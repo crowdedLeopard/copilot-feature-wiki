@@ -5,7 +5,7 @@ slug: "a2a"
 summary: "A2A is an open protocol for sending tasks between agents. Administrators meet it in Work IQ, Copilot Studio and Microsoft 365 connected agents, and use consent, spending policies and the agent registry to govern it."
 created: "2026-11-24"
 updated: "2026-11-24"
-version: 2
+version: 3
 tags: ["a2a","work-iq","copilot-studio","agent-365","declarative-agents","copilot-credits","spending-policies","agent-registry","mcp"]
 covers: []
 sources:
@@ -24,8 +24,14 @@ sources:
   - title: "Work IQ API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview"
     kind: "learn"
+  - title: "Work IQ MCP overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview"
+    kind: "learn"
   - title: "Manage connected agents in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents"
+    kind: "learn"
+  - title: "Manage connected agents in the Microsoft 365 admin center (Sales)"
+    url: "https://learn.microsoft.com/microsoft-sales-copilot/manage-connected-agents"
     kind: "learn"
   - title: "Connect to other agents from a declarative agent"
     url: "https://learn.microsoft.com/plugins/declarative-agent-connected-agent"
@@ -42,6 +48,12 @@ sources:
   - title: "Managing AI experiences enabled by usage-based billing"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     kind: "learn"
+  - title: "Usage-Based Billing and Cost Management for Copilot Credits"
+    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
+    kind: "learn"
+  - title: "Plan Licensing and Cost for Microsoft 365 Copilot Extensibility"
+    url: "https://learn.microsoft.com/plugins/cost-considerations"
+    kind: "learn"
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
@@ -56,6 +68,9 @@ sources:
     kind: "learn"
   - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
+    kind: "learn"
+  - title: "Manage plugins, skills, and MCP servers in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     kind: "learn"
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
@@ -102,8 +117,8 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All agents > Registry > agent > Block"
-      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details"
+      path: "Agents > Tools > Plugins > plugin > Block"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api:
       kind: "graph"
       call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
@@ -116,7 +131,7 @@ controls:
       path: "Agents > All agents > Researcher > Connected Agents > + Connect agents"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents"
     api: null
-    note: "Sales works the same way. Connections set by the agent developer cannot be removed."
+    note: "Same steps for Sales, which accepts only declarative agents. Developer-configured connections cannot be removed per Manage connected agents; agent details says removal may depend on how the maker connected them."
   - governs: "Registration of an external agent and its agent card for Microsoft 365 Copilot"
     scope: "tenant"
     ui: null
@@ -144,18 +159,22 @@ changes:
     note: "Corrected after the independent check: block control reworded to Copilot packages, blocking caveat narrowed, data-policy questions replaced with what Learn documents, and minor wording fixes."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 103 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: package blocking now points to Agents > Tools > Plugins, an unsupported claim about unauthenticated endpoints is removed, and the connected-agent, Work IQ enablement and spending-policy statements are qualified and sourced."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 106 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 103
-  confirmed: 101
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "9c97b86989f3b964cb709577fdc91918"
+  claims: 106
+  confirmed: 106
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "4f73032f8f67044d388a5b0afe6c2877"
 ---
 
 ## What it is
@@ -177,11 +196,11 @@ Work IQ supports A2A versions 1.0 and 0.3, chosen by the `A2A-Version` request h
 ### Copilot Studio and connected agents
 In Copilot Studio, A2A connections use the custom connector infrastructure. A typical A2A message payload includes a `contextId`, message IDs, locale information and the full chat history, not just the latest user utterance.
 
-In Microsoft 365, primary agents can connect to declarative agents and to agents available over A2A. An external A2A agent must be registered in the Microsoft Agent 365 agent registry with an agent card. An agent can connect to up to 10 other agents. See [Agent registry](/concepts/agent-registry/) and [Declarative agents](/concepts/declarative-agents/).
+In Microsoft 365, primary agents can connect to declarative agents and to agents available over A2A. An external A2A agent must be registered in the Microsoft Agent 365 agent registry with an agent card. [Manage connected agents](https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents) states that an agent can connect to up to 10 other agents; [Understand agent details](https://learn.microsoft.com/microsoft-agent-365/admin/agent-details) describes the limit as excluding agents added by the maker. See [Agent registry](/concepts/agent-registry/) and [Declarative agents](/concepts/declarative-agents/).
 
 ## Why it matters
 
-A2A is a route between agents, so what it exposes depends on the side you are on. Inbound, another party's app or agent reaches Microsoft 365 data through Work IQ: the tenant must enable Work IQ and an administrator must consent to a permission, and the `WorkIQAgent.Ask` permission includes read and write access scoped to the signed-in user. Outbound, your agent sends conversation content to an agent that may sit outside your tenant.
+A2A is a route between agents, so what it exposes depends on the side you are on. Inbound, another party's app or agent reaches Microsoft 365 data through Work IQ: the permissions reference requires an administrator to enable Work IQ, while the MCP overview also says the service principal is created automatically on first use, and an administrator must consent to a permission. The `WorkIQAgent.Ask` permission includes read and write access scoped to the signed-in user. Outbound, your agent sends conversation content to an agent that may sit outside your tenant.
 
 That gives administrators three decisions: whether an agent may call in, which external agents may be connected, and who pays for Work IQ calls. Microsoft has not documented a default for every one of these, so confirm each in your tenant rather than assuming it is closed.
 
@@ -194,7 +213,7 @@ The Copilot Studio page for adding an A2A agent names no licence or meter. The P
 ## Risks and limits
 
 - **Full chat history leaves with the task.** Copilot Studio sends the whole conversation to an A2A agent. A maker who connects an external agent shares more than the latest question.
-- **Authentication can be None.** Copilot Studio offers None, API key and OAuth 2.0. Microsoft says to use proper authentication for production, so an unauthenticated endpoint left from a test is open to whoever has its URL.
+- **Authentication can be None.** Copilot Studio offers None, API key and OAuth 2.0. Microsoft says to use proper authentication for production.
 - **Responsibility sits with you.** Microsoft states that when you connect to agents outside Copilot Studio you are responsible for their use, including data flows and permissions.
 - **External connected agents can receive context.** The primary agent decides what context to include in the prompt it sends to an external connected agent.
 - **Work IQ consent is broad.** `WorkIQAgent.Ask` allows read and write access to Microsoft 365 resources reachable by Work IQ agents, scoped to the signed-in user. Application-only authentication is not supported, so calls always act as a user.
@@ -212,23 +231,23 @@ The Copilot Studio page for adding an A2A agent names no licence or meter. The P
 <tr><td data-label="Control"><strong>Whether Work IQ, and so its A2A endpoint, is enabled in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator, one-time. The request body sets appId. Learn's steps run in Graph Explorer, not an admin centre screen.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/servicePrincipals</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which apps may call Work IQ agents on a user's behalf (admin consent for WorkIQAgent.Ask)</strong><br><small>App</small><br><small class="controls__note">At least Cloud Application Administrator in the portal; the CLI page says to sign in as a global administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Enterprise apps › All applications › application › Security › Permissions › Grant admin consent <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Azure CLI</strong><br><code>az ad app permission admin-consent --id &lt;app-id&gt;</code> <a href="https://learn.microsoft.com/cli/azure/ad/app/permission" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monthly policy limit and per-user limit for Copilot Credits spent on Work IQ API</strong><br><small>Group</small><br><small class="controls__note">Beta. The request body sets periodLimit and perUserLimit; the If-Match header is required.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Spending limits <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a Copilot package is blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Beta; the API needs a Microsoft Agent 365 licence. Blocking does not necessarily revoke connected-service permissions or credentials.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-details" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which agents Researcher and Sales can invoke as connected agents</strong><br><small>Agent</small><br><small class="controls__note">Sales works the same way. Connections set by the agent developer cannot be removed.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Researcher › Connected Agents › + Connect agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a Copilot package is blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Beta; the API needs a Microsoft Agent 365 licence. Blocking does not necessarily revoke connected-service permissions or credentials.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which agents Researcher and Sales can invoke as connected agents</strong><br><small>Agent</small><br><small class="controls__note">Same steps for Sales, which accepts only declarative agents. Developer-configured connections cannot be removed per Manage connected agents; agent details says removal may depend on how the maker connected them.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Researcher › Connected Agents › + Connect agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Registration of an external agent and its agent card for Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Beta; delegated or application permission AgentRegistration.ReadWrite.All. The request body carries the agent card in agentCard.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/agentRegistrations</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/agentregistration-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a Copilot Studio agent delegates to an external A2A agent, and how it authenticates</strong><br><small>Maker</small><br><small class="controls__note">For agents using the standard harness. Maker-side. Authentication choices are None, API key and OAuth 2.0; a connection is then selected or created.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Agents › Add agent › A2A agent <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Enabling Work IQ needs a Global Administrator, once per organisation. Consent in Microsoft Entra needs at least Cloud Application Administrator. Blocking, installing and connecting agents happen in the Microsoft 365 admin center agent registry; the Package Management API needs a Microsoft Agent 365 licence and is in beta.
+Enabling Work IQ needs a Global Administrator, once per organisation. Consent in Microsoft Entra needs at least Cloud Application Administrator. Package blocking happens under Agents > Tools > Plugins; installing and connecting agents happen in the Microsoft 365 admin center agent registry. The Package Management API needs a Microsoft Agent 365 licence and is in beta.
 
-The controls act at different points. Consent and enabling decide whether a caller can reach Work IQ; spending policies decide how much it can spend; the registry decides which agents users can install; the Copilot Studio row is set by makers. Blocking an agent does not necessarily revoke connected-service permissions or credentials. Admins can remove only the connected agents they added; developer-configured connections cannot be removed.
+The controls act at different points. Consent and enabling decide whether a caller can reach Work IQ; spending policies decide how much it can spend; the registry decides which agents users can install; the Copilot Studio row is set by makers. Blocking an agent does not necessarily revoke connected-service permissions or credentials. Manage connected agents says admins can remove only the connected agents they added; Understand agent details says removal may be possible depending on how the maker connected them.
 
 ## What to check
 
 - Confirm whether Work IQ is enabled in your tenant, and who holds Global Administrator for the one-time setup.
 - Review which applications have admin consent for `WorkIQAgent.Ask`, `WorkIQ.Read` or `WorkIQ.Act`.
 - Check that a spending policy covers Work IQ API, and review its monthly and per-user limits.
-- Inspect the agent registry and block unapproved Copilot packages.
+- Inspect Agents > Tools > Plugins and block unapproved Copilot packages.
 - Open the Connected Agents tab on Researcher and Sales, and remove connections you did not intend.
 - Ask makers which A2A endpoints they connected in Copilot Studio and whether any use authentication None.
 - Review agent registrations created through the Agent Registration API.
@@ -240,15 +259,8 @@ The controls act at different points. Consent and enabling decide whether a call
 - Tenant-level data policies can classify custom connector host URL patterns as Blocked; the * pattern applies to all custom connectors. This is a custom-connector control, not a separate A2A switch.
 - Does Block in the agent registry apply to an agent registered only through an A2A agent card?
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risks and limits: Authentication / behaviour: An unauthenticated endpoint left from a test is open to whoever has its URL. | Found: Searched: Copilot Studio A2A unauthenticated endpoint None public URL virtual network access. Read add-agent-agent-to-agent and returned network-isolation excerpts; no text says URL possession alone ensures access, and A2A connections may use private networks. | Fix: Remove 'so an unauthenticated endpoint left from a test is open to whoever has its URL'. The source supports the authentication recommendation, not universal network reachability.
-- [contradicted, blocker] controls[3].ui; Governance controls; What to check: block packages / admin-path: Agents > All agents > Registry > agent > Block is the UI control for blocking a Copilot package. | Found: These actions apply to the selected agent. If the agent is included in a plugin, don't assume the action also applies to the whole plugin package, its skills, shared MCP servers, or connections. | Fix: Keep the package API and replace controls[3].ui.path with 'Agents > Tools > Plugins > plugin > Block', using https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers as docs and a source. Replace the checklist sentence with 'Inspect Agents > Tools > Plugins and block unapproved Copilot packages.' In Governance controls, replace 'Blocking, installing and connecting agents happen in the Microsoft 365 admin center agent registry' with 'Package blocking happens under Agents > Tools > Plugins; installing and connecting agents happen in the Microsoft 365 admin center agent registry.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: Copilot Studio and connected agents / behaviour: An agent can connect to up to 10 other agents. | Found: An agent can connect to up to 10 other agents. | Fix: Replace the sentence with: 'Manage connected agents states that an agent can connect to up to 10 other agents; Understand agent details describes the limit as excluding agents added by the maker.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details for the second statement. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] Why it matters; Governance controls / applicability: An administrator must enable Work IQ in the tenant before applications can use its permissions. | Found: An organization administrator must enable Work IQ in your organization before these permissions can be used by applications. | Fix: Replace 'the tenant must enable Work IQ' with 'the permissions reference requires an administrator to enable Work IQ; the MCP overview also says the service principal is created automatically on first use'. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview for the latter qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions
-- [supported, minor] controls[4].note; What to check / behaviour: Sales works the same way as Researcher for connecting agents. | Found: Select Researcher or Sales, and then select the Connected Agents tab. | Fix: Replace 'Sales works the same way' with 'The Agent 365 guide gives the same connection steps for Sales; the Sales-specific guide says only declarative agents can be connected to Sales'. Cite https://learn.microsoft.com/microsoft-sales-copilot/manage-connected-agents. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] controls[4].note; Governance controls / behaviour: Administrators cannot remove developer-configured connected agents. | Found: You can't remove connected agents configured by the agent developer. | Fix: Replace the absolute statement with: 'Manage connected agents says developer-configured connections cannot be removed; Understand agent details says removal may be possible depending on how the maker connected them.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details for the differing qualification. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] sources; controls[2].governs / applicability: The Work IQ spending-policy applicability statement rests partly on Microsoft pages omitted from sources. | Found: Services managed by usage-based billing in the Microsoft admin center now include: Work IQ API for custom apps and agents | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits and https://learn.microsoft.com/plugins/cost-considerations to sources for the applicability of spending policies and their group and per-user limits to Work IQ API. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits#services-managed-by-usage-based-billing
+- [supported, minor] What it is: Microsoft 365 connected agents table row / behaviour: A Microsoft 365 primary agent can invoke a connected agent. | Found: For connected agents to work, both the primary agent and the connected agent must be acquired for the user. You can install each agent for users from the Microsoft 365 admin center. | Fix: Add after the Microsoft 365 connected-agent description: 'Both the primary agent and the connected agent must be acquired for the user before delegation works.' The cited Manage connected agents page states this qualification. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
 -->

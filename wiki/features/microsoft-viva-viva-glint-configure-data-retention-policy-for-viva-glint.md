@@ -41,7 +41,7 @@ sources:
     url: "https://learn.microsoft.com/viva/glint/setup/supported-environments"
     kind: "learn"
 videos: []
-related: ["microsoft-viva-viva-glint-configure-user-and-survey-data-retention-for-deleted-users-in-vi","microsoft-viva-import-hris-data-in-viva-glint-from-microsoft-admin-center"]
+related: []
 controls:
   - governs: "How long Viva Glint keeps survey data before permanently deleting it"
     scope: "tenant"
@@ -68,19 +68,23 @@ changes:
     note: "First briefing for this item: documents the Data retention policy control, its values, what it deletes and where it is set."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 38 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: removed an unsupported no-charge statement and a 'first documented' claim, and reworded the audit-log question to reflect the documented Details changes saved event."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 46 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 35
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "83a87db517ec07fcacd08f4db5b379d8"
+  claims: 46
+  confirmed: 45
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "2946fb6feb56aa991f3097a345454d6d"
 ---
 
 ## What's changing
@@ -95,7 +99,7 @@ The roadmap record lists the item as Launched, with a target of June CY2026, rel
 
 ## Why it matters
 
-This is the first documented way for a service owner to make Glint's retention follow the organisation's own records policy instead of the subscription term. Teams that must delete employee survey data after a set period, or that want to limit how much feedback history sits in one platform, now have a setting for it.
+This gives a service owner a documented way to make Glint retention follow the organisation's own records policy instead of the subscription term. Teams that must delete employee survey data after a set period, or that want to limit how much feedback history sits in one platform, now have a setting for it.
 
 Because the default keeps data while the subscription lasts, doing nothing leaves current behaviour in place. The decision is therefore deliberate and one-way: a custom period deletes data permanently, so agree the period with HR, legal and privacy owners and with the leaders who rely on trend reporting before anyone sets it.
 
@@ -118,7 +122,7 @@ Because the default keeps data while the subscription lasts, doing nothing leave
 
 ## Cost and licensing
 
-Learn's Viva Glint licensing page says a Viva Suite or Viva Glint subscription plan is required to use Viva Glint, and that individual user licence assignment is not required for using Viva Glint. The Learn page for the Data retention policy control lists no separate licence, meter or price, and Microsoft Learn states no charge specific to it at the time of writing (November 2026).
+Learn's Viva Glint licensing page says a Viva Suite or Viva Glint subscription plan is required to use Viva Glint, and that individual user licence assignment is not required for using Viva Glint. The Learn page for the Data retention policy control lists no separate licence, meter or price.
 
 The indirect cost is admin and governance time: agreeing a period with HR, legal and privacy owners, and communicating it to survey leaders. A price or licence specific to this control is not yet published.
 
@@ -164,7 +168,7 @@ The Service Admin role can only be added or removed by a Microsoft 365 Global Ad
 
 ## Open questions
 
-- Is a change to the Data retention policy control recorded in the Viva Glint Activity Audit Log, and under which event name? Watch the Activity Audit Log and Purview audit log activities pages on Microsoft Learn.
+- Learn documents **Details changes saved** as change activity in General Settings. Which event specifically identifies a Data retention policy change? Watch the Activity Audit Log and Purview audit log activities pages on Microsoft Learn.
 - How soon after a cycle passes the retention period is its data deleted? Watch the General Settings page on Microsoft Learn for a stated schedule.
 - Does the GCC availability page for Viva Glint list this control? The roadmap record lists GCC, but the Learn page on GCC feature availability does not name it.
 
@@ -174,10 +178,9 @@ cost: Low. The only cost the sources show is admin time to agree and set a perio
 impact: Low. Glint service administrators configure it and employees see no change, but leaders who report on older survey cycles notice once data past the period is deleted.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing / cost: Microsoft Learn states that there is no charge specific to the retention control. | Found: Searched: "Viva Glint" "data retention policy" licensing price; Viva Glint data retention policy licensing price meter first retention policy audit deletion schedule. Read General Settings and Viva Glint licensing; neither states the control has no charge. | Fix: Remove 'and Microsoft Learn states no charge specific to it at the time of writing (November 2026)'. Keep the preceding narrower statement that the control's Learn page lists no separate licence, meter or price.
-- [unsupported, major] Why it matters / behaviour: This is the first documented way to make Glint retention follow organisational records policy instead of the subscription term. | Found: Searched: "Viva Glint" "data retention" "first". Read General Settings and returned data-residency, deletion and role excerpts; none establishes that no earlier documented mechanism existed. | Fix: Replace the first sentence with 'This gives a service owner a documented way to make Glint retention follow the organisation's own records policy instead of the subscription term.'
-- [contradicted, blocker] Open questions: Activity Audit Log / absence: Whether a retention-policy change is recorded in the Activity Audit Log is wholly undocumented. | Found: Details changes saved | Change activity in General Settings or Advanced Configuration: Details. | Fix: Replace the audit question with 'Learn documents Details changes saved as change activity in General Settings. Which event specifically identifies a Data retention policy change? Watch the Activity Audit Log and Purview audit log activities pages on Microsoft Learn.' Do not claim a retention-specific event is documented. | Source: https://learn.microsoft.com/viva/glint/setup/activity-audit-log
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].note; Risk assessment: Security & identity; Governance controls / role: Only Microsoft 365 Global Administrators or Viva Glint Tenant Administrators can add or remove Service Admins, through the Microsoft 365 admin center. | Found: Users can only be added/removed to this role by a Microsoft 365 Global Administrator or a Viva Glint Tenant Administrator from the Microsoft 365 Admin Center. | Fix: Qualify this statement wherever repeated as applying to employee Service Admin assignments. Add: 'Support users follow a separate Viva Glint application procedure, where the Service Admin User Role is selected by default; Microsoft says not to assign them through the Microsoft 365 admin center.' Cite https://learn.microsoft.com/viva/glint/setup/add-external-user, which states 'The Service Admin User Role is selected by default' and 'Don't assign support users to the Viva Glint Service Admin role through the Microsoft 365 admin center.' | Source: https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps
+- [unsupported, minor] rationale: impact / behaviour: Employees see no change from the retention control. | Found: Searched: Viva Glint retention policy employees survey experience notification. Read General Settings and search excerpts from survey-taker FAQs, survey communications and survey access methods; none states that employees see no change from this control. | Fix: Remove 'and employees see no change' from the impact rationale; keep the supported statements that Service Admins configure the setting and older reporting data is deleted.
 -->

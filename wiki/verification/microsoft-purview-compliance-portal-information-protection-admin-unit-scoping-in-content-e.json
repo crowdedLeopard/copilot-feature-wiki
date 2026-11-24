@@ -1,0 +1,767 @@
+{
+  "slug": "microsoft-purview-compliance-portal-information-protection-admin-unit-scoping-in-content-e",
+  "roadmapId": 498916,
+  "title": "Microsoft Purview: administrative unit scoping in Content Explorer and Data Explorer (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "4 blocking findings (claims 19, 21, 30, 31)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 53,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 4,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing assumes an opt-in arrival state for government clouds that Microsoft has not stated. It also overstates explorer roles' content access and the effect of unrelated Entra roles, and overlooks the documented historical-data restriction for features supporting administrative units.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans administrative unit scoping in Content Explorer and Data Explorer to respect organisational boundaries.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature introduces Admin Unit scoping to both Content Explorer and Data Explorer, enabling more granular visibility and control over M365 data. It ensures that data exploration respects organizational boundaries defined by Admin Units",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 498916 remains In development in the supplied record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026, which has passed by November 2026 without a launched status in the supplied record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The supplied roadmap record was last modified in March 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-03-25T23:15:06\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description states no default for the government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature introduces Admin Unit scoping to both Content Explorer and Data Explorer, enabling more granular visibility and control over M365 data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary",
+      "type": "record",
+      "claim": "The roadmap states no required action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It ensures that data exploration respects organizational boundaries defined by Admin Units, enhancing compliance and governance.",
+      "severity": "minor",
+      "fix": "Replace 'the roadmap states no required action' with 'the roadmap does not specify an administrator action'; the record is silent rather than an explicit no-action notice."
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "The same feature has a separate Worldwide (Standard Multi-Tenant) roadmap item, 498915.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 498915: \"title\": \"Microsoft Purview Compliance Portal: Information Protection - Admin unit scoping in Content Explorer and Data Explorer\", \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": "minor",
+      "fix": "Add the cited Worldwide record to sources: https://www.microsoft.com/microsoft-365/roadmap?id=498915, titled 'Microsoft 365 Roadmap 498915', kind roadmap."
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The supplied record for Worldwide item 498915 has status Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 498915: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Worldwide item 498915 has a preview date of October CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 498915: \"previewDate\": \"October CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Worldwide item 498915 has a target of January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 498915: \"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Administrative units subdivide the Microsoft Entra organisation, for example by region or department.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "you can subdivide your organization into smaller units and restrict administrative permissions to specific parts of your Microsoft Entra organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Content Explorer supports administrative unit restrictions for role group members with data classification list viewer or content viewer roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Members of role groups that have the data classification list viewer or data classification content viewer role receive these respective role permissions can be restricted by administrative unit assignments within content explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Data Explorer supports administrative unit restrictions for role group members with data classification list viewer or content viewer roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+      "quote": "Members of role groups that have the data classification list viewer or data classification content viewer role will receive these respective role permissions can be restricted by administrative unit assignments within data explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The explorer Learn pages do not specify which government clouds their administrative unit support covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"data explorer\" \"administrative units\" \"GCC\"' and 'Content Explorer Data Explorer administrative unit scoping GCC GCC High DoD default licensing price'; opened both explorer pages and purview-admin-units. No cloud-specific explorer scoping statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Why it matters; Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "The government-cloud change is admin-opt-in and existing unrestricted explorer role holders keep their view until an administrator assigns units.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Content Explorer\" \"administrative units\" \"default\" settings' and 'Content Explorer Data Explorer administrative unit scoping GCC GCC High DoD default licensing price'; read roadmap 498916, both explorer pages and purview-admin-units. No government-cloud arrival default is stated.",
+      "severity": "blocker",
+      "fix": "Set defaultState to unknown. Remove 'the wiki's reading is that nothing narrows until an administrator makes those assignments' and 'so existing unrestricted role holders keep their current view until someone assigns units'. Retain 'Microsoft has not stated what happens on arrival in GCC, GCC High or DoD'."
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated what happens on arrival in GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Content Explorer\" \"administrative units\" \"default\" settings' and '\"data explorer\" \"administrative units\" \"GCC\"'; read roadmap 498916, both explorer pages and purview-admin-units. No government-cloud arrival behaviour stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "role",
+      "claim": "The Content Explorer and Data Explorer roles can read item contents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+      "quote": "These are independent role groups and the permissions they grant aren't cumulative. For example, if you want to grant an account the ability to view the items and their locations only, grant Data Explorer List viewer rights.",
+      "severity": "blocker",
+      "fix": "Replace 'Those roles can read item contents' with 'The Content Explorer Content viewer and Data Explorer Content viewer role groups grant access to item contents; the List viewer role groups grant list and location access only'. Both cited explorer pages document this distinction."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Explorer access permissions supersede locally assigned item permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+      "quote": "These permissions supersede permissions that are locally assigned to the items, which allow viewing of the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "role",
+      "claim": "Explorer List viewer role groups grant access to items and their locations and carry the data classification list viewer role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+      "quote": "Data Explorer List viewer: Membership in this role group allows you to see each item and its location in list view. The data classification list viewer role has been pre-assigned to this role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "The explorers can show item names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Additionally, this role is also required to view name of items in list view, which might contain sensitive data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "role",
+      "claim": "Explorer Content viewer role groups carry the data classification content viewer role and grant content viewing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+      "quote": "Data Explorer Content viewer: Membership in this role group allows you to view the contents of each item in the list. The data classification content viewer role has been pre-assigned to this role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The administrative units page calls administrators with no assigned units unrestricted administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "If administrators don't have administrative units assigned (unrestricted administrators), they can assign policies to the entire directory without being required to select individual administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The administrative units page does not explain the explorer-specific mapping of an item to an administrative unit.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Data Explorer\" \"administrative units\" \"SharePoint\" \"owner\"' and '\"content explorer\" \"administrative units\" \"historical\" \"scope\"'; opened both explorer pages and purview-admin-units. No explorer-specific item-to-unit mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The administrative units page limits its SharePoint site support to auto-labeling and DLP policies supporting SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "This support is only available for Microsoft Information Protection auto-labeling policies and Microsoft Data Loss Prevention policies that support application to SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "Restricted administrators cannot see historical data in administrative-unit-supporting features such as Activity Explorer and alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Restricted administrators also can't see historical data by using features that support administrative units, such as activity explorer and alerts. They remain visible to unrestricted administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "The documented historical-data restriction is not stated to cover the explorers.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Restricted administrators also can't see historical data by using features that support administrative units, such as activity explorer and alerts.",
+      "severity": "blocker",
+      "fix": "Remove 'and does not say whether the explorers behave the same way' and the historical-access open question. The general statement covers features supporting administrative units, and both cited explorer pages explicitly put the explorers in that class. Do not expand this into an item-specific historical mapping claim."
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Any Entra role, including Compliance Administrator, makes the explorer assignment unscoped and prevents the first control restricting that person.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Entra roles always take precedence, and scoping applied through Administrative Units doesn't restrict the user's effective permissions for overlapping capabilities.",
+      "severity": "blocker",
+      "fix": "Replace the unconditional override statements with 'Entra roles take precedence over scoped Purview assignments for overlapping capabilities'. Replace the first-row note's final sentence with that wording, and remove the claim that every Entra role holder has unscoped explorer access. The explorer pages explicitly say tab-access Entra roles do not grant item or content access."
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "Assigning administrative units to a role group member requires the Role management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "To assign a role group member to an administrative unit, administrators must be assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The documented Entra portal procedure for creating units requires at least Privileged Role Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "Administrative unit entitlement combines Entra licensing and a qualifying Purview subscription, represented as mixed licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft Entra ID P1 or P2 licensing\nMicrosoft Purview licensing (one of the following subscriptions):\nMicrosoft 365 E5/A5/G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Purview administrative units prerequisites list Microsoft Entra ID P1 or P2 licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft Entra ID P1 or P2 licensing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/G5 is one qualifying Purview subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft Purview licensing (one of the following subscriptions):\nMicrosoft 365 E5/A5/G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance is another qualifying subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/G5/F5 Information Protection & Governance is another qualifying subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft 365 E5/A5/G5/F5 Information Protection & Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/F5 Insider Risk Management is another qualifying subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft 365 E5/A5/F5 Insider Risk Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description says Content and Activity Explorer analytics interfaces require E5/A5/G5 licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "While Data classification analytics (Content & Activity Explorer interfaces) requires E5/A5/G5 licensing, the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The creating-units page lists P1 or P2 for each administrative unit administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Microsoft Entra ID P1 or P2 license for each administrative unit administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The creating-units page lists Microsoft Entra ID Free licences for administrative unit members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Microsoft Entra ID Free licenses for administrative unit members",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; front matter: licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or meter for explorer administrative unit scoping is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"administrative unit\" \"scoping\" \"meter\"' and '\"Data Explorer\" \"administrative units\" \"price\" meter license'; opened purview-admin-units, both explorers, the Purview service description and purview-billing-models. No separate scoping price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "A licence specific to explorer scoping, separate from documented administrative unit and explorer prerequisites, is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"administrative units\" pricing license government GCC G5' and '\"Data Explorer\" \"administrative units\" \"price\" meter license'; opened purview-admin-units, both explorer prerequisites and the Purview service description. No separate explorer-scoping SKU found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A government-cloud-specific difference in explorer-scoping licensing is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"administrative units\" pricing license government GCC G5'; opened purview-admin-units and the Purview service description; read GCC and GCC High deployment search excerpts. No explorer-scoping licensing difference found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "Government-cloud rollout mechanics beyond the roadmap target are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"data explorer\" \"administrative units\" \"GCC\"' and 'Content Explorer Data Explorer administrative unit scoping GCC GCC High DoD default licensing price'; read roadmap 498916, explorer pages and government deployment excerpts. No feature-specific rollout mechanics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The printed Purview portal route reaches Assign admin units for role group members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups ... On Role groups for Microsoft Purview solutions ... Select Edit ... On Edit members of the role group, select Choose users ... select the users or groups and select Assign admin units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no automation operation assigning administrative units to Purview role group members.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview administrative units role group member PowerShell Add-RoleGroupMember AdministrativeUnits Set-RoleGroup' and '\"Purview\" \"role group\" \"administrative unit\" \"API\" assignment'; opened purview-permissions, Add-RoleGroupMember and Set-RoleGroup references. No such operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Entra ID > Roles & admins > Admin units > Add starts administrative unit creation in the Entra admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Browse to Entra ID > Roles & admins > Admin units. ... Select Add. ... On the Review + create tab, review the administrative unit and any role assignments. ... Select the Create button.",
+      "severity": "minor",
+      "fix": "The path stops on the correct creation page. Extend it to 'Entra ID > Roles & admins > Admin units > Add > Review + create > Create', leaving optional role assignments and field entry to the cited procedure."
+    },
+    {
+      "n": 50,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /v1.0/directory/administrativeUnits creates an administrative unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Use the Create administrativeUnit API to create a new administrative unit.\nPOST https://graph.microsoft.com/v1.0/directory/administrativeUnits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Creating the Entra unit is distinct from assigning it to a Purview role group member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "1. Create administrative units to restrict the scope of role permissions in Microsoft Entra ID. ... 4. Use any of the role groups from the Microsoft Purview solutions that support administrative units to assign administrative units to members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrative unit creation, deletion and Entra resource membership are managed in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "You manage administrative unit creation, deletion, and Microsoft Entra resource membership from Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "A separate explorer-local administrative unit setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Content Explorer\" \"administrative units\" \"default\" settings' and '\"Data Explorer\" \"administrative units\" \"SharePoint\" \"owner\"'; opened both explorer pages, purview-admin-units and purview-permissions. Scoping is documented through role group assignments, not an explorer-local switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes visibility scoping and no agent or automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature introduces Admin Unit scoping to both Content Explorer and Data Explorer, enabling more granular visibility and control over M365 data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout; After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to inventory and review Entra role holders, but the controls table has no Entra role-assignment row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Inventory ... which of those people also hold Entra roles ... Review ... including any new Entra role holders. The table contains only Purview administrative unit assignments and Entra administrative unit creation.",
+      "severity": "minor",
+      "fix": "Remove the checklist clauses that tell the reader to inventory or review Entra role holders; retain the verified overlap warning in the control note. Do not add a control row as part of this correction."
+    },
+    {
+      "n": 56,
+      "where": "Scope: Who is affected",
+      "type": "role",
+      "claim": "The Data Explorer tab-access Entra roles are Compliance administrator, Security administrator, Compliance data administrator or Global administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+      "quote": "In order to get access to the data explorer tab, an account must be assigned membership in any one of these roles or role groups. ... Compliance administrator ... Security administrator ... Compliance data administrator ... Global administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Who is affected",
+      "type": "role",
+      "claim": "The Content Explorer page lists Compliance administrator, Security administrator and Compliance data administrator as tab-access Entra roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "To access the content explorer tab, assign an account membership in any one of these Entra ID roles or Purview roles. ... Entra ID roles ... Compliance administrator ... Security administrator ... Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn describes explorer access as highly restricted because it allows scanned file contents to be read.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+      "quote": "Access to data explorer is highly restricted because it lets you read the contents of scanned files.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T06:25:34.983Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498916",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-classification-data-explorer",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-admin-units",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which administrative units limit a Content Explorer or Data Explorer role group member",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users",
+          "Assign admin units"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Creating the administrative units used for scoping",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Roles & admins",
+          "Admin units",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Creating the administrative units used for scoping",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+        "reachable": true,
+        "token": "/v1.0/directory/administrativeUnits",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

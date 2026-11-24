@@ -79,18 +79,20 @@ changes:
     note: "Correction: cost rating raised to medium because the Process license is a paid capacity license; usage report source added."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 59
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "80264bb176cc081174de4379cb19c053"
 ---
 
@@ -194,8 +196,12 @@ cost: Medium. Flow groups require paid Power Automate Process capacity. Existing
 impact: Medium. Makers and flow owners who hold or request Process capacity see a new Flow groups page and licensing option.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: first paragraph; Open questions: first bullet / absence: Learn documents no admin setting limiting who can create flow groups beyond maker permissions. | Found: To control access to data and resources, you can create or modify security roles and change the security roles that are assigned to users. ... | Create | Required to make a new record | | Fix: Replace the Governance controls sentence with 'Learn documents no admin setting that turns flow groups off at the time of writing (November 2026), and the feature page states that no admin action is required to enable it.' Narrow the first Open questions bullet to 'Which named security roles have the privileges to create or change flowgroup records? Watch the Learn pages on flow groups.' The cited flowgroup reference identifies a Dataverse table, and https://learn.microsoft.com/power-platform/admin/security-roles-privileges documents role-controlled record creation; the specific role assignments remain unpublished. | Source: https://learn.microsoft.com/power-platform/admin/security-roles-privileges
+- [contradicted, blocker] Scope: first paragraph; Cost and licensing: first paragraph / licensing: Solution-aware cloud flows in a single environment with available Process capacity and maker permissions are in scope, without a pay-as-you-go qualification. | Found: You can't currently use Process licenses in a pay-as-you-go environment. ... keep it in an environment that isn't linked to an Azure subscription and assign a Process license ... to a flow group that contains it. | Fix: Add to the Scope and Cost and licensing statements about the eligible environment: 'Process licenses cannot currently be used in a pay-as-you-go environment; use an environment that is not linked to an Azure subscription.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#action-limits-and-capacity-questions. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#action-limits-and-capacity-questions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls: final paragraph / consistency: The governance checklist's Analytics and group-consumption monitoring checks have no controls-table row. | Found: Guidance: "Identify candidate flows by their daily action count" and "Review group consumption regularly". Controls: "The Analytics usage check and the regular group-consumption review ... have no monitoring row in the table above." | Fix: The Before rollout step 'Identify candidate flows by their daily action count' and After rollout step 'Review group consumption regularly' have no corresponding monitoring row in the controls table. This is a checklist/table completeness gap, not an instruction to add rows during correction.
+- [supported, minor] Governance controls: usage report paragraph / behaviour: The Power Platform admin center usage report reports consumption and is recommended for identifying flows needing dedicated capacity. | Found: Use the Usage page's top consumers and per-user flow breakdown to spot flows that could share capacity ... If a single high-volume flow drives a user's request consumption, consider assigning that flow a dedicated Process license. | Fix: Add to the usage-report paragraph: 'The Usage page shows consumption attributed to users; it does not show service-principal consumption or flows covered by Process or legacy Per-flow licenses.' Keep the existing source https://learn.microsoft.com/power-platform/admin/power-automate-licensing/power-automate-usage-report. Its Find candidates for flow groups section recommends dedicated Process capacity for a single high-volume flow. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/power-automate-usage-report
+- [contradicted, minor] Governance guidance; Governance controls: final paragraph / consistency: The Analytics and regular group-consumption checklist checks have no corresponding controls-table row. | Found: Identify candidate flows by their daily action count; Learn suggests the flow's Analytics page. ... Review group consumption regularly. ... The Analytics usage check and the regular group-consumption review ... have no monitoring row in the table above. | Fix: The Before rollout step 'Identify candidate flows by their daily action count' and After rollout step 'Review group consumption regularly' have no corresponding monitoring row in the controls table. This is a checklist/table completeness gap, not an instruction to add rows during correction.
 -->

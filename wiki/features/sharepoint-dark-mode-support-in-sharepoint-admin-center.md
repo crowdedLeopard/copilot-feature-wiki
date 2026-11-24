@@ -17,19 +17,25 @@ impact: "low"
 defaultState: "unknown"
 action: "none"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The roadmap item names no licence, and the SharePoint admin center page opened for this briefing states none for dark mode."
+  model: "included"
+  notes: "The SharePoint service description publishes the general requirement for a licence that includes SharePoint; it publishes no dark-mode-specific licence. Organisations with Frontline workers need at least one Enterprise user to access the admin center."
 audiences: ["m365-admin","change-adoption"]
 tags: ["sharepoint","admin-center","gcc"]
 sources:
   - title: "Microsoft 365 admin center accessibility overview"
     url: "https://learn.microsoft.com/microsoft-365/admin/admin-overview/admin-center-accessibility-overview"
     kind: "learn"
+  - title: "Microsoft 365 admin center - Overview"
+    url: "https://learn.microsoft.com/microsoft-365/admin/admin-overview/admin-center-overview"
+    kind: "learn"
   - title: "About administrator roles in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles"
     kind: "learn"
   - title: "Manage sites in the SharePoint admin center"
     url: "https://learn.microsoft.com/sharepoint/get-started-new-admin-center"
+    kind: "learn"
+  - title: "SharePoint service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description"
     kind: "learn"
   - title: "SharePoint: Dark mode support in SharePoint Admin Center"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=552593"
@@ -41,7 +47,7 @@ controls:
     scope: "tenant"
     ui: null
     api: null
-    note: "Role-based access to the SharePoint admin center (SharePoint Administrator) decides who sees it, not which display mode it uses."
+    note: "Role-based access to the SharePoint admin center (SharePoint Administrator) decides who sees it."
 confidence: "low"
 created: "2026-11-24"
 updated: "2026-11-24"
@@ -51,19 +57,23 @@ changes:
     note: "First briefing for this item: the roadmap lists dark mode as launched, and Microsoft Learn does not yet describe it for the SharePoint admin center."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 38 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected unsupported statements on site content, permissions, sharing and display mode; licensing now cites the SharePoint service description's general licence requirement."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 38 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 38
-  confirmed: 34
-  unconfirmed: 4
+  confirmed: 38
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "ef4316c5ff19707289e12d8be66c071d"
+  attempts: 0
+  hash: "d4ae4633359c75bc24c81601bec70d5c"
 ---
 
 ## What's changing
@@ -76,7 +86,7 @@ For context, the Microsoft 365 admin center is a separate site. Its accessibilit
 
 ## Why it matters
 
-This is a cosmetic change for administrators who work in the SharePoint admin center. It does not touch site content, permissions or sharing, and the roadmap item describes nothing that reaches users outside the admin centre.
+This is a cosmetic change for administrators who work in the SharePoint admin center. The roadmap item describes no changes to site content, permissions or sharing, and nothing that reaches users outside the admin centre.
 
 Microsoft has not stated what happens on arrival, so the wiki cannot say whether administrators see dark mode automatically or choose it. The practical view is that no source says existing behaviour changes, so a short note to your SharePoint administrators is enough, and support desks may get a few screenshots of the new appearance.
 
@@ -96,7 +106,7 @@ Microsoft has not stated what happens on arrival, so the wiki cannot say whether
 
 ## Cost and licensing
 
-The roadmap item names no licence and no meter. The Learn page that describes the SharePoint admin center's Active sites page, which was opened for this briefing, states no licence for dark mode. A licence or price specific to this feature is not yet published.
+The roadmap item names no licence and no meter. The SharePoint service description publishes the general requirement for a licence that includes SharePoint; it publishes no dark-mode-specific licence. Organisations with Frontline workers need at least one Enterprise user to access the admin center.
 
 The indirect cost is administrator time to tell colleagues about the appearance change.
 
@@ -125,11 +135,11 @@ The record does not say whether dark mode applies per user or per tenant, and Le
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Tenant-wide switch for dark mode in the SharePoint admin center</strong><br><small>Tenant</small><br><small class="controls__note">Role-based access to the SharePoint admin center (SharePoint Administrator) decides who sees it, not which display mode it uses.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant-wide switch for dark mode in the SharePoint admin center</strong><br><small>Tenant</small><br><small class="controls__note">Role-based access to the SharePoint admin center (SharePoint Administrator) decides who sees it.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The table records that no tenant-wide switch for this appearance setting is documented for the SharePoint admin center at the time of writing (November 2026). Access to the SharePoint admin center itself is governed through Microsoft Entra roles such as SharePoint Administrator, which controls who sees the interface but not which display mode it uses.
+The table records that no tenant-wide switch for this appearance setting is documented for the SharePoint admin center at the time of writing (November 2026). Access to the SharePoint admin center itself is governed through Microsoft Entra roles such as SharePoint Administrator, which controls who sees the interface.
 
 ## Open questions
 
@@ -139,18 +149,6 @@ The table records that no tenant-wide switch for this appearance setting is docu
 
 <!-- rationale
 risk: Low. The roadmap describes a display option in an admin website and states no new data access, so the change stays inside existing data and security boundaries.
-cost: Low. The roadmap item names no licence or meter, so the only cost the sources show is the time to tell administrators; licensing for this feature is not yet published.
+cost: Low. The roadmap item names no licence or meter, so the only cost the sources show is the time to tell administrators; no dark-mode-specific licensing is published.
 impact: Low. Only people who open the SharePoint admin center are affected, which in practice means administrators holding a role that grants access to it.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Dark mode does not touch site content. | Found: Searched: SharePoint admin center dark mode site content permissions sharing changes role display mode preference Microsoft 365 synchronization. Read Manage sites, accessibility overview and returned sharing excerpts; none states dark mode does not touch site content. | Fix: Replace 'It does not touch site content, permissions or sharing' with 'The roadmap item describes no changes to site content, permissions or sharing'.
-- [unsupported, major] Why it matters / behaviour: Dark mode does not touch permissions. | Found: Searched: SharePoint admin center dark mode site content permissions sharing changes role display mode preference Microsoft 365 synchronization. Read Manage sites, administrator roles and returned sharing excerpts; none states dark mode does not touch permissions. | Fix: Replace 'It does not touch site content, permissions or sharing' with 'The roadmap item describes no changes to site content, permissions or sharing'.
-- [unsupported, major] Why it matters / behaviour: Dark mode does not touch sharing. | Found: Searched: SharePoint admin center dark mode site content permissions sharing changes role display mode preference Microsoft 365 synchronization. Read Manage sites, accessibility overview and returned sharing excerpts; none states dark mode does not touch sharing. | Fix: Replace 'It does not touch site content, permissions or sharing' with 'The roadmap item describes no changes to site content, permissions or sharing'.
-- [unsupported, major] controls[0].note; Governance controls / behaviour: Role-based access does not determine which display mode the SharePoint admin center uses. | Found: Searched: SharePoint admin center dark mode site content permissions sharing changes role display mode preference Microsoft 365 synchronization. Read About administrator roles and About the SharePoint Administrator role; neither documents how roles affect dark mode. | Fix: Remove ', not which display mode it uses' from controls[0].note and the rendered note, and remove 'but not which display mode it uses' from Governance controls. Keep the documented statement that the role grants access.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: The Microsoft 365 admin center and SharePoint admin center are separate sites. | Found: Open separate admin centers for Exchange, Teams, SharePoint, Viva Engage, and Microsoft Entra. | Fix: Add https://learn.microsoft.com/microsoft-365/admin/admin-overview/admin-center-overview to sources for the statement that the admin centers are separate. | Source: https://learn.microsoft.com/microsoft-365/admin/admin-overview/admin-center-overview?view=o365-worldwide#admin-center-features-and-settings
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no dark-mode-specific licence has been published. | Found: To access SharePoint, users in your organization need to be assigned a license that includes SharePoint. | Fix: Set licensing.model to included. Replace the notes with 'The SharePoint service description publishes the general requirement for a licence that includes SharePoint; it publishes no dark-mode-specific licence. Organisations with Frontline workers need at least one Enterprise user to access the admin center.' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description and use the same wording in Cost and licensing. In the cost rationale, replace 'licensing for this feature is not yet published' with 'no dark-mode-specific licensing is published'. | Source: https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description
 -->

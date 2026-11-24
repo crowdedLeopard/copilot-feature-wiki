@@ -81,15 +81,17 @@ changes:
     note: "Corrected the data policy PowerShell example, the licensing (Power Automate Premium includes desktop automation; pay-as-you-go flow-run billing can apply) and the public key advice."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -195,8 +197,8 @@ cost: Low. The PGP reference lists no PGP-specific licence or meter; existing de
 impact: Low. Only makers who add a PGP action to a desktop flow notice it; the roadmap says the actions appear in the action picker with no other UI change.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].governs; Risk assessment: Data exposure; Governance controls / behaviour: Microsoft documents that sensitive variable values are not stored in flow run logs. | Found: The flow designer masks the values of sensitive variables during debugging, and it doesn't store them in flow run logs. | Fix: Qualify the logging assurance with: 'Microsoft also documents a sensitive-variable logging issue in Power Automate for desktop versions 2.62 through 2.66 when global sensitive variables are used in local subflows; release 2.67.143.26090 and later includes the fix, and Microsoft lists patched earlier releases.' Cite https://learn.microsoft.com/troubleshoot/power-platform/power-automate/desktop-flows/sensitive-variables-security-update. The cited variables reference additionally qualifies omission from portal Run history with 'if you've logged in with an organization premium account'; preserve that qualification when describing portal Run history. | Source: https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data
+- [supported, minor] controls[1].governs; Risk assessment: Data exposure; Governance controls / behaviour: Microsoft documents that sensitive-variable values are not stored in flow run logs. | Found: The flow designer masks the values of sensitive variables during debugging, and it doesn't store them in flow run logs. | Fix: Qualify the assurance in the control description and prose: 'Microsoft documents omission of sensitive-variable values from portal Run history when signed in with an organization premium account. Microsoft also documents a logging vulnerability in Power Automate for desktop versions 2.62 through 2.66 when global sensitive variables are used in local subflows; update to release 2.67.143.26090 or later, or a patched earlier release listed by Microsoft.' Cite https://learn.microsoft.com/troubleshoot/power-platform/power-automate/desktop-flows/sensitive-variables-security-update alongside the existing variables reference. That security page documents the exception to the general assurance. | Source: https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data
 -->

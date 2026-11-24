@@ -85,15 +85,17 @@ changes:
     note: "Corrected the auditing open question: Copilot user interactions are logged in Microsoft Purview Audit when auditing is enabled; a report-specific event remains unconfirmed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 72
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -204,4 +206,10 @@ Disabling Loop is not a targeted control: Microsoft Learn describes it as stoppi
 risk: Medium. The agent reads plan data users can already open and writes new report content to Copilot conversations, Copilot Pages or Word and PDF files, and Microsoft's notice says no admin action is needed for it to arrive.
 cost: Low. Microsoft's notice says only users generating reports need a Microsoft 365 Copilot licence and names no separate price or meter, so the known cost is admin time, communications and training.
 impact: Medium. Licensed Planner Agent users and the project managers who report on plans notice it first; people who only view or edit reports need no Copilot licence, per the notice.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].note; Governance controls; Open questions / applicability: The correctly documented Planner control is presented with a caveat that applicability to the new AI-generated reports remains unconfirmed. | Found: restrict access to the Planner Agent experience for task execution and status reporting in both basic and premium plans ... For information on how to manage the Planner Agent in Microsoft Copilot, please see Manage agents in the Microsoft 365 admin center. | Fix: Replace the applicability caveat in controls[1].note and the matching prose with: 'Applies to Planner Agent task execution and status reporting in basic and premium plans in Planner. For Planner Agent in Microsoft Copilot, Microsoft directs administrators to the Microsoft 365 admin center.' Narrow the matching open question to whether this Planner-specific setting also governs reports requested in Microsoft Copilot. Source: https://learn.microsoft.com/planner/turn-off-planner-agent | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
 -->

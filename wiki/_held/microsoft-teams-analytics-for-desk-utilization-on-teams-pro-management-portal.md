@@ -79,7 +79,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Teams Rooms Pro Management portal"
-      path: "General > BYOD Rooms and Desk management"
+      path: "Settings > General > BYOD Rooms and Desk management"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device"
     api: null
     note: "Enabled by default per Learn. The portal setting controls peripheral-data ingestion; Microsoft says disabling it stops any BYOD room or desk reports and hides inventory devices. General control, not a dedicated analytics switch."
@@ -97,11 +97,8 @@ controls:
       surface: "Teams Rooms Pro Management portal"
       path: "Planning > Inventory > Devices > Import"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information"
-    api:
-      kind: "powershell"
-      call: ".\\Get-TeamsBYODSpaceDevices.ps1"
-      docs: "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information"
-    note: "Run the downloaded script from its own directory; it exports a PERIPHERALS file for import. Auto-association is for individual desks only; its signal threshold is under Settings > General, minimum two unique signals."
+    api: null
+    note: "Run the downloaded Get-TeamsBYODSpaceDevices.ps1 script from its directory to collect peripheral information, then import the prepared file through the portal to update desk associations."
   - governs: "Whether Teams clients send peripheral and desk usage data"
     scope: "user"
     ui: null
@@ -115,9 +112,9 @@ controls:
     ui: null
     api:
       kind: "powershell"
-      call: "Get-PlacesSettings -ReadFromPrimary"
-      docs: "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings"
-    note: "Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles; Get needs Exchange Admin or Places TenantPlacesManagement. The setting is OFF by default for tenants onboarded before 1 August 2026."
+      call: "Set-PlacesSettings -EnableBuildings 'Default:true'"
+      docs: "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings"
+    note: "Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles. Read-only check: Get-PlacesSettings -ReadFromPrimary. By default, buildings are not visible across Microsoft Places experiences."
   - governs: "Dedicated switch to turn the new desk analytics on or off"
     scope: "tenant"
     ui: null
@@ -125,7 +122,7 @@ controls:
     note: "No such control is documented at the time of writing (November 2026); the rows above are the nearest existing controls."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-28T23:04:31"
 changes:
   - date: "2026-11-16"
@@ -142,19 +139,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 111 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected the portal path for BYOD Rooms and Desk management, removed the peripheral script as an automation call, switched the enableBuildings call to Set-PlacesSettings and replaced the unsupported onboarding-date default with Learn's wording."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 103 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 111
-  confirmed: 107
-  unconfirmed: 1
+  claims: 103
+  confirmed: 100
+  unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "d570beef86144054519f9981c40b18f4"
+  attempts: 2
+  hash: "82022ca296224d16a4e780f0a41239e3"
 ---
 
 ## What's changing
@@ -239,11 +240,11 @@ Portal roles and licence purchase need the permissions listed in the controls ta
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which desks are licensed to produce analytics</strong><br><small class="controls__note">MCA: buy under Marketplace (billing account administrator or billing profile contributor). EA: Volume Licensing Center. The PowerShell page covers Teams add-on licences generally and does not name Shared Space.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › desk account › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All; Set-MgUserLicense -UserId $user -AddLicenses $addLicenses -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether peripheral data is ingested for BYOD rooms and desks</strong><br><small>Tenant</small><br><small class="controls__note">Enabled by default per Learn. The portal setting controls peripheral-data ingestion; Microsoft says disabling it stops any BYOD room or desk reports and hides inventory devices. General control, not a dedicated analytics switch.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>General › BYOD Rooms and Desk management <a href="https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether peripheral data is ingested for BYOD rooms and desks</strong><br><small>Tenant</small><br><small class="controls__note">Enabled by default per Learn. The portal setting controls peripheral-data ingestion; Microsoft says disabling it stops any BYOD room or desk reports and hides inventory devices. General control, not a dedicated analytics switch.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › General › BYOD Rooms and Desk management <a href="https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can view portal reports and manage inventory</strong><br><small>Tenant</small><br><small class="controls__note">Create or edit roles: Global Administrator, Teams Administrator or Teams Rooms Pro Manager. Assign roles: those, or a custom role with role management permissions. Administrative-unit-scoped Teams admins cannot open the portal.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Roles <a href="https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which peripherals are linked to each desk</strong><br><small class="controls__note">Run the downloaded script from its own directory; it exports a PERIPHERALS file for import. Auto-association is for individual desks only; its signal threshold is under Settings &gt; General, minimum two unique signals.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Planning › Inventory › Devices › Import <a href="https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>.\Get-TeamsBYODSpaceDevices.ps1</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which peripherals are linked to each desk</strong><br><small class="controls__note">Run the downloaded Get-TeamsBYODSpaceDevices.ps1 script from its directory to collect peripheral information, then import the prepared file through the portal to update desk associations.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Planning › Inventory › Devices › Import <a href="https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Teams clients send peripheral and desk usage data</strong><br><small>User</small><br><small class="controls__note">Needs MicrosoftTeams 6.5.0 or later. Controls the peripheral-data feed Microsoft says is required to generate Bookable Desks reports. General collection control, not a dedicated analytics switch. Off by default in government clouds.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CSTeamsBYODAndDesksPolicy -Identity &lt;name&gt; -DeviceDataCollection Enabled; Grant-CSTeamsBYODAndDesksPolicy -PolicyName &lt;name&gt; -Identity &lt;user&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/bookable-desks" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether individual desks appear in the portal (enableBuildings)</strong><br><small>Tenant</small><br><small class="controls__note">Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles; Get needs Exchange Admin or Places TenantPlacesManagement. The setting is OFF by default for tenants onboarded before 1 August 2026.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-PlacesSettings -ReadFromPrimary</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether individual desks appear in the portal (enableBuildings)</strong><br><small>Tenant</small><br><small class="controls__note">Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles. Read-only check: Get-PlacesSettings -ReadFromPrimary. By default, buildings are not visible across Microsoft Places experiences.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -EnableBuildings 'Default:true'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Dedicated switch to turn the new desk analytics on or off</strong><br><small>Tenant</small><br><small class="controls__note">No such control is documented at the time of writing (November 2026); the rows above are the nearest existing controls.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -271,10 +272,9 @@ impact: Low. Administrators and portal role holders see the analytics; the roadm
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The complete portal route to cloud-data ingestion starts at General > BYOD Rooms and Desk management. | Found: The threshold for how many signals it requires before associating is configurable on Teams Rooms Pro Management portal at Settings > General. | Fix: Replace controls[1].ui.path and the table path with 'Settings > General > BYOD Rooms and Desk management'. The bookable-desks page establishes the route to General; bring-your-own-device places this control on that tab. Both pages are already cited. | Source: https://learn.microsoft.com/microsoftteams/rooms/bookable-desks
-- [contradicted, blocker] controls[3].api; Governance controls table / command: Running .\Get-TeamsBYODSpaceDevices.ps1 is the automation operation that links peripherals to desks. | Found: When you run the PowerShell script, the data is exported to a CSV file that can be upload to Teams Pro Management Portal for managing, monitoring, and reporting usage of devices in BYOD rooms and Bookable Desks. | Fix: Set controls[3].api to null and replace its table automation cell with 'Not yet documented'. Keep the script in the note as a collection tool: 'Run the downloaded Get-TeamsBYODSpaceDevices.ps1 script from its directory to collect peripheral information, then import the prepared file through the portal to update desk associations.' The cited page documents association only after portal import, not a scripted association operation. | Source: https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information
-- [contradicted, blocker] controls[5].api; Governance controls table / command: Get-PlacesSettings -ReadFromPrimary is the automation operation controlling whether individual desks appear in the portal. | Found: You can use Get-PlacesSettings to view all Microsoft Places features settings configured on your tenant. | Fix: Replace controls[5].api.call and its table call with "Set-PlacesSettings -EnableBuildings 'Default:true'" and change api.docs and the table link to https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings. Keep Get-PlacesSettings -ReadFromPrimary in the note only as a read-only check. The setter and its value are documented in the already-cited Configure buildings and floors page. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings
-- [unsupported, blocker] controls[5].note; Governance controls table / default: enableBuildings is OFF by default for tenants onboarded before 1 August 2026. | Found: Searched: enableBuildings August 2026; Microsoft Places enableBuildings default tenants onboarded August 1 2026; enableBuildings before August. Read Set-PlacesSettings and Configure buildings and floors. Neither gives an August 1 onboarding cutoff; the latter states a general visibility default. | Fix: Replace the last sentence of controls[5].note and its table note with 'By default, buildings are not visible across Microsoft Places experiences.' This is the wording in https://learn.microsoft.com/microsoft-365/places/get-started/quick-setup-buildings-floors; remove the unsupported onboarding date.
+- [contradicted, blocker] controls[2].api; rendered controls table / absence: No API or automation is documented for controlling who can view portal reports and manage inventory. | Found: Create a role assignment for the directory provider: POST /roleManagement/directory/roleAssignments. Example 1: Create a role assignment with tenant scope: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments | Fix: Narrow controls[2].governs to 'Portal-specific role assignments' and narrow its automation absence to 'No API for portal-specific role assignments is documented'. The broad existing wording includes Entra roles, which the cited RBAC page says grant portal access and Microsoft Graph can assign; do not describe those assignments as having no automation. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
+- [contradicted, blocker] Governance controls: final paragraph, change permissions / role: The Places settings check and change need the Exchange or Places TenantPlacesManagement roles named in the table. | Found: You must have both the Exchange MailRecipients role and the Places TenantPlacesManagement role. | Fix: Replace the final sentence with 'Get-PlacesSettings requires either Exchange Admin or Places TenantPlacesManagement; Set-PlacesSettings requires both Exchange MailRecipients and Places TenantPlacesManagement.' Sources: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings and https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance guidance: Before rollout; Governance controls prose / admin-path: Portal role management is under Settings > Roles. | Found: In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Roles. Select Create role. | Fix: For role creation, extend the path to 'Settings > Roles > Create role > General settings > Permissions > Role permissions'. The current path correctly stops on the role-management page but does not reach the permission selection. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
+- [supported, minor] controls[2].ui; rendered controls table; Governance guidance: Before rollout / admin-path: Settings > Roles reaches the portal role management page. | Found: In the left navigation of the Microsoft Teams Rooms Pro Management portal, expand Settings > Roles. Select the role you want to assign. In the role pane, select Assignments > Add assignment. | Fix: For adding portal assignments, extend the path to 'Settings > Roles > role > Assignments > Add assignment'. Keep the advice limited to portal roles; the cited page directs additional Entra built-in assignments to Microsoft Entra admin center. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to check the Desks usage report is represented in the controls table. | Found: After rollout: 'Check the Desks usage report for desks with no data'; the controls table has licensing, ingestion, roles, associations, client collection, enableBuildings and a dedicated-switch absence, but no report row. | Fix: The 'Check the Desks usage report' checklist step has no corresponding controls row. Do not add a row in this correction.
 -->

@@ -80,18 +80,20 @@ changes:
     note: "Corrected after verification: licensing now cites the Managed Environments requirements, impact raised to medium, an unsupported severity claim and a privilege-assignment checklist step removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 61
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "62f12c7cd02d9e91017a3d093185b8bb"
 ---
 
@@ -191,9 +193,13 @@ cost: Low. Admin time is the known incremental cost for environments already ent
 impact: Medium. Desktop-flow makers see violations in the designer, and admins set rules for an environment.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls table and notes / command: GET /msdyn_analysisoverrides is the automation counterpart for rule enablement, severity and parameter configuration. | Found: RetrieveMultiple ... GET /msdyn_analysisoverrides ... Query data. ... Update ... PATCH /msdyn_analysisoverrides(msdyn_analysisoverrideid) ... Update records. | Fix: Remove the GET call from controls[0].api and the rendered table: it only queries records, not the configuration this row governs. Remove the paragraph beginning 'The Dataverse row is included' and the table-storage qualifier from this row's note; neither establishes a configuring operation. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_analysisoverride
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: The Flow checker page lists Warning as the severity of Unsafe password security. | Found: Unsafe password security - Severity: Warning | Fix: After the sentence add: 'The solution checker rule list instead labels desktopflow-avoid-unsafe-password as High severity.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/use-powerapps-checker#best-practice-rules-used-by-solution-checker, whose desktop-flow row lists that rule as High. | Source: https://learn.microsoft.com/power-automate/desktop-flows/static-analysis
-- [supported, minor] Scope: Prerequisite, final sentence / absence: The roadmap's notification-specific thresholds, recurrence and scope are not described by Learn as notification controls. | Found: Searched: Flow checker notification thresholds; Flow checker notification recurrence. Read static-analysis: rule thresholds and environment scope are documented, but notification thresholds, recurrence and scope are not. | Fix: Replace 'the roadmap’s thresholds, recurrence and scope are described only on the roadmap' with 'Learn documents rule thresholds and environment scope, but not notification-specific thresholds, recurrence or scope.' This keeps the notification qualification explicit and avoids implying that rule thresholds are undocumented.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing / licensing: Feature-specific notification licensing is unpublished, so the licensing model is unknown despite documented Managed Environments requirements. | Found: Managed environments are included as an entitlement in the following licenses: Power Apps Premium, Power Automate Premium, Microsoft Copilot Studio | Fix: Set licensing.model to 'included'. Replace the notes with 'The documented rule configuration requires Managed Environments, included as an entitlement in Power Automate Premium and other qualifying licences listed at https://learn.microsoft.com/power-platform/admin/managed-environment-licensing. Notification-specific licensing is not yet published.' | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-licensing
+- [supported, minor] Risk assessment: Security & identity / behaviour: The Flow checker page lists Warning as the severity for Unsafe password security. | Found: Unsafe password security ... Severity: Warning | Fix: Add: 'The solution checker rule list instead labels desktopflow-avoid-unsafe-password as High severity.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/use-powerapps-checker#best-practice-rules-used-by-solution-checker, whose desktop-flow row gives High. | Source: https://learn.microsoft.com/power-automate/desktop-flows/static-analysis
+- [supported, minor] Scope: Prerequisite, final sentence / absence: The roadmap's notification-specific thresholds, recurrence and scope are described only by the roadmap. | Found: Searched: desktop flow checker notifications notification types recurrence recipients default licensing Power Automate. Read static-analysis: rule thresholds and environment scope are documented, but notification-specific thresholds, recurrence and scope are not. | Fix: Replace 'the roadmap's thresholds, recurrence and scope are described only on the roadmap' with 'Learn documents rule thresholds and environment scope, but not notification-specific thresholds, recurrence or scope.'
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist asks administrators to check Managed Environment status and review solution checker results without corresponding controls rows. | Found: Confirm that the environments you care about are Managed Environments ... Review the violations makers report, using the Object name column ... Controls rows cover rule configuration, enforcement and notifications only. | Fix: Remove the checklist bullets beginning 'Confirm that the environments you care about' and 'Review the violations makers report'; neither has a corresponding controls row. Keep the existing Managed Environments prerequisite and the documented behaviour elsewhere.
 -->

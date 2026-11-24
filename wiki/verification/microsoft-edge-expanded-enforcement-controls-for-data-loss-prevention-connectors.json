@@ -2,50 +2,33 @@
   "slug": "microsoft-edge-expanded-enforcement-controls-for-data-loss-prevention-connectors",
   "roadmapId": 579894,
   "title": "Microsoft Edge: expanded enforcement controls for Data Loss Prevention connectors",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "1 blocking finding (claim 52)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 63,
-    "confirmed": 61,
+    "claims": 69,
+    "confirmed": 69,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 2
   },
-  "summary": "Hold: the Intune control path starts inside an unidentified policy rather than explaining how to reach it from the admin centre. The roadmap facts and cited policy fields are supported, and the previously reported fetch failures did not recur.",
+  "summary": "The briefing accurately separates the planned enforcement controls from the existing connector policies, and its roadmap details match Microsoft's record. The connector discovery path could be extended to the action control, and the print policy reference should be cited for the per-action behaviour.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The change concerns Microsoft Edge.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Edge\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "What's changing; rationale: risk",
-      "type": "record",
-      "claim": "Microsoft plans to expand existing Edge for Business Data Loss Prevention Enterprise Connector capabilities.",
+      "claim": "Microsoft plans expanded enforcement controls for the existing Edge for Business DLP connectors.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Edge for Business is expanding its existing Data Loss Prevention Enterprise Connector capabilities.",
@@ -53,10 +36,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "The roadmap plans administrator-configurable, more consistent enforcement across download, upload, paste and print.",
+      "claim": "The planned controls let administrators configure more consistent enforcement across download, upload, paste and print.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Administrators will be able to configure more consistent enforcement across download, upload, paste, and print workflows.",
@@ -64,8 +47,8 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "summary; What's changing; Why it matters",
+      "n": 3,
+      "where": "summary; What's changing; Why it matters; rationale: impact",
       "type": "record",
       "claim": "The planned additional controls include required bypass justification.",
       "status": "supported",
@@ -75,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "summary; What's changing; Why it matters",
+      "n": 4,
+      "where": "summary; What's changing; Why it matters; rationale: impact",
       "type": "record",
-      "claim": "The planned additional controls include administrator-defined guidance.",
+      "claim": "The roadmap plans administrator-defined guidance for the enforcement experience.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Additional controls include required bypass justification and administrator-defined guidance.",
@@ -86,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -97,29 +80,18 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "January CY2027 is the roadmap target, not a commitment.",
+      "claim": "The roadmap target is January CY2027, not a committed rollout date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
+      "quote": "\"targetDate\": \"January CY2027\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
+      "n": 7,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -130,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -141,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists platform Web.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -152,43 +124,87 @@
       "fix": null
     },
     {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-17T00:31:56.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T00:31:56\"",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 12,
       "where": "front matter: defaultState; Why it matters; rationale: risk",
       "type": "absence",
-      "claim": "Microsoft has not stated the new controls' default or their effect on existing configurations.",
+      "claim": "Microsoft has not stated the default for the planned new controls.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Edge expanded enforcement controls 579894 default enabled; read roadmap, connectors overview, Symantec/Trellix setup and upload/paste/print references. Existing policy defaults do not describe arrival of the roadmap expansion.",
+      "quote": "Searched: 'Edge DLP connectors expanded enforcement 579894 default licensing price' and 'Enterprise Connector administrator-defined guidance download default enforcement'; read record, connector overview, Symantec/Trellix setup and upload/paste/print references. No default for the planned expansion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing specific to the planned new controls is not yet published.",
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated how the new controls affect existing configurations.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Edge DLP connectors licensing prerequisites cost new enforcement controls; read Security Connectors prerequisites, configuration policies and provider setup. No entitlement for the planned expansion was stated; Purview licensing concerns a separate mechanism.",
+      "quote": "Searched: 'Edge DLP connectors expanded enforcement 579894 default licensing price' and 'Enterprise Connector administrator-defined guidance download default enforcement'; read record, connector overview, setup pages and policy references. No migration or existing-configuration behaviour stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "Cost and licensing",
+      "where": "summary; What's changing",
       "type": "absence",
-      "claim": "Microsoft has not published a price specific to the planned controls.",
+      "claim": "Learn does not yet describe the roadmap's new enforcement controls as a distinct expansion.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Edge expanded enforcement controls 579894 licensing price; Edge DLP connectors licensing cost new enforcement controls. Read Security Connectors overview and provider setup; no price specific to the expansion was stated.",
+      "quote": "Searched: 'Microsoft Edge DLP connectors expanded enforcement download required bypass justification administrator-defined guidance 579894 default licensing price'; read connector overview, setup and upload/paste/print references. Existing justification fields are documented, but not the new expansion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published which licence covers the planned new controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge for Business DLP connectors licensing price security connectors Intune license' and 'DLP connectors expanded enforcement 579894 default licensing price'; read security connector prerequisites, setup pages and management service. No entitlement stated for the new controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published a price for the planned new controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge for Business DLP connectors licensing price security connectors Intune license' and 'DLP connectors expanded enforcement 579894 default licensing price'; opened security connector overview and setup pages. No new-control price or meter stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "The Security Connectors overview says connectors extend security investments at no additional cost.",
+      "claim": "The security connector overview says connectors extend security investments at no additional cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
       "quote": "These connectors allow Edge for Business to align with your established security protocols, extending the reach of your security investments at no additional cost.",
@@ -196,32 +212,21 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "behaviour",
-      "claim": "The connectors integrate with third-party security products.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
-      "quote": "Microsoft Edge for Business offers seamless, native integration with your existing security solutions through Edge for Business connectors",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
+      "n": 18,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "The cited connector documentation does not specify vendor licensing or charges.",
+      "claim": "The cited Learn connector pages do not specify third-party product licensing or charges.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Edge Data Loss Prevention connectors licensing prerequisites cost; read Security Connectors, DLP overview, Symantec and Trellix setup. These name products and configuration requirements, but no vendor licence entitlement or price.",
+      "quote": "Searched: 'Edge for Business DLP connectors licensing price security connectors Intune license'; opened security connector overview and Symantec/Trellix setup. They identify integrations and prerequisites, not vendor licence entitlements or prices.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The connector overview's prerequisites name no licence.",
+      "claim": "The security connector overview's prerequisites name browser version, administrator permissions and operating systems, but no licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
       "quote": "Microsoft Edge version 135.0.3179.85 or greater installed; Microsoft Edge Administrator permissions in Microsoft 365 Admin Center; Supported operating systems: Windows 10/11 or Windows Server 2016 or later",
@@ -229,98 +234,21 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "Scope: Prerequisites today; Risk assessment: Change & support",
-      "type": "availability",
-      "claim": "The connector overview requires Microsoft Edge 135.0.3179.85 or greater.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
-      "quote": "Microsoft Edge version 135.0.3179.85 or greater installed",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 20,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "role",
-      "claim": "Microsoft Edge Administrator permissions in Microsoft 365 Admin Center are a connector prerequisite.",
+      "where": "What's changing; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "behaviour",
+      "claim": "An enabled DLP connector sends content from specific user actions to an on-device agent.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
-      "quote": "Microsoft Edge Administrator permissions in Microsoft 365 Admin Center",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
+      "quote": "When enabled, Microsoft Edge sends content from specific user actions to the on-device agent and waits for the verdict before proceeding.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Scope: Prerequisites today",
-      "type": "availability",
-      "claim": "The connector overview lists Windows 10/11 or Windows Server 2016 or later as supported operating systems.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
-      "quote": "Supported operating systems: Windows 10/11 or Windows Server 2016 or later",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Scope: Policy pages; Risk assessment; Governance guidance",
-      "type": "availability",
-      "claim": "The connector policy references list Windows support from Edge version 137.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "Supported versions: Windows: ≥ 137",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Scope: Policy pages; Risk assessment; Governance guidance",
-      "type": "availability",
-      "claim": "The connector policy references list macOS support from Edge version 151.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "Supported versions: macOS: ≥ 151",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Scope: Policy pages",
-      "type": "availability",
-      "claim": "The connector policy references say Android is not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "Android: Not supported",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Scope: Policy pages",
-      "type": "availability",
-      "claim": "The connector policy references say iOS is not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "iOS: Not supported",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Risk assessment: Data exposure and Autonomy",
-      "type": "behaviour",
-      "claim": "When enabled, a connector sends content from specific user actions to an on-device DLP agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
-      "quote": "When enabled, Microsoft Edge sends content from specific user actions to the on-device agent",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
       "where": "Risk assessment: Autonomy & actions; Why it matters",
       "type": "behaviour",
-      "claim": "Edge for Business connectors natively enforce DLP verdicts from on-device agents.",
+      "claim": "Edge natively enforces DLP verdicts from the on-device agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
       "quote": "Microsoft Edge for Business Data Loss Prevention Connectors enable Microsoft Edge for Business to natively enforce DLP (Data Loss Prevention) verdicts from on-device agents.",
@@ -328,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Why it matters",
+      "n": 22,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Setting block_until_verdict to 1 makes Edge wait for an analysis response before giving the page access to data.",
+      "claim": "Setting block_until_verdict to 1 makes Edge wait for the response before giving the page access to data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
       "quote": "If set to 1, Microsoft Edge waits for a response from the analysis service before giving the page access to the data.",
@@ -339,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Any other integer value for block_until_verdict gives the page immediate access to data.",
+      "claim": "Any other integer value of block_until_verdict allows immediate page access to data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
       "quote": "Any other integer value allows the page to access the data immediately.",
@@ -350,21 +278,43 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 24,
       "where": "What's changing; Cost and licensing; Governance guidance; rationale: impact",
-      "type": "availability",
-      "claim": "The DLP connector overview lists Symantec DLP, Trellix and Cisco Secure Access as providers.",
+      "type": "behaviour",
+      "claim": "Symantec DLP Endpoint is a supported connector integration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
-      "quote": "Symantec DLP; Trellix; Cisco Secure Access",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Prevent data loss with Microsoft Edge for Business and Symantec Data Loss Prevention Endpoint.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 25,
+      "where": "What's changing; Cost and licensing; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Trellix DLP Endpoint is a supported connector integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-trellix",
+      "quote": "This connector ensures a secure browsing experience through an API integration between Edge for Business and Trellix Data Loss Prevention (DLP) Endpoint for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Cost and licensing; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Cisco Secure Access is listed as a DLP connector provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
+      "quote": "| Cisco Secure Access | Set up a Secure Access Data Loss Connector |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The DLP connector overview lists paste, print and upload as actions that can send content.",
+      "claim": "Paste is listed as a user action that can send content to a connector.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
       "quote": "The following user actions can send content to the Data Loss Prevention Connector: Paste; Print; Upload",
@@ -372,76 +322,54 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Print is listed as a user action that can send content to a connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
+      "quote": "The following user actions can send content to the Data Loss Prevention Connector: Paste; Print; Upload",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Upload is listed as a user action that can send content to a connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
+      "quote": "The following user actions can send content to the Data Loss Prevention Connector: Paste; Print; Upload",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Download is not on the connector overview's published action list.",
+      "claim": "Download is not in the current connector overview's list of user actions.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Edge DLP connectors enforcement download upload paste print; read the entire DLP connector overview. Its User Actions list contains Paste, Print and Upload, not Download.",
+      "quote": "Searched: 'Enterprise Connector administrator-defined guidance custom message download default'; read the full DLP connector overview's User Actions list (Paste, Print, Upload) and upload/paste/print policy references. The overview lists no download action.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Why it matters; rationale: risk",
+      "n": 31,
+      "where": "What's changing; Risk assessment: Security & identity; Governance controls",
       "type": "behaviour",
-      "claim": "Existing connectors require configuration.",
+      "claim": "The paste policy's require_justification_tags field requires justification for bypassable warnings with the listed analysis tags.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "This policy requires additional setup to take effect.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector",
+      "quote": "require_justification_tags Lists the analysis tags whose bypassable warnings require the user to enter a justification before proceeding.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Risk assessment: Data exposure; Why it matters",
-      "type": "behaviour",
-      "claim": "The fallback verdict controls the outcome of a communication error between Edge and the DLP agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-      "quote": "Choose to ‘Allow file access’ or ‘Block file access’. This determines the default verdict if a communication error between Edge and the DLP agent occurs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Why it matters; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The upload, paste and print connector policies each expose verdict-waiting and error-fallback settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-      "quote": "Configure any combination of the following 3 settings ... Paste ... Upload ... Print ... Configure the following fields in the policy ... block_until_verdict ... default_action",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Symantec recommends default_action allow, which permits data access on an analysis-service contact error.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-      "quote": "Configure the following fields in the policy with the recommended values from Symantec: default_action | allow",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Data exposure; Why it matters",
-      "type": "behaviour",
-      "claim": "default_action block denies access on an analysis-service contact error; other values permit access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "If set to block, Microsoft Edge denies page access to the data if an error occurs while contacting the analysis service. Any other value permits the page to access the data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
+      "n": 32,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "The upload policy already documents require_justification_tags.",
+      "claim": "The upload policy also documents require_justification_tags.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
       "quote": "require_justification_tags Lists the analysis tags whose bypassable warnings require the user to enter a justification before proceeding.",
@@ -449,18 +377,7 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The paste policy's require_justification_tags requires a user-entered justification for warnings with the listed analysis tags.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector",
-      "quote": "Lists the analysis tags whose bypassable warnings require the user to enter a justification before proceeding.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
+      "n": 33,
       "where": "Risk assessment: Security & identity",
       "type": "default",
       "claim": "Omitting require_justification_tags means no justification is required.",
@@ -471,21 +388,21 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 34,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The documented bypass justification is a statement the user enters, not an approval workflow.",
+      "claim": "The documented bypass justification is a user-entered explanation before proceeding, rather than an approval step.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector",
-      "quote": "require_justification_tags Lists the analysis tags whose bypassable warnings require the user to enter a justification before proceeding.",
+      "quote": "Lists the analysis tags whose bypassable warnings require the user to enter a justification before proceeding.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 35,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap does not say whether the planned justification control extends or replaces require_justification_tags.",
+      "claim": "The roadmap does not explain whether its planned justification control extends or replaces require_justification_tags.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Additional controls include required bypass justification and administrator-defined guidance.",
@@ -493,87 +410,65 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 36,
       "where": "Why it matters; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not documented retention or administrator access for the planned bypass explanations.",
+      "claim": "Microsoft has not documented retention of the planned bypass explanations.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Edge connectors administrator guidance message policy bypass justification retained reporting; 579894 justification reporting retention. Read upload/paste/print references and reporting-event excerpts; none describes storage or admin access for the planned explanations.",
+      "quote": "Searched: 'Microsoft Edge DLP connector bypass justification retained reporting administrator logs'; read connector setup and upload/paste/print references. Results about Purview activity logging do not state retention of connector bypass explanations.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risk assessment: Security & identity; Scope: Who is covered",
-      "type": "availability",
-      "claim": "The Symantec setup requires end users to sign in to Edge for Business with a valid Microsoft Entra ID.",
+      "n": 37,
+      "where": "Why it matters; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether administrators can read the planned bypass explanations.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-      "quote": "Ensure that end-users sign in to Microsoft Edge for Business with a valid Microsoft Entra ID.",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge DLP connector bypass justification retained reporting administrator logs'; opened connector setup and policy references. No administrator access to justification text stated; generic reporting and Purview logging do not establish this.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Scope: Who is covered; Cost and licensing",
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The connector route uses a supported third-party DLP agent on the device, including Symantec DLP Endpoint or Trellix DLP Endpoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-trellix",
-      "quote": "This connector ensures a secure browsing experience through an API integration between Edge for Business and Trellix Data Loss Prevention (DLP) Endpoint for Windows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Scope: Not the same as Purview browser DLP",
-      "type": "applicability",
-      "claim": "Edge for Business separately enforces Microsoft Purview DLP policies inline in the browser.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-security-dlp",
-      "quote": "Edge for Business enforces Purview DLP policies inline directly in browser",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Scope; Governance controls",
-      "type": "applicability",
-      "claim": "Purview inline DLP is a separate control route from configuring third-party connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
-      "quote": "Microsoft Edge for Business Data Loss Prevention Connectors enable Microsoft Edge for Business to natively enforce DLP (Data Loss Prevention) verdicts from on-device agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Settings > Microsoft Edge > Connectors reaches the connector configuration experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
-      "quote": "In the main left navigation bar, go to Settings > Microsoft Edge. Navigate to the Connectors tab.",
-      "severity": "minor",
-      "fix": "The path correctly stops on the connector page. For the Symantec example, complete it as 'Settings > Microsoft Edge > Connectors > Discover Connectors > Symantec DLP Connector > Set up > Chosen policy > Enable data loss prevention for browser actions', using https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec, already cited."
-    },
-    {
-      "n": 49,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "OnFileAttachedEnterpriseConnector can configure upload analysis through service_provider, enable and disable using Group Policy or registry.",
+      "claim": "default_action set to block denies page access if contacting the analysis service fails.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "service_provider Identifies the analysis service provider the configuration applies to. ... url_list, tags, enable, disable ... determine whether the connector sends data for analysis ... GP unique name: OnFileAttachedEnterpriseConnector",
+      "quote": "If set to block, Microsoft Edge denies page access to the data if an error occurs while contacting the analysis service.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[0].note; Governance controls",
+      "n": 39,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "A configuration policy must exist before assigning a connector configuration.",
+      "claim": "A default_action value other than block permits page access on communication failure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
+      "quote": "Any other value permits the page to access the data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Symantec recommends allow for default_action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Configure the following fields in the policy with the recommended values from Symantec: default_action | allow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Existing connectors require configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
       "quote": "Admins must set up a configuration policy to assign to any Connector configuration.",
@@ -581,10 +476,208 @@
       "fix": null
     },
     {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "The security connector overview requires Edge version 135.0.3179.85 or greater.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
+      "quote": "Microsoft Edge version 135.0.3179.85 or greater installed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Microsoft Edge Administrator permissions in the Microsoft 365 admin center are a connector prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
+      "quote": "Microsoft Edge Administrator permissions in Microsoft 365 Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The connector overview lists Windows 10/11 or Windows Server 2016 or later as supported operating systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
+      "quote": "Supported operating systems: Windows 10/11 or Windows Server 2016 or later",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The cited connector policy references list Edge 137 or later on Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
+      "quote": "Supported versions: Windows: ≥ 137",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The cited connector policy references list Edge 151 or later on macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
+      "quote": "Supported versions: macOS: ≥ 151",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The connector policy references mark Android unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The connector policy references mark iOS unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "The Symantec setup requires end users to sign into Edge for Business with a valid Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Ensure that end-users sign in to Microsoft Edge for Business with a valid Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "The documented on-device connector route depends on a supported DLP agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
+      "quote": "Microsoft Edge for Business Data Loss Prevention Connectors enable Microsoft Edge for Business to natively enforce DLP (Data Loss Prevention) verdicts from on-device agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 51,
-      "where": "controls[0].note",
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Edge for Business also enforces Microsoft Purview DLP policies inline in the browser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-security-dlp",
+      "quote": "Edge for Business enforces Purview DLP policies inline directly in browser, empowering organizations to safeguard sensitive data in real time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Purview browser DLP and third-party DLP connectors are separate configuration routes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Enable data loss prevention for browser actions: Select the user actions you want to be scanned by Symantec's DLP agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "On the connector page, Symantec setup is under Discover Connectors > Symantec DLP Connector > Set up.",
+      "claim": "Microsoft 365 admin center > Settings > Microsoft Edge > Connectors reaches the connector discovery page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
+      "quote": "Go to the Microsoft 365 admin center and sign in. In the main left navigation bar, go to Settings > Microsoft Edge. Navigate to the Connectors tab.",
+      "severity": "minor",
+      "fix": "For the Symantec action control, extend the path to 'Settings > Microsoft Edge > Connectors > Discover Connectors > Symantec DLP Connector > Set up > Chosen policy > Enable data loss prevention for browser actions', as documented at https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec. Keep the overview citation for the entry route."
+    },
+    {
+      "n": 54,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "OnFileAttachedEnterpriseConnector is a Group Policy or registry policy whose service_provider, enable and disable fields control upload analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
+      "quote": "service_provider Identifies the analysis service provider the configuration applies to. GP unique name: OnFileAttachedEnterpriseConnector. Value name: OnFileAttachedEnterpriseConnector. url_list, tags, enable, disable ... determine whether the connector sends data for analysis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Intune route starts at Devices > Configuration and continues in a policy's Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Under the Configuration settings ... Upload: Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The upload policy can set block_until_verdict and default_action through Group Policy or registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
+      "quote": "GP unique name: OnFileAttachedEnterpriseConnector; Value name: OnFileAttachedEnterpriseConnector; Example value: [{\"block_until_verdict\": 0, \"default_action\": \"allow\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin-centre UI for the roadmap's planned bypass-justification control is documented, distinct from the existing policy field.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge DLP connectors require_justification_tags user justification admin UI configuration settings'; opened Symantec setup and paste/upload references. Existing dictionary fields are documented, but no admin-centre justification setting identified for the planned expansion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "The current paste policy can require justification through require_justification_tags in OnBulkDataEntryEnterpriseConnector, using Group Policy or registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector",
+      "quote": "require_justification_tags Lists the analysis tags whose bypassable warnings require the user to enter a justification before proceeding. GP unique name: OnBulkDataEntryEnterpriseConnector. Value name: OnBulkDataEntryEnterpriseConnector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].ui; controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented a UI setting or policy/API for administrator-defined connector guidance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge EnterpriseConnector administrator guidance custom_messages learn_more_url require_justification_tags Intune' and 'Enterprise Connector administrator-defined guidance custom message download default'; read setup and upload/paste/print references. No guidance field or UI found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "On the Connectors page, Discover Connectors > Symantec DLP Connector > Set up opens Symantec setup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
       "quote": "Under Discover Connectors, locate the Symantec DLP Connector and select Set up.",
@@ -592,145 +685,112 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Intune route starts at policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
-      "quote": "If you've chosen to create an Intune policy, you can navigate to intune.microsoft.com > Devices > Configuration where you should see your newly created configuration policy in this list.",
-      "severity": "blocker",
-      "fix": "Replace the path with 'Devices > Configuration > policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors'. The entry route is documented at https://learn.microsoft.com/deployedge/microsoft-edge-management-service and the remaining labels at https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec; both are already cited. Apply the same replacement to the rendered table."
-    },
-    {
-      "n": 53,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "OnFileAttachedEnterpriseConnector exposes block_until_verdict and default_action through Group Policy or registry for upload only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-      "quote": "Specifies ... service settings that apply when users attach files in Microsoft Edge. ... block_until_verdict ... default_action ... Registry settings ... Value name: OnFileAttachedEnterpriseConnector",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[1].note",
-      "type": "admin-path",
-      "claim": "The paste and print policy settings are alongside the upload policy under Microsoft Edge in Intune.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-      "quote": "Paste: Microsoft Edge > Configuration policy for bulk data entry for Microsoft Edge for Business Data Loss Prevention Connectors ... Print: Microsoft Edge > Configuration policy for print for Microsoft Edge for Business Data Loss Prevention Connectors",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[2].ui; controls[2].note; Governance controls",
-      "type": "absence",
-      "claim": "No separate admin-centre UI for the roadmap's planned bypass-justification control is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Edge DLP Enterprise Connector administrator guidance require justification tags Intune warning bypass UI; require_justification_tags Intune Edge. Read Symantec setup, Intune configuration and paste reference; existing dictionary fields are documented, not a separate planned UI.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "The existing paste policy can configure require_justification_tags using OnBulkDataEntryEnterpriseConnector in Group Policy or registry.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector",
-      "quote": "require_justification_tags Lists the analysis tags whose bypassable warnings require the user to enter a justification before proceeding. ... GP unique name: OnBulkDataEntryEnterpriseConnector ... Value name: OnBulkDataEntryEnterpriseConnector",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[3].ui and controls[3].api; Governance controls; summary; What's changing",
-      "type": "absence",
-      "claim": "No UI setting or automation field for the planned administrator-defined connector guidance is yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Edge DLP Enterprise Connector administrator-defined guidance custom message; EnterpriseConnector custom_messages justification; 579894 enforcement controls. Read connector setup and upload/paste/print references; no guidance setting or field was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Governance controls; controls[2].note; What's changing",
-      "type": "absence",
-      "claim": "The planned justification control is not separately documented beyond the existing connector policy field.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Edge 579894 expanded enforcement controls justification; EnterpriseConnector custom_messages justification. Read upload/paste/print references and provider setup. Existing require_justification_tags is documented; no separate operation or expanded design was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "The setup guidance documents deployment through Group Policy or Intune and checking all three connector policies for Status OK at edge://policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-      "quote": "you can now enable the Symantec DLP Connector using either Group Policy or Microsoft Intune. ... Navigate to edge://policy, and verify that the following policies are listed and that their Status is OK",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Governance guidance: At rollout; controls table",
-      "type": "consistency",
-      "claim": "Every control the governance checklist tells the reader to set or check has a corresponding table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Pilot the new controls with one group by assigning a separate configuration policy ... Confirm on a test device at edge://policy ... Status OK. The table has connector configuration, fallback, justification and guidance rows, but no assignment or policy-status row.",
-      "severity": "minor",
-      "fix": "The checklist's configuration-policy assignment and edge://policy status checks have no table rows. Remove those two checklist bullets; do not add rows as part of this correction."
-    },
-    {
       "n": 61,
-      "where": "Governance guidance: At rollout",
+      "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "An Edge configuration policy can be assigned to a group for a pilot.",
+      "claim": "A configuration policy must exist before assigning a connector configuration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
-      "quote": "Each configuration policy can be assigned to multiple Microsoft Entra groups",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Admins must set up a configuration policy to assign to any Connector configuration. Once you have at least one configuration policy created, visit the Connectors page",
       "severity": null,
       "fix": null
     },
     {
       "n": 62,
-      "where": "rationale: impact; summary; What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn has not yet described the planned controls' user experience.",
+      "where": "controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The paste and print settings are listed alongside the upload setting under Microsoft Edge in Intune.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Edge 579894 expanded enforcement controls; connectors administrator guidance message policy custom warning bypass justification. Read provider setup and upload/paste/print references; they describe existing controls, not the planned expansion's user experience.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Paste: Microsoft Edge > Configuration policy for bulk data entry for Microsoft Edge for Business Data Loss Prevention Connectors; Print: Microsoft Edge > Configuration policy for print for Microsoft Edge for Business Data Loss Prevention Connectors",
       "severity": null,
       "fix": null
     },
     {
       "n": 63,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The documented paste, upload and print connector policies can be deployed with Group Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "You can enable the Symantec DLP Connector using Group Policy: ... Configure any combination of the following 3 settings depending on which user actions you want to be scanned",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The documented paste, upload and print connector policies can be deployed with Microsoft Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "You can also enable the Symantec DLP Connector using Microsoft Intune via Administrative Templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The Symantec setup page names OnPrintEnterpriseConnector as the print policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
+      "quote": "Navigate to edge://policy, and verify that the following policies are listed and that their Status is OK: OnBulkDataEntryEnterpriseConnector; OnFileAttachedEnterpriseConnector; OnPrintEnterpriseConnector",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Connector policies provide per-action verdict-waiting and communication-error fallback choices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onprintenterpriseconnector",
+      "quote": "block_until_verdict If set to 1, Microsoft Edge waits for a response ... default_action If set to block, Microsoft Edge denies page access to the data if an error occurs while contacting the analysis service.",
+      "severity": "minor",
+      "fix": "Add 'OnPrintEnterpriseConnector' at https://learn.microsoft.com/deployedge/microsoft-edge-policies/onprintenterpriseconnector to sources; it supports the print part of the per-action verdict-waiting and fallback statement alongside the already cited upload and paste references."
+    },
+    {
+      "n": 67,
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented a distinct admin-centre setting or API for the planned justification expansion, beyond the acknowledged current policy field.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge DLP connectors expanded enforcement download required bypass justification administrator-defined guidance 579894' and 'EnterpriseConnector administrator guidance require_justification_tags Intune'; read setup and policy references. No distinct new setting or operation stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The roadmap describes additional enforcement controls, not widened data access or a changed content payload.",
+      "claim": "The roadmap describes added controls and does not state that they widen the data sent to agents.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Administrators will be able to configure more consistent enforcement across download, upload, paste, and print workflows. Additional controls include required bypass justification and administrator-defined guidance.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 69,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft has not documented the user experience of the planned new controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge DLP connectors expanded enforcement download required bypass justification administrator-defined guidance 579894'; read connector overview, setup pages and policy references. They describe existing connector behaviour, not the new guidance or expansion's user experience.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T05:09:11.533Z",
+    "at": "2026-11-24T06:25:29.611Z",
     "summary": {
       "links": 9,
-      "unreachable": 8,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 3,
       "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
@@ -743,43 +803,43 @@
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-trellix",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-security-dlp",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -788,24 +848,20 @@
         "side": "ui",
         "governs": "Which providers and browser actions send content to a DLP connector",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Settings",
           "Microsoft Edge",
           "Connectors"
         ],
-        "missing": [
-          "Settings",
-          "Microsoft Edge",
-          "Connectors"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which providers and browser actions send content to a DLP connector",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-        "reachable": false,
+        "reachable": true,
         "token": "OnFileAttachedEnterpriseConnector policy",
         "found": false
       },
@@ -814,16 +870,16 @@
         "side": "ui",
         "governs": "Paste, upload and print connector settings, including the fallback verdict",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec",
-        "reachable": false,
+        "reachable": true,
         "segments": [
+          "Devices",
+          "Configuration",
           "Configuration settings",
           "Microsoft Edge",
           "Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors"
         ],
         "missing": [
-          "Configuration settings",
-          "Microsoft Edge",
-          "Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors"
+          "Devices"
         ]
       },
       {
@@ -831,7 +887,7 @@
         "side": "api",
         "governs": "Paste, upload and print connector settings, including the fallback verdict",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector",
-        "reachable": false,
+        "reachable": true,
         "token": "OnFileAttachedEnterpriseConnector policy",
         "found": false
       },
@@ -840,7 +896,7 @@
         "side": "api",
         "governs": "Whether users must give a justification to bypass a warning",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector",
-        "reachable": false,
+        "reachable": true,
         "token": "require_justification_tags field",
         "found": false
       }
@@ -869,6 +925,12 @@
     {
       "date": "2026-11-17",
       "status": "verified",
+      "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "held",
       "version": 3,
       "model": "gpt-6.1-sol"
     }

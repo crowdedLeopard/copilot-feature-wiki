@@ -82,15 +82,17 @@ changes:
     note: "First briefing for this item: Planner Agent chat in basic plans, with the Microsoft 365 admin center block and Planner PowerShell controls and the gap between them."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 61
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -200,9 +202,9 @@ cost: Low. The sources name a Microsoft Copilot licence as the requirement and p
 impact: Medium. Users with a Microsoft 365 Copilot licence who work in Planner basic plans see a new chat experience; users without the licence are not in scope.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, licence-checking bullet / admin-path: Administrators can check users' licence assignments in the Microsoft 365 admin center. | Found: Assign or unassign licenses for users in the Microsoft 365 admin center | Fix: If retaining the licence-checking bullet, add https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users to the sources. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users?view=o365-worldwide#use-the-active-users-page-to-assign-or-unassign-licenses
-- [contradicted, minor] Governance guidance: Before rollout, licence-checking bullet / consistency: The checklist instructs administrators to check licence assignments, but that control has no corresponding row in the controls table. | Found: Confirm which users hold a Microsoft 365 Copilot licence in the Microsoft 365 admin center ... Table rows cover agent blocking, AllowPlannerCopilot and PlannerCopilotAllowedGroupId, not licence assignment. | Fix: Remove the first bullet under Governance guidance > Before rollout; the licence prerequisite is already stated in Cost and licensing and Scope.
+- [supported, minor] Governance guidance: Before rollout, licence-checking bullet / admin-path: Administrators can check users' licence assignments in the Microsoft 365 admin center. | Found: In the admin center, go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. | Fix: If retaining the licence-checking bullet, add https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users to sources. Removing the bullet as specified by the checklist finding also resolves this missing citation. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [contradicted, minor] Governance guidance: Before rollout, licence-checking bullet / consistency: The governance checklist tells administrators to check licence assignments, but the controls table has no licence-assignment row. | Found: Confirm which users hold a Microsoft 365 Copilot licence in the Microsoft 365 admin center ... Controls rows cover agent availability, Planner on/off and the allowed security group, not licence assignment. | Fix: Remove the first bullet under Governance guidance > Before rollout. The licence requirement is already stated in Cost and licensing and Scope; do not add a control row.
 -->

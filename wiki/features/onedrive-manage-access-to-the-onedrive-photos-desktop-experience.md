@@ -81,15 +81,17 @@ changes:
     note: "Corrected the Intune path for DisablePersonalSync, removed the claim that DisableStoreApps devices keep the previous Photos app, and removed the AppLocker step from the Before rollout checklist."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -192,4 +194,13 @@ AppLocker packaged-app rules are the third control the notice names; the package
 risk: Medium. An updated Photos app is rolling out to commercial devices, and Microsoft has not stated whether personal Microsoft account sign-in is allowed in it unless a policy such as DisablePersonalSync is set.
 cost: Low. The only cost the sources show is admin and help desk time; Microsoft has not published a licence or meter for the updated Photos experience.
 impact: High. The updated Photos app replaces the Photos experience users already find in Start on Windows 11 devices, so most users on those devices will notice it.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions / licensing: Licensing is unknown because no licence requirement specific to the updated Photos experience is published. | Found: OneDrive for work and school accounts is online storage space in the cloud that's provided for individual licensed users in an organization. OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan. | Fix: Set licensing.model to included and replace the notes with: 'For work or school OneDrive access, OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or purchased as a standalone plan. No licence requirement specific to the updated Photos experience is published as of November 2026.' Cite https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description and use the same distinction in Cost and licensing. | Source: https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description
+- [supported, minor] Cost and licensing / behaviour: Work or school OneDrive photos reside in the user's existing OneDrive storage. | Found: With OneDrive, every person can easily store, access, and share their work files in their personal online storage space in the cloud. OneDrive storage is provisioned on a per user basis | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description to sources to support the OneDrive storage statement. | Source: https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Intune settings catalog path reaches the OneDrive settings picker used to configure DisablePersonalSync. | Found: Select Devices > Configuration > Create. Platform: Select Windows 10 and later. Profile type: Select Settings catalog. In Configuration settings, select Add settings. In the settings picker, select OneDrive to see all the available settings. | Fix: Append ' > Prevent users from syncing personal OneDrive accounts' to controls[0].ui.path and the rendered path. The current path correctly reaches the picker but stops before the setting named at https://learn.microsoft.com/sharepoint/use-group-policy#prevent-users-from-syncing-personal-onedrive-accounts. | Source: https://learn.microsoft.com/sharepoint/configure-sync-intune
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Windows Components > Store is the Group Policy location for DisableStoreApps. | Found: Name | DisableStoreApps; Friendly Name | Disable all apps from Microsoft Store; Location | Computer Configuration; Path | Windows Components > Store | Fix: Replace controls[1].ui.path and the rendered path with 'Computer Configuration > Windows Components > Store > Disable all apps from Microsoft Store', carrying the documented location into the path and ending at the setting rather than its containing Store page. | Source: https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement
 -->

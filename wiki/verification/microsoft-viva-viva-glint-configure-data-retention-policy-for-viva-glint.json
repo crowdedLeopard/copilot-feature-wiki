@@ -2,36 +2,65 @@
   "slug": "microsoft-viva-viva-glint-configure-data-retention-policy-for-viva-glint",
   "roadmapId": 560551,
   "title": "Viva Glint: configure a data retention policy for survey data",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
-  "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "2 blocking findings (claims 32, 34)"
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [
+    "claim 42: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": null,
   "counts": {
-    "claims": 38,
-    "confirmed": 35,
-    "unconfirmed": 2,
-    "contradicted": 1,
-    "blocker": 2,
-    "major": 1,
-    "minor": 0
+    "claims": 46,
+    "confirmed": 45,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
   },
-  "summary": "Hold: the briefing says Microsoft states there is no charge for the control, but the documentation does not state that. It also leaves General Settings change logging wholly open although Learn documents that activity, and its claim to be the first documented retention mechanism is unsupported.",
+  "summary": "The retention setting, navigation paths, default, retention limits and licensing statements are supported. The claim that employees see no change is unconfirmed, and the administrator-assignment statement should acknowledge Microsoft's separately documented support-user route.",
   "claims": [
     {
       "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Viva Glint has a Data retention policy control for deciding how long an instance keeps survey data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Use the Data retention policy control to define the data retention policy for your Glint instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes Glint service administrators configuring retention for their instances based on organisational policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature will introduce the capability for Glint service administrators to configure a data retention policy for their Glint instances based on the organizational policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap includes past engagement, always-on, lifecycle and 360 survey cycles in the retention configuration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Any past survey cycles including engagement surveys, always-on surveys, lifecycle surveys and 360s will be retained/deleted based on this data retention configuration period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -42,7 +71,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is June CY2026.",
@@ -53,7 +82,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -64,21 +93,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: clouds; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "Web is the platform listed on the roadmap.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -86,10 +104,32 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -97,175 +137,21 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "What's changing; Scope; summary; rationale: impact",
-      "type": "record",
-      "claim": "The roadmap describes Glint service administrators configuring retention for their Glint instances according to organisational policy.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This feature will introduce the capability for Glint service administrators to configure a data retention policy for their Glint instances based on the organizational policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap description covers past engagement, always-on, lifecycle and 360 survey cycles.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Any past survey cycles including engagement surveys, always-on surveys, lifecycle surveys and 360s will be retained/deleted based on this data retention configuration period.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "title; summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Viva Glint has a Data retention policy control that defines how long the instance holds survey data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Use the Data retention policy control to define the data retention policy for your Glint instance.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "default",
-      "claim": "The control is admin-opt-in for age-based deletion: its default retains data while the subscription is active until an administrator chooses a custom period.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Until subscription ends (default) | Glint data is retained indefinitely as long as the tenant has an active Viva Glint subscription.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 11,
-      "where": "controls[0].note; What's changing; Governance guidance; rendered controls",
-      "type": "behaviour",
-      "claim": "The two policy values are Until subscription ends and Custom time period.",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap item was modified on 2026-08-10T22:43:02.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Until subscription ends (default) | Glint data is retained indefinitely as long as the tenant has an active Viva Glint subscription. ... Custom time period",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-10T22:43:02\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "controls[0].note; What's changing; Governance guidance; rendered controls",
-      "type": "behaviour",
-      "claim": "The custom retention period must be a numerical value between 6 and 1000 months.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Enter a numerical retention period (in months) to define the data retention time period. The value must be between 6-1000 months.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk and impact",
-      "type": "behaviour",
-      "claim": "When the retention period is met, applicable survey data is permanently deleted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "When the retention period is met, applicable Glint survey data is permanently deleted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[0].note; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Deletion under this policy is irreversible and the deleted data cannot be recovered.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "This action is irreversible & deleted data cannot be recovered.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[0].scope and note; Risk assessment; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "General Settings changes, including this instance-level policy, apply to all survey programs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Any initial actions or subsequent changes in General Settings apply to all survey programs in your Viva Glint platform.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Scope",
-      "type": "applicability",
-      "claim": "The policy does not apply to configurations set in place.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "This does not apply to configurations set in place.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Governance guidance",
-      "type": "date",
-      "claim": "Recurring, ad-hoc and lifecycle engagement surveys are evaluated using the survey cycle end date once the cycle is Completed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Engagement surveys (Recurring, Ad‑hoc, Lifecycle) will be evaluated for retention based on the survey cycle end date, once the survey cycle is in a Completed state.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Governance guidance",
-      "type": "date",
-      "claim": "Always-on surveys are evaluated using the survey response date.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Always on surveys, based on survey response date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Governance guidance",
-      "type": "date",
-      "claim": "360 surveys are evaluated using the feedback cycle effective due date.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "360 surveys are subject to retention based on the feedback cycle effective due date (the latest subject due date, or the cycle due date if no subjects exist).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Scope; Risk assessment",
-      "type": "date",
-      "claim": "Focus Areas and Goals are subject to retention using their due date.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "Focus Areas & Goals based on due date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "Historical imports older than the configured retention policy are deleted shortly after import finishes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "If the historical data being imported is older than the data retention policy in place, that imported data will be deleted shortly after the import finishes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].ui; What's changing; Governance controls; rendered controls",
+      "where": "controls[0].ui; Governance controls table and notes; What's changing",
       "type": "admin-path",
-      "claim": "The control is in the Viva Glint admin dashboard at Configuration > Service Configuration > General Settings > User Data > Data retention policy.",
+      "claim": "The retention control is in Viva Glint admin dashboard > Configuration > Service Configuration > General Settings > User Data > Data retention policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
       "quote": "Select the Configuration symbol on your Viva Glint admin dashboard and then General Settings in the Service Configuration section. ... User Data ... Data retention policy",
@@ -273,43 +159,219 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[0].api; Governance controls; rendered controls",
+      "n": 13,
+      "where": "controls[0].api; Governance controls table and notes",
       "type": "absence",
-      "claim": "Microsoft Learn documents no PowerShell, Microsoft Graph or other API to configure this Data retention policy as of November 2026.",
+      "claim": "Microsoft Learn documents no PowerShell, Microsoft Graph or other API for configuring this retention policy.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Viva Glint data retention policy PowerShell Microsoft Graph API configure retention settings; \"Viva Glint\" \"retention\" \"Graph\" API. Read General Settings and returned Glint data-residency and Purview cmdlet excerpts; no applicable operation.",
+      "quote": "Searched: Viva Glint data retention policy PowerShell Microsoft Graph API; Viva Glint data retention policy API PowerShell Graph pricing licensing. Read Manage General Settings and Data residency results; neither documents a retention-setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Employee Service Admin assignment is at Microsoft 365 admin center > Settings > Viva > Viva Glint > Assign Glint service admin > Add users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps",
+      "quote": "Go to Settings and select Viva. ... select Viva Glint. ... Select Assign Glint service admin and choose Add users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented an automation operation for assigning the Viva Glint Service Admin role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint Service Administrator assign remove role Microsoft Graph PowerShell; \"Viva Glint\" \"Service Admin\" \"Graph\". Read assignment and role pages and Graph app-role search excerpts; none identifies this role as a scriptable app or directory role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The new retention control is admin-opt-in: its default imposes no custom age-based deletion period until an administrator sets one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Until subscription ends (default) | Glint data is retained indefinitely as long as the tenant has an active Viva Glint subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; controls[0].note; What's changing; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "Until subscription ends is the default value and retains Glint data indefinitely while the tenant has an active Viva Glint subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Until subscription ends (default) | Glint data is retained indefinitely as long as the tenant has an active Viva Glint subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The control offers Until subscription ends and Custom time period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Value | Definition and notes ... Until subscription ends (default) ... Custom time period",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A custom retention period is a numerical value from 6 to 1000 months.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Enter a numerical retention period (in months) to define the data retention time period. The value must be between 6-1000 months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Applicable Glint survey data is permanently deleted when the configured retention period is met.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "When the retention period is met, applicable Glint survey data is permanently deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Retention deletion is irreversible and deleted data cannot be recovered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "This action is irreversible & deleted data cannot be recovered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "Recurring, ad-hoc and lifecycle engagement surveys are evaluated using the survey cycle end date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Engagement surveys (Recurring, Ad‑hoc, Lifecycle) will be evaluated for retention based on the survey cycle end date, once the survey cycle is in a Completed state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Engagement survey retention evaluation occurs once the cycle is Completed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "once the survey cycle is in a Completed state.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "controls[1].ui; Governance guidance; rendered controls",
-      "type": "admin-path",
-      "claim": "Service Admin assignment is in Microsoft 365 admin center at Settings > Viva > Viva Glint > Assign Glint service admin > Add users.",
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "Always-on surveys use the survey response date for retention.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps",
-      "quote": "Go to Settings and select Viva. ... In the list of applications, select Viva Glint. ... Select Assign Glint service admin and choose Add users.",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Always on surveys, based on survey response date.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "controls[1].api; rendered controls",
-      "type": "absence",
-      "claim": "Microsoft documents no API or automation call for assigning the Viva Glint Service Admin role.",
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "360 surveys use the feedback cycle effective due date for retention.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Glint Service Admin assign role Microsoft Graph PowerShell automation; \"Viva Glint\" \"Service Admin\" \"API\" assignment. Read assignment page and key-role excerpts; generic Entra role/app assignment results did not identify this role.",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "360 surveys are subject to retention based on the feedback cycle effective due date (the latest subject due date, or the cycle due date if no subjects exist).",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Risk assessment; controls[1].governs; Governance controls",
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "date",
+      "claim": "Focus Areas are subject to retention based on their due date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Focus Areas & Goals based on due date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "date",
+      "claim": "Goals are subject to retention based on their due date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Focus Areas & Goals based on due date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Historical imports older than the retention policy are deleted shortly after the import finishes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Data retention policy also applies to historical imports. If the historical data being imported is older than the data retention policy in place, that imported data will be deleted shortly after the import finishes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The retention policy does not apply to configurations set in place.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "This does not apply to configurations set in place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "General Settings changes apply to all survey programs in the Viva Glint instance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Any initial actions or subsequent changes in General Settings apply to all survey programs in your Viva Glint platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "applicability",
+      "claim": "The retention policy covers programs, 360 data, associated reporting conversations and actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "This will apply to all Glint survey data including programs, 360 data, associated reporting conversations, actions, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; controls[1].governs; Governance controls",
       "type": "role",
-      "claim": "Service Admins own the Viva Glint app and have access to all administrative functionality, including its General Settings control.",
+      "claim": "Service Admins own the Viva Glint app and have access to all administrative functionality, including the retention setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps",
       "quote": "Users in this role are the \"owners\" of the Viva Glint app, having access to all administrative functionality and all survey data within the app.",
@@ -317,10 +379,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment",
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "Learn recommends typically assigning no more than five Service Admins.",
+      "claim": "Microsoft recommends typically assigning no more than five Service Admins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps",
       "quote": "At least one Service Admin is required, and typically no more than 5 users assigned to this role is recommended.",
@@ -328,21 +390,21 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "controls[1].note; Risk assessment; Governance controls; rendered controls",
+      "n": 34,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
       "type": "role",
-      "claim": "Only a Microsoft 365 Global Administrator or Viva Glint Tenant Administrator can add or remove Service Admins through Microsoft 365 admin center.",
+      "claim": "Only Microsoft 365 Global Administrators or Viva Glint Tenant Administrators can add or remove Service Admins, through the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps",
       "quote": "Users can only be added/removed to this role by a Microsoft 365 Global Administrator or a Viva Glint Tenant Administrator from the Microsoft 365 Admin Center.",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Qualify this statement wherever repeated as applying to employee Service Admin assignments. Add: 'Support users follow a separate Viva Glint application procedure, where the Service Admin User Role is selected by default; Microsoft says not to assign them through the Microsoft 365 admin center.' Cite https://learn.microsoft.com/viva/glint/setup/add-external-user, which states 'The Service Admin User Role is selected by default' and 'Don't assign support users to the Viva Glint Service Admin role through the Microsoft 365 admin center.'"
     },
     {
-      "n": 29,
+      "n": 35,
       "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The setting takes the included licensing model of Viva Glint, which requires a Viva Suite or Viva Glint subscription plan.",
+      "claim": "This setting belongs to the licensed Viva Glint product, whose general requirement is a Viva Suite or Viva Glint subscription plan; included is the appropriate model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
       "quote": "The purchase of a Viva Suite or Viva Glint subscription plan is required for using Microsoft Viva Glint.",
@@ -350,7 +412,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 36,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Individual user licence assignment is not required for using Viva Glint.",
@@ -361,96 +423,118 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 37,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "As of November 2026, Microsoft Learn publishes no separate licence, meter or price specific to this control.",
+      "claim": "Microsoft has not published a separate licence specific to this retention setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Viva Glint\" \"data retention policy\" licensing price; Viva Glint data retention policy licensing price meter first retention policy audit deletion schedule. Read licensing and General Settings pages and returned licensing excerpts; no control-specific charge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Microsoft Learn states that there is no charge specific to the retention control.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Viva Glint\" \"data retention policy\" licensing price; Viva Glint data retention policy licensing price meter first retention policy audit deletion schedule. Read General Settings and Viva Glint licensing; neither states the control has no charge.",
-      "severity": "blocker",
-      "fix": "Remove 'and Microsoft Learn states no charge specific to it at the time of writing (November 2026)'. Keep the preceding narrower statement that the control's Learn page lists no separate licence, meter or price."
-    },
-    {
-      "n": 33,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "This is the first documented way to make Glint retention follow organisational records policy instead of the subscription term.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Viva Glint\" \"data retention\" \"first\". Read General Settings and returned data-residency, deletion and role excerpts; none establishes that no earlier documented mechanism existed.",
-      "severity": "major",
-      "fix": "Replace the first sentence with 'This gives a service owner a documented way to make Glint retention follow the organisation's own records policy instead of the subscription term.'"
-    },
-    {
-      "n": 34,
-      "where": "Open questions: Activity Audit Log",
-      "type": "absence",
-      "claim": "Whether a retention-policy change is recorded in the Activity Audit Log is wholly undocumented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/viva/glint/setup/activity-audit-log",
-      "quote": "Details changes saved | Change activity in General Settings or Advanced Configuration: Details.",
-      "severity": "blocker",
-      "fix": "Replace the audit question with 'Learn documents Details changes saved as change activity in General Settings. Which event specifically identifies a Data retention policy change? Watch the Activity Audit Log and Purview audit log activities pages on Microsoft Learn.' Do not claim a retention-specific event is documented."
-    },
-    {
-      "n": 35,
-      "where": "Open questions: deletion schedule",
-      "type": "absence",
-      "claim": "Microsoft has not stated the precise deletion schedule after a cycle reaches the retention period.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Viva Glint\" \"Data retention policy\" audit schedule deletion. Read General Settings and returned data-residency and deletion excerpts; policy text says 'When the retention period is met' but gives no precise processing schedule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Open questions: GCC availability",
-      "type": "absence",
-      "claim": "The cited GCC feature-availability page does not name the Data retention policy control.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched the entire fetched supported-environments page for Data retention policy and retention. Its table lists survey administration and other capabilities but does not name this control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-08-10T22:43:02.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-08-10T22:43:02\"",
+      "quote": "Searched: Viva Glint data retention policy API PowerShell Graph pricing licensing; \"Viva Glint\" \"retention\" \"meter\" \"price\". Read General Settings, Viva Glint licensing and Data residency results; no setting-specific licence, price or meter is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Risk assessment: Data exposure; What's changing; Scope",
-      "type": "applicability",
-      "claim": "The retention policy covers all Glint survey data, including programs, 360 data, associated reporting conversations and actions.",
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout; rationale: impact",
+      "type": "behaviour",
+      "claim": "Reports and comparisons relying on deleted older survey data lose that data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
-      "quote": "This will apply to all Glint survey data including programs, 360 data, associated reporting conversations, actions, and more.",
+      "quote": "This will apply to all Glint survey data including programs, 360 data, associated reporting conversations, actions, and more. ... When the retention period is met, applicable Glint survey data is permanently deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Open questions: first bullet",
+      "type": "behaviour",
+      "claim": "Details changes saved is documented as change activity in General Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/activity-audit-log",
+      "quote": "Details changes saved | Change activity in General Settings or Advanced Configuration: Details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Open questions: first bullet",
+      "type": "absence",
+      "claim": "The documentation leaves open the audit-event identity specifically for a retention-policy change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint data retention policy schedule audit; site:learn.microsoft.com/purview/audit-log-activities Glint retention; Viva Glint data retention policy deleted daily. Read General Settings, Activity Audit Log and Purview Glint event excerpts; neither detail is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Open questions: third bullet",
+      "type": "absence",
+      "claim": "The GCC feature-availability page does not explicitly name the Data retention policy control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the full supported-environments page for Data retention policy and retention. Read its feature table and sections; survey administration is available, but this control is not explicitly named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Employees see no change from the retention control.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Glint retention policy employees survey experience notification. Read General Settings and search excerpts from survey-taker FAQs, survey communications and survey access methods; none states that employees see no change from this control.",
+      "severity": "minor",
+      "fix": "Remove 'and employees see no change' from the impact rationale; keep the supported statements that Service Admins configure the setting and older reporting data is deleted."
+    },
+    {
+      "n": 43,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Viva as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a separate price specific to this retention setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint data retention policy API PowerShell Graph pricing licensing; \"Viva Glint\" \"retention\" \"meter\" \"price\". Read General Settings, Viva Glint licensing and Data residency results; no setting-specific price is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The retention control's Learn page names no separate meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Viva Glint\" \"retention\" \"meter\" \"price\". Read the full Manage General Settings page and Viva Glint licensing; neither names a meter for configuring or enforcing this retention setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Open questions: second bullet",
+      "type": "absence",
+      "claim": "Microsoft has not stated a precise deletion schedule after a cycle reaches its retention age.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint data retention policy schedule audit; Viva Glint data retention policy deleted daily. Read General Settings and Data residency results; deletion is stated as when the period is met, without a precise cycle-deletion schedule.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T05:09:08.768Z",
+    "at": "2026-11-24T06:25:34.433Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -526,5 +610,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -102,17 +102,19 @@ changes:
     note: "Corrected after verification: removed the undocumented Teams admin center route for checking which events policy a user holds; the check now uses Get-CsUserPolicyAssignment."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 73
+  claims: 76
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "f731ef5660467ca329f3574a7ff69f87"
 ---
@@ -212,4 +214,11 @@ The meeting policy row is the current alternative. Its Learn page says it covers
 risk: Medium. Under the notice's default (On, organizers can turn it off) event organisers can view and download reports, and Microsoft has not said whether a meeting policy set to Off carries over to events.
 cost: Low. The only cost shown is admin time to choose and communicate a value; Learn's events licensing page puts attendance and engagement reports under the advanced event features licences, and no separate licence for the new setting is published.
 impact: Medium. Teams events organisers notice if reports appear or disappear; organisers of ordinary meetings are not affected by the new events setting, per Microsoft's notice MC1455014.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model / licensing: Licensing is unknown because no separate entitlement for the new policy setting is published. | Found: All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings. | Fix: Set licensing.model to "included". Retain the existing licence-category explanation and add: "The setting is an option inside licensed Teams events; Microsoft has not published a separate licence or meter specific to this policy setting." The product entitlement is documented at https://learn.microsoft.com/microsoftteams/events-licensing. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's check of each organiser's effective events policy assignment is represented in the controls table. | Found: Check which events policy each event-organising user holds, using Get-CsUserPolicyAssignment -Identity <user>. The matching table row gives Edit and Grant-CsTeamsEventsPolicy, not an assignment-reading operation. | Fix: Remove the checklist bullet beginning "Check which events policy each event-organising user holds"; that assignment-reading step has no matching table control. Do not add a new control row.
 -->

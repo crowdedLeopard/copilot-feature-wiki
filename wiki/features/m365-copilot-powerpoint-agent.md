@@ -79,19 +79,23 @@ changes:
     note: "First briefing: Learn and the roadmap disagree on licensing, and the Anthropic provider setting is the documented control."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the Rollout paragraph in Scope to state, from Learn, that the agents are installed by Microsoft and appear for licensed users when Anthropic models are enabled."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 65
+  claims: 73
+  confirmed: 72
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "bb4b1068fc7df5bcc9ae47483c7afd56"
+  attempts: 0
+  hash: "9e6bb3e05d5a16a2cd602c2f52b62e3b"
 ---
 
 ## What's changing
@@ -146,7 +150,7 @@ The control that matters is provider-level, not agent-level. Turning Anthropic o
 
 **Platforms.** The roadmap record lists Desktop, Mac and Web.
 
-**Rollout.** The roadmap status is Launched. No default or rollout mechanism is stated for PowerPoint Agent itself; the Learn page describes the agents as installed by Microsoft.
+**Rollout.** The roadmap status is Launched. Learn says the agents are installed by Microsoft and appear for users with a paid Microsoft 365 Copilot licence when Anthropic models are enabled for the tenant.
 
 ## Governance guidance
 
@@ -196,8 +200,8 @@ cost: Low. The Learn page names a paid Microsoft 365 Copilot licence as the requ
 impact: Medium. Learn says users with a paid Microsoft 365 Copilot licence see the agents in the Copilot app when Anthropic models are enabled; the roadmap also says users without that licence can use it.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Rollout; front matter: defaultState / consistency: No default is stated for PowerPoint Agent itself, while the front matter says its default is on. | Found: defaultState: "on"; "No default or rollout mechanism is stated for PowerPoint Agent itself; the Learn page describes the agents as installed by Microsoft." | Fix: Replace the second sentence of Scope: Rollout with: 'Learn says the agents are installed by Microsoft and appear for users with a paid Microsoft 365 Copilot licence when Anthropic models are enabled for the tenant.' This is stated at https://learn.microsoft.com/copilot/manage/wordexcelppt-agents and reconciles Scope with defaultState: on and the regional qualifications already reported.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist asks readers to check sensitivity labels, but the controls table has no sensitivity-label row. | Found: Sample generated decks in users' OneDrive to confirm the sensitivity labels you rely on are applied. The controls table covers tenant Anthropic availability, provider user/group access, and organization-wide agent blocking. | Fix: Remove the After rollout bullet 'Sample generated decks in users' OneDrive to confirm the sensitivity labels you rely on are applied.' It checks a control absent from the table; do not add a new control row as part of this correction.
 -->

@@ -105,26 +105,30 @@ changes:
     note: "First briefing for this item: Learn already documents macOS OCR while the roadmap shows In development with a January CY2027 target."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the Teams file-size limit (20 MB, against 50 MB for Windows and macOS endpoints) and added the Azure owner or contributor rights needed to set up pay-as-you-go billing."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 75
+  claims: 85
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "cd85dd53ccbd460b9f6e9ed891f15652"
+  contradicted: 1
+  attempts: 0
+  hash: "88030401b3bb2574900e50304a194912"
 ---
 
 ## What's changing
 
 The roadmap item states that Microsoft is adding optical character recognition (OCR) support on Mac endpoints, so that Purview policies such as data loss prevention (DLP) and auto-labelling can detect sensitive content in images and apply policies to protect them. The record says images are not supported for content scanning on Mac endpoint devices today.
 
-Microsoft Learn already describes OCR as covering macOS. Its OCR page says OCR is an optional feature that you must enable at the tenant level, lists macOS devices among the places where images can be scanned, and says Microsoft Purview then applies your existing DLP, records management and insider risk management policies to images and text-based content. For Teams, Windows and macOS endpoints it lists JPEG, JPG, PNG, BMP, TIFF and image-only PDF files, up to 50 MB, between 50 × 50 and 16,000 × 16,000 pixels. This briefing does not reconcile that Learn text with the roadmap status: the roadmap is Microsoft's plan and the Learn page is current documentation.
+Microsoft Learn already describes OCR as covering macOS. Its OCR page says OCR is an optional feature that you must enable at the tenant level, lists macOS devices among the places where images can be scanned, and says Microsoft Purview then applies your existing DLP, records management and insider risk management policies to images and text-based content. For Teams, Windows and macOS endpoints it lists JPEG, JPG, PNG, BMP, TIFF and image-only PDF files. The maximum file size is 20 MB for Teams and 50 MB for Windows and macOS endpoints; image resolution must be between 50 × 50 and 16,000 × 16,000 pixels. This briefing does not reconcile that Learn text with the roadmap status: the roadmap is Microsoft's plan and the Learn page is current documentation.
 
 The record gives the status as In development, the release phase as General Availability and the target as January CY2027. That is a target, not a commitment, and the record gives no preview date. It lists GCC, GCC High and DoD, and lists the platform as Web.
 
@@ -143,7 +147,7 @@ Microsoft has not stated what happens on arrival, so this briefing does not assu
 
 **Security & identity**
 - Learn asks that, for endpoint devices, network settings do not obstruct OCR and that a wildcard allowing blob.core.windows.net endpoints is present. Check proxy and firewall rules on your Mac fleet against that requirement.
-- Learn names the Compliance admin for OCR settings and a Global or SharePoint admin for billing, so two teams have to coordinate.
+- Learn names the Compliance admin for OCR settings and a Global or SharePoint admin for billing, so two teams have to coordinate. The administrator setting up billing must also have owner or contributor rights to the Azure subscription used for pay-as-you-go billing.
 
 **Autonomy & actions**
 - OCR only extracts text; the policies you already have act on it. Learn's macOS onboarding page lists actions that can block, warn or audit on macOS (copy to USB, copy to network shares, print, copy to clipboard, upload to cloud, access by unallowed apps). Expect a rule that uses the Content Contains condition to apply those actions to matching images.
@@ -158,7 +162,7 @@ Learn's OCR page says that, because it is an optional feature, your Global admin
 
 The meter: Learn's pay-as-you-go pricing page lists optical character recognition at $0.001/transaction. The OCR page says each image scanned counts as one transaction and each page of a PDF file is charged separately. For endpoints, it says the cache is kept for 30 days, and that each scanned image can be used in any number of policies across DLP, insider risk management, auto-labelling and records management at no extra charge. Usage is monitored in Microsoft Cost Management for Azure.
 
-Learn describes a free OCR cost estimator (preview) in the Microsoft Purview portal that can be used only once per customer. Learn's Syntex billing page sets up billing in the Microsoft 365 admin center under Setup, in the Billing and licenses section, and needs an Azure subscription and resource group in the same tenant; it names SharePoint Administrator or Global Administrator for that task. Indirect costs are admin time, network allow-listing and any bandwidth increase. Endpoint DLP licensing is covered by the Microsoft 365 licensing guidance that the macOS onboarding page points to; this briefing does not restate it.
+Learn describes a free OCR cost estimator (preview) in the Microsoft Purview portal that can be used only once per customer. Learn's Syntex billing page sets up billing in the Microsoft 365 admin center under Setup, in the Billing and licenses section, and needs an Azure subscription and resource group in the same tenant; it names SharePoint Administrator or Global Administrator for that task. The administrator setting up billing must also have owner or contributor rights to the Azure subscription used for pay-as-you-go billing. Indirect costs are admin time, network allow-listing and any bandwidth increase. Endpoint DLP licensing is covered by the Microsoft 365 licensing guidance that the macOS onboarding page points to; this briefing does not restate it.
 
 Government clouds: Learn's document processing licensing page says that for GCC organisations pay-as-you-go licensing, and the services that require it, aren't yet available, and it lists optical character recognition among those services. That note names GCC only; the roadmap item lists GCC, GCC High and DoD.
 
@@ -166,13 +170,13 @@ Government clouds: Learn's document processing licensing page says that for GCC 
 
 **Users and devices.** The Learn OCR page lists macOS devices as a location you can select once OCR is enabled. Macs must already be managed through Intune, JAMF Pro or another MDM solution and onboarded to Microsoft Purview; the onboarding page covers the three latest macOS versions on x64 and M1, M2 and M3 (ARM64) processors.
 
-**Roles.** The Compliance admin configures OCR settings; a Global or SharePoint admin sets up pay-as-you-go billing.
+**Roles.** The Compliance admin configures OCR settings; a Global or SharePoint admin sets up pay-as-you-go billing, and must also have owner or contributor rights to the Azure subscription used for pay-as-you-go billing.
 
 **Clouds and platforms.** The roadmap record lists GCC, GCC High and DoD and the platform Web. See Cost and licensing for the Learn note on GCC pay-as-you-go.
 
 **Rollout.** The record gives a January CY2027 target and no rollout mechanics; Microsoft has not stated a default.
 
-**Limits Learn gives.** JPEG, JPG, PNG, BMP, TIFF and image-only PDF; 50 MB maximum file size; 50 × 50 to 16,000 × 16,000 pixels; the first 2 million characters of text.
+**Limits Learn gives.** JPEG, JPG, PNG, BMP, TIFF and image-only PDF; 50 MB maximum file size for Windows and macOS endpoints (20 MB for Teams); 50 × 50 to 16,000 × 16,000 pixels; the first 2 million characters of text.
 
 ## Governance guidance
 
@@ -221,18 +225,14 @@ The controls interact: a path exclusion removes images in that folder from OCR w
 <!-- rationale
 risk: Medium. Once OCR is on, Mac devices send image content to the cloud for scanning and existing DLP policies can act on images. Microsoft has not stated whether tenants with OCR already on for devices get macOS scanning automatically.
 cost: Variable. OCR is billed pay-as-you-go through an Azure subscription; Learn's pricing page lists $0.001/transaction for optical character recognition, and each image scanned counts as one transaction.
-impact: Medium. Users of onboarded Macs notice only where an existing DLP policy matches text in an image; compliance admins configure OCR for the tenant and a Global or SharePoint admin sets up billing.
+impact: Medium. Users of onboarded Macs notice only where an existing DLP policy matches text in an image; compliance admins configure OCR for the tenant and a Global or SharePoint admin with owner or contributor rights to the Azure subscription sets up billing.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: second paragraph / behaviour: The sentence grouping Teams with Windows and macOS endpoints gives Teams a maximum OCR file size of 50 MB. | Found: File size (Exchange, Teams) | 20 MB max | Fix: Replace the sentence with: 'For Teams, Windows and macOS endpoints it lists JPEG, JPG, PNG, BMP, TIFF and image-only PDF files. The maximum file size is 20 MB for Teams and 50 MB for Windows and macOS endpoints; image resolution must be between 50 × 50 and 16,000 × 16,000 pixels.' | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [contradicted, blocker] Cost and licensing; Scope: Roles; Risk assessment: Security & identity; rationale: impact / role: A SharePoint Administrator or Global Administrator can set up pay-as-you-go billing, without naming the additional Azure permissions needed. | Found: You must be a SharePoint Administrator or Global Administrator ... You must have owner or contributor rights to the Azure subscription that you want to use for pay-as-you-go billing. | Fix: Qualify the billing-role statements with: 'The administrator setting up billing must also have owner or contributor rights to the Azure subscription used for pay-as-you-go billing.' The requirement is stated at https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing. | Source: https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: OCR row / admin-path: The tenant OCR configuration is reached through Microsoft Purview portal > Settings > Optical character recognition (OCR). | Found: Select Settings. Select Optical character recognition (OCR) to enter your OCR configuration settings. Select the locations where you want to scan images. Select the groups that you want included or excluded from OCR scans. | Fix: The route reaches the correct settings page but stops before selecting scope. Keep the path and append to the row note: 'Select the locations where you want to scan images, then the groups to include or exclude from OCR scans.' | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [supported, minor] controls[1].ui; controls[1].note; Risk assessment: Change & support; Governance controls / admin-path: The per-device rolling 24-hour OCR bandwidth control is under Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection. | Found: set a limit on how much bandwidth can be used in a rolling 24-hour period. You configure the limit in Endpoint DLP settings and it applies per device. | Fix: Extend the path to 'Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection > Allocated bandwidth limits'. The subsetting is named at the already-cited https://learn.microsoft.com/purview/endpoint-dlp-learn-about. | Source: https://learn.microsoft.com/purview/dlp-configure-endpoint-settings
-- [supported, minor] controls[3].ui; Governance controls: device monitoring row; Governance guidance / admin-path: Microsoft Purview portal > Settings > Device onboarding > Devices provides configuration, policy-sync and bandwidth-exceeded monitoring for onboarded devices. | Found: Sign in to the Microsoft Purview portal > Settings ... > Device onboarding > Devices. ... Select a device to open the details pane for more information on the specific device attributes under Device details. | Fix: For the bandwidth-exceeded detail, extend the route to 'Settings > Device onboarding > Devices > device > Device details'. The existing shorter route correctly reaches the device list. | Source: https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist names controls not represented by the four controls-table rows. | Found: Use the OCR cost estimator ... Check proxy and firewall rules ... Review which existing DLP rules ... Watch the OCR meter in Microsoft Cost Management for Azure | Fix: The checklist steps asking the reader to confirm billing setup, use the OCR cost estimator, check proxy/firewall rules, review existing DLP rules and watch usage in Cost Management have no corresponding controls-table rows. The four current rows cover OCR configuration, bandwidth, Mac exclusions and device monitoring.
-- [supported, minor] Governance guidance: Before rollout, OCR cost estimator / admin-path: The OCR cost estimator is reached from Microsoft Purview portal > Settings > Optical character recognition (OCR). | Found: Select Settings. Select Optical character recognition (OCR). Under Estimate the cost of an OCR scan for free, select Try for free. | Fix: If retaining the estimator instruction, give 'Settings > Optical character recognition (OCR) > Estimate the cost of an OCR scan for free > Try for free', followed by 'Select the locations and choose Run estimation'. The current path stops on the correct page. | Source: https://learn.microsoft.com/purview/ocr-cost-estimator
+- [supported, minor] controls[0].ui; rendered controls table / admin-path: Tenant OCR configuration is in Microsoft Purview portal > Settings > Optical character recognition (OCR). | Found: Select Settings. Select Optical character recognition (OCR) to enter your OCR configuration settings. Select the locations where you want to scan images. Select the groups that you want included or excluded from OCR scans. | Fix: Keep the documented path; add to controls[0].note: 'On this page, select the locations to scan and the groups to include or exclude.' The path currently stops on the correct configuration page. | Source: https://learn.microsoft.com/purview/ocr-learn-about
+- [supported, minor] controls[3].ui; rendered controls table / admin-path: Configuration, policy sync and device attributes are accessible through Settings > Device onboarding > Devices. | Found: Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices. Select a device to open the details pane for more information on the specific device attributes under Device details. | Fix: Add to controls[3].note: 'Select a device to open its details pane; specific attributes are under Device details.' The printed path stops on the correct device-list page. | Source: https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync
+- [supported, minor] Governance guidance: Before rollout, cost estimator / admin-path: The OCR estimator is reached from Microsoft Purview portal > Settings > Optical character recognition (OCR). | Found: Select Settings. Select Optical character recognition (OCR). Under Estimate the cost of an OCR scan for free, select Try for free. | Fix: Replace the parenthesised route with 'Settings > Optical character recognition (OCR) > Estimate the cost of an OCR scan for free > Try for free'. The existing route stops on the correct page. | Source: https://learn.microsoft.com/purview/ocr-cost-estimator
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Some governance checklist controls have no corresponding controls-table row. | Found: Before rollout: confirm billing; use the OCR cost estimator; check proxy and firewall rules. At rollout: review existing DLP rules. After rollout: watch the OCR meter in Cost Management. The table covers OCR scope, bandwidth, path exclusions and device monitoring. | Fix: The checklist's billing, cost-estimator, network-rule, existing-DLP-rule and Cost Management checks have no corresponding rows. Remove those checklist bullets to bring the checklist into agreement with the existing table; retain their documented facts in the prose.
 -->

@@ -60,18 +60,20 @@ changes:
     note: "Corrected the Layout button path, the licensing model (Power Automate Premium includes cloud automation capabilities) and removed unsupported statements about access, flow behaviour and secure outputs testing."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 32 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 32 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 32
-  confirmed: 32
+  confirmed: 31
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "db2e0d32646de8aa94a1271d5e1296e0"
 ---
 
@@ -159,8 +161,10 @@ cost: Low. The only cost the sources show is maker time to learn the view; no li
 impact: Low. Only makers who author or debug cloud flows in the new designer will notice it, and only if they switch the view on.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The Power Automate maker path to the layout control is Cloud flows designer > Collapse (configuration pane) > Layout. | Found: On the navigation pane to the left, select My flows. In the Cloud flows tab, select the flow you want to open. On the command bar at the top, select Edit. The flow opens in the designer. | Fix: Replace controls[0].ui.path and the rendered path with "My flows > Cloud flows > flow > Edit > New designer (on) > Collapse (configuration pane) > Layout". Add https://learn.microsoft.com/power-automate/data-operations to sources for the route into the designer. Keep https://learn.microsoft.com/power-automate/flows-designer as docs: it documents the New designer toggle, Collapse button and Layout control. The current path starts inside the designer rather than at the maker portal's navigation. | Source: https://learn.microsoft.com/power-automate/data-operations
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters; Governance guidance; rationales / default: The side pane remains the default and the inline view is a maker choice, represented as user-opt-in. | Found: You can choose which experience you prefer. The current side pane experience remains the default. You can switch to the inline view whenever you want and switch back at any time. | Fix: Keep user-opt-in and the current roadmap default. Add to What's changing: "An older release-plan entry indexed by Microsoft Learn describes inline display as the default and gives February 2026 as its general-availability target; this briefing follows the current roadmap record's side-pane default and June CY2026 target." Cite https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer. The indexed excerpt says "The feature shows all that information inline by default" and "Feb 2026"; opening that URL now leads to the archived release-wave overview.
+- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters; Governance guidance; rationales / default: The side pane remains the default and makers choose the inline view, represented as user-opt-in. | Found: You can choose which experience you prefer. The current side pane experience remains the default. You can switch to the inline view whenever you want and switch back at any time. | Fix: Keep user-opt-in and the roadmap's side-pane default. Add to What's changing: "An archived release-plan excerpt indexed by Microsoft Learn describes inline display as the default and gives February 2026 as its general-availability target; this briefing follows the current roadmap record's side-pane default and June CY2026 target." Cite https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer. The excerpt says "The feature shows all that information inline by default" and "Feb 2026"; fetching its URL redirects to an overview marked archived as of October 2026.
 -->

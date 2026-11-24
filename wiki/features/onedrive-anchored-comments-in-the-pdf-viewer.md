@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "The Learn page on PDF features lists annotation and markup tools, including sticky notes, as free of cost for OneDrive for work or school. A licence statement for anchored comments is not yet published."
+  model: "included"
+  notes: "OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or can be purchased standalone. Organisation users accessing SharePoint need a licence that includes SharePoint; no licence terms specific to anchored PDF comments are published."
 audiences: ["m365-admin","service-owner","change-adoption","end-user"]
 tags: ["onedrive","sharepoint","pdf-viewer","microsoft-365-files","comments","powershell","gcc","gcc-high","dod"]
 sources:
@@ -31,17 +31,23 @@ sources:
   - title: "Set-SPOTenant"
     url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant"
     kind: "learn"
+  - title: "OneDrive service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description"
+    kind: "learn"
+  - title: "SharePoint service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description"
+    kind: "learn"
 videos: []
 related: ["onedrive-pdf-annotation-for-sensitivity-label-protected-pdfs-in-onedrive-sharepoint-web-vi"]
 controls:
-  - governs: "Whether commenting on files is disabled for the tenant (whether it covers PDF viewer comments is to be confirmed)"
+  - governs: "Whether commenting on files is disabled for the tenant"
     scope: "tenant"
     ui: null
     api:
       kind: "powershell"
       call: "Set-SPOTenant -CommentsOnFilesDisabled $true"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant"
-    note: "Existing control, described as disabling or enabling commenting functionality on files. Requires a SharePoint Online administrator. Not confirmed to apply to the new PDF viewer comments."
+    note: "Disables or enables commenting functionality on files. Requires a SharePoint Online administrator."
 confidence: "medium"
 created: "2026-11-24"
 updated: "2026-11-24"
@@ -51,19 +57,23 @@ changes:
     note: "First briefing for roadmap item 569020: anchored comments in the OneDrive and SharePoint PDF viewer, on by default per the roadmap."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 44 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: removed the claim that the file-commenting parameter's reach is not stated, and set the licensing model to included, citing the OneDrive and SharePoint service descriptions."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 43
+  claims: 53
+  confirmed: 52
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "4c4072d740e6a93e82e3f3c3f6408b73"
+  attempts: 0
+  hash: "0d20f1d64fbd4f635c4882a4e4fc68d7"
 ---
 
 ## What's changing
@@ -102,7 +112,7 @@ The wiki's view is that this is a communication task more than a configuration t
 
 ## Cost and licensing
 
-The roadmap item names no licence, meter or price for anchored PDF comments, and says the feature requires no admin action. A licence statement for this feature is not yet published.
+The roadmap item names no licence, meter or price for anchored PDF comments, and says the feature requires no admin action. OneDrive is included in Microsoft 365 and Office 365 plans and in SharePoint plans, and can also be purchased as a standalone plan (OneDrive service description). To access SharePoint, users in your organisation need to be assigned a licence that includes SharePoint (SharePoint service description). A licence statement specific to anchored comments is not yet published.
 
 For related PDF capabilities, the Learn page on PDF features for OneDrive lists annotation and markup tools, including sticky notes, as available free of cost, and shows "Yes" for OneDrive for work/school. That page does not mention anchored comments, so it is context and not a licence statement for this feature.
 
@@ -139,11 +149,11 @@ The roadmap says the feature is on by default and requires no admin action. The 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether commenting on files is disabled for the tenant (whether it covers PDF viewer comments is to be confirmed)</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, described as disabling or enabling commenting functionality on files. Requires a SharePoint Online administrator. Not confirmed to apply to the new PDF viewer comments.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -CommentsOnFilesDisabled $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether commenting on files is disabled for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Disables or enables commenting functionality on files. Requires a SharePoint Online administrator.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -CommentsOnFilesDisabled $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Only one control is listed because it is the only one found that could apply: the tenant-wide `-CommentsOnFilesDisabled` parameter of `Set-SPOTenant`. The reference describes it as disabling or enabling commenting functionality on files. Whether it governs the new PDF viewer comments is not stated and should be confirmed by testing. The reference says you must be a SharePoint Online administrator to run the cmdlet.
+Only one control is listed because it is the only one found that could apply: the tenant-wide `-CommentsOnFilesDisabled` parameter of `Set-SPOTenant`. The reference describes it as disabling or enabling commenting functionality on files. The reference describes its reach as commenting functionality on files; test the PDF viewer experience in a pilot before relying on the control. The reference says you must be a SharePoint Online administrator to run the cmdlet.
 
 Microsoft Learn documents no SharePoint admin centre path for this parameter at the time of writing (November 2026), so the table shows that side as not yet documented.
 
@@ -151,20 +161,17 @@ Microsoft Learn documents no SharePoint admin centre path for this parameter at 
 
 - Does `Set-SPOTenant -CommentsOnFilesDisabled` switch off anchored comments in the PDF viewer, or is there a separate control? Watch the Set-SPOTenant reference and the Microsoft Learn page on PDF features for OneDrive.
 - Where is comment text stored, and does it travel with a downloaded or shared copy of the PDF? Watch for a Learn page on PDF comments.
-- Which licence, if any, does the feature need, and does it apply to OneDrive for work or school only? Watch the roadmap item and the PDF features page.
+- Which licence, if any, does the feature need beyond OneDrive and SharePoint plan licences, and does it apply to OneDrive for work or school only? Watch the roadmap item and the PDF features page.
 - When will the feature roll out, given the October CY2026 target has passed with the status still In development? Watch Message center and roadmap item 569020.
 
 <!-- rationale
 risk: Low. It adds commenting to a PDF viewer users already have, and the roadmap describes no new data source, connector or autonomous behaviour.
-cost: Low. The roadmap names no licence or meter, so the only cost the sources show is admin time and user communication; a licence statement for this feature is not yet published.
+cost: Low. The roadmap names no licence or meter, so the only cost the sources show is admin time and user communication; a licence statement specific to this feature is not yet published.
 impact: Medium. It is on by default, so users who review PDFs in OneDrive and SharePoint on the web will see commenting and @mentions without any admin step.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph beginning Only one control / absence: Whether the tenant-wide file-commenting parameter governs new PDF viewer comments is not stated. | Found: Disables or enables commenting functionality on the files. PARAMVALUE: True | False | Fix: Replace "Whether it governs the new PDF viewer comments is not stated and should be confirmed by testing." with "The reference describes its reach as commenting functionality on files; test the PDF viewer experience in a pilot before relying on the control." This preserves the testing advice without reporting the documented file-commenting scope as absent. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because feature-specific terms have not been published. | Found: OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan. | Fix: Set licensing.model to "included". Add to licensing.notes: "OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or can be purchased standalone. Organisation users accessing SharePoint need a licence that includes SharePoint; no licence terms specific to anchored PDF comments are published." Cite https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description and https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description, which states: "To access SharePoint, users in your organization need to be assigned a license that includes SharePoint." Retain the existing distinction between free annotation tools and anchored comments. | Source: https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description
-- [supported, minor] controls[0].note; controls[0].governs; Governance controls table / applicability: The correctly documented file-commenting control is qualified as not confirmed to apply to new PDF viewer comments. | Found: Disables or enables commenting functionality on the files. PARAMVALUE: True | False | Fix: Set controls[0].governs to "Whether commenting on files is disabled for the tenant". Set its note to "Disables or enables commenting functionality on files. Requires a SharePoint Online administrator." Make the same replacements in the rendered table. The reference states its general reach without excluding PDFs; keep pilot testing as wiki advice rather than a claim that applicability is undocumented. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: The medium impact rating fits an on-by-default change. | Found: impact: "medium"; defaultState: "on"; "Medium. It is on by default". The assessment scale defines high impact as "most users, or a change to default behaviour". | Fix: Set impact to high and replace the impact rationale with: "High. It is on by default, so users who review PDFs in OneDrive and SharePoint on the web will see commenting and @mentions without any admin step."
 -->

@@ -2,39 +2,33 @@
   "slug": "onedrive-anchored-comments-in-the-pdf-viewer",
   "roadmapId": 569020,
   "title": "OneDrive and SharePoint: anchored comments in the PDF viewer on the web",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "1 blocking finding (claim 40)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 44,
-    "confirmed": 43,
+    "claims": 53,
+    "confirmed": 52,
     "unconfirmed": 0,
     "contradicted": 1,
-    "blocker": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "Hold: the prose understates the documented scope of the tenant commenting control by saying its coverage of PDF comments is not stated. Microsoft describes the control as disabling or enabling commenting on files; the roadmap facts and PowerShell call are correct. The licensing field also needs to distinguish published product licensing from unpublished feature-specific terms.",
+  "summary": "The briefing passes: its rollout facts match the roadmap, and Microsoft documents the file-commenting command and the product licensing it cites. Feature-specific licensing, comment storage and an admin UI remain undocumented in the searches performed. The impact rating should be high under the wiki's scale because the feature is on by default.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Why it matters; Scope; rationale: risk",
+      "where": "title; summary; What's changing; Scope; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans anchored comments in the OneDrive and SharePoint PDF viewer on the web.",
+      "claim": "Microsoft plans anchored comments in the OneDrive PDF viewer.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft is adding anchored comments to the PDF viewer in OneDrive and SharePoint on the web.",
@@ -43,6 +37,17 @@
     },
     {
       "n": 2,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The planned PDF comments also cover SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft is adding anchored comments to the PDF viewer in OneDrive and SharePoint on the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
       "claim": "Users can attach a comment to a specific spot on a PDF page.",
@@ -53,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "What's changing",
       "type": "record",
       "claim": "Users can attach a comment to selected text.",
@@ -64,21 +69,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "summary; What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "The planned PDF commenting experience supports replies.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "collaborate through replies and @mentions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: impact",
-      "type": "record",
-      "claim": "The planned experience supports mentioning colleagues in comments using @mentions.",
+      "claim": "The planned comments support replies.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "collaborate through replies and @mentions",
@@ -87,42 +81,53 @@
     },
     {
       "n": 6,
-      "where": "What's changing",
+      "where": "summary; What's changing; Risk assessment; rationale: impact",
       "type": "record",
-      "claim": "Microsoft describes the change as bringing PDF review to parity with commenting in Office documents.",
+      "claim": "The planned comments support @mentions of people.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "bringing PDF review to parity with commenting in Office documents",
+      "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: impact",
-      "type": "default",
-      "claim": "The roadmap says the feature will be on by default.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft describes the change as bringing PDF review to parity with Office document commenting.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This feature will be on by default and requires no admin action.",
+      "quote": "bringing PDF review to parity with commenting in Office documents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "summary; What's changing; Risk assessment; Cost and licensing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The roadmap says no admin action is required for the feature to arrive.",
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "The roadmap says the feature will be on by default.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This feature will be on by default and requires no admin action.",
+      "quote": "This feature will be on by default",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
+      "where": "summary; What's changing; Risk assessment; Cost and licensing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says the feature requires no admin action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "requires no admin action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "front matter: status; What's changing; Scope; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The supplied roadmap record reports In development.",
+      "claim": "The supplied roadmap record still reports In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -130,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "front matter: targetDate; What's changing; Scope; Governance guidance; Open questions",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -141,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -152,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The listed release phases are General Availability and Targeted Release.",
+      "claim": "General Availability is a listed release phase.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
@@ -163,10 +168,32 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "Targeted Release is a listed release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"Worldwide (Standard Multi-Tenant)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists GCC.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\" ]",
@@ -174,10 +201,32 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: platforms; What's changing; Scope",
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the platform listed in the roadmap.",
+      "claim": "The record lists GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"GCC High\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"DoD\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "title; front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [ \"Web\" ]",
@@ -185,7 +234,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 20,
       "where": "front matter: roadmapModified; What's changing",
       "type": "record",
       "claim": "The roadmap record was last modified on 7 August 2026.",
@@ -196,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Governance guidance: Before rollout; Open questions",
-      "type": "date",
-      "claim": "The October CY2026 target month has passed as of the November 2026 run.",
+      "n": 21,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The October CY2026 target month has passed by the November 2026 run.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"October CY2026\"",
@@ -207,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 22,
       "where": "Cost and licensing; Scope; rationale: cost",
       "type": "record",
-      "claim": "The roadmap description names no licence for anchored PDF comments.",
+      "claim": "The roadmap item names no licence requirement.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft is adding anchored comments to the PDF viewer in OneDrive and SharePoint on the web. Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
@@ -218,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 23,
       "where": "Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "The roadmap description names no meter for anchored PDF comments.",
+      "claim": "The roadmap item names no meter.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "bringing PDF review to parity with commenting in Office documents. This feature will be on by default and requires no admin action.",
@@ -229,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 24,
       "where": "Cost and licensing",
       "type": "record",
-      "claim": "The roadmap description names no price for anchored PDF comments.",
+      "claim": "The roadmap item names no price.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "bringing PDF review to parity with commenting in Office documents. This feature will be on by default and requires no admin action.",
@@ -240,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 25,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap description states no role requirement for using the feature.",
+      "claim": "The roadmap item does not state roles for using the feature.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
@@ -251,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 26,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap description lists no prerequisites for using the feature.",
+      "claim": "The roadmap item does not state prerequisites for using the feature.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature will be on by default and requires no admin action.",
@@ -262,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 27,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap does not mention mobile apps for this feature.",
+      "claim": "The roadmap item does not mention mobile apps.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [ \"Web\" ]; Microsoft is adding anchored comments to the PDF viewer in OneDrive and SharePoint on the web.",
@@ -273,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 28,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap does not mention the desktop sync app for this feature.",
+      "claim": "The roadmap item does not mention the desktop sync app.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [ \"Web\" ]; Microsoft is adding anchored comments to the PDF viewer in OneDrive and SharePoint on the web.",
@@ -284,7 +333,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 29,
       "where": "Risk assessment: Security & identity; rationale: risk",
       "type": "record",
       "claim": "The roadmap describes no new connector or data source.",
@@ -295,140 +344,228 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "The roadmap describes no new app permission.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap describes no new identity for the feature.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes user-made comments, not an agent.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes no automated or autonomous action.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Governance guidance",
-      "type": "behaviour",
-      "claim": "Learn documents existing PDF annotation and markup tools, including inserting sticky notes directly onto PDF files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
-      "quote": "Easily collaborate and share feedback by using digital ink, highlighting text, drawing shapes, and inserting sticky notes directly onto your PDF files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
-      "claim": "The OneDrive PDF features page lists annotation and markup tools as available free of cost.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
-      "quote": "The following table lists the PDF-based features in OneDrive that are available free of cost:",
+      "quote": "This feature will be on by default and requires no admin action.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "availability",
-      "claim": "The annotation and markup tools row shows Yes for OneDrive for work/school.",
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no new identity.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
-      "quote": "| Feature | Description | OneDrive for home | OneDrive for work/school |; | **Annotation and markup tools** | Easily collaborate and share feedback by using digital ink, highlighting text, drawing shapes, and inserting sticky notes directly onto your PDF files. | Yes | Yes |",
+      "source": "roadmap record",
+      "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "What's changing; Cost and licensing",
-      "type": "absence",
-      "claim": "Learn does not yet describe the planned anchored PDF comments, and the cited PDF features page does not mention them.",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes human commenting rather than an agent or automated action.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"OneDrive\" \"anchored comments\" PDF; OneDrive SharePoint anchored PDF viewer comments storage downloaded shared comments licence. Read onedrive-pdf-features in full; results describe markup, Syntex annotations or SharePoint Embedded, not this anchored-comment feature.",
+      "source": "roadmap record",
+      "quote": "Users can attach a comment to a specific spot on a page, to selected text, and collaborate through replies and @mentions",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A licence statement specific to anchored PDF comments is not yet published.",
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn already documents PDF annotation and markup tools in OneDrive.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: OneDrive SharePoint PDF anchored comments licence licensing price meter. Read onedrive-pdf-features and OneDrive/SharePoint service descriptions; search excerpts covered document-processing meters and Syntex annotations, not anchored PDF comments.",
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
+      "quote": "Annotation and markup tools | Easily collaborate and share feedback by using digital ink, highlighting text, drawing shapes, and inserting sticky notes directly onto your PDF files.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because feature-specific terms have not been published.",
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The documented PDF annotation tools include inserting sticky notes.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
-      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
-      "severity": "minor",
-      "fix": "Set licensing.model to \"included\". Add to licensing.notes: \"OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or can be purchased standalone. Organisation users accessing SharePoint need a licence that includes SharePoint; no licence terms specific to anchored PDF comments are published.\" Cite https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description and https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description, which states: \"To access SharePoint, users in your organization need to be assigned a license that includes SharePoint.\" Retain the existing distinction between free annotation tools and anchored comments."
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
+      "quote": "inserting sticky notes directly onto your PDF files.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "controls[0].api; Governance controls table; Risk assessment; Governance guidance",
-      "type": "command",
-      "claim": "Set-SPOTenant -CommentsOnFilesDisabled $true is a documented SharePoint Online PowerShell operation for disabling commenting on files.",
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The OneDrive PDF features page lists annotation and markup tools as free of cost.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
-      "quote": "Set-SPOTenant; [-CommentsOnFilesDisabled <Boolean>]; Disables or enables commenting functionality on the files. PARAMVALUE: True | False",
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
+      "quote": "The following table lists the PDF-based features in OneDrive that are available free of cost: ... Annotation and markup tools",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[0].scope; controls[0].governs; Governance controls",
-      "type": "applicability",
-      "claim": "The Set-SPOTenant file-commenting control has tenant scope.",
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "The PDF features table shows annotation and markup tools as available for OneDrive for work/school.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
-      "quote": "Sets properties on the SharePoint Online organization.",
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
+      "quote": "| Feature | Description | OneDrive for home | OneDrive for work/school | ... | Annotation and markup tools | ... | Yes | Yes |",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[0].note; Governance controls table; Governance controls; Governance guidance: Before rollout",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "OneDrive is included in Microsoft 365 plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "OneDrive is included in Office 365 plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "OneDrive is included in SharePoint plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "OneDrive can be purchased as a standalone plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Organisation users accessing SharePoint need an assigned licence that includes SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description",
+      "quote": "To access SharePoint, users in your organization need to be assigned a license that includes SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The included licensing model describes the product-level entitlement for this new viewer option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence terms specific to anchored PDF comments are published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"anchored\" \"PDF\" comments license pricing; OneDrive SharePoint PDF viewer anchored comments replies mentions storage downloaded licensing. Opened OneDrive and SharePoint service descriptions and onedrive-pdf-features; none names anchored-comment licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this anchored PDF commenting feature, including on the cited PDF features page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"anchored comments\" \"PDF\" OneDrive SharePoint. Opened onedrive-pdf-features; read results for documentprocessing/annotations and embedded/build/preview-files. They describe other annotation or embedded viewing capabilities, not this anchored-comment feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described where this feature's comment text is stored.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OneDrive\" \"PDF\" comments stored download mentions; OneDrive SharePoint PDF viewer anchored comments replies mentions storage downloaded licensing. Opened onedrive-pdf-features; read annotation and Embedded preview excerpts; none states anchored-comment storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described whether anchored comment text accompanies a downloaded PDF.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OneDrive\" \"PDF\" comments stored download mentions. Opened onedrive-pdf-features; read documentprocessing/annotations and embedded/build/preview-files excerpts. Their statements concern other annotations, not downloads of anchored-comment PDFs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described whether anchored comment text accompanies a shared copy of a PDF.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive SharePoint PDF viewer anchored comments replies mentions storage downloaded licensing; \"OneDrive\" \"PDF\" comments stored download mentions. Opened onedrive-pdf-features and service descriptions; no statement about anchored comments on shared PDF copies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no SharePoint admin centre UI path for CommentsOnFilesDisabled.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"CommentsOnFilesDisabled\" \"admin center\" settings; SharePoint admin center disable commenting files CommentsOnFilesDisabled UI PDF anchored comments control. Opened Set-SPOTenant; returned UI guidance is for modern site pages, not commenting on files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].api; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-SPOTenant -CommentsOnFilesDisabled $true is a documented PowerShell call for disabling tenant file commenting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "Sets properties on the SharePoint Online organization. ... -CommentsOnFilesDisabled ... Disables or enables commenting functionality on the files. PARAMVALUE: True | False ... Type: System.Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; Governance guidance: Before rollout; Governance controls",
       "type": "role",
       "claim": "Running Set-SPOTenant requires a SharePoint Online administrator.",
       "status": "supported",
@@ -438,87 +575,43 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[0].ui; Governance controls table; Governance controls",
+      "n": 51,
+      "where": "Why it matters; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No SharePoint admin centre path is documented for the CommentsOnFilesDisabled parameter at the time of writing.",
+      "claim": "No separate admin switch specifically for anchored PDF comments was found beyond the documented general file-commenting control.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: CommentsOnFilesDisabled SharePoint admin center UI PDF comments disable; SharePoint admin center disable commenting files CommentsOnFilesDisabled settings UI. Read Set-SPOTenant; Learn excerpts give Settings > Pages for modern page comments, not file comments.",
+      "quote": "Searched: SharePoint admin center disable commenting files CommentsOnFilesDisabled UI PDF anchored comments control; \"anchored comments\" \"PDF\" OneDrive SharePoint. Opened Set-SPOTenant and onedrive-pdf-features; found the general file-commenting parameter, no dedicated switch.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[0].note; controls[0].governs; Governance controls table",
+      "n": 52,
+      "where": "controls[0].note; Governance controls",
       "type": "applicability",
-      "claim": "The correctly documented file-commenting control is qualified as not confirmed to apply to new PDF viewer comments.",
+      "claim": "The reference states this tenant control's reach as commenting functionality on files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
       "quote": "Disables or enables commenting functionality on the files. PARAMVALUE: True | False",
-      "severity": "minor",
-      "fix": "Set controls[0].governs to \"Whether commenting on files is disabled for the tenant\". Set its note to \"Disables or enables commenting functionality on files. Requires a SharePoint Online administrator.\" Make the same replacements in the rendered table. The reference states its general reach without excluding PDFs; keep pilot testing as wiki advice rather than a claim that applicability is undocumented."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 40,
-      "where": "Governance controls: paragraph beginning Only one control",
-      "type": "absence",
-      "claim": "Whether the tenant-wide file-commenting parameter governs new PDF viewer comments is not stated.",
+      "n": 53,
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "The medium impact rating fits an on-by-default change.",
       "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
-      "quote": "Disables or enables commenting functionality on the files. PARAMVALUE: True | False",
-      "severity": "blocker",
-      "fix": "Replace \"Whether it governs the new PDF viewer comments is not stated and should be confirmed by testing.\" with \"The reference describes its reach as commenting functionality on files; test the PDF viewer experience in a pilot before relying on the control.\" This preserves the testing advice without reporting the documented file-commenting scope as absent."
-    },
-    {
-      "n": 41,
-      "where": "Why it matters: paragraph beginning The wiki's view; Open questions",
-      "type": "absence",
-      "claim": "No admin switch specific to the anchored PDF comment feature is described.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: CommentsOnFilesDisabled SharePoint admin center UI PDF comments disable; \"OneDrive\" \"anchored comments\" PDF. Read Set-SPOTenant and onedrive-pdf-features; found the general file-commenting parameter, but no separate anchored-PDF-comment switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described the storage location of the new anchored comment text.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"PDF\" \"comments\" \"OneDrive\" \"stored\"; OneDrive SharePoint PDF anchored comments downloaded shared copy storage location. Read onedrive-pdf-features and returned OneDrive storage/privacy excerpts; none identifies the new anchored-comment storage mechanism.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described whether anchored comment text accompanies a downloaded PDF copy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: OneDrive SharePoint PDF anchored comments downloaded shared copy storage location. Read onedrive-pdf-features and returned OneDrive file-storage, collaboration and document-comment API excerpts; none describes anchored comments on downloaded PDFs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described whether anchored comment text accompanies a shared PDF copy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: OneDrive SharePoint PDF anchored comments downloaded shared copy storage location. Read onedrive-pdf-features and returned OneDrive storage/collaboration excerpts; general sharing guidance does not describe comment persistence on a shared PDF copy.",
-      "severity": null,
-      "fix": null
+      "source": "page",
+      "quote": "impact: \"medium\"; defaultState: \"on\"; \"Medium. It is on by default\". The assessment scale defines high impact as \"most users, or a change to default behaviour\".",
+      "severity": "minor",
+      "fix": "Set impact to high and replace the impact rationale with: \"High. It is on by default, so users who review PDFs in OneDrive and SharePoint on the web will see commenting and @mentions without any admin step.\""
     }
   ],
   "precheck": {
-    "at": "2026-11-24T05:09:09.791Z",
+    "at": "2026-11-24T06:25:35.444Z",
     "summary": {
-      "links": 3,
+      "links": 5,
       "unreachable": 0,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
@@ -541,13 +634,23 @@
         "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
       {
         "index": 0,
         "side": "api",
-        "governs": "Whether commenting on files is disabled for the tenant (whether it covers PDF viewer comments is to be confirmed)",
+        "governs": "Whether commenting on files is disabled for the tenant",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
         "reachable": true,
         "token": "Set-SPOTenant",
@@ -556,5 +659,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

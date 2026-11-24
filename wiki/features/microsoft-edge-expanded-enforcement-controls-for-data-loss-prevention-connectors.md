@@ -67,7 +67,7 @@ controls:
     scope: "other"
     ui:
       surface: "Intune admin center"
-      path: "policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors"
+      path: "Devices > Configuration > policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec"
     api:
       kind: "other"
@@ -89,7 +89,7 @@ controls:
     note: "No setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
@@ -104,19 +104,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-24"
+    note: "Corrected after verification: Intune admin center path now starts at Devices > Configuration, and two rollout checklist steps without matching control rows were removed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 61
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "3e873220145946b2d71e92d787e3d930"
+  contradicted: 0
+  attempts: 0
+  hash: "e5ba32db5003660f4b6dc7df83dfbe01"
 ---
 
 ## What's changing
@@ -181,9 +185,7 @@ Clouds, platform and phase as the record gives them: Worldwide (Standard Multi-T
 
 ### At rollout
 
-- Pilot the new controls with one group by assigning a separate configuration policy, once Learn documents them.
 - Send users a short note explaining what a justification prompt is for and who reads the answers.
-- Confirm on a test device at edge://policy that the connector policies show Status OK.
 
 ### After rollout
 
@@ -198,7 +200,7 @@ Clouds, platform and phase as the record gives them: Worldwide (Standard Multi-T
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which providers and browser actions send content to a DLP connector</strong><br><small>Tenant</small><br><small class="controls__note">Role: Microsoft Edge Administrator. A configuration policy must exist first. For Symantec: Discover Connectors &gt; Symantec DLP Connector &gt; Set up. The API side covers the upload action only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Edge › Connectors <a href="https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>OnFileAttachedEnterpriseConnector policy (Group Policy or registry); fields service_provider, enable, disable</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Paste, upload and print connector settings, including the fallback verdict</strong><br><small class="controls__note">The paste and print equivalents sit beside the upload policy under the same Microsoft Edge group. The API side covers the upload policy only.</small></td><td data-label="Admin UI"><strong>Intune admin center</strong><br>policy › Configuration settings › Microsoft Edge › Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors <a href="https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>OnFileAttachedEnterpriseConnector policy (Group Policy or registry); fields block_until_verdict, default_action</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Paste, upload and print connector settings, including the fallback verdict</strong><br><small class="controls__note">The paste and print equivalents sit beside the upload policy under the same Microsoft Edge group. The API side covers the upload policy only.</small></td><td data-label="Admin UI"><strong>Intune admin center</strong><br>Devices › Configuration › policy › Configuration settings › Microsoft Edge › Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors <a href="https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>OnFileAttachedEnterpriseConnector policy (Group Policy or registry); fields block_until_verdict, default_action</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users must give a justification to bypass a warning</strong><br><small class="controls__note">Documents the paste policy field as it is today; the roadmap's planned justification control is not documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>API</strong><br><code>require_justification_tags field in OnBulkDataEntryEnterpriseConnector policy (Group Policy or registry)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/onbulkdataentryenterpriseconnector" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Administrator-defined guidance shown to users</strong><br><small class="controls__note">No setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -224,11 +226,9 @@ cost: Low. Learn says Edge for Business connectors extend security investments a
 impact: Low. Admins who run a Symantec, Trellix or Cisco Secure Access connector configure it. The roadmap plans more consistent enforcement, required bypass justification and administrator-defined guidance; the user experience is not yet documented.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The Intune route starts at policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors. | Found: If you've chosen to create an Intune policy, you can navigate to intune.microsoft.com > Devices > Configuration where you should see your newly created configuration policy in this list. | Fix: Replace the path with 'Devices > Configuration > policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors'. The entry route is documented at https://learn.microsoft.com/deployedge/microsoft-edge-management-service and the remaining labels at https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec; both are already cited. Apply the same replacement to the rendered table. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Settings > Microsoft Edge > Connectors reaches the connector configuration experience. | Found: In the main left navigation bar, go to Settings > Microsoft Edge. Navigate to the Connectors tab. | Fix: The path correctly stops on the connector page. For the Symantec example, complete it as 'Settings > Microsoft Edge > Connectors > Discover Connectors > Symantec DLP Connector > Set up > Chosen policy > Enable data loss prevention for browser actions', using https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec, already cited. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview
-- [contradicted, minor] Governance guidance: At rollout; controls table / consistency: Every control the governance checklist tells the reader to set or check has a corresponding table row. | Found: Pilot the new controls with one group by assigning a separate configuration policy ... Confirm on a test device at edge://policy ... Status OK. The table has connector configuration, fallback, justification and guidance rows, but no assignment or policy-status row. | Fix: The checklist's configuration-policy assignment and edge://policy status checks have no table rows. Remove those two checklist bullets; do not add rows as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Settings > Microsoft Edge > Connectors reaches the connector discovery page. | Found: Go to the Microsoft 365 admin center and sign in. In the main left navigation bar, go to Settings > Microsoft Edge. Navigate to the Connectors tab. | Fix: For the Symantec action control, extend the path to 'Settings > Microsoft Edge > Connectors > Discover Connectors > Symantec DLP Connector > Set up > Chosen policy > Enable data loss prevention for browser actions', as documented at https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec. Keep the overview citation for the entry route. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview
+- [supported, minor] Why it matters / behaviour: Connector policies provide per-action verdict-waiting and communication-error fallback choices. | Found: block_until_verdict If set to 1, Microsoft Edge waits for a response ... default_action If set to block, Microsoft Edge denies page access to the data if an error occurs while contacting the analysis service. | Fix: Add 'OnPrintEnterpriseConnector' at https://learn.microsoft.com/deployedge/microsoft-edge-policies/onprintenterpriseconnector to sources; it supports the print part of the per-action verdict-waiting and fallback statement alongside the already cited upload and paste references. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/onprintenterpriseconnector
 -->

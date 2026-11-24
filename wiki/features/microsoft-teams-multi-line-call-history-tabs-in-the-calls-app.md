@@ -59,15 +59,17 @@ changes:
     note: "First briefing for this item; notes that Microsoft's notice and the multi-line page differ on per-line history and voicemail."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -173,4 +175,10 @@ Removing the primary line also removes all alternate lines from the user, accord
 risk: Low. The change reorganises how existing call history, voicemail and recordings are shown in the Calls app; Microsoft's notice describes no new data access or sharing.
 cost: Low. The only cost the sources show is admin time for help desk, training and documentation updates; a licence for the tabs themselves is not yet published.
 impact: Medium. Only Teams Phone users with multi-line calling and several assigned numbers see the new layout, but it changes where they find call history, voicemail and recordings.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because tabs-specific licensing is not published. | Found: Alternate lines have the same licensing requirements as the user’s primary phone number. | Fix: Set licensing.model to "included". Replace licensing.notes with "A new Calls app view for users who already have Teams Phone and multi-line calling configured. Alternate lines have the same licensing requirements as the user's primary phone number. No licence or charge specific to the tabs is published." The product-level requirement is documented at https://learn.microsoft.com/microsoftteams/multi-line; this is the standard's minor understatement, not an assertion of a tabs-specific charge. | Source: https://learn.microsoft.com/microsoftteams/multi-line
 -->

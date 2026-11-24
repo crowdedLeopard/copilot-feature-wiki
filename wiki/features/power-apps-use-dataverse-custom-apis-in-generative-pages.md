@@ -89,15 +89,17 @@ changes:
     note: "Correction: Application Insights row now notes the Contributor or Owner access requirement, and the first sentence of Why it matters no longer says pages previously only displayed data."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -183,8 +185,11 @@ cost: Low. Learn says the generative pages maker experience needs no extra AI or
 impact: Low. It affects makers and developers building model-driven apps; end users see only the resulting page.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: targetDate; What's changing / record: The roadmap gives general availability in December 2026. | Found: "targetDate": "December CY2026"; "status": "In development" | Fix: Replace the rollout sentence with: 'The roadmap targets preview for October CY2026 and general availability for December CY2026 (generative page version 307), in model-driven apps in Worldwide, GCC and GCC High.'
+- [supported, minor] front matter: targetDate; What's changing / record: The roadmap gives general availability in December 2026. | Found: "targetDate": "December CY2026", "status": "In development" | Fix: Replace the rollout sentence with: 'The roadmap targets preview for October CY2026 and general availability for December CY2026 (generative page version 307), in model-driven apps in Worldwide, GCC and GCC High.'
+- [supported, minor] front matter: licensing.model / licensing: Licensing is unknown because no entitlement specific to custom API calls from generative pages is published. | Found: Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to 'included'. Replace the final sentence of licensing.notes and the final sentence of the first Cost and licensing paragraph with: 'The model-driven app requirement supplies the published product-level entitlement; no separate licensing requirement specific to custom API calls from generative pages is published.' Keep the existing premium-use-rights requirement and licensing FAQ citation. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
+- [supported, minor] controls[0].note; Governance controls table / applicability: This is a general maker Copilot preview control whose effect on custom API use and published-page calls is not confirmed. | Found: Copilot preview features are on by default, but your admin can turn them off for an environment or a tenant. Turning off Copilot for your tenant turns off Copilot for makers only. | Fix: Replace the first sentence of controls[0].note, including its rendered copy, with: 'Controls Copilot preview features for makers in the tenant; Microsoft does not document it as a switch for custom API calls from published generative pages.' Retain the alternate Tenant settings route. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Application Insights export configuration is reached through Power Platform admin center > Manage > Data export > App Insights > New data export. | Found: In the navigation pane, select Manage. In the Manage pane, select Data export. On the Data export page, select the App Insights tab. Then select New data export. | Fix: Keep the path and add to controls[1].note and its rendered copy: 'This opens the export wizard; select the data type and filters, the source environment, and the destination Azure subscription, resource group and Application Insights environment to complete configuration.' The remaining steps are documented at https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package. | Source: https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package
 -->

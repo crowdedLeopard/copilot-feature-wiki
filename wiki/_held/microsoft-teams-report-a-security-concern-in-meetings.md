@@ -126,18 +126,20 @@ changes:
     note: "Corrected licensing: meeting and participant reporting is listed in Microsoft Defender for Office 365 Plan 1 and Plan 2, so the licensing model is now included."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 91 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 106 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 91
-  unconfirmed: 0
+  claims: 106
+  confirmed: 105
+  unconfirmed: 1
   contradicted: 0
-  attempts: 0
+  attempts: 1
   hash: "1ea8b089ac9835fbaabbf37159ce7cfa"
 ---
 
@@ -254,4 +256,13 @@ No supported command for changing the built-in alert policies that reported meet
 risk: Medium. The option is on by default and, when reports go to Microsoft, copies meeting and participant metadata for review; Microsoft documents a Teams setting, a Defender destination setting and a PowerShell parameter that cover it.
 cost: Low. Microsoft's pages tie meeting reporting to Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, and publish no separate price or meter for it; the known cost is triage time.
 impact: High. Microsoft's notice says the capability is enabled by default, so eligible users on supported clients see Report a concern in meetings without any admin action; reporting needs an online Teams mailbox.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] controls[0].ui; Governance controls table / admin-path: Teams admin center > Policy or settings page that controls reporting for Teams meetings > Allow users to report meetings is the navigation path to meeting reporting. | Found: Searched: Teams admin center "Allow users to report meetings" navigation ReportMeeting; opened end-user-reporting-teams-meeting and submissions-teams. They name the policy but describe the first page generically, without a selectable navigation label. | Fix: Remove the generic navigation string from controls[0].ui and the rendered table; set that side to null. Retain the setting name in the note: 'Microsoft documents Allow users to report meetings in the Teams admin center, but has not published its navigation path.' Keep the documented PowerShell alternative.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[3].ui; Governance guidance; Governance controls table / admin-path: Reported meetings can be reviewed at Defender portal > Submissions > User reported tab. | Found: The **User reported** tab of the **Submissions** page at https://security.microsoft.com/reportsubmission?viewid=user: | Fix: Use the fuller path 'Actions & submissions > Submissions > User reported tab' and add https://learn.microsoft.com/defender-office-365/submissions-admin to sources. Its 'Admin options for user reported messages' section gives Actions & submissions > Submissions; the cited SecOps guide confirms meeting reports on that page. | Source: https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide
+- [supported, minor] controls[5].ui; Governance controls table / admin-path: User reports are at Teams admin center > Analytics & reports > Protection reports > View reports tab > User reported security submissions. | Found: In the left navigation of the Teams admin center, go to **Analytics & reports** > **Protection reports**. 2. On the **View reports** tab, under **Report**, select **User reported security submissions**. | Fix: Add the omitted heading: 'Analytics & reports > Protection reports > View reports tab > Report > User reported security submissions'. The existing note about the documented report categories can remain. | Source: https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal
 -->

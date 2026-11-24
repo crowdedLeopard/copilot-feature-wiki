@@ -72,7 +72,7 @@ controls:
     note: "Learn says CsTeamsAIPolicy is accessible only through PowerShell and replaces EnrollUserOverride. Disables active enrolment for the Global policy; express voice enrolment is controlled separately by PassiveVoiceEnrollment."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-15T22:47:30"
 changes:
   - date: "2026-11-17"
@@ -85,19 +85,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 95 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 96 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed the claim that the feature does not act on behalf of users and the statements that the Teams Rooms Pro price is not yet published."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 96
-  confirmed: 94
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "3a7bf0fc2102a248f9cd563821da4c27"
+  claims: 81
+  confirmed: 81
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "fd2dd2ce36ec4fba4e025dde440962a7"
 ---
 
 ## What's changing
@@ -126,7 +130,7 @@ Learn says voice and face enrolment is enabled for all users by default, but use
 - Learn says identification matches participants against the meeting invite: people not on the invite, or on an invite forwarded less than 30 minutes before the meeting, are not identified.
 
 **Autonomy & actions**
-- No autonomous actions are documented. The feature shows labels; it does not act on behalf of users.
+- No autonomous actions are documented. The feature shows labels.
 
 **Change & support**
 - The notice names `EnrollUserOverride` in `Set-CsTeamsMeetingPolicy` for blocking enrolment. Learn says `CsTeamsAIPolicy` replaces that setting. Test which one your tenant honours before you rely on either.
@@ -137,7 +141,7 @@ Learn says voice and face enrolment is enabled for all users by default, but use
 
 Learn's IntelliFrame page lists a Teams Rooms Pro licence as a prerequisite and says a Basic licence does not support IntelliFrame or people recognition. The people recognition page says the feature is exclusive to Teams Rooms devices with a Teams Rooms Pro licence. The roadmap says the same. Neither the Learn prerequisites nor the notice name any other licence.
 
-No meter or price for the labels is documented at the time of writing (November 2026), and the Teams Rooms Pro price is not yet published on those pages. Indirect costs are admin time, user communications and signage. Rooms on a Basic licence would need the Pro licence, and supported cameras are needed. Learn names five multi-stream camera models on the IntelliFrame page.
+No meter or price for the labels is documented at the time of writing (November 2026). Indirect costs are admin time, user communications and signage. Rooms on a Basic licence would need the Pro licence, and supported cameras are needed. Learn names five multi-stream camera models on the IntelliFrame page.
 
 ## Scope
 
@@ -188,20 +192,11 @@ Microsoft Learn documents no API for the Pro Management Portal recognition setti
 
 - Which enrolment setting will the tenant honour at rollout: `EnrollUserOverride` as in the notice, or `CsTeamsAIPolicy` as Learn says?
 - Will the roomPeopleNameUserOverride meeting policy value still switch labels off once meeting-policy recognition configuration is retired?
-- Will Microsoft publish a separate price or meter for the labels, or the Teams Rooms Pro price they rest on?
+- Will Microsoft publish a separate price or meter for the labels?
 - How will the labels reach GCC tenants, given Learn says voice and face enrolment is available up to GCC and not in GCC High or DoD?
 
 <!-- rationale
 risk: Medium. The labels rest on biometric voice and face profiles and Microsoft's notice says the feature is enabled automatically when prerequisites are met, but enrolment and recognition settings give administrators controls.
-cost: Low. The only licence the sources name is Teams Rooms Pro, which the rooms need; no separate meter is documented, so the known cost is admin time and communications. The Teams Rooms Pro price is not yet published here.
+cost: Low. The only licence the sources name is Teams Rooms Pro, which the rooms need; no separate meter is documented, so the known cost is admin time and communications.
 impact: Medium. People who enrol and use Teams Rooms Pro rooms with supported cameras are named to remote attendees; other users and rooms are unaffected.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature does not act on behalf of users. | Found: Searched: IntelliFrame people labels autonomous actions voice face recognition. Opened Multi-Stream IntelliFrame, Enable People Recognition, and voice and face enrollment. None states a categorical guarantee that the feature does not act on behalf of users. | Fix: Remove 'it does not act on behalf of users'. Retain 'No autonomous actions are documented. The feature shows labels.'
-- [contradicted, blocker] Open questions: pricing / absence: The question asks whether Microsoft will publish the Teams Rooms Pro price, implying that this price is not yet published. | Found: Microsoft Teams Rooms Pro $40.00 $40.00 room/month, paid yearly (Annual subscription-auto renews) | Fix: Narrow the question to 'Will Microsoft publish a separate price or meter for the labels?' Remove 'or the Teams Rooms Pro price they rest on': Microsoft already publishes a US Pro price at https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans. | Source: https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; rationale: cost / absence: The cited Learn feature pages do not publish a Teams Rooms Pro price. | Found: Searched: Teams Rooms Pro price IntelliFrame people labels license included pricing meter. Read the cited feature pages: no Pro price there. Microsoft's compare-rooms-plans page separately states $40.00 room/month, paid yearly. | Fix: Remove the clauses 'and the Teams Rooms Pro price is not yet published on those pages' and 'The Teams Rooms Pro price is not yet published here'; their narrow absence is misleading when Microsoft publishes the price at https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans.
 -->

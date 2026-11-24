@@ -71,18 +71,20 @@ changes:
     note: "Corrected the Screen sharing mode PowerShell call to Set-CsTeamsMeetingPolicy -Identity <policy> -ScreenSharingMode <mode>, linked to the cmdlet reference."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 61
+  claims: 78
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "d64949395d7caf4e7bac67147bf1a026"
 ---
 
@@ -174,4 +176,14 @@ Content sharing settings are per-user policy settings. Users receive the global 
 risk: Low. The roadmap describes a redesign of how presenters pick what to share; Microsoft has not said it adds data access, and existing meeting policy settings for content sharing remain the documented controls.
 cost: Low. The only cost the sources show is admin and communications time; Microsoft has not published a licence or meter for the new panel.
 impact: High. MC1317197 says the redesigned experience is enabled by default for all Teams work and school users joining meetings on Windows desktop, Mac desktop and the web, and cannot be disabled at the tenant level.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: paragraph after table / applicability: Microsoft has not said whether the existing screen sharing mode control applies to the new panel. | Found: Content sharing settings control how users present a screen or app during a chat, meeting, or event. ... The setting controls whether a user can share a desktop and window in a Teams meeting. | Fix: Replace 'The second row is an existing control that governs content sharing in meetings today; Microsoft has not said how, or whether, it applies to the new panel.' with 'The second row is an existing control: Screen sharing mode controls whether a user can share a desktop and window in a Teams meeting. How the redesigned panel displays those restrictions is not yet documented (November 2026).' Retain the narrower uncertainty about the new panel's presentation, not whether meeting screen-sharing policy governs screen sharing. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Scope; Open questions; rationale: cost / licensing: The licensing model is unknown because no licence requirement specific to the new panel has been published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included and replace the licensing notes and the opening Cost and licensing paragraph with: 'A Microsoft Teams licence is required to use Teams, except when joining meetings anonymously. A licence requirement specific to the redesigned sharing panel is not yet published (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access. Use the same narrower wording in Scope, the licensing open question and the cost rationale. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Teams admin center > Meetings > Meeting policies > policy > Content sharing reaches the section holding Screen sharing mode. | Found: In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**. 2. Select the policy that you want to edit. 3. Go to the **Content sharing** section. 4. Select the settings you want to use. | Fix: End controls[1].ui.path and the matching prose/table path at the setting: 'Meetings > Meeting policies > policy > Content sharing > Screen sharing mode'. The existing path reaches the correct section but stops before the control. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
+- [supported, minor] controls[1].note; Governance controls: second table row / applicability: The row correctly gives an existing screen sharing control but says Microsoft has not confirmed it applies to the new panel. | Found: The setting controls whether a user can share a desktop and window in a Teams meeting. | Fix: Replace controls[1].note and its rendered table note with: 'Screen sharing mode controls whether a user can share a desktop and window in a Teams meeting.' The documented reach includes meeting screen sharing without depending on which sharing panel layout is used. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
 -->

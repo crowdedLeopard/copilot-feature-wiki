@@ -79,15 +79,17 @@ changes:
     note: "Correction: licensing now states the Power Automate Free entitlements for local desktop flow authoring and attended runs, replacing 'Not yet published'."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 43
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
   contradicted: 0
   attempts: 0

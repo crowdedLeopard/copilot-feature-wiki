@@ -117,18 +117,20 @@ changes:
     note: "Corrected after the check: New-DlpPolicy call and connection reference path now match Learn; data policy and endpoint filtering statements restated from Learn; open questions narrowed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
+  claims: 58
   confirmed: 56
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "0693fd8a42992eb2518686f45ce21215"
 ---
 
@@ -215,4 +217,15 @@ A connection reference is a solution component that points to a connection; duri
 risk: Medium. Generated pages will read external data through connections, so connection identity and permissions decide what users can see. How data policy enforcement works for these pages is not described.
 cost: Low. The only cost the sources show is maker and admin time for review and piloting. Licensing specific to this feature is not yet published; model-driven apps already need a licence with Power Apps premium use rights.
 impact: Medium. Makers gain new data sources and app users see data from outside Dataverse.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The complete endpoint-filtering route starts at Data policy > policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints. | Found: On the navigation pane, select **Security** ... select **Data and privacy** ... select **Data policy**. Select an existing policy on the command bar and then select **Edit policy** | Fix: Replace controls[1].ui.path and the rendered route with 'Security > Data and privacy > Data policy > policy > Edit policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints'. The cited endpoint-filtering page supplies the last steps; the already-cited connector-action-control page supplies navigation and Edit policy. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
+- [contradicted, blocker] controls[2].api; Governance controls table / command: GET [organization URI]/api/data/v9.2/connectionreferences is the automation equivalent for configuring the connection reference. | Found: Entity set path: [organization URI]/api/data/v9.2/connectionreferences Operations supported: POSTGETPATCHDELETE connectionid | Edm.String | Id of the connection in API hub | Fix: Replace controls[2].api.call and the rendered call with 'PATCH [organization URI]/api/data/v9.2/connectionreferences(<connectionreferenceid>)'. Replace its note with 'Updates an existing connection reference; the request body sets connectionid, the Id of the connection in API hub. Default Solution comes from the generative pages prerequisites.' Keep the same reference URL. The GET endpoint exists, but only reads references. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Why it matters / behaviour: SharePoint, SQL and SaaS systems are examples of connector data sources. | Found: The following are some of the enhanced connectors that use this pattern: SalesForce SharePoint SQL Server Zendesk | Fix: Add https://learn.microsoft.com/connectors/custom-connectors/enhanced-connectors#structured-data to sources for the SQL and SaaS connector examples; the already-cited generative-page-external-tools page states that all Power Platform connectors are supported. | Source: https://learn.microsoft.com/connectors/custom-connectors/enhanced-connectors#structured-data
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown, despite the stated product-level premium use-rights requirement. | Found: Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to 'included'. Keep the notes naming the model-driven app requirement for Power Apps premium use rights and the narrower statement that licensing specific to connectors in generative pages has not been published. This is the standard's product-level licensing case, not a claim that all users already own a qualifying licence. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The data-policy route is Power Platform admin center > Security > Data and privacy > Data policy > New Policy. | Found: select **Security** ... select **Data and privacy** ... select **Data policy** ... select **New Policy** ... In the **Prebuilt connectors** section | Fix: Extend controls[0].ui.path and its rendered table entry to 'Security > Data and privacy > Data policy > New Policy > Prebuilt connectors'. The printed route is in the documented order but stops before the page listing the connectors. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
 -->

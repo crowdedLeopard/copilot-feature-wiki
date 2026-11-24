@@ -14,7 +14,7 @@ previewDate: "November CY2026"
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "unknown"
+defaultState: "on"
 action: "prepare"
 licensing:
   model: "mixed"
@@ -67,6 +67,9 @@ sources:
   - title: "Manage settings for the Microsoft Copilot Dashboard, Agent Dashboard, Consumption Dashboard, and Viva Insights web app"
     url: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
     kind: "learn"
+  - title: "Add-VivaModuleFeaturePolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy"
+    kind: "learn"
   - title: "Set up usage-based billing for Copilot Credits"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
     kind: "learn"
@@ -86,7 +89,7 @@ controls:
       path: "Manage > Access management"
       docs: "https://learn.microsoft.com/a365-business-analytics/manage/access"
     api: null
-    note: "Permission sets, partitions and access policies. Global, AI or Viva Insights administrator. Preview documentation. Export and identification: Permission sets > Manage > permission set. Custom policy: Actions > Edit."
+    note: "Global, AI or Viva Insights administrator. Preview documentation. Export or Identification: Manage > Access management > Permission sets > Manage > permission set. Custom policy: Actions > Edit."
   - governs: "Whether the Viva Insights web app is on, for the tenant, groups or users"
     scope: "tenant"
     ui:
@@ -154,26 +157,30 @@ changes:
     note: "Corrected licensing: the preview needs at least 50 assigned Copilot licences, and an Agent 365 licence is required to view third-party agent data; added the service description's GCC note."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 116 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-24"
+    note: "Corrected the default state: in the Frontier preview, qualifying leaders, managers and global admins have access by default; general-availability rollout is not yet published."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 116 statements not yet confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 116
   confirmed: 115
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "6189075508b260c455e3f56d192b6ee6"
+  attempts: 0
+  hash: "8de8bc7c99c917acd7fc538f59ff1818"
 ---
 
 ## What's changing
 
 The roadmap item describes Agent 365 Business Analytics as one place that brings AI spend, usage and value together, so leaders can see where AI investment is going, what value it delivers and where to invest next. It lets them explore cost across services, models, agents and users, see the business use cases AI supports, and forecast future spend. The item is listed as In development, with a preview target of November CY2026 and a general availability target of December CY2026, on the web, for Worldwide, GCC, GCC High and DoD. These dates are Microsoft's targets.
 
-Microsoft Learn already documents the app as a Frontier preview (the program that gives customers early access to Microsoft AI features), and says capabilities might change. It describes a dedicated app for business decision makers and general managers with an Overview page, Use cases, Cost & forecast, Users & groups and pages for each AI service. It combines licensed Microsoft 365 Copilot with usage-based services such as Copilot Cowork, agents and GitHub Copilot. What follows about behaviour is the preview documentation, not a final design.
+Microsoft Learn already documents the app as a Frontier preview (the program that gives customers early access to Microsoft AI features), and says capabilities might change. It describes a dedicated app for business decision makers and general managers with an Overview page, Use cases, Cost & forecast, Users & groups and pages for each AI service. It combines licensed Microsoft 365 Copilot with usage-based services such as Copilot Cowork, agents and GitHub Copilot. What follows about behaviour is the preview documentation, not a final design. In the Frontier preview, qualifying leaders and managers and global admins have access by default; Microsoft has not published general-availability rollout mechanics.
 
 The Cost & forecast page covers usage-based billing and says Microsoft Copilot user subscription licence costs are not included; the Overview page shows Microsoft 365 Copilot cost as "Included in license". It offers base and growth forecasts and what-if scenarios for a spend cap or model mix. A reporting budget target creates no spending policy, and a scenario changes only the forecast comparison. AI value is an estimate, documented for Cowork, and Microsoft says it does not represent realised savings.
 
@@ -236,7 +243,7 @@ Audience and access, as the preview documentation states: leaders in the top thr
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can open Business Analytics, export, see named users, and whose data</strong><br><small>User</small><br><small class="controls__note">Permission sets, partitions and access policies. Global, AI or Viva Insights administrator. Preview documentation. Export and identification: Permission sets &gt; Manage &gt; permission set. Custom policy: Actions &gt; Edit.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Access management <a href="https://learn.microsoft.com/a365-business-analytics/manage/access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can open Business Analytics, export, see named users, and whose data</strong><br><small>User</small><br><small class="controls__note">Global, AI or Viva Insights administrator. Preview documentation. Export or Identification: Manage &gt; Access management &gt; Permission sets &gt; Manage &gt; permission set. Custom policy: Actions &gt; Edit.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Access management <a href="https://learn.microsoft.com/a365-business-analytics/manage/access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the Viva Insights web app is on, for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Select the Viva Insights web app feature. General control: Microsoft has not confirmed it switches Business Analytics off. Not available in GCC High or DoD per Microsoft.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting › On or Off <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Spending limits and billing for Copilot Credits reported by the app</strong><br><small>Tenant</small><br><small class="controls__note">Not a control over the app. Beta API. Body: periodLimit, perUserLimit set limits; billingMethods changes funding. Adding pay-as-you-go needs a complete billingInstrument; replacing an existing pay-as-you-go instrument is not defined.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Get Started › Activate the default spending policy for your organization › Set the monthly spending limit for this policy › Limit monthly spending <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether AI value metrics are displayed, and the assumptions behind them</strong><br><small>Tenant</small><br><small class="controls__note">Cowork value metrics toggle; off by default. Viva Insights admins configure Cowork value metrics; Copilot value metrics require both Viva Insights admin and Chief officer roles, or Global admin.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Configurations › Metric calculators › Cowork assisted hours and value › Edit calculator › Value calculator › Value metrics <a href="https://learn.microsoft.com/a365-business-analytics/manage/configurations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -264,11 +271,9 @@ cost: Low for core app access in a tenant meeting the 50-assigned-Copilot-licenc
 impact: Medium. Executives, general managers and managers of larger teams are the audience.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState / default: The feature's default state is unknown. | Found: Some people get access to Agent 365 Business Analytics automatically. Others need a Global admin to assign it. | Fix: Set defaultState to on for the documented Frontier preview. Add: 'In the Frontier preview, qualifying leaders and managers and global admins have access by default; Microsoft has not published general-availability rollout mechanics.' Keep the existing general-availability uncertainty, but do not label the documented preview default as unstated. Source: https://learn.microsoft.com/a365-business-analytics/manage/introduction. | Source: https://learn.microsoft.com/a365-business-analytics/manage/introduction
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; rendered controls table / admin-path: Business Analytics > Manage > Access management reaches the app's access-management page. | Found: In Business Analytics, on the left, under Manage, select Access management. | Fix: The route is correct but ends on the access-management home page. Keep it and expand the note's permission-setting route to 'Manage > Access management > Permission sets > Manage > permission set > Export or Identification'. Source: https://learn.microsoft.com/a365-business-analytics/manage/access. | Source: https://learn.microsoft.com/a365-business-analytics/manage/access
-- [supported, minor] controls[1].api; rendered controls table / command: Add-VivaModuleFeaturePolicy with ModuleId VivaInsights, FeatureId Viva Insights web app, IsFeatureEnabled false and Everyone creates the tenant-wide disable policy. | Found: Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> [-Confirm] [-Everyone] | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy to sources for the cmdlet's parameter reference. Retain the existing settings-page citation, which supplies the VivaInsights module, Viva Insights web app feature ID and tenant-disable example values. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Business Analytics > Manage > Access management reaches the access-management page. | Found: In Business Analytics, on the left, under Manage, select Access management. On the Access management home page, under Permission sets, select Manage. | Fix: For the export and identification settings, extend controls[0].ui.path to 'Manage > Access management > Permission sets > Manage > permission set'. Keep the note naming Export and Identification and the separate custom-policy route. The current path reaches the correct page but stops before the settings. | Source: https://learn.microsoft.com/a365-business-analytics/manage/access
+- [contradicted, minor] front matter: action / consistency: The prepare rating understates the action scale for automatically available preview access targeted within about 60 days. | Found: action: "prepare"; risk: "medium"; previewDate: "November CY2026"; "In the Frontier preview, qualifying leaders and managers and global admins have access by default". | Fix: Set action to 'act-now'. On the November 24, 2026 run, the November preview target and December GA target fall within about 60 days, preview access is automatic for qualifying users, and the medium-risk access/export decisions need attention before users rely on the app. Keep the GA rollout caveat.
 -->

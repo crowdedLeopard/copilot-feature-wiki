@@ -109,15 +109,17 @@ changes:
     note: "Corrected after verification: the Enhanced personalization Graph call now gives the JSON body instead of a property list, and the private-message sharing claim is reworded as a caution."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 103 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
-  confirmed: 94
+  claims: 103
+  confirmed: 102
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -238,9 +240,11 @@ cost: Low. Microsoft's notice names an active Microsoft Copilot licence as the r
 impact: High. The additions change default behaviour for every user with a Microsoft Copilot licence and access to Planner Agent, and the notice says they are enabled by default; users notice new assignment, catch-up and memory behaviour in Copilot Chat.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Why it matters; Scope; Risk assessment: Change & support / date: The notice schedules the start of Worldwide general availability rollout for early December 2026. | Found: General Availability (Worldwide): Rollout will begin in early December 2026 and is expected to complete by early December 2026. | Fix: In Why it matters, replace the sentence beginning 'Nothing needs configuring' with 'No admin configuration is required for rollout; Microsoft plans to deliver task assignment, optional scheduled catch-up and memory-based personalisation to licensed users with Planner Agent access in early December 2026.' This keeps the rollout a plan rather than guaranteeing every user's delivery date.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to review the Copilot Agents usage report, but the controls table has no reporting row. | Found: Review Planner Agent use in the Microsoft 365 Copilot Agents report, because the Planner usage report does not cover it. | Fix: Remove the After rollout checklist bullet beginning 'Review Planner Agent use in the Microsoft 365 Copilot Agents report'. The supported reporting information can remain in Risk assessment; no new control row is requested.
+- [supported, minor] summary; What's changing; Why it matters; Scope; Risk assessment: Change & support / date: The notice schedules Worldwide rollout to begin in early December 2026. | Found: General Availability (Worldwide): Rollout will begin in early December 2026 and is expected to complete by early December 2026. | Fix: In Why it matters, replace the sentence beginning 'Nothing needs configuring' with 'No admin configuration is required for rollout; Microsoft plans to deliver task assignment, optional scheduled catch-up and memory-based personalisation to licensed users with Planner Agent access in early December 2026.' The notice supplies a rollout plan, not a guarantee that every user receives it within that window.
+- [supported, minor] controls[2].api; controls[2].note; Governance controls / command: The beta PATCH call to enhancedpersonalization with Content-Type application/json and isEnabledInOrganization false disables Enhanced personalization. | Found: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization ... Content-Type | application/json. Required. ... isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control | Fix: Set controls[2].api.call and its rendered table call to 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization'. Add to controls[2].note and its rendered note: 'The JSON request body sets isEnabledInOrganization to false to disable Enhanced personalization.' The endpoint, header and printed property are correct; the standard keeps headers and request bodies out of the one-line call. | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
+- [supported, minor] Risk assessment: Security & identity; rationale: risk / applicability: Existing Planner permissions bound the plan and task changes available to the signed-in user. | Found: Within Planner, each Plan is inside a container, and access to the plan is defined by the container. ... Generally, the members of a container can create, update, and delete the tasks in the plan. | Fix: Add 'Security, privacy, and compliance in Microsoft Planner' at https://learn.microsoft.com/planner/planner-security-privacy-compliance to sources. This supports the Planner permissions premise alongside the supplied notice's signed-in-user access boundary. | Source: https://learn.microsoft.com/planner/planner-security-privacy-compliance
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The reporting control the checklist tells administrators to review is represented in the controls table. | Found: Review Planner Agent use in the Microsoft 365 Copilot Agents report, because the Planner usage report does not cover it. The controls table lists availability, pinning, memory, Planner access and a catch-up/assignment switch, but no reporting control. | Fix: Remove the After rollout checklist bullet 'Review Planner Agent use in the Microsoft 365 Copilot Agents report, because the Planner usage report does not cover it.' Keep the supported reporting information in Risk assessment; do not add a control row.
 -->

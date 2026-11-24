@@ -2,31 +2,39 @@
   "slug": "microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari",
   "roadmapId": 502520,
   "title": "Microsoft Teams: new sharing panel in meetings",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-24",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 61,
-    "confirmed": 61,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 72)"
+    ]
   },
-  "summary": "The briefing accurately distinguishes the roadmap target from Microsoft's announced rollout windows and correctly reports the default-on experience without a tenant-level off switch. The content sharing path and corrected PowerShell command are documented; panel-specific licensing and configuration gaps are appropriately qualified.",
+  "counts": {
+    "claims": 78,
+    "confirmed": 77,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The roadmap details, announced rollout windows, default state and PowerShell command are supported. The briefing should not suggest that screen-sharing meeting policies may not apply to the redesigned panel: Microsoft's documented scope already covers desktop and window sharing in Teams meetings. The licensing model also understates the published Teams licensing requirement.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans a new sharing panel in Teams meetings.",
+      "claim": "Microsoft plans a new sharing panel for Teams meetings.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Teams: New sharing panel in meetings - improved content discovery and ease of sharing",
@@ -35,17 +43,6 @@
     },
     {
       "n": 2,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes today's meeting sharing panel as the default place for content discovery and sharing.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The sharing panel in today’s meetings is the default place for content discoverability and sharing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "What's changing; rationale: risk",
       "type": "record",
       "claim": "The planned interface is intended to modernise and simplify tasks such as window sharing.",
@@ -56,10 +53,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap intends easier discovery of sharing options.",
+      "claim": "The planned interface is intended to make sharing options easier to discover.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "but also for easier discovery of sharing options",
@@ -67,10 +64,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap intends more discoverable file sharing.",
+      "claim": "The planned panel is intended to make file sharing more discoverable.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "and more discoverable file sharing.",
@@ -78,7 +75,29 @@
       "fix": null
     },
     {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes today's meeting sharing panel as the default place for content discovery and sharing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The sharing panel in today’s meetings is the default place for content discoverability and sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 6,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Teams as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -89,21 +108,21 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: targetDate; What's changing; Why it matters; Governance guidance",
       "type": "record",
-      "claim": "January CY2027 is the roadmap target, not a committed completion date.",
+      "claim": "January CY2027 is the roadmap target, not a commitment or a confirmed rollout completion date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap sets no preview date.",
+      "claim": "The roadmap has no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -111,24 +130,13 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Desktop and Mac, not web or mobile, without asserting those other platforms are unavailable.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "General Availability is a listed release phase.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
       "severity": null,
       "fix": null
     },
@@ -136,7 +144,7 @@
       "n": 11,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "claim": "Targeted Release is a listed release phase.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -145,20 +153,75 @@
     },
     {
       "n": 12,
-      "where": "front matter: products; Scope",
+      "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap product is Microsoft Teams.",
+      "claim": "Desktop is a platform listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Mac is a platform listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "GCC is listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "GCC High is listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "DoD is listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-12T01:50:56.",
+      "claim": "The roadmap record was modified at 2026-11-12T01:50:56.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-12T01:50:56\"",
@@ -166,7 +229,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1317197 is associated with roadmap items 560321 and 502520.",
@@ -177,21 +240,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 20,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1317197 was updated on 23 September 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1317197",
-      "quote": "Updated September 23, 2026: We have updated the timeline.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice says the redesigned panel may include live previews of screens and windows.",
+      "claim": "The notice says the redesigned share panel may include live previews of screens and windows.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "The redesigned share panel may include:- Live previews of screens and windows.",
@@ -199,10 +251,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 21,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice says the redesigned panel may include a tabbed layout.",
+      "claim": "The notice says the redesigned share panel may include a tabbed layout.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "The redesigned share panel may include:- Live previews of screens and windows.- A tabbed layout",
@@ -210,7 +262,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 22,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice says the panel may include a two-step share confirmation to reduce accidental sharing.",
@@ -221,10 +273,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 23,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice labels its reorganised share panel screenshot as not final UI.",
+      "claim": "The notice labels the share panel screenshot as not final UI.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Screenshot: Reorganized share panel - not final UI",
@@ -232,7 +284,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 24,
       "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
       "type": "default",
       "claim": "The new experience is on by default.",
@@ -243,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 25,
       "where": "summary; controls[0].note; What's changing; Why it matters; Governance controls; rationale: impact",
       "type": "record",
-      "claim": "The experience cannot be disabled at the tenant level.",
+      "claim": "The notice says the new experience cannot be disabled at the tenant level.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "The new experience is enabled by default and cannot be disabled at the tenant level.",
@@ -254,18 +306,18 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 26,
       "where": "What's changing",
       "type": "record",
-      "claim": "During rollout, users may opt in early.",
+      "claim": "Users may opt in early during rollout.",
       "status": "supported",
       "source": "Message Center post MC1317197",
-      "quote": "During rollout, users may opt in early",
+      "quote": "During rollout, users may opt in early and can temporarily return to the previous experience from Teams settings.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 27,
       "where": "What's changing; Governance controls",
       "type": "record",
       "claim": "During rollout, users can temporarily return to the previous experience from Teams settings.",
@@ -276,21 +328,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 28,
       "where": "What's changing; Governance controls",
       "type": "record",
       "claim": "Individual users control the opt-out toggle.",
-      "status": "supported",
-      "source": "Message Center post MC1317197",
-      "quote": "The opt‑out toggle for the new meeting experience is controlled by individual users",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Governance controls",
-      "type": "record",
-      "claim": "Administrators cannot manage the temporary opt-out at the tenant level.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "The opt‑out toggle for the new meeting experience is controlled by individual users and cannot be managed at the tenant level.",
@@ -298,7 +339,18 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 29,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "Administrators cannot manage the opt-out toggle at the tenant level.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "The opt‑out toggle for the new meeting experience is controlled by individual users and cannot be managed at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "What's changing; Open questions",
       "type": "record",
       "claim": "Microsoft says the temporary opt-out will be retired in a future release.",
@@ -309,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 31,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "Microsoft promises advance notice in a separate Message Center post before removing the opt-out.",
+      "claim": "Microsoft says a separate Message Center post will give advance notice before removal.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Microsoft will provide advance notice via a separate Message Center post before removal.",
@@ -320,10 +372,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 32,
       "where": "summary; Scope; rationale: impact",
       "type": "record",
-      "claim": "The notice affects all Teams work and school users joining meetings.",
+      "claim": "The notice applies to all Teams work and school users joining meetings.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Who is affected:\n\n- All Teams work and school users joining meetings",
@@ -331,10 +383,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 33,
       "where": "What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The notice applies to Windows desktop, Mac desktop and web Teams clients.",
+      "type": "availability",
+      "claim": "The notice includes Teams for Windows desktop.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "It applies to Teams for Windows desktop, Teams for Mac desktop, and Teams for the web.",
@@ -342,10 +394,32 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 34,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "The notice includes Teams for Mac desktop.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "It applies to Teams for Windows desktop, Teams for Mac desktop, and Teams for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "The notice includes Teams for the web.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "It applies to Teams for Windows desktop, Teams for Mac desktop, and Teams for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
       "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice excludes Teams consumer, iOS, Android, Teams Rooms and Linux from scope.",
+      "type": "availability",
+      "claim": "The notice excludes Teams consumer.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Not in scope: Teams (consumer), iOS, Android, Teams Rooms, Linux",
@@ -353,10 +427,65 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 37,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The notice excludes iOS.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Not in scope: Teams (consumer), iOS, Android, Teams Rooms, Linux",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The notice excludes Android.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Not in scope: Teams (consumer), iOS, Android, Teams Rooms, Linux",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The notice excludes Teams Rooms.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Not in scope: Teams (consumer), iOS, Android, Teams Rooms, Linux",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The notice excludes Linux.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Not in scope: Teams (consumer), iOS, Android, Teams Rooms, Linux",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "MC1317197 was updated on 23 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Updated September 23, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The notice targets redesigned meeting controls to Targeted Release from late July to mid-August 2026.",
+      "type": "date",
+      "claim": "The notice schedules Targeted Release of redesigned meeting controls from late July to mid-August 2026.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Targeted Release: We will begin rolling out redesigned meeting controls in late July 2026 (previously early July) and expect to complete by mid-August 2026 (previously late July).",
@@ -364,10 +493,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 43,
       "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The notice schedules redesigned sharing controls to begin rolling out in September 2026.",
+      "type": "date",
+      "claim": "By the notice's schedule, redesigned sharing controls begin rolling out in September 2026.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Redesigned Sharing controls will begin rolling out in September 2026.",
@@ -375,10 +504,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 44,
       "where": "What's changing",
-      "type": "record",
-      "claim": "The notice's Worldwide General Availability window is mid-October to late October 2026.",
+      "type": "date",
+      "claim": "The notice schedules Worldwide General Availability from mid-October to late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "General Availability (Worldwide): We will begin rolling out in mid-October 2026 (previously late September) and expect to complete by late October 2026 (previously late September).",
@@ -386,10 +515,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 45,
       "where": "What's changing",
-      "type": "record",
-      "claim": "The notice's GCC and GCC High General Availability window is late October to mid-December 2026.",
+      "type": "date",
+      "claim": "The notice schedules GCC and GCC High General Availability from late October to mid-December 2026.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "General Availability (GCC, GCC High): We will begin rolling out in late October 2026 (previously late September) and expect to complete by mid-December 2026 (previously late November).",
@@ -397,10 +526,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 46,
       "where": "What's changing",
-      "type": "record",
-      "claim": "The notice's DoD General Availability window is mid-December 2026 to early January 2027.",
+      "type": "date",
+      "claim": "The notice schedules DoD General Availability from mid-December 2026 to early January 2027.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "General Availability (DoD): We will begin rolling out in mid-December 2026 (previously late November) and expect to complete by early January 2027 (previously late December 2026).",
@@ -408,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 47,
       "where": "summary; Why it matters",
       "type": "record",
-      "claim": "The notice requires no immediate action.",
+      "claim": "Microsoft says no immediate action is required.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "No immediate action is required.",
@@ -419,10 +548,10 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "summary; Why it matters; Cost and licensing",
+      "n": 48,
+      "where": "summary; Why it matters",
       "type": "record",
-      "claim": "Microsoft recommends communicating the redesigned controls to users, help desk and internal support teams.",
+      "claim": "Microsoft recommends communicating the redesigned meeting controls to users, help desk and internal support teams.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Communicate ​the redesiged meeting control changes to users, helpdesk, and internal support teams ahead of the July 2026 rollout.",
@@ -430,10 +559,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Why it matters; Cost and licensing",
+      "n": 49,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "Microsoft recommends updating internal documentation and training for the changed meeting controls and share panel.",
+      "claim": "Microsoft recommends updating internal documentation and training for the new controls and share panel.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Update internal documentation and training materials to reflect:- The new meeting controls layout.- User customization options.- The updated share panel experience.",
@@ -441,10 +570,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 50,
       "where": "Why it matters",
       "type": "record",
-      "claim": "Microsoft recommends reviewing meeting app pinning policies and planning future policies around the two-app limit.",
+      "claim": "The coordinated notice recommends reviewing meeting app pinning policies and planning around a two-app limit.",
       "status": "supported",
       "source": "Message Center post MC1317197",
       "quote": "Review existing Teams meeting app pinning policies and plan future policies around the two‑app limit.",
@@ -452,131 +581,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "What's changing; front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "No Microsoft Learn page describing the new sharing panel was found at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"new sharing panel\"; Teams new share panel 502520 ScreenSharingMode policy file sharing controls licensing. Opened meeting-policies-content-sharing and meeting-policies-overview; results describe existing sharing, not the redesigned panel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[0].ui; controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "No tenant-wide admin UI or API switch specific to the new sharing panel is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams redesigned sharing panel admin center tenant level toggle new meeting experience; \"Teams\" \"sharing panel\" \"disable\" \"PowerShell\". Read content-sharing policy and Set-CsTeamsMeetingPolicy references; no panel switch found. MC1317197 explicitly rules out tenant disabling.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls",
-      "type": "admin-path",
-      "claim": "The documented path is Teams admin center > Meetings > Meeting policies > policy > Content sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies.\n2. Select the policy that you want to edit.\n3. Go to the Content sharing section.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMeetingPolicy -Identity <policy> -ScreenSharingMode <mode>.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-      "quote": "Set-CsTeamsMeetingPolicy\n    [[-Identity] <XdsIdentity>]\n...\n    [-ScreenSharingMode <String>]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[1].scope; Risk assessment: Change & support; Scope; Governance controls",
-      "type": "behaviour",
-      "claim": "Screen sharing mode is a per-user policy controlling desktop and window sharing in Teams meetings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "This setting is a per-user policy. The setting controls whether a user can share a desktop and window in a Teams meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[1].governs; Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "The Entire screen setting permits full desktop and application sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "Entire screen | Full desktop sharing and application sharing are allowed in the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[1].governs; Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Single application allows application sharing, subject to the browser exception stated in Scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "Single application | Application sharing is allowed in the meeting. If your users are using Teams in a web browser and are assigned this value, this setting functions as Not enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[1].governs; Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "The disabled sharing option turns off screen and application sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "Not enabled | Screen sharing and application sharing turned off in the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "In Teams in a web browser, Single application functions as Not enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "If your users are using Teams in a web browser and are assigned this value, this setting functions as Not enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Scope; Open questions",
-      "type": "absence",
-      "claim": "Licensing specific to the new panel is not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"share panel\" \"license\"; Teams new share panel 502520 ScreenSharingMode policy file sharing controls licensing. Read Teams Premium licensing, content-sharing policies and supplied MC1317197; none states a licensing requirement for this redesign.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to the new sharing panel is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Teams meetings licensing requirements new sharing panel meter billing. Opened Teams Premium licensing and content-sharing policies; read roadmap and MC1317197. None documents a new-panel meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 51,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "The roadmap names no licence, plan or meter for the new panel.",
+      "claim": "The roadmap record names no licence, plan or meter for the new panel.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "New sharing panel UI is crafted with intent of modernising and simplifying default tasks such as window sharing, but also for easier discovery of sharing options and more discoverable file sharing.",
@@ -585,34 +593,34 @@
     },
     {
       "n": 52,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The cited content-sharing policies page lists no licence requirement for its settings and does not describe the new panel.",
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no licence requirement specific to the new panel has been published.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams new share panel 502520 ScreenSharingMode policy file sharing controls licensing. Read Manage meeting policies for content sharing in full: settings and configuration are documented, but no licence requirement or redesigned-panel description appears.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included and replace the licensing notes and the opening Cost and licensing paragraph with: 'A Microsoft Teams licence is required to use Teams, except when joining meetings anonymously. A licence requirement specific to the redesigned sharing panel is not yet published (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access. Use the same narrower wording in Scope, the licensing open question and the cost rationale."
     },
     {
       "n": 53,
-      "where": "Scope",
+      "where": "What's changing; front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "No role for configuring the new panel experience is published.",
+      "claim": "No Microsoft Learn page describing the new sharing panel was found in November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Teams refreshed new sharing panel meeting experience licensing license prerequisites admin roles tenant toggle PowerShell. Read MC1317197, content-sharing policies and meeting policies overview; no new-panel configuration role is specified.",
+      "quote": "Searched: \"new sharing panel\" \"Teams\". Read returned excerpts, Manage meeting policies for content sharing, the meeting-policy overview and Set-CsTeamsMeetingPolicy; no feature-specific Learn page found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Scope",
+      "where": "controls[0].ui and controls[0].api; controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "No prerequisites specific to the new sharing panel are published.",
+      "claim": "No tenant-wide switch for the new sharing panel is documented on either the admin UI or automation surface.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Teams refreshed new sharing panel meeting experience licensing license prerequisites admin roles tenant toggle PowerShell; Teams new sharing panel files OneDrive SharePoint permissions prerequisites meeting policy bypass. Read supplied notice and content-sharing policies.",
+      "quote": "Searched: Teams new meeting controls share panel ScreenSharingMode policy opt out toggle PowerShell. Read content-sharing policies, meeting-policy overview and Set-CsTeamsMeetingPolicy; no switch found. MC1317197 explicitly rules out tenant-level disabling.",
       "severity": null,
       "fix": null
     },
@@ -620,7 +628,7 @@
       "n": 55,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "record",
-      "claim": "The roadmap does not identify which files the panel lists or where they come from.",
+      "claim": "The roadmap does not specify which files the panel lists or where they come from.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "but also for easier discovery of sharing options and more discoverable file sharing.",
@@ -629,9 +637,9 @@
     },
     {
       "n": 56,
-      "where": "Risk assessment: Security & identity; Why it matters; rationale: risk",
+      "where": "Risk assessment: Security & identity; rationale: risk",
       "type": "record",
-      "claim": "The roadmap does not mention new permissions, identity, authentication or data access.",
+      "claim": "The roadmap mentions no new permissions, identity or authentication.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "New sharing panel UI is crafted with intent of modernising and simplifying default tasks such as window sharing, but also for easier discovery of sharing options and more discoverable file sharing.",
@@ -645,7 +653,7 @@
       "claim": "The roadmap describes sharing tasks and mentions no automated or agent behaviour.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "modernising and simplifying default tasks such as window sharing, but also for easier discovery of sharing options and more discoverable file sharing.",
+      "quote": "New sharing panel UI is crafted with intent of modernising and simplifying default tasks such as window sharing, but also for easier discovery of sharing options and more discoverable file sharing.",
       "severity": null,
       "fix": null
     },
@@ -653,56 +661,243 @@
       "n": 58,
       "where": "Risk assessment: Data exposure; Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "Existing content-sharing policy settings govern current meeting sharing behaviour.",
+      "claim": "Existing meeting-policy content sharing settings govern how users share content in meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "Content sharing settings control how users present a screen or app during a chat, meeting, or event. You can configure admin settings for screen sharing mode, PowerPoint sharing, whiteboard, and shared notes.",
+      "quote": "Content sharing settings control how users present a screen or app during a chat, meeting, or event.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[1].note; Scope; Governance guidance: At rollout; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not specifically documented how the redesigned panel interacts with existing content-sharing meeting policies.",
+      "where": "controls[1].scope; Risk assessment: Change & support; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Screen sharing mode and the cited content sharing settings are per-user policy settings.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams new share panel 502520 ScreenSharingMode policy file sharing controls licensing; Teams new sharing panel files OneDrive SharePoint permissions prerequisites meeting policy bypass. Read content-sharing policies and MC1317197; no panel-specific policy interaction is stated.",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "This setting is a per-user policy. The setting controls whether a user can share a desktop and window in a Teams meeting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "Governance controls",
+      "where": "controls[1].governs; Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Users receive the global meeting policy unless a custom policy is created and assigned.",
+      "claim": "Entire screen allows full desktop and application sharing in meetings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "You can edit the settings in the global policy or create and assign one or more custom policies. Users get the global policy unless you create and assign a custom policy.",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "**Entire screen** | Full desktop sharing and application sharing are allowed in the meeting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "controls[1].api; writer evidence: ScreenSharingMode values",
+      "where": "controls[1].governs; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Single application allows application sharing in meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "**Single application** | Application sharing is allowed in the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].governs; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Not enabled turns off both screen and application sharing in meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "**Not enabled** | Screen sharing and application sharing turned off in the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Single application functions as Not enabled for users using Teams in a web browser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "If your users are using Teams in a web browser and are assigned this value, this setting functions as **Not enabled**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting policies > policy > Content sharing reaches the section holding Screen sharing mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.\n2. Select the policy that you want to edit.\n3. Go to the **Content sharing** section.\n4. Select the settings you want to use.",
+      "severity": "minor",
+      "fix": "End controls[1].ui.path and the matching prose/table path at the setting: 'Meetings > Meeting policies > policy > Content sharing > Screen sharing mode'. The existing path reaches the correct section but stops before the control."
+    },
+    {
+      "n": 65,
+      "where": "controls[1].api; Governance controls",
       "type": "command",
-      "claim": "ScreenSharingMode accepts SingleApplication, EntireScreen and Disabled for application-only sharing, full-screen sharing and prohibited screen sharing respectively.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -ScreenSharingMode <mode> sets the policy's screen sharing mode.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-      "quote": "Set this to SingleApplication to allow the user to share an application at a given point in time. Set this to EntireScreen to allow the user to share anything on their screens. Set this to Disabled to prohibit the user from sharing their screens.",
+      "quote": "Set-CsTeamsMeetingPolicy\n    [[-Identity] <XdsIdentity>]\n...\n    [-ScreenSharingMode <String>]\n...\nDetermines the mode in which a user can share a screen in calls or meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].note; Governance controls: second table row",
+      "type": "applicability",
+      "claim": "The row correctly gives an existing screen sharing control but says Microsoft has not confirmed it applies to the new panel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "The setting controls whether a user can share a desktop and window in a Teams meeting.",
+      "severity": "minor",
+      "fix": "Replace controls[1].note and its rendered table note with: 'Screen sharing mode controls whether a user can share a desktop and window in a Teams meeting.' The documented reach includes meeting screen sharing without depending on which sharing panel layout is used."
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Learn page on content sharing meeting policies lists no licence requirement for those settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams meetings licensing Teams license screen sharing. Read the complete Manage meeting policies for content sharing page; no licence requirement stated there. Also read Manage Teams licenses for the product-level requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published a configuration role specific to the new sharing panel.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams refreshed sharing panel \"prerequisites\" \"roles\" \"licensing\". Read returned excerpts and content-sharing meeting policies; no panel-specific configuration role found. MC1317197 describes individual users controlling the temporary opt-out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published prerequisites specific to the new sharing panel.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams refreshed sharing panel \"prerequisites\" \"roles\" \"licensing\". Read returned excerpts, content-sharing policies, meeting-policy overview, Teams service description and Manage Teams licenses; no panel-specific prerequisites found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users receive the global meeting policy unless a custom policy is created and assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "Users get the global policy unless you create and assign a custom policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can edit the global policy or create and assign custom meeting policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "You can edit the settings in the global policy or create and assign one or more custom policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: paragraph after table",
+      "type": "applicability",
+      "claim": "Microsoft has not said whether the existing screen sharing mode control applies to the new panel.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "Content sharing settings control how users present a screen or app during a chat, meeting, or event.\n...\nThe setting controls whether a user can share a desktop and window in a Teams meeting.",
+      "severity": "blocker",
+      "fix": "Replace 'The second row is an existing control that governs content sharing in meetings today; Microsoft has not said how, or whether, it applies to the new panel.' with 'The second row is an existing control: Screen sharing mode controls whether a user can share a desktop and window in a Teams meeting. How the redesigned panel displays those restrictions is not yet documented (November 2026).' Retain the narrower uncertainty about the new panel's presentation, not whether meeting screen-sharing policy governs screen sharing."
+    },
+    {
+      "n": 73,
+      "where": "Scope; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The sources do not document how the new panel implements or displays content sharing settings beyond their existing documented reach.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new sharing panel\" \"Teams\"; Teams new meeting controls share panel ScreenSharingMode policy opt out toggle PowerShell. Read content-sharing policies and Set-CsTeamsMeetingPolicy; no redesigned-panel presentation documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether any new-panel option bypasses a configured content sharing policy value.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams redesigned share panel file discovery data permissions automated sharing new panel. Read returned excerpts, content-sharing policies and Set-CsTeamsMeetingPolicy; no redesigned-panel exception or bypass described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The cost supported by the sources is indirect administration, communications and training time, consistent with a low cost rating.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Review existing Teams meeting app pinning policies and plan future policies around the two‑app limit.\n...\nUpdate internal documentation and training materials",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "The sources do not describe new data access or an expansion to new people caused by the panel redesign.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams redesigned share panel file discovery data permissions automated sharing new panel; \"new sharing panel\" \"Teams\". Read roadmap description, MC1317197 and returned excerpts; no new data-access or sharing-audience expansion was documented for this redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list web or mobile platforms; this alone does not establish exclusion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The content sharing meeting-policy page does not describe the redesigned panel and is not a feature-specific licensing statement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new sharing panel\" \"Teams\"; Microsoft Teams meetings licensing Teams license screen sharing. Read the complete Manage meeting policies for content sharing page; it describes existing settings, not the redesigned panel or its feature-specific licensing.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T01:27:15.247Z",
+    "at": "2026-11-24T06:25:37.162Z",
     "summary": {
       "links": 5,
-      "unreachable": 3,
+      "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -713,18 +908,18 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=502520",
@@ -738,26 +933,22 @@
         "side": "ui",
         "governs": "Whether a user can share an entire screen, a single application, or neither in meetings",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Content sharing"
         ],
-        "missing": [
-          "Meetings",
-          "Meeting policies",
-          "Content sharing"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether a user can share an entire screen, a single application, or neither in meetings",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-        "reachable": false,
+        "reachable": true,
         "token": "Set-CsTeamsMeetingPolicy",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -773,6 +964,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

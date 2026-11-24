@@ -101,18 +101,20 @@ changes:
     note: "Corrected the people-connection call (contentCategory is a top-level externalConnection property), aligned the At rollout step with the undocumented hiding effect, and added the People settings role page."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "84dcc72af52be81800dd82614780ffd0"
 ---
 
@@ -223,4 +225,15 @@ The third row is an existing control for Microsoft Entra properties. Microsoft h
 risk: Low. The card display needs admin configuration, but Microsoft Learn says people data from a Copilot connector is visible to all users in the tenant by default, so approve the data before ingesting it, not only before showing it on cards.
 cost: Low. The only cost the sources show is admin and HR time for the connector and settings work; the licence for this feature is not yet published and no meter is documented for it at the time of writing (November 2026).
 impact: Low. Admins act first; users notice a new property in the Contact Information section of profile cards in Outlook on the web only after an admin enables it.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls: table / admin-path: Connectors gallery > Human resources & recruiting is the admin-center navigation route for choosing a people-data connector. | Found: In the left pane, choose Copilot > Connectors. On the Connectors tab, in the left pane, choose Gallery, and select the data source you want to connect | Fix: Replace controls[1].ui.path and its rendered route with 'Copilot > Connectors > Gallery > Human resources & recruiting'. Keep the peopleconnectors docs link for the category and add https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview to sources for the navigation. Replace 'Learn gives the gallery, not a click path' with 'Choose the people-data source in the Human resources & recruiting category.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost; Open questions / licensing: Licensing is unknown because no licence requirement specific to this new feature is published. | Found: Your tenant must have Microsoft 365 licenses. The surfaces available to your users ... and the connector types you can deploy depend on your organization's licensing. | Fix: Set licensing.model to included and state: 'The connector prerequisites require Microsoft 365 licenses for the tenant; available connector types and surfaces depend on licensing. A licence requirement specific to these new custom profile card properties is not yet published.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. Keep cost low and the narrower feature-specific licensing gap. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
+- [supported, minor] controls[1].api; Governance controls: table and notes / command: POST https://graph.microsoft.com/v1.0/external/connections creates a people-data connection when contentCategory is people. | Found: POST https://graph.microsoft.com/v1.0/external/connections | Fix: Set controls[1].api.call and the rendered call to 'POST https://graph.microsoft.com/v1.0/external/connections'. In the note say: 'The request body sets the top-level contentCategory property to people.' The v1.0 externalConnection resource documents that property at https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection. | Source: https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections
+- [supported, minor] controls[2].ui; Governance controls: table and notes / admin-path: Existing optional profile-card properties are configured at Settings > Org settings > People settings > Profile card > Contact info. | Found: admins can configure their visibility by navigating to Settings > Org settings > People settings > Profile card > Contact info in the Microsoft 365 admin center. | Fix: Expand controls[2].ui.path and its rendered route to 'Settings > Org settings > Services > People settings > Profile card > Contact info'. The already-cited https://learn.microsoft.com/microsoft-365/admin/manage/people-settings-in-microsoft-365-admin-center gives the Services tab that lists People settings. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards
+- [supported, minor] controls[2].api; Governance controls: table / command: POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties configures Entra profile-card properties using directoryPropertyName, annotations and isVisible. | Found: Use the annotations and directoryPropertyName properties on profileCardProperty to configure profile card properties. You can also use the isVisible property to indicate whether the given directory property should be shown on a user's profile card. | Fix: Set controls[2].api.call and the rendered call to 'POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties'. Add to the note: 'The request body specifies directoryPropertyName, annotations for labels, and isVisible for visibility.' Remove the parenthesised property list from the call. | Source: https://learn.microsoft.com/graph/add-properties-profilecard
 -->
