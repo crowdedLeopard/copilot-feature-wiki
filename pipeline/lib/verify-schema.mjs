@@ -60,6 +60,7 @@ export const verificationSummary = z.object({
   unconfirmed: z.number().int().nonnegative(),
   contradicted: z.number().int().nonnegative(),
   attempts: z.number().int().nonnegative().default(0).describe('Consecutive holds. Two parks the page for a person.'),
+  passes: z.number().int().nonnegative().optional().describe('Consecutive passing checks of this version of the text. At VERIFICATION.cleanPasses the page moves to the settled re-check cycle.'),
   hash: z.string().regex(/^[a-f0-9]{32}$/).optional().describe('pageHash of the text that was checked. A page whose text differs is re-checked, whatever its version says.'),
 });
 

@@ -83,7 +83,9 @@ daily by GitHub Actions.
   (`changed-since-check`), whose cited Microsoft page changed (`source-changed`, from `pipeline/watch-sources.mjs`:
   a no-model step in every curation run that re-reads each learn.microsoft.com page the live pages cite once a day, paced
   and stopping on sustained HTTP 429 (Learn rate-limited 581 of 743 pages on 17 Nov 2026 when every run re-read them all), into `data/sources.json`,
-  `pipeline/lib/sources.mjs`, change = Microsoft's `ms.date` moved) or whose check is older than `recheckDays` (7). Each
+  `pipeline/lib/sources.mjs`, change = Microsoft's `ms.date` moved) or whose check is older than `recheckDays` (7; `settledRecheckDays` 30 once the same text has passed `cleanPasses` (2) checks
+  in a row, counted as `passes` in the stamp by `passStreak`: Chris's card of 24 Nov 2026, when the 7-day cycle at 800 pages had
+  become two-thirds of the day's credits). Each
   check writes a line into the page's `changes` log (`checkNote`). `VERIFY_LIMIT` (24) is the number of such pages a run
   checks on top of everything it wrote. The verify log line and `data/last-verify.json` (`heldOnRecheck`) count the live
   pages a run held on such a re-check, with why each was due and its blockers by type: the number to watch after the

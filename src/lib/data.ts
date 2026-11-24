@@ -94,7 +94,7 @@ export interface CatalogItem {
 export const catalog = (catalogJson as { generated: string; count: number; items: CatalogItem[] });
 export const stats = statsJson as {
   generated: string; briefings: number; archived?: number; concepts: number; tracked: number; byTopic: Record<string, number>; actNow: number; updatedThisWeek: number;
-  verification?: { checked: number; needsCorrection: number; unchecked: number; held: number; due?: number; recheckDays?: number; sourcesWatched?: number; sourcesChecked?: string | null };
+  verification?: { checked: number; needsCorrection: number; unchecked: number; held: number; due?: number; recheckDays?: number; cleanPasses?: number; settledRecheckDays?: number; sourcesWatched?: number; sourcesChecked?: string | null };
   messageCenter?: { posts: number; actBy: number; withheld: number; linked: number };
 };
 /** The daily source watch (pipeline/watch-sources.mjs): every Microsoft page a live briefing cites, when it was last read and when it last changed. */

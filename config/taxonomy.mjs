@@ -77,6 +77,11 @@ export const LIFECYCLE = {
 // correct and continuously verified".
 export const VERIFICATION = {
   recheckDays: 7,
+  // A page whose text has passed this many checks in a row is settled: its time-based re-check moves to
+  // settledRecheckDays. A change to its text or to a cited Microsoft page still queues it the same day.
+  // (Chris, 24 Nov 2026, card: "7 days until 2 clean passes, then 30".)
+  cleanPasses: 2,
+  settledRecheckDays: 30,
   // Hosts whose pages the daily source watch re-reads for changes.
   watchedHosts: ['learn.microsoft.com'],
 };

@@ -27,6 +27,7 @@ const verification = z.object({
   unconfirmed: z.number().int(),
   contradicted: z.number().int(),
   attempts: z.number().int().default(0),
+  passes: z.number().int().optional(),
   hash: z.string().optional(),
 });
 
