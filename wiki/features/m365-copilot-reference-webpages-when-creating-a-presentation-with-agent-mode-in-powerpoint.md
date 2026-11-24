@@ -72,19 +72,23 @@ changes:
     note: "First briefing for roadmap item 555898 (PowerPoint on the web): covers the Learn release note, the Allow web search in Copilot policy and the open question of whether it governs this feature."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected three statements: the Bing query exclusion for very short prompts, the release notes' gradual-deployment wording, and the optional connected experiences qualification on web search availability."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 63
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "7beb8e2112ef73d37c402d7f66051d38"
+  contradicted: 0
+  attempts: 0
+  hash: "4b543e5ef2458ce6c1c7ebe07df9f1d3"
 ---
 
 ## What's changing
@@ -107,7 +111,7 @@ The one admin control Microsoft documents for web search in Copilot is a Cloud P
 
 **Data exposure**
 
-- Microsoft's web search page says Copilot sends a generated search query, not the whole prompt, to the Bing search service, along with the user's client IP address, and that the query may be informed by data in a Microsoft 365 document when the prompt is entered inside a Microsoft 365 app. That page covers Microsoft Copilot and Microsoft Copilot Chat. The release note does not say whether this feature uses that web search, so confirm before relying on those terms.
+- Microsoft's web search page says Copilot sends a generated search query, not the whole prompt unless the prompt is very short (for example, "local weather"), to the Bing search service, along with the user's client IP address, and that the query may be informed by data in a Microsoft 365 document when the prompt is entered inside a Microsoft 365 app. That page covers Microsoft Copilot and Microsoft Copilot Chat. The release note does not say whether this feature uses that web search, so confirm before relying on those terms.
 - The same page says the Data Protection Addendum does not apply to generated web search queries, and that HIPAA compliance and the EU Data Boundary do not apply to them. If this feature uses that search, regulated teams should ask for it to be restricted.
 
 **Security & identity**
@@ -135,7 +139,7 @@ The one admin control Microsoft documents for web search in Copilot is a Cloud P
 
 - **Platform and cloud:** the roadmap record lists Web and Worldwide (Standard Multi-Tenant). Mac and Desktop are separate roadmap items (555893 and 555896).
 - **Users:** people with the Microsoft 365 Copilot (Basic) or (Premium) experience in PowerPoint, per Microsoft's Copilot overview. Which of these experiences gets this feature is not yet published.
-- **Rollout:** the record gives status Launched and target April CY2026. The release notes list it under August 11, 2026. Microsoft has not stated a default or rollout mechanics.
+- **Rollout:** the record gives status Launched and target April CY2026. The release notes list it under August 11, 2026. Microsoft has not stated this feature's default. The Copilot release notes describe gradual deployment to a subset of users within a tenant before expanding across the organisation.
 - **Prerequisites:** none are stated for this feature.
 
 ## Governance guidance
@@ -143,7 +147,7 @@ The one admin control Microsoft documents for web search in Copilot is a Cloud P
 ### Before rollout
 
 - Ask security and compliance whether web content from Bing may flow into decks built by licensed users, using Microsoft's web search page (Bing, query handling, Data Protection Addendum exclusion) as the basis.
-- Check whether an **Allow web search in Copilot** policy already exists in the Microsoft 365 Apps admin center, and who it targets. Without one, Microsoft says web search is available to Microsoft Copilot and Copilot Chat users.
+- Check whether an **Allow web search in Copilot** policy already exists in the Microsoft 365 Apps admin center, and who it targets. Without one, Microsoft says web search is available to Microsoft Copilot and Copilot Chat users unless Allow the use of additional optional connected experiences in Office is Disabled.
 - Pick a pilot group of PowerPoint on the web users and target the policy at a Microsoft Entra group.
 
 ### At rollout
@@ -187,13 +191,9 @@ cost: Low. No licence or meter specific to this feature is published. Copilot in
 impact: Medium. People who build presentations with Copilot in PowerPoint on the web notice it. Microsoft's release note names no administrator action.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Copilot sends a generated search query, not the whole prompt, to Bing. | Found: The following information isn't included in the generated search query sent to the Bing search service: ... The user's entire prompt, unless the prompt is very short (for example, "local weather") | Fix: Replace 'not the whole prompt' with 'not the whole prompt unless the prompt is very short (for example, "local weather")', as stated at https://learn.microsoft.com/copilot/plan/manage-public-web-access. | Source: https://learn.microsoft.com/copilot/plan/manage-public-web-access
-- [contradicted, blocker] Scope: Rollout / absence: Microsoft has not stated rollout mechanics. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace 'Microsoft has not stated a default or rollout mechanics' with 'Microsoft has not stated this feature's default. The Copilot release notes describe gradual deployment to a subset of users within a tenant before expanding across the organisation.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] Governance guidance: Before rollout / default: Without an Allow web search in Copilot policy, web search is available to Copilot and Copilot Chat users. | Found: web search will be available to users in both Microsoft Copilot and Microsoft Copilot Chat, unless the IT admin has set the Allow the use of additional optional connected experiences in Office policy to Disabled. | Fix: Replace that sentence with 'Without one, Microsoft says web search is available to Microsoft Copilot and Copilot Chat users unless Allow the use of additional optional connected experiences in Office is Disabled.' This restores the qualification already stated in Governance controls; see https://learn.microsoft.com/copilot/plan/manage-public-web-access. | Source: https://learn.microsoft.com/copilot/plan/manage-public-web-access
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api / command: POST /beta/admin/configurationManagement/configurationMonitors with applyOnce and microsoft.copilot.allowwebsearch can set tenant web-search policy. | Found: POST /admin/configurationManagement/configurationMonitors ... mode ... monitorOnly, applyOnce, unknownFutureValue ... An active applyOnce monitor runs in the background on behalf of the signed-in administrator | Fix: Keep the call. In the note, replace 'body mode applyOnce with resource microsoft.copilot.allowwebsearch' with 'body mode applyOnce; baseline.resources uses resourceType microsoft.copilot.allowwebsearch, resourceVersion 1 and properties.value (0 enables, 1 disables, 2 disables Work mode only)'. The resource property is documented at the already-cited https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[0].ui / admin-path: The Microsoft 365 admin center route Copilot > Settings > Data access > Web search for Microsoft Copilot and Microsoft Copilot Chat leads to the Cloud Policy link. | Found: In the left navigation, expand Copilot, and then select Settings. ... Browse User access, Data access ... Follow the link from Copilot settings to create an Allow web search in Copilot cloud policy in the Microsoft 365 Apps admin center. | Fix: Keep the shortcut, but complete the note with 'In the Microsoft 365 Apps admin center: Customization > Policy Management > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot.' The creation route is documented at the already-cited https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy; the policy label is at https://learn.microsoft.com/copilot/plan/manage-public-web-access. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Copilot > Settings > Data access > Web search for Microsoft Copilot and Microsoft Copilot Chat opens the Cloud Policy configuration route. | Found: Web search for Microsoft Copilot and Microsoft Copilot Chat ... Follow the link from Copilot settings to create an **Allow web search in Copilot** cloud policy in the Microsoft 365 Apps admin center. | Fix: Keep the documented shortcut and add this continuation to the row note: 'In the Microsoft 365 Apps admin center, go to Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow web search in Copilot.' The configuration route is documented at https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy and the policy name at https://learn.microsoft.com/copilot/plan/manage-public-web-access; both are already cited. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
+- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors with mode applyOnce and resource microsoft.copilot.allowwebsearch can configure tenant-level web search. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in `monitorOnly` mode, or applies a desired-state baseline once in `applyOnce` mode. | Fix: Keep the call unchanged. Add to the row note: 'Set the baseline resource properties.value to "0" to enable web search in both experiences, "1" to disable it in both, or "2" to disable Work mode while enabling Web mode and Copilot Chat.' These values are documented at https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type, which is already cited. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

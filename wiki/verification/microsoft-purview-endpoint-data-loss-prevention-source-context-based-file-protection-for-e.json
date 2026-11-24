@@ -1,0 +1,531 @@
+{
+  "slug": "microsoft-purview-endpoint-data-loss-prevention-source-context-based-file-protection-for-e",
+  "roadmapId": 547835,
+  "title": "Microsoft Purview Endpoint DLP: source context based file protection",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 22)"
+    ]
+  },
+  "counts": {
+    "claims": 38,
+    "confirmed": 35,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The briefing incorrectly says who can author the new DLP rules is undocumented: Microsoft publishes permissions for creating and deploying DLP policies. The roadmap facts and the narrowly stated gaps in source-context documentation are supported, but the policy-scoping UI path also stops before the scope control.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Microsoft plans Endpoint DLP file protection based on the website from which a file was downloaded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Protect file based on the website the file is downloaded or the app the file is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Microsoft plans Endpoint DLP file protection based on the app that created a file.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Protect file based on the website the file is downloaded or the app the file is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is February CY2026, a month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Web only, not Windows or macOS, as its platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The record was last modified on January 27, 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-01-27T00:01:00\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record lists no US Government clouds, without explicitly excluding them.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Learn does not yet describe this source-context capability beyond the roadmap description.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview source context'; 'Endpoint DLP source downloaded protection condition'. Opened Endpoint DLP overview, getting-started, policy reference and Purview what's new; no description of protecting files by download website or creating app was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Endpoint DLP extends monitoring and protection to onboarded Windows 10/11, macOS and certain Windows Server devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "(Endpoint DLP) extends the activity monitoring and protection capabilities of DLP to Windows 10/11, macOS (the three latest released major versions) devices, and Windows certain server versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Devices must be onboarded to Microsoft Purview to be used as locations in DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "You need to onboard all the devices you want to use as locations in your DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published which operating systems, browsers or apps the new source-context protection covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'source context DLP default Windows macOS rollout audit'; 'Endpoint DLP source context licence meter default platforms roles'. Opened Endpoint DLP overview, getting-started, policy reference and what's new; results describe other Endpoint DLP capabilities, not this feature's coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Existing Endpoint DLP conditions include file-content conditions and a website-access condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Content contains: Specifies content to be detected. ... The user accessed a sensitive website from Microsoft Edge:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The existing sensitive-website condition concerns a website the user accesses, not the originating website of a downloaded file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-restrict-access-to-domains",
+      "quote": "Specifically, we want to audit or restrict actions such as copying data, printing content, or saving web pages locally when users access designated sensitive service domains.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/endpoint-dlp-create-policy-restrict-access-to-domains to sources; it explains the access-based meaning of the condition already named by the cited policy reference."
+    },
+    {
+      "n": 18,
+      "where": "controls[0]; summary; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "No UI setting or automation for protecting files by source website or creating app is documented, and the Endpoint conditions list has no such condition.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP source website creating app condition Set-DlpComplianceRule PowerShell'. Read Endpoint conditions and searched Set-DlpComplianceRule for source, origin, download, website, domain, URL and app parameters; no source-website or creating-app control was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; summary; Risk assessment; Open questions; rationale",
+      "type": "absence",
+      "claim": "The source-context control's default state is not stated, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP source context protection downloaded website app default licensing'; 'source context DLP default Windows macOS rollout audit'. Opened Endpoint DLP overview, policy reference and Purview what's new; none states this control's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure; Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether a source match audits, restricts, labels or encrypts the file.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP source downloaded protection condition'; 'source context DLP default Windows macOS rollout audit'. Opened Endpoint DLP overview, policy reference and what's new; no source-match action semantics were found. The roadmap only says 'Protect file'.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No identity or permission change specific to this capability is described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP source author permissions'; 'Endpoint DLP source context licence meter default platforms roles'. Read the roadmap, policy reference, what's new and DLP creation permissions; general DLP permissions are published, but no feature-specific permission change was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Who can author the new DLP rules is not documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy#permissions",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
+      "severity": "blocker",
+      "fix": "Replace 'Who can author the new rules is not documented.' with 'Microsoft documents DLP policy creation and deployment for the Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin, and Security administrator role groups; no additional permission specific to source-context protection is published.' Cite https://learn.microsoft.com/purview/dlp-create-deploy-policy#permissions and add that page to sources."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous or agent behaviour is described for this capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview source context'; 'Endpoint DLP source downloaded protection condition'. Read the roadmap and checked Endpoint DLP overview, policy reference and what's new for source-context descriptions; no agent or autonomous behaviour for this capability was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope; rationale: impact",
+      "type": "absence",
+      "claim": "Feature-specific user eligibility and rollout mechanics are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP source context licence meter default platforms roles'; 'source context DLP default Windows macOS rollout audit'. Read the roadmap and Endpoint DLP overview, getting-started, policy reference and what's new; no feature-specific user scope or rollout procedure was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; rationale: risk; rationale: impact",
+      "type": "absence",
+      "claim": "No source states that this capability changes existing endpoint behaviour automatically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'source context DLP default Windows macOS rollout audit'; 'Endpoint DLP source context protection downloaded website app default licensing'. Read the roadmap and checked Endpoint DLP overview, policy reference and what's new; no automatic change for this capability was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Endpoint DLP is included in the listed Microsoft 365, Purview Suite, Defender + Purview Suite FLW, and Information Protection & Governance licences, supporting the included model for an option within Endpoint DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance ... Endpoint Data Loss Prevention (DLP) | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence or add-on specific to source-context file protection is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'source context based file protection licensing'; 'Endpoint DLP source context licence meter default platforms roles'. Read the Purview service description's Endpoint DLP table and getting-started licensing section; they publish general Endpoint DLP licensing, not a feature-specific add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to source-context file protection is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP source context licence meter default platforms roles'; 'source context based file protection licensing'. Read the Purview service description and Endpoint DLP getting-started licensing section; no source-context protection meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Endpoint DLP getting-started page points to Microsoft 365 licensing guidance for subscription details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "SKU/subscriptions licensing ... For information on licensing, see ... Microsoft 365 Enterprise Plans ... Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Endpoint DLP policy targeting can combine users and devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "Endpoint DLP policy targeting can be configured using a combination of users and devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data loss prevention > Policies is the UI route given for configuring which users an Endpoint DLP policy covers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services",
+      "quote": "In the left navigation pane, select Data loss prevention > Policies. ... Create and scope a policy that is applied only to the Devices location.",
+      "severity": "minor",
+      "fix": "The printed steps reach the correct policy list but stop before scope selection. Set controls[1].ui.path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > Edit > All users, groups, and adaptive scopes'. Use https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping for docs and add it to sources. This documented route selects the all-users scope."
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-DlpCompliancePolicy -Identity <policy> -AddEndpointDlpLocation <users> modifies the included accounts for an Endpoint DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "The AddEndpointDLPLocation parameter specifies the user accounts to add to the list of included accounts for Endpoint DLP if you used the value All for the EndpointDLPLocation parameter. You identify the account by name or email address.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "AddEndpointDlpLocation adds included user accounts where EndpointDLPLocation was set to All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "The AddEndpointDLPLocation parameter specifies the user accounts to add to the list of included accounts for Endpoint DLP if you used the value All for the EndpointDLPLocation parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "AddEndpointDlpLocation requires membership in the Compliance Administrator or Compliance Data Administrator role in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "This parameter requires membership in the Compliance Administrator or Compliance Data Administrator roles in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented alternative scopes users in the Devices location rather than setting a source-based file condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "The AddEndpointDLPLocation parameter specifies the user accounts to add to the list of included accounts for Endpoint DLP",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Activity explorer is the general Endpoint DLP surface for reviewing activity on onboarded devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Once devices are onboarded into the Microsoft Purview solutions, the information about what users are doing with sensitive items is made visible in activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist asks the reader to confirm device onboarding, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm which devices are onboarded to Microsoft Purview ... Controls: Rule condition or setting that protects files by the website or app they came from; Which users an Endpoint DLP policy covers on devices.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Confirm which devices are onboarded to Microsoft Purview, since Endpoint DLP applies to onboarded devices.' It directs an onboarding check that has no controls-table row; do not add a row in this correction."
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist directs monitoring in Activity explorer, but the controls table has no monitoring row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review matched events in Activity explorer ... Controls: Rule condition or setting that protects files by the website or app they came from; Which users an Endpoint DLP policy covers on devices.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Review matched events in Activity explorer to see whether source-based rules catch what you intended.' It directs a monitoring check that has no controls-table row; do not add a row in this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T14:05:11.955Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=547835",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users an Endpoint DLP policy covers on devices (today's alternative)",
+        "docs": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users an Endpoint DLP policy covers on devices (today's alternative)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+        "reachable": true,
+        "token": "Set-DlpCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -2,169 +2,42 @@
   "slug": "microsoft-teams-admin-setting-for-simpler-meeting-passcodes-numeric-only",
   "roadmapId": 555858,
   "title": "Microsoft Teams: meeting policy setting for numeric-only meeting passcodes",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "3 blocking findings (claims 20, 32, 33)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 33,
-    "confirmed": 30,
+    "claims": 35,
+    "confirmed": 35,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 3,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the admin-centre route omits the documented Edit step needed to open the selected policy. The open questions also leave delegated scheduling and admin-change auditing unresolved despite Microsoft documenting both at the meeting-policy and Teams-admin level. The passcode format, default, PowerShell control and roadmap details are supported.",
+  "summary": "The briefing matches the roadmap and Microsoft's documented meeting-policy setting. The admin path, PowerShell parameter, disabled default and effect on newly scheduled meetings are supported; licensing is correctly described using the general Teams requirement.",
   "claims": [
     {
       "n": 1,
-      "where": "title; What's changing; controls[0].ui",
-      "type": "behaviour",
-      "claim": "Teams has a meeting-policy setting named Allow numeric-only meeting passcodes.",
+      "where": "front matter: products; title; What's changing",
+      "type": "record",
+      "claim": "This feature belongs to Microsoft Teams.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
-      "quote": "Allow numeric-only meeting passcodes | Off | Controls whether meetings use 8-digit numeric-only passcodes.",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
-      "type": "behaviour",
-      "claim": "Enabling the setting makes affected meetings use 8-digit numeric-only passcodes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
-      "quote": "Controls whether meetings use 8-digit numeric-only passcodes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; rationale: risk",
-      "type": "default",
-      "claim": "The system default is an 8-character alphanumeric meeting passcode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Default: Alphanumeric passcodes with 8 characters (system default).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: defaultState; summary; Why it matters; controls[0].note; rationale: risk and impact",
-      "type": "default",
-      "claim": "The numeric-only control is off by default and requires administrator enablement, so admin-opt-in describes its arrival.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Changes apply only to meetings scheduled after the setting is enabled. Existing meetings are not affected. This setting is disabled by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "controls[0].governs and scope; What's changing; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "The setting is on a meeting policy and affects meetings scheduled by users to whom that policy applies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "When enabled, meetings scheduled by users to whom this policy applies will use 8-digit numeric-only passcodes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Enabling the setting affects only meetings scheduled after it is enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Changes apply only to meetings scheduled after the setting is enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "controls[0].note; What's changing; Risk assessment: Data exposure and Change & support",
-      "type": "behaviour",
-      "claim": "Existing meetings are not affected by the passcode setting change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Existing meetings are not affected.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Numeric-only passcodes have lower complexity and increase the risk of unauthorised meeting access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
-      "quote": "Numeric-only passcodes have lower complexity and increase the risk of unauthorized access to meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The PowerShell reference says numeric-only passcodes do not align with Microsoft's recommended meeting security best practices.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Numeric-only passcodes increase the risk of unauthorized access compared to the default setting and do not align with Microsoft’s recommended meeting security best practices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes tenant admins enabling the setting for meetings organised by selected users or groups.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Tenant admins can enable a meeting policy setting that generates 8 digit numeric-only passcodes for meetings organized by selected users/groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Governance controls",
-      "type": "record",
-      "claim": "The roadmap says enabling numeric-only passcodes displays a warning.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Because numeric-only passcodes increase the risk of unauthorized access, enabling the setting displays a warning and requires explicit confirmation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Governance controls",
-      "type": "record",
-      "claim": "The roadmap says enabling the setting requires explicit confirmation.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "enabling the setting displays a warning and requires explicit confirmation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "front matter: status; What's changing; Scope; changes",
+      "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -174,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 3,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target date is April CY2026.",
@@ -185,43 +58,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed release phases are General Availability and Targeted Release.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "Desktop is the platform listed by the roadmap.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -229,10 +69,43 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-07-28T22:43:45.",
+      "claim": "The roadmap record was modified at 2026-07-28T22:43:45.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-07-28T22:43:45\"",
@@ -240,24 +113,145 @@
       "fix": null
     },
     {
+      "n": 9,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "The roadmap describes a setting tenant admins can enable for meetings organised by selected users or groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Tenant admins can enable a meeting policy setting that generates 8 digit numeric-only passcodes for meetings organized by selected users/groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; controls[0].ui",
+      "type": "behaviour",
+      "claim": "Allow numeric-only meeting passcodes makes meetings use 8-digit numeric-only passcodes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
+      "quote": "Allow numeric-only meeting passcodes | Off | Controls whether meetings use 8-digit numeric-only passcodes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: first paragraph; rationale: risk",
+      "type": "default",
+      "claim": "The system default is an 8-character alphanumeric passcode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Default: Alphanumeric passcodes with 8 characters (system default).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; controls[0].note; rationales",
+      "type": "default",
+      "claim": "The numeric-only setting is off by default and requires an administrator to enable it, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Changes apply only to meetings scheduled after the setting is enabled. Existing meetings are not affected. This setting is disabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; Governance controls; controls[0].scope",
+      "type": "applicability",
+      "claim": "This setting operates through meeting policies for the users to whom each policy applies, rather than as one tenant-wide switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "When enabled, meetings scheduled by users to whom this policy applies will use 8‑digit numeric‑only passcodes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance; controls[0].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "Enabling the setting applies only to meetings scheduled afterwards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Changes apply only to meetings scheduled after the setting is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; controls[0].note",
+      "type": "behaviour",
+      "claim": "Existing meetings are not affected by the setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Existing meetings are not affected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: second paragraph; Governance controls",
+      "type": "record",
+      "claim": "The roadmap says enabling the setting displays a warning.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Because numeric-only passcodes increase the risk of unauthorized access, enabling the setting displays a warning and requires explicit confirmation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: second paragraph; Governance controls",
+      "type": "record",
+      "claim": "The roadmap says enabling the setting requires explicit confirmation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enabling the setting displays a warning and requires explicit confirmation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Numeric-only passcodes have lower complexity and increase the risk of unauthorised meeting access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
+      "quote": "Numeric-only passcodes have lower complexity and increase the risk of unauthorized access to meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: second paragraph; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The PowerShell reference says numeric-only passcodes do not align with Microsoft's recommended meeting security best practices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Numeric‑only passcodes increase the risk of unauthorized access compared to the default setting and do not align with Microsoft’s recommended meeting security best practices.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 20,
-      "where": "controls[0].ui; Governance controls: Admin UI",
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The route is Teams admin center > Meetings > Meeting policies > policy > Meeting join & lobby > Allow numeric-only meeting passcodes.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "Choose the policy by clicking to the left of the policy name, and then select Edit.",
-      "severity": "blocker",
-      "fix": "Replace the structured and rendered path with 'Meetings > Meeting policies > policy > Edit > Meeting join & lobby > Allow numeric-only meeting passcodes'. Keep the settings reference as docs and the cited meeting-policies-overview source: it supplies the required Edit step."
+      "claim": "The Teams admin center path is Meetings > Meeting policies > policy > Edit > Meeting join & lobby > Allow numeric-only meeting passcodes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
+      "quote": "Meeting join & lobby; Navigation: Teams admin center > Meetings > Meeting policies; Allow numeric-only meeting passcodes. The cited meeting-policies-overview page adds: Choose the policy by clicking to the left of the policy name, and then select Edit.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 21,
-      "where": "controls[0].api; Governance guidance: At rollout; Governance controls: API and automation",
+      "where": "controls[0].api; Governance guidance: At rollout; Governance controls table",
       "type": "command",
-      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMeetingPolicy -Identity <policy name> -PasscodeComplexity NumericOnly to enable numeric-only passcodes on an existing meeting policy.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -PasscodeComplexity NumericOnly configures numeric-only passcodes in MicrosoftTeams PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "[-PasscodeComplexity <String>]\nSpecify the name of the policy being created.\nNumericOnly: 8-digit numeric-only passcodes with lower complexity for meetings scheduled by users to whom this policy applies.",
+      "quote": "Module: MicrosoftTeams PowerShell module; Set-CsTeamsMeetingPolicy; -Identity: Specify the name of the policy being created. NumericOnly: 8‑digit numeric‑only passcodes with lower complexity for meetings scheduled by users to whom this policy applies.",
       "severity": null,
       "fix": null
     },
@@ -268,15 +262,15 @@
       "claim": "Setting -PasscodeComplexity Default restores the system-default alphanumeric format for newly scheduled meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Controls whether meeting passcodes use the system-default complexity or a reduced complexity using numeric-only digits.\nDefault: Alphanumeric passcodes with 8 characters (system default).",
+      "quote": "Controls whether meeting passcodes use the system‑default complexity or a reduced complexity using numeric‑only digits. Default: Alphanumeric passcodes with 8 characters (system default).",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Scope; Governance guidance: Before rollout",
+      "where": "Scope: first paragraph; Governance guidance: Before rollout",
       "type": "default",
-      "claim": "Users get the global meeting policy unless a custom policy is created and assigned.",
+      "claim": "Users receive the global meeting policy unless a custom policy is created and assigned.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
       "quote": "Users get the global policy unless you create and assign a custom policy.",
@@ -297,107 +291,129 @@
     {
       "n": 25,
       "where": "Risk assessment: Change & support; Governance guidance: Before rollout and At rollout",
-      "type": "applicability",
-      "claim": "A separate custom meeting policy can be assigned to chosen users to give them settings different from the global policy.",
+      "type": "behaviour",
+      "claim": "Administrators can create and assign a custom meeting policy to give chosen users different settings from the global policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "You can edit the settings in the global policy or create and assign one or more custom policies. Users get the global policy unless you create and assign a custom policy.",
+      "quote": "You can edit the settings in the global policy or create and assign one or more custom policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Licensing is unknown because no licence specific to the numeric-only passcode setting is published.",
+      "claim": "The setting uses the product's Teams licence requirement, supporting included; organisational users need a Teams licence except to join meetings anonymously.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/user-access",
-      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
-      "severity": "minor",
-      "fix": "Set licensing.model to 'included'. Replace the licensing notes and licensing sentence with 'Users need a Microsoft Teams product license to use Teams, except when joining meetings anonymously. Microsoft has not published a licence requirement specific to the numeric-only passcode setting at the time of writing (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access. In the cost rationale, replace 'a licence for this setting is not yet published' with 'no licence requirement specific to this setting is published'. Narrow the licensing open question to 'Will Microsoft publish a licence requirement specific to this setting?'"
+      "quote": "You manage access to Teams at the user level by assigning or removing a Microsoft Teams product license. Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 27,
-      "where": "Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft documents no meter specific to this setting at the time of writing.",
+      "claim": "No licence requirement specific to numeric-only meeting passcodes is published at the time of writing in November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Teams numeric-only meeting passcodes licensing price meter Teams license meeting policy; numeric-only meeting passcodes license meter price limit. Read settings-policies-reference, Set-CsTeamsMeetingPolicy, user-access and Microsoft Teams add-on licenses.",
+      "quote": "Searched: Teams \"numeric-only\" \"license\" \"passcodes\". Read Manage Teams licenses, the settings and policies reference, Set-CsTeamsMeetingPolicy, and the meetings overview; these give the general Teams requirement but no licence specific to this setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The cited pages give no price for the numeric-only meeting passcode setting.",
+      "where": "Cost and licensing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap record names no licence requirement.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: numeric-only meeting passcodes license meter price limit. Read settings-policies-reference, meeting-policies-overview, Set-CsTeamsMeetingPolicy and overview-meetings-events; none gives a price for this setting.",
+      "source": "roadmap record",
+      "quote": "Tenant admins can enable a meeting policy setting that generates 8 digit numeric-only passcodes for meetings organized by selected users/groups.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: second paragraph; rationale: cost",
       "type": "absence",
-      "claim": "The cited pages give no credit rate for this setting.",
+      "claim": "The referenced pages publish no price for the numeric-only setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Teams numeric-only meeting passcodes licensing price meter Teams license meeting policy. Read settings-policies-reference, meeting-policies-overview, Set-CsTeamsMeetingPolicy and overview-meetings-events; none gives a credit rate for this setting.",
+      "quote": "Searched: Teams \"numeric-only\" passcodes price credit rate limit; site:learn.microsoft.com/microsoftteams \"numeric-only\" \"price\". Opened the settings reference, Set-CsTeamsMeetingPolicy, Manage Teams licenses and the meetings overview; no setting-specific price appears.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: second paragraph",
       "type": "absence",
-      "claim": "The cited pages give no usage or spending limit for this setting.",
+      "claim": "The referenced pages publish no credit rate for the numeric-only setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: numeric-only meeting passcodes license meter price limit. Read settings-policies-reference and the PasscodeComplexity section of Set-CsTeamsMeetingPolicy, plus meeting-policies-overview and overview-meetings-events; no setting-specific usage or spending limit appears.",
+      "quote": "Searched: Teams \"numeric-only\" passcodes price credit rate limit. Read the setting in the settings reference and Set-CsTeamsMeetingPolicy, Manage Teams licenses and the meetings overview; none gives a credit rate for this setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Governance controls",
+      "where": "Cost and licensing: second paragraph",
       "type": "absence",
-      "claim": "The cited meeting-policy pages do not specify the role needed to edit meeting policies.",
+      "claim": "The referenced pages give no consumption or spending limit for the numeric-only setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Teams meeting policies role edit manage meeting policies administrator license. Read meeting-policies-overview and the cited setting and cmdlet sections: no named role there. using-admin-roles separately documents Teams admin roles; the claim is limited to the cited pages.",
+      "quote": "Searched: Teams \"numeric-only\" passcodes price credit rate limit. Read the settings reference, Set-CsTeamsMeetingPolicy, Manage Teams licenses and the meetings overview; none gives a consumption or spending limit for the setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Open questions: delegated scheduling",
+      "where": "Governance controls: final paragraph",
       "type": "absence",
-      "claim": "The briefing leaves the application of the meeting policy when an authorised delegate schedules on an organiser's behalf undocumented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings",
-      "quote": "When a delegate authorized to send meeting invitations for someone else sends a meeting, the meeting policy applies to the person who granted the delegate permission.",
-      "severity": "blocker",
-      "fix": "Replace the delegated-scheduling open question with 'When an authorised delegate sends a meeting invitation for someone else, the meeting policy applies to the person who granted the delegate permission.' Cite https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings. Do not claim that the page separately documents a numeric-passcode-specific delegation exception."
+      "claim": "The pages used for this briefing do not state the role needed to edit meeting policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams numeric-only meeting passcodes licensing price PasscodeComplexity default role TeamsAdminAction; role/administrator in the settings and PowerShell references. Read meeting-policies-overview: it gives editing steps without a required role.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 33,
-      "where": "Open questions: audit event",
-      "type": "absence",
-      "claim": "Whether any audit event records an administrator changing this setting is presented as unpublished.",
-      "status": "contradicted",
+      "where": "Open questions: delegate bullet",
+      "type": "applicability",
+      "claim": "For an authorised delegate sending a meeting invitation for someone else, the meeting policy applies to the person who granted permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings",
+      "quote": "When a delegate authorized to send meeting invitations for someone else sends a meeting, the meeting policy applies to the person who granted the delegate permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Open questions: audit bullet",
+      "type": "behaviour",
+      "claim": "Microsoft documents TeamsAdminAction for Teams administrators updating, adding or deleting Teams settings or configurations through administrative tools.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities#teams-activities",
       "quote": "Teams Admin Action | TeamsAdminAction | Logged when a Teams admin performs actions like updating, adding, or deleting Teams related settings or configurations using admin tools like PowerShell, Admin Center, API, etc.",
-      "severity": "blocker",
-      "fix": "Replace the audit open question with 'Microsoft documents TeamsAdminAction for Teams administrators updating, adding or deleting Teams settings or configurations through PowerShell, the admin centre or APIs.' Cite https://learn.microsoft.com/purview/audit-log-activities#teams-activities. If retaining an open question, narrow it to 'Which event details identify a change to PasscodeComplexity?'"
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "This setting changes passcode generation rather than adding an agent or autonomous action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Controls whether meeting passcodes use the system‑default complexity or a reduced complexity using numeric‑only digits.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T11:32:38.607Z",
+    "at": "2026-11-24T14:05:04.993Z",
     "summary": {
-      "links": 5,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -430,6 +446,21 @@
         "url": "https://learn.microsoft.com/microsoftteams/overview-meetings-events",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities#teams-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/user-access",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -442,6 +473,7 @@
         "segments": [
           "Meetings",
           "Meeting policies",
+          "Edit",
           "Meeting join & lobby",
           "Allow numeric-only meeting passcodes"
         ],
@@ -459,5 +491,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

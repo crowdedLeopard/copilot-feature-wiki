@@ -28,6 +28,9 @@ sources:
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
+  - title: "Use Microsoft Purview to manage data security & compliance for Microsoft 365 Copilot & Microsoft 365 Copilot Chat"
+    url: "https://learn.microsoft.com/purview/ai-m365-copilot"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 555892"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=555892"
     kind: "roadmap"
@@ -60,19 +63,23 @@ changes:
     note: "First briefing for the web item: referencing an existing PowerPoint file in Copilot Agent Mode, launched; default and licence tier not yet published."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed the claim that behaviour beyond the release note is undocumented, and replaced the sensitivity-label absence with Microsoft Purview's documented label inheritance."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 48
+  claims: 48
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "68a34273ab0e95d60dd390feddcd7d3c"
+  contradicted: 1
+  attempts: 0
+  hash: "974d34d8ef1a708e266f3ddd26fdd458"
 ---
 
 ## What's changing
@@ -83,7 +90,7 @@ Microsoft's Microsoft 365 Copilot release notes (entry dated July 01, 2026) list
 
 This item covers the web. Microsoft lists the same feature under separate roadmap items for Desktop (555887) and Mac (555889), with the same status, target date, cloud and release phase as this one. The release-note entry lists Windows, Web and Mac together.
 
-The roadmap record gives status Launched, a target of March CY2026, release phase General Availability and cloud Worldwide (Standard Multi-Tenant). Microsoft Learn has no page specific to this feature beyond the release-note entry, so details of behaviour beyond that entry are not documented.
+The roadmap record gives status Launched, a target of March CY2026, release phase General Availability and cloud Worldwide (Standard Multi-Tenant). Microsoft Learn has no page specific to this feature beyond the release-note entry.
 
 ## Why it matters
 
@@ -95,7 +102,7 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 
 **Data exposure**
 - Referenced decks are read by Copilot when a user picks them with Reference file. Microsoft's release note says the capability respects existing file permissions and access controls; decks with over-broad sharing remain exposed to whoever can open them, so permission hygiene on shared decks is the lever.
-- Content from a referenced deck can end up in a new deck with different sharing. Microsoft Learn describes no label or sharing carry-over for this feature at the time of writing (November 2026), so check how the new deck is labelled before it is shared.
+- Content from a referenced deck can end up in a new deck with different sharing. Microsoft Purview documents that new content created with Copilot in PowerPoint from a labelled source automatically inherits the source sensitivity label and its protection settings. Check how the new deck is labelled before it is shared.
 
 **Security & identity**
 - No change documented to sign-in, consent or roles for this capability. The user's own file permissions are the boundary Microsoft names.
@@ -156,7 +163,6 @@ Assigning licences needs an admin role that Microsoft's licence page covers; thi
 - Which Copilot licence tier (Basic or the Premium add-on) includes referencing a PowerPoint file in Agent Mode? Watch the Microsoft Copilot overview and the release notes.
 - Is the Reference file option on by default for users who already have Copilot in PowerPoint on the web, or does an administrator have to turn something on? Watch Message center and the release notes.
 - Does a setting exist to limit this option for some users without removing Copilot in PowerPoint entirely? Watch the Copilot controls documentation.
-- How does a sensitivity label on the referenced deck affect the new deck Copilot creates? Watch the Microsoft Purview documentation for Copilot.
 
 <!-- rationale
 risk: Low. Microsoft's release note says the capability respects existing file permissions and access controls, so it reads decks the user can already open; the exposure is whatever those decks hold.
@@ -164,11 +170,8 @@ cost: Low. No separate charge or meter is published for this feature, and the Co
 impact: Medium. Users who build decks with Copilot in PowerPoint on the web notice it; the roadmap lists this item for the web only, and Microsoft lists desktop and Mac under separate roadmap items.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: final sentence / absence: Details of behaviour beyond the release-note entry are not documented. | Found: If you use Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook to create new content based on an item that has a sensitivity label applied, the sensitivity label from the source file is automatically inherited, with the label's protection settings. | Fix: Remove 'so details of behaviour beyond that entry are not documented'. General Microsoft Purview guidance documents behaviour that covers this case, including sensitivity-label inheritance, at https://learn.microsoft.com/purview/ai-m365-copilot. | Source: https://learn.microsoft.com/purview/ai-m365-copilot
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions: sensitivity label / absence: Microsoft Learn describes no sensitivity-label carry-over for new decks created from referenced content. | Found: If you use Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook to create new content based on an item that has a sensitivity label applied, the sensitivity label from the source file is automatically inherited, with the label's protection settings. | Fix: Replace the label absence with: 'Microsoft Purview documents that new content created with Copilot in PowerPoint from a labelled source automatically inherits the source sensitivity label and its protection settings.' Cite https://learn.microsoft.com/purview/ai-m365-copilot. Remove the open question asking how the source sensitivity label affects the new deck; retain the advice to check its label before sharing. | Source: https://learn.microsoft.com/purview/ai-m365-copilot
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: Every governance-checklist control to review has a corresponding controls-table row. | Found: Review sharing on decks that users are likely to reference; review that file's permissions. The only control in the table is the Copilot licence. | Fix: The Before rollout step to review source-deck sharing and the After rollout step to review source-file permissions have no controls-table row. This is a checklist/table coverage gap; the correction must not add an unverified control row.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist's source-deck sharing review has a corresponding control row. | Found: Review sharing on decks that users are likely to reference, such as shared templates and board packs. / The only control in the table is the Copilot licence. | Fix: The Before rollout step 'Review sharing on decks that users are likely to reference' has no corresponding row in the controls table. Treat it as general review advice, not a documented table control; no new control row is requested.
 -->

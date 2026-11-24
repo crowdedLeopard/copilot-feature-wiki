@@ -1,0 +1,539 @@
+{
+  "slug": "m365-copilot-reference-the-content-of-a-powerpoint-file-when-creating-a-presentatio-555889",
+  "roadmapId": 555889,
+  "title": "PowerPoint on Mac: reference an existing PowerPoint file when creating a presentation with Copilot Agent Mode",
+  "status": "verified-with-gaps",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 40,
+    "confirmed": 39,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The roadmap facts, file-reference workflow, licensing background and licence-management routes are supported. The governance checklist names sharing and sensitivity-label reviews that are missing from the controls table; this is a minor completeness issue.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "Copilot in PowerPoint using Agent Mode can reference the content of a PowerPoint file when creating a presentation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now reference the content of a PowerPoint file when creating a presentation with Copilot in PowerPoint using Agent Mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: platforms; title; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "This roadmap item covers Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Scope",
+      "type": "record",
+      "claim": "Other clouds are not listed on this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-06-03T23:00:57.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-03T23:00:57\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release-note entry is under July 01, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-01,-2026",
+      "quote": "# Microsoft 365 Copilot release notes\n## July 01, 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "availability",
+      "claim": "The release-note entry headed Reuse content and style from existing PowerPoint presentations with Copilot in PowerPoint lists Windows, Web and Mac.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "**Reuse content and style from existing PowerPoint presentations with Copilot in PowerPoint** [Windows, Web, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The documented workflow is to open PowerPoint, start edit with Copilot, select Reference file and choose a PowerPoint presentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open PowerPoint and start edit with Copilot.\n- Select Reference file and choose a PowerPoint presentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure and Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A user can prompt Copilot to create a new presentation using content or style from the selected reference file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Ask Copilot to create a new presentation using content or style from the referenced file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The release-note entry additionally describes applying one presentation's style to another.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Apply the style, theme, and visual formatting of one presentation to another.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "This roadmap description does not describe applying the style of one deck to another.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now reference the content of a PowerPoint file when creating a presentation with Copilot in PowerPoint using Agent Mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The release-note entry cites roadmap IDs 555887, 555889 and 555892.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "**Roadmap ID:**\n- [555887](https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=555887)\n- [555889](https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=555889)\n- [555892](https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=555892)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Desktop and Web have separate roadmap records, 555887 and 555892 respectively.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "555887: \"platforms\": [\"Desktop\"]. 555892: \"platforms\": [\"Web\"].",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "All three platform records have the same Launched status.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Records 555887, 555889 and 555892 each state \"status\": \"Launched\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "All three platform records have the same March CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Records 555887, 555889 and 555892 each state \"targetDate\": \"March CY2026\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "All three platform records list the same Worldwide cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Records 555887, 555889 and 555892 each state \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"].",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "All three platform records list General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Records 555887, 555889 and 555892 each state \"releasePhase\": [\"General Availability\"].",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The default state on arrival is not explicitly stated for this option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PowerPoint\" \"Reference file\" \"default\"; PowerPoint Agent Mode \"Reference file\" license default admin control Mac. Read roadmap, release-notes feature entry and copilot/implement/configure-copilot-admin-center; no explicit arrival default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No feature-specific Microsoft Learn page beyond the release-note entry was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"555889\"; \"Copilot in PowerPoint\" \"Agent Mode\"; \"PowerPoint\" \"Reference file\". Read release-notes feature entry and search results; other results cover different agents, generic training or unrelated PowerPoint APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment; Scope; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "The file-reference capability respects existing file permissions and access controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This capability respects existing file permissions and access controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot in PowerPoint automatically inherits a source item's sensitivity label when creating new content based on that labelled item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
+      "quote": "If you use Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook to create new content based on an item that has a sensitivity label applied, the sensitivity label from the source file is automatically inherited, with the label's protection settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The automatically inherited source sensitivity label carries its protection settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
+      "quote": "the sensitivity label from the source file is automatically inherited, with the label's protection settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No change to sign-in, consent or roles is described for this capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot in PowerPoint\" \"reference\" \"sign-in\" \"consent\"; \"Copilot in PowerPoint\" \"Reference file\" \"admin\". Read release-notes entry and Copilot admin settings; no feature-specific sign-in, consent or role change found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The release-note steps describe user selection and prompting, not background or scheduled action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"555889\" and \"Copilot in PowerPoint\" \"Agent Mode\". Read the full Reuse content and style entry in release-notes: users select Reference file and prompt Copilot; the entry describes no scheduled or background action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing; Cost and licensing; Scope; controls[0].note",
+      "type": "licensing",
+      "claim": "The overview associates the full Copilot experience in Word, Excel, PowerPoint and OneNote with the Microsoft 365 Copilot add-on licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You **have** the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The overview describes both Basic in-app Copilot access without the add-on and Premium access with it, supporting the mixed product-level licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "**Microsoft 365 Copilot (Basic)** refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Some features available without the add-on licence are subject to fair use limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You **don't** have the Microsoft 365 Copilot add-on license but **can** use Copilot in Word, Excel, PowerPoint, and OneNote. Some features are subject to **[fair use limits]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Basic PowerPoint feature list includes creating presentations from prompts or existing content, summarizing and editing presentations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "PowerPoint: Create presentations from prompts or existing content, summarize presentations or edit presentations (add images, apply deck-wide formatting changes)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Premium experience includes everything in Basic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "**Microsoft 365 Copilot (Premium)** is the full add-on licensed experience (some features are subject to [fair use limits](https://support.microsoft.com/microsoft-365-copilot/limits-for-features-copilot-chat)), which includes everything in Microsoft 365 Copilot (Basic)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not explicitly allocate Reference file in Agent Mode to Basic versus Premium, and the feature release-note entry names no licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PowerPoint\" \"Agent Mode\" license; \"Copilot\" \"PowerPoint\" \"reference\" \"licensing\". Read release-notes, copilot-overview and copilot-license-options; generic Basic creation is listed, but no explicit allocation of this Agent Mode option was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price, meter or credit rate is published for this file-reference option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PowerPoint\" \"referencing\" \"meter\"; PowerPoint reference existing presentation Agent Mode price meter credits licensing Basic Premium. Read release-notes, copilot-overview, copilot-license-options and usage-based-billing-overview-copilot-credits; no option-specific rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses reaches the user's licence selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the **Users** > [Active users] ... Select the row of the user ... In the right pane, select **Licenses and Apps**. ... Expand the **Licenses** section, select the boxes for the licenses that you want to assign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence to a user through Microsoft Graph PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Assigning licences requires at least License or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; controls[0].note; Open questions",
+      "type": "absence",
+      "claim": "The release-note entry names no feature-specific admin setting; the documented licence assignment route is not a switch for Reference file.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot in PowerPoint\" \"Reference file\" \"admin\"; \"PowerPoint\" \"reference\" \"Copilot\" admin settings. Read release-notes, configure-copilot-admin-center and assign-licenses-to-users; no dedicated Reference file switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review sharing permissions and sensitivity labels, but neither control is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review sharing on decks that users are likely to reference ... review that file's permissions and sensitivity label. / The only control in the table is the Copilot licence",
+      "severity": "minor",
+      "fix": "The checklist steps 'Review sharing on decks that users are likely to reference' and 'review that file's permissions and sensitivity label' have no corresponding controls-table rows. Remove these control-review instructions from the checklist to resolve the mismatch without adding unverified rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T14:05:08.023Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-m365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=555889",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot add-on licence for Copilot in PowerPoint",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot add-on licence for Copilot in PowerPoint",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

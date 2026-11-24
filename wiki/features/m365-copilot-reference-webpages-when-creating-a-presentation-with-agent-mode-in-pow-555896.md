@@ -74,19 +74,23 @@ changes:
     note: "New briefing for the desktop roadmap item; Mac (555893) and web (555898) are separate items with matching status and dates."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: removed the claim that the web search policy is the only documented switch for Copilot's use of web content; it is Microsoft's primary admin policy, alongside a user-level Web content toggle."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 64
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "751e4ae06daa82bc1ae1ff34fd05f366"
+  contradicted: 0
+  attempts: 0
+  hash: "af11e2766023f104595c3c81a52e9aa4"
 ---
 
 ## What's changing
@@ -159,7 +163,7 @@ The users in scope are those with Copilot in PowerPoint under the Basic or Premi
 </tbody>
 </table>
 
-The first row is the only documented switch that Microsoft ties to Copilot's use of public web content. Its admin centre entry opens a link to create the cloud policy in the Microsoft 365 Apps admin center, which needs the Office Apps admin role; the Copilot settings page itself is managed with a role such as AI Administrator. Microsoft's pages describe the policy as applying to Microsoft Copilot and Microsoft Copilot Chat and do not say whether it gates referencing webpages in PowerPoint Agent Mode.
+The first row is Microsoft's primary admin policy for controlling Copilot web search. Its admin centre entry opens a link to create the cloud policy in the Microsoft 365 Apps admin center, which needs the Office Apps admin role; the Copilot settings page itself is managed with a role such as AI Administrator. Microsoft's pages describe the policy as applying to Microsoft Copilot and Microsoft Copilot Chat and do not say whether it gates referencing webpages in PowerPoint Agent Mode.
 
 The Graph call is preview, delegated-only and, per Microsoft, works only for settings in tenant-level policies: a group-level policy for the same setting makes it fail. It is for the global service, not national clouds. The second row records that no switch for this capability alone is documented.
 
@@ -178,11 +182,10 @@ cost: Low. No licence or meter specific to this capability is published; Copilot
 impact: Medium. People who build presentations with Copilot in desktop PowerPoint will notice it; Microsoft has not stated whether it arrives on by default or needs a user or admin to switch it on.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / applicability: The first table row is the only documented switch Microsoft ties to Copilot's use of public web content. | Found: two distinct controls are available: one for IT admins and another for users. ... If a user turns off the Web content toggle, web content isn't included in Copilot responses. | Fix: Replace 'The first row is the only documented switch that Microsoft ties to Copilot's use of public web content.' with 'The first row is Microsoft's primary admin policy for controlling Copilot web search.' The same cited page also documents the user control and the effect of disabling additional optional connected experiences; do not claim exclusivity. | Source: https://learn.microsoft.com/copilot/plan/manage-public-web-access
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The Microsoft 365 admin center route Copilot > Settings > Data access > Web search for Microsoft Copilot and Microsoft Copilot Chat leads to the web search setting link. | Found: In the left navigation, expand Copilot, and then select Settings. ... Web search for Microsoft Copilot and Microsoft Copilot Chat ... Follow the link from Copilot settings to create an Allow web search in Copilot cloud policy | Fix: Keep the printed route, but append to its note: 'To configure the policy, in Microsoft 365 Apps admin center go to Customization > Policy Management > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy for the Cloud Policy steps; the existing route reaches a link rather than the policy editor. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
-- [supported, minor] Scope; Governance controls / role: The cited Copilot settings page says creating Cloud Policy settings requires the Office Apps admin role. | Found: creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role. | Fix: Replace the exclusive Cloud Policy role requirement with: 'The Copilot settings page names Office Apps admin for Cloud Policy creation; the Cloud Policy overview recommends Office Apps Administrator and also lists Security Administrator and Global Administrator as supported management roles.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Microsoft 365 admin center route is Copilot > Settings > Data access > Web search for Microsoft Copilot and Microsoft Copilot Chat. | Found: In the left navigation, expand **Copilot**, and then select **Settings**. 3. Browse **User access**, **Data access**, **Copilot actions**, and **Other settings**. | Fix: Keep the documented entry-point path, but complete its note: 'Follow the link to the Microsoft 365 Apps admin center, then Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow web search in Copilot.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy for the continuation. The existing route stops at the correct setting's link rather than the policy itself. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
+- [supported, minor] Governance controls / availability: The documented TCM applyOnce capability is for the global service, not national clouds. | Found: TCM is available only in the global service, not in national clouds. | Fix: Replace 'It is for the global service, not national clouds' with 'The TCM remediation and applyOnce support page limits the capability to the global service; the Create configurationMonitor reference separately lists endpoint availability in Global, US Government L4 and US Government L5 (DOD), but not China operated by 21Vianet.' Both cited pages were read and their availability statements differ. | Source: https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources
+- [supported, minor] Scope; Governance controls / role: The Copilot settings page says creating Cloud Policy settings requires the Office Apps admin role. | Found: For example, creating Cloud Policy settings for Microsoft 365 apps requires the **Office Apps admin** role. | Fix: Use 'Microsoft's Copilot settings page names the Office Apps admin role for creating Cloud Policy settings. The Cloud Policy overview recommends Office Apps Administrator and also lists Security Administrator and Global Administrator as supported roles.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy, whose role table gives those alternatives, and replace the unqualified 'needs the Office Apps admin role' wording in Governance controls. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
 -->

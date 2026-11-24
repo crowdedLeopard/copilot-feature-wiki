@@ -49,6 +49,12 @@ sources:
   - title: "Export OCPM semantic model into Fabric workspace"
     url: "https://learn.microsoft.com/power-automate/object-centric-semantic-model"
     kind: "learn"
+  - title: "Tenants - Update Tenant Setting"
+    url: "https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting"
+    kind: "learn"
+  - title: "Tenants - List Tenant Settings"
+    url: "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 577827"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=577827"
     kind: "roadmap"
@@ -59,7 +65,7 @@ controls:
     scope: "maker"
     ui:
       surface: "Power Automate (maker)"
-      path: "environment > Process mining > + Start from blank > Case ID process mining > Normalized schema (preview)"
+      path: "environment > Process mining > + Start from blank > New Process > Case ID process mining > Normalized schema (preview)"
       docs: "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide"
     api: null
     note: "Maker-side entry point, not an admin restriction. Needs a rights-to-create role such as Environment maker; preview label on Learn."
@@ -74,8 +80,11 @@ controls:
       surface: "Microsoft Fabric"
       path: "OneLake catalog > Govern > Configurations > Tenant settings > Users can access data stored in OneLake with apps external to Fabric"
       docs: "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake"
-    api: null
-    note: "General control: the OneLake page lists it as a prerequisite."
+    api:
+      kind: "rest"
+      call: "POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update"
+      docs: "https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting"
+    note: "General control. Request body sets enabled. Take the settingName from GET https://api.fabric.microsoft.com/v1/admin/tenantsettings; caller must be a Fabric administrator or service principal."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-24"
@@ -95,19 +104,23 @@ changes:
     note: "Corrected the Fabric OneLake tenant-setting row (path now starts at the OneLake catalog; the read-only tenant settings call is removed) and trimmed two checklist and risk lines that had no matching control row."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 76 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-24"
+    note: "Corrected after verification: replaced an unsupported sentence on who can point a process at storage, added the Fabric REST call for the OneLake tenant setting, and added the New Process dialog step to the maker path."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 74 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 74
+  claims: 74
+  confirmed: 73
   unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "64a3f11fbc80d08f09740d1370bd070c"
+  contradicted: 0
+  attempts: 0
+  hash: "99468e6f4bd763a656e228d409dcff38"
 ---
 
 ## What's changing
@@ -135,7 +148,7 @@ For administrators the effect is mostly in who can reach what. Microsoft has not
 
 **Security & identity**
 
-- Learn says the Environment maker role can create, share and contribute to processes, and administrators and system customizers can access all processes created in the environment. Anyone who can create a process can therefore point it at any storage location named in a JSON file they can write, subject to the storage-side prerequisites.
+- Learn says the Environment maker role can create, share and contribute to processes, and administrators and system customizers can access all processes created in the environment. The JSON names the storage backend, and the normalized-import article requires the linked OneLake or ADLS Gen2 prerequisites to be met.
 - Learn's Conditional Access note for process mining says that applying a policy to Power Automate alone isn't enough; Power Apps must be in the Cloud apps list too. This is a general process mining statement, not one written for normalised import.
 
 **Autonomy & actions**
@@ -184,9 +197,9 @@ Sources are OneLake / Microsoft Fabric (managed Delta tables, or loose Parquet o
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Where a maker starts a normalized-schema import</strong><br><small>Maker</small><br><small class="controls__note">Maker-side entry point, not an admin restriction. Needs a rights-to-create role such as Environment maker; preview label on Learn.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>environment › Process mining › + Start from blank › Case ID process mining › Normalized schema (preview) <a href="https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Where a maker starts a normalized-schema import</strong><br><small>Maker</small><br><small class="controls__note">Maker-side entry point, not an admin restriction. Needs a rights-to-create role such as Environment maker; preview label on Learn.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>environment › Process mining › + Start from blank › New Process › Case ID process mining › Normalized schema (preview) <a href="https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Admin switch to turn normalized-schema import off</strong><br><small>Tenant</small><br><small class="controls__note">Not documented on the normalized schema articles at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>OneLake access for apps external to Fabric, which a OneLake source depends on</strong><br><small>Tenant</small><br><small class="controls__note">General control: the OneLake page lists it as a prerequisite.</small></td><td data-label="Admin UI"><strong>Microsoft Fabric</strong><br>OneLake catalog › Govern › Configurations › Tenant settings › Users can access data stored in OneLake with apps external to Fabric <a href="https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>OneLake access for apps external to Fabric, which a OneLake source depends on</strong><br><small>Tenant</small><br><small class="controls__note">General control. Request body sets enabled. Take the settingName from GET https://api.fabric.microsoft.com/v1/admin/tenantsettings; caller must be a Fabric administrator or service principal.</small></td><td data-label="Admin UI"><strong>Microsoft Fabric</strong><br>OneLake catalog › Govern › Configurations › Tenant settings › Users can access data stored in OneLake with apps external to Fabric <a href="https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update</code> <a href="https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -207,12 +220,8 @@ cost: Low. Learn names no separate licence or meter for normalised import; proce
 impact: Low. Makers and analysts who build process mining models from lakehouse data notice it.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Anyone who can create a process can point it at any storage location named in a JSON file they can write, subject to storage prerequisites. | Found: Searched: "process mining" "normalized" "any" storage location permissions. Read normalized UX/authoring, process-advisor-security and both ADLS prerequisite articles. They document backend fields and access prerequisites, not this universal ability. | Fix: Replace the sentence with 'The JSON names the storage backend, and the normalized-import article requires the linked OneLake or ADLS Gen2 prerequisites to be met.' This is stated at https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide.
-- [contradicted, blocker] controls[2].api; Governance controls table / absence: No API or automation is documented for changing the OneLake external-apps tenant setting. | Found: Update a given tenant setting. POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update | enabled | True | boolean | The status of the tenant setting. False - Disabled, True - Enabled. | | Fix: Replace controls[2].api null with kind 'rest', call 'POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update', and docs 'https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting'. Add to the note: 'The request body sets enabled. Use the settingName corresponding to the external-apps setting returned by GET https://api.fabric.microsoft.com/v1/admin/tenantsettings; the caller must be a Fabric administrator or authenticate using a service principal.' Cite the update reference and https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings. The list reference documents settingName and title; do not invent a hard-coded setting name. | Source: https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; What's changing; Governance controls table / admin-path: The maker route is environment > Process mining > + Start from blank > Case ID process mining > Normalized schema (preview). | Found: Choose your environment from the environment picker (top right). In the left navigation, select **Process mining**. On the Process mining home page, select **+ Start from blank**. The **New Process** dialog opens. | Fix: Include the intervening dialog heading: 'environment > Process mining > + Start from blank > New Process > Case ID process mining > Normalized schema (preview)'. The cited article gives both process-type and data-source selections in that dialog; the printed selections are correct. | Source: https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The Fabric path is OneLake catalog > Govern > Configurations > Tenant settings > Users can access data stored in OneLake with apps external to Fabric. | Found: OneLake tenant settings are configured in **Configurations** > **Tenant settings** in the [Govern section of the OneLake catalog]. ## Users can access data stored in OneLake with apps external to Fabric | Fix: Include the grouping heading: 'OneLake catalog > Govern > Configurations > Tenant settings > OneLake settings > Users can access data stored in OneLake with apps external to Fabric'. In the note add: 'OneLake catalog and Govern are rolling out by region; if unavailable, use Settings > Admin portal > Tenant settings > OneLake settings > Users can access data stored in OneLake with apps external to Fabric.' Cite https://learn.microsoft.com/fabric/admin/about-tenant-settings and https://learn.microsoft.com/fabric/admin/tenant-settings-index. The existing cited Govern article supports the route into the catalog. | Source: https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake
+- [unsupported, major] Risk assessment: Data exposure, first bullet / behaviour: The data a process can read is decided by the JSON file and by what the environment can reach. | Found: Searched: Power Automate normalized schema import environment data access storage permissions JSON reach. Read the normalized-import UX and authoring guides, Security and privacy, and OneLake prerequisites; none defines storage access as environment reach. | Fix: Remove ', so the data a process can read is decided by the file and by what the environment can reach' from the first Data exposure bullet. Keep the documented statement that the backend is read from the JSON.
 -->

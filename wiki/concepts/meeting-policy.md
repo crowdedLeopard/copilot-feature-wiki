@@ -4,8 +4,8 @@ title: "Teams meeting policy: which meeting features does each user get?"
 slug: "meeting-policy"
 summary: "A Teams meeting policy is a named set of Teams admin centre settings that switches meeting features, such as recording, transcription, captions and Copilot, on or off for the users and groups it is assigned to."
 created: "2026-11-17"
-updated: "2026-11-17"
-version: 2
+updated: "2026-11-24"
+version: 3
 tags: ["meeting-policy","teams","policy","admin-controls","powershell","meeting-transcripts"]
 covers: []
 sources:
@@ -39,7 +39,7 @@ sources:
   - title: "Manage Teams with policies"
     url: "https://learn.microsoft.com/microsoftteams/manage-teams-with-policies"
     kind: "learn"
-related: ["microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies","microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings","microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts","teams-ai-generated-meeting-memory"]
+related: ["microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies","microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings","teams-ai-generated-meeting-memory","meeting-transcripts"]
 controls:
   - governs: "Settings held in a meeting policy (global or custom)"
     scope: "tenant"
@@ -119,7 +119,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription"
     note: "Needs an add-on Microsoft Copilot licence for users. Other values: EnabledWithTranscript, EnabledWithTranscriptDefaultOn, Disabled."
 confidence: "high"
-dependents: 12
+dependents: 50
 changes:
   - date: "2026-11-17"
     note: "New concept page: how Teams meeting policies are built, assigned and prioritised, with controls for recording, transcription, captions and Copilot."
@@ -131,18 +131,22 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 87 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-24"
+    note: "Corrected how policies are assigned in PowerShell: Grant-CsTeamsMeetingPolicy for a user or group, New-CsBatchPolicyAssignmentOperation for a batch; reworded one checklist item."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 78
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "a004b64b20806377ce1da99f92ba3fb1"
+  contradicted: 0
+  attempts: 0
+  hash: "993739b164d0117460ef923646daaecf"
 ---
 
 ## What it is
@@ -163,7 +167,7 @@ Microsoft documents three implementation types, and each setting follows one of 
 
 **Which policy a user gets**
 
-A directly assigned policy takes precedence. Without one, the user inherits the policy of the group assignment with the highest ranking (1 is highest). Without either, the Global policy applies. Policies can be assigned to individual users, to batches of users or to a group, in the admin centre or with `Grant-CsTeamsMeetingPolicy`.
+A directly assigned policy takes precedence. Without one, the user inherits the policy of the group assignment with the highest ranking (1 is highest). Without either, the Global policy applies. Policies can be assigned to individual users, to batches of users or to a group in the admin centre. In PowerShell, `Grant-CsTeamsMeetingPolicy` assigns a policy to an individual user or a group; `New-CsBatchPolicyAssignmentOperation` submits a batch assignment.
 
 ## Why it matters
 
@@ -219,7 +223,7 @@ Settings that depend on one another: Transcription and Copilot interact, and the
 ## What to check
 
 - Review the Global (Org-wide default) meeting policy first, since it applies to every user without a custom assignment.
-- List custom meeting policies with `Get-CsTeamsMeetingPolicy` and confirm each one is still assigned to a group or user.
+- Review custom meeting policy settings and confirm each policy is still assigned to a group or user.
 - Compare the Meeting recording, Transcription and Copilot settings for each policy. An organiser turning Copilot Off in a meeting's options disables that meeting's recording and transcription; the policy's Copilot Off value sets an organiser-overridable default.
 - Check users who were assigned a policy directly, since these ignore any group assignment you add later.
 - Confirm group assignments are ranked, and that the groups are not nested or hidden-membership groups.
@@ -231,10 +235,9 @@ Settings that depend on one another: Transcription and Copilot interact, and the
 - Which audit events record a change to a meeting policy, and where do they appear? The pages read for this page do not say.
 - How will the MeetingAI settings interact with existing Copilot policy values in scripts?
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What it is: Which policy a user gets, final sentence / command: Grant-CsTeamsMeetingPolicy is the PowerShell operation for assigning a policy to a batch of users. | Found: You use the New-CsBatchPolicyAssignmentOperation cmdlet to submit a batch of users and the policy that you want to assign. | Fix: Replace the sentence with: 'Policies can be assigned to individual users, to batches of users or to a group in the admin centre. In PowerShell, Grant-CsTeamsMeetingPolicy assigns a policy to an individual user or a group; New-CsBatchPolicyAssignmentOperation submits a batch assignment.' The cited assignment article documents the distinction. | Source: https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] What to check: List custom meeting policies; Governance controls / consistency: The checklist asks readers to list meeting policies with Get-CsTeamsMeetingPolicy, but no controls row documents that read operation. | Found: List custom meeting policies with Get-CsTeamsMeetingPolicy and confirm each one is still assigned to a group or user. The corresponding table row instead gives Set-CsTeamsMeetingPolicy -Identity <policy name> -<parameter> <value>. | Fix: Replace the checklist bullet with 'Review custom meeting policy settings and confirm each policy is still assigned to a group or user.' This removes the unrepresented read operation without adding a controls row.
+- [supported, minor] controls[2].ui / admin-path: Individual meeting-policy assignment is at Meetings > Meeting policies > policy > Manage users > Assign users. | Found: To specific users: Select your policy, select Manage users > Assign users, enter the names of specific users in the search bar, select Add, and then select Apply. | Fix: Add to this row's note: 'The recording guide gives Manage users > Assign users; https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups instead says to select the policy, select Assign users, and then use the Manage users pane.' Keep the documented route and its existing link. | Source: https://learn.microsoft.com/microsoftteams/meeting-recording
+- [supported, minor] controls[6].note / command: The other documented Copilot parameter values are EnabledWithTranscript, EnabledWithTranscriptDefaultOn and Disabled. | Found: On with saved transcript required | EnabledWithTranscript On with transcript saved by default | EnabledWithTranscriptDefaultOn Off | Disabled | Fix: Append to controls[6].note: 'The feature guide lists these four values; the Set-CsTeamsMeetingPolicy reference currently lists only Enabled and EnabledWithTranscript.' The reference is https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-copilot. Retain the values supported by the feature guide. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
 -->

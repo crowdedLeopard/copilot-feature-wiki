@@ -2,50 +2,44 @@
   "slug": "microsoft-purview-compliance-portal-data-lifecycle-management-bulk-replaceme-us-government",
   "roadmapId": 392457,
   "title": "Microsoft Purview: bulk replacement or removal of retention labels (GCC, GCC High, DoD)",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "1 blocking finding (claim 26)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 56,
-    "confirmed": 55,
+    "claims": 53,
+    "confirmed": 53,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the briefing says changing or removing a label changes how long an item is kept or when it is deleted, without accounting for other retention settings or labels that enforce no actions. Microsoft documents both exceptions. The roadmap details and the existing role-management path and command are supported.",
+  "summary": "The briefing passes: its government-cloud scope, development status and target date match the roadmap, and its existing retention-label administration controls match Microsoft Learn. It correctly distinguishes documented background behaviour from the still-undocumented bulk action and qualifies the possible retention and deletion effects.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "The feature belongs to Microsoft Purview.",
+      "claim": "Microsoft plans an administrator action to replace a retention label in bulk.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "quote": "Admins can perform a bulk replacement or removal of a retention label using the Purview compliance portal.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; rationale: risk",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans bulk replacement or removal of a retention label.",
+      "claim": "The planned action can remove a retention label in bulk.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Admins can perform a bulk replacement or removal of a retention label using the Purview compliance portal.",
@@ -54,9 +48,9 @@
     },
     {
       "n": 3,
-      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
+      "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "The planned action is performed by administrators.",
+      "claim": "Administrators perform the planned action in the Purview portal.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Admins can perform a bulk replacement or removal of a retention label using the Purview compliance portal.",
@@ -65,31 +59,31 @@
     },
     {
       "n": 4,
-      "where": "summary; What's changing; rationale: impact",
+      "where": "summary; What's changing; Scope; controls[0].scope",
       "type": "record",
-      "claim": "The planned action is in the Purview portal.",
+      "claim": "The roadmap describes a tenant-wide scope for the action.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "using the Purview compliance portal",
+      "quote": "They can perform the action across the entire tenant or targeted to specific content using KQL and static or adaptive scopes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "summary; What's changing; Scope; controls[0]",
+      "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "The action can cover the entire tenant.",
+      "claim": "The roadmap describes targeting specific content using KQL.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "They can perform the action across the entire tenant",
+      "quote": "They can perform the action across the entire tenant or targeted to specific content using KQL and static or adaptive scopes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "summary; What's changing; Scope",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Administrators can target specific content using KQL.",
+      "claim": "The roadmap names static scopes for targeted content.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "targeted to specific content using KQL and static or adaptive scopes.",
@@ -100,26 +94,15 @@
       "n": 7,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The planned targeting supports static scopes.",
+      "claim": "The roadmap names adaptive scopes for targeted content.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "using KQL and static or adaptive scopes.",
+      "quote": "targeted to specific content using KQL and static or adaptive scopes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The planned targeting supports adaptive scopes.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "using KQL and static or adaptive scopes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: status; What's changing; Governance guidance",
       "type": "record",
       "claim": "Item 392457 is In development.",
@@ -130,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "front matter: targetDate; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap target is December CY2026.",
+      "claim": "Item 392457 has a December CY2026 target, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -141,8 +124,8 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "n": 10,
+      "where": "title; front matter: clouds; summary; What's changing; Scope",
       "type": "record",
       "claim": "Item 392457 lists GCC, GCC High and DoD.",
       "status": "supported",
@@ -152,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "Item 392457 lists the Web platform.",
@@ -163,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "Item 392457 lists General Availability as its release phase.",
@@ -174,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 13,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "Item 392457 has no preview date.",
+      "claim": "Item 392457 supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -185,7 +168,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 14,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap record was modified at 2026-03-04T00:15:19.",
@@ -196,32 +179,21 @@
       "fix": null
     },
     {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Separate item 392456 describes the same action for Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "392456: \"title\": \"Microsoft Purview compliance portal: Data Lifecycle Management - Bulk replacement or removal of a retention label\"; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "Roadmap item 392456 describes the same bulk replacement or removal feature.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "392456: Admins can perform a bulk replacement or removal of a retention label using the Purview compliance portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "Item 392456 lists Worldwide (Standard Multi-Tenant), which item 392457 does not list.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "392456: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]. 392457: \"clouds\": [\"GCC\", \"GCC High\", \"DoD\"].",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Item 392456 is In development.",
+      "claim": "Item 392456 is also In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "392456: \"status\": \"In development\"",
@@ -229,7 +201,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 17,
       "where": "What's changing",
       "type": "record",
       "claim": "Item 392456 also targets December CY2026.",
@@ -240,7 +212,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
       "claim": "Item 392456 lists General Availability and Preview release phases.",
@@ -251,76 +223,54 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "KQL in this retention-label context means Keyword Query Language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "For more information about the query syntax that uses Keyword Query Language (KeyQL), see Keyword Query Language (KeyQL) syntax reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "summary; What's changing; front matter: changes",
       "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this bulk replacement feature.",
+      "claim": "Microsoft Learn has no description of this specific bulk replacement or removal feature at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview bulk replacement removal retention labels KQL static adaptive scopes; \"Purview\" \"bulk\" \"replacement\" \"retention\". Read retention, auto-apply labels and getting-started pages; results describe existing labeling, file plan and priority cleanup, not this action.",
+      "quote": "Searched: Purview \"bulk\" \"replacement\" \"retention label\"; \"retention label\" \"bulk\" \"KQL\". Opened /purview/retention and /purview/apply-retention-labels-automatically; results describe existing methods, not this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default state is unknown because Microsoft has not stated what this change does on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"retention label\" \"bulk replacement\" licensing permissions default; Purview \"bulk replacement\" \"enabled\". Read roadmap description and /purview/retention; no arrival default or enablement rule for this action found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "controls[0].ui and controls[0].api; Governance controls",
+      "where": "Why it matters",
       "type": "absence",
-      "claim": "Neither the UI nor automation for the planned tenant-wide bulk replacement or removal action is documented.",
+      "claim": "No source states that existing behaviour changes automatically when this capability arrives.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview bulk replacement removal retention labels KQL; \"retention label\" \"bulk\" \"remove\" \"API\" PowerShell Remove-ComplianceTag; Graph driveItem removeRetentionLabel bulk replacement. Read retention and reference excerpts: label deletion and single-item APIs, not this bulk action.",
+      "quote": "Searched: Purview \"bulk replacement\" \"enabled\"; \"retention label\" \"bulk replacement\" licensing permissions default. Read roadmap and /purview/retention; neither describes an automatic change to existing content.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "front matter: defaultState; What's changing; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "Microsoft has not stated this feature's arrival default, so defaultState is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview bulk replacement removal retention labels default; \"Purview\" \"bulk\" \"replacement\" \"retention\" permissions licensing default undo scheduling. Read roadmap, retention and getting-started pages; no default for this planned action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "No source states that existing behaviour changes automatically when this action arrives.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview bulk replacement removal retention labels default; \"Purview\" \"bulk\" \"replacement\" \"retention\" default scheduling. Roadmap describes an admin action; retention and getting-started pages state no automatic migration or existing-behaviour change for it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Retention labels provide item-level retention and deletion settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention",
-      "quote": "A retention label (however it was applied) provides explicit retention in comparison with retention policies, because the retention settings are applied to an individual item rather than implicitly assigned from a container.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Replacing or removing a retention label changes how long that item is kept or when it is deleted.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/retention",
-      "quote": "These two actions are calculated independently from each other, from all the retention settings applied to an item. ... you can also use retention labels without turning on any retention or other actions.",
-      "severity": "blocker",
-      "fix": "Replace the sentence with: 'Replacing or removing a retention label can change the item's retention or deletion outcome, depending on the label's actions and other retention settings applied to the item.' Retain the citation to https://learn.microsoft.com/purview/retention."
-    },
-    {
-      "n": 27,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "An auto-apply retention label policy never replaces an existing label applied to content.",
+      "claim": "An auto-apply retention label policy never replaces an existing retention label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
       "quote": "An auto-apply retention label policy will never replace an existing retention label that's applied to content.",
@@ -328,7 +278,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The documented end-of-retention relabelling methods cannot change a label that marks items as regulatory records.",
@@ -339,21 +289,54 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 25,
       "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
       "type": "absence",
-      "claim": "How the planned bulk action treats record and regulatory record labels, including existing relabelling rules, is not documented.",
+      "claim": "Microsoft has not documented how this bulk action handles record and regulatory-record labels or the existing relabelling restrictions.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"bulk\" \"retention labels\" \"regulatory\" audit preview tenant switch. Read retention tables and declare-records; results document manual, Power Automate and policy methods, but not this planned bulk action's record handling.",
+      "quote": "Searched: Purview \"bulk\" \"replacement\" \"retention label\"; \"Purview\" \"bulk removal\" \"retention\". Opened /purview/retention and /purview/declare-records; they document existing restrictions, not this action's handling.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 26,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Retention labels can determine how long content is retained.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Although the main purpose of retention labels is to retain or delete content, you can also use retention labels without turning on any retention or other actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Retention labels can determine when content is deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "The outcome isn't which single retention policy or single retention label wins, but how long an item is retained (if applicable) and when an item is deleted (if applicable).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Replacing or removing a retention label can change the item's retention or deletion outcome depending on its actions and other retention settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "These two actions are calculated independently from each other, from all the retention settings applied to an item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap does not specify which workloads the bulk action reaches.",
+      "claim": "The roadmap does not identify individual workload locations reached by the bulk action.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "They can perform the action across the entire tenant or targeted to specific content using KQL and static or adaptive scopes.",
@@ -361,32 +344,32 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Scope; controls[1].note; Governance controls",
       "type": "absence",
-      "claim": "A role requirement specific to this bulk action has not been published.",
+      "claim": "The role needed specifically to run this bulk action has not been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview bulk replacement removal retention labels permissions; \"Purview\" \"bulk\" \"replacement\" \"retention\" permissions licensing default. Read getting-started permissions and Purview permissions; general label-administration roles, no bulk-action-specific requirement.",
+      "quote": "Searched: \"retention label\" \"bulk replacement\" licensing permissions default; Purview bulk retention label removal PowerShell API tenant enable default permissions licensing. Opened /purview/get-started-with-data-lifecycle-management and /purview/purview-permissions; no bulk-action role found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Microsoft recommends the Compliance Administrator role group for creating and managing retention policies and labels generally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "To grant permissions for this limited administration, we recommend that you add users to the Compliance Administrator admin role group.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "controls[1].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "where": "Risk assessment: Security & identity; controls[1].note; Governance controls",
       "type": "role",
-      "claim": "Microsoft recommends the Compliance Administrator role group for creating and managing retention policies and labels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "Members of your compliance team who will create and manage retention policies and retention labels need permissions ... we recommend that you add users to the Compliance Administrator admin role group.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[1].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "A custom role group with the Retention Management role is the documented alternative.",
+      "claim": "A custom role group containing Retention Management is a documented alternative for general retention administration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
       "quote": "Alternatively to using this default role, you can create a new role group and add the Retention Management role to this group.",
@@ -394,13 +377,24 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 33,
       "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Microsoft's tables distinguish standard, record and regulatory record labels for manual and automated changes and removal.",
+      "claim": "Learn distinguishes standard, record and regulatory-record labels when documenting manual and automated replacement or removal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention",
-      "quote": "Manually applied | Yes | Yes ^1^ if admin for the container | No ... Applied with auto-apply retention label policy | No | No | Not applicable",
+      "quote": "| Manually applied | Yes | Yes ^1^ if admin for the container | No |\n| Applied with the **Change label** label setting | Yes | Yes | Not applicable |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Scheduling for this bulk action is not described in the sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"retention label\" \"bulk\" \"preview\" \"undo\" scheduling approval. Read roadmap and /purview/retention; search results describe other retention mechanisms, not scheduling this action.",
       "severity": null,
       "fix": null
     },
@@ -408,21 +402,21 @@
       "n": 35,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Scheduling for this bulk action has not been described.",
+      "claim": "Approval steps for this bulk action are not described in the sources.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview bulk replacement retention label approval scheduling preview undo prerequisites. Read roadmap and retention; results describe other retention mechanisms, not scheduling for this planned action.",
+      "quote": "Searched: \"retention label\" \"bulk\" \"preview\" \"undo\" scheduling approval. Read roadmap and /purview/retention; results cover disposition and priority-cleanup approvals, not this action.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Risk assessment: Autonomy & actions",
+      "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Approval steps for this bulk action have not been described.",
+      "claim": "A preview of an intended bulk run is not described in the sources.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview bulk replacement retention label approval scheduling preview undo prerequisites. Read retention and priority-cleanup approval excerpts; the documented approvals concern priority cleanup, not this planned bulk action.",
+      "quote": "Searched: \"retention label\" \"bulk\" \"preview\" \"undo\" scheduling approval. Opened /purview/retention and /purview/apply-retention-labels-automatically; auto-apply simulation is not documentation of this bulk action.",
       "severity": null,
       "fix": null
     },
@@ -430,87 +424,87 @@
       "n": 37,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "A way to preview a bulk run has not been described.",
+      "claim": "An undo for this bulk action is not described in the sources.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview bulk replacement retention label approval scheduling preview undo prerequisites. Read auto-apply labels and retention; simulation pertains to auto-apply policies, not a preview of this planned action.",
+      "quote": "Searched: \"retention label\" \"bulk\" \"preview\" \"undo\" scheduling approval. Read roadmap and /purview/retention; no undo for this action found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "absence",
-      "claim": "An undo for a bulk run has not been described.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview bulk replacement retention label approval scheduling preview undo prerequisites. Read roadmap, retention and auto-apply labels; no undo mechanism for this planned action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
       "where": "Risk assessment: Change & support; rationale: impact",
       "type": "behaviour",
       "claim": "Retention labels have a visible presence in Microsoft 365 apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "if you supplement retention policies with retention labels, these labels do have a UI presence in Microsoft 365 apps.",
+      "quote": "However, if you supplement retention policies with retention labels, these labels do have a UI presence in Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "The documentation does not explain reapplication by an auto-apply policy after removal by this specific bulk action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"retention label\" \"reapply\" \"removed\"; \"retention label\" \"bulk replacement\". Opened /purview/apply-retention-labels-automatically and /purview/retention; manual removal is discussed, but not interaction with this bulk action.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Risk assessment: Change & support",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The documentation does not state whether an auto-apply policy reapplies a removed label after this particular bulk action.",
+      "claim": "No price specific to bulk replacement or removal has been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview bulk remove retention label auto apply policy reapply after removal. Read auto-apply labels, including manual removal before relabeling by policy conditions; no description of reapplication after this planned bulk action.",
+      "quote": "Searched: \"retention label\" \"bulk\" \"price\" meter prerequisites; \"retention label\" \"bulk replacement\" licensing permissions default. Read Microsoft Purview service description, Data Lifecycle & Records Management section; no bulk-action price found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "Microsoft has not published a price specific to bulk replacement or removal.",
+      "claim": "No meter specific to this bulk action has been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Purview\" \"bulk\" \"replacement\" \"retention\" permissions licensing default. Read service-description Data Lifecycle & Records Management licensing and getting-started billing; no price specific to this action.",
+      "quote": "Searched: \"retention label\" \"bulk\" \"price\" meter prerequisites. Read Microsoft Purview service description and /purview/get-started-with-data-lifecycle-management licensing and billing requirements; no meter for this bulk action found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published a meter specific to bulk replacement or removal.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The listed Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium plans provide retention-label creation rights.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview bulk replacement removal retention labels licensing; \"Purview\" \"bulk\" \"replacement\" \"retention\" licensing. Read service-description retention licensing and getting-started billing; AI-location billing is documented, no bulk replacement/removal meter.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For retention label creation, the following licenses provide user rights:\n- Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "front matter: licensing.model",
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The included licensing model refers to the published retention-label entitlement, with any bulk-specific requirement left open.",
+      "claim": "Microsoft Purview Suite/EDU/GOV/FLW provides retention-label creation rights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "For retention label creation, the following licenses provide user rights: ... Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium",
+      "quote": "For retention label creation, the following licenses provide user rights:\n- Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium\n- Microsoft Purview Suite/EDU/GOV/FLW",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The retention-label creation entitlement includes Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium.",
+      "claim": "Office 365 E5/A5/G5/E3/A3/G3/F3/E1/A1/G1 provides retention-label creation rights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "For retention label creation, the following licenses provide user rights: ... Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium",
+      "quote": "For retention label creation, the following licenses provide user rights: [...] Office 365 E5/A5/G5/E3/A3/G3/F3/E1/A1/G1",
       "severity": null,
       "fix": null
     },
@@ -518,144 +512,111 @@
       "n": 45,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The retention-label creation entitlement includes Microsoft Purview Suite/EDU/GOV/FLW.",
+      "claim": "Automatically changing a retention label after the retention period requires specific licences, including Microsoft 365 E5/A5/G5.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "For retention label creation, the following licenses provide user rights: ... Microsoft Purview Suite/EDU/GOV/FLW",
+      "quote": "- After the retention period, automatically change the retention label,\n\nRequire these specific licenses to provide users rights:\n\n- Microsoft 365 E5/A5/G5",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The retention-label creation entitlement includes Office 365 E5/A5/G5/E3/A3/G3/F3/E1/A1/G1.",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to this bulk action has not been published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "For retention label creation, the following licenses provide user rights: ... Office 365 E5/A5/G5/E3/A3/G3/F3/E1/A1/G1",
+      "source": null,
+      "quote": "Searched: \"retention label\" \"bulk replacement\" licensing permissions default. Read Microsoft Purview service description, retention-label creation and deployment licensing; no requirement specifically naming this bulk action found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Automatically changing a label after its retention period requires specified licences, including Microsoft 365 E5/A5/G5.",
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Prerequisites specific to the planned bulk action have not been published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "After the retention period, automatically change the retention label, ... Require these specific licenses to provide users rights: ... Microsoft 365 E5/A5/G5",
+      "source": null,
+      "quote": "Searched: \"retention label\" \"bulk\" \"price\" meter prerequisites; Purview bulk retention label removal PowerShell API tenant enable default permissions licensing. Opened /purview/get-started-with-data-lifecycle-management and /purview/retention; no feature-specific prerequisites found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "A licence requirement specific to the bulk action, including its adaptive-scope use, has not been published.",
+      "where": "Scope; controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Adding users to a role group through the Purview portal requires the Role management role.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview bulk replacement removal retention labels KQL static adaptive scopes licensing; \"Purview\" \"bulk\" \"replacement\" \"retention\" licensing. Read service-description retention sections; adaptive policy licensing is stated, not a requirement for this new bulk action.",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Prerequisites specific to the planned bulk action are not published.",
+      "where": "Scope; Governance controls",
+      "type": "availability",
+      "claim": "Security-group membership in Purview role groups is supported only in Microsoft 365 commercial cloud organizations, so government-cloud administrators should add individual users.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview bulk replacement retention label approval scheduling preview undo prerequisites. Read getting-started, retention and auto-apply labels; no prerequisite list for this planned action.",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "On Edit members of the role group, select Choose users or Choose groups.\nSecurity groups are supported only in Microsoft 365 commercial cloud organizations.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The printed Purview Settings > Roles and scopes > Role groups route reaches Choose users for role-group membership.",
+      "where": "controls[0]; Governance controls",
+      "type": "absence",
+      "claim": "Neither a tenant switch or UI setting nor an API for the specific tenant-wide bulk replacement or removal feature is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group ... Select Edit ... On Edit members of the role group, select Choose users or Choose groups.",
+      "source": null,
+      "quote": "Searched: Purview bulk retention label removal PowerShell API tenant enable default permissions licensing; \"retention label\" \"bulk\" \"Remove-\" replacement. Opened /purview/retention-cmdlets and /purview/retention; item-level Graph and CSOM results do not document this tenant-wide feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the specified user to a management role group.",
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The stated Purview Settings > Roles and scopes > Role groups route reaches Choose users for a built-in role group.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... User ID or user principal name (UPN)",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes [...] Select Role groups. [...] On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group [...] Select Edit [...] On Edit members of the role group, select Choose users or Choose groups.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "controls[1].note; Scope; Governance controls",
-      "type": "role",
-      "claim": "Adding members through the Purview role-group UI requires the Role management role.",
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds an identified user to a management role group.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "Sign in to the Microsoft Purview portal ... by using credentials for an admin account assigned the Role management role.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. [...] The Identity parameter specifies the role group to add a member to. [...] User ID or user principal name (UPN)",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Scope; Governance controls",
-      "type": "availability",
-      "claim": "Security groups in Purview role groups are supported only in commercial cloud organizations, so government-cloud admins should add individual users.",
+      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model refers to existing retention-label product entitlements, with any bulk-specific requirement explicitly left unpublished.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "On Edit members of the role group, select Choose users or Choose groups. ... Security groups are supported only in Microsoft 365 commercial cloud organizations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "A tenant-level availability switch specific to this bulk action is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"bulk\" \"retention labels\" \"regulatory\" audit preview tenant switch; Purview bulk replacement removal retention labels default. Read retention and getting-started; tenant controls concern other labeling mechanisms, not this planned action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "The existing role-management control does not establish which permissions the planned bulk action will honour.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Purview\" \"bulk\" \"replacement\" \"retention\" permissions. Read getting-started permissions: create, configure and apply labels; Purview permissions describes role assignments. Neither describes the planned tenant-wide bulk action's permission checks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The query language referred to as KQL in the roadmap is Keyword Query Language.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
-      "quote": "For more information about the query syntax that uses Keyword Query Language (KeyQL), see Keyword Query Language (KeyQL) syntax reference.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For retention label creation, the following licenses provide user rights:\n- Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T11:32:44.842Z",
+    "at": "2026-11-24T14:05:10.555Z",
     "summary": {
       "links": 8,
-      "unreachable": 7,
+      "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -666,38 +627,38 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/retention",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/purview-permissions",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/declare-records",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -706,7 +667,7 @@
         "side": "ui",
         "governs": "Who holds the roles that manage retention labels",
         "docs": "https://learn.microsoft.com/purview/purview-permissions",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Settings",
           "Roles and scopes",
@@ -717,28 +678,26 @@
           "Edit members of the role group",
           "Choose users"
         ],
-        "missing": [
-          "Settings",
-          "Roles and scopes",
-          "Role groups",
-          "Role groups for Microsoft Purview solutions",
-          "role group",
-          "Edit",
-          "Edit members of the role group",
-          "Choose users"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Who holds the roles that manage retention labels",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-        "reachable": false,
+        "reachable": true,
         "token": "Add-RoleGroupMember",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

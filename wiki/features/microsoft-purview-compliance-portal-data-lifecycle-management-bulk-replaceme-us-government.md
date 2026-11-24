@@ -22,7 +22,7 @@ licensing:
 audiences: ["compliance","m365-admin"]
 tags: ["purview","data-lifecycle-management","retention","records-management","adaptive-scopes","gcc","gcc-high","dod"]
 sources:
-  - title: "Microsoft 365 Roadmap item 392457"
+  - title: "Microsoft 365 Roadmap 392457"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=392457"
     kind: "roadmap"
   - title: "Learn about retention policies and retention labels"
@@ -74,19 +74,23 @@ changes:
     note: "First briefing for roadmap item 392457: GCC, GCC High and DoD scope, In development with a December CY2026 target; no Learn page for the feature yet."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the data exposure statement: replacing or removing a label can change the retention or deletion outcome, depending on the label's actions and other retention settings."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 55
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "8d8a6411a10676358a70b24481c9b802"
+  contradicted: 0
+  attempts: 0
+  hash: "c6cee3523674a9c36df8cb16ade1b466"
 ---
 
 ## What's changing
@@ -108,7 +112,7 @@ No source says existing behaviour changes when this arrives, and Microsoft has n
 ## Risk assessment
 
 **Data exposure**
-- A label carries the retention settings applied to an item, so replacing or removing it changes how long that item is kept or when it is deleted. Which locations the bulk action reaches (SharePoint, OneDrive, Exchange) is not stated on the roadmap record beyond "entire tenant" or targeted content.
+- Replacing or removing a retention label can change the item's retention or deletion outcome, depending on the label's actions and other retention settings applied to the item. Which locations the bulk action reaches (SharePoint, OneDrive, Exchange) is not stated on the roadmap record beyond "entire tenant" or targeted content.
 
 **Security & identity**
 - The role needed to run the action is not yet published. Learn recommends the Compliance Administrator role group, or a custom role group with the Retention Management role, for creating and managing retention policies and labels in general; confirm whether that covers this action.
@@ -177,10 +181,4 @@ Adding members to a Purview role group needs the Role management role. Learn rec
 risk: Medium. The roadmap describes admins replacing or removing retention labels across a whole tenant, which changes what retention applies to content; how record labels are treated is not yet documented. Default state is not stated.
 cost: Low. The only cost the sources show is admin time plus the Purview licences already listed for retention labels; a licence or price specific to bulk replacement is not yet published.
 impact: Low. The roadmap describes an action that admins run from the Purview portal, so compliance admins notice first; end users are not asked to do anything, though labels visible in their apps may change.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Replacing or removing a retention label changes how long that item is kept or when it is deleted. | Found: These two actions are calculated independently from each other, from all the retention settings applied to an item. ... you can also use retention labels without turning on any retention or other actions. | Fix: Replace the sentence with: 'Replacing or removing a retention label can change the item's retention or deletion outcome, depending on the label's actions and other retention settings applied to the item.' Retain the citation to https://learn.microsoft.com/purview/retention. | Source: https://learn.microsoft.com/purview/retention
 -->

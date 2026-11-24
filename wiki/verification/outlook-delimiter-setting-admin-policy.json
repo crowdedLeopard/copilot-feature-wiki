@@ -2,45 +2,36 @@
   "slug": "outlook-delimiter-setting-admin-policy",
   "roadmapId": 557676,
   "title": "Outlook on the web: tenant default for using commas to separate recipients",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
-  "notes": [
-    "claim 32: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page",
-    "claim 35: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "1 blocking finding (claim 34)"
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 35,
-    "confirmed": 31,
-    "unconfirmed": 3,
-    "contradicted": 1,
-    "blocker": 1,
-    "major": 1,
-    "minor": 3
+    "claims": 32,
+    "confirmed": 32,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "Hold: the advice to test the cmdlet on a mailbox group is inconsistent with its organisation-wide scope. The briefing also claims that only Outlook on the web users are affected while acknowledging that the new Outlook scope is undocumented. The PowerShell control and roadmap facts are supported, and the previously reported fetch failures did not recur.",
+  "summary": "The briefing passes. Microsoft's reference supports the organisation-wide PowerShell control and its documented default, and the roadmap facts match the record. The briefing appropriately leaves the user-preference interaction, Windows applicability and policy-correction completion unresolved.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products",
+      "where": "title; summary; What's changing; controls[0].governs",
       "type": "record",
-      "claim": "The roadmap item concerns Outlook.",
+      "claim": "Administrators can define a tenant-wide default for whether commas separate recipients in the Outlook on the web Mail Compose and Reply setting.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Outlook\"]",
+      "quote": "Admins will be able to define a tenant-wide default value for the Mail Compose and Reply setting that controls whether commas are used to separate recipients.",
       "severity": null,
       "fix": null
     },
@@ -57,39 +48,6 @@
     },
     {
       "n": 3,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list US Government clouds.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is June CY2026.",
@@ -100,10 +58,43 @@
       "fix": null
     },
     {
+      "n": 4,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap lists Web as its platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 7,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap provides no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -114,7 +105,7 @@
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-07-28T22:43:45.",
+      "claim": "The roadmap record was modified at 2026-07-28T22:43:45.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-07-28T22:43:45\"",
@@ -123,20 +114,9 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing; controls[0].governs",
+      "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "The roadmap describes an admin policy defining a tenant-wide default for whether commas separate recipients in Mail Compose and Reply.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Admins will be able to define a tenant-wide default value for the Mail Compose and Reply setting that controls whether commas are used to separate recipients.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
-      "type": "record",
-      "claim": "The description contains a June 2, 2026 update reporting an issue with setting the policy.",
+      "claim": "An update dated June 2, 2026 says Microsoft was correcting an issue with setting the policy.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Updated June 2, 2026: We are in the process of correcting an issue with setting the policy.",
@@ -144,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "What's changing; Risk assessment: Change & support; Open questions",
       "type": "record",
       "claim": "The June 2 update expected the correction to complete in mid-June 2026.",
@@ -155,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The record does not explicitly confirm completion of the correction.",
+      "claim": "The record does not confirm whether that correction has finished.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We are in the process of correcting an issue with setting the policy. We expect to complete in mid-June. Thank you for your patience.",
@@ -166,13 +146,24 @@
       "fix": null
     },
     {
+      "n": 12,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 13,
       "where": "controls[0].api; summary; What's changing; Governance guidance; Governance controls",
       "type": "command",
-      "claim": "Exchange PowerShell documents Set-OrganizationConfig -RecipientDelimiters $false to set the organisation-wide recipient delimiter default.",
+      "claim": "Exchange PowerShell provides Set-OrganizationConfig -RecipientDelimiters $false to set the organisation-wide default so commas do not separate recipients.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
-      "quote": "The RecipientDelimiters parameter specifies the organization-wide default for the Mail Compose and Reply setting that controls whether commas are used to separate recipients. Valid values are:\n\n- $true: Commas are used to separate recipients by default. This value is the default.",
+      "quote": "The RecipientDelimiters parameter specifies the organization-wide default for the Mail Compose and Reply setting that controls whether commas are used to separate recipients.",
       "severity": null,
       "fix": null
     },
@@ -180,10 +171,10 @@
       "n": 14,
       "where": "controls[0].note; What's changing; Scope",
       "type": "availability",
-      "claim": "RecipientDelimiters is available only in Exchange Online, the cloud-based service.",
+      "claim": "RecipientDelimiters is available only in the cloud-based Exchange service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
-      "quote": "Applicable: Exchange Online\n\nThis parameter is available only in the cloud-based service.",
+      "quote": "Applicable: Exchange Online\nThis parameter is available only in the cloud-based service.",
       "severity": null,
       "fix": null
     },
@@ -191,7 +182,7 @@
       "n": 15,
       "where": "controls[0].note; What's changing; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The parameter description says $true uses commas as separators by default and is the default value.",
+      "claim": "The parameter description says $true uses commas to separate recipients by default and is the default value.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
       "quote": "$true: Commas are used to separate recipients by default. This value is the default.",
@@ -200,7 +191,7 @@
     },
     {
       "n": 16,
-      "where": "What's changing; Risk assessment: Security & identity; Governance guidance; rationale: impact",
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
       "claim": "Setting RecipientDelimiters to $false means commas are not used to separate recipients by default.",
       "status": "supported",
@@ -213,40 +204,18 @@
       "n": 17,
       "where": "What's changing",
       "type": "default",
-      "claim": "The same parameter's properties table lists Default value as None.",
+      "claim": "The same reference lists None in the parameter properties table's Default value field.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
-      "quote": "| Type: | Boolean |\n| --- | --- |\n| Default value: | None |",
+      "quote": "| Type: | Boolean |\n| Default value: | None |",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "controls[0].note; Cost and licensing; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "Running the cmdlet requires assigned Exchange permissions, and Learn directs readers to the cmdlet-permissions reference.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
-      "quote": "You need to be assigned permissions before you can run this cmdlet. Although this article lists all parameters for the cmdlet, you might not have access to some parameters if they aren't included in the permissions assigned to you.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The Government Cloud release notes describe the user delimiter setting in the June 13, 2025 entry.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/officeupdates/release-notes-outlook-new-gc",
-      "quote": "## June 13, 2025\n\n*Version: 20250606009.12*\n\n- **[GCC] Setting to toggle comma as recipient delimiter:**",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Those release notes say Outlook Web and the New Outlook support semicolons or commas as recipient separators by default.",
+      "claim": "The cited release notes say Outlook Web and the New Outlook support semicolons or commas as recipient separators by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/officeupdates/release-notes-outlook-new-gc",
       "quote": "By default, Outlook Web and the New Outlook support separating recipients by using either a semicolon or a comma.",
@@ -254,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 19,
       "where": "What's changing; Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "The release notes describe a user choice between using commas as separators and allowing commas within contact names.",
+      "claim": "The user setting lets individuals choose whether a comma separates recipients or forms part of a contact name.",
       "status": "supported",
       "source": "https://learn.microsoft.com/officeupdates/release-notes-outlook-new-gc",
       "quote": "This new setting allows users to choose if the comma should be used as a recipient separator or instead allowed as part of the contact name.",
@@ -265,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 20,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The release notes say the setting helps organisations whose contacts use the Family name, First name format.",
+      "claim": "Microsoft identifies contacts formatted as Family name, First name as a use case for this setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/officeupdates/release-notes-outlook-new-gc",
       "quote": "This is helpful for organizations where contacts follow the \"Family name, First name\" format.",
@@ -276,158 +245,147 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 21,
       "where": "What's changing",
-      "type": "availability",
-      "claim": "The cited release notes describe Government Cloud channels rather than a Worldwide release.",
+      "type": "date",
+      "claim": "The user-setting description appears in the June 13, 2025 Government Cloud release notes, rather than a Worldwide release-note entry.",
       "status": "supported",
       "source": "https://learn.microsoft.com/officeupdates/release-notes-outlook-new-gc",
-      "quote": "These release notes provide more information about those changes in Government Cloud Channels.",
+      "quote": "Release notes for Outlook for Windows (New) in Government Cloud Channels\nJune 13, 2025\nVersion: 20250606009.12\n[GCC] Setting to toggle comma as recipient delimiter",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Cost and licensing; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Running the cmdlet and using its parameters requires assigned Exchange permissions, which the linked permissions-finding guidance identifies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
+      "quote": "You need to be assigned permissions before you can run this cmdlet. Although this article lists all parameters for the cmdlet, you might not have access to some parameters if they aren't included in the permissions assigned to you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The control is admin-opt-in: an administrator must configure it to change the existing comma-separator default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
+      "quote": "$true: Commas are used to separate recipients by default. This value is the default.\n$false: Commas aren't used to separate recipients by default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "controls[0].ui; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No Exchange admin center path for the tenant recipient delimiter default is documented at the time of writing.",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "This Exchange Online configuration option uses the product's existing subscription entitlement, so the licensing model is included.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: RecipientDelimiters Exchange admin center tenant comma recipient delimiter policy UI; \"RecipientDelimiters\". Opened Set-OrganizationConfig and Outlook on the web in Exchange Online; results supplied no admin UI route for this default.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description",
+      "quote": "Each user who accesses the Exchange Online service must be assigned to a subscription plan, and each user subscription has its own mailbox.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "front matter: licensing.model",
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The licensing model is unknown because no licence specific to RecipientDelimiters is published.",
+      "claim": "Each user accessing Exchange Online must be assigned a subscription plan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description",
       "quote": "Each user who accesses the Exchange Online service must be assigned to a subscription plan, and each user subscription has its own mailbox.",
-      "severity": "minor",
-      "fix": "Set licensing.model to included. Replace the notes with: 'This is an option inside Exchange Online. Each user accessing Exchange Online must be assigned a subscription plan; Outlook on the web is listed across the service's plans. No licence or meter specific to RecipientDelimiters is documented as of November 2026.' Cite the already-listed Exchange Online service description."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 26,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The parameter reference names no licence for RecipientDelimiters, and no licence, meter or charge specific to this setting is published.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Exchange Online service description lists Outlook on the web across its plans.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: RecipientDelimiters licensing price meter Exchange Online subscription. Opened Set-OrganizationConfig and Exchange Online service description; neither publishes a setting-specific licence, meter or price.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description",
+      "quote": "Outlook on the web^1,^^10^, Outlook for iOS and Android^1,^^10^, Exchange ActiveSync and SMTP^10^ | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Change & support; Governance controls; Open questions",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft Learn does not state whether the tenant default overrides an existing user choice.",
+      "claim": "No licence, meter or charge specific to RecipientDelimiters is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: RecipientDelimiters existing user choice override new Outlook Windows default comma; \"RecipientDelimiters\". Opened Set-OrganizationConfig and Government Cloud release notes; neither explains precedence over saved user preferences.",
+      "quote": "Searched: \"RecipientDelimiters\" licensing price meter; \"RecipientDelimiters\" \"admin center\" \"license\". Opened Set-OrganizationConfig and Exchange Online service description; neither names feature-specific licensing, metering or charges.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Scope; Open questions",
+      "where": "controls[0].ui; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The RecipientDelimiters documentation does not state whether the organisation default also applies in new Outlook for Windows.",
+      "claim": "An Exchange admin center control for the tenant-wide recipient-delimiter default is not documented; the documented tenant control is the PowerShell parameter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: RecipientDelimiters existing user choice override new Outlook Windows default comma; \"RecipientDelimiters\". Opened Set-OrganizationConfig, Government Cloud release notes and Outlook on the web in Exchange Online; no parameter-specific Windows scope statement found.",
+      "quote": "Searched: \"RecipientDelimiters\"; \"RecipientDelimiters\" \"admin center\" \"license\"; \"comma\" \"recipient\" \"Exchange admin center\". Opened Set-OrganizationConfig and Outlook on the web in Exchange Online; no matching admin UI path found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The control is admin-opt-in: commas remain separators by default unless an administrator configures the alternative default.",
+      "where": "Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not state whether the tenant default overrides an existing user choice.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
-      "quote": "$true: Commas are used to separate recipients by default. This value is the default.\n- $false: Commas aren't used to separate recipients by default.",
+      "source": null,
+      "quote": "Searched: \"RecipientDelimiters\" \"override\" \"Outlook\"; \"RecipientDelimiters\" \"user\" \"default\"; Outlook comma recipient delimiter tenant default existing user preference RecipientDelimiters. Read the parameter reference and user-setting release-note passage; neither specifies precedence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Governance controls",
+      "where": "Scope; Open questions; rationale: impact",
       "type": "absence",
-      "claim": "The PowerShell parameter is the only documented administrative control for this tenant default.",
+      "claim": "The RecipientDelimiters reference does not state whether this tenant default also applies to new Outlook for Windows.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"RecipientDelimiters\"; RecipientDelimiters Exchange admin center tenant comma recipient delimiter policy UI; \"recipient\" \"delimiter\" \"Set-MailboxMessageConfiguration\". Read the parameter reference and search results; no other tenant-default control found.",
+      "quote": "Searched: \"RecipientDelimiters\" \"new Outlook\"; read Set-OrganizationConfig, Government Cloud release notes and Outlook on the web overview. The overview's Windows statement covers mailbox policies, not this organisation parameter; no parameter-specific Windows statement found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Data exposure",
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "absence",
-      "claim": "The cited sources describe no new data access for this setting.",
+      "claim": "The cited descriptions identify a recipient-parsing preference and describe no new data access.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Outlook recipient delimiter setting comma data access autonomous actions. Opened Set-OrganizationConfig, Government Cloud release notes, Outlook on the web in Exchange Online and Exchange Online service description; none describes new data access for the setting.",
+      "quote": "Searched: RecipientDelimiters in the fetched Set-OrganizationConfig reference; read the roadmap description, relevant Government Cloud release-note passage, Outlook on the web overview and service description. The feature descriptions concern comma handling, not new access permissions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "rationale: risk",
-      "type": "behaviour",
-      "claim": "The policy reads no new data.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Outlook recipient delimiter setting comma data access autonomous actions. Opened Set-OrganizationConfig and Government Cloud release notes; they describe the preference but do not state that the policy reads no new data.",
-      "severity": "minor",
-      "fix": "Replace 'it reads no new data' with 'the cited sources describe no new data access'."
-    },
-    {
-      "n": 33,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The setting takes no action on its own and involves no agent or automation.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Outlook recipient delimiter setting comma data access autonomous actions. Opened Set-OrganizationConfig and Government Cloud release notes; neither makes a statement about autonomous actions, agents or automation.",
-      "severity": "major",
-      "fix": "Replace the bullet with: 'The cited documentation describes a recipient-delimiter preference, not an autonomous action.'"
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Change & support",
-      "type": "applicability",
-      "claim": "The tenant-default cmdlet can be tested on a pilot mailbox group as an alternative to a pilot tenant.",
-      "status": "contradicted",
+      "claim": "The cited documentation describes a recipient-delimiter preference rather than an autonomous action.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
       "quote": "The RecipientDelimiters parameter specifies the organization-wide default for the Mail Compose and Reply setting that controls whether commas are used to separate recipients.",
-      "severity": "blocker",
-      "fix": "Replace 'Test the cmdlet on a pilot tenant or mailbox group and read back the result before announcing a change.' with 'Test the cmdlet in a pilot tenant and read back the result before announcing a change.' The documented control sets an organisation-wide default, not a mailbox-group default."
-    },
-    {
-      "n": 35,
-      "where": "rationale: impact",
-      "type": "availability",
-      "claim": "Only users composing or replying in Outlook on the web notice the tenant-default change.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: RecipientDelimiters existing user choice override new Outlook Windows default comma; \"RecipientDelimiters\". Opened Set-OrganizationConfig and Government Cloud release notes; neither excludes new Outlook from the tenant default's scope.",
-      "severity": "minor",
-      "fix": "Replace the impact rationale with: 'Low. This is an administrator-configured recipient-delimiter default. The roadmap lists Web; whether the tenant default also affects new Outlook for Windows is not stated for this parameter.'"
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T11:32:46.374Z",
+    "at": "2026-11-24T14:05:11.034Z",
     "summary": {
       "links": 5,
-      "unreachable": 4,
+      "unreachable": 0,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -438,23 +396,23 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/officeupdates/release-notes-outlook-new-gc",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/outlook-on-the-web",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -463,12 +421,19 @@
         "side": "api",
         "governs": "Organisation-wide default for whether commas separate recipients in Mail Compose and Reply",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
-        "reachable": false,
+        "reachable": true,
         "token": "Set-OrganizationConfig",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

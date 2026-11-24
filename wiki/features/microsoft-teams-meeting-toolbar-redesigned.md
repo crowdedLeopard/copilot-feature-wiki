@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Neither the roadmap record, Microsoft's notice MC1317197 nor the Teams adoption page names a licence for the redesigned meeting controls."
+  model: "included"
+  notes: "Microsoft documents a Teams licence as the general requirement for organisational users, except when joining meetings anonymously; no licence or charge specific to this redesign is published. Source: Manage Teams licenses."
 audiences: ["m365-admin","change-adoption","service-owner","end-user"]
 tags: ["teams","adoption","app-management","meeting-controls","gcc","gcc-high","dod"]
 sources:
@@ -37,6 +37,9 @@ sources:
   - title: "Set-CsTeamsAppSetupPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy"
     kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -45,17 +48,17 @@ controls:
     ui: null
     api: null
     note: "Microsoft's notice MC1317197 says the new experience cannot be disabled at the tenant level, and the opt-out toggle is per user."
-  - governs: "Which apps are pinned to the in-meeting bar for users under a setup policy"
+  - governs: "Which apps are pinned in meetings organised by users assigned a setup policy"
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Teams apps > Setup policies > policy > Pinned apps > Add apps"
+      path: "Teams apps > Setup policies > policy > Edit > Pinned apps > Add apps"
       docs: "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies"
     api:
       kind: "powershell"
       call: "Set-CsTeamsAppSetupPolicy -Identity <policy name> -AppPresetMeetingList <list>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy"
-    note: "Governs pinned apps only, not built-in controls. Teams Administrator or higher. The PowerShell reference says to modify app setup policies in the Teams admin center."
+    note: "Pinned apps only. Teams Administrator or higher. Microsoft documents the cmdlet for completeness but says not to use it; edit policies in the Teams admin center. For specific users, extensions apply only in meetings they organise."
 confidence: "medium"
 created: "2026-11-24"
 updated: "2026-11-24"
@@ -65,19 +68,23 @@ changes:
     note: "New briefing on the Teams meeting toolbar redesign, using the rollout windows in MC1317197 as updated 23 September 2026."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the setup policy path, the PowerShell qualifier and the pinning scope, and set the licence to the general Teams requirement."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "e50702ce08c0e18124ca5b3d29e5308e"
+  contradicted: 0
+  attempts: 0
+  hash: "865b604019688eccc4c53524a3db7665"
 ---
 
 ## What's changing
@@ -114,7 +121,7 @@ The practical decision for an administrator is communication timing and whether 
 
 ## Cost and licensing
 
-Neither the roadmap record, MC1317197 nor the Teams adoption page for the new meeting controls names a licence or a charge for the redesign, so the entitlement is not yet published. The cost the sources point to is time: communicating the change, updating training and briefing the helpdesk, as the notice recommends.
+Microsoft documents a Teams licence as the general requirement for organisational users, except when joining meetings anonymously; no licence or charge specific to this redesign is published (Manage Teams licenses, https://learn.microsoft.com/microsoftteams/user-access). The cost the sources point to is time: communicating the change, updating training and briefing the helpdesk, as the notice recommends.
 
 No meter is documented for this feature at the time of writing (November 2026).
 
@@ -134,7 +141,7 @@ Teams Administrator or higher can edit app setup policies, which are the policy 
 - Put the cross-device sync limitation and the temporary opt-out into user communications and support scripts.
 
 ### At rollout
-- Confirm in a pilot group that apps pinned by policy appear in the main meeting bar or the More menu as expected.
+- Confirm in meetings organised by pilot users assigned the policy that pinned apps appear in the main meeting bar or More menu as expected.
 - Tell users where Leave, Raise hand and Reactions now sit and how to pin, unpin and reorder controls.
 
 ### After rollout
@@ -149,7 +156,7 @@ Teams Administrator or higher can edit app setup policies, which are the policy 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-wide switch for the redesigned meeting controls</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft's notice MC1317197 says the new experience cannot be disabled at the tenant level, and the opt-out toggle is per user.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which apps are pinned to the in-meeting bar for users under a setup policy</strong><br><small>User</small><br><small class="controls__note">Governs pinned apps only, not built-in controls. Teams Administrator or higher. The PowerShell reference says to modify app setup policies in the Teams admin center.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Setup policies › policy › Pinned apps › Add apps <a href="https://learn.microsoft.com/microsoftteams/teams-app-setup-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsAppSetupPolicy -Identity &lt;policy name&gt; -AppPresetMeetingList &lt;list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which apps are pinned in meetings organised by users assigned a setup policy</strong><br><small>User</small><br><small class="controls__note">Pinned apps only. Teams Administrator or higher. Microsoft documents the cmdlet for completeness but says not to use it; edit policies in the Teams admin center. For specific users, extensions apply only in meetings they organise.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Setup policies › policy › Edit › Pinned apps › Add apps <a href="https://learn.microsoft.com/microsoftteams/teams-app-setup-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsAppSetupPolicy -Identity &lt;policy name&gt; -AppPresetMeetingList &lt;list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -157,27 +164,19 @@ The only admin-side control the sources describe is the app setup policy, which 
 
 The notice says the new experience cannot be disabled at the tenant level, and that the per-user opt-out toggle is controlled by individual users and cannot be managed at the tenant level. The table therefore has a row with both sides marked not yet documented for a tenant switch.
 
-Microsoft's PowerShell reference for Set-CsTeamsAppSetupPolicy says the cmdlet is documented for completeness and that app setup policies should be created and modified in the Teams admin center. Learn says changes can take a few hours to take effect after a policy is edited or assigned.
+For policies assigned to specific users, meeting extensions are available only in meetings organised by those users and are also available to other participants.
+
+Microsoft documents the Set-CsTeamsAppSetupPolicy cmdlet for completeness but explicitly says not to use it; all creation and modification of app setup policies, excluding assignment or removal from users, must happen in the Teams admin center. Learn says changes can take a few hours to take effect after a policy is edited or assigned.
 
 ## Open questions
 
 - Will Microsoft add any tenant or policy setting for the redesigned meeting controls? The notice says none exists; watch Message center and the Teams adoption page.
 - When will the per-user opt-out toggle be retired? Microsoft says advance notice will come in a separate Message Center post.
 - When will personalised control pins sync across devices? The notice says cross-device sync is planned for a future release.
-- Which licence, if any, covers the redesign? Not yet published; watch the roadmap item and the Teams licensing pages.
+- Will Microsoft publish a licence or charge specific to the redesign? Microsoft documents a Teams licence as the general requirement for organisational users, except when joining meetings anonymously; none specific to this redesign is published. Watch the roadmap item.
 
 <!-- rationale
 risk: Low. This changes the layout of in-meeting buttons inside existing meeting permissions, and Microsoft's notice MC1317197 lists no compliance considerations; the exposure is user confusion, not data.
-cost: Low. The cost the sources show is admin, helpdesk and training time to prepare users; no licence or charge is stated for the redesign (licensing is not yet published).
+cost: Low. The cost the sources show is admin, helpdesk and training time to prepare users. Microsoft documents a Teams licence as the general requirement for organisational users, except when joining meetings anonymously; no licence or charge specific to this redesign is published.
 impact: High. Microsoft's notice says all Teams work and school users joining meetings are affected, and the new experience is on by default and cannot be disabled at the tenant level.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls: rendered table / admin-path: The editing route is Teams admin center > Teams apps > Setup policies > policy > Pinned apps > Add apps. | Found: Choose the policy you want to edit and then select Edit. ... Under Pinned apps, select Add apps. | Fix: Replace controls[1].ui.path and the rendered path with 'Teams apps > Setup policies > policy > Edit > Pinned apps > Add apps'. Keep the surface Teams admin center and the existing docs URL. | Source: https://learn.microsoft.com/microsoftteams/teams-app-setup-policies
-- [contradicted, blocker] controls[1].api; controls[1].note; Governance controls / command: Set-CsTeamsAppSetupPolicy -Identity <policy name> -AppPresetMeetingList <list> is presented as usable automation for meeting-app pinning, with only a recommendation to modify policies in the admin centre. | Found: The existence of this cmdlet is being documented for completeness, but do not use this cmdlet. We require that all creation and modification of app setup polices | Fix: Keep the documented call, whose cmdlet and parameters exist, but replace the PowerShell qualifier in controls[1].note, the rendered note and the concluding paragraph with: 'Microsoft documents this cmdlet for completeness but explicitly says not to use it; all creation and modification of app setup policies, excluding assignment or removal from users, must happen in the Teams admin center.' Keep the existing reference URL. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy
-- [contradicted, blocker] controls[1].governs; controls[1].note; Governance guidance: At rollout / applicability: Meeting-app pinning is described as governing users under a setup policy without qualifying which meetings follow that policy. | Found: When apps are pinned for specific users, the meeting extension is available only in meetings organized by users assigned the app setup policy. In those meetings, the meeting extension is also available to other participants. | Fix: Replace controls[1].governs and its rendered label with 'Which apps are pinned in meetings organised by users assigned a setup policy'. Add to its note: 'For policies assigned to specific users, meeting extensions are available only in meetings organised by those users and are also available to other participants.' Replace the pilot bullet with 'Confirm in meetings organised by pilot users assigned the policy that pinned apps appear in the main meeting bar or More menu as expected.' | Source: https://learn.microsoft.com/microsoftteams/teams-app-setup-policies
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because entitlement to the redesigned controls is not yet published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the entitlement statements and licensing open question with: 'Microsoft documents a Teams licence as the general requirement for organisational users, except when joining meetings anonymously; no licence or charge specific to this redesign is published.' Cite https://learn.microsoft.com/microsoftteams/user-access and use that wording in the notes, cost paragraph and cost rationale. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

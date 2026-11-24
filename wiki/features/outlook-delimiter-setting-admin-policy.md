@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The Set-OrganizationConfig reference names no licence for the RecipientDelimiters parameter, and no meter or charge is documented for it."
+  model: "included"
+  notes: "This is an option inside Exchange Online. Each user accessing Exchange Online must be assigned a subscription plan; Outlook on the web is listed across the service's plans. No licence or meter specific to RecipientDelimiters is documented as of November 2026."
 audiences: ["m365-admin","service-owner"]
 tags: ["outlook","exchange","powershell","admin-controls"]
 sources:
@@ -57,19 +57,23 @@ changes:
     note: "First briefing for roadmap item 557676: documents the Set-OrganizationConfig -RecipientDelimiters control and the open mid-June 2026 correction note."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 35 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after verification: pilot advice now says pilot tenant, autonomy bullet reworded, licensing now included in Exchange Online, and risk and impact rationales narrowed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 32 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 35
-  confirmed: 31
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 1
-  hash: "07a631653f81c9a575137cdc3cf903d1"
+  claims: 32
+  confirmed: 32
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a3b3c865014106587c0b92139f37046c"
 ---
 
 ## What's changing
@@ -97,15 +101,15 @@ If nobody acts, the Learn description lists commas as separators as the default 
 - A mis-split recipient can send mail to the wrong address. Setting `-RecipientDelimiters $false` stops commas acting as separators by default, so users who type comma-separated addresses may find the addresses joined. Tell users before you change the default.
 
 **Autonomy & actions**
-- No change: the setting takes no action on its own and involves no agent or automation.
+- The cited documentation describes a recipient-delimiter preference, not an autonomous action.
 
 **Change & support**
-- The roadmap description says an issue with setting the policy was being corrected, with completion expected in mid-June 2026. Test the cmdlet on a pilot tenant or mailbox group and read back the result before announcing a change.
+- The roadmap description says an issue with setting the policy was being corrected, with completion expected in mid-June 2026. Test the cmdlet in a pilot tenant and read back the result before announcing a change.
 - The user-level setting lets individuals choose for themselves, according to the release notes. Microsoft Learn does not state whether a tenant default replaces a choice a user has already made; see Open questions.
 
 ## Cost and licensing
 
-The Set-OrganizationConfig reference page names no licence for `-RecipientDelimiters`, and Microsoft has not published a licence, meter or charge for this setting. A licence statement specific to this setting is not yet published.
+This is an option inside Exchange Online. The [Exchange Online service description](https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description) says each user accessing Exchange Online must be assigned a subscription plan, and lists Outlook on the web across the service's plans. The Set-OrganizationConfig reference page names no licence for `-RecipientDelimiters`, and no licence, meter or charge specific to this setting is documented as of November 2026.
 
 The cost the sources support is admin time: running one Exchange Online PowerShell cmdlet and communicating the change to users. The `Set-OrganizationConfig` cmdlet requires Exchange permissions assigned to you, as its Learn page states.
 
@@ -155,18 +159,7 @@ The row sets the organisation default. The release notes describe a separate use
 - Will Microsoft document an Exchange admin center setting for this default? Watch the Outlook on the web admin documentation.
 
 <!-- rationale
-risk: Low. The policy only sets the default for a mail-composition preference; it reads no new data, and Learn lists $true (commas separate recipients) as the value that applies when nothing is set.
+risk: Low. The policy only sets the default for a mail-composition preference; the cited sources describe no new data access, and Learn lists $true (commas separate recipients) as the value that applies when nothing is set.
 cost: Low. The only cost the sources show is admin time to run one cmdlet and tell users; Microsoft has not published a licence or meter specific to this setting.
-impact: Low. Only users composing or replying to mail in Outlook on the web notice it, and only if an admin sets the default to $false so that commas stop acting as recipient separators.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The setting takes no action on its own and involves no agent or automation. | Found: Searched: Outlook recipient delimiter setting comma data access autonomous actions. Opened Set-OrganizationConfig and Government Cloud release notes; neither makes a statement about autonomous actions, agents or automation. | Fix: Replace the bullet with: 'The cited documentation describes a recipient-delimiter preference, not an autonomous action.'
-- [contradicted, blocker] Risk assessment: Change & support / applicability: The tenant-default cmdlet can be tested on a pilot mailbox group as an alternative to a pilot tenant. | Found: The RecipientDelimiters parameter specifies the organization-wide default for the Mail Compose and Reply setting that controls whether commas are used to separate recipients. | Fix: Replace 'Test the cmdlet on a pilot tenant or mailbox group and read back the result before announcing a change.' with 'Test the cmdlet in a pilot tenant and read back the result before announcing a change.' The documented control sets an organisation-wide default, not a mailbox-group default. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because no licence specific to RecipientDelimiters is published. | Found: Each user who accesses the Exchange Online service must be assigned to a subscription plan, and each user subscription has its own mailbox. | Fix: Set licensing.model to included. Replace the notes with: 'This is an option inside Exchange Online. Each user accessing Exchange Online must be assigned a subscription plan; Outlook on the web is listed across the service's plans. No licence or meter specific to RecipientDelimiters is documented as of November 2026.' Cite the already-listed Exchange Online service description. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description
-- [unsupported, minor] rationale: risk / behaviour: The policy reads no new data. | Found: Searched: Outlook recipient delimiter setting comma data access autonomous actions. Opened Set-OrganizationConfig and Government Cloud release notes; they describe the preference but do not state that the policy reads no new data. | Fix: Replace 'it reads no new data' with 'the cited sources describe no new data access'.
-- [unsupported, minor] rationale: impact / availability: Only users composing or replying in Outlook on the web notice the tenant-default change. | Found: Searched: RecipientDelimiters existing user choice override new Outlook Windows default comma; "RecipientDelimiters". Opened Set-OrganizationConfig and Government Cloud release notes; neither excludes new Outlook from the tenant default's scope. | Fix: Replace the impact rationale with: 'Low. This is an administrator-configured recipient-delimiter default. The roadmap lists Web; whether the tenant default also affects new Outlook for Windows is not stated for this parameter.'
+impact: Low. This is an administrator-configured recipient-delimiter default. The roadmap lists Web; whether the tenant default also affects new Outlook for Windows is not stated for this parameter.
 -->

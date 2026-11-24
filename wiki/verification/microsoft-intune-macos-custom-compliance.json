@@ -1,0 +1,949 @@
+{
+  "slug": "microsoft-intune-macos-custom-compliance",
+  "roadmapId": 553222,
+  "title": "Microsoft Intune: custom compliance for macOS using a discovery script and JSON file",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "2 blocking findings (claims 41, 58)"
+    ]
+  },
+  "counts": {
+    "claims": 74,
+    "confirmed": 69,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the retirement warning omits the administrator confirmation required to retire a noncompliant device. The Graph call exists, but its reference does not establish that it uploads macOS discovery scripts; the table should not present it as that automation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026, already past on 24 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: title, products, roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 553222 concerns Microsoft Intune macOS custom compliance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 553222, \"title\": \"Microsoft Intune: macOS Custom Compliance\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-01-30T00:15:33.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-01-30T00:15:33\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a discovery script and JSON experience mirroring Windows and Linux custom compliance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature will enable users to use discovery script and json file to define compliance policy to specific organziational needs. The experience mirrors Windows and Linux custom compliance experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The JSON file defines custom settings and the values considered compliant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "The JSON file defines the custom settings and the values that you consider to be compliant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "A platform-specific discovery script runs on policy-targeted devices and reports discovered setting values to Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "Discovery scripts are specific to the different platforms and are delivered to devices as part of the compliance policy. When a device evaluates its policy, the script detects, or discovers, the settings from the JSON file, and then reports the results to Intune.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "Microsoft Learn already documents macOS as a supported custom compliance platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "Device platform requirements\nWindows (excluding Windows Home)\nmacOS\nLinux",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Custom compliance can evaluate device settings absent from built-in templates without waiting for Intune to add them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "Custom settings provide flexibility to base compliance on the settings that are available on a device without waiting for Intune to add these settings to the built-in policy templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope: Limits",
+      "type": "behaviour",
+      "claim": "Each compliance policy supports one discovery script.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Each discovery script can only be used with one compliance policy, and each compliance policy can only include one discovery script.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "One discovery script can discover multiple settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "Each compliance policy supports a single script, and each script can discover multiple settings:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing; Scope: Limits",
+      "type": "behaviour",
+      "claim": "Each discovery script can be used with only one compliance policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Each discovery script can only be used with one compliance policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "macOS discovery scripts use Bash.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "macOS devices use a Bash shell script.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A macOS discovery script must include a valid shebang.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Discovery scripts for macOS use Bash and must include a valid shebang line, such as `#!/bin/bash`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "macOS discovery scripts must use UTF-8 without a BOM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Scripts must be UTF-8 encoded without BOM",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "macOS discovery scripts return exit code 0 for success.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "must return exit code 0 for success and a non-zero exit code for failure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The macOS upload workflow can run the script with the logged-on user's credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Run this script using the logged on credentials. Set this value to Yes to run the script in the context of the logged-on user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "The macOS upload workflow has an Enforce script signature check option requiring a valid signature when enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Enforce script signature check. Set this value to Yes to require a valid signature on the script.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; What's changing",
+      "type": "behaviour",
+      "claim": "The macOS upload workflow can hide script notifications on devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Hide script notifications on devices. Set this value to Yes to hide notifications from the script on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The JSON rules file can include up to 100 rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-json",
+      "quote": "Your policy can be up to 100 KB and include 100 rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The JSON rules file can be up to 100 KB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-json",
+      "quote": "Your policy can be up to 100 KB and include 100 rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Rules can include remediation text displayed to noncompliant users in Company Portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-json",
+      "quote": "RemediationStrings - Information that shows in the Company Portal when a device is noncompliant to a setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Remediation strings must include en_US.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-json",
+      "quote": "There must be at least one string for the language `en_US`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Intune validates the JSON file when it is added to the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "Wait while Intune validates the JSON. Problems that need to be fixed appear onscreen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "After JSON validation, Intune displays the rules in a table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "After validation of the JSON contents, the rules from the JSON appear in table format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Scope: Platforms and clouds; Open questions",
+      "type": "availability",
+      "claim": "Learn says macOS custom compliance for special clouds will be available soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "macOS custom compliance for special clouds will be available soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Governance guidance: At rollout; rationale: risk",
+      "type": "applicability",
+      "claim": "Custom compliance results can govern access through Conditional Access like built-in compliance results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "You can use custom compliance settings for Conditional Access decisions in the same way built-in compliance settings are.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Custom and built-in settings form a compound rule set affecting device compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "Together they form a compound rule set, equally affecting the device compliance state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: defaultState; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "Custom compliance is admin-opt-in per policy and adds no custom rules unless an administrator configures it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "Optionally, add custom settings for supported platforms.\nFor Linux and macOS:\nSwitch Require Custom Compliance to True.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The discovery script must be uploaded before policy creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "This script must be uploaded before you begin to create the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Intune does not validate uploaded discovery scripts for syntax or programmatic errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Intune doesn’t validate the script for syntax or programmatic errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Anything the discovery script prints becomes data held in Intune compliance reports.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Intune custom compliance discovery script output values stored report actual value macOS; \"custom compliance\" \"script\" \"reports\" \"output\" \"stored\". Opened custom-settings and create-custom-script; neither states that everything printed is stored in compliance reports.",
+      "severity": "major",
+      "fix": "Replace 'so anything your script prints becomes data held in Intune compliance reports' with 'and Intune displays per-setting compliance results', as documented at https://learn.microsoft.com/intune/device-security/compliance/custom-settings."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Noncompliant devices and settings report provides per-setting custom compliance details for macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "For Linux, macOS, and Windows devices, view per-setting device compliance details for custom compliance settings in the Microsoft Intune admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Actions for noncompliance can mark a device noncompliant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "you might change the schedule of the default action Mark device noncompliant to occur after one day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Actions for noncompliance can send the user an email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "You can then add an action to send an email to the user when the device isn't compliant to warn them of that status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Actions for noncompliance can lock the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "You can also add actions that lock or retire devices that remain noncompliant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The policy can automatically retire a device as an action triggered by noncompliance.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/configure-noncompliance-actions",
+      "quote": "The device isn't retired until an administrator explicitly initiates the retirement process.",
+      "severity": "blocker",
+      "fix": "Replace 'lock the device or retire it' with 'lock the device or add it to a retire list; retirement requires an administrator to explicitly initiate and confirm it'. Replace 'before any lock or retire action' with 'before any lock or add-to-retire-list action'. Cite https://learn.microsoft.com/intune/device-security/compliance/configure-noncompliance-actions, which qualifies the create-policy page's abbreviated description."
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The schedule of the noncompliance action can provide a grace period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "You can configure the schedule to give your users a grace period, such as one day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn lists 65007 as Script returned failure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "65007: Script returned failure",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn lists 65008 as Setting missing in the script result.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "65008: Setting missing in the script result",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn lists 65009 as Invalid json for the discovered setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "65009: Invalid json for the discovered setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn lists 65010 as Invalid datatype for the discovered setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "65010: Invalid datatype for the discovered setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "The create-policy page states an output limit of 2048 characters and warns that truncation can cause error 65009.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "Discovery script output is limited to 2048 characters. If the output exceeds this limit, it may be truncated, resulting in invalid JSON and error 65009 during compliance evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "The discovery scripts page instead states a 1 MB output limit, a discrepancy the briefing explicitly reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Output generated by each script can be no larger than 1 MB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Limits",
+      "type": "behaviour",
+      "claim": "Discovery scripts can be no larger than 1 MB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Scripts can be no larger than 1 megabyte (MB) each.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Limits",
+      "type": "behaviour",
+      "claim": "macOS discovery scripts must run in 10 minutes or less.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "On macOS, scripts must take 10 minutes or less to run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support",
+      "type": "admin-path",
+      "claim": "A macOS user can open Company Portal, select Devices, select their device and select Check Status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+      "quote": "On macOS, a user can open the Company Portal app, select Devices, select their device, and then select Check Status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model rests on the compliance-policy prerequisite of a Microsoft Intune subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "Licensing requirements\nMicrosoft Intune subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Entra ID P1 or P2 is needed for Conditional Access, not for Intune compliance itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "If you use Conditional Access, then you need Microsoft Entra ID P1 or P2 edition. Microsoft Entra pricing lists what you get with the different editions. Intune compliance doesn't require Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence specific to custom compliance is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune custom compliance licensing price billing meter macOS. Opened custom-settings, create-policy, and Intune fundamentals/licensing; no custom-compliance-specific licence was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to custom compliance is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune custom compliance licensing price billing meter macOS. Opened custom-settings, create-policy, and Intune fundamentals/licensing; found no price specific to custom compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter is documented for custom compliance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune custom compliance licensing price billing meter macOS; \"Intune\" \"custom compliance\" \"meter\". Opened custom-settings, create-policy and Intune fundamentals/licensing; found no custom compliance meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Endpoint security > Device compliance > Scripts > Add > macOS reaches the discovery-script creation workflow in Microsoft Intune admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "go to Endpoint security > Device compliance > Scripts > Add > (choose your platform).\nOn Basics, provide a Name.\nOn Settings, add your script to Detection script.",
+      "severity": "minor",
+      "fix": "Extend the UI path in the front matter and rendered table to 'Endpoint security > Device compliance > Scripts > Add > macOS > Basics > Settings > Detection script'. The printed route is correct but stops before the script upload field."
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/deviceManagement/deviceComplianceScripts is documented automation for the macOS discovery-script upload control.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"macOS\" \"custom compliance\" \"deviceComplianceScripts\". Opened deviceComplianceScript-create and macOSCompliancePolicy. The create reference documents detectionScriptContent as PowerShell and does not establish macOS Bash support.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null and render that side as 'Not yet documented'. Retain the prose explaining that the deviceComplianceScript reference describes PowerShell and does not document how a macOS Bash script is held. Do not present this generic endpoint as verified macOS upload automation."
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The cited beta endpoint creates a script object, describes detectionScriptContent as PowerShell, and does not mention macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-devices-devicecompliancescript-create?view=graph-rest-beta",
+      "quote": "Create a new deviceComplianceScript object.\nPOST /deviceManagement/deviceComplianceScripts\ndetectionScriptContent | Binary | The entire content of the detection powershell script",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].ui; What's changing; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Devices > Manage devices > Compliance route reaches Require Custom Compliance in the macOS policy wizard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "Then select Create to open the configuration page.\nOn the Basics tab, enter a Name\nOn the Compliance settings page, select Add settings to open the Settings picker.\nSelect Custom Compliance.\nSwitch Require Custom Compliance to True.",
+      "severity": "minor",
+      "fix": "Use 'Devices > Manage devices > Compliance > Create policy > macOS > Create > Basics > Compliance settings > Add settings > Custom Compliance > Require Custom Compliance' in both copies of the path. The current path omits only passage through Create and Basics, not a platform or policy-type choice."
+    },
+    {
+      "n": 61,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Graph call was found that adds the discovery script and JSON custom rules to a macOS compliance policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune macOS custom compliance Graph API deviceManagement configurationPolicies custom compliance script rules file; \"macOS\" \"custom compliance\" \"Graph\" \"rules\". Opened macOSCompliancePolicy and deviceComplianceScript-create; neither documents this macOS policy setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The policy's Assignments tab assigns it to groups, and it applies to those groups after saving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "On the Assignments tab, assign the policy to your groups.\nSelect Add groups, and then assign the policy to one or more groups. The policy applies to these groups when you save the policy after the next step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].note; Scope: Roles",
+      "type": "role",
+      "claim": "Device compliance policies is an Intune permission category with Assign, Create, Delete, Read, Update and View reports actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/ref-built-in-roles",
+      "quote": "Device compliance policies | Assign\nDevice compliance policies | Create\nDevice compliance policies | Delete\nDevice compliance policies | Read\nDevice compliance policies | Update\nDevice compliance policies | View reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Roles",
+      "type": "absence",
+      "claim": "Learn does not name a role specific to custom compliance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom compliance\" \"macOS\" \"role\"; Intune custom compliance tenant wide switch disable role permissions. Searched the fetched built-in role permissions page for custom compliance and read its Device compliance policies rows; found no dedicated custom compliance role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn documents no tenant-wide switch for custom compliance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom compliance\" \"tenant-wide\"; Intune custom compliance tenant wide switch disable role permissions. Opened custom-settings and create-policy; the documented enabling setting is per policy, with no custom compliance tenant-wide switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The macOSCompliancePolicy reference lists no custom compliance property.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"macOS\" \"custom compliance\" \"Graph\" \"rules\". Read the complete macOSCompliancePolicy resource reference, including its properties, relationships and JSON representation; none lists a custom compliance property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Intune Graph beta APIs are subject to more frequent change than v1.0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-devices-devicecompliancescript-create?view=graph-rest-beta",
+      "quote": "Microsoft supports Intune /beta APIs, but they are subject to more frequent change. Microsoft recommends using version v1.0 when possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "The medium risk rating is based on exposure after administrators opt in rather than exposure if nobody acts.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "risk: \"medium\"\nMedium. A script you write runs on managed Macs ... nothing applies until an admin builds a policy.\nWhy it matters: If nobody acts, nothing is added to your Mac compliance policies.",
+      "severity": "minor",
+      "fix": "Set risk to 'low' and replace the risk rationale with 'Low. Custom compliance adds no rules until an administrator configures it in a policy.' The schema's low-risk definition explicitly includes nothing happening until an admin opts in."
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to configure noncompliance grace periods and check Conditional Access policies, but neither control has a table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "set a grace period on the noncompliance action ... Check the Conditional Access policies that depend on compliance ... Table rows: discovery script; macOS custom compliance policy.",
+      "severity": "minor",
+      "fix": "The checklist steps about the noncompliance-action grace period and dependent Conditional Access policies have no matching controls-table rows. Remove those two instructions from the checklist to make it agree with the existing table; do not add unverified rows."
+    },
+    {
+      "n": 70,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Devices must be enrolled in Intune to see their compliance status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "Enroll devices in Intune (required to see the compliance status)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The macOS policy workflow selects a previously uploaded discovery script.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "For Select your discovery script, select Select a script. Then select a script that’s been previously added to the Microsoft Intune admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The macOS policy workflow adds a prepared JSON rules file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+      "quote": "For Select your rules file, select the folder icon and then locate and add the JSON file that you want to use with this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A macOS discovery script can report the version of an installed management agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "The following example returns the version of the Microsoft Intune Agent app installed on the device:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The discovery script returns values for settings named in the JSON file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+      "quote": "Identify one or more settings, as defined in the JSON, and return a list of discovered values for those settings.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T14:05:08.743Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=553222",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-security/compliance/custom-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-json",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/intune-devices-devicecompliancescript-create?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/intune-deviceconfig-macoscompliancepolicy?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/ref-built-in-roles",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which discovery script a macOS custom compliance policy can use",
+        "docs": "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script",
+        "reachable": true,
+        "segments": [
+          "Endpoint security",
+          "Device compliance",
+          "Scripts",
+          "Add",
+          "macOS"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which discovery script a macOS custom compliance policy can use",
+        "docs": "https://learn.microsoft.com/graph/api/intune-devices-devicecompliancescript-create?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/deviceManagement/deviceComplianceScripts",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a macOS compliance policy requires custom compliance, with its script and JSON rules file",
+        "docs": "https://learn.microsoft.com/intune/device-security/compliance/create-policy",
+        "reachable": true,
+        "segments": [
+          "Devices",
+          "Manage devices",
+          "Compliance",
+          "Create policy",
+          "macOS",
+          "Compliance settings",
+          "Add settings",
+          "Custom Compliance",
+          "Require Custom Compliance"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,606 @@
+{
+  "slug": "microsoft-purview-compliance-portal-custom-permissions-ui-enhancements-in-microsoft-purvie",
+  "roadmapId": 493749,
+  "title": "Microsoft Purview: new custom permissions menu in the Information Protection File Labeler",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "5 blocking findings (claims 14, 15, 16, 17, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 46,
+    "confirmed": 40,
+    "unconfirmed": 0,
+    "contradicted": 6,
+    "blocker": 5,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: Microsoft already documents the Office-style custom permissions dialog in released client versions, although the roadmap still says In development. The briefing incorrectly says the version, delivery and administrator action are undocumented; the release notes give upgrade and authentication-token instructions.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap plans to replace the File Labeler's existing custom permissions UI with the familiar Office menu.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature borrows the familiar custom permissions menu in Office and replaces the existing custom permissions UI in the Microsoft Purview Information Protection File Labeler.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The planned menu assigns viewer, restricted editor, editor and owner permissions to multiple groups at the same time.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The new menu enables viewer, restricted editor, editor and owner permissions to be assigned to multiple groups at the same time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026, which has passed as of the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is September CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The roadmap record was last modified on 23 January 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-01-23T00:15:29\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "File Labeler is a component of the Information Protection client used to apply sensitivity labels and encryption through File Explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "| [Information protection file labeler](https://support.microsoft.com/topic/label-and-protect-files-in-file-explorer-in-windows-67829155-2d0e-4122-9677-7c53c8cba18a) | Used to apply sensitivity labels and encryption using File Explorer. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The client described by the cited Windows client page runs on Windows only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "This client runs on Windows only and replaces the Azure Information Protection (AIP) unified labeling client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The Windows client supports 64-bit Windows and Windows Server versions supported under the Microsoft Lifecycle Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "The Microsoft Purview Information Protection client supports 64-bit versions of Windows and Windows Server that are supported under the Microsoft Lifecycle Policy, including versions in extended support:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "ARM64 is supported for the viewer and file labeler.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "ARM64 is supported for the viewer and file labeler, but isn't supported for the scanner or PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe the new custom permissions menu as of November 2026.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/information-protection-client-relnotes",
+      "quote": "## Version 3.2.92.0\n\nMicrosoft Purview Information Protection client and scanner version 3.2.92.0.\n\n**Released** 06/11/2026\n\nUpdated the Custom Permissions dialog styling to match the same experience in Office.",
+      "severity": "blocker",
+      "fix": "Replace the documentation-gap sentence with: 'The roadmap still says In development, but Microsoft's client release notes document the Office-style Custom Permissions dialog in version 3.2.92.0, released 11 June 2026, following preview version 3.2.89.0 on 22 April 2026.' Cite https://learn.microsoft.com/purview/information-protection-client-relnotes and retain the roadmap's status and target as record facts, not as the only account of availability."
+    },
+    {
+      "n": 15,
+      "where": "Scope; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated a client version carrying the new custom permissions menu.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/information-protection-client-relnotes",
+      "quote": "## Version 3.2.92.0\n\n**Released** 06/11/2026\n\nUpdated the Custom Permissions dialog styling to match the same experience in Office.",
+      "severity": "blocker",
+      "fix": "Replace the version gap and its open question with: 'The Office-style Custom Permissions dialog is documented in client version 3.2.92.0, released 11 June 2026; version 3.2.172.0 preview, released 1 September 2026, subsequently improved recipient search and support for different permission levels for recipients.' Cite https://learn.microsoft.com/purview/information-protection-client-relnotes. Change the rollout checklist to checking installed client versions against these documented releases."
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated how the new menu reaches existing client installations.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/information-protection-client-relnotes",
+      "quote": "Including the Microsoft Purview Information Protection client in the catalog means that you can upgrade the client using Windows Server Update Services (WSUS) or Configuration Manager, or other software deployment mechanisms that use Microsoft Update.",
+      "severity": "blocker",
+      "fix": "Replace the delivery gap with: 'The dialog update ships in the client. Microsoft distributes Windows client releases through the Microsoft Download Center and, typically after four weeks for GA versions, the Microsoft Update Catalog, supporting upgrades through WSUS, Configuration Manager or other Microsoft Update deployment mechanisms.' Cite https://learn.microsoft.com/purview/information-protection-client-relnotes. Remove the open question asking how it will be delivered."
+    },
+    {
+      "n": 17,
+      "where": "summary; Why it matters; Scope: prerequisites",
+      "type": "absence",
+      "claim": "No administrator action or prerequisites for the updated menu are documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/information-protection-client-relnotes",
+      "quote": "After upgrading to this version, run [Clear-Authentication](/en-us/powershell/module/purviewinformationprotection/clear-authentication) and then [Set-Authentication](/en-us/powershell/module/purviewinformationprotection/set-authentication) so that the client and PowerShell module obtain the access tokens needed",
+      "severity": "blocker",
+      "fix": "Remove 'no admin action is documented yet' from the summary and the equivalent claim in Why it matters. Replace the prerequisite gap with: 'The version 3.2.92.0 release notes instruct administrators, after upgrading, to run Clear-Authentication and then Set-Authentication so the client and PowerShell module obtain the access tokens needed to connect to Microsoft Graph.' Cite https://learn.microsoft.com/purview/information-protection-client-relnotes."
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly state a separate default or activation switch for the replacement menu.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Information Protection File Labeler custom permissions menu default'; read client requirements, advanced settings and client release notes. Releases document the updated dialog, but no separate activation default or switch for the redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[0].governs",
+      "type": "default",
+      "claim": "Users see Protect with custom permissions by default when they right-click in File Explorer with File Labeler.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/exchange/client-advanced-settings?view=exchange-ps",
+      "quote": "By default, users see an option named **Protect with custom permissions** when they right-click in File Explorer with the file labeler.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The current custom permissions option lets users set encryption settings that can override label encryption settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/exchange/client-advanced-settings?view=exchange-ps",
+      "quote": "This option lets them set their own encryption settings that can override any encryption settings that you might have included with a label configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Reviewer was renamed Restricted Editor in the places Learn lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "**Reviewer** is now called **Restricted Editor**, **Co-Author** is now called **Editor**, and **Co-Owner** is now called **Owner**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Co-Author was renamed Editor in the places Learn lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "**Reviewer** is now called **Restricted Editor**, **Co-Author** is now called **Editor**, and **Co-Owner** is now called **Owner**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Co-Owner was renamed Owner in the places Learn lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "**Reviewer** is now called **Restricted Editor**, **Co-Author** is now called **Editor**, and **Co-Owner** is now called **Owner**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Learn places the naming update in the Purview portal and the Word, Excel and PowerPoint custom permissions dialog on Windows version 2411 and later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "The Microsoft Purview portal and the custom permissions dialog in Word, Excel, and PowerPoint for Windows (version 2411+) have updated permissions level naming.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says other applications continue using the original permission-level names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "Other applications continue to use the original permissions level naming.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The menu is an included option within the licensed Information Protection client rather than a separately documented entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "You must have a cloud-based subscription for sensitivity labeling using the Microsoft Purview Information Protection client or scanner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The client page requires a cloud-based subscription for sensitivity labelling using the client or scanner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "You must have a cloud-based subscription for sensitivity labeling using the Microsoft Purview Information Protection client or scanner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The client page's Subscription requirement links to licensing guidance without naming a subscription plan itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "You must have a cloud-based subscription for sensitivity labeling using the Microsoft Purview Information Protection client or scanner. For more information, see:\n\n- [Microsoft 365 licensing guidance for security & compliance]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No price, meter or licence specific to the redesigned custom permissions menu is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview File Labeler custom permissions menu licensing subscription price meter'; 'File Labeler new menu licence price'. Read client Subscription, release notes and Purview service description sensitivity-labeling licensing; no menu-specific charge or entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; rendered controls table",
+      "type": "absence",
+      "claim": "No administrator portal path is documented for setting EnableCustomPermissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'EnableCustomPermissions portal UI setting File Explorer custom permissions'. Opened advanced client settings and Set-LabelPolicy reference; both document PowerShell, not an administrator portal setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; rendered controls table; Risk assessment: Data exposure",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity \"Global Policy\" -AdvancedSettings @{EnableCustomPermissions=\"False\"} hides the File Explorer custom permissions option for the named policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
+      "quote": "Set-LabelPolicy -Identity \"Global Policy\" -AdvancedSettings @{EnableCustomPermissions=\"False\"}\n\nThis example configures the specified advanced setting for the sensitivity label policy name Global Policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Why it matters; Governance guidance; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "EnableCustomPermissions is documented for the existing option but is not confirmed to govern the replacement menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/exchange/client-advanced-settings?view=exchange-ps",
+      "quote": "| EnableCustomPermissions | Turn off custom permissions in File Explorer |\n\nWhen you configure this setting, users do not see these options.",
+      "severity": "minor",
+      "fix": "Replace the unconfirmed-applicability caveat with: 'EnableCustomPermissions controls the Protect with custom permissions option in File Explorer.' Remove the corresponding carry-over uncertainty from Why it matters, Governance controls and Open questions. The documented control's scope is File Explorer custom permissions, not a particular dialog design; pilot testing can remain advice."
+    },
+    {
+      "n": 33,
+      "where": "controls[1].ui; rendered controls table",
+      "type": "absence",
+      "claim": "No administrator portal path is documented for hiding the Apply sensitivity label with Microsoft Purview File Explorer entry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'LegacyDisable Purview hide File Explorer menu admin UI'. Opened the Windows client Supported customizations section; it documents a local registry value, not an administrator portal control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].api; controls[1].note; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "Creating a DWORD value named LegacyDisable with any value data under HKEY_CLASSES_ROOT\\AllFilesystemObjects\\shell\\Microsoft.Azip.RightClick hides the whole File Explorer labeler entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "create the following DWORD registry key that has the value name of **LegacyDisable** and any value data:\n\n**HKEY_CLASSES_ROOT\\AllFilesystemObjects\\shell\\Microsoft.Azip.RightClick**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls: introductory note about both rows",
+      "type": "applicability",
+      "claim": "The registry control is not confirmed as a control over access to the replacement menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "To hide the **Apply sensitivity label with Microsoft Purview** right-click menu option in File Explorer, create the following DWORD registry key that has the value name of **LegacyDisable** and any value data:",
+      "severity": "minor",
+      "fix": "Replace the registry-control uncertainty with: 'The registry value hides the File Explorer entry used to open File Labeler; it is not a switch for only the custom permissions dialog.' Retain the existing warning that it hides the entire entry."
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Set-LabelPolicy is functional only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
+      "quote": "This cmdlet is functional only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Using Set-LabelPolicy requires assigned permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
+      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "When EnableCustomPermissions is disabled, users by default cannot see or change custom permissions already set on an encrypted document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/exchange/client-advanced-settings?view=exchange-ps",
+      "quote": "When you configure the advanced client setting *EnableCustomPermissions* to turn off custom permissions in File Explorer, by default, users are not able to see or change custom permissions that are already set in an encrypted document.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "EnableCustomPermissionsForCustomProtectedFiles set to True lets users see and change existing custom permissions in File Explorer despite EnableCustomPermissions being disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/exchange/client-advanced-settings?view=exchange-ps",
+      "quote": "users can see and change custom permissions for an encrypted document when they use File Explorer and right-click the file.\n\n- Key: **EnableCustomPermissionsForCustomProtectedFiles**\n- Value: **True**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Neither the roadmap nor Learn describes a change to sign-in or authentication associated with the menu update.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/information-protection-client-relnotes",
+      "quote": "Integrated Microsoft Graph with the Microsoft Purview Information Protection client and PowerShell module to look up users and groups when assigning custom permissions, removing the dependency on the classic Outlook contact picker.",
+      "severity": "blocker",
+      "fix": "Replace the sign-in/authentication absence with: 'The version 3.2.92.0 release notes document Microsoft Graph integration for looking up users and groups and instruct administrators to refresh authentication with Clear-Authentication followed by Set-Authentication after upgrading.' Cite https://learn.microsoft.com/purview/information-protection-client-relnotes."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified the group types or external-domain rules of the redesigned menu.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'File Labeler custom permissions groups'; 'Purview File Labeler new custom permissions menu 493749 release notes default client version groups'. Read release notes, advanced settings and File Explorer support; none specifies group types for the redesigned menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes a permissions menu and does not describe autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature borrows the familiar custom permissions menu in Office and replaces the existing custom permissions UI in the Microsoft Purview Information Protection File Labeler.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "The cited known-issues page lists an Address Book button failure when new Outlook is used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/known-issues-ip-client",
+      "quote": "If you use new Outlook, the Address Book button in the \\*\\*Select \\_users, groups, or organizations\" field in the Information Protection File Labeler app doesn't open the Outlook address book. You must add email addresses manually.",
+      "severity": "minor",
+      "fix": "Add the qualification: 'However, the client release notes for version 3.2.92.0 say Microsoft Graph lookup removes the dependency on the classic Outlook contact picker.' Cite https://learn.microsoft.com/purview/information-protection-client-relnotes. Replace the speculative open question about the new menu fixing Outlook address-book dependency with advice to check the installed client version against those release notes."
+    },
+    {
+      "n": 44,
+      "where": "Open questions: domain-name support",
+      "type": "behaviour",
+      "claim": "The known-issues page says the Restricted Access dialog does not support specifying a domain name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/known-issues-ip-client",
+      "quote": "Unlike the Microsoft Azure Information Protection dialog box, the **Restricted Access** dialog box doesn't support specifying a domain name to automatically include all users in the organization.",
+      "severity": "minor",
+      "fix": "Remove the final explanatory sentence about Restricted Access from this open question. It occurs under coauthoring issues, while https://support.microsoft.com/topic/label-and-protect-files-in-file-explorer-in-windows-67829155-2d0e-4122-9677-7c53c8cba18a explicitly documents entering a domain name in File Labeler's Select users, groups, or organizations field. The narrower question about the redesigned menu can remain."
+    },
+    {
+      "n": 45,
+      "where": "Scope: macOS cross-reference",
+      "type": "record",
+      "claim": "File Labeler and File Viewer for macOS are covered by a separate roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "561327: Microsoft Purview: Information Protection- File Labeler and File Viewer for MacOS. This feature is bringing the Information Protection Filer Labeler and Viewer applications to the MacOS platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to inventory EnableCustomPermissionsForCustomProtectedFiles, but the controls table has no row for that control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Identify which label policies already set `EnableCustomPermissions` or `EnableCustomPermissionsForCustomProtectedFiles` ... The table contains only EnableCustomPermissions and the LegacyDisable registry value.",
+      "severity": "minor",
+      "fix": "Remove 'or EnableCustomPermissionsForCustomProtectedFiles' from the inventory checklist item so it asks readers to inventory only the existing EnableCustomPermissions table row. The documented explanation of the other setting in Governance controls can remain."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T14:05:09.500Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=493749",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/information-protection-client",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/exchange/client-advanced-settings?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/known-issues-ip-client",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether File Labeler users see the Protect with custom permissions option in File Explorer",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "Set-LabelPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Apply sensitivity label with Microsoft Purview option appears in File Explorer",
+        "docs": "https://learn.microsoft.com/purview/information-protection-client",
+        "reachable": true,
+        "token": "Create DWORD",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
