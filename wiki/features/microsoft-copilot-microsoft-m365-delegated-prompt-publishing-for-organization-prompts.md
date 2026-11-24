@@ -61,15 +61,17 @@ changes:
     note: "Corrected the default state to unknown, as Microsoft has not stated the delegation default, and added it to open questions."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 41 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 41
+  claims: 43
+  confirmed: 43
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -148,4 +150,12 @@ Microsoft Learn documents role-gated prompt management in the admin centre; no G
 risk: Medium. Delegates can publish tenant-wide prompts that users see and run, so poor or unreviewed prompts can reach everyone without admin involvement.
 cost: Low. Admin time to define the delegate list and a review process; no licence change is published.
 impact: Medium. Affects prompt authors and admins directly, and all users who see suggested organisation prompts indirectly.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes / licensing: Licensing for delegated organization-prompt publishing is not yet published. | Found: Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses. | Fix: Set licensing.model to included and replace the notes with: 'Copilot Chat (Basic) is included with eligible Microsoft 365 licenses. Licensing specific to delegated organization-prompt publishing is not yet published.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Targeted licensing searches and the organizational-prompts prerequisites did not identify delegate-specific entitlement. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Copilot > Prompts is the location for creating, editing, importing and pinning organization prompts. | Found: Expand Copilot and select Prompts. ... Select Create prompt. ... select Edit. ... Select Import prompts ... Select Pin prompt from the more options menu (...). | Fix: The path correctly reaches the prompt list but stops before its actions. Keep 'Copilot > Prompts' and add to the row note: 'From the prompt list, select Create prompt or Import prompts; to edit, select a prompt > Edit; to pin, select a prompt > Pin prompt from the more options menu.' These are the routes at https://learn.microsoft.com/copilot/manage/organizational-prompts. | Source: https://learn.microsoft.com/copilot/manage/organizational-prompts
+- [supported, minor] summary; What's changing; Scope / record: Administrators can delegate organization-prompt publishing to individual users. | Found: Now, admins can delegate organization prompt publishing to users, AAD security groups, and distribution groups. | Fix: Replace the summary with: 'Microsoft plans to let admins delegate organisation prompt publishing to users and groups, who would manage tenant-wide prompts in the Prompt Lab without admin centre access.' Introduce the delegation description in What's changing with 'The roadmap item describes planned delegation:' so the following capabilities are not presented as already available.
 -->

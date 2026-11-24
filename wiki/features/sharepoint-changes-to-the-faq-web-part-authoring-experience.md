@@ -4,8 +4,8 @@ slug: "sharepoint-changes-to-the-faq-web-part-authoring-experience"
 roadmapId: 570647
 topic: "modern-work"
 products: ["SharePoint"]
-summary: "The SharePoint FAQ web part drops its built-in AI authoring; AI FAQ creation and import move to Copilot in SharePoint. No admin action is required, but tell authors and update training."
-status: "rolling-out"
+summary: "The SharePoint FAQ web part drops its built-in AI authoring; AI FAQ creation and import move to Copilot in SharePoint. Launched; no admin action is required, but tell authors and update training."
+status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
 platforms: ["Web"]
@@ -35,7 +35,7 @@ sources:
     url: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
     kind: "learn"
 videos: []
-related: ["m365-copilot-copilot-in-sharepoint","sharepoint-html-pages"]
+related: ["m365-copilot-copilot-in-sharepoint","restricted-content-discovery","sharepoint-html-pages","copilot-credits"]
 controls:
   - governs: "Whether Copilot in SharePoint and AI actions appear on a site"
     scope: "site"
@@ -50,8 +50,8 @@ controls:
     note: "Existing setting, not specific to the FAQ web part. SharePoint administrators manage it by default; needs a Microsoft Copilot licence."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
-roadmapModified: "2026-10-27T23:05:02"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-22"
     note: "First briefing on the FAQ web part moving to non-AI authoring, with AI FAQ generation in Copilot in SharePoint."
@@ -61,36 +61,40 @@ changes:
     note: "Corrected the Restricted Content Discovery statement to say it governs where Copilot in SharePoint and AI actions appear, and noted the cited Learn page's preview-to-GA wording."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Status moved to Launched; removed the GCC tag (added from the record) and updated the preview PowerShell controls now that November 1, 2026 has passed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 3
 verification:
   status: "verified"
-  date: "2026-11-22"
-  version: 2
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "971df0f1b14fcfee7aaf6d9eb493fd44"
+  hash: "bba408c334f536bcc837d15cd3ed6179"
 ---
 
 ## What's changing
 
-The SharePoint FAQ web part will offer a standard, non-AI experience for manually creating, editing and managing FAQs. AI-assisted FAQ creation and import will move to the Copilot in SharePoint authoring experience, where authors use natural-language prompts and selected grounding sources to generate FAQ content that is saved to the compatible FAQ web part. Existing FAQ web parts and their content will continue to render without migration.
+The SharePoint FAQ web part now offers a standard, non-AI experience for manually creating, editing and managing FAQs. AI-assisted FAQ creation and import move to the Copilot in SharePoint authoring experience, where authors use natural-language prompts and selected grounding sources to generate FAQ content that is saved to the compatible FAQ web part. Existing FAQ web parts and their content continue to render without migration.
 
 Microsoft's notice MC1476319 (published 2026-09-21) says the change affects authors who create or edit FAQs on SharePoint pages and news posts, and users who use AI-assisted authoring to generate or import FAQ content. It says rollout for Worldwide and GCC begins in late October 2026 and is expected to complete in early November 2026.
 
-The roadmap item shows status Rolling out, target October CY2026, release phase General Availability, platform Web, and clouds Worldwide (Standard Multi-Tenant) and GCC. The target is Microsoft's plan, not a commitment.
+The roadmap item now shows status Launched, target October CY2026, release phase General Availability, platform Web, and clouds Worldwide (Standard Multi-Tenant) and GCC.
 
 Microsoft Learn does not describe the FAQ web part change itself at the time of writing (November 2026), so what this page says about its behaviour is the roadmap and notice description. Learn does describe Copilot in SharePoint, which is where the AI route moves.
 
 ## Why it matters
 
-For most tenants this is a communication change, not a configuration change. Authors who relied on AI inside the FAQ web part will have to find the same capability in Copilot in SharePoint, and any training material or support article that shows the old AI workflow becomes out of date. Microsoft's notice recommends informing authors and site owners and updating training, support documentation and governance guidance.
+For most tenants this is a communication change, not a configuration change. Authors who relied on AI inside the FAQ web part have to find the same capability in Copilot in SharePoint, and any training material or support article that shows the old AI workflow is out of date. Microsoft's notice recommends informing authors and site owners and updating training, support documentation and governance guidance. The notice gives a rollout schedule and says no administrative action is required, so the change reaches authors without an administrator choosing it.
 
-The change also ties AI FAQ generation to Copilot in SharePoint's licensing and availability controls. Learn says users of Copilot in SharePoint need a Microsoft 365 Copilot licence, so expect authors without one to ask where the AI option went. The notice says no administrative action is required, and the roadmap item describes the FAQ web part's manual route as standard and non-AI.
+The change also ties AI FAQ generation to Copilot in SharePoint's licensing and availability controls. Learn says users of Copilot in SharePoint need a Microsoft 365 Copilot licence, so expect authors without one to ask where the AI option went.
 
 ## Risk assessment
 
@@ -109,7 +113,7 @@ The change also ties AI FAQ generation to Copilot in SharePoint's licensing and 
 
 **Change & support**
 
-- Authors who generated or imported FAQs with AI in the web part will no longer find that route there. Expect help-desk questions and out-of-date internal guides until training is updated, as the notice recommends.
+- Authors who generated or imported FAQs with AI in the web part no longer find that route there. Expect help-desk questions and out-of-date internal guides until training is updated, as the notice recommends.
 
 ## Cost and licensing
 
@@ -163,7 +167,7 @@ Microsoft Learn documents no admin setting specific to the FAQ web part's author
 
 By default only SharePoint administrators manage it; Learn describes optional delegation to site administrators. It needs a Microsoft Copilot licence and the page's prerequisites. Learn describes it as removing AI entry points such as the Copilot button and Create pages with AI; it does not say how it affects the FAQ web part itself, so treat it as an existing control, not a switch for this change.
 
-The preview PowerShell availability settings for Copilot in SharePoint remain in effect only until November 1, 2026 per Learn; after that date Learn points to Site AI settings and Restricted Content Discovery.
+Learn says existing preview PowerShell availability settings for Copilot in SharePoint were honoured until November 1, 2026, and that after that date availability is managed through Site AI settings and Restricted Content Discovery.
 
 ## Open questions
 

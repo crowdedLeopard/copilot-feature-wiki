@@ -4,8 +4,8 @@ slug: "planner-capacity-view"
 roadmapId: 569733
 topic: "modern-work"
 products: ["Planner"]
-summary: "Planner adds a Capacity view timeline of who is working on what. Microsoft's notice says it is on by default for Planner and Project Plan 3 users and has no admin switch. No admin action is required, but users should be told."
-status: "rolling-out"
+summary: "Planner has launched a Capacity view timeline of who is working on what. Microsoft's notice says it is on by default for Plan 3 users and has no admin switch. No admin action is required, but users should be told."
+status: "launched"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Desktop","Web"]
@@ -18,7 +18,7 @@ defaultState: "on"
 action: "prepare"
 licensing:
   model: "per-user"
-  notes: "The Planner service description lists Capacity view as available with Planner and Project Plan 3 and not with the other columns of its table. Microsoft's notice MC1474110 says users without a Plan 3 licence do not see it. A price is not given on those pages."
+  notes: "The Planner service description lists Capacity view as available with Planner and Project Plan 3 and not with the other columns of its table. Microsoft's notice MC1474110 says users without a Plan 3 licence do not see it. No price is given on those pages."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["planner","teams","outlook","licensing","admin-controls"]
 sources:
@@ -72,8 +72,8 @@ controls:
     note: "Microsoft's notice MC1474110 says there is no admin control to disable it."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
-roadmapModified: "2026-10-26T23:15:50"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-22"
     note: "First briefing for Planner Capacity view, rolling out per the roadmap and notice MC1474110, with Plan 3 licensing and no admin switch."
@@ -87,30 +87,34 @@ changes:
     note: "Corrected the cost statement: Planner and Project Plan 5 includes all Plan 3 capabilities, so Plan 3 is needed only for users not already entitled through Plan 3 or Plan 5."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
-version: 3
+  - date: "2026-11-24"
+    note: "Status moved to Launched on the roadmap record; re-checked the service description (Plan 3 only, Plan 5 end of sale 1 May 2026) and controls, with no admin switch for the view documented."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 4
 verification:
   status: "verified"
-  date: "2026-11-22"
-  version: 3
+  date: "2026-11-24"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 62
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "a73d76398412204e556a36e92c4983ea"
+  hash: "439d55a0ca3526cf4c6ea0dc46cb780a"
 ---
 
 ## What's changing
 
-Planner is adding Capacity view, a new view on existing plans that shows a timeline of who is working on what, so that team leads can see how work is spread across a team and spot overload or open capacity. The roadmap item describes it in those terms.
+Planner has added Capacity view, a new view on existing plans that shows a timeline of who is working on what, so that team leads can see how work is spread across a team and spot overload or open capacity. The roadmap item describes it in those terms.
 
 Microsoft's notice MC1474110 adds detail. The view is a live staffing matrix built from existing Planner task data, and no new data is created. It appears alongside Board, Grid and Schedule, in Planner in Teams and Planner in Outlook (web and desktop). It is not included on mobile. Accuracy depends on tasks having assignees and start and finish dates; the notice says tasks missing either are not represented reliably.
 
 Microsoft Learn has no page about Capacity view itself at the time of writing (November 2026). Its Planner service description lists the view and says it is currently available only in unified plans, so what follows about behaviour rests on the roadmap item and the notice.
 
-The roadmap record gives status Rolling out and a target of October CY2026, for General Availability and Targeted Release. The notice, last updated 15 October 2026, gives Targeted Release beginning in late October 2026 and completing in late October 2026, and General availability (Worldwide) beginning in late October 2026 and completing by early November 2026. The notice's own text also tells admins to warn users about the view appearing in "early October 2026", which no longer matches its updated timeline. The notice shows a Microsoft end date of 14 December 2026.
+The roadmap record gives status Launched and a target of October CY2026, for General Availability and Targeted Release. The notice, last updated 15 October 2026, gives Targeted Release beginning in late October 2026 and completing in late October 2026, and General availability (Worldwide) beginning in late October 2026 and completing by early November 2026. The notice's own text also tells admins to warn users about the view appearing in "early October 2026", which no longer matches its updated timeline. The notice shows a Microsoft end date of 14 December 2026.
 
 ## Why it matters
 
@@ -136,9 +140,9 @@ The view is licence-gated. Per the service description, Planner and Project Plan
 
 ## Cost and licensing
 
-The Planner service description lists Capacity view as "Yes" for Planner and Project Plan 3 and "No" for Microsoft Planner included in Microsoft 365, Planner Plan 1 and Microsoft 365 Copilot. Microsoft's notice MC1474110 says the same in its own terms: users with a Planner Plan 3 licence are affected and users without one do not see the view. The service description also says Planner and Project Plan 5 includes all Planner and Project Plan 3 capabilities, whereas the notice says users without Plan 3 will not see the view.
+The Planner service description lists Capacity view as "Yes" for Planner and Project Plan 3 and "No" for Microsoft Planner included in Microsoft 365, Planner Plan 1 and Microsoft 365 Copilot. Microsoft's notice MC1474110 says the same in its own terms: users with a Planner Plan 3 licence are affected and users without one do not see the view. The service description also says Planner and Project Plan 5 includes all Planner and Project Plan 3 capabilities, whereas the notice says users without Plan 3 will not see the view. The same page says Plan 5 reached end of sale on May 1, 2026.
 
-The service description's footnote says the view is currently available only in unified plans, and that the features available to each user in a unified plan depend on their license. No meter, credit rate or separate charge for Capacity view appears on the pages read; the Plan 3 price is not given there.
+The service description's footnote says the view is currently available only in unified plans, and that the features available to each user in a unified plan depend on their license. The service description publishes no separate meter, credit rate or charge for Capacity view, and gives no Plan 3 price (November 2026).
 
 For users not already entitled through Planner and Project Plan 3 or an existing Planner and Project Plan 5 subscription, access can require purchasing Planner and Project Plan 3, plus admin time for communication and for tidying task assignees and dates. This briefing does not state the subscription price.
 
@@ -148,7 +152,7 @@ For users not already entitled through Planner and Project Plan 3 or an existing
 - **Clouds:** Worldwide (Standard Multi-Tenant), per the roadmap record and the notice.
 - **Platforms:** the roadmap record lists Desktop and Web. The notice names Planner in Teams and Planner in Outlook, web and desktop, and says the view is not included on mobile.
 - **Plans:** the service description says Capacity view is currently available only in unified plans; the notice says it appears on existing plans.
-- **Rollout:** status Rolling out, target October CY2026, with Targeted Release then General Availability, per the roadmap record. The notice's timeline is in What's changing.
+- **Rollout:** status Launched, target October CY2026, with Targeted Release then General Availability, per the roadmap record. The notice's timeline is in What's changing.
 - **Prerequisites:** the notice says accuracy depends on tasks having assignees and start and finish dates.
 
 ## Governance guidance
@@ -189,7 +193,7 @@ The Teams admin center page covers the Planner app in Teams, and says settings c
 - Which users inside a plan can see which people's rows in Capacity view, and does it follow plan membership? Watch the Planner service description and Message center.
 - Will Microsoft add an admin control for Capacity view? The notice says there is none; watch Message center and Planner for admins.
 - Does blocking the Planner app in the Teams admin center also affect Planner in Outlook? The Teams page does not say.
-- When did or will General Availability complete? The notice gives early November 2026 for completion, and the roadmap status is still Rolling out.
+- Did General Availability complete on the notice's timeline? The notice gives early November 2026 for completion, and the roadmap record now shows Launched.
 
 <!-- rationale
 risk: Low. Microsoft's notice says the view is built entirely from existing Planner task data and creates no new data, so it stays inside existing data boundaries.

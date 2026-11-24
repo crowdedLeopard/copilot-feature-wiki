@@ -4,8 +4,8 @@ slug: "microsoft-viva-engage-improved-shared-messages-end-user-experience"
 roadmapId: 578870
 topic: "modern-work"
 products: ["Microsoft Viva"]
-summary: "Microsoft is rolling out richer previews of shared messages in Viva Engage, with a dialog on web surfaces to open the full conversation. Users get it automatically; Microsoft's notice asks admins only to tell users."
-status: "rolling-out"
+summary: "Microsoft is rolling out richer previews of shared messages in Viva Engage, with a dialog on web surfaces to open the full conversation. Users get it automatically; Microsoft recommends informing users and updating training or support materials."
+status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Desktop","Web"]
@@ -40,6 +40,9 @@ sources:
   - title: "Legacy Viva Engage (Yammer) Core APIs"
     url: "https://learn.microsoft.com/rest/api/yammer/yammer-core-apis"
     kind: "learn"
+  - title: "Manage and set up storyline in Viva Engage"
+    url: "https://learn.microsoft.com/viva/engage/eac-storyline"
+    kind: "learn"
 videos: []
 related: ["microsoft-viva-engage-community-feed-improvements","microsoft-viva-viva-engage-new-left-navigation-controls-collapse-resize-increased-favorite"]
 controls:
@@ -50,26 +53,30 @@ controls:
     note: "Microsoft's notice names no admin control. Existing Engage conversation settings are not described as covering shared message previews."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
-roadmapModified: "2026-11-17T18:36:41"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-21"
     note: "First briefing: Microsoft is rolling out richer shared message previews and a conversation dialog in Viva Engage; no admin control is documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 54 statements not yet confirmed"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: removed an unsupported assurance about autonomy, aligned the summary with Microsoft's recommendation, added a source, and updated status to Launched per the roadmap record."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 56 statements not yet confirmed"
+version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 1
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 56
+  confirmed: 55
   unconfirmed: 1
   contradicted: 0
   attempts: 0
-  hash: "69c948624ffcbc2eaf49ee9adcc50942"
+  hash: "5545d82285162365752387e755810ae1"
 ---
 
 ## What's changing
@@ -78,7 +85,7 @@ Microsoft is changing how a shared message looks to the person who receives it i
 
 On Viva Engage web surfaces, a user can select a shared message or **View full conversation** to open the original conversation in a dialog, including replies and reactions. From that dialog the user can react, reply and share without losing their place in the feed. The notice says users continue to discover and share messages as they do today.
 
-The roadmap item (status Rolling out, target November CY2026, General Availability, Worldwide (Standard Multi-Tenant), Desktop and Web) describes the aim as making shared conversations easier to discover, read and participate in. MC1539003, published 2026-11-05, gives a rollout window beginning mid-November 2026 and expected to complete by late November 2026, with an end date of 2027-01-01 and no act-by date. Microsoft Learn has no page on this feature at the time of writing (November 2026), so the behaviour above is as the notice and roadmap describe it.
+The roadmap item (status Launched, target November CY2026, General Availability, Worldwide (Standard Multi-Tenant), Desktop and Web) describes the aim as making shared conversations easier to discover, read and participate in. MC1539003, published 2026-11-05, gives a rollout window beginning mid-November 2026 and expected to complete by late November 2026, with an end date of 2027-01-01 and no act-by date. Microsoft Learn has no page on this feature at the time of writing (November 2026), so the behaviour above is as the notice and roadmap describe it.
 
 ## Why it matters
 
@@ -98,7 +105,7 @@ The visible change is that more of the original post appears inside the shared m
 
 **Autonomy & actions**
 
-- No change: the notice describes the user reacting, replying and sharing from the dialog, which users already do in the feed; nothing runs on a user's behalf.
+- No change: the notice describes the user reacting, replying and sharing from the dialog, which users already do in the feed.
 
 **Change & support**
 
@@ -164,11 +171,8 @@ cost: Low. The only cost the sources show is admin time to inform users and upda
 impact: Medium. Anyone who views shared messages in Viva Engage sees different previews and a new dialog, though the notice says sharing workflows stay as they are.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Nothing runs on a user's behalf in the improved shared message experience. | Found: Searched: Viva Engage shared messages conversation dialog automatic autonomous actions acting on behalf of users. Read MC1539003 and Learn search excerpts for Engage integrations and Cowork; none states this assurance for shared message previews. | Fix: Remove '; nothing runs on a user's behalf' from the Autonomy & actions bullet. The notice documents users reacting, replying and sharing, but does not establish the broader negative assurance.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; Why it matters; Risk assessment: Change & support / record: Microsoft recommends informing users, summarised as asking administrators only to tell users. | Found: We recommend informing users about the improved shared message experience and updating any existing training or support materials that demonstrate how shared messages appear in Viva Engage. | Fix: Replace the summary's final sentence with 'Users get it automatically; Microsoft recommends informing users and updating training or support materials.' The notice recommends both actions rather than asking administrators only to tell users.
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Reacting and replying to posts are capabilities users already have in Viva Engage feeds. | Found: This setting controls who has a storyline feed on their user profile and who can create new storyline posts. It doesn't restrict who can view, react, or reply to storyline posts made by others. | Fix: Add https://learn.microsoft.com/viva/engage/eac-storyline to sources for the existing feed reaction and reply capabilities. | Source: https://learn.microsoft.com/viva/engage/eac-storyline#advanced-settings
+- [unsupported, minor] rationale: risk / behaviour: The change introduces no new data source. | Found: Searched: "Viva Engage" "shared messages" "preview"; Viva Engage improved shared message previews conversation dialog admin user setting default automatic rollout licensing price. Read MC1539003 and Learn results; none states that data sources remain unchanged. | Fix: Remove 'with no new data source or action' from the risk rationale. Use: 'Low. Microsoft's notice describes a display change to messages users already share; it does not say how previews treat recipients who cannot view the original post.'
 -->

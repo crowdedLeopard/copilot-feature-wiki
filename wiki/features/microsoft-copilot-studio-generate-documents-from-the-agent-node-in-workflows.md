@@ -89,15 +89,17 @@ changes:
     note: "Correction: narrowed the harness and created-files wording, added the environment-group rule on tenant draw and that agent limits are not instant, and removed three checklist steps that had no controls row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 61
+  claims: 71
+  confirmed: 70
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -199,9 +201,11 @@ cost: Variable. Workflows on the Microsoft Copilot harness are billed in Copilot
 impact: Medium. Makers who build workflows notice first; recipients of emailed or saved documents and capacity owners are affected if workflows start producing files at volume.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / cost: The workflows overview says workflows consume Copilot Studio capacity for each action they execute. | Found: Workflows consume Copilot Studio capacity for each action they execute. | Fix: After this sentence, add: 'The cost-management page separately lists workflows as covered by a Microsoft 365 Copilot license when run inside a standard harness agent by a licensed user, and billed in all other cases.' Cite https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness, whose workflow table gives this qualification to the overview's general statement. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control that the governance checklist instructs the reader to change appears in the controls table. | Found: Where a published environment-group rule governs that setting, change the group rule instead. / The table has environment allocation, agent monthly limit and missing file-output switch rows, but no environment-group rule row. | Fix: Remove the sentence 'Where a published environment-group rule governs that setting, change the group rule instead.' from the Before rollout checklist. Keep the existing group-rule qualification and supported remediation in Cost and licensing; do not add a control row.
+- [supported, minor] Risk assessment: Change & support, capacity bullet / behaviour: The workflows overview says fully consuming environment prepaid capacity blocks new runs until capacity is available. | Found: Once you fully consume your environment's prepaid Copilot Studio capacity, new workflow runs are blocked until capacity is available. | Fix: Add after the capacity bullet: 'Usage can continue through a linked pay-as-you-go billing plan.' Cite https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness, which says usage can continue through the linked Azure subscription after the prepaid allocation is consumed. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
+- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / cost: The workflows overview says workflows consume Copilot Studio capacity for each action they execute. | Found: Workflows consume Copilot Studio capacity for each action they execute. | Fix: After this statement in licensing.notes and Cost and licensing, add: 'The cost-management page separately lists workflows as covered by a Microsoft 365 Copilot license when run inside a standard harness agent by a licensed user, and billed in all other cases.' Cite https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
+- [supported, minor] controls[1].ui; Governance controls: row 2 / admin-path: The agent monthly-limit control is at Power Platform admin center > Licensing > Copilot Studio > Manage Agents > agent > Set limit. | Found: go to Licensing > Copilot Studio. Select Manage Agents. Select the agent, and then select Set limit. | Fix: Complete the path in controls[1].ui and the rendered table to 'Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit'. The cited cost-management page supplies Set limit; the already-cited https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity specifies Products and the Summary tab. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the governance checklist tells the reader to change appears in the controls table. | Found: Where a published environment-group rule governs that setting, change the group rule instead. / The controls table lists environment allocation, an agent monthly limit and an undocumented file-output switch, but no environment-group rule row. | Fix: Remove 'Where a published environment-group rule governs that setting, change the group rule instead.' from the Before rollout checklist. Keep the supported environment-group qualification and remediation in Cost and licensing; do not add a control row.
 -->

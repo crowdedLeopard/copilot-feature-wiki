@@ -54,15 +54,17 @@ changes:
     note: "First briefing for roadmap item 545896, now Launched, covering the feature's default, licence requirement and the lack of a documented feature-specific switch."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 77
+  confirmed: 75
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -171,9 +173,10 @@ cost: Medium. Microsoft's notice MC1218000 says creating and configuring forms r
 impact: Medium. Template owners and form creators with a Copilot licence see it first; form submitters across the organisation then receive generated documents, in a feature that is on by default.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's instruction to check Copilot licence assignments is represented in the controls table. | Found: Checklist: "Confirm which users hold a Microsoft 365 Copilot licence". The only controls row is "A switch specific to structured document generation"; it is not a licence-assignment control. | Fix: Remove the checklist bullet beginning 'Confirm which users hold a Microsoft 365 Copilot licence'. It names a licensing control with no table row; retain the verified licence prerequisite in Cost and licensing and Scope.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the standard for this launched, on-by-default feature with medium risk and cost and a governance decision to take. | Found: Fields: status "launched", defaultState "on", risk "medium", cost "medium", action "prepare". Governance advice: "agree who may create templates". The standard assigns act-now to launched automatic changes with medium risk or cost and a decision to take. | Fix: Change front matter action from 'prepare' to 'act-now': as of 17 November 2026 the feature is launched, on by default, and the briefing identifies an outstanding template-ownership decision.
+- [supported, minor] Risk assessment: Change & support; Scope: Limits / behaviour: Published forms are read-only in SharePoint. | Found: Forms are read-only once published. To make structural field changes, edit the template in Word and republish. ... Make non-structural changes such as showing or hiding fields, changing themes, and updating settings directly in the SharePoint form view. | Fix: Replace 'Published forms are read-only in SharePoint' and 'forms are read-only once published' with 'Published form fields require Word for structural changes; visibility, themes and settings remain editable in SharePoint', as qualified at https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the standard for this launched, on-by-default feature with medium risk and cost and a decision to take. | Found: Fields: status 'launched', defaultState 'on', risk 'medium', cost 'medium', action 'prepare'. Checklist: 'agree who may create templates'. The standard assigns act-now to launched automatic changes with medium risk or cost and a decision to take. | Fix: Change front matter action from 'prepare' to 'act-now': on 24 November 2026 the feature is launched and on by default, and the briefing identifies a template-ownership decision to take.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The controls table represents the checklist's instruction to check Copilot licence assignments. | Found: Checklist: 'Confirm which users hold a Microsoft 365 Copilot licence'. The only controls row is 'A switch specific to structured document generation'; no licence-assignment row appears. | Fix: Remove the Before rollout bullet 'Confirm which users hold a Microsoft 365 Copilot licence, since form creation requires one per the notice and the Learn page.' Retain the verified licence prerequisite elsewhere; do not add a control row.
 -->

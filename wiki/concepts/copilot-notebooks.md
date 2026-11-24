@@ -2,10 +2,10 @@
 kind: "concept"
 title: "Copilot Notebooks: where does the content live, and who can switch it off?"
 slug: "copilot-notebooks"
-summary: "Copilot Notebooks is a persistent workspace that grounds Copilot on a user's chats, references and files. Administrators use one Cloud Policy setting to allow or block creation and decide where the content, licensing and compliance reach."
+summary: "Copilot Notebooks is a persistent workspace that grounds Copilot on a user's chats, references and files. Administrators can allow or block creation through Cloud Policy; storage, licensing and compliance have separate requirements."
 created: "2026-11-24"
 updated: "2026-11-24"
-version: 1
+version: 2
 tags: ["copilot-notebooks","copilot-pages","cloud-policy","m365-copilot","ediscovery","data-governance","admin-controls","licensing"]
 covers: []
 sources:
@@ -33,6 +33,9 @@ sources:
   - title: "Overview of Cloud Policy service for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     kind: "learn"
+  - title: "Plan security, compliance, and governance"
+    url: "https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance"
+    kind: "learn"
 related: ["cloud-policy","ediscovery","retention","sensitivity-labels","auditing","teams-meetings-in-copilot-notebooks","onenote-multimodal-capture-in-copilot-notebooks-android","m365-copilot-copilot-workspaces-updates"]
 controls:
   - governs: "Whether users can create and view Copilot Pages and Copilot Notebooks"
@@ -45,7 +48,7 @@ controls:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Preview Graph beta. Set resourceType microsoft.copilot.copilotpagesnotebooks, value 0 or 1. The Graph route works only against tenant-level policies."
+    note: "Preview Graph beta. resourceType microsoft.copilot.copilotpagesnotebooks; properties.value as the string \"0\" (disabled) or \"1\" (enabled). Mode applyOnce applies it; default monitorOnly only detects drift. Tenant-level only."
 confidence: "medium"
 dependents: 9
 changes:
@@ -53,18 +56,22 @@ changes:
     note: "New concept page: where Copilot Notebooks content is stored, the Cloud Policy setting that controls creation, licensing and compliance limits."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 3 unconfirmed; taken offline until corrected"
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: removed the unsupported no-separate-charge, no-move and Workspaces-rename statements, aligned the summary with the body, and clarified the Graph row and Information Barriers."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 70
-  unconfirmed: 3
-  contradicted: 2
-  attempts: 1
-  hash: "b1214523ad9b0d1b4fdd026643cba72b"
+  claims: 76
+  confirmed: 75
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "819b9abd6946eac0d3f98c7752b2314c"
 ---
 
 ## What it is
@@ -93,14 +100,14 @@ The switch is blunt. Microsoft's admin policies page lists one Cloud Policy sett
 
 Microsoft's requirements page lists the licence for Notebooks as a Microsoft Copilot licence, and its text says "the Microsoft Copilot or Copilot Chat license". The Tenant Configuration Management page says Notebooks "require a Microsoft 365 Copilot license". The pages word this differently, so confirm which licence your users hold before budgeting.
 
-Storage is not a separate charge on these pages. Content in OneDrive for Business counts against the user's OneDrive storage limit. Legacy content in SharePoint Embedded counts against the organisation's SharePoint storage quota. The requirements and storage pages publish no separate meter or price for Notebooks. If your organisation disabled OneDrive creation for some users, those users cannot create Notebooks whatever the policy says.
+Content in OneDrive for Business counts against the user's OneDrive storage limit. Legacy content in SharePoint Embedded counts against the organisation's SharePoint storage quota. The requirements and storage pages publish no separate meter or price for Notebooks. If your organisation disabled OneDrive creation for some users, those users cannot create Notebooks whatever the policy says.
 
 ## Risks and limits
 
 - **Disabling creation hides existing Notebooks.** The Notebooks module is hidden in the Microsoft Copilot app and sharing links to Notebooks stop working. Existing items are not deleted, and the files stay in OneDrive and SharePoint.
 - **One container, two policies (legacy content).** The legacy container is created when either the Copilot policy or the Loop *Create Loop workspaces in Loop* policy allows it. Disabling only one still lets the other app create it; disable both for the same user.
 - **Recovery differs by storage.** For legacy Notebooks there is no end-user recycle bin, and neither administrators nor users can recover an individually deleted notebook. The storage page says deleted pages and notebooks can be found in the OneDrive recycle bin for the OneDrive-stored items.
-- **Compliance gaps.** Information Barriers are not supported for SharePoint Embedded content. Conditional Access applies only to the whole Microsoft Copilot app. Notebooks have no container sensitivity label, because they share a container with Copilot Pages.
+- **Compliance gaps.** The Copilot compliance summary says Information Barriers are unsupported for Notebooks; the SharePoint Embedded security page separately documents a beta informationBarrier property, leaving its applicability to Notebooks unresolved. Conditional Access applies only to the whole Microsoft Copilot app. Notebooks have no container sensitivity label, because they share a container with Copilot Pages.
 - **No per-container quota.** Microsoft states there is no admin control to set quota limits on individual containers.
 - **Delayed effect.** A policy change can take up to 90 minutes to show, or up to 24 hours if no policy configuration existed before.
 - **Blocked WebSockets.** Real-time collaboration needs WebSocket traffic to `*.svc.ms` and `*.office.com`.
@@ -112,7 +119,7 @@ Storage is not a separate charge on these pages. Content in OneDrive for Busines
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks</strong><br><small>Tenant</small><br><small class="controls__note">Preview Graph beta. Set resourceType microsoft.copilot.copilotpagesnotebooks, value 0 or 1. The Graph route works only against tenant-level policies.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks</strong><br><small>Tenant</small><br><small class="controls__note">Preview Graph beta. resourceType microsoft.copilot.copilotpagesnotebooks; properties.value as the string &quot;0&quot; (disabled) or &quot;1&quot; (enabled). Mode applyOnce applies it; default monitorOnly only detects drift. Tenant-level only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -124,14 +131,13 @@ Storage is not a separate charge on these pages. Content in OneDrive for Busines
 
 **Watching.** Audit logs are available for all events and can be searched in Purview. Purview eDiscovery supports Notebooks, with review and HTML export needing a Premium licence. Retention policies configured for all SharePoint sites are enforced. See [eDiscovery](/concepts/ediscovery/) and [retention](/concepts/retention/).
 
-The setting does not delete or move content, and it does not set sensitivity labels, retention or Conditional Access.
+The setting does not delete content, and it does not set sensitivity labels, retention or Conditional Access.
 
 ## What to check
 
 - Check whether *Create and view Copilot Pages and Copilot Notebooks* is configured in any policy configuration, and at which scope and priority.
 - Confirm which users hold the Microsoft Copilot or Copilot Chat licence the requirements page names.
 - Identify legacy Notebooks created before November 2025 and the user-owned containers that hold them.
-- Review whether Loop workspace creation is also disabled for any group where you want no container created.
 - Test that WebSocket traffic to the endpoints Microsoft lists reaches users.
 - Search the Purview audit log for the `.pod` file extension to see Notebooks activity.
 - Confirm that your eDiscovery managers know to add the user-owned container as a data source.
@@ -141,19 +147,12 @@ The setting does not delete or move content, and it does not set sensitivity lab
 - Which licence does Notebooks actually need: Microsoft 365 Copilot, or the Copilot Chat licence the requirements page also names?
 - When will the admin policies and requirements pages describe OneDrive for Business storage as well as the legacy SharePoint Embedded container?
 - Does Microsoft intend to add settings for individual notebook features, such as audio overview or new reference types, beyond the creation policy?
-- What happens to the policy and storage when Copilot Notebooks becomes Copilot Workspaces, as described in [the Workspaces briefing](/features/m365-copilot-copilot-workspaces-updates/)?
+- How will future changes to Copilot Notebooks affect its policy and storage?
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing / cost: Storage is not a separate charge on the cited pages. | Found: Searched: Copilot Notebooks no additional storage pricing meter; Copilot Notebooks separate charge. Read requirements, storage and licensing pages. They describe quota accounting, not an explicit assurance of no separate charge. | Fix: Remove 'Storage is not a separate charge on these pages.' Keep the verified quota statements and the narrower sentence that the requirements and storage pages publish no separate meter or price.
-- [unsupported, major] Governance controls: final paragraph / behaviour: The creation setting does not move notebook content. | Found: Searched: Copilot Notebooks creation policy disabled does not move content storage sensitivity labels retention Conditional Access. Read admin policies and storage; existing items are not deleted and references remain available, but neither states a no-movement guarantee for notebook content. | Fix: Remove 'or move' from 'The setting does not delete or move content.' The remaining non-deletion statement is explicitly documented.
-- [unsupported, major] Open questions: Workspaces / behaviour: Copilot Notebooks will become Copilot Workspaces. | Found: Searched: Copilot Notebooks Copilot Workspaces; Copilot Workspaces Notebooks November 2026; site:support.microsoft.com Copilot Workspaces. Searched the full cited release-notes text for Workspaces and renaming; found no supporting passage. | Fix: Replace the final open question with 'How will future changes to Copilot Notebooks affect its policy and storage?' Remove the assertion of a Workspaces rename; the linked wiki briefing is not Microsoft evidence.
-- [contradicted, blocker] summary; Governance controls: final paragraph / consistency: The summary presents the creation setting as deciding storage, licensing and compliance reach, unlike the body. | Found: Administrators use one Cloud Policy setting to allow or block creation and decide where the content, licensing and compliance reach. / The setting does not delete or move content, and it does not set sensitivity labels, retention or Conditional Access. | Fix: Replace the summary's second sentence with 'Administrators can allow or block creation through Cloud Policy; storage, licensing and compliance have separate requirements.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risks and limits: Compliance gaps / applicability: Information Barriers are not supported for SharePoint Embedded content. | Found: Information Barriers are not supported for content stored in SharePoint Embedded containers. | Fix: Replace this sentence with 'The Copilot compliance summary says Information Barriers are unsupported for Notebooks; the SharePoint Embedded security page separately documents a beta informationBarrier property, leaving its applicability to Notebooks unresolved.' Cite https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance, which says the beta fileStorageContainer informationBarrier property manages a container's information barrier. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary
-- [supported, minor] controls[0].api / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the notebook creation setting. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Keep the method and path, but add to the row's note: 'Set mode to applyOnce to apply the baseline; the default monitorOnly mode only detects drift.' The reference documents both modes and defaults mode to monitorOnly. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[0].note; Governance controls table / command: The resource uses value 0 or 1 for the creation setting. | Found: The value property is a string, not a Boolean or a number. ... 0 disables the setting; 1 enables the setting. | Fix: Replace 'value 0 or 1' with 'properties.value as the string "0" (disabled) or "1" (enabled)' in the row note and its rendered copy. The copilotpagesnotebooks parameter table allows these values and the sample places value under properties. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [contradicted, minor] What to check: Loop workspace creation; Governance controls table / consistency: The checklist asks readers to review Loop workspace creation, but the controls table has no row for that control. | Found: Review whether Loop workspace creation is also disabled for any group where you want no container created. / The sole table row is Whether users can create and view Copilot Pages and Copilot Notebooks. | Fix: Remove the Loop workspace creation checklist bullet, which has no corresponding control row. Retain the already supported explanation of the two-policy interaction in Risks and limits.
-- [supported, minor] Why it matters; Risks and limits: Compliance gaps; sources / applicability: The storage-governance premise also relies on a Microsoft page not listed in sources. | Found: Supported consuming tenant Microsoft 365 settings and Microsoft Purview capabilities apply to the app documents stored there. | Fix: Add https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance to sources, titled 'Plan security, compliance, and governance'. It supports the storage-governance premise and documents the platform-level beta Information Barriers qualification. | Source: https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance
+- [supported, minor] Risks and limits: Compliance gaps / applicability: Conditional Access applies only to the entire Microsoft Copilot app. | Found: Only applies at the app level. Because Copilot Pages and Copilot Notebooks are features of the Microsoft Copilot app, Conditional Access applies to the entire app at m365.cloud.microsoft. | Fix: Replace the sentence with: 'The Copilot compliance summary describes Conditional Access as app-level only; the SharePoint Embedded security page separately documents container-level ConditionalAccessPolicy, so the guidance differs for legacy storage.' Both cited pages were read. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary
+- [supported, minor] Risks and limits: Compliance gaps / applicability: Notebooks have no container sensitivity label. | Found: Copilot Notebooks don't have container sensitivity labels because they share a container with all Copilot Pages. | Fix: Replace the sentence with: 'The Copilot compliance summary says Notebooks have no container sensitivity labels because they share a container with Copilot Pages; the SharePoint Embedded security page separately documents setting container sensitivity labels, so the guidance differs for legacy storage.' | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary
+- [contradicted, minor] What to check; Governance controls table / consistency: The checklist names Purview audit searching and eDiscovery data-source configuration, but the controls table contains only the creation policy. | Found: Search the Purview audit log for the `.pod` file extension ... Confirm that your eDiscovery managers know to add the user-owned container as a data source. Table: Whether users can create and view Copilot Pages and Copilot Notebooks. | Fix: Remove the two checklist bullets beginning 'Search the Purview audit log' and 'Confirm that your eDiscovery managers' so the checklist does not direct readers to controls absent from the table. Keep the supported Watching prose; do not add control rows in this correction.
 -->

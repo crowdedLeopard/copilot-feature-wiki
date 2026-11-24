@@ -1,0 +1,187 @@
+---
+title: "Microsoft Teams Rooms on Android: redesigned on-device admin settings"
+slug: "microsoft-teams-improved-device-settings-experience-on-teams-rooms-on-android"
+roadmapId: 581965
+topic: "modern-work"
+products: ["Microsoft Teams"]
+summary: "Microsoft plans to reorganise the on-device admin settings on Teams Rooms on Android. It affects admins who configure rooms at the console. Microsoft has not stated a default or any admin action; target January CY2027."
+status: "in-development"
+releasePhase: ["General Availability"]
+clouds: ["Worldwide (Standard Multi-Tenant)"]
+platforms: ["Android"]
+targetDate: "January CY2027"
+previewDate: null
+risk: "low"
+cost: "low"
+impact: "low"
+defaultState: "unknown"
+action: "prepare"
+licensing:
+  model: "included"
+  notes: "Learn says Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licences. A licence, price or meter specific to this redesign is not yet published."
+audiences: ["m365-admin","service-owner"]
+tags: ["teams","teams-rooms","pro-management-portal","admin-controls"]
+sources:
+  - title: "Microsoft 365 Roadmap 581965"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=581965"
+    kind: "roadmap"
+  - title: "Teams Rooms (Windows and Android) home screen and admin controls"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh"
+    kind: "learn"
+  - title: "Managing settings for Teams devices"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings"
+    kind: "learn"
+  - title: "Settings available for remote management in Teams Rooms Pro management portal"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available"
+    kind: "learn"
+  - title: "Microsoft Teams Rooms licenses"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing"
+    kind: "learn"
+videos: []
+related: ["microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management"]
+controls:
+  - governs: "Settings of a Teams Rooms on Android device, changed remotely"
+    scope: "other"
+    ui:
+      surface: "Teams Rooms Pro Management portal"
+      path: "Rooms > device > Settings"
+      docs: "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings"
+    api: null
+    note: "Needs role-based access control permissions for Rooms Management and a signed-in device. Changes on the device sync back to the portal."
+  - governs: "Meeting settings on the room console, such as whether meeting names show"
+    scope: "other"
+    ui:
+      surface: "Teams Rooms on Android console"
+      path: "Teams Admin Settings > Meetings > Show meeting names"
+      docs: "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh"
+    api: null
+    note: "Path is as Learn documents it today; the roadmap says navigation will change. Set on the device itself."
+confidence: "medium"
+created: "2026-11-24"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
+changes:
+  - date: "2026-11-24"
+    note: "New briefing on the planned redesign of the on-device admin settings for Teams Rooms on Android; Microsoft Learn does not describe the redesign yet."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 1
+verification:
+  status: "held"
+  date: "2026-11-24"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 42
+  confirmed: 38
+  unconfirmed: 0
+  contradicted: 4
+  attempts: 1
+  hash: "d721349aabc1f3301d681e48eefc6488"
+---
+
+## What's changing
+
+Microsoft plans to redesign the on-device admin settings on Teams Rooms on Android. The roadmap item describes better information structure, organisation and navigation, so that admins can find, understand and adjust device settings directly from the console.
+
+Microsoft Learn does not describe this redesign yet, so what follows about its behaviour is the roadmap's description. Learn documents the current on-device settings as **Teams Admin Settings** on a Teams Rooms on Android device, with sections such as General (for example Bluetooth beaconing) and Meetings (for example Show meeting names).
+
+The roadmap item gives the status as In development and the target as January CY2027. The release phase is General Availability, the cloud is Worldwide (Standard Multi-Tenant) and the platform is Android. The target date is Microsoft's plan, not a commitment.
+
+## Why it matters
+
+This is a layout change to a screen that administrators use to configure rooms, so the effect falls on runbooks, screenshots and support scripts that quote today's Teams Admin Settings labels. Microsoft has not stated what happens on arrival, and no source says that existing setting values change, so plan for the layout moving rather than for settings being reset.
+
+Because settings changed on the device are synchronised to the Teams Rooms Pro Management portal, the portal is a second place to check a room's configuration before and after the redesign reaches your devices.
+
+## Risk assessment
+
+**Data exposure**
+
+- No new data access is described: the roadmap item covers settings structure and navigation only. Learn documents privacy-related switches on the device, such as Show meeting names under Teams Admin Settings > Meetings; record their values before the update and compare afterwards.
+
+**Security & identity**
+
+- Learn documents Require passcode for all meetings under Teams Admin Settings > Meetings on Teams Rooms on Android, and says the feature requires a Teams Rooms Pro licence on the device account. Confirm it is still set as intended once the new layout is on your devices.
+
+**Autonomy & actions**
+
+- No change: the roadmap item describes no autonomous or AI behaviour.
+
+**Change & support**
+
+- Settings may move in the console, so room technicians following existing instructions may not find them. Learn documents the Teams Rooms Pro Management portal (Rooms > device > Settings) as a place to change settings for Teams Rooms on Android devices, which is a second route while staff learn the new layout.
+
+## Cost and licensing
+
+**Licence.** The Teams Rooms licences page says Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licences. It describes Basic as core meeting experiences at no additional cost, and Pro as adding advanced management features such as remote device management. The roadmap item names no licence for this redesign.
+
+**Meter.** No meter is named in the roadmap item. A price, meter or licence condition specific to this redesign is not yet published.
+
+**Indirect cost.** Admin time to update runbooks and brief room support staff.
+
+## Scope
+
+The roadmap item is aimed at admins who configure Teams Rooms on Android devices at the console. It lists the platform as Android, the cloud as Worldwide (Standard Multi-Tenant) and the release phase as General Availability; no other cloud is listed on the record.
+
+The roadmap names no prerequisite. Learn documents that changing settings from the Teams Rooms Pro Management portal needs role-based access control permissions for Rooms Management and a signed-in device. Rollout mechanics are not stated.
+
+## Governance guidance
+
+### Before rollout
+
+- Record the current values of key settings in Teams Admin Settings on a representative Teams Rooms on Android device, such as Show meeting names, Require passcode for all meetings and Bluetooth beaconing.
+- Check which rooms hold Teams Rooms Pro licences, since the Learn page ties Require passcode for all meetings to a Pro licence on the device account.
+- Tell room technicians that the roadmap targets the settings layout change for January CY2027.
+
+### At rollout
+
+- Open Teams Admin Settings on a pilot room after the update and compare each recorded value with what is shown.
+- Check the room's Settings tab in the Teams Rooms Pro Management portal to see that it reflects the on-device values.
+
+### After rollout
+
+- Update runbooks and screenshots that quote the old Teams Admin Settings labels.
+- Watch Message center and the Learn page on settings available for remote management, which says the full Android settings list is coming soon.
+
+## Governance controls
+
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Settings of a Teams Rooms on Android device, changed remotely</strong><br><small class="controls__note">Needs role-based access control permissions for Rooms Management and a signed-in device. Changes on the device sync back to the portal.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms › device › Settings <a href="https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Meeting settings on the room console, such as whether meeting names show</strong><br><small class="controls__note">Path is as Learn documents it today; the roadmap says navigation will change. Set on the device itself.</small></td><td data-label="Admin UI"><strong>Teams Rooms on Android console</strong><br>Teams Admin Settings › Meetings › Show meeting names <a href="https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Learn documents two places to change these settings: on the device under Teams Admin Settings, and remotely from the Teams Rooms Pro Management portal. Learn also says some Android settings can be updated with the Teams Rooms on Android configuration profile in the Teams admin center; it has no row in the table.
+
+Remote changes from the portal need role-based access control permissions for Rooms Management, and Learn says settings management is available only for signed-in devices. Microsoft Learn documents no API for changing these on-device admin settings at the time of writing (November 2026). Nothing in the sources says whether the redesign can be deferred or switched off.
+
+## Open questions
+
+- Does the redesign arrive on every Teams Rooms on Android device automatically, and can administrators defer it? Watch Message center and the roadmap item.
+- Will existing setting labels and paths, such as Teams Admin Settings > Meetings > Show meeting names, keep their names, and will Learn be updated when they move?
+- Will the redesigned settings still match what the Teams Rooms Pro Management portal and the Teams admin center configuration profile show?
+- Does the redesign add or remove any setting, or only reorganise existing ones?
+
+<!-- rationale
+risk: Low. The roadmap item describes a reorganised settings layout and names no new data access or autonomous behaviour; Microsoft has not stated whether existing settings values are touched.
+cost: Low. The only cost the sources show is admin time to relearn the layout; the roadmap names no licence or meter, and rooms already need a Teams Rooms Basic or Pro licence.
+impact: Low. The roadmap item is about admins finding and changing device settings at the console, so the people who notice are those who configure Teams Rooms on Android devices.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licences, and rooms already need one of those two licences. | Found: Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid). | Fix: Add '(Teams Rooms legacy licences are also valid)' to the Basic-or-Pro statement in licensing.notes and Cost and licensing. Replace 'rooms already need a Teams Rooms Basic or Pro licence' in the cost rationale with 'rooms already need a Teams Rooms licence'. The cited licensing page explicitly permits existing legacy licences. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing
+- [contradicted, blocker] controls[0].api; Governance controls / absence: Microsoft Learn documents no API or automation for changing these Teams Rooms on Android device settings remotely. | Found: Update the navigation property configuration in teamwork; -TeamworkDeviceId <string>; -TeamsClientConfiguration <IMicrosoftGraphTeamworkTeamsClientConfiguration>; [IsBluetoothBeaconingEnabled <Boolean?>]: True if Bluetooth beaconing is enabled. | Fix: Keep api null rather than recommending unsupported automation, but qualify the gap in controls[0].note and replace the no-API sentence with: 'Learn retains documentation for Update-MgBetaTeamworkDeviceConfiguration, including Bluetooth beaconing and hiding meeting names. The underlying Graph teamworkDevice APIs are deprecated and no longer supported after November 2025; this is not supported automation for the redesign.' Cite the cmdlet URL and https://learn.microsoft.com/graph/api/resources/teamworkdeviceconfiguration?view=graph-rest-beta. | Source: https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta
+- [contradicted, blocker] controls[1].api; Governance controls / absence: Microsoft has not documented API or automation for the meeting-name setting. | Found: Update the navigation property configuration in teamwork; [FeaturesConfiguration <IMicrosoftGraphTeamworkFeaturesConfiguration>]: teamworkFeaturesConfiguration; [IsHideMeetingNamesEnabled <Boolean?>]: True if hiding meeting names is enabled. | Fix: Keep api null because the underlying API is no longer supported, but add to controls[1].note: 'Learn documents IsHideMeetingNamesEnabled through Update-MgBetaTeamworkDeviceConfiguration, but the underlying Graph teamworkDevice APIs are deprecated and no longer supported after November 2025.' Replace the blanket no-API prose as specified for controls[0].api; cite the cmdlet URL and https://learn.microsoft.com/graph/api/resources/teamworkdeviceconfiguration?view=graph-rest-beta. | Source: https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: Licence / cost: Teams Rooms Basic provides core meeting experiences at no additional cost. | Found: Microsoft Teams Rooms Basic provides core meeting experiences to organizations that purchase a certified Microsoft Teams Rooms system, at no additional cost. | Fix: Replace the Basic clause with 'Teams Rooms Basic provides core meeting experiences to organisations that purchase a certified Microsoft Teams Rooms system, at no additional cost' to retain the source's purchase qualification. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing
+- [supported, minor] controls[0].ui; Risk assessment: Change & support; Governance guidance / admin-path: Teams Rooms Pro Management portal > Rooms > device > Settings reaches the page for remotely configuring a room device. | Found: Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.). | Fix: The path correctly stops on the settings page. Add to controls[0].note: 'From Settings, select the relevant settings category (About, Account, Meetings, Device or Network) and modify the desired setting.' The full route is Rooms > device > Settings > category > setting, as described at the cited URL. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
+- [supported, minor] controls[1].ui; What's changing; Risk assessment: Data exposure; Open questions / admin-path: On the Teams Rooms on Android console, Teams Admin Settings > Meetings > Show meeting names controls whether meeting names show. | Found: On a Teams Rooms on Android device, open Teams Admin Settings > Meetings and toggle Show meeting names to Off to hide meeting names on the Teams Rooms device. | Fix: Add to controls[1].note: 'The home-screen guidance documents this Android toggle, while the Teams Rooms licence comparison lists Show meeting names under Pro only.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing alongside the existing home-screen reference to disclose the different licensing presentation. | Source: https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells administrators to record Require passcode for all meetings and Bluetooth beaconing, but neither has a corresponding control row. | Found: Record the current values ... such as Show meeting names, Require passcode for all meetings and Bluetooth beaconing. The console row gives only Teams Admin Settings > Meetings > Show meeting names; the other row gives the remote Settings page. | Fix: The Before rollout recording step names Require passcode for all meetings and Bluetooth beaconing without their own rows. Narrow that step to 'Record the current value of Show meeting names in Teams Admin Settings on a representative Teams Rooms on Android device.' Do not add control rows as part of this correction.
+-->

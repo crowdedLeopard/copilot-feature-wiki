@@ -65,18 +65,20 @@ changes:
     note: "New briefing: the roadmap plans expiry on main sharing links, with admin policies targeted for February CY2027; Learn has no page for it yet."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  claims: 61
+  confirmed: 58
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
   hash: "6253500797f0f23af9262ca70caf2c5a"
 ---
 
@@ -169,8 +171,13 @@ cost: Low. The only cost the sources show is admin time to set and communicate a
 impact: Medium. People who share files in OneDrive and SharePoint would see an expiry option, and recipients lose access when an enforced maximum duration passes.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Why it matters: first paragraph / behaviour: A link continuing to grant access is the usual route by which files stay shared after the work requiring sharing has finished. | Found: Searched: SharePoint OneDrive sharing links usual primary cause files remain shared after work finished oversharing. Read the returned Plan sharing and collaboration options excerpt and hero-link guidance; neither establishes this as the usual route. | Fix: Remove ', which is the usual route by which files stay shared after the work that needed them has finished' from the first sentence of Why it matters.
+- [contradicted, blocker] rationale: impact; Risk assessment: Data exposure / consistency: The impact rationale says recipients lose access when the enforced maximum passes, while the body says main-link expiry does not remove access granted another way. | Found: recipients lose access when an enforced maximum duration passes. / expiry of the main link does not by itself remove access granted another way. The roadmap says directly granted permissions are preserved. | Fix: Replace the impact rationale with: 'Medium. People who share files in OneDrive and SharePoint would see an expiry option, and access granted through the main link expires when an enforced maximum duration passes; directly granted permissions are preserved.' This preserves the roadmap's distinction between main-link access and other access.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The first controls-table row covers the recommended inventory of settings allowing Anyone links and default link types. | Found: Inventory which of your tenant's sharing settings allow Anyone links and what link type your teams use by default ... (first row of the controls table). / Maximum lifetime of Anyone links, for SharePoint sites and OneDrive | Fix: Remove the first Before rollout bullet: its external-sharing and default-link-type controls have no corresponding rows, and the first row covers expiration instead. Do not add control rows as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls / admin-path: SharePoint admin center > Policies > Sharing leads to the page containing the Anyone-link maximum-expiration setting. | Found: In the SharePoint admin center, expand Policies, and then select Sharing. ... Advanced settings for "Anyone" links ... Link expiration - You can require all Anyone links to expire, and specify the maximum number of days allowed. | Fix: Extend controls[0].ui.path and its rendered table entry to 'Policies > Sharing > Advanced settings for "Anyone" links > Link expiration', as documented at https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off. | Source: https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off
+- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions / licensing: Licensing is unknown because no license specific to main-link expiration has been published. | Found: OneDrive for work and school accounts is online storage space in the cloud that's provided for individual licensed users in an organization. ... OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans | Fix: Set licensing.model to 'included'. Replace the notes and the licensing paragraph with: 'SharePoint users need an assigned license that includes SharePoint. OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or purchased standalone. Licensing specific to main-link expiration is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description and https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description; retain the open question about feature-specific requirements. | Source: https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist points to the first controls-table row for inventorying Anyone-link availability and default link types, but that row governs expiration instead. | Found: Inventory which of your tenant's sharing settings allow Anyone links and what link type your teams use by default ... (first row of the controls table). / Maximum lifetime of Anyone links, for SharePoint sites and OneDrive | Fix: Remove the first Before rollout bullet: its external-sharing and default-link-type controls have no corresponding table rows, and the first row covers expiration. Do not add rows as part of this correction.
 -->

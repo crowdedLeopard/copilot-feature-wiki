@@ -231,18 +231,20 @@ changes:
     note: "Corrected after verification: classic data policies are ignored in ACP-only mode; the credit-consumption path now runs through the Environments tab to the consumption details grid; the roadmap source now names item 562222."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 34
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-24"
   version: 34
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 94
+  claims: 88
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "db1b35a2b330beafc15f7c9fca2fc2a6"
 ---
 
@@ -345,4 +347,10 @@ Platform controls outside the table: data policies govern Power Platform connect
 risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
 cost: Variable. The node's usage is billed in Copilot Credits, drawn from an environment's allocation or a linked pay-as-you-go plan, and no rate specific to the agent node is published.
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive a workflow's output see decisions made by an agent instead of a fixed rule.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing: final paragraph / absence: The Learn page for the node does not say which part of the feature is still in preview. | Found: For a new agent created inside a workflow, use **Success criteria** in the node's **Configure** tab to define the outcomes you expect. Learn more in [Set success criteria for workflow agents (preview)](agent-success-criteria). | Fix: Replace 'The Learn page for the node does not say which part of the feature is still in preview, so the extent of each phase is unclear.' with 'The Learn page identifies success criteria for workflow agents as a preview capability, but does not map the roadmap release phases to every node capability.' The node page explicitly links to 'Set success criteria for workflow agents (preview)' at https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-success-criteria. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow
 -->

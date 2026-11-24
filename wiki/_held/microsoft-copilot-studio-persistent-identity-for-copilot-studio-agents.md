@@ -99,18 +99,20 @@ changes:
     note: "Corrected after verification: the agent-blocking path now ends at Block > Block agent > Save, and the unsupported statement about how agents ran before agent accounts was removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 82
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "7cc5da1638384c85f46988670475c4b2"
 ---
 
@@ -208,4 +210,14 @@ Switching Agent accounts off in an environment hides the **Agent account** butto
 risk: High. An agent with an account keeps one shared memory across everyone it works with, Microsoft says it can surface content to users who lack access to the source, and an admin cannot turn that memory off separately from agent accounts.
 cost: Variable. Each agent account uses one Microsoft 365 Frontier for AI Teammates licence, makers need Microsoft 365 E5 with the Agent 365 add-on or Microsoft 365 E7, and usage may consume Copilot Credits.
 impact: Medium. Only makers selected by an admin can create these agents, but colleagues will see the agent in Teams, email and the directory, and anyone who talks to it contributes to its shared memory.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls / absence: Microsoft documents no API for agent-template activation and its maker audience. | Found: Activate an already-onboarded agent template for the users or groups allowed to create instances from it, and apply the selected policy template. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate | Fix: Set controls[0].api to kind 'graph', call 'POST /beta/copilot/admin/catalog/packages/{id}/activate', docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate'. Add this note: 'Reviewed beta contract; deployment depends on matching schema/backend release and tenant admission, not supported in production. Requires Agent 365, delegated CopilotPackages.ReadWrite.All and a signed-in Global Administrator or AI Administrator. The request body sets agentManagerScope to select the users/groups allowed to create instances; packageVersion and an existing policyTemplateId are required.' Cite the reference in sources. Replace the prose claim of no template-activation API with 'Microsoft documents a reviewed beta Graph contract for template activation; deployed availability is not established by API-review approval.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] summary; front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: The feature page documents a Microsoft 365 Frontier for AI Teammates license per agent account. | Found: These licenses are assigned per agent and are required before an agent's account can be created. | Fix: Keep the per-agent license statement explicitly attributed to the feature page, and add: 'Microsoft's Microsoft 365 Resources for Agents service description describes a different Frontier Public model for Copilot Studio, available December 1, 2026: automatic resource enablement rather than a manageable user license, consumption billing enabled for the maker, and a recurring 100 Copilot Credits per agent per month for the account, email address and persistent resource access, plus activity charges. That page requires a Microsoft 365 Copilot or E7 license for tenant Frontier enrollment; the feature and Agent 365 Frontier pages retain the prerequisites stated above.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account
+- [supported, minor] Scope / admin-path: The Frontier enrollment route starts at Agents > Overview in Microsoft 365 admin center. | Found: In Microsoft 365 admin center, navigate to Agents > Overview and select Try now in the banner and I agree to the Terms of Service. | Fix: Replace 'from Agents > Overview' with 'from Agents > Overview > Try now > I agree' in the Scope enrollment sentence. | Source: https://learn.microsoft.com/microsoft-agent-365/frontier
+- [supported, minor] controls[2].note / applicability: The block controls are general controls and their reference pages do not mention agent accounts specifically. | Found: Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. | Fix: Replace 'General control; neither page mentions agent accounts specifically' in controls[2].note with 'Blocking Copilot Studio agents affects availability and functionality in Microsoft Copilot and other host products such as Outlook and Teams'. Retain the existing API prerequisites and beta qualification. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
 -->

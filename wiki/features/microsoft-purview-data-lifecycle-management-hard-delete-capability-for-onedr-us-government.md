@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
-targetDate: "November CY2026"
+targetDate: "January CY2027"
 previewDate: null
 risk: "medium"
 cost: "medium"
@@ -39,6 +39,12 @@ sources:
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 561034"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=561034"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 557188"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=557188"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 558343"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=558343"
     kind: "roadmap"
 videos: []
 related: ["microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep","microsoft-purview-compliance-portal-data-lifecycle-management-introduction-of-secure-workf","ediscovery","auditing"]
@@ -83,8 +89,8 @@ controls:
     note: "Use the cleanup ID as the keyword and look for PriorityCleanupFileDeleted. Needs the Audit Logs or View-Only Audit Logs role."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
-roadmapModified: "2026-08-19T22:58:06"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-22"
     note: "New briefing for the GCC, GCC High and DoD roadmap item for permanent deletion in Priority cleanup for OneDrive and SharePoint."
@@ -94,11 +100,15 @@ changes:
     note: "Corrected after the independent check: the permanent-deletion row now gives the static-scope route, the PowerShell note names the module for each cmdlet, and the impact rationale no longer says end users see 'only' a label."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 106 statements not yet confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: fuller static-scope path for permanent deletion, roadmap citations for items 557188 and 558343, a note that some checklist steps are prerequisites, and target dates aligned to the roadmap record."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 106 statements not yet confirmed"
+version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
-  version: 2
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 106
@@ -106,7 +116,7 @@ verification:
   unconfirmed: 0
   contradicted: 1
   attempts: 0
-  hash: "777270f20581d5c92c87b310d74102d7"
+  hash: "64634d48c21142c39cdb48e085ada1d0"
 ---
 
 ## What's changing
@@ -115,7 +125,7 @@ Microsoft is adding permanent deletion as an option on Priority cleanup policies
 
 According to the Learn page, an administrator with the Priority Cleanup Admin role creates the policy, chooses an adaptive or static scope and the SharePoint or OneDrive locations, writes a query for the files, and selects **Delete data permanently**. The policy must run in simulation mode, and a second Priority Cleanup admin reviews the results and turns it on. Required approvers then approve disposal of the identified items, and only after all required approvals do the items skip the recycle bins and get deleted. Records and regulatory records cannot be targeted, and items already copied to an eDiscovery review set are not deleted by Priority cleanup.
 
-This page covers roadmap item 561034, which lists GCC, GCC High and DoD, the Web platform and the General Availability phase. The roadmap status is In development with a target of November CY2026, and the record gives no preview date. The Learn page for permanent deletion names no cloud and says public preview rollout begins on August 24, 2026. Microsoft lists the feature under two other roadmap items: 557188 (Worldwide (Standard Multi-Tenant), Launched, April CY2026) and 558343 (Worldwide (Standard Multi-Tenant), In development, target November CY2026, preview August CY2026), which has its own briefing at [/features/microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep/](/features/microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep/).
+This page covers roadmap item 561034, which lists GCC, GCC High and DoD, the Web platform and the General Availability phase. The roadmap status is In development with a target of January CY2027, and the record gives no preview date. The Learn page for permanent deletion names no cloud and says public preview rollout begins on August 24, 2026. Microsoft lists the feature under two other roadmap items: [557188](https://www.microsoft.com/microsoft-365/roadmap?id=557188) (Worldwide (Standard Multi-Tenant), Launched, April CY2026) and [558343](https://www.microsoft.com/microsoft-365/roadmap?id=558343) (Worldwide (Standard Multi-Tenant), In development, target December CY2026, preview August CY2026), which has its own briefing at [/features/microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep/](/features/microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep/).
 
 ## Why it matters
 
@@ -189,6 +199,8 @@ Learn says you cannot create one cleanup policy covering Exchange, SharePoint an
 
 Roles decide most of the control: the Priority Cleanup Admin role creates and manages policies and enables or disables the feature, and the Priority Cleanup Viewer role gives visibility without changes. Approval is per item and sits with individual users.
 
+The Before rollout checks on Organization Management membership, approver roles and auditing are prerequisite checks, and the table does not give routes for configuring them.
+
 Turning the tenant switch off stops new policies being created; existing policies continue to function, can be deleted and cannot be modified. The PowerShell reference describes -PriorityCleanup as creating a Priority cleanup policy and does not say how to select permanent deletion. New-RetentionCompliancePolicy runs in Security & Compliance PowerShell; Search-UnifiedAuditLog runs in Exchange Online PowerShell.
 
 ## Open questions
@@ -204,10 +216,10 @@ cost: Medium. Microsoft's service description lists Microsoft 365 E5/A5/G5, Micr
 impact: Low. Priority Cleanup admins and approvers work with it. End users see a retention label named after the policy on files it identifies.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: other roadmap items / record: Roadmap item 557188 describes hard deletion for OneDrive and SharePoint through Priority cleanup. | Found: Admins will be able to select hard delete configuration while setting up a priority cleanup policy for OneDrive and SharePoint content and skip recycle bins. | Fix: Add the two roadmap citations used in this paragraph to sources: https://www.microsoft.com/microsoft-365/roadmap?id=557188 and https://www.microsoft.com/microsoft-365/roadmap?id=558343.
-- [supported, minor] controls[2].ui / admin-path: The static route reaches Delete data permanently through Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Choose what to do with the content. | Found: On the Choose what to do with the content page, select Delete data permanently. | Fix: The cited permanent-deletion page supplies the last steps; the already-cited priority-cleanup-onedrive-sharepoint page supplies the static route. Expand controls[2].ui.path to 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > locations > Tell us what you're looking for > Choose what to do with the content > Delete data permanently'. The omitted location selection and query-entry page are non-branching steps, not a wrong route. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
-- [contradicted, minor] Governance guidance: Before rollout versus Governance controls table / consistency: The checklist names role-group membership, approver-role assignment and enabling auditing without corresponding controls-table rows. | Found: Review membership of the Organization Management role group ... Turn on auditing at least one day before the first policy ... Assign approver roles before creating the policy. The table covers the tenant switch, policy creation, permanent deletion and audit searching. | Fix: The Before rollout steps for Organization Management membership, approver-role assignment and enabling auditing have no corresponding table row. Keep them as prerequisite checks rather than claiming the table supplies their configuration routes; do not add control rows in this correction.
+- [supported, minor] controls[2].ui; rendered controls table / admin-path: The printed static-scope route reaches Delete data permanently. | Found: On the Choose what to do with the content page, select Delete data permanently. | Fix: The static-scope labels are confirmed on the already-cited https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint, so the pre-check's missing words are not wrong steps. Add the omitted query-entry page: 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Tell us what you're looking for > Choose what to do with the content > Delete data permanently'. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
+- [supported, minor] controls[3].note; rendered controls table / role: Audit search requires Audit Logs or View-Only Audit Logs. | Found: You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center. | Fix: Replace the final sentence of controls[3].note with 'Needs the Audit Logs or View-Only Audit Logs role in the Microsoft Purview portal for UI search, or in the Exchange admin center for PowerShell.' | Source: https://learn.microsoft.com/purview/audit-search
+- [contradicted, minor] Governance guidance; Governance controls: prerequisite note / consistency: The checklist tells readers to check or configure controls that have no corresponding controls-table row. | Found: Review membership of the Organization Management role group ... Turn on auditing ... Assign approver roles ... Run simulation ... The Before rollout checks ... are prerequisite checks, and the table does not give routes for configuring them. | Fix: The Before rollout steps reviewing Organization Management membership, enabling auditing and assigning approver roles, and the At rollout simulation/review step have no matching control row. Calling them prerequisites does not exempt them from the checklist/table rule. Record this coverage gap; do not add rows in this correction.
 -->

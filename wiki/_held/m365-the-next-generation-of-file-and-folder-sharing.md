@@ -94,18 +94,20 @@ changes:
     note: "Corrected after verification: DefaultMainLinkScope support for Groups site collections is now stated as unconfirmed, the rollout sentence follows the notice's schedule, and the legacy expiration checklist item is removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 74
-  confirmed: 74
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "cafcd1a6124bc9a0f172f07ea4486463"
 ---
 
@@ -215,4 +217,15 @@ The organisation-level sharing row is a general control: Learn says the availabl
 risk: Low. The hero link starts at Only people added to the file, which grants no access of its own, and the audiences users can pick depend on the organisation's existing sharing policies.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence or meter for the hero link.
 impact: High. Microsoft's notice says all users who share or manage files and folders see the new dialog, which replaces how they copy, email and re-share links.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: final paragraph / absence: No page lists which setting removes which hero link scope. | Found: `Anyone` is only available if anonymous links are allowed at the tenant level. If `Anyone` is selected but the site has Anyone links disabled, the effective default falls back to the next most restrictive value. | Fix: Remove ', but no page lists which setting removes which hero link scope' from the final Governance controls paragraph. The paragraph already gives the documented relationship between tenant anonymous-link policy and Anyone, and the preceding paragraph gives the site-level fallback; retain those verified statements. | Source: https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a license requirement specific to the hero link. | Found: To access SharePoint, users in your organization need to be assigned a license that includes SharePoint. | Fix: Set licensing.model to included. Replace the licensing explanation with: 'SharePoint users need an assigned license that includes SharePoint. OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, or a standalone OneDrive plan. No requirement specific to the hero link is published.' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description and https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description. Retain the narrower absence of a hero-link-specific meter. | Source: https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description
+- [supported, minor] controls[2].ui; Governance guidance: Before rollout / admin-path: SharePoint admin center > Policies > Sharing reaches the organization-level external sharing settings. | Found: In the SharePoint admin center, expand **Policies**, and then select **Sharing**. Under **External sharing**, set your sharing level for SharePoint and OneDrive. | Fix: Change controls[2].ui.path to 'Policies > Sharing > External sharing'. The current path stops on the correct page but omits the heading containing this control. | Source: https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off
+- [supported, minor] controls[3].ui / admin-path: SharePoint admin center > Active sites > site > Sharing > Default sharing link type reaches the site's legacy default link setting. | Found: In the left column, select a site. Select **Sharing** on the command bar. Under **Default sharing link type**, clear the **Same as organization-level setting** checkbox. | Fix: Change controls[3].ui.path to 'Active sites > site > Sharing > Default sharing link type > Same as organization-level setting'. State in the note: 'Clear the checkbox, then choose the site's default sharing link setting.' The printed path reaches the correct section but stops before its override control. | Source: https://learn.microsoft.com/sharepoint/change-default-sharing-link
+- [supported, minor] controls[2].note / absence: No complete mapping of each organization-level sharing setting to hero link scopes is given in the cited documentation. | Found: Searched: '"hero link" "sharing policies" Anyone organization settings'; read shareable-links, sharing settings and Set-SPOSite. Found the Anyone tenant restriction and site fallback, but not a complete setting-by-setting mapping for every hero link scope. | Fix: Replace controls[2].note with: 'Available hero link scopes depend on the organization's sharing policies. Anyone is available only if anonymous links are allowed at tenant level; if a site disables Anyone links, an Anyone default falls back to the next most restrictive value.' This states the documented reach instead of a broad caveat. The cited Set-SPOSite reference is already in sources.
 -->

@@ -90,19 +90,23 @@ changes:
     note: "Corrected: recovery-history wording now matches Learn, the overview price unit is noted, risk set to low, the recovery window path ends at the control, and the role-review checklist step is removed."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected the Microsoft 365 Backup Administrator role scope to SharePoint, OneDrive and Exchange, and removed an unsupported end-user claim from the impact rating."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 72
-  confirmed: 70
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "46d171575b2d838103f8f5749af37938"
+  confirmed: 72
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "d088dbbcb3cf277bba8c448d629b6f16"
 ---
 
 ## What's changing
@@ -148,7 +152,7 @@ The pricing page also says that restore point frequency does not materially chan
 
 ## Scope
 
-**Who and what:** administrators who create or edit Microsoft 365 Backup policies. Microsoft's setup page says only tenant-level admins create and manage backups, and that the admin role determines which products you can manage: SharePoint Administrator for SharePoint and OneDrive, Exchange Administrator for Exchange, and the Microsoft 365 Backup Administrator role for the whole tool. End users cannot enable backups or restores.
+**Who and what:** administrators who create or edit Microsoft 365 Backup policies. Microsoft's setup page says only tenant-level admins create and manage backups, and that the admin role determines which products you can manage: SharePoint Administrator for SharePoint and OneDrive, Exchange Administrator for Exchange, and the Microsoft 365 Backup Administrator role for SharePoint, OneDrive and Exchange. End users cannot enable backups or restores.
 
 **Workloads:** SharePoint and OneDrive up to 10 years; Exchange up to 2 years; Microsoft Entra Backup and Recovery Premium (preview) has a fixed 30-day window that is not configurable.
 
@@ -200,13 +204,5 @@ Roles differ by workload: the setup page lists SharePoint Administrator for Shar
 <!-- rationale
 risk: Low. Existing policies keep their one-year recovery window unless an administrator changes them. Longer windows retain deleted content for longer, and a later reduction deletes older recovery points after a 30-day grace period.
 cost: Variable. Microsoft 365 Backup is pay-as-you-go at a list price of $0.15/GiB/month of protected content, and deleted or versioned content stays counted until the recovery window lapses.
-impact: Low. Backup administrators and the finance owners of the Azure bill notice; end users see no change in Microsoft 365 apps.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Who and what / role: Microsoft 365 Backup Administrator controls the whole tool. | Found: Global Administrators and Microsoft Entra Backup Administrators can manage Entra backup; the Microsoft 365 Backup Administrator role alone doesn't grant Entra management privileges. | Fix: Replace 'the Microsoft 365 Backup Administrator role for the whole tool' with 'the Microsoft 365 Backup Administrator role for SharePoint, OneDrive and Exchange'. The setup page's role table excludes Entra, consistent with https://learn.microsoft.com/microsoft-365/backup/backup-whats-new. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-whats-new
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: End users see no change in Microsoft 365 apps. | Found: Searched: Microsoft 365 Backup recovery window change end users apps user experience. Read backup-whats-new, backup-view-edit-policies, backup-overview and backup-setup; these describe admin policy changes, not an explicit guarantee about user app experience. | Fix: Remove 'end users see no change in Microsoft 365 apps' from the impact rationale; retain 'Low. Backup administrators and the finance owners of the Azure bill notice.'
+impact: Low. Backup administrators and the finance owners of the Azure bill notice.
 -->

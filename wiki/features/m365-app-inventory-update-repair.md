@@ -17,23 +17,26 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "The Inventory page says the signed-in user must hold one of its listed plans (for example Microsoft 365 E3 or E5). The Update Repair page lists prerequisites but names no additional licence or meter, and does not state which licence covers it."
+  model: "included"
+  notes: "Update Repair uses Inventory, whose licensing requirements say the signed-in user must have a listed plan, such as Microsoft 365 E3 or E5. Microsoft Learn publishes no licence or meter specific to Update Repair as of November 2026."
 audiences: ["m365-admin","change-adoption"]
 tags: ["admin-center","monitoring","microsoft-365-apps","inventory"]
 sources:
-  - title: "Microsoft 365 Roadmap 576286"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=576286"
-    kind: "roadmap"
   - title: "Use Update Repair to identify and remediate Microsoft 365 Apps update issues"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair"
     kind: "learn"
   - title: "Overview of inventory in the Microsoft 365 Apps admin center"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory"
     kind: "learn"
+  - title: "Roadmap to modern management of Microsoft 365 Apps in the enterprise"
+    url: "https://learn.microsoft.com/microsoft-365-apps/best-practices/roadmap-to-modern-management"
+    kind: "learn"
   - title: "MC1518032: Microsoft 365 apps: Introducing Update Repair in Inventory"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1518032"
     kind: "message-center"
+  - title: "Microsoft 365 Roadmap 576286"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=576286"
+    kind: "roadmap"
 videos: []
 related: []
 controls:
@@ -41,15 +44,15 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Inventory"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory"
+      path: "Inventory > Get started"
+      docs: "https://learn.microsoft.com/microsoft-365-apps/best-practices/roadmap-to-modern-management"
     api: null
     note: "A new tenant completes a one-step setup. Roles listed on the Inventory page: Office Apps Administrator, Security Administrator, Global Administrator."
   - governs: "Which devices are repaired remotely, and when"
     scope: "other"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Review devices > Update Repair table > select one or more devices > Repair"
+      path: "Inventory > Review devices > Update Repair table > select one or more devices > Repair"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair"
     api: null
     note: "Per-device action; the device receives it at its next Inventory check-in. Not available for Needs attention devices."
@@ -71,7 +74,7 @@ controls:
     note: "Run from an elevated Command Prompt; verify the x64 platform matches the installation. Covers one device, not the admin-centre report."
 confidence: "high"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-24"
 roadmapModified: "2026-11-12T01:50:56"
 changes:
   - date: "2026-11-16"
@@ -82,19 +85,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected after verification: the Repair path now starts at Inventory, the Inventory setup path is Inventory > Get started, and licensing is set to included on the Inventory plan requirement."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 83 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 77
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "60dbcd0a1c83cdd4fd68729934945480"
+  claims: 83
+  confirmed: 82
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "f75f8ea092c208aa2bdf58e548096c04"
 ---
 
 ## What's changing
@@ -172,8 +179,8 @@ Indirect costs are admin time, user downtime during a repair, and a download of 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Inventory, the data source for Update Repair, is set up</strong><br><small>Tenant</small><br><small class="controls__note">A new tenant completes a one-step setup. Roles listed on the Inventory page: Office Apps Administrator, Security Administrator, Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Inventory <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which devices are repaired remotely, and when</strong><br><small class="controls__note">Per-device action; the device receives it at its next Inventory check-in. Not available for Needs attention devices.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Review devices › Update Repair table › select one or more devices › Repair <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Inventory, the data source for Update Repair, is set up</strong><br><small>Tenant</small><br><small class="controls__note">A new tenant completes a one-step setup. Roles listed on the Inventory page: Office Apps Administrator, Security Administrator, Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Inventory › Get started <a href="https://learn.microsoft.com/microsoft-365-apps/best-practices/roadmap-to-modern-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which devices are repaired remotely, and when</strong><br><small class="controls__note">Per-device action; the device receives it at its next Inventory check-in. Not available for Needs attention devices.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Inventory › Review devices › Update Repair table › select one or more devices › Repair <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to turn Update Repair off or restrict who can start Repair</strong><br><small>Tenant</small><br><small class="controls__note">No such setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Manual Online Repair on a single device (alternative for Needs attention)</strong><br><small class="controls__note">Run from an elevated Command Prompt; verify the x64 platform matches the installation. Covers one device, not the admin-centre report.</small></td><td data-label="Admin UI"><strong>Windows (on the device)</strong><br>Installed apps (or Add or remove programs) › Microsoft 365 Apps › Modify or Change › Online Repair › Repair <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>&quot;C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeClickToRun.exe&quot; scenario=Repair platform=x64 RepairType=FullRepair forceappshutdown=True DisplayLevel=True</code> <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -186,7 +193,6 @@ Repair and the report share one surface. Inventory lists Office Apps Administrat
 - Does Update Repair have its own switch, role restriction or scheduling window, separate from Inventory? Watch the Update Repair Learn page.
 - When will the Learn page drop its preview wording, and do the preview check-in intervals (12 hours, or 2 hours with cloud update) change at General Availability?
 - Is a Repair action logged anywhere an admin can audit, and is there an API for it? None is documented at the time of writing (November 2026).
-- Does the Inventory plan list apply unchanged to Update Repair, given that its Learn page names no licence?
 
 <!-- rationale
 risk: Medium. A Repair action closes open Microsoft 365 Apps on the selected devices and reinstalls them, so users can lose unsaved work unless admins warn them first; it reads no new data and starts only when an admin selects it.
@@ -194,11 +200,8 @@ cost: Low. The Update Repair page names no separate licence or meter; the costs 
 impact: Low. Admins use the report; users notice only on devices an admin repairs, where Office apps close and reinstall.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Remote Repair is reached through Review devices > Update Repair table > select one or more devices > Repair. | Found: a notification banner appears on the Home and Inventory pages. Select Review devices in the banner to open Update Repair ... In the Update Repair table, select one or more devices. Select Repair and confirm the action. | Fix: Set controls[1].ui.path and the rendered table path to 'Inventory > Review devices > Update Repair table > select one or more devices > Repair'. The existing path starts inside a page at its banner rather than identifying the navigation page containing it. The cited Update Repair page documents the banner on Inventory. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance guidance; Governance controls table / admin-path: Inventory setup is reached through Microsoft 365 Apps admin center > Inventory. | Found: go to Inventory in the navigation pane. If you're new to inventory, you need to complete the one-step setup. | Fix: The path stops on the right page before the setup control. Set controls[0].ui.path and its rendered counterpart to 'Inventory > Get started', and cite https://learn.microsoft.com/microsoft-365-apps/best-practices/roadmap-to-modern-management, which says 'Navigate to Inventory and choose Get started to enable the feature.' | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory
-- [supported, minor] front matter: licensing.model and notes; Open questions / licensing: The licensing model is unknown despite the published Inventory plan requirement. | Found: Your user must be assigned to one of the following subscription plans: ... Microsoft 365 Business Standard ... Microsoft 365 Business Premium ... Office 365 E3 ... Office 365 E5 ... Microsoft 365 E3 ... Microsoft 365 E5 | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Update Repair uses Inventory, whose licensing requirements say the signed-in user must have a listed plan, such as Microsoft 365 E3 or E5. Microsoft Learn publishes no licence or meter specific to Update Repair as of November 2026.' Remove the final Open questions bullet questioning the applicability of the product-level requirement. Keep the existing Inventory citation. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory
+- [unsupported, major] Cost and licensing: indirect costs / behaviour: Each repaired device downloads the full build from the CDN. | Found: Searched: Microsoft 365 Apps Click-to-Run Online Repair downloads full installation build. Read https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair. It states downloading the latest available build but does not specify the full download payload for every repair. | Fix: Replace 'a download of the full build from the CDN for each repaired device' with 'a download of the latest available build from the CDN for each repaired device', as documented at https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair.
 -->

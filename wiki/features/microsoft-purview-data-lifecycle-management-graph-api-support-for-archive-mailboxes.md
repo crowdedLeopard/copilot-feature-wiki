@@ -107,7 +107,21 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Status moved to Launched on the roadmap record; added the other roadmap item's clouds; noted that Microsoft's two EWS pages disagree on exceptions to organisation-wide blocking."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
 version: 3
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 3
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 95
+  confirmed: 95
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "196148476ceec8141ef322c9d6308d6c"
 ---
 
 ## What's changing
@@ -201,4 +215,11 @@ Application access to the Graph mailbox APIs is governed by the Graph permission
 risk: Medium. EWS-based eDiscovery, export and records tools that read archive mailboxes stop working once EWS is disabled, which Microsoft says begins in October 2026.
 cost: Low. The cost the sources show is developer and admin time to migrate. Microsoft has not published a licence or meter specific to these APIs; its Graph metered list names a single API, assignSensitivityLabel.
 impact: Medium. Admins, developers and third-party vendors that run EWS-based archive integrations notice; users do not, unless one of those tools breaks.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing: second roadmap item / record: Roadmap item 573701 covers Graph archive mailbox support for GCC, GCC High and DoD. | Found: 573701: "title": "Microsoft Purview: Data Lifecycle Management-Graph API Support for Archive Mailboxes"; "clouds": ["GCC", "GCC High", "DoD"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=573701 to sources with kind roadmap and title Microsoft 365 Roadmap 573701.
+- [supported, minor] Risk assessment: Change & support; Open questions / behaviour: Learn's archive redirect examples use beta endpoints. | Found: GET https://graph.microsoft.com/beta/admin/exchange/mailboxes/MBX:e0643f21@a7809c93/folders/NJWt2LeVEAAAIBDAAAAA== | Fix: Add after the beta-examples sentence: 'Beta APIs are preview, subject to change and not supported for production applications.' Cite https://learn.microsoft.com/graph/archive-mailbox-mail-api, whose preview banner states this. | Source: https://learn.microsoft.com/graph/handle-archive-mailbox-redirects
 -->

@@ -55,19 +55,23 @@ changes:
     note: "Correction: removed the unsupported sentence saying no cap or budget control applies; the statement that no licence or meter specific to the download manager is published stays."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Correction: removed the paragraph saying Microsoft has not said whether file-access controls govern the download manager; the page now makes no claim about those controls."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 42
-  confirmed: 41
+  confirmed: 42
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "8f7c8c39299fcb83e05883e121f93ebd"
+  contradicted: 0
+  attempts: 0
+  hash: "53c19f3b962b819471a59357d9438934"
 ---
 
 ## What's changing
@@ -145,8 +149,6 @@ The roadmap does not name a licence, role or prerequisite for the download manag
 
 No tenant setting for the download manager is documented, so the table has a single row recording that gap. The Teams settings and policies reference and the Set-CsTeamsClientConfiguration reference were checked in November 2026 and list nothing for it.
 
-The table does not list controls over which files people can reach or download, because Microsoft has not said that any of them govern the download manager.
-
 ## Open questions
 
 - Is the new download manager on by default for every user, or does Microsoft stage it by release phase? Watch Message center and the roadmap item.
@@ -158,10 +160,4 @@ The table does not list controls over which files people can reach or download, 
 risk: Low. The roadmap describes a change to how downloads are shown and opened in the Teams client, and Microsoft has described no new data access, permission or autonomous action.
 cost: Low. The only cost the sources show is admin and helpdesk time; Microsoft has published no licence or meter specific to the download manager, and the Teams service description says Teams is part of qualifying Microsoft 365 offerings or a standalone SKU.
 impact: Medium. Users of the Teams desktop client on Windows and Mac who download files will see a changed download manager; Microsoft has not said whether it is switched on for everyone on arrival.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / applicability: Microsoft has not said that any existing controls over which files people can reach or download govern the download manager. | Found: Applying any Conditional Access (CA) policy on SharePoint in Microsoft 365 is also applied to Teams. | Fix: Remove the final paragraph of Governance controls beginning 'The table does not list controls over which files people can reach or download'. Microsoft documents file-access and download restrictions for Teams clients at https://learn.microsoft.com/microsoftteams/block-access-sharepoint; the separate manager-switch absence can remain. | Source: https://learn.microsoft.com/microsoftteams/block-access-sharepoint
 -->

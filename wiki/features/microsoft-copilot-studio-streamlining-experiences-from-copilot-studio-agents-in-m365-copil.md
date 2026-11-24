@@ -69,15 +69,17 @@ changes:
     note: "Correction: reworded the claim that blocking is the only documented control, and removed two review steps that had no controls-table row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 53
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -177,4 +179,10 @@ The Graph block call is in beta, which Microsoft says is subject to change, and 
 risk: Medium. The roadmap says agent replies will show tool execution traces and a compressed chain of thought; Microsoft has not published what those display or whether an admin can limit them.
 cost: Low. The only cost the sources show is admin and communication time; licensing for this change is not yet published, and existing Copilot Studio billing rules are described under Cost and licensing.
 impact: Medium. People who use Copilot Studio agents inside Microsoft 365 Copilot would notice new formatting, streaming and citations, and makers and support teams would see changed behaviour.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown, although the notes and body give existing Copilot Studio agent billing rules. | Found: Copilot Credits are the common currency across Copilot Studio capabilities. You can get them through pay-as-you-go meters, prepurchase plans, and Copilot Credit prepaid pack subscriptions. | Fix: Set licensing.model to "mixed". Replace licensing.notes with: "Existing Copilot Studio agent licensing includes qualifying authenticated Microsoft 365 Copilot licence-holder usage; other agent usage can consume Copilot Credits. No licensing change specific to this response redesign is published. See Cost and licensing and https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing." | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 -->

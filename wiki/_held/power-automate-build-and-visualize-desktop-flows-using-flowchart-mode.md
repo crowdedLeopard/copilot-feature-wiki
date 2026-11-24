@@ -65,18 +65,20 @@ changes:
     note: "New briefing: a flowchart view for desktop flows, chosen per flow by makers, in preview on Learn; no admin switch documented."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 49
+  claims: 63
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "44cee59898699454d30a8f49298961f9"
 ---
 
@@ -171,4 +173,10 @@ At the time of writing (November 2026), the Learn page on governance in Power Au
 risk: Low. Flowchart mode is a different view of the same desktop flow: Microsoft's page says both modes represent the same flow, and sequence mode is the default.
 cost: Low. The only cost the sources show is admin and maker time; the flowchart mode page names no licence or meter, and no separate price for it is yet published.
 impact: Low. Makers who build desktop flows in Power Automate for desktop notice it, and only if they pick it; run-time users and admins see no change described.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: final paragraph / behaviour: The governance page lists Windows registry settings for Copilot capabilities. | Found: To prevent your users from using any copilot capability contact Microsoft Customer Support to disable all copilot functionality in your tenant. | Fix: Remove 'and copilot capabilities' from the list of registry-controlled areas. Replace that sentence with: 'At the time of writing (November 2026), the Learn page on governance in Power Automate for desktop lists registry settings for sign-in, updates, proxy and logging, and none names flowchart mode.' The cited governance page documents Copilot controls through tenant settings or Microsoft Customer Support, not registry entries. | Source: https://learn.microsoft.com/power-automate/desktop-flows/governance
 -->

@@ -87,18 +87,20 @@ changes:
     note: "Corrected after verification: data policies are stated to apply to Copilot Studio agents in scope, the credit-cap wording now notes pay-as-you-go, and capacity controls are stated as applying across Copilot Studio."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 65 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
+  claims: 66
   confirmed: 64
   unconfirmed: 1
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "e6f97d39979f0ccf1b4c036bb9edeb1e"
 ---
 
@@ -189,8 +191,14 @@ cost: Low. No licence or meter is published for this feature, so the only known 
 impact: Medium. Makers in Copilot Studio would see a different way to start and configure agents; end users and administrators are not described as affected.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The planned experience provides a unified tools-and-knowledge screen where makers choose the agent's data access. | Found: Searched: "Copilot Studio" "app-first"; "Copilot Studio" "intent-first". Read: roadmap record; Create a new agent (Microsoft Copilot); What's new in Copilot Studio. The record describes a unified experience, not a single screen or its access-selection behaviour. | Fix: Replace the first sentence of Data exposure with: "Knowledge is the data an agent can access when answering questions, according to Learn's agent-creation page."
+- [unsupported, major] Risk assessment: Data exposure / behaviour: The planned unified tools-and-knowledge screen is where makers choose the agent's data access. | Found: Searched: "Copilot Studio" "app-first" agent creation authentication knowledge tools unified; "Copilot Studio" "intent-first". Read: roadmap record; Create a new agent; Add a tool; What's new. A unified experience is described, not one screen or its access-selection behaviour. | Fix: Replace the first sentence of Data exposure with: 'Knowledge is the data an agent can access when answering questions, according to Learn's agent-creation page.'
+- [contradicted, blocker] controls[0].api; Governance controls: data-policy row / command: New-DlpPolicy -DisplayName <name> -EnvironmentType <type> configures which tool connectors and knowledge-source endpoints makers can use. | Found: The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. ... -DisplayName ... Creates the policy with the input display name. ... -EnvironmentType ... The type of the environment: trial, production, sandbox, default. | Fix: Remove the data-policy control row (controls[0] and its rendered table row), retaining the documented data-policy guidance in prose. The printed invocation creates a policy but specifies neither connector restrictions nor endpoint rules; do not present it as the operation that configures them or claim that policy automation is undocumented. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a licence specific to this feature. | Found: To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free). ... Copilot Studio authors ... Microsoft 365 Copilot license ... Copilot Studio trial license | Fix: Set licensing.model to included. Replace the opening licensing note with: 'This is a new creation option inside Copilot Studio. Product access requires a Copilot Studio user license (with a tenant prepaid pack subscription), the Copilot Studio authors role, a Microsoft 365 Copilot license, or a Copilot Studio trial license. No licence specific to this flow is published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing and retain the distinction between maker access and harness-dependent usage charges. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+- [supported, minor] controls[0].ui; Governance controls: data-policy row / admin-path: Data-policy restrictions are reached in Power Platform admin center through Security > Data and privacy > Data policy. | Found: select Security, and then select Data and privacy. ... Select Data policy. The Data policies list appears. ... select the data policy and select Edit Policy. ... The Assign connectors page appears. | Fix: Extend the existing-policy route to 'Security > Data and privacy > Data policy > policy > Edit Policy > Add an environment > Assign connectors > connector > Block'. State in the row note that endpoint restrictions use 'Configure connector > Connector endpoints' instead of Block. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [supported, minor] controls[1].ui; Governance controls: credits row / admin-path: Credit allocation and tenant-capacity draw are reached through Licensing > Products > Copilot Studio > Manage Copilot Credits. | Found: select Licensing. ... Under Products, select Copilot Studio, and then select Manage Copilot Credits. ... Select the environment ... Under Allocate capacity ... Under Capacity overages, select or clear Draw from the available capacity in my tenant | Fix: Extend the draw-setting path to 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant'. In the note, state that the same environment pane's Allocate capacity field sets the credit allocation. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[1].api; Governance controls: credits row / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 writes environment credit allocations and tenant-pool draw settings. | Found: $apiBaseUrl = "https://api.powerplatform.com" ... $apiVersion = "2024-10-01" ... Invoke-RestMethod -Method Put ... -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call. Add to the row note: 'The request body identifies scope.environmentId and the MCSMessages entitlement; allocatedEntitlements[].allocation.quantity sets the allocation, and allocatedEntitlements[].enforcementRules with ruleType TenantPool and enabled sets tenant-capacity draw.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 -->

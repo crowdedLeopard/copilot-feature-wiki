@@ -113,19 +113,23 @@ changes:
     note: "Dates updated: target moved to December CY2026 and MC1261587 (updated 23 November 2026) now gives early December 2026 for preview completion and GA start; added sibling roadmap items and the A5 add-on source."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Correction: removed the Open questions bullet about a recovery route, which the Learn page answers,."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 106 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 91
+  claims: 106
+  confirmed: 106
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "536635155eedfd87bd787b2af35b0d61"
+  contradicted: 0
+  attempts: 0
+  hash: "50e4d6e2b7e6b9da67f9400cdbcdfd09"
 ---
 
 ## What's changing
@@ -216,7 +220,6 @@ Learn documents no separate tenant switch for the permanent deletion option itse
 - The roadmap record still says In development, while Learn and MC1261587 describe preview rollout from August 2026. When will General Availability reach tenants, given the notice's early December 2026 start and the roadmap's December CY2026 target?
 - Can the Priority cleanup tenant switch turn off permanent deletion alone, while leaving the standard recycle-bin workflow available?
 - Does the PriorityCleanup parameter on New-ComplianceTag, Set-RetentionCompliancePolicy and New-RetentionComplianceRule support creating permanent-deletion policies?
-- Does Microsoft document any recovery route for files after Priority cleanup permanently deletes them?
 
 <!-- rationale
 risk: Low. Nothing changes until an admin creates a policy and a second admin turns it on; configured policies can permanently delete files despite retention settings and eDiscovery holds.
@@ -224,10 +227,10 @@ cost: Medium. Learn lists licences that give user rights to the Priority cleanup
 impact: Low. Microsoft's notice says user workflows do not change unless an admin configures and applies a priority cleanup policy, so the people who notice are Purview administrators and approvers.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: final bullet / absence: Whether Microsoft documents any recovery route after Priority cleanup permanent deletion remains an open question. | Found: In an exceptional scenario, customers can submit a support ticket to request recovery. Recovery is subject to Microsoft review and approval and is attempted only on a best-effort basis. Recovery isn't guaranteed. | Fix: Remove the final Open questions bullet: the cited Learn page already answers it. If retaining a replacement statement, use: 'Microsoft documents an exceptional support-ticket recovery request, subject to Microsoft review and approval, attempted only on a best-effort basis and not guaranteed; there is no customer-accessible recovery option.' Cite https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion#understand-permanent-deletion-and-recovery-limitations. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The policy-creation path follows Solutions, Data Lifecycle Management, Priority cleanup, creation, Static SharePoint/OneDrive policy and Delete data permanently. | Found: On the Choose what to do with the content page, select Delete data permanently. | Fix: The missing labels flagged by the pre-check are supported by the already-cited https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint. Include its query-page heading in controls[0].ui and the rendered row: 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Tell us what you're looking for > Choose what to do with the content > Delete data permanently'. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
+- [supported, minor] controls[2].ui; Governance controls; What's changing / admin-path: Permanent-deletion approval is at Data Lifecycle Management > Priority cleanup > Pending cleanups > cleanup > Approve disposal in Microsoft Purview. | Found: Select the cleanup and review the identified items, their locations, and their history. Select the items to delete, and then select Approve disposal. | Fix: In the front matter and rendered table, replace the path with 'Data Lifecycle Management > Priority cleanup > Pending cleanups > cleanup > items > Approve disposal' to include selecting the items to which approval applies. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
+- [supported, minor] controls[3].ui; Governance controls; Governance guidance / admin-path: The cleanup ID for monitoring is reached through Data Lifecycle Management > Priority cleanup > policy details. | Found: Go to Data Lifecycle Management > Priority cleanup and open the policy details. Copy the cleanup ID. | Fix: In the front matter and rendered table, replace the path with 'Data Lifecycle Management > Priority cleanup > policy details > Copy the cleanup ID'. The existing path reaches the right page but stops before the documented copy action. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
+- [supported, minor] What's changing: sibling roadmap items / record: Microsoft lists this hard-delete capability under roadmap ids 558343, 557188 and 561034. | Found: "id": 558343; "id": 557188; "id": 561034. Each record's title names: Hard delete capability for OneDrive and SharePoint through secure priority cleanup workflows. | Fix: Add sources for 'Microsoft 365 Roadmap 557188' at https://www.microsoft.com/microsoft-365/roadmap?id=557188 and 'Microsoft 365 Roadmap 561034' at https://www.microsoft.com/microsoft-365/roadmap?id=561034, both of kind 'roadmap', for the sibling-record facts.
 -->

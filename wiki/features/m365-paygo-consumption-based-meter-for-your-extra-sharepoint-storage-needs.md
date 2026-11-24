@@ -102,15 +102,17 @@ changes:
     note: "Correction: removed the unsupported 'no new data access' claim, added the documented Graph storage usage report to the storage row, and replaced the exclusive 'only way to stop billing' wording."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -214,8 +216,11 @@ cost: Variable. This is a metered pay-as-you-go service billed through an Azure 
 impact: Low. Administrators, finance and procurement notice it; Microsoft's notice MC1330893 says there is no impact to users.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Risk assessment: Security & identity; Scope: Roles / role: The billing setup article allows SharePoint Administrator, Billing Administrator, AI Administrator or Global Administrator. | Found: You must have one of the following roles to complete the tasks in this article: SharePoint Administrator; Billing Administrator; AI Administrator; Global Administrator | Fix: After the role list in Scope, add: "The storage-specific prerequisites page separately lists only SharePoint Administrator or Global Administrator: https://learn.microsoft.com/microsoft-365/commerce/add-storage-space#prerequisites-for-adding-microsoft-365-onedrive-storage (the SharePoint section refers to these shared prerequisites)." Both pages are already cited; retain the billing article's role list. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[0].note; Risk assessment: Security & identity; Scope: Roles / role: The billing article permits SharePoint Administrator, Billing Administrator, AI Administrator or Global Administrator for setup. | Found: You must have one of the following roles to complete the tasks in this article: SharePoint Administrator; Billing Administrator; AI Administrator; Global Administrator | Fix: Retain the billing article's role list and add in Scope: "The storage-specific prerequisites page instead lists SharePoint Administrator or Global Administrator; its SharePoint section refers to the shared OneDrive prerequisites: https://learn.microsoft.com/microsoft-365/commerce/add-storage-space#prerequisites-for-adding-microsoft-365-onedrive-storage." | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: At rollout / admin-path: Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > Add a billing policy leads to Azure billing details. | Found: go to Billing > Pay-as-you-go. On the Billing policies tab, select Add a billing policy. On the Billing details page, enter a name for the billing policy. | Fix: Extend controls[1].ui.path to "Billing > Pay-as-you-go > Billing policies > Add a billing policy > Billing details". Retain the note explaining that the subscription, resource group and region are selected there, as documented at https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > policy > Budget > Settings opens budget configuration. | Found: On the Billing policies tab, select a billing policy. In the billing policy side panel, select the Budget tab. To configure your budget and alert preferences, select Settings. Select the Set a budget for this policy checkbox. | Fix: Extend controls[2].ui.path to "Billing > Pay-as-you-go > Billing policies > policy > Budget > Settings > Set a budget for this policy". The cited billing-node article documents this checkbox and the budget and alert fields that follow. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[5].ui; Governance controls table / admin-path: Microsoft 365 admin center > Billing > Add more products > Office 365 > Office 365 Extra File Storage > Details reaches the add-on purchase page. | Found: If you're using the Simplified view, select Billing, and then select Add more products. Under View by category, select Office 365. Find Office 365 Extra File Storage, and then select Details. | Fix: Restore the omitted heading: set controls[5].ui.path to "Billing > Add more products > View by category > Office 365 > Office 365 Extra File Storage > Details". Keep the existing Simplified view/MCA qualification. | Source: https://learn.microsoft.com/microsoft-365/commerce/add-storage-space
 -->

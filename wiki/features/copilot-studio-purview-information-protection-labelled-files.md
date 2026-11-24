@@ -155,15 +155,17 @@ changes:
     note: "Corrected after verification: label encryption path now starts at the Purview portal and includes the label scope step; the DSPM report row is narrowed to the summary report and names Export-ActivityExplorerData for activity events."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
 version: 6
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-24"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -268,9 +270,9 @@ cost: Variable. Existing agent usage is measured in Copilot Credits; qualifying 
 impact: Medium. Makers of agents on the Microsoft 365 channel, their users and the compliance team that owns the label taxonomy would notice; users without agents on that channel would not.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui / admin-path: The printed Purview DLP path reaches the Copilot policy location in the custom policy wizard. | Found: Go to Data Loss Prevention > Policies and select + Create policy. 3. Select the Custom template, then Custom policy. 4. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The path reaches the correct wizard page but stops before the label-processing control. Keep the existing path and extend the row's note to say: 'Add a rule with Content contains > Sensitivity labels and the Prevent Copilot and Cowork from processing content action.' The cited page's Supported conditions and actions table gives this condition/action pair. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] controls[3].ui / admin-path: The label-encryption path starts at the Purview portal and reaches Access control through the label scope and Control access selection. | Found: Then, on the Choose protection settings for the types of items you selected page, make sure you select Control access. | Fix: The path is supported by this page together with the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels, but ends on the right page before the permission settings. Append ' > Configure access control settings > Assign permissions now' to the current path, and append to the existing note: 'To set individual rights, select Assign permissions, add the intended recipients, then select Choose permissions.' Both steps are documented on the encryption page. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The Purview DLP path reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork location in the custom policy wizard. | Found: Go to Data Loss Prevention > Policies and select + Create policy. 3. Select the Custom template, then Custom policy. 4. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the existing path and add to controls[2].note: 'Add a rule with Content contains > Sensitivity labels and the Prevent Copilot and Cowork from processing content action.' The cited page's Supported conditions and actions table documents the remaining label-blocking control. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: The label-encryption path starts at the Purview portal and reaches Access control through the label scope and Control access option. | Found: make sure the Files & other data assets option is selected for the label's scope ... on the Choose protection settings for the types of items you selected page, make sure you select Control access. ... On the Access control page | Fix: The already-cited create-sensitivity-labels page supplies Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label. Append ' > Configure access control settings > Assign permissions now' to the current path. Add to controls[3].note: 'To set individual rights, assign the intended users or groups and select Choose permissions.' These remaining steps are on https://learn.microsoft.com/purview/encryption-sensitivity-labels. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 -->

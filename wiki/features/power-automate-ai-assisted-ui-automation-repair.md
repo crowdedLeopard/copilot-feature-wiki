@@ -86,15 +86,17 @@ changes:
     note: "Correction: Why it matters and the risk rationale now cite the Copilot in Power Automate overview for the initial state, and the Desktop flow repair at runtime row is removed from the controls table."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 53
+  claims: 46
+  confirmed: 46
   unconfirmed: 0
   contradicted: 0
   attempts: 0

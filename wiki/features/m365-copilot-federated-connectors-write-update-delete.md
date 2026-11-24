@@ -55,11 +55,23 @@ sources:
   - title: "Staged rollout for connectors"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout#modify-staged-rollout"
     kind: "learn"
+  - title: "Set up custom federated connectors"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors"
+    kind: "learn"
+  - title: "Supported Agent resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
   - title: "Allowing or blocking connectors by publisher type (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls"
     kind: "learn"
 videos: []
-related: ["work-iq-federated-connectors","copilot-studio-require-human-approval-for-tool-calls"]
+related: []
 controls:
   - governs: "Enabling, disabling or staging a federated connector"
     scope: "tenant"
@@ -74,15 +86,22 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > Agent and plugin access"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls"
-    api: null
-    note: "Applies to future connectors of that publisher type as well."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Applies to future connectors of that publisher type. Preview, global service only. Set mode applyOnce, status active; resourceType microsoft.agent.allowedagenttypes, resourceVersion 1, valueObject.areISVAppsAllowed."
   - governs: "Which users may use connectors"
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
-    api: null
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Preview, global service only. Set mode applyOnce, status active; resourceType microsoft.agent.useraccess, resourceVersion 1, valueObject.userAssignmentCategory everyone or noOne. No specific-user or group assignment is documented."
   - governs: "Blocking an individual tool on a supported MCP server"
     scope: "tenant"
     ui:
@@ -100,7 +119,7 @@ controls:
     api: null
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-30T22:08:34"
 changes:
   - date: "2026-11-13"
@@ -117,24 +136,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Correction: publisher-type access and user access now list their preview Microsoft Graph applyOnce equivalents; removed the claim that the confirmation card explains Cancel; noted the connectors overview still says read-only."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 65
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "b207cbe3caebf8b3f3ff8f10d2644daa"
+  claims: 79
+  confirmed: 78
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "5549ed891f90ec53c58c8148251fdfe2"
 ---
 
 ## What's changing
 
 **Federated Copilot connectors** use the Model Context Protocol to query third-party services in real time without indexing their data into Microsoft 365. Until October 2026 they were read-only. With this change, when a connector publisher exposes tools that create, update or delete content, those tools are unblocked in Copilot Chat. A user can turn an escalation email into a ticket, update a CRM record or add a comment on an issue without leaving Copilot.
+
+The general [Copilot connectors overview](https://learn.microsoft.com/microsoft-365/copilot/connectors/overview) still describes federated connectors as read-only, alongside a note that write actions start in early October 2026; this briefing follows the launched roadmap item and the feature-specific federated connectors overview.
 
 The model is the same as for read tools: Copilot acts with the **user's own account and permissions** at the third-party service, and no data is indexed. The roadmap item says every create, update or delete action requires the user's explicit confirmation before it runs. Microsoft Learn gives the detail: write, update and delete tools default to **Needs approval**, Copilot shows a confirmation card with the parameters it will send, and nothing is transmitted until the user responds. Users can choose **Allow once**, **Allow for conversation**, **Always allow** (per tool, revocable in Settings > Sources) or **Cancel**, so reusable choices mean later calls to the same tool need not ask again. If a publisher adds or changes a write tool, it reverts to Needs approval.
 
@@ -162,7 +187,7 @@ Compliance teams should note Microsoft's own wording: these actions "export Cust
 
 **Change & support**
 - Connectors already enabled for read gain write tools when the publisher adds them. Monitor the Tools section per connector where the admin centre offers it.
-- Users may not understand that cancelling leaves the third-party system unchanged; the card explains this but training helps.
+- Users may not understand that cancelling leaves the third-party system unchanged; training helps.
 
 ## Cost and licensing
 
@@ -200,14 +225,14 @@ Compliance teams should note Microsoft's own wording: these actions "export Cust
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Enabling, disabling or staging a federated connector</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Enable / Disable / Staged rollout <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Allowing or blocking connectors by publisher type</strong><br><small>Tenant</small><br><small class="controls__note">Applies to future connectors of that publisher type as well.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users may use connectors</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Allowing or blocking connectors by publisher type</strong><br><small>Tenant</small><br><small class="controls__note">Applies to future connectors of that publisher type. Preview, global service only. Set mode applyOnce, status active; resourceType microsoft.agent.allowedagenttypes, resourceVersion 1, valueObject.areISVAppsAllowed.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users may use connectors</strong><br><small>User</small><br><small class="controls__note">Preview, global service only. Set mode applyOnce, status active; resourceType microsoft.agent.useraccess, resourceVersion 1, valueObject.userAssignmentCategory everyone or noOne. No specific-user or group assignment is documented.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Blocking an individual tool on a supported MCP server</strong><br><small>Tenant</small><br><small class="controls__note">Rolling out; supports only specific MCP server types registered on Agent 365. Not confirmed for every federated connector.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Tools › tool toggle › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who is in a staged rollout</strong><br><small>Group</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connector › Staged Rollout › Edit <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout#modify-staged-rollout" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-None of these settings has a documented Graph or PowerShell equivalent, so change control is portal and audit log. Write, update and delete tools are not enabled separately from the connector. Microsoft documents individual tool toggles only for supported MCP servers registered on Agent 365, where the feature is still rolling out, so the tool row does not apply to every federated connector. Where the connector's Tools section is available, it lists Read tools and Write/Delete tools, which is where an admin sees what a write-capable connector can do before enabling it; where it is not, Learn points to the user-side Settings > Sources view. Users manage individual tool approvals under Settings > Sources > connector > Tools > Write/Delete tools; reusable approvals apply to a tool, not the whole connector. That user-side approval is not an admin control. Purview audit records connector actions.
+Publisher-type access and all-user/no-user access have preview Microsoft Graph Tenant Configuration Management applyOnce equivalents; the other listed settings have no documented equivalent. For publisher-type access the baseline sets properties.valueObject.areISVAppsAllowed, areMicrosoftAppsAllowed or areTenantScopedAppsAllowed. Write, update and delete tools are not enabled separately from the connector. Microsoft documents individual tool toggles only for supported MCP servers registered on Agent 365, where the feature is still rolling out, so the tool row does not apply to every federated connector. Where the connector's Tools section is available, it lists Read tools and Write/Delete tools, which is where an admin sees what a write-capable connector can do before enabling it; where it is not, Learn points to the user-side Settings > Sources view. Users manage individual tool approvals under Settings > Sources > connector > Tools > Write/Delete tools; reusable approvals apply to a tool, not the whole connector. That user-side approval is not an admin control. Purview audit records connector actions.
 
 ## Open questions
 
@@ -221,13 +246,11 @@ cost: None. Connector grounding adds no extra Microsoft charge for users who alr
 impact: High. Changes what every Copilot Chat user can do with enabled connectors.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table; Governance controls: none has a Graph equivalent / absence: No Graph or other automation equivalent for publisher-type Agent and plugin access is documented. | Found: These resources also support remediation and applyOnce. areISVAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by external publishers are allowed. | Fix: Set controls[1].api to kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Add note: 'Preview, global service only. Set mode to applyOnce and status to active; the baseline uses resourceType microsoft.agent.allowedagenttypes, resourceVersion 1, and properties.valueObject.areISVAppsAllowed, areMicrosoftAppsAllowed or areTenantScopedAppsAllowed to set publisher access.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Replace the blanket portal-only/undocumented Graph prose with 'Publisher-type access and all-user/no-user access have preview Microsoft Graph Tenant Configuration Management applyOnce equivalents; the other listed settings have no documented equivalent.' | Source: https://learn.microsoft.com/graph/utcm-agent-resources#allowedagenttypes-resource-type
-- [contradicted, blocker] controls[2].api; Governance controls table; Governance controls: none has a Graph equivalent / absence: No Graph or other automation equivalent for User access is documented. | Found: userAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne Remediation and applyOnce | CopilotPolicySettings.ReadWrite | Fix: Set controls[2].api to kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Add note: 'Preview, global service only. Set mode to applyOnce and status to active; the baseline uses resourceType microsoft.agent.useraccess, resourceVersion 1, and properties.valueObject.userAssignmentCategory set to everyone or noOne. This schema does not document specific-user/group assignment.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Apply the narrowed Graph-equivalent prose specified for publisher-type access. | Source: https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type
-- [unsupported, major] Risk assessment: Change & support, the card explains this / behaviour: The confirmation card itself explains that cancelling leaves the third-party system unchanged. | Found: Searched: federated connectors confirmation Cancel card. Read federated-connectors-overview and confirmation search excerpts: the documentation table states Cancel changes nothing, and the image description names Cancel, but neither establishes that the card explains its outcome. | Fix: Replace 'the card explains this but training helps' with 'training helps'. Keep the documented statement that cancelling leaves the third-party system unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] title; summary; What's changing; Why it matters / behaviour: Publisher-provided create, update and delete tools are now usable from Copilot Chat. | Found: When a connector provides the appropriate tools, users can ask Microsoft 365 Copilot to create, update, or delete information in a connected third-party system on their behalf. | Fix: Add after the first paragraph of What's changing: 'The general Copilot connectors overview still describes federated connectors as read-only, alongside a note that write actions start in early October 2026; this briefing follows the launched roadmap item and the feature-specific federated connectors overview.' The conflicting page is https://learn.microsoft.com/microsoft-365/copilot/connectors/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Administrators enable, disable or stage a connector under Microsoft 365 admin center > Copilot > Connectors > Your connections > connector. | Found: Enable / Disable | Copilot > Connectors > Your connections | Turns an individual connector on or pauses it without removing configuration. Staged rollout | Copilot > Connectors > Your connections > Staged rollout | Fix: Keep controls[0].ui unchanged and add https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors to sources. Its Manage the connector section supplies the connector-selection and Staged rollout steps, and its Enable, disable, or delete the connector section supplies Enable and Disable. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
+- [supported, minor] What's changing; Scope / availability: Copilot in Word supports federated connector actions. | Found: Copilot in Word, Excel, PowerPoint, and Outlook | Fix: Add: 'The federated connectors overview lists Word as supported, but the submission guide still says Word is coming soon.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/submit-federated-connector, which states 'with Word and PowerPoint coming soon'. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] What's changing; Scope / availability: Copilot in PowerPoint supports federated connector actions. | Found: Copilot in Word, Excel, PowerPoint, and Outlook | Fix: Combine with the Word qualification: 'The federated connectors overview lists Word and PowerPoint as supported, but the submission guide still says they are coming soon.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/submit-federated-connector. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] Risk assessment / behaviour: Always allow removes repeated confirmation for a user's tool indefinitely. | Found: Always allow | Runs the action and doesn't ask again for this tool until the user changes the setting or the publisher changes the tool. | Fix: Replace the sentence with: '"Always allow" removes repeated confirmation for that tool until the user changes the setting or the publisher changes the tool.' The earlier paragraph already documents publisher-triggered resets; repeat that qualification here instead of 'indefinitely'. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [contradicted, minor] Governance guidance: Before rollout; After rollout / consistency: The governance checklist asks readers to inventory and review connector tool lists, but the controls table has no tool-inventory row. | Found: Inventory enabled federated connectors ... record which now expose Write/Delete tools ... Review connector tool lists monthly for newly added write tools. The table covers connector availability, publisher access, user access, MCP tool blocking and staged rollout, not tool inventory. | Fix: Remove 'and record which now expose Write/Delete tools, using the connector's Tools section where it is available' from the Before rollout inventory bullet, and remove the After rollout bullet 'Review connector tool lists monthly for newly added write tools.' Do not add an unverified controls row.
 -->

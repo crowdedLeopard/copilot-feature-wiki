@@ -71,18 +71,20 @@ changes:
     note: "Corrected: the Managed Environments sharing controls are now stated as identified by the harness FAQ, the Editor-to-individuals limit is stated as Learn gives it, and two unmatched checklist bullets were removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 81 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 81
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "861e98914106bc5b8245382ed77936e8"
 ---
 
@@ -181,8 +183,12 @@ cost: Variable. Microsoft Learn says the Microsoft Copilot harness uses usage-ba
 impact: Medium. Makers and the people they share with notice it; end users who only chat with an agent do not need Editor or Viewer access.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Scope / absence: The roles that can limit sharing are not stated on the pages read. | Found: To enable or edit managed environments, you need the Power Platform Administrator or Dynamics 365 Administrator role in Microsoft Entra ID. | Fix: Replace "The roles that can limit sharing are not stated on the pages read" with "To edit Managed Environments sharing settings, you need the Power Platform Administrator or Dynamics 365 Administrator role in Microsoft Entra ID." Cite https://learn.microsoft.com/power-platform/admin/managed-environment-enable#permissions. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-enable
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The harness sharing page says viewers can open the agent to view details. | Found: Viewers can see the agent in their list of agents, open it to view details and test it, but they can't edit the agent or its content. | Fix: Add to the existing source-disagreement paragraph: "The separate Control how agents are shared page defines Viewer differently again: makers with the Viewer assignment can only chat with the agent." Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits#use-the-editor-and-viewer-roles-to-control-sharing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent
+- [supported, minor] licensing.notes; What's changing; Cost and licensing; Governance guidance: Before rollout / licensing: The Learn sharing page lists a Microsoft Copilot Studio per-user licence for users the maker shares with. | Found: Users you share with have a Microsoft Copilot Studio per-user license. | Fix: Keep the prerequisite attributed to the sharing page. Add: "The harness overview separately says an individually assigned Copilot Studio user licence is not needed to access the Microsoft Copilot harness experience; creating agents depends on Copilot Studio and environment permissions." Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview#access-permissions-and-billing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent
+- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The harness sharing page says viewers can open the agent to view details. | Found: Viewers can display the agent in their list of agents, open it to view details and test it, but they can't edit the agent or its content. | Fix: Add to the existing source-disagreement paragraph: "The separate Control how agents are shared page defines Viewer differently again: makers with the Viewer assignment can only chat with the agent." Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits#use-the-editor-and-viewer-roles-to-control-sharing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent
+- [supported, minor] Why it matters; Risk assessment: Security & identity / behaviour: An Editor can change the harness agent's instructions and tools. | Found: Build | Configure the agent's identity, knowledge, tools, skills, model, and memory. ... Instructions: Define the agent's identity, tone, scope, and behavior. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview to sources for the existing statement about changing instructions and tools; the Editor's edit/configure permission is already supported by the roadmap and sharing-controls page. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview
 -->
