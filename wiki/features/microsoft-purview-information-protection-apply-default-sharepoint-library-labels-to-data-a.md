@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 575283"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=575283"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 559105"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=559105"
+    kind: "roadmap"
   - title: "Automatically apply a sensitivity label to Microsoft 365 data"
     url: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
     kind: "learn"
@@ -90,7 +93,7 @@ controls:
     note: "Read-only. Look for the Applied sensitivity label file event; the Learn page for library defaults says ActionScourceDetails 6 marks a library default."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-21"
+updated: "2026-11-24"
 roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-20"
@@ -111,19 +114,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected after verification: user-defined permissions restriction, E3 or Business Premium licensing statement and library-default licence requirement now match Learn; markings wording and roadmap 559105 source added."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 61
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "0108c3439d6f18f968073b8915251175"
+  contradicted: 0
+  attempts: 0
+  hash: "5af44733347681e5c8d97e23d1f2b6d3"
 ---
 
 ## What's changing
@@ -136,7 +143,7 @@ This roadmap item (575283) covers GCC, GCC High and DoD on the web, is In develo
 
 ## Why it matters
 
-The Learn page applies a library default to new and edited files, and lists existing files at rest as a limitation of that setting. Learn documents an administrator-created auto-labeling policy to extend library defaults to eligible existing files; review simulation results before turning on the policy. The roadmap still targets GCC, GCC High and DoD for January CY2027. Once such a policy runs, a label with encryption, markings or other settings could appear on many existing files.
+The Learn page applies a library default to new and edited files, and lists existing files at rest as a limitation of that setting. Learn documents an administrator-created auto-labeling policy to extend library defaults to eligible existing files; review simulation results before turning on the policy. The roadmap still targets GCC, GCC High and DoD for January CY2027. Once such a policy runs, many eligible existing files could receive the library default label and its encryption. Visual markings are not applied to documents by auto-labeling.
 
 Use the weeks before the January CY2027 target to find which libraries already carry a default label and what those labels do. A default chosen for new files may not suit older content, so review it before anyone creates the policy.
 
@@ -144,7 +151,7 @@ Use the weeks before the January CY2027 target to find which libraries already c
 
 **Data exposure**
 - Existing files could take the library's default label. The Learn page says a library default overrides a lower-priority label unless the existing label was applied manually, so check which labels in your tenant rank below the defaults you have set.
-- Labels that apply encryption can change who can open a file. The page says labels with user-defined permissions, an access expiry other than Never, or Double Key Encryption do not support a default label for a library.
+- Labels that apply encryption can change who can open a file. The page says labels configured with **Let users assign permissions when they apply the label** and with **In Word, PowerPoint, and Excel, prompt users to specify permissions** selected, an access expiry other than Never, or Double Key Encryption do not support a default label for a library.
 
 **Security & identity**
 - Setting or changing a library default needs site admin permissions, according to the Learn page. Review who holds that role on sites that matter.
@@ -161,7 +168,7 @@ Use the weeks before the January CY2027 target to find which libraries already c
 
 Microsoft Learn's page on getting started with sensitivity labels says that a number of different per-user subscriptions support sensitivity labels for Microsoft 365 apps and services, and that the licensing requirements for users depend on the features you use. It also says admins need a licence to manage sensitivity labels, and points to the Microsoft Purview service description for feature-level requirements.
 
-Learn documents the existing-files capability as service-side auto-labeling. The Purview service description lists Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5 among the qualifying licenses for client and service-side automatic sensitivity labeling. The auto-labeling page says that with E3 or Business Premium, auto-labeling of files and emails isn't included and an E5 / P2-tier add-on is required. A licence or meter specific to labelling existing files from a library default is not yet published. The Learn page on library default labels lists labels, SharePoint settings and site admin permissions as requirements, and names no licence among them.
+Learn documents the existing-files capability as service-side auto-labeling. The Purview service description lists Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5 among the qualifying licenses for client and service-side automatic sensitivity labeling. The auto-labeling page says that E3 or Business Premium manual-labeling entitlement does not include automatic labeling; check the Purview service description for an eligible subscription or add-on for service-side automatic sensitivity labeling. A licence or meter specific to labelling existing files from a library default is not yet published. The library-default page also requires an eligible premium subscription for library default labeling, including applicable prerequisite licenses; check the Apply default sensitivity labeling for SharePoint Document library entry in the Purview service description.
 
 The indirect cost is time: finding libraries with defaults, checking label priority and encryption settings, and handling support questions once files change.
 
@@ -211,17 +218,6 @@ Audit search shows the **Applied sensitivity label file** event with a ActionSco
 
 <!-- rationale
 risk: Low. Existing files are labelled only after an administrator creates and turns on an auto-labeling policy; review simulation results before enabling it.
-cost: Medium. Learn documents this as service-side auto-labeling, which requires qualifying licensing; tenants with E3 or Business Premium need an E5 / P2-tier add-on. Reviewing library defaults and simulation results also takes administrator time.
+cost: Medium. Learn documents this as service-side auto-labeling, which requires qualifying licensing; E3 or Business Premium manual-labeling entitlement does not include automatic labeling, so check the Purview service description. Reviewing defaults also takes admin time.
 impact: Medium. Site admins who set library defaults and people who work in those libraries could see existing files take a label, with any protection that label carries.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Labels with user-defined permissions do not support a default label for a library. | Found: Let users assign permissions when they apply the label and the checkbox In Word, PowerPoint, and Excel, prompt users to specify permissions is selected. | Fix: Replace 'labels with user-defined permissions' with 'labels configured with Let users assign permissions when they apply the label and with In Word, PowerPoint, and Excel, prompt users to specify permissions selected'. Keep the separate expiry and Double Key Encryption restrictions. | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label
-- [contradicted, blocker] Cost and licensing; rationale: cost / licensing: Tenants with E3 or Business Premium require an E5 / P2-tier add-on for this service-side capability. | Found: Client-only entitlements don't establish service-side entitlement. ... You have E3 or Business Premium. ... Check the feature matrix for an eligible subscription or add-on for the labeling method you intend to use. | Fix: Replace the E5 / P2-tier add-on statement in Cost and licensing and the cost rationale with 'E3 or Business Premium manual-labeling entitlement does not include automatic labeling; check the Purview service description for an eligible subscription or add-on for service-side automatic sensitivity labeling.' Do not imply that a client-only P2 entitlement covers service-side labeling. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-- [contradicted, blocker] Cost and licensing / licensing: The library-default page lists its requirements but names no licence among them. | Found: An eligible premium subscription for library default labeling. Check the Apply default sensitivity labeling for SharePoint Document library entry ... including the applicable prerequisite licenses. | Fix: Replace the last sentence of the second Cost and licensing paragraph with 'The library-default page also requires an eligible premium subscription for library default labeling, including applicable prerequisite licenses; check the Apply default sensitivity labeling for SharePoint Document library entry in the Purview service description.' | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: Roadmap item 559105 describes the same capability in a separate record. | Found: "id": 559105, "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest" | Fix: Add a roadmap source titled 'Microsoft 365 Roadmap 559105' with URL https://www.microsoft.com/microsoft-365/roadmap?id=559105 for the comparison.
-- [supported, minor] Why it matters / behaviour: A label configured with markings or other settings could appear on many existing files when the policy runs. | Found: If the labels you select are configured to use visual markings (headers, footers, watermarks), these markings aren't applied to documents when you use auto-labeling. | Fix: Replace 'Once such a policy runs, a label with encryption, markings or other settings could appear on many existing files.' with 'Once such a policy runs, many eligible existing files could receive the library default label and its encryption. Visual markings are not applied to documents by auto-labeling.' | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 -->

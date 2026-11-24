@@ -61,6 +61,9 @@ sources:
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     kind: "learn"
+  - title: "Whether web search is allowed at all (Microsoft 365 Apps admin center)"
+    url: "https://learn.microsoft.com/copilot/plan/manage-public-web-access#it-admin-control-for-both-microsoft-copilot-and-microsoft-copilot-chat"
+    kind: "learn"
 videos: []
 related: ["purview-dlp-block-sensitive-data-in-copilot-web-search"]
 controls:
@@ -77,7 +80,7 @@ controls:
     ui:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+      docs: "https://learn.microsoft.com/copilot/plan/manage-public-web-access#it-admin-control-for-both-microsoft-copilot-and-microsoft-copilot-chat"
     api:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
@@ -121,19 +124,23 @@ changes:
     note: "Correction: the DLP row now lists the documented New-DlpComplianceRule -RestrictWebGrounding automation, and the Cloud Policy path ends at the Allow web search in Copilot policy."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 72 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-24"
+    note: "Correction: the web search policy row now links the Learn page that documents the Allow web search in Copilot policy; the rest of the page is unchanged."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+version: 7
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
-  unconfirmed: 1
+  claims: 76
+  confirmed: 76
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "7fb176d45291e33ce75d05699b7e18da"
+  attempts: 0
+  hash: "9341e1f2765ad7b3abcdd509d724fc62"
 ---
 
 ## What's changing
@@ -201,7 +208,7 @@ It is also part of Microsoft's prompt-injection defence story: excluding domains
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which domains are excluded from web grounding</strong><br><small>Tenant</small><br><small class="controls__note">Search Administrator or Global Administrator; needs the Az.Accounts module. The script also supports get, update, delete and template.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>ConfigureTenantDomainExclusions.ps1 -Create -FromFile &lt;csv&gt;</code> <a href="https://learn.microsoft.com/copilot/implement/domain-exclusion" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether web search is allowed at all</strong><br><small>Group</small><br><small class="controls__note">UI: tenant or group scope. Graph: preview, tenant-level only; fails if the setting is in a group-level policy; needs the signed-in user's AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether web search is allowed at all</strong><br><small>Group</small><br><small class="controls__note">UI: tenant or group scope. Graph: preview, tenant-level only; fails if the setting is in a group-level policy; needs the signed-in user's AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/copilot/plan/manage-public-web-access#it-admin-control-for-both-microsoft-copilot-and-microsoft-copilot-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Sensitive content sent to web search</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell documents RestrictWebGrounding as a DLP rule action that blocks web grounding; configure the sensitive-information condition on the rule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Policy &lt;policy&gt; -RestrictWebGrounding $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -224,11 +231,10 @@ cost: Low. Maintaining the CSV and running the script take administrator time; f
 impact: High. The tenant exclusion list changes which web page sources Copilot and Copilot Chat users may see cited once configured.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[1].ui: docs; rendered table: web search UI Learn link / admin-path: The UI row's linked Cloud Policy overview documents the control-specific final step, Allow web search in Copilot. | Found: Searched: Allow web search in Copilot in the full Cloud Policy overview; absent. Opened learn.microsoft.com/copilot/plan/manage-public-web-access, which names the setting and Cloud Policy service. The route is supported, but the row's docs page lacks its control-specific step. | Fix: Replace controls[1].ui.docs and the matching rendered UI Learn link with https://learn.microsoft.com/copilot/plan/manage-public-web-access#it-admin-control-for-both-microsoft-copilot-and-microsoft-copilot-chat. Keep the existing path and the Cloud Policy overview in sources: that overview supplies the wizard route, while this page supplies the control-specific step.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api / command: POST /beta/admin/configurationManagement/configurationMonitors can set web-search policy using an applyOnce monitor and an allowwebsearch baseline. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Append to controls[1].note and its rendered copy: "Request body: mode = applyOnce; baseline.resources uses resourceType microsoft.copilot.allowwebsearch, resourceVersion 1, and properties.value as a string (0 enables, 1 disables, 2 disables Work mode only)." These properties are documented at https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type and already appear in the prose. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[2].ui / admin-path: The Purview route through Data Loss Prevention, Policies, + Create policy, Custom, Custom policy and Locations reaches the Copilot policy location. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Extend controls[2].ui.path and its rendered copy to "Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Content contains > Sensitive information types > Prevent Copilot from processing content > Performing Web Searches". The cited page gives these remaining steps; the existing path stops at the location, not the web-search action. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[1].api; Governance controls table and Graph paragraph / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the web-search setting through an applyOnce baseline. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call. Append to controls[1].note and the rendered note: 'Request body: mode=applyOnce; baseline.resources uses resourceType=microsoft.copilot.allowwebsearch, resourceVersion=1 and properties.value as a string (0 enables, 1 disables, 2 disables Work mode only).' These properties are documented at https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type and https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta; they currently appear only in the prose. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed Purview path reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork location in a Custom DLP policy. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Complete controls[2].ui.path and the rendered path as 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Content contains > Sensitive information types > Prevent Copilot from processing content > Performing Web Searches'. The current path stops at the correct location rather than the web-search action. The remaining labels are documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about#block-sensitive-information-types-in-web-search. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The full Copilot experience uses the Microsoft 365 Copilot add-on license. | Found: Microsoft 365 Copilot (Premium) is the full add-on licensed experience | Fix: The cited overview supports the add-on description, but https://learn.microsoft.com/copilot/plan/copilot-license-options also states 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on'. Replace the clause in licensing.notes and Cost and licensing with 'The full Copilot experience is described as add-on licensed in the overview; Microsoft's license-options page also lists Microsoft 365 E7, which includes Microsoft Copilot.' Cite that license-options URL. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 -->

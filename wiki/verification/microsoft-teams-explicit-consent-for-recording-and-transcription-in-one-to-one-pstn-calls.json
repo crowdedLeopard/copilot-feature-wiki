@@ -3,30 +3,32 @@
   "roadmapId": 577543,
   "title": "Microsoft Teams: keypad consent for recording and transcription in one-to-one PSTN calls",
   "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "date": "2026-11-24",
   "version": 5,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 55,
-    "confirmed": 55,
+    "claims": 56,
+    "confirmed": 56,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 2
   },
-  "summary": "The briefing is supported by the roadmap, Microsoft's tenant notice and the cited documentation, including its warnings about conflicting documentation. The summary should explicitly say that the keypad prompt applies where explicit consent is required, rather than suggesting every PSTN call will receive it.",
+  "summary": "The briefing's controls and planned rollout are supported, and it accurately reports the conflicting consent and audit documentation. The summary should explicitly limit keypad prompts to calls requiring consent, and licensing should distinguish existing Teams Phone entitlement from unpublished feature-specific terms.",
   "claims": [
     {
       "n": 1,
       "where": "summary",
       "type": "behaviour",
-      "claim": "Teams will ask PSTN participants in one-to-one calls to press 1 or 2 before including them in recording or transcription.",
+      "claim": "Teams will ask PSTN participants in one-to-one calls to press 1 or 2 before recording or transcription includes them.",
       "status": "supported",
       "source": "Message Center post MC1530950",
       "quote": "PSTN participants in applicable one-to-one Teams calls where explicit consent for recording or transcription is required",
@@ -57,6 +59,17 @@
     },
     {
       "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -67,7 +80,18 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -78,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Android, iOS and Mobile as platforms.",
+      "claim": "The roadmap lists Android, iOS and Mobile.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"iOS\", \"Mobile\"]",
@@ -89,21 +113,32 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: previewDate",
+      "n": 9,
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The record gives no preview date.",
+      "claim": "The roadmap record was modified on 2026-11-17T18:36:41.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
+      "n": 10,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans keypad consent for PSTN participants in one-to-one calls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams will support explicit consent for participants connected through the public switched telephone network (PSTN) in one-to-one calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "What's changing",
       "type": "record",
-      "claim": "When consent is required, PSTN participants hear an audio prompt when recording or transcription starts.",
+      "claim": "When explicit consent is required, PSTN participants hear an audio prompt when recording or transcription starts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "When explicit consent is required, PSTN participants will hear an audio prompt when recording or transcription is started.",
@@ -111,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "title; What's changing",
+      "n": 12,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The planned one-to-one PSTN consent experience accepts consent or refusal through the phone keypad.",
+      "claim": "PSTN participants can consent or decline using their phone keypad.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "They can use their phone keypad to consent or decline.",
@@ -122,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Why it matters; Risk assessment",
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: impact",
       "type": "record",
-      "claim": "PSTN participants who decline consent can remain in the call.",
+      "claim": "Participants who decline can remain in the call but stay muted.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Participants who decline can remain in the call but stay muted.",
@@ -133,43 +168,43 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "PSTN participants who decline consent remain muted.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "Update internal guidance so users understand that PSTN participants who decline consent remain muted while the consent requirement applies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "PSTN participants press 1 to consent.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "Participants can press 1 to consent or 2 to decline.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "PSTN participants press 2 to decline.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "Participants can press 1 to consent or 2 to decline.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 14,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "This capability extends the existing Teams calling policy for explicit consent to one-to-one PSTN calls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This capability extends the existing Teams calling policy for explicit consent to one-to-one PSTN calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The participant presses 1 to consent.",
+      "status": "supported",
+      "source": "Message Center post MC1530950",
+      "quote": "Participants can press 1 to consent or 2 to decline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The participant presses 2 to decline.",
+      "status": "supported",
+      "source": "Message Center post MC1530950",
+      "quote": "Participants can press 1 to consent or 2 to decline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The PSTN participant's audio is excluded from recording and transcription before consent.",
+      "claim": "The PSTN participant's audio is not included in the recording or transcript before consent is provided.",
       "status": "supported",
       "source": "Message Center post MC1530950",
       "quote": "The PSTN participant's audio will not be included in the recording or transcript before consent is provided.",
@@ -177,30 +212,19 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; controls[0].note; Governance controls",
+      "n": 18,
+      "where": "summary; What's changing; controls[1].note; Governance controls; rationale: risk",
       "type": "record",
-      "claim": "The feature extends the existing explicit consent setting in Teams calling policies.",
+      "claim": "The update introduces no new admin policy setting.",
       "status": "supported",
       "source": "Message Center post MC1530950",
-      "quote": "This capability uses the existing explicit consent setting in Teams calling policies.",
+      "quote": "This capability uses the existing explicit consent setting in Teams calling policies. It does not introduce a new admin policy setting.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "summary; What's changing; controls[1].note; Governance controls",
-      "type": "record",
-      "claim": "The capability introduces no new admin policy setting.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "It does not introduce a new admin policy setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Why it matters; controls[0].note; Scope; rationale: risk",
+      "n": 19,
+      "where": "What's changing; Why it matters; Scope; controls[0].note; rationale: risk",
       "type": "default",
       "claim": "The existing explicit consent setting is disabled by default.",
       "status": "supported",
@@ -210,32 +234,32 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "This update does not change compliance recording.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "It does not change compliance recording or the existing consent experience for meetings and group calls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "This update does not change the existing meeting and group-call consent experience.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "It does not change compliance recording or the existing consent experience for meetings and group calls.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 20,
-      "where": "What's changing; Scope; Governance guidance",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice schedules Worldwide General Availability beginning in early December 2026.",
+      "claim": "The update does not change compliance recording.",
+      "status": "supported",
+      "source": "Message Center post MC1530950",
+      "quote": "It does not change compliance recording or the existing consent experience for meetings and group calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The update does not change the existing consent experience for meetings and group calls.",
+      "status": "supported",
+      "source": "Message Center post MC1530950",
+      "quote": "It does not change compliance recording or the existing consent experience for meetings and group calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "date",
+      "claim": "The notice gives General Availability (Worldwide) beginning in early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1530950",
       "quote": "General Availability (Worldwide): Beginning in early December 2026",
@@ -243,9 +267,9 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
       "where": "What's changing",
-      "type": "record",
+      "type": "date",
       "claim": "Microsoft's end date for the notice is 30 June 2027.",
       "status": "supported",
       "source": "Message Center post MC1530950",
@@ -254,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
       "where": "What's changing",
       "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
+      "claim": "The notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1530950",
       "quote": "Act by: none",
@@ -265,10 +289,21 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "n": 25,
+      "where": "Scope; Open questions",
+      "type": "record",
+      "claim": "The notice's rollout schedule gives no rollout date for GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": "Message Center post MC1530950",
+      "quote": "[Rollout schedule]\n- General Availability (Worldwide): Beginning in early December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The update reaches users already subject to explicit consent without a new admin configuration.",
+      "claim": "The extension reaches calls already requiring explicit consent without a new administrator configuration, represented as defaultState on.",
       "status": "supported",
       "source": "Message Center post MC1530950",
       "quote": "No new policy configuration is required if your existing explicit consent configuration meets your organization's requirements.",
@@ -276,186 +311,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the one-to-one PSTN keypad prompt.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams PSTN one to one explicit consent keypad separate policy switch PowerShell ExplicitRecordingConsent; opened call-recording-transcription-captions and participant-agreement-recording-transcription. Keypad results cover Audio Conferencing, not this planned one-to-one change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The call-recording Learn page describes a Yes or No consent prompt for call participants.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "When a participant decides to un-mute, turn on their camera, or share content, they’re asked to respond 'Yes' or 'No' to consent to be included in the recording and transcription.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Governance controls",
-      "type": "applicability",
-      "claim": "The calling-policy ExplicitRecordingConsent parameter covers both one-to-one VoIP and PSTN calls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "This parameter manages recording consent for Teams 1:1 VoIP and PSTN calls.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 27,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The meeting-consent Learn page currently lists PSTN endpoints in one-to-one calls as auto-consented.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
-      "quote": "The following user types are auto consented for recording and transcription without any participant interaction. ... PSTN endpoints in 1:1 calls",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Learn says the administrator can see each call participant's consent choice.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "The consent choice for each participant is visible by the admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure; Governance controls",
-      "type": "behaviour",
-      "claim": "Learn says participant consent choices are included in the call's Purview audit log.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "The consent choice for each participant is visible by the admin and is included in the Purview audit log for the call.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The documentation does not specify whether this new PSTN keypad choice is logged under the existing call-consent activity.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams PSTN keypad consent audit logging CallParticipantDetail call queue explicit consent; opened call-recording-transcription-captions, participant-agreement-recording-transcription and audit-log-activities. None describes auditing this planned keypad choice.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The supplied notice describes keypad responses but no sign-in step.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "Participants can press 1 to consent or 2 to decline.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Security & identity; Why it matters; Scope",
-      "type": "behaviour",
-      "claim": "Disabled means explicit consent is not required before recording starts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
-      "quote": "Disabled: Users are not required to obtain explicit consent before recording starts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "applicability",
-      "claim": "The call-recording Learn page says explicit consent is not supported for call queue calls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "Explicit consent is not supported for call queue calls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not separately explained the call queue limitation for this planned keypad extension.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams PSTN keypad consent audit logging CallParticipantDetail call queue explicit consent; read call-recording-transcription-captions and the call-queue setup search excerpt. Neither explains the planned one-to-one keypad extension; the existing exclusion is correctly reported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The supplied feature descriptions describe participant responses, not autonomous actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "They can use their phone keypad to consent or decline. Participants who decline can remain in the call but stay muted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Change & support; controls[0].scope; Governance controls",
-      "type": "applicability",
-      "claim": "Calling policies are assigned to users, so consent configuration can differ between users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
-      "quote": "You can assign a policy directly to users, either individually or at scale through a batch assignment (if supported for the policy type), or to a group that the users are members of (if supported for the policy type).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "Licensing and a meter specific to this planned consent extension have not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Phone recording transcription explicit consent license prerequisites licensing. Read calling-policy and call-recording pages and Microsoft Teams add-on licenses. Teams Phone/PSTN base licensing is documented, but no licence or meter specific to this extension is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "record",
-      "claim": "Neither the roadmap record nor the supplied notice names a licence, meter or charge for the capability.",
-      "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "The capability uses the existing Teams calling policy for explicit recording consent rather than introducing a new policy setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The calling-policies Learn page describes this consent setting without naming a licence for it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
-      "quote": "Require participant agreement for recording and transcription - When this is on, participants must agree to be recorded and transcribed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[0].ui; Governance guidance: Before rollout",
+      "where": "controls[0].ui; Governance guidance",
       "type": "admin-path",
-      "claim": "The consent setting is at Teams admin center > Voice > Calling policies > policy > Edit > Require participant agreement for recording and transcription.",
+      "claim": "The consent setting is in Teams admin center > Voice > Calling policies > policy > Edit > Require participant agreement for recording and transcription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
       "quote": "select Voice > Calling policies. ... Select the policy or policies that you want to modify, and then select Edit. ... Require participant agreement for recording and transcription",
@@ -463,120 +322,263 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[0].api",
+      "n": 28,
+      "where": "controls[0].api; Governance controls",
       "type": "command",
-      "claim": "MicrosoftTeams PowerShell documents Set-CsTeamsCallingPolicy -Identity <policy name> -ExplicitRecordingConsent <string>, subject to the unreleased-feature caveat the briefing reports.",
+      "claim": "Set-CsTeamsCallingPolicy -Identity <policy name> -ExplicitRecordingConsent <string> sets calling-policy recording consent, subject to the reported release warning.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
-      "quote": "Set-CsTeamsCallingPolicy ... [-Identity] <string> ... [-ExplicitRecordingConsent <string>] ... This setting controls whether users must provide or obtain explicit consent before recording a 1:1 PSTN or Teams call.",
+      "quote": "This setting controls whether users must provide or obtain explicit consent before recording a 1:1 PSTN or Teams call. ... Type: | String ... Default value: | Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1]; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documents no separate PSTN-only or keypad-only admin UI or API consent switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams calling policy PSTN only keypad consent switch ExplicitRecordingConsent roles admin. Opened teams-calling-policy, call-recording-transcription-captions and Set-CsTeamsCallingPolicy; these document the shared consent setting, not a separate switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Voice > Calling policies > policy > Cloud recording for calling controls recording of one-to-one and PSTN calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "select Voice > Calling policies. ... Select the policy that you want to edit. ... Turn Cloud recording for calling to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy -Identity Global -AllowCloudRecordingForCalls $true enables recording for the global calling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "For example, this script enables call recording for the global policy:\nSet-CsTeamsCallingPolicy -Identity Global -AllowCloudRecordingForCalls $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Voice > Calling policies > policy > Transcription controls call transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "select Voice > Calling policies. ... Select the policy you want to modify. ... Turn Transcription to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy -Identity Global -AllowTranscriptionForCalling $true enables transcription for the global calling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "For example, this script enables transcription for the global policy:\nSet-CsTeamsCallingPolicy -Identity Global -AllowTranscriptionForCalling $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[4].ui; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Search > Activities - friendly names provides an audit activity filter, with a date range and Search starting the query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable: ... Date and time range (UTC) ... Activities - friendly names ... Select Search to start your search job.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[4].api; Governance controls",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <start date> -EndDate <end date> -Operations CallParticipantDetail searches that operation in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+      "quote": "The Search-UnifiedAuditLog cmdlet is available in Exchange Online PowerShell. ... The Operations parameter filters the log entries by operation. ... For a list of the available values for this parameter, see Audited activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Learn call-recording page describes a Yes or No consent prompt for call participants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "When a participant decides to un-mute, turn on their camera, or share content, they're asked to respond 'Yes' or 'No' to consent to be included in the recording and transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Governance controls; controls[0].governs",
+      "type": "applicability",
+      "claim": "The existing ExplicitRecordingConsent parameter covers both Teams one-to-one VoIP and PSTN calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "This parameter manages recording consent for Teams 1:1 VoIP and PSTN calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Group calls and Audio Conferencing are managed by Teams meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "Audio conferencing and group calls are managed by Teams Meeting Policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The meeting-consent Learn page lists PSTN endpoints in one-to-one calls as auto-consented.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+      "quote": "The following user types are auto consented for recording and transcription without any participant interaction. ... PSTN endpoints in 1:1 calls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe keypad consent for one-to-one PSTN calls at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/microsoftteams PSTN consent 1:1 keypad. Read call-recording-transcription-captions and participant-agreement-recording-transcription; results document keypad consent for Audio Conferencing, not the planned one-to-one extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says each call participant's consent choice is visible to the admin and included in the Purview audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "The consent choice for each participant is visible by the admin and is included in the Purview audit log for the call.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "controls[1]; Why it matters; Governance controls",
+      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No separate PSTN-only or keypad-only consent switch is documented in the UI or calling-policy PowerShell.",
+      "claim": "Microsoft has not stated how the planned one-to-one PSTN keypad choice is logged or whether it uses the same audit filter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams PSTN one to one explicit consent keypad separate policy switch PowerShell ExplicitRecordingConsent. Opened teams-calling-policy and Set-CsTeamsCallingPolicy; both document the shared setting. MC1530950 explicitly says no new admin policy setting is introduced.",
+      "quote": "Searched: site:learn.microsoft.com/microsoftteams PSTN consent audit keypad; audit-log-activities CallParticipantDetail MeetingParticipantDetail. Read the consent and audit passages; they document existing consent logs but no planned one-to-one keypad event mapping.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The recording permission is at Teams admin center > Voice > Calling policies > policy > Cloud recording for calling.",
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "applicability",
+      "claim": "Learn states that explicit consent is not supported for call queue calls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "In the Microsoft Teams admin center, select Voice > Calling policies. ... Select the policy that you want to edit. ... Turn Cloud recording for calling to On.",
+      "quote": "Explicit consent is not supported for call queue calls.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "Set-CsTeamsCallingPolicy -Identity Global -AllowCloudRecordingForCalls $true enables recording in the global calling policy.",
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not explicitly address the call queue limitation for this planned keypad capability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "For example, this script enables call recording for the global policy: Set-CsTeamsCallingPolicy -Identity Global -AllowCloudRecordingForCalls $true",
+      "source": null,
+      "quote": "Searched: Teams PSTN keypad consent audit CallParticipantDetail call queue press 1 press 2. Read call-recording-transcription-captions and call queue search excerpts; existing explicit consent is unsupported for queues, but the planned extension is not discussed.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "The transcription permission is at Teams admin center > Voice > Calling policies > policy > Transcription.",
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The Disabled parameter value means users are not required to obtain explicit consent before recording starts.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "In the Microsoft Teams admin center, select Voice > Calling policies. ... Select the policy you want to modify. ... Turn Transcription to On.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "Disabled: Users are not required to obtain explicit consent before recording starts.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "Set-CsTeamsCallingPolicy -Identity Global -AllowTranscriptionForCalling $true enables transcription in the global calling policy.",
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice describes keypad responses without describing a sign-in step.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "For example, this script enables transcription for the global policy: Set-CsTeamsCallingPolicy -Identity Global -AllowTranscriptionForCalling $true",
+      "source": "Message Center post MC1530950",
+      "quote": "PSTN participants will hear an audio prompt requesting consent when recording or transcription starts. ... Participants can press 1 to consent or 2 to decline.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "controls[4].ui; Governance guidance: After rollout",
-      "type": "admin-path",
-      "claim": "Audit searches are configured in Microsoft Purview portal > Audit > Search > Activities - friendly names.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous behaviour is described for this capability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable: ... Activities - friendly names: Select the drop-down list to display the friendly names for audited activities that you can search for.",
+      "source": null,
+      "quote": "Searched: Teams calling policy PSTN only keypad consent switch. Read roadmap, MC1530950 and call-recording-transcription-captions: consent follows user-started recording; no autonomous agent is described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "controls[4].api; Governance controls",
-      "type": "command",
-      "claim": "Exchange Online PowerShell supports Search-UnifiedAuditLog -StartDate <start date> -EndDate <end date> -Operations CallParticipantDetail.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Neither the roadmap item nor the supplied notice names a licence, meter or charge for this capability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
-      "quote": "Search-UnifiedAuditLog ... -EndDate <ExDateTime> ... -StartDate <ExDateTime> ... The Operations parameter filters the log entries by operation. ... For a list of the available values for this parameter, see Audited activities.",
+      "source": null,
+      "quote": "Searched: Teams one-to-one PSTN explicit recording consent keypad license licensing Teams Phone. Read roadmap record 577543 and supplied MC1530950 in full: neither names a licence, meter or charge for the extension.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Governance controls; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Added information about call participants maps to operation CallParticipantDetail.",
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Feature-specific licensing is not yet published, represented by licensing.model unknown.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "Added information about call participants ... | CallParticipantDetail | Teams added information about the participants of a call",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/microsoftteams/teams-phone-licensing",
+      "quote": "With PSTN access to your tenant and licensed users, Microsoft Teams Phone provides support for 1:1 calling and group calling between a Teams client--and any PSTN telephone number.",
+      "severity": "minor",
+      "fix": "Set licensing.model to \"included\". Replace licensing.notes and the licensing paragraph with: \"The capability extends existing Teams Phone calling policies. Teams Phone licensing and a PSTN solution are required for Teams PSTN calling; feature-specific licensing or a meter for this keypad extension is not yet published.\" Cite https://learn.microsoft.com/microsoftteams/teams-phone-licensing. Replace \"Treat licensing as not yet published rather than as included\" with \"Feature-specific terms remain unpublished; the existing Teams Phone entitlement is documented.\" In the cost rationale replace \"its licensing is not yet published\" with \"feature-specific licensing is not yet published\". Replace \"Will any licence apply?\" with \"Will Microsoft publish feature-specific licensing terms?\""
     },
     {
       "n": 50,
-      "where": "controls[4].note; Governance guidance: After rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "The audit-activities reference says recorded or transcribed calls are included in MeetingParticipantDetail.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The calling-policies Learn page describes the consent setting without naming a licence for it.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "Calls that are recorded or transcribed are included in MeetingParticipantDetail.",
+      "source": null,
+      "quote": "Searched: Teams one-to-one PSTN explicit recording consent keypad license licensing Teams Phone. Opened teams-calling-policy in full: its Require participant agreement for recording and transcription entry describes behaviour but names no licence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
       "where": "controls[0].note; Governance controls",
-      "type": "availability",
-      "claim": "The Set-CsTeamsCallingPolicy reference marks ExplicitRecordingConsent as not yet released and ineffective when enabled or disabled.",
+      "type": "behaviour",
+      "claim": "The cmdlet reference still marks ExplicitRecordingConsent as unreleased and ineffective if enabled or disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
       "quote": "This feature has not been released yet and will have no changes if it is enabled or disabled.",
@@ -585,58 +587,69 @@
     },
     {
       "n": 52,
-      "where": "Scope",
-      "type": "applicability",
-      "claim": "Audio Conferencing and group-call consent are managed through the Teams meeting policy.",
+      "where": "controls[4].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The call-recording page directs admins to Added information about call participants, whose audit operation is CallParticipantDetail.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "Audio conferencing and group calls are managed by Teams Meeting Policy.",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities#teams-activities",
+      "quote": "Added information about call participants ... | CallParticipantDetail | Teams added information about the participants of a call",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Scope; Open questions",
-      "type": "record",
-      "claim": "The supplied notice gives a rollout window only for Worldwide, not a separate window for the government clouds listed on the roadmap.",
+      "where": "controls[4].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The audit activities reference says calls that are recorded or transcribed are included in MeetingParticipantDetail.",
       "status": "supported",
-      "source": "Message Center post MC1530950",
-      "quote": "[Rollout schedule] - General Availability (Worldwide): Beginning in early December 2026",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities#teams-activities",
+      "quote": "Calls that are recorded or transcribed are included in MeetingParticipantDetail.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[2].note; Governance controls",
+      "where": "controls[0].scope; Governance controls; Risk assessment: Change & support",
       "type": "applicability",
-      "claim": "Cloud recording for calling controls permission to record one-to-one Teams and PSTN calls, separately from the consent requirement.",
+      "claim": "Calling-policy settings apply to assigned users, so users with different assigned consent settings can have different behaviour.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "Use the Microsoft Teams admin center or PowerShell to set a Teams calling policy to control whether a user's 1:1 Teams call or Public Switched Telephone Network (PSTN) call can be recorded.",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+      "quote": "calling policies control which calling and call forwarding features are available to users. ... You can use the global (Org-wide default) policy that's created automatically or create and assign custom policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[3].note; Governance controls",
+      "where": "Why it matters; Scope; Risk assessment: Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The planned prompt affects calls where explicit consent is required, not policies where consent remains disabled.",
+      "status": "supported",
+      "source": "Message Center post MC1530950",
+      "quote": "PSTN participants in applicable one-to-one Teams calls where explicit consent for recording or transcription is required",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].note; controls[3].note; Governance controls",
       "type": "applicability",
-      "claim": "Transcription and its AllowTranscriptionForCalling parameter control permission to transcribe calls, separately from the consent requirement.",
+      "claim": "Cloud recording for calling and Transcription are separate availability settings rather than the explicit consent control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-      "quote": "To turn on call transcription for users: ... Turn Transcription to On. ... With PowerShell, you can configure the -AllowTranscriptionForCalling parameter",
+      "quote": "set a Teams calling policy to control whether a user's 1:1 Teams call or Public Switched Telephone Network (PSTN) call can be recorded. ... Turn Transcription to On. ... Require participant agreement for recording and transcription",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T20:02:40.679Z",
+    "at": "2026-11-24T05:09:14.010Z",
     "summary": {
       "links": 9,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 4,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 4,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -652,23 +665,23 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/audit-search",
@@ -677,13 +690,13 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/audit-log-activities",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -692,67 +705,80 @@
         "side": "ui",
         "governs": "Whether participants must agree to recording and transcription in 1:1 calls, including PSTN",
         "docs": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Voice",
           "Calling policies",
           "Edit",
           "Require participant agreement for recording and transcription"
         ],
-        "missing": []
+        "missing": [
+          "Voice",
+          "Calling policies",
+          "Edit",
+          "Require participant agreement for recording and transcription"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether participants must agree to recording and transcription in 1:1 calls, including PSTN",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsCallingPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Whether users can record 1:1 and PSTN calls at all",
         "docs": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Voice",
           "Calling policies",
           "Cloud recording for calling"
         ],
-        "missing": []
+        "missing": [
+          "Voice",
+          "Calling policies",
+          "Cloud recording for calling"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Whether users can record 1:1 and PSTN calls at all",
         "docs": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsCallingPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Whether users can transcribe 1:1 and PSTN calls at all",
         "docs": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Voice",
           "Calling policies",
           "Transcription"
         ],
-        "missing": []
+        "missing": [
+          "Voice",
+          "Calling policies",
+          "Transcription"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Whether users can transcribe 1:1 and PSTN calls at all",
         "docs": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsCallingPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 4,
@@ -772,9 +798,9 @@
         "side": "api",
         "governs": "Reviewing call consent data in the audit log",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
-        "reachable": true,
+        "reachable": false,
         "token": "Search-UnifiedAuditLog",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -808,6 +834,12 @@
       "date": "2026-11-17",
       "status": "verified",
       "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 5,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -80,15 +80,17 @@ changes:
     note: "Corrected the calling policy statement: it no longer says turning delegation off removes the lock and tone; it now states the Learn cleanup requirement. Clarified that delegation is inspected per user."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -200,8 +202,12 @@ cost: Low. The only cost the sources show is admin and support time for communic
 impact: Medium. Only users with call delegation configured notice it: executives, assistants, managers and support staff. Everyone else on their calls may hear the new tone.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope / licensing: The delegation guide says both delegator and delegate need a Teams Phone licence. | Found: In the example where a manager is delegating calls to an administrative assistant, the manager and administrative assistant must each have a Teams Phone license. | Fix: Add after the licence paragraph: 'Microsoft's Teams Calling features comparison separately lists "Member of call group or call delegation" as available with a Microsoft Teams Enterprise licence alone, whereas the delegation guide says both parties need Teams Phone (https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system#teams-calling-features).' Add that comparison URL to sources. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
+- [supported, minor] front matter: clouds; What's changing; Scope / record: The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. | Found: "clouds": [ "Worldwide (Standard Multi-Tenant)", "GCC", "GCC High", "DoD" ] | Fix: Keep the roadmap cloud list. Add to Scope: 'The Teams Calling features page separately lists "Call settings for secondary ringer, voicemail, and enhanced delegation" as not yet available in GCC High and DoD, whereas this roadmap item and MC1429012 list those clouds (https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system#availability-in-gcc-high-and-dod-clouds).' Add that URL to sources.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope / licensing: The delegation guide says the delegator and delegate each need a Teams Phone licence. | Found: In the example where a manager is delegating calls to an administrative assistant, the manager and administrative assistant must each have a Teams Phone license. | Fix: Add after the licence paragraph: 'The Teams Calling features comparison separately lists "Member of call group or call delegation" as available with a Microsoft Teams Enterprise licence alone, whereas the delegation guide says both parties need Teams Phone (https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system#teams-calling-features).' Add the comparison URL to sources. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because licensing specific to the new controls is unpublished. | Found: Call delegation and is included with Teams Phone. | Fix: Set licensing.model to 'included'. Keep the notes naming Teams Phone and the narrower statement that licensing specific to the lock and warning tone controls has not been published; the standard uses the product-level licence for new options within the licensed product. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
+- [supported, minor] controls[0].ui; Governance controls / admin-path: Teams admin center > Voice > Calling policies > policy > Delegation for inbound and outbound calls reaches the delegation setting. | Found: select Voice > Calling policies. ... Choose the policy you would like to update ... Toggle Delegation for inbound and outbound calls on. | Fix: Keep this cited route, but add: 'The Calling policies guide gives an explicit Edit step after selecting an existing policy: Voice > Calling policies > policy > Edit > Delegation for inbound and outbound calls (https://learn.microsoft.com/microsoftteams/teams-calling-policy#edit-a-calling-policy).' Add that URL to sources. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
+- [supported, minor] controls[1].ui; Governance controls; Governance guidance: Before rollout / admin-path: Teams admin center > Users > Manage users > user > Voice reaches the user's delegation configuration page. | Found: go to Users > Manage users and select a licensed user. ... go to the Voice tab. ... select Call delegation under Also allow. Then add the appropriate delegates by selecting Add people | Fix: Extend controls[1].ui.path and its rendered table path to 'Users > Manage users > user > Voice > Call answering rules > Ring the user's devices > Also allow > Call delegation > Add people', as documented at https://learn.microsoft.com/microsoftteams/user-call-settings#use-the-teams-admin-center. The shorter inventory route in Before rollout can remain. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
 -->

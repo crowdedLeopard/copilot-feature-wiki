@@ -83,18 +83,20 @@ changes:
     note: "Corrected after verification: default state set to on per MC1419798, meeting-policy call and enrolment row narrowed to what Learn documents, and the cap and enrolment-review statements removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 95 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 96 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
+  claims: 96
   confirmed: 94
   unconfirmed: 1
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "3a7bf0fc2102a248f9cd563821da4c27"
 ---
 
@@ -195,8 +197,11 @@ cost: Low. The only licence the sources name is Teams Rooms Pro, which the rooms
 impact: Medium. People who enrol and use Teams Rooms Pro rooms with supported cameras are named to remote attendees; other users and rooms are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature does not act on behalf of users. | Found: Searched: IntelliFrame people labels autonomous actions recognition device settings meeting policy precedence. Opened Multi-Stream IntelliFrame and Enable People Recognition on Teams Rooms; they describe recognition and labels, not a categorical guarantee about acting on behalf of users. | Fix: Remove 'it does not act on behalf of users'. Retain 'No autonomous actions are documented. The feature shows labels.'
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature does not act on behalf of users. | Found: Searched: IntelliFrame people labels autonomous actions voice face recognition. Opened Multi-Stream IntelliFrame, Enable People Recognition, and voice and face enrollment. None states a categorical guarantee that the feature does not act on behalf of users. | Fix: Remove 'it does not act on behalf of users'. Retain 'No autonomous actions are documented. The feature shows labels.'
+- [contradicted, blocker] Open questions: pricing / absence: The question asks whether Microsoft will publish the Teams Rooms Pro price, implying that this price is not yet published. | Found: Microsoft Teams Rooms Pro $40.00 $40.00 room/month, paid yearly (Annual subscription-auto renews) | Fix: Narrow the question to 'Will Microsoft publish a separate price or meter for the labels?' Remove 'or the Teams Rooms Pro price they rest on': Microsoft already publishes a US Pro price at https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans. | Source: https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing; rationale: cost / absence: The cited Learn feature pages do not publish a Teams Rooms Pro price. | Found: Searched: Teams Rooms Pro price IntelliFrame people labels license included pricing meter. Read the cited feature pages: no Pro price there. Microsoft's compare-rooms-plans page separately states $40.00 room/month, paid yearly. | Fix: Remove the clauses 'and the Teams Rooms Pro price is not yet published on those pages' and 'The Teams Rooms Pro price is not yet published here'; their narrow absence is misleading when Microsoft publishes the price at https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans.
 -->

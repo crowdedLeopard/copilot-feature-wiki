@@ -2,58 +2,107 @@
   "slug": "microsoft-teams-improved-device-settings-experience-on-teams-rooms-on-android",
   "roadmapId": 581965,
   "title": "Microsoft Teams Rooms on Android: redesigned on-device admin settings",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "2 blocking findings (claims 41, 42)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 46,
-    "confirmed": 44,
+    "claims": 49,
+    "confirmed": 48,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 2
   },
-  "summary": "Hold: both automation cells say Microsoft has not documented a control, although Microsoft still publishes the device-configuration cmdlet and its settings properties. The APIs are deprecated and unsupported, which should be distinguished from undocumented; the roadmap facts, licensing background and console path are supported.",
+  "summary": "The briefing's roadmap facts, licensing context and control references are supported. The PowerShell calls are documented and clearly identified as historical, unsupported automation. Two minor corrections remain: complete the shortened portal path in the prose and remove the checklist's licence-stocktaking step, which has no controls-table row.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
+      "where": "title; summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "Microsoft plans to reorganise the on-device admin settings experience for Teams Rooms on Android.",
+      "claim": "Microsoft plans to improve on-device admin settings on Teams Rooms on Android.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "We’re enhancing the on-device admin settings experience for Teams Rooms on Android by improving information structure, organization and navigation.",
+      "quote": "We’re enhancing the on-device admin settings experience for Teams Rooms on Android",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Scope; rationale: impact",
+      "where": "What's changing; Why it matters; controls[1].note",
       "type": "record",
-      "claim": "The change aims to help administrators find, understand and adjust device settings directly from the console.",
+      "claim": "The planned change improves the settings' information structure.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "These updates make it easier for admins to find, understand, and adjust device settings directly from the console, improving overall usability and efficiency in room management.",
+      "quote": "by improving information structure, organization and navigation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The planned change reorganises device settings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "by improving information structure, organization and navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; controls[1].note",
+      "type": "record",
+      "claim": "The planned change improves device-settings navigation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "by improving information structure, organization and navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap aims to make it easier for admins to find device settings directly from the console.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These updates make it easier for admins to find, understand, and adjust device settings directly from the console",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap aims to make it easier for admins to understand device settings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These updates make it easier for admins to find, understand, and adjust device settings directly from the console",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap aims to make it easier for admins to adjust device settings directly from the console.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These updates make it easier for admins to find, understand, and adjust device settings directly from the console",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -64,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: targetDate; summary; What's changing; Governance guidance: Before rollout",
+      "n": 9,
+      "where": "front matter: targetDate; summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "January CY2027 is the roadmap target, not a committed release date.",
+      "claim": "The roadmap targets January CY2027, rather than committing to availability then.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"January CY2027\"",
@@ -75,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 10,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -86,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -97,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 12,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Android is the platform listed in the record.",
+      "claim": "The roadmap platform is Android.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\"]",
@@ -108,65 +157,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record provides no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; front matter: changes",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this specific settings redesign.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Android improved device admin settings 581965 redesign January 2027 default automatic rollout defer disable license price meter. Read mtr-home-refresh, pro-portal-settings, device-settings-available and release-note excerpts; no redesign description.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: defaultState; summary; Why it matters",
-      "type": "default",
-      "claim": "Microsoft has not stated what this redesign does on arrival, so its default state is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 581965 settings default existing values rollout disable; Teams Rooms Android improved device admin settings 581965 redesign January 2027 default automatic rollout defer disable license price meter. Read roadmap, home controls and release-note excerpts; no redesign default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "summary",
-      "type": "absence",
-      "claim": "Microsoft has not specified an administrator action for this redesign.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Android improved device admin settings 581965 redesign January 2027 default automatic rollout defer disable license price meter. Read roadmap, home controls, portal settings and release-note excerpts; no action specified for this redesign.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "Why it matters; rationale: risk",
-      "type": "absence",
-      "claim": "No source states that this redesign changes existing setting values.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 581965 settings default existing values rollout disable. Read roadmap, mtr-home-refresh, pro-portal-settings and Teams Rooms release-note excerpts; no statement about this redesign changing values.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "where": "Scope",
       "type": "record",
-      "claim": "The roadmap description names settings structure and navigation, not new data access.",
+      "claim": "The roadmap description names no prerequisite for the redesign.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We’re enhancing the on-device admin settings experience for Teams Rooms on Android by improving information structure, organization and navigation.",
@@ -175,9 +169,9 @@
     },
     {
       "n": 14,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "where": "Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "The roadmap description contains no autonomous or AI behaviour.",
+      "claim": "The roadmap item names no licence for the redesign.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "These updates make it easier for admins to find, understand, and adjust device settings directly from the console, improving overall usability and efficiency in room management.",
@@ -186,130 +180,141 @@
     },
     {
       "n": 15,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
-      "type": "licensing",
-      "claim": "Teams Rooms devices should be assigned Teams Rooms Basic or Teams Rooms Pro licences, with legacy Teams Rooms licences also valid.",
+      "where": "Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap item names no meter for the redesign.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "source": "roadmap record",
+      "quote": "We’re enhancing the on-device admin settings experience for Teams Rooms on Android by improving information structure, organization and navigation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The new settings layout belongs to the licence Teams Rooms already requires, so the licensing model is included.",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes no autonomous or AI behaviour.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "A device used as a shared meeting device requires a Teams Rooms license whether it participates by signing in to a Microsoft Teams client, by anonymous join, or by authenticating a Microsoft 365 identity",
+      "source": "roadmap record",
+      "quote": "These updates make it easier for admins to find, understand, and adjust device settings directly from the console",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter",
-      "type": "absence",
-      "claim": "Microsoft has not published a licence condition specific to this redesign.",
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes settings structure and navigation, not new data access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms settings redesign licensing price meter. Read rooms-licensing, mtr-home-refresh and related search excerpts; general room licences, no redesign-specific licence condition.",
+      "source": "roadmap record",
+      "quote": "by improving information structure, organization and navigation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "Cost and licensing: Licence",
-      "type": "cost",
-      "claim": "Teams Rooms Basic provides core meeting experiences to organisations purchasing a certified Teams Rooms system at no additional cost.",
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated what the redesign does on arrival without administrator action.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "Microsoft Teams Rooms Basic provides core meeting experiences to organizations that purchase a certified Microsoft Teams Rooms system, at no additional cost.",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android improved device settings experience redesign 581965 January 2027 default rollout defer licensing price meter; \"Teams Rooms on Android\" \"settings\" \"redesign\" \"default\". Read roadmap, mtr-home-refresh and pro-portal-settings; no redesign default found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "Teams Rooms Pro provides advanced management features including remote device management.",
+      "where": "summary",
+      "type": "absence",
+      "claim": "Microsoft has not stated an administrator action required for this redesign.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "The Teams Rooms Pro license also provides advanced management features like remote device management, conditional access policies, and detailed device analytics.",
+      "source": null,
+      "quote": "Searched: \"Improved device settings experience\" \"Teams Rooms\" licensing rollout settings; Teams Rooms Android improved device settings experience redesign 581965 January 2027 default rollout defer licensing price meter. Read roadmap and cited settings pages; no required redesign action found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "Cost and licensing: Licence; rationale: cost",
-      "type": "record",
-      "claim": "The roadmap item names no licence for this redesign.",
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this planned redesign.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "We’re enhancing the on-device admin settings experience for Teams Rooms on Android by improving information structure, organization and navigation.",
+      "source": null,
+      "quote": "Searched: \"Improved device settings experience\" \"Teams Rooms\" licensing rollout settings; \"Teams Rooms on Android\" \"admin settings\" \"January\" \"2027\". Read mtr-home-refresh, pro-portal-settings and device-settings-available; results describe other updates, not this redesign.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Cost and licensing: Meter; rationale: cost",
-      "type": "record",
-      "claim": "The roadmap item names no meter.",
+      "where": "Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "No source reviewed states that the redesign changes existing setting values.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "These updates make it easier for admins to find, understand, and adjust device settings directly from the console, improving overall usability and efficiency in room management.",
+      "source": null,
+      "quote": "Searched: \"Teams Rooms on Android\" \"admin settings\" \"redesign\" \"disable\" \"values\". Read roadmap, mtr-home-refresh and pro-portal-settings; no statement that the redesign changes or resets existing values found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "where": "Scope",
       "type": "absence",
-      "claim": "Microsoft has not published a price specific to this redesign.",
+      "claim": "Rollout mechanics specific to this redesign are not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Rooms settings redesign licensing price meter. Read rooms-licensing, mtr-home-refresh, pro-portal-settings and related search excerpts; no redesign-specific price.",
+      "quote": "Searched: \"Improved device settings experience\" \"Teams Rooms\" licensing rollout settings; \"Teams Rooms on Android\" \"admin settings\" \"January\" \"2027\". Read roadmap and cited settings pages; no feature-specific rollout mechanics found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not published a meter specific to this redesign.",
+      "claim": "The sources do not say whether administrators can defer or switch off the redesign.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Rooms settings redesign licensing price meter. Read rooms-licensing, mtr-home-refresh, pro-portal-settings and related search excerpts; no redesign-specific meter.",
+      "quote": "Searched: Teams Rooms Android improved device settings experience redesign 581965 January 2027 default rollout defer licensing price meter; \"Teams Rooms on Android\" \"admin settings\" \"redesign\" \"disable\" \"values\". Read roadmap and cited settings pages; no redesign switch or deferral found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap item names no prerequisite.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A licence condition specific to this redesign is not yet published.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "We’re enhancing the on-device admin settings experience for Teams Rooms on Android by improving information structure, organization and navigation.",
+      "source": null,
+      "quote": "Searched: \"Improved device settings experience\" \"Teams Rooms\" licensing rollout settings; \"Teams Rooms on Android\" \"settings experience\" \"meter\" \"license\". Read rooms-licensing and cited settings pages; found product-level requirements, not redesign-specific licensing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Scope",
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "Rollout mechanics for this redesign are not stated.",
+      "claim": "A price specific to the redesign is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 581965 settings default existing values rollout disable. Also read roadmap and rooms/security and officeupdates/teams-admin excerpts from the broader redesign search: general automatic updates, no redesign-specific delivery mechanism.",
+      "quote": "Searched: Teams Rooms Android improved device settings experience redesign 581965 January 2027 default rollout defer licensing price meter. Read rooms-licensing, mtr-home-refresh and pro-portal-settings; no redesign-specific price found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "What's changing",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A meter specific to the redesign is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams Rooms on Android\" \"settings experience\" \"meter\" \"license\"; Teams Rooms Android improved device settings experience redesign 581965 January 2027 default rollout defer licensing price meter. Read rooms-licensing and cited settings pages; no redesign-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Governance controls",
       "type": "admin-path",
-      "claim": "Current Teams Rooms on Android settings include Bluetooth beaconing under Teams Admin Settings > General.",
+      "claim": "Current Android on-device settings include Teams Admin Settings > General > Bluetooth beaconing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
       "quote": "On a Teams Rooms on Android device, open Teams Admin Settings > General > toggle Bluetooth beaconing to Off as desired.",
@@ -317,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 28,
       "where": "controls[1].ui; What's changing; Risk assessment; Governance guidance; Open questions",
       "type": "admin-path",
-      "claim": "The console path is Teams Admin Settings > Meetings > Show meeting names.",
+      "claim": "The Android console path is Teams Admin Settings > Meetings > Show meeting names.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
       "quote": "On a Teams Rooms on Android device, open Teams Admin Settings > Meetings and toggle Show meeting names to Off to hide meeting names on the Teams Rooms device.",
@@ -328,21 +333,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "controls[1].governs; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Show meeting names controls whether meeting names are visible on the room device.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
-      "quote": "For privacy purposes, meeting names can be hidden from Teams Rooms (Windows and Android) calendar and replaced with the organizer name if desired",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 29,
       "where": "Risk assessment: Security & identity",
       "type": "admin-path",
-      "claim": "Require passcode for all meetings is under Teams Admin Settings > Meetings on Teams Rooms on Android.",
+      "claim": "The Android console path to the passcode control is Teams Admin Settings > Meetings > Require passcode for all meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
       "quote": "On Teams Rooms on Android devices, open Teams Admin Settings > Meetings and toggle Require passcode for all meetings to On to require room users to enter the meeting credentials to join all scheduled Teams meetings.",
@@ -353,7 +347,7 @@
       "n": 30,
       "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "licensing",
-      "claim": "Requiring meeting credentials for scheduled meetings requires a Teams Rooms Pro licence on the device account.",
+      "claim": "Requiring meeting credentials on the room device requires a Teams Rooms Pro licence on its account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
       "quote": "This feature requires the account on the device to have a Teams Rooms Pro license.",
@@ -362,20 +356,42 @@
     },
     {
       "n": 31,
-      "where": "controls[0].ui; Risk assessment: Change & support; Governance controls",
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Rooms > device > Settings in the Teams Rooms Pro Management portal reaches the device settings page.",
+      "claim": "The Teams Rooms Pro Management portal path is Rooms > device > Settings > category > setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel.",
-      "severity": "minor",
-      "fix": "The path correctly reaches the settings page but stops before the category and setting. Use 'Rooms > device > Settings > category > setting', with category and setting as placeholders, and retain the note listing the documented categories at https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings."
+      "quote": "Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.).",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 32,
+      "where": "Risk assessment: Change & support",
+      "type": "admin-path",
+      "claim": "Rooms > device > Settings in the Teams Rooms Pro Management portal is a place to change device settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Select the Settings tab in the device panel. Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.). Modify the desired settings using the form fields.",
+      "severity": "minor",
+      "fix": "Replace the prose path 'Rooms > device > Settings' with 'Rooms > device > Settings > category > setting', matching controls[0].ui and https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings."
+    },
+    {
+      "n": 33,
+      "where": "controls[0].governs; Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "The Teams Rooms Pro Management portal can configure settings on Teams Rooms on Android devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "In the Microsoft Teams Rooms Pro Management portal, you can configure settings for Microsoft Teams devices (Teams Rooms on Windows, Teams Rooms on Android, Teams Panels and Teams Phones)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "controls[0].note; Scope; Governance controls",
       "type": "role",
-      "claim": "Configuring device settings in the portal requires Rooms Management role-based access control permissions.",
+      "claim": "Portal settings changes require role-based access control permissions for Rooms Management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
       "quote": "provided you have the necessary role-based access control permissions for Rooms Management.",
@@ -383,7 +399,7 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "controls[0].note; Scope; Governance controls",
       "type": "behaviour",
       "claim": "Portal settings management is available only for signed-in devices.",
@@ -394,21 +410,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[0].note",
-      "type": "admin-path",
-      "claim": "The device Settings tab has categories including About, Account, Meetings, Device and Network.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Why it matters; Governance guidance: At rollout; Governance controls",
+      "n": 36,
+      "where": "Why it matters; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Settings changed directly on the device synchronise back to the portal and appear in its Settings tab.",
+      "claim": "On-device settings changes synchronise back to the portal and are reflected in the device's Settings tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
       "quote": "Any setting changes made directly on the device are synchronized back to the Teams Rooms Pro Management portal and reflected in the Settings tab of the device panel, providing visibility into the device's current configuration.",
@@ -416,10 +421,65 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 37,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The portal's settings categories include About, Account, Meetings, Device and Network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Included is the product-level entitlement model for this new settings screen, and Teams Rooms devices should be assigned Teams Rooms Basic or Teams Rooms Pro licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams Rooms legacy licences are also valid.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams Rooms Basic provides core meeting experiences at no additional cost to organisations purchasing a certified Microsoft Teams Rooms system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "Microsoft Teams Rooms Basic provides core meeting experiences to organizations that purchase a certified Microsoft Teams Rooms system, at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams Rooms Pro includes advanced management features such as remote device management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "The Teams Rooms Pro license also provides advanced management features like remote device management, conditional access policies, and detailed device analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "controls[1].note",
       "type": "licensing",
-      "claim": "The licence comparison lists Show meeting names for Pro, not Basic.",
+      "claim": "The licence comparison lists Show meeting names under Pro only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
       "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| Show meeting names |  | ✔ |",
@@ -427,98 +487,10 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "Microsoft Learn retains documentation for Update-MgBetaTeamworkDeviceConfiguration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
-      "quote": "# Update-MgBetaTeamworkDeviceConfiguration\nModule: Microsoft.Graph.Beta.Teams Module\nUpdate the navigation property configuration in teamwork",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The cmdlet reference includes a Bluetooth beaconing property.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
-      "quote": "[IsBluetoothBeaconingEnabled <Boolean?>]: True if Bluetooth beaconing is enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The cmdlet reference includes IsHideMeetingNamesEnabled for hiding meeting names.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
-      "quote": "[FeaturesConfiguration <IMicrosoftGraphTeamworkFeaturesConfiguration>]: teamworkFeaturesConfiguration\n[IsHideMeetingNamesEnabled <Boolean?>]: True if hiding meeting names is enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[0].note; controls[1].note; Governance controls",
-      "type": "date",
-      "claim": "The Graph beta teamworkDevice management APIs are deprecated and unsupported after November 2025.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/teamworkdeviceconfiguration?view=graph-rest-beta",
-      "quote": "The Microsoft Graph beta APIs related to device management under the teamworkDevice resource type will be deprecated by November 2025 and will no longer be supported after that date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[0].api; Governance controls: remote settings automation cell",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for changing room device settings remotely.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
-      "quote": "Update the navigation property configuration in teamwork\nUpdate-MgBetaTeamworkDeviceConfiguration\n-TeamworkDeviceId <string>\n[-TeamsClientConfiguration <IMicrosoftGraphTeamworkTeamsClientConfiguration>]",
-      "severity": "blocker",
-      "fix": "Replace the null API side with kind 'powershell', call 'Update-MgBetaTeamworkDeviceConfiguration -TeamworkDeviceId <device-id> -TeamsClientConfiguration <teams-client-configuration>', and the cited cmdlet reference as docs. Keep an explicit note: 'Historical documentation only: the underlying Graph beta device-management APIs are unsupported after November 2025; do not use this as supported automation for the redesign.' Deprecated documentation is not an absence of documentation."
-    },
-    {
-      "n": 42,
-      "where": "controls[1].api; Governance controls: meeting settings automation cell",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for the meeting-name visibility setting.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
-      "quote": "TEAMSCLIENTCONFIGURATION <IMicrosoftGraphTeamworkTeamsClientConfiguration>\n[FeaturesConfiguration <IMicrosoftGraphTeamworkFeaturesConfiguration>]\n[IsHideMeetingNamesEnabled <Boolean?>]: True if hiding meeting names is enabled.",
-      "severity": "blocker",
-      "fix": "Replace the null API side with kind 'powershell', call 'Update-MgBetaTeamworkDeviceConfiguration -TeamworkDeviceId <device-id> -TeamsClientConfiguration @{ FeaturesConfiguration = @{ IsHideMeetingNamesEnabled = $true } }', and the cited cmdlet reference as docs. Retain the Pro-only licence note and state: 'Historical documentation only: the underlying Graph beta APIs are unsupported after November 2025; this is not supported automation for the redesign.'"
-    },
-    {
       "n": 43,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The deprecated Graph device-management API is not supported automation for this redesign.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/teamworkdeviceconfiguration?view=graph-rest-beta",
-      "quote": "The Microsoft Graph beta APIs related to device management under the teamworkDevice resource type will be deprecated by November 2025 and will no longer be supported after that date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The sources do not say whether this specific redesign can be deferred or switched off.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Android improved device admin settings 581965 redesign January 2027 default automatic rollout defer disable license price meter. Read roadmap, home controls, portal settings and officeupdates/teams-admin excerpts; update pausing exists, no redesign-specific switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
       "where": "Governance controls; Open questions",
       "type": "behaviour",
-      "claim": "Some Android settings can also be changed through a Teams Rooms on Android configuration profile in the Teams admin center.",
+      "claim": "Some Android settings can also be updated using a Teams Rooms on Android configuration profile in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
       "quote": "You can also update this setting using the Teams Rooms on Android configuration profile in the Teams admin center.",
@@ -526,25 +498,80 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 44,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "The remote-management settings page says the full Android settings list documentation is coming soon.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
-      "quote": "# Teams Android Devices\nThe full settings list documentation is coming soon.",
+      "quote": "# [Teams Android Devices](#tab/Android)\nThe full settings list documentation is coming soon.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Historical documentation lists Update-MgBetaTeamworkDeviceConfiguration with -TeamworkDeviceId and -TeamsClientConfiguration to update a device's Teams client configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
+      "quote": "Update the navigation property configuration in teamwork\nUpdate-MgBetaTeamworkDeviceConfiguration\n-TeamworkDeviceId <string>\n[-TeamsClientConfiguration <IMicrosoftGraphTeamworkTeamsClientConfiguration>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "The historical cmdlet's -TeamsClientConfiguration accepts FeaturesConfiguration with IsHideMeetingNamesEnabled set to $true to hide meeting names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
+      "quote": "[FeaturesConfiguration <IMicrosoftGraphTeamworkFeaturesConfiguration>]: teamworkFeaturesConfiguration [(Any) <Object>]: This indicates any property can be added to this object. [IsHideMeetingNamesEnabled <Boolean?>]: True if hiding meeting names is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "date",
+      "claim": "The underlying Graph beta device-management APIs are deprecated and unsupported after November 2025, so the listed calls are not supported automation for the redesign.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/teamworkdevice?view=graph-rest-beta",
+      "quote": "The Microsoft Graph beta APIs related to device management under the teamworkDevice resource type will be deprecated by November 2025 and will no longer be supported after that date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The retained cmdlet documentation includes a Bluetooth beaconing configuration property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
+      "quote": "[IsBluetoothBeaconingEnabled <Boolean?>]: True if Bluetooth beaconing is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to take stock of room licences, but no controls-table row covers that check.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check which rooms hold Teams Rooms Pro licences, since the Learn page ties Require passcode for all meetings to a Pro licence on the device account. The controls table covers remote device settings and on-console meeting settings, not licence stocktaking.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet 'Check which rooms hold Teams Rooms Pro licences, since the Learn page ties Require passcode for all meetings to a Pro licence on the device account.' Do not add a controls-table row."
     }
   ],
   "precheck": {
-    "at": "2026-11-24T03:56:43.461Z",
+    "at": "2026-11-24T05:09:07.065Z",
     "summary": {
-      "links": 7,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -583,6 +610,11 @@
         "url": "https://learn.microsoft.com/graph/api/resources/teamworkdeviceconfiguration?view=graph-rest-beta",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/teamworkdevice?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -595,9 +627,21 @@
         "segments": [
           "Rooms",
           "device",
-          "Settings"
+          "Settings",
+          "category"
         ],
-        "missing": []
+        "missing": [
+          "category"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Settings of a Teams Rooms on Android device, changed remotely",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
+        "reachable": true,
+        "token": "Update-MgBetaTeamworkDeviceConfiguration",
+        "found": true
       },
       {
         "index": 1,
@@ -611,6 +655,15 @@
           "Show meeting names"
         ],
         "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Meeting settings on the room console, such as whether meeting names show",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.teams/update-mgbetateamworkdeviceconfiguration?view=graph-powershell-beta",
+        "reachable": true,
+        "token": "Update-MgBetaTeamworkDeviceConfiguration",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -620,6 +673,12 @@
       "date": "2026-11-24",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

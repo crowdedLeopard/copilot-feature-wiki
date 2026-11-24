@@ -3,30 +3,43 @@
   "roadmapId": 562016,
   "title": "Microsoft Purview Endpoint DLP: AI skill to investigate policy sync and device health",
   "status": "verified",
-  "date": "2026-11-17",
+  "date": "2026-11-24",
   "version": 5,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 75,
-    "confirmed": 75,
+    "claims": 91,
+    "confirmed": 91,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing accurately separates Microsoft's planned AI skill from today's documented device troubleshooting tools. Its rollout dates, Security Copilot capacity information and control paths are supported; the skill-specific controls, default and consumption rate remain documented gaps.",
+  "summary": "The briefing accurately reports Microsoft's planned diagnostic skill, rollout targets and Security Copilot capacity requirement. The manual device-status controls and licensing figures are documented, while the skill-specific default, controls and consumption rate remain unpublished.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans an Endpoint DLP AI agent skill to detect and alert on unhealthy policy sync and device configuration.",
+      "claim": "Microsoft plans Policy Sync and Device Health AI skills for Purview Endpoint DLP.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "We are introducing Policy Sync and Device Health AI skills for Microsoft Purview Endpoint Data Loss Prevention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes an AI agent skill to detect and alert unhealthy policy sync.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "AI agent skill to detect and alert unhealthy policy sync and device configuration.",
@@ -34,120 +47,43 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 3,
-      "where": "front matter: previewDate; summary; What's changing",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "The roadmap preview target is June CY2027.",
+      "claim": "The roadmap describes an AI agent skill to detect and alert unhealthy device configuration.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": \"June CY2027\"",
+      "quote": "AI agent skill to detect and alert unhealthy policy sync and device configuration.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "front matter: targetDate; summary; What's changing",
-      "type": "record",
-      "claim": "The roadmap general availability target is July CY2027.",
+      "where": "What's changing: Endpoint DLP definition",
+      "type": "behaviour",
+      "claim": "Endpoint DLP monitors how sensitive items are used on onboarded devices.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"July CY2027\"",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Once devices are onboarded into the Microsoft Purview solutions, the information about what users are doing with sensitive items is made visible in activity explorer.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap release phases are General Availability and Preview.",
+      "where": "What's changing: Endpoint DLP definition",
+      "type": "behaviour",
+      "claim": "Endpoint DLP restricts how sensitive items are used on onboarded devices.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "You can then enforce protective actions on those items via DLP policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "front matter: products; Scope",
+      "where": "What's changing: notice description",
       "type": "record",
-      "claim": "The roadmap product is Microsoft Purview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Purview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "Scope",
-      "type": "record",
-      "claim": "Other clouds are not listed in the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modified timestamp is 2026-11-11T00:53:22.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-11T00:53:22\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Endpoint DLP monitors and restricts sensitive-item use on onboarded devices.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
-      "quote": "Once devices are onboarded into the Microsoft Purview solutions, the information about what users are doing with sensitive items is made visible in activity explorer. You can then enforce protective actions on those items via DLP policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice describes real-time visibility into DLP policy deployment across endpoints.",
+      "claim": "The notice promises real-time visibility into DLP policy deployment across endpoints.",
       "status": "supported",
       "source": "Message Center post MC1381121",
       "quote": "Real-time visibility into DLP policy deployment across endpoints will be available",
@@ -155,8 +91,8 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing",
+      "n": 7,
+      "where": "What's changing: notice description",
       "type": "record",
       "claim": "The notice says impacted devices will be identified automatically.",
       "status": "supported",
@@ -166,8 +102,8 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
+      "n": 8,
+      "where": "What's changing: notice description",
       "type": "record",
       "claim": "The notice says sync failures will be identified automatically.",
       "status": "supported",
@@ -177,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 9,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The notice promises root cause explanations.",
+      "claim": "The notice describes root cause explanations.",
       "status": "supported",
       "source": "Message Center post MC1381121",
       "quote": "Root cause explanations and recommended remediation actions will be provided",
@@ -188,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 10,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "The notice describes recommended remediation actions.",
@@ -199,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 11,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "The notice places the experience within DLP policy and device views in Microsoft Purview.",
+      "claim": "The experience is planned within DLP policy views in Microsoft Purview.",
       "status": "supported",
       "source": "Message Center post MC1381121",
       "quote": "The experience will be available within DLP policy and device views in Microsoft Purview.",
@@ -210,10 +146,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 12,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The experience is planned within device views in Microsoft Purview.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "The experience will be available within DLP policy and device views in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "What's changing; licensing.notes; Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "The notice requires Security Copilot capabilities to be available in the tenant.",
+      "claim": "The feature requires Security Copilot capabilities to be available in the tenant.",
       "status": "supported",
       "source": "Message Center post MC1381121",
       "quote": "The feature requires Security Copilot capabilities to be available in the tenant.",
@@ -221,8 +168,19 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "summary; What's changing",
+      "n": 14,
+      "where": "What's changing: documentation gap",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this particular skill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Policy Sync and Device Health\"; Purview Endpoint DLP policy sync device health Security Copilot AI skill. Opened Purview Copilot overview, sync troubleshooting, health dashboard and Security Copilot agents-manage; none describes this skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing: action",
       "type": "record",
       "claim": "Microsoft's notice says no immediate action is required.",
       "status": "supported",
@@ -232,7 +190,18 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 16,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The skill's default state on arrival is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Endpoint DLP policy sync device health AI skill tenant setting PowerShell Microsoft Graph API default. Read roadmap, MC1381121, Purview Copilot overview and agents-manage; general agent setup is documented, but this embedded skill's default is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
       "claim": "The notice schedules public preview to begin early June 2027.",
@@ -243,7 +212,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 18,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
       "claim": "The notice schedules Worldwide rollout to begin early July 2027.",
@@ -254,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing",
+      "n": 19,
+      "where": "What's changing: notice update",
       "type": "record",
-      "claim": "The notice was updated on 10 November 2026 with a revised timeline.",
+      "claim": "The notice was last updated on 10 November 2026 with a revised timeline.",
       "status": "supported",
       "source": "Message Center post MC1381121",
       "quote": "Updated November 10, 2026: We have updated the timeline.",
@@ -265,43 +234,109 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this specific AI skill.",
+      "n": 20,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"562016\"; \"Purview\" \"policy sync\" \"AI\" \"skill\". Opened copilot-in-purview-overview, dlp-edlp-tshoot-sync and device-onboarding-health-reports-dashboard on Learn; no description of this skill found.",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists Preview and General Availability release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: previewDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is June CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is July CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2027\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions; rationale: risk",
-      "type": "default",
-      "claim": "The skill's default state on arrival is not stated.",
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Purview\" \"Policy Sync\" \"Device Health\" \"default\" \"role\" \"identity\" \"macOS\". Read roadmap, MC1381121, Security Copilot inclusion and agents-manage; none identifies this skill's default. General agent setup is not a stated default for this embedded skill.",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Devices must be online for policy updates to happen.",
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
-      "quote": "Devices must be online for the policy update to happen.",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: other clouds",
+      "type": "record",
+      "claim": "Other clouds are not listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Devices must be online for policy updates to happen.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Devices must be online for the policy update to happen. If the status isn't updating, check the last time the device was seen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Not updated in Policy sync status means the device has not synced the latest policy updates.",
+      "claim": "Policy sync status Not updated means the device has not synced the latest policy updates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
       "quote": "This device isn't synced the latest policy updates.",
@@ -309,43 +344,32 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 30,
+      "where": "licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft's preparation steps ask admins to confirm Security Compute Units are provisioned to support AI experiences.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "Confirm that Security Compute Units are provisioned to support AI experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Why it matters; rationale: risk",
       "type": "absence",
-      "claim": "The sources do not describe a change to existing Endpoint DLP enforcement behaviour.",
+      "claim": "No source describes this skill as changing existing Endpoint DLP enforcement behaviour on arrival.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Purview\" \"policy sync\" \"AI\" \"skill\"; \"562016\". Read roadmap, MC1381121, endpoint-dlp-learn-about and copilot-in-purview-overview; the planned change describes diagnostic insights, not an enforcement change.",
+      "quote": "Searched: \"Policy Sync and Device Health\"; Purview Endpoint DLP policy sync device health AI skill default. Read roadmap, MC1381121, Purview Copilot overview, Endpoint DLP overview and sync troubleshooting; only diagnostic changes are described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice says the AI skills analyze DLP policy sync status.",
-      "status": "supported",
-      "source": "Message Center post MC1381121",
-      "quote": "AI-powered skills that analyze DLP policy sync status and device health",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The notice says the AI skills analyze device health.",
-      "status": "supported",
-      "source": "Message Center post MC1381121",
-      "quote": "AI-powered skills that analyze DLP policy sync status and device health",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The notice answers Yes to whether the change introduces AI capabilities that interact with or provide access to customer data.",
+      "claim": "The notice says the new AI capabilities interact with or provide access to customer data.",
       "status": "supported",
       "source": "Message Center post MC1381121",
       "quote": "Does the change introduce or significantly modify AI or machine learning capabilities that interact with or provide access to customer data?Yes.",
@@ -353,18 +377,18 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 33,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The skill's data inputs are not specified beyond policy sync status and device health.",
+      "claim": "The skill's input data is not specified beyond DLP policy sync status and device health.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Purview\" \"policy sync\" \"AI\" \"skill\"; \"Security Copilot\" \"policy sync\" SCU roles enable default identity audit. Read MC1381121, copilot-in-purview-overview and security-copilot-inclusion; no more specific input inventory found.",
+      "quote": "Searched: \"Security Copilot\" \"policy sync\" \"skill\" consumption identity macOS; \"Purview\" \"Policy Sync\" \"Device Health\" AI skill. Read MC1381121 and Purview Copilot overview; the notice names status and health, not a detailed input schema.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 34,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Relevant Customer Data may be copied by Security Copilot to provide responses.",
@@ -375,7 +399,7 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Relevant Customer Data may be processed by Security Copilot to provide responses.",
@@ -386,7 +410,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Relevant Customer Data may be stored by Security Copilot to provide responses.",
@@ -397,7 +421,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "Microsoft asks admins to verify appropriate permissions to access DLP policies and device views.",
@@ -408,54 +432,43 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 38,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "absence",
-      "claim": "Roles required specifically for this skill are not stated.",
+      "claim": "Roles specific to this skill are not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Purview\" \"Policy Sync\" \"Device Health\" \"default\" \"role\" \"identity\" \"macOS\". Read MC1381121, copilot-in-purview-overview and agents-manage; no skill-specific role requirements found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The identity under which this skill runs is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Purview\" \"Policy Sync\" \"Device Health\" \"default\" \"role\" \"identity\" \"macOS\". Read MC1381121 and agents-manage; general agent identity choices do not identify the execution identity of this embedded skill.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The notice does not say the skill changes devices or policies itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Purview\" \"policy sync\" \"AI\" \"skill\". Read MC1381121 in full and copilot-in-purview-overview; the notice describes root cause explanations and recommended remediation actions, not autonomous device or policy changes.",
+      "quote": "Searched: \"Purview\" \"Policy Sync\" \"Device Health\" AI skill enable disable permissions SCU. Read Purview permissions search excerpts, Copilot overview and agents-manage; general roles are documented, but no roles specific to this skill.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The troubleshooting documentation directs admins to remediation steps in the device details pane.",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The identity under which this particular skill runs is not stated.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
-      "quote": "If the status is Not updated or Not available, follow the remediation steps in the details pane and the steps in the workflow diagram.",
+      "source": null,
+      "quote": "Searched: \"Security Copilot\" \"policy sync\" \"skill\" consumption identity macOS. Read MC1381121, Copilot overview and agents-manage; general agent identity choices are documented, but no identity for this skill.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The notice does not say the skill itself changes devices or policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Policy Sync and Device Health\"; \"Purview\" \"Policy Sync\" \"Device Health\" AI skill. Read MC1381121 and Purview Copilot overview; the notice describes explanations and recommended actions, not executing remediation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn supplies a troubleshooting workflow diagram for Not updated or Not available device statuses.",
+      "claim": "Learn gives remediation steps in the device details pane for configuration and policy sync issues.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
       "quote": "If the status is Not updated or Not available, follow the remediation steps in the details pane and the steps in the workflow diagram.",
@@ -463,43 +476,87 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment: Change & support",
+      "n": 42,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn lists OS, Defender engine version, Defender client version, MDATP device ID and Valid user as support-ticket evidence.",
+      "claim": "Learn provides a troubleshooting workflow diagram for Not updated or Not available status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
-      "quote": "From the Device details section, record the values for these fields: OS; Defender engine version; Defender client version; MDATP device ID; Valid user",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing; licensing.notes; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A skill-specific SCU consumption rate has not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"AI skill\" \"SCU\"; Purview Endpoint DLP Policy Sync Device Health AI skill enable disable role API SCU consumption rate. Read MC1381121, security-copilot-inclusion and copilot-in-purview-overview; no rate for this skill found.",
+      "quote": "If the status is Not updated or Not available, follow the remediation steps in the details pane and the steps in the workflow diagram.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Cost and licensing; licensing.notes; rationale: cost",
-      "type": "record",
-      "claim": "The notice's preparation steps ask admins to confirm SCUs are provisioned to support AI experiences.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn lists OS as evidence to record for a support ticket.",
       "status": "supported",
-      "source": "Message Center post MC1381121",
-      "quote": "Confirm that Security Compute Units are provisioned to support AI experiences.",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "From the Device details section, record the values for these fields: OS",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Security Compute Units are the meter for Security Copilot AI compute.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn lists Defender engine version as evidence to record for a support ticket.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Defender engine version",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn lists Defender client version as evidence to record for a support ticket.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Defender client version",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn lists MDATP device ID as evidence to record for a support ticket.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "MDATP device ID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn lists Valid user as evidence to record for a support ticket.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Valid user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A skill-specific SCU consumption rate is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Security Copilot Purview policy sync device health skill SCU consumption rate licensing. Read Security Copilot inclusion and capacity search excerpts, Purview Copilot overview and MC1381121; no rate for this skill is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.model; cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Security Copilot uses SCU capacity for this embedded AI experience, supporting consumption licensing and variable cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
       "quote": "A Security Compute Unit is a unit measure of the compute power to run Security Copilot workloads for AI capabilities within the standalone and embedded experiences.",
@@ -507,43 +564,10 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "front matter: licensing.model",
+      "n": 50,
+      "where": "licensing.notes; Cost and licensing; Governance guidance: Before rollout",
       "type": "licensing",
-      "claim": "The licensing model is consumption.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
-      "quote": "With the inclusion model, which provides 400 SCUs per 1,000 user licenses, there's no hourly provisioned capacity. Instead, the same two scenarios would deduct 3.5 SCUs from the monthly SCU allocation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing; licensing.notes",
-      "type": "licensing",
-      "claim": "Microsoft 365 E5 and E7 inclusion provides 400 SCUs monthly for every 1,000 paid user licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
-      "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The included monthly allocation is capped at 10,000 SCUs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
-      "quote": "up to 10,000 SCUs each month at no additional cost.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "That included allocation is supplied at no additional cost.",
+      "claim": "Microsoft 365 E5 includes monthly Security Copilot capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
       "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license, up to 10,000 SCUs each month at no additional cost.",
@@ -551,7 +575,51 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 51,
+      "where": "licensing.notes; Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 includes monthly Security Copilot capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license, up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: included allocation",
+      "type": "cost",
+      "claim": "The included allocation is 400 SCUs each month per 1,000 paid user licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "400 Security Compute Units (SCU) each month for every 1,000 paid user license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: included allocation",
+      "type": "cost",
+      "claim": "The included monthly allocation is limited to 10,000 SCUs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "up to 10,000 SCUs each month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: included allocation",
+      "type": "cost",
+      "claim": "The included SCUs come at no additional cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
       "where": "Cost and licensing; Governance guidance: Before rollout",
       "type": "licensing",
       "claim": "Customers without Microsoft 365 E5 or E7 can use the existing Security Copilot pricing model.",
@@ -562,10 +630,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Cost and licensing; licensing.notes",
-      "type": "applicability",
-      "claim": "The inclusion rule covers all Microsoft Purview chat, promptbook and agentic scenarios.",
+      "n": 56,
+      "where": "Cost and licensing: core experiences",
+      "type": "licensing",
+      "claim": "The inclusion covers all Microsoft Purview chat scenarios.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
       "quote": "Core Experiences: All chat, promptbook, and agentic scenarios across Microsoft Entra, Microsoft Intune, Microsoft Purview, Microsoft Defender, and the standalone Security Copilot portal.",
@@ -573,8 +641,30 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Cost and licensing",
+      "n": 57,
+      "where": "Cost and licensing: core experiences",
+      "type": "licensing",
+      "claim": "The inclusion covers all Microsoft Purview promptbook scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Core Experiences: All chat, promptbook, and agentic scenarios across Microsoft Entra, Microsoft Intune, Microsoft Purview, Microsoft Defender, and the standalone Security Copilot portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "licensing.notes; Cost and licensing: inclusion reach",
+      "type": "applicability",
+      "claim": "The inclusion covers all Microsoft Purview agentic scenarios, the class of experience the roadmap describes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Core Experiences: All chat, promptbook, and agentic scenarios across Microsoft Entra, Microsoft Intune, Microsoft Purview, Microsoft Defender, and the standalone Security Copilot portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: excess usage",
       "type": "cost",
       "claim": "Usage beyond allocated SCUs will be throttled at a future date.",
       "status": "supported",
@@ -584,10 +674,10 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Cost and licensing",
+      "n": 60,
+      "where": "Cost and licensing: excess usage",
       "type": "cost",
-      "claim": "At that future date customers can scale beyond allocation at $6 USD per SCU on a pay-as-you-go basis.",
+      "claim": "At that future date, customers can scale beyond their allocation at $6 USD per SCU on a pay-as-you-go basis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
       "quote": "Customers have an option to scale beyond the allocated amount at $6 USD for each SCU on a pay-as-you go basis at that time.",
@@ -595,10 +685,10 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Cost and licensing",
+      "n": 61,
+      "where": "Cost and licensing: excess usage",
       "type": "date",
-      "claim": "Customers will get 30 days' advance notice when that option becomes available.",
+      "claim": "Customers will receive 30 days' advance notice when that option is available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
       "quote": "Customers will get a 30-day advanced notification when this option is available.",
@@ -606,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Cost and licensing",
+      "n": 62,
+      "where": "Cost and licensing: monitoring",
       "type": "behaviour",
-      "claim": "Usage can be tracked in the Security Copilot standalone portal's in-product usage dashboard.",
+      "claim": "Usage can be tracked in the usage dashboard in the Security Copilot standalone portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
       "quote": "Customers are able to track their usage in the in-product usage dashboard in the Security Copilot standalone portal.",
@@ -617,65 +707,54 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Scope; rationale: impact",
-      "type": "record",
-      "claim": "The notice identifies admins managing Endpoint DLP policies in Microsoft Purview as the affected audience.",
-      "status": "supported",
-      "source": "Message Center post MC1381121",
-      "quote": "Who is affected - Admins managing Endpoint Data Loss Prevention policies in Microsoft Purview",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The notice lists the Microsoft Purview compliance portal, Endpoint DLP and Security Copilot as the involved services.",
-      "status": "supported",
-      "source": "Message Center post MC1381121",
-      "quote": "Platforms/Services - Microsoft Purview compliance portal- Endpoint DLP- Security Copilot",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Scope",
+      "n": 63,
+      "where": "Scope: devices",
       "type": "applicability",
-      "claim": "Endpoint DLP device monitoring concerns devices onboarded to Endpoint DLP.",
+      "claim": "The Endpoint DLP device context consists of onboarded devices.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
-      "quote": "Once devices are onboarded into the Microsoft Purview solutions, the information about what users are doing with sensitive items is made visible in activity explorer.",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Determining the device configuration and policy sync status values for Windows devices and macOS devices that are successfully onboarded into Microsoft Purview Data Loss Prevention (DLP).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Scope",
+      "n": 64,
+      "where": "Scope: dashboard prerequisites",
       "type": "behaviour",
-      "claim": "The device health dashboard requires devices to be onboarded to Endpoint DLP and actively reporting telemetry.",
+      "claim": "The device health reports dashboard requires devices to be onboarded to Endpoint DLP.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
-      "quote": "Devices must also: Be onboarded to Endpoint DLP; Be actively reporting device telemetry",
+      "quote": "Devices must also: Be onboarded to Endpoint DLP",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Scope; Open questions",
+      "n": 65,
+      "where": "Scope: dashboard prerequisites",
+      "type": "behaviour",
+      "claim": "The device health reports dashboard requires devices to actively report telemetry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Be actively reporting device telemetry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope; Open questions: operating systems",
       "type": "absence",
-      "claim": "Whether this specific skill covers both Windows and macOS is not stated.",
+      "claim": "Whether this particular skill supports both Windows and macOS is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Purview\" \"Policy Sync\" \"Device Health\" \"default\" \"role\" \"identity\" \"macOS\". Read MC1381121, endpoint-dlp-learn-about and dlp-edlp-tshoot-sync; manual tools support Windows and macOS, but the AI skill's OS coverage is not specified.",
+      "quote": "Searched: \"Security Copilot\" \"policy sync\" \"skill\" consumption identity macOS. Read MC1381121, Endpoint DLP overview and sync troubleshooting; manual diagnostics support both platforms, but this skill's platform coverage is not stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
+      "n": 67,
       "where": "Governance guidance: Before rollout",
       "type": "role",
-      "claim": "Learn recommends Compliance Administrator or Security Administrator as sufficient least-privilege choices for most dashboard users.",
+      "claim": "Compliance Administrator or Security Administrator are the least-privileged dashboard roles Learn recommends for most organisations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
       "quote": "Use the least-privileged role that meets your needs. For most organizations, the Compliance Administrator or Security Administrator role is sufficient.",
@@ -683,10 +762,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 68,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Learn recommends regular dashboard reviews for connectivity, Defender version and configuration issues.",
+      "claim": "Microsoft recommends reviewing the device health reports dashboard regularly.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
       "quote": "Review the dashboard regularly. Frequent checks help you catch device health trends before they become widespread issues.",
@@ -694,10 +773,43 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 69,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "DlpInfo in DeviceInfo exposes device configuration validity for reporting.",
+      "claim": "The dashboard identifies devices with offline status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Shows devices that may not be ready to receive future Endpoint DLP policy updates because of: offline status during the past day",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The dashboard identifies devices with outdated Defender versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "outdated Microsoft Defender Antivirus versions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The dashboard identifies devices with configuration issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "onboarded devices with configuration issues",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DlpInfo in DeviceInfo supports reporting configuration validity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
       "quote": "IsDlpConfigurationValid | boolean | Indicates whether the device configuration health is valid.",
@@ -705,10 +817,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 73,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "DlpInfo in DeviceInfo exposes policy modification times for reporting.",
+      "claim": "DlpInfo in DeviceInfo supports reporting policy modification times.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
       "quote": "DlpPolicyLastModifiedTimeUTC | datetime | Timestamp of the most recent DLP policy modification associated with the device, in Coordinated Universal Time (UTC).",
@@ -716,21 +828,21 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[0]; Governance controls; Open questions",
+      "n": 74,
+      "where": "controls[0].ui and controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No tenant UI or automation to enable, disable or scope this specific AI skill is documented as of November 2026.",
+      "claim": "No tenant setting or API specific to enabling, disabling or scoping this skill is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview Endpoint DLP Policy Sync Device Health AI skill enable disable role API SCU consumption rate; site:learn.microsoft.com/powershell \"policy sync\" \"Copilot\". Read copilot-in-purview-overview and agents-manage; no control specifically for this skill found.",
+      "quote": "Searched: Purview Endpoint DLP policy sync device health AI skill tenant setting PowerShell Microsoft Graph API default. Read Purview Copilot overview, agents-manage and Purview API search excerpts; no control specific to this skill was documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[1].ui",
+      "n": 75,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "Device status is reached in the Microsoft Purview portal at Settings > Device onboarding > Devices.",
+      "claim": "Per-device configuration and policy sync status are accessible at Microsoft Purview portal > Settings > Device onboarding > Devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
       "quote": "Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices.",
@@ -738,21 +850,21 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[1].api",
+      "n": 76,
+      "where": "controls[1].api; Governance controls table; Governance guidance: After rollout",
       "type": "command",
-      "claim": "Microsoft Defender portal Advanced hunting supports the query DeviceInfo | where DlpInfo != \"\" | project DlpInfo.",
+      "claim": "Microsoft Defender portal Advanced hunting supports DeviceInfo | where DlpInfo != \"\" | project DlpInfo for Endpoint DLP device data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
-      "quote": "Go to the Microsoft Defender portal ... Navigate to Investigation & response > Hunting > Advanced hunting ... Sample query: DeviceInfo | where DlpInfo != \"\" | project DlpInfo",
+      "quote": "Go to the Microsoft Defender portal\nNavigate to Investigation & response > Hunting > Advanced hunting\nSample query:\nDeviceInfo\n| where DlpInfo != \"\"\n| project DlpInfo",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The device status UI and hunting query are existing read-only status and attribute views, not controls over the planned skill.",
+      "n": 77,
+      "where": "controls[1].note; Governance controls: manual tools",
+      "type": "applicability",
+      "claim": "The device-status view and hunting query read existing device attributes rather than controlling the new AI skill.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
       "quote": "In addition to viewing device attributes in the Microsoft Purview portal, you can access the same Endpoint DLP device data through the DeviceInfo table in Advanced hunting.",
@@ -760,43 +872,54 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[2].ui",
+      "n": 78,
+      "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The device health reporting dashboard is reached in Microsoft Purview at Settings > Device onboarding > Device report.",
+      "claim": "The device health reports dashboard is at Microsoft Purview portal > Settings > Device onboarding > Device report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
-      "quote": "Go to the Microsoft Purview portal. Select Settings > Device onboarding > Device report.",
+      "quote": "Go to the Microsoft Purview portal.\nSelect Settings > Device onboarding > Device report.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[2].api",
-      "type": "absence",
-      "claim": "An API or automation equivalent for the device readiness dashboard is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Purview\" \"device health\" dashboard API PowerShell report; \"ExchangePowerShell\" \"Endpoint DLP\" \"device\" report Copilot. Read device-onboarding-health-reports-dashboard and dlp-edlp-tshoot-sync; no dashboard equivalent found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
+      "n": 79,
       "where": "controls[2].note; Governance controls",
       "type": "role",
-      "claim": "Dashboard access requires Compliance Administrator, Security Administrator or Global Administrator.",
+      "claim": "Compliance Administrator can access the device health reports dashboard.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
-      "quote": "To access the device health reporting dashboard, you must have one of the following roles: Compliance Administrator; Security Administrator; Global Administrator",
+      "quote": "To access the device health reporting dashboard, you must have one of the following roles: Compliance Administrator",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "controls[2].note",
+      "n": 80,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Security Administrator can access the device health reports dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Global Administrator can access the device health reports dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[2].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Device readiness indicators identify risk of missing future policy updates, not confirmed failures.",
+      "claim": "Dashboard readiness indicators identify risk of missing future policy updates rather than confirming failed updates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
       "quote": "These indicators don't confirm whether a device failed to receive a policy update, but instead highlight devices that may be at risk of not receiving future updates.",
@@ -804,10 +927,21 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance controls",
+      "n": 83,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API or automation equivalent for the Purview device health readiness dashboard is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"device health\" \"dashboard\" API PowerShell report; Purview device onboarding Device report readiness API Security Compliance PowerShell. Read health dashboard and search excerpts; Defender antivirus APIs cover a different report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls: Purview source prerequisite",
       "type": "applicability",
-      "claim": "The Purview source is a general prerequisite for Security Copilot embedded experiences in Microsoft Purview.",
+      "claim": "The Purview source is a general prerequisite for Security Copilot embedded experiences in Purview, including the planned experience, not a skill-specific switch.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
       "quote": "Security Copilot in Purview must be enabled for both the standalone and embedded experiences to work.",
@@ -815,21 +949,10 @@
       "fix": null
     },
     {
-      "n": 73,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The Purview source is a general integration control rather than a switch specific to this planned skill.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
-      "quote": "To enable or disable the Microsoft Purview source in Microsoft Security Copilot ... On the Manage plugins page, set the Purview toggle to On to enable or Off to disable.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Governance controls",
+      "n": 85,
+      "where": "Governance controls: status lag",
       "type": "behaviour",
-      "claim": "The Devices list can take up to 2 hours to update Policy sync status.",
+      "claim": "Policy sync status in the Devices list can take up to two hours to update.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
       "quote": "It might take up to 2 hours for the status in the devices list to update.",
@@ -837,24 +960,79 @@
       "fix": null
     },
     {
-      "n": 75,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The variable cost rating reflects the documented SCU compute meter.",
+      "n": 86,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies admins managing Endpoint DLP policies in Microsoft Purview as the affected audience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
-      "quote": "A Security Compute Unit is a unit measure of the compute power to run Security Copilot workloads for AI capabilities within the standalone and embedded experiences.",
+      "source": "Message Center post MC1381121",
+      "quote": "Who is affected\nAdmins managing Endpoint Data Loss Prevention policies in Microsoft Purview",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Scope: services",
+      "type": "record",
+      "claim": "The notice lists the Microsoft Purview compliance portal among the services involved.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "Platforms/Services\nMicrosoft Purview compliance portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Scope: services",
+      "type": "record",
+      "claim": "The notice lists Endpoint DLP among the services involved.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "Endpoint DLP",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Scope: services",
+      "type": "record",
+      "claim": "The notice lists Security Copilot among the services involved.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "Security Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice describes AI skills analysing DLP policy sync status.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "The change introduces AI-powered skills that analyze DLP policy sync status and device health, identify impacted devices, and provide root cause insights along with recommended remediation actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice describes AI skills analysing device health.",
+      "status": "supported",
+      "source": "Message Center post MC1381121",
+      "quote": "The change introduces AI-powered skills that analyze DLP policy sync status and device health, identify impacted devices, and provide root cause insights along with recommended remediation actions.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T05:06:33.246Z",
+    "at": "2026-11-24T05:09:12.545Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 3,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -872,13 +1050,13 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
@@ -887,8 +1065,8 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
@@ -924,13 +1102,17 @@
         "side": "ui",
         "governs": "Device readiness for policy updates and Endpoint DLP features",
         "docs": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Device onboarding",
           "Device report"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Device onboarding",
+          "Device report"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -964,6 +1146,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 5,
       "model": "gpt-6.1-sol"
     }
   ]

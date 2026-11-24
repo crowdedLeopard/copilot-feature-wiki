@@ -4,8 +4,8 @@ title: "Viva Feature Access Management (VFAM): who gets which Viva feature?"
 slug: "viva-feature-access-management"
 summary: "VFAM is the policy system that switches Viva and Microsoft 365 features, or types of data processing, on or off for the tenant, groups or users. Administrators use it to decide who reaches Insights, Pulse and similar features."
 created: "2026-11-21"
-updated: "2026-11-21"
-version: 2
+updated: "2026-11-24"
+version: 3
 tags: ["viva-feature-access-management","admin-controls","m365-admin-center","powershell","policy","governance","analytics"]
 covers: []
 sources:
@@ -20,6 +20,9 @@ sources:
     kind: "learn"
   - title: "Add-VivaModuleFeaturePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy"
+    kind: "learn"
+  - title: "Get-VivaModuleFeatureEnablement"
+    url: "https://learn.microsoft.com/powershell/module/exchange/get-vivamodulefeatureenablement"
     kind: "learn"
   - title: "Manage settings for the Microsoft Copilot Dashboard, Agent Dashboard, Consumption Dashboard, and Viva Insights web app"
     url: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
@@ -96,7 +99,7 @@ controls:
       docs: "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy"
     note: "Agent Dashboard is a public preview. The AI admin sets it at tenant, group or user level; the Viva Insights web app control must also be on."
 confidence: "high"
-dependents: 13
+dependents: 21
 changes:
   - date: "2026-11-21"
     note: "First concept page on Viva Feature Access Management: policy types, precedence, limits, cost and the admin centre and PowerShell controls."
@@ -108,18 +111,22 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 91 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-24"
+    note: "Corrected the roles statement: Add-VivaModuleFeaturePolicy needs Global Administrators or a feature-level role, while Get-VivaModuleFeatureEnablement needs Global Administrators."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 90
+  claims: 94
+  confirmed: 94
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "c00dc73f679813d3d7267e7718765306"
+  contradicted: 0
+  attempts: 0
+  hash: "671e0438e43d526f8912f88c2c2dce7a"
 ---
 
 ## What it is
@@ -176,7 +183,7 @@ Policy creation requires a supported version of Microsoft 365 or a Viva Suite li
 </tbody>
 </table>
 
-**Roles.** Running the cmdlets needs the Global Administrators role or the role assigned at feature level. The feature table names it per feature: for example Global admin or AI admin for the Agent Dashboard. Microsoft recommends least privilege rather than Global Administrator.
+**Roles.** Running Add-VivaModuleFeaturePolicy requires the Global Administrators role or a role assigned at feature level. The Get-VivaModuleFeatureEnablement reference requires the Global Administrators role. The feature table names the feature-level role per feature: for example Global admin or AI admin for the Agent Dashboard. Microsoft recommends least privilege rather than Global Administrator.
 
 **Other surfaces.** Copilot settings in the Microsoft 365 admin center manage Copilot policies for Viva apps and stay in sync with VFAM. The Viva Insights web app is also a VFAM feature (`FeatureId` "Viva Insights web app"). Read-only cmdlets show state: `Get-VivaModuleFeature` lists feature IDs, `Get-VivaModuleFeaturePolicy` returns policy IDs and `Get-VivaModuleFeatureEnablement` returns a user's or group's enablement status.
 
@@ -196,9 +203,3 @@ Policy creation requires a supported version of Microsoft 365 or a Viva Suite li
 - What default state applies to each feature? The feature table does not list it.
 - Which operation names do VFAM policy changes record in the Microsoft Purview audit log? The VFAM pages point to the change logs without naming events.
 - Can the admin center set soft disable? The pages document it through PowerShell (`IsUserOptedInByDefault`), and the admin center page does not mention it.
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: Roles / role: Running the cmdlets requires the Global Administrators role or the role assigned at feature level. | Found: Currently, you need to be a member of the Global Administrators role to run this cmdlet. | Fix: Replace the first Roles sentence with: 'Running Add-VivaModuleFeaturePolicy requires the Global Administrators role or a role assigned at feature level. The Get-VivaModuleFeatureEnablement reference requires the Global Administrators role.' Cite https://learn.microsoft.com/powershell/module/exchange/get-vivamodulefeatureenablement for the second sentence and add it to sources. | Source: https://learn.microsoft.com/powershell/module/exchange/get-vivamodulefeatureenablement
--->

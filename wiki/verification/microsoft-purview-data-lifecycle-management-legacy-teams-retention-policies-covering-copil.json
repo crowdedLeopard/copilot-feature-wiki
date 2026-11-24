@@ -3,52 +3,32 @@
   "roadmapId": 571306,
   "title": "Microsoft Purview: legacy Teams retention policies will stop covering Copilot interactions",
   "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 55,
-    "confirmed": 54,
+    "claims": 54,
+    "confirmed": 52,
     "unconfirmed": 0,
-    "contradicted": 1,
+    "contradicted": 2,
     "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 5
   },
-  "summary": "The briefing's rollout dates, retention changes, billing prerequisites and portal paths are supported. Two minor corrections remain: disclose conflicting Microsoft guidance about the Copilot PowerShell syntax and its preview status, and reconcile the billing checklist with the controls table.",
+  "summary": "The briefing accurately describes the planned loss of Copilot coverage, the rollout dates, and the need for an explicit Copilot retention policy. Minor corrections should flag conflicting Microsoft command guidance, complete the portal route, name the applicable licences, and align the checklist and impact rating with the standard.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Some existing Teams-scoped retention policies currently also apply to Microsoft 365 Copilot interactions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Some existing retention policies scoped to Microsoft Teams may currently also apply to Microsoft 365 Copilot interactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "title; summary; What's changing; rationale: risk",
-      "type": "record",
-      "claim": "Microsoft plans to convert legacy Teams-and-Copilot retention policies to Teams-only policies that no longer implicitly govern Copilot.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "As part of an upcoming change, these legacy Teams retention policies will be converted to—and treated as—Teams-only policies. They will no longer implicitly govern Copilot workloads.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap item is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -56,7 +36,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is January CY2027.",
@@ -67,43 +47,43 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 3,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 6,
+      "n": 4,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Web\" ]",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
+      "n": 6,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -111,120 +91,32 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: roadmapModified",
+      "n": 7,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-28T23:04:31.",
+      "claim": "Some existing Teams-scoped retention policies currently also apply to Microsoft 365 Copilot interactions.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-28T23:04:31\"",
+      "quote": "Some existing retention policies scoped to Microsoft Teams may currently also apply to Microsoft 365 Copilot interactions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Governance guidance",
-      "type": "behaviour",
-      "claim": "Microsoft Learn names the legacy location Teams chats and Copilot interactions.",
+      "n": 8,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans to convert legacy Teams-and-Copilot retention policies to Teams-only policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Previously, retention policies used the location Teams chats and Copilot interactions that combined Teams chat and Copilot interactions.",
+      "source": "roadmap record",
+      "quote": "As part of an upcoming change, these legacy Teams retention policies will be converted to—and treated as—Teams-only policies. They will no longer implicitly govern Copilot workloads.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Scope",
-      "type": "date",
-      "claim": "Learn says the Teams-only treatment begins on 15 January 2027.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Beginning 15th January, 2027, Microsoft Purview will treat 'Teams chats and Copilot interactions\" policy as Teams-only policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "After conversion, legacy Teams policies no longer retain Microsoft 365 Copilot interactions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Microsoft 365 Copilot interactions will no longer be retained or deleted through these legacy Teams policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "behaviour",
-      "claim": "After conversion, legacy Teams policies no longer delete Microsoft 365 Copilot interactions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Microsoft 365 Copilot interactions will no longer be retained or deleted through these legacy Teams policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment; Open questions",
-      "type": "behaviour",
-      "claim": "Previously retained Copilot interactions are also no longer covered by these legacy policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Previously retained Copilot interactions also will NOT be covered.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The change also applies to new Copilot interactions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "This change applies to both previously retained Copilot interactions and new Copilot interactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Governance guidance; rationale: impact",
-      "type": "behaviour",
-      "claim": "Retention behaviour for Teams content remains unchanged.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Retention behavior for Microsoft Teams content will remain unchanged.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Copilot messages were previously included automatically in the combined retention location.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
-      "quote": "Previously, messages from Microsoft 365 Copilot and Microsoft 365 Copilot Chat were automatically included in the retention policy location named Teams chats and Copilot interactions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Users did not need to use Teams for that policy to apply to Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
-      "quote": "Users didn't have to be using Teams for the retention policy to apply to Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
+      "n": 9,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1481313 contains an update dated 27 October 2026.",
+      "claim": "The text of MC1481313 says its timeline was updated on 27 October 2026.",
       "status": "supported",
       "source": "Message Center post MC1481313",
       "quote": "Updated October 27, 2026: We have updated the timeline. Thank you for your patience.",
@@ -232,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "summary; What's changing; Scope; Governance guidance",
+      "n": 10,
+      "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "The notice targets the beginning of Worldwide rollout for mid-January 2027.",
+      "claim": "MC1481313 gives the Worldwide rollout start as mid-January 2027.",
       "status": "supported",
       "source": "Message Center post MC1481313",
       "quote": "Worldwide: Beginning in mid-January 2027 (previously late October 2026)",
@@ -243,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 11,
       "where": "What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "Worldwide rollout is expected to complete by the end of January 2027.",
+      "claim": "MC1481313 expects the Worldwide rollout to complete by end of January 2027.",
       "status": "supported",
       "source": "Message Center post MC1481313",
       "quote": "expected to complete by end of January 2027 (previously mid-November)",
@@ -254,8 +146,8 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Governance guidance",
+      "n": 12,
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
       "claim": "The previously announced rollout start was late October 2026.",
       "status": "supported",
@@ -265,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 13,
       "where": "What's changing",
       "type": "record",
-      "claim": "The previously announced rollout completion was mid-November.",
+      "claim": "The previously announced completion was mid-November.",
       "status": "supported",
       "source": "Message Center post MC1481313",
       "quote": "expected to complete by end of January 2027 (previously mid-November)",
@@ -276,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "The supplied Message Center notice has no act-by date.",
+      "claim": "The supplied Message Center post sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1481313",
       "quote": "Act by: none",
@@ -287,10 +179,21 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Scope: Who is affected",
+      "n": 15,
+      "where": "summary; What's changing; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Affected organisations rely on historically Teams-configured Purview policies to retain or delete Copilot interactions.",
+      "claim": "Administrators relying on Teams retention policies for Copilot must configure retention explicitly for Copilot.",
+      "status": "supported",
+      "source": "Message Center post MC1481313",
+      "quote": "Action is required if you currently rely on Teams retention policies to govern Copilot interactions. Configure retention policies explicitly for the Copilot workload to maintain the desired compliance coverage after this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Scope: Who is affected; rationale: impact",
+      "type": "record",
+      "claim": "The affected audience is organisations relying on historical Teams policies for Copilot and their compliance and records management administrators.",
       "status": "supported",
       "source": "Message Center post MC1481313",
       "quote": "Organizations using Microsoft Purview retention policies that were historically configured for Microsoft Teams and currently rely on those policies to retain or delete Microsoft 365 Copilot interactions",
@@ -298,43 +201,120 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Scope; rationale: impact",
+      "n": 17,
+      "where": "Governance guidance: After rollout",
       "type": "record",
-      "claim": "The notice names compliance administrators and records management administrators responsible for retention configuration.",
+      "claim": "MC1481313 recommends updating internal compliance guidance and informing compliance and records management stakeholders.",
       "status": "supported",
       "source": "Message Center post MC1481313",
-      "quote": "Compliance administrators and records management administrators responsible for retention policy configuration",
+      "quote": "Update internal compliance documentation and administrator guidance as needed.- Inform compliance and records management stakeholders of this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope: Rollout",
+      "type": "date",
+      "claim": "Learn gives 15 January 2027 as the beginning of the legacy policy change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Beginning 15th January, 2027, Microsoft Purview will treat 'Teams chats and Copilot interactions\" policy as Teams-only policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The affected legacy location is named Teams chats and Copilot interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Previously, retention policies used the location Teams chats and Copilot interactions that combined Teams chat and Copilot interactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "After conversion, the legacy Teams policies no longer retain Microsoft 365 Copilot interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Microsoft 365 Copilot interactions will no longer be retained or deleted through these legacy Teams policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "After conversion, the legacy Teams policies no longer delete Microsoft 365 Copilot interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Microsoft 365 Copilot interactions will no longer be retained or deleted through these legacy Teams policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "Previously retained Copilot interactions also cease to be covered by these legacy policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Previously retained Copilot interactions also will NOT be covered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The coverage change also applies to new Copilot interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "This change applies to both previously retained Copilot interactions and new Copilot interactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: At rollout; rationale: impact",
+      "type": "behaviour",
+      "claim": "Retention behaviour for Teams content remains unchanged.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Retention behavior for Microsoft Teams content will remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot messages were previously included automatically in the combined location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Previously, messages from Microsoft 365 Copilot and Microsoft 365 Copilot Chat were automatically included in the retention policy location named Teams chats and Copilot interactions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users did not have to use Teams for the legacy policy to apply to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Users didn't have to be using Teams for the retention policy to apply to Copilot.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "summary; What's changing; Governance guidance",
-      "type": "record",
-      "claim": "Organisations relying on these policies must configure Copilot-specific retention to preserve required Copilot coverage.",
-      "status": "supported",
-      "source": "Message Center post MC1481313",
-      "quote": "Configure retention policies explicitly for the Copilot workload to maintain the desired compliance coverage after this change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "front matter: defaultState; Why it matters; Risk assessment: Autonomy & actions",
-      "type": "default",
-      "claim": "The conversion arrives through Microsoft's rollout without an administrator opting in, so its default state is on.",
-      "status": "supported",
-      "source": "Message Center post MC1481313",
-      "quote": "Beginning with this rollout, these legacy policies will be treated as Teams-only policies and will no longer implicitly apply to Copilot workloads.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Copilot interaction data is stored in a hidden folder in the mailbox of the user running the AI app.",
+      "claim": "AI interaction data is stored in a hidden folder in the mailbox of the user who runs the AI app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
       "quote": "Data from generative AI messages is stored in a hidden folder in the mailbox of the user who runs the AI app.",
@@ -342,21 +322,21 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Risk assessment; Governance guidance",
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "A newly created retention policy can take up to seven days to apply.",
+      "claim": "A newly created and submitted retention policy can take up to seven days to apply.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "When you create and submit a retention policy, it can take up to seven days for the retention policy to be applied",
+      "quote": "When you create and submit a retention policy, it can take up to seven days for the retention policy to be applied:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[0].note; Risk assessment; Governance guidance; Open questions",
+      "n": 29,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Get output for legacy combined policies still shows MicrosoftTeams rather than TeamsChatUserInteractions after processing becomes Teams-only.",
+      "claim": "Get still shows MicrosoftTeams rather than TeamsChatUserInteractions for converted legacy combined policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/create-retention-policies",
       "quote": "doing a Get command on 'Teams chats and Copilot interactions' policies from cmdlet will still show the policy covering teams+copilot i.e. MicrosoftTeams and NOT TeamsChatUserInteractions but while processing; they will ONLY cover Teams Interactions.",
@@ -364,54 +344,109 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Microsoft describes no identity or permission change associated with this conversion.",
+      "n": 30,
+      "where": "Scope: Roles; Governance controls: Roles",
+      "type": "role",
+      "claim": "Learn recommends the Compliance Administrator role group for managing retention policies.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview legacy Teams Copilot retention change identity permissions tenant notification conversion January 2027; \"Teams chats and Copilot interactions\" \"identity\" \"permissions\". Read MC1481313, create-retention-policies and get-started-with-data-lifecycle-management.",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "To grant permissions for this limited administration, we recommend that you add users to the Compliance Administrator admin role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Roles; Governance controls: Roles",
+      "type": "role",
+      "claim": "A custom role group with Retention Management is an alternative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "Alternatively to using this default role, you can create a new role group and add the Retention Management role to this group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "View-Only Retention Management provides read-only retention permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "For a read-only role, use View-Only Retention Management.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not explain conversion-specific release or deletion eligibility for interactions already held by a legacy policy.",
+      "where": "Risk assessment: Security & identity; Governance controls: Roles",
+      "type": "role",
+      "claim": "Creating and managing replacement retention policies requires permissions to the Purview portal.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams chats and Copilot interactions\" \"previously retained\" released deletion; \"Teams chats and Copilot interactions\" \"released\". Read create-retention-policies, retention-policies-copilot and MC1481313; none explains the conversion-specific transition for already-held items.",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "Members of your compliance team who will create and manage retention policies and retention labels need permissions to the Microsoft Purview portal.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Open questions: identifying legacy policies",
-      "type": "absence",
-      "claim": "A reliable conversion-specific identification method remains undocumented beyond the warning about misleading Get output.",
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The retention policy inventory is at Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams chats and Copilot interactions\" identify legacy policy portal MicrosoftTeams. Read create-retention-policies, Get-RetentionCompliancePolicy and MC1481313; these describe review and the Get-output caveat, not a definitive conversion-identification procedure.",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Open questions: tenant notification",
-      "type": "absence",
-      "claim": "Microsoft has not specified a per-tenant notification when conversion completes.",
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Get-RetentionCompliancePolicy -Identity \"<policy name>\" -DistributionDetail | Format-List retrieves policy details in Security & Compliance PowerShell.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"MC1481313\" notification conversion applied tenant; \"Teams chats and Copilot interactions\" \"notify\". Read MC1481313 and create-retention-policies; neither specifies a per-tenant conversion-completion notification.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-retentioncompliancepolicy",
+      "quote": "Get-RetentionCompliancePolicy -Identity \"Regulation 123 Compliance\" -DistributionDetail | Format-List\nThis example displays detailed information for the policy named \"Regulation 123 Compliance\", including accurate values for the DistributionStatus and *Location properties.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy is the portal route given for configuring Copilot retention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Select New retention policy to start the Create retention policy configuration, and name your new retention policy.",
+      "severity": "minor",
+      "fix": "Complete this early-ending route with a documented static-policy example: 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both'. Keep the current docs URL."
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Set-AppRetentionCompliancePolicy -Identity \"<policy name>\" -Applications \"User:M365Copilot\" adds Copilot to an existing newer-location policy in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "To add Microsoft 365 Copilot interactions to an existing retention policy for newer locations, such as Teams private channel messages and Viva Engage:\nSet-AppRetentionCompliancePolicy -Identity “<policy name>” -Applications \"User:M365Copilot\"",
+      "severity": "minor",
+      "fix": "Append to controls[1].note: 'The configuration guide shows User:M365Copilot alone, but the cmdlet reference marks Microsoft Copilot experiences as preview and requires all these values together: User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot. Confirm the supported syntax before running this example.' Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy#-applications to sources. The cited guide supports the printed call; this is a disagreement between Microsoft pages."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Selecting the Microsoft Copilot experiences location configures retention coverage for Microsoft 365 Copilot interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Create a new retention policy explicitly configured for Copilot by selecting \"Microsoft Copilot Experiences\" location to maintain the required retention coverage for Copilot interactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "licensing.notes; controls[1].note; Cost and licensing; Governance guidance; rationale: cost",
       "type": "licensing",
-      "claim": "Pay-as-you-go billing must be set up to create policies including Microsoft Copilot experiences, Enterprise AI apps or Other AI apps.",
+      "claim": "Pay-as-you-go billing must be set up to create policies including Microsoft Copilot experiences, Enterprise AI apps, or Other AI apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
       "quote": "You must set up pay-as-you-go billing to create retention policies that include the locations Microsoft Copilot experiences, Enterprise AI apps, and Other AI apps.",
@@ -419,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 40,
       "where": "licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Microsoft 365 Copilot interactions are not charged for this retention capability.",
+      "claim": "Microsoft 365 Copilot interactions are not charged under the documented Purview billing model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
       "quote": "There's no charge for Microsoft 365 Copilot interactions.",
@@ -430,7 +465,7 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 41,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "The Data Lifecycle Management meter counts non-Microsoft 365 Copilot or AI app prompts and responses under a retention policy.",
@@ -441,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 42,
       "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Learn directs readers to the Purview service description for feature-level licence requirements.",
+      "claim": "The get-started page refers readers to the Purview service description for feature-level licensing requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
       "quote": "For the features listed on this page, see the Microsoft Purview Data Lifecycle Management & Records Management section for feature-level licensing requirements.",
@@ -452,131 +487,32 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 43,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The licensing model is mixed, combining licensing prerequisites with required pay-as-you-go setup while excluding Microsoft 365 Copilot interactions from charges.",
+      "claim": "The licensing model is mixed, with licence requirements and required pay-as-you-go setup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "The pay-as-you-go billing model builds on the per-user licensing model. The two are complementary, not mutually exclusive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The known incremental cost of this change is administrator effort, rather than a charge for retaining Microsoft 365 Copilot interactions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "You must set up pay-as-you-go billing to create retention policies that include the locations Microsoft Copilot experiences, Enterprise AI apps, and Other AI apps. There's no charge for Microsoft 365 Copilot interactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Scope: Roles; Governance controls",
-      "type": "role",
-      "claim": "Learn recommends the Compliance Administrator role group for people managing retention policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "To grant permissions for this limited administration, we recommend that you add users to the Compliance Administrator admin role group.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Scope: Roles; Governance controls",
-      "type": "role",
-      "claim": "A custom role group containing Retention Management is an alternative.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "Alternatively to using this default role, you can create a new role group and add the Retention Management role to this group.",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Keep mixed, but name the entitlement in licensing.notes: 'The Purview service description lists Microsoft 365 E3/E5 + Microsoft 365 Copilot; Microsoft 365 E3 + Microsoft Purview Suite + Microsoft 365 Copilot; or Microsoft 365 E3 + Microsoft E5 Information Protection and Governance + Microsoft 365 Copilot as providing user rights for Copilot interaction retention. Pay-as-you-go setup is required, but Microsoft 365 Copilot interactions are not charged.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description."
     },
     {
       "n": 44,
-      "where": "Scope: Roles",
-      "type": "role",
-      "claim": "View-Only Retention Management provides read-only access.",
+      "where": "front matter: defaultState; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "The conversion arrives without administrator opt-in, so defaultState is on.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "For a read-only role, use View-Only Retention Management.",
+      "source": "Message Center post MC1481313",
+      "quote": "Beginning with this rollout, these legacy policies will be treated as Teams-only policies and will no longer implicitly apply to Copilot workloads.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "role",
-      "claim": "Creating and managing the replacement retention policy requires Purview portal retention permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "Members of your compliance team who will create and manage retention policies and retention labels need permissions to the Microsoft Purview portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Tenant retention policies can be reviewed in Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "Get-RetentionCompliancePolicy -Identity \"<policy name>\" -DistributionDetail | Format-List retrieves detailed policy information including accurate distribution and location values.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-retentioncompliancepolicy",
-      "quote": "Get-RetentionCompliancePolicy -Identity \"Regulation 123 Compliance\" -DistributionDetail | Format-List\nThis example displays detailed information for the policy named \"Regulation 123 Compliance\", including accurate values for the DistributionStatus and *Location properties.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "A Copilot retention policy starts at Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy, selecting Microsoft Copilot experiences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.\nSelect New retention policy to start the Create retention policy configuration, and name your new retention policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[1].api; controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "Set-AppRetentionCompliancePolicy -Identity \"<policy name>\" -Applications \"User:M365Copilot\" adds Copilot interactions to an existing policy for newer locations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "To add Microsoft 365 Copilot interactions to an existing retention policy for newer locations, such as Teams private channel messages and Viva Engage:\nSet-AppRetentionCompliancePolicy -Identity “<policy name>” -Applications \"User:M365Copilot\"",
-      "severity": "minor",
-      "fix": "Append this qualification to the second control's note: 'Microsoft's configuration guide shows User:M365Copilot alone, but the cmdlet reference marks Microsoft Copilot experiences as preview and requires all application values together: User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot. Confirm the supported syntax before running this example.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy#-applications. The cited configuration guide supports the printed command, so this is a disagreement between Microsoft pages, not an invented command."
-    },
-    {
-      "n": 50,
-      "where": "Governance controls: separate policy",
-      "type": "behaviour",
-      "claim": "Selecting Teams locations for a static retention policy excludes the other locations, requiring a separate Copilot policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "If you select the Teams or Viva Engage locations when you create a retention policy, the other locations are automatically excluded.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
       "where": "Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "Selecting a policy on the Retention policies page opens a flyout showing distribution status.",
+      "claim": "Selecting a policy on the Purview Retention policies page opens a flyout with its distribution status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/create-retention-policies",
       "quote": "You can always check the distribution status of the retention policy by selecting it from the Retention policies page in the Microsoft Purview portal. From the flyout pane, if you see (Error) included in the status",
@@ -584,59 +520,114 @@
       "fix": null
     },
     {
+      "n": 46,
+      "where": "Governance controls: Roles",
+      "type": "behaviour",
+      "claim": "Selecting Teams locations when creating a static retention policy excludes the other locations, requiring a separate Copilot policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "If you select the Teams or Viva Engage locations when you create a retention policy, the other locations are automatically excluded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No identity or permissions change is described for this conversion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"legacy Teams\" \"Copilot\" retention \"permissions\" \"identity\"; read MC1481313, create-retention-policies, get-started-with-data-lifecycle-management and the returned retention-cmdlets excerpts. No conversion-specific identity or permissions change was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explain the conversion-specific release or deletion eligibility of Copilot items already held by legacy policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams chats and Copilot interactions\" \"previously retained\" \"released\" January 2027; read create-retention-policies, retention-policies-copilot and MC1481313. They state loss of coverage, but do not specify conversion-specific release or deletion processing for held items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "A reliable conversion-specific identification method for legacy combined policies remains undocumented beyond the stated Get-output caveat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams chats and Copilot interactions\" identify legacy policies portal PowerShell conversion notification tenant January 2027; read create-retention-policies, Get-RetentionCompliancePolicy and retention-cmdlets excerpts. No further conversion-specific identification procedure was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Whether tenants receive notification when their own conversion completes remains an open question.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams chats and Copilot interactions\" identify legacy policies portal PowerShell conversion notification tenant January 2027; read MC1481313 and create-retention-policies. Neither states that individual tenants receive a completion notice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "absence",
+      "claim": "No additional cost specific to the conversion is stated beyond administrator work.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Data Lifecycle Management Copilot retention policies license requirements Microsoft 365 Copilot pay as you go no charge; read the service description, billing models, get-started page and MC1481313. Existing licence rights are stated; no conversion-specific charge was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 52,
-      "where": "Governance controls: PowerShell family",
-      "type": "command",
-      "claim": "The two printed policy cmdlets belong to Security & Compliance PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance guidance: After rollout",
-      "type": "record",
-      "claim": "MC1481313 recommends updating internal compliance documentation and administrator guidance.",
-      "status": "supported",
-      "source": "Message Center post MC1481313",
-      "quote": "Update internal compliance documentation and administrator guidance as needed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance guidance: After rollout",
-      "type": "record",
-      "claim": "MC1481313 recommends informing compliance and records management stakeholders.",
-      "status": "supported",
-      "source": "Message Center post MC1481313",
-      "quote": "Inform compliance and records management stakeholders of this change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance guidance: Before rollout; Governance controls",
+      "where": "Governance guidance: Before rollout",
       "type": "consistency",
-      "claim": "The billing setup control named in the governance checklist is represented in the controls table.",
+      "claim": "The billing setup instruction in the governance checklist has a corresponding controls-table row.",
       "status": "contradicted",
       "source": "page",
       "quote": "Checklist: 'Set up pay-as-you-go billing if it is not in place'. The two controls rows cover policy inventory and Copilot retention configuration, not billing setup.",
       "severity": "minor",
-      "fix": "Replace the checklist bullet with 'Pay-as-you-go billing is a prerequisite for creating policies that include the Microsoft Copilot experiences location; see Cost and licensing.' This keeps the verified prerequisite without instructing readers to configure a control absent from the table."
+      "fix": "Replace that checklist bullet with 'Pay-as-you-go billing is a prerequisite for creating policies that include the Microsoft Copilot experiences location; see Cost and licensing.' Do not add a control row."
+    },
+    {
+      "n": 53,
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "Medium impact is justified by compliance and records management administrators being the people who notice first.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Rationale: 'Compliance and records management administrators who rely on Teams policies for Copilot data notice first'. Scale: 'low: admins only, or a small opt-in group'. The body describes this as not user-visible.",
+      "severity": "minor",
+      "fix": "Set impact to low and replace the impact rationale with 'Low. Compliance and records management administrators must maintain Copilot retention coverage; Teams retention behaviour remains unchanged.'"
+    },
+    {
+      "n": 54,
+      "where": "front matter: products; What's changing",
+      "type": "record",
+      "claim": "The roadmap identifies Microsoft Purview as the product making this change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T14:05:56.389Z",
+    "at": "2026-11-24T05:09:12.228Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 4,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -652,18 +643,18 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/create-retention-policies",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/retention-policies-copilot",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/purview-billing-models",
@@ -672,8 +663,8 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-retentioncompliancepolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -682,30 +673,35 @@
         "side": "ui",
         "governs": "Which retention policies exist and what locations they cover",
         "docs": "https://learn.microsoft.com/purview/create-retention-policies",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Solutions",
           "Data Lifecycle Management",
           "Policies",
           "Retention policies"
         ],
-        "missing": []
+        "missing": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Policies",
+          "Retention policies"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which retention policies exist and what locations they cover",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-retentioncompliancepolicy",
-        "reachable": true,
+        "reachable": false,
         "token": "Get-RetentionCompliancePolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Retention or deletion of Microsoft 365 Copilot interactions",
         "docs": "https://learn.microsoft.com/purview/create-retention-policies",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Solutions",
           "Data Lifecycle Management",
@@ -713,16 +709,22 @@
           "Retention policies",
           "New retention policy"
         ],
-        "missing": []
+        "missing": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Policies",
+          "Retention policies",
+          "New retention policy"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Retention or deletion of Microsoft 365 Copilot interactions",
         "docs": "https://learn.microsoft.com/purview/create-retention-policies",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-AppRetentionCompliancePolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -732,6 +734,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

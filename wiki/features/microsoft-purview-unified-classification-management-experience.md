@@ -89,15 +89,17 @@ changes:
     note: "Correction: the role-group access control now lists the Add-RoleGroupMember cmdlet as its automation, replacing the claim that none is documented."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -206,4 +208,11 @@ Access to the page is decided by the roles in the first row. The SIT listing cmd
 risk: Low. Learn describes a page for managing classifiers that already exist, available alongside the existing experiences; the exposure is an edit to a classifier that policies depend on.
 cost: Low. Licensing for the new experience is not yet published and the Learn page names no licence; the cost the sources show is admin time to learn the page and check classifier changes.
 impact: Low. The audience is administrators with access to the Classifiers page through the Microsoft Entra roles or Microsoft Purview role groups that Learn lists.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because no licence specific to the new Classifiers experience is published. | Found: The per-user licensing model is the familiar Microsoft 365 E3/E5/A5/F5/G5 model. It remains unchanged. This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets. | Fix: Set licensing.model to included. Replace the opening licensing paragraph and notes with: 'The Classifiers management experience uses the existing Purview entitlement. Microsoft documents the Microsoft 365 E3/E5/A5/F5/G5 per-user licensing model for Microsoft 365 and Windows/macOS endpoint assets; users assigned a Purview role for portal use require the appropriate licence. A licence specific to the new Classifiers page is not yet published. Credential scanning SITs require an E5 licence.' Cite https://learn.microsoft.com/purview/purview-billing-models and https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. In Open questions and the cost rationale, narrow 'Licensing is Not yet published' to 'Licensing specific to the new page is Not yet published'. | Source: https://learn.microsoft.com/purview/purview-billing-models
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: Role-group membership is managed in Microsoft Purview portal > Settings > Roles and scopes > Role groups > role group > Edit > Choose users. | Found: On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. 4. On Edit members of the role group, select Choose users or Choose groups. | Fix: Expand controls[0].ui.path and the corresponding rendered table path to 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users', retaining https://learn.microsoft.com/purview/purview-permissions as its documentation link. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

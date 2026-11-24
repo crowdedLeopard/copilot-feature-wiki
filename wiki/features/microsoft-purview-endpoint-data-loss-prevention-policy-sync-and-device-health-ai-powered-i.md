@@ -91,15 +91,17 @@ changes:
     note: "Correction: the cost section now says only the skill-specific SCU rate is unpublished, the Purview source is described as a general prerequisite for Purview embedded experiences, and the checklist no longer asks admins to check the source."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 91 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
   contradicted: 0
   attempts: 0

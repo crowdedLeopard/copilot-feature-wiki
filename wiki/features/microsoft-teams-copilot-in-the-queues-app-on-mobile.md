@@ -127,15 +127,17 @@ changes:
     note: "Corrected four statements: licence wording now refers to entitlements rather than separate add-on purchases, the audit and retention uncertainty is replaced by Microsoft's general Copilot rules, and the recording-access sentence now depends on the Copilot licence."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -239,4 +241,13 @@ The Teams calling policy **Copilot** setting is documented for one-to-one and gr
 risk: Low. Copilot works on call recordings that users can already open in shared call history, and Microsoft's notice says recording creation, storage and access do not change.
 cost: Medium. Users need a Teams Premium licence for the Queues app and a Microsoft 365 Copilot licence for Copilot, so each agent or supervisor who wants the feature needs both entitlements.
 impact: Low. Only calling reps and supervisor leads in call queues, with the right licences and recorded calls, will see it; most Teams users are unaffected.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing / record: Targeted Release completes by early December 2026. | Found: Targeted Release (Worldwide): We will begin rolling out on late November 2026 and expect to complete by early December 2026. | Fix: Replace 'completes by early December 2026' with 'is expected to complete by early December 2026'.
+- [supported, minor] What's changing / record: General Availability completes by mid December 2026. | Found: General Availability (Worldwide): We will begin rolling out on early December 2026 and expect to complete by mid December 2026. | Fix: Replace 'completes by mid December 2026' with 'is expected to complete by mid December 2026'.
+- [supported, minor] controls[0].api / command: POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes user licences. | Found: POST /users/{id | userPrincipalName}/assignLicense. addLicenses: objects that specify the licenses to add. removeLicenses: A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection. | Fix: Keep the call and add to controls[0].note: 'The request body uses addLicenses to add licences and removeLicenses to remove licence skuIds; removeLicenses is required and can be empty.' | Source: https://learn.microsoft.com/graph/api/user-assignlicense
+- [supported, minor] controls[1].note / admin-path: The automatic recording template is created under Voice > Templates and resources. | Found: go to Voice > Templates and resources. Select Templates. Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. | Fix: Replace 'Template created under Voice > Templates and resources' with 'Template created under Voice > Templates and resources > Templates > Automatic Recording > Add'. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
 -->

@@ -2,12 +2,14 @@
   "slug": "microsoft-teams-hide-organizer-name-in-calendar-view-on-teams-panels",
   "roadmapId": 569423,
   "title": "Microsoft Teams panels: hide the organiser name in Calendar View",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "verified-with-gaps",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
@@ -18,12 +20,100 @@
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "The briefing passes: the roadmap, supplied Microsoft notice and Microsoft Learn support the default behaviour, licensing and documented portal paths. The page appropriately distinguishes general device-management controls from unconfirmed automation and display coverage for this setting.",
+  "summary": "The briefing's default, licensing, rollout dates and device-management behaviour are supported by Microsoft's notice, roadmap and documentation. The portal routes are correct but stop before selecting the setting; these are minor navigation omissions, not reasons to withhold publication.",
   "claims": [
     {
       "n": 1,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Teams panels gain a new Show organizer name administrator setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
+      "quote": "Admins can now decide whether the organizer’s name will appear in the calendar. They can toggle the “Show organizer name” setting On or Off in the Pro Management portal or on their local device settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Turning Show organizer name off hides the organiser's name in Calendar View on the panel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
+      "quote": "Depending on the selection, the organizer’s name will either be displayed or hidden in the calendar view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Admins can configure Show organizer name in the Teams Rooms Pro Management portal.",
+      "status": "supported",
+      "source": "Message Center post MC1484010",
+      "quote": "Admins can toggle the Show organizer name setting ON or OFF in the Teams Rooms Pro Management portal or on the panel device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Admins can configure Show organizer name directly on a Teams panel device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
+      "quote": "They can toggle the “Show organizer name” setting On or Off in the Pro Management portal or on their local device settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "The privacy control is admin-opt-in: organiser names continue to appear by default until an admin configures hiding.",
+      "status": "supported",
+      "source": "Message Center post MC1484010",
+      "quote": "By default, organizer names will continue to be displayed in Calendar View.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "MC1484010 says no action is required if organiser names should continue appearing.",
+      "status": "supported",
+      "source": "Message Center post MC1484010",
+      "quote": "No action is required if you want organizer names to continue appearing in Calendar View on Teams panel devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1484010 asks admins who want names hidden to review room privacy and display requirements.",
+      "status": "supported",
+      "source": "Message Center post MC1484010",
+      "quote": "If you want to hide organizer names: - Review your room privacy and display requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1484010 asks admins who want names hidden to update the setting in the portal or on individual panels.",
+      "status": "supported",
+      "source": "Message Center post MC1484010",
+      "quote": "Update the Show organizer name setting in the Teams Rooms Pro Management portal or on individual Teams panel devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -34,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 10,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -45,18 +135,7 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
+      "n": 11,
       "where": "front matter: releasePhase",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -67,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list other clouds for this item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -78,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 13,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Android as a platform.",
+      "claim": "Android is a platform listed for the item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Teams and Surface Devices\"]",
@@ -89,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 14,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Teams and Surface Devices as a platform.",
+      "claim": "Teams and Surface Devices is a platform listed for the item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Teams and Surface Devices\"]",
@@ -100,18 +179,18 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: products",
+      "n": 15,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap identifies Microsoft Teams as the product.",
+      "claim": "The roadmap record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 16,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-10-26T23:15:50.",
@@ -122,109 +201,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "title; summary; What's changing; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "Teams panels have an administrator setting named Show organizer name.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
-      "quote": "They can toggle the “Show organizer name” setting On or Off in the Pro Management portal or on their local device settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "summary; What's changing; Why it matters; Risk assessment; Scope; rationale",
-      "type": "behaviour",
-      "claim": "Turning Show organizer name off hides the organiser name in Calendar View on the panel.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
-      "quote": "Depending on the selection, the organizer’s name will either be displayed or hidden in the calendar view.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Risk assessment; Governance guidance; Governance controls",
-      "type": "record",
-      "claim": "Administrators can configure the setting in the Teams Rooms Pro Management portal.",
-      "status": "supported",
-      "source": "Message Center post MC1484010",
-      "quote": "Admins can toggle the Show organizer name setting ON or OFF in the Teams Rooms Pro Management portal or on the panel device.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Risk assessment; Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Administrators can configure the setting locally on the panel.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
-      "quote": "They can toggle the “Show organizer name” setting On or Off in the Pro Management portal or on their local device settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Teams panels are touchscreen devices mounted outside meeting spaces.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/devices/teams-panels",
-      "quote": "Microsoft Teams panels are the compact touchscreen devices that are mounted right outside of your meeting spaces, typically next to entrances.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale",
-      "type": "default",
-      "claim": "The hiding control is admin-opt-in: organiser names remain displayed unless an administrator changes the setting.",
-      "status": "supported",
-      "source": "Message Center post MC1484010",
-      "quote": "By default, organizer names will continue to be displayed in Calendar View.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "Microsoft says no action is required to keep organiser names appearing.",
-      "status": "supported",
-      "source": "Message Center post MC1484010",
-      "quote": "No action is required if you want organizer names to continue appearing in Calendar View on Teams panel devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 17,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft asks administrators wanting to hide names to review room privacy and display requirements.",
-      "status": "supported",
-      "source": "Message Center post MC1484010",
-      "quote": "If you want to hide organizer names: - Review your room privacy and display requirements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "Microsoft asks administrators wanting to hide names to update the setting in the portal or on individual panels.",
-      "status": "supported",
-      "source": "Message Center post MC1484010",
-      "quote": "Update the Show organizer name setting in the Teams Rooms Pro Management portal or on individual Teams panel devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1484010 gives an early October 2026 start for general availability rollout worldwide.",
+      "claim": "MC1484010 gives a Worldwide general availability rollout beginning in early October 2026.",
       "status": "supported",
       "source": "Message Center post MC1484010",
       "quote": "General Availability (Worldwide): Beginning in early October 2026 and expected to complete by early October 2026",
@@ -232,7 +212,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1484010 gives expected rollout completion by early October 2026.",
@@ -243,21 +223,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Cost and licensing; Scope",
+      "n": 19,
+      "where": "What's changing; Scope",
       "type": "date",
       "claim": "The Teams panels release notes list the setting under October 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
-      "quote": "Teams panels\n## October 2026\nApplies to: Teams app version 1449/1.0.97.2026369007\nHide the organizer’s name in the calendar view.",
+      "quote": "Teams panels\nOctober 2026\nApplies to: Teams app version 1449/1.0.97.2026369007\nHide the organizer’s name in the calendar view.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 20,
       "where": "Scope",
       "type": "availability",
-      "claim": "The October release-note entry applies to Teams app version 1449/1.0.97.2026369007.",
+      "claim": "The October 2026 release notes apply to Teams app version 1449/1.0.97.2026369007.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
       "quote": "Applies to: Teams app version 1449/1.0.97.2026369007",
@@ -265,10 +245,32 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "n": 21,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The setting is included in the named Teams panel licences rather than separately licensed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
+      "quote": "This feature is available with Teams Rooms Pro and Teams Shared Space licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "The roadmap says the setting is available with Teams Rooms Pro and Teams Shared Space licences.",
+      "claim": "The roadmap says the setting is available with Teams Rooms Pro licences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Available with Teams Rooms Pro and Teams Shared Space licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap says the setting is available with Teams Shared Space licences.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Available with Teams Rooms Pro and Teams Shared Space licenses.",
@@ -279,7 +281,7 @@
       "n": 24,
       "where": "front matter: licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "The release notes say the setting is available with Teams Rooms Pro and Teams Shared Space licences.",
+      "claim": "Microsoft's release notes say the setting is available with Teams Rooms Pro licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
       "quote": "This feature is available with Teams Rooms Pro and Teams Shared Space licenses.",
@@ -288,20 +290,9 @@
     },
     {
       "n": 25,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "MC1484010 uses the names Teams Rooms Pro and Teams Shared Spaces licences.",
-      "status": "supported",
-      "source": "Message Center post MC1484010",
-      "quote": "This feature is available with Teams Rooms Pro and Teams Shared Spaces licenses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: licensing.model",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "The setting is included in the named panel licences rather than requiring a separately named feature add-on.",
+      "claim": "Microsoft's release notes say the setting is available with Teams Shared Space licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
       "quote": "This feature is available with Teams Rooms Pro and Teams Shared Space licenses.",
@@ -309,21 +300,43 @@
       "fix": null
     },
     {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "MC1484010 describes the entitlement as Teams Rooms Pro and Teams Shared Spaces licences.",
+      "status": "supported",
+      "source": "Message Center post MC1484010",
+      "quote": "This feature is available with Teams Rooms Pro and Teams Shared Spaces licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 27,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No feature-specific meter, price or separate charge is published in the documentation checked.",
+      "claim": "Microsoft publishes no separate meter, price or charge for this particular setting in the sources checked.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams panels \"Show organizer name\" \"price\"; Teams panels \"Show organizer name\" \"Settings\" licensing price. Opened devices/devices-release-notes, devices/teams-panels and teams-add-on-licensing/teams-shared-device-license on Learn; no price or meter for this setting.",
+      "quote": "Searched: Teams panels hide organizer name license price meter Teams Shared Space. Opened devices-release-notes, teams-panels and teams-add-on-licensing/teams-shared-device-license; the published licence price is not a separate price or meter for this setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Teams panels are touchscreen devices mounted outside meeting spaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/teams-panels",
+      "quote": "Microsoft Teams panels are the compact touchscreen devices that are mounted right outside of your meeting spaces, typically next to entrances.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Teams panels usage page describes the scheduled-meeting Home screen tile as displaying the organiser name.",
+      "claim": "The Learn page describes the Home screen scheduled-meeting tile as showing the organiser's name.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/devices/use-teams-panels",
       "quote": "It displays meeting title in prominent text, meeting start and end times, and meeting organizer's name.",
@@ -331,21 +344,21 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 30,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not documented whether this setting also affects the Home screen meeting-details tile.",
+      "claim": "Microsoft has not stated whether Show organizer name also affects the Home screen meeting tile.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams panels\" \"Show organizer name\" \"Home\"; Teams panels \"Show organizer name\" PowerShell Graph API settings template calendar home screen. Opened Learn devices/devices-release-notes and devices/use-teams-panels; no explicit coverage of the meeting-details tile.",
+      "quote": "Searched: Teams panels Show organizer name setting Teams admin settings Meetings calendar home screen. Opened devices-release-notes and use-teams-panels; the setting's description names calendar view, not the scheduled-meeting tile.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "controls notes; Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "n": 31,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
       "type": "role",
-      "claim": "Managing device settings in the Pro Management portal requires Rooms Management RBAC permissions.",
+      "claim": "Changing device settings in the Pro Management portal, including the table's single-device and bulk controls, requires Rooms Management RBAC permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
       "quote": "you can configure settings for Microsoft Teams devices (Teams Rooms on Windows, Teams Rooms on Android, Teams Panels and Teams Phones), provided you have the necessary role-based access control permissions for Rooms Management.",
@@ -353,24 +366,13 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "A device setting changed through the portal is applied through a settings job.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Since setting changes from the Teams Rooms Pro management portal to the Teams device aren't in real-time, there will be a delay. An indicator is visible next to any setting that is pending a change or pending verification of a change as a visual cue that a job is in progress for that device.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 32,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Apply Now queues a job to apply the setting.",
+      "claim": "A portal-initiated device setting change is applied as a job rather than in real time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Apply Now - Queues a job to apply the setting and restarts the device as soon as possible to apply the setting changes.",
+      "quote": "Since setting changes from the Teams Rooms Pro management portal to the Teams device aren't in real-time, there will be a delay.",
       "severity": null,
       "fix": null
     },
@@ -378,7 +380,7 @@
       "n": 33,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Apply Now restarts the device as soon as possible.",
+      "claim": "Apply Now queues a settings job and restarts the device as soon as possible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
       "quote": "Apply Now - Queues a job to apply the setting and restarts the device as soon as possible to apply the setting changes.",
@@ -403,7 +405,7 @@
       "claim": "A settings job can fail with DEVICE IN MEETING.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "| Failed | DEVICE IN MEETING | Device is currently in a meeting. | Try again later. |",
+      "quote": "Failed | DEVICE IN MEETING | Device is currently in a meeting. | Try again later.",
       "severity": null,
       "fix": null
     },
@@ -411,17 +413,17 @@
       "n": 36,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "A settings job can fail because the device is disconnected.",
+      "claim": "A settings job can fail if the device is disconnected when execution is attempted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "| Failed | DEVICE DISCONNECTED | Device was disconnected when we attempted to execute the settings change, so no changes occurred. | Reapply the settings change. |",
+      "quote": "Failed | DEVICE DISCONNECTED | Device was disconnected when we attempted to execute the settings change, so no changes occurred.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
       "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
-      "type": "behaviour",
+      "type": "availability",
       "claim": "Portal settings management is available only for signed-in devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
@@ -433,84 +435,62 @@
       "n": 38,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Settings changed directly on the device are synchronised back to the portal.",
+      "claim": "Settings changed directly on a device are synchronised back to the portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Any setting changes made directly on the device are synchronized back to the Teams Rooms Pro Management portal and reflected in the Settings tab of the device panel, providing visibility into the device's current configuration.",
+      "quote": "Any setting changes made directly on the device are synchronized back to the Teams Rooms Pro Management portal and reflected in the Settings tab of the device panel",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "controls[0].ui; Governance controls table",
+      "where": "controls[0].ui; Governance controls: first row",
       "type": "admin-path",
-      "claim": "The documented entry path for per-device settings is Teams Rooms Pro Management portal > Rooms/ Phones > device > Settings.",
+      "claim": "The single-device settings route in the Teams Rooms Pro Management portal is Rooms/ Phones > device > Settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel.",
-      "severity": null,
-      "fix": null
+      "quote": "Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. Use the left navigation in the device panels to browse settings categories",
+      "severity": "minor",
+      "fix": "Keep the documented path, but append to controls[0].note: 'This route stops at the Settings tab; browse the settings categories and select Show organizer name. Microsoft has not published which category contains it.' The cited page documents browsing categories and modifying settings, not the final category."
     },
     {
       "n": 40,
       "where": "controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No PowerShell, Microsoft Graph or other API for Show organizer name is documented.",
+      "claim": "Microsoft Learn documents no PowerShell, Graph or other API operation that sets Show organizer name.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: site:learn.microsoft.com/powershell/module/teams \"panel\" \"organizer\"; site:learn.microsoft.com/graph Teams panels device settings jobs organizer name; \"Teams panels\" \"organizer\" \"PowerShell\" \"Graph\". Read release notes, portal settings and Teams PowerShell search excerpts; no matching API.",
+      "quote": "Searched: Teams panels Show organizer name PowerShell Microsoft Graph API; Teams module ShowOrganizerName. Opened Graph teamworkDeviceConfiguration and Update-MgBetaTeamworkDeviceConfiguration references; no organiser-display property is documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft documents settings categories but not the category containing Show organizer name.",
+      "where": "controls[1].ui; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "The bulk device settings route in the Teams Rooms Pro Management portal is Settings > Device Settings > Jobs.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams panels \"Show organizer name\" \"Settings\" licensing price; \"Show organizer name\" \"Teams\" \"Meetings\". Opened Learn rooms/pro-portal-settings, rooms/device-settings-available and devices/devices-release-notes; no category for this setting.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "go to Settings > Device Settings. Select the Jobs tab. Add devices or groups of devices where the setting changes are to be applied. Select Settings changes to be applied to devices.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path to 'Settings > Device Settings > Jobs > Settings'. Append to controls[1].note: 'On Jobs, add the target devices or groups of devices, then select the Settings changes to apply.' This follows the cited Create a Job steps without implying that this particular setting is documented for bulk changes."
     },
     {
       "n": 42,
-      "where": "controls[0].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "The portal supports changing settings on an individual panel device.",
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documents no equivalent script or API for creating the bulk device settings job shown in the second row.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "you can configure settings for Microsoft Teams devices (Teams Rooms on Windows, Teams Rooms on Android, Teams Panels and Teams Phones) ... You can change settings on a single device",
+      "source": null,
+      "quote": "Searched: Teams Rooms Pro Management device settings jobs bulk configuration PowerShell Microsoft Graph API; Graph beta teamwork device update configuration settings jobs. Opened pro-portal-settings and Graph configuration references; no bulk settings-job operation found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The general bulk-job path is Teams Rooms Pro Management portal > Settings > Device Settings > Jobs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Device Settings. Select the Jobs tab.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API equivalent for the device-settings bulk job control is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Pro device settings jobs API PowerShell Microsoft Graph panels configuration; site:learn.microsoft.com/graph Teams panels device settings jobs organizer name. Opened Learn rooms/pro-portal-settings and read returned excerpts; no bulk settings-job API documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[1].governs; Governance controls table",
-      "type": "behaviour",
-      "claim": "Device setting jobs provide a general control for applying device settings to multiple panels.",
+      "where": "controls[1].governs; Governance controls",
+      "type": "applicability",
+      "claim": "Device setting jobs are a general portal control for changing settings on many Teams devices, including panels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
       "quote": "you can configure settings for Microsoft Teams devices (Teams Rooms on Windows, Teams Rooms on Android, Teams Panels and Teams Phones) ... You can change settings on a single device, or for many devices at once using Device setting jobs.",
@@ -518,13 +498,35 @@
       "fix": null
     },
     {
+      "n": 44,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented which portal settings category holds Show organizer name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams panels Show organizer name setting Teams admin settings Meetings calendar home screen. Opened pro-portal-settings, devices-release-notes and device-settings-available; Android's full settings list is coming soon and no category for this setting is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The Learn pages do not give the complete on-device route to Show organizer name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams panels Show organizer name setting Teams admin settings Meetings calendar home screen. Opened use-teams-panels and devices-release-notes; general Teams admin settings access is documented, but the route to Show organizer name is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 46,
       "where": "controls[1].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not explicitly confirmed Show organizer name as a setting supported by bulk jobs.",
+      "claim": "Microsoft has not specifically confirmed Show organizer name as a setting that bulk jobs can apply.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams panels \"Show organizer name\" PowerShell Graph API settings template calendar home screen; \"Teams panels\" \"Show organizer name\" \"template\". Opened Learn rooms/pro-portal-settings, rooms/device-settings-available and devices/devices-release-notes; no setting-specific bulk confirmation.",
+      "quote": "Searched: Teams panels Show organizer name PowerShell Microsoft Graph API device settings jobs. Opened pro-portal-settings, devices-release-notes and device-settings-available; jobs are general, but this setting's bulk eligibility is not listed and Android's full list is coming soon.",
       "severity": null,
       "fix": null
     },
@@ -532,41 +534,41 @@
       "n": 47,
       "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not explicitly confirmed Show organizer name as a setting supported by templates.",
+      "claim": "Microsoft has not specifically confirmed that Show organizer name can be pushed through settings templates.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams panels\" \"Show organizer name\" \"template\". Opened Learn rooms/pro-portal-settings, rooms/device-settings-available and devices/devices-release-notes; general template documentation does not identify this setting.",
+      "quote": "Searched: Teams Rooms Pro Management device settings jobs bulk configuration PowerShell Microsoft Graph API. Read pro-portal-settings template steps, devices-release-notes and device-settings-available; no template eligibility for Show organizer name is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The exact on-device path to Show organizer name is not given in the Learn documentation checked.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams panels \"Show organizer name\" \"Settings\" licensing price; \"Show organizer name\" \"Teams\" \"Meetings\". Opened Learn devices/use-teams-panels and devices/devices-release-notes; general on-device navigation exists, but no exact path for this setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
       "where": "Scope",
       "type": "record",
-      "claim": "MC1484010 says available information does not indicate support for managing the setting through Entra ID group membership.",
+      "claim": "MC1484010 says the available information does not indicate management support through Entra ID group membership.",
       "status": "supported",
       "source": "Message Center post MC1484010",
       "quote": "The available information does not indicate support for management through Entra ID group membership.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Why it matters; Governance guidance; rationale: impact",
+      "type": "applicability",
+      "claim": "The panel's local settings change applies per device, so admins can choose which panels hide organiser names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/use-teams-panels",
+      "quote": "Any updates to the Panels App settings done via the device are applicable only to that specific device. Those updates will not impact other panels devices in your organization.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T09:44:33.646Z",
+    "at": "2026-11-24T05:09:14.266Z",
     "summary": {
       "links": 6,
-      "unreachable": 0,
+      "unreachable": 3,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
@@ -586,8 +588,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/devices/devices-release-notes",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
@@ -596,13 +598,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/devices/teams-panels",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/devices/use-teams-panels",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -640,6 +642,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

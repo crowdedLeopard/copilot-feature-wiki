@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: neither the roadmap item nor the Learn notice states a licence or meter for this change. Learn says the option to turn on audit logging is only visible when the minimum Office licensing requirements are met."
+  model: "included"
+  notes: "Microsoft Purview Audit (Standard) is included in the plans listed in the Microsoft Purview service description, including Microsoft 365 E3 and Office 365 E3; no licence or meter specific to this removal is published. Learn says the option to turn on audit logging is only visible when the minimum Office licensing requirements are met."
 audiences: ["power-platform-admin","compliance","security"]
 tags: ["auditing","purview","dataverse","data-governance","privacy","power-platform","monitoring"]
 sources:
@@ -45,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Manage Microsoft Dataverse settings"
     url: "https://learn.microsoft.com/power-platform/admin/admin-settings"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
 videos: []
 related: []
@@ -73,7 +76,7 @@ controls:
     note: "Needs the View Audit Summary privilege in the app; the Web API messages need prvReadRecordAuditHistory and prvReadAuditSummary. Reads values; does not send them to Purview."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-19"
+updated: "2026-11-24"
 roadmapModified: "2026-10-16T19:09:56"
 changes:
   - date: "2026-11-17"
@@ -92,19 +95,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-24"
+    note: "Corrected the checklist step on auditing (removed the claim that auditing alone puts an environment's events in Purview) and set licensing to included, citing the Purview service description for Audit (Standard)."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
+  claims: 50
+  confirmed: 50
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "ef97d490e4e105ad3e0beb27c2cf2f44"
+  contradicted: 0
+  attempts: 0
+  hash: "fc06cf47d733fd8c9f6d1cec60e0a31b"
 ---
 
 ## What's changing
@@ -142,6 +149,8 @@ For most tenants the change reduces exposure: sensitive field values no longer t
 
 Microsoft has not published a licence or meter for this change: neither the roadmap record nor the Learn notice "Removal of before-and-after field change values in audit events sent to Microsoft Purview" states one. The cost the sources support is admin time to find and rework Purview-based monitoring.
 
+The Microsoft Purview service description lists Microsoft Purview Audit (Standard) as included in Microsoft 365 E3/A3/A1/G3/F3/F1, Office 365 E3/E1/A3/A1/G3/G1/F3 and Microsoft 365 Business Basic/Standard/Premium; it lists no licence or meter specific to this removal.
+
 The surrounding services have their own conditions. The Manage Dataverse auditing page says Dataverse stores audit logs and they consume log storage capacity, so moving field-level reporting to Dataverse audit data depends on that capacity. The Power Platform activity logs page says the option to turn on audit logging is only visible when the minimum Office licensing requirements are met, and points to the Microsoft Purview service description for licensing.
 
 ## Scope
@@ -154,7 +163,7 @@ To configure auditing you need a system administrator or system customizer role 
 
 ### Before rollout
 - Inventory the Purview audit searches, alert rules, SIEM or data pipelines and compliance checks that read old and new field values from Dataverse audit events, starting with the three examples in Microsoft's notice. Owner: security and compliance leads.
-- Confirm which production environments have auditing turned on in Audit settings, since those are the environments whose events reach Purview (controls table, row 1).
+- Confirm which production environments have auditing turned on in Audit settings (controls table, row 1).
 - Decide who needs Dataverse access to read before-and-after values, because the Purview roles alone are not described as giving it (controls table, row 2).
 
 ### At rollout
@@ -189,14 +198,6 @@ Changing audit settings needs the System Administrator or System Customizer role
 
 <!-- rationale
 risk: Medium. Less sensitive data reaches Purview, but monitoring or compliance rules that compare old and new values in Purview stop working, according to Microsoft's notice.
-cost: Low. The sources state no licence or meter for this change; the known cost is admin time to rework Purview-based monitoring. Licensing is not yet published.
+cost: Low. The sources state no licence or meter for this change; the known cost is admin time to rework Purview-based monitoring. No licence or meter specific to this removal is published.
 impact: Medium. Security, compliance and Power Platform admins who search Purview or run pipelines on Dataverse audit events notice; the sources do not describe makers or end users as affected.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, second bullet / applicability: Production environments with auditing turned on in Audit settings are the environments whose events reach Purview. | Found: A Power Platform system admin or customizer needs to configure auditing in the Power Platform admin center and then turn on the Enable SAS Logging in Purview setting for each Power Platform production environment so Microsoft Purview auditing solutions can access the environment's activity logs. | Fix: Replace the checklist bullet with: 'Confirm which production environments have auditing turned on in Audit settings (controls table, row 1).' Remove the clause 'since those are the environments whose events reach Purview': auditing alone does not establish that Purview receives their events. | Source: https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown, with notes limiting the gap to this change and acknowledging surrounding licensing conditions. | Found: | Feature | Microsoft 365 E3/A3/A1/G3/F3/F1 | Office 365 E3/E1/A3/A1/G3/G1/F3 | Microsoft 365 Business Basic/Standard/Premium | | Audit (Standard) | Included | Included | Included | | Fix: Set licensing.model to included. Add to licensing.notes: 'Microsoft Purview Audit (Standard) is included in the plans listed in the Microsoft Purview service description, including Microsoft 365 E3 and Office 365 E3; no licence or meter specific to this removal is published.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

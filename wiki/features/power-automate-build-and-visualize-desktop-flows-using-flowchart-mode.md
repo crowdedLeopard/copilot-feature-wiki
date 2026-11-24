@@ -50,7 +50,7 @@ controls:
       path: "Console > New flow > Create a flow > Flowchart mode (Preview)"
       docs: "https://learn.microsoft.com/power-automate/desktop-flows/flowchart-flow-designer"
     api: null
-    note: "Maker-side and preview. Existing flows switch with View > Flowchart mode or View > Sequence mode, and only when the flow has no errors."
+    note: "Maker-side and preview. Existing flows switch with View > Flowchart mode or View > Sequence mode. Switching to flowchart mode requires a flow with no errors."
   - governs: "Tenant or environment switch that allows or blocks flowchart mode"
     scope: "tenant"
     ui: null
@@ -71,26 +71,30 @@ changes:
     note: "Correction: the governance paragraph no longer lists copilot capabilities among the registry-controlled areas."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 67 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Correction: the page now says that only switching to flowchart mode requires a flow with no errors, as Microsoft Learn states."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 67
-  confirmed: 66
-  unconfirmed: 1
+  confirmed: 67
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "3d141b02563fec949ddf5ef5fd3d1f58"
+  attempts: 0
+  hash: "1eb7efb84e13c3ace16668b2269e1d9d"
 ---
 
 ## What's changing
 
 Flowchart mode is a second way to build and read a desktop flow in Power Automate for desktop. Actions appear as nodes on a canvas and the lines between them (edges) show the execution path, which Microsoft says can make branches, loops and other complex logic easier to follow. Sequence mode, the numbered list, is the default and remains.
 
-Makers choose the mode per flow. A new flow can be created in flowchart mode from the **Create a flow** dialog, where the option is labelled **Flowchart mode (Preview)**. An existing flow can be switched with **View** > **Flowchart mode** or **View** > **Sequence mode**, but only when the flow has no errors. Learn says both modes represent the same desktop flow and that changes made in one mode are available in the other.
+Makers choose the mode per flow. A new flow can be created in flowchart mode from the **Create a flow** dialog, where the option is labelled **Flowchart mode (Preview)**. An existing flow can be switched with **View** > **Flowchart mode** or **View** > **Sequence mode**. Switching to flowchart mode requires the flow to have no errors. Learn says both modes represent the same desktop flow and that changes made in one mode are available in the other.
 
 In flowchart mode, **If** and **Switch** actions open a consolidated properties dialog, and loop actions show a loop-back edge for the loop body. Learn also describes node-level debugging (**Run from here**), a minimap, zoom and keyboard shortcuts.
 
@@ -157,7 +161,7 @@ That page's feature list does not include flowchart mode, and a licence, credit 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which mode a maker uses to create or view a desktop flow</strong><br><small>Maker</small><br><small class="controls__note">Maker-side and preview. Existing flows switch with View &gt; Flowchart mode or View &gt; Sequence mode, and only when the flow has no errors.</small></td><td data-label="Admin UI"><strong>Power Automate for desktop (maker)</strong><br>Console › New flow › Create a flow › Flowchart mode (Preview) <a href="https://learn.microsoft.com/power-automate/desktop-flows/flowchart-flow-designer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which mode a maker uses to create or view a desktop flow</strong><br><small>Maker</small><br><small class="controls__note">Maker-side and preview. Existing flows switch with View &gt; Flowchart mode or View &gt; Sequence mode. Switching to flowchart mode requires a flow with no errors.</small></td><td data-label="Admin UI"><strong>Power Automate for desktop (maker)</strong><br>Console › New flow › Create a flow › Flowchart mode (Preview) <a href="https://learn.microsoft.com/power-automate/desktop-flows/flowchart-flow-designer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant or environment switch that allows or blocks flowchart mode</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing (November 2026). The Windows registry settings on the governance page do not name flowchart mode.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -177,10 +181,4 @@ At the time of writing (November 2026), the Learn page on governance in Power Au
 risk: Low. Flowchart mode is a different view of the same desktop flow: Microsoft's page says both modes represent the same flow, and sequence mode is the default.
 cost: Low. The only cost the sources show is admin and maker time; the flowchart mode page names no licence or meter, and no separate price for it is yet published.
 impact: Low. Makers who build desktop flows in Power Automate for desktop notice it, and only if they pick it; run-time users and admins see no change described.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].note; What's changing, second paragraph; Governance controls table / behaviour: Switching an existing flow back into sequence mode is also possible only when the flow has no errors. | Found: Searched: "flowchart mode" "sequence mode" errors switch. Read flowchart-flow-designer, especially Switch an existing flow between modes. Its prerequisite says "switch to flowchart mode only when the flow has no errors"; no passage states this restriction for switching to sequence mode. | Fix: Replace controls[0].note and its rendered table note with: 'Maker-side and preview. Existing flows switch with View > Flowchart mode or View > Sequence mode. Switching to flowchart mode requires a flow with no errors.' In What's changing replace the switching sentence with: 'An existing flow can be switched with View > Flowchart mode or View > Sequence mode. Switching to flowchart mode requires the flow to have no errors.' Source: https://learn.microsoft.com/power-automate/desktop-flows/flowchart-flow-designer.
 -->

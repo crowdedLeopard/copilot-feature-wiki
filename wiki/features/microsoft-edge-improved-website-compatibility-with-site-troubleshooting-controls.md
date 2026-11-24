@@ -71,15 +71,17 @@ changes:
     note: "First briefing for this roadmap item: planned in-context site troubleshooting prompts in Edge, with the existing tracking prevention controls they point to."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 59 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 64 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 57
+  claims: 64
+  confirmed: 62
   unconfirmed: 2
   contradicted: 0
   attempts: 0
@@ -180,10 +182,13 @@ cost: Low. The only cost the sources show is admin time to brief the help desk a
 impact: Low. Users notice it only when a site is not working as expected, and the roadmap item does not say how many users will see the prompt.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] What's changing: first sentence / behaviour: The planned experience lets users fix website problems without leaving the page. | Found: Searched: Microsoft Edge site troubleshooting prompts "without leaving" website. Read the roadmap description and Tracking prevention in Microsoft Edge; neither promises that completing troubleshooting keeps the user on the current page. | Fix: Replace the first sentence with: "Microsoft Edge plans to help users resolve website issues directly from the browser."
+- [unsupported, major] What's changing: first sentence / behaviour: Users will be able to fix website problems without leaving the page. | Found: Searched: Microsoft Edge site troubleshooting prompt "without leaving" "automatic" "information". Read the roadmap description and Tracking prevention in Microsoft Edge; neither guarantees that troubleshooting stays on the current page. | Fix: Replace the first sentence with: "Microsoft Edge plans to help users resolve website issues directly from the browser."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Users notice the new experience only when a site is not working as expected. | Found: Searched: Microsoft Edge site troubleshooting prompts only broken website automatic actions site information sent Microsoft. Read roadmap and tracking prevention overview; the roadmap describes a broken-site scenario, not an exclusive condition for noticing the experience. | Fix: Replace the impact rationale with: "Low. The roadmap describes in-context troubleshooting actions when a site is not functioning as expected, but does not state how many users will see them."
+- [supported, minor] summary; Change & support; Governance controls; Open questions / absence: Microsoft has not documented a setting that turns this particular planned troubleshooting prompt off. | Found: Searched: Edge site troubleshooting policy tracking prevention disable; Edge site troubleshooting ShowRecommendationsEnabled. Read ShowRecommendationsEnabled and roadmap; a general assistance-notification policy exists, but the new experience is not mapped to it. | Fix: Replace the Change & support bullet with: "No feature-specific policy for the planned troubleshooting experience is documented at the time of writing (November 2026). ShowRecommendationsEnabled controls in-browser assistance notifications, but Microsoft has not stated whether this experience uses them." Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/showrecommendationsenabled. Keep other mentions limited to the absence of a feature-specific control, rather than an inability to switch the experience off.
+- [supported, minor] controls[0].ui / admin-path: Group Policy Editor exposes Block tracking of users' web-browsing activity under Administrative Templates > Microsoft Edge. | Found: GP name: Block tracking of users' web-browsing activity; GP path (Mandatory): Administrative Templates/Microsoft Edge | Fix: Set controls[0].ui.path and its rendered path to "Computer Configuration or User Configuration > Policies > Administrative Templates > Microsoft Edge > Block tracking of users' web-browsing activity". The omitted scope headings are documented at the already-cited https://learn.microsoft.com/deployedge/configure-microsoft-edge. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/trackingprevention
+- [supported, minor] controls[1].ui / admin-path: Group Policy Editor exposes Configure tracking prevention exceptions for specific sites under Administrative Templates > Microsoft Edge. | Found: GP name: Configure tracking prevention exceptions for specific sites; GP path (Mandatory): Administrative Templates/Microsoft Edge | Fix: Set controls[1].ui.path and its rendered path to "Computer Configuration or User Configuration > Policies > Administrative Templates > Microsoft Edge > Configure tracking prevention exceptions for specific sites". The omitted scope headings are documented at the already-cited https://learn.microsoft.com/deployedge/configure-microsoft-edge. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/allowtrackingforurls
+- [unsupported, minor] rationale: impact / behaviour: Users notice the new experience only when a site is not working as expected. | Found: Searched: Microsoft Edge site troubleshooting only broken. Read roadmap and Tracking prevention in Microsoft Edge; the roadmap gives a broken-site scenario, not an exclusive condition for seeing the experience. | Fix: Replace the impact rationale with: "Low. The roadmap describes in-context troubleshooting actions when a site is not functioning as expected, but does not state how many users will see them."
 -->

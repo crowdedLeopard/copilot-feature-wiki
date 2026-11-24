@@ -81,17 +81,19 @@ changes:
     note: "Corrected after verification: removed the unsupported agent-behaviour and Copilot billing-gap statements, reworded the summary as Microsoft's plan, and dropped the optional Teams-only command paragraph."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
+  claims: 54
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 2
   attempts: 0
   hash: "677d9183585afc649a1e62a129c98493"
 ---
@@ -187,9 +189,12 @@ cost: Low. The main cost is admin time to create a Copilot policy. Learn says th
 impact: Medium. Compliance and records management administrators who rely on Teams policies for Copilot data notice first; Teams retention behaviour is stated to stay unchanged.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: Set-AppRetentionCompliancePolicy -Identity "<policy name>" -Applications "User:M365Copilot" adds Copilot interactions to an existing policy for newer locations. | Found: To add Microsoft 365 Copilot interactions to an existing retention policy for newer locations, such as Teams private channel messages and Viva Engage: Set-AppRetentionCompliancePolicy -Identity “<policy name>” -Applications "User:M365Copilot" | Fix: Append this qualification to the second control's note: 'Microsoft's configuration guide shows User:M365Copilot alone, but the cmdlet reference marks Microsoft Copilot experiences as preview and requires all application values together: User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot. Confirm the supported syntax before running this example.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy#-applications. The cited configuration guide supports the printed command, so this is a disagreement between Microsoft pages, not an invented command. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The billing setup control named in the governance checklist is represented in the controls table. | Found: Checklist: 'Set up pay-as-you-go billing if it is not in place'. The two controls rows cover policy inventory and Copilot retention configuration, not billing setup. | Fix: Replace the checklist bullet with 'Pay-as-you-go billing is a prerequisite for creating policies that include the Microsoft Copilot experiences location; see Cost and licensing.' This keeps the verified prerequisite without instructing readers to configure a control absent from the table.
+- [supported, minor] controls[1].ui / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy is the portal route given for configuring Copilot retention. | Found: Select New retention policy to start the Create retention policy configuration, and name your new retention policy. | Fix: Complete this early-ending route with a documented static-policy example: 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both'. Keep the current docs URL. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: Set-AppRetentionCompliancePolicy -Identity "<policy name>" -Applications "User:M365Copilot" adds Copilot to an existing newer-location policy in Security & Compliance PowerShell. | Found: To add Microsoft 365 Copilot interactions to an existing retention policy for newer locations, such as Teams private channel messages and Viva Engage: Set-AppRetentionCompliancePolicy -Identity “<policy name>” -Applications "User:M365Copilot" | Fix: Append to controls[1].note: 'The configuration guide shows User:M365Copilot alone, but the cmdlet reference marks Microsoft Copilot experiences as preview and requires all these values together: User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot. Confirm the supported syntax before running this example.' Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy#-applications to sources. The cited guide supports the printed call; this is a disagreement between Microsoft pages. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is mixed, with licence requirements and required pay-as-you-go setup. | Found: The pay-as-you-go billing model builds on the per-user licensing model. The two are complementary, not mutually exclusive. | Fix: Keep mixed, but name the entitlement in licensing.notes: 'The Purview service description lists Microsoft 365 E3/E5 + Microsoft 365 Copilot; Microsoft 365 E3 + Microsoft Purview Suite + Microsoft 365 Copilot; or Microsoft 365 E3 + Microsoft E5 Information Protection and Governance + Microsoft 365 Copilot as providing user rights for Copilot interaction retention. Pay-as-you-go setup is required, but Microsoft 365 Copilot interactions are not charged.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/purview/purview-billing-models
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The billing setup instruction in the governance checklist has a corresponding controls-table row. | Found: Checklist: 'Set up pay-as-you-go billing if it is not in place'. The two controls rows cover policy inventory and Copilot retention configuration, not billing setup. | Fix: Replace that checklist bullet with 'Pay-as-you-go billing is a prerequisite for creating policies that include the Microsoft Copilot experiences location; see Cost and licensing.' Do not add a control row.
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: Medium impact is justified by compliance and records management administrators being the people who notice first. | Found: Rationale: 'Compliance and records management administrators who rely on Teams policies for Copilot data notice first'. Scale: 'low: admins only, or a small opt-in group'. The body describes this as not user-visible. | Fix: Set impact to low and replace the impact rationale with 'Low. Compliance and records management administrators must maintain Copilot retention coverage; Teams retention behaviour remains unchanged.'
 -->

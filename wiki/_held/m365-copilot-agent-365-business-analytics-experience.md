@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price. Spending policies for usage-based services are also a prerequisite. Microsoft documents the preview's 50-assigned-Copilot-licence prerequisite but does not explicitly state the app's inclusion or separate licensing terms."
+  model: "mixed"
+  notes: "The Frontier preview requires at least 50 assigned Copilot licences in the tenant. An Agent 365 licence is not required to access the app but is required to view third-party agent data. Spending policies are a prerequisite for usage-based cost insights; the introduction specifies no separate app price."
 audiences: ["finops","m365-admin","service-owner","change-adoption"]
 tags: ["agent-365","analytics","finops","cost-management","spending-policies","copilot-credits","viva-insights","m365-copilot","viva-feature-access-management","gcc","gcc-high","dod"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Introduction to Agent 365 Business Analytics (Frontier)"
     url: "https://learn.microsoft.com/a365-business-analytics/introduction"
+    kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
     kind: "learn"
   - title: "How to use the Agent 365 Business Analytics Cost & forecast page (Frontier)"
     url: "https://learn.microsoft.com/a365-business-analytics/cost-forecast"
@@ -83,7 +86,7 @@ controls:
       path: "Manage > Access management"
       docs: "https://learn.microsoft.com/a365-business-analytics/manage/access"
     api: null
-    note: "Permission sets, partitions and access policies. Global, AI or Viva Insights administrator. Preview documentation."
+    note: "Permission sets, partitions and access policies. Global, AI or Viva Insights administrator. Preview documentation. Export and identification: Permission sets > Manage > permission set. Custom policy: Actions > Edit."
   - governs: "Whether the Viva Insights web app is on, for the tenant, groups or users"
     scope: "tenant"
     ui:
@@ -124,7 +127,7 @@ controls:
     note: "Value of at least 5. Does not apply to user-level insights that are not aggregated."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-19"
+updated: "2026-11-24"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-17"
@@ -147,19 +150,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected licensing: the preview needs at least 50 assigned Copilot licences, and an Agent 365 licence is required to view third-party agent data; added the service description's GCC note."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 116 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 107
-  confirmed: 105
+  claims: 116
+  confirmed: 115
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "bb1791c6f26ec061b5861e8ae5844189"
+  contradicted: 1
+  attempts: 2
+  hash: "6189075508b260c455e3f56d192b6ee6"
 ---
 
 ## What's changing
@@ -196,13 +203,13 @@ Microsoft has not stated how the app arrives at general availability, so treat a
 
 ## Cost and licensing
 
-The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price (Introduction to Agent 365 Business Analytics). Its other prerequisites are spending policies for usage-based services, access set up, and billing turned on in the Microsoft 365 admin center. Terms for general availability are not yet published.
+The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price (Introduction to Agent 365 Business Analytics). An Agent 365 licence is not required to access the app but is required to view data on third-party agents (same page). The Microsoft Agent 365 service description lists the Business Analytics capabilities for Microsoft services as a core capability included with a Microsoft cloud subscription, and the capabilities for non-Microsoft services as premium capabilities. Its other prerequisites are spending policies for usage-based services, access set up, and billing turned on in the Microsoft 365 admin center. Terms for general availability are not yet published.
 
 The app reports spend. For Copilot Credits, charges go to the subscription selected in the billing method; the app reports GitHub AI credits separately. When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis (Set up usage-based billing for Copilot Credits). Copilot Credits spending limits are set in Copilot Credits spending policies in the Microsoft 365 admin center (controls table, row 3), not in the app. Cost and credit information on the GitHub Copilot page is for reference only; Microsoft points to GitHub.com for official GitHub billing and budget setting. Microsoft 365 Copilot per-user licence cost is not part of the Cost & forecast figures. Indirect costs are admin time, plus finance time to agree the value assumptions. See [Copilot Credits](/concepts/copilot-credits/) for the meter.
 
 ## Scope
 
-The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, and the web platform. Learn documents the app as a Frontier preview, and the roadmap lists both Preview and General Availability phases. Microsoft's Viva feature access management page says its access controls are not available in GCC High or DoD, which sits awkwardly with the roadmap's cloud list. Microsoft has not said how the app's controls behave in those clouds.
+The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, and the web platform. Learn documents the app as a Frontier preview, and the roadmap lists both Preview and General Availability phases. Microsoft's Viva feature access management page says its access controls are not available in GCC High or DoD, which sits awkwardly with the roadmap's cloud list. Microsoft has not said how the app's controls behave in those clouds. The Microsoft Agent 365 service description separately lists GCC availability as No for the Business Analytics Frontier public preview features; the roadmap still lists GCC among its planned clouds.
 
 Audience and access, as the preview documentation states: leaders in the top three layers get tenant-level access, managers of teams that meet the minimum group size of 10 get their own organisation, and global admins have access by default. Insights analysts, Insights admins and other leaders or GMs need a Global admin to assign access. Business leaders see cost insights only after an admin turns consumption insights on for their role. Global administrators, AI administrators and Viva Insights administrators manage access policies. Existing Viva Insights role assignments and minimum group size carry over.
 
@@ -229,7 +236,7 @@ Audience and access, as the preview documentation states: leaders in the top thr
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can open Business Analytics, export, see named users, and whose data</strong><br><small>User</small><br><small class="controls__note">Permission sets, partitions and access policies. Global, AI or Viva Insights administrator. Preview documentation.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Access management <a href="https://learn.microsoft.com/a365-business-analytics/manage/access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can open Business Analytics, export, see named users, and whose data</strong><br><small>User</small><br><small class="controls__note">Permission sets, partitions and access policies. Global, AI or Viva Insights administrator. Preview documentation. Export and identification: Permission sets &gt; Manage &gt; permission set. Custom policy: Actions &gt; Edit.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Access management <a href="https://learn.microsoft.com/a365-business-analytics/manage/access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the Viva Insights web app is on, for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Select the Viva Insights web app feature. General control: Microsoft has not confirmed it switches Business Analytics off. Not available in GCC High or DoD per Microsoft.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting › On or Off <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Spending limits and billing for Copilot Credits reported by the app</strong><br><small>Tenant</small><br><small class="controls__note">Not a control over the app. Beta API. Body: periodLimit, perUserLimit set limits; billingMethods changes funding. Adding pay-as-you-go needs a complete billingInstrument; replacing an existing pay-as-you-go instrument is not defined.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Get Started › Activate the default spending policy for your organization › Set the monthly spending limit for this policy › Limit monthly spending <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether AI value metrics are displayed, and the assumptions behind them</strong><br><small>Tenant</small><br><small class="controls__note">Cowork value metrics toggle; off by default. Viva Insights admins configure Cowork value metrics; Copilot value metrics require both Viva Insights admin and Chief officer roles, or Global admin.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Configurations › Metric calculators › Cowork assisted hours and value › Edit calculator › Value calculator › Value metrics <a href="https://learn.microsoft.com/a365-business-analytics/manage/configurations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -245,7 +252,7 @@ Microsoft Learn documents no PowerShell or API for Business Analytics access pol
 
 ## Open questions
 
-- What licence or price will apply to the app at general availability, beyond the 50-licence prerequisite? Watch the Learn introduction and the roadmap item.
+- Will the licensing terms or price for the app change at general availability from the preview prerequisites (50 assigned Copilot licences; an Agent 365 licence for third-party agent data)? Watch the Learn introduction and the roadmap item.
 - How does the app arrive for tenants at general availability: do leaders get access automatically as the preview documents, and is that on or off by default? Watch Message center.
 - Will the app be available in GCC, GCC High and DoD as the roadmap lists, given the Viva access-control page says its controls are unavailable in GCC High and DoD?
 - Does the Viva Insights web app control switch off Business Analytics, and does it have its own feature ID?
@@ -253,16 +260,15 @@ Microsoft Learn documents no PowerShell or API for Business Analytics access pol
 
 <!-- rationale
 risk: Medium. Leaders and managers can see AI cost and usage by user, group and model, and can export it, under access rules that an admin has to review. Scenarios and budget targets do not change live policies.
-cost: Low. The only cost the sources show is admin time. The Frontier preview requires at least 50 assigned Copilot licences, and the Learn introduction specifies no separate price for the app.
+cost: Low for core app access in a tenant meeting the 50-assigned-Copilot-licence prerequisite: allow for administration and finance time. The preview does not require an Agent 365 licence to access the app, but viewing third-party agent data requires that licence; the introduction specifies no separate app price.
 impact: Medium. Executives, general managers and managers of larger teams are the audience.
 -->
 
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; licensing.notes; Open questions / licensing: The app's licensing model is unknown and Microsoft has not explicitly stated its inclusion or separate licensing terms. | Found: The tenant must have at least 50 Copilot licenses assigned. An Agent 365 license is not required to access the app but is required to view data on third party agents. | Fix: Set licensing.model to "mixed" and replace the licensing notes with: "The Frontier preview requires at least 50 assigned Copilot licences in the tenant. An Agent 365 licence is not required to access the app but is required to view third-party agent data. Spending policies are a prerequisite for usage-based cost insights; the introduction specifies no separate app price." Add the Agent 365 licence distinction to Cost and licensing and narrow Open questions to future general-availability changes. Cite https://learn.microsoft.com/a365-business-analytics/introduction and https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365, whose table distinguishes included Microsoft-service analytics from premium non-Microsoft analytics. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
-- [contradicted, blocker] rationale: cost; front matter: cost / cost: The only cost the sources show for this app is administration time. | Found: An Agent 365 license is not required to access the app but is required to view data on third party agents. | Fix: Replace the cost rationale with: "Low for core app access in a tenant meeting the 50-assigned-Copilot-licence prerequisite: allow for administration and finance time. The preview does not require an Agent 365 licence to access the app, but viewing third-party agent data requires that licence; the introduction specifies no separate app price." Retain low only with that core-access qualification, and include the same licence distinction in Cost and licensing. Cite https://learn.microsoft.com/a365-business-analytics/introduction. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
+- [contradicted, blocker] front matter: defaultState / default: The feature's default state is unknown. | Found: Some people get access to Agent 365 Business Analytics automatically. Others need a Global admin to assign it. | Fix: Set defaultState to on for the documented Frontier preview. Add: 'In the Frontier preview, qualifying leaders and managers and global admins have access by default; Microsoft has not published general-availability rollout mechanics.' Keep the existing general-availability uncertainty, but do not label the documented preview default as unstated. Source: https://learn.microsoft.com/a365-business-analytics/manage/introduction. | Source: https://learn.microsoft.com/a365-business-analytics/manage/introduction
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: clouds; What's changing; Scope; Open questions / record: The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. | Found: "clouds": ["Worldwide (Standard Multi-Tenant)", "GCC", "GCC High", "DoD"] | Fix: Retain the roadmap cloud list. Add to Scope: "The Microsoft Agent 365 service description separately lists GCC availability as No for the Business Analytics Frontier public preview features; the roadmap still lists GCC among its planned clouds." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Business Analytics > Manage > Access management reaches access, export, identification and data-scope management. | Found: In Business Analytics, on the left, under Manage, select Access management. ... The home page provides entry points for managing access policies, permission sets, and partitions. | Fix: Retain the path to the management home page and append to controls[0].note: "To change export or identification, continue through Permission sets > Manage > permission set and edit its capability settings. To edit a custom access policy, select its Actions > Edit on the Access management home page." These continuations are documented at https://learn.microsoft.com/a365-business-analytics/manage/access. | Source: https://learn.microsoft.com/a365-business-analytics/manage/access
+- [supported, minor] controls[0].ui; rendered controls table / admin-path: Business Analytics > Manage > Access management reaches the app's access-management page. | Found: In Business Analytics, on the left, under Manage, select Access management. | Fix: The route is correct but ends on the access-management home page. Keep it and expand the note's permission-setting route to 'Manage > Access management > Permission sets > Manage > permission set > Export or Identification'. Source: https://learn.microsoft.com/a365-business-analytics/manage/access. | Source: https://learn.microsoft.com/a365-business-analytics/manage/access
+- [supported, minor] controls[1].api; rendered controls table / command: Add-VivaModuleFeaturePolicy with ModuleId VivaInsights, FeatureId Viva Insights web app, IsFeatureEnabled false and Everyone creates the tenant-wide disable policy. | Found: Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> [-Confirm] [-Everyone] | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy to sources for the cmdlet's parameter reference. Retain the existing settings-page citation, which supplies the VivaInsights module, Viva Insights web app feature ID and tenant-disable example values. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy
 -->

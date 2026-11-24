@@ -109,15 +109,17 @@ changes:
     note: "Correction: removed unsupported claims about a single Teams-wide decision, guest lock-out and False hiding the selection, and the sign-in logs step; fixed the policy-targeting path and beta Graph call."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -223,4 +225,14 @@ The rows work in sequence: a context must exist and be published in Entra, a Con
 risk: Low. The change adds a control: nothing is enforced on a meeting until an administrator publishes an authentication context and an organiser picks it, so the main exposure is a misconfigured policy locking out participants.
 cost: Low. The only cost the sources show is admin time; Conditional Access itself needs Microsoft Entra ID P1, and Microsoft has not published a separate licence or meter for this Teams feature.
 impact: Low. Administrators and the organisers who choose to protect a meeting notice it first; participants only see it when they join a meeting that carries a Conditional Access requirement.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Authentication contexts are managed at Microsoft Entra admin center > Entra ID > Conditional Access > Authentication context. | Found: Manage authentication contexts by going to Entra ID > Conditional Access > Authentication context. Select New authentication context to create an authentication context definition. | Fix: Complete controls[0].ui.path and its table rendering as 'Entra ID > Conditional Access > Authentication context > New authentication context > Publish to apps'. The current route stops on the correct management page; the cited page documents the remaining creation and publication steps. | Source: https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps
+- [supported, minor] controls[0].api; Governance controls table / command: POST /beta/identity/conditionalAccess/authenticationContextClassReferences creates a context with id, displayName, description and isAvailable set to true. | Found: POST https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationContextClassReferences {"id": "c1", "displayName": "Contoso medium", "description": "Medium protection level defined for Contoso policy", "isAvailable": true} | Fix: Set controls[0].api.call and its table rendering to 'POST /beta/identity/conditionalAccess/authenticationContextClassReferences'. Add to the row note: 'The request body supplies id, displayName and description, and sets isAvailable to true to publish the context to apps.' | Source: https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences
+- [supported, minor] controls[1].api; Governance controls table / command: POST /beta/identity/conditionalAccess/policies can create a policy targeting conditions.applications.includeAuthenticationContextClassReferences with user assignments and grant controls. | Found: includeAuthenticationContextClassReferences | String collection | Authentication context class references include. Supported values are c1 through c25. | Fix: Set controls[1].api.call and its table rendering to 'POST /beta/identity/conditionalAccess/policies'. Add to its note: 'The request body targets the context through conditions.applications.includeAuthenticationContextClassReferences and supplies user assignments and grant controls.' The cited create-policy reference confirms the POST operation and body structure. | Source: https://learn.microsoft.com/graph/api/resources/conditionalaccessapplications?view=graph-rest-beta
+- [supported, minor] front matter: licensing.model / licensing: The feature's licensing model is unknown, with a known Conditional Access prerequisite but no published additional Teams-specific entitlement. | Found: Using this feature requires Microsoft Entra ID P1 licenses. ... Customers with Microsoft 365 Business Premium licenses can also use Conditional Access features. | Fix: Set licensing.model to 'included' under the standard for a new option within a licensed product. Set licensing.notes to 'Conditional Access requires Microsoft Entra ID P1 licenses; customers with Microsoft 365 Business Premium licenses can also use Conditional Access features. An additional Teams licence specific to this feature is not yet published.' | Source: https://learn.microsoft.com/entra/identity/conditional-access/overview
+- [supported, minor] Risk assessment: Change & support / applicability: Guests using unmanaged devices are an example of participants who may fail a device-compliance requirement. | Found: Such policies can block external user access, because an external user can't register their unmanaged device with the resource organization. Devices can only be managed by a user's home tenant. | Fix: Add https://learn.microsoft.com/entra/external-id/authentication-conditional-access to sources for the unmanaged-guest-device example. Keep the existing Open questions caveat about participant-type support for this new meeting feature. | Source: https://learn.microsoft.com/entra/external-id/authentication-conditional-access#conditional-access-for-external-users
 -->

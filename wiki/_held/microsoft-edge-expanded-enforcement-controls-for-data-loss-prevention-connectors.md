@@ -102,18 +102,20 @@ changes:
     note: "Corrected after verification: connector behaviour and verdict-waiting now stated as Learn documents them, impact rationale narrowed, Trellix source added, and target date updated to the roadmap's January CY2027."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 63
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "3e873220145946b2d71e92d787e3d930"
 ---
 
@@ -220,4 +222,13 @@ A configuration policy must exist before you can assign a connector. Microsoft E
 risk: Low. Microsoft has not stated the default for the new controls, so this rates today's behaviour continuing: connectors need configuration and the roadmap item adds controls, not data access. The remaining risk is a connector left at its fail-open fallback, which Learn lets you set to allow.
 cost: Low. Learn says Edge for Business connectors extend security investments at no additional cost. Licensing for the new controls is not yet published, so the known cost is admin time; confirm third-party vendor entitlements separately.
 impact: Low. Admins who run a Symantec, Trellix or Cisco Secure Access connector configure it. The roadmap plans more consistent enforcement, required bypass justification and administrator-defined guidance; the user experience is not yet documented.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The Intune route starts at policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors. | Found: If you've chosen to create an Intune policy, you can navigate to intune.microsoft.com > Devices > Configuration where you should see your newly created configuration policy in this list. | Fix: Replace the path with 'Devices > Configuration > policy > Configuration settings > Microsoft Edge > Configuration policy for files attached for Microsoft Edge for Business Data Loss Prevention Connectors'. The entry route is documented at https://learn.microsoft.com/deployedge/microsoft-edge-management-service and the remaining labels at https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec; both are already cited. Apply the same replacement to the rendered table. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Settings > Microsoft Edge > Connectors reaches the connector configuration experience. | Found: In the main left navigation bar, go to Settings > Microsoft Edge. Navigate to the Connectors tab. | Fix: The path correctly stops on the connector page. For the Symantec example, complete it as 'Settings > Microsoft Edge > Connectors > Discover Connectors > Symantec DLP Connector > Set up > Chosen policy > Enable data loss prevention for browser actions', using https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec, already cited. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-connectors-overview
+- [contradicted, minor] Governance guidance: At rollout; controls table / consistency: Every control the governance checklist tells the reader to set or check has a corresponding table row. | Found: Pilot the new controls with one group by assigning a separate configuration policy ... Confirm on a test device at edge://policy ... Status OK. The table has connector configuration, fallback, justification and guidance rows, but no assignment or policy-status row. | Fix: The checklist's configuration-policy assignment and edge://policy status checks have no table rows. Remove those two checklist bullets; do not add rows as part of this correction.
 -->

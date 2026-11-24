@@ -49,6 +49,12 @@ sources:
   - title: "Export data from the Agent Dashboard (preview)"
     url: "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data"
     kind: "learn"
+  - title: "Technical privacy guide for organization insights and advanced analysis"
+    url: "https://learn.microsoft.com/viva/insights/advanced/privacy/privacy"
+    kind: "learn"
+  - title: "Add-VivaModuleFeaturePolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy"
+    kind: "learn"
 videos: []
 related: ["microsoft-viva-copilot-analytics-export-metrics-from-agent-dashboard","microsoft-viva-copilot-analytics-agent-dashboard","m365-copilot-agent-365-business-analytics-experience","microsoft-viva-ability-for-leaders-to-publish-power-bi-reports"]
 controls:
@@ -56,13 +62,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Viva > Settings > Manage feature access"
+      path: "Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off > Apply access settings to > Everyone"
       docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
       call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AdvancedInsights -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone"
       docs: "https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell"
-    note: "Create a policy and pick the app and feature there. The control page says disabling blocks analysts from the Advanced analysis tab; the agent query page does not name this control."
+    note: "The Advanced analysis policy controls access to all advanced analysis features at tenant level, including custom queries."
   - governs: "A switch for the agent query alone"
     scope: "tenant"
     ui: null
@@ -70,7 +76,7 @@ controls:
     note: "The feature access management table lists no entry for the agent query at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-24"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-21"
@@ -79,19 +85,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: the Advanced analysis policy is now stated as the documented tenant-level control for all advanced analysis features, and the control path is extended."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
+  claims: 72
+  confirmed: 68
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "4854fa8ea199ef4a09281ddd3643a514"
+  contradicted: 4
+  attempts: 0
+  hash: "4947f0981f95abc458ba39e2eb9fe59a"
 ---
 
 ## What's changing
@@ -116,7 +126,7 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 
 **Security & identity**
 - Access follows the Insights Analyst role, which the Microsoft 365 global admin assigns. A global admin also inherits Insights Administrator privileges, who configure privacy settings and partitions.
-- The agent query page does not name a dedicated feature access policy; the nearest documented control is the tenant-level Advanced analysis policy in the controls table.
+- The agent query page does not name a dedicated feature access policy; the documented tenant-level Advanced analysis control is in the controls table.
 
 **Autonomy & actions**
 - No change: the query reads usage data and runs when an analyst runs it, or on a schedule when the analyst turns on Auto refresh.
@@ -161,19 +171,19 @@ Prerequisites: at least 50 Microsoft 365 Copilot licences, at least 1 Agent 365 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether analysts can use advanced analysis, where the agent query sits (tenant-wide)</strong><br><small>Tenant</small><br><small class="controls__note">Create a policy and pick the app and feature there. The control page says disabling blocks analysts from the Advanced analysis tab; the agent query page does not name this control.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AdvancedInsights -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether analysts can use advanced analysis, where the agent query sits (tenant-wide)</strong><br><small>Tenant</small><br><small class="controls__note">The Advanced analysis policy controls access to all advanced analysis features at tenant level, including custom queries.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting › Off › Apply access settings to › Everyone <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AdvancedInsights -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A switch for the agent query alone</strong><br><small>Tenant</small><br><small class="controls__note">The feature access management table lists no entry for the agent query at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The Advanced analysis policy is tenant-level only per its page; it does not support user or group policies. The control page is headed "Applies to: AI admin", while the feature access table lists Global admin as who manages it. Policy changes take effect within 24 hours unless noted for a specific feature.
 
-The Agent Metrics Export (Preview) policy governs export from the Agent Dashboard, a different surface, and is not listed here as a control for the agent query. Partitions and role assignment are configured in the Viva Insights web app and Microsoft 365 admin center; see the roles page.
+The Agent Metrics Export (Preview) policy governs export from the Agent Dashboard, a different surface, and is not listed here as a control for the agent query. Partitions and role assignment are configured in the Viva Insights web app and Microsoft 365 admin center; see the roles page. The Before rollout checklist steps for analyst role assignments, partitions and privacy settings have no matching rows in the controls table.
 
 ## Open questions
 
 - What happens on arrival: is the Agent query on for existing analysts by default, and does a feature access policy turn it off? Watch the Learn page and Message center.
-- Does the Advanced analysis policy, the Agent Metrics Export policy or neither govern the agent query?
+- Does the Agent Metrics Export policy additionally govern the agent query? The Advanced analysis policy controls access to all advanced analysis features at tenant level.
 - Are person identifiers in the query output protected or identifiable, and does that depend on a setting? The agent query page does not say.
 - Which agents does the query cover where the roadmap says Copilot agents and Learn says agents Agent 365 manages?
 - Will a price or meter specific to the agent query be published?
@@ -184,13 +194,13 @@ cost: Low. Learn lists tenant prerequisites (at least 50 Microsoft 365 Copilot l
 impact: Low. Only Insights analysts, global or partitioned, run the query; other users see no change unless an analyst publishes or shares results.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: Advanced analysis policy applicability / applicability: Whether the Advanced analysis policy governs the agent query remains unresolved, including the possibility that neither named policy governs it. | Found: To enable or disable access to all advanced analysis features at the tenant level, you can use PowerShell cmdlets or create a policy in the Microsoft 365 admin center | Fix: Replace 'Does the Advanced analysis policy, the Agent Metrics Export policy or neither govern the agent query?' with 'Does the Agent Metrics Export policy additionally govern the agent query? The Advanced analysis policy controls access to all advanced analysis features at tenant level.' Add https://learn.microsoft.com/viva/insights/advanced/privacy/privacy to sources; the cited roles page places custom queries in Advanced analysis and the query page identifies Agent query as a custom query. | Source: https://learn.microsoft.com/viva/insights/advanced/privacy/privacy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Settings > Viva > Settings > Manage feature access reaches advanced-analysis policy management. | Found: From the Microsoft 365 admin center, select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy. | Fix: Extend controls[0].ui.path and its rendered copy to 'Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off > Apply access settings to > Everyone'. The existing route stops on the correct policy management page. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [supported, minor] controls[0].api; Governance controls table / command: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AdvancedInsights -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone disables advanced analysis tenant-wide. | Found: Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> ... [-Everyone] ... $false: The feature is not enabled by the policy. | Fix: Add https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy to sources. Keep the command unchanged; the cited advanced-analysis page supplies VivaInsights, AdvancedInsights, DisableFeatureForAll, false and Everyone, and the reference verifies the printed syntax. | Source: https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy
-- [supported, minor] controls[0].governs and note; Risk assessment: Security & identity; Governance guidance: At rollout / applicability: The tenant-level Advanced analysis policy controls analyst access to the workbench containing the custom agent query, but is presented only as the nearest documented control. | Found: To enable or disable access to all advanced analysis features at the tenant level, you can use PowerShell cmdlets or create a policy in the Microsoft 365 admin center | Fix: Replace controls[0].note and its rendered copy with 'The Advanced analysis policy controls access to all advanced analysis features at tenant level, including custom queries.' Replace 'the nearest documented control' in Security & identity with 'the documented tenant-level Advanced analysis control'. Add https://learn.microsoft.com/viva/insights/advanced/privacy/privacy to sources. | Source: https://learn.microsoft.com/viva/insights/advanced/privacy/privacy
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist recommends checking analyst roles, partitions and privacy settings, but these controls have no matching table rows. | Found: Confirm which people hold the Insights Analyst role and which partitions they belong to ... Check privacy settings and partitions ... Table: Whether analysts can use advanced analysis; A switch for the agent query alone. | Fix: Record that the Before rollout checklist steps for analyst role assignments, partitions and privacy settings have no matching controls-table rows. Do not add rows as part of this correction.
+- [supported, minor] Risk assessment; Governance controls / role: The Microsoft 365 global admin assigns the Insights Analyst role in the Microsoft 365 admin center. | Found: Assign roles in the Microsoft 365 admin center These steps must be performed by the Microsoft 365 Global Administrator. | Fix: Add https://learn.microsoft.com/viva/insights/advanced/setup-maint/assign-user-roles to sources and cite it for role assignment. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/assign-user-roles
+- [supported, minor] Cost and licensing / cost: Handling exported results can incur destination-specific storage or licensing costs. | Found: Power BI Desktop is free to download and use for creating reports ... Power BI Pro and Premium Per User (PPU) are paid licenses that let you share content and access all features | Fix: Replace the destination-cost clause with 'Export destinations may incur their own storage or licensing costs.' Cite https://learn.microsoft.com/power-bi/personas/business-user/end-user-faq#is-power-bi-free; do not imply every Power BI connection requires a paid licence. | Source: https://learn.microsoft.com/power-bi/personas/business-user/end-user-faq#is-power-bi-free
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist instructs readers to check analyst role assignments, but the controls table has no role-assignment row. | Found: Confirm which people hold the Insights Analyst role ... Review who still holds analyst access ... The Before rollout checklist steps for analyst role assignments, partitions and privacy settings have no matching rows in the controls table. | Fix: Remove the checklist instruction 'Confirm which people hold the Insights Analyst role' and the After rollout instruction 'Review who still holds analyst access'; retain the factual role information elsewhere. Do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist instructs readers to check partitions, but the controls table has no partitions row. | Found: Confirm ... which partitions they belong to ... Check privacy settings and partitions ... The Before rollout checklist steps for analyst role assignments, partitions and privacy settings have no matching rows in the controls table. | Fix: Remove the Before rollout checklist instructions to confirm partition membership and check partitions. Retain the factual partition descriptions elsewhere; do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist instructs readers to check privacy settings, but the controls table has no privacy-settings row. | Found: Check privacy settings and partitions with the Insights Administrator ... The Before rollout checklist steps for analyst role assignments, partitions and privacy settings have no matching rows in the controls table. | Fix: Remove the Before rollout checklist instruction to check privacy settings. Retain the factual description of administrator responsibilities elsewhere; do not add a control row.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist instructs readers to review Auto refresh settings, but the controls table has no Auto refresh row. | Found: Review who still holds analyst access and which queries have Auto refresh on. Table rows: "Whether analysts can use advanced analysis, where the agent query sits (tenant-wide)"; "A switch for the agent query alone". | Fix: Remove the After rollout checklist instruction to review which queries have Auto refresh on. Retain the factual Auto refresh explanation in Risk assessment; do not add a control row.
 -->

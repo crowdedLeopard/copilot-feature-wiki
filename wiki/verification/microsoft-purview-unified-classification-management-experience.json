@@ -2,61 +2,41 @@
   "slug": "microsoft-purview-unified-classification-management-experience",
   "roadmapId": 570844,
   "title": "Microsoft Purview: unified Classifiers page for sensitive information types and trainable classifiers",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "verified-with-gaps",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 64,
-    "confirmed": 64,
+    "claims": 81,
+    "confirmed": 81,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "The briefing passes: its navigation paths, PowerShell calls and access requirements are supported by Microsoft documentation. It accurately distinguishes the preview documentation and Message Center rollout schedule from the later roadmap target, and identifies the remaining default-state and licensing gaps.",
+  "summary": "The briefing passes: its rollout dates, permissions and commands are supported, and all five Learn links opened successfully. The licensing field understates published product-level licensing, and the role-group path omits headings; both are minor corrections.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "front matter: products; title; summary",
       "type": "record",
-      "claim": "This roadmap change is a Microsoft Purview classification management experience.",
+      "claim": "The change is a Microsoft Purview feature.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Purview: Unified Classification Management Experience\"",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The planned experience unifies sensitive information types, exact data match, fingerprint SITs and trainable classifiers.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The Unified Classification Management Experience unifies every classifier in Microsoft Purview—Sensitive Information Types (SITs), Exact Data Match (EDM), fingerprint SITs, and trainable classifiers",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes one place to discover, create, validate and manage classifiers.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "into one place to discover, create, validate, and manage classifiers.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -67,18 +47,7 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: targetDate; What's changing; Risk assessment; Open questions",
-      "type": "record",
-      "claim": "The roadmap target is March CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"March CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is October CY2026.",
@@ -89,10 +58,21 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap target date is March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) and no other clouds.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -100,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 6,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The record lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -111,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The roadmap lists General Availability as a release phase.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -122,10 +102,21 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Preview as a release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-30T22:08:34.",
+      "claim": "The roadmap record was modified on 2026-10-30T22:08:34.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-30T22:08:34\"",
@@ -133,142 +124,54 @@
       "fix": null
     },
     {
+      "n": 10,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The planned experience unifies SITs, EDM, fingerprint SITs and trainable classifiers in one place.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Unified Classification Management Experience unifies every classifier in Microsoft Purview—Sensitive Information Types (SITs), Exact Data Match (EDM), fingerprint SITs, and trainable classifiers—into one place to discover, create, validate, and manage classifiers.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 11,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1486289 says Public Preview rollout begins in early October 2026.",
+      "claim": "The roadmap describes discovering classifiers in the unified experience.",
       "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "Public Preview (Worldwide): We will begin rolling out on early October 2026 and expect to complete by mid October 2026.",
+      "source": "roadmap record",
+      "quote": "into one place to discover, create, validate, and manage classifiers.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1486289 gives mid October 2026 as the expected Public Preview rollout completion.",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The Classifiers page supports creating classifiers.",
       "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "Public Preview (Worldwide): We will begin rolling out on early October 2026 and expect to complete by mid October 2026.",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The Classifiers page brings classification types together in one experience where you can discover, create, inspect, and manage classifiers.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing; Risk assessment; Open questions",
+      "where": "What's changing",
       "type": "record",
-      "claim": "MC1486289 says General Availability rollout begins in mid November 2026.",
+      "claim": "The roadmap describes validating classifiers in the unified experience.",
       "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "General Availability (Worldwide): We will begin rolling out on mid November 2026 and expect to complete by late November 2026.",
+      "source": "roadmap record",
+      "quote": "into one place to discover, create, validate, and manage classifiers.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "MC1486289 gives late November 2026 as the expected General Availability rollout completion.",
-      "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "General Availability (Worldwide): We will begin rolling out on mid November 2026 and expect to complete by late November 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "Scope: Who and where",
-      "type": "record",
-      "claim": "MC1486289 gives rollout windows for Worldwide only.",
-      "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "General Availability (Worldwide): We will begin rolling out on mid November 2026 and expect to complete by late November 2026.\n\nPublic Preview (Worldwide): We will begin rolling out on early October 2026 and expect to complete by mid October 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "summary; Why it matters",
-      "type": "record",
-      "claim": "MC1486289 asks administrators to plan to review the experience when it becomes available.",
-      "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "Plan to review the unified Classifiers experience in the Microsoft Purview portal when it becomes available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "MC1486289 recommends using the product tour and teaching bubbles.",
-      "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "Use the product tour and teaching bubbles to learn about the experience, then explore search, filters, and classifier details to find and understand the classifiers your organization uses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "MC1486289 recommends creation guidance to choose between SITs, EDM, trainable classifiers and document fingerprinting.",
-      "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "When creating a classifier, use the guidance in the creation experience to choose between sensitive information types (SITs), Exact Data Match (EDM), trainable classifiers, and document fingerprinting based on your scenario.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Governance controls: prose",
-      "type": "absence",
-      "claim": "Neither the roadmap nor MC1486289 names a separate switch for the experience.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read the complete roadmap description and supplied MC1486289, including its recommendations and compliance table, for an enablement or disablement setting; neither names one.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Governance controls: prose",
-      "type": "record",
-      "claim": "MC1486289 answers its admin-control and group-membership question affirmatively but refers readers elsewhere for configuration support.",
-      "status": "supported",
-      "source": "Message Center post MC1486289",
-      "quote": "Yes. The feature includes or affects admin controls, policies, permissions, roles, authentication, or management settings as described in this message. Review the linked documentation or admin center controls for group-based configuration support.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Scope: Where it appears; Open questions",
-      "type": "record",
-      "claim": "MC1481315 says retirement of DSPM classic and DSPM for AI classic begins in mid-March 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1481315",
-      "quote": "Beginning mid-March 2027, Microsoft will start retiring the Microsoft Purview Data Security Posture Management (DSPM) classic and DSPM for AI classic experiences.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Scope: Where it appears",
-      "type": "absence",
-      "claim": "MC1481315 does not mention the Classifiers page.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read the complete supplied MC1481315 for Classifiers or classification management; the notice addresses DSPM classic retirement and does not mention the Classifiers page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "title; summary; What's changing; rationale: impact",
+      "where": "summary; What's changing; rationale: risk",
       "type": "behaviour",
-      "claim": "Classifiers is a Microsoft Purview portal page for administrators to manage classifiers.",
+      "claim": "The Classifiers page is an administrator experience for managing classifiers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "Microsoft Purview classifiers help administrators identify sensitive content so they can protect and manage it. The Classifiers page brings classification types together in one experience where you can discover, create, inspect, and manage classifiers.",
@@ -276,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Classifiers page supports searching for classifiers.",
+      "claim": "The page provides search to find classifiers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "Search and filtering help you find classifiers.",
@@ -287,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Classifiers page supports filtering classifiers.",
+      "claim": "The page provides filtering to find classifiers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "Search and filtering help you find classifiers.",
@@ -298,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The creation experience explains how each classifier type works.",
+      "claim": "When creating a classifier, administrators can view how each classifier type works.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "When you create a new classifier, you can view how each classifier type works. This helps you understand the available options and choose a classifier for your scenario.",
@@ -309,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 18,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A Classified items count shows the number of items found with a classifier.",
+      "claim": "The Classifiers page shows a Classified items count for each classifier.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "The Classified items count shows how many items were found with that specific classification.",
@@ -320,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The page shows how many policies use a classifier.",
+      "claim": "Administrators can see the number of policies using a classifier.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "You can also see how many policies use a classifier and inspect those dependencies before changing it.",
@@ -331,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 20,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Administrators can inspect a classifier's policy dependencies before changing it.",
+      "claim": "Administrators can inspect policy dependencies before changing a classifier.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "You can also see how many policies use a classifier and inspect those dependencies before changing it.",
@@ -342,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What's changing; Risk assessment; Scope; front matter: changes",
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
       "type": "availability",
-      "claim": "Learn describes the new Classifiers experience as preview.",
+      "claim": "Learn marks the new Classifiers experience as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "The new Classifiers experience in Microsoft Purview is in preview and is available alongside the existing classification experiences.",
@@ -353,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "What's changing; Why it matters; Governance guidance; rationale: risk",
+      "n": 22,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout; rationale: risk",
       "type": "behaviour",
-      "claim": "The new and existing classification experiences are available alongside each other.",
+      "claim": "The new experience is available alongside the existing classification experiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "The new Classifiers experience in Microsoft Purview is in preview and is available alongside the existing classification experiences.",
@@ -364,8 +267,8 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "n": 23,
+      "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Classifiers created in either experience are reflected in the other.",
       "status": "supported",
@@ -375,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What's changing; Risk assessment; Governance guidance: After rollout",
+      "n": 24,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Classifier edits in either experience are reflected in the other.",
+      "claim": "Classifiers edited in either experience are reflected in the other.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "Classifiers you create, edit, or delete in either experience are reflected in the other.",
@@ -386,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 25,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Classifier deletions in either experience are reflected in the other.",
+      "claim": "Classifiers deleted in either experience are reflected in the other.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "Classifiers you create, edit, or delete in either experience are reflected in the other.",
@@ -397,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "What's changing; Risk assessment; Governance guidance: After rollout",
+      "n": 26,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Learn warns that features and functionality might change before general availability.",
+      "claim": "Features in the preview experience might change before general availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "Features and functionality in the new experience might change before general availability.",
@@ -408,139 +311,139 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Why it matters",
-      "type": "applicability",
-      "claim": "SITs are used in DLP policies, sensitivity labels, retention labels, insider risk management, communication compliance and auto-labeling.",
+      "n": 27,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1486289 says Public Preview rollout for Worldwide begins in early October 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels\n- Retention labels\n- Insider risk management\n- Communication compliance\n- Auto-labeling policies",
+      "source": "Message Center post MC1486289",
+      "quote": "Public Preview (Worldwide): We will begin rolling out on early October 2026 and expect to complete by mid October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1486289 says Public Preview rollout is expected to complete by mid October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "Public Preview (Worldwide): We will begin rolling out on early October 2026 and expect to complete by mid October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "record",
+      "claim": "MC1486289 says General Availability rollout for Worldwide begins in mid November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "General Availability (Worldwide): We will begin rolling out on mid November 2026 and expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1486289 says General Availability rollout is expected to complete by late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "General Availability (Worldwide): We will begin rolling out on mid November 2026 and expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "MC1486289 asks administrators to plan to review the unified Classifiers experience when available.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "Plan to review the unified Classifiers experience in the Microsoft Purview portal when it becomes available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1486289 recommends using the product tour.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "Use the product tour and teaching bubbles to learn about the experience, then explore search, filters, and classifier details to find and understand the classifiers your organization uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1486289 recommends using teaching bubbles.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "Use the product tour and teaching bubbles to learn about the experience, then explore search, filters, and classifier details to find and understand the classifiers your organization uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1486289 asks administrators to use creation guidance to choose between SITs, EDM, trainable classifiers and document fingerprinting.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "When creating a classifier, use the guidance in the creation experience to choose between sensitive information types (SITs), Exact Data Match (EDM), trainable classifiers, and document fingerprinting based on your scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is unknown because no licence specific to the new Classifiers experience is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The per-user licensing model is the familiar Microsoft 365 E3/E5/A5/F5/G5 model. It remains unchanged. This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Replace the opening licensing paragraph and notes with: 'The Classifiers management experience uses the existing Purview entitlement. Microsoft documents the Microsoft 365 E3/E5/A5/F5/G5 per-user licensing model for Microsoft 365 and Windows/macOS endpoint assets; users assigned a Purview role for portal use require the appropriate licence. A licence specific to the new Classifiers page is not yet published. Credential scanning SITs require an E5 licence.' Cite https://learn.microsoft.com/purview/purview-billing-models and https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. In Open questions and the cost rationale, narrow 'Licensing is Not yet published' to 'Licensing specific to the new page is Not yet published'."
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The classifiers overview lists permissions but does not name a licence for the new page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview unified Classifiers experience licensing license pricing meter'; opened the complete data-classification-overview page, including Permissions and all classification capabilities; no licence for the new page is named.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Risk assessment: Data exposure",
-      "type": "role",
-      "claim": "Access to lists of classified items requires appropriate Data Explorer permissions.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The roadmap record and MC1486289 state no licence or meter for the new experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "Access to item lists and item contents requires the appropriate Data Explorer permissions.",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview unified Classifiers experience licensing license pricing meter'; read the full supplied roadmap record and MC1486289, classifiers overview, Purview service description and billing models; neither record names a licence or meter for the page.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Risk assessment: Data exposure",
-      "type": "role",
-      "claim": "Access to classified item contents requires appropriate Data Explorer permissions.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "An E5 licence is required to use credential scanning SITs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "Access to item lists and item contents requires the appropriate Data Explorer permissions.",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "E5 license is required to make use of credential scanning SITs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "Risk assessment: Data exposure",
-      "type": "role",
-      "claim": "Data Explorer item-access permissions are distinct from access to the Classifiers page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "Access to item lists and item contents requires the appropriate Data Explorer permissions.\n\nAccess to the Classifiers page can come from a Microsoft Entra administrator role or a Microsoft Purview role group.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Learn does not specify which roles can see the Classified items counts.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview Classifiers Classified items count roles permissions visibility'; opened data-classification-overview and purview-permissions. The overview documents page access and Data Explorer permissions, but no count-specific role mapping.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Security & identity; Scope: Who can open it",
-      "type": "role",
-      "claim": "The four listed Entra roles provide Classifiers access: Global, Compliance, Security and Compliance data administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "The following Microsoft Entra roles provide access:\n- Global administrator\n- Compliance administrator\n- Security administrator\n- Compliance data administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Scope: Who can open it; Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Applicable Purview roles are Information Protection Admin, Analyst, Investigator and Reader.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "Applicable Microsoft Purview roles\n- Information Protection Admin\n- Information Protection Analyst\n- Information Protection Investigator\n- Information Protection Reader",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Scope: Who can open it; controls[0].note",
-      "type": "role",
-      "claim": "Applicable role groups are Information Protection, Information Protection Admins, Analysts, Investigators and Readers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "Applicable Microsoft Purview role groups\n\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The listed Purview role groups have differing permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "Use the following role groups to assign access. Their permissions differ; choose the group that matches the user's responsibilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Microsoft recommends least-privilege roles for access to Classifiers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "As a best practice, always use the role with least privilege to grant access to the Classifiers page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Endpoint DLP classifies against all tenant SITs, including custom SITs unused by DLP policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Endpoint DLP classifies files based on all sensitive information types available in the tenant, including custom sensitive information types, regardless of their utilization in any DLP policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Poorly tuned SITs that match many files can cause excessive classification traffic.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "This can cause excessive classification traffic if the sensitive information types aren't well tuned and end up matching many files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
       "where": "Cost and licensing",
       "type": "behaviour",
       "claim": "The overview includes Credentials among its classification types.",
@@ -551,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 40,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "The All credentials SIT groups individual credential types.",
+      "claim": "All credentials groups individual credential types.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-overview",
       "quote": "The All credentials sensitive information type groups individual credential types to detect credentials from supported services and environments.",
@@ -562,98 +465,252 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The SIT documentation requires an E5 licence for credential scanning SITs.",
+      "n": 41,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the new experience's default state or whether an administrator must enable it.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "E5 license is required to make use of credential scanning SITs.",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview new unified Classifiers experience enable disable switch default rollout opt in'; read the supplied roadmap and both MC posts, classifiers overview and relevant portal search excerpts; none states automatic enablement or required opt-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide UI or API switch for the new Classifiers experience is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview new unified Classifiers experience enable disable switch default rollout opt in'; 'Microsoft Purview Classifiers new experience enable disable Set PowerShell unified classification management switch'. Read overview and Set-FeatureConfiguration excerpt; no such switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Learn does not specify which roles can see the Classified items counts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview Classifiers \"Classified items\" \"permissions\" counts'. Read the complete classifiers overview and Purview permissions page and returned role excerpts; count visibility is not assigned explicitly to roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Access to classified item lists requires appropriate Data Explorer permissions, separately from access to the Classifiers page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The Classifiers page helps you manage classifiers. Use Data Explorer to review items with classification matches and see where those items are located. Access to item lists and item contents requires the appropriate Data Explorer permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Access to classified item contents requires appropriate Data Explorer permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Access to item lists and item contents requires the appropriate Data Explorer permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note",
+      "type": "role",
+      "claim": "The Microsoft Entra Global administrator role grants access to the Classifiers page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The following Microsoft Entra roles provide access:\n\n- Global administrator\n- Compliance administrator\n- Security administrator\n- Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note",
+      "type": "role",
+      "claim": "The Microsoft Entra Compliance administrator role grants access to the Classifiers page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The following Microsoft Entra roles provide access:\n\n- Global administrator\n- Compliance administrator\n- Security administrator\n- Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note",
+      "type": "role",
+      "claim": "The Microsoft Entra Security administrator role grants access to the Classifiers page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The following Microsoft Entra roles provide access:\n\n- Global administrator\n- Compliance administrator\n- Security administrator\n- Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note",
+      "type": "role",
+      "claim": "The Microsoft Entra Compliance data administrator role grants access to the Classifiers page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The following Microsoft Entra roles provide access:\n\n- Global administrator\n- Compliance administrator\n- Security administrator\n- Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Information Protection Admin is an applicable Purview role for Classifiers access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview roles\n\n- Information Protection Admin\n- Information Protection Analyst\n- Information Protection Investigator\n- Information Protection Reader",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The Classifiers overview lists permissions but names no licence.",
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Information Protection Analyst is an applicable Purview role for Classifiers access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: read the complete data-classification-overview, including Permissions, for license, licence, subscription and billing requirements. It lists Entra roles and Purview roles and role groups, but no licence.",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview roles\n\n- Information Protection Admin\n- Information Protection Analyst\n- Information Protection Investigator\n- Information Protection Reader",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing specific to the new Classifiers management experience is not yet published, so its licensing model is unknown.",
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Information Protection Investigator is an applicable Purview role for Classifiers access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview unified Classifiers experience licensing billing license requirements'; opened data-classification-overview, Microsoft Purview service description and purview-billing-models. No new-experience-specific licence is stated.",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview roles\n\n- Information Protection Admin\n- Information Protection Analyst\n- Information Protection Investigator\n- Information Protection Reader",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "The sources publish no meter specific to the new Classifiers management experience.",
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Information Protection Reader is an applicable Purview role for Classifiers access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview unified Classifiers experience licensing billing license requirements'; read purview-billing-models, Classifiers overview, roadmap and MC1486289. Meters cover other capabilities, not the unified management page.",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview roles\n\n- Information Protection Admin\n- Information Protection Analyst\n- Information Protection Investigator\n- Information Protection Reader",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the experience's arrival default or automatic changes to existing classifiers, so the default is unknown.",
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Information Protection role group grants Classifiers access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview new Classifiers experience enable disable tenant switch PowerShell default licensing meter preview'; read Classifiers overview, roadmap and both supplied notices for default or enablement wording. None states the arrival default.",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview role groups\n\nUse the following role groups to assign access.\n\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls",
-      "type": "absence",
-      "claim": "No tenant-wide UI or automation switch for the new Classifiers experience is documented as of November 2026.",
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Information Protection Admins role group grants Classifiers access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview new Classifiers experience enable disable tenant switch PowerShell default licensing meter preview'; '\"Classifiers\" \"experience\" \"disable\" \"PowerShell\" Purview'. Read Classifiers overview and Security & Compliance search results; no switch found.",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview role groups\n\nUse the following role groups to assign access.\n\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Purview role-group membership is managed at Settings > Roles and scopes > Role groups > role group > Edit > Choose users.",
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Information Protection Analysts role group grants Classifiers access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... select Choose users or Choose groups.",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview role groups\n\nUse the following role groups to assign access.\n\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[0].api; Governance controls: first row; writer evidence",
-      "type": "command",
-      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a management role group.",
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Information Protection Investigators role group grants Classifiers access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps",
-      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group.\nAdd-RoleGroupMember\n    [-Identity] <RoleGroupIdParameter>\n    -Member <SecurityPrincipalIdParameter>",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview role groups\n\nUse the following role groups to assign access.\n\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
+      "where": "Scope: Who can open it; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Information Protection Readers role group grants Classifiers access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview role groups\n\nUse the following role groups to assign access.\n\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The applicable Purview role groups have differing permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Use the following role groups to assign access. Their permissions differ; choose the group that matches the user's responsibilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Learn recommends least privilege when granting Classifiers access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "As a best practice, always use the role with least privilege to grant access to the Classifiers page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "Role-group membership is managed in Microsoft Purview portal > Settings > Roles and scopes > Role groups > role group > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar.\n4. On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": "minor",
+      "fix": "Expand controls[0].ui.path and the corresponding rendered table path to 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users', retaining https://learn.microsoft.com/purview/purview-permissions as its documentation link."
+    },
+    {
+      "n": 62,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the specified user to the specified role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group.\nThe Identity parameter specifies the role group to add a member to.\nThe Member parameter specifies who you want to add to the role group.\nUser ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
       "where": "controls[0].note; Governance controls: first row",
       "type": "role",
-      "claim": "The Role management role authorises changing Purview role groups.",
+      "claim": "The Role management role is required for the documented role-group editing procedure.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-permissions",
       "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role. Go to Settings > Roles and scopes to view and manage compliance and governance roles in your organization.",
@@ -661,81 +718,213 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "controls[0].note; Governance controls: first row; writer evidence",
+      "n": 64,
+      "where": "controls[0]; Governance controls; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "The role-group command applies in Security & Compliance PowerShell and grants group roles rather than assigning Entra roles.",
+      "claim": "Adding users to the applicable Purview role groups grants the roles' permissions, including Classifiers access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Access to the Classifiers page can come from a Microsoft Entra administrator role or a Microsoft Purview role group.\nAdding a user to a role group grants the permissions of the roles in that group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].ui; Scope; Governance guidance: At rollout; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "Classifiers is accessible in the Microsoft Purview portal under Information Protection, Data Loss Prevention or DSPM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "In the Microsoft Purview portal, you can access Classifiers under Information Protection, Data Loss Prevention, or DSPM (Data Security Posture Management).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].api; Governance controls: second row; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-DlpSensitiveInformationType -IncludeDetails is a documented call for listing the organization's sensitive information types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps",
+      "quote": "Use the Get-DlpSensitiveInformationType cmdlet to list the sensitive information types that are defined for your organization in the Microsoft Purview compliance portal.\nGet-DlpSensitiveInformationType\n    [[-Identity] <SensitiveInformationTypeIdParameter>]\n    [-IncludeDetails]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The listing cmdlet covers sensitive information types rather than switching the new experience on or off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps",
+      "quote": "Use the Get-DlpSensitiveInformationType cmdlet to list the sensitive information types that are defined for your organization in the Microsoft Purview compliance portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Add-RoleGroupMember is available in Security & Compliance PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps",
-      "quote": "When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group.\n-Identity\nApplicable: ... Security & Compliance ...\n-Member\nApplicable: ... Security & Compliance",
+      "quote": "-Identity\nApplicable: Exchange Server 2010, Exchange Server 2013, Exchange Server 2016, Exchange Server 2019, Exchange Server SE, Exchange Online, Security & Compliance, Built-in security add-on for on-premises mailboxes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
-      "where": "controls[1].ui; Governance controls: second row; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The Classifiers page can be opened in the Microsoft Purview portal under Information Protection > Classifiers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "In the Microsoft Purview portal, you can access Classifiers under Information Protection, Data Loss Prevention, or DSPM (Data Security Posture Management).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[1].api; Governance controls: second row; Governance guidance",
-      "type": "command",
-      "claim": "Get-DlpSensitiveInformationType -IncludeDetails is a valid command for listing the organisation's sensitive information types.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps",
-      "quote": "Use the Get-DlpSensitiveInformationType cmdlet to list the sensitive information types that are defined for your organization in the Microsoft Purview compliance portal.\nGet-DlpSensitiveInformationType\n    ...\n    [-IncludeDetails]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[1].note; Governance controls: prose",
+      "n": 69,
+      "where": "controls[0].note; Governance controls: first row",
       "type": "applicability",
-      "claim": "The listing cmdlet is a Security & Compliance PowerShell SIT inventory operation, not a switch for the new experience.",
+      "claim": "Purview role-group membership management is distinct from Microsoft Entra role assignment management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To manage members of a Microsoft Entra role, select Manage members in Microsoft Entra ID. This choice redirects you to the Azure management portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Sensitive information types are used in DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Sensitive information types are used in sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Sensitive information types are used in retention labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels\n- Retention labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Sensitive information types are used in insider risk management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels\n- Retention labels\n- Insider risk management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Sensitive information types are used in communication compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels\n- Retention labels\n- Insider risk management\n- Communication compliance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Sensitive information types are used in auto-labeling policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels\n- Retention labels\n- Insider risk management\n- Communication compliance\n- Auto-labeling policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Endpoint DLP classifies files against all SITs available in the tenant, including custom SITs unused by DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Endpoint DLP classifies files based on all sensitive information types available in the tenant, including custom sensitive information types, regardless of their utilization in any DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Poorly tuned SITs can cause excessive classification traffic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "This can cause excessive classification traffic if the sensitive information types aren't well tuned and end up matching many files. You should optimize all custom sensitive information types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Scope: Where it appears; Open questions",
+      "type": "record",
+      "claim": "MC1481315 says retirement of DSPM classic and DSPM for AI classic starts in mid-March 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1481315",
+      "quote": "Beginning mid-March 2027, Microsoft will start retiring the Microsoft Purview Data Security Posture Management (DSPM) classic and DSPM for AI classic experiences. Retirement will be completed by end of March 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Scope: Where it appears; Open questions",
+      "type": "absence",
+      "claim": "MC1481315 does not mention the Classifiers page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Classifiers and classification in the complete supplied MC1481315 post; read its retirement scope, impact, actions and compliance table. It names the classic DSPM experiences and current DSPM navigation but not the Classifiers page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls: paragraph after table",
+      "type": "record",
+      "claim": "MC1486289 answers yes to the admin-control and group-membership question and directs administrators to documentation or admin-center controls for group-based configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1486289",
+      "quote": "Yes. The feature includes or affects admin controls, policies, permissions, roles, authentication, or management settings as described in this message. Review the linked documentation or admin center controls for group-based configuration support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[1].note; Governance controls: second row",
+      "type": "command",
+      "claim": "Get-DlpSensitiveInformationType is available only in Security & Compliance PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell.\nUse the Get-DlpSensitiveInformationType cmdlet to list the sensitive information types that are defined for your organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Scope: Where it appears",
-      "type": "admin-path",
-      "claim": "The Classifiers page is also accessible under Data Loss Prevention in the Microsoft Purview portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "In the Microsoft Purview portal, you can access Classifiers under Information Protection, Data Loss Prevention, or DSPM (Data Security Posture Management).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Scope: Where it appears; Open questions",
-      "type": "admin-path",
-      "claim": "The Classifiers page is also accessible under DSPM, meaning Data Security Posture Management, in the Microsoft Purview portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-overview",
-      "quote": "In the Microsoft Purview portal, you can access Classifiers under Information Protection, Data Loss Prevention, or DSPM (Data Security Posture Management).",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T09:44:37.308Z",
+    "at": "2026-11-24T05:09:12.803Z",
     "summary": {
       "links": 8,
-      "unreachable": 0,
+      "unreachable": 5,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -756,28 +945,28 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/data-classification-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/purview-permissions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -786,7 +975,7 @@
         "side": "ui",
         "governs": "Which admins and role groups can open the Classifiers page",
         "docs": "https://learn.microsoft.com/purview/purview-permissions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Roles and scopes",
@@ -795,37 +984,47 @@
           "Edit",
           "Choose users"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which admins and role groups can open the Classifiers page",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps",
-        "reachable": true,
+        "reachable": false,
         "token": "Add-RoleGroupMember",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Review and baseline of sensitive information types",
         "docs": "https://learn.microsoft.com/purview/data-classification-overview",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Information Protection",
           "Classifiers"
         ],
-        "missing": []
+        "missing": [
+          "Information Protection",
+          "Classifiers"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Review and baseline of sensitive information types",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps",
-        "reachable": true,
+        "reachable": false,
         "token": "Get-DlpSensitiveInformationType",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -835,6 +1034,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

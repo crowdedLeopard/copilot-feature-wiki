@@ -4,7 +4,7 @@ slug: "power-automate-direct-triggers-for-desktop-flows"
 roadmapId: 579975
 topic: "power-platform"
 products: ["Power Automate"]
-summary: "Microsoft plans direct triggers for desktop flows (preview target January 2027). Learn documents a Scheduled triggers preview that starts desktop flows without a cloud flow; makers opt in per trigger. Direct-trigger licensing is not yet published."
+summary: "Microsoft plans direct triggers for desktop flows (preview target January 2027). Learn documents a Scheduled triggers preview that starts desktop flows without a cloud flow; makers opt in per trigger. No direct-trigger-specific licensing change is published."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -14,7 +14,7 @@ previewDate: "January CY2027"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "user-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "mixed"
@@ -94,19 +94,23 @@ changes:
     note: "Correction: now cites the Scheduled triggers (preview) page for the documented default, per-trigger disable, roles, prerequisites, identity and rollout; licensing model set to mixed and default to user-opt-in; tenant-wide switch gap narrowed."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 83 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Correction: default state set to unknown (user-opt-in kept for Scheduled triggers only); owner-review checklist step removed; Disable path now starts at environment selection; summary and risk rationale narrowed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 80
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 2
-  hash: "bb05664f887fc68f4cc2dd51377a9440"
+  claims: 79
+  confirmed: 79
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "92bd82f4c40f5bc4027d75c329201e79"
 ---
 
 ## What's changing
@@ -141,7 +145,7 @@ For Scheduled triggers (preview), users create a scheduled trigger and choose En
 
 **Change & support**
 - Cloud-triggered runs are documented with a limit of 70 desktop flow runs per minute for every connection. Microsoft has not said whether a limit applies to direct triggers.
-- No tenant-wide availability switch is documented at the time of writing (November 2026). For Scheduled triggers (preview), the Power Automate route is Automation center > Manage > Scheduled triggers (Preview) > Overview > scheduled trigger > More commands > Disable; disabling stops future scheduled runs.
+- No tenant-wide availability switch is documented at the time of writing (November 2026). For Scheduled triggers (preview), the Power Automate route is Power Automate > environment > Automation center > Manage > Scheduled triggers (Preview) > Overview > scheduled trigger > More commands > Disable; disabling stops future scheduled runs.
 
 ## Cost and licensing
 
@@ -171,7 +175,6 @@ Learn also describes a cloud-flow route today, which needs a registered machine 
 - Check whether the data policy row covers direct triggers once Microsoft documents how they are governed.
 
 ### After rollout
-- Review which desktop flows have a scheduled trigger and who owns them, using the Overview tab under Scheduled triggers (Preview) in Automation center.
 - Watch Message center and the roadmap item for the preview and general availability dates.
 
 ## Governance controls
@@ -186,7 +189,7 @@ Learn also describes a cloud-flow route today, which needs a registered machine 
 </tbody>
 </table>
 
-No tenant-wide availability switch for direct triggers is documented at the time of writing (November 2026), which is why the first row has no path or call. For Scheduled triggers (preview), Learn documents a per-trigger disable: Automation center > Manage > Scheduled triggers (Preview) > Overview > scheduled trigger > More commands > Disable. Disabling stops future scheduled runs without deleting the configuration.
+No tenant-wide availability switch for direct triggers is documented at the time of writing (November 2026), which is why the first row has no path or call. For Scheduled triggers (preview), Learn documents a per-trigger disable: Power Automate > environment > Automation center > Manage > Scheduled triggers (Preview) > Overview > scheduled trigger > More commands > Disable. Disabling stops future scheduled runs without deleting the configuration.
 
 For Scheduled triggers (preview), the schedule owner and users assigned the Power Automate Operator role can manage schedules. Operator permissions for Flow trigger and Flow trigger instance apply across the environment and do not grant permission to edit the desktop flow definition.
 
@@ -203,20 +206,13 @@ Learn says tenant-level data policies need the Power Platform Administrator role
 - Which account and machine session does a directly triggered flow run under for event-trigger cases beyond Scheduled triggers?
 
 <!-- rationale
-risk: Medium. The roadmap describes events starting desktop flows with no cloud flow in between. Learn documents per-trigger disable for Scheduled triggers (preview) but no tenant-wide switch, and whether data policies cover the new route is unconfirmed.
+risk: Medium. The roadmap describes events starting desktop flows with no cloud flow in between. Learn documents per-trigger disable for Scheduled triggers (preview) but no tenant-wide switch, and whether desktop flow connector policies govern the new triggering route is unconfirmed.
 cost: Variable. The preview Power Automate flow-run meter charges desktop flows in pay-as-you-go environments; attended charges depend on licence entitlements and unattended runs are charged per run. No direct-trigger-specific rate or exception is published.
 impact: Medium. Makers and RPA developers who build desktop flows are the people affected; the roadmap names no change for other users.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The roadmap's direct-trigger capability has a user-opt-in default. | Found: Searched: direct triggers desktop flows enabled default existing flows automatic admin switch. Read roadmap record and schedule-desktop-flows. Only Scheduled triggers has documented maker activation; no source identifies it as the entire roadmap capability. | Fix: Set defaultState to unknown. Keep the documented Enable behaviour explicitly scoped to Scheduled triggers (preview), and retain the sentence that Microsoft has not stated arrival behaviour for the broader event-trigger capability.
-- [unsupported, blocker] Governance guidance: After rollout / admin-path: Readers can identify the current owner of scheduled triggers using the Overview tab. | Found: Searched: Power Automate Scheduled triggers Overview owner Created by schedule owner columns. Opened schedule-desktop-flows; Overview documents Created by, not Owner. Read Flow Trigger reference excerpts distinguishing writable ownerid from record creation. | Fix: Remove 'and who owns them' from the Overview-based checklist instruction. The scheduling page documents a Created by column, not a current-owner column; do not describe the creator as necessarily the current owner.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Risk assessment: Data exposure; Governance controls / applicability: Data policies govern desktop flow modules. | Found: Power Automate allows you to create and enforce DLP policies that classify desktop flow modules and individual module actions as Business, Non-business, or Blocked. | Fix: Narrow the risk rationale's 'whether data policies cover the new route is unconfirmed' to 'whether desktop flow connector policies govern the new triggering route is unconfirmed', matching the body and row note rather than casting doubt on the documented module policies. | Source: https://learn.microsoft.com/power-automate/prevent-data-loss
-- [supported, minor] Risk assessment: Change & support; Governance controls / admin-path: Scheduled triggers can be disabled through Automation center > Manage > Scheduled triggers (Preview) > Overview > scheduled trigger > More commands > Disable. | Found: select the environment where you want to manage scheduled triggers. In the left navigation pane, select Automation center. Under Manage, select Scheduled triggers (Preview). On the Overview tab, open the More commands menu | Fix: Include environment selection: Power Automate > environment > Automation center > Manage > Scheduled triggers (Preview) > Overview > scheduled trigger > More commands > Disable, as documented at https://learn.microsoft.com/power-automate/schedule-desktop-flows. | Source: https://learn.microsoft.com/power-automate/schedule-desktop-flows
-- [supported, minor] summary; front matter: licensing.notes; Cost and licensing; Open questions / absence: No direct-trigger-specific licensing change is published. | Found: Searched: direct triggers desktop price meter licensing; direct triggers desktop flows pay-as-you-go rate exemption exception licensing change. Opened schedule-desktop-flows and licensing/types; run-mode requirements are stated, not a distinct direct-trigger entitlement. | Fix: Replace the summary's 'Direct-trigger licensing is not yet published.' with 'No direct-trigger-specific licensing change is published.' This preserves the distinction from the documented run-mode licensing in the body.
-- [supported, minor] controls[1].ui / admin-path: Power Platform admin center > Security > Settings > Data and privacy > Data policy reaches the data-policy list. | Found: Select Security in the navigation pane. In the Security pane, under Settings, select Data and privacy. In the Data protection and privacy screen, select the Data policy section. Select + New Policy. | Fix: For configuring an existing policy, extend the path to 'Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Prebuilt connectors > Assign connectors'; the cited page documents selection and connector classification beyond the list. | Source: https://learn.microsoft.com/power-platform/admin/prevent-data-loss
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist's Scheduled triggers review control is represented in the controls table. | Found: Checklist: 'Review which desktop flows have a scheduled trigger and who owns them, using the Overview tab'. Table rows: tenant-wide availability switch; desktop flow modules and connectors data policy. | Fix: The After rollout step directing readers to review schedules in Overview has no corresponding control row. Remove that navigation-specific checklist step; a correction need not add a row.
+- [supported, minor] controls[1].ui; Governance controls: table / admin-path: Power Platform admin center > Security > Settings > Data and privacy > Data policy reaches the data policy list. | Found: Select Security in the navigation pane. ... under Settings, select Data and privacy. ... select the Data policy section. ... From the list of data policies, select a policy, and then select Edit Policy. | Fix: Extend controls[1].ui.path and its rendered counterpart to 'Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Prebuilt connectors > connector > Move to Business' for the documented classification operation. The existing route is correct but stops at the policy list; the remaining steps are documented at https://learn.microsoft.com/power-platform/admin/prevent-data-loss. | Source: https://learn.microsoft.com/power-platform/admin/prevent-data-loss
 -->

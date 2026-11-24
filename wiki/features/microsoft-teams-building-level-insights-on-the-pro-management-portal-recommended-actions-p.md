@@ -68,15 +68,17 @@ changes:
     note: "New briefing: building-level insights on the Teams Rooms Pro Management Recommended Actions page, Launched, with controls for the optimisation setting and room building data."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -182,8 +184,8 @@ cost: Low. It needs a Teams Rooms Pro or Teams Shared Devices licence already re
 impact: Low. Admins and room-technology planners who use the Teams Rooms Pro Management portal notice it; end users see no change.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; Open questions / licensing: The cited sources use Shared Space, Shared Device and Teams Shared Devices names, leaving the naming difference unresolved in the briefing. | Found: At least one Teams Rooms Pro or Teams Shared Devices license is required to access the Recommended Actions page. | Fix: After the source-name comparison add: 'Microsoft's licensing page says Microsoft Teams Shared Devices was renamed Microsoft Teams Shared Space in April 2026.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license, which states 'Prior to April 2026, this license was called Microsoft Teams Shared Devices license.' Remove the final Open questions bullet about which licence names apply. | Source: https://learn.microsoft.com/microsoftteams/rooms/recommended-actions
+- [supported, minor] Cost and licensing; Open questions: licensing / licensing: The sources use Shared Space, Shared Device and Teams Shared Devices names, leaving the naming difference open. | Found: Prior to April 2026, this license was called Microsoft Teams Shared Devices license. | Fix: After the source-name comparison add: 'Microsoft's licensing page says Microsoft Teams Shared Devices was renamed Microsoft Teams Shared Space in April 2026.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license. Remove the final Open questions bullet about which licence names apply. | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license
 -->

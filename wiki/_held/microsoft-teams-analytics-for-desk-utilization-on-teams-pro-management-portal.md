@@ -140,18 +140,20 @@ changes:
     note: "Corrected the peripheral script and Get-PlacesSettings commands in the controls table, and replaced the claim that Microsoft has not said whether the portal cloud-data setting and DeviceDataCollection affect desk reports with what the BYOD Learn page states."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 111 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 94
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 111
+  confirmed: 107
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
   hash: "d570beef86144054519f9981c40b18f4"
 ---
 
@@ -264,4 +266,15 @@ The DeviceDataCollection policy needs MicrosoftTeams module 6.5.0 or later, and 
 risk: Low. This adds admin-facing reports on desk use and nothing in the roadmap item or notice says it changes any desk or user; the exposure that matters is the existing Teams client data collection that feeds bookable desks.
 cost: Medium. The roadmap item says each desk needs a Microsoft Teams Shared Space or Shared Space - Single Space licence; Microsoft Learn lists the paid licence at $8 per desk per month and gives three $0 single-space licences per paid one.
 impact: Low. Administrators and portal role holders see the analytics; the roadmap item and Microsoft's notice describe no change for people who book desks.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The complete portal route to cloud-data ingestion starts at General > BYOD Rooms and Desk management. | Found: The threshold for how many signals it requires before associating is configurable on Teams Rooms Pro Management portal at Settings > General. | Fix: Replace controls[1].ui.path and the table path with 'Settings > General > BYOD Rooms and Desk management'. The bookable-desks page establishes the route to General; bring-your-own-device places this control on that tab. Both pages are already cited. | Source: https://learn.microsoft.com/microsoftteams/rooms/bookable-desks
+- [contradicted, blocker] controls[3].api; Governance controls table / command: Running .\Get-TeamsBYODSpaceDevices.ps1 is the automation operation that links peripherals to desks. | Found: When you run the PowerShell script, the data is exported to a CSV file that can be upload to Teams Pro Management Portal for managing, monitoring, and reporting usage of devices in BYOD rooms and Bookable Desks. | Fix: Set controls[3].api to null and replace its table automation cell with 'Not yet documented'. Keep the script in the note as a collection tool: 'Run the downloaded Get-TeamsBYODSpaceDevices.ps1 script from its directory to collect peripheral information, then import the prepared file through the portal to update desk associations.' The cited page documents association only after portal import, not a scripted association operation. | Source: https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information
+- [contradicted, blocker] controls[5].api; Governance controls table / command: Get-PlacesSettings -ReadFromPrimary is the automation operation controlling whether individual desks appear in the portal. | Found: You can use Get-PlacesSettings to view all Microsoft Places features settings configured on your tenant. | Fix: Replace controls[5].api.call and its table call with "Set-PlacesSettings -EnableBuildings 'Default:true'" and change api.docs and the table link to https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings. Keep Get-PlacesSettings -ReadFromPrimary in the note only as a read-only check. The setter and its value are documented in the already-cited Configure buildings and floors page. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings
+- [unsupported, blocker] controls[5].note; Governance controls table / default: enableBuildings is OFF by default for tenants onboarded before 1 August 2026. | Found: Searched: enableBuildings August 2026; Microsoft Places enableBuildings default tenants onboarded August 1 2026; enableBuildings before August. Read Set-PlacesSettings and Configure buildings and floors. Neither gives an August 1 onboarding cutoff; the latter states a general visibility default. | Fix: Replace the last sentence of controls[5].note and its table note with 'By default, buildings are not visible across Microsoft Places experiences.' This is the wording in https://learn.microsoft.com/microsoft-365/places/get-started/quick-setup-buildings-floors; remove the unsupported onboarding date.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui; Governance guidance: Before rollout; Governance controls prose / admin-path: Portal role management is under Settings > Roles. | Found: In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Roles. Select Create role. | Fix: For role creation, extend the path to 'Settings > Roles > Create role > General settings > Permissions > Role permissions'. The current path correctly stops on the role-management page but does not reach the permission selection. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
 -->

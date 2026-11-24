@@ -50,13 +50,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > managed environment > Edit Managed Environments > Manage sharing"
+      path: "Manage > Environments > managed environment > Edit Managed Environments > Manage sharing > desired agent sharing rule"
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     api:
       kind: "powershell"
       call: "Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration"
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
-    note: "Managed Environments only. The Microsoft Copilot harness FAQ identifies Managed environment sharing controls and environment security groups as controls over who agents are shared with."
+    note: "Rules: Let people grant Editor permissions when agents are shared; Let people grant Viewer permissions when agents are shared; Only share with individuals (no security groups); Limit number of viewers who can access each agent."
   - governs: "Tenant-wide switch that turns maker-to-maker agent sharing off"
     scope: "tenant"
     ui: null
@@ -83,19 +83,23 @@ changes:
     note: "Corrected: the roles needed to edit Managed Environments sharing settings are now stated; added the harness overview's licence note and the Viewer definition on the sharing-controls page."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected: the licence check in Before rollout now covers viewing and testing access only, and the sharing-rules path and note name the four agent sharing rules."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 79 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "a8b3b1940060b657505e5878943cd4dd"
+  contradicted: 0
+  attempts: 0
+  hash: "c529e2006976cfc13d5417d6830103b7"
 ---
 
 ## What's changing
@@ -150,7 +154,7 @@ It applies to agents built on the Microsoft Copilot harness. Learn says the clas
 ### Before rollout
 - Identify which Managed Environments host Microsoft Copilot harness agents and read their **Manage sharing** rules in the Power Platform admin center.
 - Decide whether makers may grant Editor access, and whether sharing with security groups is acceptable, then set the matching sharing rules.
-- Check that the people who will receive Viewer or Editor access hold a Microsoft Copilot Studio per-user licence, as the Learn prerequisites require.
+- Check that the people who will receive viewing and testing access hold a Microsoft Copilot Studio per-user licence, as the Learn sharing page prerequisites require.
 
 ### At rollout
 - Test with a non-production agent: share it as Viewer and as Editor, and check whether the environment's sharing rules block each case.
@@ -167,7 +171,7 @@ It applies to agents built on the Microsoft Copilot harness. Learn says the clas
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether makers can share agents as Editor or Viewer, with security groups, and how many viewers</strong><br><small>Environment</small><br><small class="controls__note">Managed Environments only. The Microsoft Copilot harness FAQ identifies Managed environment sharing controls and environment security groups as controls over who agents are shared with.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether makers can share agents as Editor or Viewer, with security groups, and how many viewers</strong><br><small>Environment</small><br><small class="controls__note">Rules: Let people grant Editor permissions when agents are shared; Let people grant Viewer permissions when agents are shared; Only share with individuals (no security groups); Limit number of viewers who can access each agent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing › desired agent sharing rule <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch that turns maker-to-maker agent sharing off</strong><br><small>Tenant</small><br><small class="controls__note">No tenant-wide setting found in the pages read; sharing is limited per environment.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -191,12 +195,4 @@ Assigning editing rights through environment security roles is a separate route 
 risk: Medium. An Editor can edit, configure, share and publish an agent per the roadmap, and when tools use maker-provided credentials, shared-agent users can act with the maker's permissions; tools set to end-user credentials use each user's own connection.
 cost: Variable. Microsoft Learn says the Microsoft Copilot harness uses usage-based billing, so using, building, testing and evaluating shared agents might consume Copilot Credits; no separate charge for sharing is documented.
 impact: Medium. Makers and the people they share with notice it; end users who only chat with an agent do not need Editor or Viewer access.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout; Cost and licensing / consistency: The checklist treats the per-user licence prerequisite as established for Editor recipients while the licensing section says its applicability to Editors is unresolved. | Found: The same page does not say whether that applies to makers given Editor access. / Check that the people who will receive Viewer or Editor access hold a Microsoft Copilot Studio per-user licence, as the Learn prerequisites require. | Fix: Replace the Before rollout licence bullet with: 'Check that the people who will receive viewing and testing access hold a Microsoft Copilot Studio per-user licence, as the Learn sharing page prerequisites require.' Do not assert that the sources establish this requirement for Editor recipients.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance / admin-path: The sharing controls are at Power Platform admin center > Manage > Environments > managed environment > Edit Managed Environments > Manage sharing. | Found: In the navigation pane, select Manage. In the Manage pane, select Environments. On the Environments page, select a managed environment. In the command bar, Edit Managed Environments. The sharing rules are located in the Manage sharing section. | Fix: Keep the existing route and append '> desired agent sharing rule'. In the note name the choices: 'Let people grant Editor permissions when agents are shared', 'Let people grant Viewer permissions when agents are shared', 'Only share with individuals (no security groups)', and 'Limit number of viewers who can access each agent'. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
 -->

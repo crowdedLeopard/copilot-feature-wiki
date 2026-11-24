@@ -1,0 +1,663 @@
+{
+  "slug": "microsoft-purview-compliance-portal-ediscovery-premium-cmk-customer-managed-keys-encryptio",
+  "roadmapId": 117569,
+  "title": "Microsoft Purview eDiscovery (Premium): customer-managed keys for review set data at rest",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "3 blocking findings (claims 24, 48, 49)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 48,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the checklist directs administrators to an enablement command to check existing onboarding, and the low cost rating overlooks documented Azure key-management charges. The required roles also need to be qualified for Azure Key Vault rather than Managed HSM, and Microsoft's conflicting statements about review set encryption should both be reported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans customer-managed key support for data at rest in eDiscovery review sets.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This release of eDiscovery features the implementation of customer-managed key (CMK) options, allowing users to manage their own encryption keys for the data stored in eDiscovery review sets",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The planned option supplements the Microsoft-managed encryption already in place.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "in addition to the default, strong Microsoft-managed encryption already in place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; summary; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap preview target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap general availability target is February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list a US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-04-09T23:15:51.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-04-09T23:15:51\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap item has no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The roadmap is the only identified source describing this planned release, as distinct from related documented Customer Key behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery 117569 customer managed key review sets default enabled administrator opt in; opened review set ingestion, Customer Key overview and setup, and direct export documentation. These describe related behaviour, not this roadmap release's future rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Scope; controls[0].governs",
+      "type": "applicability",
+      "claim": "Learn says Customer Key encrypts review set content at rest when the tenant is configured with Customer Key.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Yes. If your tenant is configured with Customer Key, review set content at rest is encrypted with the customer-managed key.",
+      "severity": "minor",
+      "fix": "After the Learn statement, add: 'However, Microsoft's direct-export documentation says, \"Data at rest in an eDiscovery review set isn't included at this time.\" These Microsoft pages disagree; confirm review set coverage with Microsoft.' Cite https://learn.microsoft.com/purview/edisc-search-export alongside the existing review set source."
+    },
+    {
+      "n": 14,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Adding search results to a review set copies content from live services into Azure Storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "All items in the search results are copied from the original data source in the live services to a secure Azure Storage location in the Microsoft cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Review set storage is Microsoft-owned and Microsoft-managed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Yes. The storage is Microsoft-owned and Microsoft-managed. Customers don't see, manage, or pay for these storage resources directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Review set storage is provisioned per case rather than per review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "No. Storage is provisioned per case. Multiple review sets within the same case share the underlying case storage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The storage region matches the case's geo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "The storage is provisioned in the region that matches the case's geo, consistent with Microsoft 365 data residency commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Review sets can hold copies of mailbox, SharePoint and Teams content for investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "gathering items from the original data sources in Microsoft 365 (for example, from mailboxes and sites), copying them to the Azure Storage location; Include Teams and Viva Engage conversations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Customer-managed encryption is admin-opt-in through tenant Customer Key configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "If your tenant is configured with Customer Key, review set content at rest is encrypted with the customer-managed key.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated that this planned release changes an untouched tenant automatically on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery 117569 customer managed key review sets default enabled administrator opt in; read the roadmap, review set ingestion, Customer Key setup and overview. No passage states an automatic arrival change for this planned release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Customer Key adds an encryption layer using customer-controlled keys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-overview",
+      "quote": "Microsoft 365 also offers an added layer of encryption for your content through Customer Key.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Customer Key encrypts only data at rest in the cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-overview",
+      "quote": "Customer Key encrypts only data at rest in the cloud. It doesn't protect on-premises mailboxes or files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Customer Key authorises Microsoft 365 to use customer-controlled keys held in Azure Key Vault or Managed HSM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Customer Key lets you control your organization's encryption keys and configure Microsoft 365 to use those keys; The setup process differs depending on whether you're using Azure Key Vault or Managed HSM.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "role",
+      "claim": "Customer Key setup requires Key Vault Administrators and Key Vault Contributors without distinguishing Key Vault from Managed HSM.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "The setup process differs depending on whether you're using Azure Key Vault or Managed HSM. ... Assign user roles to your Managed HSM: Managed HSM Administrators are responsible for day-to-day management tasks",
+      "severity": "blocker",
+      "fix": "Change the role clause to 'for Azure Key Vault configurations, its set-up page requires Key Vault Administrators and Key Vault Contributors roles'. Qualify the After rollout role-review bullet as applying to Azure Key Vault configurations. This preserves the documented roles without applying them to Managed HSM."
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes encryption of stored review set data, not autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allowing users to manage their own encryption keys for the data stored in eDiscovery review sets",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether existing review set content is re-encrypted when keys are assigned or changed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery review sets Customer Key data encryption policy MDEP licensing price existing review set re-encryption key unavailable; read review set ingestion, Customer Key overview/setup and availability-key recovery. Re-encryption passages concern other workloads, not review sets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified the effect of key unavailability on Add to review set jobs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery review set Customer Key encryption policy scenario existing data key revoked unavailable jobs switch enable licensing price; read ingestion and availability-key uses/triggers. General eDiscovery fallback is documented, but Add to review set job behaviour is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Customer Key setup requires Exchange admin permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Permissions: Exchange admin permissions (all Customer Key operations run through Exchange Online PowerShell)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The setup page states that Customer Key operations run through Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Permissions: Exchange admin permissions (all Customer Key operations run through Exchange Online PowerShell)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment; Cost and licensing; Scope; rationale: cost",
+      "type": "cost",
+      "claim": "Customer Key setup requires two paid Azure subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Azure subscriptions: Two paid Azure subscriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Free, Trial, Sponsorship, MSDN and Legacy Support subscriptions are ineligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Two paid Azure subscriptions (Free, Trial, Sponsorship, MSDN, or Legacy Support aren't eligible)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Customer Key is included in the Microsoft 365, Office 365, Purview Suite and Information Protection and Governance plans named in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance | Office 365 E5/A5/G5 | ... | Customer Key | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Each user who benefits from Customer Key requires a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Each user who benefits from Customer Key requires a license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Customer Key licensing requirements vary by workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Requirements vary by workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "For multiple-workload Customer Key, insufficient eligible licences cause reversion to default service encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft periodically validates your license count. If your tenant doesn't have enough eligible licenses, encryption reverts to the default service encryption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Cost and licensing; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not identified which Customer Key DEP type or onboarding scenario covers review sets.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery review sets Customer Key data encryption policy MDEP licensing price existing review set re-encryption key unavailable; read Customer Key overview/setup, licensing and ingestion. Direct-export documentation names MDEP for exports only, explicitly excluding review sets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or charge specific to customer-managed keys on review sets is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery review sets Customer Key data encryption policy MDEP licensing price existing review set re-encryption key unavailable; read Purview Customer Key licensing, eDiscovery permissions, setup and ingestion. No review-set-specific entitlement or charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited pages publish no Key Vault or Managed HSM price specific to this review set feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Azure Key Vault Managed HSM Customer Key pricing monthly key operations; read Customer Key setup and licensing and Azure key-management pricing excerpts. General transaction, monthly-key and hourly charges are documented, not a review-set-specific price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Analysing a user's data with premium eDiscovery requires that user to have Office 365 E5 or Microsoft 365 E5, unless using the documented add-on alternative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "To analyze a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Eligible E1/E3 users can instead receive a Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Alternatively, users with an Office 365 E1 or an Office 365 or Microsoft 365 E3 license can be assigned a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) or Microsoft 365 eDiscovery and Audit add-on license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "New-CustomerKeyOnboardingRequest -Organization <tenantID> -Scenario <Scenario> -OnboardingMode Enable enables tenant onboarding for MDEP or EXO.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "New-CustomerKeyOnboardingRequest -Organization <tenantID> -Scenario <Scenario> -Subscription1 <subscriptionID1> -KeyIdentifier1 <KeyURI1> -Subscription2 <subscriptionID2> -KeyIdentifier2 <KeyURI2> -OnboardingMode <OnboardingMode>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft documents no admin UI equivalent for Customer Key tenant onboarding.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Key tenant onboarding admin portal UI enable New-CustomerKeyOnboardingRequest review set specific switch default encryption; read Customer Key setup. It documents PowerShell onboarding, not a portal control that performs that onboarding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no review-set-specific customer-managed key switch as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Key tenant onboarding admin portal UI enable New-CustomerKeyOnboardingRequest review set specific switch default encryption; eDiscovery 117569 customer managed key review sets default enabled administrator opt in. Read setup, ingestion and review set settings; no review-set CMK switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The onboarding service supports the MDEP and EXO scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "-Scenario | Workload: MDEP (Multiple Workloads) or EXO (Exchange)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The onboarding account needs service principal registration permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "The account used for onboarding must have the following permissions: 1. Service principal registration permissions: To register the required service principals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The onboarding account needs Reader on each Azure Key Vault used in the cmdlet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Reader role: On each Azure Key Vault used in the onboarding cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Add to review set progress can be tracked on the Process manager page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "You can track the progress on the Process manager page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "command",
+      "claim": "The onboarding table's Enable command can be used to check whether the tenant already uses Customer Key.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Use the Enable mode when you're ready to onboard your tenant to Customer Key. This mode enables Customer Key for the workload you specify using the -Scenario parameter.",
+      "severity": "blocker",
+      "fix": "Replace the first Before rollout bullet with 'Confirm with your Customer Key service owner whether the tenant already uses Customer Key and who owns the Azure Key Vault or Managed HSM resources behind it.' Do not direct a status check to the Enable command."
+    },
+    {
+      "n": 49,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The cost rating is low, meaning indirect costs only, despite the documented Azure key-management charges.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/azure/security/fundamentals/key-management",
+      "quote": "Azure Key Vault standard and premium tiers bill on a transactional basis, with an extra monthly per-key charge for premium hardware-backed keys. ... Azure Key Vault Managed HSM ... bill at a fixed hourly rate.",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable'. Replace its rationale with 'Variable. Customer Key setup requires paid Azure resources: Key Vault bills transactions and premium hardware-backed keys monthly, while Managed HSM bills hourly. No review-set-specific charge is published.' Add https://learn.microsoft.com/azure/security/fundamentals/key-management to sources."
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to review Key Vault role assignments, but the controls table contains only Customer Key onboarding.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review who holds the Key Vault Administrators and Key Vault Contributors roles on the vaults used for Customer Key. ... Whether the tenant is onboarded to Customer Key",
+      "severity": "minor",
+      "fix": "The After rollout step reviewing Key Vault role assignments has no corresponding controls-table row. Remove that checklist step if retaining the onboarding-only table; do not add a new control row as part of this correction."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout, licence-count bullet",
+      "type": "licensing",
+      "claim": "Multiple-workload Customer Key licence counts are compared with the tenant's Exchange or Teams licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "your tenant must have at least as many Customer Key licenses as users assigned Exchange or Teams licenses - whichever is greater.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "SharePoint and OneDrive have a separate Customer Key onboarding procedure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "This service isn't currently available for the following scenarios: ... SharePoint and OneDrive: See Onboard to Customer Key for SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T05:09:06.380Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=117569",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/customer-key-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/customer-key-set-up",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the tenant is onboarded to Customer Key, which Learn says applies to review set content",
+        "docs": "https://learn.microsoft.com/purview/customer-key-set-up",
+        "reachable": true,
+        "token": "New-CustomerKeyOnboardingRequest",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

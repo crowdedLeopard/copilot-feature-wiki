@@ -34,7 +34,7 @@ sources:
   - title: "Manage sharing settings for SharePoint and OneDrive in Microsoft 365"
     url: "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off"
     kind: "learn"
-  - title: "Change the default sharing link for a site"
+  - title: "Change the default sharing link type for a site"
     url: "https://learn.microsoft.com/sharepoint/change-default-sharing-link"
     kind: "learn"
   - title: "SharePoint service description"
@@ -86,7 +86,7 @@ controls:
       kind: "powershell"
       call: "Set-SPOSite -Identity <site URL> -DefaultSharingLinkType <value>"
       docs: "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite"
-    note: "Existing control. Clear the checkbox, then choose the site's default sharing link setting. MC1454378 says default sharing link settings apply to legacy links and do not govern hero links."
+    note: "Existing control; MC1454378 says it does not govern hero links. For Teams private or shared channel sites, use Set-SPOSite instead; the admin-centre route does not apply."
 confidence: "high"
 created: "2026-11-17"
 updated: "2026-11-24"
@@ -106,19 +106,23 @@ changes:
     note: "Corrected after verification: removed an unsupported absence about hero link scopes, completed two admin paths and the sharing-policy note, and set licensing to the SharePoint and OneDrive plan licence."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-24"
+    note: "Corrected the legacy default sharing link row: for Teams private or shared channel sites, the admin-centre route does not apply and Set-SPOSite is used instead."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 79
+  claims: 82
+  confirmed: 82
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4b91267c7585f29a5e23200179291850"
+  contradicted: 0
+  attempts: 0
+  hash: "19848a82f13e1b243fb457684d6d4ae9"
 ---
 
 ## What's changing
@@ -205,7 +209,7 @@ The cost the sources do show is indirect: time to review sharing guidance and en
 <tr><td data-label="Control"><strong>Default audience of the hero link for a site</strong><br><small>Site</small><br><small class="controls__note">Needs SharePoint Online admin and site collection admin. Default audience only. The Set-SPOSite reference omits DefaultMainLinkScope from its valid parameters for OneDrive and Groups site collections; support is unconfirmed.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultMainLinkScope &lt;OnlyPeopleAdded|Organization|Anyone&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide default audience of the hero link</strong><br><small>Tenant</small><br><small class="controls__note">MC1454378 says there is currently no tenant-wide equivalent. The Set-SPOTenant reference lists no main link parameter at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Organisation-level external sharing level</strong><br><small>Tenant</small><br><small class="controls__note">Available hero link scopes depend on the organization's sharing policies. Anyone needs anonymous links allowed at tenant level; if a site disables Anyone links, an Anyone default falls back to the next most restrictive value.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Sharing › External sharing <a href="https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -SharingCapability &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Default sharing link type for a site (legacy links)</strong><br><small>Site</small><br><small class="controls__note">Existing control. Clear the checkbox, then choose the site's default sharing link setting. MC1454378 says default sharing link settings apply to legacy links and do not govern hero links.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Active sites › site › Sharing › Default sharing link type › Same as organization-level setting <a href="https://learn.microsoft.com/sharepoint/change-default-sharing-link" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultSharingLinkType &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Default sharing link type for a site (legacy links)</strong><br><small>Site</small><br><small class="controls__note">Existing control; MC1454378 says it does not govern hero links. For Teams private or shared channel sites, use Set-SPOSite instead; the admin-centre route does not apply.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Active sites › site › Sharing › Default sharing link type › Same as organization-level setting <a href="https://learn.microsoft.com/sharepoint/change-default-sharing-link" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultSharingLinkType &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -229,8 +233,8 @@ cost: Low. The only cost the sources show is admin and communication time; no li
 impact: High. Microsoft's notice says all users who share or manage files and folders see the new dialog, which replaces how they copy, email and re-share links.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].ui; controls[3].note; Governance controls table / admin-path: The legacy site-default control is reached through Active sites > site > Sharing > Default sharing link type > Same as organization-level setting, without a site-type qualification. | Found: To change the default link type for a Teams private or shared channel site, you must use the Set-SPOSite PowerShell cmdlet. | Fix: Keep the documented path, but add to controls[3].note: 'For Teams private or shared channel sites, use Set-SPOSite instead; the admin-centre route does not apply.' This qualification is stated at https://learn.microsoft.com/sharepoint/change-default-sharing-link. | Source: https://learn.microsoft.com/sharepoint/change-default-sharing-link
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[3].ui / admin-path: The legacy site default link type is reached through Active sites > site > Sharing > Default sharing link type > Same as organization-level setting. | Found: Under Default sharing link type, clear the Same as organization-level setting checkbox. ... Choose the default sharing link setting that you want to use for this site, and then select Save. | Fix: Keep the documented path and add to controls[3].note: 'Clear Same as organization-level setting, then choose the default sharing link setting for the site.' The cited page requires the choice after clearing inheritance: https://learn.microsoft.com/sharepoint/change-default-sharing-link. | Source: https://learn.microsoft.com/sharepoint/change-default-sharing-link
 -->

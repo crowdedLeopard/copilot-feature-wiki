@@ -37,8 +37,8 @@ sources:
   - title: "Update enhancedPersonalizationSetting"
     url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
     kind: "learn"
-  - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
-    url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
+  - title: "Get enhancedPersonalizationSetting"
+    url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta"
     kind: "learn"
 videos: []
 related: ["memory","m365-copilot-updates-to-memory-and-personalization-in-m365-copilot","m365-copilot-enhanced-personalization-with-memory-in-copilot","microsoft-purview-data-lifecycle-management-retention-for-copilot-memory","work-iq"]
@@ -60,19 +60,23 @@ changes:
     note: "New briefing: Copilot uses Microsoft 365 work-data inferences for personalised responses, rolling out to the end of November 2026, with the Graph beta control to disable it."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: memory is not covered by Purview retention, the audit claim is narrowed, the opening of Why it matters no longer says what Copilot used before, and rollout completion is described as expected."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 45
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "143e21f41bef549031be2229ea042cd0"
+  contradicted: 0
+  attempts: 0
+  hash: "7b236ab06f18d8148286120c25f3b7a4"
 ---
 
 ## What's changing
@@ -85,15 +89,15 @@ The roadmap item is In development with a target of November CY2026, release pha
 
 ## Why it matters
 
-This changes what Copilot draws on to answer a user, from what they type to what Microsoft 365 holds about their work. Learn says Enhanced personalization is turned on by default and that no action is needed to turn Copilot memory on, only to turn it off for users or the tenant. A tenant that does nothing should therefore expect the feature to start working for its users as the rollout reaches them.
+This adds inferences from Microsoft 365 work data as context for Copilot responses. Learn says Enhanced personalization is turned on by default and that no action is needed to turn Copilot memory on, only to turn it off for users or the tenant. A tenant that does nothing should therefore expect the feature to start working for its users as the rollout reaches them.
 
-The decision for an administrator is whether to accept that default, and with what communication. The one documented tenant switch is a Microsoft Graph beta call with no documented admin centre path, so someone has to own that script before the rollout completes at the end of November 2026.
+The decision for an administrator is whether to accept that default, and with what communication. The one documented tenant switch is a Microsoft Graph beta call with no documented admin centre path, so someone has to own that script before the expected rollout completion by the end of November 2026.
 
 ## Risk assessment
 
 **Data exposure**
 - Microsoft Learn says the Enhanced personalization control lets Microsoft use a user's private communication data connected to Microsoft 365, such as Teams chats, Outlook emails and transcripts. The same page says the information is not shared with other users.
-- Memories, including details inferred from chat history, are stored in the user's Exchange mailbox in a hidden folder, so they follow the policies that apply to other mailbox data.
+- Memories, including details inferred from chat history, are stored in the user's Exchange mailbox in a hidden folder, so mailbox protections such as Customer Lockbox and encryption at rest apply; Purview retention policies and retention labels do not apply to Copilot memory.
 
 **Security & identity**
 - Learn says admins can't restrict what type of information is added to Copilot memory, so there is no documented way to narrow what is remembered short of turning the control off.
@@ -103,7 +107,7 @@ The decision for an administrator is whether to accept that default, and with wh
 - The documented effect is on the context Copilot uses for responses and recommendations. Neither Learn page read describes this feature taking actions on its own.
 
 **Change & support**
-- Learn says memory and personalisation actions don't generate audit log entries in Purview, so a support case about why Copilot answered in a certain way has no Purview audit trail to consult.
+- Learn says memory and personalisation actions don't generate audit log entries in Purview.
 - Turning the control off does not delete stored items: Learn says saved memories and custom instructions are kept but not applied, and details from chat history are deleted after 30 days.
 - Users see the "Chat History and Work Insights" toggle in Settings > Personalization. Learn says that where the admin control is off, the user-level controls show as off and users can't turn them on.
 
@@ -111,11 +115,11 @@ The decision for an administrator is whether to accept that default, and with wh
 
 Microsoft Learn says Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot licence (page: Manage Copilot personalization and memory). That page publishes no separate price or meter for memory, and no price or meter for this feature is published at the time of writing (November 2026).
 
-The costs known today are indirect: administrator time to decide on the control and script it, and communication to users before the rollout completes. A licence requirement specific to the work-data inferences is not stated in the roadmap item or the notice.
+The costs known today are indirect: administrator time to decide on the control and script it, and communication to users before the expected rollout completion by the end of November 2026. A licence requirement specific to the work-data inferences is not stated in the roadmap item or the notice.
 
 ## Scope
 
-The roadmap lists Worldwide (Standard Multi-Tenant) and the platforms Android, Desktop, iOS, Mac and Web. Microsoft's notice MC1492154 targets users of Microsoft Copilot (Microsoft 365), with rollout from early October to the end of November 2026.
+The roadmap lists Worldwide (Standard Multi-Tenant) and the platforms Android, Desktop, iOS, Mac and Web. Microsoft's notice MC1492154 targets users of Microsoft Copilot (Microsoft 365), with rollout starting in early October 2026 and expected to complete by the end of November 2026.
 
 Learn says Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot licence. The control can be set for the tenant, with an optional Microsoft Entra group for which it is disabled. The Graph update operation lists People Administrator as the least privileged supported role, with the PeopleSettings.ReadWrite.All permission, and is marked beta.
 
@@ -128,13 +132,12 @@ Learn says Copilot memory is available to Copilot Chat users with and without a 
 - Brief users and the data protection team on what the control draws on (Teams chats, Outlook emails, transcripts) and on the user toggle in Settings > Personalization.
 
 ### At rollout
-- Apply the decision with the PATCH call in the controls table before the rollout completes at the end of November 2026.
+- Apply the decision with the PATCH call in the controls table before the expected rollout completion by the end of November 2026.
 - Check the Message center notice MC1492154 for further timeline changes, since Microsoft has already moved the end date once.
 - Confirm with a pilot user that the personalisation toggles show as off after you turn the control off.
 
 ### After rollout
 - Plan for stored items that survive switching the control off: Learn says saved memories and custom instructions are kept, and chat history details are deleted after 30 days.
-- Use Purview eDiscovery or Content Search to find a user's memory when a data subject request needs it, as Learn describes.
 - Tell your compliance team that Learn says memory actions are not audited in Purview and retention policies don't apply.
 
 ## Governance controls
@@ -150,12 +153,12 @@ Learn says Copilot memory is available to Copilot Chat users with and without a 
 
 The documented tenant control is one Graph operation. Its request body sets isEnabledInOrganization (required) and disabledForGroup (a Microsoft Entra group ID, optional); the operation is marked beta, which Microsoft says is subject to change and not supported in production applications. The notice says admins can disable the setting with enhancedPersonalizationSetting, and Learn's control overview says the control can disable linked features for the tenant or a group of users.
 
-Users have their own toggles in Settings > Personalization; an administrator cannot turn these on for a user while the admin control is off. Microsoft Learn documents no Microsoft 365 admin center path for the tenant control at the time of writing (November 2026). Retention policies are not a control over memory, and Learn describes eDiscovery as a way to search and delete memory data, not as a switch.
+Users have their own toggles in Settings > Personalization; an administrator cannot turn these on for a user while the admin control is off. Microsoft Learn documents no Microsoft 365 admin center path for the tenant control at the time of writing (November 2026). Retention policies are not a control over memory, and Learn describes eDiscovery as a way to search and delete memory data, not as a switch. Learn says admins can search users' memory through Microsoft Purview eDiscovery or Content Search; custom instructions aren't yet discoverable in these solutions.
 
 ## Open questions
 
 - Does the enhancedPersonalizationSetting control switch off the "Work insight" inferences in the notice completely, or only the memory features Learn lists? Watch the Enhanced personalization control overview on Learn.
-- Will Microsoft add an admin centre path for the Enhanced personalization control, and will the Graph operation move from beta to v1.0 before the rollout completes?
+- Will Microsoft add an admin centre path for the Enhanced personalization control, and will the Graph operation move from beta to v1.0 before the expected rollout completion by the end of November 2026?
 - Is any licence or meter specific to work-data inferences planned? None is published, and the notice says only that no additional work is required from the admin.
 - When the roadmap item moves from In development to a later status, will Microsoft restate the end of November 2026 rollout date again? Watch MC1492154.
 
@@ -163,17 +166,4 @@ Users have their own toggles in Settings > Personalization; an administrator can
 risk: Medium. Copilot memory draws on Teams chats, Outlook emails and transcripts, is on by default per Learn, and has one documented tenant switch (Graph beta), no Purview audit entries and no retention controls.
 cost: Low. Learn says Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot licence and publishes no price or meter; the known cost is admin and communication time.
 impact: High. Microsoft's notice MC1492154 says inferences from Microsoft 365 data will be used for Copilot responses as it rolls out, so most Copilot users see changed behaviour unless the control is turned off.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: Memories follow the policies that apply to other mailbox data, without qualification. | Found: Retention policies and retention labels configured in Purview by organization admins don't apply to Copilot memory. | Fix: Replace 'so they follow the policies that apply to other mailbox data' with 'so mailbox protections such as Customer Lockbox and encryption at rest apply; Purview retention policies and retention labels do not apply to Copilot memory', as qualified at https://learn.microsoft.com/copilot/manage/copilot-personalization-memory. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [contradicted, blocker] Risk assessment: Change & support / applicability: A support case about why Copilot answered in a certain way has no Purview audit trail to consult. | Found: Microsoft Purview Audit automatically logs Copilot interactions. Each audit record shows who interacted with Copilot, when and where the interaction took place, and which files, sites, or other resources Copilot accessed to generate the response. | Fix: Delete 'so a support case about why Copilot answered in a certain way has no Purview audit trail to consult'. Keep only the supported statement that memory and personalisation actions do not generate Purview audit log entries; that is not a claim that Copilot interactions have no audit trail. | Source: https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing
-- [contradicted, blocker] Governance guidance: After rollout / applicability: An administrator can use Purview eDiscovery or Content Search to find a user's memory for a data subject request, without an exclusion for custom instructions. | Found: Admins can search their users' memory in Microsoft Copilot via Microsoft Purview eDiscovery or Content Search. Custom instructions aren't yet discoverable in these solutions. | Fix: Replace the bullet with 'Use Purview eDiscovery or Content Search to find saved memories and inferred chat-history memories for a data subject request; custom instructions are not discoverable in these solutions.' The exclusion is documented at https://learn.microsoft.com/copilot/manage/copilot-personalization-memory. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [contradicted, blocker] Why it matters / behaviour: This change moves Copilot from drawing on what users type to drawing on what Microsoft 365 holds about their work. | Found: Copilot Memory leverages insights inferred from conversations between the user and Copilot, along with data from the Microsoft Graph and custom instructions to provide personalized help for tasks. | Fix: Replace the first sentence of Why it matters with 'This adds inferences from Microsoft 365 work data as context for Copilot responses.' Do not claim the preceding experience used only what users typed. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-3,-2025
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Why it matters; Cost and licensing; Scope; Governance guidance / date: Rollout is expected to finish by the end of November 2026, moved from late October, but later prose treats completion as certain. | Found: expect to complete by end of November 2026 (previously late October). | Fix: Keep the expected window in What's changing. Elsewhere replace 'before the rollout completes at the end of November 2026' with 'before the expected rollout completion by the end of November 2026', and describe any other end-of-November completion reference as expected rather than certain.
-- [supported, minor] Governance guidance: Before rollout / command: The current Enhanced personalization setting can be read with Microsoft Graph. | Found: GET https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization | Fix: Add https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta to sources for the existing instruction to read the current setting. | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist directs administrators to use a discovery control that has no controls-table row. | Found: Checklist: 'Use Purview eDiscovery or Content Search to find a user's memory'; controls table: only 'Whether Copilot can use Enhanced personalization features such as memory, for the tenant or except one Entra group'. | Fix: Remove the eDiscovery/Content Search instruction from the governance checklist, retaining the corrected discovery limitation in Governance controls prose instead. Do not add a new controls row during correction.
 -->

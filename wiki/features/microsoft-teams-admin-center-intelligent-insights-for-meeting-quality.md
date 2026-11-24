@@ -84,15 +84,17 @@ changes:
     note: "Roadmap status is now Rolling out (previously In development); the page is otherwise unchanged and a claim about the Teams Communications Support Specialist role was removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -193,4 +195,12 @@ Learn says that for the existing troubleshooting experience an administrator's A
 risk: Low. Microsoft's notice MC1523077 says the insights analyse historical meeting-quality data and does not say they change how customer data is stored or processed; only admins in listed roles see them.
 cost: Low. No licence or meter is published for the insights, so the only known cost is admin and network-team time; licensing is not yet published.
 impact: Low. Only administrators in the roles listed in MC1523077 see the insights; end users notice only if admins act on them, for example by changing network settings.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because no licence specific to these insights has been published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included under the standard's product-level licensing rule. Replace the opening licensing sentence with: 'Teams requires a Teams license except for joining meetings anonymously; no licence specific to these insights is yet published.' Add https://learn.microsoft.com/microsoftteams/user-access to sources and retain the warning not to assume the existing telemetry entitlements apply to the insights. This does not assert that a feature-specific add-on has been ruled out. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Role assignment starts at Microsoft Entra admin center > Entra ID > Users > select the user > Assigned roles > Add assignments. | Found: Browse to **Entra ID** > **Users**. Search for and select the user getting the role assignment. Select **Assigned roles** from the side menu, then select **Add assignments**. | Fix: The printed steps are correct but stop at the entry to the assignment flow. Extend controls[1].ui.path and its table rendering to 'Entra ID > Users > select the user > Assigned roles > Add assignments > select a role > Assignment type', as documented at https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal. | Source: https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal
+- [supported, minor] controls[1].api; Governance controls table / command: POST /v1.0/roleManagement/directory/roleAssignments creates a Microsoft Entra directory role assignment. | Found: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments | Fix: Keep the call unchanged. Add to controls[1].note and its rendered note: 'The request body uses principalId for the assignee, roleDefinitionId for the role and directoryScopeId for the directory scope.' These properties are documented in the cited reference. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments
 -->

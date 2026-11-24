@@ -122,15 +122,17 @@ changes:
     note: "Roadmap now lists GCC, GCC High and DoD alongside Worldwide; the notice's rollout schedule still names only Worldwide, so scope and open questions say so. Controls and guidance re-checked against Learn."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -241,8 +243,9 @@ cost: Low. The only cost the sources show is admin and communication time; no li
 impact: Low. Only PSTN participants in one-to-one calls, and the Teams users who call them, in tenants whose calling policy already requires explicit consent, notice the change.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary / behaviour: Teams will ask PSTN participants in one-to-one calls to press 1 or 2 before including them in recording or transcription. | Found: PSTN participants in applicable one-to-one Teams calls where explicit consent for recording or transcription is required | Fix: Replace the summary with: "Where explicit consent is required, PSTN callers in one-to-one Teams calls will press 1 or 2 before recording or transcription includes them. No new setting; prepare users."
+- [supported, minor] summary / behaviour: Teams will ask PSTN participants in one-to-one calls to press 1 or 2 before recording or transcription includes them. | Found: PSTN participants in applicable one-to-one Teams calls where explicit consent for recording or transcription is required | Fix: Replace the summary with: "Where explicit consent is required, PSTN callers in one-to-one Teams calls will press 1 or 2 before recording or transcription includes them. No new setting; prepare users."
+- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: Feature-specific licensing is not yet published, represented by licensing.model unknown. | Found: With PSTN access to your tenant and licensed users, Microsoft Teams Phone provides support for 1:1 calling and group calling between a Teams client--and any PSTN telephone number. | Fix: Set licensing.model to "included". Replace licensing.notes and the licensing paragraph with: "The capability extends existing Teams Phone calling policies. Teams Phone licensing and a PSTN solution are required for Teams PSTN calling; feature-specific licensing or a meter for this keypad extension is not yet published." Cite https://learn.microsoft.com/microsoftteams/teams-phone-licensing. Replace "Treat licensing as not yet published rather than as included" with "Feature-specific terms remain unpublished; the existing Teams Phone entitlement is documented." In the cost rationale replace "its licensing is not yet published" with "feature-specific licensing is not yet published". Replace "Will any licence apply?" with "Will Microsoft publish feature-specific licensing terms?" | Source: https://learn.microsoft.com/microsoftteams/teams-phone-licensing
 -->

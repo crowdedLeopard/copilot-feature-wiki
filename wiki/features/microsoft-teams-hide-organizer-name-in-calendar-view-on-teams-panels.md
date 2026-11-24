@@ -72,10 +72,12 @@ changes:
     note: "Corrected after verification: licensing model set to included; removed unsupported claims about scope, data access, identity, autonomy and the meeting itself; removed the licence-pricing question and the Settings Job History step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -170,4 +172,11 @@ The release notes and MC1484010 also say the setting can be changed on the panel
 risk: Low. The setting only removes a detail from the panel display, and Microsoft's notice MC1484010 says organiser names continue to be displayed by default, so leaving it alone keeps today's behaviour.
 cost: Low. The roadmap says the setting is available with Teams Rooms Pro and Teams Shared Space licences; the only cost shown is admin time, and no separate price is published for this setting.
 impact: Low. Room admins notice the new setting; people reading a panel notice a change only on devices where an admin turns the setting off.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The single-device settings route in the Teams Rooms Pro Management portal is Rooms/ Phones > device > Settings. | Found: Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. Use the left navigation in the device panels to browse settings categories | Fix: Keep the documented path, but append to controls[0].note: 'This route stops at the Settings tab; browse the settings categories and select Show organizer name. Microsoft has not published which category contains it.' The cited page documents browsing categories and modifying settings, not the final category. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
+- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: The bulk device settings route in the Teams Rooms Pro Management portal is Settings > Device Settings > Jobs. | Found: go to Settings > Device Settings. Select the Jobs tab. Add devices or groups of devices where the setting changes are to be applied. Select Settings changes to be applied to devices. | Fix: Extend controls[1].ui.path to 'Settings > Device Settings > Jobs > Settings'. Append to controls[1].note: 'On Jobs, add the target devices or groups of devices, then select the Settings changes to apply.' This follows the cited Create a Job steps without implying that this particular setting is documented for bulk changes. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
 -->

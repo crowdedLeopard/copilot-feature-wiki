@@ -111,19 +111,23 @@ changes:
     note: "Corrected after verification: template activation now lists its reviewed beta Graph call, the Frontier enrolment path is given in full, and the block-agent note says what blocking affects."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed the statement that Learn names no roles for the Power Platform admin center step."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
+  claims: 91
   confirmed: 91
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4ba74e711e43dc2b2dd48194ceac0ee2"
+  contradicted: 0
+  attempts: 0
+  hash: "8d9f6a24442c7f45def7205a0c14c5f9"
 ---
 
 ## What's changing
@@ -171,7 +175,7 @@ Usage is charged separately. Learn says account licensing and usage-based servic
 
 Only users and groups selected in the activation wizard of the Copilot Studio (Frontier) template can create agents with accounts. Admin switches apply per environment: Learn requires the environment to use the early release cycle, and makers build in Copilot Studio Preview.
 
-The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the web platform. Learn says agent accounts are available to customers in the European Economic Area. Tenant admins activate the template, and a global admin enrols the tenant in Frontier from Agents > Overview > Try now > I agree in the Microsoft 365 admin center. Learn names no roles for the Power Platform admin center step.
+The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the web platform. Learn says agent accounts are available to customers in the European Economic Area. Tenant admins activate the template, and a global admin enrols the tenant in Frontier from Agents > Overview > Try now > I agree in the Microsoft 365 admin center.
 
 ## Governance guidance
 
@@ -222,8 +226,9 @@ cost: Variable. Each agent account uses one Microsoft 365 Frontier for AI Teamma
 impact: Medium. Only makers selected by an admin can create these agents, but colleagues will see the agent in Teams, email and the directory, and anyone who talks to it contributes to its shared memory.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope / absence: Microsoft Learn names no roles for the Power Platform admin center step. | Found: To help you administer environments and settings for the Microsoft Power Platform, you can assign users to manage the service at the tenant level ... Power Platform administrator ... Perform admin functions in Microsoft Power Platform | Fix: Remove the sentence 'Learn names no roles for the Power Platform admin center step.' Microsoft documents general Power Platform service administration roles at https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant; the absence must not be stated about all of Learn. | Source: https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: previewDate; What's changing / record: The roadmap preview date is September CY2026. | Found: "previewDate": "September CY2026" | Fix: Keep the roadmap date and add: 'The Microsoft 365 Resources for Agents service description instead lists Copilot Studio Frontier Public preview availability as December 1, 2026, with consumption billing beginning on availability.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents.
+- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost / licensing: The cited account documentation describes mixed licensing: maker entitlement, a per-agent account licence and separate usage charges. | Found: An agent account requires a Microsoft 365 Frontier for AI Teammates license and tenant Frontier enrollment, as described in Prerequisites. Account licensing and usage-based service charges are separate. | Fix: Retain the cited Frontier requirements but add to Cost and licensing: 'Microsoft's Microsoft 365 Resources for Agents service description describes automatic resource provisioning rather than a manageable user licence, billed through Copilot Credits at 100 credits per agent per month plus activity. It requires consumption billing for the Copilot Studio maker. These published descriptions differ.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents and note that distinction in licensing.notes. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account
 -->

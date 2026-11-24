@@ -77,15 +77,17 @@ changes:
     note: "Corrected after verification: added the Windows-only Group Policy path for the browser check-in row, narrowed the threshold and data-exposure statements, and trimmed two checklist items that had no controls-table row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 62 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 66 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
+  claims: 66
+  confirmed: 64
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -189,11 +191,11 @@ cost: Low. The only cost the sources show is admin time to choose a threshold; M
 impact: Low. Only administrators who use the Edge management service see the alerts; end users are not mentioned in the roadmap item, the Message Center post or the Learn page.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first sentence / behaviour: Edge handles untrusted content on every managed device. | Found: Searched: Microsoft Edge browser untrusted web content installed every managed device security updates risk. Read Monitoring dashboard and Microsoft Edge security for your business excerpts; neither establishes that Edge handles content on every managed device. | Fix: Replace the first sentence with: 'Browser sessions without the latest security updates might be at risk.' This is stated on the already-cited Monitoring dashboard page.
+- [unsupported, major] Why it matters: first sentence / behaviour: Edge handles untrusted content on every managed device. | Found: Searched: Microsoft Edge browser untrusted content every managed device security risk. Read Microsoft Edge security for your business, Application Guard overview and legacy-app security excerpts; these describe browser risks but do not establish use on every managed device. | Fix: Replace the first sentence with: 'Browser sessions without the latest security updates might be at risk.' This is stated on https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api / command: Setting EdgeManagementEnabled to 0 or disabled stops browsers checking in with the Edge management service. | Found: To disable the checking in with the Edge management service you can set the EdgeManagementEnabled policy to 0 or disabled. | Fix: Remove controls[2] and its rendered table row, retaining the supported EdgeManagementEnabled explanation already in the Governance controls prose. The policy instruction is true, but it is not a runnable API or automation call as the table and standard require; do not replace it with a false undocumented-automation claim. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
-- [contradicted, minor] rationale: impact / absence: End users are not mentioned in the roadmap item, the Message Center post or the Learn page. | Found: Recommend restart: This action sends a notification to the user to restart their browser to apply the latest update. No action will be taken on their behalf, and users may choose whether to act upon the notification. | Fix: Replace the impact rationale with: 'Low. Microsoft describes security update alerts as an administrator capability displayed in the monitoring dashboard.' The Learn page does mention end users for separate restart actions; this does not establish that alerts automatically trigger those actions. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard
+- [supported, minor] controls[2].api; rendered Governance controls table / command: Setting EdgeManagementEnabled to 0 or disabled stops browsers checking in with the Edge management service. | Found: To disable the checking in with the Edge management service you can set the EdgeManagementEnabled policy to 0 or disabled. | Fix: Remove controls[2] and its rendered table row, retaining the supported policy explanation in Governance controls prose. The instruction is true but is not a runnable API or automation call; do not replace it with a claim that automation is undocumented. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
+- [contradicted, minor] rationale: impact / absence: End users are not mentioned in the roadmap item, Message Center post or Learn page. | Found: Recommend restart: This action sends a notification to the user to restart their browser to apply the latest update. No action will be taken on their behalf, and users may choose whether to act upon the notification. | Fix: Replace the impact rationale with: 'Low. Microsoft describes security update alerts as an administrator capability displayed in the monitoring dashboard.' The cited Learn page mentions users for separate restart actions, not automatic actions triggered by alerts. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard
 -->

@@ -2,31 +2,33 @@
   "slug": "microsoft-teams-granular-conditional-access-for-teams-meetings",
   "roadmapId": 571879,
   "title": "Microsoft Teams: Conditional Access policies for selected meetings",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "verified-with-gaps",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 65,
-    "confirmed": 65,
+    "claims": 59,
+    "confirmed": 59,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 5
   },
-  "summary": "The briefing passes: its configuration paths, API calls and PowerShell settings are supported by Microsoft documentation. It accurately distinguishes the roadmap target from the later Message Center schedule, flags the settings' current no-effect warning, and leaves feature-specific licensing and client coverage unresolved.",
+  "summary": "The meeting controls and the differing roadmap and Message Center schedules are supported. Minor corrections should complete the authentication-context path, simplify the Graph calls and distinguish the known Conditional Access licence requirement from unpublished Teams-specific licensing.",
   "claims": [
     {
       "n": 1,
       "where": "title; What's changing",
       "type": "record",
-      "claim": "Microsoft plans granular Conditional Access policies for selected Teams meetings to check participants' security requirements before joining.",
+      "claim": "The feature permits Conditional Access policies for selected Teams meetings.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Administrators can apply Conditional Access policies to selected meetings, helping ensure participants meet organizational security requirements before joining.",
@@ -35,6 +37,28 @@
     },
     {
       "n": 2,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Organisers can select an authentication context for a specific meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "$true: Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration, defaulting to None in the meeting options dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1532256 identifies multifactor authentication, device compliance and location-based controls as possible additional requirements.",
+      "status": "supported",
+      "source": "Message Center post MC1532256",
+      "quote": "allowing organizers to require additional verification such as multifactor authentication, device compliance, or location-based controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -45,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing; Open questions",
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is November CY2026, not a committed availability date.",
+      "claim": "The roadmap target is November CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -56,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -67,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
@@ -78,35 +102,13 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed roadmap cloud; GCC, GCC High and DoD are not listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not list GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap item has no more-info link.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"moreInfoLink\": null",
       "severity": null,
       "fix": null
     },
@@ -123,17 +125,6 @@
     },
     {
       "n": 10,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-11T00:52:46.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-11T00:52:46\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1532256 was published on 2026-10-30.",
@@ -144,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "MC1532256 targets Public Preview for late November 2026.",
+      "claim": "MC1532256 places the Worldwide Public Preview rollout in late November 2026.",
       "status": "supported",
       "source": "Message Center post MC1532256",
       "quote": "Public Preview (Worldwide): We will begin rolling out in late November 2026 and expect to complete by late November 2026.",
@@ -155,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "MC1532256 says General Availability rollout begins in early January 2027.",
+      "claim": "MC1532256 says Worldwide General Availability rollout begins in early January 2027.",
       "status": "supported",
       "source": "Message Center post MC1532256",
       "quote": "General Availability (Worldwide): We will begin rolling out in early January 2027 and expect to complete by late January 2027.",
@@ -166,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 13,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1532256 expects General Availability rollout to complete by late January 2027.",
@@ -177,7 +168,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1532256 sets no act-by date.",
@@ -188,109 +179,43 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Governance guidance: Before rollout",
+      "n": 15,
+      "where": "summary; Scope; Governance controls",
       "type": "record",
-      "claim": "Administrators can offer meeting requirements that let organisers require multifactor authentication.",
+      "claim": "Microsoft recommends configuring Entra contexts and policies, publishing contexts to Teams and enabling authentication requirements through Teams meeting policies.",
       "status": "supported",
       "source": "Message Center post MC1532256",
-      "quote": "Administrators can make approved authentication requirements available for specific meetings, allowing organizers to require additional verification such as multifactor authentication, device compliance, or location-based controls.",
+      "quote": "administrators should configure required authentication contexts and associated Conditional Access policies in Microsoft Entra, publish authentication contexts to Microsoft Teams, and enable meeting authentication requirements through Teams meeting policies.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Authentication contexts are managed at Microsoft Entra admin center > Entra ID > Conditional Access > Authentication context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Manage authentication contexts by going to Entra ID > Conditional Access > Authentication context. Select New authentication context to create an authentication context definition.",
+      "severity": "minor",
+      "fix": "Complete controls[0].ui.path and its table rendering as 'Entra ID > Conditional Access > Authentication context > New authentication context > Publish to apps'. The current route stops on the correct management page; the cited page documents the remaining creation and publication steps."
     },
     {
       "n": 17,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Device compliance is an example of a requirement organisers can apply to selected meetings.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/identity/conditionalAccess/authenticationContextClassReferences creates a context with id, displayName, description and isAvailable set to true.",
       "status": "supported",
-      "source": "Message Center post MC1532256",
-      "quote": "allowing organizers to require additional verification such as multifactor authentication, device compliance, or location-based controls.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
+      "quote": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationContextClassReferences\n{\"id\": \"c1\", \"displayName\": \"Contoso medium\", \"description\": \"Medium protection level defined for Contoso policy\", \"isAvailable\": true}",
+      "severity": "minor",
+      "fix": "Set controls[0].api.call and its table rendering to 'POST /beta/identity/conditionalAccess/authenticationContextClassReferences'. Add to the row note: 'The request body supplies id, displayName and description, and sets isAvailable to true to publish the context to apps.'"
     },
     {
       "n": 18,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Location-based controls are an example of the available meeting requirements.",
-      "status": "supported",
-      "source": "Message Center post MC1532256",
-      "quote": "allowing organizers to require additional verification such as multifactor authentication, device compliance, or location-based controls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Microsoft's notice says participants must satisfy the applicable policy before joining a protected meeting.",
-      "status": "supported",
-      "source": "Message Center post MC1532256",
-      "quote": "Participants must satisfy the applicable Conditional Access policy before joining the protected meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft asks administrators to configure authentication contexts and associated policies in Microsoft Entra.",
-      "status": "supported",
-      "source": "Message Center post MC1532256",
-      "quote": "administrators should configure required authentication contexts and associated Conditional Access policies in Microsoft Entra",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "summary; Scope; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "Microsoft asks administrators to publish authentication contexts to Teams.",
-      "status": "supported",
-      "source": "Message Center post MC1532256",
-      "quote": "publish authentication contexts to Microsoft Teams",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "summary; Scope; Governance controls",
-      "type": "record",
-      "claim": "Microsoft asks administrators to enable meeting authentication requirements through Teams meeting policies.",
-      "status": "supported",
-      "source": "Message Center post MC1532256",
-      "quote": "enable meeting authentication requirements through Teams meeting policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Authentication contexts are managed in Microsoft Entra admin center at Entra ID > Conditional Access > Authentication context.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
-      "quote": "Manage authentication contexts by going to Entra ID > Conditional Access > Authentication context.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[0].api; Governance controls: first row",
-      "type": "command",
-      "claim": "POST /beta/identity/conditionalAccess/authenticationContextClassReferences creates a context using id, displayName, description and isAvailable: true.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
-      "quote": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationContextClassReferences\n\"id\": \"c1\",\n\"displayName\": \"Contoso medium\",\n\"description\": \"Medium protection level defined for Contoso policy\",\n\"isAvailable\": true",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "Publish to apps makes an authentication context available for applications to assign.",
+      "claim": "Publish to apps makes an authentication context available to downstream apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
       "quote": "Publish to apps checkbox, when selected, advertises the authentication context to apps and makes it available to be assigned. If not selected, the authentication context is unavailable to downstream resources.",
@@ -298,32 +223,54 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[0].note; Scope",
-      "type": "role",
-      "claim": "The Graph create-context reference lists Security Administrator as a supported role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
-      "quote": "This operation supports the following built-in roles, which provide only the least privilege necessary:\n- Security Administrator\n- Conditional Access Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[0].note; Scope",
-      "type": "role",
-      "claim": "The Graph create-context reference lists Conditional Access Administrator as a supported role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
-      "quote": "This operation supports the following built-in roles, which provide only the least privilege necessary:\n- Security Administrator\n- Conditional Access Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].note; controls[1].note; Governance controls",
+      "n": 19,
+      "where": "controls[0].note",
       "type": "behaviour",
-      "claim": "The documented Graph beta APIs are subject to change and are not supported for production applications.",
+      "claim": "The cited Graph context-creation reference documents the beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "The Graph context-creation reference lists Security Administrator and Conditional Access Administrator as supported roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
+      "quote": "For delegated access using work or school accounts ... This operation supports the following built-in roles ... Security Administrator; Conditional Access Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "A policy targets a context through Entra ID > Conditional Access > Policies > policy > Assignments > Target resources > Select what this policy applies to > Authentication context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Browse to Entra ID > Conditional Access > Policies. ... Admins can select published authentication contexts ... by going to Assignments > Target resources and selecting Authentication context from the Select what this policy applies to menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/identity/conditionalAccess/policies can create a policy targeting conditions.applications.includeAuthenticationContextClassReferences with user assignments and grant controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/conditionalaccessapplications?view=graph-rest-beta",
+      "quote": "includeAuthenticationContextClassReferences | String collection | Authentication context class references include. Supported values are c1 through c25.",
+      "severity": "minor",
+      "fix": "Set controls[1].api.call and its table rendering to 'POST /beta/identity/conditionalAccess/policies'. Add to its note: 'The request body targets the context through conditions.applications.includeAuthenticationContextClassReferences and supplies user assignments and grant controls.' The cited create-policy reference confirms the POST operation and body structure."
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The beta Graph policy API is subject to change and is not supported for production applications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta",
       "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
@@ -331,219 +278,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "controls[1].ui; Governance controls: second row",
-      "type": "admin-path",
-      "claim": "The policy path is Entra ID > Conditional Access > Policies > policy > Assignments > Target resources > Select what this policy applies to > Authentication context.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
-      "quote": "Browse to Entra ID > Conditional Access > Policies.\nAdmins can select published authentication contexts in Conditional Access policies by going to Assignments > Target resources and selecting Authentication context from the Select what this policy applies to menu.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[1].api; Governance controls: second row",
-      "type": "command",
-      "claim": "POST /beta/identity/conditionalAccess/policies accepts policy JSON with conditions.applications.includeAuthenticationContextClassReferences, user assignments and grant controls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta",
-      "quote": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies\nIn the request body, supply a JSON representation of a conditionalAccessPolicy object.\n\"includeAuthenticationContextClassReferences\": []",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[2].api; Governance guidance: At rollout; Governance controls",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingConfiguration -Identity Global -PublishedEntraAuthenticationContexts <contexts> publishes the meeting contexts through the MicrosoftTeams module.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-      "quote": "Set-CsTeamsMeetingConfiguration\n    [[-Identity] <XdsIdentity>]\n    [-PublishedEntraAuthenticationContexts <PSObject>]\nThe only valid input is Global\nA list of authentication contexts from Microsoft Entra ID that can be applied to Teams meetings for conditional access scenarios.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[2].scope; Scope",
+      "n": 24,
+      "where": "controls[1].note; Risk assessment; Governance guidance",
       "type": "applicability",
-      "claim": "Teams meeting configuration applies tenant-wide.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-      "quote": "The CsTeamsMeetingConfiguration cmdlets enable administrators to control the meetings configurations in their tenants. Use this cmdlet to set the configuration for your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[2].note; Governance controls",
-      "type": "command",
-      "claim": "Every entry in PublishedEntraAuthenticationContexts requires an Id.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-      "quote": "Each entry has a required Id (c1-c99), and optional PublishedName (max 50 characters) and PublishedDescription (max 150 characters).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[2].note; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "PublishedName and PublishedDescription are optional entry properties.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-      "quote": "Each entry has a required Id (c1-c99), and optional PublishedName (max 50 characters) and PublishedDescription (max 150 characters).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The Teams configuration reference gives context Id values c1-c99.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-      "quote": "Each entry has a required Id (c1-c99)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[2].note; What's changing; Risk assessment; Governance guidance",
-      "type": "availability",
-      "claim": "The PublishedEntraAuthenticationContexts reference warns that the feature is not fully released and the setting has no effect.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[3].api; Governance controls: fourth row",
-      "type": "command",
-      "claim": "The MicrosoftTeams cmdlet Set-CsTeamsMeetingPolicy accepts -Identity <policy name> -ConditionalAccessAttendeeVerification $true.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Set-CsTeamsMeetingPolicy\n    [[-Identity] <XdsIdentity>]\n    [-ConditionalAccessAttendeeVerification <Boolean>]\n$true: Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[3].scope; summary; Scope",
-      "type": "applicability",
-      "claim": "The meeting policy can be assigned to particular users and controls meetings organised by those users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "The Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies that can be assigned to particular users to control Teams features related to meetings.\nEnables Conditional Access Authentication for users joining meetings organized by this user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "When ConditionalAccessAttendeeVerification is True, organisers can select a context published in Teams meeting configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "$true: Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration, defaulting to None in the meeting options dropdown.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "default",
-      "claim": "The organiser's meeting-options authentication-context dropdown defaults to None.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "$true: Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration, defaulting to None in the meeting options dropdown.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[3].note; Risk assessment; Governance guidance",
-      "type": "default",
-      "claim": "ConditionalAccessAttendeeVerification defaults to True.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -ConditionalAccessAttendeeVerification\n| Type: | Boolean |\n| Default value: | True |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[3].note; Risk assessment; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "Setting ConditionalAccessAttendeeVerification to False disables authentication-context enforcement for meetings organised by the policy's user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "$false: Disables conditional access authentication context enforcement for meetings organized by this user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Users with the required claims can join the meeting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "If the user has the required claims, they will be able to join the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "Participants lacking the required claims are prompted to retry obtaining a token.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Otherwise, they will be prompted to choose between retrying to get the token or joining the lobby if enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Open questions",
-      "type": "behaviour",
-      "claim": "Participants lacking the required claims can be prompted to join the lobby if the lobby is enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Otherwise, they will be prompted to choose between retrying to get the token or joining the lobby if enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[3].note; What's changing; Risk assessment; Governance guidance",
-      "type": "availability",
-      "claim": "The ConditionalAccessAttendeeVerification reference warns that the feature is not fully released and the setting has no effect.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -ConditionalAccessAttendeeVerification\nThis feature has not been fully released yet, so the setting will have no effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "front matter: defaultState; Why it matters; Risk assessment; rationale: risk",
-      "type": "default",
-      "claim": "The new control is admin-opt-in: meeting-context requirements need administrative publication and organiser selection rather than being imposed on existing meetings by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "$true: Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration, defaulting to None in the meeting options dropdown.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[1].note; Risk assessment; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "A Conditional Access policy can target a published authentication context.",
+      "claim": "Conditional Access policies can target published authentication contexts to define their requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
       "quote": "Admins can select published authentication contexts in Conditional Access policies by going to Assignments > Target resources and selecting Authentication context from the Select what this policy applies to menu.",
@@ -551,10 +289,208 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 25,
+      "where": "controls[2].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "A Teams admin center path for publishing meeting authentication contexts is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams PublishedEntraAuthenticationContexts ConditionalAccessAttendeeVerification Teams admin center; \"PublishedEntraAuthenticationContexts\" \"admin center\". Read Set-CsTeamsMeetingConfiguration and search excerpts; no Teams UI publication route returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingConfiguration -Identity Global -PublishedEntraAuthenticationContexts <contexts> configures the published contexts, subject to the documented no-effect caveat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "[-PublishedEntraAuthenticationContexts <PSObject>] ... -Identity: The only valid input is Global ... A list of authentication contexts from Microsoft Entra ID that can be applied to Teams meetings for conditional access scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Each published context entry requires an Id.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "Each entry has a required Id (c1-c99), and optional PublishedName (max 50 characters) and PublishedDescription (max 150 characters).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "PublishedName is an optional field for each published context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "Each entry has a required Id (c1-c99), and optional PublishedName (max 50 characters) and PublishedDescription (max 150 characters).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "PublishedDescription is an optional field for each published context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "Each entry has a required Id (c1-c99), and optional PublishedName (max 50 characters) and PublishedDescription (max 150 characters).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].note; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The published-context parameter reference says the feature is not fully released and the setting has no effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].scope; Scope",
+      "type": "applicability",
+      "claim": "The Teams meeting configuration is tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "The CsTeamsMeetingConfiguration cmdlets enable administrators to control the meetings configurations in their tenants. Use this cmdlet to set the configuration for your organization. ... The only valid input is Global",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[3].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "A Teams admin center path for ConditionalAccessAttendeeVerification is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams PublishedEntraAuthenticationContexts ConditionalAccessAttendeeVerification Teams admin center; \"ConditionalAccessAttendeeVerification\" \"admin center\". Read Set-CsTeamsMeetingPolicy and search excerpts; no Teams UI enforcement setting returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -ConditionalAccessAttendeeVerification $true enables the described meeting authentication capability, subject to the no-effect caveat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "[-ConditionalAccessAttendeeVerification <Boolean>] ... $true: Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[3].note; Risk assessment; Governance guidance",
+      "type": "default",
+      "claim": "ConditionalAccessAttendeeVerification has a reference default of True.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "-ConditionalAccessAttendeeVerification ... Type: Boolean ... Default value: True",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "False disables authentication-context enforcement for meetings organised by the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "$false: Disables conditional access authentication context enforcement for meetings organized by this user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].scope; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Meeting policies can be assigned to particular users, allowing different policy settings for different organisers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "The Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies that can be assigned to particular users to control Teams features related to meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[3].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The enforcement parameter reference says the feature is not fully released and the setting has no effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "default",
+      "claim": "The organiser's meeting-options authentication-context dropdown defaults to None.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration, defaulting to None in the meeting options dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Participants with the required claims can join the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "If the user has the required claims, they will be able to join the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Participants lacking the required claims are prompted to retry obtaining the token or join the lobby if it is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Otherwise, they will be prompted to choose between retrying to get the token or joining the lobby if enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: defaultState; rationale: risk",
+      "type": "default",
+      "claim": "The new control is admin-opt-in: the meeting context must be published before an organiser can choose it, and the selection defaults to None.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "$true: Conditional Access Authentication contexts are available for the organizer to select from those published in the Teams Meeting Configuration, defaulting to None in the meeting options dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "A meeting left at None has no additional authentication-context requirement; publication and organiser selection are needed to apply one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Uses the AuthenticationContexts published in the TeamsMeetingConfiguration. ... contexts are available for the organizer to select from those published in the Teams Meeting Configuration, defaulting to None in the meeting options dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Publishing a context without assigning it a Conditional Access policy does not itself enforce an additional policy requirement.",
+      "claim": "An authentication context with no assigned Conditional Access policy supplies no policy requirement to enforce.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity-platform/developer-guide-conditional-access-authentication-context",
       "quote": "If no Conditional Access policy is assigned to an ACRS value the claim might still be issued, because all policy requirements are satisfied.",
@@ -562,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 44,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "An authentication-context claim might still be issued when no policy is assigned to its value.",
+      "claim": "A context with no assigned policy may still be issued in token claims.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity-platform/developer-guide-conditional-access-authentication-context",
       "quote": "If no Conditional Access policy is assigned to an ACRS value the claim might still be issued, because all policy requirements are satisfied.",
@@ -573,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 45,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Entra documentation permits up to 99 authentication-context definitions, c1-c99.",
+      "claim": "The Entra authentication-context page documents up to 99 contexts, c1-c99.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
       "quote": "Organizations can create up to 99 authentication context definitions (c1-c99).",
@@ -584,10 +520,21 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 46,
       "where": "Governance controls",
-      "type": "command",
-      "claim": "The Graph beta create-context reference instead lists the allowed IDs as c1 through c25.",
+      "type": "behaviour",
+      "claim": "The Teams configuration cmdlet documents context Id values c1-c99.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "Each entry has a required Id (c1-c99)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph beta context-creation reference lists allowed Id values c1 through c25, differing from Entra and Teams documentation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
       "quote": "The allowed values are c1 through c25. Required.",
@@ -595,21 +542,10 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "Feature-specific Teams licensing beyond the documented Conditional Access prerequisite is not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams meetings granular Conditional Access authentication context licensing Teams Premium meter pricing. Opened Teams Premium licensing, Conditional Access overview and both Teams cmdlet references; no feature-specific Teams licence stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
+      "n": 48,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Using Conditional Access requires Microsoft Entra ID P1 licensing.",
+      "claim": "Using Conditional Access requires Microsoft Entra ID P1 licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
       "quote": "Using this feature requires Microsoft Entra ID P1 licenses.",
@@ -617,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 49,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 Business Premium customers can also use Conditional Access features.",
+      "claim": "Customers with Microsoft 365 Business Premium licenses can also use Conditional Access features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
       "quote": "Customers with Microsoft 365 Business Premium licenses can also use Conditional Access features.",
@@ -628,125 +564,125 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 50,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature's licensing model is unknown, with a known Conditional Access prerequisite but no published additional Teams-specific entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Using this feature requires Microsoft Entra ID P1 licenses. ... Customers with Microsoft 365 Business Premium licenses can also use Conditional Access features.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included' under the standard for a new option within a licensed product. Set licensing.notes to 'Conditional Access requires Microsoft Entra ID P1 licenses; customers with Microsoft 365 Business Premium licenses can also use Conditional Access features. An additional Teams licence specific to this feature is not yet published.'"
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a separate licence specific to granular Conditional Access for Teams meetings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"authentication context\" \"licensing\"; \"Teams\" \"granular Conditional Access\". Read Teams Premium licensing, Teams Premium overview, Conditional Access overview and both Teams cmdlet references; no additional feature-specific licence stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No feature-specific meter, credit rate or storage charge is documented at the time of writing.",
+      "claim": "No meter, credit rate or storage charge specific to this feature is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams meetings granular Conditional Access authentication context licensing Teams Premium meter pricing. Opened Teams Premium licensing, Conditional Access overview and Teams cmdlet references; no feature-specific meter, credit rate or storage charge.",
+      "quote": "Searched: \"Teams\" \"Conditional Access\" \"meeting\" \"meter\" pricing; Teams meetings granular conditional access authentication context Teams Premium licensing meter. Read Teams Premium licensing, Conditional Access overview and Teams cmdlet references; no feature-specific meter.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[2].ui; What's changing; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "A Teams admin center path for publishing meeting authentication contexts is not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center PublishedEntraAuthenticationContexts authentication context meeting options. Opened Set-CsTeamsMeetingConfiguration and Teams settings and policies reference; the parameter is documented, but no matching Teams admin center control or path was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[3].ui; What's changing; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "A Teams admin center path for ConditionalAccessAttendeeVerification is not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center ConditionalAccessAttendeeVerification meeting policy Conditional Access. Opened Set-CsTeamsMeetingPolicy and Teams settings and policies reference; no matching Teams admin center setting or path was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn has no dedicated meeting-experience instructions or organiser-side steps for selecting this new requirement.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams meetings\" \"authentication context\" \"organizer\"; Teams admin center PublishedEntraAuthenticationContexts authentication context meeting options. Read results and Teams cmdlet references; only the dropdown description, not organiser instructions for this feature, was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
+      "n": 53,
       "where": "Scope",
       "type": "absence",
       "claim": "Microsoft Learn does not state whether this granular meeting feature will reach GCC, GCC High or DoD.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams meetings granular Conditional Access authentication context GCC GCC High DoD guests anonymous Teams Rooms supported. Read results, including government release notes and Rooms guidance; these describe other Conditional Access scenarios, not this feature's government-cloud rollout.",
+      "quote": "Searched: \"Teams\" \"authentication contexts\" \"GCC\" \"anonymous\"; \"Teams\" \"granular Conditional Access\". Read both Teams cmdlet references and search excerpts. General cross-cloud and Graph availability do not state this meeting feature's government rollout.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Scope; Open questions",
+      "n": 54,
+      "where": "What's changing; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft Learn has not specified the supported Teams meeting types for this feature.",
+      "claim": "Microsoft Learn has no dedicated meeting-experience instructions giving the organiser-side steps for this feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams meetings\" \"authentication context\" \"organizer\"; Teams meetings granular Conditional Access authentication context GCC GCC High DoD guests anonymous Teams Rooms supported. Read results and both Teams cmdlet references; no feature-specific meeting-type matrix was found.",
+      "quote": "Searched: \"Teams\" \"granular Conditional Access\"; Teams PublishedEntraAuthenticationContexts ConditionalAccessAttendeeVerification Teams admin center meeting options authentication context. Read both Teams cmdlet references and returned excerpts; only the dropdown behaviour is described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 55,
       "where": "Scope; Open questions",
       "type": "absence",
-      "claim": "Microsoft Learn has not specified coverage for guests, external participants and anonymous attendees for this new meeting requirement.",
+      "claim": "Learn does not specify granular meeting authentication-context support by meeting type, participant type or Teams Rooms device.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams\" \"authentication context\" \"anonymous\"; Teams meetings granular Conditional Access authentication context GCC GCC High DoD guests anonymous Teams Rooms supported. Read results and Set-CsTeamsMeetingPolicy; generic join behaviour is documented, but no participant-type matrix.",
+      "quote": "Searched: Teams meetings granular conditional access authentication context Teams Premium licensing meter guest anonymous Teams Rooms GCC; \"Teams\" \"authentication contexts\" \"GCC\" \"anonymous\". Read Teams cmdlet references and Teams Premium overview; no feature support matrix.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn has not specified how this granular meeting requirement applies to Teams Rooms devices or detailed its experience on each client.",
+      "n": 56,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap item has no more-info link.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams meetings granular Conditional Access authentication context GCC GCC High DoD guests anonymous Teams Rooms supported. Read Rooms Conditional Access search results and both Teams cmdlet references; Rooms sign-in guidance does not establish support for this meeting-specific feature.",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
+      "n": 57,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "No autonomous or agent behaviour is described for this granular meeting feature.",
+      "claim": "The supplied description and feature parameter documentation describe no autonomous or agent behaviour for this feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams meetings\" \"granular Conditional Access\" \"autonomous\" \"agent\". Read search results, roadmap record, MC1532256 and both Teams cmdlet references; agent-policy documentation is separate and no autonomous behaviour is described for this feature.",
+      "quote": "Searched: Teams granular Conditional Access meetings autonomous agent actions authentication contexts. Read both Teams parameter references, the roadmap description and search excerpts; general Conditional Access for agents does not describe autonomous actions by this meeting feature.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Authentication contexts allow stricter requirements on selected sensitive operations rather than requiring the same standard for every application sign-in.",
+      "n": 58,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Guests using unmanaged devices are an example of participants who may fail a device-compliance requirement.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity-platform/developer-guide-conditional-access-authentication-context",
-      "quote": "Conditional Access authentication context (auth context) allows you to apply granular policies to sensitive data and actions instead of just at the app level.",
+      "source": "https://learn.microsoft.com/entra/external-id/authentication-conditional-access#conditional-access-for-external-users",
+      "quote": "Such policies can block external user access, because an external user can't register their unmanaged device with the resource organization. Devices can only be managed by a user's home tenant.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/entra/external-id/authentication-conditional-access to sources for the unmanaged-guest-device example. Keep the existing Open questions caveat about participant-type support for this new meeting feature."
+    },
+    {
+      "n": 59,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1532256 says participants must satisfy the applicable Conditional Access policy before joining a protected meeting.",
+      "status": "supported",
+      "source": "Message Center post MC1532256",
+      "quote": "Participants must satisfy the applicable Conditional Access policy before joining the protected meeting.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T04:20:11.193Z",
+    "at": "2026-11-24T05:09:14.119Z",
     "summary": {
       "links": 11,
-      "unreachable": 0,
+      "unreachable": 9,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 4,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 4,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -762,48 +698,48 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-device-compliance",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/resources/conditionalaccessapplications?view=graph-rest-beta",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/identity-platform/developer-guide-conditional-access-authentication-context",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -812,29 +748,33 @@
         "side": "ui",
         "governs": "Authentication contexts that can be offered for Teams meetings",
         "docs": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Entra ID",
           "Conditional Access",
           "Authentication context"
         ],
-        "missing": []
+        "missing": [
+          "Entra ID",
+          "Conditional Access",
+          "Authentication context"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Authentication contexts that can be offered for Teams meetings",
         "docs": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/identity/conditionalAccess",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Conditional Access policy that applies to a published authentication context",
         "docs": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Entra ID",
           "Conditional Access",
@@ -844,34 +784,42 @@
           "Select what this policy applies to",
           "Authentication context"
         ],
-        "missing": []
+        "missing": [
+          "Entra ID",
+          "Conditional Access",
+          "Policies",
+          "Assignments",
+          "Target resources",
+          "Select what this policy applies to",
+          "Authentication context"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Conditional Access policy that applies to a published authentication context",
         "docs": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/identity/conditionalAccess",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Which authentication contexts are published to Teams meetings",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMeetingConfiguration",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Whether authentication contexts are enforced for meetings organised by users under a meeting policy",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMeetingPolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -881,6 +829,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]
