@@ -56,24 +56,24 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services"
+      path: "Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Set limits and alerts"
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
       call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
-    note: "Beta API. The request body sets periodLimit and perUserLimit. Creating policies needs Global administrator or Billing administrator; AI administrator and License administrator can edit."
+    note: "Beta API. The request body sets periodLimit and perUserLimit. Creating policies needs Global administrator or Billing administrator; AI administrator can edit."
   - governs: "Which users can use Anthropic models, which Microsoft's notice says video creation needs"
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic"
+      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences"
       docs: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor"
     api: null
     note: "AI Administrator or Global Administrator role. Provider-level setting: it applies to Anthropic models across Copilot experiences, not only video creation."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-24"
 roadmapModified: "2026-09-28T22:58:08"
 changes:
   - date: "2026-11-20"
@@ -86,19 +86,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: the spending policy path now ends at Set limits and alerts, the Anthropic path now includes the subprocessor heading and the user and group access step, and License administrator is removed from the policy-editing roles."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 2
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 91
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "b6b998f224db4e8fc667e3d6e1873716"
+  hash: "7efbe037a21a6d36a67b2d4690917d3a"
 ---
 
 ## What's changing
@@ -128,7 +132,7 @@ The notice requires Anthropic access and a spending policy covering the feature.
 **Security & identity**
 
 - Access has two gates: the Anthropic setting (AI Administrator or Global Administrator role, per Learn) and the spending policy that includes the feature. Both can be scoped to users or groups, so pilot with a security group.
-- Spending policy changes by role: Learn says Global administrator and Billing administrator can add and change billing methods, and AI administrator and License administrator can edit policies but not create them.
+- Spending policy changes by role: Learn says Global administrator and Billing administrator can add and change billing methods, and AI administrator can edit policies but not create them.
 
 **Autonomy & actions**
 
@@ -186,8 +190,8 @@ Rollout: the notice says public preview in Frontier public from November 17, 202
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Spending policy that covers Copilot video creation, its users and monthly credit limits</strong><br><small>Group</small><br><small class="controls__note">Beta API. The request body sets periodLimit and perUserLimit. Creating policies needs Global administrator or Billing administrator; AI administrator and License administrator can edit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Define the policy scope › Identity › Select agents and services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can use Anthropic models, which Microsoft's notice says video creation needs</strong><br><small>Group</small><br><small class="controls__note">AI Administrator or Global Administrator role. Provider-level setting: it applies to Anthropic models across Copilot experiences, not only video creation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Anthropic <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Spending policy that covers Copilot video creation, its users and monthly credit limits</strong><br><small>Group</small><br><small class="controls__note">Beta API. The request body sets periodLimit and perUserLimit. Creating policies needs Global administrator or Billing administrator; AI administrator can edit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Define the policy scope › Identity › Select agents and services › Set limits and alerts <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Anthropic models, which Microsoft's notice says video creation needs</strong><br><small>Group</small><br><small class="controls__note">AI Administrator or Global Administrator role. Provider-level setting: it applies to Anthropic models across Copilot experiences, not only video creation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -211,10 +215,9 @@ cost: Variable. Microsoft's notice MC1560920 says each video and each refinement
 impact: Low. Per Microsoft's notice, users covered by a spending policy that includes the feature can create videos; Learn says Auto-apply new services can cover newly supported services automatically, so check which users your policies already reach.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The spending-policy path is Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services. | Found: Select the Configuration tab and then select + Add spending policy. ... Define the policy scope ... choose Identity as the scope. ... Select agents and services ... Set limits and alerts | Fix: Set controls[0].ui.path and the rendered table path to 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Set limits and alerts'. The existing route reaches service selection but stops before the credit-limit section. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-- [supported, minor] controls[0].note; Risk assessment: Security & identity; Governance controls table / role: License administrators can edit spending policies. | Found: License administrator roles can edit spending policies ... / AI Reader, Global Reader, License Administrator ... These roles provide read-only access ... and don't allow administrators to create or change spending policies | Fix: Remove License administrator from the controls[0] note, the rendered note and the Security & identity sentence about editing policies. The cited setup page both permits edits and lists License Administrator among read-only roles; retain only AI administrator in the editing statement. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The Anthropic access path is Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic. | Found: under Available subprocessors for your organization, select Anthropic, and Save. ... Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save. | Fix: Set controls[1].ui.path and the rendered table path to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'. The existing steps are correct but omit the heading and stop before user/group access selection. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
+- [supported, minor] What's changing; Scope; Risk assessment: Autonomy & actions / record: The notice directs users to Video Hub, Create video, prompt, preview and refine, then Export as MP4. | Found: Go to Create video in the left menu- Describe the video, and add files if needed.- Preview the video, refine it.- Select Export to save it as an MP4. | Fix: Add to What's changing: 'The support article linked from Learn's billing overview describes Clipchamp Home and further editing in the Clipchamp editor, unlike the Video Hub conversational preview in MC1560920; this briefing follows the notice for this update.' Cite https://support.microsoft.com/clipchamp/how-to-create-video-with-copilot, which says 'To keep working on your video, open it in Clipchamp' and 'The video editor opens in a new browser tab'.
+- [supported, minor] controls[0].ui; rendered Governance controls table / admin-path: The printed spending-policy route reaches Set limits and alerts through Copilot, Cost Management, Configuration, Add spending policy and Identity scope. | Found: go to Copilot > Cost Management. ... Configuration ... + Add spending policy ... Define the policy scope ... Select agents and services ... Set limits and alerts ... choose Identity as the scope. | Fix: Extend controls[0].ui.path and its rendered copy to 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Set limits and alerts > Limited monthly budget'. In the row note add: 'On Set limits and alerts, select monthly budget limits for users to set the optional per-user limit.' The cited page documents both settings. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
 -->

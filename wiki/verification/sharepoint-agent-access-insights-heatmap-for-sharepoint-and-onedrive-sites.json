@@ -1,0 +1,1169 @@
+{
+  "slug": "sharepoint-agent-access-insights-heatmap-for-sharepoint-and-onedrive-sites",
+  "roadmapId": 565027,
+  "title": "SharePoint: agent access heatmap for SharePoint and OneDrive sites",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "2 blocking findings (claims 40, 89)"
+    ]
+  },
+  "counts": {
+    "claims": 91,
+    "confirmed": 88,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing overstates restricted site access protection because external participants in shared channels are not evaluated against that policy. It also treats publication of Agent 365 licence pricing as an open question, although Microsoft already publishes it. The roadmap facts and the documented heatmap controls otherwise check out.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title",
+      "type": "record",
+      "claim": "The roadmap describes a visual heatmap of agent activity to detect patterns, hotspots and unusual access behaviour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Provides a visual heatmap of agent activity to help admins quickly detect patterns, hotspots, and unusual access behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap item concerns OneDrive and SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"OneDrive\", \"SharePoint\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "July CY2026 is the roadmap target month, which has passed by the November 24, 2026 run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap record has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-06-04T23:15:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-04T23:15:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; controls[0].note; front matter: changes",
+      "type": "availability",
+      "claim": "Learn marks the heatmap as preview and says its features and terminology might change before general availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "The agent access heatmap is in preview. Features and terminology described in this article might change before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The heatmap is a content-first view in the new Agent governance node of the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "It's a content-first view of agent activity across your Microsoft 365 content, available in the new Agent governance node in the SharePoint admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "The heatmap shows agent activity on SharePoint sites, OneDrive accounts and Teams-connected sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "The heatmap shows agent activity on SharePoint sites, OneDrive accounts, and Teams-connected sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Scope: Who and what",
+      "type": "behaviour",
+      "claim": "The heatmap includes declarative agents, Agent 365 agents, and Microsoft and third-party agents registered in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "It includes declarative agents, Agent 365 agents, and Microsoft and third-party agents registered in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: grid rows",
+      "type": "behaviour",
+      "claim": "Rows represent agent platforms, including the five example platforms listed in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "The agent platforms responsible for the most activity, such as Copilot declarative agents, Copilot Studio agents, agents in SharePoint, custom engine agents, and third-party agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: grid columns",
+      "type": "behaviour",
+      "claim": "Columns represent business groups or sensitivity labels depending on the selected view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Business groups or sensitivity labels, depending on the view you select.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: grid cells",
+      "type": "behaviour",
+      "claim": "Each cell counts resources accessed by agents from that platform in the corresponding business group or sensitivity level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "How many resources (sites, OneDrive accounts, and Teams-connected sites) agents from that platform accessed in that business group or at that sensitivity level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: grid cells",
+      "type": "behaviour",
+      "claim": "Darker cells indicate more resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Darker cells indicate more resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: cell investigation",
+      "type": "behaviour",
+      "claim": "Selecting a cell opens a details pane from which an administrator can drill into a site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Select a cell to open the details pane for that combination of agent platform and business group or sensitivity label. Select a site in the details pane to open the site view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: site investigation",
+      "type": "behaviour",
+      "claim": "The site view shows the top agents using a site and their actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "The site view shows who owns the site and lists the top 20 agents that access it by request volume, with each agent's platform and actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Actions show whether agents read, create or update content, with operations such as FileAccessed and FileModified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Actions show whether agents only read content or also create and update it. For each agent and resource, the heatmap lists the top three operations recorded in the audit log, such as FileAccessed, FileModified, or FileUploaded, with a count for each.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; controls[1].governs; controls[2].governs; Governance guidance",
+      "type": "applicability",
+      "claim": "Restrict content discovery and Restrict site access are site actions available directly from the heatmap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "You can act on a site directly from the details pane or the site view, without switching to another page. Select Restrict content discovery or Restrict site access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Heatmap reports use the Microsoft 365 unified audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Report data comes from the Microsoft 365 unified audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; summary; Why it matters; controls[0].note; rationale: risk",
+      "type": "default",
+      "claim": "The heatmap is admin-opt-in: an administrator turns on data collection and generates reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Reports are built from audit data that's collected after you turn on data collection. If you're prompted to turn on data collection, turn it on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters; Scope: Timing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Heatmap data collection starts when enabled and excludes earlier activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Data collection starts when you turn it on, so activity from before that point isn't included.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Reports can cover the last 1, 7, 14 or 28 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Select a reporting period: the last 1, 7, 14, or 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters: insights generation",
+      "type": "behaviour",
+      "claim": "Learn says insights are not generated automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-overview",
+      "quote": "Insights aren't generated automatically. Select Generate insights to fill the page with data from the last seven days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; controls[3].note; Governance controls",
+      "type": "availability",
+      "claim": "The existing report under Reports > Agent insights remains available alongside the heatmap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "If you use the agent access insights report under Reports > Agent insights, that report remains available. The heatmap, the business group and sensitivity views, and actions are available in Agent governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters: configuration",
+      "type": "behaviour",
+      "claim": "With neither site sensitivity labels nor departments, neither corresponding view is available and activity is grouped by site template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "No | No | Neither view. Activity is grouped by site template instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Prerequisites for the full view",
+      "type": "behaviour",
+      "claim": "Using both labels and business groups provides both views; using only one provides only that view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "Organizations that use both get the full heatmap experience. If your organization uses only one, the heatmap shows the view for that one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The detailed report download contains up to 1 million rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Detailed report | Up to 1 million rows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The download includes site details and owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "The download contains up to 1 million rows and includes site details and owner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The download includes business group or department.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "business group (department)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The download includes agent ID, name, type and platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "agent ID, name, type, and platform",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The download includes request volume and operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "request volume, operations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The download includes site sensitivity and the enabled status of restricted content discovery, restricted site access and external sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "site sensitivity, and whether restricted content discovery, restricted site access, and external sharing are enabled for each site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The heatmap does not show end-user identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "it doesn't show end-user identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The heatmap reports on a chosen period rather than monitoring in real time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "The heatmap reports on a period you choose. It isn't real-time monitoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance; rationale: impact",
+      "type": "role",
+      "claim": "The heatmap requires the SharePoint Administrator or AI Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Admin role | SharePoint Administrator or AI Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; controls[2].governs",
+      "type": "applicability",
+      "claim": "The heatmap's Restrict site access action limits site access to members of selected groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Restrict site access | Limits access to the site to members of the groups you choose.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Users outside the restricted access group cannot open the site or its content even with prior permissions or a shared link.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+      "quote": "For shared channel sites, restricted access control applies only to internal users in the resource tenant. External participants accessing the shared channel from another tenant aren't evaluated against the restricted access control policy.",
+      "severity": "blocker",
+      "fix": "Add to this sentence: 'For shared channel sites, this applies only to internal users in the resource tenant; external participants from another tenant are not evaluated against the policy, and their access remains governed by shared-channel and site permissions.' Source: https://learn.microsoft.com/sharepoint/restricted-access-control#shared-and-private-channel-sites."
+    },
+    {
+      "n": 41,
+      "where": "controls[1].governs; Risk assessment; Cost and licensing",
+      "type": "applicability",
+      "claim": "Restricted content discovery keeps site content out of Microsoft 365 Copilot agent search and organisation-wide discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Keeps the site's content from appearing in Microsoft 365 Copilot agent search and discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Restricted content discovery does not change existing permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't change existing permissions. Users who already have access to content can continue to access that content directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Restricted content discovery removes AI entry points such as the Copilot button from affected sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Users don't see entry points such as the Copilot button, AI actions menus (including creating agents), or Create pages with AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "applicability",
+      "claim": "Content guardrails on Settings in Agent governance apply intent to every agent in scope, including future agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "To apply your intent to every agent in scope, including agents created in the future, use content guardrails on the Settings page in Agent governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The heatmap lists the top three audit-log operations for each agent and resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Actions | The top three operations for each agent and resource",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The heatmap considers the 500 resources with the most agent activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Resources in the heatmap | The top 500 by request volume",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The heatmap shows the top five agent platforms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Heatmap rows and columns | The top five agent platforms, and the top five business groups or sensitivity labels, ranked by request volume",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The heatmap shows the top five business groups or sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Heatmap rows and columns | The top five agent platforms, and the top five business groups or sensitivity labels, ranked by request volume",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Report tab lists the top 100 sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "The Report tab lists the top 100 sites agents accessed, with each site's sensitivity label and governance settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The detailed report provides the full data behind the report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "Detailed report | A download of the full data behind a report, for analysis outside the SharePoint admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Applying a policy from a report does not update the policy status in that existing report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "After you apply a policy from a report, the policy status in that report doesn't update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A report reflects configuration at generation time, and a later report reflects subsequent changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Each report reflects the configuration in place when it was generated, so changes you make later appear in the next report you generate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Only one report exists for each reporting period, for up to four reports in total.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "You can have one report for each reporting period at a time, so up to four reports in total.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A new report replaces the existing report for that period, so downloading preserves the earlier report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Generating a new report for a period replaces the existing report for that period. To keep the earlier report, download it first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A new heatmap report can be generated once every 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "You can generate a new report once every 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "summary; licensing.notes; controls[0].note; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The heatmap requires Microsoft Agent 365 or Microsoft 365 E7 and directs licensing questions to Product Terms or an account representative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "Microsoft Agent 365 or Microsoft 365 E7 license. For licensing questions, see Microsoft Product Terms or contact your Microsoft account representative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The agent governance overview lists the same licence requirement and the SharePoint Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-overview",
+      "quote": "SharePoint Administrator role\nMicrosoft Agent 365 or Microsoft 365 E7 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "licensing.notes; Cost and licensing: Meter and price; rationale: cost",
+      "type": "absence",
+      "claim": "The cited heatmap and governance pages give no licence price or price for the heatmap itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Agent 365 Microsoft 365 E7 agent access heatmap license price meter credits. Read agent-access-heatmap-overview, agent-governance-generate-agent-access-report and agent-governance-overview on Learn; those pages name licences but no prices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Meter and price; rationale: cost",
+      "type": "absence",
+      "claim": "The pages read describe no meter or credit rate for the heatmap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Agent 365 Microsoft 365 E7 agent access heatmap license price meter credits. Read the heatmap overview, report instructions and governance overview; no heatmap meter is stated. Search found resource provisioning charges, not heatmap reporting charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "Excessive use of restricted content discovery can reduce the completeness and relevance of search results and AI responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Excessive use can reduce the amount of content available to organization-wide search and Microsoft Copilot experiences, which can affect the completeness and relevance of search results and AI-generated responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].note; Cost and licensing: Other licences",
+      "type": "licensing",
+      "claim": "The existing agent access insights report's PowerShell route requires a SharePoint Advanced Management add-on or Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+      "quote": "Make sure your organization has a license for the SharePoint Advanced Management add-on or Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing: Other licences",
+      "type": "behaviour",
+      "claim": "Without a SharePoint Advanced Management licence, data collection for the existing report must be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+      "quote": "If you don't have a Microsoft SharePoint Advanced Management license, you're asked to enable data collection, so that the product starts to collect the relevant audit data to build this report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Prerequisites for the full view",
+      "type": "behaviour",
+      "claim": "The sensitivity view uses container sensitivity labels applied to sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "The sensitivity view uses Microsoft Purview sensitivity labels that are applied to sites (container labels).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Prerequisites for the full view",
+      "type": "behaviour",
+      "claim": "Labels applied only to individual files or emails are not used in the sensitivity view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Labels applied only to individual files or emails aren't used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: Prerequisites for the full view",
+      "type": "behaviour",
+      "claim": "The business group view uses the Department category in catalog management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "The business group view uses the Department category from catalog management in SharePoint Advanced Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Prerequisites for the full view",
+      "type": "behaviour",
+      "claim": "Catalog management assigns each site to a department based on its owner's Microsoft Entra ID department attribute.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Catalog management assigns each site to a department based on the Microsoft Entra ID department attribute of the site's owner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope: Timing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The first report can be generated after 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "You can generate your first report after 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Timing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "For large tenants, data can take up to 48 hours to become available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "For large tenants, it can take up to 48 hours for data to become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope: Timing",
+      "type": "behaviour",
+      "claim": "Data collection turns off automatically if no report is generated for three months.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "If no report is generated for three months, data collection turns off automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope: Timing",
+      "type": "behaviour",
+      "claim": "An administrator can turn data collection back on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "You can turn it back on at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn says the site owner usually knows whether an agent belongs with the content and recommends involving them before restricting access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "The site owner usually knows whether an agent belongs with that content, so bring them into the decision before you restrict access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends starting with the sensitivity view filtered to the most sensitive labels and then switching to the business group view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "Start with sensitivity. Filter to your most sensitive labels first, and then switch to the business group view to see whose content is involved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[0].ui; Governance controls table row 1; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The heatmap and its data collection and reports are reached at SharePoint admin center > Agent governance > Agent access heatmap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "In the navigation pane, expand Agent governance, and then select Agent access heatmap. If you're prompted to turn on data collection, turn it on. Select Generate report.",
+      "severity": "minor",
+      "fix": "For report generation, extend the path to 'Agent governance > Agent access heatmap > Generate report'. Retain the note that data collection is enabled on the heatmap page if prompted. The existing path reaches the correct page but stops before the report-generation control."
+    },
+    {
+      "n": 74,
+      "where": "controls[0].api; Governance controls table row 1; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell cmdlet or API is documented for the heatmap report or its data collection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint agent access heatmap PowerShell report data collection Start SPO Microsoft Graph API; SharePoint Online Management Shell agent governance heatmap Start-SPOM365AgentAccessInsightsReport heatmap API. Read heatmap pages and insights-on-agent-access; commands cover the older report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].ui; Governance controls table row 2",
+      "type": "admin-path",
+      "claim": "Restricted content discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[1].api; Governance controls table row 2",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables restricted content discovery for the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Enable Restricted Content Discovery for a site\nUse PowerShell\nSet-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "The restricted content discovery page supports SharePoint sites but not OneDrive sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "You can only apply this feature to SharePoint sites. It's not supported for OneDrive sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Only SharePoint administrators manage restricted content discovery by default, but management can be delegated to site administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "By default, only SharePoint administrators can manage Restricted Content Discovery. When delegation is enabled, site administrators can manage Restricted Content Discovery for their sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[2].ui; Governance controls table row 3",
+      "type": "admin-path",
+      "claim": "Restricted site access is reached at SharePoint admin center > Sites > Active sites > site > Settings > Restricted site access > Edit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+      "quote": "In the Settings tab, select Edit in the Restricted site access section. Select the Restrict SharePoint site access to only users in specified groups check box.",
+      "severity": "minor",
+      "fix": "Extend the path to 'Sites > Active sites > site > Settings > Restricted site access > Edit > Restrict SharePoint site access to only users in specified groups'. The existing path reaches the correct editing pane but stops before the deciding checkbox."
+    },
+    {
+      "n": 80,
+      "where": "controls[2].api; Governance controls table row 3",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <siteurl> -RestrictedAccessControl $true enables site access restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+      "quote": "Enable site access restriction\nSet-SPOSite -Identity <siteurl> -RestrictedAccessControl $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[2].note; Governance controls; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Site-level access restriction must be allowed for the organisation before it can be configured on individual sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+      "quote": "You must enable site-level access restriction for your organization before you can configure it for individual sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[2].note",
+      "type": "applicability",
+      "claim": "Applying site access restriction requires at least one group in the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+      "quote": "To apply site access restriction to the site, you must add at least one group to the site access restriction policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Restricted access control is documented for OneDrive as well as SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+      "quote": "You can apply this policy on Microsoft 365 group-connected, Teams-connected, nongroup connected sites, and OneDrive by using Microsoft 365 groups or Microsoft Entra security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[3].ui; Governance controls table row 4; Governance guidance",
+      "type": "admin-path",
+      "claim": "The existing agent access report is at SharePoint admin center > Reports > Agent insights > Agent access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+      "quote": "Go to the SharePoint admin center and sign in. In the navigation pane, expand Reports, and then select Agent insights. Select Agent access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[3].api; Governance controls table row 4",
+      "type": "command",
+      "claim": "Start-SPOM365AgentAccessInsightsReport -ReportPeriodInDays 28 generates the existing agent access insights report for the past 28 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+      "quote": "You can specify a different duration (7, 14, or 28 days) by using the -ReportPeriodInDays parameter. For example, to create a report for the past 28 days, run: Start-SPOM365AgentAccessInsightsReport -ReportPeriodInDays <28>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[3].note",
+      "type": "role",
+      "claim": "The existing report's PowerShell route requires at least SharePoint administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+      "quote": "You must have at least a SharePoint administrator assigned in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Risk assessment: Autonomy & actions; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The heatmap is a visibility tool rather than an enforcement mechanism and does not replace audit analysis, per-file diagnostics or security investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "The heatmap is a governance visibility tool. It doesn't replace audit log analysis, per-file diagnostics, or security investigations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[3].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing Reports > Agent insights report is separate from the heatmap rather than a control over it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+      "quote": "If you use the agent access insights report under Reports > Agent insights, that report remains available. The heatmap, the business group and sensitivity views, and actions are available in Agent governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Open questions: Agent 365 licence price",
+      "type": "absence",
+      "claim": "Where Microsoft will publish the price of the Agent 365 licence remains an open question.",
+      "status": "contradicted",
+      "source": "https://www.microsoft.com/en-ca/microsoft-agent-365",
+      "quote": "Plans and pricing\nAgent 365\nCAD $20.40\nuser/month, paid yearly\n(Annual commitment)\nPlus applicable tax",
+      "severity": "blocker",
+      "fix": "Replace the final Open questions bullet with 'Does anything else (storage, audit retention) add cost for the heatmap's data collection?' Microsoft already publishes Agent 365 licence pricing at https://www.microsoft.com/microsoft-agent-365#plans-and-pricing; the narrower claim that the cited heatmap pages contain no price can remain."
+    },
+    {
+      "n": 90,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The heatmap entitlement is included with the named Microsoft Agent 365 or Microsoft 365 E7 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+      "quote": "License | Microsoft Agent 365 or Microsoft 365 E7 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to configure site sensitivity labels, departments and tenant-level access restriction, but the table has no rows for those controls.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Decide whether to apply sensitivity labels to sites and to set up departments in catalog management before the first report. Remember restricted site access needs the tenant-level setting turned on first. The table contains only the heatmap, two site policies and the existing report.",
+      "severity": "minor",
+      "fix": "The Before rollout step for sensitivity labels and departments and the After rollout instruction to check tenant-level site access restriction have no corresponding control rows. Narrow these checklist instructions to checking whether the prerequisites are already satisfied rather than directing configuration of controls absent from the table; do not add rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T20:04:59.601Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565027",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/agent-governance-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "The agent access heatmap, its data collection and its reports",
+        "docs": "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report",
+        "reachable": true,
+        "segments": [
+          "Agent governance",
+          "Agent access heatmap"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a site's content is discoverable by Copilot and organisation-wide search (heatmap site action)",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "Settings",
+          "Restrict content from Microsoft Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a site's content is discoverable by Copilot and organisation-wide search (heatmap site action)",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which groups can access a site (restricted site access, a site action offered from the heatmap)",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "Settings",
+          "Restricted site access",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which groups can access a site (restricted site access, a site action offered from the heatmap)",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-access-control",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "The existing agent access insights report under Reports > Agent insights (today's alternative, not the heatmap)",
+        "docs": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Agent insights",
+          "Agent access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "The existing agent access insights report under Reports > Agent insights (today's alternative, not the heatmap)",
+        "docs": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
+        "reachable": true,
+        "token": "Start-SPOM365AgentAccessInsightsReport",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

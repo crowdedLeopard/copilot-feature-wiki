@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
 platforms: ["Mac"]
 targetDate: "May CY2026"
 previewDate: null
-risk: "medium"
+risk: "low"
 cost: "low"
 impact: "medium"
 defaultState: "admin-opt-in"
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Create a compliance policy in Microsoft Intune"
     url: "https://learn.microsoft.com/intune/device-security/compliance/create-policy"
+    kind: "learn"
+  - title: "Configure actions for noncompliant devices in Intune"
+    url: "https://learn.microsoft.com/intune/device-security/compliance/configure-noncompliance-actions"
     kind: "learn"
   - title: "Custom compliance discovery scripts for Microsoft Intune"
     url: "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script"
@@ -53,18 +56,15 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Endpoint security > Device compliance > Scripts > Add > macOS"
+      path: "Endpoint security > Device compliance > Scripts > Add > macOS > Basics > Settings > Detection script"
       docs: "https://learn.microsoft.com/intune/device-security/compliance/create-custom-script"
-    api:
-      kind: "graph"
-      call: "POST /beta/deviceManagement/deviceComplianceScripts"
-      docs: "https://learn.microsoft.com/graph/api/intune-devices-devicecompliancescript-create?view=graph-rest-beta"
-    note: "The reference describes detectionScriptContent as a PowerShell script and does not mention macOS. Beta endpoint. On macOS, the upload page sets the logged-on credentials, signature check and notification options."
+    api: null
+    note: "The deviceComplianceScript reference describes detectionScriptContent as a PowerShell script and does not mention macOS. On macOS, the upload page sets the logged-on credentials, signature check and notification options."
   - governs: "Whether a macOS compliance policy requires custom compliance, with its script and JSON rules file"
     scope: "group"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Devices > Manage devices > Compliance > Create policy > macOS > Compliance settings > Add settings > Custom Compliance > Require Custom Compliance"
+      path: "Devices > Manage devices > Compliance > Create policy > macOS > Create > Basics > Compliance settings > Add settings > Custom Compliance > Require Custom Compliance"
       docs: "https://learn.microsoft.com/intune/device-security/compliance/create-policy"
     api: null
     note: "Assignments are set on the policy's Assignments tab. Role permission: Device compliance policies (Create, Update, Assign)."
@@ -77,19 +77,23 @@ changes:
     note: "First briefing for roadmap item 553222: macOS custom compliance in Intune, including the gap between the In development roadmap status and the Learn pages that already describe it."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 74 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: retirement needs an administrator's explicit action, the script-upload Graph call is withdrawn, risk lowered to low, and two checklist steps without table rows removed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 69
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "099a6cdaa657aa9726864f16fe732717"
+  claims: 86
+  confirmed: 85
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "73f47450bfde63a12fe9f8fab0a2bb65"
 ---
 
 ## What's changing
@@ -112,7 +116,7 @@ If nobody acts, nothing is added to your Mac compliance policies: the Learn step
 
 **Data exposure**
 
-- The discovery script runs on each targeted Mac and returns the values it finds to Intune, so anything your script prints becomes data held in Intune compliance reports. Learn shows these per-setting results in the Noncompliant devices and settings report. Print only the values the JSON rules need.
+- The discovery script runs on each targeted Mac and returns the values it finds to Intune, and Intune displays per-setting compliance results. Learn shows these per-setting results in the Noncompliant devices and settings report. Print only the values the JSON rules need.
 
 **Security & identity**
 
@@ -121,7 +125,7 @@ If nobody acts, nothing is added to your Mac compliance policies: the Learn step
 
 **Autonomy & actions**
 
-- Noncompliance can trigger the policy's actions for noncompliance, which can mark the device noncompliant, send email, lock the device or retire it. A wrong rule combined with those actions affects many devices at once, so start with a pilot group.
+- Noncompliance can trigger the policy's actions for noncompliance, which can mark the device noncompliant, send email, lock the device or add it to a retire list; retirement requires an administrator to explicitly initiate and confirm it. A wrong rule combined with those actions affects many devices at once, so start with a pilot group.
 
 **Change & support**
 
@@ -157,8 +161,7 @@ No meter is documented for this feature at the time of writing (November 2026). 
 ### At rollout
 
 - Upload the script, then create the macOS compliance policy and add custom compliance as described in the controls table.
-- Assign the policy to a pilot group first, and set a grace period on the noncompliance action before any lock or retire action.
-- Check the Conditional Access policies that depend on compliance before widening the assignment.
+- Assign the policy to a pilot group first.
 
 ### After rollout
 
@@ -173,14 +176,14 @@ No meter is documented for this feature at the time of writing (November 2026). 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which discovery script a macOS custom compliance policy can use</strong><br><small>Tenant</small><br><small class="controls__note">The reference describes detectionScriptContent as a PowerShell script and does not mention macOS. Beta endpoint. On macOS, the upload page sets the logged-on credentials, signature check and notification options.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Endpoint security › Device compliance › Scripts › Add › macOS <a href="https://learn.microsoft.com/intune/device-security/compliance/create-custom-script" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/deviceComplianceScripts</code> <a href="https://learn.microsoft.com/graph/api/intune-devices-devicecompliancescript-create?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a macOS compliance policy requires custom compliance, with its script and JSON rules file</strong><br><small>Group</small><br><small class="controls__note">Assignments are set on the policy's Assignments tab. Role permission: Device compliance policies (Create, Update, Assign).</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Compliance › Create policy › macOS › Compliance settings › Add settings › Custom Compliance › Require Custom Compliance <a href="https://learn.microsoft.com/intune/device-security/compliance/create-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which discovery script a macOS custom compliance policy can use</strong><br><small>Tenant</small><br><small class="controls__note">The deviceComplianceScript reference describes detectionScriptContent as a PowerShell script and does not mention macOS. On macOS, the upload page sets the logged-on credentials, signature check and notification options.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Endpoint security › Device compliance › Scripts › Add › macOS › Basics › Settings › Detection script <a href="https://learn.microsoft.com/intune/device-security/compliance/create-custom-script" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a macOS compliance policy requires custom compliance, with its script and JSON rules file</strong><br><small>Group</small><br><small class="controls__note">Assignments are set on the policy's Assignments tab. Role permission: Device compliance policies (Create, Update, Assign).</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Compliance › Create policy › macOS › Create › Basics › Compliance settings › Add settings › Custom Compliance › Require Custom Compliance <a href="https://learn.microsoft.com/intune/device-security/compliance/create-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Custom compliance is switched on per policy, not per tenant: Learn documents no tenant-wide switch for it, and a policy with **Require Custom Compliance** left off does not use it. The policy takes effect only for the groups it is assigned to.
 
-The Graph row covers the script object only, and the reference describes its script content as a PowerShell script, so it does not show how a macOS Bash script is held. Adding the script and JSON file to a macOS policy is documented as an admin centre procedure. The macOSCompliancePolicy reference lists no custom compliance property, and Learn documents no call for that step at the time of writing (November 2026). The Intune Graph beta endpoints are subject to more frequent change than v1.0.
+No Graph call is listed for the script upload: the deviceComplianceScript reference describes its script content as a PowerShell script, so it does not show how a macOS Bash script is held. Adding the script and JSON file to a macOS policy is documented as an admin centre procedure. The macOSCompliancePolicy reference lists no custom compliance property, and Learn documents no call for that step at the time of writing (November 2026). The Intune Graph beta endpoints are subject to more frequent change than v1.0.
 
 ## Open questions
 
@@ -190,20 +193,14 @@ The Graph row covers the script object only, and the reference describes its scr
 - Is there a documented Graph operation for adding a discovery script and JSON file to a macOS compliance policy? Watch the Intune Graph reference.
 
 <!-- rationale
-risk: Medium. A script you write runs on managed Macs and its result counts towards compliance, which Conditional Access can act on, so a faulty rule can lock users out; nothing applies until an admin builds a policy.
+risk: Low. Custom compliance adds no rules until an administrator configures it in a policy.
 cost: Low. The only licence Learn lists for compliance policies is a Microsoft Intune subscription, and no custom compliance price is published; the real cost is admin time writing and testing scripts.
 impact: Medium. Intune and security administrators build the policies, and users of the Macs they target notice when a rule marks a device noncompliant.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Anything the discovery script prints becomes data held in Intune compliance reports. | Found: Searched: Intune custom compliance discovery script output values stored report actual value macOS; "custom compliance" "script" "reports" "output" "stored". Opened custom-settings and create-custom-script; neither states that everything printed is stored in compliance reports. | Fix: Replace 'so anything your script prints becomes data held in Intune compliance reports' with 'and Intune displays per-setting compliance results', as documented at https://learn.microsoft.com/intune/device-security/compliance/custom-settings.
-- [contradicted, blocker] Risk assessment: Autonomy & actions; Governance guidance: At rollout / behaviour: The policy can automatically retire a device as an action triggered by noncompliance. | Found: The device isn't retired until an administrator explicitly initiates the retirement process. | Fix: Replace 'lock the device or retire it' with 'lock the device or add it to a retire list; retirement requires an administrator to explicitly initiate and confirm it'. Replace 'before any lock or retire action' with 'before any lock or add-to-retire-list action'. Cite https://learn.microsoft.com/intune/device-security/compliance/configure-noncompliance-actions, which qualifies the create-policy page's abbreviated description. | Source: https://learn.microsoft.com/intune/device-security/compliance/configure-noncompliance-actions
-- [unsupported, blocker] controls[0].api; Governance controls table / command: POST /beta/deviceManagement/deviceComplianceScripts is documented automation for the macOS discovery-script upload control. | Found: Searched: "macOS" "custom compliance" "deviceComplianceScripts". Opened deviceComplianceScript-create and macOSCompliancePolicy. The create reference documents detectionScriptContent as PowerShell and does not establish macOS Bash support. | Fix: Set controls[0].api to null and render that side as 'Not yet documented'. Retain the prose explaining that the deviceComplianceScript reference describes PowerShell and does not document how a macOS Bash script is held. Do not present this generic endpoint as verified macOS upload automation.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Endpoint security > Device compliance > Scripts > Add > macOS reaches the discovery-script creation workflow in Microsoft Intune admin center. | Found: go to Endpoint security > Device compliance > Scripts > Add > (choose your platform). On Basics, provide a Name. On Settings, add your script to Detection script. | Fix: Extend the UI path in the front matter and rendered table to 'Endpoint security > Device compliance > Scripts > Add > macOS > Basics > Settings > Detection script'. The printed route is correct but stops before the script upload field. | Source: https://learn.microsoft.com/intune/device-security/compliance/create-custom-script
-- [supported, minor] controls[1].ui; What's changing; Governance controls table / admin-path: The printed Devices > Manage devices > Compliance route reaches Require Custom Compliance in the macOS policy wizard. | Found: Then select Create to open the configuration page. On the Basics tab, enter a Name On the Compliance settings page, select Add settings to open the Settings picker. Select Custom Compliance. Switch Require Custom Compliance to True. | Fix: Use 'Devices > Manage devices > Compliance > Create policy > macOS > Create > Basics > Compliance settings > Add settings > Custom Compliance > Require Custom Compliance' in both copies of the path. The current path omits only passage through Create and Basics, not a platform or policy-type choice. | Source: https://learn.microsoft.com/intune/device-security/compliance/create-policy
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: The medium risk rating is based on exposure after administrators opt in rather than exposure if nobody acts. | Found: risk: "medium" Medium. A script you write runs on managed Macs ... nothing applies until an admin builds a policy. Why it matters: If nobody acts, nothing is added to your Mac compliance policies. | Fix: Set risk to 'low' and replace the risk rationale with 'Low. Custom compliance adds no rules until an administrator configures it in a policy.' The schema's low-risk definition explicitly includes nothing happening until an admin opts in.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells administrators to configure noncompliance grace periods and check Conditional Access policies, but neither control has a table row. | Found: set a grace period on the noncompliance action ... Check the Conditional Access policies that depend on compliance ... Table rows: discovery script; macOS custom compliance policy. | Fix: The checklist steps about the noncompliance-action grace period and dependent Conditional Access policies have no matching controls-table rows. Remove those two instructions from the checklist to make it agree with the existing table; do not add unverified rows.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The create-policy page requires Microsoft Entra ID P1 or P2 only when Conditional Access is used. | Found: If you use Conditional Access, then you need Microsoft Entra ID P1 or P2 edition. ... Intune compliance doesn't require Microsoft Entra ID. | Fix: Keep the cited requirement, but add: 'The Intune planning guide separately lists Intune and Microsoft Entra ID P1 or P2 as the minimum for enforcing compliance or password rules.' Cite https://learn.microsoft.com/intune/fundamentals/planning-guide#step-3---determine-costs-and-licensing, which says 'You want to enforce the compliance or password rules you create in Intune. At a minimum, you need: Intune; Microsoft Entra ID P1 or P2.' | Source: https://learn.microsoft.com/intune/device-security/compliance/create-policy
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells administrators to review the Noncompliant devices and settings report, but the controls table has no reporting row. | Found: Review the Noncompliant devices and settings report in the admin centre, choosing the macOS platform ... Controls table: Which discovery script a macOS custom compliance policy can use; Whether a macOS compliance policy requires custom compliance, with its script and JSON rules file. | Fix: Remove the After rollout checklist bullet beginning 'Review the Noncompliant devices and settings report'. It names a reporting control with no controls-table row; retain the already supported report description in Risk assessment.
 -->

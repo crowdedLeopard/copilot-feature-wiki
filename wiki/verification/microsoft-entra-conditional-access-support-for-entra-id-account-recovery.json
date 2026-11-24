@@ -1,0 +1,1022 @@
+{
+  "slug": "microsoft-entra-conditional-access-support-for-entra-id-account-recovery",
+  "roadmapId": 529855,
+  "title": "Microsoft Entra: Conditional Access for Entra ID account recovery",
+  "status": "verified-with-gaps",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 76,
+    "confirmed": 74,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The roadmap facts, recovery prerequisites, licensing and documented controls are supported. Remove the unsupported assurance that Conditional Access leaves the identity-verification data flow unchanged, and clarify the recovery settings path and beta API limitation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Account recovery lets users regain organisational account access after losing all registered authentication methods.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enables users to regain access to their organizational accounts when they've lost access to all registered authentication methods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The planned change enables Conditional Access policies to protect the recovery flow.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature adds additional support for protecting the account recovery flow by enabling CA policies to be applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The supplied roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The general availability target is May CY2026, a passed target at the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is March CY2026, a passed target at the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without establishing exclusion of other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap record provides no Learn link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope; controls[1].note",
+      "type": "availability",
+      "claim": "Learn documents Account onboarding and recovery as a preview Conditional Access user action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Account onboarding and recovery (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; controls[1].governs",
+      "type": "applicability",
+      "claim": "The Account onboarding and recovery user action protects recovery separately from ordinary resource access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Use the Account onboarding and recovery user action to protect bootstrap separately from ordinary resource access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Identity-verified recovery requires identity verification independently of Conditional Access requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Identity-verified onboarding and account recovery require identity verification regardless of whether a Conditional Access policy requires it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; controls[1].note; Governance guidance",
+      "type": "applicability",
+      "claim": "Terms of use is unsupported for the onboarding and recovery user action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "The following controls aren't supported for these journeys: Terms of use. Require authentication strength.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; controls[1].note; Governance guidance",
+      "type": "applicability",
+      "claim": "Require authentication strength is unsupported for the onboarding and recovery user action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "The following controls aren't supported for these journeys: Terms of use. Require authentication strength.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Most other Microsoft Entra-specific controls are also unsupported for this action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Most other Microsoft Entra-specific controls also aren't supported for this action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft states no current plan or timeline to add support for those controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "There's no current plan or timeline to add support for these controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance; controls[1].note",
+      "type": "behaviour",
+      "claim": "The policy must explicitly configure Client apps as Browser and Mobile apps and desktop clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Under Conditions > Client apps, set Configure to Yes, explicitly select Browser and Mobile apps and desktop clients, and select Done.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "All resources policies apply to recovery unless the tenant-wide onboarding and recovery exclusion is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Without this exclusion, policies targeting All resources also apply to onboarding and account recovery events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[2].governs",
+      "type": "applicability",
+      "claim": "Policies directly targeting the user action still apply with the global exclusion enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Enabling the exclusion removes the Account onboarding and recovery user action from All resources policies; policies that directly target the user action still apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Unsupported recovery requirements can block recovery or leave intended requirements unenforced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Unsupported recovery policy requirements can block recovery or leave intended requirements unenforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; summary; Why it matters; controls[0].note",
+      "type": "default",
+      "claim": "Account recovery requires admin enablement and its policy is disabled by default for new and existing tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "In the new Account recovery policy experience, the policy is disabled by default for both new and existing tenants. Enable the policy before users can use account recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Managing recovery settings requires Authentication Policy Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "The Authentication Policy Administrator role to manage Account recovery settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Recovery enablement and TAP issuance settings are reached through Microsoft Entra admin center > Entra ID > Account recovery > Settings (preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Go to Entra ID > Account recovery. Open Settings (preview). Use Actions after recovery in Account recovery settings to choose how users register replacement methods.",
+      "severity": "minor",
+      "fix": "Keep the shared path, which reaches the settings page, and append to the row note: 'On this page, enable the Account recovery policy; under Actions after recovery, choose Issue Temporary Access Pass.'"
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation operation for tenant recovery enablement or post-recovery TAP issuance is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph account recovery settings enable policy Temporary Access Pass issuance API. Opened recovery settings, recovery overview and FAQ; results document portal settings and individual TAP management, not these recovery settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The user action is reached through Entra ID > Conditional Access > Policies > New policy > Target resources > User actions > Account onboarding and recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Under Target resources, select User actions, then select Account onboarding and recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].api; Open questions",
+      "type": "absence",
+      "claim": "Graph documents no policy user-action value or operation for targeting Account onboarding and recovery.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: conditionalAccessApplications includeUserActions account recovery onboarding Graph policy API urn. Opened beta conditionalAccessApplications; search also returned v1.0. Both list only urn:user:registersecurityinfo and urn:user:registerdevice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The global exclusion is at Entra ID > Conditional Access > Settings (Preview) > Global exclusions > Account onboarding and recovery (Preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Browse to Entra ID > Conditional Access > Settings (Preview). Under Global exclusions, enable the Account onboarding and recovery (Preview) exclusion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "PATCH /beta/identity/conditionalAccess/settings updates the tenant-wide exclusion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta",
+      "quote": "PATCH https://graph.microsoft.com/beta/identity/conditionalAccess/settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The request sets exclusions.allResourcesExclusions.userActionExclusions with userAction accountrecovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta",
+      "quote": "\"exclusions\": { \"allResourcesExclusions\": { \"userActionExclusions\": [ { \"state\": \"enabled\", \"userAction\": \"accountrecovery\" } ] } }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "Updating userActionExclusions requires supplying the complete desired collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta",
+      "quote": "When updating userActionExclusions, supply the complete desired collection, not only the entries that changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "The settings update requires Policy.ReadWrite.ConditionalAccess.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | Policy.ReadWrite.ConditionalAccess; Application | Policy.ReadWrite.ConditionalAccess",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "The settings operation is a beta API subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": "minor",
+      "fix": "Append to the beta qualification: 'Microsoft does not support using beta APIs in production applications.'"
+    },
+    {
+      "n": 33,
+      "where": "controls[3].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Applied policy details are at Entra ID > Monitoring & health > Sign-in logs > sign-in > Conditional Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/monitoring-health/how-to-view-applied-conditional-access-policies",
+      "quote": "Browse to Entra ID > Monitoring & health > Sign-in logs. Select a sign-in item from the table to view the sign-in details pane. Select the Conditional Access tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[3].api; controls[3].note",
+      "type": "command",
+      "claim": "GET /v1.0/auditLogs/signIns reads sign-in records and applied Conditional Access results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/monitoring-health/how-to-view-applied-conditional-access-policies",
+      "quote": "GET https://graph.microsoft.com/v1.0/auditLogs/signIns?$filter=(createdDateTime ge 2024-11-01T14:13:32Z and createdDateTime le 2024-11-10T17:43:26Z) and conditionalAccessStatus eq 'failure'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].note",
+      "type": "role",
+      "claim": "Viewing applied Conditional Access results requires permissions to view both logs and policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/monitoring-health/how-to-view-applied-conditional-access-policies",
+      "quote": "To see applied Conditional Access policies in the logs, administrators must have permissions to view both the logs and the policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Recovery involves government-issued documents and biometric checks through third-party identity verification providers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Identity verification involves processing government-issued documents and biometric data through third-party providers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing privacy, retention and regional compliance requirements before deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Review your organization's privacy, data retention, and regional compliance requirements before deploying account recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Conditional Access does not change recovery's identity-verification data flow.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: account recovery Conditional Access identity verification data flow biometric government documents unchanged. Opened recovery overview, recovery settings, FAQ and CA identity-verification guidance; none explicitly establishes an unchanged data flow.",
+      "severity": "major",
+      "fix": "Replace 'CA does not change that data flow; it adds conditions to the journey.' with 'CA adds conditions to the recovery journey.'"
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Recovery is an existing user-driven flow for complete authentication lockout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "The user provides their account identifier at sign-in and indicates they can't access their account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "default",
+      "claim": "After successful validation, recovery issues a TAP by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Issue Temporary Access Pass on | Default for new and existing tenants. Successful account validation issues a TAP for the established registration flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The default TAP issuance setting does not itself enable tenant account recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "The default TAP issuance setting doesn't enable account recovery for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Report-only mode does not evaluate user-action-scope policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Report-only mode excludes policies in the user-action scope from evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft advises an approved isolated enforcement pilot for action policies without report-only support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Use an approved, isolated enforcement pilot for action policies when report-only isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance; controls[3].governs",
+      "type": "applicability",
+      "claim": "Conditional Access results in sign-in logs can identify a policy blocking recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "If recovery is blocked, review the Conditional Access results in the sign-in logs to identify the blocking policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The recovery FAQ requires Microsoft Entra ID P1 for account recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Users need a Microsoft Entra ID P1 license to use account recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Recovery also needs Face Check licensing through Entra Suite or standalone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "A Face Check license is also required, either through Entra Suite or standalone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The identity verification provider has a separate cost determined by its Security Store offer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "If your scenario uses an identity verification provider, purchase the provider's services separately through the Microsoft Security Store. These services aren't included in the Microsoft Entra licenses listed in the table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing table includes Account recovery in P1, P2, ID Governance, Entra Suite and Microsoft 365 E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "| Feature ** | Free | Microsoft Entra ID P1 | Microsoft Entra ID P2 | Microsoft Entra ID Governance | Microsoft Entra Suite | Microsoft 365 E7 |; | Account recovery |  | ✅ | ✅ | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Face Check is an add-on for Free, P1, P2 and ID Governance, and included in Entra Suite and Microsoft 365 E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "| Feature ** | Free | Microsoft Entra ID P1 | Microsoft Entra ID P2 | Microsoft Entra ID Governance | Microsoft Entra Suite | Microsoft 365 E7 |; | Face Check | Add-on | Add-on | Add-on | Add-on | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Face Check pricing is based on unique Face Check verifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/verified-id-pricing",
+      "quote": "Face Check with Microsoft Entra Verified ID pricing is based on unique Face Check verifications performed by the verifying authority during the billing cycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Face Check can be enabled through Entra Suite or pay-as-you-go charged to a linked Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/verified-id-pricing",
+      "quote": "Enable as a Microsoft Entra Suite trial or paid subscriber. Face Check is included as a full capability in the Microsoft Entra Suite. Or enable in pay-as-you-go where your Azure subscription received charges per each individual Face Check verification performed from your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Face Check attempts returning a matching score or failed face matching emit billing events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/verified-id-pricing",
+      "quote": "Verification request returns failed face matching: Processing the face matching between the biometric data and the credential data failed | Yes; Verification request returns a face matching score | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Licensing is mixed, combining recovery entitlement with Face Check and separately purchased provider services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Users need a Microsoft Entra ID P1 license to use account recovery. A Face Check license is also required, either through Entra Suite or standalone. The identity verification provider cost depends on the offer you subscribe to in the Microsoft Security Store.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating rests on Face Check pay-as-you-go billing per verification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/verified-id-pricing",
+      "quote": "Or enable in pay-as-you-go where your Azure subscription received charges per each individual Face Check verification performed from your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "licensing.notes",
+      "type": "absence",
+      "claim": "The cited recovery FAQ and licensing pages state no numerical verification rate.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Entra account recovery Conditional Access account onboarding recovery settings API Graph default global exclusion licensing Face Check. Read the recovery FAQ, licensing table and Face Check billing page; none states a numerical verification rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Recovery profiles determine user scope through user groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Account recovery supports a phased rollout through identity verification profiles. Each profile targets specific user groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Recovery does not support B2B, external guest or federated users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Account recovery doesn't support B2B users, external guest users, or federated users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Verified ID must be enabled as a recovery prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Verified ID enabled and Face Check configured in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Face Check must be configured as a recovery prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Verified ID enabled and Face Check configured in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Recovery requires an ID verification profile for recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "An ID verification profile for recovery, configured in Microsoft Entra Verified ID, and a dedicated test group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Recovery requires Microsoft Authenticator meeting the versions listed in the setup page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Microsoft Authenticator version 6.2610.7075 or later for Android, or version 6.8.58 or later for iOS, installed on users' devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Step-up and recovery are unsupported when initiated from a mobile app with Link to Windows as active broker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Identity verification step-up and recovery aren't currently supported when initiated from a mobile app while Link to Windows is the active broker on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft plans support in a later Link to Windows version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Support for both features is planned in Link to Windows version 1.26111.xxx, starting November 30.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Tenants using recovery in the earlier preview must enable the new policy to continue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "If your tenant already uses account recovery from an earlier preview, you also need to enable the new policy to continue using the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Microsoft pilot guidance requires working emergency access accounts excluded from the pilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Working emergency access accounts excluded from the pilot, following Manage emergency access accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends starting with a test group and recovery profile in Evaluation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Create a profile in Evaluation mode targeting a small test group to validate the identity verification flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises testing replacement-method registration, not only identity verification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Apply your settings and test recovery through registration of a replacement method, not just successful identity verification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The global onboarding and recovery exclusion's default is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Conditional Access global exclusions account onboarding recovery default enabled disabled. Read CA identity-verification guidance, Target resources and recovery settings; these explain enabling the exclusion and recording its previous state, not its default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks the reader to configure a recovery profile in Evaluation mode but the table has no profile control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "start with a test group and an ID verification profile in Evaluation mode; table rows cover recovery settings, CA user-action policies, global exclusions and sign-in logs.",
+      "severity": "minor",
+      "fix": "The At rollout step's ID verification profile mode and group-scope control has no corresponding table row. Remove 'and an ID verification profile in Evaluation mode' from that checklist step; do not add a row in this correction."
+    },
+    {
+      "n": 70,
+      "where": "Governance controls; controls[0].governs; Risk assessment",
+      "type": "behaviour",
+      "claim": "Recovery enablement, post-recovery TAP issuance and Conditional Access policy configuration are separate controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Enabling the policy is separate from configuring actions after recovery, such as issuing a TAP or removing stale credentials. Use Conditional Access to protect the Account onboarding and recovery user action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Account recovery substitutes automated identity proofing for manual help-desk verification in total-lockout scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Account recovery uses automated identity proofing to reduce reliance on manual help desk verification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "All resources policies can prevent users from establishing or restoring credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Without this exclusion, policies targeting All resources also apply to onboarding and account recovery events. Those policies can prevent users from establishing or restoring credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "The global exclusion affects every All resources policy in the tenant, not just the pilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "This setting affects all policies targeting All resources, not just the policy used in your pilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises recording the global exclusion's previous state for rollback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Record the exclusion's previous state in your rollback plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft advises configuring and testing a user-action policy rather than treating the global exclusion as replacement protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Configure and test the intended user-action policy rather than treating the exclusion as a replacement for protecting onboarding and recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The supplied roadmap modification timestamp is 2025-12-23T23:00:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-12-23T23:00:50\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T20:04:50.659Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=529855",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/fundamentals/licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/verified-id/verified-id-pricing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/conditionalaccessapplications?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/monitoring-health/how-to-view-applied-conditional-access-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/policy-alt-all-users-compliant-hybrid-or-mfa",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether account recovery is enabled, and Temporary Access Pass issuance after recovery",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Account recovery",
+          "Settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Conditional Access requirements for the account recovery journey",
+        "docs": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Conditional Access",
+          "Policies",
+          "New policy",
+          "Target resources",
+          "User actions",
+          "Account onboarding and recovery"
+        ],
+        "missing": [
+          "New policy"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether All resources policies also apply to onboarding and recovery",
+        "docs": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Conditional Access",
+          "Settings",
+          "Global exclusions",
+          "Account onboarding and recovery"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether All resources policies also apply to onboarding and recovery",
+        "docs": "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/identity/conditionalAccess",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which Conditional Access policies applied to a recovery attempt",
+        "docs": "https://learn.microsoft.com/entra/identity/monitoring-health/how-to-view-applied-conditional-access-policies",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Monitoring & health",
+          "Sign-in logs",
+          "sign-in",
+          "Conditional Access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which Conditional Access policies applied to a recovery attempt",
+        "docs": "https://learn.microsoft.com/entra/identity/monitoring-health/how-to-view-applied-conditional-access-policies",
+        "reachable": true,
+        "token": "/v1.0/auditLogs/signIns",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

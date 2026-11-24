@@ -31,6 +31,9 @@ sources:
   - title: "Microsoft Copilot requirements"
     url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
     kind: "learn"
+  - title: "Data, Privacy, and Security for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
+    kind: "learn"
   - title: "Admins - Manage transcription and captions for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     kind: "learn"
@@ -77,26 +80,30 @@ changes:
     note: "First briefing for the Mac item: referencing a Teams meeting or chat in Copilot Agent Mode, launched; default, licence experience and permission model not yet published."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected: replaced the claim that Microsoft has not said whose permissions apply with its documented view-permission statement, and removed the unsupported claim about the deck's own sharing."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 53 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 48
+  claims: 53
+  confirmed: 51
   unconfirmed: 1
   contradicted: 1
-  attempts: 1
-  hash: "3f4557933b6a6f8aadcf51ccda569720"
+  attempts: 0
+  hash: "eceeaae92b33db161bd6e207e087ebff"
 ---
 
 ## What's changing
 
 Copilot in PowerPoint can now use a referenced Teams meeting or chat as context when a user creates a presentation with Agent Mode. This roadmap item covers the Mac. The roadmap item states: "You can now reference a Teams meeting or chat when creating a presentation with Agent Mode in PowerPoint."
 
-Microsoft's Microsoft 365 Copilot release notes (entry dated July 01, 2026, listing Windows, Web and Mac) describe the user steps: open PowerPoint and start Copilot, enter a prompt that references the Teams meeting or chat to use, and press Enter, and Copilot creates a presentation using the referenced Teams content. The entry says the integration "supports referencing meetings and chat messages securely within the presentation creation process"; it does not say whose permissions apply or what content of a meeting (for example a transcript) is read.
+Microsoft's Microsoft 365 Copilot release notes (entry dated July 01, 2026, listing Windows, Web and Mac) describe the user steps: open PowerPoint and start Copilot, enter a prompt that references the Teams meeting or chat to use, and press Enter, and Copilot creates a presentation using the referenced Teams content. The entry says the integration "supports referencing meetings and chat messages securely within the presentation creation process"; it gives no permission details and does not say what content of a meeting (for example a transcript) is read.
 
 Microsoft lists the feature under three roadmap ids: 555883 for Web, 555884 for Desktop and this one, 555885, for Mac. The records give the same status, target date, cloud and release phase; only the platform differs. The release-note entry cites all three ids.
 
@@ -104,14 +111,14 @@ The roadmap record gives status Launched, a target of March CY2026, release phas
 
 ## Why it matters
 
-This puts Teams conversations, which often hold decisions, names and figures that were never meant for a slide deck, one prompt away from a new presentation. Expect decks that quote or summarise meetings and chats, and expect them to be shared more widely than the original meeting or chat was. The exposure to plan around is what happens to the deck afterwards, because the deck is a new file with its own sharing.
+This puts Teams conversations, which often hold decisions, names and figures that were never meant for a slide deck, one prompt away from a new presentation. Expect decks that quote or summarise meetings and chats, and expect them to be shared more widely than the original meeting or chat was. The exposure to plan around is what happens to the deck afterwards.
 
 Microsoft has not stated what happens on arrival, so no source says existing behaviour changes or that an administrator has to switch anything. Users who already use Agent Mode in PowerPoint on Mac may find the option on their own; plan a short communication and a check of your Teams transcription settings rather than a rollout project.
 
 ## Risk assessment
 
 **Data exposure**
-- Copilot builds a deck from a meeting or chat the user names in the prompt. Microsoft's release note calls this secure but does not say whose permissions apply, so confirm in a test that a user cannot pull in a meeting or chat they could not already open.
+- Copilot builds a deck from a meeting or chat the user names in the prompt. Microsoft's release note calls this secure but gives no permission details. Microsoft states that Copilot only surfaces organizational data to which the individual user has at least view permissions, so confirm in a test that a user cannot pull in a meeting or chat they could not already open.
 - The resulting deck is a new file. Meeting or chat content that was limited to attendees can end up in a deck that is shared more widely, so check how decks created this way are labelled and shared. See [Sensitivity labels](/concepts/sensitivity-labels/).
 - Microsoft's Copilot requirements page says that to allow Copilot to reference meeting content after a meeting ends, you configure transcription or recording. Whether this option relies on a transcript is not yet published. See [Meeting transcripts](/concepts/meeting-transcripts/).
 
@@ -147,7 +154,7 @@ The feature is part of Copilot in PowerPoint. The Microsoft Copilot overview des
 - Decide how decks built from meetings and chats should be labelled and shared, and tell users before the option reaches them.
 
 ### At rollout
-- Test with a Mac user who is an attendee of a meeting and one who is not, to see whether the second user can reference it, since Microsoft has not said whose permissions apply.
+- Test with a Mac user who is an attendee of a meeting and one who is not, to validate the documented user-permission boundary.
 - Test with and without the add-on licence to see whether the option appears, since Microsoft has not published which experience covers it.
 - Tell Windows and web users that their platforms have separate roadmap items, even though the release-note entry lists them.
 
@@ -173,7 +180,7 @@ Microsoft's licence page says you must be at least a License or User Administrat
 
 ## Open questions
 
-- Whose permissions decide which Teams meetings and chats a user can reference, and does referencing a meeting need a saved transcript or recording? Watch the Microsoft 365 Copilot release notes and the Microsoft Copilot requirements page.
+- Does referencing a meeting need a saved transcript or recording? Watch the Microsoft 365 Copilot release notes and the Microsoft Copilot requirements page.
 - Is the option on by default for users who already have Agent Mode in PowerPoint on Mac, or does an administrator have to turn something on? Watch Message center and the release notes.
 - Which Copilot experience, Basic or the Premium add-on, includes referencing a Teams meeting or chat in Agent Mode? Watch the Microsoft Copilot overview.
 - Does an admin setting exist to limit this option for some users without removing Copilot in PowerPoint entirely? Watch the release notes and the Copilot admin documentation.
@@ -184,9 +191,12 @@ cost: Low. The only cost the sources show is admin time; Microsoft's overview sp
 impact: Low. Only Mac users of Copilot in PowerPoint who build decks with Agent Mode will see the option; Windows and web are separate roadmap items.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: At rollout; Open questions; changes[0] / absence: Microsoft has not said whose permissions govern which Teams meetings and chats a user can reference. | Found: Microsoft Copilot only surfaces organizational data to which individual users have at least view permissions. | Fix: Replace the broad permission-unknown statements with: 'Microsoft states that Copilot only surfaces organizational data to which the individual user has at least view permissions.' Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy. In the rollout test, replace 'since Microsoft has not said whose permissions apply' with 'to validate the documented user-permission boundary'. Remove the permissions question from Open questions and 'permission model not yet published' from changes[0]. The narrower observation that this release-note entry omits permission details can remain. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [unsupported, major] Why it matters: first paragraph / behaviour: The resulting deck has its own sharing, separate from the source meeting or chat. | Found: Searched: Copilot generated PowerPoint presentation new file sharing permissions separate source content; Copilot generated documents sharing permissions source files new content inherits permissions. Read release-notes, privacy guidance and data-protection search excerpts; no stating passage found. | Fix: Remove 'because the deck is a new file with its own sharing' from Why it matters. Keep the recommendation to review how generated decks are shared as the wiki's advice, without asserting an undocumented permission-transfer mechanism.
+- [unsupported, major] Risk assessment: Data exposure, second bullet / behaviour: The resulting deck is a new file. | Found: Searched: 'PowerPoint Copilot new file'; read release entry, Create a new presentation with Copilot and July 22, 2025 release-note excerpts. New-file text is qualified to starting from an existing presentation; this option's entry says only that it creates a presentation. | Fix: Replace 'The resulting deck is a new file.' with 'Copilot creates a presentation using the referenced Teams content.' as stated at https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-01,-2026.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Scope; Risk assessment: Change & support; Governance guidance; rationale: impact / record: Roadmap item 555883 is the separate Web item for this capability. | Found: "id": 555883; "description": "You can now reference a Teams meeting or chat when creating a presentation with Agent Mode in PowerPoint."; "platforms": ["Web"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=555883 to sources as a roadmap source for the Web record facts.
+- [supported, minor] What's changing; Scope; Risk assessment: Change & support; Governance guidance; rationale: impact / record: Roadmap item 555884 is the separate Desktop item for this capability. | Found: "id": 555884; "description": "You can now reference a Teams meeting or chat when creating a presentation with Agent Mode in PowerPoint."; "platforms": ["Desktop"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=555884 to sources as a roadmap source for the Desktop record facts.
+- [contradicted, minor] Governance guidance: Before rollout, third bullet; Governance controls table / consistency: The checklist's deck labelling and sharing control has a corresponding controls-table row. | Found: Decide how decks built from meetings and chats should be labelled and shared ... The two rows in the table are ... one decides who holds the Copilot add-on licence, the other whether Teams meeting transcription is allowed. | Fix: The Before rollout step about deck labelling and sharing has no controls-table row. Remove that bullet to resolve the checklist/table mismatch without adding a control row.
 -->

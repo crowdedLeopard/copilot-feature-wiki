@@ -77,19 +77,23 @@ changes:
     note: "New briefing for the desktop item: reference a PowerPoint file in Copilot in PowerPoint, with licence and Restricted Content Discovery controls."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: removed the claim that licensed users gain the option if nobody acts, and the instruction to fix source-deck permissions."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "a90af7d557ba875cf97a64cd2f68091f"
+  claims: 56
+  confirmed: 52
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 2
+  hash: "71d23088ac6e86c678e52d8de003507b"
 ---
 
 ## What's changing
@@ -104,7 +108,7 @@ The roadmap record lists this item as Launched, General Availability, with a tar
 
 For a service owner this is a small, user-driven change: a deck a user picks with Reference file becomes source material for a new deck. Microsoft says existing file permissions apply, so in the wiki's view the realistic exposure is oversharing, meaning decks that people can open but should not be able to.
 
-Microsoft has not stated whether the capability is on by default or whether an admin setting governs it, and no source says existing behaviour changes. If nobody acts, licensed users on desktop will gain the option as it rolls out. The useful work is confirming who holds the licence and whether permissions on shared decks are sound before users start reusing them.
+Microsoft has not stated whether the capability is on by default or whether an admin setting governs it, and no source says existing behaviour changes. The useful work is confirming who holds the licence and whether permissions on shared decks are sound before users start reusing them.
 
 ## Risk assessment
 
@@ -149,7 +153,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and the Desktop platf
 
 ### After rollout
 
-- Ask pilot users whether referenced content surfaced anything that should not have been reachable, and fix permissions on the source deck.
+- Ask pilot users whether referenced content surfaced anything that should not have been reachable.
 - Re-read the roadmap item and Learn release notes for changes to platforms, clouds or licensing.
 
 ## Governance controls
@@ -184,7 +188,8 @@ impact: Medium. It reaches PowerPoint users on desktop who have Copilot access, 
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; front matter: defaultState / consistency: Despite reporting the arrival default as unknown, the briefing promises that licensed desktop users will gain the option if nobody acts. | Found: defaultState: "unknown"; "Microsoft has not stated whether the capability is on by default or whether an admin setting governs it"; "If nobody acts, licensed users on desktop will gain the option as it rolls out." | Fix: Remove 'If nobody acts, licensed users on desktop will gain the option as it rolls out.' Keep the narrower statement that Microsoft has not stated the arrival default specifically for Reference file; the release note supplies user steps, not an automatic-enablement promise.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist directs administrators to fix source-deck permissions, but neither control row documents source-deck permissions. | Found: "fix permissions on the source deck"; the controls table contains only licence assignment and Restricted Content Discovery, which the page itself says changes discoverability rather than permissions. | Fix: Remove ', and fix permissions on the source deck' from the After rollout checklist bullet so it asks pilot users to report unexpected exposure without directing an undocumented control change.
+- [contradicted, blocker] Why it matters / behaviour: No source says existing behaviour changes. | Found: Previously, Copilot in power point could not directly use content or styling from another PowerPoint presentation as part of a presentation creation or editing workflow. With this update, users can: | Fix: Remove ', and no source says existing behaviour changes'. The release note explicitly describes a change from the previous creation and editing behaviour; keep the narrower statement about an unpublished feature-specific enablement state. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
+- [contradicted, blocker] front matter: licensing.model / licensing: Reference file has a mixed licensing model based on Basic and Premium in-app access. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^ ^2^Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Set licensing.model to 'included'. Replace the licensing notes with 'Reference file uses edit with Copilot in PowerPoint. The Microsoft Copilot service description marks edit with Copilot as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Scope; Open questions / absence: Microsoft has not published which licence tier covers Reference file, leaving Basic or Premium as possibilities. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^ ^2^Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Replace the tier-unknown statements with 'Reference file is used through edit with Copilot in PowerPoint, which the Microsoft Copilot service description identifies as a Premium capability requiring a Microsoft 365 Copilot licence.' In Scope replace 'under one of the tiers above' with 'with a Microsoft 365 Copilot licence for the Premium editing experience'. Remove the licence-tier part of the open question, retaining the question about feature-specific fair use limits. Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- [unsupported, blocker] Risk assessment: Data exposure / applicability: The licence and Restricted Content Discovery rows cover part of the oversharing exposure from explicitly referenced SharePoint or OneDrive decks. | Found: Searched: Restricted Content Discovery Reference file PowerPoint selected presentation. Read restricted-content-discovery, assign-licenses-to-users and release-notes; no support for the rows governing explicitly referenced deck oversharing. | Fix: Replace '; the licence row and the Restricted Content Discovery row cover part of it' with '. The rows govern licence assignment and SharePoint discoverability; neither changes file permissions.' This keeps the distinction already documented at https://learn.microsoft.com/sharepoint/restricted-content-discovery and https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users.
 -->

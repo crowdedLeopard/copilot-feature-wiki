@@ -1,0 +1,747 @@
+{
+  "slug": "m365-copilot-now-smarter-with-visuals-declarative-agents-leverage-embedded-images-for-rich",
+  "roadmapId": 531758,
+  "title": "Microsoft 365 Copilot: declarative agents read images embedded in Word, PowerPoint and PDF files",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "3 blocking findings (claims 16, 41, 53)"
+    ]
+  },
+  "counts": {
+    "claims": 55,
+    "confirmed": 52,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: whole-agent blocking is not the only documented agent-level control. The briefing also overlooks Microsoft's general rollout guidance and its explicit statement that embedded knowledge files are used only as text for grounding.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationales",
+      "type": "record",
+      "claim": "Declarative agents interpret and ground responses using images embedded in Word .docx, PowerPoint .pptx and PDF files.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Declarative Agents have been enhanced to interpret and ground responses using images embedded in files such as Word documents (.docx), PowerPoint presentations (.pptx), and PDFs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; Scope; rationales",
+      "type": "record",
+      "claim": "Charts, diagrams and screenshots can inform agents' answers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This capability allows the agent to extract insights from visual elements like charts, diagrams, and screenshots",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), not GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Desktop\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-05-27T23:15:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-27T23:15:50\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release notes list Smarter answers with embedded image understanding under April 7, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## April 7, 2026\nUpdates released between March 24, 2026, April 7, 2026\n### Microsoft 365 Copilot extensibility\n- **Smarter answers with embedded image understanding** [Windows]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The release-notes entry is marked Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "**Smarter answers with embedded image understanding** [Windows]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The release notes suggest testing Word charts, PowerPoint diagrams and PDF screenshots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Upload a Word document with embedded charts and ask Copilot to summarize key insights.\nAttach a PowerPoint file with diagrams and request an explanation of the visual flow.\nUse a PDF with screenshots and ask Copilot to describe the process shown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn has no separate feature page for this roadmap item at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: declarative agents embedded images Word PowerPoint PDF image understanding default disable admin setting licensing knowledge sources 531758. Opened release notes, knowledge-sources, agent-builder-add-knowledge and agent-details; no dedicated feature page surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "Microsoft has not stated this feature's default state or whether administrators must enable it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"declarative agents\" \"embedded images\" \"default\"; \"declarative agents\" \"image understanding\" \"disable\". Read roadmap, release-notes entry, Copilot settings, agent-settings and copilotAdminSetting; none states an image-reading default or enablement requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not enumerated all declarative-agent knowledge sources covered by image understanding.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: declarative agents embedded images Word PowerPoint PDF image understanding knowledge sources 531758. Read release-notes entry, knowledge-sources, agent-builder-add-knowledge and agent-details; no complete source-coverage list found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Data exposure, embedded file content bullet; Open questions",
+      "type": "absence",
+      "claim": "Whether image reading applies to embedded file content is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source",
+      "quote": "Embedded knowledge agents support uploading files as knowledge sources. Copilot only uses the text content of these files for grounding.",
+      "severity": "blocker",
+      "fix": "Replace 'Whether image reading applies to embedded file content is not stated' with 'Microsoft’s agent-details page says embedded knowledge agents use only the text content of uploaded files for grounding; the image-understanding release note does not reconcile that limitation.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source. Narrow the knowledge-source open question to the remaining undocumented coverage rather than treating embedded-file behaviour as wholly unstated."
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The roadmap description and the release-notes entry describe no identity or permission change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: identity and permissions in the roadmap description and the full release-notes passage for 531758. Both describe image-based grounding and examples; neither describes an identity or permission change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes grounding answers, not actions taken on a user's behalf.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "By combining textual and visual understanding, Declarative Agents deliver more comprehensive and contextually accurate responses for complex queries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Agent entitlement is mixed: the licence or metered-usage requirement depends on the knowledge sources used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "indicates whether users require a Microsoft 365 Copilot license or metered usage to access agents with that capability or knowledge source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The knowledge-sources table marks Copilot connectors, SharePoint and OneDrive as requiring a licence or metered usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "| Copilot connectors | ✅ | ✅ | Yes |\n| SharePoint | ✅ | ✅ | Yes |\n| OneDrive | ✅ | ✅ | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The knowledge-sources page says SharePoint and OneDrive sources require the signed-in user to have an active Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot license.",
+      "severity": "minor",
+      "fix": "Keep the attribution, but append: 'Microsoft’s prerequisites page also lists SharePoint grounding as available with usage-based billing, so its licensing guidance differs from the knowledge-sources page.' Cite https://learn.microsoft.com/plugins/prerequisites#agent-capabilities-and-licensing-models, whose table marks Custom knowledge: SharePoint data as available for Copilot Chat with usage-based billing."
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Embedded-file upload is available with usage billing enabled or a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "The file upload feature is available to users with usage billing enabled or with a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The knowledge-sources table marks code interpreter, image generator and web search as not requiring a licence or metered usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "| Code interpreter | ✅ | ✅ | No |\n| Image generator | ✅ | ✅ | No |\n| Web search | ✅ | ✅ | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Files uploaded when building an agent in Agent Builder are stored as embedded knowledge in SharePoint Embedded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "If you're using Agent Builder to build your agent, you can upload files directly from your device or the cloud to embed the content for your agent to use as knowledge. The embedded file content is stored in SharePoint Embedded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Embedded knowledge files count against the tenant's OneDrive and SharePoint capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "These files count against the OneDrive and SharePoint capacity in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Microsoft Purview Information Barriers is not supported on embedded files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "Microsoft Purview Information Barriers (IB) isn't supported on embedded files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Any user who can access the agent can see responses grounded in its embedded file content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "Any user who can access the agent can see responses grounded in the embedded file content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Cloud and platform",
+      "type": "availability",
+      "claim": "Embedded file content is not supported in Microsoft 365 GCC environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "Embedded file content isn't supported in Microsoft 365 Government Community Cloud (GCC) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licensing requirement specific to image understanding is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"declarative agents\" \"embedded images\" \"license\". Read release-notes entry, knowledge-sources and prerequisites, including capability licensing tables; no image-understanding-specific licence requirement surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No meter specific to this image-understanding enhancement is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Copilot declarative agents embedded image understanding disable setting API pricing credit rate. Read release notes, knowledge-sources, prerequisites, pay-as-you-go-overview and pay-as-you-go-meters; general agent meters, no image-specific meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to image understanding is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Copilot declarative agents embedded image understanding disable setting API pricing credit rate. Read release-notes entry, knowledge-sources, prerequisites and pay-as-you-go-meters; no separate image-understanding price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No credit rate specific to image understanding is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Copilot declarative agents embedded image understanding disable setting API pricing credit rate. Read billing-rates search excerpts, prerequisites, release-notes entry and pay-as-you-go-meters; no image-understanding-specific credit rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].ui; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "An agent can be blocked at Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\nIn the All agents page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks the identified Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The package block API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The block API is unavailable in the US Government clouds its reference lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking applies to the whole selected agent and prevents every user in the organisation from using it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Block and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Agent Builder or Copilot Studio agents affects Microsoft Copilot and other host products.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking SharePoint or Microsoft Foundry agents affects only their availability in Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "The only agent-level lever is the whole-agent block.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "When you delete an agent in the Microsoft 365 admin center, the agent is soft deleted. A soft-deleted agent is unavailable to its maker and end users",
+      "severity": "blocker",
+      "fix": "Replace 'No setting for image reading is documented, so the only agent-level lever is the whole-agent block (see the controls table), which stops the agent for every user' with 'No setting specifically for image reading is documented; the whole-agent block shown in the controls table stops the agent for every user.' Do not claim that blocking exhausts the documented agent-level controls."
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Restricted Content Discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites.\nSelect the site you want to configure.\nOpen the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables Restricted Content Discovery for a site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].governs; Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery limits SharePoint site content in organisation-wide search and Microsoft Copilot discovery scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Restricted Content Discovery changes discovery, not existing permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't change existing permissions. Users who already have access to content can continue to access that content directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery does not affect experiences operating on content already in use, such as summarising an open document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't affect experiences that operate on content that's already in use by the user, such as summarizing an open document.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note",
+      "type": "licensing",
+      "claim": "Restricted Content Discovery needs a Microsoft Copilot licence and the SharePoint Advanced Management prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "You can configure Restricted Content Discovery if your organization is licensed for Copilot and has SharePoint Advanced Management available. See Prerequisites for SharePoint Advanced Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].ui and api; summary; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No tenant UI or API switch specifically for declarative-agent embedded-image reading is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"declarative agents\" \"image understanding\" \"disable\"; Microsoft Graph Copilot declarative agents embedded image understanding disable setting API pricing credit rate. Read configure-copilot-admin-center, agent-settings and copilotAdminSetting; none lists such a switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "User access is at Microsoft 365 admin center > Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "User access offers All users, No users and Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "The setting has three options:\nAll users\nNo users\nSpecific users or groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "All users is the documented default for User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "User access controls who can use agents and plugins, rather than what those agents read.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Use User access to control how members of your organization access and install agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "Microsoft has not stated any rollout mechanics.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization.",
+      "severity": "blocker",
+      "fix": "Replace 'Microsoft has not stated the default or any rollout mechanics' with 'Microsoft has not stated this feature’s default. The release-notes page describes a general safe deployment model that gradually expands from a subset of users within a tenant to the organisation.' Keep the feature-specific default as unknown."
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "When an agent uses SharePoint and OneDrive knowledge, Copilot searches files, folders or sites accessible to the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/knowledge-sources",
+      "quote": "When you configure your agent to use SharePoint and OneDrive content as knowledge, Copilot searches SharePoint and OneDrive files, folders, or sites that a user has access to for grounding information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "A separate roadmap item covers embedded-image understanding in Copilot Chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "560540: Microsoft Copilot (Microsoft 365): Now smarter with visuals: Copilot Chat leverages embedded images for richer, more accurate answers.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T20:04:51.167Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=531758",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/knowledge-sources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadminsetting",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether one agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether one agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which SharePoint sites Microsoft Copilot can discover content from",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "Settings",
+          "Restrict content from Microsoft Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which SharePoint sites Microsoft Copilot can discover content from",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

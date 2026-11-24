@@ -22,9 +22,15 @@ licensing:
 audiences: ["m365-admin","compliance","security","change-adoption"]
 tags: ["onedrive","sharepoint","sensitivity-labels","pdf-viewer","microsoft-edge","information-protection","purview","encryption","gcc","gcc-high","dod"]
 sources:
-  - title: "Microsoft 365 Roadmap item 566695"
+  - title: "Microsoft 365 Roadmap 566695"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=566695"
     kind: "roadmap"
+  - title: "Create and publish sensitivity labels"
+    url: "https://learn.microsoft.com/purview/create-sensitivity-labels"
+    kind: "learn"
+  - title: "Apply encryption using sensitivity labels"
+    url: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
+    kind: "learn"
   - title: "Enable sensitivity labels for files in SharePoint and OneDrive"
     url: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files"
     kind: "learn"
@@ -33,12 +39,6 @@ sources:
     kind: "learn"
   - title: "Learn about the Azure Rights Management encryption service"
     url: "https://learn.microsoft.com/purview/azure-rights-management-learn-about"
-    kind: "learn"
-  - title: "Restrict access to content by using sensitivity labels to apply encryption"
-    url: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
-    kind: "learn"
-  - title: "Create and configure sensitivity labels and their policies"
-    url: "https://learn.microsoft.com/purview/create-sensitivity-labels"
     kind: "learn"
   - title: "Set-Label"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label"
@@ -56,7 +56,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information Protection > Sensitivity labels > label > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions"
+      path: "Solutions > Information Protection > Sensitivity labels > label > Edit label > Files & other data assets > Control access > Access control > Configure access control settings > Assign permissions now > Choose permissions"
       docs: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
     api:
       kind: "powershell"
@@ -88,19 +88,23 @@ changes:
     note: "First briefing for this item: the record shows In development with an August CY2026 target, and Microsoft Learn has no page for the feature itself."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 38 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the Purview portal path for the Copy (EXTRACT) label-permissions control to start from Edit label, as the Learn pages give it."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 37
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "93df9009616143b2a8876caf6d89eb8c"
+  contradicted: 0
+  attempts: 0
+  hash: "c2aff039c0a90c8f422440157294b3d4"
 ---
 
 ## What's changing
@@ -177,7 +181,7 @@ The trigger is a sensitivity label on the PDF without the Copy (EXTRACT) permiss
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a sensitivity label grants the Copy (EXTRACT) permission</strong><br><small class="controls__note">Copy (EXTRACT) is the right the item names. The parameter applies when EncryptionEnabled is set and EncryptionProtectionType is Template, per the reference. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › label › Access control › Configure access control settings › Assign permissions now › Assign permissions › Choose permissions <a href="https://learn.microsoft.com/purview/encryption-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label&gt; -EncryptionRightsDefinitions &lt;Identity1:Rights1,Rights2&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a sensitivity label grants the Copy (EXTRACT) permission</strong><br><small class="controls__note">Copy (EXTRACT) is the right the item names. The parameter applies when EncryptionEnabled is set and EncryptionProtectionType is Template, per the reference. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › label › Edit label › Files &amp; other data assets › Control access › Access control › Configure access control settings › Assign permissions now › Choose permissions <a href="https://learn.microsoft.com/purview/encryption-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label&gt; -EncryptionRightsDefinitions &lt;Identity1:Rights1,Rights2&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether SharePoint and OneDrive support sensitivity labels on PDFs</strong><br><small>Tenant</small><br><small class="controls__note">Existing tenant setting. Microsoft has not said whether the new screen capture block depends on it.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Policies › Auto-labeling policies › Protect PDFs with Auto-labeling <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableSensitivityLabelforPDF $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A switch for the PDF viewer's screen capture block</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -201,10 +205,9 @@ cost: Low. The only cost the sources show is admin and help desk time; no meter 
 impact: Medium. People who open label-protected PDFs without the Copy permission in the web viewer in Edge are the ones who notice; unlabelled files are outside the item's description.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: first row / admin-path: The printed route goes directly from selecting a sensitivity label to Access control and its permission settings. | Found: To edit an existing label, select it, and then select the Edit label icon. ... This action starts the Edit sensitivity label configuration, which lets you change all the label settings. | Fix: Replace the path with 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. The entry and Edit label step are documented at https://learn.microsoft.com/purview/create-sensitivity-labels; the scope and Control access choices are documented at https://learn.microsoft.com/purview/encryption-sensitivity-labels. Keep both sources, which the briefing already cites. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and licensing.notes / licensing: The licensing model is included under the existing sensitivity-labelling product licences. | Found: Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium ... Manual Sensitivity Labeling | Included | Fix: Keep model included, but name a documented licence in the notes: 'The service description lists Manual Sensitivity Labeling as included with Microsoft 365 E3, among other plans. Administrators and end users need the appropriate licences for the labelling functionality they use. No licence specific to this PDF viewer behaviour is published.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The licensing model is included under the product's existing sensitivity-labelling entitlements. | Found: Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium ... Manual Sensitivity Labeling | Included | Fix: Keep model included. In licensing.notes and Cost and licensing, add: 'For example, the Microsoft Purview service description lists Manual Sensitivity Labeling as included with Microsoft 365 E3.' Keep the existing statement that no entitlement specific to this viewer behaviour is published. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview label-editing route reaches Choose permissions for the label's access control. | Found: on the Choose protection settings for the types of items you selected page, make sure you select Control access. ... On the Access control page ... Configure access control settings ... Assign permissions now ... Choose permissions | Fix: Complete controls[0].ui.path and the rendered row as: 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions to specific users or groups > user or group > Choose permissions'. The omitted scope and protection-page names are documented at https://learn.microsoft.com/purview/create-sensitivity-labels and https://learn.microsoft.com/purview/encryption-sensitivity-labels; both are already cited. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 -->

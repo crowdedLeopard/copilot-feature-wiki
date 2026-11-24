@@ -40,6 +40,15 @@ sources:
   - title: "Help prevent sharing of sensitive items with unauthorized cloud apps and services"
     url: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services"
     kind: "learn"
+  - title: "Create and deploy data loss prevention policies"
+    url: "https://learn.microsoft.com/purview/dlp-create-deploy-policy"
+    kind: "learn"
+  - title: "Create a DLP policy that uses device scoping"
+    url: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping"
+    kind: "learn"
+  - title: "Help prevent risky user activity by monitoring or restricting access to sensitive service domains"
+    url: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-restrict-access-to-domains"
+    kind: "learn"
   - title: "Set-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy"
     kind: "learn"
@@ -58,8 +67,8 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies"
-      docs: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services"
+      path: "Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > Edit > All users, groups, and adaptive scopes"
+      docs: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping"
     api:
       kind: "powershell"
       call: "Set-DlpCompliancePolicy -Identity <policy> -AddEndpointDlpLocation <users>"
@@ -74,19 +83,23 @@ changes:
     note: "First briefing: roadmap-only item with no Learn page yet; controls, default and feature-specific licence are not yet documented."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 38 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: named the roles Microsoft documents for creating DLP policies, gave the full portal path for scoping a policy to devices, and removed two checklist items that had no controls row."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 35
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "fbabb03df80cbd1b1f7361ba275bf026"
+  contradicted: 0
+  attempts: 0
+  hash: "cb6b0b70968d5e99399641aaa575a77d"
 ---
 
 ## What's changing
@@ -110,7 +123,7 @@ Because Microsoft has not stated what happens on arrival, the wiki's view is tha
 - Learn says devices must be onboarded to be used as locations in DLP policies, so confirm which devices are onboarded before relying on any new rule.
 
 **Security & identity**
-- No identity or permission change is described in the record or on Microsoft Learn. Who can author the new rules is not documented.
+- No identity or permission change is described in the record or on Microsoft Learn. Microsoft documents DLP policy creation and deployment for the Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin, and Security administrator role groups; no additional permission specific to source-context protection is published.
 
 **Autonomy & actions**
 - No autonomous or agent behaviour is described. Whether the capability only audits or can restrict file activity is not stated.
@@ -134,7 +147,6 @@ Endpoint DLP policy targeting can be configured using a combination of users and
 ## Governance guidance
 
 ### Before rollout
-- Confirm which devices are onboarded to Microsoft Purview, since Endpoint DLP applies to onboarded devices.
 - Review the Devices-location policies you already run (Data loss prevention > Policies) so you know the baseline to compare against.
 - Assign someone to watch the Microsoft Purview what's new page and the roadmap item for documentation of the capability.
 
@@ -143,7 +155,6 @@ Endpoint DLP policy targeting can be configured using a combination of users and
 - Test any new rule on a pilot group of users and devices before widening scope.
 
 ### After rollout
-- Review matched events in Activity explorer to see whether source-based rules catch what you intended.
 - Record the licence the feature requires once Microsoft publishes it, and update budget notes.
 
 ## Governance controls
@@ -154,7 +165,7 @@ Endpoint DLP policy targeting can be configured using a combination of users and
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Rule condition or setting that protects files by the website or app they came from</strong><br><small>Tenant</small><br><small class="controls__note">Learn documents no such control at the time of writing (November 2026); the Endpoint conditions list has no source-website or source-app condition.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users an Endpoint DLP policy covers on devices (today's alternative)</strong><br><small>User</small><br><small class="controls__note">Scopes the Devices location of a policy; does not apply source-based protection. Parameter needs the Compliance Administrator or Compliance Data Administrator role and EndpointDLPLocation set to All.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies <a href="https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpCompliancePolicy -Identity &lt;policy&gt; -AddEndpointDlpLocation &lt;users&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users an Endpoint DLP policy covers on devices (today's alternative)</strong><br><small>User</small><br><small class="controls__note">Scopes the Devices location of a policy; does not apply source-based protection. Parameter needs the Compliance Administrator or Compliance Data Administrator role and EndpointDLPLocation set to All.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Categories › Custom › Regulations › Custom policy › Admin units › Full directory › Devices › Edit › All users, groups, and adaptive scopes <a href="https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpCompliancePolicy -Identity &lt;policy&gt; -AddEndpointDlpLocation &lt;users&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -174,15 +185,4 @@ The Set-DlpCompliancePolicy parameter -AddEndpointDlpLocation adds accounts to t
 risk: Low. The roadmap item describes a protection capability, and no source says existing endpoint behaviour changes. The default is not stated, so this rates today's behaviour continuing.
 cost: Low. Microsoft's Purview service description lists Endpoint DLP as included in specific licences; the only known cost is admin time. A feature-specific licence or meter is not yet published.
 impact: Low. The roadmap item names no audience beyond Microsoft Purview customers, and no source says users on onboarded devices see a change by default.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / absence: Who can author the new DLP rules is not documented. | Found: The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator | Fix: Replace 'Who can author the new rules is not documented.' with 'Microsoft documents DLP policy creation and deployment for the Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin, and Security administrator role groups; no additional permission specific to source-context protection is published.' Cite https://learn.microsoft.com/purview/dlp-create-deploy-policy#permissions and add that page to sources. | Source: https://learn.microsoft.com/purview/dlp-create-deploy-policy#permissions
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: The existing sensitive-website condition concerns a website the user accesses, not the originating website of a downloaded file. | Found: Specifically, we want to audit or restrict actions such as copying data, printing content, or saving web pages locally when users access designated sensitive service domains. | Fix: Add https://learn.microsoft.com/purview/endpoint-dlp-create-policy-restrict-access-to-domains to sources; it explains the access-based meaning of the condition already named by the cited policy reference. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-restrict-access-to-domains
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Microsoft Purview portal > Data loss prevention > Policies is the UI route given for configuring which users an Endpoint DLP policy covers. | Found: In the left navigation pane, select Data loss prevention > Policies. ... Create and scope a policy that is applied only to the Devices location. | Fix: The printed steps reach the correct policy list but stop before scope selection. Set controls[1].ui.path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > Edit > All users, groups, and adaptive scopes'. Use https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping for docs and add it to sources. This documented route selects the all-users scope. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks the reader to confirm device onboarding, but the controls table has no corresponding row. | Found: Confirm which devices are onboarded to Microsoft Purview ... Controls: Rule condition or setting that protects files by the website or app they came from; Which users an Endpoint DLP policy covers on devices. | Fix: Remove the checklist bullet 'Confirm which devices are onboarded to Microsoft Purview, since Endpoint DLP applies to onboarded devices.' It directs an onboarding check that has no controls-table row; do not add a row in this correction.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist directs monitoring in Activity explorer, but the controls table has no monitoring row. | Found: Review matched events in Activity explorer ... Controls: Rule condition or setting that protects files by the website or app they came from; Which users an Endpoint DLP policy covers on devices. | Fix: Remove the checklist bullet 'Review matched events in Activity explorer to see whether source-based rules catch what you intended.' It directs a monitoring check that has no controls-table row; do not add a row in this correction.
 -->

@@ -3,8 +3,8 @@
   "roadmapId": 573453,
   "title": "Microsoft Teams: streaming switchboard for NDI sources in meetings and events",
   "status": "verified-with-gaps",
-  "date": "2026-11-21",
-  "version": 1,
+  "date": "2026-11-24",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
@@ -14,15 +14,15 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 36,
-    "confirmed": 35,
-    "unconfirmed": 1,
-    "contradicted": 0,
+    "claims": 37,
+    "confirmed": 36,
+    "unconfirmed": 0,
+    "contradicted": 1,
     "blocker": 0,
-    "major": 1,
+    "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: the admin control, default state, source limit and rollout details are supported. Licensing should name the published Teams entitlement while retaining the narrower uncertainty about switchboard-specific licensing and pricing. The statement about organisation-supplied production equipment is not established by the sources checked.",
+  "summary": "The briefing's rollout dates, NDI prerequisites and policy controls match Microsoft's notice and documentation. The checklist names the user-side Production capabilities control, but that control has no row in the controls table; this is a minor completeness finding.",
   "claims": [
     {
       "n": 1,
@@ -37,7 +37,7 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Open questions",
+      "where": "summary; What's changing; Risk assessment; Open questions",
       "type": "record",
       "claim": "Event producers can individually select and stream up to eight NDI sources.",
       "status": "supported",
@@ -48,9 +48,9 @@
     },
     {
       "n": 3,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "The switchboard is reached through More actions > Streaming > Streaming switchboard during a meeting or event.",
+      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "During a meeting or event, producers access More actions > Streaming > Streaming switchboard.",
       "status": "supported",
       "source": "Message Center post MC1521613",
       "quote": "To access the feature during a meeting or event, select More actions, then Streaming > Streaming switchboard.",
@@ -59,31 +59,31 @@
     },
     {
       "n": 4,
-      "where": "summary; What's changing; Scope; Governance guidance; rationale: risk",
+      "where": "summary; What's changing; Why it matters; Risk assessment; Scope; rationale: risk and impact",
       "type": "record",
-      "claim": "Administrators must enable NDI streaming for appropriate users through AllowNDIStreaming in a Teams meeting policy.",
+      "claim": "Administrators must enable NDI streaming before users can use the feature.",
       "status": "supported",
       "source": "Message Center post MC1521613",
-      "quote": "Admins must enable NDI streaming before users can use the feature. Enable AllowNDIStreaming for the appropriate users through the CsTeamsMeetingPolicy cmdlet.",
+      "quote": "Admins must enable NDI streaming before users can use the feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "What's changing; Risk assessment: Security & identity; Scope; Governance guidance",
+      "where": "What's changing; Risk assessment; Cost and licensing; Scope; Governance guidance",
       "type": "record",
-      "claim": "Users must turn on production capabilities after administrators enable NDI streaming.",
+      "claim": "Users must turn on production capabilities in Teams after an administrator enables NDI streaming.",
       "status": "supported",
       "source": "Message Center post MC1521613",
-      "quote": "Yes. After an admin enables NDI streaming, users must turn on production capabilities in Teams.",
+      "quote": "After an admin enables NDI streaming, users must turn on production capabilities in Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "front matter: defaultState; Why it matters; rationale: risk; rationale: impact",
+      "where": "front matter: defaultState; Why it matters; rationale: risk and impact",
       "type": "default",
-      "claim": "The default state is admin-opt-in, so users without an enabled NDI policy cannot use the feature.",
+      "claim": "The feature is admin-opt-in: users cannot use it until an administrator enables NDI streaming.",
       "status": "supported",
       "source": "Message Center post MC1521613",
       "quote": "Admins must enable NDI streaming before users can use the feature.",
@@ -92,42 +92,9 @@
     },
     {
       "n": 7,
-      "where": "front matter: licensing.model; licensing.notes; summary; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because no licence specific to the streaming switchboard is published.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
-      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
-      "severity": "minor",
-      "fix": "Set licensing.model to included and replace the licensing notes with: 'Teams is licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. No licence or price specific to the streaming switchboard is yet published.' Use the same distinction in the summary, Cost and licensing and licensing open question; cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description."
-    },
-    {
-      "n": 8,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The Learn NDI broadcast production page gives admin and user prerequisites without naming a licence.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams NDI broadcast production hardware software installed computer requirements license. Read https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings in full; its policy and client prerequisites name no licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No switchboard-specific licence, price, charge or meter is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams NDI streaming switchboard licensing price requirements production software; Teams NDI switchboard licensing price. Read Learn use-ndi-in-meetings, Teams service description and Teams Premium licensing; none names a switchboard licence, price or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
       "where": "What's changing; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The Teams settings reference lists Broadcast production with NDI and SDI hardware as Off by default.",
+      "claim": "Broadcast production with NDI and SDI hardware has a default of Off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
       "quote": "| Broadcast production with NDI and SDI hardware | Off | Use NDI or SDI technology to capture and deliver broadcast-quality audio and video over your network. |",
@@ -135,18 +102,7 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Governance guidance: After rollout; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the streaming switchboard itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"streaming switchboard\" \"NDI\". Read Learn use-ndi-in-meetings in full and search results for Teams encoder setup and Teams admin release notes; none describes the streaming switchboard.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 8,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -157,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 9,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -168,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 10,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -179,18 +135,7 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
@@ -201,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 12,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Desktop and Mac.",
@@ -212,32 +157,32 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: roadmapModified",
+      "n": 13,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-17T18:36:41.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1521613 was updated on 3 November 2026.",
+      "claim": "MC1521613 was updated on 24 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1521613",
-      "quote": "Updated November 3, 2026: We have updated the timeline. Thank you for your patience.",
+      "quote": "Updated November 24, 2026: We have updated the timeline.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Change & support; front matter: changes",
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "Worldwide general availability begins in mid-November 2026, revised from early November.",
+      "claim": "Worldwide general availability begins in mid-November 2026, previously early November.",
       "status": "supported",
       "source": "Message Center post MC1521613",
       "quote": "General Availability (Worldwide): Beginning in mid-November 2026 (previously early November)",
@@ -245,21 +190,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing",
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "The notice expects Worldwide rollout to complete by mid-November 2026.",
+      "claim": "Worldwide rollout is expected to complete by mid-December 2026, previously mid-November.",
       "status": "supported",
       "source": "Message Center post MC1521613",
-      "quote": "expected to complete by mid-November 2026",
+      "quote": "expected to complete by mid-December 2026 (previously mid-November)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice sets no act-by date.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1521613",
       "quote": "Act by: none",
@@ -267,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 18,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice describes an integration with third-party production software that receives Teams meeting content.",
+      "claim": "The change integrates with third-party production software and sends Teams meeting content to it.",
       "status": "supported",
       "source": "Message Center post MC1521613",
       "quote": "Does the change add any integration to third-party software products, and if so, what?Yes. NDI® enables Microsoft Teams meeting content to be sent to production software.",
@@ -278,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 19,
       "where": "Scope; rationale: impact",
       "type": "record",
-      "claim": "The notice identifies event producers using NDI streaming in Teams meetings and events as the affected audience.",
+      "claim": "The notice identifies event producers using NDI streaming in Teams meetings and events as affected.",
       "status": "supported",
       "source": "Message Center post MC1521613",
       "quote": "Who is affected\n\n- Event producers who use NDI streaming in Microsoft Teams meetings and events",
@@ -289,10 +234,32 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "controls[0].note; Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "n": 20,
+      "where": "controls[0].ui; Governance controls: rendered table",
+      "type": "admin-path",
+      "claim": "The Teams admin center path is Meetings > Meeting policies > policy > Audio & video > Broadcast production with NDI and SDI hardware.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
+      "quote": "go to **Meetings** > **Meeting policies**.\n2. Select an existing policy or create a new one.\n3. Go to the **Audio & video** section.\n4. Turn the **Broadcast production with NDI and SDI hardware** toggle **On**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].api; Governance controls: rendered table; Governance guidance",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowNDIStreaming $true to enable NDI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "MicrosoftTeams PowerShell module; [-AllowNDIStreaming <Boolean>]; This parameter enables the use of NDI technology to capture and deliver broadcast-quality audio and video over your network. -Identity: Specify the name of the policy being created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
       "type": "behaviour",
-      "claim": "Learn advises against enabling the NDI and SDI broadcast policy globally.",
+      "claim": "Learn advises against enabling the broadcast production policy as a global setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
       "quote": "For the most secure solution, don't turn on this policy as a global setting.",
@@ -300,54 +267,21 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The admin control is at Teams admin center > Meetings > Meeting policies > policy > Audio & video > Broadcast production with NDI and SDI hardware.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
-      "quote": "go to Meetings > Meeting policies.\n2. Select an existing policy or create a new one.\n3. Go to the Audio & video section.\n4. Turn the Broadcast production with NDI and SDI hardware toggle On.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[0].api; Governance controls table; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowNDIStreaming $true enables NDI streaming on a meeting policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -AllowNDIStreaming\nThis parameter enables the use of NDI technology to capture and deliver broadcast-quality audio and video over your network.\n| Type: | Boolean |\n### -Identity\nSpecify the name of the policy being created.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].governs; controls[0].scope; Governance controls",
-      "type": "applicability",
-      "claim": "The broadcast production meeting policy governs NDI and SDI use per user through policy assignment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
-      "quote": "As an admin, you can allow your users to use NDI® and SDI for broadcast production in their meetings. To turn on NDI® and SDI broadcast features for a user, you can use the Teams admin center or PowerShell.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
+      "n": 23,
       "where": "Scope; Governance guidance: At rollout; Governance controls",
       "type": "admin-path",
-      "claim": "Learn instructs each enabled user to turn on Production capabilities under Settings > App Permissions in their client.",
+      "claim": "Users turn on Production capabilities under Settings > App Permissions in their Teams client.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
-      "quote": "Users with an enabled Broadcast production with NDI and SDI hardware policy must turn on Production capabilities from Settings > App Permissions in their specific client.",
+      "quote": "Users with an enabled **Broadcast production with NDI and SDI hardware** policy must turn on **Production capabilities** from **Settings** > **App Permissions** in their specific client.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 24,
       "where": "Scope",
       "type": "availability",
-      "claim": "Learn states that NDI and SDI technology is supported in all locales.",
+      "claim": "The Learn page states that NDI and SDI technology is supported in all locales.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
       "quote": "NDI® and SDI technology is supported in all locales.",
@@ -355,43 +289,87 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The Learn PowerShell guidance names ContentSharingInExternalMeetings in its introductory text but its script uses AllowNDIStreaming.",
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams can be licensed through qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included under Teams' product-level licensing, with feature-specific licensing left unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The NDI Learn page lists administrator and user steps and names no licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
-      "quote": "You can use the -ContentSharingInExternalMeetings parameter in the CsTeamsMeetingPolicy cmdlet to enable broadcast production for your users.\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AllowNDIStreaming $true",
+      "quote": "## 1. Turn on the broadcast production policy\nTo turn on NDI® and SDI broadcast features for a user, you can use the Teams admin center or PowerShell.\n## 2. Instruct your users to turn on production capabilities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No licence specific to the streaming switchboard is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams NDI broadcast production streaming switchboard license licensing pricing Teams Premium; opened use-ndi-in-meetings and teams-service-description; read Teams Premium licensing search excerpts. No switchboard-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has published no switchboard-specific price or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams streaming switchboard NDI licence price charge meter; Teams NDI broadcast production streaming switchboard license licensing pricing Teams Premium; opened use-ndi-in-meetings and teams-service-description. No switchboard price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the streaming switchboard itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams streaming switchboard NDI documentation existing enabled policy changes Production capabilities admin control; opened use-ndi-in-meetings. Results describe existing NDI production, not the switchboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described additional changes for tenants that already enable AllowNDIStreaming.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams NDI streaming switchboard Production capabilities admin policy user setting autonomous existing policies rollout changes; opened use-ndi-in-meetings and read MC1521613. Neither describes additional changes to already-enabled tenants.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The roadmap and notice describe producer-selected streams, not autonomous switchboard behaviour.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams NDI switchboard automatic. Read the roadmap, MC1521613, Learn use-ndi-in-meetings and Teams admin release-note excerpts; automatic NDI installation is documented, but no autonomous switchboard source selection or streaming is described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described other changes for tenants that already enabled AllowNDIStreaming.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams streaming switchboard AllowNDIStreaming existing enabled policy changes Entra group policy assignment. Read MC1521613, Learn use-ndi-in-meetings and Set-CsTeamsMeetingPolicy; none specifies further changes for already-enabled tenants.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout; Open questions",
+      "where": "Risk assessment: Security & identity; Governance guidance; Open questions",
       "type": "record",
-      "claim": "MC1521613 says its provided source does not specify whether Entra ID group membership can manage the control.",
+      "claim": "MC1521613 says its provided source does not specify management through Entra ID group membership.",
       "status": "supported",
       "source": "Message Center post MC1521613",
       "quote": "The provided source does not specify whether the control can be managed through Entra ID group membership.",
@@ -399,30 +377,63 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "NDI production uses hardware and software the organisation supplies.",
-      "status": "unsupported",
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous switchboard behaviour is described; the sources describe producer selection.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: Teams NDI broadcast production hardware software installed computer requirements license. Read Learn use-ndi-in-meetings and Use NDI for custom layouts; they describe networked production devices but do not establish who supplies the hardware and software.",
-      "severity": "major",
-      "fix": "Remove 'NDI production itself uses hardware and software the organisation supplies;' and retain 'Microsoft has published no charge for the switchboard.'"
+      "quote": "Searched: Teams NDI streaming switchboard Production capabilities admin policy user setting autonomous existing policies rollout changes; opened use-ndi-in-meetings and read roadmap and MC1521613. The notice describes producers selecting sources, not autonomous actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The NDI Learn page's PowerShell prose names ContentSharingInExternalMeetings, while its script uses AllowNDIStreaming.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/use-ndi-in-meetings",
+      "quote": "You can use the **`-ContentSharingInExternalMeetings`** parameter ... to enable broadcast production for your users.\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AllowNDIStreaming $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The documented Production capabilities client step is performed by each user, with no administrator policy for that user step shown in the cited pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams NDI streaming switchboard Production capabilities admin policy user setting autonomous existing policies rollout changes; opened use-ndi-in-meetings, settings-policies-reference and Set-CsTeamsMeetingPolicy. The client step is user-operated; no admin equivalent found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 36,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "AllowNDIStreaming in a Teams meeting policy is the only documented admin control for this switchboard.",
+      "where": "controls[0].scope and note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "AllowNDIStreaming in a user's Teams meeting policy controls NDI broadcast production and is the notice's administrator control for this switchboard.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams streaming switchboard AllowNDIStreaming existing enabled policy changes Entra group policy assignment; streaming switchboard NDI. Read MC1521613, Learn use-ndi-in-meetings and Set-CsTeamsMeetingPolicy; no separate switchboard admin control was found.",
+      "source": "Message Center post MC1521613",
+      "quote": "Enable AllowNDIStreaming for the appropriate users through the CsTeamsMeetingPolicy cmdlet. ... Admins can control NDI® streaming through the AllowNDIStreaming setting in CsTeamsMeetingPolicy.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: At rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist tells producers to set Production capabilities, but the controls table has no row for that client control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Tell producers to turn on Production capabilities under Settings > App Permissions before they try the switchboard. The sole controls row is: Whether users can use NDI and SDI broadcast production in meetings.",
+      "severity": "minor",
+      "fix": "The At rollout bullet 'Tell producers to turn on Production capabilities under Settings > App Permissions before they try the switchboard' names a control without a table row. Remove that checklist bullet; retain the verified user prerequisite and path in Scope."
     }
   ],
   "precheck": {
-    "at": "2026-11-21T20:54:42.609Z",
+    "at": "2026-11-24T20:04:53.601Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -491,5 +502,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -4,7 +4,7 @@ slug: "microsoft-teams-streaming-switchboard-for-network-device-interface-ndi-so
 roadmapId: 573453
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Teams is adding a streaming switchboard that lets event producers send up to eight NDI sources to production software. Admins must enable AllowNDIStreaming in a meeting policy first; no licence is published."
+summary: "Teams is adding a streaming switchboard that lets event producers send up to eight NDI sources to production software. Admins must enable AllowNDIStreaming in a meeting policy first; no switchboard-specific licence is published."
 status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "The Learn page on NDI broadcast production names no licence, and no licence or price for the streaming switchboard is yet published."
+  model: "included"
+  notes: "Teams is licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. No licence or price specific to the streaming switchboard is yet published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","meeting-policy","teams-events","powershell","ndi","gcc"]
 sources:
@@ -56,26 +56,30 @@ controls:
     note: "Microsoft's notice names AllowNDIStreaming in CsTeamsMeetingPolicy as the admin control for NDI streaming. Learn advises against turning it on as a global setting."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-24"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-21"
     note: "First briefing for this item: rollout moved to mid-November 2026 per MC1521613; AllowNDIStreaming is the admin control."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 36 statements not yet confirmed"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected: removed an unsupported statement about NDI hardware, set licensing to included per the Teams service description, and updated rollout to MC1521613's 24 November 2026 timeline."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 37 statements not yet confirmed"
+version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 1
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 35
-  unconfirmed: 1
-  contradicted: 0
+  claims: 37
+  confirmed: 36
+  unconfirmed: 0
+  contradicted: 1
   attempts: 0
-  hash: "d5f908d208bfd211cdd5ec624bd888c0"
+  hash: "ba8217ead8580d955371c912df09f411"
 ---
 
 ## What's changing
@@ -84,11 +88,11 @@ Teams is adding a streaming switchboard that lets event producers select and sen
 
 Microsoft's notice MC1521613 says administrators must enable NDI streaming before users can use the feature, and users must then turn on production capabilities in Teams. The Learn page on NDI broadcast production describes the existing policy and the user step, and lists a **Broadcast production with NDI and SDI hardware** setting that the Teams settings and policies reference gives a default of Off. Microsoft Learn does not describe the switchboard itself yet, so what this page says about its behaviour is the roadmap description and the notice.
 
-The roadmap record shows the item as Rolling out, General Availability, with a target of November CY2026. It lists Worldwide (Standard Multi-Tenant) and GCC, on Desktop and Mac. MC1521613, updated 3 November 2026, gives general availability for Worldwide beginning in mid-November 2026 (previously early November) and expected to complete by mid-November 2026. The notice sets no act-by date.
+The roadmap record shows the item as Rolling out, General Availability, with a target of November CY2026. It lists Worldwide (Standard Multi-Tenant) and GCC, on Desktop and Mac. MC1521613, updated 24 November 2026, gives general availability for Worldwide beginning in mid-November 2026 (previously early November) and expected to complete by mid-December 2026 (previously mid-November). The notice sets no act-by date.
 
 ## Why it matters
 
-This change moves meeting content toward software outside Teams, so the decision is who may produce with NDI, not whether the switchboard exists. MC1521613 says the change adds an integration with third-party software: NDI enables Teams meeting content to be sent to production software.
+This change moves meeting content toward software outside Teams, so the decision is who may produce with NDI, not whether the switchboard exists. MC1521613 says the change adds an integration with third-party software: NDI enables Microsoft Teams meeting content to be sent to production software.
 
 If nobody acts, the sources point to no change for most users: the notice says admins must enable NDI streaming first and the settings reference lists the policy as Off. Tenants that already enabled AllowNDIStreaming for some users should expect those producers to see the switchboard as it rolls out; Microsoft has not said whether anything else changes for them.
 
@@ -108,13 +112,13 @@ If nobody acts, the sources point to no change for most users: the notice says a
 
 **Change & support**
 
-- Producers get a new Streaming switchboard entry under More actions > Streaming during the mid-November 2026 rollout window in the notice. Expect questions from producers who have the policy but have not turned on Production capabilities.
+- Producers get a new Streaming switchboard entry under More actions > Streaming during the rollout window in the notice (mid-November to mid-December 2026). Expect questions from producers who have the policy but have not turned on Production capabilities.
 
 ## Cost and licensing
 
-The Learn page on NDI broadcast production lists steps for an admin and for users and names no licence. No licence, price or meter for the switchboard is yet published, so the licensing model shows as not yet published.
+The Learn page on NDI broadcast production lists steps for an admin and for users and names no licence. The Teams service description says Teams is licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. No licence or price specific to the streaming switchboard is yet published.
 
-The cost the sources do show is indirect: admin time to set the policy, and communication to producers about the Production capabilities step. NDI production itself uses hardware and software the organisation supplies; Microsoft has published no charge for the switchboard.
+The cost the sources do show is indirect: admin time to set the policy, and communication to producers about the Production capabilities step. Microsoft has published no charge for the switchboard.
 
 ## Scope
 
@@ -158,21 +162,19 @@ The Learn page's PowerShell heading names the -ContentSharingInExternalMeetings 
 
 ## Open questions
 
-- Which licence, if any, does the streaming switchboard require, and will Microsoft publish a price? Watch the Learn NDI page and Message center.
+- Beyond Teams' own licensing, does the streaming switchboard need a licence of its own, and will Microsoft publish a price? Watch the Learn NDI page and Message center.
 - Does the switchboard change anything for tenants that already enable AllowNDIStreaming for users? Watch MC1521613.
 - Can the policy be assigned through Entra ID group membership? MC1521613 says its source does not specify this.
 - Will Microsoft Learn document the switchboard, including its limit of eight NDI sources?
 
 <!-- rationale
 risk: Low. Microsoft's notice says admins must enable NDI streaming first and the Teams policy default is Off, so nothing reaches production software until a meeting policy is changed.
-cost: Low. The only cost the sources show is admin time to set the policy and brief producers; a licence or price for the switchboard is not yet published.
+cost: Low. The only cost the sources show is admin time to set the policy and brief producers; no licence or price specific to the switchboard is yet published.
 impact: Low. Microsoft's notice names event producers who use NDI streaming as the people affected; other users see no change unless an admin enables the policy for them.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Cost and licensing / behaviour: NDI production uses hardware and software the organisation supplies. | Found: Searched: Teams NDI broadcast production hardware software installed computer requirements license. Read Learn use-ndi-in-meetings and Use NDI for custom layouts; they describe networked production devices but do not establish who supplies the hardware and software. | Fix: Remove 'NDI production itself uses hardware and software the organisation supplies;' and retain 'Microsoft has published no charge for the switchboard.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; summary; Cost and licensing; Open questions / licensing: The licensing model is unknown because no licence specific to the streaming switchboard is published. | Found: Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. | Fix: Set licensing.model to included and replace the licensing notes with: 'Teams is licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. No licence or price specific to the streaming switchboard is yet published.' Use the same distinction in the summary, Cost and licensing and licensing open question; cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/teams-service-description
+- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist tells producers to set Production capabilities, but the controls table has no row for that client control. | Found: Tell producers to turn on Production capabilities under Settings > App Permissions before they try the switchboard. The sole controls row is: Whether users can use NDI and SDI broadcast production in meetings. | Fix: The At rollout bullet 'Tell producers to turn on Production capabilities under Settings > App Permissions before they try the switchboard' names a control without a table row. Remove that checklist bullet; retain the verified user prerequisite and path in Scope.
 -->

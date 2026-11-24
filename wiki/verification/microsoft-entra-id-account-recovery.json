@@ -1,0 +1,1078 @@
+{
+  "slug": "microsoft-entra-id-account-recovery",
+  "roadmapId": 529856,
+  "title": "Microsoft Entra: account recovery through government ID verification (Web)",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "3 blocking findings (claims 13, 44, 53)"
+    ]
+  },
+  "counts": {
+    "claims": 86,
+    "confirmed": 80,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 3,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: tenants using the earlier preview must enable the new policy to continue recovery, contrary to the assurance that existing behaviour does not change. The profile creation API does not document user-group assignment, and the credential-cleanup description omits important success conditions.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Account recovery restores organisational account access when all registered authentication methods are unavailable.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enables users to regain access to their organizational accounts when they've lost access to all registered authentication methods",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes identity verification and trust re-establishment before replacement of authentication methods rather than simple credential recovery.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "account recovery focuses on identity verification and trust re-establishment prior to replacement of authentication methods rather than simple credential recovery",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The General Availability target is May CY2026, not a release commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"; \"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; summary; front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Item 529856 covers Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 529856; \"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Open questions",
+      "type": "record",
+      "claim": "The second ID Account Recovery roadmap item, 529857, covers Android, Desktop and iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 529857: \"title\": \"Microsoft Entra: ID Account Recovery\"; \"platforms\": [\"Android\", \"Desktop\", \"iOS\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "Item 529857 has a June CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 529857: \"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Account recovery enablement and TAP issuance are under Microsoft Entra admin center > Entra ID > Account recovery > Settings (preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Go to Entra ID > Account recovery. Open Settings (preview). Use Actions after recovery in Account recovery settings to choose how users register replacement methods.",
+      "severity": "minor",
+      "fix": "Keep the documented route, but extend the TAP part to 'Entra ID > Account recovery > Settings (preview) > Actions after recovery > Issue Temporary Access Pass'; explain in the note that tenant enablement is the Account recovery policy on the same settings page."
+    },
+    {
+      "n": 12,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Profile configuration is under Microsoft Entra admin center > Verified ID > ID verification profiles > Profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "Go to Verified ID > ID verification profiles > Profiles. Select the profile name to open its configuration, or choose the action you need: Create profile.",
+      "severity": "minor",
+      "fix": "For the creation instruction, extend the path to 'Verified ID > ID verification profiles > Profiles > Create profile'. Keep the note that Recovery is selected as the purpose in the wizard."
+    },
+    {
+      "n": 13,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/identity/verifiedId/profiles provides automation for the row's user scope, provider, purpose and mode.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph verifiedIdProfile assign groups include exclude recovery profile users scope'; read create-profile, verifiedIdProfile, verifiedIdUsageConfiguration and verifiedIdProfileConfiguration v1.0 references. They document creation and configuration, not group assignment.",
+      "severity": "blocker",
+      "fix": "Keep 'POST /v1.0/identity/verifiedId/profiles', but replace the row note with 'This call creates the profile, not its user-group assignment or the tenant policy. verifiedIdProfileConfiguration.acceptedIssuer sets the issuer; verifiedIdUsageConfigurations.purpose sets Recovery and isEnabledForTestOnly sets evaluation or production. Configure user scope through the admin UI.' The create reference is https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0."
+    },
+    {
+      "n": 14,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft Graph operation is documented for tenant Account recovery policy enablement, TAP issuance or cleanup as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph tenant Account recovery policy enable TAP issuance stale credential cleanup API accountRecoveryPolicy' and 'site:learn.microsoft.com/graph account recovery tenant policy TAP issuance stale credential cleanup settings API beta'; read recovery setup and Graph profile references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales; controls[0].note",
+      "type": "default",
+      "claim": "The new policy is disabled for new and existing tenants and requires administrator enablement, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "In the new Account recovery policy experience, the policy is disabled by default for both new and existing tenants. Enable the policy before users can use account recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects an Entra licence, Face Check entitlement and separately purchased provider service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Users need a Microsoft Entra ID P1 license to use account recovery. A Face Check license is also required, either through Entra Suite or standalone. The identity verification provider cost depends on the offer you subscribe to in the Microsoft Security Store.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The FAQ requires Microsoft Entra ID P1 for account recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Users need a Microsoft Entra ID P1 license to use account recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "A Face Check licence is required, standalone or through Entra Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "A Face Check license is also required, either through Entra Suite or standalone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Face Check is a premium add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "Microsoft Entra Verified ID also provides Face Check as a premium feature available as an add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Face Check is included in Microsoft Entra Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "Face Check is included as a full capability in the Microsoft Entra Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "Identity verification provider services are purchased separately through Microsoft Security Store.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "If your scenario uses an identity verification provider, purchase the provider's services separately through the Microsoft Security Store. These services aren't included in the Microsoft Entra licenses listed in the table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Provider cost depends on the subscribed offer, with cost per verification used in the estimator, supporting variable cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "The identity verification provider cost depends on the offer you subscribe to in the Microsoft Security Store. Enter your current helpdesk costs, target user count, and the cost per verification from your chosen provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Microsoft Entra admin center includes an account recovery cost savings estimator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "The cost savings estimator in the Microsoft Entra admin center (under Entra ID > Account recovery) helps you project potential savings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The estimator takes help desk costs, target user count and provider cost per verification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Enter your current helpdesk costs, target user count, and the cost per verification from your chosen provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "role",
+      "claim": "Provider subscription requires Contributor or Billing Administrator on the Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "The Contributor or Billing Administrator role for your Azure subscription (required for identity verification provider subscription).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope; controls[0].note",
+      "type": "role",
+      "claim": "Authentication Policy Administrator manages Account recovery settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "The Authentication Policy Administrator role to manage Account recovery settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope; controls[1].note",
+      "type": "role",
+      "claim": "Profile creation accepts Authentication Policy Administrator or Global Administrator, with the former recommended for least privilege.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "The Authentication Policy Administrator or Global Administrator role in the tenant. Use Authentication Policy Administrator for least privilege.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "Authentication Policy Administrator is the least privileged role for the Graph create-profile operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0",
+      "quote": "Authentication Policy Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Users start recovery by selecting Recover your account at sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+      "quote": "If you're unable to sign in with any methods, select Recover your account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The organisation selects the provider to which the user is redirected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+      "quote": "You're redirected to the identity proofing service configured by your organization, and you start the identity proofing process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The provider verifies government-issued identification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "The provider verifies government-issued identification documents using advanced fraud detection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Face Check verifies the user's presence against the ID photo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Account recovery first verifies proof of presence by comparing the photo on the user's government-issued ID to a real-time Face Check.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The user presents the resulting Verified ID to Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "The user presents their newly acquired Verified ID to Microsoft Entra ID. The system validates the credential's authenticity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Successful recovery issues a TAP by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "By default, the user receives a Temporary Access Pass (TAP) with limited validity and is guided through registering new authentication methods, such as passkeys.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Recovery guides the user to register replacement methods such as passkeys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "By default, the user receives a Temporary Access Pass (TAP) with limited validity and is guided through registering new authentication methods, such as passkeys.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Governance controls; controls[0].note",
+      "type": "availability",
+      "claim": "The settings blade and the option to register without a TAP are documented as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Open Settings (preview). Issue Temporary Access Pass off: Explicit preview opt-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Tenant enablement and profile configuration are separate administrative tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "ID verification profiles are created and managed in Microsoft Entra Verified ID, separately from Account recovery settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Existing profiles alone do not enable the tenant policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Existing identity verification profiles alone don't enable the new policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Evaluation mode tests verification without recovering accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Evaluation — Users can test the identity verification flow to confirm it works correctly. Accounts are not recovered in this mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Production mode allows verified users to recover independently and re-enrol authentication methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Production — Users who complete identity verification can fully recover their accounts, receive a Temporary Access Pass by default, and re-enroll authentication methods. Users recover accounts independently without waiting for help desk availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "An optional custom authentication extension validates verified claims against organisational records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Verified claims from the identity verification provider are passed to the extension, which validates them against organizational data such as a human resources information system (HRIS) or an employee directory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Account recovery uses automated identity proofing to reduce manual help desk verification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Account recovery uses automated identity proofing to reduce reliance on manual help desk verification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft warns that social engineering can manipulate support staff into granting access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Social engineering attacks can manipulate support staff into granting unauthorized access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Nothing in the sources says existing behaviour changes on arrival.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "If your tenant already uses account recovery from an earlier preview, you also need to enable the new policy to continue using the feature.",
+      "severity": "blocker",
+      "fix": "Replace 'Nothing in the sources says existing behaviour changes on arrival' with 'Tenants already using the earlier preview must enable the new Account recovery policy to continue using recovery.' Qualify the preceding no-action statement as applying to tenants that have not used the earlier preview."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Third-party providers process government-issued documents and biometric data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Identity verification involves processing government-issued documents and biometric data through third-party providers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Providers have their own privacy and data retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Identity verification providers have their own privacy and data retention policies as part of the verification offer from the Microsoft Security Store.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data processed by a custom authentication extension stays within the organisation's trust boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "Data processed by the custom authentication extension stays within the organization's trust boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Only the match result returns to recovery and no organisational data is shared with Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "No organizational data is shared with Microsoft — only the match result is returned to the account recovery flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Why it matters",
+      "type": "behaviour",
+      "claim": "Learn warns that name-only matching may be insufficient for high-risk accounts and suggests an extension for sensitive populations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+      "quote": "For sensitive user populations, consider enabling a custom authentication extension to validate additional claims beyond first and last name. Name-only matching may not provide sufficient assurance for high-risk accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "Profile exclusions apply globally across all identity verification profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "Exclude applies globally across all identity verification profiles, not just the profile you're editing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "Creating a profile enables Verified ID as an authentication method for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "Creating a profile also turns on Verified ID as an authentication method for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity; controls[0].note",
+      "type": "behaviour",
+      "claim": "Disabling TAP issuance makes preview stale-credential cleanup available for explicit enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Issue Temporary Access Pass off: Explicit preview opt-in. Stale-credential cleanup becomes available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Stale-credential cleanup deletes all previously registered authentication methods after recovery.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "After successful recovery and replacement-passkey registration, deletes all previously registered authentication methods while preserving the new passkey. If deletion fails, recovery remains successful.",
+      "severity": "blocker",
+      "fix": "Replace the cleanup clause with 'When explicitly enabled, stale-credential cleanup deletes previously registered authentication methods only after successful recovery and replacement-passkey registration, preserves the new passkey, and does not make recovery fail if deletion fails.' Keep its preview status and TAP-off requirement."
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support; Why it matters; Governance guidance",
+      "type": "applicability",
+      "claim": "Conditional Access policies can block recovery when they require unsupported controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Conditional Access policies can block account recovery if they require controls that aren't supported for the onboarding and recovery user action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Require authentication strength is unsupported for the onboarding and recovery user action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "The following controls aren't supported for these journeys: Terms of use. Require authentication strength.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Terms of use is unsupported for the onboarding and recovery user action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "The following controls aren't supported for these journeys: Terms of use. Require authentication strength.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "First- and last-name mismatches between directory properties and the ID can prevent TAP issuance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+      "quote": "This error may be present when account ownership couldn't be confirmed—often due to mismatches between the first and last names in the user's profile and those on the ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "B2B users are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Account recovery doesn't support B2B users, external guest users, or federated users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "External guest users are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Account recovery doesn't support B2B users, external guest users, or federated users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "Federated users are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+      "quote": "Account recovery doesn't support B2B users, external guest users, or federated users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "When passkey attestation is required, TAP-free registration is supported only on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "When passkey attestation is required, this path is supported only on Android; iOS continues to receive a TAP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Users",
+      "type": "behaviour",
+      "claim": "Recovery is designed for accounts with prior authentication events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+      "quote": "Account recovery is designed for actively used accounts that have prior authentication events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Users",
+      "type": "behaviour",
+      "claim": "Users may need an initial authentication after recovery scope changes before seeing the recovery option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+      "quote": "After you enable or change the scope of account recovery, users might need to complete an initial authentication before the recovery option is made available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The profile preview is unavailable in national and sovereign clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "A tenant in the Microsoft public cloud. This preview isn't available in national or sovereign clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Verified ID must be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Verified ID enabled and Face Check configured in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Face Check must be configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Verified ID enabled and Face Check configured in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope: Prerequisites; Governance guidance",
+      "type": "behaviour",
+      "claim": "A recovery ID verification profile is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "An ID verification profile for recovery, configured in Microsoft Entra Verified ID, and a dedicated test group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Supported replacement authentication methods must be enabled for in-scope users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Supported replacement authentication methods enabled for the users in scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope: Prerequisites; Governance guidance",
+      "type": "applicability",
+      "claim": "For TAP-based recovery, users must be enabled for Temporary Access Pass in the Authentication methods policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+      "quote": "Check the Authentication methods policy and confirm that users in scope for recovery are also enabled for the Temporary Access Pass method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope: Prerequisites; Risk assessment",
+      "type": "availability",
+      "claim": "Android users need Microsoft Authenticator 6.2610.7075 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Microsoft Authenticator version 6.2610.7075 or later for Android, or version 6.8.58 or later for iOS, installed on users' devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Scope: Prerequisites; Risk assessment",
+      "type": "availability",
+      "claim": "iOS users need Microsoft Authenticator 6.8.58 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "Microsoft Authenticator version 6.2610.7075 or later for Android, or version 6.8.58 or later for iOS, installed on users' devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Recovery is selected as the profile purpose, represented by verifiedIdUsageConfigurations in Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0",
+      "quote": "\"verifiedIdUsageConfigurations\": [ { \"isEnabledForTestOnly\": true, \"purpose\": \"recovery\" } ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Profile changes can take 5-10 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "Changes to identity verification profiles can take 5-10 minutes to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "View audit logs on the Profiles tab reviews profile configuration changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "Use the Profiles tab to review existing profiles and maintain their configuration: View audit logs | Review profile configuration changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Conditional Access has an Account onboarding and recovery user action for protecting recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Use the Account onboarding and recovery user action to protect bootstrap separately from ordinary resource access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "The tenant-wide global exclusion removes the user action from All resources policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Enabling the exclusion removes the Account onboarding and recovery user action from All resources policies; policies that directly target the user action still apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Policies directly targeting the user action still apply when the global exclusion is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "Enabling the exclusion removes the Account onboarding and recovery user action from All resources policies; policies that directly target the user action still apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The global exclusion is a preview setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+      "quote": "The settings page labels the exclusion Account onboarding and recovery (Preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Scope: Users; Risk assessment; rationale: impact; controls[1]",
+      "type": "behaviour",
+      "claim": "Included profile groups determine which users are offered recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+      "quote": "If they aren't part of the selected group, then they won't be offered the recovery task during login.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "Medium risk is justified by exposure after enabling an otherwise disabled-by-default capability.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Risk rationale: 'Medium. Disabled by default, but once enabled'. Schema: rate a tenant where nobody has acted; low includes 'nothing happens until an admin opts in'.",
+      "severity": "minor",
+      "fix": "Set risk to 'low' and use 'Low. The tenant policy is disabled until an administrator enables it; third-party identity proofing, name matching and Conditional Access need review before opting in.' Keep the enabling risks in the body."
+    },
+    {
+      "n": 81,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs review of Conditional Access policies but no controls-table row covers Conditional Access.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Review Conditional Access policies, including those targeting All resources'. Table rows cover Account recovery settings and ID verification profiles only.",
+      "severity": "minor",
+      "fix": "Remove the Conditional Access checklist bullet because it has no matching controls-table row. Retain the verified explanation and reference in Governance controls; do not add a row as part of this correction."
+    },
+    {
+      "n": 82,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs review of TAP eligibility in the Authentication methods policy but no controls-table row covers that policy.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'they are enabled for the Temporary Access Pass method in the Authentication methods policy'. The table's TAP control concerns issuance after recovery, not authentication-method eligibility.",
+      "severity": "minor",
+      "fix": "Remove 'and that they are enabled for the Temporary Access Pass method in the Authentication methods policy' from the checklist bullet. Retain the verified prerequisite in Scope; do not add a row as part of this correction."
+    },
+    {
+      "n": 83,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/identity/verifiedId/profiles exists and creates a profile rather than enabling the tenant policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0",
+      "quote": "Create a new verifiedIdProfile object. POST https://graph.microsoft.com/v1.0/identity/verifiedId/profiles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Conditional Access results in sign-in logs identify policies blocking recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "If recovery is blocked, review the Conditional Access results in the sign-in logs to identify the blocking policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The profile wizard offers Recovery as the purpose to select for account recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+      "quote": "Select Profile purpose. For account recovery, select Recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling the tenant policy does not perform the separately required profile creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+      "quote": "ID verification profiles are created and managed in Microsoft Entra Verified ID, separately from Account recovery settings. Before configuring recovery settings, prepare: An ID verification profile for recovery.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T20:04:54.091Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=529856",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-for-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/self-service-account-recovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/fundamentals/licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether account recovery is enabled for the tenant, and TAP issuance after recovery",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Account recovery",
+          "Settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users, provider, purpose and mode an identity verification profile uses for recovery",
+        "docs": "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile",
+        "reachable": true,
+        "segments": [
+          "Verified ID",
+          "ID verification profiles",
+          "Profiles"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users, provider, purpose and mode an identity verification profile uses for recovery",
+        "docs": "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/identity/verifiedId",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
