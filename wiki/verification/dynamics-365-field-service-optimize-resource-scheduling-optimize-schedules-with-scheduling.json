@@ -2,25 +2,27 @@
   "slug": "dynamics-365-field-service-optimize-resource-scheduling-optimize-schedules-with-scheduling",
   "roadmapId": 577807,
   "title": "Dynamics 365 Field Service: Scheduling Operations Agent suggests optimised technician schedules",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "verified-with-gaps",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 92,
-    "confirmed": 92,
+    "claims": 96,
+    "confirmed": 96,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 4
   },
-  "summary": "The briefing is supported by the roadmap record and Microsoft's preview documentation. The enablement requirements, consumption billing, control paths, API operations and qualified optimisation limits were verified.",
+  "summary": "The briefing's roadmap facts, preview limitations, administrator enablement and credit billing are supported. The enablement path stops one step early, and the three REST calls should be shortened to method and path with their deciding properties in the notes.",
   "claims": [
     {
       "n": 1,
@@ -57,17 +59,6 @@
     },
     {
       "n": 4,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The record lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -78,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -89,10 +80,21 @@
       "fix": null
     },
     {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 7,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record associates the feature with Microsoft Copilot (Microsoft 365) and Dynamics 365 Field Service.",
+      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Dynamics 365 Field Service.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Field Service\"]",
@@ -101,29 +103,18 @@
     },
     {
       "n": 8,
-      "where": "What's changing: first paragraph",
+      "where": "front matter: roadmapId; title",
       "type": "record",
-      "claim": "The roadmap describes access from the Copilot side pane anywhere in the Field Service application.",
+      "claim": "Roadmap item 577807 concerns optimizing schedules with Scheduling Operations Agent in Dynamics 365 Field Service.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users can access the feature from the Copilot side pane anywhere within the Dynamics 365 Field Service application.",
+      "quote": "\"id\": 577807; \"title\": \"Dynamics 365 Field Service: Optimize resource scheduling - Optimize schedules with Scheduling Operations Agent\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "What's changing: first paragraph",
-      "type": "record",
-      "claim": "The roadmap describes optimising for technician utilisation or work order priority.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "You can direct Copilot to optimize for the business goal you want, such as maximizing technician usage or work order priority.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "Scope: first paragraph",
+      "where": "Scope",
       "type": "record",
       "claim": "The roadmap describes enablement by admins for end users.",
       "status": "supported",
@@ -133,10 +124,32 @@
       "fix": null
     },
     {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes Copilot requests to maximise technician utilisation or work order priority.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can direct Copilot to optimize for the business goal you want, such as maximizing technician usage or work order priority.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 11,
-      "where": "title; What's changing: first paragraph",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap places the feature in the Copilot side pane anywhere in the Field Service app.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can access the feature from the Copilot side pane anywhere within the Dynamics 365 Field Service application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; What's changing",
       "type": "behaviour",
-      "claim": "The agent suggests improved schedules for one or more technicians.",
+      "claim": "The agent suggests optimized schedules for one or more technicians.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
       "quote": "The Scheduling Operations Agent in Dynamics 365 Field Service optimizes the schedules of one or more technicians at the same time.",
@@ -144,21 +157,21 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing: second paragraph",
+      "n": 13,
+      "where": "summary; What's changing; Scope; Open questions",
       "type": "behaviour",
-      "claim": "Microsoft documents interactive and batch optimisation modes.",
+      "claim": "Interactive optimizations support up to five resources, subject to resource capacity.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
-      "quote": "The Scheduling Operations Agent supports two ways to optimize schedules:",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
+      "quote": "Resources | Up to 5. A resource with a capacity greater than 1 counts as one resource for each capacity point.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
-      "where": "summary; What's changing: second paragraph",
+      "n": 14,
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Interactive optimisations can start from the schedule board, a resource list or Copilot.",
+      "claim": "Interactive optimization can start from the schedule board, a resource list or Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
       "quote": "Interactive optimizations let a dispatcher select up to five resources from the schedule board, a resource list, or Copilot",
@@ -166,32 +179,21 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What's changing; Scope; Open questions",
-      "type": "behaviour",
-      "claim": "Interactive runs support up to five resource capacity points, counting each capacity point of a resource separately.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
-      "quote": "Up to 5. A resource with a capacity greater than 1 counts as one resource for each capacity point.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "What's changing: first and second paragraphs",
+      "where": "What's changing; Risk assessment: Always match time window",
       "type": "behaviour",
-      "claim": "The dispatcher reviews an interactive suggestion and chooses whether to apply it.",
+      "claim": "A dispatcher reviews the interactive suggestion before applying it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-interactive-optimizations",
-      "quote": "Review the agent's suggested schedule before you apply it.",
+      "quote": "You select the resources to optimize, review the agent's suggested schedule, and apply it when you're satisfied.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing: second paragraph",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Batch optimisations run asynchronously.",
+      "claim": "Batch optimizations run asynchronously.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
       "quote": "The optimization runs asynchronously, so you can continue working while the agent processes the request.",
@@ -200,53 +202,42 @@
     },
     {
       "n": 17,
-      "where": "What's changing: second paragraph; controls[3]",
+      "where": "What's changing; controls[3].governs",
       "type": "behaviour",
-      "claim": "A scope defines the resources, unfulfilled requirements and existing bookings for a batch optimisation.",
+      "claim": "Batch work is configured through a scope, goal and plan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
-      "quote": "A scope defines which resources to optimize, which unfulfilled requirements to consider, and which existing bookings the agent can change.",
+      "quote": "You configure the work once as a scope, a goal, and a plan",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing: second paragraph; controls[3]",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "A goal defines the objectives and constraints for a batch optimisation.",
+      "claim": "Batch plans can run on demand.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
-      "quote": "A goal defines the objectives and constraints for the optimization.",
+      "quote": "To run the plan on demand, open it and select Run optimization plan. The run starts immediately",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing: second paragraph; controls[3]",
+      "where": "What's changing; controls[3].governs",
       "type": "behaviour",
-      "claim": "A batch plan combines a scope and goal with a time range.",
+      "claim": "Batch plans can run on a recurring schedule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
-      "quote": "A plan combines the scope and goal with a time range.",
+      "quote": "To run the plan automatically, configure an hourly, daily, weekly, or monthly recurrence with a minimum interval of 30 minutes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing: second paragraph; controls[3]",
+      "where": "What's changing; Risk assessment; controls[3].note; rationale: risk",
       "type": "behaviour",
-      "claim": "Batch plans can run on demand or on a recurring schedule.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
-      "quote": "Run a plan on demand or on a recurring schedule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Risk assessment: Autonomy; controls[3].note; rationale: risk",
-      "type": "behaviour",
-      "claim": "A batch plan can hold results for review or apply them automatically without that review step.",
+      "claim": "Batch plans offer Review before apply or Apply automatically, allowing application without review.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
       "quote": "Whether the results are applied automatically or held for you to review depends on the plan's Apply method",
@@ -254,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing: second paragraph",
+      "n": 21,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The overview says the agent never moves bookings marked Do Not Move, with booking-level overrides separately acknowledged.",
+      "claim": "Learn's overview says the agent never moves bookings marked Do Not Move.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
       "quote": "The agent never moves bookings that are marked Do Not Move",
@@ -265,8 +256,8 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing: second paragraph",
+      "n": 22,
+      "where": "What's changing",
       "type": "behaviour",
       "claim": "The agent respects technician working hours.",
       "status": "supported",
@@ -276,8 +267,8 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing: second paragraph",
+      "n": 23,
+      "where": "What's changing",
       "type": "behaviour",
       "claim": "The agent respects technician breaks.",
       "status": "supported",
@@ -287,10 +278,21 @@
       "fix": null
     },
     {
+      "n": 24,
+      "where": "What's changing; Risk assessment: booking statuses",
+      "type": "behaviour",
+      "claim": "An individual booking's Optimization behavior overrides its booking status optimization method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-booking-level-restrictions",
+      "quote": "When you set Optimization behavior on an individual booking, the agent uses that setting for the booking instead of the behavior that the booking's status optimization method implies.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 25,
-      "where": "What's changing; Governance guidance; Open questions",
+      "where": "What's changing; changes; Open questions",
       "type": "availability",
-      "claim": "Learn documents the agent as preview, rather than silently treating the roadmap target as a launched release.",
+      "claim": "Microsoft Learn documents this as a preview feature, unlike the roadmap's development status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
       "quote": "This is a preview feature.",
@@ -312,7 +314,7 @@
       "n": 27,
       "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "Learn says the agent is available in Field Service's Azure regions except Azure Government and China.",
+      "claim": "The agent is available in the same Azure regions as Field Service except Azure Government and China.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
       "quote": "The Scheduling Operations Agent is available in the same Azure regions as Dynamics 365 Field Service, except Azure Government and China.",
@@ -323,7 +325,7 @@
       "n": 28,
       "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "Learn describes a gradual rollout across supported Azure regions.",
+      "claim": "Rollout is gradual across supported Azure regions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
       "quote": "The feature is rolling out gradually across the supported Azure regions.",
@@ -332,12 +334,12 @@
     },
     {
       "n": 29,
-      "where": "Scope: first paragraph",
+      "where": "Scope",
       "type": "date",
-      "claim": "Learn directs readers to Universal Resource Scheduling version history for rollout dates.",
+      "claim": "Learn points to Universal Resource Scheduling version history for rollout dates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
-      "quote": "Rollout dates are listed in the release schedule for Universal Resource Scheduling.",
+      "quote": "Rollout dates are listed in the release schedule for Universal Resource Scheduling. Learn more in Universal Resource Scheduling version history.",
       "severity": null,
       "fix": null
     },
@@ -345,7 +347,7 @@
       "n": 30,
       "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
       "type": "default",
-      "claim": "An administrator must set up and turn on the agent before dispatchers can use it.",
+      "claim": "The feature is admin-opt-in: dispatchers cannot use it before an administrator sets it up.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Before dispatchers can use the agent, an administrator must set it up in your environment.",
@@ -354,7 +356,7 @@
     },
     {
       "n": 31,
-      "where": "controls[0].note; Cost and licensing; Scope; Governance controls",
+      "where": "controls[0].note; Scope; Governance controls",
       "type": "role",
       "claim": "Setup requires an administrator role in Dynamics 365.",
       "status": "supported",
@@ -365,9 +367,9 @@
     },
     {
       "n": 32,
-      "where": "controls[0].note",
+      "where": "controls[0].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Turning on the agent enables both interactive and batch optimisations.",
+      "claim": "Turning on the agent enables interactive and batch optimizations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Turning on the agent enables both interactive and batch optimizations.",
@@ -376,31 +378,31 @@
     },
     {
       "n": 33,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "No automation for this agent's enablement toggle is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Scheduling Operations Agent enable toggle API msdyn schedulingparameter; Scheduling Operations Agent toggle Dataverse enable. Opened soa-setup, faqs-soa and the Dataverse msdyn_schedulingparameter reference; no documented operation or value format identified as this agent's toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[0].ui; Governance guidance: At rollout",
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
       "type": "admin-path",
-      "claim": "The agent toggle is in Field Service app > Resources > Scheduling Parameters > Resource Scheduling > Agents.",
+      "claim": "The enablement route is Field Service app > Resources > Scheduling Parameters > Resource Scheduling > Agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Change to the Resources area and go to Scheduling Parameters > Resource Scheduling. Go to the Agents tab and turn on Scheduling Operations Agent (Preview).",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and its rendered path to 'Resources > Scheduling Parameters > Resource Scheduling > Agents > Scheduling Operations Agent (Preview)', as given at https://learn.microsoft.com/dynamics365/field-service/soa-setup."
+    },
+    {
+      "n": 34,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no automation for this agent's enablement toggle as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Scheduling Operations Agent enable toggle msdyn schedulingparameter entity Web API; Scheduling Operations Agent enable Web API PowerShell. Opened soa-setup and Customer Service msdyn_schedulingparameter reference; Enable Suggest Schedule is a memo field with no documented agent-toggle mapping.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "controls[1].ui; Governance guidance: At rollout",
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
       "type": "admin-path",
-      "claim": "User roles are assigned in Power Platform admin center > environment > Settings > Users + permissions > Users > user > Manage security roles.",
+      "claim": "User role assignment is Power Platform admin center > environment > Settings > Users + permissions > Users > user > Manage security roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Select your environment, and then go to Settings > Users + permissions > Users. Select a user, and then select Manage security roles.",
@@ -409,31 +411,20 @@
     },
     {
       "n": 36,
-      "where": "controls[1].api; controls[1].note",
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "The printed v9.0 POST to systemuserroles_association/$ref with a roles reference assigns a Dataverse security role to the specified user.",
+      "claim": "The printed v9.0 POST systemuserroles_association/$ref with @odata.id assigning a role is a documented user role assignment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref\nAccept: application/json\n\n{\n  \"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"\n}",
-      "severity": null,
-      "fix": null
+      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref\nAccept: application/json\n\n{ \n  \"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"\n}",
+      "severity": "minor",
+      "fix": "Set controls[1].api.call and its rendered call to 'POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref'. Add to the note: 'The request body's @odata.id identifies the Scheduling Operations Agent User or Administrator role.'"
     },
     {
       "n": 37,
-      "where": "Risk assessment: Security & identity; Governance guidance",
+      "where": "Risk assessment: Security & identity; controls[3].note; Scope",
       "type": "role",
-      "claim": "The two Scheduling Operations Agent roles are additive rather than replacements for existing roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "They're additive, so assign them alongside a user's existing roles rather than replacing them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Security & identity; Scope; controls[3].note",
-      "type": "role",
-      "claim": "Scheduling Operations Agent Administrator grants creation of scopes, goals and plans.",
+      "claim": "Scheduling Operations Agent Administrator permits creation of scopes, goals and plans.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Scheduling Operations Agent Administrator | Administrators who create scopes, goals, and plans | Create, edit, and delete scopes, goals, and plans, and view optimization results.",
@@ -441,13 +432,24 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 38,
       "where": "Risk assessment: Security & identity; Scope; controls[1].note",
       "type": "role",
-      "claim": "Scheduling Operations Agent User is the role for dispatchers running optimisations.",
+      "claim": "Scheduling Operations Agent User permits dispatchers to run optimizations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "Scheduling Operations Agent User | Dispatchers who run optimizations",
+      "quote": "Scheduling Operations Agent User | Dispatchers who run optimizations | View scopes, goals, and plans; run interactive optimizations from the schedule board and batch optimizations from a plan; and view optimization results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "The agent's two user security roles are additive to existing roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
+      "quote": "They're additive, so assign them alongside a user's existing roles rather than replacing them.",
       "severity": null,
       "fix": null
     },
@@ -455,7 +457,7 @@
       "n": 40,
       "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "role",
-      "claim": "Users also need underlying scheduling-table access, for example through Field Service - Dispatcher.",
+      "claim": "Users also need a scheduling-table access role such as Field Service - Dispatcher.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Each user also needs a role that grants access to the underlying scheduling tables, such as bookable resources, bookings, and resource requirements - for example, a dispatcher role like Field Service - Dispatcher.",
@@ -477,7 +479,7 @@
       "n": 42,
       "where": "Risk assessment: Data exposure; Governance controls",
       "type": "behaviour",
-      "claim": "Changes use the combined permissions of the running user and application user, and both must have record access.",
+      "claim": "Changes use the running user's combined permissions with the application user, and both need record access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Each change the agent makes uses the combined permissions of the user who runs the optimization and the agent's application user, so both must have access to the affected records.",
@@ -486,9 +488,9 @@
     },
     {
       "n": 43,
-      "where": "Risk assessment: Data exposure",
+      "where": "Risk assessment: Data exposure; Why it matters",
       "type": "default",
-      "claim": "The application user can read and write standard scheduling tables by default.",
+      "claim": "By default the application user can read and write standard scheduling tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "By default, the agent's application user can read and write the standard scheduling tables.",
@@ -499,10 +501,10 @@
       "n": 44,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Custom, Field Service or Project Operations table access is granted through matching roles on Scheduling Operations Agent Team.",
+      "claim": "Matching team security roles grant the agent access to custom, Field Service, Project Operations and other queried tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "If your optimizations use custom tables, Field Service or Project Operations tables, or queries that reference other tables, assign the matching security roles to the Scheduling Operations Agent Team",
+      "quote": "If your optimizations use custom tables, Field Service or Project Operations tables, or queries that reference other tables, assign the matching security roles to the Scheduling Operations Agent Team so that the agent can read and update those tables.",
       "severity": null,
       "fix": null
     },
@@ -510,7 +512,7 @@
       "n": 45,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Column-level security on queried columns requires adding the agent team to the matching field security profile.",
+      "claim": "Column-level security on scope or query columns requires adding the agent team to the matching field security profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "If you use column-level security (field security profiles) on any columns that your scopes or queries reference, also add the Scheduling Operations Agent Team to the matching field security profile.",
@@ -521,7 +523,7 @@
       "n": 46,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Without that field security profile access the agent might ignore filter conditions and return incorrect results.",
+      "claim": "Without that field security access the agent might ignore filter conditions and return incorrect results.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Otherwise, the agent might ignore filter conditions on those columns and return incorrect results.",
@@ -530,42 +532,42 @@
     },
     {
       "n": 47,
-      "where": "controls[2].ui; Governance guidance: Before rollout",
+      "where": "controls[2].ui; Governance controls table; Governance guidance",
       "type": "admin-path",
-      "claim": "Optimization Method is configured in Field Service app > Resources > Booking Settings > Booking Statuses > booking status.",
+      "claim": "Booking status optimization is set in Field Service app > Resources > Booking Settings > Booking Statuses > booking status > Optimization Method.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "Open the Field Service app and go to the Resources area. Select Booking Settings > Booking Statuses. ... For each booking status, set the Optimization Method property",
+      "quote": "Open the Field Service app and go to the Resources area. Select Booking Settings > Booking Statuses. To show all statuses, remove all filters from the view. For each booking status, set the Optimization Method property",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "controls[2].api; Governance controls",
+      "where": "controls[2].api; Governance controls table",
       "type": "command",
-      "claim": "The printed PATCH updates a bookingstatus row using the documented bookingstatuses entity set and Dataverse JSON update syntax.",
+      "claim": "PATCH v9.2 bookingstatuses with msdyn_optimizationmethod 192350000 sets Optimize, with valid JSON and If-Match headers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/bookingstatus",
-      "quote": "Update ... PATCH /bookingstatuses(bookingstatusid) ... See Update",
-      "severity": null,
-      "fix": null
+      "quote": "Update Event: True | PATCH /bookingstatuses(bookingstatusid) See Update",
+      "severity": "minor",
+      "fix": "Set controls[2].api.call and its rendered call to 'PATCH [Organization URI]/api/data/v9.2/bookingstatuses(<booking status ID>)'. Add to its note: 'The request body sets msdyn_optimizationmethod; 192350000 selects Optimize.' The column and choices are at https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus, already cited."
     },
     {
       "n": 49,
-      "where": "controls[2].api; controls[2].note",
-      "type": "command",
-      "claim": "Writable msdyn_optimizationmethod uses 192350000 for Optimize, 192350001 for Do Not Move and 192350002 for Ignore.",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Optimize allows moving or deleting bookings with that status.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus",
-      "quote": "LogicalName | msdyn_optimizationmethod ... 192350000 | Optimize ... 192350001 | Do Not Move ... 192350002 | Ignore",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
+      "quote": "Optimize: The agent can move or delete bookings with this status to generate an optimal schedule.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[2].note; Risk assessment: Autonomy; Governance guidance",
+      "where": "controls[2].note; Risk assessment; Governance guidance",
       "type": "default",
-      "claim": "An unset booking status Optimization Method is treated as Do Not Move.",
+      "claim": "Do Not Move is used when the booking status Optimization Method is unset.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "If you don't set this field, the agent treats all bookings in that status as Do Not Move.",
@@ -574,42 +576,42 @@
     },
     {
       "n": 51,
-      "where": "Risk assessment: Autonomy; Why it matters; rationale: risk",
+      "where": "Risk assessment: Autonomy & actions; controls[2].governs",
       "type": "behaviour",
-      "claim": "Optimize allows the agent to move or delete bookings, making changes to scheduling records.",
+      "claim": "Do Not Move preserves the booking rather than allowing its movement or deletion, subject to the stated booking-level override.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "Optimize: The agent can move or delete bookings with this status to generate an optimal schedule.",
+      "quote": "Do Not Move: The agent must preserve the estimated arrival time of bookings with this status. It only updates the travel time if a previous booking is moved or changed.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "controls[2].governs; Risk assessment: Autonomy",
+      "where": "controls[2].governs; Governance guidance",
       "type": "behaviour",
-      "claim": "Booking status methods govern preservation or overriding of bookings.",
+      "claim": "Ignore permits the agent to override bookings with that status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "Do Not Move: The agent must preserve the estimated arrival time ... Ignore: The agent can override bookings with this status and move or create new bookings on top of them.",
+      "quote": "Ignore: The agent can override bookings with this status and move or create new bookings on top of them.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "What's changing; Risk assessment: Autonomy",
-      "type": "behaviour",
-      "claim": "An individual booking's Optimization behavior overrides the method implied by its booking status.",
+      "where": "controls[2].api; controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "Writable msdyn_optimizationmethod uses 192350000 for Optimize, 192350001 for Do Not Move and 192350002 for Ignore.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-booking-level-restrictions",
-      "quote": "When you set Optimization behavior on an individual booking, the agent uses that setting for the booking instead of the behavior that the booking's status optimization method implies.",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus",
+      "quote": "Writable columns/attributes ... msdyn_OptimizationMethod; LogicalName | msdyn_optimizationmethod; 192350000 | Optimize; 192350001 | Do Not Move; 192350002 | Ignore",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[3].ui; Governance guidance: At rollout",
+      "where": "controls[3].ui; Governance controls table; Governance guidance",
       "type": "admin-path",
-      "claim": "A new batch plan's Apply method is configured in Resource Scheduling app > Settings > Optimization > Scheduling Plans > New.",
+      "claim": "Batch application is configured in Resource Scheduling app > Settings > Optimization > Scheduling Plans > New > Apply method.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
       "quote": "In the Settings area of the Resource Scheduling app, under Optimization, select Scheduling Plans, and then select New. ... For Apply method, select Review before apply or Apply automatically.",
@@ -618,20 +620,20 @@
     },
     {
       "n": 55,
-      "where": "controls[3].api; controls[3].note",
+      "where": "controls[3].api; Governance controls table",
       "type": "command",
-      "claim": "PATCH of msdyn_schedulingoptimizationplans with msdyn_applymethod 859530000 sets Review before apply.",
+      "claim": "PATCH v9.2 msdyn_schedulingoptimizationplans with msdyn_applymethod 859530000 selects Review before apply.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/msdyn_schedulingoptimizationplan",
-      "quote": "PATCH /msdyn_schedulingoptimizationplans(msdyn_schedulingoptimizationplanid) ... LogicalName | msdyn_applymethod ... 859530000 | Review before apply",
-      "severity": null,
-      "fix": null
+      "quote": "Update ... PATCH /msdyn_schedulingoptimizationplans(msdyn_schedulingoptimizationplanid); LogicalName | msdyn_applymethod; 859530000 | Review before apply; 859530001 | Apply automatically",
+      "severity": "minor",
+      "fix": "Set controls[3].api.call and its rendered call to 'PATCH [Organization URI]/api/data/v9.2/msdyn_schedulingoptimizationplans(<plan ID>)'. Add to the note: 'The request body sets msdyn_applymethod; 859530000 selects Review before apply.'"
     },
     {
       "n": 56,
-      "where": "Risk assessment: Autonomy",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Results awaiting review expire at the optimisation window's start or 72 hours after running, whichever comes first.",
+      "claim": "Reviewed results expire at the optimization window start or 72 hours after the request runs, whichever is earlier.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "Results that are waiting for review expire at the start of the optimization window or 72 hours after the request runs, whichever comes first.",
@@ -640,9 +642,9 @@
     },
     {
       "n": 57,
-      "where": "Risk assessment: Autonomy",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The agent warns before applying a batch result if bookings, requirements or resources changed since the request ran.",
+      "claim": "The agent warns before applying if bookings, requirements or resources changed since the request ran.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
       "quote": "If bookings, requirements, or resources changed since the request ran, the agent warns you before applying.",
@@ -651,9 +653,9 @@
     },
     {
       "n": 58,
-      "where": "Risk assessment: Autonomy",
+      "where": "Risk assessment: Always match time window",
       "type": "behaviour",
-      "claim": "Always match time window can remove an expired-promise booking from the suggested schedule before the dispatcher applies it.",
+      "claim": "Always match time window can remove a booking with an expired promise window from the suggested schedule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-interactive-optimizations",
       "quote": "If you select this option and a booking in the optimization range has an expired promise window, the agent deletes that booking from the suggested schedule.",
@@ -664,10 +666,10 @@
       "n": 59,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Priority Value accepts 1 to 100 and determines relative priority.",
+      "claim": "Priority Value ranges from 1 to 100 and determines the relative importance of work.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "It accepts numbers between 1 and 100. The higher the number, the higher the priority.",
+      "quote": "The Priority Value property helps the agent decide which bookings or resource requirements are more important. It accepts numbers between 1 and 100. The higher the number, the higher the priority.",
       "severity": null,
       "fix": null
     },
@@ -686,10 +688,10 @@
       "n": 61,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Widely separated priority values can make the highest-priority bookings nearly always included despite inefficient placement.",
+      "claim": "Widely spaced priority values can make highest-priority bookings nearly always included despite inefficient placement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "This results in Emergency bookings nearly always being included in the result, regardless of how inefficient the placement is.",
+      "quote": "if your values are Low - 1, Medium - 10, and Emergency - 100 ... Emergency bookings nearly always being included in the result, regardless of how inefficient the placement is.",
       "severity": null,
       "fix": null
     },
@@ -697,7 +699,7 @@
       "n": 62,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Equipment, Pool and Facility resource types are unsupported.",
+      "claim": "Equipment resources are unsupported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "It doesn't support resources of type Equipment, Pool, and Facility.",
@@ -708,6 +710,28 @@
       "n": 63,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
+      "claim": "Pool resources are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
+      "quote": "It doesn't support resources of type Equipment, Pool, and Facility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Facility resources are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
+      "quote": "It doesn't support resources of type Equipment, Pool, and Facility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
       "claim": "Requirement groups are unsupported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
@@ -716,7 +740,7 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 66,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Multiday requirements related to requirement detail records are unsupported.",
@@ -727,10 +751,10 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 67,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Four or more resource breaks per workday or shift produce an error.",
+      "claim": "Four or more resource breaks in a day or shift produce an error.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "A resource can have up to three breaks per work day or shift. With four or more breaks, the agent returns an error.",
@@ -738,63 +762,8 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Scope: prerequisites; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Field Service version 8.8.133.214 or newer is required.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "Your environment is updated to Field Service version 8.8.133.214 or newer",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Scope: prerequisites; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Universal Resource Scheduling version 3.12.149.15 or newer is required.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "Universal Resource Scheduling version 3.12.149.15 or newer.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 68,
-      "where": "Scope: prerequisites; Cost and licensing",
-      "type": "default",
-      "claim": "Location and map settings must be turned on.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "Location and map settings are turned on for your environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Scope: prerequisites",
-      "type": "default",
-      "claim": "Each resource the agent should consider needs Display on schedule board set to Yes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "set the following properties for each bookable resource that you want the agent to consider: Display on schedule board must be Yes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Cost and licensing: first paragraph; Open questions",
-      "type": "absence",
-      "claim": "The setup prerequisites and roadmap record do not name a dispatcher's user licence.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Scheduling Operations Agent data processing region movement consent license dispatcher. Read the roadmap record and soa-setup in full: prerequisites name product versions, Location and map settings and an administrator role, not a dispatcher user licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "front matter: licensing.model and cost; summary; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "The agent uses consumption-based billing measured in Microsoft Copilot Studio credits.",
       "status": "supported",
@@ -804,10 +773,32 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Cost and licensing; Why it matters; rationale: cost",
+      "n": 69,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The setup page's prerequisites do not name a dispatcher user licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Scheduling Operations Agent license dispatcher. Opened soa-setup: prerequisites list Field Service and URS versions, Location and map settings, and an administrator role; no dispatcher user licence is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record specifies no user licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for: Enabled by admins/makers/marketers for end users. The supplied description and record fields name no licence requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "One optimisation request consumes credits according to the number of resources included.",
+      "claim": "An optimization request consumes credits based on its number of resources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "For the Scheduling Operations Agent, a single optimization request consumes credits based on the number of resources it includes, so optimizing more resources at once uses more capacity.",
@@ -815,7 +806,7 @@
       "fix": null
     },
     {
-      "n": 73,
+      "n": 72,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Prepaid capacity uses Copilot Studio credit pack subscriptions.",
@@ -826,21 +817,21 @@
       "fix": null
     },
     {
-      "n": 74,
+      "n": 73,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Pay-as-you-go is supported through an Azure subscription.",
+      "claim": "Pay-as-you-go uses an Azure subscription and bills actual monthly credit usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "To set up pay-as-you-go billing, you first need an active Azure subscription. Link the subscription to your Power Platform environment",
+      "quote": "The pay-as-you-go model charges for the actual number of credits that agents consume during the month. ... To set up pay-as-you-go billing, you first need an active Azure subscription.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
-      "where": "Cost and licensing: second paragraph",
-      "type": "cost",
-      "claim": "Both billing models can be used in the same environment.",
+      "n": 74,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Prepaid capacity and pay-as-you-go can be used in the same environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "You can use both billing models in the same environment.",
@@ -848,8 +839,8 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Cost and licensing: second paragraph",
+      "n": 75,
+      "where": "Cost and licensing",
       "type": "cost",
       "claim": "Prepaid capacity is consumed first.",
       "status": "supported",
@@ -859,10 +850,10 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Cost and licensing: second paragraph",
-      "type": "behaviour",
-      "claim": "The setup page says both models require linking the Dynamics 365 environment to a Power Platform environment.",
+      "n": 76,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Both billing models require linking the Dynamics 365 environment to a Power Platform environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "Both models require that you link your Dynamics 365 environment to a Power Platform environment.",
@@ -870,8 +861,8 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Why it matters: second paragraph",
+      "n": 77,
+      "where": "Why it matters",
       "type": "cost",
       "claim": "The setup page says depleted quota makes AI capabilities unavailable until capacity is added.",
       "status": "supported",
@@ -881,10 +872,10 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Cost and licensing: third paragraph",
+      "n": 78,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "For pay-as-you-go the setup page directs readers to Microsoft Cost Management in Azure portal for usage and budgets.",
+      "claim": "The setup page points pay-as-you-go administrators to Microsoft Cost Management in Azure for usage and budget adjustments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "For pay-as-you-go, use Microsoft Cost Management in the Azure portal to view detailed usage and adjust spending limits, or budgets, to free up more capacity.",
@@ -892,10 +883,10 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 79,
       "where": "Cost and licensing; Governance controls",
       "type": "cost",
-      "claim": "Copilot Studio credit capacity and usage are visible in Power Platform admin center.",
+      "claim": "Copilot Studio credit capacity and usage are viewable in Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
       "quote": "You can view Copilot Studio credit capacity and usage for both prepaid capacity and pay-as-you-go billing in the Power Platform admin center.",
@@ -903,32 +894,98 @@
       "fix": null
     },
     {
-      "n": 81,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "n": 80,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The setup page gives no numerical per-optimisation credit rate.",
+      "claim": "The setup page does not give a numeric credit rate per optimization or resource.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Scheduling Operations Agent credits limit cap consumption rate. Read soa-setup in full: it states consumption depends on resource count, without a numerical credit rate.",
+      "quote": "Searched: Scheduling Operations Agent credits rate cap disable credit usage data processing cross region consent license dispatcher. Opened soa-setup in full; it states resource-based consumption but supplies no numeric per-request or per-resource rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The setup page does not give a credit cap specific to this agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Scheduling Operations Agent cap credits limit. Opened soa-setup and soa-limits; setup covers shared capacity and budgets, not an agent-specific credit cap.",
       "severity": null,
       "fix": null
     },
     {
       "n": 82,
-      "where": "Cost and licensing; Governance controls",
+      "where": "Governance controls",
       "type": "absence",
-      "claim": "No separate credit cap or credit-use switch is documented specifically for Scheduling Operations Agent.",
+      "claim": "No separate credit-use cap or switch is specifically documented for Scheduling Operations Agent as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Scheduling Operations Agent credits limit cap consumption rate; Scheduling Operations Agent consumption limits. Opened soa-setup and Manage Copilot Credits and capacity for Copilot Studio; the latter covers Copilot Studio agents without identifying this Dynamics agent as covered.",
+      "quote": "Searched: Scheduling Operations Agent cap credits limit. Opened soa-setup, soa-limits and manage-copilot-studio-copilot-credits-capacity. General monthly limits cover Copilot Studio agents; the sources do not identify this Dynamics agent as within that class or document its own credit cap.",
       "severity": null,
       "fix": null
     },
     {
       "n": 83,
-      "where": "Scope: limits",
+      "where": "Scope; Cost and licensing",
       "type": "behaviour",
-      "claim": "Interactive runs have a limit of 120 jobs.",
+      "claim": "Field Service version 8.8.133.214 or newer is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
+      "quote": "Your environment is updated to Field Service version 8.8.133.214 or newer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Scope; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Universal Resource Scheduling version 3.12.149.15 or newer is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
+      "quote": "Universal Resource Scheduling version 3.12.149.15 or newer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Scope; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Location and map settings must be on for the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
+      "quote": "Location and map settings are turned on for your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Each resource to be considered needs Display on schedule board set to Yes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
+      "quote": "set the following properties for each bookable resource that you want the agent to consider: Display on schedule board must be Yes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The cost rating is variable because the feature consumes metered Copilot Studio credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
+      "quote": "These capabilities use consumption-based billing, charging per use, and credits are the billing units that measure usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Interactive optimization allows up to 120 jobs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "Jobs (existing bookings and open requirements) | Up to 120.",
@@ -936,10 +993,10 @@
       "fix": null
     },
     {
-      "n": 84,
-      "where": "Scope: limits",
+      "n": 89,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "Interactive optimisations have a 72-hour window limit.",
+      "claim": "Interactive optimization allows a 72-hour window.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "Optimization window | Any 72-hour window in the future.",
@@ -947,21 +1004,21 @@
       "fix": null
     },
     {
-      "n": 85,
-      "where": "Scope: limits",
+      "n": 90,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "Batch optimisations support up to 50 resources.",
+      "claim": "Batch optimization allows up to 50 resources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
-      "quote": "Resources | Up to 50.",
+      "quote": "Batch optimizations ... Resources | Up to 50.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 86,
-      "where": "Scope: limits",
+      "n": 91,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "Batch optimisations support up to 4,000 jobs.",
+      "claim": "Batch optimization allows up to 4,000 jobs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "Jobs (existing bookings and open requirements) | Up to 4,000.",
@@ -969,10 +1026,10 @@
       "fix": null
     },
     {
-      "n": 87,
-      "where": "Scope: limits",
+      "n": 92,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "Batch optimisations support up to 2,000 bookings per resource.",
+      "claim": "Batch optimization allows up to 2,000 bookings per resource.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "Bookings per resource | Up to 2,000.",
@@ -980,10 +1037,10 @@
       "fix": null
     },
     {
-      "n": 88,
-      "where": "Scope: limits",
+      "n": 93,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "Batch optimisations have a maximum 14-day range.",
+      "claim": "Batch optimization allows up to a 14-day range.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
       "quote": "Optimization range | Up to 14 days.",
@@ -991,8 +1048,8 @@
       "fix": null
     },
     {
-      "n": 89,
-      "where": "Scope: limits",
+      "n": 94,
+      "where": "Scope",
       "type": "behaviour",
       "claim": "Recurring plans have a minimum interval of 30 minutes.",
       "status": "supported",
@@ -1002,48 +1059,37 @@
       "fix": null
     },
     {
-      "n": 90,
-      "where": "Governance controls: second paragraph",
+      "n": 95,
+      "where": "Governance controls",
       "type": "admin-path",
-      "claim": "Scheduling Operations Agent Team is configured in Power Platform admin center > environment > Settings > Teams.",
+      "claim": "Agent team permissions are configured under Power Platform admin center > environment > Settings > Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-      "quote": "In the Power Platform admin center, select your environment, and then go to Settings > Teams. Select the Scheduling Operations Agent Team.",
+      "quote": "In the Power Platform admin center, select your environment, and then go to Settings > Teams. Select the Scheduling Operations Agent Team. Assign the security roles that grant access to the tables your optimizations use, and then save.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 91,
+      "n": 96,
       "where": "Open questions: data processing",
       "type": "absence",
-      "claim": "The agent's Learn pages do not specify its processing location or whether it requires cross-region data-movement consent.",
+      "claim": "The agent's Learn pages do not specify its processing location or whether cross-region processing needs consent.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Scheduling Operations Agent data processed; Scheduling Operations Agent data processing region movement consent. Opened soa-overview, soa-setup, faqs-soa and geographical-availability-copilot; the platform page does not identify this agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 92,
-      "where": "controls[2].api; controls[3].api",
-      "type": "command",
-      "claim": "The PATCH examples use documented Dataverse v9.2 JSON update syntax with Content-Type: application/json and If-Match: *.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api",
-      "quote": "PATCH [Organization URI]/api/data/v9.2/accounts(00000000-0000-0000-0000-000000000001) HTTP/1.1\nContent-Type: application/json\nOData-MaxVersion: 4.0\nOData-Version: 4.0\nIf-Match: *",
+      "quote": "Searched: Scheduling Operations Agent data region consent. Opened soa-overview, soa-setup, faqs-soa and geographical-availability-copilot. The agent pages give availability, not processing locations; the general consent page omits this agent and says not all features are governed by its setting.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T20:02:32.684Z",
+    "at": "2026-11-24T01:20:05.674Z",
     "summary": {
       "links": 12,
-      "unreachable": 0,
+      "unreachable": 11,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 4,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -1054,58 +1100,58 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/soa-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/soa-interactive-optimizations",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/soa-limits",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/soa-booking-level-restrictions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/msdyn_schedulingoptimizationplan",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/bookingstatus",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1114,44 +1160,54 @@
         "side": "ui",
         "governs": "Whether the Scheduling Operations Agent is turned on in the environment",
         "docs": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Resources",
           "Scheduling Parameters",
           "Resource Scheduling",
           "Agents"
         ],
-        "missing": []
+        "missing": [
+          "Resources",
+          "Scheduling Parameters",
+          "Resource Scheduling",
+          "Agents"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Which users can run optimisations or create scopes, goals and plans",
         "docs": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Users + permissions",
           "Users",
           "Manage security roles"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Users + permissions",
+          "Users",
+          "Manage security roles"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users can run optimisations or create scopes, goals and plans",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-        "reachable": true,
+        "reachable": false,
         "token": "POST [Organization",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Which booking statuses the agent may move, preserve or override",
         "docs": "https://learn.microsoft.com/dynamics365/field-service/soa-setup",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Resources",
           "Booking Settings",
@@ -1159,14 +1215,20 @@
           "booking status",
           "Optimization Method"
         ],
-        "missing": []
+        "missing": [
+          "Resources",
+          "Booking Settings",
+          "Booking Statuses",
+          "booking status",
+          "Optimization Method"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Which booking statuses the agent may move, preserve or override",
         "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/bookingstatus",
-        "reachable": true,
+        "reachable": false,
         "token": "Content-Type",
         "found": false
       },
@@ -1175,7 +1237,7 @@
         "side": "ui",
         "governs": "Batch plans: scope, goal, schedule and whether results apply automatically",
         "docs": "https://learn.microsoft.com/dynamics365/field-service/soa-batch-optimizations",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Optimization",
@@ -1183,14 +1245,20 @@
           "New",
           "Apply method"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Optimization",
+          "Scheduling Plans",
+          "New",
+          "Apply method"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Batch plans: scope, goal, schedule and whether results apply automatically",
         "docs": "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/msdyn_schedulingoptimizationplan",
-        "reachable": true,
+        "reachable": false,
         "token": "Content-Type",
         "found": false
       }
@@ -1202,6 +1270,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

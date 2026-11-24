@@ -9,8 +9,8 @@ status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "December CY2026"
-previewDate: "November CY2026"
+targetDate: "March CY2027"
+previewDate: "January CY2027"
 risk: "medium"
 cost: "low"
 impact: "low"
@@ -64,7 +64,7 @@ controls:
       kind: "powershell"
       call: "New-RetentionCompliancePolicy -Name <policy name> -PriorityCleanup"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
-    note: "Security & Compliance PowerShell. Learn's priority cleanup page lists SharePoint and OneDrive policies as needing a second admin and a simulation run first."
+    note: "Security & Compliance PowerShell. The route opens the wizard, where the OneDrive location, query and approvers are set; the initial policy runs in simulation. Learn lists a second admin as needed."
   - governs: "Deleting an inactive mailbox by removing its retention policy hold"
     scope: "user"
     ui: null
@@ -86,35 +86,39 @@ controls:
     note: "Requires the Audit Logs role in Exchange Online. Learn says priority cleanup needs auditing enabled at least one day before the first policy runs."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
-roadmapModified: "2026-09-21T23:04:49"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-21"
     note: "First briefing for the Worldwide roadmap item; Learn does not yet describe the feature, so it covers the nearest documented controls."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 58 statements not yet confirmed"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the data exposure bullet to say deletion safeguards are not yet documented; clarified the priority cleanup wizard row; removed a Preservation Lock checklist step; updated dates to the current roadmap record."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 1
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 56
-  unconfirmed: 1
-  contradicted: 1
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 0
   attempts: 0
-  hash: "826b26ac8fc0d8b0e80182c4880d9349"
+  hash: "43c6130322f8c4af32c1c4d12c8ef39f"
 ---
 
 ## What's changing
 
-The roadmap item states that Microsoft Purview Data Lifecycle Management will let administrators "delete both content and containers for departed users at scale", keeping the tenant compliant "without any manual effort". The title names inactive OneDrives and mailboxes. This item covers Worldwide (Standard Multi-Tenant). Microsoft lists the same feature under roadmap id 569721 for GCC, GCC High and DoD, with the same status and target dates.
+The roadmap item states that Microsoft Purview Data Lifecycle Management will let administrators "delete both content and containers for departed users at scale", keeping the tenant compliant "without any manual effort". The title names inactive OneDrives and mailboxes. This item covers Worldwide (Standard Multi-Tenant). Microsoft lists the same feature under roadmap id 569721 for GCC, GCC High and DoD, with the same status and different target dates (preview November CY2026, general availability April CY2027).
 
 Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. The roadmap text gives no mechanism, default state, licence or admin path, and does not say whether the feature builds on priority cleanup or on inactive mailbox deletion, both of which Learn documents today (see Governance controls).
 
-The status is In development. The roadmap targets a preview in November CY2026 and general availability in December CY2026, and lists the release phases as General Availability and Preview. These are Microsoft's targets, not shipped behaviour.
+The status is In development. The roadmap targets a preview in January CY2027 and general availability in March CY2027, and lists the release phases as General Availability and Preview. These are Microsoft's targets, not shipped behaviour.
 
 ## Why it matters
 
@@ -125,7 +129,7 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 ## Risk assessment
 
 **Data exposure**
-- Deleting a departed user's OneDrive and mailbox removes data that may be under retention or eDiscovery hold. For priority cleanup, Learn says items marked as a record or regulatory record can't be used with it, and that data already copied to an eDiscovery review set is out of its reach. Confirm whether this feature has the same exceptions.
+- Confirm whether retained or held data is eligible for deletion by this capability; Microsoft has not yet documented its deletion safeguards. For priority cleanup, Learn says items marked as a record or regulatory record can't be used with it, and that data already copied to an eDiscovery review set is out of its reach. Confirm whether this feature has the same exceptions.
 
 **Security & identity**
 - Priority cleanup for SharePoint and OneDrive, the closest documented mechanism, needs the Priority Cleanup Admin role and approval from at least one person besides the policy's creator. Confirm which roles and approvals this feature uses before delegating it.
@@ -144,7 +148,7 @@ The indirect cost is admin and approver time, plus legal and HR review of what m
 
 ## Scope
 
-The roadmap item lists Worldwide (Standard Multi-Tenant), on the Web platform. The GCC, GCC High and DoD entry is roadmap id 569721. The targets are a November CY2026 preview and a December CY2026 general availability.
+The roadmap item lists Worldwide (Standard Multi-Tenant), on the Web platform. The GCC, GCC High and DoD entry is roadmap id 569721. The targets are a January CY2027 preview and a March CY2027 general availability.
 
 The roadmap identifies inactive OneDrives and mailboxes for departing employees, but does not state detailed eligibility criteria, roles, prerequisites or exclusions. For priority cleanup on SharePoint and OneDrive, Learn requires the Priority Cleanup Admin role and enabled auditing at least one day before the first policy is created and run.
 
@@ -153,7 +157,6 @@ The roadmap identifies inactive OneDrives and mailboxes for departing employees,
 ### Before rollout
 - List leavers whose OneDrive accounts or mailboxes are blocked from deletion by retention policies or holds, using the blockers Learn documents for OneDrive and inactive mailboxes.
 - Check that auditing is on (Audit row in the controls table) so deletions can be traced.
-- Identify any mailbox retention policy with Preservation Lock, because Learn says you can't remove an inactive mailbox from such a policy.
 - Agree with legal and HR which departed users' data may be deleted, and by whom.
 
 ### At rollout
@@ -173,7 +176,7 @@ The roadmap identifies inactive OneDrives and mailboxes for departing employees,
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether priority cleanup policies can be created in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Applies to Exchange as well as SharePoint and OneDrive. Needs the Priority Cleanup Admin role. Not documented for this feature. Exchange priority cleanup is in preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup settings › Configuration › control for priority cleanup <a href="https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Creating a priority cleanup policy that overrides holds on OneDrive files</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Learn's priority cleanup page lists SharePoint and OneDrive policies as needing a second admin and a simulation run first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup › + Create a priority cleanup <a href="https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;policy name&gt; -PriorityCleanup</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Creating a priority cleanup policy that overrides holds on OneDrive files</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. The route opens the wizard, where the OneDrive location, query and approvers are set; the initial policy runs in simulation. Learn lists a second admin as needed.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup › + Create a priority cleanup <a href="https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;policy name&gt; -PriorityCleanup</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Deleting an inactive mailbox by removing its retention policy hold</strong><br><small>User</small><br><small class="controls__note">Exchange Online PowerShell. For policies on the entire location that use older retention locations; other hold types use other commands on the page. Not possible if the policy has Preservation Lock.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Mailbox &lt;identity of inactive mailbox&gt; -ExcludeFromAllOrgHolds</code> <a href="https://learn.microsoft.com/purview/delete-an-inactive-mailbox" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the unified audit log records activity for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Audit Logs role in Exchange Online. Learn says priority cleanup needs auditing enabled at least one day before the first policy runs.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -186,7 +189,7 @@ Turning off the tenant priority cleanup control prevents creation of new policie
 ## Open questions
 
 - Which mechanism does the feature use: a new Data Lifecycle Management policy, an extension of priority cleanup, or inactive mailbox and OneDrive deletion, and does it override retention policies, eDiscovery holds and Preservation Lock? Watch Microsoft Learn's Data Lifecycle Management pages.
-- What is the default state, and how does preview in November CY2026 reach tenants? Watch Message center.
+- What is the default state, and how does preview in January CY2027 reach tenants? Watch Message center.
 - Which roles and approvals does it need, and what does it write to the audit log?
 - Which licence covers it, and does it follow the priority cleanup list on the Microsoft Purview service description page?
 
@@ -196,11 +199,9 @@ cost: Low. The only cost the sources show is admin time; no licence, meter or pr
 impact: Low. Compliance and Microsoft 365 administrators would use it, and it targets the data of users who have already left; nothing states that end users see a change.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Deletion by the new capability removes data that may be under retention or eDiscovery hold. | Found: Searched: "delete" "containers" "departed" Purview OneDrive mailbox; Purview delete inactive OneDrives mailboxes departed users containers 566527 default licensing. Read roadmap and priority cleanup pages; only existing priority cleanup is documented as overriding holds. | Fix: Replace the first sentence of Data exposure with: "Confirm whether retained or held data is eligible for deletion by this capability; Microsoft has not yet documented its deletion safeguards." Keep the separately attributed priority cleanup exceptions.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup opens creation of a OneDrive priority cleanup policy. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Priority cleanup, and then select + Create a priority cleanup. | Fix: Clarify that the printed route opens the wizard. For a static OneDrive policy, the documented continuation is Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Tell us what you're looking for > Choose when content should be deleted > Assign who'll approve what gets deleted > Choose the policy mode. State in the existing note that the OneDrive location, query and approvers are configured in the wizard and that the initial policy runs in simulation. Source: https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint#create-a-priority-cleanup-policy. | Source: https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells readers to identify Preservation Lock on mailbox retention policies without a corresponding control row. | Found: Identify any mailbox retention policy with Preservation Lock ... The table contains priority cleanup enablement, priority cleanup creation, mailbox hold removal and auditing, but no Preservation Lock inspection control. | Fix: Remove the checklist bullet beginning "Identify any mailbox retention policy with Preservation Lock". Keep the verified Preservation Lock limitation in the existing mailbox hold-removal row.
+- [supported, minor] What's changing; Scope / record: Roadmap item 569721 describes the same capability for government clouds. | Found: "id": 569721; "description": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort." | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=569721 to sources with title 'Microsoft 365 Roadmap: item 569721' and kind 'roadmap'; its separate local record supports the government-cloud facts.
+- [supported, minor] controls[1].note / behaviour: The initial SharePoint and OneDrive priority cleanup policy runs in simulation. | Found: For the Choose the policy mode page, choose whether to run the policy first in simulation mode or leave it turned off. Running the policy in simulation mode is required to initially set up priority cleanup for SharePoint and OneDrive locations. | Fix: Replace 'the initial policy runs in simulation' in controls[1].note with 'the policy can initially run in simulation or remain off; simulation is required before it is turned on'. This preserves the required first-run safeguard without implying that creation always starts a run. | Source: https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint
 -->

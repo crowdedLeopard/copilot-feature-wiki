@@ -81,15 +81,17 @@ changes:
     note: "Correction: cost rating raised to medium because users need a Microsoft 365 Copilot add-on licence; removed two checklist steps that had no controls-table row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 83 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 83
+  claims: 95
+  confirmed: 95
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -193,8 +195,8 @@ cost: Medium. Microsoft's notice says target users need a Microsoft 365 Copilot 
 impact: Low. Only users for whom the page is enabled see it; everyone else keeps the existing Edge new tab page, so the people who notice are those in the groups you target.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: The service description calls Microsoft 365 Copilot an add-on plan with licensing prerequisites, supporting the briefing's add-on model. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Keep the cited service-description statement and add: 'Microsoft's separate licensing page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, which states 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.' | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: The service description calls Microsoft 365 Copilot an add-on plan with specific licensing prerequisites. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Keep the service-description statement and add to Cost and licensing: "Microsoft's separate licensing page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans." Cite https://learn.microsoft.com/copilot/plan/copilot-license-options. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
 -->

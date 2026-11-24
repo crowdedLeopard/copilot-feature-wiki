@@ -6,16 +6,16 @@ topic: "modern-work"
 products: ["Microsoft Teams"]
 summary: "Teams webinars and town halls are expected to gain up to 20,000 registrations per event, in preview from mid-December 2026 and generally available from January 2027. Over 3,000 needs an Attendee Capacity Pack. No admin action is required."
 status: "in-development"
-releasePhase: ["General Availability","Targeted Release"]
+releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "December CY2026"
-previewDate: null
+targetDate: "January CY2027"
+previewDate: "December CY2026"
 risk: "low"
 cost: "medium"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "mixed"
   notes: "Teams Enterprise organisers can allow up to 3,000 registrations; up to 20,000 needs an Attendee Capacity Pack, an add-on for Teams Enterprise (MC1557760; Learn pack page). A price for packs is not yet published on those pages."
@@ -101,8 +101,8 @@ controls:
     note: "Existing control. The matching setting for events up to 1,000 attendees is EventAccessType."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-23"
-roadmapModified: "2026-10-16T22:00:35"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-22"
     note: "First briefing: registration capacity for Teams webinars and town halls rises to 20,000 from December 2026, with the Attendee Capacity Pack needed above 3,000."
@@ -116,19 +116,23 @@ changes:
     note: "Corrected after verification (organiser scheduling flow cited, events-policy note and preview label added) and rollout dates updated to MC1557760's 2026-11-23 timeline: Public Preview from mid-December 2026, General Availability from early January 2027."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
-version: 3
+  - date: "2026-11-24"
+    note: "Action rating changed to act-now; dates and release phases in the text now match the roadmap record (target January CY2027, preview December CY2026, General Availability and Preview)."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
-  version: 3
+  date: "2026-11-24"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 66
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
   contradicted: 1
   attempts: 0
-  hash: "b2c9bcd2c607bb3e0f84085d46e9df6b"
+  hash: "24d8017b50218434ad2b4eb9e41bc6c0"
 ---
 
 ## What's changing
@@ -137,7 +141,7 @@ During the planned rollout, registration capacity for Microsoft Teams town halls
 
 The updated notice gives a Public Preview rollout starting in mid-December 2026 and expected to complete by late December 2026, and a Worldwide General Availability rollout starting in early January 2027 and expected to complete by late January 2027. It states no action is required. It adds that large webinars with registration don't support broadcast-style streaming, which is available with town halls, that organisers still need the right events policy, and that Microsoft plans to support more registrations per event in future releases.
 
-The roadmap record (item 574110) lists the item as In development, with a target date of December CY2026, release phases General Availability and Targeted Release, the Worldwide (Standard Multi-Tenant) cloud and the Web platform. The notice's General Availability window (January 2027) is later than the roadmap's December CY2026 target. Dates are Microsoft's targets, not commitments.
+The roadmap record (item 574110) lists the item as In development, with a target date of January CY2027, a preview date of December CY2026, release phases General Availability and Preview, the Worldwide (Standard Multi-Tenant) cloud and the Web platform. The notice's rollout windows (Public Preview from mid-December 2026, General Availability from early January 2027) line up with the roadmap's preview and target dates. Dates are Microsoft's targets, not commitments.
 
 The Learn page [Meetings and events feature and capacity comparison](https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison) still lists registration as up to 1,000 attendees at the time of writing (November 2026). The notice and the roadmap are the later statements of the new limit.
 
@@ -175,7 +179,7 @@ The change arrives without an admin step, so the practical decision is licensing
 
 **Who is affected.** Organisers of Teams town halls and webinars that use registration, and admins who manage Teams events policies and Attendee Capacity Pack licences (MC1557760).
 
-**Clouds and platforms.** The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform, with General Availability and Targeted Release phases. The notice gives Public Preview from mid-December 2026 to late December 2026 and a Worldwide General Availability rollout from early January 2027 to late January 2027.
+**Clouds and platforms.** The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform, with General Availability and Preview phases. The notice gives Public Preview from mid-December 2026 to late December 2026 and a Worldwide General Availability rollout from early January 2027 to late January 2027.
 
 **Prerequisites.** Organisers need the right events policy. The notice says no new policy access is needed, only the right Attendee Capacity Pack where applicable. Learn says a Global Administrator manages pack assignments in the Teams admin center; Teams Administrators have read-only access.
 
@@ -228,8 +232,8 @@ cost: Medium. Registration above 3,000 per event needs an Attendee Capacity Pack
 impact: Medium. Organisers of webinars and town halls with registration see the higher limit; other users and admins notice only if they manage events policies or pack licences.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: action / consistency: The action rating is prepare. | Found: action: "prepare"; cost: "medium"; defaultState: "on". Public Preview starts in mid-December 2026 and General Availability in early January 2027; both are within about 60 days of the November 23, 2026 run. | Fix: Change action from "prepare" to "act-now": the change arrives without admin enablement within about 60 days, and the medium-cost add-on licensing decision should be made before rollout.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist instructs readers to review the event inventory without a corresponding monitoring row in the controls table. | Found: Review the event inventory before removing or changing a pack ... Table rows: Attendee Capacity Pack assignment; webinar creation; large-audience event creation; town hall attendee access. | Fix: Replace the After rollout bullet 'Review the event inventory before removing or changing a pack, because Learn warns upcoming events may no longer run at the scheduled capacity' with 'Consider the impact before removing or changing a pack, because Learn warns upcoming events may no longer run at the scheduled capacity.' This removes the inventory-control instruction that has no table row without adding a row.
 -->

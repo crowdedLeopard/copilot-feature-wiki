@@ -65,17 +65,19 @@ changes:
     note: "First briefing for this item: sharing is on by default and has one tenant-wide switch in the Microsoft 365 admin center."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 55
+  claims: 72
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 3
   attempts: 0
   hash: "4340331f0f90450f9a4bd2bf59940c3b"
 ---
@@ -189,9 +191,12 @@ cost: Low. The only cost the sources show is admin time to decide on the setting
 impact: High. Microsoft's notice MC1461700 says all Microsoft 365 Copilot users are affected and that the feature is enabled by default, so a Share option appears for users without an admin acting.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist names sensitivity label review, user shared-link management and Purview audit review without corresponding controls-table rows. | Found: Checklist: 'ask whether your sensitivity label setup is relevant'; 'Shared links lets them stop sharing a link'; 'Review Microsoft Purview audit records'. Table: tenant sharing switch and user/group scoping only. | Fix: Remove the Before rollout bullet beginning 'Check which teams handle material', remove the After rollout audit-review bullet, and remove ', and that Copilot > Settings > Data controls > Shared links lets them stop sharing a link' from the At rollout communication bullet. The verified explanatory body can remain.
-- [supported, minor] title; What's changing; running prose / behaviour: The briefing calls the product Microsoft 365 Copilot, its former name. | Found: Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat. | Fix: Use 'Microsoft Copilot' in the title and unattributed running prose. Retain the original product name when reporting the roadmap record or quoting MC1461700. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
+- [supported, minor] title; What's changing; unattributed running prose / behaviour: The briefing calls the product Microsoft 365 Copilot. | Found: Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat. | Fix: Use 'Microsoft Copilot' in the title and unattributed running prose; retain the original name when reporting the roadmap record or MC1461700. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
+- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing / licensing: Licensing is unknown because no licence specific to sharing has been published. | Found: Microsoft Copilot | Users need a Microsoft Copilot license and a qualifying prerequisite license. | Fix: Set licensing.model to 'included'. Begin licensing.notes and Cost and licensing with: 'For Microsoft Copilot, users need a Microsoft Copilot license and a qualifying prerequisite license. Microsoft has not published a licence specific to sharing.' Retain the cited requirements URL and the narrower absence. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks admins to check sensitivity label setup, but the controls table has no corresponding row. | Found: Checklist: 'ask whether your sensitivity label setup is relevant'. Table rows: 'Whether users can share Copilot sessions and responses' and 'Sharing for specific users or groups only'. | Fix: Remove the Before rollout bullet beginning 'Check which teams handle material'; its sensitivity-label review has no corresponding controls-table row.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist directs users to shared-link management, but that control has no table row. | Found: Checklist: 'Copilot > Settings > Data controls > Shared links lets them stop sharing a link'. Table rows cover only the tenant sharing switch and unavailable user/group scoping. | Fix: Remove ', and that Copilot > Settings > Data controls > Shared links lets them stop sharing a link' from the At rollout communication bullet; leave its other advice and the explanatory Security & identity text unchanged.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks admins to review Purview audit records, but audit review has no table row. | Found: Checklist: 'Review Microsoft Purview audit records for sharing events, link access and blocked sharing attempts'. Table rows cover only the tenant sharing switch and unavailable user/group scoping. | Fix: Remove the After rollout bullet beginning 'Review Microsoft Purview audit records'; the requested audit review has no corresponding controls-table row.
 -->

@@ -112,17 +112,19 @@ changes:
     note: "Corrected the Edge management service path to Settings > Microsoft Edge in the Microsoft 365 admin center, removed two unsupported policy 'commands', and dropped the Work IQ setup step from the pre-rollout checklist."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 80 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 79 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 79
+  claims: 79
+  confirmed: 77
   unconfirmed: 1
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "1f8e06002a1f333f2d956fcab003eb2a"
 ---
@@ -230,8 +232,10 @@ cost: Variable. Users need a Microsoft 365 Copilot (Premium) licence or higher, 
 impact: Low. Learn says the feature is off by default, and it reaches only users with a Premium licence or higher whose tenant also has the Copilot new tab page and Work IQ access in place.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The Copilot new tab page is the page users see most often. | Found: Searched: Commercial Journeys most often review administrator approval. Opened Commercial Journeys and Configure the Copilot new tab page. They identify the new tab surface but provide no comparison establishing that users see it more often than any other page. | Fix: Replace 'on the page users see most often' with 'on the Copilot new tab page' in the first sentence of Why it matters.
+- [unsupported, major] Why it matters / behaviour: The Copilot new tab page is the page users see most often. | Found: Searched: "Commercial Journeys" "most often" new tab page. Opened Commercial Journeys and Configure the Copilot new tab page; neither gives comparative page-view frequency. | Fix: Replace 'on the page users see most often' with 'on the Copilot new tab page' in the first sentence of Why it matters.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist names the Get things done user opt-out control, but that control has no row in the controls table. | Found: Tell pilot users they can turn off Get things done in Microsoft Edge settings. The table lists Commercial Journeys availability, the Copilot new tab page, Work IQ spending and licence assignment, not the user opt-out. | Fix: The Before rollout step naming the Get things done user opt-out has no matching controls row. Remove that checklist bullet; keep the documented user opt-out information in the prose. Do not add a control row.
 -->

@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Purview: Microsoft Graph APIs for archive mailboxes as EWS retires"
+title: "Microsoft Purview: Microsoft Graph APIs for archive mailboxes as EWS retires (Worldwide)"
 slug: "microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-mailboxes"
 roadmapId: 567313
 topic: "governance"
 products: ["Microsoft Purview"]
 summary: "Microsoft Graph gains APIs for archive mailboxes, including auto-expanding archives, as Exchange Web Services is disabled. Integrations that read archives through EWS must migrate; Microsoft's act-by date of 1 October 2026 has passed."
-status: "rolling-out"
+status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
@@ -71,7 +71,7 @@ sources:
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1469565"
     kind: "message-center"
 videos: []
-related: ["microsoft-purview-data-lifecycle-management-increase-in-expansion-limit-for-auto-expanding"]
+related: ["microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-ma-us-government","microsoft-purview-data-lifecycle-management-increase-in-expansion-limit-for-auto-expanding"]
 controls:
   - governs: "Which applications still call EWS (usage report)"
     scope: "tenant"
@@ -94,8 +94,8 @@ controls:
     note: "Needs Exchange Administrator or Global Administrator. The EwsEnabled behaviour changes in October 2026."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
-roadmapModified: "2026-11-05T23:59:28"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-18"
     note: "First briefing: Graph archive mailbox APIs arrive as EWS is disabled; Microsoft's 1 October 2026 act-by date has passed."
@@ -105,19 +105,9 @@ changes:
     note: "Corrected the EWS timing, licensing (Exchange Online Archiving entitlement), EWS-setting scope wording and admin paths; removed two checklist steps without matching control rows."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
-version: 2
-verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
-  version: 2
-  model: "gpt-6.1-sol"
-  engine: "copilot"
-  claims: 79
-  confirmed: 79
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
-  hash: "e36458cb765e6e37b5c365efb3b01208"
+  - date: "2026-11-24"
+    note: "Status moved to Launched on the roadmap record; added the other roadmap item's clouds; noted that Microsoft's two EWS pages disagree on exceptions to organisation-wide blocking."
+version: 3
 ---
 
 ## What's changing
@@ -126,7 +116,7 @@ Microsoft is adding Microsoft Graph support for archive mailboxes, both the main
 
 Applications that work with an archive mailbox through Graph may have to handle redirects. Microsoft Learn explains that a folder can appear in the main archive while its contents sit in an auxiliary archive. The API then returns a redirect such as HTTP 308 Permanent Redirect, an `ErrorArchiveFolderMovedPermanently` error on export, or an HTTP 409 Conflict on import, and the app repeats the request against the mailbox the response names. The Learn page also says well-known folder names are not supported for archive mailboxes, so apps reference archive folders by folder ID.
 
-Status on the roadmap record is Rolling out, targeted for October CY2026, General Availability, Worldwide (Standard Multi-Tenant), Web. MC1469565 gives a General Availability rollout window beginning in late October 2026 and expected to complete by early November 2026, and asks administrators to act by 1 October 2026 (48 days before today, 18 November 2026). It states that EWS in Exchange Online begins to be disabled globally in October 2026 and is expected to be fully disabled by April 2027.
+Status on the roadmap record is Launched, targeted for October CY2026, General Availability, Worldwide (Standard Multi-Tenant), Web. Microsoft lists the feature under a second roadmap item, 573701, for GCC, GCC High and DoD, which the record shows as In development with a December CY2026 target; this page covers Worldwide only. MC1469565 gives a General Availability rollout window beginning in late October 2026 and expected to complete by early November 2026, and asks administrators to act by 1 October 2026 (54 days before today, 24 November 2026). It states that EWS in Exchange Online begins to be disabled globally in October 2026 and is expected to be fully disabled by April 2027.
 
 Learn's EWS deprecation page lists "Import-Export (Archive)" and "In-Place Archive (Generic CRUD)" among the parity gaps with a Q4 CY2026 estimate, and calls such dates targets that might change. The same page says the In-Place Archive capability does not create archive mailboxes.
 
@@ -196,7 +186,7 @@ The change affects organisations whose applications, scripts or third-party tool
 
 These rows document the EWS usage report and organisation-wide EWS blocking. Microsoft Learn documents no switch that turns the Graph archive APIs on or off for a tenant at the time of writing (November 2026).
 
-The Microsoft 365 admin center setting to disable organisation-wide EWS access needs the Exchange Administrator or Global Administrator role. Learn's control-access page says disabling EWS for the organisation also disables per-user EWS overrides, and that the way the EwsEnabled parameter operates changes in October 2026. Disabling EWS before an archive integration has migrated stops it; use it to test readiness or after migration.
+The Microsoft 365 admin center setting to disable organisation-wide EWS access needs the Exchange Administrator or Global Administrator role. Learn's control-access page says disabling EWS for the organisation also disables per-user EWS overrides, and that the way the EwsEnabled parameter operates changes in October 2026. The Baseline Security Mode EWS page instead says, "You can still allow exceptions for specific users or workloads using Exchange Online PowerShell"; Microsoft's two pages disagree on exceptions ([Block access to Exchange Web Services (EWS)](https://learn.microsoft.com/microsoft-365/baseline-security-mode/block-access-exchange-web-services)). Disabling EWS before an archive integration has migrated stops it; use it to test readiness or after migration.
 
 Application access to the Graph mailbox APIs is governed by the Graph permissions on each API's reference page, for example MailboxFolder.Read.All on List folders and MailboxItem.Export.All on exportItems.
 
@@ -211,10 +201,4 @@ Application access to the Graph mailbox APIs is governed by the Graph permission
 risk: Medium. EWS-based eDiscovery, export and records tools that read archive mailboxes stop working once EWS is disabled, which Microsoft says begins in October 2026.
 cost: Low. The cost the sources show is developer and admin time to migrate. Microsoft has not published a licence or meter specific to these APIs; its Graph metered list names a single API, assignSensitivityLabel.
 impact: Medium. Admins, developers and third-party vendors that run EWS-based archive integrations notice; users do not, unless one of those tools breaks.
--->
-
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: The EWS control-access page says organisation-wide disablement also disables per-user EWS overrides. | Found: Important: Disabling EWS in the organization also disables per-user EWS overrides. | Fix: After this sentence add: "The Baseline Security Mode EWS page instead says, 'You can still allow exceptions for specific users or workloads using Exchange Online PowerShell'; Microsoft's two pages disagree on exceptions." Cite https://learn.microsoft.com/microsoft-365/baseline-security-mode/block-access-exchange-web-services. | Source: https://learn.microsoft.com/exchange/client-developer/exchange-web-services/how-to-control-access-to-ews-in-exchange
 -->

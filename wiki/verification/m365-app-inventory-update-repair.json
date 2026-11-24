@@ -2,75 +2,50 @@
   "slug": "m365-app-inventory-update-repair",
   "roadmapId": 576286,
   "title": "Microsoft 365 Apps admin center: Update Repair in Inventory",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 71,
-    "confirmed": 71,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 17)"
+    ]
   },
-  "summary": "The briefing's rollout information, repair prerequisites, control paths and command match the supplied records and Microsoft documentation. It correctly distinguishes the roadmap's launched status from Learn's preview wording and leaves the undocumented default and feature-specific licensing unresolved.",
+  "counts": {
+    "claims": 78,
+    "confirmed": 77,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the remote Repair path starts at a banner button without telling administrators which page to open first. Microsoft documents that button on Home and Inventory. The behaviour, rollout dates and manual repair command are supported; the licensing model also understates the published Inventory entitlement.",
   "claims": [
     {
       "n": 1,
-      "where": "title; What's changing",
+      "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap identifies Update Repair as an Inventory feature.",
+      "claim": "The roadmap item is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Microsoft 365 app: Inventory - Update Repair",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target date is November CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview date is October CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -78,10 +53,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 3,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -89,7 +64,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 4,
       "where": "front matter: platforms; What's changing",
       "type": "record",
       "claim": "The roadmap platforms are Desktop and Web.",
@@ -100,7 +75,29 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: products",
       "type": "record",
       "claim": "The roadmap products are Microsoft 365 and Microsoft 365 app.",
@@ -111,18 +108,535 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: roadmapModified",
+      "n": 8,
+      "where": "title; What's changing",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-12T01:50:56.",
+      "claim": "The roadmap describes Update Repair as part of Inventory.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-12T01:50:56\"",
+      "quote": "\"title\": \"Microsoft 365 app: Inventory - Update Repair\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Update Repair identifies Windows devices with out-of-date Microsoft 365 Apps or update problems in the Microsoft 365 Apps admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Update Repair in the Microsoft 365 Apps admin center helps you find Windows devices with Microsoft 365 Apps that are out of date or reporting update problems.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Administrators can remotely start Online Repair for eligible devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "admins can review device status and recommended actions, remotely start Online Repair for eligible devices, and follow manual remediation guidance for devices that need attention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Inventory setup is reached through Microsoft 365 Apps admin center > Inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "go to Inventory in the navigation pane. If you're new to inventory, you need to complete the one-step setup.",
+      "severity": "minor",
+      "fix": "The path stops on the right page before the setup control. Set controls[0].ui.path and its rendered counterpart to 'Inventory > Get started', and cite https://learn.microsoft.com/microsoft-365-apps/best-practices/roadmap-to-modern-management, which says 'Navigate to Inventory and choose Get started to enable the feature.'"
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or automation call for enabling Inventory.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps admin center Inventory enable setup API Microsoft Graph PowerShell. Read Inventory and roadmap-to-modern-management; results documented UI setup, not an enabling API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; Scope",
+      "type": "behaviour",
+      "claim": "A tenant new to Inventory completes a one-step setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "If you're new to inventory, you need to complete the one-step setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Inventory lists Office Apps Administrator as a supported and recommended role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "You can use the following built-in Microsoft Entra roles for accessing and managing the feature: ... Office Apps Administrator (Recommended)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
+      "type": "role",
+      "claim": "Inventory lists Security Administrator as a supported role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "Security Administrator | This role can read security information and reports and manage configuration in Microsoft Entra ID and Office 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
+      "type": "role",
+      "claim": "Inventory lists Global Administrator as a supported role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "Global Administrator | This role can manage all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Remote Repair is reached through Review devices > Update Repair table > select one or more devices > Repair.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "a notification banner appears on the Home and Inventory pages. Select Review devices in the banner to open Update Repair ... In the Update Repair table, select one or more devices. Select Repair and confirm the action.",
+      "severity": "blocker",
+      "fix": "Set controls[1].ui.path and the rendered table path to 'Inventory > Review devices > Update Repair table > select one or more devices > Repair'. The existing path starts inside a page at its banner rather than identifying the navigation page containing it. The cited Update Repair page documents the banner on Inventory."
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No API or automation operation is documented for the admin-centre remote Repair action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps Update Repair remote repair API Microsoft Graph PowerShell audit; Update Repair scheduling disable restrictions Microsoft Graph beta API Inventory. Read Update Repair; Graph results concern Intune, not this action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].ui and controls[2].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No separate tenant-wide Update Repair disable switch or restriction on who can start Repair is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps Update Repair default enabled disable tenant switch restrict role schedule audit logs; Update Repair scheduling disable restrictions Microsoft Graph beta API Inventory. Read Update Repair and Inventory; no separate switch or Repair-specific restriction appeared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Manual Online Repair is reached through Installed apps (or Add or remove programs) > Microsoft 365 Apps > Modify or Change > Online Repair > Repair in Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Open Installed apps (or Add or remove programs) in Windows. Locate Microsoft 365 Apps and select Modify or Change. Select Online Repair, then Repair, and follow the prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed OfficeClickToRun.exe command performs manual Online Repair on the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "\"C:\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\OfficeClickToRun.exe\" scenario=Repair platform=x64 RepairType=FullRepair forceappshutdown=True DisplayLevel=True",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[3].note; Governance controls table",
+      "type": "command",
+      "claim": "The manual repair command must be run from an elevated Command Prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Alternatively, run the following command from an elevated Command Prompt:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[3].note; Governance controls table",
+      "type": "command",
+      "claim": "The command specifies x64 and administrators must verify that this matches the installation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The command specifies the x64 platform. Verify that this matches the Microsoft 365 Apps installation on the device before running it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated Update Repair's default state on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps Update Repair default enabled disable tenant switch restrict role schedule audit logs; Update Repair roles default Microsoft 365 Apps. Read Update Repair, Inventory and MC1518032; no rollout default is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model and notes; Open questions",
+      "type": "licensing",
+      "claim": "The licensing model is unknown despite the published Inventory plan requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "Your user must be assigned to one of the following subscription plans: ... Microsoft 365 Business Standard ... Microsoft 365 Business Premium ... Office 365 E3 ... Office 365 E5 ... Microsoft 365 E3 ... Microsoft 365 E5",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included'. Replace licensing.notes with 'Update Repair uses Inventory, whose licensing requirements say the signed-in user must have a listed plan, such as Microsoft 365 E3 or E5. Microsoft Learn publishes no licence or meter specific to Update Repair as of November 2026.' Remove the final Open questions bullet questioning the applicability of the product-level requirement. Keep the existing Inventory citation."
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 E3 and Microsoft 365 E5 are listed qualifying plans for the Inventory user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "Enterprise | - Office 365 E3 - Office 365 E5 - Microsoft 365 E3 - Microsoft 365 E5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Business Standard and Microsoft 365 Business Premium are listed qualifying Inventory plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "Business | - Microsoft 365 Business Standard - Microsoft 365 Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 E3 and Office 365 E5 are listed qualifying Inventory plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "Enterprise | - Office 365 E3 - Office 365 E5 - Microsoft 365 E3 - Microsoft 365 E5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Inventory page lists Microsoft 365 operated by 21Vianet as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "The following plans are not supported: - Microsoft 365 operated by 21Vianet",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The Inventory page lists Microsoft 365 GCC as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "The following plans are not supported: ... Microsoft 365 GCC",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The Inventory page lists Microsoft 365 GCC High and DoD as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "The following plans are not supported: ... Microsoft 365 GCC High and DoD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "The device must run Windows with Microsoft 365 Apps installed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The device runs Windows and has Microsoft 365 Apps installed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "The device must appear in Inventory and report current data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The device appears in Inventory and reports current data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Remote Repair eligibility requires Microsoft 365 Apps build 16.0.20326.20000 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "To be eligible for the Repair action, the device must run Microsoft 365 Apps build 16.0.20326.20000 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Update Repair prerequisites list no additional licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The device runs Windows and has Microsoft 365 Apps installed. The device appears in Inventory and reports current data. To be eligible for the Repair action, the device must run Microsoft 365 Apps build 16.0.20326.20000 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate Update Repair licence, meter, price, credit rate or spending cap as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps Update Repair licensing price meter subscription Inventory. Read Update Repair and Inventory, including prerequisites and licensing requirements; no separate feature entitlement, meter, price, rate or spending cap was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Update Repair uses the installed version and build already reported to Inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Update Repair uses device data reported to Inventory, including the installed Microsoft 365 Apps version and build",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Update Repair uses the target version policy reported to Inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Update Repair uses device data reported to Inventory, including the installed Microsoft 365 Apps version and build, the target version policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Update Repair uses Click-to-Run error information reported to Inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Update Repair uses device data reported to Inventory, including the installed Microsoft 365 Apps version and build, the target version policy, and Click-to-Run error information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The report compares the installed version with the latest version available for the configured update channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "It compares the installed version with the latest version available for the device's configured update channel and assigns a status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Only devices classified Needs repair or Needs attention appear in the report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Only Windows devices with Microsoft 365 Apps that appear in Inventory, report current data, and are classified as Needs repair or Needs attention appear in the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Needs repair includes a device at least one version behind with an error that does not require separate remediation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The device is at least one version behind and has an error that doesn't require separate remediation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Needs repair also includes a device at least three versions behind with no reported error.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "or it's at least three versions behind and has no reported error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Needs attention includes a device with an error requiring separate remediation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The device has an error that requires separate remediation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "An otherwise repair-qualified device on a build earlier than 16.0.20326.20000 is classified Needs attention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "or it otherwise qualifies for repair but is running a Microsoft 365 Apps build earlier than 16.0.20326.20000.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; What's changing; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Needs attention devices are not eligible for the remote Repair action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Devices in the Needs attention state can't be repaired by the Repair action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].governs; Scope; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft documents manual Click-to-Run Online Repair for devices running a build earlier than 16.0.20326.20000.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "If the device is running a build earlier than 16.0.20326.20000, use Click-to-Run Online Repair to update the installation and restore it to a supported state:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "The remote Repair action triggers Click-to-Run Online Repair.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The action triggers Click-to-Run Online Repair.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Repair closes any open Microsoft 365 Apps on selected devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "It closes any open Microsoft 365 Apps, then reinstalls Microsoft 365 Apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing; Risk assessment; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Repair reinstalls Microsoft 365 Apps using the latest available build for the device's configured update channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "then reinstalls Microsoft 365 Apps by downloading the latest available build for the device's configured update channel",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "What's changing; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "behaviour",
+      "claim": "Repair downloads the replacement build from the Microsoft Content Delivery Network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "by downloading the latest available build for the device's configured update channel from the Microsoft Content Delivery Network (CDN).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The remote action is received at the device's next Inventory check-in rather than starting immediately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "The action doesn't start immediately. ... A device receives the action at its next check-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "During preview, devices not managed by Cloud Update check in every 12 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "During preview, devices check in with Inventory every 12 hours when they aren't managed by Cloud Update",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "During preview, devices managed by Cloud Update check in every 2 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "or every 2 hours when they are managed by Cloud Update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "A successfully repaired device can remain in the report for up to 28 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "A successfully repaired device can remain in the table for up to 28 days before it's removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1518032 was published on 2026-10-20.",
@@ -133,10 +647,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 57,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1518032 has no act-by date.",
+      "claim": "MC1518032 sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1518032",
       "quote": "Act by: none",
@@ -144,10 +658,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Scope: Rollout",
+      "n": 58,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice says Public Preview rollout began in mid-October 2026.",
+      "claim": "MC1518032 says Public Preview rollout began in mid-October 2026.",
       "status": "supported",
       "source": "Message Center post MC1518032",
       "quote": "Public Preview (Worldwide): Rollout began in mid-October 2026",
@@ -155,10 +669,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 59,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice expects Public Preview rollout to complete by late October 2026.",
+      "claim": "MC1518032 says Public Preview rollout is expected to complete by late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1518032",
       "quote": "Public Preview (Worldwide): Rollout began in mid-October 2026 and is expected to complete by late October 2026.",
@@ -166,10 +680,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Scope: Rollout",
+      "n": 60,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice says General Availability rollout will begin in mid-November 2026.",
+      "claim": "MC1518032 plans General Availability rollout to begin in mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1518032",
       "quote": "General Availability (Worldwide): Rollout will begin in mid-November 2026",
@@ -177,10 +691,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Scope: Rollout",
+      "n": 61,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice expects General Availability rollout to complete by late November 2026.",
+      "claim": "MC1518032 expects General Availability rollout to complete by late November 2026.",
       "status": "supported",
       "source": "Message Center post MC1518032",
       "quote": "General Availability (Worldwide): Rollout will begin in mid-November 2026 and is expected to complete by late November 2026.",
@@ -188,197 +702,21 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Update Repair identifies Windows devices with outdated Microsoft 365 Apps or update problems in the Microsoft 365 Apps admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Update Repair in the Microsoft 365 Apps admin center helps you find Windows devices with Microsoft 365 Apps that are out of date or reporting update problems.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "Admins can remotely start Online Repair for eligible devices.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "admins can review device status and recommended actions, remotely start Online Repair for eligible devices, and follow manual remediation guidance for devices that need attention.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Update Repair uses Inventory data including installed version and build, target version policy and Click-to-Run errors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Update Repair uses device data reported to Inventory, including the installed Microsoft 365 Apps version and build, the target version policy, and Click-to-Run error information.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The report compares the installed version with the latest version for the configured update channel.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "It compares the installed version with the latest version available for the device's configured update channel and assigns a status.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Scope: Devices; Governance guidance",
-      "type": "behaviour",
-      "claim": "Only Needs repair and Needs attention devices appear in Update Repair.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The report shows devices in the Needs repair and Needs attention states. Devices that are Up to date or Outdated aren't shown because they don't currently require remediation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing: Needs repair",
-      "type": "behaviour",
-      "claim": "A device at least one version behind with an error needing no separate remediation qualifies as Needs repair.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The device is at least one version behind and has an error that doesn't require separate remediation",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing: Needs repair",
-      "type": "behaviour",
-      "claim": "A device at least three versions behind with no reported error qualifies as Needs repair.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "or it's at least three versions behind and has no reported error.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing: Needs attention",
-      "type": "behaviour",
-      "claim": "Needs attention includes devices with errors requiring separate remediation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The device has an error that requires separate remediation",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Scope: Repair eligibility",
-      "type": "behaviour",
-      "claim": "Devices otherwise qualifying for repair but running builds earlier than 16.0.20326.20000 are Needs attention.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "or it otherwise qualifies for repair but is running a Microsoft 365 Apps build earlier than 16.0.20326.20000.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Risk assessment; controls[1].note",
-      "type": "behaviour",
-      "claim": "The remote Repair action is unavailable for Needs attention devices.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Devices in the Needs attention state can't be repaired by the Repair action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Cost and licensing; Scope: Devices",
+      "n": 62,
+      "where": "What's changing; Scope; Open questions",
       "type": "availability",
-      "claim": "Update Repair requires Windows devices with Microsoft 365 Apps installed.",
+      "claim": "The Update Repair Learn page still describes the feature as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The device runs Windows and has Microsoft 365 Apps installed.",
+      "quote": "Update Repair is currently available as a preview. Some devices may require manual remediation and cannot be repaired from the admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Cost and licensing; Scope: Devices",
-      "type": "availability",
-      "claim": "Devices must appear in Inventory and report current data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The device appears in Inventory and reports current data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Cost and licensing; Scope: Repair eligibility; Governance guidance",
-      "type": "availability",
-      "claim": "The Repair action requires Microsoft 365 Apps build 16.0.20326.20000 or later.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "To be eligible for the Repair action, the device must run Microsoft 365 Apps build 16.0.20326.20000 or later.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing",
+      "n": 63,
+      "where": "summary; Why it matters; Risk assessment; Governance guidance; rationale: risk and impact",
       "type": "behaviour",
-      "claim": "Repair triggers Click-to-Run Online Repair.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The action triggers Click-to-Run Online Repair.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk and impact",
-      "type": "behaviour",
-      "claim": "Repair closes open Microsoft 365 Apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Repair interrupts users and closes open Microsoft 365 Apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Repair reinstalls Microsoft 365 Apps using the latest available build for the device's configured update channel.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Repair reinstalls Microsoft 365 Apps using the latest available build for the device’s configured update channel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "What's changing; Risk assessment: Data exposure; Cost and licensing; rationale: cost",
-      "type": "behaviour",
-      "claim": "Each repair downloads the replacement build from the Microsoft CDN.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "then reinstalls Microsoft 365 Apps by downloading the latest available build for the device's configured update channel from the Microsoft Content Delivery Network (CDN).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "summary; Why it matters; Risk assessment; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "A remote repair is initiated by an admin selecting devices and confirming Repair.",
+      "claim": "The documented remote Repair workflow requires an administrator to select devices and confirm Repair.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
       "quote": "In the Update Repair table, select one or more devices. Select Repair and confirm the action.",
@@ -386,384 +724,153 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing; Risk assessment; controls[1].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "The action does not start immediately and is received at the device's next Inventory check-in.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The action doesn't start immediately. During preview, devices check in with Inventory every 12 hours when they aren't managed by Cloud Update, or every 2 hours when they are managed by Cloud Update. A device receives the action at its next check-in.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "behaviour",
-      "claim": "During preview, devices not managed by cloud update check in every 12 hours.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "During preview, check-ins occur every 12 hours for devices not managed by Cloud Update",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "behaviour",
-      "claim": "During preview, cloud-update-managed devices check in every two hours.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "and every 2 hours for devices managed by Cloud Update.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "What's changing; Scope: Rollout; Open questions; front matter: changes",
-      "type": "availability",
-      "claim": "The Update Repair Learn page still describes the feature as preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Update Repair is currently available as a preview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Microsoft warns that Repair interrupts users and advises notifying them to save work and close Office apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Repair interrupts users and closes open Microsoft 365 Apps. Notify affected users before you start. Ask them to save their work and close their Office apps",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "record",
-      "claim": "Microsoft asks admins to keep devices powered on, signed in and connected to receive the action.",
-      "status": "supported",
-      "source": "Message Center post MC1518032",
-      "quote": "Keep devices powered on, signed in, and connected so they can receive the action at their next Inventory check-in.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Successfully repaired devices can remain in the report for up to 28 days.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "A successfully repaired device can remain in the table for up to 28 days before it's removed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment; Scope: Admins; controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Inventory lists Office Apps Administrator as a supported role for accessing and managing the feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "You can use the following built-in Microsoft Entra roles for accessing and managing the feature: ... Office Apps Administrator (Recommended)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment; Scope: Admins; Governance guidance",
-      "type": "role",
-      "claim": "The Inventory page recommends Office Apps Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "Office Apps Administrator (Recommended)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment; Scope: Admins; controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Inventory lists Security Administrator as a supported role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "Security Administrator | This role can read security information and reports and manage configuration in Microsoft Entra ID and Office 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment; Scope: Admins; controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Inventory lists Global Administrator as a supported role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "Global Administrator | This role can manage all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Security & identity; Scope: Admins; Governance controls",
-      "type": "absence",
-      "claim": "The Update Repair page does not specify which roles can start Repair.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"disable\" \"roles\" \"schedule\"; \"Microsoft 365 Apps\" \"Update Repair\" licensing default disable permissions schedule scope. Opened Learn /microsoft-365-apps/admin-center/update-repair and /inventory; no Repair-specific role statement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Inventory requires the user to hold a listed subscription, including Microsoft 365 E3/E5, Business Standard/Premium or Office 365 E3/E5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "Your user must be assigned to one of the following subscription plans: ... Microsoft 365 Business Standard ... Microsoft 365 Business Premium ... Office 365 E3 ... Office 365 E5 ... Microsoft 365 E3 ... Microsoft 365 E5",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing; Scope: Cloud",
-      "type": "licensing",
-      "claim": "Inventory lists Microsoft 365 operated by 21Vianet, GCC, and GCC High and DoD as unsupported plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "The following plans are not supported: Microsoft 365 operated by 21Vianet; Microsoft 365 GCC; Microsoft 365 GCC High and DoD",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[0].note; Scope: Prerequisite",
-      "type": "behaviour",
-      "claim": "A tenant new to Inventory must complete a one-step setup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "If you're new to inventory, you need to complete the one-step setup.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Scope: Prerequisite",
-      "type": "behaviour",
-      "claim": "After setup, devices appear in Inventory as users launch Office apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "Devices don't require manual onboarding to appear in Inventory. Once a user launches their Office apps on a supported device, that device is automatically included in Inventory.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Inventory is reached from the Microsoft 365 Apps admin center's Inventory navigation item.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-      "quote": "Sign in to the Microsoft 365 Apps admin center with your admin account, and then go to Inventory in the navigation pane.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API or automation call is documented for setting up Inventory.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 Apps admin center Inventory enable setup PowerShell API. Opened Learn /microsoft-365-apps/admin-center/inventory; results document UI setup, not an Inventory setup API or cmdlet.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Review devices opens Update Repair, where admins select one or more devices in the table and select Repair.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Select Review devices in the banner to open Update Repair and see device details and recommended actions. ... In the Update Repair table, select one or more devices. ... Select Repair and confirm the action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[1].api; Governance controls table; Open questions",
-      "type": "absence",
-      "claim": "No API for the admin-center remote Repair action is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"API\" \"audit\"; \"Update Repair\" \"Inventory\" API PowerShell audit logging. Opened Learn /microsoft-365-apps/admin-center/update-repair; no remote Repair API found. Service Fabric repair APIs are unrelated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No tenant-wide switch or Repair-specific role restriction is documented on either control surface.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"disable\" \"roles\" \"schedule\"; \"Microsoft 365 Apps\" \"Update Repair\" licensing default disable permissions schedule scope. Opened Learn /microsoft-365-apps/admin-center/update-repair and /inventory; no such switch or restriction found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Manual repair uses Windows Installed apps or Add or remove programs, Microsoft 365 Apps, Modify or Change, Online Repair, then Repair.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Open Installed apps (or Add or remove programs) in Windows. Locate Microsoft 365 Apps and select Modify or Change. Select Online Repair, then Repair, and follow the prompts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[3].api; Governance controls table",
-      "type": "command",
-      "claim": "The printed OfficeClickToRun.exe command and its Repair parameters are the documented manual Online Repair call.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "\"C:\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\OfficeClickToRun.exe\" scenario=Repair platform=x64 RepairType=FullRepair forceappshutdown=True DisplayLevel=True",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[3].note; Governance controls table",
-      "type": "command",
-      "claim": "The manual command must be run from an elevated Command Prompt.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Alternatively, run the following command from an elevated Command Prompt:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[3].note; Governance controls table",
-      "type": "command",
-      "claim": "Admins should verify that the command's x64 platform matches the device's Microsoft 365 Apps installation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "The command specifies the x64 platform. Verify that this matches the Microsoft 365 Apps installation on the device before running it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[3].governs; controls[3].note; Governance controls; Scope; Governance guidance",
-      "type": "behaviour",
-      "claim": "Manual Online Repair is an on-device alternative for devices excluded from remote Repair because of their earlier build.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "If the device is running a build earlier than 16.0.20326.20000, use Click-to-Run Online Repair to update the installation and restore it to a supported state:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "Microsoft has not stated Update Repair's default state on arrival or an automatic change to existing behavior.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"licensing\" \"price\" \"default\"; \"Microsoft 365 Apps\" \"Update Repair\" licensing default disable permissions schedule scope. Read roadmap, MC1518032, Learn update-repair and inventory; none states Update Repair's arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "front matter: licensing.model; licensing.notes; Open questions",
-      "type": "licensing",
-      "claim": "Update Repair's feature-specific licensing model is not published, although Inventory's plan requirements are documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"licensing\" \"price\" \"default\"; \"Microsoft 365 Apps\" \"Update Repair\" licensing default disable permissions schedule scope. Opened Learn update-repair and inventory; no Update Repair-specific licensing statement found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The Update Repair page lists technical prerequisites but names no additional licence.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"licensing\" \"price\" \"default\". Read the full Learn /microsoft-365-apps/admin-center/update-repair page, including Prerequisites; it names Windows, installed Apps, current Inventory data and a minimum Repair build, but no licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate Update Repair billing meter is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"Inventory\" disable role permissions schedule audit API default licensing pricing; \"Update Repair\" \"licensing\" \"price\" \"default\". Opened Learn update-repair and inventory; no Update Repair billing meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 64,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No Update Repair price, credit rate or cap is published in the checked documentation.",
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Review devices banner on Home or Inventory opens Update Repair.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"licensing\" \"price\" \"default\"; \"Update Repair\" \"Inventory\" disable role permissions schedule audit API default licensing pricing. Opened Learn update-repair and inventory; neither documents a Repair price, credit rate or cap.",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "a notification banner appears on the Home and Inventory pages. Select Review devices in the banner to open Update Repair and see device details and recommended actions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 65,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "The report uses data already reported to Inventory rather than describing a new collection source.",
+      "claim": "After Inventory setup, devices appear as users launch Office apps.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "Update Repair uses device data reported to Inventory, including the installed Microsoft 365 Apps version and build, the target version policy, and Click-to-Run error information.",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
+      "quote": "Once a user launches their Office apps on a supported device, that device is automatically included in Inventory.",
       "severity": null,
       "fix": null
     },
     {
       "n": 66,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No separate setting for device-scope restrictions or scheduled Repair execution is documented.",
+      "where": "Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft warns that Repair interrupts users and recommends notifying them before starting.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"disable\" \"roles\" \"schedule\"; \"Microsoft 365 Apps\" \"Update Repair\" licensing default disable permissions schedule scope. Opened Learn update-repair and inventory; documentation describes selecting devices, not a scope policy or scheduler.",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Repair interrupts users and closes open Microsoft 365 Apps. Notify affected users before you start.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "Open questions: audit",
-      "type": "absence",
-      "claim": "No admin-auditable log for Update Repair actions is documented in the checked sources.",
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft recommends asking affected users to save work and close Office apps before Repair.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Update Repair\" \"API\" \"audit\"; site:learn.microsoft.com/purview \"repair\" \"cloud update\"; site:learn.microsoft.com/purview/audit-log-activities \"Repair\" \"Apps\". Opened Learn update-repair and cloud-update-purview; no Update Repair audit event found.",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Ask them to save their work and close their Office apps",
       "severity": null,
       "fix": null
     },
     {
       "n": 68,
-      "where": "What's changing; Governance guidance: After rollout",
+      "where": "Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "The Learn page provides manual error remediation guidance, including freeing disk space.",
+      "claim": "Devices should remain powered on so they can receive the Repair action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "leave their devices powered on, signed in, and connected so the action can be received.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Devices should remain signed in so they can receive the Repair action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "leave their devices powered on, signed in, and connected so the action can be received.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Devices should remain connected so they can receive the Repair action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "leave their devices powered on, signed in, and connected so the action can be received.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment; Scope; Governance controls",
+      "type": "absence",
+      "claim": "The Update Repair page does not specify which roles can start Repair.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Update Repair roles default Microsoft 365 Apps; Microsoft 365 Apps Update Repair default enabled disable tenant switch restrict role schedule audit logs. Read the full Update Repair page and Inventory roles; Update Repair specifies no Repair role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented a separate Update Repair scheduling window or scheduling setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps Update Repair default enabled disable tenant switch restrict role schedule audit logs; Update Repair scheduling disable restrictions Microsoft Graph beta API Inventory. Read Update Repair; results cover other update systems, not a Repair scheduler.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented a separate policy restricting remote Repair to a subset of devices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Update Repair scheduling disable restrictions Microsoft Graph beta API Inventory; Microsoft 365 Apps Update Repair default enabled disable tenant switch restrict role schedule audit logs. Read Update Repair and Inventory; device selection is documented, not a separate restriction policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls; Scope",
+      "type": "absence",
+      "claim": "Inventory enablement is the only on/off dependency Microsoft names for Update Repair.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps Update Repair default enabled disable tenant switch restrict role schedule audit logs. Read Update Repair prerequisites, Inventory setup and MC1518032, which asks admins to make sure Inventory is enabled; no other on/off dependency was named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented manual Online Repair procedure runs on the individual device rather than through the admin-centre report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
+      "quote": "Open Installed apps (or Add or remove programs) in Windows. ... Alternatively, run the following command from an elevated Command Prompt:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented an administrator-auditable log for the Inventory Repair action as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Apps Update Repair remote repair API Microsoft Graph PowerShell audit. Read Update Repair and search excerpts from cloud-update-purview and Purview audit-log-activities; these document Cloud Update actions but do not identify Inventory Repair as audited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Update Repair error-code table recommends freeing disk space for disk-space errors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
       "quote": "Disk space | 112, 30192, 30179 | Free up disk space.",
@@ -771,48 +878,26 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 78,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The manual error guidance includes checking network connectivity, proxy settings and firewall rules.",
+      "claim": "The Update Repair error-code table recommends checking connectivity, proxy settings and firewall rules for persistent network issues.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
       "quote": "Persistent network issues | 150, 159, 172 | Check network connectivity, proxy settings, and firewall rules.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[0].governs; Cost and licensing; Scope: Prerequisite; Governance guidance; Governance controls",
-      "type": "record",
-      "claim": "Inventory must be enabled as the prerequisite data source for Update Repair.",
-      "status": "supported",
-      "source": "Message Center post MC1518032",
-      "quote": "Go to the Microsoft 365 apps admin center and make sure Inventory is enabled. ... Update Repair uses Inventory data from Windows devices with Microsoft 365 apps installed to identify devices that need attention or repair.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The Review devices banner is available on the Home and Inventory pages when eligible devices need repair or attention.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-      "quote": "If eligible devices need repair or attention, a notification banner appears on the Home and Inventory pages. Select Review devices in the banner to open Update Repair and see device details and recommended actions.",
-      "severity": null,
-      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T00:01:21.113Z",
+    "at": "2026-11-24T01:20:06.151Z",
     "summary": {
       "links": 4,
-      "unreachable": 0,
+      "unreachable": 2,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -823,13 +908,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1518032",
@@ -843,32 +928,39 @@
         "side": "ui",
         "governs": "Whether Inventory, the data source for Update Repair, is set up",
         "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Inventory"
         ],
-        "missing": []
+        "missing": [
+          "Inventory"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Which devices are repaired remotely, and when",
         "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Review devices",
           "Update Repair table",
           "select one or more devices",
           "Repair"
         ],
-        "missing": []
+        "missing": [
+          "Review devices",
+          "Update Repair table",
+          "select one or more devices",
+          "Repair"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Manual Online Repair on a single device (alternative for Needs attention)",
         "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Installed apps",
           "Microsoft 365 Apps",
@@ -876,16 +968,22 @@
           "Online Repair",
           "Repair"
         ],
-        "missing": []
+        "missing": [
+          "Installed apps",
+          "Microsoft 365 Apps",
+          "Modify or Change",
+          "Online Repair",
+          "Repair"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Manual Online Repair on a single device (alternative for Needs attention)",
         "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair",
-        "reachable": true,
+        "reachable": false,
         "token": "\"C:\\Program Files\\Common",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -901,6 +999,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

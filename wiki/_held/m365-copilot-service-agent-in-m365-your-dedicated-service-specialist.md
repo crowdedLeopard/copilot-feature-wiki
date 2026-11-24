@@ -67,18 +67,20 @@ changes:
     note: "Corrected after verification: added Public Preview billing (Copilot Credits), prerequisites and agent identity from Microsoft 365 Resources for Agents; fixed autonomy-choice wording; dropped the 'separate product' claim."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 70
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 4
+  attempts: 1
   hash: "cee268971b81a71db41f07e3bbc51219"
 ---
 
@@ -180,4 +182,16 @@ The Learn page for the admin centre action does not say the action can be applie
 risk: High. The roadmap says a manager can choose a fully autonomous mode and that the agent can connect to CRMs and MCP tools. Public Preview requires Microsoft Entra Agent ID and audit logs, but feature-specific autonomy and escalation settings remain undocumented.
 cost: Variable. Public Preview uses Copilot Credits, including 100 Copilot Credits per agent per month for the agent account and persistent Microsoft 365 resource access, plus consumptively billed agent activity.
 impact: Low. The roadmap describes a manager-run agent, so the people who notice are service managers and administrators, not most users. Microsoft has not said who gets it.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls prose; Governance guidance: Before rollout, After rollout / absence: The prose treats whether the general Block action covers Service Agent as an unpublished governance rule. | Found: These actions apply to the selected agent. ... Agent approval or blocking doesn't necessarily grant or revoke connected-service permissions or credentials. | Fix: Replace the two prose statements that Microsoft has not confirmed Block coverage with: 'The Block action applies to the selected agent in the Microsoft 365 admin center; blocking does not necessarily revoke connected-service permissions or credentials.' In the Before rollout checklist replace 'if Microsoft confirms they cover this agent' with 'for agents listed in the registry'; in After rollout replace 'once Microsoft confirms the Block action covers it' with 'if it is listed in the registry'. Do not claim that blocking necessarily stops every external runtime. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
+- [contradicted, blocker] Risk assessment: Data exposure / absence: Microsoft has not described how access is scoped for this agent. | Found: Supported agents are equipped with persistent access to their own mailbox, calendar, and OneDrive workspace for file storage. | Fix: Replace 'Microsoft has not described how access is scoped for this agent' with: 'For Public Preview, Microsoft documents persistent access to the agent's own mailbox, calendar and OneDrive workspace; the exact permissions for additional connected knowledge sources are not yet documented as of November 2026.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents
+- [contradicted, blocker] Scope / absence: Which administrator roles can manage and configure this agent is not yet published. | Found: The AI Administrator and Global Administrator roles have tenant-wide visibility and governance authority | Fix: Replace 'Who can hire or manage the agent and which roles configure it are not yet published' with: 'AI Administrator and Global Administrator have tenant-wide governance authority for agents in the Microsoft 365 admin center; who can hire this planned autonomous capability and its feature-specific configuration roles are not yet published as of November 2026.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms
+- [contradicted, blocker] Governance controls: final sentence / absence: Controls for CRM or MCP tool access are not yet documented. | Found: Control which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide | Fix: Replace the final sentence with: 'The administrator control for the roadmap's semi/full autonomy choice and its escalation-rule configuration are not yet documented as of November 2026. Agent 365 documents tenant-wide control of plugins, skills, connectors and Microsoft MCP servers accessible to Copilot and Microsoft-platform agents; connection-specific setup for this planned capability remains undocumented.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. Do not infer that every third-party connection or tool uses the Agent 365 Tooling Gateway. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Open questions / absence: Microsoft has not established whether the Dynamics 365 assistant and the autonomous, CRM-optional roadmap capability are the same product. | Found: Searched: Service Agent Microsoft 365 same Dynamics; opened Service Agent overview, FAQ and Configure Service Agent. They identify the Dynamics assistant as a Microsoft 365 Copilot agent but do not tie its assisted scenarios to this CRM-optional autonomous roadmap capability. | Fix: Replace the final sentence of the third What's changing paragraph with: 'Learn also documents a Dynamics 365 Customer Service assistant that is a Microsoft 365 Copilot agent; the documentation does not establish how its assisted scenarios relate to the roadmap's CRM-optional autonomous capability.' Keep the existing Service Agent overview citation.
+- [supported, minor] controls[0].note; Governance controls table / applicability: The row presents Block as a documented general agent control but says Microsoft has not confirmed it applies to this agent. | Found: These actions apply to the selected agent. | Fix: Replace the first two sentences of controls[0].note and the rendered table note with: 'Applies to the selected agent in the Microsoft 365 admin center; agent blocking does not necessarily revoke connected-service permissions or credentials.' Retain the beta and API license sentence. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
 -->

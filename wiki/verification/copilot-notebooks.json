@@ -1,0 +1,943 @@
+{
+  "slug": "copilot-notebooks",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Copilot Notebooks: where does the content live, and who can switch it off?",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "2 blocking findings (claims 26, 73)"
+    ]
+  },
+  "counts": {
+    "claims": 75,
+    "confirmed": 70,
+    "unconfirmed": 3,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 2,
+    "minor": 5
+  },
+  "summary": "Hold: the summary gives the creation policy authority over storage, licensing and compliance that the body correctly says it does not have. The sources document storage quotas, not an assurance of no separate storage charge. The proposed Workspaces rename also lacks Microsoft evidence.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Notebooks is a persistent workspace for related chats, generated content and references.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot Notebooks in the Microsoft Copilot app (iOS) now lets users organize related chats, output creations, and references into a persistent AI workspace.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Copilot grounds responses on the notebook's accumulated context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot uses the Notebook's accumulated context to ground responses, so work continues across sessions instead of starting over each time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The Microsoft Copilot app offers a lighter, faster Notebooks experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The full-featured Notebooks experience remains available in OneNote, while the app offers a lighter, faster version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is",
+      "type": "availability",
+      "claim": "The full-featured Notebooks experience remains available in OneNote.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The full-featured Notebooks experience remains available in OneNote, while the app offers a lighter, faster version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Both Notebooks experiences are governed by the creation setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages and Copilot Notebooks check the following Cloud Policy settings:\n- Create and view Copilot Pages and Copilot Notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: Where the content lives",
+      "type": "behaviour",
+      "claim": "The storage page places current Pages and Notebooks in OneDrive for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "Pages and Notebooks are stored in OneDrive for Business: the same visible file system where Word, Excel, and PowerPoint files live.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is: Where the content lives; What to check",
+      "type": "date",
+      "claim": "Notebooks created before November 2025 remain in user-owned SharePoint Embedded storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "Copilot Pages and Copilot Notebooks created before November 2025 continue to be stored in the user-owned SharePoint Embedded container.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is: Where the content lives",
+      "type": "behaviour",
+      "claim": "Legacy Notebooks have not moved to OneDrive for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "These legacy Copilot Pages and legacy Copilot Notebooks haven't moved to OneDrive for Business.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: Where the content lives",
+      "type": "behaviour",
+      "claim": "Legacy Notebooks share their user-owned container with Loop My workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "Each user has a single user-owned container that stores legacy Copilot Pages, legacy Copilot Notebooks, and Loop My workspace content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: Where the content lives; Open questions",
+      "type": "absence",
+      "claim": "The admin policies page does not yet describe the OneDrive storage distinction.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks OneDrive SharePoint Embedded storage. Read cpcn-admin-configuration in full; it describes the shared SharePoint Embedded container and links to cpcn-storage, but gives no current-versus-legacy OneDrive distinction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is: Where the content lives; Open questions",
+      "type": "absence",
+      "claim": "The requirements page does not yet describe the OneDrive storage distinction.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks OneDrive SharePoint Embedded storage. Read cpcn-requirements in full; it describes files in the shared SharePoint Embedded container and links to cpcn-storage, without distinguishing current OneDrive storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: Where the content lives; What to check",
+      "type": "behaviour",
+      "claim": "Notebooks create .pod files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+      "quote": "Copilot Pages create .page files and Copilot Notebooks create .pod files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: Where the content lives; Risks and limits",
+      "type": "behaviour",
+      "claim": "Files added to a notebook remain in their original OneDrive and SharePoint storage locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Original storage locations: Files added to Notebooks remain available in OneDrive and SharePoint where they're stored",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: Where the content lives",
+      "type": "behaviour",
+      "claim": "The legacy container appears as Loop in SharePoint admin center, PowerShell and Purview audit data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "In the SharePoint admin center, PowerShell, and Purview audit data, this container's application name is always Loop",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: Where the content lives",
+      "type": "absence",
+      "claim": "There is no separate Notebooks application filter for the legacy container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "There's no separate Copilot Pages or Copilot Notebooks application filter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: Who sets what; summary; controls[0]",
+      "type": "applicability",
+      "claim": "Create and view Copilot Pages and Copilot Notebooks controls notebook creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "For Create and view Copilot Pages and Copilot Notebooks\n- Disabled: Copilot Pages and Copilot Notebooks creation and integration aren't available to the users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Who sets what; controls[0].scope; Governance controls: Scoping",
+      "type": "applicability",
+      "claim": "The Cloud Policy configuration can target all users in the tenant or a group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The creation setting defaults to Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages and Copilot Notebooks creation | Cloud Policy: Create and view Copilot Pages and Copilot Notebooks | Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Not configured leaves creation available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Not configured: Copilot Pages and Copilot Notebooks creation and integration are available to the users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Users can add Teams meeting content to notebook references.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Meetings as References in Copilot Notebooks bring Teams meeting content into the notebook experience, enabling users to ground Copilot on the discussions, decisions, and context that drive their work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Notebook files remain subject to the governance and sharing rules of their storage service rather than a separate new store.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance",
+      "quote": "Supported consuming tenant Microsoft 365 settings and Microsoft Purview capabilities apply to the app documents stored there.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The admin policies page gives no individual notebook-feature settings for audio overview or new reference types.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks per feature admin policy audio overview reference file types creation price meter storage charge. Read cpcn-admin-configuration in full; its settings cover creation and code previews, not audio overview or reference types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The requirements table names Microsoft Copilot license for Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+      "quote": "Copilot Notebooks license | Microsoft Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing; What to check; Open questions",
+      "type": "licensing",
+      "claim": "The requirements text says users need the Microsoft Copilot or Copilot Chat license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+      "quote": "Users need the Microsoft Copilot or Copilot Chat license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The Tenant Configuration Management page says Notebooks require a Microsoft 365 Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "Copilot Notebooks also require a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Storage is not a separate charge on the cited pages.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks no additional storage pricing meter; Copilot Notebooks separate charge. Read requirements, storage and licensing pages. They describe quota accounting, not an explicit assurance of no separate charge.",
+      "severity": "blocker",
+      "fix": "Remove 'Storage is not a separate charge on these pages.' Keep the verified quota statements and the narrower sentence that the requirements and storage pages publish no separate meter or price."
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "OneDrive-stored content counts against the user's OneDrive storage limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "Quota | Counts against user's OneDrive storage limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Legacy content counts against the organization's SharePoint storage quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "All legacy Copilot Pages and legacy Copilot Notebooks count against your organization's SharePoint storage quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The requirements and storage pages publish no separate notebook meter or price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks no additional storage pricing meter; Copilot Notebooks separate charge. Read cpcn-requirements and cpcn-storage in full: quota accounting is stated, but neither page publishes a notebook-specific meter or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Users for whom OneDrive creation is disabled cannot create Notebooks regardless of the creation policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If your organization disabled the creation of OneDrive, regardless of the setting noted here, these people in your organization can't create Copilot Pages or Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risks and limits: Disabling creation",
+      "type": "behaviour",
+      "claim": "Disabling creation hides the Notebooks module and access through the Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risks and limits: Disabling creation",
+      "type": "behaviour",
+      "claim": "Notebook sharing links stop working when creation is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Sharing links to Copilot Notebooks don't work when creation is disabled via the policy in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risks and limits: Disabling creation; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling creation does not delete existing notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Existing Copilot Pages and Notebooks aren't deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risks and limits: One container, two policies",
+      "type": "applicability",
+      "claim": "Either the Copilot creation policy or Create Loop workspaces in Loop can allow the shared container to be created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "The shared container is created when either the Copilot Pages and Copilot Notebooks policy or the Loop Create Loop workspaces in Loop policy allows creation for the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risks and limits: One container, two policies; What to check",
+      "type": "applicability",
+      "claim": "Both policies must be disabled for the same user to prevent creation of the shared container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "To prevent the single user-owned container from being created, disable both policies for the same user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risks and limits: Recovery differs",
+      "type": "behaviour",
+      "claim": "Legacy Notebooks have no end-user recycle bin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "There is no end-user recycle bin for Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risks and limits: Recovery differs",
+      "type": "behaviour",
+      "claim": "Administrators cannot recover an individually deleted legacy notebook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "Neither administrators nor end users can recover individually deleted Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risks and limits: Recovery differs",
+      "type": "behaviour",
+      "claim": "End users cannot recover an individually deleted legacy notebook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "Neither administrators nor end users can recover individually deleted Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risks and limits: Recovery differs",
+      "type": "behaviour",
+      "claim": "Deleted OneDrive-stored notebooks can be found in the OneDrive recycle bin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+      "quote": "Recycle bin | Deleted pages and notebooks can be found in the OneDrive recycle bin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risks and limits: Compliance gaps",
+      "type": "applicability",
+      "claim": "Information Barriers are not supported for SharePoint Embedded content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Information Barriers are not supported for content stored in SharePoint Embedded containers.",
+      "severity": "minor",
+      "fix": "Replace this sentence with 'The Copilot compliance summary says Information Barriers are unsupported for Notebooks; the SharePoint Embedded security page separately documents a beta informationBarrier property, leaving its applicability to Notebooks unresolved.' Cite https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance, which says the beta fileStorageContainer informationBarrier property manages a container's information barrier."
+    },
+    {
+      "n": 41,
+      "where": "Risks and limits: Compliance gaps",
+      "type": "applicability",
+      "claim": "The Copilot compliance summary limits Conditional Access to the whole Microsoft Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Because Copilot Pages and Copilot Notebooks are features of the Microsoft Copilot app, Conditional Access applies to the entire app at m365.cloud.microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Compliance gaps",
+      "type": "applicability",
+      "claim": "Notebooks have no container sensitivity label because they share a container with Copilot Pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Copilot Notebooks don't have container sensitivity labels because they share a container with all Copilot Pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: No per-container quota",
+      "type": "absence",
+      "claim": "Microsoft states there is no admin control to set quota limits on individual containers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "There's no admin control to set quota limits on individual containers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Delayed effect",
+      "type": "behaviour",
+      "claim": "Changes can take up to 90 minutes when policy configurations already existed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Delayed effect",
+      "type": "behaviour",
+      "claim": "Changes can take up to 24 hours if no policy configurations existed before.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Blocked WebSockets; What to check",
+      "type": "behaviour",
+      "claim": "Real-time collaboration requires WebSocket traffic to *.svc.ms and *.office.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+      "quote": "Allow WebSocket traffic to *.svc.ms and *.office.com endpoints. WebSocket connections enable real-time collaboration features including live editing, presence indicators, and shared cursors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 Apps admin center route is Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. ... In Configure Settings, choose one of the following settings: ... Create and view Copilot Pages and Copilot Notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the notebook creation setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode.",
+      "severity": "minor",
+      "fix": "Keep the method and path, but add to the row's note: 'Set mode to applyOnce to apply the baseline; the default monitorOnly mode only detects drift.' The reference documents both modes and defaults mode to monitorOnly."
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The baseline resourceType for the setting is microsoft.copilot.copilotpagesnotebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "\"resourceType\": \"microsoft.copilot.copilotpagesnotebooks\",\n  \"resourceVersion\": 1,\n  \"properties\": {\n    \"value\": \"1\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The resource uses value 0 or 1 for the creation setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "The value property is a string, not a Boolean or a number. ... 0 disables the setting; 1 enables the setting.",
+      "severity": "minor",
+      "fix": "Replace 'value 0 or 1' with 'properties.value as the string \"0\" (disabled) or \"1\" (enabled)' in the row note and its rendered copy. The copilotpagesnotebooks parameter table allows these values and the sample places value under properties."
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls: Graph route",
+      "type": "availability",
+      "claim": "Tenant Configuration Management Copilot resources are in preview in Microsoft Graph beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "This article lists the Copilot resource types supported in preview for monitoring and snapshots through the Tenant Configuration Management (TCM) APIs in Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls: Graph route",
+      "type": "applicability",
+      "claim": "TCM supports this setting only in tenant-level policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: Graph route",
+      "type": "applicability",
+      "claim": "A group-level policy for the same setting causes monitoring and remediation to fail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Office Apps Administrator is the recommended Cloud Policy role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Security Administrator is also a supported Cloud Policy management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Security Administrator | This role can read security information and reports and manage configuration in Microsoft Entra ID and Office 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Global Administrator is also a supported Cloud Policy management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Global Administrator | This role can manage all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "AI Administrator is the least-privileged signed-in user role for remediation and applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: Scoping",
+      "type": "applicability",
+      "claim": "To enable a subset, assign Enabled to Group A.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Create Group A containing the users you want to enable the policy for. Assign the Cloud Policy to this group and set it to Enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: Scoping",
+      "type": "applicability",
+      "claim": "The complementary policy assignment is Disabled for All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Create Group B that includes All users. Assign the same Cloud Policy to this group and set it to Disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: Scoping",
+      "type": "behaviour",
+      "claim": "Group A must have the lower priority number so it is evaluated first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Set the priority for Group A to a lower number (for example, priority 0) so it's evaluated before Group B (for example, priority 1).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: Watching",
+      "type": "applicability",
+      "claim": "Audit logs are available for all notebook events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Audit logs: Available for all events. Retained, exportable, and streamable to third-party tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: Watching; What to check",
+      "type": "applicability",
+      "claim": "Purview can search notebook audit activity, whose content-management files use .pod.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Search in Purview for \"page\" and filter by \"SourceFileExtension\":\"page\". Copilot Notebooks create and update .pod files to manage content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: Watching",
+      "type": "applicability",
+      "claim": "Purview eDiscovery supports Notebooks search, collection, review and export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Purview eDiscovery: Supported for search/collection, review (Premium license required), and export as HTML (Premium license required) or original format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: Watching",
+      "type": "licensing",
+      "claim": "eDiscovery review needs a Premium license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "review (Premium license required)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: Watching",
+      "type": "licensing",
+      "claim": "eDiscovery HTML export needs a Premium license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "export as HTML (Premium license required) or original format",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: Watching; Why it matters",
+      "type": "applicability",
+      "claim": "The compliance summary says retention policies for all SharePoint sites are enforced for Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Retention policies from Microsoft Purview Data Lifecycle Management configured for all SharePoint sites are enforced for all Copilot Pages and Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "The creation setting does not move notebook content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks creation policy disabled does not move content storage sensitivity labels retention Conditional Access. Read admin policies and storage; existing items are not deleted and references remain available, but neither states a no-movement guarantee for notebook content.",
+      "severity": "major",
+      "fix": "Remove 'or move' from 'The setting does not delete or move content.' The remaining non-deletion statement is explicitly documented."
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "The creation setting does not set sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Sensitivity labels: Available for Copilot Pages. Copilot Notebooks don't have container sensitivity labels because they share a container with all Copilot Pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "Retention is configured through Purview rather than the creation setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Retention policies from Microsoft Purview Data Lifecycle Management configured for all SharePoint sites are enforced for all Copilot Pages and Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "The creation setting does not configure Conditional Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Conditional Access applies to the entire app at m365.cloud.microsoft. Use admin policies to block creation of new content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "What to check: eDiscovery data source",
+      "type": "applicability",
+      "claim": "The user-owned container can be added as an eDiscovery data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Until then, retrieve the user-owned container URL using PowerShell or the SharePoint admin center, then add it as a data source manually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Open questions: Workspaces",
+      "type": "behaviour",
+      "claim": "Copilot Notebooks will become Copilot Workspaces.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks Copilot Workspaces; Copilot Workspaces Notebooks November 2026; site:support.microsoft.com Copilot Workspaces. Searched the full cited release-notes text for Workspaces and renaming; found no supporting passage.",
+      "severity": "major",
+      "fix": "Replace the final open question with 'How will future changes to Copilot Notebooks affect its policy and storage?' Remove the assertion of a Workspaces rename; the linked wiki briefing is not Microsoft evidence."
+    },
+    {
+      "n": 73,
+      "where": "summary; Governance controls: final paragraph",
+      "type": "consistency",
+      "claim": "The summary presents the creation setting as deciding storage, licensing and compliance reach, unlike the body.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Administrators use one Cloud Policy setting to allow or block creation and decide where the content, licensing and compliance reach. / The setting does not delete or move content, and it does not set sensitivity labels, retention or Conditional Access.",
+      "severity": "blocker",
+      "fix": "Replace the summary's second sentence with 'Administrators can allow or block creation through Cloud Policy; storage, licensing and compliance have separate requirements.'"
+    },
+    {
+      "n": 74,
+      "where": "What to check: Loop workspace creation; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review Loop workspace creation, but the controls table has no row for that control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review whether Loop workspace creation is also disabled for any group where you want no container created. / The sole table row is Whether users can create and view Copilot Pages and Copilot Notebooks.",
+      "severity": "minor",
+      "fix": "Remove the Loop workspace creation checklist bullet, which has no corresponding control row. Retain the already supported explanation of the two-policy interaction in Risks and limits."
+    },
+    {
+      "n": 75,
+      "where": "Why it matters; Risks and limits: Compliance gaps; sources",
+      "type": "applicability",
+      "claim": "The storage-governance premise also relies on a Microsoft page not listed in sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance",
+      "quote": "Supported consuming tenant Microsoft 365 settings and Microsoft Purview capabilities apply to the app documents stored there.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/sharepoint/dev/embedded/compliance/security-and-compliance to sources, titled 'Plan security, compliance, and governance'. It supports the storage-governance premise and documents the platform-level beta Information Barriers qualification."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T01:19:56.041Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether users can create and view Copilot Pages and Copilot Notebooks",
+        "docs": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management",
+          "policy configuration",
+          "Choose the scope",
+          "Configure Settings",
+          "Create and view Copilot Pages and Copilot Notebooks"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can create and view Copilot Pages and Copilot Notebooks",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -4,7 +4,7 @@ slug: "m365-copilot-admins-can-manage-access-more-precisely-with-support-for-nes
 roadmapId: 503587
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Launched: Confluence and ServiceNow Copilot connectors now evaluate parent-level permissions for child items. Jira is in the roadmap title only. Connector admins should re-test who sees indexed content."
+summary: "Launched: Confluence and ServiceNow Copilot connectors now evaluate parent-level permissions for child items. The roadmap title and description include Jira; the July 15 release note names only Confluence and ServiceNow. Re-test who sees indexed content."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "included"
-  notes: "The connectors prerequisites page says the tenant must have Microsoft 365 licenses and that indexing of synced connector data incurs no extra cost for such tenants. Nothing specific to hierarchical permissions is published."
+  model: "mixed"
+  notes: "The connectors prerequisites page says the tenant must have Microsoft 365 licenses and that indexing of synced connector data incurs no extra cost for such tenants. Its table lists Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7, for synced connector Copilot grounding. Nothing specific to hierarchical permissions is published."
 audiences: ["m365-admin","security","service-owner"]
 tags: ["copilot-connectors","m365-copilot","servicenow","confluence","oversharing","m365-admin-center"]
 sources:
@@ -42,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Jira Cloud Microsoft 365 Copilot connector overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-overview"
+    kind: "learn"
+  - title: "Deploy the Jira Cloud connector"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-deployment"
     kind: "learn"
   - title: "Manage access permissions for connectors"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions"
@@ -67,32 +70,36 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge"
+      path: "Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge > Choose flow based on user criteria"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment"
     api: null
     note: "At the Choose flow based on user criteria step, pick Simple (default) or Advanced; Advanced needs the Scripted REST API set up in ServiceNow."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-07-13T23:07:14"
 changes:
   - date: "2026-11-23"
     note: "First briefing: records the Confluence and ServiceNow parent-level permission change, the Confluence page that disagrees with it, and that Jira is named only in the roadmap title."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: Jira is named in the roadmap title and description; the licensing note now states the Microsoft 365 Copilot add-on or E7 requirement for Copilot grounding; ServiceNow path extended."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "c6982002c1ed5f7bd34b35da0d7a21b1"
+  contradicted: 1
+  attempts: 0
+  hash: "37fbce6fcc7a672be993035587cd12f9"
 ---
 
 ## What's changing
@@ -101,7 +108,7 @@ The roadmap item adds support for hierarchical access control lists (ACLs) in th
 
 For ServiceNow Knowledge, Learn defines the model: permissions are set at the knowledge base (parent) level and the article (child) level, and the system evaluates them together. The connector supports this. A July 1, 2026 release note (roadmap item 505438) adds that admins previously had to create new ServiceNow Knowledge and Catalog connections to adopt hierarchical permissions, and can now edit an existing connection to switch between the Simple and Advanced permission handling options.
 
-For Confluence, the sources differ. The release note says the connector evaluates parent-level permissions. At the time of writing (November 2026), the Confluence Cloud setup page on Learn says "Permissions are managed only at the space and page level. Parent page permissions aren't considered." Both statements are reported here as published. That page also describes synced nested groups as usable for ACLs, which is a different meaning of nested from parent and child items.
+For Confluence, the sources differ. The release note says the connector evaluates parent-level permissions. At the time of writing (November 2026), the Confluence Cloud setup page on Learn says "Permissions are managed only at the space and page level. Parent page permissions aren't considered." Both statements are reported here as published. That page also describes synced nested groups as usable for ACLs, provided the nested group's members are part of a Confluence user group, which is a different meaning of nested from parent and child items.
 
 For Jira, the Jira Cloud connector pages read for this briefing describe project permission schemes and issue-level security, and do not mention hierarchical or nested permissions. The roadmap item is Launched, General Availability, for Web, in Worldwide (Standard Multi-Tenant), with a target of April CY2026 and a preview date of March CY2026.
 
@@ -121,7 +128,7 @@ Microsoft has not stated whether existing connections pick up parent-level evalu
 
 **Security & identity**
 
-- Confluence maps users to Microsoft Entra ID by email address against the user principal name; where they differ, Learn says content might not appear for intended users until a mapping is configured.
+- The Confluence overview says email-to-UPN mismatches require manual mapping and can hide intended content. The setup page instead describes default matching against either the Entra ID UPN or email address; check both before configuring a mapping.
 - Parent-level permission changes are not picked up promptly. ServiceNow incremental crawls do not update permissions for articles whose knowledge base (parent) permissions changed, and Confluence permission changes are picked up only in the full crawl (once every 24 hours by default).
 
 **Autonomy & actions**
@@ -135,7 +142,7 @@ Microsoft has not stated whether existing connections pick up parent-level evalu
 
 ## Cost and licensing
 
-The Learn page on connector prerequisites says the tenant must have Microsoft 365 licenses, that the surfaces available to users depend on the organisation's licensing, and that indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. Its Microsoft 365 Copilot add-on licence requirement is stated for federated connectors, not synced ones such as Confluence and ServiceNow.
+The Learn page on connector prerequisites says the tenant must have Microsoft 365 licenses, that the surfaces available to users depend on the organisation's licensing, and that indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. Microsoft 365 alone supports synced connectors in Microsoft Search, not Copilot grounding. The table lists Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7, for synced connector Copilot grounding.
 
 Microsoft Learn documents no separate licence, meter or price for hierarchical permissions at the time of writing (November 2026). The indirect cost is admin time: reviewing connection permissions, ServiceNow service-account access and identity mapping, and re-testing after the next full crawl.
 
@@ -174,13 +181,15 @@ To configure and deploy Copilot connectors you must be an AI administrator in th
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether a connection honours source ACLs or is visible to everyone</strong><br><small class="controls__note">Needs the AI administrator role. Learn says access permissions cannot be updated after the connection is created.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection › Permissions <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the ServiceNow Knowledge connector evaluates advanced script-based user criteria</strong><br><small class="controls__note">At the Choose flow based on user criteria step, pick Simple (default) or Advanced; Advanced needs the Scripted REST API set up in ServiceNow.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Connectors › Gallery › ServiceNow Knowledge <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the ServiceNow Knowledge connector evaluates advanced script-based user criteria</strong><br><small class="controls__note">At the Choose flow based on user criteria step, pick Simple (default) or Advanced; Advanced needs the Scripted REST API set up in ServiceNow.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Connectors › Gallery › ServiceNow Knowledge › Choose flow based on user criteria <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Both rows are set in the Microsoft 365 admin center, which Learn says needs the AI administrator role. The access permissions setting cannot be changed on an existing connection, according to Learn, so a wrong choice means deleting and recreating the connection through Custom setup.
 
 The Simple or Advanced flow applies to ServiceNow Knowledge. A July 1, 2026 release note says admins can now edit existing ServiceNow Knowledge and Catalog connections to switch between them. Settings inside ServiceNow (user criteria, sys_properties access, roles) and inside Confluence (space permissions, page restrictions) are made in those products, not in the Microsoft 365 admin center.
+
+The checklist steps on ServiceNow service-account table access, HR Service Delivery roles and Confluence identity mapping have no rows in this table.
 
 ## Open questions
 
@@ -195,15 +204,8 @@ cost: Low. Learn states indexing of synced connector data incurs no extra cost f
 impact: Medium. Only people whose tenant has a ServiceNow or Confluence connector notice it, but for them search and Copilot answers can show or hide items.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; changes[0].note / record: Jira is named only in the roadmap title. | Found: Support for hierarchical ACLs for SNOW, Confluence, Jira connectors. | Fix: Replace 'Jira is in the roadmap title only' with 'The roadmap title and description include Jira; the July 15 release note names only Confluence and ServiceNow.' Make the same correction in changes[0].note.
-- [contradicted, blocker] Cost and licensing: first paragraph / licensing: The prerequisites page's Microsoft 365 Copilot add-on requirement is for federated connectors, not synced connectors such as Confluence and ServiceNow. | Found: | Microsoft 365 (any plan) | ✅ | ❌ | ❌ | | Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ | | Microsoft 365 E7 | ✅ | ✅ | ✅ | | Fix: Replace the final sentence of the first licensing paragraph with 'Microsoft 365 alone supports synced connectors in Microsoft Search, not Copilot grounding. The table lists Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7, for synced connector Copilot grounding.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Confluence paragraph / behaviour: The Confluence setup page describes synced nested groups as usable for ACLs, separately from parent-page permissions. | Found: You can use synced nested groups to manage access control lists (ACLs), provided the nested group's members are part of a Confluence user group. | Fix: Append 'provided the nested group's members are part of a Confluence user group' to the sentence describing synced nested groups. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup
-- [supported, minor] What's changing: Jira paragraph / behaviour: Jira Cloud connector documentation describes project permission schemes and issue-level security. | Found: In Atlassian Jira, security permissions are defined using project permission schemes containing site-level groups and project roles. Issue-level security can also be defined using issue-level permission schemes. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-deployment to sources; it states the project permission-scheme fact. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-deployment
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The ServiceNow Simple/Advanced control is reached through Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge. | Found: choose Copilot > Connectors. Go to the Connectors tab, and in the left pane, choose Gallery. From the list of available connectors, choose ServiceNow Knowledge. Choose flow based on user criteria | Fix: Extend controls[1].ui.path and its rendered table cell to 'Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge > Choose flow based on user criteria'. The existing path stops early on the correct connector page. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / behaviour: When those identities differ, a mapping must be configured or some content might not appear for intended users. | Found: Without this mapping, some content might not appear for intended users because the service can't verify that they have access. | Fix: Replace the identity-mapping risk bullet with 'The Confluence overview says email-to-UPN mismatches require manual mapping and can hide intended content. The setup page instead describes default matching against either the Entra ID UPN or email address; check both before configuring a mapping.' Both https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview and https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup are already cited. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to check ServiceNow service-account access and HR roles and Confluence identity mapping, but these controls have no table rows. | Found: Confirm ... service account can read sys_properties, and holds an HR Service Delivery role ... Check that Confluence user emails match ... or that a mapping rule exists. The table contains only connection visibility and Simple/Advanced flow. | Fix: The service-account table access, HR Service Delivery roles and Confluence identity-mapping checklist steps have no corresponding controls rows. Record this table-coverage limitation without adding rows in this correction.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check ServiceNow service-account table access and HR roles and Confluence identity mapping, but none has a controls-table row. | Found: Confirm ... the connector's service account can read sys_properties ... Check that Confluence user emails match ... The checklist steps on ServiceNow service-account table access, HR Service Delivery roles and Confluence identity mapping have no rows in this table. | Fix: The Before rollout bullets on ServiceNow service-account sys_properties access and HR roles, and on Confluence identity mapping, have no controls-table rows. Remove those two checklist bullets and the sentence acknowledging their missing rows; retain their factual risk discussion.
 -->

@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
-targetDate: "December CY2026"
+targetDate: "April CY2027"
 previewDate: "November CY2026"
 risk: "medium"
 cost: "low"
@@ -24,6 +24,9 @@ tags: ["purview","data-lifecycle-management","onedrive","exchange","retention","
 sources:
   - title: "Microsoft 365 Roadmap: item 569721"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=569721"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap: item 566527"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566527"
     kind: "roadmap"
   - title: "Override holds to clean up files for Copilot and reclaim storage"
     url: "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint"
@@ -89,8 +92,8 @@ controls:
     note: "Requires the Audit Logs role in Exchange Online. Learn says priority cleanup needs auditing enabled at least one day before the first policy runs."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
-roadmapModified: "2026-10-01T23:00:07"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-21"
     note: "First briefing for the US Government (GCC, GCC High and DoD) roadmap item; the Worldwide item 566527 is listed separately."
@@ -100,28 +103,32 @@ changes:
     note: "Correction: licensing model set to unknown; tenant switch behaviour and the scope sentence corrected to match Learn and the roadmap; minor wording fixes."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected targets to match the roadmap (general availability April CY2027, and the Worldwide item 566527's own dates); added the 566527 roadmap item as a source."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 2
+  status: "verified"
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "db3d56f7599798cde56d6130dad838b0"
+  hash: "6511053cf4aeea415b7a958b6ca3145c"
 ---
 
 ## What's changing
 
-The roadmap item states that Microsoft Purview Data Lifecycle Management will let administrators "delete both content and containers for departed users at scale", keeping the tenant compliant "without any manual effort". The title names inactive OneDrives and mailboxes. This item covers GCC, GCC High and DoD. Microsoft lists the same feature under roadmap id 566527 for Worldwide (Standard Multi-Tenant), with the same status and target dates.
+The roadmap item states that Microsoft Purview Data Lifecycle Management will let administrators "delete both content and containers for departed users at scale", keeping the tenant compliant "without any manual effort". The title names inactive OneDrives and mailboxes. This item covers GCC, GCC High and DoD. Microsoft lists the same feature under roadmap id 566527 for Worldwide (Standard Multi-Tenant), which is also In development but has its own targets: a January CY2027 preview and March CY2027 general availability.
 
 Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. The roadmap text gives no mechanism, default state, licence or admin path, and does not say whether the feature builds on priority cleanup or on inactive mailbox deletion, both of which Learn documents today (see Governance controls).
 
-The status is In development. The roadmap targets a preview in November CY2026 and general availability in December CY2026, and lists the release phases as General Availability and Preview. These are Microsoft's targets, not shipped behaviour.
+The status is In development. The roadmap targets a preview in November CY2026 and general availability in April CY2027, and lists the release phases as General Availability and Preview. These are Microsoft's targets, not shipped behaviour.
 
 ## Why it matters
 
@@ -151,7 +158,7 @@ The indirect cost is admin and approver time, plus legal and HR review of what m
 
 ## Scope
 
-The roadmap item lists GCC, GCC High and DoD, on the Web platform. The Worldwide entry is roadmap id 566527. The targets are a November CY2026 preview and a December CY2026 general availability.
+The roadmap item lists GCC, GCC High and DoD, on the Web platform. The Worldwide entry is roadmap id 566527. The targets for this item are a November CY2026 preview and an April CY2027 general availability.
 
 The roadmap identifies inactive OneDrives and mailboxes for departing employees, but does not state detailed eligibility criteria, roles, prerequisites or exclusions. For priority cleanup on SharePoint and OneDrive, Learn requires the Priority Cleanup Admin role and enabled auditing at least one day before the first policy runs.
 
@@ -201,10 +208,4 @@ Turning off the tenant priority cleanup control prevents creation of new policie
 risk: Medium. The stated purpose is deleting departed users' content and containers at scale, which is hard to undo; the default state, approvals and safeguards for this feature are not yet published.
 cost: Low. The only cost the sources show is admin time; no licence, meter or price specific to this feature is published, and Data Lifecycle Management licensing sits on the Microsoft Purview service description page.
 impact: Low. Compliance and Microsoft 365 administrators would use it, and it targets the data of users who have already left; nothing states that end users see a change.
--->
-
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope; front matter: changes / record: The same planned feature is listed separately under roadmap item 566527. | Found: "id": 566527; "description": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort." | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=566527 to sources with kind roadmap; it supports the separate Worldwide entry and its status and dates.
 -->

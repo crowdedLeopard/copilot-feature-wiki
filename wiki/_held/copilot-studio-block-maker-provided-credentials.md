@@ -93,18 +93,20 @@ changes:
     note: "Corrected after verification: the Threat detection sharing control path now includes the Environment groups or Environments tab and target before Set up; sign-in prompts are qualified with 'if needed'."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 59
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "3570122f47997e26d475517a9beb7e14"
 ---
 
@@ -206,8 +208,11 @@ cost: Low. The setting's prerequisites name admin permissions and no licence; en
 impact: Medium. Makers lose an option, and users of affected agents are asked to sign in to connected services where needed; autonomous and scheduled agents fail.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[3].ui; Governance controls; Governance guidance: Before rollout / admin-path: The maker-side authentication field is at Copilot Studio > Tools > tool > Details > Additional details > Authentication. | Found: The configuration page has three sections: Details, Inputs, and Completion. ... Authentication | Runs the tool with the user's credentials (End user, the default) or the maker's credentials (Maker-provided). | Fix: Replace controls[3].ui.path and the rendered route with 'Agents > agent > Tools > tool > Details > Authentication'. The cited https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent places Authentication directly in Details. Do not insert Additional details from the connector-specific route: https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors instead calls that field 'Credentials to use' under 'Details > Additional details' on the connector tool Overview page. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance guidance: Before rollout; Governance controls / admin-path: A maker selects a tool's credentials at Copilot Studio > Tools > tool > Details > Additional details > Authentication. | Found: Go to the Tools page for your agent, and select the tool from the list of tools. ... Details ... Additional details ... Authentication: Select whether to use the user's (End user) or maker's (Maker-provided) credentials for the tool. | Fix: Append to controls[3].note and the rendered note: 'The connector-specific instructions instead call this field Credentials to use under Details > Additional details on the tool Overview page.' Cite https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors#use-connectors-with-maker-provided-credentials, whose search excerpt gives that alternative label and location. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent
+- [supported, minor] controls[2].ui; Governance controls / admin-path: The Security sharing route is Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups (or Environments) > target > Set up. | Found: On the navigation pane, select Security, and then select Threat detection. ... Select Sharing agent with embedded maker credentials. A panel opens. ... Select Set up. | Fix: The route stops on the right setup page but before the setting. Extend it to 'Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups (or Environments) > environment group (or environment) > Set up > Don't let makers share agents with their own credentials embedded (recommended)' as documented at https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials. | Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because the feature page names no feature-specific licence. | Found: To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free). ... Copilot Studio authors role in Power Platform admin center. ... Microsoft 365 Copilot license ... Copilot Studio trial license. | Fix: Set licensing.model to 'included' for this new option inside Copilot Studio. Add https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing to sources and state in licensing.notes: 'Copilot Studio publishes product-level access configurations: a Copilot Studio user license with a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a Copilot Studio trial license. No licence specific to this credential control is published.' Preserve the existing managed-environment qualification. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 -->

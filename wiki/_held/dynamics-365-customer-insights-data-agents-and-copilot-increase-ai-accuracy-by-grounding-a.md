@@ -106,18 +106,20 @@ changes:
     note: "Corrected after the independent check: default state is now admin-opt-in because a tenant admin must provision the gateway service principal, and the After rollout check now refers to the token's scp claim only."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 87 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 87
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "510a886d8d368604558a26cf77ac30b7"
 ---
 
@@ -227,8 +229,13 @@ cost: Variable. Copilot Studio agent usage is metered in Copilot Credits, subjec
 impact: Medium. Makers who build agents and the sellers, marketers and service staff who use them notice it; most users and tenant defaults do not change.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[3].ui; Governance controls table / admin-path: The Entra admin-center route to client-app consent starts at API permissions > Add a permission > APIs my organization uses. | Found: Browse to Entra ID > App registrations ... Select API permissions under Manage on your app registration's Overview page. | Fix: Replace controls[3].ui.path and the matching table path with 'Entra ID > App registrations > client app > API permissions > Add a permission > APIs my organization uses > Agent 365 Tooling Gateway (search by app ID) > McpServers.D365CustomerInsights.All (delegated permission) > Grant admin consent'. Add https://learn.microsoft.com/entra/identity-platform/quickstart-register-app to sources for the route into the app registration; retain the gateway page as docs for the permission and consent steps. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-register-app
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / licensing: Additional Customer Insights capacity can be purchased with add-on licences. | Found: Customer Insights - Data is licensed per tenant. You can purchase more capacity with add-on licenses. | Fix: Add https://learn.microsoft.com/dynamics365/customer-insights/data/overview to sources for the explicit add-on capacity wording. | Source: https://learn.microsoft.com/dynamics365/customer-insights/data/overview
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Additional Customer Insights capacity can be purchased with add-on licences. | Found: Customer Insights - Data is licensed per tenant. You can purchase more capacity with add-on licenses. | Fix: Add https://learn.microsoft.com/dynamics365/customer-insights/data/overview to sources for the explicit add-on capacity wording. | Source: https://learn.microsoft.com/dynamics365/customer-insights/data/overview
+- [supported, minor] Cost and licensing: Meter / licensing: Employee-facing Copilot Studio agents and invoked tools are included in Microsoft Copilot USL when the user is licensed and the agent uses that authenticated identity. | Found: Employee-facing usage scenarios (Business to Employee) of Copilot Studio agents and Copilot Studio tools and features that these agents invoke are included in the Microsoft Copilot USL ... Usage is limited to fair usage limits. | Fix: Append 'Usage is limited to fair usage limits.' to the sentence describing Microsoft Copilot USL inclusion, as stated at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The tenant registry control is reached at Microsoft 365 admin center > Agents > Tools > Registry. | Found: In the left navigation pane, select Agents > Tools > Registry. ... Select actions directly from the list, or select a tool to view its overview page. | Fix: For the availability control, extend controls[0].ui.path and its table path to 'Agents > Tools > Registry > MCP server > Block' and retain the note that Unblock restores access. The existing cited overview page documents selecting a tool and the Block action. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The maker's per-agent selection control is Tools > select the MCP server > Allow all. | Found: Go to the Tools tab for your agent. Select the MCP server from the list of tools. ... Tools: A list of names and descriptions for the MCP tools that the server offers. ... Turn off the Allow all toggle. | Fix: Change controls[1].ui.path and the matching table path to 'Tools > select the MCP server > Tools > Allow all' to include the settings page's Tools section. Qualify the row note with 'For agents powered by the standard harness', as the cited page does. | Source: https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent
 -->

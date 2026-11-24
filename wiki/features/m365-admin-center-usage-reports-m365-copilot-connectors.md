@@ -71,15 +71,17 @@ changes:
     note: "New briefing: the Copilot connectors usage report, with Microsoft's November 2026 general availability timeline from MC1404326."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 59 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 72 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 57
+  claims: 72
+  confirmed: 70
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -182,12 +184,13 @@ cost: Low. Microsoft's notice says a Microsoft 365 Copilot (Premium) licence is 
 impact: Low. Administrators and analytics owners see the new report; Microsoft's notice says there is no impact to user workflows.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The report does not change what connectors index. | Found: Searched: Copilot connectors usage report changes indexing permissions read only report. Read the report and connector-overview excerpts; neither states whether this report changes indexing. MC1404326 confirms existing permissions, not indexing behaviour. | Fix: Replace 'The report does not change what connectors index or who can see it' with 'Microsoft says the report respects existing permissions.'
+- [unsupported, major] Why it matters / behaviour: The report does not change what connectors index. | Found: Searched: "Copilot connectors usage report" "indexing" "read-only". Opened the report and read connector-overview excerpts; neither states that the report leaves indexing unchanged. | Fix: Replace 'The report does not change what connectors index or who can see it' with 'Microsoft says the report respects existing permissions.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; summary; Governance guidance / admin-path: The report is at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Connectors. | Found: In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports. ... Select Usage. ... under Reports, select Microsoft Copilot, and then select Connectors. | Fix: Keep the Learn-based path. Add: 'MC1404326 instead labels the path Reporting > Usage > Microsoft 365 Copilot > Connectors.' | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review role assignments, but the controls table does not represent that assignment control. | Found: List which administrators hold a role that can view usage reports ... controls: Where administrators view the Copilot connectors usage report; Whether usage reports show user, group and site names | Fix: The role-assignment review step has no corresponding control row. Remove that checklist bullet; retain the documented viewer roles in Scope.
-- [supported, minor] Governance guidance: Before rollout / record: The recommendation to name a report owner and inform stakeholders is attributed to Microsoft's notice. | Found: Inform relevant administrators and analytics stakeholders about the new report. | Fix: Replace the first Before rollout bullet with 'Name an owner for the Connectors report. Inform relevant administrators and analytics stakeholders about the new report, as Microsoft’s notice suggests.' The owner recommendation is the wiki's advice, not part of the notice.
+- [supported, minor] controls[0].ui; summary; Governance guidance: At rollout; Governance controls table / admin-path: The report is at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Connectors. | Found: In the navigation menu, select Reports. ... Select Usage. ... On the Usage page, under Reports, select Microsoft Copilot, and then select Connectors. | Fix: Keep the Learn-based path. Add to the rollout paragraph: 'MC1404326 instead labels the path Reporting > Usage > Microsoft 365 Copilot > Connectors.' | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage
+- [supported, minor] controls[1].api; Governance controls table / command: PATCH https://graph.microsoft.com/v1.0/admin/reportSettings with displayConcealedNames set to false shows identifiable information in reports. | Found: PATCH https://graph.microsoft.com/v1.0/admin/reportSettings ... displayConcealedNames ... If false, all reports show identifiable information. | Fix: Set controls[1].api.call to 'PATCH https://graph.microsoft.com/v1.0/admin/reportSettings' and make the same change in the rendered table. Add to the row note: 'The request body sets displayConcealedNames to false to show identifiable information, or true to conceal it.' | Source: https://learn.microsoft.com/graph/api/adminreportsettings-update
+- [supported, minor] Governance guidance: Before rollout; Cost and licensing: Indirect cost / record: Microsoft's notice suggests naming a report owner and informing analytics and adoption stakeholders. | Found: Inform relevant administrators and analytics stakeholders about the new report. | Fix: Replace the first Before rollout bullet with 'Name an owner for the Connectors report. Inform relevant administrators and analytics stakeholders about the new report, as Microsoft's notice suggests.' This separates the wiki's owner recommendation from Microsoft's advice.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review role assignments without a corresponding control row. | Found: List which administrators hold a role that can view usage reports ... Table rows: Where administrators view the Copilot connectors usage report; Whether usage reports show user, group and site names. | Fix: Remove the Before rollout bullet beginning 'List which administrators hold a role that can view usage reports'. The role-assignment review has no control row; retain the documented roles in Scope.
 -->

@@ -80,18 +80,20 @@ changes:
     note: "Corrected after verification: default state and licensing model set to unknown, Repair role claim narrowed to what Inventory lists, pending-action claim removed, and General Availability rollout worded as the notice plans it."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 78
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "60dbcd0a1c83cdd4fd68729934945480"
 ---
 
@@ -190,4 +192,13 @@ Repair and the report share one surface. Inventory lists Office Apps Administrat
 risk: Medium. A Repair action closes open Microsoft 365 Apps on the selected devices and reinstalls them, so users can lose unsaved work unless admins warn them first; it reads no new data and starts only when an admin selects it.
 cost: Low. The Update Repair page names no separate licence or meter; the costs shown are admin time, user disruption and a CDN download per repaired device. Inventory itself requires one of the plans its Learn page lists.
 impact: Low. Admins use the report; users notice only on devices an admin repairs, where Office apps close and reinstall.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Remote Repair is reached through Review devices > Update Repair table > select one or more devices > Repair. | Found: a notification banner appears on the Home and Inventory pages. Select Review devices in the banner to open Update Repair ... In the Update Repair table, select one or more devices. Select Repair and confirm the action. | Fix: Set controls[1].ui.path and the rendered table path to 'Inventory > Review devices > Update Repair table > select one or more devices > Repair'. The existing path starts inside a page at its banner rather than identifying the navigation page containing it. The cited Update Repair page documents the banner on Inventory. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/update-repair
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance guidance; Governance controls table / admin-path: Inventory setup is reached through Microsoft 365 Apps admin center > Inventory. | Found: go to Inventory in the navigation pane. If you're new to inventory, you need to complete the one-step setup. | Fix: The path stops on the right page before the setup control. Set controls[0].ui.path and its rendered counterpart to 'Inventory > Get started', and cite https://learn.microsoft.com/microsoft-365-apps/best-practices/roadmap-to-modern-management, which says 'Navigate to Inventory and choose Get started to enable the feature.' | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory
+- [supported, minor] front matter: licensing.model and notes; Open questions / licensing: The licensing model is unknown despite the published Inventory plan requirement. | Found: Your user must be assigned to one of the following subscription plans: ... Microsoft 365 Business Standard ... Microsoft 365 Business Premium ... Office 365 E3 ... Office 365 E5 ... Microsoft 365 E3 ... Microsoft 365 E5 | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Update Repair uses Inventory, whose licensing requirements say the signed-in user must have a listed plan, such as Microsoft 365 E3 or E5. Microsoft Learn publishes no licence or meter specific to Update Repair as of November 2026.' Remove the final Open questions bullet questioning the applicability of the product-level requirement. Keep the existing Inventory citation. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/inventory
 -->

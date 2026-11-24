@@ -3,46 +3,70 @@
   "roadmapId": 481834,
   "title": "Microsoft 365 Backup: longer recovery windows for SharePoint and OneDrive, up to 10 years",
   "status": "held",
-  "date": "2026-11-23",
-  "version": 1,
+  "date": "2026-11-24",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
-  "notes": [],
+  "notes": [
+    "claim 72: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
   "hold": {
     "reason": "failed",
     "since": "2026-11-23",
     "reasons": [
-      "1 blocking finding (claim 57)"
+      "1 blocking finding (claim 32)"
     ]
   },
   "counts": {
-    "claims": 60,
-    "confirmed": 57,
-    "unconfirmed": 0,
-    "contradicted": 3,
+    "claims": 72,
+    "confirmed": 70,
+    "unconfirmed": 1,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 4
+    "minor": 1
   },
-  "summary": "Hold: the guidance incorrectly says backup history before the date a window was lengthened does not exist. Microsoft says available history depends on when protection began and which recovery points have not expired, not simply when the window was changed.",
+  "summary": "The recovery windows, unchanged default, pricing, and control paths and APIs are supported. Hold for an overbroad administrator-role statement: Microsoft 365 Backup Administrator manages SharePoint, OneDrive and Exchange, but does not grant Entra backup management privileges. The statement that end users see no app changes also lacks explicit documentation.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing; Scope",
+      "where": "front matter: products; title",
       "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "claim": "The roadmap item belongs to Microsoft 365.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"",
+      "quote": "\"products\": [\"Microsoft 365\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes longer retention for restoring beyond one year without naming a workload.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This creates the ability to set longer term retention periods to restore beyond one year.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap target is August CY2026.",
@@ -53,7 +77,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is March CY2026.",
@@ -64,7 +88,18 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -75,10 +110,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Web.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -86,32 +121,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; front matter: products, roadmapModified",
-      "type": "record",
-      "claim": "The Microsoft 365 roadmap item describes longer retention to restore beyond one year and was modified August 18, 2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"description\": \"This creates the ability to set longer term retention periods to restore beyond one year.\"; \"modified\": \"2026-08-18T23:05:00\"; \"products\": [\"Microsoft 365\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "title; summary; What's changing; Scope; changes",
+      "n": 9,
+      "where": "title; summary; What's changing; Scope",
       "type": "behaviour",
-      "claim": "SharePoint and OneDrive policies support 3 months, 6 months, or any whole number of years from 1 through 10.",
+      "claim": "SharePoint policies now accept 3 months, 6 months, or any whole number of years from 1 through 10.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
       "quote": "SharePoint and OneDrive: 3 months, 6 months, 1 year, 2 years, 3 years, 4 years, 5 years, 6 years, 7 years, 8 years, 9 years, or 10 years.",
@@ -119,10 +132,21 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "summary; What's changing; Scope; changes; Open questions",
+      "n": 10,
+      "where": "title; summary; What's changing; Scope",
       "type": "behaviour",
-      "claim": "Exchange policies support 3 months, 6 months, 1 year, or 2 years.",
+      "claim": "OneDrive policies now accept 3 months, 6 months, or any whole number of years from 1 through 10.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "SharePoint and OneDrive: 3 months, 6 months, 1 year, 2 years, 3 years, 4 years, 5 years, 6 years, 7 years, 8 years, 9 years, or 10 years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope; Open questions",
+      "type": "behaviour",
+      "claim": "Exchange policies accept 3 months, 6 months, 1 year or 2 years.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
       "quote": "Exchange: 3 months, 6 months, 1 year, or 2 years.",
@@ -130,10 +154,21 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: risk",
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: risk",
       "type": "default",
-      "claim": "Longer recovery windows are admin-opt-in: the one-year default is unchanged and existing policies retain it unless an administrator changes them.",
+      "claim": "The previous one-year default is unchanged and existing policies and artifacts keep it unless an administrator changes it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "The existing one-year default is unchanged. Existing policies keep a one-year recovery window unless an administrator changes them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Longer recovery windows are admin-opt-in rather than automatically applied to existing policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
       "quote": "Existing policies keep a one-year recovery window unless an administrator changes them.",
@@ -141,10 +176,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Why it matters; Governance controls; controls[0].note",
+      "n": 14,
+      "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "The recovery window is set per policy and applies to every item in that policy.",
+      "claim": "The recovery window is configured per policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
       "quote": "You set the recovery window on a policy, and it applies to every artifact in that policy.",
@@ -152,68 +187,35 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Why it matters",
-      "type": "default",
-      "claim": "One year was the existing default before the configurable-window extension.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
-      "quote": "The existing one-year default is unchanged.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Full SharePoint site and OneDrive account restores have 10-minute recovery points for the prior two weeks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
-      "quote": "For full account restores: 10 minutes for two weeks prior",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Weekly recovery points beyond two weeks remain available for full site and account restores through the configured window.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
-      "quote": "For full SharePoint site and OneDrive account restores, weekly recovery points beyond the prior two weeks remain available through the configured recovery window, up to 10 years.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Granular file and folder restore is limited to the most recent 14 days regardless of the configured recovery window.",
+      "where": "What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "A policy's recovery window applies to every item in that policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
-      "quote": "Granular file and folder restore is available only for recovery points within the most recent 14 days, regardless of the configured recovery window.",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "You set the recovery window on a policy, and it applies to every artifact in that policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Recovery points older than 14 days support only full OneDrive account or SharePoint site restores.",
+      "claim": "Full SharePoint site restore recovery points occur every 10 minutes for the prior two weeks.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
-      "quote": "Recovery points older than 14 days support full account or site restore only.",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Full OneDrive account and full SharePoint site restore | 10 minutes | One week, through the configured recovery window of up to 10 years",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Risk assessment: Change & support",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Increasing the recovery window does not create older recovery points or recover expired ones.",
+      "claim": "Full OneDrive account restore recovery points occur every 10 minutes for the prior two weeks.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
-      "quote": "Increasing the recovery window doesn't create older recovery points or recover points that have already expired.",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Full OneDrive account and full SharePoint site restore | 10 minutes | One week, through the configured recovery window of up to 10 years",
       "severity": null,
       "fix": null
     },
@@ -221,48 +223,114 @@
       "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Backup history accumulates from when protection began.",
+      "claim": "Full SharePoint site restore recovery points are weekly beyond two weeks through the configured window.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
-      "quote": "Restore points are physically created in the service as soon as the policy is confirmed to be activated in the tool",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "For full SharePoint site and OneDrive account restores, weekly recovery points beyond the prior two weeks remain available through the configured recovery window, up to 10 years.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
       "where": "What's changing",
-      "type": "date",
-      "claim": "What's new dates configurable recovery windows of 3 months to 2 years to September 18, 2026.",
+      "type": "behaviour",
+      "claim": "Full OneDrive account restore recovery points are weekly beyond two weeks through the configured window.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
-      "quote": "Configure backup recovery windows\nSeptember 18, 2026\nBackup policies can use recovery windows of 3 months, 6 months, 1 year, or 2 years.",
+      "quote": "For full SharePoint site and OneDrive account restores, weekly recovery points beyond the prior two weeks remain available through the configured recovery window, up to 10 years.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; Open questions",
-      "type": "date",
-      "claim": "What's new dates the SharePoint and OneDrive extension to 10 years to October 31, 2026, later than the roadmap target.",
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Granular SharePoint and OneDrive file and folder restore is limited to the most recent 14 days regardless of the recovery window.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
-      "quote": "Extend SharePoint and OneDrive recovery windows up to 10 years\nOctober 31, 2026",
+      "quote": "Granular file and folder restore is available only for recovery points within the most recent 14 days, regardless of the configured recovery window.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Why it matters; Risk assessment: Data exposure; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Billable protected storage includes live protected content and deleted or versioned content held for recovery.",
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "SharePoint and OneDrive recovery points older than 14 days support only full site or account restore.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "Summation of the user-facing size of the protected content:\nSummation of the deleted and versioned data held for recovery in the backups:",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Recovery points older than 14 days support full OneDrive account or SharePoint site restores only.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Increasing the window does not create older recovery points.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Increasing the recovery window doesn't create older recovery points or recover points that have already expired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Increasing the window does not recover expired recovery points.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Increasing the recovery window doesn't create older recovery points or recover points that have already expired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Available recovery history depends on when protection began and which points have not expired.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "For full OneDrive account and SharePoint site restores, available recovery points depend on the configured recovery window and the backup history accumulated since protection began.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "What's new dates configurable 3-month to 2-year recovery windows to September 18, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Configure backup recovery windows. September 18, 2026. Backup policies can use recovery windows of 3 months, 6 months, 1 year, or 2 years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "What's new dates the SharePoint and OneDrive 10-year extension to October 31, 2026, later than the roadmap target.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Extend SharePoint and OneDrive recovery windows up to 10 years. October 31, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Longer recovery windows retain deleted and versioned backup content for longer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Deleted or versioned content held in the recycle bin or in the mailboxes will expire from the backups once the configured backup recovery window lapses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
       "claim": "Purview retention and deletion policies do not affect the backup recovery window.",
@@ -273,43 +341,54 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
+      "n": 29,
+      "where": "Risk assessment; Scope; Governance controls",
       "type": "role",
-      "claim": "SharePoint Administrators can manage SharePoint and OneDrive backups.",
+      "claim": "SharePoint Administrator manages SharePoint and OneDrive backup policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
-      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra |\n| SharePoint Administrator | ✓ | ✓ |  |  |",
+      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra | SharePoint Administrator | ✓ | ✓ |  |  |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
+      "n": 30,
+      "where": "Risk assessment; Scope; Governance controls",
       "type": "role",
-      "claim": "Exchange Administrators can manage Exchange backups.",
+      "claim": "Exchange Administrator manages Exchange backup policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
-      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra |\n| Exchange Administrator |  |  | ✓ |  |",
+      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra | Exchange Administrator |  |  | ✓ |  |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
+      "n": 31,
+      "where": "Risk assessment; Governance controls",
       "type": "role",
-      "claim": "The Microsoft 365 Backup Administrator role controls the tool for SharePoint, OneDrive, and Exchange.",
+      "claim": "Microsoft 365 Backup Administrator manages SharePoint, OneDrive and Exchange backup policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
-      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra |\n| Microsoft 365 Backup Administrator | ✓ | ✓ | ✓ |  |",
+      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra | Microsoft 365 Backup Administrator | ✓ | ✓ | ✓ |  |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Scope",
+      "n": 32,
+      "where": "Scope: Who and what",
       "type": "role",
-      "claim": "Only tenant-level administrators can create and manage backups with Microsoft 365 Backup.",
+      "claim": "Microsoft 365 Backup Administrator controls the whole tool.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Global Administrators and Microsoft Entra Backup Administrators can manage Entra backup; the Microsoft 365 Backup Administrator role alone doesn't grant Entra management privileges.",
+      "severity": "blocker",
+      "fix": "Replace 'the Microsoft 365 Backup Administrator role for the whole tool' with 'the Microsoft 365 Backup Administrator role for SharePoint, OneDrive and Exchange'. The setup page's role table excludes Entra, consistent with https://learn.microsoft.com/microsoft-365/backup/backup-whats-new."
+    },
+    {
+      "n": 33,
+      "where": "Scope: Who and what",
+      "type": "role",
+      "claim": "Only tenant-level administrators can create and manage Microsoft 365 Backup backups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
       "quote": "Only tenant-level admins can create and manage backups using Microsoft 365 Backup for their users.",
@@ -317,8 +396,8 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Scope",
+      "n": 34,
+      "where": "Scope: Who and what",
       "type": "role",
       "claim": "End users cannot enable backups or restores.",
       "status": "supported",
@@ -328,10 +407,32 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 35,
+      "where": "Risk assessment; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Reducing a recovery window is destructive because recovery points older than the new window are deleted.",
+      "claim": "Decreasing a policy's window starts a 30-day grace period before points older than the new window are deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Decreasing a policy's window, or moving an item into a policy with a shorter window, starts a 30-day grace period before recovery points older than the new window are deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Moving an item into a policy with a shorter window starts the same 30-day deletion grace period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Decreasing a policy's window, or moving an item into a policy with a shorter window, starts a 30-day grace period before recovery points older than the new window are deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft calls decreasing the recovery window a destructive action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
       "quote": "Decreasing the recovery window is a destructive action, because recovery points older than the new window are deleted.",
@@ -339,19 +440,8 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout; rationale: risk",
-      "type": "behaviour",
-      "claim": "Decreasing a policy window or moving an item into a shorter-window policy starts a 30-day grace period before older recovery points are deleted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
-      "quote": "you decrease the recovery window on a policy, or you move an artifact into a policy that has a shorter recovery window. In either case, to protect against accidental or malicious reductions, the deletion takes effect only after a 30-day grace period",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "n": 38,
+      "where": "Risk assessment; Governance guidance",
       "type": "behaviour",
       "claim": "Increasing a recovery window applies immediately.",
       "status": "supported",
@@ -361,21 +451,21 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout; controls[0].note",
+      "n": 39,
+      "where": "Risk assessment; controls[0].note; Governance guidance",
       "type": "behaviour",
-      "claim": "A window can be changed on an active policy but not on a paused policy.",
+      "claim": "The recovery window can be changed on an active policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
-      "quote": "You can change the recovery window on an active policy. You can't change it on a policy that is paused or has a run in progress.",
+      "quote": "You can change the recovery window on an active policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "n": 40,
+      "where": "Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "A recovery window cannot be changed while a policy has a run in progress.",
+      "claim": "The recovery window cannot be changed on a paused policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
       "quote": "You can't change it on a policy that is paused or has a run in progress.",
@@ -383,10 +473,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: licensing.model, cost; Cost and licensing; rationale: cost",
+      "n": 41,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The recovery window cannot be changed while a policy has a run in progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "You can't change it on a policy that is paused or has a run in progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Microsoft 365 Backup uses pay-as-you-go consumption billing, supporting the consumption licensing model and variable cost rating.",
+      "claim": "Microsoft 365 Backup is a pay-as-you-go consumption-based service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
       "quote": "The Microsoft 365 Backup service, offered through the Microsoft 365 admin center, is a pay-as-you-go consumption-based service.",
@@ -394,10 +495,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 43,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "The pricing page gives a list price of $0.15/GiB/month of protected content.",
+      "claim": "The pricing page lists $0.15/GiB/month of protected content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
       "quote": "The list price is $0.15/GiB/month of protected content.",
@@ -405,32 +506,54 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 44,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The overview gives the same storage-price figure for OneDrive, SharePoint, and Exchange Online.",
+      "claim": "The overview instead labels the OneDrive, SharePoint and Exchange rate as $0.15 per GB per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
-      "quote": "$0.15 per GB per month for all data protected by Backup",
-      "severity": "minor",
-      "fix": "Replace 'and the overview gives the same figure for OneDrive, SharePoint and Exchange Online' with 'while the overview lists $0.15 per GB per month for OneDrive, SharePoint and Exchange Online; its unit label differs from the pricing page, which uses GiB'. Both sources are already cited: https://learn.microsoft.com/microsoft-365/backup/backup-pricing and https://learn.microsoft.com/microsoft-365/backup/backup-overview."
+      "quote": "Billing model | $0.15 per GB per month for all data protected by BackupRestores are free",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 36,
+      "n": 45,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "The overview says restores are free.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
-      "quote": "Restores are free",
+      "quote": "$0.15 per GB per month for all data protected by BackupRestores are free",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Cost and licensing; Risk assessment: Data exposure; rationale: cost; Open questions",
+      "n": 46,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
       "type": "cost",
-      "claim": "Deleted or versioned content expires after the configured recovery window and then stops contributing to backup charges.",
+      "claim": "Billable protected storage counts the live user-facing size of protected content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Summation of the user-facing size of the protected content: Size of OneDrive accounts and SharePoint sites as displayed in the live sites' usage reports, which includes the first-stage recycle bin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing; Governance guidance: Before rollout; rationale: cost",
+      "type": "cost",
+      "claim": "Billable storage also counts deleted and versioned data, including SharePoint and OneDrive second-stage recycle bins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Summation of the deleted and versioned data held for recovery in the backups: Deleted content in SharePoint sites' and OneDrive accounts' second-stage recycle bin (also known as site collection recycle bin). Deleted and versioned items in the protected mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Deleted or versioned content stops contributing to backup charges after it expires under the configured recovery window.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
       "quote": "Once deleted or versioned content expires from the backups, they're no longer counted in the backup consumption equation and therefore no longer contribute to the cost.",
@@ -438,18 +561,18 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 49,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The pricing page's one-year-window example keeps deleted content billable for a year.",
+      "claim": "The pricing page's one-year example keeps deleted content billable for a year.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "your next monthly bill will still be for 1 GiB since the backup tool is retaining that deleted content for a year.",
+      "quote": "If you delete content in that site such that it's now only 0.5 GiB, your next monthly bill will still be for 1 GiB since the backup tool is retaining that deleted content for a year.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 50,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "Restore point frequency does not materially change backup storage cost.",
@@ -460,10 +583,21 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "n": 51,
+      "where": "Cost and licensing; Governance guidance",
       "type": "behaviour",
-      "claim": "Microsoft provides an Excel pricing calculator to estimate backup storage and cost.",
+      "claim": "Microsoft documents a pricing calculator for estimating backup storage and cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The Microsoft 365 Backup pricing calculator is a tool that helps you estimate the amount of backup storage and the costs that you incur to protect and back up your Microsoft 365 data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The linked pricing calculator is an Excel spreadsheet.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
       "quote": "Download the latest version of the Microsoft 365 Backup pricing calculator tool (an Excel spreadsheet).",
@@ -471,21 +605,10 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Governance guidance: Before rollout",
+      "n": 53,
+      "where": "Why it matters; Cost and licensing; Governance guidance; rationale: impact",
       "type": "cost",
-      "claim": "A SharePoint and OneDrive storage estimate must include live data and second-stage recycle bin data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "content in the OneDrive and SharePoint second-stage recycle bins and data in a mailbox's online archives won't be reflected in these reports, and need to be calculated separately.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing; Why it matters; Governance guidance; rationale: impact",
-      "type": "cost",
-      "claim": "Backup pay-as-you-go billing is linked to an Azure subscription.",
+      "claim": "Backup billing is set up through an Azure subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
       "quote": "As a first step, you should link an Azure subscription in pay-as-you-go, if you haven't already done so.",
@@ -493,54 +616,120 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Microsoft Entra Backup and Recovery Premium is in preview and has a fixed, nonconfigurable 30-day window.",
+      "n": 54,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "The pricing page states no separate price for longer recovery windows.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
-      "quote": "Microsoft Entra Backup and Recovery Premium (preview), enabled through Microsoft 365 Backup, supports a single policy and full tenant backup. ... Premium's backup recovery window is fixed at 30 days and isn't configurable.",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup longer recovery windows 10 years separate pricing price example. Read backup-pricing in full and backup-whats-new; the pricing page gives the protected-content meter, not a separate longer-window rate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The recovery-window UI route is Microsoft 365 admin center > Settings > Microsoft 365 Backup > Backup policies > policy > View details.",
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The pricing page has no worked storage-pricing example for recovery windows beyond one year.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
-      "quote": "select the Backup policies tab ... select that policy and then select View details. ... To change the recovery window later, open an active policy, update the Recovery window, and then select Update policy.",
-      "severity": "minor",
-      "fix": "Extend controls[0].ui.path and its rendered table path to 'Settings > Microsoft 365 Backup > Backup policies > policy > View details > Recovery window'. The current route reaches the policy but stops before its control; the existing note already describes changing Recovery window and selecting Update policy."
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup longer recovery windows 10 years separate pricing price example. Read backup-pricing in full; its deleted-content example uses one year, and the other examples concern Entra object counts.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[0].api; Governance controls table and prose",
+      "n": 56,
+      "where": "Scope: Workloads",
+      "type": "availability",
+      "claim": "Microsoft Entra Backup and Recovery Premium is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Microsoft Entra Backup and Recovery Premium is in public preview and can be enabled through Microsoft 365 Backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Workloads",
+      "type": "behaviour",
+      "claim": "Microsoft Entra Backup and Recovery Premium has a fixed 30-day recovery window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Premium's backup recovery window is fixed at 30 days and isn't configurable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Workloads",
+      "type": "behaviour",
+      "claim": "The Entra Premium recovery window is not configurable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Premium's backup recovery window is fixed at 30 days and isn't configurable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The SharePoint recovery window is reached in Microsoft 365 admin center at Settings > Microsoft 365 Backup > Backup policies > policy > View details > Recovery window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Select Settings. Select Microsoft 365 Backup. Select the Backup policies tab. To edit any specific policy, select that policy and then select View details. To change the recovery window later, open an active policy, update the Recovery window, and then select Update policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId} updates a SharePoint policy's retentionSettings.",
+      "claim": "PATCH https://graph.microsoft.com/beta/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId} updates a SharePoint policy's retention settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-update?view=graph-rest-beta",
-      "quote": "PATCH /solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}\nretentionSettings ... Updated retention settings for the policy.",
+      "quote": "This method updates retention settings or adds a siteProtectionUnit to or removes it from the protection policy. PATCH /solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[0].note; Governance controls table",
+      "n": 61,
+      "where": "controls[0].note",
       "type": "command",
-      "claim": "The retentionSettings request may specify period P3650D and interval R/P1W.",
+      "claim": "The beta SharePoint policy update request sets retentionSettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-update?view=graph-rest-beta",
+      "quote": "retentionSettings | retentionSetting collection | Updated retention settings for the policy. If retentionSettings is omitted, the existing retention settings are unchanged. You can update retentionSettings without adding or removing protection units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "A retentionSetting period can be P3650D.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/resources/retentionsetting?view=graph-rest-beta",
-      "quote": "Use R/P1W when specifying the policy retention period in a create or update request. ... P3285D, and P3650D. Other policy retention periods aren't supported.",
+      "quote": "The supported policy retention periods in create and update requests are: P90D, P180D, P365D, P730D, P1095D, P1460D, P1825D, P2190D, P2555D, P2920D, P3285D, and P3650D.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 63,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The retention-setting interval for configuring policy retention is R/P1W.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/retentionsetting?view=graph-rest-beta",
+      "quote": "Use R/P1W when specifying the policy retention period in a create or update request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "The Graph operation is beta, subject to change, and unsupported in production applications.",
+      "claim": "The cited Graph API is beta, subject to change and unsupported in production applications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-update?view=graph-rest-beta",
       "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
@@ -548,10 +737,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 65,
+      "where": "controls[1].ui",
       "type": "admin-path",
-      "claim": "Backup activity can be viewed and exported at Microsoft 365 admin center > Settings > Microsoft 365 Backup > Reports > Recent activities > View more.",
+      "claim": "Activity viewing and CSV export are reached in Microsoft 365 admin center at Settings > Microsoft 365 Backup > Reports > Recent activities > View more.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
       "quote": "Open Reports > Recent activities > View more to review activity counts and details, filter or search activities, and export the current results as a CSV file.",
@@ -559,21 +748,21 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "n": 66,
+      "where": "controls[1].api",
       "type": "command",
-      "claim": "GET https://graph.microsoft.com/beta/solutions/backupRestore/activityLogs is the read-only operation to list backup activity logs.",
+      "claim": "GET https://graph.microsoft.com/beta/solutions/backupRestore/activityLogs reads Microsoft 365 Backup activity logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-list-activitylogs?view=graph-rest-beta",
-      "quote": "Get a list of activityLogBase objects and their properties.\nGET https://graph.microsoft.com/beta/solutions/backupRestore/activityLogs",
+      "quote": "Get a list of activityLogBase objects and their properties. GET https://graph.microsoft.com/beta/solutions/backupRestore/activityLogs",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[1].governs; Governance controls; Governance guidance: After rollout",
+      "n": 67,
+      "where": "controls[1].governs; Governance guidance; Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft 365 Backup activity logs include policy changes.",
+      "claim": "Backup activity logs record policy changes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
       "quote": "Logs include policy and dynamic rule changes, product and protection-unit offboarding, and restore task creation and completion; read-only operations aren't included.",
@@ -581,8 +770,8 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[1].note; Governance controls table",
+      "n": 68,
+      "where": "controls[1].note",
       "type": "behaviour",
       "claim": "Activity logs have a fixed 365-day retention period.",
       "status": "supported",
@@ -592,10 +781,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 69,
       "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Microsoft directs administrators to Purview Audit for compliance investigations requiring the Microsoft 365 audit record.",
+      "claim": "Microsoft advises continuing to use Purview Audit for compliance investigations needing the Microsoft 365 audit record.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
       "quote": "For compliance investigations that require the Microsoft 365 audit record, continue to use Microsoft Purview Audit.",
@@ -603,98 +792,43 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 70,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Graph list-activityLogs example includes retentionPeriod in a policy activity log.",
+      "claim": "The Graph activity-log example includes a retentionPeriod field on policy logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-list-activitylogs?view=graph-rest-beta",
-      "quote": "\"@odata.type\": \"#microsoft.graph.backupPolicyActivityLog\" ... \"retentionPeriod\": \"P30D\"",
+      "quote": "\"@odata.type\": \"#microsoft.graph.backupPolicyActivityLog\", \"activityType\": \"backupPolicyCreated\", \"retentionPeriod\": \"P30D\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
+      "n": 71,
       "where": "Governance controls",
       "type": "absence",
-      "claim": "There is no documented tenant-wide recovery-window default setting to change instead of configuring individual policies.",
+      "claim": "No tenant-wide recovery-window default control is documented; windows belong to individual policies.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft 365 Backup recovery window increasing existing recovery points protection started tenant default retention settings. Opened backup-view-edit-policies, backup-whats-new, and Graph sharePointProtectionPolicy update; the documented setting is per policy.",
+      "quote": "Searched: Microsoft 365 Backup recovery window tenant-wide default retention setting. Read backup-view-edit-policies, backup-whats-new, backup-setup and the Graph update and retentionSetting references; results document per-policy windows, not a tenant default control.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "front matter: licensing.notes",
-      "type": "absence",
-      "claim": "The pricing page states no separate price for longer recovery windows.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 Backup longer recovery window separate price pricing 10 years example. Read backup-pricing in full, plus backup-overview and backup-view-edit-policies; backup-pricing states the storage meter but no separate longer-window price.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The pricing page contains no worked example for recovery windows beyond one year.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 Backup longer recovery window separate price pricing 10 years example. Read backup-pricing in full: the recovery-window example uses one year; other examples cover protected storage or Entra object counts, not multiyear windows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Governance guidance: At rollout; Risk assessment: Change & support",
+      "n": 72,
+      "where": "rationale: impact",
       "type": "behaviour",
-      "claim": "History before the date a recovery window was lengthened does not exist, and history beyond one year is available only for periods after protection began under the longer window.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data?view=o365-worldwide#considerations-when-using-restore",
-      "quote": "Restore points start being generated when you create the backup policy ... Only recovery points that have been generated and haven't expired are available.",
-      "severity": "blocker",
-      "fix": "Replace the At rollout bullet with 'Record the date each window was lengthened; increasing it does not create older recovery points or recover expired ones.' Replace 'Tell restore owners that history beyond one year only exists for periods after protection began under the longer window' with 'Tell restore owners that available history depends on when protection began and which recovery points have not expired.' These statements are documented at https://learn.microsoft.com/microsoft-365/backup/backup-whats-new and https://learn.microsoft.com/microsoft-365/backup/backup-restore-data?view=o365-worldwide#considerations-when-using-restore; add the latter to sources."
-    },
-    {
-      "n": 58,
-      "where": "front matter: risk; rationale: risk",
-      "type": "consistency",
-      "claim": "The medium risk rating is justified by opt-in extensions and the effects of administrators subsequently reducing a window.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "risk: \"medium\"; rationale: 'The change is opt-in per policy'; Why it matters: 'the one-year default stays until an administrator edits a policy'. The scale defines low as 'nothing happens until an admin opts in'.",
+      "claim": "End users see no change in Microsoft 365 apps.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup recovery window change end users apps user experience. Read backup-whats-new, backup-view-edit-policies, backup-overview and backup-setup; these describe admin policy changes, not an explicit guarantee about user app experience.",
       "severity": "minor",
-      "fix": "Set risk to 'low' and replace the risk rationale with 'Low. Existing policies keep their one-year recovery window unless an administrator changes them. Longer windows retain deleted content for longer, and a later reduction deletes older recovery points after a 30-day grace period.'"
-    },
-    {
-      "n": 59,
-      "where": "Governance guidance: Before rollout",
-      "type": "consistency",
-      "claim": "Every control that the governance checklist asks administrators to review is represented in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "'Check which roles can edit policies ... and remove the role from anyone who should not be able to shorten a window.' The table contains only recovery-window configuration and backup activity logs.",
-      "severity": "minor",
-      "fix": "The Before rollout role-assignment review/removal step has no controls-table row. Remove that checklist bullet; keep the documented role information in Scope and Governance controls. Do not add a new control row as part of this correction."
-    },
-    {
-      "n": 60,
-      "where": "controls[0].note; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "An administrator changes an active policy's Recovery window and then selects Update policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
-      "quote": "To change the recovery window later, open an active policy, update the Recovery window, and then select Update policy.",
-      "severity": null,
-      "fix": null
+      "fix": "Remove 'end users see no change in Microsoft 365 apps' from the impact rationale; retain 'Low. Backup administrators and the finance owners of the Azure bill notice.'"
     }
   ],
   "precheck": {
-    "at": "2026-11-23T20:02:38.292Z",
+    "at": "2026-11-24T01:19:55.491Z",
     "summary": {
-      "links": 9,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -734,6 +868,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-update?view=graph-rest-beta",
         "ok": true,
         "status": 200
@@ -760,7 +899,8 @@
           "Settings",
           "Microsoft 365 Backup",
           "Backup policies",
-          "View details"
+          "View details",
+          "Recovery window"
         ],
         "missing": []
       },
@@ -800,5 +940,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -67,15 +67,17 @@ changes:
     note: "Corrected after verification: removed the Dataverse GET as the control's automation, added the scenario-category step to the path, the feature toggle named in the Responsible AI FAQ and the planned credit exemption."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 88
+  claims: 82
+  confirmed: 81
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -187,8 +189,9 @@ cost: Variable. Publishing a playbook consumes Copilot credits (the Dynamics 365
 impact: Medium. Contact centre administrators configure it, but customers in queues and the representatives who receive their conversations feel the routing changes.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist's controls are all represented in the controls table. | Found: Checklist: 'Set up consumption-based billing'; 'Limit the System administrator and Omnichannel administrator roles'; 'Monitor playbook behaviour with the diagnostics custom query'. Table: 'Which queues and channels a playbook applies to, and whether it is published'. | Fix: The checklist steps for billing set-up, administrator-role restriction, inventorying custom queue prioritisation, and diagnostics monitoring have no corresponding controls-table rows. Record this as a table-coverage gap; do not add unverified paths or automation.
+- [supported, minor] controls[0].ui; Scope; Governance controls / admin-path: Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > scenario category > playbook template > Queues > Edit reaches the playbook queue and channel configuration pane. | Found: go to Customer support > Conversation Orchestration. On the Conversation Orchestration page, select Prompt gallery. In the drop-down field, select a scenario category, and then select a playbook template. Select Queues > Edit to open the queues pane. | Fix: Keep the supported path, but complete its note: 'In Queues > Edit, select Channel: Voice or Messaging, then Apply to: All queues, List of queues, or All queues except. Return to the editor, select Save to save a draft, and select Publish to activate the playbook.' The printed route reaches the correct pane but does not itself reach publication. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: All controls the governance checklist asks readers to set or review are represented in the controls table. | Found: Checklist: 'Set up consumption-based billing'; 'Monitor playbook behaviour with the diagnostics custom query'. Table: 'Which queues and channels a playbook applies to, and whether it is published'. | Fix: The billing set-up, administrator-role restriction, custom-prioritisation inventory and diagnostics-monitoring checklist steps lack corresponding control rows. Treat this as a table-coverage gap; do not add rows or unverified paths and automation.
 -->

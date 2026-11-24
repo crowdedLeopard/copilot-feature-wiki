@@ -44,29 +44,33 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value VerticalTabsAllowed (REG_DWORD)"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/verticaltabsallowed"
-    note: "Existing policy for the vertical layout. Microsoft Learn does not describe the update, so whether it governs the updated implementation is unconfirmed. Per profile; needs a browser restart."
+    note: "VerticalTabsAllowed controls whether users can access the vertical tab layout. Per profile; needs a browser restart."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-08-12T22:47:48"
 changes:
   - date: "2026-11-23"
     note: "First briefing for roadmap item 569217, based on the roadmap description and the VerticalTabsAllowed policy page."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 49 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: removed an unsupported sentence about browser-wide policies and restated the VerticalTabsAllowed scope as the policy reference describes it."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 1
+  status: "verified"
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 48
-  unconfirmed: 1
+  claims: 50
+  confirmed: 50
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "6b3c40b0b2df5afc74fc5f75a33e2a4c"
+  attempts: 0
+  hash: "28bb07560a26cbd548631438ec02b791"
 ---
 
 ## What's changing
@@ -89,7 +93,7 @@ If nobody acts, Microsoft has not stated what happens on arrival. The roadmap sa
 - No change is described: the roadmap item mentions layout, controls and visual treatments and names no new data the feature reads or sends.
 
 **Security & identity**
-- No change is described: the roadmap item names no sign-in, permission or identity change. Edge policies that apply to the browser as a whole are unaffected by a layout rebuild unless Microsoft states otherwise.
+- No change is described: the roadmap item names no sign-in, permission or identity change.
 
 **Autonomy & actions**
 - No change is described: vertical tabs is a layout the user operates, and the roadmap names no autonomous behaviour.
@@ -133,13 +137,13 @@ The VerticalTabsAllowed policy page lists support for Windows and macOS from ver
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can use the vertical tab layout</strong><br><small>User</small><br><small class="controls__note">Existing policy for the vertical layout. Microsoft Learn does not describe the update, so whether it governs the updated implementation is unconfirmed. Per profile; needs a browser restart.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Configures availability of a vertical layout for tabs on the side of the browser <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/verticaltabsallowed" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value VerticalTabsAllowed (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/verticaltabsallowed" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can use the vertical tab layout</strong><br><small>User</small><br><small class="controls__note">VerticalTabsAllowed controls whether users can access the vertical tab layout. Per profile; needs a browser restart.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Configures availability of a vertical layout for tabs on the side of the browser <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/verticaltabsallowed" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value VerticalTabsAllowed (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/verticaltabsallowed" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The VerticalTabsAllowed policy page documents a policy that can be set as mandatory but not recommended, is per profile, and needs a browser restart to take effect. Disabling it removes the vertical tab layout as an option for users; enabling it or leaving it unset leaves tabs at the top and lets the user turn vertical tabs on.
 
-This policy is the documented control over the existing vertical layout. Microsoft Learn does not describe the update at the time of writing, so confirm that the policy governs the updated implementation before relying on it.
+The policy reference describes its scope as access to the vertical tab layout.
 
 ## Open questions
 
@@ -153,12 +157,4 @@ This policy is the documented control over the existing vertical layout. Microso
 risk: Low. The roadmap describes a rebuild of an existing browser layout and states that no admin action is required; it describes no new data access, sign-in or autonomous behaviour.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence or charge for this update.
 impact: Low. The VerticalTabsAllowed policy page describes vertical tabs as an option a user turns on, so users who have turned it on are the likeliest to notice; the roadmap does not say who is affected.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Security & identity / applicability: Edge policies that apply to the browser as a whole are unaffected by a layout rebuild unless Microsoft states otherwise. | Found: Searched: Microsoft Edge vertical tabs layout rebuild browser security policies unaffected VerticalTabsAllowed; "Microsoft Edge" "vertical tabs" "policies" "unchanged". Read Edge for Business, VerticalTabsAllowed and policy reference excerpts; none guarantees this continuity. | Fix: Remove the sentence 'Edge policies that apply to the browser as a whole are unaffected by a layout rebuild unless Microsoft states otherwise.' The preceding sentence, that the roadmap names no sign-in, permission or identity change, can remain.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls / applicability: The documented VerticalTabsAllowed control is presented as unconfirmed for the updated vertical layout. | Found: Configures whether a user can access an alternative layout where tabs are vertically aligned on the side of the browser instead of at the top. | Fix: Replace the note's first two sentences with 'VerticalTabsAllowed controls whether users can access the vertical tab layout.' Keep 'Per profile; needs a browser restart.' In the closing Governance controls paragraph, replace the applicability caveat with 'The policy reference describes its scope as access to the vertical tab layout.' The cited reference states that reach without an implementation exception. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/verticaltabsallowed
 -->

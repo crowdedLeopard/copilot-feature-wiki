@@ -93,18 +93,20 @@ changes:
     note: "Correction: shortened the Cloud Policy path in the web search control row to the steps its Learn page documents; the policy name stays in the prose."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
+  claims: 59
   confirmed: 56
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "cd808a965b8e178edb836f7956f04317"
 ---
 
@@ -191,4 +193,16 @@ The Purview rule for blocking web search uses **Content contains** > **Sensitive
 risk: Low. A restrictive control that narrows web grounding; no new data movement.
 cost: Low. Maintaining the CSV and running the script take administrator time; feature-specific licensing and pricing are not yet published.
 impact: Medium. Changes what web sources every Copilot user may see cited once configured.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api; Governance controls / absence: Microsoft has not documented automation for configuring the web-search policy. | Found: Controls web search availability in Microsoft 365 Copilot and Microsoft 365 Copilot Chat. "resourceType": "microsoft.copilot.allowwebsearch", "resourceVersion": 1, "properties": { "value": "0" } | Fix: Replace controls[1].api null with kind 'graph', call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to the note: 'Preview, tenant-level automation only; fails if the setting exists in a group-level Cloud Policy. Set mode to applyOnce and include baseline.resources with resourceType microsoft.copilot.allowwebsearch, resourceVersion 1, and properties.value as the string 0 (enabled), 1 (disabled), or 2 (work mode disabled). Requires delegated access and the signed-in user's AI Administrator role.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources for the resource and restrictions. The existing UI still supports group scope. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type
+- [contradicted, blocker] controls[2].api; Governance controls / command: New-DlpCompliancePolicy -Name <name> -Locations <location> -EnforcementPlanes @('CopilotExperiences') is the automation equivalent for blocking sensitive content in web search. | Found: The fourth command creates the DLP policy using the $loc variable for the value of the Locations parameter ... The last command creates the DLP rule | Fix: Set controls[2].api to null and remove the policy-creation command from the rendered table and its explanatory prose. Replace the automation note with 'The policy-creation cmdlet does not set Performing Web Searches; an automation call for that action is not yet documented.' The command and its parameters exist, but creating the policy does not configure the blocking rule. Targeted searches and the New-DlpComplianceRule and Set-DlpComplianceRule references returned no Copilot web-search action syntax. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The Microsoft 365 Apps admin center path is Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name | Fix: The printed steps are correct but stop on the policy-selection page. Extend the path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The setting name is documented at https://learn.microsoft.com/copilot/plan/manage-public-web-access. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] front matter: licensing.model / licensing: The feature's licensing model is unknown because no feature-specific licence is published. | Found: Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses. You have the Microsoft 365 Copilot add-on license with access to the full experience | Fix: Set licensing.model to 'included'. Replace the notes with 'Copilot Chat (Basic) is included with eligible Microsoft 365 licenses; the full Copilot experience uses the Microsoft 365 Copilot add-on license. Feature-specific domain-exclusion licensing is not yet published.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Only product-level licensing was found; the feature-specific absence is true, but 'unknown' understates the published product entitlement. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
+- [supported, minor] Governance controls: prose / admin-path: The web-search policy is linked from Microsoft 365 admin center under Copilot > Settings > Data access, but configured in Cloud Policy. | Found: Web search for Microsoft Copilot and Microsoft Copilot Chat ... Follow the link from Copilot settings to create an Allow web search in Copilot cloud policy in the Microsoft 365 Apps admin center | Fix: Complete the shortcut path in the prose as 'Copilot > Settings > Data access > Web search for Microsoft Copilot and Microsoft Copilot Chat'. Keep the explanation that the change is made in Cloud Policy. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center#configure-data-access
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: The medium impact rating agrees with a rationale describing a configured change affecting every Copilot user. | Found: impact: "medium"; impact: Medium. Changes what web sources every Copilot user may see cited once configured. | Fix: Set impact to 'high' and change the rationale to 'High. The tenant exclusion list changes which web page sources Copilot and Copilot Chat users may see cited once configured.' The schema defines high as most users, whereas medium is specific roles or one business unit; the verified control is tenant-wide.
 -->

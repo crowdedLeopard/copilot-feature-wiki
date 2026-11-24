@@ -6,11 +6,11 @@ topic: "modern-work"
 products: ["Microsoft Teams"]
 summary: "Teams plans AI alerts for suspected social engineering on one-to-one calls from outside your organisation. A calling policy setting exists, but Learn says it has no effect yet. Check the default alert mode before the January 2027 target."
 status: "in-development"
-releasePhase: ["General Availability"]
+releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Android","Desktop","iOS","Mac","Mobile"]
 targetDate: "January CY2027"
-previewDate: null
+previewDate: "December CY2026"
 risk: "medium"
 cost: "low"
 impact: "medium"
@@ -62,8 +62,8 @@ controls:
     note: "Values: BannerAndAudio (default), Banner, Audio, None. Learn says the feature is not fully released, so the setting has no effect yet. New-CsTeamsCallingPolicy has the same parameter."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-21"
-roadmapModified: "2026-11-20T23:20:27"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-20"
     note: "First briefing for this item: December CY2026 target, plus the VoicePhishingDetection calling policy parameter, which Learn says has no effect until release."
@@ -81,19 +81,23 @@ changes:
     note: "Corrected the last open question: it now asks only whether the Defender portal receives anything automatically when a detection alert is raised, since Learn documents Submissions metadata and default alerts for user-reported calls."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
-version: 4
+  - date: "2026-11-24"
+    note: "Added the call reporting qualifications from the User reported settings page, and updated the release phases and preview target to match the roadmap record."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 4
+  date: "2026-11-24"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
+  claims: 54
   confirmed: 53
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "808413af5d0282bf5ddcee749e760329"
+  hash: "01e26f927ef6f0857fc1e4e661662156"
 ---
 
 ## What's changing
@@ -102,7 +106,7 @@ Teams is adding AI detection of voice phishing (vishing) during one-to-one calls
 
 Microsoft Learn documents a calling policy parameter for it. The Set-CsTeamsCallingPolicy reference says the Voice Phishing Detection policy enables AI-based detection of voice phishing attempts during live inbound Microsoft Teams calls. The parameter takes BannerAndAudio (visual and voice alerts), Banner (visual alert only), Audio (voice alert only) or None (no alerts), and its default value is BannerAndAudio. The same page notes that the feature has not been fully released yet, so the setting has no effect.
 
-The roadmap item is In development, with a target of January CY2027, release phase General Availability, Worldwide (Standard Multi-Tenant) only, on Android, Desktop, iOS, Mac and Mobile. These are Microsoft's targets, not commitments. Microsoft Learn has no dedicated page describing the feature, so what it analyses, how detection works and what the alert looks like beyond the banner and voice options is the roadmap's description only.
+The roadmap item is In development, with a target of January CY2027, release phases General Availability and Preview (preview target December CY2026), Worldwide (Standard Multi-Tenant) only, on Android, Desktop, iOS, Mac and Mobile. These are Microsoft's targets, not commitments. Microsoft Learn has no dedicated page describing the feature, so what it analyses, how detection works and what the alert looks like beyond the banner and voice options is the roadmap's description only.
 
 ## Why it matters
 
@@ -119,7 +123,7 @@ For a security team the value is a warning at the moment of the call, aimed at t
 **Security & identity**
 
 - This is a detection and alerting feature. The roadmap and the cmdlet reference describe alerts to the recipient, not blocking or ending calls. Detection can still miss an attack or flag a legitimate caller, so it supports, rather than replaces, user training.
-- Learn documents separate user reporting of calls (the end user reporting page is marked Preview). In organisations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, users can report suspicious calls when Report call is enabled in the Teams calling policy. Microsoft's User reported settings in Microsoft Teams page also includes Defender for Office 365 Plan 1 for call reporting. Reporting must also be enabled in the Defender portal for reported calls to show up correctly. The same page says users can report a call incorrectly flagged as "Scam Suspected" as not a security concern. Whether voice phishing detection produces that "Scam Suspected" flag is not stated.
+- Learn documents separate user reporting of calls (the end user reporting page is marked Preview). In organisations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, users can report suspicious calls when Report call is enabled in the Teams calling policy. Microsoft's User reported settings in Microsoft Teams page also includes Defender for Office 365 Plan 1 for call reporting. Reporting must also be enabled in the Defender portal for reported calls to show up correctly. The User reported settings page documents call reporting on the Teams desktop client and Web App, and requires users to have an online Teams mailbox. This qualifies the separate reporting capability, not voice phishing detection. The same page says users can report a call incorrectly flagged as "Scam Suspected" as not a security concern. Whether voice phishing detection produces that "Scam Suspected" flag is not stated.
 
 **Autonomy & actions**
 
@@ -190,8 +194,10 @@ cost: Low. The only cost the sources show is admin time and user communication; 
 impact: Medium. Users who take one-to-one calls from outside the organisation would see alerts, but only when Teams detects suspicious activity on a call.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / licensing: In organisations with Defender for Office 365 Plan 2 or Defender XDR, users can report suspicious calls when Report call is enabled. | Found: In organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, admins can decide whether users can report malicious or suspicious calls in Microsoft Teams. | Fix: Add after the reporting prerequisites: 'The User reported settings page documents call reporting on the Teams desktop client and Web App, and requires users to have an online Teams mailbox.' Source: https://learn.microsoft.com/defender-office-365/submissions-teams. This qualifies the separate reporting capability, not voice phishing detection. | Source: https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling
+- [supported, minor] Risk assessment: Security & identity / applicability: Users can report suspicious calls when Report call is enabled in the Teams calling policy. | Found: go to **Voice > Calling policies**. Select a policy. Turn on the setting: **Report call**. | Fix: Add: 'The User reported settings page gives a different UI location: Calling settings > General > Report a call (https://learn.microsoft.com/defender-office-365/submissions-teams); the preview calling page describes Report call in a calling policy.' | Source: https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling
+- [supported, minor] Risk assessment: Security & identity; Governance guidance: At rollout / behaviour: Users can report a call incorrectly flagged as Scam Suspected as not a security concern, attributed to the User reported settings page. | Found: In the Teams call history, locate the call that incorrectly flagged as "Scam Suspected". Hover over the call without selecting it. Select **...** > **Report as not a security concern**. | Fix: Replace 'The same page says' with 'The End user reporting for Teams Calling (Preview) page says', linking https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling. The User reported settings page does not give these Scam Suspected instructions. | Source: https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling
+- [contradicted, minor] front matter: action / consistency: The prepare action fits the assessment scale for this new control with an unstated rollout default. | Found: action: "prepare"; defaultState: "unknown"; risk: "medium". Standard: "If nothing changes until someone chooses it, including a new capability whose default is not stated when no source says existing behaviour will change, it is review." | Fix: Set action to 'review': this is a new control with an unknown release default, no verified automatic change to existing behaviour, and medium rather than high exposure. Keep the specific review and communication advice.
 -->

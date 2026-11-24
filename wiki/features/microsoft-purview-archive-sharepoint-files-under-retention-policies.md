@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
-targetDate: "December CY2026"
+targetDate: "January CY2027"
 previewDate: null
 risk: "low"
 cost: "variable"
@@ -53,7 +53,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancerule"
     kind: "learn"
 videos: []
-related: ["purview-retention-last-accessed-sharepoint-onedrive","m365-paygo-consumption-based-meter-for-your-extra-sharepoint-storage-needs","microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep"]
+related: ["purview-retention-last-accessed-sharepoint-onedrive","microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep"]
 controls:
   - governs: "Whether a retention policy archives inactive SharePoint files"
     scope: "tenant"
@@ -81,8 +81,8 @@ controls:
     note: "Existing control, not specific to the retention archive action: it hides the manual action and policies still archive. SharePoint Administrator or Global Administrator."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
-roadmapModified: "2026-10-19T23:15:15"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-18"
     note: "New briefing: retention-policy archive action for SharePoint files, with Microsoft 365 Archive billing and Copilot indexing effects."
@@ -92,19 +92,23 @@ changes:
     note: "Correction: single-site command now includes the mandatory -Identity parameter; risk rated low; audit-log checklist bullet removed; cmdlet reference sources added."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Removed the archive-storage monitoring checklist bullet the check flagged, and updated the target and rollout dates to January CY2027 and mid-January to mid-February 2027."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
-  version: 2
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 75
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 0
   attempts: 0
-  hash: "d05823bc98ae65aa481b6c5506cc069a"
+  hash: "97ce1990ae76a1fed0c615bd6c0d3b70"
 ---
 
 ## What's changing
@@ -113,7 +117,7 @@ Microsoft Purview Data Lifecycle Management retention policies and retention lab
 
 The admin chooses the **Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost** option in the retention settings, then sets when the archive period starts (created or last modified) and how long files stay active first. Event-based retention is not supported for file-level archive. A file that is already archived stays archived when a policy evaluates it, and after a file is reactivated it cannot be archived, manually or by policy, for 120 days.
 
-The roadmap item (In development, target December CY2026, General Availability) lists GCC, GCC High and DoD, and Web. Microsoft's notice MC1472601, updated 19 October 2026, gives the rollout for GCC, GCC High and DoD as beginning in early December 2026 and expected to complete by early January 2027 (previously early November 2026), with no act-by date. Microsoft Learn already documents the archive action without that cloud qualification, so the roadmap status and the Learn text differ. The notice says no immediate action is required and that the feature is not enabled by default.
+The roadmap item (In development, target January CY2027, General Availability) lists GCC, GCC High and DoD, and Web. Microsoft's notice MC1472601, updated 23 November 2026, gives the rollout for GCC, GCC High and DoD as beginning in mid-January 2027 (previously early December 2026) and expected to complete by mid-February 2027 (previously early January), with no act-by date. Microsoft Learn already documents the archive action without that cloud qualification, so the roadmap status and the Learn text differ. The notice says no immediate action is required and that the feature is not enabled by default.
 
 ## Why it matters
 
@@ -155,7 +159,7 @@ Because the archive action is not on by default and existing policies do not arc
 
 **Roles.** Learn says a restricted administrator assigned administrative units cannot configure a retention policy that includes SharePoint sites; those locations need an unrestricted administrator. Setting up Microsoft 365 Archive needs a SharePoint Administrator or Global Administrator.
 
-**Clouds and rollout.** The roadmap lists GCC, GCC High and DoD on the Web. Microsoft Learn states Microsoft 365 Archive for SharePoint sites is available for GCC organisations; at the time of writing (November 2026) it does not state GCC High or DoD availability for it. MC1472601 gives the early December 2026 to early January 2027 window.
+**Clouds and rollout.** The roadmap lists GCC, GCC High and DoD on the Web. Microsoft Learn states Microsoft 365 Archive for SharePoint sites is available for GCC organisations; at the time of writing (November 2026) it does not state GCC High or DoD availability for it. MC1472601 gives the mid-January 2027 to mid-February 2027 window.
 
 ## Governance guidance
 
@@ -171,7 +175,6 @@ Because the archive action is not on by default and existing policies do not arc
 - Avoid event-based retention for content you intend to archive, as Learn says it is not supported.
 
 ### After rollout
-- Review archive storage against the tenant quota and the pay-as-you-go bill; `Get-SPOSite` reports `ArchivedFileDiskUsed` per site.
 - Check reactivation requests and the 120-day wait, and adjust the archive period if users keep reactivating.
 
 ## Governance controls
@@ -204,8 +207,11 @@ cost: Variable. File-level archive requires a Microsoft 365 E5 licence, and arch
 impact: Low. Compliance and SharePoint admins configure it, and users notice only where a policy archives their files. Microsoft states it is not enabled by default.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The archive-storage monitoring check in the governance checklist has a corresponding controls-table row. | Found: Checklist: "Review archive storage against the tenant quota and the pay-as-you-go bill; Get-SPOSite reports ArchivedFileDiskUsed per site." Table rows cover retention archiving, billing connection and the manual Archive action, not storage monitoring. | Fix: Remove the After rollout checklist bullet beginning 'Review archive storage against the tenant quota' because its monitoring control has no corresponding table row.
+- [supported, minor] Cost and licensing / absence: The documented billing budget is not a hard cap on service or billing. | Found: Reaching 100% of your budget doesn't stop the service or billing. | Fix: Replace 'it does not describe a hard cap' with 'Reaching 100% of the budget does not stop the service or billing' and add https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node to sources. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The printed Purview path reaches New retention policy from Solutions > Data Lifecycle Management > Policies > Retention policies. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. Select New retention policy to start the Create retention policy configuration. | Fix: Extend the path for a static policy to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations > Decide if you want to retain content, delete it, or both > Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost'. The wizard route is documented at https://learn.microsoft.com/purview/create-retention-policies and the final option at https://learn.microsoft.com/purview/retention-settings. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [supported, minor] controls[1].ui; Governance controls: second table row / admin-path: Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy is the route into Archive billing connection. | Found: Go to the Services tab and find Microsoft 365 Archive. Select Connect a policy, turn on the Connection status toggle for the billing policy, and then select Save. | Fix: Extend controls[1].ui.path and its rendered copy to 'Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy > Connection status', as documented at https://learn.microsoft.com/microsoft-365/archive/archive-setup. | Source: https://learn.microsoft.com/microsoft-365/archive/archive-setup
+- [supported, minor] controls[1].note; Governance controls: second table row / admin-path: Earlier tenants can use Settings > Org settings > Pay-as-you-go services for Archive enablement. | Found: On the Pay-as-you-go services page, select the Settings tab. Under Storage services, select Archive. On the Microsoft 365 Archive panel, in the SharePoint site archive section, select the status toggle. | Fix: Replace the earlier-flow note with 'Earlier tenants may use Settings > Org settings > Pay-as-you-go services > Settings > Storage services > Archive > SharePoint site archive > status toggle instead', as documented at https://learn.microsoft.com/microsoft-365/archive/archive-setup. | Source: https://learn.microsoft.com/microsoft-365/archive/archive-setup
 -->

@@ -107,18 +107,20 @@ changes:
     note: "Correction: removed the claim about where scoped data would sit, narrowed the cost-cap statement to the planned ACL capability, and stated that the Permissions view is documented for each connector."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 59
+  confirmed: 56
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
   hash: "bf9bb4b9d4c979129314e50b9efbbf43"
 ---
 
@@ -225,4 +227,15 @@ The Permissions view and the Copilot Visibility toggle are documented on the con
 risk: Medium. Today Microsoft Learn says people connector data is visible to all users in the tenant; the planned ACL support narrows that, but how it is configured and enforced is not yet documented.
 cost: Low. The only cost the sources show is admin and developer time to build or change a connector; licensing for the new ACL capability is not yet published, and Copilot grounding on connector data needs a Copilot licence.
 impact: Low. Only admins and developers who build or run people connectors are affected directly; users would notice only when Copilot answers people questions with different data.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Data exposure / applicability: Any sensitive attribute mapped into a profile is therefore tenant-wide. | Found: Within your organization, this data is treated as organizational content and is subject to existing Microsoft 365 profile visibility and access controls. Microsoft 365 Copilot connectors for people data comply with information barriers (IB) | Fix: Replace 'Any sensitive attribute you map into a profile is therefore tenant-wide' with 'By default, people connector data is visible to all tenant users, subject to existing Microsoft 365 profile visibility and access controls and information barriers.' Keep the citation to https://learn.microsoft.com/graph/peopleconnectors. | Source: https://learn.microsoft.com/graph/peopleconnectors
+- [unsupported, major] Risk assessment: Security & identity / behaviour: Mismatched identifiers silently drop data rather than produce a failure. | Found: Searched: people data connectors nonmatched user accounts ignored silent errors diagnostics failure; read the people-data build guide and graph/peopleconnectors. They say accounts are ignored, but do not specify silence, diagnostics or failure responses. | Fix: Replace 'Mismatched identifiers in a source system would therefore silently drop data rather than fail' with 'Microsoft Graph ignores nonmatched user accounts.'
+- [contradicted, blocker] controls[4].ui; Governance controls table / admin-path: The deletion route starts at Microsoft 365 admin center > Connectors > Your Connections > select the connector > Delete. | Found: In the Microsoft 365 Admin Center, go to Copilot > Connectors > Your Connections. Select the connector you want to review to open the details pane. In the connector pane, choose Delete to delete the existing connection. | Fix: Replace controls[4].ui.path and the rendered deletion path with 'Copilot > Connectors > Your Connections > select the connector > Delete'. Use https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions for ui.docs; retain https://learn.microsoft.com/graph/peopleconnectors as the source confirming deletion applies to people connectors. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; Cost and licensing / licensing: The licensing model is unknown because no licence specific to the new ACL option is published. | Found: If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply. | Fix: Set licensing.model to 'included'. Replace the first Cost and licensing paragraph with 'Connector grounding in Copilot is included with Microsoft 365 Copilot licences. Microsoft has not published a licence or price specific to the planned people-data ACL option.' Retain the general prerequisite details and citation to https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
+- [supported, minor] controls[3].api; Governance controls table / command: POST https://graph.microsoft.com/v1.0/external/connections creates a people connection with contentCategory set to people. | Found: POST https://graph.microsoft.com/v1.0/external/connections In the request body, supply a JSON representation of the externalConnection object. | Fix: Set controls[3].api.call and its rendered table call to 'POST https://graph.microsoft.com/v1.0/external/connections'. Add to controls[3].note: 'The request body sets contentCategory to people.' Cite https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0, whose property table permits people; the already-cited build guide requires it. | Source: https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections
 -->

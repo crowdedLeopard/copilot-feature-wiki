@@ -2,31 +2,33 @@
   "slug": "m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u",
   "roadmapId": 573170,
   "title": "Microsoft 365 Copilot: usage reports for Copilot Search, connectors and agents in US Government clouds",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "verified-with-gaps",
+  "date": "2026-11-24",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 30,
-    "confirmed": 30,
+    "claims": 33,
+    "confirmed": 33,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 4
   },
-  "summary": "The briefing matches the roadmap and the cited Microsoft documentation. The reporting paths and Graph operations are documented, and the page appropriately leaves government-release licensing and rollout defaults unconfirmed.",
+  "summary": "The briefing passes: its government-cloud scope and target match the roadmap, and the reporting paths and Graph operations are documented. Minor corrections should complete the reporting route, remove request bodies from the displayed calls, and replace the unnecessary caveat about role assignments.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; title",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans new Microsoft 365 Copilot usage reports for Copilot Search, Copilot Connectors and Copilot Agents.",
+      "claim": "Microsoft plans new Copilot Search usage reports for US Government customers.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We are introducing new Microsoft 365 Copilot usage reports for Copilot Search, Copilot Connectors, and Copilot Agents for US Government customers",
@@ -35,9 +37,31 @@
     },
     {
       "n": 2,
-      "where": "front matter: clouds; summary; What's changing; Scope",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The planned government release covers GCC Moderate, GCC High and DoD.",
+      "claim": "Microsoft plans new Copilot Connectors usage reports for US Government customers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are introducing new Microsoft 365 Copilot usage reports for Copilot Search, Copilot Connectors, and Copilot Agents for US Government customers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans new Copilot Agents usage reports for US Government customers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are introducing new Microsoft 365 Copilot usage reports for Copilot Search, Copilot Connectors, and Copilot Agents for US Government customers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The planned reports cover GCC Moderate, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "across GCC Moderate, GCC High, and DoD environments.",
@@ -45,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "summary; What's changing; Governance controls",
       "type": "record",
-      "claim": "The planned reports provide administrators with organisation-level usage and adoption insights.",
+      "claim": "The planned reports provide organisation-level usage and adoption insights to administrators.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "These reports will provide administrators with organization-level and user-level insights to help them understand usage and adoption of these Copilot capabilities.",
@@ -56,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
       "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The planned reports expose user-level usage insights to report readers.",
+      "claim": "The planned reports provide user-level usage and adoption insights to administrators.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "These reports will provide administrators with organization-level and user-level insights to help them understand usage and adoption of these Copilot capabilities.",
@@ -67,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -78,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "December 2026 is the roadmap target rather than a committed release date.",
+      "claim": "The roadmap target is December 2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -89,18 +113,7 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap record supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
+      "n": 9,
       "where": "front matter: releasePhase",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -111,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: platforms",
       "type": "record",
-      "claim": "Web is the platform listed for this release.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -122,35 +135,24 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: products",
+      "n": 11,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap associates this release with Microsoft Copilot (Microsoft 365) and Microsoft 365 admin center.",
+      "claim": "The roadmap record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft 365 admin center\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Why it matters",
-      "type": "availability",
-      "claim": "Learn currently lists Copilot Search usage reporting as available in Public but not yet available in GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
-      "quote": "| Microsoft Copilot Search usage | Yes | N/A^1^ | N/A^1^ | N/A^1^ | N/A^2^ |\nN/A^1^: The report will be released in the future.",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Why it matters",
-      "type": "availability",
-      "claim": "Learn currently lists Copilot Connectors usage reporting as available in Public but not yet available in GCC, GCC High or DoD.",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 3 November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
-      "quote": "| Microsoft 365 Copilot Connectors usage | Yes | N/A^1^ | N/A^1^ | N/A^1^ | N/A^2^ |\nN/A^1^: The report will be released in the future.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
       "severity": null,
       "fix": null
     },
@@ -158,7 +160,29 @@
       "n": 13,
       "where": "What's changing; Why it matters",
       "type": "availability",
-      "claim": "Learn's availability table currently shows Copilot Agent usage reporting as available in Public only.",
+      "claim": "Learn currently lists Copilot Search usage reporting as unavailable in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
+      "quote": "| Microsoft Copilot Search usage | Yes | N/A^1^ | N/A^1^ | N/A^1^ | N/A^2^ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "availability",
+      "claim": "Learn currently lists Copilot Connectors usage reporting as unavailable in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
+      "quote": "| Microsoft 365 Copilot Connectors usage | Yes | N/A^1^ | N/A^1^ | N/A^1^ | N/A^2^ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
+      "type": "availability",
+      "claim": "Learn currently lists Copilot Agent usage reporting as available in Public only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
       "quote": "| Microsoft Copilot Agent usage | Yes | N/A^1^ | N/A^1^ | N/A^2^ | N/A^2^ |",
@@ -166,41 +190,19 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "controls[0].ui; Governance controls table; Scope",
-      "type": "admin-path",
-      "claim": "The Microsoft 365 admin center exposes Copilot reporting under Reports > Usage > Microsoft Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
-      "quote": "To view reports, go to Reports > Usage.\nSelect Microsoft Copilot > Readiness or Usage:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[0].api; controls[0].note; Governance controls table",
-      "type": "command",
-      "claim": "POST /v1.0/roleManagement/directory/roleAssignments with principalId, roleDefinitionId and directoryScopeId '/' creates a general tenant-scoped Entra role assignment, rather than opening a report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
-      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n\"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\",\n\"principalId\": \"f8ca5a85-489a-49a0-b555-0a6d81e56f0d\",\n\"directoryScopeId\": \"/\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 16,
-      "where": "Risk assessment: Security & identity; Governance controls",
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
       "type": "role",
-      "claim": "Viewing admin centre usage reports is controlled through administrator and reporting-reader roles.",
+      "claim": "Usage report access depends on the administrator's reporting role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
-      "quote": "To view usage reports, you must have one of the following permissions:\nGlobal Administrator\nExchange Administrator\nSharePoint Administrator\nUsage Summary Reports Reader (with no user details).\nReports Reader",
+      "quote": "To view usage reports, you must have one of the following permissions: ... Usage Summary Reports Reader (with no user details). ... Reports Reader ... AI Administrator",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "Governance controls: paragraph after table",
+      "where": "Governance controls: reporting roles",
       "type": "role",
       "claim": "The reporting options page lists AI Administrator as a role that accesses Copilot reports.",
       "status": "supported",
@@ -211,108 +213,141 @@
     },
     {
       "n": 18,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The tenant report-name concealment setting is at Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports.",
+      "where": "Risk assessment: Security & identity; Governance controls; controls[1].note",
+      "type": "applicability",
+      "claim": "The organisation's report privacy setting governs whether user, group and site names are concealed.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports",
-      "quote": "select Settings.\nSelect Org Settings.\nOn the Services tab, select Reports.\nIn the Reports panel, uncheck the checkbox next to Conceal user, group, and site names in all reports.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
+      "quote": "By default, all reports hide user information such as usernames, display names, groups, and sites to help companies support local privacy laws.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "controls[1].api; controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "PATCH /beta/admin/reportSettings with displayConcealedNames set to true conceals identifying information in tenant reports.",
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Copilot reports are reached at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
-      "quote": "PATCH https://graph.microsoft.com/beta/admin/reportSettings\n{\n  \"displayConcealedNames\": true\n}\nIf set to true, all reports conceal user information such as usernames, groups, and sites.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "To view reports, go to Reports > Usage. ... Select Microsoft Copilot > Readiness or Usage",
+      "severity": "minor",
+      "fix": "The path stops at the report family. Replace it with 'Reports > Usage > Microsoft Copilot > Usage' for the usage report documented at https://learn.microsoft.com/copilot/manage/copilot-admin-reports."
     },
     {
       "n": 20,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Setting displayConcealedNames to false shows identifiable information.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns a directory role using principalId, roleDefinitionId and directoryScopeId.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
-      "quote": "If false, all reports show identifiable information.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments ... \"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\", \"principalId\": \"f8ca5a85-489a-49a0-b555-0a6d81e56f0d\", \"directoryScopeId\": \"/\"",
+      "severity": "minor",
+      "fix": "Set controls[0].api.call to 'POST /v1.0/roleManagement/directory/roleAssignments', and name principalId, roleDefinitionId and directoryScopeId in the note instead of printing the request body."
     },
     {
       "n": 21,
-      "where": "controls[1].note; Governance controls table",
+      "where": "controls[0].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Microsoft Graph beta APIs are subject to change.",
+      "claim": "The directory role-assignment API assigns a role rather than opening a report.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
-      "quote": "APIs under the /beta version in Microsoft Graph are subject to change.",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "Create a new unifiedRoleAssignment object. ... Create a role assignment for the directory provider",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Use of Microsoft Graph beta APIs in production applications is not supported.",
+      "where": "controls[0].note; Governance controls table",
+      "type": "applicability",
+      "claim": "The documented general role-assignment operation is presented with a caveat that Microsoft has not confirmed it as a control specific to these reports.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
-      "quote": "Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "To use the reporting features described in this article, you need to sign into different portals with the appropriate permissions. ... AI Administrator: Accesses the Copilot reports.",
+      "severity": "minor",
+      "fix": "Replace the unconfirmed-applicability sentence with 'Assigning a reporting role controls access; the reporting options page lists AI Administrator as able to access Copilot reports.' Keep the distinction that the API assigns the role rather than opening the report."
     },
     {
       "n": 23,
-      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft has not documented a government-specific UI or API switch for the new reports.",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Name concealment is configured at Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"reportSettings\" \"Copilot\" \"government\"; \"Copilot\" \"usage reports\" \"GCC\" \"enable\". Opened reporting overview/options, Search and Connectors report pages and Graph adminReportSettings reference; no government-specific report switch documented.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports",
+      "quote": "Select Org Settings. ... On the Services tab, select Reports. ... In the Reports panel, uncheck the checkbox next to Conceal user, group, and site names in all reports.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "front matter: defaultState; controls[2].note",
-      "type": "absence",
-      "claim": "Microsoft has not stated the rollout default for this government reporting release.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/admin/reportSettings updates report name concealment using displayConcealedNames.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"573170\" \"reports\" default licensing rollout; \"Copilot\" \"usage reports\" \"GCC\" \"enable\". Read roadmap, reporting overview/options and Search, Connectors and Agents report pages; no government rollout default stated.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
+      "quote": "PATCH https://graph.microsoft.com/beta/admin/reportSettings ... { \"displayConcealedNames\": true }",
+      "severity": "minor",
+      "fix": "Set controls[1].api.call to 'PATCH /beta/admin/reportSettings'. Add 'The request body sets displayConcealedNames.' to its note and retain the explanation of true and false."
     },
     {
       "n": 25,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Licensing prerequisites specifically for the government reporting release have not yet been published.",
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "displayConcealedNames true conceals names and false shows identifiable information.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot\" \"usage reports\" \"government\" \"licensing\". Opened Copilot license options, reporting overview/options and Search, Connectors and Agents report pages; product licensing documented, but no prerequisites specific to this government reporting release.",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
+      "quote": "If set to true, all reports conceal user information such as usernames, groups, and sites. If false, all reports show identifiable information.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Tenant reporting privacy settings govern whether report readers see identifiable names.",
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Beta Graph APIs are subject to change and unsupported in production applications.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
-      "quote": "By default, all reports hide user information such as usernames, display names, groups, and sites to help companies support local privacy laws.\nGlobal administrators can update the settings to display concealed information if your organization's privacy practices allow it.",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Governance controls: paragraph after table",
+      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented a US Government-specific switch for these new usage reports.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph beta reportSettings Copilot Search connectors agents government usage report enable disable switch; opened reporting options, usage overview and adminReportSettings update. Results concerned SharePoint API metrics or connectors, not this report switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: defaultState; controls[2].note; Governance controls table",
+      "type": "default",
+      "claim": "Microsoft has not stated the rollout default for this government reporting release.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot usage reports government GCC Search Connectors Agents enable disable switch rollout default 573170; read roadmap, reporting options, usage overview and Search report. None states this government release's rollout default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing prerequisites specific to this government reporting release are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Search Connectors Agents usage reports GCC GCC High DoD licensing prerequisites government reporting; read Copilot license options, reporting options, usage overview and Search report. No government-report entitlement is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance controls: agents report background",
       "type": "behaviour",
-      "claim": "Microsoft Learn documents a Microsoft Copilot Agents usage report.",
+      "claim": "Learn documents a Microsoft Copilot Agents usage report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "The Microsoft Copilot Agent usage report helps you track how agents are used in Microsoft Copilot Chat and Microsoft 365 apps - Word, Excel, and PowerPoint.",
@@ -320,48 +355,48 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Governance controls: paragraph after table; Open questions: Metric definitions",
+      "n": 31,
+      "where": "Governance controls: agents report background; Open questions: metrics",
       "type": "absence",
-      "claim": "Microsoft has not confirmed that the background Agents report's exact design and metrics describe this government release.",
+      "claim": "Microsoft has not confirmed that the documented agents report's exact design and metrics describe this government release.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft 365 Copilot usage reports government Search connectors Agents December 2026 rollout metrics credits. Opened Agents report and reporting overview; read release-notes excerpts. No explicit mapping of exact metrics/design to this government release.",
+      "quote": "Searched: Microsoft 365 Copilot Agents usage report government clouds metrics definitions licensing report prerequisites; read Agents report and usage overview. Metrics are documented generally, but government availability is not listed and no government-specific design is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 32,
       "where": "Open questions: Exact rollout date per cloud",
       "type": "absence",
-      "claim": "An exact per-cloud rollout schedule remains unconfirmed.",
+      "claim": "Exact rollout dates for each government cloud are not yet stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"573170\" \"reports\" default licensing rollout; Microsoft 365 Copilot usage reports government Search connectors Agents December 2026 rollout metrics credits. Read roadmap, reporting overview and release-notes excerpts; no exact per-cloud dates.",
+      "quote": "Searched: Microsoft 365 Copilot usage reports government GCC Search Connectors Agents enable disable switch rollout default 573170; read roadmap and usage overview. Roadmap gives December CY2026 only; overview gives future availability without dates.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 33,
       "where": "Open questions: Whether Copilot Credits reporting follows",
       "type": "absence",
-      "claim": "A subsequent government Copilot Credits reporting release remains unconfirmed.",
+      "claim": "Whether Copilot Credits reporting follows this government release remains open.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft 365 Copilot usage reports government Search connectors Agents December 2026 rollout metrics credits. Read roadmap, reporting overview and Credits report search excerpts; no subsequent government Credits reporting commitment found.",
+      "quote": "Searched: Microsoft 365 Copilot Search Connectors Agents usage reports GCC GCC High DoD licensing prerequisites government reporting; read usage overview, which lists Copilot credits N/A in GCC, GCC-High and DoD. Roadmap names Search, Connectors and Agents, not Credits.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T01:27:08.526Z",
+    "at": "2026-11-24T01:20:07.748Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -372,33 +407,33 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -407,29 +442,33 @@
         "side": "ui",
         "governs": "Access to the Copilot usage reports",
         "docs": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Reports",
           "Usage",
           "Microsoft Copilot"
         ],
-        "missing": []
+        "missing": [
+          "Reports",
+          "Usage",
+          "Microsoft Copilot"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Access to the Copilot usage reports",
         "docs": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/roleManagement/directory",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether user, group and site names are concealed in reports",
         "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Org settings",
@@ -437,16 +476,22 @@
           "Reports",
           "Conceal user, group, and site names in all reports"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Org settings",
+          "Services",
+          "Reports",
+          "Conceal user, group, and site names in all reports"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether user, group and site names are concealed in reports",
         "docs": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/admin/reportSettings",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -462,6 +507,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

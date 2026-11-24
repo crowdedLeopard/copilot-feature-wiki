@@ -4,7 +4,7 @@ slug: "m365-copilot-engage-customers-across-multiple-channels-web-voice-sms-and-
 roadmapId: 567001
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "The roadmap plans an agent that engages customers over web chat, voice, SMS and email. Microsoft has published no Learn page, default, licence or admin control for it, so administrators can only watch for details."
+summary: "The roadmap plans an agent that engages customers over web chat, voice, SMS and email. Microsoft Copilot is available with Microsoft 365 E7 or as an add-on; no Learn page, default or admin control for this feature is published."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,14 +17,17 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. No Microsoft page read for this item says which licence or meter covers multichannel outreach, and the roadmap record does not either."
+  model: "included"
+  notes: "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. Terms specific to multichannel outreach are not yet published."
 audiences: ["m365-admin","service-owner","compliance"]
 tags: ["m365-copilot","agents","channels"]
 sources:
   - title: "Microsoft 365 Roadmap item 567001"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=567001"
     kind: "roadmap"
+  - title: "License options for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
+    kind: "learn"
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     kind: "learn"
@@ -44,33 +47,37 @@ controls:
     note: "No control for this feature is documented at the time of writing (November 2026)."
 confidence: "low"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-07-08T23:10:57"
 changes:
   - date: "2026-11-23"
     note: "New briefing: the roadmap describes multichannel customer outreach, and Microsoft Learn documents no default, licence or admin control for it yet."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 40 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected: the record gives no recipient-selection mechanism (previously said it does not say who is contacted); licensing is now Microsoft Copilot's product licence, with feature-specific terms not yet published."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 1
+  status: "verified"
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 39
+  claims: 46
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "cd9d338c081769c3eb82f7ce96889f95"
+  contradicted: 0
+  attempts: 0
+  hash: "54ba7d7e6e1a340eb473694016038cc4"
 ---
 
 ## What's changing
 
 Microsoft's roadmap item 567001 describes a multichannel outreach capability for Microsoft Copilot (Microsoft 365). It spans web chat, voice, SMS and email, and the roadmap text says the aim is to activate "the agent" across several surfaces so that conversations continue if one channel fails.
 
-Microsoft Learn does not describe this feature yet, so everything in this briefing about its behaviour is the roadmap's description. The record does not name the agent, say who it contacts, say what data it uses or say whether it acts without a person approving each message. It gives no default state and links to no documentation.
+Microsoft Learn does not describe this feature yet, so everything in this briefing about its behaviour is the roadmap's description. The record does not name the agent, explain how customer recipients are selected, say what data it uses or say whether it acts without a person approving each message. It gives no default state and links to no documentation.
 
 The roadmap record lists the status as In development, with a preview target of July CY2026 and a general availability target of August CY2026, for Worldwide (Standard Multi-Tenant) on the Web platform. Both dates are Microsoft's targets, and as of 23 November 2026 both months have passed while the status is still In development. The record lists General Availability and Preview as release phases and was last modified in July 2026.
 
@@ -100,9 +107,9 @@ Microsoft has not stated what happens on arrival, so the sensible position is to
 
 ## Cost and licensing
 
-Licensing is not yet published. The roadmap record names no licence, and Microsoft Learn pages for Copilot agent management cover agents in general, not this feature.
+Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans, according to [License options for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/copilot-license-options). Terms specific to multichannel outreach are not yet published. The roadmap record names no licence, and Microsoft Learn pages for Copilot agent management cover agents in general, not this feature.
 
-No meter, credit rate or cap for multichannel outreach is published at the time of writing (November 2026).
+The licence page establishes the product requirement only. No meter, credit rate or cap for multichannel outreach is published at the time of writing (November 2026).
 
 The cost that can be stated today is admin time: tracking the roadmap item, and talking to the teams that might use it.
 
@@ -112,7 +119,7 @@ Cloud: the roadmap record lists Worldwide (Standard Multi-Tenant) only. That is 
 
 Platform: the record lists Web. Release phase: General Availability and Preview. The product is listed as Microsoft Copilot (Microsoft 365).
 
-Users, licences, roles and prerequisites are not stated in the record or on any Microsoft page found, and rollout mechanics are not described.
+Licences: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. Which users get this feature, which roles configure it and any prerequisites specific to it are not stated in the record or on any Microsoft page found, and rollout mechanics are not described.
 
 ## Governance guidance
 
@@ -125,7 +132,7 @@ Users, licences, roles and prerequisites are not stated in the record or on any 
 ### At rollout
 
 - Wait for a Microsoft Learn page or a Message center post that names the agent before enabling or promoting anything for this feature.
-- Confirm the default state, the licence and the admin controls with Microsoft once they are published, and update your change plan.
+- Confirm the default state, the feature-specific licence terms and the admin controls with Microsoft once they are published, and update your change plan.
 
 ### After rollout
 
@@ -150,20 +157,12 @@ The Microsoft 365 admin center Copilot settings page groups settings under User 
 
 - Which agent does roadmap item 567001 describe, and where will Microsoft document it? Watch the roadmap item and Message center.
 - Is the capability on, off or opt-in when it arrives, and who in the tenant gets it first?
-- Which licence, or which meter, covers voice, SMS and email outreach, and does any channel carry a separate charge?
+- Does any meter or separate charge apply to voice, SMS and email outreach beyond the Microsoft Copilot licence?
 - Can an administrator turn individual channels off, and is there an API for that setting?
 - Does the agent send messages without a person approving them, and where are sent messages and call content recorded?
 
 <!-- rationale
 risk: Medium. The roadmap describes an agent contacting customers over voice, SMS and email, which is external communication, but Microsoft has not said what it can reach, what it does unattended or whether any control exists. Rated on today's behaviour continuing.
-cost: Low. Licensing and any meter for this feature are not yet published, so the only cost the sources support is admin time to track the item and plan communications.
+cost: Low. Microsoft Copilot is available with Microsoft 365 E7 or as an add-on, but terms and any meter specific to this feature are not yet published, so the only cost the sources support is admin time to track the item and plan communications.
 impact: Low. The roadmap record does not say which users or teams get it, and its release phase lists both General Availability and Preview. Microsoft has not stated that anyone receives it without an administrator acting.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: second paragraph / record: The record does not say who the agent contacts. | Found: Engage customers across multiple channels (web, voice, SMS & email) | Fix: Replace 'say who it contacts' with 'explain how customer recipients are selected'. The record explicitly identifies customers as the intended audience but gives no recipient-selection mechanism.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; summary; Cost and licensing; Scope; rationale: cost / licensing: Licensing is unknown because no feature-specific entitlement has been published. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Set licensing.model to 'included' for a new capability within the licensed product, as the standard requires for product-level licensing. Replace licensing.notes with 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. Terms specific to multichannel outreach are not yet published.' Use the same distinction in the summary, Cost and licensing, Scope and cost rationale; cite https://learn.microsoft.com/copilot/plan/copilot-license-options. This product requirement does not establish a feature-specific meter. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
 -->

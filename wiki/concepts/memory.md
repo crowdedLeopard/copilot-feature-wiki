@@ -4,8 +4,8 @@ title: "Agent memory: what does Copilot remember about a user, and who can switc
 slug: "memory"
 summary: "Memory lets Microsoft 365 Copilot and Copilot Studio agents keep facts about a user between conversations. Administrators use it to decide whether it is on, what survives switching it off, and how a user's memories are found and deleted."
 created: "2026-11-23"
-updated: "2026-11-23"
-version: 1
+updated: "2026-11-24"
+version: 2
 tags: ["memory","personalisation","m365-copilot","copilot-chat","copilot-studio","privacy","ediscovery"]
 covers: []
 sources:
@@ -18,20 +18,17 @@ sources:
   - title: "Update enhancedPersonalizationSetting"
     url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
     kind: "learn"
-  - title: "Get enhancedPersonalizationSetting"
-    url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta"
-    kind: "learn"
-  - title: "enhancedPersonalizationSetting resource type"
-    url: "https://learn.microsoft.com/graph/api/resources/enhancedpersonalizationsetting"
-    kind: "learn"
   - title: "Search for and delete AI application data in eDiscovery"
     url: "https://learn.microsoft.com/purview/edisc-search-copilot-data"
     kind: "learn"
   - title: "Memory management and privacy"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy"
     kind: "learn"
-  - title: "How agents determine what to remember"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-what-agents-remember"
+  - title: "Memory (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview"
+    kind: "learn"
+  - title: "Harnesses in Copilot Studio"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview"
     kind: "learn"
 related: ["work-iq","ediscovery","retention","copilot-credits","m365-copilot-enhanced-personalization-with-memory-in-copilot","microsoft-purview-data-lifecycle-management-retention-for-copilot-memory","work-iq-memory-capabilities-expand-to-agents"]
 controls:
@@ -66,18 +63,22 @@ changes:
     note: "New concept page covering Microsoft 365 Copilot memory (Enhanced personalization) and Copilot Studio agent memory."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 4 unconfirmed; taken offline until corrected"
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: default wording, what switching Enhanced personalization off and deleting a chat do to each kind of memory, the Copilot Studio support-ticket route, and how the two controls are described."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 62
-  unconfirmed: 4
-  contradicted: 2
-  attempts: 1
-  hash: "98a6348af13d37ab3e79dd47d7e7c6ff"
+  claims: 72
+  confirmed: 72
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0e9dab4e69cbf3a74eb80da6b96603df"
 ---
 
 ## What it is
@@ -94,11 +95,11 @@ A tenant-level control called **Enhanced personalization** decides whether Copil
 
 Agents built on the Microsoft Copilot harness in Copilot Studio have their own Memory feature. An agent saves memories on request or automatically, and makers and users review them in a memory portal where each person sees only their own. Memories are kept per tenant, environment, agent and user, and one agent's memory is not available to another. Agents that have their own account use shared memory instead. Learn describes this feature as rolling out for general availability, and as possibly still in preview in some regions.
 
-The two systems have separate controls. See [/concepts/work-iq/](/concepts/work-iq/) for how agents reach a user's Microsoft 365 data.
+Microsoft documents an Enhanced personalization control for Copilot memory and an agent-level Memory toggle in Copilot Studio. See [/concepts/work-iq/](/concepts/work-iq/) for how agents reach a user's Microsoft 365 data.
 
 ## Why it matters
 
-Memory is on unless someone acts. Microsoft's page says Enhanced personalization is turned on by default and that no action is needed to turn Copilot memory on, only to turn it off for users or the tenant. A tenant that has not decided is therefore already storing inferred details about each user's work in their mailbox.
+Memory is on unless someone acts. Microsoft's page says Enhanced personalization is turned on by default and that no action is needed to turn Copilot memory on, only to turn it off for users or the tenant. A tenant that has not changed the default allows Copilot memory to be used.
 
 What an administrator can then decide is narrow and documented: whether the control is on for the tenant or off for one Entra group, how a user's stored memories are found and deleted, and, in Copilot Studio, whether a maker lets an agent use Memory at all. What an administrator cannot see is also documented: Microsoft states that memory actions do not generate Purview audit entries.
 
@@ -110,14 +111,14 @@ Copilot Studio agents built on the Microsoft Copilot harness use usage-based bil
 
 ## Risks and limits
 
-- **Switching the control off does not delete anything.** With Enhanced personalization off, Copilot stops applying custom instructions and saved memories but does not remove them. Details from chat history are deleted after 30 days. A tenant that switches memory off for compliance reasons still holds the stored items for a time.
+- **Switching the control off does not delete custom instructions or saved memories.** With Enhanced personalization off, Copilot stops applying them but does not remove them. Details from chat history are deleted after 30 days. A tenant that switches memory off for compliance reasons still holds the stored items for a time.
 - **Purview retention does not reach memory.** Learn says retention policies and labels do not apply to Copilot memory and that there are no admin controls to enforce retention rules specifically for it. The roadmap-based briefing at [/features/microsoft-purview-data-lifecycle-management-retention-for-copilot-memory/](/features/microsoft-purview-data-lifecycle-management-retention-for-copilot-memory/) records a different expectation; confirm before relying on retention.
 - **You cannot restrict what goes into memory.** Learn says administrators cannot restrict what type of information is added, so sensitive details a user shares in chat can be remembered.
 - **There is no audit trail.** Memory and personalization actions do not generate Purview audit log entries, so [/concepts/auditing/](/concepts/auditing/) cannot show who changed or read a memory.
-- **Deleting a chat does not delete its memory.** Removing a conversation from Purview or eDiscovery does not delete the associated Copilot memory, and deleting a chat does not delete saved memories generated from it.
+- **Deleting a chat does not delete its saved memories.** Removing a conversation from Purview or eDiscovery does not delete the associated Copilot memory, and deleting a chat does not delete saved memories generated from it.
 - **Deletion through eDiscovery is an event tool.** It removes up to 10 items per mailbox at a time, needs any hold or retention policy on the mailbox removed first, and custom instructions are not discoverable.
 - **The Graph control is beta.** Microsoft states beta APIs are subject to change and not supported in production. The operation is documented as unavailable in US Government L4, L5 (DOD) and China operated by 21Vianet.
-- **Copilot Studio memory expires on its own clock.** Memories are deleted after 28 days of inactivity, and admins can view users' memories only by submitting a support ticket.
+- **Copilot Studio memory expires on its own clock.** Memories are deleted after 28 days of inactivity, and Microsoft says admins can submit a support ticket to view users' memories.
 
 ## Governance controls
 
@@ -134,7 +135,7 @@ Copilot Studio agents built on the Microsoft Copilot harness use usage-based bil
 
 Enhanced personalization has no documented admin centre path at the time of writing (November 2026). Microsoft's own page points administrators to a Microsoft Graph script. The least privileged Entra role Microsoft lists for the update is People Administrator, with the PeopleSettings.ReadWrite.All permission. The `GET` on the same path reads the current state.
 
-The Graph control and the Copilot Studio Memory toggle are independent. Microsoft's control overview ties Enhanced personalization to Copilot memory; whether it governs Copilot Studio agent memory is not stated. Retention policies cannot be used as a memory control, and the eDiscovery row is a clean-up route, not a switch.
+Microsoft documents an Enhanced personalization control for Copilot memory and an agent-level Memory toggle in Copilot Studio. Microsoft's control overview ties Enhanced personalization to Copilot memory; whether it governs Copilot Studio agent memory is not stated. Retention policies cannot be used as a memory control, and the eDiscovery row is a clean-up route, not a switch.
 
 ## What to check
 
@@ -149,18 +150,13 @@ The Graph control and the Copilot Studio Memory toggle are independent. Microsof
 
 - Does Enhanced personalization also switch off Copilot Studio agent memory? The pages read tie it only to Copilot memory.
 - Will an admin centre setting for Enhanced personalization be published? Learn documents no admin centre path at the time of writing.
-- Does Purview retention apply to memory? Learn says not, while the roadmap lists retention for Copilot memory as launched.
+- Does Purview retention apply to memory? Learn says not.
 - Which controls will cover memory used through the Work IQ MCP path for agents? See [/features/work-iq-memory-capabilities-expand-to-agents/](/features/work-iq-memory-capabilities-expand-to-agents/).
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / default: A tenant that has not decided is already storing inferred work details about each user in their mailbox. | Found: Searched: "Copilot memory" "each user" "default". Opened Manage Copilot personalization and memory and Enhanced personalization control overview. They establish the enabled control and mailbox storage, not that every user already has inferred memories. | Fix: Replace the sentence with: 'A tenant that has not changed the default allows Copilot memory to be used.' The documented default does not establish that inferred details have already been stored for every user.
-- [contradicted, blocker] Risks and limits > Switching the control off does not delete anything / behaviour: Switching Enhanced personalization off does not delete anything. | Found: If the Enhanced personalization control is turned off at the admin-level, or if the Chat history control is turned off at the end-user level, then all details from chat history are deleted after 30 days. | Fix: Replace the bullet's bold lead with 'Switching the control off does not delete custom instructions or saved memories.' Keep the following sentence explaining that chat-history details are deleted after 30 days; it is an exception to the current absolute lead. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [unsupported, blocker] Open questions > Does Purview retention apply to memory? / availability: The roadmap lists retention for Copilot memory as launched. | Found: Searched: "Copilot memory" "retention" "launched"; "Copilot memory" "retention for Copilot memory". Opened https://www.microsoft.com/microsoft-365/roadmap?id=569612; its returned page did not expose the item's status. The linked wiki briefing is not evidence. | Fix: Remove 'while the roadmap lists retention for Copilot memory as launched' from this open question. Keep the link to the roadmap-based briefing in Risks and limits, without asserting a launch status that was not verifiable on a Microsoft page.
-- [unsupported, blocker] Risks and limits > Copilot Studio memory expires on its own clock / admin-path: Administrators can view users' Copilot Studio memories only by submitting a support ticket. | Found: Searched: "Copilot Studio" "memories" "admin" "support ticket". Opened Memory management and privacy, whose note says admins 'can submit a support ticket'; it does not state that this is the only possible route. | Fix: Replace 'admins can view users' memories only by submitting a support ticket' with 'Microsoft says admins can submit a support ticket to view users' memories', matching https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy.
-- [unsupported, blocker] What it is > Copilot Studio agent memory; Governance controls / applicability: The tenant Enhanced personalization control and the Copilot Studio Memory toggle are independent. | Found: Searched: "Enhanced personalization" "Copilot Studio" memory independent. Read Enhanced personalization control overview and Memory management and privacy. They document two controls, but do not establish that their effects are independent. | Fix: Replace 'The two systems have separate controls' and 'The Graph control and the Copilot Studio Memory toggle are independent' with 'Microsoft documents an Enhanced personalization control for Copilot memory and an agent-level Memory toggle in Copilot Studio.' Keep the existing caveat that their interaction is not stated.
-- [contradicted, blocker] Risks and limits > Deleting a chat does not delete its memory / behaviour: Deleting a chat does not delete its memory, without distinguishing saved memories from inferred chat-history details. | Found: If a user deletes all chats where a piece information was originally shared or referenced, then all traces of that information are deleted from the Chat History details within seven days. | Fix: Replace the bullet's bold lead with 'Deleting a chat does not delete its saved memories.' Keep the following statements about saved memories and Purview deletion; do not extend the saved-memory rule to inferred chat-history details. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is; sources / behaviour: Memory carries learned information about a person into later conversations so the person need not repeat it. | Found: Memory lets an agent carry what it learns into later conversations, such as a person's role, preferences, and corrections. People don't need to repeat themselves, and the agent builds on what it already knows instead of starting over. | Fix: Add the Microsoft pages supporting the definition and harness applicability to sources: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview and https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview
+- [supported, minor] What it is: Copilot Studio agent memory / behaviour: An agent can save memories on request. | Found: On request: A user can say, "Remember that I manage the Main Street store." The agent still evaluates whether the information is worth retaining, so a request doesn't guarantee a save. | Fix: Add these supporting Microsoft pages to sources, as one grouped citation correction: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-what-agents-remember ; https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta ; https://learn.microsoft.com/graph/api/security-ediscoverysearch-purgedata?view=graph-rest-1.0 . | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-what-agents-remember
+- [supported, minor] controls[2].note; Risks and limits: Deletion through eDiscovery / behaviour: The cited AI-data deletion workflow removes up to 10 items per mailbox at a time. | Found: You can remove up to 10 items per mailbox at one time. | Fix: Keep the cited workflow's 10-item limit, but add: 'Microsoft's Graph purgeData reference instead states a maximum of 100 items per location; confirm which limit applies before deletion.' Cite https://learn.microsoft.com/graph/api/security-ediscoverysearch-purgedata?view=graph-rest-1.0 . | Source: https://learn.microsoft.com/purview/edisc-search-copilot-data
+- [supported, minor] controls[2].api / command: POST /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseID}/searches/{ediscoverySearchID}/purgeData deletes memory items returned by the search. | Found: run the following POST request to delete the items returned by the search that you created in Step 2. Use the value https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/{ediscoveryCaseID}/searches/{ediscoverySearchID}/purgeData | Fix: Keep the call unchanged. Add to the row's note: 'The request body sets purgeAreas to mailboxes; purgeType selects recoverable or permanentlyDelete.' These properties and values are documented at https://learn.microsoft.com/graph/api/security-ediscoverysearch-purgedata?view=graph-rest-1.0 . | Source: https://learn.microsoft.com/purview/edisc-search-copilot-data
 -->

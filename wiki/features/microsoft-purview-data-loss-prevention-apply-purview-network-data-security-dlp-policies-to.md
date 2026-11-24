@@ -9,8 +9,8 @@ status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "December CY2026"
-previewDate: "November CY2026"
+targetDate: "March CY2027"
+previewDate: "January CY2027"
 risk: "medium"
 cost: "medium"
 impact: "medium"
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Learn about Microsoft Purview Network Data Security"
     url: "https://learn.microsoft.com/purview/dlp-network-data-security-learn"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
   - title: "Use Network Data Security to help prevent sharing sensitive information with unmanaged AI"
     url: "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security"
@@ -72,8 +75,8 @@ controls:
     note: "Needs the Global Secure Access Administrator role. On Rules, add a new rule, then select Action > Scan with Purview. Learn's content policy page gives portal steps only."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
-roadmapModified: "2026-10-12T23:01:05"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-21"
     note: "New briefing: roadmap item 575285, Purview network DLP scoped to all websites through Entra Internet Access, with the documented network data security prerequisites and limits."
@@ -87,19 +90,23 @@ changes:
     note: "Correction: removed the claim that an all-websites policy does nothing outside the Entra ID joined device chain, removed the After rollout monitoring bullet, and expanded the Purview and Entra control paths to the steps Learn lists."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
-version: 3
+  - date: "2026-11-24"
+    note: "Preview and general availability targets now read January CY2027 and March CY2027, as the roadmap record gives them; added the Purview service description's pay-as-you-go wording beside the GSA exception."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 3
+  date: "2026-11-24"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 61
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "479c1ff0114f42961f7a95d4f8ba68c8"
+  hash: "5713ca1e2b15e232fc2cff862d67f30c"
 ---
 
 ## What's changing
@@ -108,7 +115,7 @@ Microsoft plans to let administrators scope Microsoft Purview network data secur
 
 Microsoft Learn does not describe the all-websites scope yet, so the paragraph above is the roadmap's description. What Learn documents today is the surrounding feature. Network data security DLP policies take their data sources from unmanaged cloud apps in the Microsoft Defender for Cloud Apps cloud app catalog (over 35,000 discoverable cloud apps) and from adaptive app scopes, which are categories such as generative AI, cloud storage, collaboration, social network and webmail. The policies support the Audit only and Block actions.
 
-The roadmap item is In development, with a preview target of November CY2026 and a general availability target of December CY2026. It lists the Worldwide (Standard Multi-Tenant) cloud and the Web platform. These are Microsoft's targets, not commitments.
+The roadmap item is In development, with a preview target of January CY2027 and a general availability target of March CY2027. It lists the Worldwide (Standard Multi-Tenant) cloud and the Web platform. These are Microsoft's targets, not commitments.
 
 ## Why it matters
 
@@ -138,7 +145,7 @@ Microsoft has not stated whether existing policies change scope on arrival; no s
 
 ## Cost and licensing
 
-Learn says network data security with Microsoft Entra Global Secure Access requires one of two licence combinations: Microsoft 365 E7 per-seat licences, or Purview E5 (or equivalent) per-seat licences together with Entra Internet Access (or equivalent) licences. The Global Secure Access licensing overview also says users need a Microsoft Entra ID P1 or Microsoft Entra ID P2 licence to use Microsoft Entra Internet Access. The same Purview page says pay-as-you-go does not have to be set up for the GSA integration; it is required for the non-Microsoft SASE and secure browser integrations.
+Learn says network data security with Microsoft Entra Global Secure Access requires one of two licence combinations: Microsoft 365 E7 per-seat licences, or Purview E5 (or equivalent) per-seat licences together with Entra Internet Access (or equivalent) licences. The Global Secure Access licensing overview also says users need a Microsoft Entra ID P1 or Microsoft Entra ID P2 licence to use Microsoft Entra Internet Access. The same Purview page says pay-as-you-go does not have to be set up for the GSA integration; it is required for the non-Microsoft SASE and secure browser integrations. The [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description) describes network DLP more generally as pay-as-you-go capabilities without stating this GSA exception; the network data security overview explicitly gives the exception.
 
 The GSA content policy page lists a valid Microsoft Entra Internet Access licence and a valid Microsoft Purview licence for Scan with Purview inspection. Another note on that page says that if Data loss prevention is missing from the Purview portal you may need a Microsoft 365 E5/A5 subscription or a Microsoft Purview DLP add-on.
 
@@ -146,7 +153,7 @@ A price, meter or licence rule specific to the all-websites scope is not yet pub
 
 ## Scope
 
-The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the Web platform, with Preview and General Availability phases, and targets of November CY2026 for preview and December CY2026 for general availability.
+The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the Web platform, with Preview and General Availability phases, and targets of January CY2027 for preview and March CY2027 for general availability.
 
 Learn places the following prerequisites on the GSA integration: the device must be Entra ID joined (the DLP walkthrough) or Microsoft Entra ID joined or hybrid joined (the content policy page); a TLS inspection policy; the Internet Access traffic forwarding profile enabled; and the Global Secure Access client on Windows or macOS. Scan with Purview applies to traffic mapped to an Entra user identity, and Purview network data security policies don't apply to B2B guest users.
 
@@ -197,8 +204,8 @@ cost: Medium. Network data security through Global Secure Access needs Microsoft
 impact: Medium. Users whose traffic routes through the Global Secure Access client and falls in the policy scope notice blocks and alerts; admins in Purview and Entra do the configuring.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: The network data security overview says pay-as-you-go setup is not required for GSA integration. | Found: Pay-as-you-go is not required to be set up for integration with Microsoft Entra Global Secure Access. | Fix: After this sentence add: 'The Microsoft Purview service description describes network DLP more generally as pay-as-you-go capabilities without stating this GSA exception; the network data security overview explicitly gives the exception.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/purview/dlp-network-data-security-learn
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed Purview path reaches Network and non-Microsoft secure browsers but omits the intervening cloud-app selection. | Found: Select + Add cloud apps. Select the Adaptive app scopes tab, then choose All unmanaged AI apps ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On | Fix: Replace controls[1].ui.path and its rendered table path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > + Add cloud apps > Adaptive app scopes > app scope > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. Set its docs to https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering, whose DLP steps document this route without the walkthrough's scenario-specific user inclusions. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
 -->

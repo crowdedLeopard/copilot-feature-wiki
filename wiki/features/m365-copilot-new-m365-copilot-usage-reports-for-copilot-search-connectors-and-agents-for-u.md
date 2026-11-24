@@ -83,15 +83,17 @@ changes:
     note: "Correction: default state and licensing now unknown, cost rated low, role-assignment and report-settings Graph calls corrected, read-only and agents-report design claims removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 30 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 33 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 30
-  confirmed: 30
+  claims: 33
+  confirmed: 33
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -171,4 +173,13 @@ The reports provide usage and adoption insights for administrators; the governan
 risk: Low. Usage reporting for admins; the main care is who can see user-level data.
 cost: Low. Admin time to review report access and adoption metrics; licensing for the government reporting release is not yet published.
 impact: Low. Affects admins and adoption leads in US Government tenants.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Copilot reports are reached at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot. | Found: To view reports, go to Reports > Usage. ... Select Microsoft Copilot > Readiness or Usage | Fix: The path stops at the report family. Replace it with 'Reports > Usage > Microsoft Copilot > Usage' for the usage report documented at https://learn.microsoft.com/copilot/manage/copilot-admin-reports. | Source: https://learn.microsoft.com/copilot/manage/copilot-admin-reports
+- [supported, minor] controls[0].api; Governance controls table / command: POST /v1.0/roleManagement/directory/roleAssignments assigns a directory role using principalId, roleDefinitionId and directoryScopeId. | Found: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments ... "roleDefinitionId": "c2cf284d-6c41-4e6b-afac-4b80928c9034", "principalId": "f8ca5a85-489a-49a0-b555-0a6d81e56f0d", "directoryScopeId": "/" | Fix: Set controls[0].api.call to 'POST /v1.0/roleManagement/directory/roleAssignments', and name principalId, roleDefinitionId and directoryScopeId in the note instead of printing the request body. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
+- [supported, minor] controls[0].note; Governance controls table / applicability: The documented general role-assignment operation is presented with a caveat that Microsoft has not confirmed it as a control specific to these reports. | Found: To use the reporting features described in this article, you need to sign into different portals with the appropriate permissions. ... AI Administrator: Accesses the Copilot reports. | Fix: Replace the unconfirmed-applicability sentence with 'Assigning a reporting role controls access; the reporting options page lists AI Administrator as able to access Copilot reports.' Keep the distinction that the API assigns the role rather than opening the report. | Source: https://learn.microsoft.com/copilot/manage/copilot-admin-reports
+- [supported, minor] controls[1].api; Governance controls table / command: PATCH /beta/admin/reportSettings updates report name concealment using displayConcealedNames. | Found: PATCH https://graph.microsoft.com/beta/admin/reportSettings ... { "displayConcealedNames": true } | Fix: Set controls[1].api.call to 'PATCH /beta/admin/reportSettings'. Add 'The request body sets displayConcealedNames.' to its note and retain the explanation of true and false. | Source: https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta
 -->

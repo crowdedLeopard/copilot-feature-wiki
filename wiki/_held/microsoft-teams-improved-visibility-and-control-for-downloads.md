@@ -44,26 +44,30 @@ controls:
     note: "No setting is documented at the time of writing (November 2026); Teams client policies in the settings reference do not list one."
 confidence: "low"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-08-19T22:58:06"
 changes:
   - date: "2026-11-23"
     note: "First briefing: records the roadmap's description of the Teams download manager update and that no admin control or licence detail is documented yet."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 36 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: removed the unsupported sentence saying no cap or budget control applies; the statement that no licence or meter specific to the download manager is published stays."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-23"
-  version: 1
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 35
-  unconfirmed: 1
-  contradicted: 0
-  attempts: 1
-  hash: "9cfa3157213eb636526f2401c3a59c45"
+  claims: 42
+  confirmed: 41
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "8f7c8c39299fcb83e05883e121f93ebd"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ Microsoft has not stated what happens on arrival, so the wiki cannot say whether
 
 No licence or meter specific to the download manager is published at the time of writing (November 2026). The Microsoft Teams service description says that Teams is available as part of qualifying Microsoft 365 offerings and as a standalone SKU, and that all supported subscription plans are eligible for access to the Teams web client, desktop clients and mobile apps. It does not list the download manager.
 
-The indirect cost is admin and helpdesk time to communicate the change. No cap or budget control applies, because no meter is documented for this feature.
+The indirect cost is admin and helpdesk time to communicate the change.
 
 ## Scope
 
@@ -156,8 +160,8 @@ cost: Low. The only cost the sources show is admin and helpdesk time; Microsoft 
 impact: Medium. Users of the Teams desktop client on Windows and Mac who download files will see a changed download manager; Microsoft has not said whether it is switched on for everyone on arrival.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing: final sentence / cost: No cap or budget control applies because no meter is documented for this feature. | Found: Searched: 'Microsoft Teams download manager spending cap budget control meter' and '"Teams" "download manager" licensing price meter'; opened Teams service description. No passage establishes that caps or budget controls are inapplicable. | Fix: Remove the sentence 'No cap or budget control applies, because no meter is documented for this feature.' Retain the preceding qualified statement that no licence or meter specific to the download manager is published.
+- [contradicted, blocker] Governance controls: final paragraph / applicability: Microsoft has not said that any existing controls over which files people can reach or download govern the download manager. | Found: Applying any Conditional Access (CA) policy on SharePoint in Microsoft 365 is also applied to Teams. | Fix: Remove the final paragraph of Governance controls beginning 'The table does not list controls over which files people can reach or download'. Microsoft documents file-access and download restrictions for Teams clients at https://learn.microsoft.com/microsoftteams/block-access-sharepoint; the separate manager-switch absence can remain. | Source: https://learn.microsoft.com/microsoftteams/block-access-sharepoint
 -->

@@ -99,15 +99,17 @@ changes:
     note: "Corrected the Purview Audit retention wording: one year by default also applies to Purview Suite and E5 eDiscovery and Audit add-on users; noted the GB/GiB labelling difference on the rate."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 109 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 101 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 109
-  confirmed: 109
+  claims: 101
+  confirmed: 101
   unconfirmed: 0
   contradicted: 0
   attempts: 0

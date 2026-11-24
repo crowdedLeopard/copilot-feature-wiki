@@ -58,6 +58,9 @@ sources:
   - title: "Understand usage-based billing and cost management for Copilot Credits"
     url: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits"
     kind: "learn"
+  - title: "Managing AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
@@ -72,6 +75,9 @@ sources:
     kind: "learn"
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "Spending limits and billing method of the spending policy that covers Work IQ API (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy"
     kind: "learn"
 videos: []
 related: ["work-iq","mcp","m365-copilot-work-iq-apis-pay-as-you-go-usage","spending-policies","copilot-credits"]
@@ -96,35 +102,39 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost management"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits"
+      path: "Copilot > Cost Management > Configuration > spending policy"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy"
     api:
       kind: "graph"
       call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
-    note: "Beta API; the request body sets periodLimit, perUserLimit or billingMethods. Delegated permission CopilotCostManagement-Policy.ReadWrite.All."
+    note: "Open Spending limits or Billing method in the policy details fly-out. Beta API; the request body sets periodLimit, perUserLimit or billingMethods. Delegated permission CopilotCostManagement-Policy.ReadWrite.All."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-06-29T23:02:39"
 changes:
   - date: "2026-11-23"
     note: "New briefing: the remote Work IQ MCP server, its admin consent and Copilot Credits billing, and the admin centre controls for blocking it, its tenant policy and spending."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the WorkIQAgent.Ask scope wording, qualified the cohort-stopping step with the default-policy caveat and extended the spending policy path to the Configuration tab."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 70
+  claims: 85
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "09d1a79864f946942fd790fb0d091fe9"
+  contradicted: 1
+  attempts: 0
+  hash: "ea39eca7dfa0006d373a5182447dc930"
 ---
 
 ## What's changing
@@ -144,7 +154,7 @@ Learn says an administrator must enable consumptive billing before Work IQ usage
 ## Risk assessment
 
 **Data exposure**
-- The tools read by path. Learn's examples include `fetch /me/messages` (read mail), `fetch /me/chats/{id}/messages` (read Teams chat messages) and `call_function /search/query` (semantic search). The `WorkIQAgent.Ask` permission is described as including read and write access to Microsoft 365 resources scoped to the signed-in user, so a client granted it can reach whatever that user can reach.
+- The tools read by path. Learn's examples include `fetch /me/messages` (read mail), `fetch /me/chats/{id}/messages` (read Teams chat messages) and `call_function /search/query` (semantic search). The `WorkIQAgent.Ask` permission is described as including read and write access to Microsoft 365 resources that are accessible to Work IQ agents and scoped to the signed-in user.
 - The tool reference says the complete list of allowed and blocked paths depends on per-tenant policy configuration, so confirm what your tenant's policy permits before relying on a path.
 
 **Security & identity**
@@ -191,7 +201,7 @@ Learn says an administrator must enable consumptive billing before Work IQ usage
 ### After rollout
 - Review Copilot > Cost management consumption by spending policy, user, group and service to see who drives Work IQ API usage.
 - Check consent, spending-policy coverage, limits, user access and policy denials when a client reports `403 Forbidden`.
-- Use the spending policy to stop one cohort (remove Work IQ API from its policy or remove the cohort) and the Work IQ MCP Block to stop the server for the tenant, as Learn's rollback steps describe.
+- Use the spending policy to stop one cohort (remove Work IQ API from its policy or remove the cohort) and the Work IQ MCP Block to stop the server for the tenant, as Learn's rollback steps describe. Review all applicable spending policies, including the default policy: excluding Work IQ API from one policy does not exclude it from other policies.
 
 ## Governance controls
 
@@ -202,13 +212,13 @@ Learn says an administrator must enable consumptive billing before Work IQ usage
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Work IQ MCP server is available to the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Applies to the entire Work IQ MCP server. The page lists the AI Administrator role for Microsoft 365 admin center settings. Learn does not state that the Graph copilotPackage block call covers this server.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the Work IQ MCP tenant policy is on, which evaluates each tool request</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-level on/off in the initial release; changes can take up to 24 hours. The page mentions clients that configure policy settings but names no operation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Spending limits and billing method of the spending policy that covers Work IQ API</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; the request body sets periodLimit, perUserLimit or billingMethods. Delegated permission CopilotCostManagement-Policy.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Spending limits and billing method of the spending policy that covers Work IQ API</strong><br><small>Tenant</small><br><small class="controls__note">Open Spending limits or Billing method in the policy details fly-out. Beta API; the request body sets periodLimit, perUserLimit or billingMethods. Delegated permission CopilotCostManagement-Policy.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Block and policy are separate controls on the same Work IQ MCP pane. Block applies to the entire Work IQ MCP server, separate from Copilot audience settings and App Access; the tenant policy evaluates each tool request and complements, but doesn't replace, Entra authentication, OAuth permissions and user permissions. Learn describes the initial policy control as tenant-level, and says per-user, per-app and per-agent policy templates aren't part of it.
 
-The spending policy limits are the cost control; Learn's rollback steps remove Work IQ API from a cohort's spending policy to stop that cohort without blocking the server. Admin consent for the Work IQ permissions is a separate step that is not a row here. The Graph call in row 3 is a beta API.
+The spending policy limits are the cost control; Learn's rollback steps remove Work IQ API from a cohort's spending policy to stop that cohort without blocking the server. Review all applicable spending policies, including the default policy: excluding Work IQ API from one policy does not exclude it from other policies. Admin consent for the Work IQ permissions is a separate step that is not a row here. The Graph call in row 3 is a beta API.
 
 ## Open questions
 
@@ -224,12 +234,11 @@ cost: Variable. Work IQ API use is metered in Copilot Credits and managed throug
 impact: Low. The roadmap lists the Developer platform, so developers, makers and administrators notice it; end users meet it only through apps that call the server.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure, first bullet / applicability: A client granted WorkIQAgent.Ask can reach whatever the signed-in user can reach. | Found: For developers, these controls mean an MCP request can fail because of tenant policy even when the user is authenticated and the app has the required OAuth permission. | Fix: Remove ', so a client granted it can reach whatever that user can reach'. Keep the permission description but qualify its resources as 'accessible to Work IQ agents and scoped to the signed-in user', as stated at https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions. The following bullet can continue to explain tenant-policy restrictions. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls table; Cost and licensing / admin-path: Microsoft 365 admin center > Copilot > Cost management is the destination for spending-policy limits and billing methods covering Work IQ API. | Found: In the Microsoft admin center, **Copilot > Cost management**, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as **Cowork**, running apps hosted on the **Copilot Managed Runtime**, and **Work IQ API**. | Fix: The path stops on the right dashboard. Extend controls[2].ui.path to 'Copilot > Cost Management > Configuration > spending policy', with note 'Open Spending limits or Billing method in the policy details fly-out'. Use https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy as docs and add that source. | Source: https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits
-- [supported, minor] Governance guidance: After rollout; Governance controls / applicability: Learn's rollback instructions say removing Work IQ API or the cohort from its spending policy stops that cohort without tenant-wide blocking. | Found: To stop Work IQ usage for only the migration cohort, remove Work IQ API from that cohort's spending policy or remove the cohort from the policy. | Fix: Qualify both cohort-stopping statements: 'Review all applicable spending policies, including the default policy: excluding Work IQ API from one policy does not exclude it from other policies.' This qualification is documented at https://learn.microsoft.com/plugins/cost-considerations#manage-shared-copilot-credits, although the cited migration rollback steps omit it. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The governance checklist tells administrators to grant admin consent, but the controls table does not represent that control. | Found: Grant admin consent only to named client applications Admin consent for the Work IQ permissions is a separate step that is not a row here. | Fix: The 'At rollout' checklist step 'Grant admin consent only to named client applications' has no corresponding controls-table row. This is the checklist/table coverage gap; do not add a control row as part of this correction.
+- [supported, minor] controls[1].ui; Governance guidance; Open questions / admin-path: Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy reaches the tenant policy on/off setting. | Found: select Agents > Tools. ... select Work IQ MCP. ... select the Policy tab when it's available. ... Review the current policy state, then turn policy on or off for the tenant as needed. | Fix: Extend controls[1].ui.path and the rendered path to 'Agents > Tools > Work IQ MCP > Policy > policy on/off'; the cited page describes the final toggle without naming a more specific label. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] controls[2].ui; Cost and licensing / admin-path: Copilot > Cost Management > Configuration > spending policy reaches the spending-policy settings fly-out in Microsoft 365 admin center. | Found: go to Copilot > Cost Management. ... Select the Configuration tab. ... Select the spending policy you want to edit. ... This includes: ... Billing method ... Spending limits | Fix: Extend controls[2].ui.path and its rendered path to 'Copilot > Cost Management > Configuration > spending policy > Spending limits or Billing method', matching the two settings already named in the note. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy
+- [supported, minor] Why it matters / behaviour: Work IQ integrations include coding assistants, Copilot Studio agents and Foundry agents. | Found: Work IQ is generally available in Microsoft Copilot Studio and is added by default to every new agent that uses the Microsoft Copilot harness. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq to sources for the Copilot Studio integration; the existing GitHub Copilot CLI and Foundry sources support the other named clients. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
+- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist tells administrators to grant client-app consent, but the controls table has no consent row. | Found: Grant admin consent only to named client applications ... Admin consent for the Work IQ permissions is a separate step that is not a row here. | Fix: The Before rollout consent-review step and At rollout 'Grant admin consent only to named client applications' step have no corresponding row in the controls table.
 -->

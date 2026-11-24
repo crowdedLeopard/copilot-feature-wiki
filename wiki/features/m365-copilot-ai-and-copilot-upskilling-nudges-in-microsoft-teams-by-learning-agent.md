@@ -79,15 +79,17 @@ changes:
     note: "New briefing: roadmap item 579905 (Learning Agent upskilling nudges in Teams), based on the roadmap record and the Learning agent pages on Microsoft Learn."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 66 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 74 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 64
+  claims: 74
+  confirmed: 72
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -191,11 +193,12 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Medium. Users who have the Learning agent would see messages in Teams; Microsoft has not said how many users in a tenant are in scope on arrival, so the audience depends on who is given the agent.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Cost and licensing; front matter: licensing.notes / availability: The cited overview describes Learning agent as a Private Preview offered through Frontier. | Found: Learning agent is currently available to authorized users in Private Preview exclusively through the Frontier program. | Fix: After the preview statement, add: 'Microsoft's October 27, 2026 release notes also say Microsoft 365 Copilot now includes Learning agent, without the Private Preview qualification; the two pages differ.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026. | Source: https://learn.microsoft.com/viva/learning/learning-agent-overview-deployment-steps
-- [supported, minor] Scope / availability: The setup page lists side-by-side Word, PowerPoint and Excel experiences as coming soon. | Found: Side-by-side experiences in Word, PowerPoint, and Excel (coming soon). | Fix: Add: 'The Responsible AI FAQ instead lists access within Teams, Word, Excel and PowerPoint without that qualification; the pages differ on app availability.' The FAQ is https://learn.microsoft.com/viva/learning/transparency-note. | Source: https://learn.microsoft.com/viva/learning/learning-agent-setup
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every deployment-audience control the checklist tells administrators to review is represented in the controls table. | Found: Check ... whether the Learning agent is already deployed, and to which users or groups. ... Table rows cover a separate nudge switch, organisation-wide blocking and Frontier enrolment, not agent deployment assignment. | Fix: Remove 'and to which users or groups' from the first Before rollout checklist item; the table has no deployment-assignment row. Do not add a control row as part of this correction.
-- [unsupported, minor] rationale: impact / behaviour: The nudge audience depends on who is given the Learning agent. | Found: Searched: "Learning agent" "Copilot adoption" "notifications"; "Learning agent" "nudges" "default". Opened Learning agent setup, overviews, FAQ and Frontier guidance. These document agent access, not whether assignment determines the Teams nudge audience. | Fix: Replace the impact rationale with: 'Medium. The roadmap plans personalised learning messages in Teams, but Microsoft has not stated how many users in a tenant are in scope on arrival.'
+- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no licence specific to the Teams nudges or their general availability is published. | Found: Searched: "Learning agent" licensing Copilot Credits Teams notifications. Read Learning agent overview, setup, Frontier prerequisites and Microsoft Copilot licensing. No nudge-specific rule found; Frontier does require a Microsoft Copilot licence or a licence including Copilot for Copilot features. | Fix: Set licensing.model to 'included'. Retain the preview licence notes and replace the opening Cost and licensing sentence with: 'Frontier Copilot features require a Microsoft Copilot licence or a licence that includes access to Copilot. Microsoft has not published licensing specific to the Teams nudges or their general availability.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier.
+- [supported, minor] What's changing; front matter: licensing.notes; Cost and licensing / availability: The cited overview describes Learning agent as a Private Preview offered through Frontier. | Found: Learning agent is currently available to authorized users in Private Preview exclusively through the Frontier program. | Fix: After the preview description, add: 'Microsoft's October 27, 2026 release notes instead say Microsoft 365 Copilot now includes a Learning agent, without the Private Preview qualification; the pages differ.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026. | Source: https://learn.microsoft.com/viva/learning/learning-agent-overview-deployment-steps
+- [supported, minor] Scope / availability: The setup page lists side-by-side Word, PowerPoint and Excel experiences as coming soon. | Found: Side-by-side experiences in Word, PowerPoint, and Excel (coming soon). | Fix: Add after this statement: 'The Responsible AI FAQ instead lists access within Teams, Word, Excel and PowerPoint without the coming-soon qualification; the pages differ on app availability.' Cite https://learn.microsoft.com/viva/learning/transparency-note. | Source: https://learn.microsoft.com/viva/learning/learning-agent-setup
+- [unsupported, minor] rationale: impact / behaviour: The Teams nudge audience depends on who is given the Learning agent. | Found: Searched: "Learning agent" "nudges" "default" "Teams"; "Learning agent" "adoption stage" notifications data Teams. Read roadmap, setup, both overviews, FAQ and Frontier; deployment governs agent access, but no text connects assignment to this nudge audience. | Fix: Replace the impact rationale with: 'Medium. The roadmap plans personalised learning messages in Teams, but Microsoft has not stated how many users in a tenant are in scope on arrival.'
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every deployment-audience control the governance checklist asks administrators to review has a corresponding table row. | Found: Check ... whether the Learning agent is already deployed, and to which users or groups. ... Table rows cover a separate nudge switch, organisation-wide blocking and Frontier enrollment, not agent deployment assignment. | Fix: Remove 'and to which users or groups' from the first Before rollout checklist item. Do not add a deployment-assignment control row.
 -->

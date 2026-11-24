@@ -2,31 +2,39 @@
   "slug": "m365-copilot-domain-exclusion-web-grounding",
   "roadmapId": 503144,
   "title": "Microsoft 365 Copilot: exclude specific domains from web grounding",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-24",
   "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "2 blocking findings (claims 31, 37)"
+    ]
+  },
   "counts": {
-    "claims": 56,
+    "claims": 59,
     "confirmed": 56,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 0
+    "minor": 4
   },
-  "summary": "The briefing passes: its roadmap facts, documented controls and administrator opt-in default are supported. It accurately warns that exclusions filter web page results only and that news results might still cite excluded sites.",
+  "summary": "Hold: Microsoft now documents a preview API that can configure tenant-level web search, contrary to the table's claim that automation is undocumented. The Purview command creates a policy but does not configure the web-search blocking action, so it is not an automation equivalent for that control. The exclusion script, limits, default and roadmap details are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title; What's changing; Scope",
+      "where": "title; What's changing",
       "type": "record",
-      "claim": "The roadmap feature concerns domain exclusion for Microsoft 365 Copilot and Copilot Chat.",
+      "claim": "The roadmap feature lets administrators specify sites to exclude from web grounding in Microsoft 365 Copilot and Copilot Chat.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature will allow admins to specify a limited set of sites to exclude from web grounding in M365 Copilot and Copilot Chat #copilotcontrolsystem",
@@ -35,6 +43,17 @@
     },
     {
       "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -45,10 +64,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -56,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is September CY2026.",
+      "claim": "The roadmap targets September CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"September CY2026\"",
@@ -67,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -78,10 +97,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), not government clouds.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the listed cloud, and government clouds are not listed for this item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -89,7 +108,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap lists Desktop and Web.",
@@ -100,43 +119,21 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-09-01T23:00:02.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-01T23:00:02\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 9,
-      "where": "What's changing; Scope",
+      "where": "summary; What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "When enabled, web search lets Copilot and Copilot Chat ground responses in public web information.",
+      "claim": "Administrators can exclude up to 1,000 sites, with at most 1,000 entries in the CSV.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "When web search is enabled, Microsoft Copilot and Microsoft Copilot Chat may fetch information from the Bing search service when information from the web helps to provide a better, more grounded response.",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "By using domain exclusion, you can specify up to 1,000 sites to exclude from web grounding in Microsoft Copilot and Copilot Chat through a PowerShell script. Maximum of 1,000 entries per CSV file.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "summary; What's changing; Risk assessment",
-      "type": "behaviour",
-      "claim": "Administrators can specify up to 1,000 sites for exclusion from Copilot and Copilot Chat web grounding.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "By using domain exclusion, you can specify up to 1,000 sites to exclude from web grounding in Microsoft Copilot and Copilot Chat through a PowerShell script.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "The configuration supports up to two levels of subdomain.",
+      "claim": "Domain exclusion supports up to two levels of subdomains.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
       "quote": "Currently, the domain exclusion configuration supports up to two levels of subdomains.",
@@ -144,76 +141,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Governance controls",
-      "type": "command",
-      "claim": "Tenant domain exclusions are managed with ConfigureTenantDomainExclusions.ps1, downloaded from aka.ms/Copilot/DomainExclusionScript.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "To manage the Copilot domain exclusion configuration for your tenant, use the ConfigureTenantDomainExclusions.ps1 PowerShell script. Download it at https://aka.ms/Copilot/DomainExclusionScript.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; controls[0].note; Governance guidance",
+      "n": 11,
+      "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "The script can get the current configuration and export it to CSV.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "Get the current domain exclusion configuration and export to CSV",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[0].api; What's changing; Governance guidance",
-      "type": "command",
-      "claim": "ConfigureTenantDomainExclusions.ps1 -Create -FromFile <csv> creates the tenant domain exclusion configuration from CSV.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "Create your domain exclusion configuration from a CSV file:\n   .\\ConfigureTenantDomainExclusions.ps1 -Create -FromFile \"input.csv\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; controls[0].note",
-      "type": "behaviour",
-      "claim": "The script can update an existing domain exclusion configuration from CSV.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "Update an existing domain exclusion configuration from CSV file",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; controls[0].note",
-      "type": "behaviour",
-      "claim": "The script can delete the current domain exclusion configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "Delete the current domain exclusion configuration",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; controls[0].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "The script can generate a template CSV for domain exclusions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "Generate a template CSV file for domain exclusions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Domain exclusion restricts incoming grounding results, currently filtering web page results only.",
+      "claim": "Domain exclusions currently filter web page results only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
       "quote": "Currently, domain exclusions support filtering on web page results only.",
@@ -221,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 12,
       "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Other answer verticals, such as news, might still cite excluded sites.",
+      "claim": "Other answer verticals such as news might still cite an excluded site.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
       "quote": "Results from other answer verticals, such as news, might still be cited.",
@@ -232,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 13,
       "where": "front matter: defaultState; What's changing",
       "type": "default",
-      "claim": "Domain exclusion is administrator opt-in: the default settings contain no configuration and the administrator runs the script to opt in.",
+      "claim": "The exclusion control is admin-opt-in: default settings have no configuration, and an administrator opts in by running the script.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
       "quote": "Default settings don't include the domain exclusion configuration. Opt in to use the feature by running the PowerShell script.",
@@ -243,7 +174,18 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 14,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The domain exclusion configuration is tenant-scoped.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "To manage the Copilot domain exclusion configuration for your tenant, use the ConfigureTenantDomainExclusions.ps1 PowerShell script.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "What's changing; Scope",
       "type": "applicability",
       "claim": "Cowork uses the organization's domain exclusion policy.",
@@ -254,10 +196,76 @@
       "fix": null
     },
     {
+      "n": 16,
+      "where": "controls[0].api; Governance controls; What's changing",
+      "type": "command",
+      "claim": "ConfigureTenantDomainExclusions.ps1 -Create -FromFile <csv> creates a domain exclusion configuration from CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "Create your domain exclusion configuration from a CSV file: .\\ConfigureTenantDomainExclusions.ps1 -Create -FromFile \"input.csv\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The script can get the current exclusion configuration and export it to CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "Get the current domain exclusion configuration and export to CSV",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "The script can update the exclusion configuration from CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "Update an existing domain exclusion configuration from CSV file",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "The script can delete the current exclusion configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "Delete the current domain exclusion configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The script can generate a template CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "Generate a template CSV file for domain exclusions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft publishes the script download at aka.ms/Copilot/DomainExclusionScript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "Download it at https://aka.ms/Copilot/DomainExclusionScript.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 22,
       "where": "controls[0].note; Risk assessment: Security & identity",
       "type": "role",
-      "claim": "The domain exclusion script requires sign-in as Search Administrator or Global Administrator.",
+      "claim": "The script requires sign-in as Search Administrator or Global Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
       "quote": "Sign in as a Search Administrator or Global Administrator.",
@@ -266,8 +274,8 @@
     },
     {
       "n": 23,
-      "where": "controls[0].note",
-      "type": "command",
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
       "claim": "The script needs the Az.Accounts PowerShell module.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
@@ -277,42 +285,31 @@
     },
     {
       "n": 24,
-      "where": "controls[0].ui; Open questions",
-      "type": "absence",
-      "claim": "An administrator UI for Copilot web-grounding domain exclusions is not yet documented.",
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "When web search is enabled, Copilot and Copilot Chat may ground responses in public web content.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"domain exclusion\" \"admin center\"; Copilot domain exclusion admin center UI. Opened learn.microsoft.com/copilot/implement/domain-exclusion and /copilot/implement/configure-copilot-admin-center; both describe no such UI.",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "When web search is enabled, Microsoft Copilot and Microsoft Copilot Chat may fetch information from the Bing search service when information from the web helps to provide a better, more grounded response.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "What's changing; controls[1]; Governance controls",
+      "where": "What's changing; controls[1].governs",
       "type": "applicability",
-      "claim": "Allow web search in Copilot is the Cloud Policy control for web search in both Copilot and Copilot Chat.",
+      "claim": "Allow web search in Copilot is a Cloud Policy control governing web search in both Copilot and Copilot Chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "The primary way that IT admins can control access to web search is by using the Allow web search in Copilot policy, which is available only in Cloud Policy service for Microsoft 365.",
+      "quote": "The primary way that IT admins can control access to web search is by using the Allow web search in Copilot policy, which is available only in Cloud Policy service for Microsoft 365. This policy applies to both Microsoft Copilot and Microsoft Copilot Chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "What's changing; controls[1].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "The web search policy offers enabled, disabled, and disabled in work mode only options.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "Enabled in Microsoft Copilot and Microsoft Copilot Chat\nDisabled in Microsoft Copilot and Microsoft Copilot Chat\nDisabled in Microsoft Copilot Work mode; Enabled in Microsoft Copilot Web mode and Microsoft Copilot Chat",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
       "where": "controls[1].scope; controls[1].note",
       "type": "applicability",
-      "claim": "Cloud Policy configurations can target the tenant's users or specific groups.",
+      "claim": "The web-search policy can be configured for the tenant or for groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
       "quote": "On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups, or to users who anonymously access documents using Office for the web.",
@@ -320,32 +317,65 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The Microsoft 365 Apps admin center path is Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings.",
+      "n": 27,
+      "where": "What's changing; controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The policy can enable web search in Copilot and Copilot Chat.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Start with the basics page, enter a name (required) and a description (optional), then select Next.",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "Enabled in Microsoft Copilot and Microsoft Copilot Chat",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The policy can disable web search in Copilot and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "Disabled in Microsoft Copilot and Microsoft Copilot Chat",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "No automation equivalent for the Allow web search in Copilot cloud policy is documented.",
+      "where": "What's changing; controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The policy can disable web search in work mode while leaving web mode and Copilot Chat enabled.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Allow web search in Copilot\" \"Graph\" API Cloud Policy PowerShell; site:learn.microsoft.com/graph \"cloud policy\" \"Copilot\" web search. Opened Cloud Policy overview and manage-public-web-access; no corresponding call found.",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "Disabled in Microsoft Copilot Work mode; Enabled in Microsoft Copilot Web mode and Microsoft Copilot Chat",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 Apps admin center path is Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name",
+      "severity": "minor",
+      "fix": "The printed steps are correct but stop on the policy-selection page. Extend the path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The setting name is documented at https://learn.microsoft.com/copilot/plan/manage-public-web-access."
+    },
+    {
+      "n": 31,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for configuring the web-search policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type",
+      "quote": "Controls web search availability in Microsoft 365 Copilot and Microsoft 365 Copilot Chat. \"resourceType\": \"microsoft.copilot.allowwebsearch\", \"resourceVersion\": 1, \"properties\": { \"value\": \"0\" }",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api null with kind 'graph', call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to the note: 'Preview, tenant-level automation only; fails if the setting exists in a group-level Cloud Policy. Set mode to applyOnce and include baseline.resources with resourceType microsoft.copilot.allowwebsearch, resourceVersion 1, and properties.value as the string 0 (enabled), 1 (disabled), or 2 (work mode disabled). Requires delegated access and the signed-in user's AI Administrator role.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources for the resource and restrictions. The existing UI still supports group scope."
+    },
+    {
+      "n": 32,
       "where": "What's changing; Risk assessment; controls[2].governs",
       "type": "applicability",
-      "claim": "Purview DLP can block external web search when Copilot prompt text matches configured sensitive information types.",
+      "claim": "Purview DLP can block external web search when prompt text matches configured sensitive information types.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "When a user prompt contains the configured SITs, Copilot and Cowork block external web search as a grounding source and continue to generate the response using allowed internal Microsoft 365 data sources.",
@@ -353,21 +383,21 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[2].ui",
+      "n": 33,
+      "where": "controls[2].ui; Governance controls",
       "type": "admin-path",
       "claim": "The Purview path is Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Go to Data Loss Prevention > Policies and select + Create policy.\nSelect the Custom template, then Custom policy.\nOn the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "quote": "Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 34,
       "where": "controls[2].note; Governance controls",
       "type": "admin-path",
-      "claim": "The DLP rule condition is Content contains > Sensitive information types.",
+      "claim": "The DLP rule uses Content contains > Sensitive information types.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Add a rule with the Content contains > Sensitive information types condition and choose the SITs you want to detect.",
@@ -375,10 +405,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "controls[2].note; Governance controls",
       "type": "admin-path",
-      "claim": "The DLP rule action is Prevent Copilot from processing content > Performing Web Searches.",
+      "claim": "The DLP action is Prevent Copilot from processing content > Performing Web Searches.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "In the same rule, set the action to Prevent Copilot from processing content > Performing Web Searches.",
@@ -386,10 +416,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
       "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "The documented DLP procedure ends by saving and turning on the policy.",
+      "type": "behaviour",
+      "claim": "The documented procedure saves and turns on the DLP policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Save and turn on the policy.",
@@ -397,43 +427,98 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "New-DlpCompliancePolicy -Name <name> -Locations <location> -EnforcementPlanes @('CopilotExperiences') creates a Copilot DLP policy with the supplied location.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
-      "quote": "New-DLPCompliancePolicy -Name \"Copilot Policy\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\")",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[2].note; Governance controls",
-      "type": "command",
-      "claim": "The policy-creation cmdlet alone does not configure the sensitive-information rule and its web-search action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Add a rule with the Content contains > Sensitive information types condition and choose the SITs you want to detect.\nIn the same rule, set the action to Prevent Copilot from processing content > Performing Web Searches.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 37,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Domain-result filtering does not replace the enabled web-search flow that sends generated queries to Bing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "Based on these terms, Copilot generates a search query that it sends to the Bing search service asking for more information.",
-      "severity": null,
-      "fix": null
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name <name> -Locations <location> -EnforcementPlanes @('CopilotExperiences') is the automation equivalent for blocking sensitive content in web search.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "The fourth command creates the DLP policy using the $loc variable for the value of the Locations parameter ... The last command creates the DLP rule",
+      "severity": "blocker",
+      "fix": "Set controls[2].api to null and remove the policy-creation command from the rendered table and its explanatory prose. Replace the automation note with 'The policy-creation cmdlet does not set Performing Web Searches; an automation call for that action is not yet documented.' The command and its parameters exist, but creating the policy does not configure the blocking rule. Targeted searches and the New-DlpComplianceRule and Set-DlpComplianceRule references returned no Copilot web-search action syntax."
     },
     {
       "n": 38,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "New-DlpCompliancePolicy creates the policy only, and a separate rule is needed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies ... DLP policies contain DLP rules that identify, monitor, and protect sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature's licensing model is unknown because no feature-specific licence is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses. You have the Microsoft 365 Copilot add-on license with access to the full experience",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included'. Replace the notes with 'Copilot Chat (Basic) is included with eligible Microsoft 365 licenses; the full Copilot experience uses the Microsoft 365 Copilot add-on license. Feature-specific domain-exclusion licensing is not yet published.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Only product-level licensing was found; the feature-specific absence is true, but 'unknown' understates the published product entitlement."
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Feature-specific domain-exclusion licensing has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot domain exclusion licensing pricing meter subscription requirements; Copilot \"domain exclusion\" \"licensing\". Opened Domain exclusion overview, Copilot overview and License options for Microsoft Copilot; no feature-specific entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The domain-exclusion script prerequisites list roles, PowerShell and CSV requirements without naming a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
+      "quote": "Before running the script, ensure you meet the following requirements: Administrative permissions ... PowerShell requirements ... CSV file requirements (for Create/Update operations)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Feature-specific domain-exclusion pricing has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot domain exclusion licensing pricing meter subscription requirements; \"Copilot\" \"domain exclusion\" \"price\" \"meter\". Opened Domain exclusion overview, Copilot overview, License options and pay-as-you-go meters; no domain-exclusion price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No domain-exclusion meter is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"domain exclusion\" \"price\" \"meter\"; Copilot domain exclusion licensing pricing meter subscription requirements. Opened Domain exclusion overview and Meters for Microsoft Copilot pay-as-you-go services; no exclusion-configuration meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Generated search queries consist of a few words informed by the user's prompt.",
+      "claim": "Filtering incoming web results does not turn off the generated web-search queries sent to Bing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "When web search is enabled ... Copilot generates a search query that it sends to the Bing search service asking for more information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Generated Bing queries consist of a few words informed by the prompt.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "This generated search query is different from the user's original prompt-it consists of a few words informed by the user's prompt.",
@@ -441,32 +526,32 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 46,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Generated queries do not include entire Microsoft 365 files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "The following information isn't included in the generated search query sent to the Bing search service:\nEntire Microsoft 365 files (for example, emails or documents) or files uploaded into Copilot",
+      "quote": "The following information isn't included in the generated search query sent to the Bing search service: ... Entire Microsoft 365 files (for example, emails or documents) or files uploaded into Copilot",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 47,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Generated web search queries can be informed by organizational document content.",
+      "claim": "Generated queries can be informed by organizational document content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "Copilot reasons over this document and identifies \"clean energy policy\" as a major theme. \"Clean energy policy\" is added to the generated search query sent to the Bing search service (the document itself isn't included).",
+      "quote": "it may also be informed by data within a Microsoft 365 document ... When a user enters a prompt into Copilot inside a Microsoft 365 application ... When the user explicitly references a specific document in their prompt.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 48,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A generated web search query can contain a manager's name obtained from Microsoft 365 data.",
+      "claim": "A manager's name obtained from Microsoft 365 data can form the Bing query.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "Copilot finds the name of the user's manager from Microsoft 365 data. It then generates a Bing search query based on their name to see what information about them is available on the web.",
@@ -474,10 +559,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 49,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A very short prompt can itself be included in the generated query.",
+      "claim": "Very short prompts can themselves be included in the generated search query.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "The user's entire prompt, unless the prompt is very short (for example, \"local weather\")",
@@ -485,87 +570,32 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Why it matters",
-      "type": "applicability",
-      "claim": "Microsoft presents domain exclusion as part of its layered prompt-injection defenses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-prompt-defense-in-depth",
-      "quote": "Proactive protections reduce risk by improving visibility, limiting exposure to harmful content, controlling content discovery, and protecting customer data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Microsoft has not documented domain-exclusion-specific user messaging at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"domain exclusion\" \"user\" \"message\" Copilot. Opened Domain exclusion overview, manage-public-web-access and prompt-defense-in-depth; no domain-exclusion user messaging documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Wildcard-style blocking of whole top-level domains is not described for Copilot domain exclusions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot domain exclusion admin center UI user notification wildcard TLD declarative agents excluded domains; \"domain exclusion\" wildcard TLD. Opened Domain exclusion overview, including CSV format and limitations; no whole-TLD wildcard syntax.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific licensing for domain exclusion is not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot domain exclusion licensing pricing meter requirements. Opened Domain exclusion overview, Copilot license options and pay-as-you-go overview; no domain-exclusion-specific licensing rule found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific pricing for domain exclusion is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot domain exclusion licensing pricing meter requirements. Opened Domain exclusion overview, Copilot license options and pay-as-you-go overview; no domain-exclusion-specific price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No domain-exclusion meter is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot domain exclusion licensing pricing meter requirements. Opened Domain exclusion overview and Copilot pay-as-you-go overview; billing covers usage of agents and services, with no domain-exclusion meter identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Domain exclusion overview prerequisites list administrative permissions, PowerShell and CSV requirements, but name no licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-      "quote": "Before running the script, ensure you meet the following requirements:\nAdministrative permissions:\nPowerShell requirements:\nCSV file requirements (for Create/Update operations):",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not documented domain-exclusion user messaging.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"domain exclusion\" \"user\" \"message\"; Copilot \"domain exclusion\" \"notifications\". Opened Domain exclusion overview and manage-public-web-access; no user message for excluded grounding sites found. Script operation confirmations are admin messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Wildcard-style blocking of whole top-level domains is not described for Copilot domain exclusion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"domain exclusion\" \"wildcard\"; Copilot domain exclusion admin center user notification messaging wildcard top level domain. Read Domain exclusion overview, including CSV requirements and limitations; wildcard results concerned other products.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
       "where": "Scope",
       "type": "default",
-      "claim": "Government tenants have web search off by default.",
+      "claim": "Government clouds have Copilot web search off by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-prompt-defense-in-depth",
       "quote": "By default, web search is enabled for Microsoft Copilot and Microsoft Copilot Chat in commercial tenants, but not for U.S. Government Community Cloud (GCC, GCC-High, and DoD) tenants.",
@@ -573,81 +603,92 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 53,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Declarative agents can scope web search to specific websites in their manifest.",
+      "claim": "Declarative agents can scope web search to specific sites in their manifest.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
-      "quote": "To scope your web search to specific sites, add the sites property and specify up to four URLs, as shown in the following example.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented the interaction between tenant domain exclusions and declarative-agent web search scoped to an excluded site.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"domain exclusion\" \"declarative\"; Copilot domain exclusion admin center UI user notification wildcard TLD declarative agents excluded domains. Opened Domain exclusion overview and knowledge-sources, Web and scoped web search; no interaction rule found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "The web search control is linked from Copilot > Settings under Data access in the Microsoft 365 admin center, with configuration performed in Cloud Policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
-      "quote": "Follow the link from Copilot settings to create an Allow web search in Copilot cloud policy in the Microsoft 365 Apps admin center",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources#web-and-scoped-web-search",
+      "quote": "To scope your web search to specific sites, add the sites property and specify up to four URLs",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Copilot users cannot enable web search with their personal toggle when the administrator policy disables it.",
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented the interaction between tenant domain exclusions and agents scoped to an excluded site.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "If the IT admin turns off web search, the Web content toggle is turned off and appears dimmed. Users can't turn on the toggle to use web search.",
+      "source": null,
+      "quote": "Searched: Copilot tenant domain exclusions declarative agent scoped web search excluded site interaction. Opened Domain exclusion overview and Add knowledge sources to your declarative agent; no exclusion precedence for scoped sites found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "Governance controls",
+      "where": "Governance controls: prose",
+      "type": "admin-path",
+      "claim": "The web-search policy is linked from Microsoft 365 admin center under Copilot > Settings > Data access, but configured in Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center#configure-data-access",
+      "quote": "Web search for Microsoft Copilot and Microsoft Copilot Chat ... Follow the link from Copilot settings to create an Allow web search in Copilot cloud policy in the Microsoft 365 Apps admin center",
+      "severity": "minor",
+      "fix": "Complete the shortcut path in the prose as 'Copilot > Settings > Data access > Web search for Microsoft Copilot and Microsoft Copilot Chat'. Keep the explanation that the change is made in Cloud Policy."
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: prose",
       "type": "behaviour",
-      "claim": "Copilot users retain the option to disable web search with a personal toggle when administrators allow web search.",
+      "claim": "Copilot and Copilot Chat users have a personal web-search toggle unless the administrator disables web search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "If the IT admin turns on web search for Microsoft Copilot users, those users still have the option to turn off web search by using the Web content toggle.",
+      "quote": "The Web content toggle ... is now available to both Microsoft Copilot and Microsoft Copilot Chat users. If the IT admin disables web search, the Web content toggle isn't available to the user and web search is disabled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[2].scope",
-      "type": "applicability",
-      "claim": "The Copilot DLP policy can apply tenant-wide.",
+      "n": 57,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft presents domain exclusion as part of its prompt-defense protections.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
-      "quote": "For the entire tenant, use this value: {Type:\"Tenant\",Identity:\"All\"}.",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-prompt-defense-in-depth",
+      "quote": "Proactive protections reduce risk by improving visibility, limiting exposure to harmful content ... Domain exclusion | Administrators can use a PowerShell script to exclude up to 1,000 sites from web grounding",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].ui; Governance controls; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented an admin-center UI for Copilot domain exclusion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"domain exclusion\" \"admin center\"; Copilot domain exclusion admin center user notification messaging wildcard top level domain. Opened Domain exclusion overview and Configure Microsoft Copilot settings; no UI for this exclusion list found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "The medium impact rating agrees with a rationale describing a configured change affecting every Copilot user.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "impact: \"medium\"; impact: Medium. Changes what web sources every Copilot user may see cited once configured.",
+      "severity": "minor",
+      "fix": "Set impact to 'high' and change the rationale to 'High. The tenant exclusion list changes which web page sources Copilot and Copilot Chat users may see cited once configured.' The schema defines high as most users, whereas medium is specific roles or one business unit; the verified control is tenant-wide."
     }
   ],
   "precheck": {
-    "at": "2026-11-17T02:48:26.395Z",
+    "at": "2026-11-24T01:20:07.153Z",
     "summary": {
       "links": 9,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -658,13 +699,13 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
@@ -673,28 +714,28 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources#web-and-scoped-web-search",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/plan/copilot-prompt-defense-in-depth",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center#configure-data-access",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -703,9 +744,9 @@
         "side": "api",
         "governs": "Which domains are excluded from web grounding",
         "docs": "https://learn.microsoft.com/copilot/implement/domain-exclusion",
-        "reachable": true,
+        "reachable": false,
         "token": "ConfigureTenantDomainExclusions.ps1 -Create",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
@@ -729,7 +770,7 @@
         "side": "ui",
         "governs": "Sensitive content sent to web search",
         "docs": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Data Loss Prevention",
           "Policies",
@@ -739,16 +780,24 @@
           "Locations",
           "Microsoft Copilot, Copilot Chat, and Copilot Cowork"
         ],
-        "missing": []
+        "missing": [
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "Custom policy",
+          "Locations",
+          "Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Sensitive content sent to web search",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
-        "reachable": true,
+        "reachable": false,
         "token": "New-DlpCompliancePolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -770,6 +819,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 4,
       "model": "gpt-6.1-sol"
     }
   ]

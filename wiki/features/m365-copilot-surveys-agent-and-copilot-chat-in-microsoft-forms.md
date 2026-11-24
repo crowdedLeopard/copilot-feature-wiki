@@ -34,6 +34,9 @@ sources:
   - title: "License Options for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
+  - title: "Microsoft Copilot requirements"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
+    kind: "learn"
   - title: "Administrator settings for Microsoft Forms"
     url: "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms"
     kind: "learn"
@@ -90,7 +93,7 @@ controls:
     note: "Not listed in the Forms administrator settings or the Copilot settings page at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-07-13T23:07:14"
 changes:
   - date: "2026-11-23"
@@ -101,19 +104,23 @@ changes:
     note: "Corrected after the independent check: cost raised to medium, the missing-switch claim narrowed to the Forms pane, Microsoft-agent governance acknowledged, and the licence-options page added."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected the Scope prerequisites: removed the claim that Learn names no further prerequisite and added Microsoft's general Copilot identity, browser and network requirements."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 2
+  status: "verified"
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "f16a0ebf7db99a2c1cac4bb62f48261a"
+  contradicted: 0
+  attempts: 0
+  hash: "eb926c9a4bc7212351ef18f3bc651ff5"
 ---
 
 ## What's changing
@@ -165,7 +172,7 @@ To assign the licence, use the Microsoft 365 admin center or Microsoft Graph Pow
 
 **Rollout:** the roadmap status is Launched, with a target of May CY2026. Microsoft's release notes list the pane under September 23, 2026.
 
-**Prerequisites:** the Copilot icon in Forms, as the roadmap describes it. Microsoft Learn names no further prerequisite for the pane.
+**Prerequisites:** the Copilot icon in Forms, as the roadmap describes it. Microsoft's general Copilot requirements page says users must have a work or school account in Microsoft Entra ID, and lists a supported browser and cookies, and the Microsoft 365 and Copilot network requirements, as required for web-based experiences.
 
 ## Governance guidance
 
@@ -213,10 +220,4 @@ Turning Forms off for a user removes Forms for that person altogether; it is an 
 risk: Medium. The pane analyses form responses and helps send invitations, and Microsoft Learn documents no separate switch for it in Forms, so licence assignment and disabling Forms are documented controls, alongside general Microsoft-agent governance.
 cost: Medium. The release notes require a Microsoft 365 Copilot licence for business users of the pane, and the Copilot overview describes an add-on licensed experience. No separate Forms-pane meter is documented; admin time is an additional indirect cost.
 impact: Medium. People who hold a Microsoft 365 Copilot licence and build or run forms notice it as a Copilot icon in Forms; users without the licence are not named as recipients.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Prerequisites / absence: Microsoft Learn names no further prerequisite for the pane beyond access through the Copilot icon and the licence described elsewhere. | Found: Users must have a work or school account in Microsoft Entra ID. Supported browser and cookies | Required for web-based experiences | Required for web-based experiences Microsoft 365 and Copilot network requirements | Required | Required | Fix: Remove 'Microsoft Learn names no further prerequisite for the pane.' Microsoft's general Copilot identity, browser and network requirements apply to web-based Copilot experiences; the absence of an additional Forms-specific prerequisite does not establish that no further prerequisite is documented. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
 -->

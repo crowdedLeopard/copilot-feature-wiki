@@ -18,7 +18,7 @@ defaultState: "on"
 action: "none"
 licensing:
   model: "mixed"
-  notes: "Connector licensing is set by the connectors prerequisites page: synced connectors need Microsoft 365 licences, and federated connectors need a Microsoft 365 Copilot add-on licence per user. Nothing specific to this feature is published."
+  notes: "Connector licensing is set by the connectors prerequisites page: synced connectors need Microsoft 365 licences, and federated connectors need a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for every user who queries the federated source. Nothing specific to this feature is published."
 audiences: ["m365-admin","service-owner"]
 tags: ["copilot-connectors","m365-copilot","m365-admin-center","monitoring","extensibility"]
 sources:
@@ -84,29 +84,33 @@ controls:
       path: "Health > Service health > Customize > Email > Issues in your environment that require action"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector"
     api: null
-    note: "Select Microsoft 365 suite under Include these services so Copilot connector notices are included; up to two email addresses."
+    note: "Select Microsoft 365 suite under Include these services so Copilot connector notices are included; up to two email addresses. Service-health guidance also says to select Send me email notifications about service health on the Email tab."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-07-02T23:12:48"
 changes:
   - date: "2026-11-23"
     note: "New briefing on connector admin set-up guides, editing, error detail and failure alerts, launched on the roadmap with a June CY2026 target."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected federated-connector licensing to include Microsoft 365 E7, removed the claim that licensing is unchanged, dropped an uncontrolled checklist step and added the service-health email option."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 69
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "e1cdfdb0a7e7a8973b2af116097a453f"
+  claims: 77
+  confirmed: 74
+  unconfirmed: 2
+  contradicted: 1
+  attempts: 0
+  hash: "6daf17378c1fbeef7660a3d67c4a0fda"
 ---
 
 ## What's changing
@@ -149,7 +153,7 @@ The release notes say connector admins now have access, and the sources describe
 
 ## Cost and licensing
 
-Microsoft publishes no licence, meter or charge specific to this feature at the time of writing. Connector licensing comes from the connectors prerequisites page: the tenant must have Microsoft 365 licences, and indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licences. Federated connectors need a Microsoft 365 Copilot add-on licence for every user who queries the federated source, and are not supported with Copilot Studio licences or Microsoft 365 Copilot pay-as-you-go.
+Microsoft publishes no licence, meter or charge specific to this feature at the time of writing. Connector licensing comes from the connectors prerequisites page: the tenant must have Microsoft 365 licences, and indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licences. Federated connectors need a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for every user who queries the federated source, and are not supported with Copilot Studio licences or Microsoft 365 Copilot pay-as-you-go.
 
 The indirect costs are administrator time to read errors and edit connections, and any source-system load from a full crawl after an edit.
 
@@ -170,7 +174,7 @@ The people affected are administrators. To configure and deploy Copilot connecto
 ### At rollout
 
 - Open the Error tab of any connection that shows errors and match each code to the solution Learn gives.
-- Edit expired credentials from the connection page, and apply user mapping or schema edits to a limited audience first.
+- Edit expired credentials from the connection page.
 - Read the per-connector set-up page before you create a new connection.
 
 ### After rollout
@@ -188,7 +192,7 @@ The people affected are administrators. To configure and deploy Copilot connecto
 <tbody>
 <tr><td data-label="Control"><strong>Editing a published or draft connection's settings</strong><br><small class="controls__note">AI administrator role. The request body can set name, description and configuration only; the admin center edits more, for Microsoft-built connectors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection › Edit <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/external/connections/{connectionsId}</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Viewing and downloading connection errors</strong><br><small class="controls__note">Read-only. The admin center shows a limited set of errors; the script downloads the item errors for a connection ID, up to 5,000 errors per batch.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connection › Error <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>DownloadErrorScript.ps1</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Email notifications for failed connector crawls</strong><br><small>User</small><br><small class="controls__note">Select Microsoft 365 suite under Include these services so Copilot connector notices are included; up to two email addresses.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Health › Service health › Customize › Email › Issues in your environment that require action <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Email notifications for failed connector crawls</strong><br><small>User</small><br><small class="controls__note">Select Microsoft 365 suite under Include these services so Copilot connector notices are included; up to two email addresses. Service-health guidance also says to select Send me email notifications about service health on the Email tab.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Health › Service health › Customize › Email › Issues in your environment that require action <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -205,16 +209,17 @@ The error tab shows a limited set of errors in the admin center; the PowerShell 
 
 <!-- rationale
 risk: Low. These are admin-side tools for connections the tenant already runs; edits change connection settings only when an AI administrator makes them, and nothing new is exposed to users.
-cost: Low. The only cost the sources show is admin time; Microsoft publishes no charge specific to this feature, and connector licensing (Microsoft 365 licences, or a Copilot add-on for federated connectors) is unchanged.
+cost: Low. The only cost the sources show is admin time; Microsoft publishes no charge specific to this feature. The prerequisites page describes connector licensing (Microsoft 365 licences, or a Copilot add-on or Microsoft 365 E7 for federated connectors).
 impact: Low. Only administrators who deploy and maintain Copilot connectors see the new guides, edit options and alerts; end users see no change.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: Federated connectors require a Microsoft 365 Copilot add-on licence for every querying user. | Found: Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7). | Fix: Replace the federated-connector requirement in licensing.notes and Cost and licensing with 'Federated connectors require a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for every user who queries the federated source.' In rationale: cost, replace 'a Copilot add-on for federated connectors' with 'a Copilot add-on or Microsoft 365 E7 for federated connectors'. The qualification is in https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites#licensing. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
-- [unsupported, blocker] rationale: cost / licensing: Connector licensing is unchanged by this release. | Found: Searched: "502529" "licensing" "unchanged"; "Copilot connectors" "pre-setup" "license" "additional". Opened release-notes and connectors/prerequisites; they describe the release and current licensing but do not establish unchanged licensing across this release. | Fix: In rationale: cost, remove the assurance that licensing 'is unchanged'. After the existing statement that no feature-specific charge is published, use 'The prerequisites page describes connector licensing.' Keep the corrected current licence requirements, without asserting a historical comparison.
+- [unsupported, major] Risk assessment: Data exposure; rationale: risk / behaviour: The item adds no new data source or exposure to users. | Found: Searched: 502529 guides data users; Copilot connectors 502529 pre-setup guides editability actionable errors alerting admin enable switch default. Read roadmap, release-notes, manage-connector and deployment-overview; they describe admin improvements but do not state this exclusion. | Fix: Remove 'No new data source is added by this item; it changes how existing connections are managed' and 'nothing new is exposed to users' from the risk rationale. The remaining admin-tool and editability statements are supported.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls / admin-path: Connector failure emails are configured through Health > Service health > Customize > Email > Issues in your environment that require action. | Found: Go to the customize section on service health and open the email tab. Check the box for **Issues in your environment that require action**. | Fix: Keep the connector-specific path. Add to its note: 'The general service-health guidance also says to select Send me email notifications about service health on the Email tab.' That additional selection appears at the already-cited https://learn.microsoft.com/microsoft-365/enterprise/view-service-health and https://learn.microsoft.com/intune/governance/tenant-status, but not in the connector-specific steps. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist tells readers to configure is represented in the controls table. | Found: Checklist: 'apply user mapping or schema edits to a limited audience first.' Controls table: editing settings; viewing/downloading errors; email notifications. There is no limited-audience rollout control row. | Fix: The At rollout checklist's limited-audience instruction has no controls-table row. Remove 'and apply user mapping or schema edits to a limited audience first' from that checklist bullet, leaving 'Edit expired credentials from the connection page.' Do not add a control row as part of this correction.
+- [supported, minor] What's changing: Editing / behaviour: Published Microsoft-built ServiceNow connections support editing the query string. | Found: Edit a published connection | ... Query string (ServiceNow) | Fix: Keep the supported editability statement, and add: 'The connectors FAQ disagrees: it says editing a query string after publication is not supported and requires a new connection.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions#general-questions. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Connection editing is reached in the Microsoft 365 admin center through Copilot > Connectors > Your Connections > connection > Edit. | Found: Go to Copilot > Connectors > Your Connections. Select the connection that you want to modify. ... Edit a published connection ... Edit a draft connection. [error-responses: Select Edit to update the authentication credentials.] | Fix: Keep the route supported across the cited manage-connector and error-responses pages. Add: 'The description-editing guide gives a different route: Settings > Copilot > Connectors > connection > Edit description.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
+- [unsupported, minor] rationale: impact / behaviour: End users see no change from these improvements. | Found: Searched: 502529 guides data users; Copilot connectors 502529 pre-setup guides editability actionable errors alerting admin enable switch default. Read release-notes, manage-connector and deployment-overview; admin audiences are named, but no complete absence of end-user effects is stated. | Fix: Remove 'end users see no change' from the impact rationale. Replace the rationale with 'Low. Microsoft describes the new guides, edit options and alerts as tools for connector administrators.'
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells administrators to confirm AI administrator assignments, but no controls-table row covers role assignments. | Found: Confirm which administrators hold the AI administrator role ... Table rows: Editing a published or draft connection's settings; Viewing and downloading connection errors; Email notifications for failed connector crawls. | Fix: Remove the checklist bullet 'Confirm which administrators hold the AI administrator role, since that role manages connectors in the Microsoft 365 admin center.' The role prerequisite is already stated elsewhere; do not add a control row.
 -->

@@ -1,15 +1,15 @@
 ---
-title: "Microsoft Purview: permanently delete OneDrive and SharePoint files with Priority cleanup"
+title: "Microsoft Purview: permanently delete OneDrive and SharePoint files with Priority cleanup (Worldwide)"
 slug: "microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep"
 roadmapId: 558343
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Priority cleanup in Purview Data Lifecycle Management gains a Delete data permanently option for OneDrive and SharePoint files, bypassing recycle bins and holds after approval. Admin opt-in; no action is required."
+summary: "Priority cleanup in Purview Data Lifecycle Management gains a Delete data permanently option for OneDrive and SharePoint files, bypassing recycle bins and holds after approval. Worldwide item; admin opt-in, no action required."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "November CY2026"
+targetDate: "December CY2026"
 previewDate: "August CY2026"
 risk: "low"
 cost: "medium"
@@ -34,6 +34,9 @@ sources:
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
+  - title: "Security A5 addon plans"
+    url: "https://learn.microsoft.com/microsoft-365/education/guide/4-advanced/security/advanced-security-compliance-a5-addons"
+    kind: "learn"
   - title: "New-ComplianceTag"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancetag"
     kind: "learn"
@@ -46,11 +49,11 @@ sources:
   - title: "Search-UnifiedAuditLog"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog"
     kind: "learn"
-  - title: "MC1261587"
+  - title: "MC1261587: Microsoft Purview | Data Lifecycle Management - Hard delete OneDrive and SharePoint files with priority cleanup workflow"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1261587"
     kind: "message-center"
 videos: []
-related: ["purview-retention-last-accessed-sharepoint-onedrive","microsoft-purview-ediscovery-in-product-diagnostics-to-troubleshoot-common-challenges","microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl"]
+related: ["microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedr-us-government","purview-retention-last-accessed-sharepoint-onedrive","microsoft-purview-ediscovery-in-product-diagnostics-to-troubleshoot-common-challenges","microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl"]
 controls:
   - governs: "Creating a Priority cleanup policy with the permanent deletion option"
     scope: "tenant"
@@ -89,8 +92,8 @@ controls:
     note: "Copy the cleanup ID from the policy details, search the audit log with it, and check for the PriorityCleanupFileDeleted operation. Auditing must be enabled at least one day beforehand."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-20"
-roadmapModified: "2026-10-26T23:15:50"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-17"
     note: "New briefing: Priority cleanup gains a permanent deletion option for OneDrive and SharePoint, with approval, roles and audit controls."
@@ -106,19 +109,23 @@ changes:
     note: "Corrected the policy-creation, tenant-switch and approval admin paths, lowered the risk rating to low, and removed three checklist items that have no controls-table row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
-version: 3
+  - date: "2026-11-24"
+    note: "Dates updated: target moved to December CY2026 and MC1261587 (updated 23 November 2026) now gives early December 2026 for preview completion and GA start; added sibling roadmap items and the A5 add-on source."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
-  version: 3
+  status: "held"
+  date: "2026-11-24"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 90
+  claims: 92
+  confirmed: 91
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
-  hash: "10a1de6cc053eb563744209f3ac52ac0"
+  contradicted: 1
+  attempts: 1
+  hash: "536635155eedfd87bd787b2af35b0d61"
 ---
 
 ## What's changing
@@ -127,7 +134,9 @@ Microsoft Purview Data Lifecycle Management is adding a **Delete data permanentl
 
 An administrator creates the policy in the Microsoft Purview portal, chooses an adaptive or static scope, writes a query for the targeted files, and chooses whether to delete matched items as soon as possible or after a set time. Required approvers are assigned, the policy runs in simulation mode, and a second Priority Cleanup admin reviews the samples and turns it on. Approvers then approve disposal under Pending cleanups. Learn lists two limits: items already copied to an eDiscovery review set are not deleted by Priority cleanup, and priority cleanup cannot be used on items marked as a record or regulatory record.
 
-The roadmap record gives status In development, a preview date of August CY2026 and a target of November CY2026, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC1261587 (updated 26 October 2026) says public preview rollout begins mid-August 2026 and completes by end of November 2026, and that General Availability rollout begins end of November 2026 and completes by early January 2027. The Learn page for the option says public preview rollout begins on August 24, 2026. The notice sets no act-by date. These are Microsoft's targets, not commitments.
+The roadmap record gives status In development, a preview date of August CY2026 and a target of December CY2026, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC1261587 (updated 23 November 2026) says public preview rollout begins mid-August 2026 (previously mid-July) and is expected to complete by early December 2026 (previously end of November), and that General Availability rollout begins early December 2026 (previously end of November) and is expected to complete by mid-January 2027 (previously early January). The Learn page for the option says public preview rollout begins on August 24, 2026. The notice sets no act-by date. These are Microsoft's targets, not commitments.
+
+Microsoft lists the feature under three roadmap ids. This page covers 558343. Item 557188 is also Worldwide (Standard Multi-Tenant) on the web and is listed as Launched with a target of April CY2026. Item 561034 covers GCC, GCC High and DoD, is In development and has a target of January CY2027; it has its own briefing at /features/microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedr-us-government/.
 
 ## Why it matters
 
@@ -204,7 +213,7 @@ Learn documents no separate tenant switch for the permanent deletion option itse
 ## Open questions
 
 - Does the permanent deletion option carry a licence or price different from the Priority cleanup licences listed in the Purview service description? Watch the service description and the Learn page.
-- The roadmap record still says In development, while Learn and MC1261587 describe preview rollout from August 2026. When will General Availability reach tenants, given the notice's end-of-November 2026 start?
+- The roadmap record still says In development, while Learn and MC1261587 describe preview rollout from August 2026. When will General Availability reach tenants, given the notice's early December 2026 start and the roadmap's December CY2026 target?
 - Can the Priority cleanup tenant switch turn off permanent deletion alone, while leaving the standard recycle-bin workflow available?
 - Does the PriorityCleanup parameter on New-ComplianceTag, Set-RetentionCompliancePolicy and New-RetentionComplianceRule support creating permanent-deletion policies?
 - Does Microsoft document any recovery route for files after Priority cleanup permanently deletes them?
@@ -215,8 +224,10 @@ cost: Medium. Learn lists licences that give user rights to the Priority cleanup
 impact: Low. Microsoft's notice says user workflows do not change unless an admin configures and applies a priority cleanup policy, so the people who notice are Purview administrators and approvers.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Open questions: final bullet / absence: Whether Microsoft documents any recovery route after Priority cleanup permanent deletion remains an open question. | Found: In an exceptional scenario, customers can submit a support ticket to request recovery. Recovery is subject to Microsoft review and approval and is attempted only on a best-effort basis. Recovery isn't guaranteed. | Fix: Remove the final Open questions bullet: the cited Learn page already answers it. If retaining a replacement statement, use: 'Microsoft documents an exceptional support-ticket recovery request, subject to Microsoft review and approval, attempted only on a best-effort basis and not guaranteed; there is no customer-accessible recovery option.' Cite https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion#understand-permanent-deletion-and-recovery-limitations. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes / licensing: Information Protection and Governance is available as an add-on plan. | Found: # Security A5 addon plans ## Microsoft 365 A5 - Information Protection and Governance | Fix: Add https://learn.microsoft.com/microsoft-365/education/guide/4-advanced/security/advanced-security-compliance-a5-addons to sources to support the add-on classification; it identifies Microsoft 365 A5 Information Protection and Governance under Security A5 addon plans. | Source: https://learn.microsoft.com/microsoft-365/education/guide/4-advanced/security/advanced-security-compliance-a5-addons
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The policy-creation path follows Solutions, Data Lifecycle Management, Priority cleanup, creation, Static SharePoint/OneDrive policy and Delete data permanently. | Found: On the Choose what to do with the content page, select Delete data permanently. | Fix: The missing labels flagged by the pre-check are supported by the already-cited https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint. Include its query-page heading in controls[0].ui and the rendered row: 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Tell us what you're looking for > Choose what to do with the content > Delete data permanently'. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
 -->

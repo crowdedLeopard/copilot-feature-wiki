@@ -3,11 +3,11 @@
   "roadmapId": 560815,
   "title": "Microsoft Teams: download manager with improved visibility and control",
   "status": "held",
-  "date": "2026-11-23",
-  "version": 1,
+  "date": "2026-11-24",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-23",
     "reasons": [
-      "1 blocking finding (claim 35)"
+      "1 blocking finding (claim 42)"
     ]
   },
   "counts": {
-    "claims": 36,
-    "confirmed": 35,
-    "unconfirmed": 1,
-    "contradicted": 0,
+    "claims": 42,
+    "confirmed": 41,
+    "unconfirmed": 0,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
     "minor": 0
   },
-  "summary": "The roadmap details, product-level licensing and qualified documentation gaps are supported. However, the assertion that no spending cap or budget control applies goes beyond the evidence: finding no documented meter does not establish that financial controls are inapplicable.",
+  "summary": "Hold: the briefing incorrectly treats existing file-access controls as unconfirmed for this download experience. Microsoft documents that SharePoint Conditional Access also applies to Teams and can block file downloads in Teams clients. The roadmap details, product-level licensing and absence of a separate download-manager switch are otherwise supported.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing",
+      "where": "title; summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "The Teams download manager update makes file progress easier to track.",
+      "claim": "Microsoft Teams has updated its download manager to make file progress easier to track.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Download manager updates in Microsoft Teams make it easier to track file progress with improved visibility, control, and accessibility.",
@@ -43,64 +43,75 @@
     },
     {
       "n": 2,
-      "where": "title; What's changing",
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "The roadmap describes improved download visibility and control.",
+      "claim": "The download manager can now be opened from the title bar.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Download manager updates in Microsoft Teams make it easier to track file progress with improved visibility, control, and accessibility.",
+      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing",
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "The roadmap describes improved accessibility.",
+      "claim": "A keyboard shortcut can now open the download manager.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Download manager updates in Microsoft Teams make it easier to track file progress with improved visibility, control, and accessibility.",
+      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "People can now open the download manager from the title bar.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "People can open the download manager using a keyboard shortcut.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
       "claim": "Downloads can be viewed without blocking key chat and channel actions.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "view downloads without blocking key chat and channel actions.",
+      "quote": "and view downloads without blocking key chat and channel actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes improved download visibility.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with improved visibility, control, and accessibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes improved download control.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with improved visibility, control, and accessibility.",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes improved download accessibility.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with improved visibility, control, and accessibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: status; summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap lists the feature as Launched.",
+      "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
@@ -108,7 +119,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is June CY2026.",
@@ -119,10 +130,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phases are General Availability and Targeted Release.",
+      "claim": "The listed release phases are General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -130,8 +152,8 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: platforms; summary; What's changing; Scope; rationale: impact",
+      "n": 12,
+      "where": "front matter: platforms; summary; What's changing; Risk assessment; Scope",
       "type": "record",
       "claim": "The roadmap lists Desktop and Mac as the platforms.",
       "status": "supported",
@@ -141,7 +163,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -152,18 +174,7 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
+      "n": 14,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-08-19T22:58:06.",
@@ -174,21 +185,76 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: defaultState; Why it matters; Scope; Open questions; rationale: impact",
-      "type": "default",
-      "claim": "The download manager's default state on arrival is not stated.",
+      "n": 15,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this download-manager update at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Microsoft Teams download manager rollout enabled automatically default staged release'; read roadmap, Teams service description, settings and policies reference and Set-CsTeamsClientConfiguration. No feature-specific default found.",
+      "quote": "Searched: \"Teams\" \"download manager\"; Microsoft Teams download manager title bar keyboard shortcut downloads default rollout admin policy licensing meter. Read Learn search excerpts and cited service, policy and client-configuration references; none describes this update.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: licensing.model and licensing.notes",
+      "n": 16,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not document the download manager's title-bar button.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams download manager keyboard shortcut title bar progress accessibility controls. Read returned accessibility and client excerpts and searched the settings reference for title bar and download; no manager-button documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "absence",
+      "claim": "Learn does not publish the shortcut keys for opening the download manager.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams download manager keyboard shortcut title bar progress accessibility controls. Read accessibility excerpts; also fetched support.microsoft.com/office/2e8e2a70-e8d8-4a19-949b-4c36dd5292d2 and searched download/title bar; only diagnostic-log downloads appeared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "Learn does not document the new manager's layout or the controls it offers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"download manager\"; Microsoft Teams download manager keyboard shortcut title bar progress accessibility controls. Read search excerpts and searched settings-policies-reference for download manager/download; no manager layout or offered controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "The download manager's arrival default is unknown: Microsoft has not stated whether it is on for every user.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"download manager\" default automatically rollout. Read roadmap and Learn results, including general Teams client-update guidance; no feature-specific default. General background client updates do not state this manager's enablement default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified how rollout of this manager is staged.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"download manager\" default automatically rollout. Read roadmap and returned client-update and upgrade-configuration excerpts; no manager-specific rollout stages beyond the roadmap's named release phases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The download manager is included under the licensing of the Teams product it belongs to.",
+      "claim": "The download-manager interface option uses the included Teams product-level licensing model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
       "quote": "All supported subscription plans are eligible for access to the Teams web client, desktop clients, and mobile apps. Teams is available as part of qualifying Microsoft 365 offerings and as a standalone SKU.",
@@ -196,21 +262,32 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 22,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Teams is available as part of qualifying Microsoft 365 offerings and as a standalone SKU.",
+      "claim": "Teams is available as part of qualifying Microsoft 365 offerings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
-      "quote": "Teams is available as part of qualifying Microsoft 365 offerings and as a standalone SKU.",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams is available as a standalone SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "All supported subscription plans are eligible for Teams web, desktop and mobile clients.",
+      "claim": "All supported Teams subscription plans allow access to its web client, desktop clients and mobile apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
       "quote": "All supported subscription plans are eligible for access to the Teams web client, desktop clients, and mobile apps.",
@@ -218,117 +295,84 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No licence specific to the download manager is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Teams\" \"download manager\" licensing price meter'; opened Teams service description, including Available plans and Feature availability. No download-manager-specific licence found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: licensing.notes",
-      "type": "absence",
-      "claim": "No price specific to the download manager is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Teams\" \"download manager\" licensing price meter'; opened Teams service description. No download-manager-specific price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to the download manager is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Teams\" \"download manager\" licensing price meter' and 'Microsoft Teams download manager spending cap budget control meter'; opened Teams service description. No meter for this feature found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[0] (ui and api); summary; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No tenant admin UI or automation switch for the download manager is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Teams download manager tenant switch PowerShell admin center disable'; opened and checked Teams settings and policies reference and Set-CsTeamsClientConfiguration for download/manager settings. No switch for this manager found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not describe the updated download manager's title bar button or offered controls.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Teams\" \"download manager\"' and 'Microsoft Teams download manager shortcut title bar file progress'; opened Teams service description, settings and policies reference and Set-CsTeamsClientConfiguration. No feature description found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Open questions",
-      "type": "absence",
-      "claim": "The download manager's shortcut keys are not documented on Microsoft Learn.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Teams download manager shortcut title bar file progress' and '\"Teams\" \"download manager\" policy disable default keyboard shortcut'; opened Teams service description. No download-manager shortcut keys found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented how this download manager rollout is staged.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Teams download manager rollout enabled automatically default staged release'; read roadmap and Teams service description. Results concern general Teams updates or unrelated staged rollouts, not staging of this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 25,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not name a licence for the download manager.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the download manager is published as of November 2026.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Download manager updates in Microsoft Teams make it easier to track file progress with improved visibility, control, and accessibility.",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"download manager\" license pricing meter. Opened Teams service description and read returned pricing/licensing excerpts; product-level Teams licensing is stated, but no licence specific to the manager.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not name a required role for the download manager.",
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "No price specific to the download manager is published as of November 2026.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"download manager\" license pricing meter. Opened Teams service description and read pricing-and-offers excerpts returned by Learn; no manager-specific price.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not name a prerequisite for the download manager.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to the download manager is published as of November 2026.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"download manager\" license pricing meter; Microsoft Teams download manager title bar keyboard shortcut downloads default rollout admin policy licensing meter. Opened service description and read returned pricing excerpts; none meters this manager.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Teams service description does not list the download manager.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"download manager\" license pricing meter. Opened and read learn.microsoft.com/office365/servicedescriptions/teams-service-description in full; its feature table and licensing sections do not name the download manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].ui and .api; summary; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "Neither an admin UI nor an automation operation is documented for a separate tenant switch for the Teams download manager.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams download manager tenant disable admin setting PowerShell Set-CsTeamsClientConfiguration Microsoft Graph. Read returned references, opened settings-policies-reference and Set-CsTeamsClientConfiguration; no separate manager switch on either surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The Teams settings and policies reference lists no download-manager setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams download manager tenant disable admin setting PowerShell Set-CsTeamsClientConfiguration Microsoft Graph. Opened settings-policies-reference and searched download manager/download/title bar; matches concern Teams installation and channel recordings, not this manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Set-CsTeamsClientConfiguration documents no download-manager control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams download manager tenant disable admin setting PowerShell Set-CsTeamsClientConfiguration Microsoft Graph. Opened learn.microsoft.com/powershell/module/microsoftteams/set-csteamsclientconfiguration and read its syntax and all parameters; no manager parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
       "claim": "The roadmap describes no new data access.",
@@ -339,21 +383,32 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Nothing in the roadmap states a change to file-access controls or which files a user can reach.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The roadmap describes no change to sign-in.",
+      "claim": "The roadmap describes no sign-in change.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
+      "quote": "Download manager updates in Microsoft Teams make it easier to track file progress with improved visibility, control, and accessibility.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 35,
       "where": "Risk assessment: Security & identity; rationale: risk",
       "type": "record",
-      "claim": "The roadmap describes no change to permissions.",
+      "claim": "The roadmap describes no permission change.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
@@ -361,7 +416,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "The roadmap describes no change to roles.",
@@ -372,32 +427,21 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 37,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "record",
-      "claim": "The roadmap describes no autonomous behaviour.",
+      "claim": "The roadmap describes people opening the manager rather than autonomous behaviour.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
+      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Nothing in the roadmap states a change to existing SharePoint or OneDrive file-access controls.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Download manager updates in Microsoft Teams make it easier to track file progress with improved visibility, control, and accessibility.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 38,
       "where": "Risk assessment: Change & support; Open questions",
       "type": "record",
-      "claim": "The roadmap does not say whether this manager applies to web or mobile.",
+      "claim": "The roadmap does not state that this manager is available on web or mobile.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
@@ -405,30 +449,52 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Cost and licensing: final sentence",
-      "type": "cost",
-      "claim": "No cap or budget control applies because no meter is documented for this feature.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Teams download manager spending cap budget control meter' and '\"Teams\" \"download manager\" licensing price meter'; opened Teams service description. No passage establishes that caps or budget controls are inapplicable.",
-      "severity": "blocker",
-      "fix": "Remove the sentence 'No cap or budget control applies, because no meter is documented for this feature.' Retain the preceding qualified statement that no licence or meter specific to the download manager is published."
-    },
-    {
-      "n": 36,
-      "where": "Governance controls: final paragraph",
-      "type": "absence",
-      "claim": "Microsoft has not said that file-access or download restrictions configure the download manager itself.",
+      "n": 39,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not name a licence for the download manager.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Teams download manager SharePoint OneDrive file access controls policies'; read block-download policy excerpts for SharePoint sites and Teams recordings, plus Teams policy references. They govern file access, not this manager's interface.",
+      "source": "roadmap record",
+      "quote": "Download manager updates in Microsoft Teams make it easier to track file progress with improved visibility, control, and accessibility.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not name an administrator role for the download manager.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not give a prerequisite for the download manager.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now open the manager from the title bar or by using a keyboard shortcut, and view downloads without blocking key chat and channel actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "Microsoft has not said that any existing controls over which files people can reach or download govern the download manager.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/block-access-sharepoint",
+      "quote": "Applying any Conditional Access (CA) policy on SharePoint in Microsoft 365 is also applied to Teams.",
+      "severity": "blocker",
+      "fix": "Remove the final paragraph of Governance controls beginning 'The table does not list controls over which files people can reach or download'. Microsoft documents file-access and download restrictions for Teams clients at https://learn.microsoft.com/microsoftteams/block-access-sharepoint; the separate manager-switch absence can remain."
     }
   ],
   "precheck": {
-    "at": "2026-11-23T20:02:42.068Z",
+    "at": "2026-11-24T01:19:59.573Z",
     "summary": {
       "links": 4,
       "unreachable": 0,
@@ -463,5 +529,12 @@
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

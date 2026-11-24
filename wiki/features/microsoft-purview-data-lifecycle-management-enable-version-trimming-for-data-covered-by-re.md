@@ -10,7 +10,7 @@ releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "January CY2027"
-previewDate: "November CY2026"
+previewDate: "December CY2026"
 risk: "low"
 cost: "low"
 impact: "low"
@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "For retention policies that do not use adaptive policy scopes, the licences listed in the Microsoft Purview service description provide user rights, with SharePoint Plan 2 also listed for SharePoint and OneDrive locations. A licence or meter specific to this setting is not yet published."
+  notes: "For organisation-wide, location-wide or include/exclude retention policies, the licences in the Microsoft Purview service description provide user rights, with SharePoint Plan 2 also listed for SharePoint or OneDrive for Business locations. A licence or meter specific to this setting is not yet published."
 audiences: ["compliance","m365-admin","service-owner"]
 tags: ["purview","data-lifecycle-management","retention","sharepoint","onedrive","governance","powershell","version-history"]
 sources:
@@ -36,12 +36,6 @@ sources:
     kind: "learn"
   - title: "Set default organization version limits for new document libraries and OneDrive accounts"
     url: "https://learn.microsoft.com/sharepoint/set-default-org-version-limits"
-    kind: "learn"
-  - title: "Set-SPOTenant"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps"
-    kind: "learn"
-  - title: "Set-RetentionCompliancePolicy"
-    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy"
     kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
@@ -75,8 +69,8 @@ controls:
     note: "Preview. Requires a SharePoint Advanced Management or Copilot licence. Versions under a retention policy or eDiscovery hold get an expiration date instead of being deleted."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
-roadmapModified: "2026-11-05T23:59:28"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-20"
     note: "First briefing: planned Purview setting to permit version trimming under retention, with today's version-limit and trim controls."
@@ -86,19 +80,23 @@ changes:
     note: "Correction: narrowed the retention licence statement to policies without adaptive scopes, removed the audit-log checklist step and extended the version-limits path to Automatically."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Preview target moved from November to December CY2026 in the roadmap record; Learn still does not describe the setting, and the version-limit and trim controls were re-checked."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 3
 verification:
-  status: "verified"
-  date: "2026-11-20"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 62
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "c6e7ad4dd0781a9451f214ae537c07cf"
+  hash: "be96092c1d07a53b2b808c004f0b9803"
 ---
 
 ## What's changing
@@ -107,11 +105,11 @@ The roadmap item describes a setting in Microsoft Purview Data Lifecycle Managem
 
 Microsoft Learn does not describe this setting yet (at the time of writing, November 2026), so what follows about its behaviour is the roadmap's description. Learn does document today's behaviour: for items under a retention policy or an eDiscovery hold, the document library's version limits are ignored until the retention period is reached or the hold is released.
 
-The record lists the status as In development, with a preview targeted for November CY2026 and general availability targeted for January CY2027. Release phases are General Availability and Preview, the cloud is Worldwide (Standard Multi-Tenant) and the platform is Web. These are Microsoft's targets, not commitments.
+The record lists the status as In development, with a preview targeted for December CY2026 and general availability targeted for January CY2027. Release phases are General Availability and Preview, the cloud is Worldwide (Standard Multi-Tenant) and the platform is Web. These are Microsoft's targets, not commitments.
 
 ## Why it matters
 
-Retained file versions are a storage cost that existing version limits cannot reduce. Microsoft Learn says that for content under a retention policy, old versions are not automatically purged and users are prevented from deleting them. This setting is Microsoft's planned route to reclaiming that storage without removing the retention policy.
+Retained file versions are a storage cost that existing version limits do not reduce for retained content. Microsoft Learn says that for content under a retention policy, the library's version limits are ignored, old versions are not automatically purged and users are prevented from deleting them. The roadmap presents this setting as a way to reclaim that storage without removing the retention policy.
 
 The roadmap wording suggests an administrator turns the setting on, so we expect nothing to change for retained content until someone does; Microsoft has not published the default in Learn. The decision to take is whether the storage saved is worth permitting permanent deletion of versions that a retention policy would otherwise keep.
 
@@ -132,9 +130,9 @@ The roadmap wording suggests an administrator turns the setting on, so we expect
 
 ## Cost and licensing
 
-**Licence.** For retention policies that do not use adaptive policy scopes, the Microsoft Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium among the licences providing user rights, with SharePoint Plan 2 also listed for SharePoint or OneDrive for Business locations. This setting is described as scoped to a retention policy, so that is the closest published licensing statement. A licence or meter specific to this setting is not yet published.
+**Licence.** For organisation-wide, location-wide or include/exclude retention policies, the Microsoft Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium among the licences providing user rights, with SharePoint Plan 2 also listed where the retention policy location is SharePoint or OneDrive for Business. This setting is described as scoped to a retention policy, so that is the closest published licensing statement. A licence specific to this setting is not yet published.
 
-**Meter.** The roadmap and the pages read name no meter for this setting.
+**Meter.** The roadmap names no meter for this setting, and Microsoft Learn documents none for it at the time of writing (November 2026).
 
 **Related requirement.** Tenant-level trimming of existing versions, currently in public preview, requires a SharePoint Advanced Management licence or Copilot licence. Learn states that for that trimming feature; it does not say whether it applies to this setting.
 
@@ -145,7 +143,7 @@ The roadmap wording suggests an administrator turns the setting on, so we expect
 - **Workloads:** OneDrive and SharePoint content covered by retention policies, per the roadmap title and description.
 - **Cloud and platform:** Worldwide (Standard Multi-Tenant) and Web, as the roadmap record lists them. No other cloud is listed on the record; that is not a statement that it is unavailable.
 - **Roles:** The roadmap says "appropriate Purview RBAC". The specific role is not yet documented.
-- **Rollout:** Preview targeted for November CY2026 and general availability targeted for January CY2027. No Message Center post was supplied for this item.
+- **Rollout:** Preview targeted for December CY2026 and general availability targeted for January CY2027. No Message Center post was supplied for this item.
 - **Policy scope:** The roadmap calls it policy-scoped. Which policy types and which locations it attaches to are not yet documented.
 
 ## Governance guidance
@@ -177,9 +175,9 @@ The roadmap wording suggests an administrator turns the setting on, so we expect
 </tbody>
 </table>
 
-The first row is the control this briefing is about, and Microsoft Learn documents neither an admin path nor a call for it at the time of writing (November 2026). The other two rows are today's controls. They do not override retention: Learn says version limits are ignored for items under a retention policy, and a trim job stamps an expiration date on such versions instead of deleting them.
+The first row is the control this briefing is about, and Microsoft Learn documents neither an admin path nor a call for it at the time of writing (November 2026). The other two rows are today's controls. They do not override retention: Learn says version limits are ignored for items under a retention policy, and a trim job stamps an expiration date on such versions instead of deleting it.
 
-Organisation-level limits apply only to new libraries and new OneDrive accounts, and do not trim existing versions. Changing the limit requires an account with SharePoint administrator permissions; Set-SPOTenant needs the SharePoint Online administrator role. Tenant-level trimming is in public preview, allows one job per tenant at a time, and excludes read-only, locked and archived sites and sites with broken version policy inheritance. Its trim jobs permanently delete versions.
+Organisation-level limits apply only to new libraries and new OneDrive accounts, and do not trim existing versions. Learn says global and SharePoint admins in Microsoft 365 can set them at the organisation level, and that a SharePoint Administrator can queue trim jobs. Tenant-level trimming is in public preview, allows one job per tenant at a time, and excludes read-only, locked and archived sites and sites with broken version policy inheritance. Its trim jobs permanently delete versions.
 
 ## Open questions
 
@@ -191,6 +189,13 @@ Organisation-level limits apply only to new libraries and new OneDrive accounts,
 
 <!-- rationale
 risk: Low. Left at its default, today's behaviour continues: Microsoft Learn says version limits are ignored for items under a retention policy. The risk sits in enabling it, because trimmed versions are permanently deleted.
-cost: Low. The only costs the sources show are admin time and a possible storage saving. Microsoft has not published a separate licence or meter for this setting; retention policies without adaptive scopes are covered by the licences in the Purview service description.
+cost: Low. The only costs the sources show are admin time and a possible storage saving. Microsoft has not published a separate licence or meter for this setting; the Purview service description lists the licences that provide retention policy user rights.
 impact: Low. Compliance and SharePoint administrators configure it. Users would notice only if an older version they expected to restore had been trimmed.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].api; Governance controls table / command: New-SPOTenantApplyFileVersionPolicyJob -TrimVersions queues tenant-level trimming of existing versions using the current tenant policy. | Found: Trim existing versions using current tenant policy | New-SPOTenantApplyFileVersionPolicyJob -TrimVersions | Fix: Keep the call. Add to Governance controls: 'The organization-defaults page still says organization-level trimming is not supported, while the Trim existing versions page documents it in public preview.' Cite https://learn.microsoft.com/sharepoint/set-default-org-version-limits and https://learn.microsoft.com/sharepoint/trim-versions for those respective statements. | Source: https://learn.microsoft.com/sharepoint/trim-versions
+- [supported, minor] controls[2].governs; Cost and licensing: Indirect costs / applicability: Tenant-level operations provide broad existing-version trimming and what-if analysis across eligible SharePoint and OneDrive content. | Found: The what-if analysis returns impact data for both SharePoint sites and OneDrive accounts. If your tenant is Multi-Geo, run the what-if analysis and version trimming separately for each geo location. | Fix: Add to controls[2].note and its rendered table note: 'For Multi-Geo tenants, run what-if analysis and version trimming separately for each geo location.' This qualification is documented at https://learn.microsoft.com/sharepoint/trim-versions. | Source: https://learn.microsoft.com/sharepoint/trim-versions
 -->

@@ -34,6 +34,12 @@ sources:
   - title: "Search the audit log"
     url: "https://learn.microsoft.com/purview/audit-search"
     kind: "learn"
+  - title: "Get started with sensitivity labels"
+    url: "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels"
+    kind: "learn"
+  - title: "Configure usage rights for the Azure Rights Management service"
+    url: "https://learn.microsoft.com/purview/rights-management-usage-rights"
+    kind: "learn"
   - title: "Data Sources - Create Or Update"
     url: "https://learn.microsoft.com/rest/api/searchservice/data-sources/create-or-update?view=rest-searchservice-2026-11-01-preview"
     kind: "docs"
@@ -61,7 +67,7 @@ controls:
       kind: "rest"
       call: "PUT {endpoint}/datasources('{dataSourceName}')?api-version=2026-11-01-preview"
       docs: "https://learn.microsoft.com/rest/api/searchservice/data-sources/create-or-update?view=rest-searchservice-2026-11-01-preview"
-    note: "The request body adds sensitivityLabel to indexerPermissionOptions. Preview API."
+    note: "The request body adds sensitivityLabel to indexerPermissionOptions. Preview API. The indexer setup article documents the sensitivityLabel value; the 2026-11-01-preview REST reference's IndexerPermissionOption enumeration does not list it."
   - governs: "Which Purview roles the search service's managed identity holds"
     scope: "app"
     ui: null
@@ -83,26 +89,30 @@ controls:
     note: "Needs the Audit Logs or View-Only Audit Logs role. Filter by the Foundry IQ record type to find elevated read entries."
 confidence: "high"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-24"
 roadmapModified: "2026-06-25T23:15:45"
 changes:
   - date: "2026-11-23"
     note: "New briefing: Learn documents label ingestion and query-time enforcement for Azure AI Search (Foundry IQ) as Public Preview, while the roadmap item is In development."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after verification: qualified the missing-header behaviour, removed an unsupported claim about index access rules, reworded the configuration methods, and trimmed checklist steps with no controls row."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 85 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 68
-  unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "e0bd0af8b45ac181bb8f18eb918a37e3"
+  claims: 85
+  confirmed: 84
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "8738a30e113dcc6058b73faa191f6ea1"
 ---
 
 ## What's changing
@@ -117,7 +127,7 @@ The roadmap record lists the item as In development, with a preview date of Nove
 
 ## Why it matters
 
-This is a control for oversharing in AI search. Without label-aware indexing, a search index built over labelled files is a second copy of the content whose access rules are whatever the application builds. With it, the service applies Purview label rights at query time, so an agent grounded on the index should receive only what the signed-in user could retrieve.
+This is a control for oversharing in AI search. Without label-aware indexing, a search index built over labelled files is a second copy of the content. With it, the service applies Purview label rights at query time, so an agent grounded on the index should receive only what the signed-in user could retrieve.
 
 Nothing in the sources says existing indexes change: the feature needs a new index, a data source option and privileged role grants, so it takes effect only where someone sets it up. The trade-off is a new highly privileged identity and a dependency on Purview availability, which a security or compliance owner should approve rather than leave to a search developer.
 
@@ -133,10 +143,10 @@ Nothing in the sources says existing indexes change: the feature needs a new ind
 - Only the service's system-assigned managed identity is supported; user-assigned identities are not. A Global Administrator or Privileged Role Administrator must grant the roles.
 - The service and the querying user must be in the same Microsoft Entra tenant; guests and cross-tenant queries are not supported.
 - Purview-enabled indexes do not accept API-key document operations, so callers must use Azure RBAC and pass the user token.
-- A call without the user-identity header, from an application with the Search Index Data Reader role, succeeds and returns only unlabelled documents.
+- When Foundry IQ cannot reach Microsoft Purview, a non-elevated call without x-ms-query-source-authorization from an application with at least Search Index Data Reader succeeds with unlabelled-only results. Microsoft documents this degraded path only for non-user-facing workflows, not end-user search.
 
 **Autonomy & actions**
-- The roadmap item targets agentic RAG. Where an agent queries without passing the user's token, it receives only unlabelled documents; where Purview cannot be reached, label-enforced requests fail with a 5xx error rather than returning unfiltered results.
+- The roadmap item targets agentic RAG. Where Foundry IQ cannot evaluate label policies, label-enforced requests fail with a 5xx error rather than returning unfiltered results. An agent that serves end users should pass the user token, because Microsoft documents the unlabelled-only degraded path only for non-user-facing workflows.
 
 **Change & support**
 - The feature is preview; the Learn pages state preview terms apply. Plan for API changes.
@@ -148,7 +158,7 @@ Learn's [cost page](https://learn.microsoft.com/azure/search/search-sku-manage-c
 
 The cost page's premium-feature table has no line for sensitivity labels, and a separate charge or licence for label ingestion is not yet published. Eligible paid Serverless services incur Compute Unit usage for indexer execution, and resetting an indexer to backfill labels reprocesses all source documents, so budget for that run.
 
-Which Purview or Microsoft 365 licence a tenant needs for label-aware search is not yet published on the feature pages; the sensitivity label licence rules sit with Purview, so check them before budgeting.
+Which Purview or Microsoft 365 licence a tenant needs for label-aware search is not yet published on the feature pages; the sensitivity label licence rules sit with Purview, which documents [licensing and billing requirements for sensitivity labels](https://learn.microsoft.com/purview/get-started-with-sensitivity-labels#licensing-and-billing-requirements-for-sensitivity-labels), so check them before budgeting.
 
 ## Scope
 
@@ -164,18 +174,14 @@ Which Purview or Microsoft 365 licence a tenant needs for label-aware search is 
 
 ### Before rollout
 - Agree the Content.SuperUser and UnifiedPolicy.Tenant.Read grant with the security and compliance owners; Learn asks for governance approval first.
-- Decide which Purview labels must restrict content, and apply them to source documents before indexing.
 - Plan a new index created with purviewEnabled set to true, because an existing index cannot be converted.
 
 ### At rollout
 - Grant the two roles to the service's system-assigned managed identity only, using a Global Administrator or Privileged Role Administrator.
 - Add sensitivityLabel to the data source's indexerPermissionOptions, keeping any options already set.
-- Reset and run the indexer to backfill existing files, then check Get Indexer Status for errors before relying on results.
 
 ### After rollout
 - Search the Microsoft Purview audit log for the Foundry IQ record type to review elevated read activity.
-- Schedule the indexer so label changes reach the index, and test with a known labelled document and an unauthorised user.
-- Verify that agents pass the user token and do not rely on the unlabelled-only fallback.
 
 ## Governance controls
 
@@ -185,13 +191,13 @@ Which Purview or Microsoft 365 licence a tenant needs for label-aware search is 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether an index enforces Purview sensitivity labels</strong><br><small class="controls__note">The request body sets purviewEnabled; it must be true when the index is created and cannot be changed later. Preview API.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>REST API</strong><br><code>PUT {endpoint}/indexes('{indexName}')?api-version=2026-11-01-preview</code> <a href="https://learn.microsoft.com/rest/api/searchservice/indexes/create-or-update?view=rest-searchservice-2026-11-01-preview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the indexer extracts sensitivity labels from a data source</strong><br><small class="controls__note">The request body adds sensitivityLabel to indexerPermissionOptions. Preview API.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>REST API</strong><br><code>PUT {endpoint}/datasources('{dataSourceName}')?api-version=2026-11-01-preview</code> <a href="https://learn.microsoft.com/rest/api/searchservice/data-sources/create-or-update?view=rest-searchservice-2026-11-01-preview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the indexer extracts sensitivity labels from a data source</strong><br><small class="controls__note">The request body adds sensitivityLabel to indexerPermissionOptions. Preview API. The indexer setup article documents the sensitivityLabel value; the 2026-11-01-preview REST reference's IndexerPermissionOption enumeration does not list it.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>REST API</strong><br><code>PUT {endpoint}/datasources('{dataSourceName}')?api-version=2026-11-01-preview</code> <a href="https://learn.microsoft.com/rest/api/searchservice/data-sources/create-or-update?view=rest-searchservice-2026-11-01-preview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Purview roles the search service's managed identity holds</strong><br><small>App</small><br><small class="controls__note">Run by a Global Administrator or Privileged Role Administrator. Grants Content.SuperUser and UnifiedPolicy.Tenant.Read to the system-assigned identity only.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-EntraServicePrincipalAppRoleAssignment -ServicePrincipalId &lt;managed-identity-object-id&gt; -PrincipalId &lt;managed-identity-object-id&gt; -ResourceId &lt;resource-service-principal-id&gt; -Id &lt;app-role-id&gt;</code> <a href="https://learn.microsoft.com/azure/search/search-indexer-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Review of elevated-read and label-related activity in the audit log</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs or View-Only Audit Logs role. Filter by the Foundry IQ record type to find elevated read entries.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The configuration is documented through REST and PowerShell only; the Azure portal does not support the feature. Label rights themselves (the READ or EXTRACT usage rights a label grants) are set on the sensitivity label in Purview and are not set by any row above.
+The index and data-source configuration uses REST or an equivalent preview SDK, while the documented role grants use PowerShell; the Azure portal does not support the feature. Label rights themselves (the READ or EXTRACT usage rights a label grants) are set on the sensitivity label in Purview, as [usage rights are selected when you configure sensitivity labels](https://learn.microsoft.com/purview/rights-management-usage-rights), and are not set by any row above.
 
 The two Learn pages differ on wording: the indexer article says users with the READ usage right can retrieve documents, while the query article says documents are excluded unless the user has EXTRACT permission. Check both against your labels.
 
@@ -202,7 +208,7 @@ Elevated read needs the Search Index Data Contributor role and writes a Purview 
 - Which Purview or Microsoft 365 licence does a tenant need for label-aware Azure AI Search, and is any charge specific to label ingestion planned? Watch the Foundry IQ cost page and Purview licensing pages.
 - When will the feature reach general availability, given the roadmap target of October CY2026 and status In development, while Learn labels it Public Preview? Watch the roadmap item and Message center.
 - Does query-time enforcement require the READ or the EXTRACT usage right? The indexer and query articles word it differently.
-- Will the Azure portal or an admin centre gain a setting for this, or will configuration stay REST and PowerShell only?
+- Will the Azure portal or an admin centre gain a setting for this, or will configuration stay API, SDK and PowerShell based?
 
 <!-- rationale
 risk: Medium. Enforcement needs a Purview-enabled index and a managed identity holding the highly privileged Content.SuperUser role, and labels are only as current as the last indexer run.
@@ -210,15 +216,10 @@ cost: Variable. The feature runs on a Foundry IQ (Azure AI Search) service bille
 impact: Low. The people who set it up are search administrators and developers; searchers see only results their label rights allow.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Autonomy & actions / behaviour: Omitting the user-identity header normally succeeds with unlabelled-only results when the application has Search Index Data Reader. | Found: 400 Bad Request Microsoft Purview rejected the request because the x-ms-query-source-authorization header is absent, malformed, or the tenant isn't onboarded to Microsoft Purview Information Protection. | Fix: Replace both unqualified statements with: 'When Foundry IQ cannot reach Microsoft Purview, a non-elevated call without x-ms-query-source-authorization from an application with at least Search Index Data Reader succeeds with unlabelled-only results. Microsoft documents this degraded path only for non-user-facing workflows, not end-user search.' The same article documents a missing header among possible 400 errors; do not promise normal success without it. | Source: https://learn.microsoft.com/azure/search/search-query-sensitivity-labels
-- [contradicted, blocker] Why it matters: Without label-aware indexing / behaviour: Without label-aware indexing, access rules for indexed content are whatever the application builds. | Found: SharePoint ACL ingestion and query-time permission filtering, ADLS Gen2 ACL/RBAC, and standard Blob container RBAC are generally available with the 2026-10-01 data plane REST API. Push ACL ingestion is also generally available. | Fix: Remove 'whose access rules are whatever the application builds'. The remaining sentence about an index being a second copy of the content can stay; do not imply that sensitivity labels are the only native document-access mechanism. | Source: https://learn.microsoft.com/azure/search/search-document-level-access-overview
-- [contradicted, blocker] Governance controls: The configuration is documented through REST and PowerShell only / absence: REST and PowerShell are the only documented configuration methods. | Found: Use REST API version 2026-11-01-preview or an equivalent preview SDK package. | Fix: Replace the sentence with: 'The index and data-source configuration uses REST or an equivalent preview SDK, while the documented role grants use PowerShell; the Azure portal does not support the feature.' In Open questions, replace 'REST and PowerShell only' with 'API, SDK and PowerShell based'. | Source: https://learn.microsoft.com/azure/search/search-indexer-sensitivity-labels
+- [unsupported, major] title / behaviour: Azure AI Search enforces sensitivity labels at indexing time as well as query time. | Found: Searched: Azure AI Search Purview sensitivity labels enforce user access rights at indexing time not query time. Read indexer How policy enforcement works and query enforcement: indexing extracts content and label metadata; no indexing-time access enforcement is stated. | Fix: Replace the title with "Azure AI Search: ingest Microsoft Purview sensitivity labels and enforce them at query time".
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: sensitivity label licence rules / licensing: General sensitivity-label licensing requirements are documented by Purview. | Found: A number of different per-user subscriptions support sensitivity labels for Microsoft 365 apps and services, and the licensing requirements for users depend on the features you use. Admins also need a license to manage sensitivity labels. | Fix: Cite https://learn.microsoft.com/purview/get-started-with-sensitivity-labels#licensing-and-billing-requirements-for-sensitivity-labels for the sentence about Purview's sensitivity-label licence rules and add that URL to sources. | Source: https://learn.microsoft.com/purview/get-started-with-sensitivity-labels
-- [supported, minor] controls[1].api; controls[1].note; Governance controls table / command: PUT {endpoint}/datasources('{dataSourceName}')?api-version=2026-11-01-preview sets indexerPermissionOptions for sensitivity-label extraction. | Found: PUT {endpoint}/datasources('{dataSourceName}')?api-version=2026-11-01-preview indexerPermissionOptions | IndexerPermissionOption[] | Ingestion options with various types of permission data. | Fix: Keep the call and property. Append to the note: 'The indexer setup article documents the sensitivityLabel value, although the 2026-11-01-preview REST reference's IndexerPermissionOption enumeration does not list it.' Both pages are already cited. | Source: https://learn.microsoft.com/rest/api/searchservice/data-sources/create-or-update?view=rest-searchservice-2026-11-01-preview
-- [supported, minor] Governance controls: Label rights themselves / behaviour: Usage rights are configured on sensitivity labels in Purview, not by the listed Search index and identity operations. | Found: Usage rights are selected when you configure sensitivity labels or rights management templates for encryption. For example, you can select roles that configure a logical grouping of usage rights, or configure the individual rights separately. | Fix: Cite https://learn.microsoft.com/purview/rights-management-usage-rights for the sentence about configuring label usage rights and add it to sources. | Source: https://learn.microsoft.com/purview/rights-management-usage-rights
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist asks readers to configure or check controls that have no matching table row. | Found: Checklist: 'Decide which Purview labels must restrict content'; 'Reset and run the indexer'; 'Schedule the indexer'; 'Verify that agents pass the user token'. Table rows cover only index enforcement, extraction, managed-identity roles and audit review. | Fix: Limit the checklist to the controls already represented in the table: its label configuration, indexer reset/run/status, scheduling and query-token checks have no matching rows. Remove those unmatched checklist instructions; this correction does not require adding control rows.
+- [supported, minor] controls[3].ui; Governance controls / admin-path: The cited general audit guide locates search at Microsoft Purview portal > Audit > Search. | Found: Select the **Audit** solution card. If the **Audit** solution card isn't displayed, select **View all solutions** and then select **Audit** from the **Core** section. On the **Search** page, configure the following search criteria as applicable: | Fix: Add to the audit row's note: "The general audit guide uses Audit > Search; the feature-specific query guide instead lists Solutions > Audit > Audit Search (https://learn.microsoft.com/azure/search/search-query-sensitivity-labels#find-elevated-read-audit-logs-in-microsoft-purview)." | Source: https://learn.microsoft.com/purview/audit-search
 -->

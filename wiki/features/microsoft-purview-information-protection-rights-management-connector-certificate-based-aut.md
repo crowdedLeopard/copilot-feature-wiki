@@ -10,7 +10,7 @@ releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "January CY2027"
-previewDate: "October CY2026"
+previewDate: "December CY2026"
 risk: "medium"
 cost: "low"
 impact: "low"
@@ -22,7 +22,7 @@ licensing:
 audiences: ["m365-admin","security","compliance"]
 tags: ["purview","information-protection","authentication","entra-id","powershell","encryption","exchange","sharepoint"]
 sources:
-  - title: "Microsoft 365 Roadmap item 564617"
+  - title: "Microsoft 365 Roadmap 564617"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=564617"
     kind: "roadmap"
   - title: "Deploying the Microsoft Rights Management connector"
@@ -61,8 +61,8 @@ controls:
     note: "Planned per the roadmap item (new PowerShell module). Learn documents neither an admin UI nor a command at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
-roadmapModified: "2026-10-13T23:01:05"
+updated: "2026-11-24"
+roadmapModified: "2026-11-24T00:13:11"
 changes:
   - date: "2026-11-21"
     note: "First briefing for this roadmap item."
@@ -72,19 +72,23 @@ changes:
     note: "Corrected after verification: added the onboarding-controls condition for the installing account, named Entra's Application Administrator role for app registrations, and narrowed the install step to the roadmap's prerequisites."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Preview target moved from October CY2026 to December CY2026; Learn still describes only the shared-secret setup, so the plan remains the roadmap's description."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 59 statements confirmed"
+version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
-  version: 2
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "cf37f4013ef814a8c4f9973d96ca9a79"
+  hash: "438c659fd5dac979ea9704464a017b24"
 ---
 
 ## What's changing
@@ -95,7 +99,7 @@ The roadmap item also says connector setup will no longer provision an Entra ser
 
 Microsoft Learn does not describe this change yet, so the behaviour above is the roadmap's description. Learn's current pages describe the existing setup: an administrator signs in during installation, the installer sets up security tokens that are stored in the registry, and the connector creates a service principal named Aadrm_S-1-7-0 in Microsoft Entra ID. The connector serves Exchange Server, SharePoint Server and file servers that use FCI.
 
-The roadmap item is In development, with a preview date of October CY2026 and a General Availability target of January CY2027. Both are Microsoft's targets. The record lists Worldwide (Standard Multi-Tenant) only.
+The roadmap item is In development, with a preview date of December CY2026 and a General Availability target of January CY2027. Both are Microsoft's targets. The record lists Worldwide (Standard Multi-Tenant) only.
 
 ## Why it matters
 
@@ -166,7 +170,7 @@ The roadmap says the app registration and certificate come before installing or 
 
 Learn documents no control for certificate-based authentication at the time of writing (November 2026), so the second row is empty. The first row is today's way to decide who may sign in to install and administer the connector; it does not govern the new authentication.
 
-Learn says delegated administration of the protection service must be done in PowerShell and cannot be done in a management portal, so the portal side of that row is empty. Controls over the Entra app registration are not covered by any page read for this briefing.
+Learn says delegated administration of the protection service must be done in PowerShell and cannot be done in a management portal, so the portal side of that row is empty.
 
 ## Open questions
 

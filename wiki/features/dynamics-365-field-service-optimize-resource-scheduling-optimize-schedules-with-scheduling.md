@@ -115,15 +115,17 @@ changes:
     note: "Corrected after verification: interactive limit qualified by resource capacity, Always match time window behaviour reworded, 72-hour expiry rule completed, Do Not Move qualified, two API calls made runnable, and checklist steps without table rows removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 92 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 96 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 92
+  claims: 96
+  confirmed: 96
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -230,4 +232,13 @@ Credit capacity and usage are viewed in the Power Platform admin center (the set
 risk: Medium. Once an administrator turns it on, the agent can move or delete bookings, and a batch plan set to Apply automatically applies its results without review; the toggle, security roles and booking status settings cover this.
 cost: Variable. The setup page says the agent uses Copilot Studio credits, and one optimisation request consumes credits according to the number of resources it includes. A per-request credit rate is not given on that page.
 impact: Medium. Dispatchers who run optimisations and the technicians whose bookings change notice it; other Field Service users are unaffected until an administrator enables it.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance / admin-path: The enablement route is Field Service app > Resources > Scheduling Parameters > Resource Scheduling > Agents. | Found: Change to the Resources area and go to Scheduling Parameters > Resource Scheduling. Go to the Agents tab and turn on Scheduling Operations Agent (Preview). | Fix: Extend controls[0].ui.path and its rendered path to 'Resources > Scheduling Parameters > Resource Scheduling > Agents > Scheduling Operations Agent (Preview)', as given at https://learn.microsoft.com/dynamics365/field-service/soa-setup. | Source: https://learn.microsoft.com/dynamics365/field-service/soa-setup
+- [supported, minor] controls[1].api; Governance controls table / command: The printed v9.0 POST systemuserroles_association/$ref with @odata.id assigning a role is a documented user role assignment. | Found: POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref Accept: application/json { "@odata.id":"[Organization URI]/api/data/v9.0/roles(<role ID>)" } | Fix: Set controls[1].api.call and its rendered call to 'POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref'. Add to the note: 'The request body's @odata.id identifies the Scheduling Operations Agent User or Administrator role.' | Source: https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team
+- [supported, minor] controls[2].api; Governance controls table / command: PATCH v9.2 bookingstatuses with msdyn_optimizationmethod 192350000 sets Optimize, with valid JSON and If-Match headers. | Found: Update Event: True | PATCH /bookingstatuses(bookingstatusid) See Update | Fix: Set controls[2].api.call and its rendered call to 'PATCH [Organization URI]/api/data/v9.2/bookingstatuses(<booking status ID>)'. Add to its note: 'The request body sets msdyn_optimizationmethod; 192350000 selects Optimize.' The column and choices are at https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus, already cited. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/bookingstatus
+- [supported, minor] controls[3].api; Governance controls table / command: PATCH v9.2 msdyn_schedulingoptimizationplans with msdyn_applymethod 859530000 selects Review before apply. | Found: Update ... PATCH /msdyn_schedulingoptimizationplans(msdyn_schedulingoptimizationplanid); LogicalName | msdyn_applymethod; 859530000 | Review before apply; 859530001 | Apply automatically | Fix: Set controls[3].api.call and its rendered call to 'PATCH [Organization URI]/api/data/v9.2/msdyn_schedulingoptimizationplans(<plan ID>)'. Add to the note: 'The request body sets msdyn_applymethod; 859530000 selects Review before apply.' | Source: https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/msdyn_schedulingoptimizationplan
 -->
