@@ -2,34 +2,42 @@
   "slug": "power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process",
   "roadmapId": 576765,
   "title": "Power Automate process mining: Process Intelligence Studio for object-centric models",
-  "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-24",
   "version": 5,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 43,
-    "confirmed": 43,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 1
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 39)"
+    ]
   },
-  "summary": "The briefing passes: its roadmap facts, capacity-allocation API and administrator navigation match the sources checked. It distinguishes the planned workspace extension from the documented OCPM preview and does not invent an additional licence requirement. The note about the PowerShell reference needs a citation.",
+  "counts": {
+    "claims": 46,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the page incorrectly reports that automation for restricting add-on capacity assignments is undocumented. Microsoft documents a tenant-setting update command and the capacity-allocation setting it can update. The roadmap facts and the printed capacity-allocation API are supported; the licensing model and API formatting need minor corrections.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products; Scope",
+      "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "This roadmap change concerns Process Intelligence Studio in Power Automate process mining.",
+      "claim": "The change belongs to Power Automate.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Power Automate: Process mining - Enable Process Intelligence Studio in object-centric process mining",
+      "quote": "\"products\": [\"Power Automate\"]",
       "severity": null,
       "fix": null
     },
@@ -70,7 +78,7 @@
       "n": 5,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -101,17 +109,6 @@
     },
     {
       "n": 8,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-16T19:08:49.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-16T19:08:49\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: defaultState; rationale: impact",
       "type": "default",
       "claim": "The change is enabled automatically for admins, makers and marketers, supporting defaultState on.",
@@ -122,52 +119,30 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; summary",
-      "type": "behaviour",
-      "claim": "Process Intelligence Studio is a customisable analysis workspace in Power Automate Process Mining.",
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-16T19:08:49.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
-      "quote": "The new process intelligence experience is the next-generation interface for process analysis in Power Automate Process Mining. It delivers a comprehensive, customizable dashboard for exploring process intelligence insights.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:08:49\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Scope",
+      "type": "record",
+      "claim": "The roadmap plans full Process Intelligence Studio functionality for OCPM alongside traditional process models.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The platform supports both traditional and object-centric process mining methodologies",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "What's changing; summary",
-      "type": "behaviour",
-      "claim": "The workspace offers tab-based navigation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
-      "quote": "The tab bar organizes your analytical views. It's located at the top of the interface.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; summary",
-      "type": "behaviour",
-      "claim": "Tiles or cards can be arranged in flexible grid layouts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
-      "quote": "Customizable layouts where you can arrange, resize, and configure cards",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; summary",
-      "type": "behaviour",
-      "claim": "Filters apply across all cards and visualisations on the current tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
-      "quote": "Filters apply to all cards and visualizations on the current tab.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; rationale: risk",
+      "where": "What's changing",
       "type": "record",
       "claim": "The roadmap describes saving workspace configurations.",
       "status": "supported",
@@ -177,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Governance guidance",
+      "n": 12,
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "The roadmap describes reusable analysis templates.",
+      "claim": "The planned saved configurations can become reusable analysis templates.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "allowing teams to create reusable analysis templates",
@@ -188,24 +163,57 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
       "type": "record",
-      "claim": "The roadmap describes sharing standardised workspace views across teams.",
+      "claim": "The roadmap describes sharing standardised views across the organisation.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "share standardized views across the organization for consistent process monitoring and improvement tracking",
+      "quote": "share standardized views across the organization for consistent process monitoring and improvement tracking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Process Intelligence Studio is a customisable analysis workspace in Power Automate Process Mining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "The new process intelligence experience is the next-generation interface for process analysis in Power Automate Process Mining. It delivers a comprehensive, customizable dashboard for exploring process intelligence insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The workspace provides tab-based navigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "The tab bar organizes your analytical views. It's located at the top of the interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Cards can be arranged in customisable grid layouts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Customizable layouts where you can arrange, resize, and configure cards",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "summary; What's changing; Why it matters; Scope",
-      "type": "record",
-      "claim": "The roadmap plans to extend full workspace functionality to OCPM models alongside traditional models.",
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Filters apply across all cards and visualisations on the current tab.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Object-centric support: Extends full functionality to OCPM models, enabling multi-dimensional analysis of interconnected objects, relationships, and cross-object metrics within the same intuitive interface.",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Filters apply to all cards and visualizations on the current tab.",
       "severity": null,
       "fix": null
     },
@@ -213,21 +221,21 @@
       "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "An OCPM event can relate to several objects, including orders, invoices and payments.",
+      "claim": "An OCPM event can relate to multiple objects such as orders, invoices and payments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-overview",
-      "quote": "With OCPM, each event (for example, Create invoice, Receive goods, Ship order, Record payment) can link to the objects it touched at that moment (for example, Order O1, Invoice I1, Supplier Order SO1, Payment P1).",
+      "quote": "each event ... can link to the objects it touched at that moment (for example, Order O1, Invoice I1, Supplier Order SO1, Payment P1).",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing; Cost and licensing; Governance guidance; rationale: risk",
+      "where": "What's changing; Cost and licensing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "OCPM models are built by ingesting object-centric event logs stored in Azure Data Lake Gen2 or OneLake.",
+      "claim": "OCPM models are created by ingesting an object-centric event log stored in Azure Data Lake Gen2 or OneLake.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
-      "quote": "To access OCPM (object-centric process mining) in Power Automate Process Mining, first create a process model by ingesting the object-centric event log (OCEL).",
+      "quote": "first create a process model by ingesting the object-centric event log (OCEL). ... store the resulting file in a CSV format in either Azure Data Lake Gen2 or OneLake.",
       "severity": null,
       "fix": null
     },
@@ -235,7 +243,7 @@
       "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The documented OCPM preview offers only the Process overview tab.",
+      "claim": "The documented OCPM preview has only the Process overview tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
       "quote": "In the preview of this feature, only the Process overview tab is available.",
@@ -246,7 +254,7 @@
       "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The documented OCPM preview offers only the Default view.",
+      "claim": "The documented OCPM preview has only the Default view.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
       "quote": "In the preview of this feature, only the Default view is available.",
@@ -257,7 +265,7 @@
       "n": 22,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn calls the existing analysis interface the process intelligence experience.",
+      "claim": "Learn calls the interface the process intelligence experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
       "quote": "The new process intelligence experience is the next-generation interface for process analysis in Power Automate Process Mining.",
@@ -268,18 +276,18 @@
       "n": 23,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Object-centric event logs can contain order and invoice identifiers.",
+      "claim": "Object-centric event logs can contain business identifiers such as order and invoice IDs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-overview",
-      "quote": "each row is an event (with activity and timestamp) and has one or more columns listing the object IDs per object type that the event touched (for example, Order=O2, Invoice=I1)",
+      "quote": "each row is an event ... and has one or more columns listing the object IDs per object type that the event touched (for example, Order=O2, Invoice=I1).",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Risk assessment: Data exposure; controls[2].note; Governance controls",
+      "where": "Risk assessment: Data exposure; controls[2].note; Governance controls prose",
       "type": "applicability",
-      "claim": "Process mining access follows process and environment permissions.",
+      "claim": "Process mining access relies on environment security and roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
       "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
@@ -288,61 +296,83 @@
     },
     {
       "n": 25,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Learn names the Environment Maker role for creating processes.",
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Access to process analytics follows process sharing permissions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "You need the Environment Maker role to create, share, and contribute to processes.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
+      "quote": "Adding a viewer to a process shares analytics and insights with other people. A viewer can perform the following actions: ... View the process analytics",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-automate/process-mining-share to sources for the statement about process permissions."
     },
     {
       "n": 26,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes an analysis workspace rather than announcing a new autonomous automation capability.",
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Learn identifies Environment Maker as a role that can create processes.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "It provides a fully customizable analysis environment that combines multiple visualization and analysis components into cohesive, purpose-built workspaces.",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The Environment maker role can use the process mining capabilities to create, share, and contribute to processes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Additional licensing specific to this workspace extension has not been published, supporting the unknown licensing model.",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes an analysis workspace rather than a new autonomous automation capability.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'object-centric process mining licensing license capacity studio'; 'Process Intelligence Studio licensing'. Read process-advisor-overview licensing, process-mining-studio-overview and object-centric ingestion/overview; no additional extension-specific licence stated.",
+      "source": "roadmap record",
+      "quote": "Process Intelligence Studio is a modern, flexible workspace designed for comprehensive process analysis.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Documented Power Automate process mining licensing supplies the product baseline.",
+      "claim": "Feature-specific licensing is unknown, while documented process mining licensing is the baseline.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "Process mining is licensed as part of Microsoft Power Automate. Three Power Automate licenses relate to process mining, and a Power BI license is required for Power BI report customization.",
-      "severity": null,
-      "fix": null
+      "quote": "The Power Automate Premium license is a per-user license ... Process mining capabilities: Enable you to create a process ... view the analytics report in the web",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Use the note: 'Process mining capabilities are included in Power Automate Premium; additional licensing specific to this change is not yet published.' Cite https://learn.microsoft.com/power-automate/process-advisor-overview#licensing. Only product-level licensing is documented, so unknown understates the published entitlement."
     },
     {
       "n": 29,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Azure Data Lake storage carries storage costs.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Additional licensing specific to this change has not been published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace",
-      "quote": "To analyze differences in data storage prices, transaction prices, and storage capacity reservation pricing between accounts that have a flat namespace versus a hierarchical namespace, see Azure Data Lake Storage pricing.",
+      "source": null,
+      "quote": "Searched: 'Process Intelligence Studio license'; 'object-centric licensing Power Automate'. Read studio overview, object-centric ingestion and process-advisor-overview licensing; results cover product licences, not an additional licence for this change.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Power Automate process mining has documented baseline licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Process mining is licensed as part of Microsoft Power Automate. Three Power Automate licenses relate to process mining",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Azure Data Lake storage carries storage costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace",
+      "quote": "To analyze differences in data storage prices, transaction prices, and storage capacity reservation pricing ... see Azure Data Lake Storage pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "Cost and licensing; rationale: cost",
       "type": "cost",
       "claim": "OneLake storage carries storage costs.",
@@ -353,98 +383,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "absence",
-      "claim": "A process-mining-specific capacity-allocation admin UI path is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'ProcessMiningDataStorage admin center allocate process mining capacity'; 'process mining allocate capacity environment admin center'. Read capacity-add-on and programmability-tutorial-allocate-capacity-addons; generic paths do not identify ProcessMiningDataStorage in the UI.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "The printed PATCH allocation endpoint, version, currencyAllocations body, ProcessMiningDataStorage currency and allocated count are documented.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
-      "quote": "PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01; currencyAllocations | CurrencyAllocationRequestModelV1[]; allocated | integer (int32); currencyType | ExternalCurrencyType; ProcessMiningDataStorage",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 33,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Power Platform admin center path is Settings > Power Platform settings > Tenant settings > Add-on capacity assignments > Only specific admins.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity",
-      "quote": "In the title bar, select the Settings icon. Select Power Platform settings. On the Tenant settings page, select Add-on capacity assignments, and then select Only specific admins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "No setting-specific automation call for restricting add-on capacity assignments was established in Microsoft documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'disableCapacityAllocationByEnvironmentAdmins update tenant settings API PowerShell'; 'Power Platform update tenant settings API disableCapacityAllocationByEnvironmentAdmins updateTenantSettings'. Read list-tenantsettings and Set-TenantSettings; no setting-specific write call.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The preview list-tenantsettings documentation defines disableCapacityAllocationByEnvironmentAdmins.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/list-tenantsettings",
-      "quote": "disableCapacityAllocationByEnvironmentAdmins | Boolean | Ability to disable capacity allocation by environment administrators. Default value is false.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[1].note; Governance controls table",
-      "type": "absence",
-      "claim": "The Set-TenantSettings reference does not document a PowerShell call specifically for disableCapacityAllocationByEnvironmentAdmins.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'disableCapacityAllocationByEnvironmentAdmins update tenant settings API PowerShell'. Read the entire Set-TenantSettings reference: its example sets WalkMeOptOut and its parameters are RequestBody and ApiVersion; the capacity-allocation property is not present.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings to sources, and date the note's reference check 'at the time of writing (November 2026)'."
-    },
-    {
-      "n": 37,
-      "where": "controls[2].ui and api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft documents no dedicated environment switch for Process Intelligence Studio or object-centric models.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Process Intelligence Studio turn off disable admin switch'; 'object-centric process mining admin enable setting API'; 'object-centric disable process mining'. Read studio/OCEL pages and settings-features: a general production-ready-preview switch, no dedicated Studio/OCPM switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[2].note",
-      "type": "applicability",
-      "claim": "The event log's storage location introduces storage-side access requirements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-byo-azure-data-lake",
-      "quote": "all users that have the Owner or Co-Owner role on the process must be attributed: Storage Blob Data Reader or Storage Blob Data Contributor role assigned; Azure Resource Manager Reader role assigned, at minimum.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Governance controls",
+      "where": "Governance controls prose",
       "type": "licensing",
-      "claim": "Power Automate Premium licences contribute process mining capacity.",
+      "claim": "Power Automate Premium licences contribute process mining capacity to a tenant-wide pool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
@@ -452,81 +394,180 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Governance controls",
+      "n": 34,
+      "where": "Governance controls prose",
       "type": "licensing",
-      "claim": "The Process Mining add-on contributes additional capacity to the tenant-wide pool.",
+      "claim": "The Process Mining add-on contributes additional tenant-wide process mining capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license. It offers: An extra 100 GB of process mining capacity to the capacity pool",
+      "quote": "The Process Mining add-on is a tenant-wide license ... An extra 100 GB of process mining capacity to the capacity pool",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].governs; Governance controls prose",
+      "type": "applicability",
+      "claim": "Process mining data storage capacity can be allocated to an environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
+      "quote": "Allocate and deallocate the currencies for the environment. ... ExternalCurrencyType ... ProcessMiningDataStorage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "absence",
+      "claim": "A UI control specifically allocating process mining capacity is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'ProcessMiningDataStorage admin center capacity allocate'; 'process mining capacity allocate environment admin center'. Read capacity-add-on and allocate-capacity-addons tutorial: generic UI steps, but no process-mining-specific allocation control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed PATCH call and currencyAllocations body allocate ProcessMiningDataStorage capacity using API version 2024-10-01.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
+      "quote": "PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01; currencyAllocations; allocated: integer (int32); currencyType: ExternalCurrencyType; ProcessMiningDataStorage",
+      "severity": "minor",
+      "fix": "Replace the call, in front matter and the rendered table, with 'PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01'. Add the note: 'The request body sets currencyAllocations with currencyType ProcessMiningDataStorage and allocated.' The printed body keys are correct, but the standard puts them in the note."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Settings > Power Platform settings > Tenant settings > Add-on capacity assignments > Only specific admins restricts who can allocate add-on capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity",
+      "quote": "In the title bar, select the Settings icon. ... Select Power Platform settings. ... On the Tenant settings page, select Add-on capacity assignments, and then select Only specific admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "Automation for restricting who may allocate add-on capacity is not yet documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings",
+      "quote": "pac admin update-tenant-settings: Update tenant settings. --setting-name: Name of the setting to be updated. --setting-value: Value of the setting to be updated.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api null with kind pac-cli, call 'pac admin update-tenant-settings --setting-name disableCapacityAllocationByEnvironmentAdmins --setting-value true', and docs https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings; update the table to match. The existing cited https://learn.microsoft.com/power-platform/admin/list-tenantsettings#definitions defines this Boolean as disabling capacity allocation by environment administrators. Add the CLI reference to sources. The narrow Set-TenantSettings-reference caveat may remain, but it does not justify reporting all automation absent."
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The preview list-tenantsettings documentation defines disableCapacityAllocationByEnvironmentAdmins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/list-tenantsettings",
+      "quote": "This is a preview feature. ... disableCapacityAllocationByEnvironmentAdmins | Boolean | Ability to disable capacity allocation by environment administrators. Default value is false.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Governance controls; controls[0].scope",
-      "type": "applicability",
-      "claim": "Process mining capacity can be allocated per environment.",
+      "where": "controls[1].note; Governance controls table",
+      "type": "absence",
+      "claim": "The Set-TenantSettings reference does not document a PowerShell call specifically for disableCapacityAllocationByEnvironmentAdmins.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
-      "quote": "Allocate and deallocate the currencies for the environment. ExternalCurrencyType: The available currency type that can be allocated to an environment. ProcessMiningDataStorage",
-      "severity": null,
-      "fix": null
+      "source": null,
+      "quote": "Searched: 'disableCapacityAllocationByEnvironmentAdmins update tenant settings API Set-TenantSettings'. Read the full Set-TenantSettings reference: RequestBody and ApiVersion parameters; WalkMeOptOut example; no capacity-allocation property.",
+      "severity": "minor",
+      "fix": "Date this narrow reference-check statement 'at the time of writing (November 2026)' and add https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings to sources."
     },
     {
       "n": 42,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The add-on allocation programmability tutorial shows using the allocation API through a flow action.",
+      "where": "controls[2].ui and controls[2].api; Governance controls prose",
+      "type": "absence",
+      "claim": "No separate environment feature switch for Process Intelligence Studio or object-centric models is documented on either UI or automation surfaces.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons",
-      "quote": "Allocate an add-on using Power Automate flows or Logic Apps. Add a new action to the canvas, searching for \"Allocate and deallocate the currencies for the environment\". Set the parameters to higher numeric values to perform assignment.",
+      "source": null,
+      "quote": "Searched: 'Process Intelligence Studio enable admin settings'; 'object-centric table entity reference process mining enable settings'. Read studio overview, OCPM ingestion, list-tenantsettings and msdyn_pmprocessusersettings Web API reference; no feature switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "rationale: impact; Why it matters",
-      "type": "record",
-      "claim": "The roadmap identifies business analysts and process owners among the intended workspace users.",
+      "where": "controls[2].note; Governance controls table",
+      "type": "applicability",
+      "claim": "For event logs stored in Azure Data Lake, process access has storage-role prerequisites.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Business analysts, process owners, and improvement teams can now build comprehensive views that tell the complete story",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-byo-azure-data-lake",
+      "quote": "all users that have the Owner or Co-Owner role on the process must be attributed: Storage Blob Data Reader or Storage Blob Data Contributor role assigned; Azure Resource Manager Reader role assigned, at minimum.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Governance controls table",
+      "type": "applicability",
+      "claim": "For OneLake event logs, access depends on Fabric workspace setup and permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
+      "quote": "The Admin role must be attributed to the user performing the initial workspace setup ... The Fabric workspace needs to be shared to the Process Insight Prod service principal with an Admin role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "The allocating-add-ons tutorial demonstrates the allocation API through a Power Automate flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons",
+      "quote": "Allocate an add-on using Power Automate flows or Logic Apps ... searching for \"Allocate and deallocate the currencies for the environment\". Set the parameters to higher numeric values to perform assignment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "The analysis workspace operates over process data already ingested.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "After the ingestion finishes, you're navigated to the process intelligence experience for OCPM with the Process overview tab active.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T02:48:28.513Z",
+    "at": "2026-11-24T07:39:42.151Z",
     "summary": {
       "links": 16,
-      "unreachable": 0,
+      "unreachable": 15,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/object-centric-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576765",
@@ -535,58 +576,58 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/capacity-add-on",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/list-tenantsettings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-byo-azure-data-lake",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace#decide-whether-to-enable-a-hierarchical-namespace",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/fabric/onelake/onelake-storage-tiers#storage-tiers-and-onelake-consumption",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-advisor-overview#licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-advisor-security",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -595,16 +636,16 @@
         "side": "api",
         "governs": "Process mining capacity allocated to an environment",
         "docs": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
-        "reachable": true,
+        "reachable": false,
         "token": "api.powerplatform.com/licensing/environments/{environmentId}/allocations",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Who may allocate add-on capacity",
         "docs": "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Power Platform settings",
@@ -612,7 +653,13 @@
           "Add-on capacity assignments",
           "Only specific admins"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Power Platform settings",
+          "Tenant settings",
+          "Add-on capacity assignments",
+          "Only specific admins"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -634,6 +681,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 5,
       "model": "gpt-6.1-sol"
     }
   ]

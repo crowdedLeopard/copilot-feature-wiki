@@ -129,17 +129,19 @@ changes:
     note: "Corrected: Copilot Off is an organiser-overridable default, the Copilot setting also governs events, group rankings can be changed in PowerShell, and the propagation, Teams Reader and consent notes were narrowed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 87 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 87
+  claims: 80
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "a004b64b20806377ce1da99f92ba3fb1"
 ---
 
@@ -228,3 +230,11 @@ Settings that depend on one another: Transcription and Copilot interact, and the
 - Is there an admin centre toggle for channel recording download? The recording page documents it only as a PowerShell parameter.
 - Which audit events record a change to a meeting policy, and where do they appear? The pages read for this page do not say.
 - How will the MeetingAI settings interact with existing Copilot policy values in scripts?
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What it is: Which policy a user gets, final sentence / command: Grant-CsTeamsMeetingPolicy is the PowerShell operation for assigning a policy to a batch of users. | Found: You use the New-CsBatchPolicyAssignmentOperation cmdlet to submit a batch of users and the policy that you want to assign. | Fix: Replace the sentence with: 'Policies can be assigned to individual users, to batches of users or to a group in the admin centre. In PowerShell, Grant-CsTeamsMeetingPolicy assigns a policy to an individual user or a group; New-CsBatchPolicyAssignmentOperation submits a batch assignment.' The cited assignment article documents the distinction. | Source: https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] What to check: List custom meeting policies; Governance controls / consistency: The checklist asks readers to list meeting policies with Get-CsTeamsMeetingPolicy, but no controls row documents that read operation. | Found: List custom meeting policies with Get-CsTeamsMeetingPolicy and confirm each one is still assigned to a group or user. The corresponding table row instead gives Set-CsTeamsMeetingPolicy -Identity <policy name> -<parameter> <value>. | Fix: Replace the checklist bullet with 'Review custom meeting policy settings and confirm each policy is still assigned to a group or user.' This removes the unrepresented read operation without adding a controls row.
+-->

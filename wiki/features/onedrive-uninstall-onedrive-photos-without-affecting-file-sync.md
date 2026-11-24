@@ -51,19 +51,23 @@ changes:
     note: "First briefing: roadmap plan to let people uninstall the OneDrive Photos experience without affecting file sync; Microsoft Learn documents no admin control yet."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 44 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected two statements: removed the claim that administrators cannot stop users uninstalling the Photos experience, and narrowed the data statement to the roadmap's promise of no file deletion or sync interruption."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 42
-  unconfirmed: 2
+  claims: 46
+  confirmed: 46
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "8f4e217457e9070702931613fc9b57cd"
+  attempts: 0
+  hash: "a4c07a00c43429c5de86d636ff63d714"
 ---
 
 ## What's changing
@@ -84,7 +88,7 @@ The practical effect for a service owner is support load and expectation setting
 
 **Data exposure**
 
-- No change to what OneDrive stores or syncs: the roadmap says removing the Photos experience does not delete photos or files or interrupt file sync. Microsoft Learn does not document what happens to photo data cached or indexed by the Photos experience on removal.
+- No file deletion or sync interruption is planned: the roadmap says removing the Photos experience does not delete photos or files or interrupt file sync. Microsoft Learn does not document what happens to photo data cached or indexed by the Photos experience on removal.
 
 **Security & identity**
 
@@ -97,7 +101,7 @@ The practical effect for a service owner is support load and expectation setting
 **Change & support**
 
 - People may confuse removing the Photos experience with uninstalling OneDrive. The roadmap says the OneDrive app stays installed, so tell the service desk to treat these as different actions.
-- Microsoft Learn documents no administrator setting to allow or prevent the removal (see the controls table), so you cannot stop individual users from choosing it.
+- Microsoft Learn documents no administrator setting to allow or prevent the removal (see the controls table).
 
 ## Cost and licensing
 
@@ -155,11 +159,4 @@ This row concerns the removal option only. Other OneDrive policies on that page 
 risk: Low. The roadmap says removal leaves the OneDrive app, file sync and files untouched, and it describes a choice for people, not a new data flow.
 cost: Low. Only admin time and service desk communication are known costs; no licence or meter for this feature is published, and OneDrive is included in Microsoft 365 and Office 365 plans.
 impact: Low. Only people on Windows desktops who choose to remove the Photos experience notice it, and the roadmap says their sync is unaffected.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Change & support / applicability: Administrators cannot stop individual users from choosing to uninstall the Photos experience. | Found: Searched: "OneDrive Photos" "prevent" "uninstall"; OneDrive Photos policy PowerShell registry disable uninstall. Read use-group-policy and Browse and manage your photos on Windows. Neither states that administrators cannot prevent removal. | Fix: Delete ', so you cannot stop individual users from choosing it'. Keep only 'Microsoft Learn documents no administrator setting to allow or prevent the removal (see the controls table).'
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Removal causes no change to what OneDrive stores or syncs. | Found: Searched: OneDrive Photos removal cached indexed data minimum version personal work school accounts; "OneDrive Photos" "uninstall". Read the roadmap and sync-release-notes. They promise no file deletion or sync interruption, not an unchanged inventory of stored or synced data. | Fix: Replace 'No change to what OneDrive stores or syncs:' with 'No file deletion or sync interruption is planned:'. Keep the following attribution to the roadmap.
 -->

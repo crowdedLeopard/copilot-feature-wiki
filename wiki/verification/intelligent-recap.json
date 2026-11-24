@@ -1,0 +1,1088 @@
+{
+  "slug": "intelligent-recap",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Intelligent recap: what Teams generates after a meeting or call, and what controls it",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "6 blocking findings (claims 18, 32, 38, 44, 46, 77)"
+    ]
+  },
+  "counts": {
+    "claims": 78,
+    "confirmed": 70,
+    "unconfirmed": 3,
+    "contradicted": 5,
+    "blocker": 6,
+    "major": 2,
+    "minor": 4
+  },
+  "summary": "Hold: the page presents meeting memory as enabled for every tenant without Microsoft's Teams TAP preview restriction, and incorrectly attributes all recap storage to the organiser. Audio recap prerequisites and recording-expiration exceptions also need correction; Microsoft documents conflicting guidance about the two newer recap policy parameters.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Intelligent recap provides AI-generated meeting, event and call summaries and notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Intelligent recap for Microsoft Teams uses AI technology to improve your users' productivity and efficiency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Intelligent recap includes AI-recommended tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Your users can access AI-generated notes and recommended tasks for PSTN calls through the **Recap** button in the Calls app in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Meeting recap includes chapters and topic navigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Meeting chapters divide the meeting into chapters, and meeting topics that allow your users to jump to a point in the meeting when a certain topic was discussed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is",
+      "type": "admin-path",
+      "claim": "Users access meeting and event recap through the Recap tab in Teams calendar and chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "After the meeting or event ends, your users can access the following AI powered features for their meetings through the **Recap** tab in the Teams calendar and chat:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is",
+      "type": "admin-path",
+      "claim": "Users access call recap through a Recap button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Your users can access AI-generated notes and recommended tasks for PSTN calls through the **Recap** button in the Calls app in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is; Why it matters",
+      "type": "availability",
+      "claim": "Intelligent recap is automatically available to users with the required licences and policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Intelligent recap is automatically available to users in your organization with the following required licenses and policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is; Variants: Full recap",
+      "type": "applicability",
+      "claim": "The full recap experience depends on transcription and uses the meeting transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/privacy/intelligent-recap",
+      "quote": "| AI-generated notes | Understand key points from the discussion | Meeting transcript | AI-generated notes are stored in an Exchange folder in the mailboxes of the meeting participants. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is; Variants: Full recap; Risks and limits",
+      "type": "behaviour",
+      "claim": "Recording off removes the recording, speakers, topics and chapters from meeting and event recap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "If recording is turned off, users experience recap without the recording, speakers, topics, and chapters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Variants: Full recap",
+      "type": "availability",
+      "claim": "Intelligent recap supports meetings, events, PSTN calls, 1:1 calls and group peer-to-peer calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Meetings: Meetings scheduled in the Teams client, meetings scheduled in Outlook, meet now, and events. Audio recap is only available for scheduled meetings.\n- Calls: PSTN, 1:1, group peer-to-peer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Variants: Recap without saving transcripts; Cost and licensing",
+      "type": "licensing",
+      "claim": "Organisers need a Copilot licence to generate recap without saving transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Organizers with a Microsoft Copilot license can generate AI summaries of Teams meetings without saving a recording or persistent transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Variants: Recap without saving transcripts; controls[3].note",
+      "type": "applicability",
+      "claim": "Recap without saving transcripts requires a Teams meeting policy with Copilot enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Intelligent recap without saving transcripts is automatically available to users who have a Microsoft Copilot license and are assigned a Teams meeting policy with Copilot enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Variants: Recap without saving transcripts",
+      "type": "availability",
+      "claim": "Recap without saving transcripts supports scheduled meetings only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "This feature is supported for scheduled meetings only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Variants: Recap without saving transcripts",
+      "type": "behaviour",
+      "claim": "The no-transcript recap is a read-only Word document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "The AI summary is stored as a read-only Word document in the organizer's OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Variants: Recap without saving transcripts",
+      "type": "behaviour",
+      "claim": "The no-transcript summary document is stored in the organiser's OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "The AI summary is stored as a read-only Word document in the organizer's OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Variants: Audio recap; Cost and licensing",
+      "type": "licensing",
+      "claim": "Audio recap requires a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "For audio recap, you must assign a Microsoft Copilot license.",
+      "severity": "minor",
+      "fix": "Keep the requirement, but add: 'Microsoft's AI overview also lists audio recap under features included with Teams Premium; its recap prerequisites and Meeting Recaps app licensing require Copilot. The pages disagree.' Cite https://learn.microsoft.com/microsoftteams/copilot-ai-agents-overview#ai-features-included-with-teams-premium, whose feature table lists 'Intelligent call recap, intelligent meeting recap, and audio recap'."
+    },
+    {
+      "n": 16,
+      "where": "Variants: Audio recap",
+      "type": "behaviour",
+      "claim": "Audio recap can summarise up to eight meetings in one summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Audio recaps create a single content summary of up to eight meetings, allowing users to stay informed on the day's key discussions, critical decisions, and actionable takeaways.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Variants: Audio recap",
+      "type": "availability",
+      "claim": "Audio recap supports scheduled meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Audio recap is only available for scheduled meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Variants: Audio recap, What it needs",
+      "type": "applicability",
+      "claim": "A Copilot licence is the listed prerequisite for audio recap, without a recording or transcription prerequisite.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Users can generate and listen to audio recaps for transcribed (or recorded) scheduled meetings on Teams desktop and mobile clients.",
+      "severity": "blocker",
+      "fix": "Replace the Audio recap row's What it needs cell with 'Copilot licence; transcribed (or recorded) scheduled meetings'."
+    },
+    {
+      "n": 19,
+      "where": "Variants: Audio recap; Risks and limits: Preview parts",
+      "type": "availability",
+      "claim": "Audio recap is in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "### Audio recap\n\nNote\n\nThis feature is currently in Public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Variants: Video recap",
+      "type": "applicability",
+      "claim": "Video recap requires a recorded and transcribed meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Video recap creates narrated highlights from recorded and transcribed meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Variants: Video recap",
+      "type": "behaviour",
+      "claim": "Video recap requires a meeting of at least 10 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "The meeting must be at least 10 minutes long.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Variants: Video recap; Cost and licensing",
+      "type": "licensing",
+      "claim": "Video recap requires a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recaps-app",
+      "quote": "AI-generated recap experiences, including audio recap and video recap, require a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Variants: Video recap",
+      "type": "behaviour",
+      "claim": "Video recap data is stored with the recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Video recap data is stored as part of the original Teams meeting recording file in OneDrive or SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Where the content lives",
+      "type": "behaviour",
+      "claim": "AI-generated meeting notes are stored in an Exchange folder in participants' mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/privacy/intelligent-recap",
+      "quote": "AI-generated notes are stored in an Exchange folder in the mailboxes of the meeting participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Where the content lives",
+      "type": "behaviour",
+      "claim": "AI-generated meeting tasks are stored in an Exchange folder in participants' mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/privacy/intelligent-recap",
+      "quote": "AI-generated tasks are stored in an Exchange folder in the mailboxes of the meeting participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Where the content lives",
+      "type": "behaviour",
+      "claim": "Chapters and topics are stored in OneDrive or SharePoint with the recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/privacy/intelligent-recap",
+      "quote": "Chapters and topics are stored in OneDrive or SharePoint together with the meeting recording.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Where the content lives",
+      "type": "applicability",
+      "claim": "Microsoft says the listed notes, tasks, chapters and topics follow the meeting recording retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/privacy/intelligent-recap",
+      "quote": "All the features listed in the table follow the meeting recording retention policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Where the content lives",
+      "type": "role",
+      "claim": "For Teams events, recap is available only to organisers, co-organisers and presenters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "For Teams events, intelligent recap is available only to organizers, co-organizers, and presenters. Attendees don't have access to intelligent recap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Where the content lives",
+      "type": "behaviour",
+      "claim": "A meeting recap can be shared with specified external attendees through Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "To share the recap via Outlook with specified external attendees, after the meeting, in the **Recap** tab, users can select **Share** > **Share via Outlook**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "An organisation assigning Copilot or Teams Premium licences and leaving transcription policy on is already producing recaps.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams intelligent recap start transcription meeting automatic AI notes generated transcription policy. Read intelligent-recap-calls-meetings, privacy/intelligent-recap and meeting-transcription-captions; none states that policy alone generates recaps.",
+      "severity": "major",
+      "fix": "Replace the clause beginning 'so an organisation' with 'so an organisation that has assigned Copilot or Teams Premium licences and enabled transcription has made full recap available for transcribed meetings'."
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The no-transcript recap can generate a summary when recording and transcription are not enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "With this feature, an AI summary is generated even when recording and transcription aren't enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Only the meeting policy parameter AllowIntelligentRecap can switch intelligent recap off for every meeting.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: intelligent recap AllowIntelligentRecap Teams admin center toggle turn off meetings calls; intelligent recap AI summary delete administrator policy disable without saving transcripts. Read no-transcript recap and Copilot policy pages; neither establishes exclusivity in those terms.",
+      "severity": "blocker",
+      "fix": "Remove 'Only' and replace the sentence with 'The meeting policy parameter -AllowIntelligentRecap switches intelligent recap off for all meetings under that policy, whether or not transcripts are saved.' Keep the source disagreement qualification specified for controls[0].api."
+    },
+    {
+      "n": 33,
+      "where": "Risks and limits: AllowIntelligentRecap",
+      "type": "behaviour",
+      "claim": "Turning intelligent recap off makes the related settings unavailable in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Turning off intelligent recap disables intelligent recap for all meetings, regardless of whether transcripts are saved, and the related settings are unavailable in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Intelligent recap needs a Microsoft 365 subscription including Teams, or a no-Teams subscription plus a separate Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "You must assign your users a Microsoft 365 subscription that includes Teams or a Microsoft 365 (no Teams) subscription with a separate Teams license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Intelligent text recap requires Teams Premium or Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recaps-app",
+      "quote": "Intelligent text recap requires a Teams Premium or Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; What to check",
+      "type": "licensing",
+      "claim": "PSTN call recap additionally requires Teams Phone and a calling plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "For Public Switched Telephone Network (PSTN) calls, you must also assign a Teams Phone license and have a calling plan for your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The recap pages publish licence requirements but no separate recap meter, per-use charge or price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"intelligent recap\" \"pricing\" \"meter\". Read intelligent-recap-calls-meetings, intelligent-recap-without-saving-transcripts and manage-meeting-recaps-app in full; their licensing sections name licences, not a separate recap meter or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Storage for recap files falls on the organiser's OneDrive, SharePoint or Exchange.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/privacy/intelligent-recap",
+      "quote": "AI-generated notes are stored in an Exchange folder in the mailboxes of the meeting participants.",
+      "severity": "blocker",
+      "fix": "Replace 'Storage for recap files falls on the organiser's OneDrive, SharePoint or Exchange' with 'The no-transcript Word summary is stored in the organiser's OneDrive; meeting notes and tasks are stored in participants' Exchange mailboxes, while chapters and topics are stored with the recording in OneDrive or SharePoint'."
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Microsoft recap pages read give no recap-specific storage charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"intelligent recap\" \"storage\" \"charge\"; intelligent recap storage costs charges pricing per use OneDrive Exchange Teams Premium Microsoft 365 Copilot license. Read recap overview, no-transcript recap and privacy pages; no recap-specific storage rate was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Prices sit on the Teams Premium and Microsoft 365 Copilot licensing pages.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams Premium licensing price pricing Microsoft Copilot pricing plans. Opened licensing-enhance-teams and copilot/plan/copilot-license-options; the latter links to a separate pricing-and-plans site, and neither read licensing page states paid licence prices.",
+      "severity": "major",
+      "fix": "Remove 'Prices sit on the Teams Premium and Microsoft 365 Copilot licensing pages'."
+    },
+    {
+      "n": 41,
+      "where": "Risks and limits: Transcription off",
+      "type": "applicability",
+      "claim": "The Teams Premium admin page says Transcription Off removes full intelligent meeting recap for users with that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/enhanced-teams-experience",
+      "quote": "If you toggle the **Transcription** setting to **Off** in your **Meeting policies**, intelligent meeting recap isn't available for users with this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Organiser-level Copilot Off",
+      "type": "behaviour",
+      "claim": "When organisers turn off Copilot for their meeting or event, recording and transcription also turn off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "When organizers turn off Copilot for their meeting or event, recording and transcription are also turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Recap files expire; controls[4].note",
+      "type": "default",
+      "claim": "No-transcript summary documents expire after 120 days by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "AI summary documents are stored in the Meetings folder of the meeting organizer's OneDrive and, by default, expire after 120 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Recap files expire; controls[5].note",
+      "type": "default",
+      "claim": "Recordings and transcripts default to 120 days without a qualification for A1 users.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+      "quote": "Meeting recordings and transcripts have a default expiration time of 120 days.\n\nThe maximum default expiration time for A1 users is 30 days.",
+      "severity": "blocker",
+      "fix": "Qualify both the bullet and controls[5].note: 'Meeting recordings and transcripts generally default to 120 days; the maximum default expiration time for A1 users is 30 days.'"
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Recap files expire; controls[5].note",
+      "type": "behaviour",
+      "claim": "Changes to recording and transcript expiration settings affect only newly created recordings and transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+      "quote": "Any changes to this setting only affect newly created recordings and transcripts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Meeting memory",
+      "type": "availability",
+      "claim": "Meeting memory is enabled by default for every tenant, presented without a preview or tenant eligibility restriction.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory is in preview and only available to organizations in the Teams TAP program.",
+      "severity": "blocker",
+      "fix": "Replace 'Meeting memory is enabled by default for every tenant' with 'Meeting memory is in preview and only available to organisations in the Teams TAP program; Microsoft documents memory generation as on by default for those organisations'."
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Meeting memory",
+      "type": "behaviour",
+      "claim": "Meeting memory is not automatically deleted when the transcript or recording is deleted or expires.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory won't automatically be deleted if the transcript or recording is deleted or expired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Variants: Recap without saving transcripts; Risks and limits: Audience limits",
+      "type": "licensing",
+      "claim": "Attendees in the organiser's organisation need a Copilot licence to access the no-transcript AI summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Attendees in the same organization as the meeting organizer who have a Copilot license can access the AI summary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Audience limits",
+      "type": "availability",
+      "claim": "Guests and external attendees cannot access the no-transcript AI summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Guests and external attendees can't access it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Preview parts",
+      "type": "availability",
+      "claim": "Multilingual intelligent recap is in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "### Intelligent recap for multilingual meetings\n\nNote\n\nThis feature is currently in Public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Compliance",
+      "type": "applicability",
+      "claim": "No-transcript AI summary documents support Microsoft Purview eDiscovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "AI summary documents support Microsoft Purview eDiscovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Compliance",
+      "type": "applicability",
+      "claim": "No-transcript AI summary documents support Microsoft Purview legal hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "AI summary documents support Microsoft Purview legal hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No admin centre toggle for AllowIntelligentRecap was found at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"AllowIntelligentRecap\" \"admin center\"; intelligent recap AllowIntelligentRecap Teams admin center toggle turn off meetings calls. Read no-transcript recap, Teams Premium overview and Set-CsTeamsMeetingPolicy; no admin centre path for this parameter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].api; controls[0].note; Why it matters; Risks and limits",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false disables recap for all meetings under the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "To turn off intelligent recap, use the [Set-CsTeamsMeetingPolicy](/en-us/powershell/module/microsoftteams/set-csteamsmeetingpolicy) cmdlet and set the `-AllowIntelligentRecap` parameter to `$false`.",
+      "severity": "minor",
+      "fix": "Keep the command, but add to the row note and the existing documentation-conflict paragraph: 'The no-transcript recap page documents this switch as effective, while the Set-CsTeamsMeetingPolicy reference says under -AllowIntelligentRecap: \"This feature has not been fully released yet, so the setting will have no effect.\" Microsoft has not reconciled these statements.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy."
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Meeting transcription is configured in Teams admin center > Meetings > Meeting policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.\n2. Select the policy that you want to edit or create a new one.\n3. Toggle **Transcription** **On** or **Off**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true allows meeting transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -AllowTranscription\n\nDetermines whether post-meeting captions and transcriptions are allowed in a user's meetings. Set this to TRUE to allow. Set this to FALSE to prohibit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Both the organiser's transcription policy and the policy of the person starting transcription matter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcription is both a per-organizer and per-user policy setting. For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note",
+      "type": "default",
+      "claim": "Meeting transcription is On by default for new policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Toggle **Transcription** **On** or **Off**. This setting is **On** by default for new policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].ui; What to check",
+      "type": "admin-path",
+      "claim": "Call transcription is configured in Teams admin center > Voice > Calling policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "In the Microsoft Teams admin center, select **Voice** > **Calling policies**.\n2. Select the policy you want to modify.\n3. Turn **Transcription** to **On**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy -Identity <policy name> -AllowTranscriptionForCalling $true enables call transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "For example, this script enables transcription for the global policy:\n\n```powershell\nSet-CsTeamsCallingPolicy -Identity Global -AllowTranscriptionForCalling $true\n```",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "Call transcription is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+      "quote": "Transcription is automatically generated, recorded text of what was said in a call. When turned on, the transcript is available to users to review after a call ends. This setting is off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The Copilot setting is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.\n2. Select an existing policy or create a new one.\n3. Go to the **Recording & transcription** section and find the **Copilot** setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Disabled sets the organiser's default Copilot option to Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "To set the organizer's default Copilot option to **Off** and allow them to change it, use the following script:\n\n```PowerShell\nSet-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Disabled\n```",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The other Copilot parameter values include Enabled, EnabledWithTranscript and EnabledWithTranscriptDefaultOn.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "| On | Enabled | ... | On with saved transcript required | EnabledWithTranscript | ... | On with transcript saved by default | EnabledWithTranscriptDefaultOn |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls; What to check",
+      "type": "applicability",
+      "claim": "Organisers can change the Copilot option per meeting depending on their assigned policy value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "Organizers can change this value to **During and after the meeting**, and **Off**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "The no-transcript docx expiry setting is under Meetings > Meeting policies > policy > Copilot and other AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Under **Copilot and other AI**, next to **Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings**, enter the number of days that documents are retained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays <days> sets recap document expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Use the [Set-CsTeamsMeetingPolicy](/en-us/powershell/module/microsoftteams/set-csteamsmeetingpolicy) cmdlet with the `-IntelligentRecapDocxFileExpirationDays` parameter.",
+      "severity": "minor",
+      "fix": "Keep the command, but add to the note: 'The no-transcript recap page documents this parameter as effective; the Set-CsTeamsMeetingPolicy reference says under -IntelligentRecapDocxFileExpirationDays: \"This feature has not been fully released yet, so the setting will have no effect.\" Microsoft has not reconciled the pages.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy."
+    },
+    {
+      "n": 68,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "The recap docx expiry period accepts 1 to 9999 days, or -1 for no expiration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "You can specify a value from **1** to **9999** days, or **-1** for no expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "The recording and transcript automatic-expiry control is under Meetings > Meeting policies > Recording & transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+      "quote": "After turning on **Recordings and transcriptions automatically expire**, you'll get the option to set the **Default expiration time**, measured in days.",
+      "severity": "minor",
+      "fix": "Use 'Meetings > Meeting policies > policy > Recording & transcription > Recordings and transcriptions automatically expire' for the existing toggle. Add to the row note: 'When automatic expiry is on, set Default expiration time to choose the number of days.' The current route omits selection of the policy and stops before the duration setting."
+    },
+    {
+      "n": 70,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -NewMeetingRecordingExpirationDays <days> sets recording expiration time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+      "quote": "To set the expiration time using PowerShell, run the following command:\n\n```powershell\nSet-CsTeamsMeetingPolicy -Identity <policy name> -NewMeetingRecordingExpirationDays <days>\n```",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Meeting policies can be assigned to users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "You can apply your Copilot meeting policies to groups or individual users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "There is no separate policy setting for no-transcript recap; disabling intelligent recap under the policy also disables that variant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "There isn't a separate policy setting for intelligent recap without saving transcripts. To prevent users from using this feature while keeping Copilot enabled, turn off intelligent recap in the Teams meeting policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Meeting organisers can delete the no-transcript AI summary from the Recap tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Meeting organizers can delete the AI summary from the **Recap** tab or the corresponding Word document in OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No admin switch governing organiser deletion of the no-transcript AI summary is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: intelligent recap AI summary delete administrator policy disable without saving transcripts. Read no-transcript recap FAQ, policy controls and cmdlet reference. No administrator switch governing organiser deletion of that Word summary was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The Teams Premium overview says admins cannot turn intelligent meeting recap on or off, whereas the no-transcript page documents a policy cmdlet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/enhanced-teams-experience",
+      "quote": "| Intelligent meeting recap | No, contact support for assistance.^1^ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The read Microsoft documentation does not establish whether AllowIntelligentRecap also disables call recap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: intelligent recap AllowIntelligentRecap Teams admin center toggle turn off meetings calls. Read no-transcript recap, call recap prerequisites, Teams Premium calls section and Set-CsTeamsMeetingPolicy's AllowIntelligentRecap entry; its documented scope is meetings, not calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Open questions: storage or other charges",
+      "type": "absence",
+      "claim": "What storage or other charges apply to recap files is not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services?view=o365-worldwide",
+      "quote": "Microsoft 365 OneDrive Storage is a pay-as-you-go service that allows organizations to extend OneDrive storage beyond licensed limits and pay only for storage consumed above their included quota.",
+      "severity": "blocker",
+      "fix": "Replace the final Open questions bullet with 'Is there a recap-specific storage charge? The recap pages read publish none.' This keeps the verified narrow absence and does not imply that ordinary OneDrive or SharePoint storage charges are unpublished."
+    },
+    {
+      "n": 78,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Meeting recap includes speaker timeline markers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Speaker timeline markers show who spoke during the meeting, when they spoke, and allows your users to jump to that moment.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T07:39:38.469Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 6,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/privacy/intelligent-recap",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/enhanced-teams-experience",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-meeting-recaps-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether intelligent recap is available in meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can transcribe meetings, which full recap depends on",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can transcribe meetings, which full recap depends on",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether call transcription is allowed for 1:1 and PSTN calls",
+        "docs": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Calling policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether call transcription is allowed for 1:1 and PSTN calls",
+        "docs": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsCallingPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Copilot in meetings and events, which sets the default transcript behaviour",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Copilot in meetings and events, which sets the default transcript behaviour",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Expiry of recap Word files for non-transcribed meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Copilot and other AI",
+          "Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Expiry of recap Word files for non-transcribed meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether recordings and transcripts expire automatically, and after how many days",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Recordings and transcriptions automatically expire"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Whether recordings and transcripts expire automatically, and after how many days",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

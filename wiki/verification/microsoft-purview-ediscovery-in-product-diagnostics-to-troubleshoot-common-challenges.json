@@ -2,94 +2,33 @@
   "slug": "microsoft-purview-ediscovery-in-product-diagnostics-to-troubleshoot-common-challenges",
   "roadmapId": 565222,
   "title": "Microsoft Purview eDiscovery: in-product diagnostics for case access, security filters and holds",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "2 blocking findings (claims 56, 69)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 72,
-    "confirmed": 70,
-    "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
-    "major": 0,
-    "minor": 0
+    "claims": 68,
+    "confirmed": 67,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 1
   },
-  "summary": "Hold pending corrections to the existing troubleshooting controls. The case-membership path only adds users, not role groups, and the existing Help-pane diagnostic is unavailable in GCC High and DoD. The planned diagnostic checks and rollout windows otherwise match Microsoft's notice.",
+  "summary": "The documented control paths, commands, licensing background and current rollout windows are supported. The statement that every rollout date was postponed goes beyond the supplied notice, and the search-filter command should acknowledge a difference between Microsoft's guide and its cmdlet reference.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; title",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap plans self-service diagnostics for case permissions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Self-service diagnostics help identify common issues with case permissions, security filters, and policy status.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "What's changing; title",
-      "type": "record",
-      "claim": "The roadmap plans self-service diagnostics for security filters.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Self-service diagnostics help identify common issues with case permissions, security filters, and policy status.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap plans self-service diagnostics for policy status.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Self-service diagnostics help identify common issues with case permissions, security filters, and policy status.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The planned experience highlights potential misconfigurations.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The experience highlights potential misconfigurations and provides simple guidance to help customers understand and resolve them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The planned experience provides simple guidance to help understand and resolve issues.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The experience highlights potential misconfigurations and provides simple guidance to help customers understand and resolve them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "summary; What's changing; Scope",
-      "type": "record",
-      "claim": "MC1515937 specifies three diagnostic checks covering case access, security filters and hold-policy distribution.",
+      "claim": "Microsoft Purview eDiscovery is introducing in-product diagnostics.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "Microsoft Purview eDiscovery is introducing three read-only diagnostic checks for case access, security filters, and hold-policy distribution.",
@@ -97,10 +36,21 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 2,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "There are three checks, covering case access, security filters and hold-policy distribution.",
+      "status": "supported",
+      "source": "Message Center post MC1515937",
+      "quote": "Microsoft Purview eDiscovery is introducing three read-only diagnostic checks for case access, security filters, and hold-policy distribution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The three planned checks are read-only.",
+      "claim": "The new diagnostic checks are read-only.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "Admins can use three read-only diagnostics to understand common issues with case access, search scoping, and hold-policy distribution.",
@@ -108,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Risk assessment; rationale: risk",
+      "n": 4,
+      "where": "What's changing; Risk assessment",
       "type": "record",
-      "claim": "The diagnostics provide guidance without changing existing organisational configuration.",
+      "claim": "The checks provide troubleshooting guidance.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "The diagnostics provide guidance without changing your organization's existing configuration.",
@@ -119,40 +69,40 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "Scope; rationale: impact",
+      "n": 5,
+      "where": "What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "MC1515937 names eDiscovery admins as the affected group.",
+      "claim": "The checks do not change the organisation's existing configuration.",
       "status": "supported",
       "source": "Message Center post MC1515937",
-      "quote": "Who is affected:\n\n- eDiscovery admins.",
+      "quote": "The diagnostics provide guidance without changing your organization's existing configuration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; Why it matters",
+      "n": 6,
+      "where": "What's changing",
       "type": "record",
-      "claim": "MC1515937 says no admin action is required at this time.",
+      "claim": "The roadmap describes self-service diagnostics for case permissions, security filters and policy status.",
       "status": "supported",
-      "source": "Message Center post MC1515937",
-      "quote": "No admin action is required at this time. Review your eDiscovery workflows and internal guidance if your organization uses the related Microsoft Purview capabilities.",
+      "source": "roadmap record",
+      "quote": "Self-service diagnostics help identify common issues with case permissions, security filters, and policy status.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "Why it matters",
+      "n": 7,
+      "where": "What's changing",
       "type": "record",
-      "claim": "MC1515937 sets no act-by date.",
+      "claim": "The roadmap says the experience highlights potential misconfigurations and provides simple guidance.",
       "status": "supported",
-      "source": "Message Center post MC1515937",
-      "quote": "Act by: none",
+      "source": "roadmap record",
+      "quote": "The experience highlights potential misconfigurations and provides simple guidance to help customers understand and resolve them.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
+      "n": 8,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -163,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 9,
       "where": "front matter: targetDate; What's changing; Governance guidance",
       "type": "record",
-      "claim": "The roadmap target date is December CY2026.",
+      "claim": "The roadmap target is December CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -174,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 10,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is December CY2026.",
@@ -185,18 +135,7 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -207,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 12,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -218,32 +157,32 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: roadmapModified",
+      "n": 13,
+      "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The roadmap record was modified on 4 November 2026 at 23:59:50.",
+      "claim": "The roadmap lists Preview and General Availability release phases.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-04T23:59:50\"",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1515937 was updated on 4 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1515937",
-      "quote": "Updated November 4, 2026: We have updated the timeline.",
+      "quote": "Updated November 4, 2026: We have updated the timeline. Thank you for your patience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; front matter: changes",
+      "n": 15,
+      "where": "What's changing",
       "type": "record",
-      "claim": "Worldwide Public Preview rollout is planned to begin in early December 2026.",
+      "claim": "Microsoft plans to begin Worldwide Public Preview rollout in early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "Public Preview (Worldwide): We will begin rolling out in early December 2026 (previously late October)",
@@ -251,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "Worldwide Public Preview rollout is expected to complete by mid-December 2026.",
+      "claim": "Microsoft expects Worldwide Public Preview rollout to complete by mid-December 2026.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "expect to complete by mid-December 2026 (previously mid-November).",
@@ -262,21 +201,21 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Scope",
+      "n": 17,
+      "where": "What's changing",
       "type": "record",
-      "claim": "General Availability rollout is planned to begin in late December 2026 in Worldwide, GCC, GCC High and DoD.",
+      "claim": "Microsoft plans to begin GA rollout in late December 2026 for Worldwide, GCC, GCC High and DoD.",
       "status": "supported",
       "source": "Message Center post MC1515937",
-      "quote": "General Availability (Worldwide): ... late December 2026 ... General Availability (GCC): ... late December 2026 ... General Availability (GCC High): ... late December 2026 ... General Availability (DoD): ... late December 2026",
+      "quote": "General Availability (Worldwide): We will begin rolling out in late December 2026 (previously early December). General Availability (GCC): We will begin rolling out in late December 2026 (previously early December).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "Worldwide General Availability rollout is expected to complete by early January 2027.",
+      "claim": "Microsoft expects Worldwide GA rollout to complete by early January 2027.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "General Availability (Worldwide): We will begin rolling out in late December 2026 (previously early December) and expect to complete by early January 2027 (previously mid-December 2026).",
@@ -284,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "GCC General Availability rollout is expected to complete by mid-January 2027.",
+      "claim": "Microsoft expects GCC GA rollout to complete by mid-January 2027.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "General Availability (GCC): We will begin rolling out in late December 2026 (previously early December) and expect to complete by mid-January 2027.",
@@ -295,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 20,
       "where": "What's changing",
       "type": "record",
-      "claim": "GCC High General Availability rollout is expected to complete by early February 2027.",
+      "claim": "Microsoft expects GCC High GA rollout to complete by early February 2027.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "General Availability (GCC High): We will begin rolling out in late December 2026 (previously early December) and expect to complete by early February 2027.",
@@ -306,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 21,
       "where": "What's changing",
       "type": "record",
-      "claim": "DoD General Availability rollout is expected to complete by late February 2027.",
+      "claim": "Microsoft expects DoD GA rollout to complete by late February 2027.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "General Availability (DoD): We will begin rolling out in late December 2026 (previously early December) and expect to complete by late February 2027.",
@@ -317,120 +256,164 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 22,
+      "where": "What's changing",
       "type": "record",
-      "claim": "MC1515937 revised the Preview and General Availability schedules later than the earlier schedule.",
+      "claim": "The notice moved each rollout date later than its earlier schedule.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: the supplied MC1515937 rollout schedule and its 'previously' comparisons. It gives earlier preview dates, all earlier GA starts and an earlier Worldwide GA completion, but no earlier GCC, GCC High or DoD completion dates.",
+      "severity": "major",
+      "fix": "Replace 'The notice moved each date later than its earlier schedule.' with 'The notice postponed the preview start and completion, all GA start dates, and the Worldwide GA completion date.' The supplied MC1515937 explicitly gives those comparisons."
+    },
+    {
+      "n": 23,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "MC1515937 names eDiscovery admins as the affected group.",
       "status": "supported",
       "source": "Message Center post MC1515937",
-      "quote": "early December 2026 (previously late October); mid-December 2026 (previously mid-November); late December 2026 (previously early December); early January 2027 (previously mid-December 2026).",
+      "quote": "Who is affected: - eDiscovery admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required at this time.",
+      "status": "supported",
+      "source": "Message Center post MC1515937",
+      "quote": "No admin action is required at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "MC1515937 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1515937",
+      "quote": "Act by: none. No admin action is required at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the new three-check experience as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery in-product diagnostics hold' and 'eDiscovery diagnostics case access security filters'; read edisc-permissions, edisc-settings-access-permissions, edisc-hold-manage and purview-compliance-diagnostics. Results describe existing controls and older diagnostics, not the new experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented where the new checks appear in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics case access security filters hold distribution diagnostic permissions roles prerequisites enabled default turn off'; read purview-compliance-diagnostics and edisc-permissions. Their Help-pane paths concern existing diagnostics.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
       "where": "What's changing",
-      "type": "record",
-      "claim": "The notice points readers to existing case-access, security-filter and hold-distribution topics.",
+      "type": "absence",
+      "claim": "Microsoft has not documented exactly what each new check inspects.",
       "status": "supported",
-      "source": "Message Center post MC1515937",
-      "quote": "Learn about access and permission settings in eDiscovery cases (role/permission troubleshooting)- Security-filter diagnostic- Hold-distribution diagnostic",
+      "source": null,
+      "quote": "Searched: 'eDiscovery diagnostics case access security filters' and 'eDiscovery in-product diagnostics hold'; read edisc-permissions, edisc-hold-manage and purview-compliance-diagnostics. MC1515937 names the three areas but not the detailed inspections.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "What's changing",
+      "where": "What's changing; Risk assessment; Scope; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft Learn does not yet describe these three new in-product diagnostics as of November 2026.",
+      "claim": "Microsoft has not stated the specific role needed to run the new checks.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: eDiscovery diagnostics case access; eDiscovery diagnostics security filters; eDiscovery diagnostics hold distribution. Read Self-help diagnostics for Microsoft Purview, Assign permissions, case access, search filtering and hold management; no matching new feature documentation.",
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics case access security filters hold distribution diagnostic permissions roles prerequisites enabled default turn off'; read edisc-permissions and purview-compliance-diagnostics. Existing role rules do not identify the role for these three new checks.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "What's changing; Open questions",
+      "where": "What's changing; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not documented where the three new checks appear in the Purview portal.",
+      "claim": "Microsoft has not documented an admin switch to turn the new diagnostics on or off.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: eDiscovery in-product diagnostics case access security filter hold distribution diagnostics default enable disable role prerequisites. Read Self-help diagnostics for Microsoft Purview and the case-access, permissions and hold-management pages; no path for the three new checks.",
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics case access security filters hold distribution diagnostic permissions roles prerequisites enabled default turn off'; read edisc-get-started, edisc-permissions and purview-compliance-diagnostics. No switch for the new checks was found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "What's changing; Risk assessment; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented exactly what each new check inspects or displays.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery diagnostics case access; eDiscovery diagnostics security filters; eDiscovery diagnostics hold distribution. Read Self-help diagnostics for Microsoft Purview and the associated permissions, search-filter and hold pages; only existing diagnostics and controls are described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "What's changing; Risk assessment; Scope; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specified the role needed to run each of the three new checks.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery in-product diagnostics case access security filter hold distribution diagnostics default enable disable role prerequisites. Read Self-help diagnostics for Microsoft Purview, Assign permissions and Get started with eDiscovery; no role mapping for these three new checks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "What's changing; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented an admin on/off switch for the new diagnostics.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery in-product diagnostics case access security filter hold distribution diagnostics default enable disable role prerequisites. Read Self-help diagnostics for Microsoft Purview, Get started with eDiscovery and Assign permissions; no on/off switch for the new checks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
       "where": "front matter: defaultState; Why it matters",
       "type": "default",
       "claim": "The default state of the new checks is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: eDiscovery in-product diagnostics case access security filter hold distribution diagnostics default enable disable role prerequisites. Read Self-help diagnostics for Microsoft Purview and Get started with eDiscovery; neither those pages, the roadmap nor MC1515937 states a default.",
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics case access security filters hold distribution diagnostic permissions roles prerequisites enabled default turn off'; read MC1515937, the roadmap, edisc-get-started and purview-compliance-diagnostics. None states their default enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said what data the new checks read or display.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery diagnostics case access security filters' and 'eDiscovery in-product diagnostics hold'; read purview-compliance-diagnostics, edisc-settings-access-permissions and edisc-hold-manage. No new-check results or displayed data are specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not stated prerequisites specific to the new checks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics case access security filters hold distribution diagnostic permissions roles prerequisites enabled default turn off'; read edisc-get-started and edisc-permissions. General eDiscovery prerequisites exist; no additional check-specific prerequisites were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not said whether the new checks appear for case members who are not eDiscovery admins.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics case access security filters hold distribution diagnostic permissions roles prerequisites enabled default turn off'; read edisc-permissions and MC1515937. The notice names admins, without specifying availability to other case members.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Scope",
+      "where": "controls[1].note; Governance controls",
       "type": "absence",
-      "claim": "Prerequisites specific to the new checks are not documented.",
+      "claim": "Microsoft has not confirmed how the new diagnostics read the existing case membership, role, filter and hold controls.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: eDiscovery in-product diagnostics case access security filter hold distribution diagnostics default enable disable role prerequisites. Read Get started with eDiscovery, Assign permissions and Self-help diagnostics for Microsoft Purview; general requirements but no new-check prerequisites.",
+      "quote": "Searched: 'eDiscovery diagnostics case access security filters' and 'eDiscovery in-product diagnostics hold'; read edisc-settings-access-permissions, edisc-permissions, edisc-search-permission-filtering and edisc-hold-manage. None maps the new checks to those settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether the new checks appear for case members who are not eDiscovery admins.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery diagnostics case access; eDiscovery in-product diagnostics case access security filter hold distribution diagnostics default enable disable role prerequisites. Read case-access and permissions pages and Self-help diagnostics for Microsoft Purview; no new-check visibility rule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The new diagnostics do not automatically perform fixes; remediation remains separate from their guidance.",
+      "claim": "The notice mentions no automatic remediation.",
       "status": "supported",
       "source": "Message Center post MC1515937",
       "quote": "The diagnostics provide guidance without changing your organization's existing configuration.",
@@ -438,109 +421,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The cited case-access page does not itself mention a diagnostic.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery diagnostics case access. Read Learn about access and permission settings in eDiscovery cases in full: case users, role groups and guest access are documented, but no diagnostic is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Included is the applicable product-level licensing model, with the diagnostics-specific requirement left open.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-get-started",
-      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Microsoft documents Microsoft 365 Enterprise E3 or E5 licensing for admins working with eDiscovery cases.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-get-started",
-      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft documents Microsoft 365 Enterprise E3 or E5 licensing for users working with eDiscovery cases.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-get-started",
-      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "summary; front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "A licence or add-on requirement specific to the new diagnostics is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery in-product diagnostics licensing price charge Microsoft 365 E3 E5. Read Get started with eDiscovery, Assign permissions, Billing in eDiscovery and the service-description search excerpt; none identifies a licence or add-on specific to these new diagnostics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "A consumption charge specific to the new diagnostics is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery in-product diagnostics licensing price charge Microsoft 365 E3 E5. Read Get started with eDiscovery and Billing in eDiscovery; published storage and export billing does not name these diagnostics. Neither the roadmap nor MC1515937 names a charge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "To analyse a user's data with premium eDiscovery features enabled, that user needs Office 365 E5 or Microsoft 365 E5 unless covered by the stated add-on alternative.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "To analyze a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The premium-data alternative is Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit for Office 365 E1 or Office 365 or Microsoft 365 E3 users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Alternatively, users with an Office 365 E1 or an Office 365 or Microsoft 365 E3 license can be assigned a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) or Microsoft 365 eDiscovery and Audit add-on license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The permissions page does not identify the three new diagnostics as the subject of its premium licensing rule.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery diagnostics case access; eDiscovery diagnostics security filters; eDiscovery diagnostics hold distribution. Read Assign permissions in eDiscovery in full; it names the existing RBAC check but does not mention the three new checks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "The case-access article says users must be added to the eDiscovery Manager role group before accessing a case.",
+      "claim": "The case-access article says a user must be added to the eDiscovery Manager role group before accessing a case.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
       "quote": "before a user can access an eDiscovery case (and perform tasks in the case), you must add the user to the eDiscovery Manager role group in the Microsoft Purview portal.",
@@ -548,7 +432,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 38,
       "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "The permissions article also documents eDiscovery permissions through Compliance Administrator, Organization Management and Reviewer role groups.",
@@ -559,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 39,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "For users who are not eDiscovery Administrators, visible cases are limited to cases they belong to.",
+      "claim": "Users who are not eDiscovery Administrators see only cases they belong to.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-permissions",
       "quote": "For users who aren't eDiscovery Administrators, the cases shown are limited to those where the user is a member.",
@@ -570,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 40,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "An eDiscovery Administrator can view and access all eDiscovery cases.",
+      "claim": "An eDiscovery Administrator can view and access all cases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-permissions",
       "quote": "An eDiscovery Administrator can view and access all eDiscovery cases, they can audit and oversee all cases and associated compliance searches.",
@@ -581,21 +465,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Risk assessment: Security & identity; controls[2].governs",
-      "type": "applicability",
-      "claim": "Search permissions filters govern the mailboxes and sites an eDiscovery manager can search.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
-      "quote": "Use search permissions filtering to let an eDiscovery manager search only a subset of mailboxes and sites in your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
+      "n": 41,
       "where": "Risk assessment; Governance guidance: At rollout; Governance controls",
       "type": "behaviour",
-      "claim": "Adding or removing a role in a role group removes the role group from every eDiscovery case it belongs to.",
+      "claim": "Adding or removing a role in a role group automatically removes that group from every case it belongs to.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
       "quote": "If you add or remove a role from a role group that you added as a member of a case, the role group is automatically removed as a member of the case (or any case the role group is a member of).",
@@ -603,30 +476,52 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 42,
+      "where": "controls[2].governs; Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Search permissions filters restrict which mailboxes, sites or content an eDiscovery manager can search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "Use search permissions filtering to let an eDiscovery manager search only a subset of mailboxes and sites in your organization. You can also use permissions filtering to let that same eDiscovery manager search only for mailbox or site content that meets a specific search criteria.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing eDiscovery RBAC diagnostic checks whether Search, Export or Preview roles are assigned to a named user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Run the following diagnostic test to check if the Export, Preview, or Search roles are assigned to the designated admin account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
       "type": "admin-path",
-      "claim": "eDiscovery Manager membership is assigned in the Purview portal through Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users or Choose groups.",
+      "claim": "The existing RBAC diagnostic is reached in the Purview portal through Help > Ask a question > search for Diag:edisRBACdiag.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Go to Settings > Role groups. On Role groups for Microsoft Purview solutions, select eDiscovery Manager. Select Edit. On Manage eDiscovery Manager, select Choose users or Choose groups.",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Select the Help icon in the upper-right corner of the portal. In the Help and support pane, select Ask a question. In the search box, enter a brief description of the issue that you want to resolve.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> adds a group to the eDiscovery Managers subgroup.",
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "availability",
+      "claim": "Existing Help-pane diagnostics are unavailable in GCC High, DoD and Microsoft 365 operated by 21Vianet.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "You can add a mail-enabled security group as a member of the eDiscovery Managers subgroup ... by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell.\nAdd-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].note; Governance controls table",
+      "n": 46,
+      "where": "controls[0].note",
       "type": "role",
       "claim": "Assigning eDiscovery permissions requires Organization Management membership or the Role Management role.",
       "status": "supported",
@@ -636,87 +531,10 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Purview path eDiscovery > Cases > case > Case settings > Access and permissions > Users > Add provides the row's control for adding users and role groups to a case.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
-      "quote": "Under Users, select Add to add users to the case. You can also choose to add a role group to the case by selecting Add under Role groups.",
-      "severity": "blocker",
-      "fix": "Replace controls[1].ui.path and its rendered table path with 'eDiscovery > Cases > case > Case settings > Access and permissions > Users or Role groups > Add'. The cited page uses Users for individual users and Role groups for role groups."
-    },
-    {
-      "n": 57,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/caseMembers adds a user or role group as a case member.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
-      "quote": "The ediscoveryCaseMember can be one of two types: a user or a role group.\nPOST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/b0073e4e-4184-41c6-9eb7-8c8cc3e2288b/caseMembers",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "The case-member request body sets recipientType.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
-      "quote": "recipientType ... Specifies the recipient type of the eDiscovery case member. The possible values are: user, roleGroup, unknownFutureValue. Required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "The request identifies a case member by id, or by displayName for a role group or smtpAddress for a user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
-      "quote": "id ... The ID of the eDiscovery case member. If not specified, then either displayName (for role group) or smtpAddress (for user) must be provided.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed how the new diagnostics read the existing underlying case-access, filter and hold controls.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery diagnostics case access; eDiscovery diagnostics security filters; eDiscovery diagnostics hold distribution. Read case-access, permissions, search-filter, hold-management and self-help diagnostic pages; no implementation mapping for the new checks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[2].ui; Governance controls",
-      "type": "absence",
-      "claim": "An admin UI control for configuring search permissions filters is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery search permissions filtering portal UI New-ComplianceSecurityFilter Get-ComplianceSecurityFilter. Read Configure search permissions filtering in eDiscovery in full and search excerpts from its cmdlet references; configuration is documented through PowerShell, not a portal path.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter> creates the search permissions filter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
-      "quote": "Use the New-ComplianceSecurityFilter cmdlet to create a search permissions filter. Here's the basic syntax for this cmdlet:\nNew-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter>",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
+      "n": 47,
       "where": "controls[2].note; Governance controls",
       "type": "role",
-      "claim": "Compliance security filter cmdlets require Organization Management membership and the eDiscovery administrator role.",
+      "claim": "Running compliance security filter cmdlets requires Organization Management role group membership.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
       "quote": "To run the compliance security filter cmdlets, you need to be a member of the Organization Management role group and have the eDiscovery administrator role assigned in the Microsoft Purview portal.",
@@ -724,43 +542,131 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 48,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Running compliance security filter cmdlets also requires the eDiscovery administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "To run the compliance security filter cmdlets, you need to be a member of the Organization Management role group and have the eDiscovery administrator role assigned in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
       "where": "controls[2].note; Governance controls",
       "type": "command",
-      "claim": "Search permissions filter cmdlets run in Security & Compliance PowerShell with connections to both it and Exchange Online PowerShell.",
+      "claim": "Compliance security filter cmdlets run through Security & Compliance PowerShell with Exchange Online PowerShell also connected.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
-      "quote": "You need to connect to both Exchange Online and Security & Compliance PowerShell to use the compliance security filter cmdlets. These cmdlets require access to mailbox properties, which is why you need to connect to Exchange Online PowerShell.",
+      "quote": "You need to connect to both Exchange Online and Security & Compliance PowerShell to use the compliance security filter cmdlets.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Governance guidance: Before rollout",
-      "type": "command",
-      "claim": "Get-ComplianceSecurityFilter returns the existing search permissions filters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
-      "quote": "Use Get-ComplianceSecurityFilter to return a list of search permissions filters. Use the FilterName parameter to return information for a specific search filter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[3].ui; Governance controls table; Risk assessment",
+      "n": 50,
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Hold policies can be retried in Purview through eDiscovery > Cases > case > Hold policies > hold policy > Policy actions > Retry policy.",
+      "claim": "eDiscovery Manager role assignment is at Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users or Choose groups in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Go to Settings > Role groups. On Role groups for Microsoft Purview solutions, select eDiscovery Manager. Select Edit. On Manage eDiscovery Manager, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> adds a security group to the eDiscovery Managers subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You can add a mail-enabled security group as a member of the eDiscovery Managers subgroup in the eDiscovery Manager role group by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell. Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Case members are added at eDiscovery > Cases > case > Case settings > Access and permissions > Users or Role groups > Add in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
+      "quote": "Select a case, then select Case settings. On Case settings, select Access and permissions. Under Users, select Add to add users to the case. You can also choose to add a role group to the case by selecting Add under Role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/caseMembers adds a user or role group to a case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
+      "quote": "Add an ediscoveryCaseMember to an ediscoveryCase. The ediscoveryCaseMember can be one of two types: a user or a role group. POST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/b0073e4e-4184-41c6-9eb7-8c8cc3e2288b/caseMembers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The Graph case-member request body sets recipientType.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
+      "quote": "recipientType | microsoft.graph.security.recipientType | Specifies the recipient type of the eDiscovery case member. The possible values are: user, roleGroup, unknownFutureValue. Required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The Graph case-member request identifies the member using id, displayName for a role group, or smtpAddress for a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
+      "quote": "id | String | The ID of the eDiscovery case member. If not specified, then either displayName (for role group) or smtpAddress (for user) must be provided.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].ui; Governance controls",
+      "type": "absence",
+      "claim": "A portal path for configuring search permissions filters is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery search permissions filtering portal UI configure security filters New-ComplianceSecurityFilter Get-ComplianceSecurityFilter'; read edisc-search-permission-filtering and the New-ComplianceSecurityFilter reference. Results document PowerShell configuration, not a portal route.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter> creates a search permissions filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "Use the New-ComplianceSecurityFilter cmdlet to create a search permissions filter. Here's the basic syntax for this cmdlet: New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter>",
+      "severity": "minor",
+      "fix": "Keep the guide-supported call, but append to the row note: 'The cmdlet reference additionally marks -Action as mandatory; it selects Search, Preview, Export, Purge or All.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancesecurityfilter?view=exchange-ps, whose syntax and -Action parameter table differ from the cited guide."
+    },
+    {
+      "n": 58,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Hold retry is at eDiscovery > Cases > case > Hold policies > hold policy > Policy actions > Retry policy in the Microsoft Purview portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-manage",
-      "quote": "Select the eDiscovery solution card, then select Cases ... Select a case, then select the Hold policies tab ... select the hold policy you want to retry ... select Policy actions > Retry policy.",
+      "quote": "Select the eDiscovery solution card, then select Cases in the left navigation. Select a case, then select the Hold policies tab. On the Hold policy page for the selected policy, select Policy actions > Retry policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 59,
       "where": "controls[3].api; Governance controls table",
       "type": "command",
-      "claim": "Set-CaseHoldPolicy -Identity <policyname> -RetryDistribution retries hold policy distribution.",
+      "claim": "Set-CaseHoldPolicy -Identity <policyname> -RetryDistribution retries hold-policy distribution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/ediscovery/resolve-ediscovery-hold-issues",
       "quote": "Run the Set-CaseHoldPolicy -Identity \"policyname\" -RetryDistribution to resolve the issue.",
@@ -768,87 +674,131 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[3].note; Risk assessment; Governance controls",
+      "n": 60,
+      "where": "controls[3].note; Risk assessment: Change & support",
       "type": "command",
-      "claim": "Get-CaseHoldPolicy -Identity <policyname> -DistributionDetail reads hold distribution status separately.",
+      "claim": "Get-CaseHoldPolicy -Identity <policyname> -DistributionDetail reads hold-policy distribution status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/ediscovery/resolve-ediscovery-hold-issues",
-      "quote": "$status = Get-CaseHoldPolicy -Identity <policyname> -DistributionDetail\nif($status.DistributionStatus -ne \"Pending\")",
+      "quote": "Check whether a hold policy is pending before you make any further updates to it. $status = Get-CaseHoldPolicy -Identity <policyname> -DistributionDetail",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "Governance controls; Risk assessment: Change & support",
-      "type": "availability",
-      "claim": "The existing eDiscovery RBAC diagnostic is presented as a Help-pane troubleshooting route without a cloud restriction.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
-      "severity": "blocker",
-      "fix": "Add to the existing RBAC diagnostic description: 'The existing Help-pane diagnostic is unavailable in GCC High, DoD and Microsoft 365 operated by 21Vianet, according to Self-help diagnostics for Microsoft Purview.' Apply this qualification to its mention in Risk assessment too. Do not apply that restriction to the new checks in MC1515937."
-    },
-    {
-      "n": 70,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "The existing RBAC diagnostic is found through Purview Help > Ask a question > search for Diag:edisRBACdiag, with the permissions article abbreviating the route to Help search.",
+      "n": 61,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-ComplianceSecurityFilter lists existing search permissions filters.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Select the Help icon ... In the Help and support pane, select Ask a question. In the search box, enter a brief description ... Assign permissions in eDiscovery: Select the Help control ... Enter Diag:edisRBACdiag in search.",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "Use Get-ComplianceSecurityFilter to return a list of search permissions filters. Use the FilterName parameter to return information for a specific search filter.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The existing eDiscovery RBAC diagnostic checks Search, Export or Preview role assignments for a designated account.",
+      "n": 62,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft documents Microsoft 365 Enterprise E3 or E5 licensing for both admins and users working with eDiscovery cases.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Checks eDiscovery role-based access control (RBAC) to determine whether the Search, Export, or Preview roles are assigned to the designated administrator account.",
+      "source": "https://learn.microsoft.com/purview/edisc-get-started",
+      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
+      "n": 63,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included in the licence eDiscovery already requires, with no diagnostics-specific entitlement yet published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-get-started",
+      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A licence, add-on or consumption charge specific to the new diagnostics has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics license pricing charge billing'; read edisc-get-started, edisc-permissions and edisc-billing, plus the roadmap and MC1515937. General licences and unrelated storage/export meters are published; no diagnostics-specific entitlement or meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Analysing a user's data with premium features requires Office 365 E5 or Microsoft 365 E5, or a Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on for eligible E1/E3 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "To analyze a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 license. Alternatively, users with an Office 365 E1 or an Office 365 or Microsoft 365 E3 license can be assigned a Microsoft Purview Suite",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing; What's changing",
+      "type": "absence",
+      "claim": "The cited permissions and case-access articles do not themselves mention the new diagnostics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery diagnostics case access security filters'; read edisc-settings-access-permissions and the relevant roles, assignment and RBAC sections of edisc-permissions. The former has no diagnostic; the latter documents the existing RBAC Help diagnostic, not the new checks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The known incremental cost of the new checks is indirect admin time, with diagnostics-specific licensing not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview eDiscovery in-product diagnostics license pricing charge billing'; read edisc-billing, edisc-get-started, the roadmap and MC1515937. No direct diagnostic charge was found. The rationale limits the low rating to known preparation effort, not a claim of free use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
       "where": "rationale: impact",
       "type": "record",
       "claim": "MC1515937 does not mention end users or case reviewers as affected groups.",
       "status": "supported",
       "source": "Message Center post MC1515937",
-      "quote": "Who is affected:\n\n- eDiscovery admins.",
+      "quote": "Who is affected: - eDiscovery admins.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T06:25:35.908Z",
+    "at": "2026-11-24T07:39:41.070Z",
     "summary": {
       "links": 10,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 4,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/purview/edisc-get-started",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-permissions",
@@ -857,23 +807,23 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-hold-manage",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/ediscovery/resolve-ediscovery-hold-issues",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1515937",
@@ -917,42 +867,50 @@
         "side": "ui",
         "governs": "Which users and role groups are members of an eDiscovery case",
         "docs": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "eDiscovery",
           "Cases",
           "case",
           "Case settings",
           "Access and permissions",
-          "Users",
+          "Users or Role groups",
           "Add"
         ],
-        "missing": []
+        "missing": [
+          "eDiscovery",
+          "Cases",
+          "case",
+          "Case settings",
+          "Access and permissions",
+          "Users or Role groups",
+          "Add"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users and role groups are members of an eDiscovery case",
         "docs": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/security/cases",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Which mailboxes and sites an eDiscovery manager can search (search permissions filters)",
         "docs": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
-        "reachable": true,
+        "reachable": false,
         "token": "New-ComplianceSecurityFilter",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Hold policy distribution status and retry",
         "docs": "https://learn.microsoft.com/purview/edisc-hold-manage",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "eDiscovery",
           "Cases",
@@ -962,16 +920,24 @@
           "Policy actions",
           "Retry policy"
         ],
-        "missing": []
+        "missing": [
+          "eDiscovery",
+          "Cases",
+          "case",
+          "Hold policies",
+          "hold policy",
+          "Policy actions",
+          "Retry policy"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Hold policy distribution status and retry",
         "docs": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/ediscovery/resolve-ediscovery-hold-issues",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CaseHoldPolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -987,6 +953,12 @@
       "date": "2026-11-24",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -2,50 +2,33 @@
   "slug": "power-automate-cloud-flows-view-property-value-expanded-inline-in-new-cloud-flow-designer",
   "roadmapId": 577803,
   "title": "Power Automate: view property values inline on cards in the new cloud flow designer",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-24",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "1 blocking finding (claim 22)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 32,
-    "confirmed": 31,
+    "claims": 40,
+    "confirmed": 40,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "The layout-control path starts inside the designer without explaining how to reach it from Power Automate. The feature description and licensing are supported, but the briefing should also acknowledge an archived release-plan excerpt that gives a different default and target month.",
+  "summary": "The briefing passes: its rollout facts and maker-selected default match the roadmap, and its Layout route and product licensing are supported by Microsoft Learn. It reports the archived release plan's differing default and date without presenting that older plan as current guidance.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "title; What's changing; Scope",
       "type": "record",
-      "claim": "This feature belongs to Power Automate.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Power Automate\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The feature is a capability of the new cloud flow designer.",
+      "claim": "This feature belongs to Power Automate's new cloud flow designer.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Power Automate: Cloud flows - View property value expanded inline in new cloud flow designer",
@@ -53,10 +36,21 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "n": 2,
+      "where": "summary; What's changing; Autonomy & actions; rationale: risk",
       "type": "record",
-      "claim": "The inline view displays property values at design time directly on action cards.",
+      "claim": "Makers can view property values directly on action cards at design time.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you add an action, you can view property values for multiple steps at design time, or output values for multiple steps at runtime. The inline view shows this information directly on the cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Why it matters; Data exposure; Autonomy & actions",
+      "type": "record",
+      "claim": "The inline view can show output values on cards at runtime.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "When you add an action, you can view property values for multiple steps at design time, or output values for multiple steps at runtime. The inline view shows this information directly on the cards",
@@ -65,20 +59,9 @@
     },
     {
       "n": 4,
-      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "where": "What's changing; Why it matters; Data exposure",
       "type": "record",
-      "claim": "The inline view displays runtime output values directly on cards.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When you add an action, you can view property values for multiple steps at design time, or output values for multiple steps at runtime. The inline view shows this information directly on the cards",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Makers can review and compare values from several steps at once.",
+      "claim": "Several steps' values can be viewed and compared at once.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The inline view shows this information directly on the cards, so you can review and compare values across several steps at once.",
@@ -86,32 +69,43 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "summary; What's changing; rationale: risk",
+      "n": 5,
+      "where": "What's changing; rationale: risk",
       "type": "record",
-      "claim": "Without inline view, makers open each card individually to see values already accessible in the side pane, one step at a time.",
+      "claim": "Without inline view, makers select each card individually to read its value in the side pane.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Without the inline view, you select each card individually to see its value in the side pane, and you can view only one step's value at a time.",
+      "quote": "Without the inline view, you select each card individually to see its value in the side pane",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The side pane value experience shows one step's value at a time.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "you can view only one step's value at a time.",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Governance guidance; rationales",
+      "where": "summary; What's changing; Why it matters; Governance guidance; rationale: risk",
       "type": "default",
-      "claim": "The side pane remains the default and makers choose the inline view, represented as user-opt-in.",
+      "claim": "According to the current roadmap, the side pane remains the default until a maker switches views.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can choose which experience you prefer. The current side pane experience remains the default. You can switch to the inline view whenever you want and switch back at any time.",
-      "severity": "minor",
-      "fix": "Keep user-opt-in and the roadmap's side-pane default. Add to What's changing: \"An archived release-plan excerpt indexed by Microsoft Learn describes inline display as the default and gives February 2026 as its general-availability target; this briefing follows the current roadmap record's side-pane default and June CY2026 target.\" Cite https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer. The excerpt says \"The feature shows all that information inline by default\" and \"Feb 2026\"; fetching its URL redirects to an overview marked archived as of October 2026."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 8,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "where": "What's changing; Change & support; Governance guidance; Governance controls",
       "type": "record",
-      "claim": "Makers can switch to inline view and back at any time.",
+      "claim": "Makers can switch to the inline view and back at any time.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can switch to the inline view whenever you want and switch back at any time.",
@@ -120,9 +114,9 @@
     },
     {
       "n": 9,
-      "where": "What's changing",
+      "where": "What's changing; summary",
       "type": "record",
-      "claim": "The roadmap lists the feature as enabled for admins, makers and marketers automatically.",
+      "claim": "The roadmap lists automatic availability for admins, makers and marketers rather than an administrator enablement requirement.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled for admins/makers/marketers automatically",
@@ -131,18 +125,7 @@
     },
     {
       "n": 10,
-      "where": "summary; What's changing",
-      "type": "absence",
-      "claim": "No administrator enablement action is needed for makers to choose the view.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate inline property values view admin environment tenant enable disable setting. Read roadmap automatic enablement, flows-designer, list-tenantsettings and settings-features; no admin prerequisite or inline-view enablement switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: status; What's changing; changes",
+      "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -152,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is June CY2026.",
+      "claim": "The current roadmap target is June CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"June CY2026\"",
@@ -163,24 +146,35 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: releasePhase; What's changing; Scope",
+      "n": 12,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), without saying GCC, GCC High or DoD are excluded.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
@@ -197,105 +191,39 @@
     },
     {
       "n": 16,
-      "where": "front matter: previewDate",
+      "where": "Scope",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap does not explicitly exclude GCC, GCC High or DoD.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-22T23:45:28.",
+      "where": "front matter: defaultState; Governance controls; rationale: impact",
+      "type": "default",
+      "claim": "The change is user-opt-in: makers choose the inline experience without a documented administrator switch.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-22T23:45:28\"",
+      "quote": "You can choose which experience you prefer. The current side pane experience remains the default. You can switch to the inline view whenever you want and switch back at any time.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "The designer documentation describes a Layout button that switches between inline and panel layouts.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Included is the licensing model for this new view inside Power Automate's existing cloud automation capabilities.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/flows-designer",
-      "quote": "Layout: Switch between inline and panel layouts.",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "With a Power Automate Premium user license, users gain the full set of capabilities for cloud and desktop automation",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing; controls[0].governs",
-      "type": "behaviour",
-      "claim": "The documented inline layout displays an action's properties in an expanded card on the canvas.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/flows-designer",
-      "quote": "The inline layout displays an action's properties in an expanded card on the canvas.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The documented panel layout displays properties in the configuration pane and keeps cards compact.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/flows-designer",
-      "quote": "The panel layout displays the properties in the configuration pane on the left and keeps the action cards compact.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The cited designer page does not identify Layout as the roadmap's inline property-value and runtime-output view.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate designer Layout inline panel layout API Power Platform REST Dataverse workflow PowerShell tenant setting. Read flows-designer in full and the feature release-plan excerpt; neither connects Layout to runtime output-value display.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Power Automate maker path to the layout control is Cloud flows designer > Collapse (configuration pane) > Layout.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/data-operations",
-      "quote": "On the navigation pane to the left, select My flows. In the Cloud flows tab, select the flow you want to open. On the command bar at the top, select Edit. The flow opens in the designer.",
-      "severity": "blocker",
-      "fix": "Replace controls[0].ui.path and the rendered path with \"My flows > Cloud flows > flow > Edit > New designer (on) > Collapse (configuration pane) > Layout\". Add https://learn.microsoft.com/power-automate/data-operations to sources for the route into the designer. Keep https://learn.microsoft.com/power-automate/flows-designer as docs: it documents the New designer toggle, Collapse button and Layout control. The current path starts inside the designer rather than at the maker portal's navigation."
-    },
-    {
-      "n": 23,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API or automation operation for a maker's inline-versus-panel layout choice is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate designer Layout inline panel layout API Power Platform REST Dataverse workflow PowerShell tenant setting; inline property output values Layout admin API PowerShell pac. Read designer, PowerShell and pac excerpts and list-tenantsettings; no layout-setting operation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[1].ui and api; controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft documents no tenant or environment UI switch or API setting for this inline property-value view as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate inline property values view admin environment tenant enable disable setting; designer Layout inline panel API Power Platform REST Dataverse workflow PowerShell tenant setting. Read flows-designer, list-tenantsettings, settings-features and admin/CLI excerpts; none found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Power Automate Premium includes the full set of cloud automation capabilities.",
@@ -306,54 +234,197 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The inline designer option is represented as included in the product's existing licensing, with Power Automate Premium named in the notes.",
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence specific to the inline view is published in the reviewed documentation or named in the roadmap.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
-      "quote": "With a Power Automate Premium user license, users gain the full set of capabilities for cloud and desktop automation",
+      "source": null,
+      "quote": "Searched: \"Power Automate\" \"inline\" \"layout\" \"license\" \"meter\". Read Types of Power Automate licenses, Explore the cloud flows designer, the release-plan excerpt and the roadmap; none names a separate inline-view licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to displaying inline values is published in the reviewed documentation or named in the roadmap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Automate\" \"inline\" \"layout\" \"license\" \"meter\". Read Pay-as-you-go meters excerpts, Types of Power Automate licenses, the designer page and release-plan excerpt; meters describe flow runs, not displaying inline values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The maker route is My flows > Cloud flows > flow > Edit > New designer (on) > Collapse (configuration pane) > Layout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flows-designer",
+      "quote": "On the navigation pane to the left, select My flows. ... In the Cloud flows tab, select the flow you want to open. ... select Edit. ... Collapse button: (New designer only) Hide the pane. ... Layout: Switch between inline and panel layouts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or automation operation is documented for the maker's designer layout selection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate designer inline layout API PowerShell Power Platform API pac admin settings; \"Power Automate Management\" \"designer\" \"layout\". Read designer page, List tenant settings, pac admin and PowerShell support excerpts; no layout operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant or environment UI setting or API is documented specifically for the inline property-value view as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate inline property value cloud flow designer admin disable tenant environment layout setting. Read designer and List tenant settings pages, plus Tenant settings, Manage Power Automate flows and pac admin excerpts; no inline-view switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Governance controls; controls[0].governs",
+      "type": "behaviour",
+      "claim": "Layout switches between inline and panel layouts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flows-designer",
+      "quote": "Layout: Switch between inline and panel layouts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The documented inline layout displays an action's properties in an expanded card on the canvas.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flows-designer",
+      "quote": "The inline layout displays an action's properties in an expanded card on the canvas.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The reviewed documentation and roadmap do not state a separate licence for the inline view.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The panel layout displays action properties in the configuration pane.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate inline property value view separate license pricing meter; expanded inline cloud designer licensing meter secure outputs classic designer. Read roadmap, flows-designer, licensing/types and feature release-plan excerpt; none names a separate inline-view licence.",
+      "source": "https://learn.microsoft.com/power-automate/flows-designer",
+      "quote": "The panel layout displays the properties in the configuration pane on the left",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The reviewed documentation and roadmap do not state a meter specific to the inline view.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The panel layout keeps action cards compact.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate inline property value view separate license pricing meter. Read roadmap, flows-designer, licensing/types, release-plan and pay-as-you-go-meters excerpts; documented flow-run meters do not name an inline-view meter.",
+      "source": "https://learn.microsoft.com/power-automate/flows-designer",
+      "quote": "The panel layout displays the properties in the configuration pane on the left and keeps the action cards compact.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Risk assessment: Data exposure; Open questions",
+      "where": "controls[0].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The sources do not specify how inline runtime cards handle actions with Secure outputs enabled.",
+      "claim": "The designer documentation does not explicitly identify Layout as the switch for the roadmap's runtime property-value view.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate inline runtime card output values secure outputs hidden. Read flows-designer, release-plan, how-tos-use-sensitive-input and secure-data excerpts. Secure outputs is documented for run history/logs, but inline runtime-card handling is not specified.",
+      "quote": "Searched: Power Automate inline property value cloud flow designer admin disable tenant environment layout setting; \"Power Automate Management\" \"designer\" \"layout\". Read Explore the cloud flows designer and the release-plan excerpt; neither links Layout to runtime value display.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Risk assessment: Security & identity",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The designer overview documents inline action properties but does not describe displaying runtime output values on cards.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Automate Management\" \"designer\" \"layout\". Read the full Explore the cloud flows designer page, including Canvas, Layout and Test; no runtime output-values-on-cards description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The older release plan is archived, and its feature text remains available as a Learn search excerpt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer",
+      "quote": "As of October 2026, this content is archived and no longer maintained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The archived release-plan excerpt describes inline display as the default, unlike the current roadmap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer",
+      "quote": "The feature shows all that information inline by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The archived release-plan excerpt gives February 2026 as the general-availability target.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer",
+      "quote": "| Enabled for | Public preview | Early access | General availability| ... | Admins, makers, marketers, or analysts, automatically | - | - | Feb 2026 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The sources do not specify how inline runtime cards handle actions with Secure outputs enabled.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Automate\" \"inline\" \"Secure outputs\". Read designer page, release-plan excerpt, Secure data used in cloud flows and Manage sensitive input like passwords excerpts; secure-output guidance covers logs, not inline runtime cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "Secure outputs is an action setting available in the designer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flows-designer",
+      "quote": "Use the Secure inputs and Secure outputs toggles to turn the operations, and references of output properties, on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Security & identity",
       "type": "record",
-      "claim": "The roadmap item describes no new permission, connection or identity.",
+      "claim": "The roadmap description specifies no new permission.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can choose which experience you prefer. The current side pane experience remains the default. You can switch to the inline view whenever you want and switch back at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Security & identity",
+      "type": "record",
+      "claim": "The roadmap description specifies no new connection.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The inline view shows this information directly on the cards, so you can review and compare values across several steps at once.",
@@ -361,10 +432,21 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 38,
+      "where": "Security & identity",
+      "type": "record",
+      "claim": "The roadmap description specifies no new identity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can be more efficient when authoring or debugging flows by using the inline view to examine property values from multiple steps at once without needing to select each step separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap names the new cloud flow designer but gives no further prerequisite.",
+      "claim": "The roadmap names the new cloud flow designer without specifying another prerequisite.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Power Automate: Cloud flows - View property value expanded inline in new cloud flow designer",
@@ -372,24 +454,24 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 40,
       "where": "Scope",
       "type": "absence",
-      "claim": "Whether the classic designer offers this specific inline property-value and runtime-output view is not stated.",
+      "claim": "The documentation does not state whether this particular inline property and runtime-output view is offered in the classic designer.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate view property value expanded inline cloud designer licensing meter secure outputs classic designer. Read flows-designer, feature release-plan and classic-vs-modern-designer excerpts; classic expanded configuration cards are described, not this runtime comparison view.",
+      "quote": "Searched: \"Power Automate\" \"property value\" \"classic designer\". Read designer overview, release-plan excerpt and classic-designer search excerpts; classic cards contain configuration data, but this particular runtime inline view is not identified there.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T06:25:42.369Z",
+    "at": "2026-11-24T07:39:39.546Z",
     "summary": {
-      "links": 3,
-      "unreachable": 0,
+      "links": 5,
+      "unreachable": 3,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -402,8 +484,18 @@
       },
       {
         "url": "https://learn.microsoft.com/power-automate/flows-designer",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/data-operations",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer",
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
@@ -417,13 +509,23 @@
         "side": "ui",
         "governs": "Which layout a maker uses for action properties in the designer",
         "docs": "https://learn.microsoft.com/power-automate/flows-designer",
-        "reachable": true,
+        "reachable": false,
         "segments": [
-          "Cloud flows designer",
+          "My flows",
+          "Cloud flows",
+          "Edit",
+          "New designer",
           "Collapse",
           "Layout"
         ],
-        "missing": []
+        "missing": [
+          "My flows",
+          "Cloud flows",
+          "Edit",
+          "New designer",
+          "Collapse",
+          "Layout"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -438,6 +540,12 @@
     {
       "date": "2026-11-17",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

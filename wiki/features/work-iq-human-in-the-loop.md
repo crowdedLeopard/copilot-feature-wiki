@@ -88,15 +88,17 @@ changes:
     note: "Corrected the Copilot Studio tool-confirmation path to Agents > agent > Tools > tool > Details > Ask the end user before running."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 32 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 31 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 32
-  confirmed: 32
+  claims: 31
+  confirmed: 31
   unconfirmed: 0
   contradicted: 0
   attempts: 0

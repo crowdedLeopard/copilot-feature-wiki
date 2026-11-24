@@ -4,10 +4,10 @@
   "title": "Microsoft Teams: users can report a security concern in meetings",
   "status": "held",
   "date": "2026-11-24",
-  "version": 4,
+  "version": 5,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,693 +16,44 @@
     "reason": "failed",
     "since": "2026-11-24",
     "reasons": [
-      "1 blocking finding (claim 1)"
+      "1 blocking finding (claim 96)"
     ]
   },
   "counts": {
-    "claims": 106,
-    "confirmed": 105,
-    "unconfirmed": 1,
-    "contradicted": 0,
+    "claims": 107,
+    "confirmed": 106,
+    "unconfirmed": 0,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "The default, licensing and reporting workflows are supported by Microsoft's notice and documentation. The meeting-reporting admin path is not an actionable navigation route: Microsoft names the setting but does not identify the policy or settings page needed to reach it.",
+  "summary": "The briefing needs one correction before publication: it says reports reach Defender if nobody acts, but existing tenants must enable Defender monitoring for reports to appear correctly. The documented controls, licensing, default-on reporting and rollout dates are otherwise supported.",
   "claims": [
     {
       "n": 1,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Teams admin center > Policy or settings page that controls reporting for Teams meetings > Allow users to report meetings is the navigation path to meeting reporting.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams admin center \"Allow users to report meetings\" navigation ReportMeeting; opened end-user-reporting-teams-meeting and submissions-teams. They name the policy but describe the first page generically, without a selectable navigation label.",
-      "severity": "blocker",
-      "fix": "Remove the generic navigation string from controls[0].ui and the rendered table; set that side to null. Retain the setting name in the note: 'Microsoft documents Allow users to report meetings in the Teams admin center, but has not published its navigation path.' Keep the documented PowerShell alternative."
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The change is security-concern reporting in Microsoft Teams meetings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams: Report a Security Concern in Meetings",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 2,
-      "where": "controls[0].api; Governance guidance; Governance controls",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingConfiguration -Identity Global -ReportMeeting Enabled|Disabled controls meeting reporting tenant-wide.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-      "quote": "Controls whether end users can access the \"Report a concern\" and \"Report as not a concern\" options in the meeting experience (including meeting UI and meeting chat).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
-      "type": "role",
-      "claim": "Global Administrator or Teams Administrator can configure user reporting in the Teams admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "To view or configure user reporting in the Teams admin center, you need to be a member of the **Global Administrator**^\\*^ or **Teams Administrator** roles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn does not explicitly identify ReportMeeting as the backing setting for the Allow users to report meetings admin toggle.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"ReportMeeting\" \"Allow users to report meetings\". Read the meeting reporting page, submissions-teams and Set-CsTeamsMeetingConfiguration; both controls are described, but no explicit backing-setting mapping is given.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "controls[0].note; What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "The dedicated meeting-reporting Learn page remains labelled Preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-      "quote": "# Report a security concern in Microsoft Teams meetings (Preview)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented the full navigation path to Allow users to report meetings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center \"Allow users to report meetings\" navigation ReportMeeting. Opened the dedicated meeting page and submissions-teams; the former says 'open the policy or settings page' without naming that page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "controls[1].ui; Risk assessment; Governance guidance; Governance controls table",
-      "type": "admin-path",
-      "claim": "The destination setting is at Defender portal > Settings > Email & collaboration > Teams user reported settings tab > Reported item destinations > Send the reported items to.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "go to **Settings** > **Email & collaboration** > **Teams user reported settings** tab.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "controls[1].api; controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "The printed Set-ReportSubmissionPolicy call sends reported Teams items to Microsoft and the reporting mailbox.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy `\n    -ReportChatMessageEnabled $true `\n    -ReportChatMessageToCustomizedAddressEnabled $true `\n    -ReportChatMessageAddresses \"securityadmin@contoso.com\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "controls[1].note; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "Meetings and participant reports follow the same Teams user reported destination settings as other Teams items.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
-      "quote": "When users report Teams messages or calls or report meetings or meeting participants as malicious or non malicious, the reported items are sent to Microsoft and/or the reporting mailbox as defined by the [Teams user reported settings in Defender for Office 365]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "controls[1].scope",
-      "type": "applicability",
-      "claim": "Reported-item destinations are an organization-wide setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-reportsubmissionpolicy",
-      "quote": "The Identity parameter specifies the report submission policy that you want to modify. The only available policy is named DefaultReportSubmissionPolicy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The reported-item destination command is run through Exchange Online PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "To view or configure user reporting in Teams by using PowerShell, connect to [Exchange Online PowerShell]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Defender monitoring is at Settings > Email & collaboration > Teams user reported settings tab > Microsoft Teams > Monitor reported items in Microsoft Teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "On the **Teams user reported settings** page, go to the **Microsoft Teams** section for the **Monitor reported items in Microsoft Teams** setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[2].api; Governance controls table",
-      "type": "absence",
-      "claim": "An automation operation for the Defender monitoring toggle is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Monitor reported items in Microsoft Teams\" PowerShell Graph ReportSubmissionPolicy. Read submissions-teams and searched Set-ReportSubmissionPolicy's Teams parameters; they configure destinations, not this monitoring toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[2].note; Risk assessment; Scope; Governance guidance",
-      "type": "role",
-      "claim": "Organization Management or Security Administrator can modify the Defender monitoring setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "To modify the **Monitor reported items in Microsoft Teams** setting in the Defender portal, you need to be a member of the **Organization Management** or **Security Administrator** role groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[2].note; Scope",
-      "type": "default",
-      "claim": "Monitor reported items in Microsoft Teams is on by default for new tenants.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "The **Monitor reported items in Microsoft Teams** setting is turned on by default for new tenants; existing tenants need to enable it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "controls[2].note; Scope; Governance guidance",
-      "type": "default",
-      "claim": "Existing tenants need to enable Defender monitoring.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "The **Monitor reported items in Microsoft Teams** setting is turned on by default for new tenants; existing tenants need to enable it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "controls[2].note; Governance controls",
-      "type": "applicability",
-      "claim": "The Defender monitoring setting is meaningful only when Teams reporting is enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "The **Monitor reported items in Microsoft Teams** setting is meaningful only if Teams message, call, or meeting reporting is turned on in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Scope: Prerequisites",
-      "type": "behaviour",
-      "claim": "Defender monitoring must also be enabled for reported items to show correctly on the User reported tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "it also needs to be turned on in the Defender portal for user reported items to show up correctly on the **User reported** tab on the **Submissions** page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[3].ui; Governance guidance; Governance controls table",
-      "type": "admin-path",
-      "claim": "Reported meetings can be reviewed at Defender portal > Submissions > User reported tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
-      "quote": "The **User reported** tab of the **Submissions** page at https://security.microsoft.com/reportsubmission?viewid=user:",
-      "severity": "minor",
-      "fix": "Use the fuller path 'Actions & submissions > Submissions > User reported tab' and add https://learn.microsoft.com/defender-office-365/submissions-admin to sources. Its 'Admin options for user reported messages' section gives Actions & submissions > Submissions; the cited SecOps guide confirms meeting reports on that page."
-    },
-    {
-      "n": 20,
-      "where": "controls[3].api; Governance controls table",
-      "type": "absence",
-      "claim": "An API or command for reviewing reported meeting submissions is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams meeting user reported submissions Microsoft Graph API security report review. Read submissions-teams and mdo-support-teams-sec-ops-guide; results describe portal review, not a meeting-submissions API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[3].note; Cost and licensing",
-      "type": "record",
-      "claim": "The notice makes detailed Defender meeting submissions available to organizations with Defender for Office 365 Plan 1, Plan 2 or Defender XDR.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Organizations with Microsoft Defender for Office 365 Plan 1, Microsoft Defender for Office 365 Plan 2, or Microsoft Defender XDR will be able to review detailed reported meeting submissions in the Microsoft Defender portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[3].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "Meeting submission details are also reachable through View submission in the Defender XDR incident.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
-      "quote": "SecOps team members can review submitted Teams message, call, meeting, or meeting participant details in the following locations in the Defender portal:\n\n- The **View submission** action in the Defender XDR incident.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[4].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Alert policies are at Defender portal > Email & collaboration > Policies & rules > Alert policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
-      "quote": "To view and create alert policies, in the [Microsoft Defender portal](https://security.microsoft.com), under **Email & collaboration** select **Policies & rules** > **Alert policy**.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[4].api; Governance controls",
-      "type": "absence",
-      "claim": "No supported command for changing the built-in reported-call alert policies is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Set-ProtectionAlert built-in default alert policies Teams call reported by user. Read alert-policies and the Set-ProtectionAlert search excerpt: 'You can't use this cmdlet to edit default alert policies.' No other supported editing command was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[4].note; Risk assessment; Governance guidance",
-      "type": "applicability",
-      "claim": "Reported meetings and participants generate the same alert policies as reported calls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
-      "quote": "Reported meetings and meeting participants generate the same alert policies as reported calls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[4].note; Governance controls table",
-      "type": "role",
-      "claim": "Manage Alerts is required to create and edit alert policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
-      "quote": "You have to be assigned the Manage Alerts role to create and edit alert policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[4].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Built-in alert policies can be turned off and back on.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
-      "quote": "You can turn off these policies (or back on again), set up a list of recipients to send email notifications to, and set a daily notification limit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[4].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "Notification recipients can be configured for built-in alert policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
-      "quote": "You can turn off these policies (or back on again), set up a list of recipients to send email notifications to, and set a daily notification limit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[4].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "A daily notification limit can be set for built-in alert policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
-      "quote": "You can turn off these policies (or back on again), set up a list of recipients to send email notifications to, and set a daily notification limit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[4].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Other built-in alert policy settings cannot be edited.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
-      "quote": "The other settings for these policies can't be edited.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[5].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "User reports are at Teams admin center > Analytics & reports > Protection reports > View reports tab > User reported security submissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "In the left navigation of the Teams admin center, go to **Analytics & reports** > **Protection reports**.\n2. On the **View reports** tab, under **Report**, select **User reported security submissions**.",
-      "severity": "minor",
-      "fix": "Add the omitted heading: 'Analytics & reports > Protection reports > View reports tab > Report > User reported security submissions'. The existing note about the documented report categories can remain."
-    },
-    {
-      "n": 32,
-      "where": "controls[5].api; Governance controls table",
-      "type": "absence",
-      "claim": "Automation for the Teams admin center User reported security submissions report is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"User reported security submissions\" Graph PowerShell API. Read end-user-reported-security-signal; results returned unrelated usage-report commands, not this protection report's API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[5].note; Governance guidance; Open questions",
-      "type": "behaviour",
-      "claim": "The Teams admin report documentation lists Calling, Chats and channels, and User categories.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Under **Report category**, choose one of the following categories:\n\n    - **Calling**\n    - **Chats and channels**\n    - **User**",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[5].note; Governance guidance; Open questions",
-      "type": "absence",
-      "claim": "A meetings category in the Teams admin center report is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"User reported security submissions\" \"meetings\" \"category\". Read end-user-reported-security-signal; its category list contains Calling, Chats and channels, and User, but not Meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
-      "type": "default",
-      "claim": "Meeting security reporting is enabled by default and reaches eligible users without admin action.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "This capability will be enabled by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Meeting and participant reporting is included in Defender for Office 365 Plan 1.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
-      "quote": "Microsoft Defender for Office 365 Plan 1 provides the following extra Teams protection features:\n\n**Report Teams items**: Users can report Teams messages, calls, meetings, or meeting participants as malicious or not malicious.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Meeting and participant reporting is also included in Defender for Office 365 Plan 2.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
-      "quote": "| User-reported Teams items (messages, calls, meetings, and meeting participants) |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Organizations with Defender XDR can control and use meeting security reporting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings, or meeting participants in Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "Licensing for viewing meeting reports in Teams admin center without Defender is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"User reported security submissions\" \"license\"; Teams admin center user reported security submissions report API PowerShell license meeting reporting pricing. Read the report prerequisites, meeting page and Teams protection licence table; none states entitlement for this case.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A separate price for meeting reporting is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams meeting\" \"report\" \"security concern\" pricing meter cap license Defender; \"Teams\" \"meeting reporting\" \"price\" \"license\". Read meeting reporting, submissions-teams and the Teams protection feature table; no separate reporting price was returned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A meeting-reporting usage meter is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams meeting\" \"report\" \"security concern\" pricing meter cap license Defender. Read meeting reporting, submissions-teams and mdo-support-teams-about; no reporting-specific meter was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "A cap for meeting reporting is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams meeting\" \"report\" \"security concern\" pricing meter cap license Defender. Read meeting reporting, submissions-teams and Teams protection licensing; no meeting-reporting cap was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "title; summary; What's changing",
-      "type": "behaviour",
-      "claim": "Teams users can report a meeting as a security concern.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-      "quote": "Users can report:\n\n- A **meeting** as a security concern.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "What's changing; controls[0].governs",
-      "type": "behaviour",
-      "claim": "Teams users can report an individual meeting participant as a security concern.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-      "quote": "- A **meeting participant** as a security concern.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Meeting reporting can be used while the meeting is in progress.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "Users can report a meeting or an individual meeting participant as a security concern during or after a meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Meeting reporting can be used after the meeting ends.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-      "quote": "Users can report a security concern after the meeting ends.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "The roadmap describes reporting suspicious, malicious or potentially fraudulent activity, including impersonation, phishing and scams.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Users can submit reports during or after a meeting, helping organizations identify potential threats such as impersonation, phishing, scams, and other suspicious behavior.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap says reports integrate with Microsoft security and administrative workflows.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Reports are integrated with Microsoft security and administrative workflows to support investigation, remediation, and ongoing improvements to security protections.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice says Report a concern appears in participant tiles and the participant pane.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Users will see a new Report a concern option in the participant tile and participant pane during Teams meetings:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "What's changing; Why it matters; Governance guidance",
-      "type": "record",
-      "claim": "The notice says users can mark a previously reported participant as Not a concern.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Users will also be able to mark a previously reported participant as Not a concern.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice says relevant meeting metadata is collected to support investigation.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Relevant meeting metadata and limited contextual information will be collected to support security investigations and remediation activities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice says limited contextual information is collected to support investigation.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Relevant meeting metadata and limited contextual information will be collected to support security investigations and remediation activities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1466296 was published on 2026-09-02.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Published 2026-09-02; last updated 2026-09-02; Microsoft's end date 2026-11-30",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice's end date is 2026-11-30.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Published 2026-09-02; last updated 2026-09-02; Microsoft's end date 2026-11-30",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice sets no act-by date.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Act by: none",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice gives the Targeted Release start as late September 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Targeted Release: Beginning in late September 2026 and expected to complete by late September 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice expects Targeted Release completion by late September 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Targeted Release: Beginning in late September 2026 and expected to complete by late September 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice gives the Worldwide General Availability start as mid-October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "General Availability (Worldwide): Beginning in mid-October 2026 and expected to complete by late October 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice gives the expected Worldwide General Availability completion as late October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "General Availability (Worldwide): Beginning in mid-October 2026 and expected to complete by late October 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The notice identifies meeting participants on Windows, Mac and web as affected users.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Users participating in Microsoft Teams meetings on Windows, Mac, and web",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\",\n  \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is September CY2026.",
@@ -713,40 +64,7 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap release phases are General Availability and Targeted Release.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Targeted Release\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "front matter: platforms; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS and Mac.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Android\",\n    \"Desktop\",\n    \"iOS\",\n    \"Mac\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap gives no preview date.",
@@ -757,65 +75,406 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "What's changing",
-      "type": "admin-path",
-      "claim": "The Defender documentation gives More (...) > Report a concern as an in-meeting entry point.",
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "General Availability is a listed release phase.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "In the meeting, select **More** (...).\n2. Select **Report a concern**.",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
-      "where": "What's changing",
-      "type": "admin-path",
-      "claim": "The Defender documentation gives Report on a participant tile as a participant-reporting entry point.",
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "Targeted Release is a listed release phase.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "On the participant tile, select **More options** (...), and then select **Report**.",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "What's changing",
-      "type": "admin-path",
-      "claim": "The Defender documentation gives Report in the participant roster as another participant-reporting entry point.",
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "Open the **People** or participant roster pane in the meeting.\n2. Locate the participant that you want to report.\n3. Select **More options** (...) next to the participant's name, and then select **Report**.",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1466296 was published on 2026-09-02.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Published 2026-09-02; last updated 2026-09-02",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice has Microsoft's end date 2026-11-30.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Targeted Release was scheduled to begin in late September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Targeted Release: Beginning in late September 2026 and expected to complete by late September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Targeted Release was expected to complete by late September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Targeted Release: Beginning in late September 2026 and expected to complete by late September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability (Worldwide) was scheduled to begin in mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "General Availability (Worldwide): Beginning in mid-October 2026 and expected to complete by late October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability (Worldwide) was expected to complete by late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "General Availability (Worldwide): Beginning in mid-October 2026 and expected to complete by late October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice names Windows meeting users as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Users participating in Microsoft Teams meetings on Windows, Mac, and web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice names Mac meeting users as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Users participating in Microsoft Teams meetings on Windows, Mac, and web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice names web meeting users as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Users participating in Microsoft Teams meetings on Windows, Mac, and web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Meeting participants can report a meeting as a security concern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "Users can report a meeting or an individual meeting participant as a security concern during or after a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Meeting participants can report an individual participant as a security concern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "Users can report a meeting or an individual meeting participant as a security concern during or after a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Reporting is available during a meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "Users can report a meeting or an individual meeting participant as a security concern during or after a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Reporting is available after a meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "Users can report a meeting or an individual meeting participant as a security concern during or after a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes reports of suspicious, malicious or potentially fraudulent activity, including impersonation, phishing and scams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can submit reports during or after a meeting, helping organizations identify potential threats such as impersonation, phishing, scams, and other suspicious behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says reports integrate with Microsoft security and administrative workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Reports are integrated with Microsoft security and administrative workflows to support investigation, remediation, and ongoing improvements to security protections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says Report a concern appears in the participant tile.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Users will see a new Report a concern option in the participant tile and participant pane during Teams meetings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says Report a concern appears in the participant pane.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Users will see a new Report a concern option in the participant tile and participant pane during Teams meetings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "record",
+      "claim": "The notice says users can mark a previously reported participant as Not a concern.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Users will also be able to mark a previously reported participant as Not a concern.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says relevant meeting metadata is collected for security investigation.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Relevant meeting metadata and limited contextual information will be collected to support security investigations and remediation activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says limited contextual information is collected for security investigation.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Relevant meeting metadata and limited contextual information will be collected to support security investigations and remediation activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Meeting reporting is enabled by default and its options reach eligible users without an administrator enabling meeting reporting.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "This capability will be enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The Defender documentation gives More (...) > Report a concern during a meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "In the meeting, select More (...). Select Report a concern.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The Defender documentation gives Report on a participant tile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "On the participant tile, select More options (...), and then select Report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The Defender documentation gives Report in the participant roster.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "Open the People or participant roster pane in the meeting. Locate the participant that you want to report. Select More options (...) next to the participant's name, and then select Report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "What's changing",
       "type": "admin-path",
       "claim": "The Defender documentation gives Report a concern from the post-meeting experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "Open the meeting from the Teams post-meeting experience.\n2. Select **More options** (...), and then select **Report a concern**.",
+      "quote": "Open the meeting from the Teams post-meeting experience. Select More options (...), and then select Report a concern.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "What's changing; Risk assessment; Open questions",
+      "n": 39,
+      "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The dedicated meeting page uses Report a security concern rather than the other documentation's Report a concern wording.",
+      "claim": "The dedicated meeting reporting page is still titled Preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-      "quote": "In the meeting, select **More (...)**.\n2. Select **Report a security concern**.",
+      "quote": "Report a security concern in Microsoft Teams meetings (Preview)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
+      "n": 40,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "admin-path",
+      "claim": "The dedicated meeting page calls the option Report a security concern, unlike the Defender page's Report a concern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
+      "quote": "In the meeting, select More (...). Select Report a security concern.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
-      "claim": "Learn lists the Teams iOS app as messages-only for user reporting.",
+      "claim": "Learn lists the iOS/iPadOS app as supporting messages only, rather than confirming mobile meeting reporting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "The Microsoft Teams app for iOS/iPadOS: Version 7.15 or later (messages only).",
@@ -823,10 +482,10 @@
       "fix": null
     },
     {
-      "n": 73,
+      "n": 42,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
-      "claim": "Learn lists the Teams Android app as messages-only for user reporting.",
+      "claim": "Learn lists the Android app as supporting messages only, rather than confirming mobile meeting reporting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "The Microsoft Teams app for Android: Version 1416/1.0.0.2025153104 or later (messages only).",
@@ -834,51 +493,194 @@
       "fix": null
     },
     {
-      "n": 74,
-      "where": "What's changing; Open questions",
+      "n": 43,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "User-reported meetings and meeting participants are included in Microsoft Defender for Office 365 Plan 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
+      "quote": "Microsoft Defender for Office 365 Plan 1 provides the following extra Teams protection features: ... Report Teams items: Users can report Teams messages, calls, meetings, or meeting participants as malicious or not malicious.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "User-reported meetings and meeting participants are included in Microsoft Defender for Office 365 Plan 2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
+      "quote": "| User-reported Teams items (messages, calls, meetings, and meeting participants) |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Teams user reporting page allows administrators in organisations with Defender for Office 365 Plan 1, Plan 2 or Defender XDR to decide whether users can report Teams items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings, or meeting participants in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The dedicated meeting page describes reporting in organisations with Defender for Office 365 or Defender XDR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
+      "quote": "In organizations with Microsoft Defender for Office 365 or Microsoft Defender XDR, users can report suspicious meetings or meeting participants in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].note; Cost and licensing",
+      "type": "record",
+      "claim": "The notice says detailed Defender meeting submissions are available with Defender for Office 365 Plan 1, Plan 2 or Defender XDR.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Organizations with Microsoft Defender for Office 365 Plan 1, Microsoft Defender for Office 365 Plan 2, or Microsoft Defender XDR will be able to review detailed reported meeting submissions in the Microsoft Defender portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Mobile meeting reporting remains unconfirmed given the difference between the roadmap and Learn.",
+      "claim": "A licence requirement for viewing meeting reports in the Teams admin center without Defender is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams\" \"meeting reporting\" \"iOS\" \"Android\". Read submissions-teams and the dedicated meeting page; Learn marks mobile messages-only, whereas the supplied roadmap lists mobile platforms. No passage resolves that difference.",
+      "quote": "Searched: Teams meeting reporting licensing Teams admin center User reported security submissions; opened the meeting reporting, Teams security submissions, Teams user reporting and Defender support-for-Teams pages. No licence for that non-Defender viewing scenario was stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
-      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "Meeting metadata is copied when a reported Teams item is sent to Microsoft.",
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price for meeting reporting is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting reporting licensing price metered billing Defender Office 365; opened Teams user reporting, meeting reporting and Defender support-for-Teams pages; read Defender what's-new excerpts. No separate meeting-reporting price was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate meter for meeting reporting is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting reporting price meter cap licensing; Teams meeting reporting licensing price metered billing Defender Office 365; opened Teams user reporting and Defender support-for-Teams pages. No meeting-reporting meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No cap for meeting reporting is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting report price meter cap licensing; opened Teams user reporting, meeting reporting and Defender support-for-Teams pages. No meeting-reporting spending cap was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Why it matters; Risk assessment: Security & identity; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "Teams user reporting requires an online Teams mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable:",
+      "quote": "User reporting in Teams is supported only for users with an online Teams mailbox.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "Meeting participant metadata is among the data copied for reports sent to Microsoft.",
+      "n": 53,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "availability",
+      "claim": "The reporting mailbox must be an Exchange Online mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "- Meeting metadata.\n    - Meeting participant metadata.",
+      "quote": "The reporting mailbox configured in Teams user reported settings must also be an Exchange Online mailbox.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
+      "n": 54,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "availability",
+      "claim": "Users with on-premises mailboxes are not supported for Teams user reporting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "On-premises mailboxes aren't supported in either scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Global Administrator or Teams Administrator can configure user reporting in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "To view or configure user reporting in the Teams admin center, you need to be a member of the Global Administrator or Teams Administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Organization Management or Security Administrator can change the Defender monitoring setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "To modify the Monitor reported items in Microsoft Teams setting in the Defender portal, you need to be a member of the Organization Management or Security Administrator role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Meeting metadata is copied when a Teams report is sent to Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable: ... Meeting metadata.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Meeting participant metadata is copied when a Teams report is sent to Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable: ... Meeting participant metadata.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Copied reporting data is included in ongoing algorithm reviews.",
+      "claim": "Metadata submitted to Microsoft is included in ongoing algorithm reviews.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable:",
+      "quote": "When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable",
       "severity": null,
       "fix": null
     },
     {
-      "n": 78,
+      "n": 60,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Microsoft personnel might review submitted meeting and participant metadata.",
@@ -889,10 +691,10 @@
       "fix": null
     },
     {
-      "n": 79,
+      "n": 61,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Microsoft says such personnel review is typically not permitted for Teams items.",
+      "claim": "Such personnel review is typically not permitted for Teams items.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "Microsoft personnel might read submitted messages and files and review submitted call, meeting, and participant metadata, which is typically not permitted for Teams items in Microsoft 365.",
@@ -900,10 +702,10 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 62,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Content submitted to Microsoft is stored in data centers in the USA.",
+      "claim": "Content submitted to Microsoft is stored in data centres in the USA.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "Submitted content is stored in secured, compliance-audited data centers located in the USA and is deleted as soon as it's no longer required.",
@@ -911,76 +713,54 @@
       "fix": null
     },
     {
-      "n": 81,
-      "where": "controls[1].governs; Risk assessment: Data exposure",
+      "n": 63,
+      "where": "Risk assessment: Data exposure; controls[1]",
       "type": "behaviour",
-      "claim": "Reported items can go to Microsoft and the reporting mailbox, Microsoft only, or the reporting mailbox only.",
+      "claim": "Send the reported items to offers Microsoft and my reporting mailbox, Microsoft only, and My reporting mailbox only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "**Send the reported items to** > **Microsoft and my reporting mailbox**\n**Send the reported items to** > **Microsoft only**\n**Send the reported items to** > **My reporting mailbox only**",
+      "quote": "Send the reported items to > Microsoft and my reporting mailbox ... Send the reported items to > Microsoft only ... Send the reported items to > My reporting mailbox only",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
+      "n": 64,
       "where": "Risk assessment: Data exposure",
       "type": "default",
-      "claim": "Microsoft documents Microsoft and my reporting mailbox as the default destination.",
+      "claim": "Microsoft cites Microsoft and my reporting mailbox as the default destination.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "That's why we use **Send the reported items to** > **Microsoft and my reporting mailbox** as the default.",
+      "quote": "That's why we use Send the reported items to > Microsoft and my reporting mailbox as the default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 83,
+      "n": 65,
       "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "behaviour",
-      "claim": "With My reporting mailbox only, items are not sent to Microsoft unless an administrator manually submits them from User reported.",
+      "claim": "My reporting mailbox only prevents submission to Microsoft unless an administrator manually submits the item from User reported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "If you select **Send the reported items to** > **My reporting mailbox only**, reported items don't go to Microsoft for analysis unless an admin manually submits the item from the **User reported** tab on the **Submissions** page",
+      "quote": "If you select Send the reported items to > My reporting mailbox only, reported items don't go to Microsoft for analysis unless an admin manually submits the item from the User reported tab on the Submissions page",
       "severity": null,
       "fix": null
     },
     {
-      "n": 84,
-      "where": "Why it matters; Risk assessment; Scope; rationale: impact",
-      "type": "availability",
-      "claim": "User reporting requires an online Teams mailbox.",
+      "n": 66,
+      "where": "controls[4].note; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Reported meetings and participants generate the same alert policies as reported calls.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "User reporting in Teams is supported only for users with an online Teams mailbox.",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
+      "quote": "Reported meetings and meeting participants generate the same alert policies as reported calls.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 85,
-      "where": "Risk assessment; Scope",
-      "type": "availability",
-      "claim": "The configured reporting mailbox must be an Exchange Online mailbox.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "The reporting mailbox configured in **Teams user reported settings** must also be an Exchange Online mailbox.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 86,
-      "where": "Risk assessment; Scope",
-      "type": "availability",
-      "claim": "On-premises mailboxes are unsupported for reporters and reporting mailboxes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "On-premises mailboxes aren't supported in either scenario.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 87,
+      "n": 67,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The reported-item alerts currently do not generate AIR investigations.",
+      "claim": "These reporting alerts currently do not generate automated investigation and response investigations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
       "quote": "Currently, these alerts don't generate automated investigation and response (AIR) investigations.",
@@ -988,18 +768,18 @@
       "fix": null
     },
     {
-      "n": 88,
+      "n": 68,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Microsoft's reporting pages describe no automatic action against a reported meeting participant.",
+      "claim": "The reporting documentation describes investigation signals but no automatic action against a reported meeting participant.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams\" \"reported meetings\" \"automatic\" \"participant\". Read meeting reporting, submissions-teams and mdo-support-teams-sec-ops-guide; they describe administrator investigation and alerts, not automatic participant removal or blocking.",
+      "quote": "Searched: Teams meeting report security concern automatic block remove participant automated action; opened meeting reporting, Teams user reporting and the Teams SecOps guide. They describe investigation; no automatic response to a meeting-participant report was documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 89,
+      "n": 69,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Reported Teams items remain visible to users.",
@@ -1010,10 +790,10 @@
       "fix": null
     },
     {
-      "n": 90,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "n": 70,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Users can report the same Teams item more than once.",
+      "claim": "Users can report the same item more than once.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "Users can report the same items multiple times.",
@@ -1021,10 +801,10 @@
       "fix": null
     },
     {
-      "n": 91,
+      "n": 71,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Not-a-concern feedback helps distinguish legitimate meeting activity from activity needing investigation.",
+      "claim": "Not-a-security-concern feedback helps distinguish legitimate meeting activity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
       "quote": "This feedback helps distinguish legitimate meeting activity from activity that might require further security investigation.",
@@ -1032,65 +812,10 @@
       "fix": null
     },
     {
-      "n": 92,
-      "where": "Governance guidance: After rollout",
-      "type": "record",
-      "claim": "Microsoft recommends updating security awareness training and incident response documentation.",
-      "status": "supported",
-      "source": "Message Center post MC1466296",
-      "quote": "Update security awareness training, incident response documentation, and internal guidance as needed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 93,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Messaging policies document a Report a security concern toggle for malicious messages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
-      "quote": "**Report a security concern** - When this is ON, users can report malicious messages in Microsoft Teams in organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 94,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The messaging-policy page does not confirm that its Report a security concern toggle governs meeting reporting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"ReportMeeting\" \"Allow users to report meetings\". Read messaging-policies-in-teams, submissions-teams and meeting reporting; the messaging toggle describes malicious messages, with a separate meeting policy named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 95,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The printed Microsoft-only Set-ReportSubmissionPolicy call requires ReportChatMessageEnabled true, ReportChatMessageToCustomizedAddressEnabled false and EnableUserEmailNotification true.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "The value `-ReportChatMessageEnabled $true` is required to achieve **Send reported items to** > **Microsoft only**. The values `-EnableUserEmailNotification $true` and `-ReportChatMessageToCustomizedAddressEnabled $false` are also required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 96,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "No Graph endpoint for meeting security reports was found in Learn.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams meeting user reported submissions Microsoft Graph API security report review; \"Teams\" \"User reported security submissions\" Graph PowerShell API. Read the meeting page and Teams reporting/SecOps documentation; no meeting-security-report Graph endpoint was returned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 97,
+      "n": 72,
       "where": "Scope: Clouds",
       "type": "availability",
-      "claim": "Learn says reporting calls, meetings and messages is unsupported in GCC, GCC High and DoD.",
+      "claim": "Learn says Teams call, meeting and message reporting is unsupported in GCC, GCC High and DoD.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "User reporting of calls, meetings, and messages in Teams is not supported in U.S. Government organizations (Microsoft 365 GCC, GCC High, and DoD).",
@@ -1098,30 +823,327 @@
       "fix": null
     },
     {
-      "n": 98,
-      "where": "Why it matters; Scope; rationale: impact",
-      "type": "availability",
-      "claim": "The Teams desktop client supports user reporting.",
+      "n": 73,
+      "where": "controls[2].note; Scope: Prerequisites; Governance guidance",
+      "type": "default",
+      "claim": "Defender monitoring of reported Teams items is on by default for new tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "The following clients support reporting:\n\n- The Microsoft Teams desktop client.",
+      "quote": "The Monitor reported items in Microsoft Teams setting is turned on by default for new tenants; existing tenants need to enable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[2].note; Scope: Prerequisites; Governance guidance",
+      "type": "default",
+      "claim": "Existing tenants need to enable Defender monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "The Monitor reported items in Microsoft Teams setting is turned on by default for new tenants; existing tenants need to enable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Defender monitoring must be enabled for reported Teams items to show correctly on User reported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "If user reporting of messages, calls, or meetings is turned on in the Teams admin center, it also needs to be turned on in the Defender portal for user reported items to show up correctly on the User reported tab on the Submissions page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[0].ui; controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft names Allow users to report meetings but has not published a selectable navigation path to that Teams admin center policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Allow users to report meetings\" Teams admin center navigation ReportMeeting; opened meeting reporting and Teams user reporting; read quick-configure excerpts. The route says only \"open the policy or settings page that controls reporting for Teams meetings\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[0].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingConfiguration -Identity Global -ReportMeeting Enabled|Disabled controls meeting reporting options tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
+      "quote": "Controls whether end users can access the \"Report a concern\" and \"Report as not a concern\" options in the meeting experience (including meeting UI and meeting chat). ... Possible values: Enabled; Disabled. ... The only valid input is Global",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly identify ReportMeeting as the same setting as Allow users to report meetings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ReportMeeting\" \"Allow users to report meetings\"; opened Set-CsTeamsMeetingConfiguration, meeting reporting and Teams user reporting. Both controls are described, but no passage explicitly equates their setting names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[1].ui; Risk assessment: Data exposure; Governance guidance",
+      "type": "admin-path",
+      "claim": "The destination control is at Microsoft Defender portal > Settings > Email & collaboration > Teams user reported settings tab > Reported item destinations > Send the reported items to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "go to Settings > Email & collaboration > Teams user reported settings tab. ... settings in the Reported item destinations section on the Teams user reported settings page ... Send the reported items to",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[1].api; controls[1].note",
+      "type": "command",
+      "claim": "The printed Set-ReportSubmissionPolicy call sends reported Teams items to Microsoft and the specified reporting mailbox through Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "Send reported Teams items to Microsoft and the reporting mailbox: Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled $true -ReportChatMessageToCustomizedAddressEnabled $true -ReportChatMessageAddresses \"securityadmin@contoso.com\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Meeting and participant reports follow the same Teams user reported destination settings despite the PowerShell parameters' chat-message names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
+      "quote": "When users report Teams messages or calls or report meetings or meeting participants as malicious or non malicious, the reported items are sent to Microsoft and/or the reporting mailbox as defined by the Teams user reported settings in Defender for Office 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[2].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Monitoring is at Microsoft Defender portal > Settings > Email & collaboration > Teams user reported settings tab > Microsoft Teams > Monitor reported items in Microsoft Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "go to Settings > Email & collaboration > Teams user reported settings tab. ... On the Teams user reported settings page, go to the Microsoft Teams section for the Monitor reported items in Microsoft Teams setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No documented automation specifically changes the Defender Monitor reported items in Microsoft Teams control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Monitor reported items in Microsoft Teams\" PowerShell enable disable; Graph Teams reported meeting submissions API Monitor reported items; opened Teams user reporting and searched Set-ReportSubmissionPolicy. Destination parameters are documented, not this monitoring toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[3].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Administrators review submissions at Microsoft Defender portal > Actions & submissions > Submissions > User reported tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin",
+      "quote": "In the Microsoft Defender portal at https://security.microsoft.com, go to Actions & submissions > Submissions. ... On the Submissions page, select the User reported tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented API retrieves the reported meeting submissions shown in Defender.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Graph\" \"meeting\" \"user reported\" submissions API; Graph security threatSubmission Teams meeting submissions beta. Opened Submissions and Teams SecOps pages; read threatSubmission reference excerpts for email, URL and file threats. None documented meeting submissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[3].note",
+      "type": "admin-path",
+      "claim": "Meeting submission details are also accessible through View submission in the Defender XDR incident.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
+      "quote": "SecOps team members can review submitted Teams message, call, meeting, or meeting participant details in the following locations in the Defender portal: The View submission action in the Defender XDR incident.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[4].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Alert policies are at Microsoft Defender portal > Email & collaboration > Policies & rules > Alert policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
+      "quote": "To view and create alert policies, in the Microsoft Defender portal, under Email & collaboration select Policies & rules > Alert policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "No supported command for modifying the built-in reported-call alert policies was established.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-ProtectionAlert built-in default alert policies Teams reported call update PowerShell; opened Alert policies and read Set-ProtectionAlert reference excerpts: \"You can't use this cmdlet to edit default alert policies.\" No alternative operation was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[4].note",
+      "type": "role",
+      "claim": "Manage Alerts is required to create and edit alert policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
+      "quote": "You have to be assigned the Manage Alerts role to create and edit alert policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "Built-in alert policies can be turned off or on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
+      "quote": "You can turn off these policies (or back on again), set up a list of recipients to send email notifications to, and set a daily notification limit. The other settings for these policies can't be edited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[5].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "The Teams report is at Teams admin center > Analytics & reports > Protection reports > View reports tab > Report > User reported security submissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports. On the View reports tab, under Report, select User reported security submissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "An API for the Teams admin center User reported security submissions report is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"User reported security submissions\" API Graph export; opened the Teams security submissions report page. It documents viewing and CSV export; search returned that page and unrelated email/eDiscovery reports, not an API for this report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "controls[5].note; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The Teams report page lists Calling, Chats and channels, and User, but no meetings category.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting reporting Teams admin center User reported security submissions; opened the security submissions report page. Its Report category choices are Calling, Chats and channels, User; no meeting category is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The printed Microsoft-only Set-ReportSubmissionPolicy call is documented with ReportChatMessageEnabled true, ReportChatMessageToCustomizedAddressEnabled false and EnableUserEmailNotification true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled $true -ReportChatMessageToCustomizedAddressEnabled $false -EnableUserEmailNotification $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Governance controls; controls[2].note",
+      "type": "applicability",
+      "claim": "The Teams setting controls whether users can report meeting concerns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "In the Teams admin center: Controls whether users are able to report items from Teams. When the applicable setting is turned off, users can't report those items within Teams, so the corresponding setting in the Microsoft Defender portal is irrelevant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Why it matters: second paragraph",
+      "type": "default",
+      "claim": "If nobody acts, reports land in the Defender portal and Teams admin center.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "In the Microsoft Defender portal: On by default for new tenants. Existing tenants need to enable it. ... it also needs to be turned on in the Defender portal for user reported items to show up correctly on the User reported tab on the Submissions page.",
+      "severity": "blocker",
+      "fix": "Replace 'If nobody acts, reports land in the Defender portal and Teams admin center with no agreed owner' with 'Existing tenants need to enable Defender monitoring for submitted reports to show correctly on the User reported tab; without preparation'. Keep the remaining warning about missing user guidance and copying metadata when Microsoft is a destination. This carries the monitoring qualification stated at https://learn.microsoft.com/defender-office-365/submissions-teams."
+    },
+    {
+      "n": 97,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "Built-in alert policies can be assigned email notification recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
+      "quote": "You can turn off these policies (or back on again), set up a list of recipients to send email notifications to, and set a daily notification limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "Built-in alert policies can be given a daily notification limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
+      "quote": "You can turn off these policies (or back on again), set up a list of recipients to send email notifications to, and set a daily notification limit.",
       "severity": null,
       "fix": null
     },
     {
       "n": 99,
-      "where": "Scope: Users and clients",
-      "type": "availability",
-      "claim": "The Teams Web App supports user reporting.",
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "Other settings of built-in alert policies cannot be edited.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "- The Microsoft Teams Web App.",
+      "source": "https://learn.microsoft.com/defender-xdr/alert-policies",
+      "quote": "The other settings for these policies can't be edited.",
       "severity": null,
       "fix": null
     },
     {
       "n": 100,
-      "where": "summary; Why it matters; Governance guidance; Open questions",
+      "where": "Scope: Mailboxes; Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "An on-premises mailbox cannot be the Teams reporting mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "The reporting mailbox configured in Teams user reported settings must also be an Exchange Online mailbox. On-premises mailboxes aren't supported in either scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Defender monitoring setting is meaningful only when the applicable Teams reporting setting is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "The Monitor reported items in Microsoft Teams setting is meaningful only if Teams message, call, or meeting reporting is turned on in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "summary; What's changing; Governance guidance; Open questions",
       "type": "record",
       "claim": "The notice says meeting report information is available in Teams admin center Protection reports > User-reported security submissions.",
       "status": "supported",
@@ -1131,123 +1153,117 @@
       "fix": null
     },
     {
-      "n": 101,
-      "where": "summary; Why it matters; Governance guidance",
+      "n": 103,
+      "where": "summary; Governance guidance",
       "type": "behaviour",
-      "claim": "Defender exposes reported meeting and participant metadata on the User reported tab regardless of the destination selection.",
+      "claim": "Reported meeting metadata is available for administrator review on Defender's User reported tab regardless of the selected submission destination, subject to monitoring prerequisites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "Metadata from the reported Teams items (for example, senders/callers, recipients, reported by, meeting and participant details, and item details) is available on the **User reported** tab on the **Submissions** page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 102,
-      "where": "controls[0].governs; Governance controls",
-      "type": "behaviour",
-      "claim": "Turning off the Teams meeting reporting setting prevents meeting security reports from being submitted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-      "quote": "When you turn off this setting, users can't submit security concern reports from Teams meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 103,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Sharing reports with Microsoft in Defender is separate from enabling the reporting experience in Teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-      "quote": "Administrators can control whether supported user-submitted reports are shared with Microsoft for analysis. This setting is separate from the setting that controls whether the reporting experience is available to users in Teams.",
+      "quote": "Regardless of the Send the reported items to setting ... Metadata from the reported Teams items ... is available on the User reported tab on the Submissions page.",
       "severity": null,
       "fix": null
     },
     {
       "n": 104,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The destination PowerShell parameters are named ReportChatMessageEnabled, ReportChatMessageToCustomizedAddressEnabled and ReportChatMessageAddresses.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Messaging policies include a Report a security concern setting described as controlling malicious-message reporting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "Format-List ReportChatMessageEnabled,ReportChatMessageToCustomizedAddressEnabled,ReportChatMessageAddresses",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "Report a security concern - When this is ON, users can report malicious messages in Microsoft Teams in organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR.",
       "severity": null,
       "fix": null
     },
     {
       "n": 105,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-04T00:02:09.",
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The messaging-policy documentation does not confirm that its Report a security concern toggle governs meeting reporting.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "source": null,
+      "quote": "Searched: \"Allow users to report meetings\" Teams admin center navigation ReportMeeting; opened Manage messaging policies, Teams user reporting and meeting reporting. Messaging policies describes messages; meeting reporting names a separate Allow users to report meetings policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 106,
-      "where": "front matter: products",
+      "where": "Governance guidance: After rollout",
       "type": "record",
-      "claim": "The roadmap item is for Microsoft Teams.",
+      "claim": "Microsoft's notice recommends updating security awareness training.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\n    \"Microsoft Teams\"\n  ]",
+      "source": "Message Center post MC1466296",
+      "quote": "Update security awareness training, incident response documentation, and internal guidance as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 107,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft's notice recommends updating incident response documentation.",
+      "status": "supported",
+      "source": "Message Center post MC1466296",
+      "quote": "Update security awareness training, incident response documentation, and internal guidance as needed.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T06:25:38.093Z",
+    "at": "2026-11-24T07:39:40.883Z",
     "summary": {
-      "links": 10,
-      "unreachable": 0,
-      "uiPaths": 6,
-      "uiPathsWithMissingWords": 0,
+      "links": 11,
+      "unreachable": 9,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 5,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/submissions-admin",
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/defender-xdr/alert-policies",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1466296",
@@ -1263,31 +1279,19 @@
     "controlChecks": [
       {
         "index": 0,
-        "side": "ui",
-        "governs": "Whether users can report meetings and meeting participants",
-        "docs": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting",
-        "reachable": true,
-        "segments": [
-          "Policy or settings page that controls reporting for Teams meetings",
-          "Allow users to report meetings"
-        ],
-        "missing": []
-      },
-      {
-        "index": 0,
         "side": "api",
         "governs": "Whether users can report meetings and meeting participants",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMeetingConfiguration",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Where reported Teams items are sent (Microsoft, reporting mailbox or both)",
         "docs": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Email & collaboration",
@@ -1295,23 +1299,29 @@
           "Reported item destinations",
           "Send the reported items to"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Email & collaboration",
+          "Teams user reported settings tab",
+          "Reported item destinations",
+          "Send the reported items to"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Where reported Teams items are sent (Microsoft, reporting mailbox or both)",
         "docs": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-ReportSubmissionPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Whether the Defender portal monitors reported Teams items",
         "docs": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Email & collaboration",
@@ -1319,46 +1329,68 @@
           "Microsoft Teams",
           "Monitor reported items in Microsoft Teams"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Email & collaboration",
+          "Teams user reported settings tab",
+          "Microsoft Teams",
+          "Monitor reported items in Microsoft Teams"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Where administrators review reported meetings in Defender",
-        "docs": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide",
-        "reachable": true,
+        "docs": "https://learn.microsoft.com/defender-office-365/submissions-admin",
+        "reachable": false,
         "segments": [
+          "Actions & submissions",
           "Submissions",
           "User reported tab"
         ],
-        "missing": []
+        "missing": [
+          "Actions & submissions",
+          "Submissions",
+          "User reported tab"
+        ]
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Alerts raised by reported meetings and participants",
         "docs": "https://learn.microsoft.com/defender-xdr/alert-policies",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Email & collaboration",
           "Policies & rules",
           "Alert policy"
         ],
-        "missing": []
+        "missing": [
+          "Email & collaboration",
+          "Policies & rules",
+          "Alert policy"
+        ]
       },
       {
         "index": 5,
         "side": "ui",
         "governs": "Where administrators review user reports in Teams",
         "docs": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Analytics & reports",
           "Protection reports",
           "View reports tab",
+          "Report",
           "User reported security submissions"
         ],
-        "missing": []
+        "missing": [
+          "Analytics & reports",
+          "Protection reports",
+          "View reports tab",
+          "Report",
+          "User reported security submissions"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -1391,6 +1423,12 @@
     {
       "date": "2026-11-17",
       "status": "verified",
+      "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "held",
       "version": 4,
       "model": "gpt-6.1-sol"
     }

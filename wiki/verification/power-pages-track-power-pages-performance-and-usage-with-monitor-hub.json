@@ -3,30 +3,32 @@
   "roadmapId": 577859,
   "title": "Power Pages: performance and usage metrics in the Power Platform admin center monitor hub",
   "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "date": "2026-11-24",
   "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 45,
-    "confirmed": 45,
+    "claims": 47,
+    "confirmed": 47,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: its roadmap facts, documented admin paths and general Monitor requirements are supported, and targeted searches confirmed the Power Pages-specific documentation gaps. One minor correction should acknowledge that Microsoft's prerelease export documentation describes 30-day metric retention, whereas the cited Monitor overview states 28 days.",
+  "summary": "The briefing passes: its roadmap facts and documented administrative paths are supported, and searches confirmed the feature-specific documentation gaps. Microsoft gives conflicting general Monitor metric-retention periods; the briefing should mention the export documentation's 30-day window alongside the overview's 28 days.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: products; title",
       "type": "record",
-      "claim": "The roadmap product is Power Pages.",
+      "claim": "The roadmap item concerns Power Pages.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Power Pages\"]",
@@ -37,7 +39,7 @@
       "n": 2,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The feature is in development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -59,7 +61,7 @@
       "n": 4,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only, with government clouds not listed.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed roadmap cloud; government clouds are not listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -70,7 +72,7 @@
       "n": 5,
       "where": "front matter: platforms",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -103,7 +105,7 @@
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-27T23:05:02.",
+      "claim": "The roadmap record was modified on 2026-10-27T23:05:02.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-27T23:05:02\"",
@@ -112,7 +114,7 @@
     },
     {
       "n": 9,
-      "where": "title; summary; What's changing; rationale: impact",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
       "claim": "Power Pages is being integrated into the monitor hub in the Power Platform admin center.",
       "status": "supported",
@@ -125,10 +127,10 @@
       "n": 10,
       "where": "What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The integration is intended to give site owners, makers and administrators performance and usage insights.",
+      "claim": "The planned insights are for site owners, makers and administrators.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This integration empowers site owners, makers, and administrators to access performance and usage insights directly within the monitor hub of the Power Platform admin center.",
+      "quote": "This integration empowers site owners, makers, and administrators to access performance and usage insights",
       "severity": null,
       "fix": null
     },
@@ -136,7 +138,7 @@
       "n": 11,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Session count measures the number of sessions.",
+      "claim": "The roadmap lists session count as a metric.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Session count: Tracks the number of sessions.",
@@ -147,7 +149,7 @@
       "n": 12,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Session duration measures the average time spent in a session.",
+      "claim": "Session duration measures average time spent in a session.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Session duration: Measures the average time spent in a session.",
@@ -158,7 +160,7 @@
       "n": 13,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Page load time measures the time for a page to fully load at P75.",
+      "claim": "Page load time is a P75 metric.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Page load time: Captures the time it takes for a web page to fully load (P75).",
@@ -169,7 +171,7 @@
       "n": 14,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Error rate is the percentage of requests where pages become unresponsive or return component-level errors.",
+      "claim": "Error rate is the share of requests where pages become unresponsive or return component-level errors.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Error rate: Measures the percentage of requests where pages become unresponsive or return component-level errors.",
@@ -183,34 +185,45 @@
       "claim": "The roadmap includes trend visualisation.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Additional capabilities include trend visualization and the ability to download detailed reports for further analysis",
+      "quote": "Additional capabilities include trend visualization",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
       "claim": "The roadmap includes downloading detailed reports for further analysis.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Additional capabilities include trend visualization and the ability to download detailed reports for further analysis",
+      "quote": "the ability to download detailed reports for further analysis",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "No Learn page describing this Power Pages monitor hub capability was found.",
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Microsoft has not stated the arrival default for this Power Pages integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: site:learn.microsoft.com/power-pages \"monitor hub\"; \"Monitor\" \"Power Pages\" \"session count\". Opened Monitor overview, traffic analytics and Monitor metrics export; none documents this integration.",
+      "quote": "Searched: Power Pages Monitor default performance metrics; Power Pages Monitor session performance usage hub default enable roles reports. Read roadmap, Monitor overview, tenant-level analytics and list tenant settings; none states this integration's arrival default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Learn page describing this Power Pages Monitor capability was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages Monitor session performance usage hub default enable roles reports; Power Pages monitor hub reports identifiers retention roles. Read Monitor overview and export documentation and Power Pages analytics; results describe surrounding features, not this integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "Existing Learn guidance documents site traffic analytics in the Power Platform admin center.",
@@ -221,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Website error logs can be sent to Azure Blob storage.",
+      "claim": "Existing website error logging sends application errors to Azure Blob storage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/view-portal-error-log",
       "quote": "To access the logs, configure your website to send all application errors to an Azure Blob storage account that you own.",
@@ -232,32 +245,32 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The telemetry covers aggregate usage and performance metrics.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview",
-      "quote": "Admins use it to understand aggregate operational health in the tenant or in specific environments. Metrics are calculated by aggregating daily event logs from runtime activity; they're not real-time.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 21,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "The identifiers included in this integration's downloadable reports are not yet published.",
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The described metrics cover aggregate usage and performance.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"monitor hub\" \"download\" \"identifiers\"; \"Power Pages\" \"monitor\" \"report\" \"identifiers\". Opened Monitor overview and metrics export; no Power Pages report schema is supplied.",
+      "source": "roadmap record",
+      "quote": "Session count: Tracks the number of sessions. Session duration: Measures the average time spent in a session.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Risk assessment: Security & identity; Governance controls",
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The identifiers in downloadable reports for this integration are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages monitor hub reports identifiers retention roles. Read Power Pages analytics, capacity management, website consumption report search excerpts and Monitor export documentation; none specifies this integration's downloadable report identifiers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "General Monitor admin experiences give Power Platform service and Dynamics 365 admins tenant-wide access.",
+      "claim": "General Monitor documentation allows Power Platform service admins to view Monitor data across the tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview",
       "quote": "Admin experiences are available to Power Platform service and Dynamics 365 admins, who can view Monitor data across the tenant.",
@@ -265,7 +278,18 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "General Monitor documentation allows Dynamics 365 admins to view Monitor data across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview",
+      "quote": "Admin experiences are available to Power Platform service and Dynamics 365 admins, who can view Monitor data across the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "Viewing resource names in Monitor requires the environment system administrator role.",
@@ -276,51 +300,62 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
       "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "Additional Power Pages-specific role requirements for these Monitor metrics are not yet published.",
+      "claim": "Additional Power Pages-specific roles for these Monitor metrics are not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"monitor hub\" \"roles\". Opened Monitor overview and read Power Pages RBAC search excerpts; they cover site-management permissions, not this integration's metric access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes metrics, trends and report downloads rather than autonomous site actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The following metrics will be surfaced in monitor hub: ... Additional capabilities include trend visualization and the ability to download detailed reports for further analysis",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Licensing for this integration is not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"monitor\" \"licensing\"; \"Power Pages\" \"monitor hub\" \"reports\" \"licence\". Opened capacity management, licensing FAQ Power Pages section and Monitor overview; no integration-specific licensing rule is stated.",
+      "quote": "Searched: Power Pages monitor hub reports identifiers retention roles; Power Pages Monitor session performance usage hub default enable roles reports. Read Monitor overview and Power Pages RBAC search excerpts; those excerpts cover site management, not these Monitor metrics.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No meter for this integration has been published.",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes metrics, trends and report downloads, not autonomous site actions.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages monitor hub session count session duration enable licensing default reports identifiers; \"Power Pages\" \"monitor\" \"licensing\". Opened Power Platform licensing FAQ, capacity management, Monitor overview and export documentation.",
+      "source": "roadmap record",
+      "quote": "Additional capabilities include trend visualization and the ability to download detailed reports for further analysis",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft has not published which licence covers this Monitor integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages monitor hub licensing price meter paid report export; Monitor Power Platform admin center license licensing health metrics cost. Read Monitor overview/export, tenant-level analytics and Power Pages licensing FAQ excerpts; no entitlement for this integration is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter is published for this Monitor integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages monitor hub licensing price meter paid report export; Monitor Power Platform admin center license licensing health metrics cost. Read Monitor overview/export and pay-as-you-go meter search excerpts; website-visitor meters do not meter this admin reporting integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Paid export options for this integration are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages monitor hub licensing price meter paid report export. Read Monitor export documentation, Monitor overview and Power Pages capacity management; no paid export option for this integration is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Cost and licensing; Open questions",
       "type": "behaviour",
       "claim": "General Monitor documentation states that event logs are available for up to seven days.",
@@ -331,7 +366,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 32,
       "where": "Cost and licensing; Open questions",
       "type": "behaviour",
       "claim": "General Monitor documentation states that metrics are available for up to 28 days.",
@@ -339,57 +374,46 @@
       "source": "https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview",
       "quote": "Metrics are available for only up to 28 days.",
       "severity": "minor",
-      "fix": "After the retention sentence, add: \"Microsoft's prerelease Monitor metrics export documentation instead states that Monitor retains daily metric aggregates for 30 days (https://learn.microsoft.com/power-platform/admin/monitoring/monitor-data-export).\" Keep the existing attribution of 28 days to the Monitor overview."
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "Power Pages-specific differences from the general Monitor retention periods are not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"Monitor\" \"retention\". Opened Monitor overview and metrics export; the latter gives a general 30-day window but no Power Pages-specific retention rule or supported product identifier.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Paid export options for this integration are not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"monitor\" \"paid export\"; site:learn.microsoft.com/power-platform/admin/monitoring \"licensing\" \"export\". Opened Monitor metrics export and licensing FAQ; no paid Power Pages Monitor export option is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[0].ui; Governance controls: Site traffic analytics",
-      "type": "admin-path",
-      "claim": "Tenant site traffic analytics is reached in Power Platform admin center through Manage > Products > Power Pages > Analytics (preview).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/admin-center-analytics",
-      "quote": "In the left navigation, select Manage. Under Products, select Power Pages and then select Analytics (preview).",
-      "severity": null,
-      "fix": null
+      "fix": "Keep the attribution to the overview, then add: \"Microsoft's prerelease Monitor metrics export documentation instead describes a 30-day retention window (https://learn.microsoft.com/power-platform/admin/monitoring/monitor-data-export).\" That page says: \"Retain a historical record beyond Monitor's 30-day retention window in your own storage.\""
     },
     {
       "n": 33,
-      "where": "controls[0].api; Governance controls: Site traffic analytics",
+      "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "An API or automation equivalent for the site traffic analytics dashboard is not yet documented.",
+      "claim": "Power Pages-specific differences from general Monitor retention are not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"analytics\" \"API\"; \"Power Pages\" \"analytics\" \"PowerShell\". Opened traffic analytics, Power Platform API Websites, pac pages and pac admin references; none supplies this dashboard's equivalent.",
+      "quote": "Searched: Power Pages monitor hub reports identifiers retention roles. Read Monitor overview/export and Power Pages analytics/error-log documentation; no retention rule for this integration is stated. Existing site diagnostic-log retention is a different mechanism.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "controls[0].note; Governance controls: Site traffic analytics",
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Site traffic analytics is reached at Power Platform admin center > Manage > Products > Power Pages > Analytics (preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/admin-center-analytics",
+      "quote": "Sign in to the Power Platform admin center. In the left navigation, select Manage. Under Products, select Power Pages and then select Analytics (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No API or automation equivalent for the existing site traffic analytics control is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages analytics traffic API Power Platform API pac admin PowerShell; Power Pages traffic analytics API. Read analytics page, Websites API operations, pac power-pages/pages excerpts and Monitor export documentation; no equivalent for the existing traffic dashboard is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note",
       "type": "role",
-      "claim": "Dynamics 365 administrators can access the site traffic analytics dashboard.",
+      "claim": "Dynamics 365 administrators can access the existing traffic analytics dashboard.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/admin-center-analytics",
       "quote": "To access the analytics dashboard, you should have one of the following roles: Dynamics 365 administrator",
@@ -397,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "controls[0].note; Governance controls: Site traffic analytics",
+      "n": 37,
+      "where": "controls[0].note",
       "type": "role",
-      "claim": "Power Platform administrators can access the site traffic analytics dashboard.",
+      "claim": "Power Platform administrators can access the existing traffic analytics dashboard.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/admin-center-analytics",
       "quote": "To access the analytics dashboard, you should have one of the following roles: ... Power Platform administrator",
@@ -408,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[0].note; Governance controls: Site traffic analytics",
+      "n": 38,
+      "where": "controls[0].note",
       "type": "role",
-      "claim": "System administrators can access traffic analytics for the environments where they are system administrators.",
+      "claim": "System administrators can access traffic analytics only for their environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/admin-center-analytics",
       "quote": "System administrator (You can only see environments for which you're a system administrator.)",
@@ -419,7 +443,7 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 39,
       "where": "controls[0].note; Governance controls",
       "type": "availability",
       "claim": "Existing traffic analytics reports cover public sites and exclude private sites.",
@@ -430,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[1].ui; Governance controls: Diagnostic logs for a site",
+      "n": 40,
+      "where": "controls[1].ui",
       "type": "admin-path",
-      "claim": "Site diagnostic logging is reached in Power Platform admin center through Resources > Power Pages sites > site > Site Actions > Enable diagnostics logs.",
+      "claim": "Site diagnostic logging is reached at Power Platform admin center > Resources > Power Pages sites > site > Site Actions > Enable diagnostics logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging",
       "quote": "Open the Power Platform admin center. Under the Resources section, select Power Pages sites. Select your website. From the Site Actions menu, select Enable diagnostics logs.",
@@ -441,29 +465,29 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[1].api; Governance controls: Diagnostic logs for a site",
+      "n": 41,
+      "where": "controls[1].api",
       "type": "absence",
-      "claim": "An API or automation equivalent for enabling site diagnostic logging to Blob storage is not yet documented.",
+      "claim": "No documented API or automation equivalent enables this site's diagnostic logging to Azure Blob storage.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"diagnostic\" \"API\" logging; \"Power Pages\" \"diagnostic\" \"PowerShell\"; Power Apps administration PowerShell Power Pages analytics diagnostic. Opened error-log guidance, Websites API, pac pages and pac admin.",
+      "quote": "Searched: Power Pages enable diagnostic logging API Power Platform pac pages PowerShell; Power Pages diagnostic logging API enable. Read error-log page, Websites API operations and PAC excerpts; PowerPagesLog table excerpts concern WAF/CDN logs, not this logging configuration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 42,
       "where": "controls[2].ui and api; controls[2].note; Governance controls",
       "type": "absence",
-      "claim": "No Power Pages-specific enablement or scoping switch in Monitor is documented on the UI or automation surface.",
+      "claim": "No Power Pages-specific Monitor enablement or scoping switch is documented on the UI or automation surfaces.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"Monitor\" \"scoping\"; \"Power Platform API\" \"Power Pages\" \"Monitor\" \"enable\". Opened Monitor overview, tenant-level analytics, Websites API, pac pages and pac admin; no integration-specific switch is documented.",
+      "quote": "Searched: Power Pages Monitor hub enable disable scoping tenant settings API; Power Pages Monitor default performance metrics. Read Monitor overview, tenant analytics, list tenant settings, Websites API and PAC excerpts; Copilot hub AI switches are for a different capability.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 43,
       "where": "controls[2].note; Governance controls",
       "type": "applicability",
       "claim": "Monitor generally requires tenant-level analytics to be enabled.",
@@ -474,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Governance controls: tenant-level analytics path",
+      "n": 44,
+      "where": "Governance controls",
       "type": "admin-path",
-      "claim": "The general enablement path is Power Platform admin center > Manage > Tenant settings > Analytics > Tenant-level analytics > Enable > Save.",
+      "claim": "The general analytics enablement path is Power Platform admin center > Manage > Tenant settings > Analytics > Tenant-level analytics > Enable > Save.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/tenant-level-analytics",
       "quote": "In the navigation pane, select Manage. In the Manage pane, select Tenant settings. On the Tenant settings page, select Analytics. In the Analytics pane, turn the Tenant-level analytics option to Enable. Select Save.",
@@ -485,10 +509,21 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Governance controls: Monitor description",
+      "n": 45,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Monitor area provides a reporting experience for admins and makers, with health metrics aggregated from runtime event logs.",
+      "claim": "Monitor is an area of the Power Platform admin center for operational health reporting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview",
+      "quote": "Your organization can use the Monitor area of the Power Platform admin center to measure and improve operational health metrics of resources that are built or deployed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "General Monitor aggregates runtime event logs into health metrics for admins and makers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview",
       "quote": "The Monitor experience is available to both makers ... and admins ... Metrics are calculated by aggregating daily event logs from runtime activity; they're not real-time.",
@@ -496,35 +531,24 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Governance controls: capacity management",
+      "n": 47,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Capacity management provides Power Pages capacity consumption and licensing views.",
+      "claim": "Power Pages capacity management includes capacity and licensing views.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/capacity-management",
       "quote": "The Power Pages capacity management experience in the Power Platform admin center allows administrators to manage Power Pages capacity and monitor capacity consumption. This experience also provides an overview of the different licensing models in use.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: defaultState",
-      "type": "absence",
-      "claim": "The default state of the Power Pages monitor hub integration is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"monitor\" \"default\"; \"Power Platform API\" \"Power Pages\" \"Monitor\" \"enable\". Re-read roadmap description; opened Monitor overview and tenant-level analytics. No source states the integration's arrival default.",
-      "severity": null,
-      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T08:14:12.912Z",
+    "at": "2026-11-24T07:39:42.821Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -537,33 +561,33 @@
       },
       {
         "url": "https://learn.microsoft.com/power-pages/admin/admin-center-security",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-pages/admin/admin-center-analytics",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/tenant-level-analytics",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-pages/admin/capacity-management",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -572,28 +596,38 @@
         "side": "ui",
         "governs": "Site traffic analytics",
         "docs": "https://learn.microsoft.com/power-pages/admin/admin-center-analytics",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Products",
           "Power Pages",
           "Analytics"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Products",
+          "Power Pages",
+          "Analytics"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Diagnostic logs for a site",
         "docs": "https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Resources",
           "Power Pages sites",
           "Site Actions",
           "Enable diagnostics logs"
         ],
-        "missing": []
+        "missing": [
+          "Resources",
+          "Power Pages sites",
+          "Site Actions",
+          "Enable diagnostics logs"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -613,6 +647,12 @@
     },
     {
       "date": "2026-11-16",
+      "status": "verified-with-gaps",
+      "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
       "status": "verified-with-gaps",
       "version": 4,
       "model": "gpt-6.1-sol"

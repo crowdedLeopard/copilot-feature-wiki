@@ -127,14 +127,16 @@ changes:
     note: "Corrected after the independent check: the sharing-limits row no longer says its agent example covers only one rule, the embedded-credentials path names the environment selection, and the digest-recipient checklist step is removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 117 statements not yet confirmed"
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 94
+  claims: 117
+  confirmed: 117
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -218,3 +220,10 @@ Two more surfaces have no row above. To see an environment's data policies, edit
 - Does Microsoft document a PowerShell, Graph or Power Platform API call for maker guidelines or for sharing agents with embedded maker credentials? Not yet documented.
 - Will per-environment exceptions to published group rules be supported? Microsoft says they are not currently supported.
 - Does the February 2027 block extend beyond opening apps to flows and agents? The licensing page describes apps.
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[3].ui / admin-path: The embedded maker credentials path goes through Security > Threat detection > Sharing agent with embedded maker credentials > Environments or Environment groups > target > Set up > Save. | Found: Select Set up. 6. Select the following options to allow or block sharing agents with embedded maker credentials: - Don't let makers share agents with their own credentials embedded (recommended) - Let makers share agents with their own credentials embedded 7. Select Save. | Fix: Complete the path on the setting pane: 'Security > Threat detection > Sharing agent with embedded maker credentials > Environments or Environment groups > environment or environment group > Set up > Don't let makers share agents with their own credentials embedded (recommended) or Let makers share agents with their own credentials embedded'. The path reaches the correct pane but omits its actual setting choices. Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials. | Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials
+- [supported, minor] controls[4].ui / admin-path: Maker guidelines is reached at Power Platform admin center > Copilot > Settings > Maker guidelines > Environments > environment > Edit setting. | Found: Environment: Select Copilot > Settings, and then select Maker guidelines. Select the Environments tab, select the environment, and then select Edit setting. | Fix: Complete the path to the documented choice: 'Copilot > Settings > Maker guidelines > Environments > environment > Edit setting > Where to show the message > Maker selects Review'. The existing route stops on the correct setting pane. Source: https://learn.microsoft.com/power-platform/admin/maker-guidelines. | Source: https://learn.microsoft.com/power-platform/admin/maker-guidelines
+-->

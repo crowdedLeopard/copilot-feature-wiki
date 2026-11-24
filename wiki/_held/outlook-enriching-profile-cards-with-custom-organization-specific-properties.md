@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. Learn's connector prerequisites page says indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses, and does not address people-data connectors."
+  model: "included"
+  notes: "The connector prerequisites require Microsoft 365 licenses for the tenant; available connector types and surfaces depend on licensing. A licence requirement specific to these new custom profile card properties is not yet published."
 audiences: ["m365-admin","service-owner","compliance"]
 tags: ["outlook","copilot-connectors","microsoft-graph","m365-admin-center","admin-controls","privacy"]
 sources:
@@ -55,6 +55,9 @@ sources:
   - title: "Prerequisites for deploying connectors"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites"
     kind: "learn"
+  - title: "Deploy connectors in the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -70,27 +73,27 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Connectors gallery > Human resources & recruiting"
+      path: "Copilot > Connectors > Gallery > Human resources & recruiting"
       docs: "https://learn.microsoft.com/graph/peopleconnectors"
     api:
       kind: "graph"
-      call: "POST https://graph.microsoft.com/v1.0/external/connections (contentCategory = people)"
+      call: "POST https://graph.microsoft.com/v1.0/external/connections"
       docs: "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections"
-    note: "Learn names Global Administrator and Copilot Administrator for people connectors; the prerequisites page names AI administrator. Learn gives the gallery, not a click path."
+    note: "The request body sets the top-level contentCategory property to people. Learn names Global Administrator and Copilot Administrator for people connectors; the prerequisites page names AI administrator."
   - governs: "Optional Microsoft Entra properties shown on profile cards (existing control)"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Org settings > People settings > Profile card > Contact info"
+      path: "Settings > Org settings > Services > People settings > Profile card > Contact info"
       docs: "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards"
     api:
       kind: "graph"
-      call: "POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties (directoryPropertyName, annotations, isVisible)"
+      call: "POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties"
       docs: "https://learn.microsoft.com/graph/add-properties-profilecard"
-    note: "Covers Microsoft Entra attributes, including CustomAttribute1 to 15. Microsoft has not confirmed it governs connector-sourced properties."
+    note: "Covers Entra attributes, including CustomAttribute1 to 15. Not confirmed to govern connector-sourced properties. The request body specifies directoryPropertyName, annotations for labels, and isVisible for visibility."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-16"
@@ -103,19 +106,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-24"
+    note: "Corrected the connector gallery route (Copilot > Connectors > Gallery), the Graph calls and the People settings path; licensing now follows the connector prerequisites page."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "84dcc72af52be81800dd82614780ffd0"
+  attempts: 2
+  hash: "c658500cceaf51290cc0de3cbb1b80d4"
 ---
 
 ## What's changing
@@ -158,7 +165,7 @@ If nobody acts, nothing changes: Microsoft's notice says the feature is off by d
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement for this feature. Neither the roadmap record nor MC1193692 names a licence, a meter or a price, and no meter is documented for it at the time of writing (November 2026).
+Microsoft has not published a licence requirement specific to these custom profile card properties. Neither the roadmap record nor MC1193692 names a licence, a meter or a price, and no meter is documented for it at the time of writing (November 2026).
 
 The connector prerequisites page says your tenant must have Microsoft 365 licenses, that the connector types and surfaces available depend on licensing, and that indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. That page does not mention people-data connectors, so do not treat it as the licence statement for this feature.
 
@@ -202,14 +209,14 @@ Rollout: the notice gives January 2027 for start and completion. Dates are Micro
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Visibility, display name and icon of connector-sourced custom properties on profile cards</strong><br><small>Tenant</small><br><small class="controls__note">Path as given in Message Center post MC1193692; Learn does not yet describe it. Profile card settings need Global Administrator or People Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › People settings › Profile › Person info on profile cards <a href="https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1193692" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which people-data connection supplies the properties</strong><br><small>Tenant</small><br><small class="controls__note">Learn names Global Administrator and Copilot Administrator for people connectors; the prerequisites page names AI administrator. Learn gives the gallery, not a click path.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Connectors gallery › Human resources &amp; recruiting <a href="https://learn.microsoft.com/graph/peopleconnectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/external/connections (contentCategory = people)</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Optional Microsoft Entra properties shown on profile cards (existing control)</strong><br><small>Tenant</small><br><small class="controls__note">Covers Microsoft Entra attributes, including CustomAttribute1 to 15. Microsoft has not confirmed it governs connector-sourced properties.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › People settings › Profile card › Contact info <a href="https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties (directoryPropertyName, annotations, isVisible)</code> <a href="https://learn.microsoft.com/graph/add-properties-profilecard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which people-data connection supplies the properties</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets the top-level contentCategory property to people. Learn names Global Administrator and Copilot Administrator for people connectors; the prerequisites page names AI administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Gallery › Human resources &amp; recruiting <a href="https://learn.microsoft.com/graph/peopleconnectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/external/connections</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Optional Microsoft Entra properties shown on profile cards (existing control)</strong><br><small>Tenant</small><br><small class="controls__note">Covers Entra attributes, including CustomAttribute1 to 15. Not confirmed to govern connector-sourced properties. The request body specifies directoryPropertyName, annotations for labels, and isVisible for visibility.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › People settings › Profile card › Contact info <a href="https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties</code> <a href="https://learn.microsoft.com/graph/add-properties-profilecard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The first row is the control Microsoft's notice describes. Its path comes from that notice, and Learn labels the existing setting differently (Profile card > Contact info), so check the label in your tenant when the feature arrives. No API for the connector-sourced properties is documented at the time of writing (November 2026).
 
-The second row covers how data gets in. The connector gallery is the starting point Learn gives; it does not give a click path. In the Microsoft Graph call, contentCategory is a top-level property of the externalConnection, not a property inside configuration. Role requirements differ between the people-connector and prerequisites pages (see Risk assessment).
+The second row covers how data gets in. Learn's connector deployment page gives the route to the connector gallery; choose the people-data source in the Human resources & recruiting category. In the Microsoft Graph call, contentCategory is a top-level property of the externalConnection, not a property inside configuration. Role requirements differ between the people-connector and prerequisites pages (see Risk assessment).
 
 The third row is an existing control for Microsoft Entra properties. Microsoft has not confirmed it governs connector-sourced properties, so do not use it as a switch for this feature. The overview page says delegated calls need a Tenant Administrator role, while the Create profileCardProperty reference names People Administrator as the least privileged supported role. Writes need the PeopleSettings.ReadWrite.All permission.
 
@@ -223,17 +230,14 @@ The third row is an existing control for Microsoft Entra properties. Microsoft h
 
 <!-- rationale
 risk: Low. The card display needs admin configuration, but Microsoft Learn says people data from a Copilot connector is visible to all users in the tenant by default, so approve the data before ingesting it, not only before showing it on cards.
-cost: Low. The only cost the sources show is admin and HR time for the connector and settings work; the licence for this feature is not yet published and no meter is documented for it at the time of writing (November 2026).
+cost: Low. The only cost the sources show is admin and HR time for the connector and settings work; a licence specific to this feature is not yet published and no meter is documented for it at the time of writing (November 2026).
 impact: Low. Admins act first; users notice a new property in the Contact Information section of profile cards in Outlook on the web only after an admin enables it.
 -->
 
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls: table / admin-path: Connectors gallery > Human resources & recruiting is the admin-center navigation route for choosing a people-data connector. | Found: In the left pane, choose Copilot > Connectors. On the Connectors tab, in the left pane, choose Gallery, and select the data source you want to connect | Fix: Replace controls[1].ui.path and its rendered route with 'Copilot > Connectors > Gallery > Human resources & recruiting'. Keep the peopleconnectors docs link for the category and add https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview to sources for the navigation. Replace 'Learn gives the gallery, not a click path' with 'Choose the people-data source in the Human resources & recruiting category.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview
+- [contradicted, blocker] Cost and licensing: second paragraph / applicability: Because the prerequisites page does not name people-data connectors, it should not be treated as a licence statement for this feature. | Found: This article covers the prerequisites that apply to synced and federated connectors. Your tenant must have Microsoft 365 licenses. | Fix: Replace 'That page does not mention people-data connectors, so do not treat it as the licence statement for this feature.' with 'These are the general connector prerequisites; a licence requirement specific to the new custom profile card properties is not yet published.' The people-data build guide documents ingestion and indexing, and https://learn.microsoft.com/microsoft-365/copilot/connectors/overview describes people connectors as providing a synchronized view; they are not outside the general connector requirement. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost; Open questions / licensing: Licensing is unknown because no licence requirement specific to this new feature is published. | Found: Your tenant must have Microsoft 365 licenses. The surfaces available to your users ... and the connector types you can deploy depend on your organization's licensing. | Fix: Set licensing.model to included and state: 'The connector prerequisites require Microsoft 365 licenses for the tenant; available connector types and surfaces depend on licensing. A licence requirement specific to these new custom profile card properties is not yet published.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. Keep cost low and the narrower feature-specific licensing gap. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
-- [supported, minor] controls[1].api; Governance controls: table and notes / command: POST https://graph.microsoft.com/v1.0/external/connections creates a people-data connection when contentCategory is people. | Found: POST https://graph.microsoft.com/v1.0/external/connections | Fix: Set controls[1].api.call and the rendered call to 'POST https://graph.microsoft.com/v1.0/external/connections'. In the note say: 'The request body sets the top-level contentCategory property to people.' The v1.0 externalConnection resource documents that property at https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection. | Source: https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections
-- [supported, minor] controls[2].ui; Governance controls: table and notes / admin-path: Existing optional profile-card properties are configured at Settings > Org settings > People settings > Profile card > Contact info. | Found: admins can configure their visibility by navigating to Settings > Org settings > People settings > Profile card > Contact info in the Microsoft 365 admin center. | Fix: Expand controls[2].ui.path and its rendered route to 'Settings > Org settings > Services > People settings > Profile card > Contact info'. The already-cited https://learn.microsoft.com/microsoft-365/admin/manage/people-settings-in-microsoft-365-admin-center gives the Services tab that lists People settings. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards
-- [supported, minor] controls[2].api; Governance controls: table / command: POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties configures Entra profile-card properties using directoryPropertyName, annotations and isVisible. | Found: Use the annotations and directoryPropertyName properties on profileCardProperty to configure profile card properties. You can also use the isVisible property to indicate whether the given directory property should be shown on a user's profile card. | Fix: Set controls[2].api.call and the rendered call to 'POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties'. Add to the note: 'The request body specifies directoryPropertyName, annotations for labels, and isVisible for visibility.' Remove the parenthesised property list from the call. | Source: https://learn.microsoft.com/graph/add-properties-profilecard
+- [supported, minor] controls[1].ui; Governance controls: second paragraph; Governance guidance: Before rollout / admin-path: The people-data source gallery is reached through Copilot > Connectors > Gallery > Human resources & recruiting. | Found: Browse the Connectors gallery in the Microsoft 365 admin center and check the Human resources & recruiting category. | Fix: Extend the path to 'Copilot > Connectors > Gallery > Human resources & recruiting > data source' to include the source selection. The cited category page supports the final category, and the already-cited https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview gives Copilot > Connectors, Gallery, and 'select the data source you want to connect'. | Source: https://learn.microsoft.com/graph/peopleconnectors
 -->

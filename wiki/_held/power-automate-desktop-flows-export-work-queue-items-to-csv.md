@@ -78,18 +78,20 @@ changes:
     note: "Correction: removed an unsupported claim about Dataverse controls after download, stated that Dataverse request limits cover read operations, and changed action to act-now."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 59
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "8fb1da596c13df3a204b5f3a56792d7e"
 ---
 
@@ -175,4 +177,14 @@ The second row states a gap: Microsoft Learn documents no setting that turns the
 risk: Medium. Work queue items can hold business data in free-text fields, and the export puts a copy in a file outside Dataverse; Microsoft has not said whether the export follows the Dataverse security roles that protect the data.
 cost: Low. No separate licence or meter for the export is published; work queue data in the automation center already requires a Power Automate Premium licence, so the visible cost is admin time.
 impact: Medium. Makers, operators and analysts who use work queues in the automation center will see the new option; administrators who do not use work queues will not notice it.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Security & identity; Governance guidance: At rollout; Governance controls; rationale: risk / absence: Microsoft has not confirmed that Dataverse security roles govern the work queue data downloaded by the CSV export. | Found: The automation center's underlying data is managed through Dataverse tables, secured through role-based access control (RBAC). | Fix: Replace the prose caveats that security roles may not apply to exported work queue data with 'The automation center's underlying work queue data is secured through Dataverse role-based access control.' In At rollout, use 'Test the export with a user who has a narrow custom security role and record what that user can download.' In the risk rationale, remove the clause beginning 'Microsoft has not said whether'. Remove the corresponding Open question about whether the person's Dataverse roles apply. Source: https://learn.microsoft.com/power-automate/automation-center-overview#required-permissions. | Source: https://learn.microsoft.com/power-automate/automation-center-overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].note; Governance controls: first row note / applicability: The correctly documented security roles control is presented as a general control not confirmed for the CSV export. | Found: The automation center's underlying data is managed through Dataverse tables, secured through role-based access control (RBAC). | Fix: Replace 'General control: Microsoft has not confirmed it applies to the CSV export.' in the row note with 'Controls access to the automation center's underlying Dataverse data.' The control's published reach includes the work queue data; retain the note about the API's Microsoft Entra ID group user example. | Source: https://learn.microsoft.com/power-automate/automation-center-overview
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown despite the published Power Automate Premium requirement for work queue data. | Found: Data under the Work queues tab is a premium feature, which requires a Power Automate Premium license. | Fix: Set licensing.model to 'included'. Replace the opening sentence of licensing.notes with 'Work queue data in the automation center requires a Power Automate Premium licence; Microsoft has not published a licence specific to the CSV export.' Retain the documented work queue prerequisite. Source: https://learn.microsoft.com/power-automate/automation-center-overview#data-and-visualization-strategy. | Source: https://learn.microsoft.com/power-automate/automation-center-overview
+- [supported, minor] controls[0].api; Governance controls: first row API and automation / command: The printed v9.0 POST systemuserroles_association/$ref call with an @odata.id role reference assigns a security role to a user. | Found: POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref Accept: application/json { "@odata.id":"[Organization URI]/api/data/v9.0/roles(<role ID>)" } | Fix: Set controls[0].api.call to 'POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref' and use that call in the rendered table. Add 'The request body sets @odata.id to the role reference.' to the row note. The existing body is correct but the standard puts the body property in the note. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team
 -->

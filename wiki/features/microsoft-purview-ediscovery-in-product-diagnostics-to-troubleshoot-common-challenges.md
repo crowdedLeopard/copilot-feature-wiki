@@ -70,7 +70,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "eDiscovery > Cases > case > Case settings > Access and permissions > Users > Add"
+      path: "eDiscovery > Cases > case > Case settings > Access and permissions > Users or Role groups > Add"
       docs: "https://learn.microsoft.com/purview/edisc-settings-access-permissions"
     api:
       kind: "graph"
@@ -111,19 +111,23 @@ changes:
     note: "Corrected the hold retry command, case-access wording, rollout date attribution and RBAC diagnostic path; licensing now cites Microsoft 365 E3 or E5; action is now review."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected the case-members admin path to Users or Role groups > Add, and noted that the existing Help-pane RBAC diagnostic is unavailable in GCC High, DoD and 21Vianet."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 70
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "edd6748f56caf14347ac53575fd44aaf"
+  claims: 68
+  confirmed: 67
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "07cd5c1ee0d38acb4c3cf0be3ab994db"
 ---
 
 ## What's changing
@@ -157,7 +161,7 @@ Microsoft has not stated whether the checks are on automatically or switched on 
 
 **Change & support**
 
-- Existing troubleshooting routes include the eDiscovery RBAC diagnostic in the Help pane, hold distribution results from PowerShell and the Retry policy action. Internal runbooks that name only those routes may need updating once the checks are documented.
+- Existing troubleshooting routes include the eDiscovery RBAC diagnostic in the Help pane, hold distribution results from PowerShell and the Retry policy action. The existing Help-pane diagnostic is unavailable in GCC High, DoD and Microsoft 365 operated by 21Vianet, according to [Self-help diagnostics for Microsoft Purview](https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics). Internal runbooks that name only those routes may need updating once the checks are documented.
 - Preview and General Availability dates have already moved once, per MC1515937, so check the notice before telling teams when to expect the checks.
 
 ## Cost and licensing
@@ -201,7 +205,7 @@ Rollout is by Microsoft, on the dates in the notice (see What's changing). Micro
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who holds eDiscovery roles through the eDiscovery Manager role group</strong><br><small>Tenant</small><br><small class="controls__note">General control for case access, not for the diagnostics. Assigning permissions needs Organization Management or the Role Management role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Role groups › eDiscovery Manager › Edit › Manage eDiscovery Manager › Choose users or Choose groups <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember &quot;eDiscoveryManager&quot; -Member &lt;name of security group&gt;</code> <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users and role groups are members of an eDiscovery case</strong><br><small class="controls__note">Existing control for case access. Microsoft has not confirmed the new check reads it. The body sets recipientType and identifies the member using id, displayName for a role group, or smtpAddress for a user.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Case settings › Access and permissions › Users › Add <a href="https://learn.microsoft.com/purview/edisc-settings-access-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/caseMembers</code> <a href="https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and role groups are members of an eDiscovery case</strong><br><small class="controls__note">Existing control for case access. Microsoft has not confirmed the new check reads it. The body sets recipientType and identifies the member using id, displayName for a role group, or smtpAddress for a user.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Case settings › Access and permissions › Users or Role groups › Add <a href="https://learn.microsoft.com/purview/edisc-settings-access-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/caseMembers</code> <a href="https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which mailboxes and sites an eDiscovery manager can search (search permissions filters)</strong><br><small>User</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Needs Organization Management and the eDiscovery administrator role. Existing control for the security filter area.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-ComplianceSecurityFilter -FilterName &lt;name of filter&gt; -Users &lt;user or role group&gt; -Filters &lt;filter&gt;</code> <a href="https://learn.microsoft.com/purview/edisc-search-permission-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Hold policy distribution status and retry</strong><br><small class="controls__note">Existing control for the hold-distribution area. Status is read separately with Get-CaseHoldPolicy -Identity &lt;policyname&gt; -DistributionDetail.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Hold policies › hold policy › Policy actions › Retry policy <a href="https://learn.microsoft.com/purview/edisc-hold-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CaseHoldPolicy -Identity &lt;policyname&gt; -RetryDistribution</code> <a href="https://learn.microsoft.com/troubleshoot/microsoft-365/purview/ediscovery/resolve-ediscovery-hold-issues" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -209,7 +213,7 @@ Rollout is by Microsoft, on the dates in the notice (see What's changing). Micro
 
 No setting to turn the diagnostics on or off, and no role requirement for running them, is named in the roadmap item or in MC1515937. The rows above are the existing controls behind the three areas the checks cover. They are not controls over the diagnostics themselves, and Microsoft has not confirmed how the diagnostics read them.
 
-Changing a role in a role group that is a case member removes that role group from the case. Search permissions filters need membership of the Organization Management role group and the eDiscovery administrator role, and run through Security & Compliance PowerShell connected alongside Exchange Online PowerShell. Microsoft Learn documents the search permissions filter through cmdlets; no portal path was found on that page. The existing eDiscovery RBAC diagnostic (Help > Ask a question > search for Diag:edisRBACdiag in the Microsoft Purview portal; the permissions article abbreviates this to Help search) checks whether the Search, Export or Preview roles are assigned to a named user; it is the existing check closest to the case access area.
+Changing a role in a role group that is a case member removes that role group from the case. Search permissions filters need membership of the Organization Management role group and the eDiscovery administrator role, and run through Security & Compliance PowerShell connected alongside Exchange Online PowerShell. Microsoft Learn documents the search permissions filter through cmdlets; no portal path was found on that page. The existing eDiscovery RBAC diagnostic (Help > Ask a question > search for Diag:edisRBACdiag in the Microsoft Purview portal; the permissions article abbreviates this to Help search) checks whether the Search, Export or Preview roles are assigned to a named user; it is the existing check closest to the case access area. The existing Help-pane diagnostic is unavailable in GCC High, DoD and Microsoft 365 operated by 21Vianet, according to Self-help diagnostics for Microsoft Purview.
 
 ## Open questions
 
@@ -225,9 +229,10 @@ cost: Low. Microsoft documents Microsoft 365 Enterprise E3 or E5 licensing for e
 impact: Low. MC1515937 names eDiscovery admins as the affected group; end users and case reviewers are not mentioned.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The Purview path eDiscovery > Cases > case > Case settings > Access and permissions > Users > Add provides the row's control for adding users and role groups to a case. | Found: Under Users, select Add to add users to the case. You can also choose to add a role group to the case by selecting Add under Role groups. | Fix: Replace controls[1].ui.path and its rendered table path with 'eDiscovery > Cases > case > Case settings > Access and permissions > Users or Role groups > Add'. The cited page uses Users for individual users and Role groups for role groups. | Source: https://learn.microsoft.com/purview/edisc-settings-access-permissions
-- [contradicted, blocker] Governance controls; Risk assessment: Change & support / availability: The existing eDiscovery RBAC diagnostic is presented as a Help-pane troubleshooting route without a cloud restriction. | Found: Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet. | Fix: Add to the existing RBAC diagnostic description: 'The existing Help-pane diagnostic is unavailable in GCC High, DoD and Microsoft 365 operated by 21Vianet, according to Self-help diagnostics for Microsoft Purview.' Apply this qualification to its mention in Risk assessment too. Do not apply that restriction to the new checks in MC1515937. | Source: https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics
+- [unsupported, major] What's changing / record: The notice moved each rollout date later than its earlier schedule. | Found: Searched: the supplied MC1515937 rollout schedule and its 'previously' comparisons. It gives earlier preview dates, all earlier GA starts and an earlier Worldwide GA completion, but no earlier GCC, GCC High or DoD completion dates. | Fix: Replace 'The notice moved each date later than its earlier schedule.' with 'The notice postponed the preview start and completion, all GA start dates, and the Worldwide GA completion date.' The supplied MC1515937 explicitly gives those comparisons.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].api; Governance controls table / command: New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter> creates a search permissions filter. | Found: Use the New-ComplianceSecurityFilter cmdlet to create a search permissions filter. Here's the basic syntax for this cmdlet: New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter> | Fix: Keep the guide-supported call, but append to the row note: 'The cmdlet reference additionally marks -Action as mandatory; it selects Search, Preview, Export, Purge or All.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancesecurityfilter?view=exchange-ps, whose syntax and -Action parameter table differ from the cited guide. | Source: https://learn.microsoft.com/purview/edisc-search-permission-filtering
 -->

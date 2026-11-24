@@ -2,37 +2,31 @@
   "slug": "outlook-purview-data-loss-prevention-support-for-calendar-events-in-outlook-for-mac",
   "roadmapId": 569717,
   "title": "Outlook for Mac: Purview Data Loss Prevention for calendar events",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "1 blocking finding (claim 23)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 53,
-    "confirmed": 52,
+    "claims": 58,
+    "confirmed": 58,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 2
   },
-  "summary": "Hold: the Outlook policy-tip path skips opening or creating a policy configuration and reaching its settings, so administrators cannot follow it directly to the switch. The roadmap facts and PowerShell call are supported; calendar-specific defaults and implementation details remain unpublished, while general DLP licensing is documented.",
+  "summary": "The briefing accurately reports the roadmap plan and distinguishes existing email DLP controls from unconfirmed calendar behaviour. The Purview path stops at policy creation rather than the scope and simulation controls, and Microsoft's broader support matrix qualifies the dedicated email reference's support statement.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing",
+      "where": "title; summary; What's changing",
       "type": "record",
       "claim": "Microsoft plans Purview DLP policy support for calendar events in Outlook for Mac.",
       "status": "supported",
@@ -45,10 +39,10 @@
       "n": 2,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says organizations can detect sensitive information sharing in calendar events.",
+      "claim": "The planned capability detects sensitive information.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Organizations can detect and help prevent the sharing of sensitive information in meeting subjects, descriptions, and invite content",
+      "quote": "Organizations can detect and help prevent the sharing of sensitive information",
       "severity": null,
       "fix": null
     },
@@ -56,10 +50,10 @@
       "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says organizations can help prevent sensitive information sharing in calendar events.",
+      "claim": "The planned capability helps prevent sharing sensitive information.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Organizations can detect and help prevent the sharing of sensitive information in meeting subjects, descriptions, and invite content",
+      "quote": "Organizations can detect and help prevent the sharing of sensitive information",
       "severity": null,
       "fix": null
     },
@@ -67,7 +61,7 @@
       "n": 4,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Meeting subjects are named as content covered by the planned capability.",
+      "claim": "The roadmap identifies meeting subjects as protected content.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "sensitive information in meeting subjects, descriptions, and invite content",
@@ -78,7 +72,7 @@
       "n": 5,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Meeting descriptions are named as content covered by the planned capability.",
+      "claim": "The roadmap identifies meeting descriptions as protected content.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "sensitive information in meeting subjects, descriptions, and invite content",
@@ -89,7 +83,7 @@
       "n": 6,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Invite content is named as content covered by the planned capability.",
+      "claim": "The roadmap identifies invite content as protected content.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "sensitive information in meeting subjects, descriptions, and invite content",
@@ -98,12 +92,12 @@
     },
     {
       "n": 7,
-      "where": "What's changing",
+      "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "The roadmap describes policy tips as part of the planned capability.",
+      "claim": "The roadmap describes policy tips as part of the planned calendar protection.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "through policy tips, user remediation, and policy enforcement.",
+      "quote": "through policy tips, user remediation, and policy enforcement",
       "severity": null,
       "fix": null
     },
@@ -111,18 +105,18 @@
       "n": 8,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes user remediation as part of the planned capability.",
+      "claim": "The roadmap describes user remediation as part of the planned calendar protection.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "through policy tips, user remediation, and policy enforcement.",
+      "quote": "through policy tips, user remediation, and policy enforcement",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
       "type": "record",
-      "claim": "The roadmap mentions policy enforcement without describing its implementation.",
+      "claim": "The roadmap mentions policy enforcement without specifying its actions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "through policy tips, user remediation, and policy enforcement. This provides consistent compliance protection across email and calendar experiences on Mac devices.",
@@ -144,7 +138,7 @@
       "n": 11,
       "where": "front matter: targetDate; What's changing; Governance guidance",
       "type": "record",
-      "claim": "November CY2026 is the roadmap target, not a committed release date.",
+      "claim": "The roadmap target is November CY2026, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"targetDate\": \"November CY2026\"",
@@ -166,7 +160,7 @@
       "n": 13,
       "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "Mac is the platform listed in the roadmap record, which names no other platform.",
+      "claim": "Mac is the only platform named in this roadmap item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Mac\"]",
@@ -177,7 +171,7 @@
       "n": 14,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
@@ -186,9 +180,42 @@
     },
     {
       "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "Outlook is the product named in the roadmap record.",
+      "claim": "The product named by the roadmap is Outlook.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Outlook\"]",
@@ -196,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap record has no preview date.",
+      "claim": "The item has no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -207,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 20,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap record has no more-info link.",
+      "claim": "The item has no more-info link.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"moreInfoLink\": null",
@@ -218,7 +245,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 21,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-10-27T23:05:02.",
@@ -229,29 +256,40 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; Governance controls",
+      "n": 22,
+      "where": "What's changing; Why it matters; Governance controls",
       "type": "absence",
-      "claim": "Microsoft Learn has not yet described the Outlook for Mac calendar-event DLP capability.",
+      "claim": "Microsoft Learn has not yet described this Outlook for Mac calendar DLP capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Outlook for Mac\" \"calendar\" \"DLP\" default policy enforcement actions; Outlook Mac calendar events DLP policy tips default licensing calendar invitations release channel. Read mobile tip reference and Office for Mac release-note excerpts; no calendar-DLP description.",
+      "quote": "Searched: Outlook for Mac calendar DLP 569717; Outlook for Mac calendar data loss prevention licensing. Opened mobile policy-tip reference, deployment guidance and Mac preferences; searched release-note excerpts. No calendar DLP description found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Why it matters; controls[0].note; Governance controls",
+      "n": 23,
+      "where": "What's changing; Why it matters; controls[0].governs; Governance controls",
       "type": "behaviour",
-      "claim": "Learn documents email DLP policy tips for Outlook for Android, iOS and macOS.",
+      "claim": "The dedicated Learn reference documents DLP policy tips for email in Outlook for Android, iOS and macOS.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
       "quote": "Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips with commonly used predicates and exceptions, advanced classifiers, and override capabilities.",
-      "severity": "minor",
-      "fix": "Add after the email-support statement: 'Microsoft's troubleshooting article still says policy tips are not supported for Outlook for Mac iOS clients, conflicting with this dedicated reference.' Cite https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips#client-doesn't-support-mailtips."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 21,
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft's troubleshooting article says policy tips are not supported for Outlook for Mac iOS clients, conflicting with the dedicated reference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips",
+      "quote": "Policy tips are currently not supported for Outlook for Mac iOS clients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "default",
       "claim": "Email Policy Tip UI is off by default in Outlook for Android, iOS and macOS.",
@@ -262,32 +300,43 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Governance controls",
+      "n": 26,
+      "where": "What's changing; Governance guidance; controls[0].ui",
       "type": "behaviour",
-      "claim": "Administrators enable the documented email Policy Tip UI through the named policy in the Microsoft 365 Apps admin center.",
+      "claim": "The email policy-tip setting is named Enable Purview Data Loss Prevention (DLP) policy tips in Outlook and is enabled in the Microsoft 365 Apps admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
-      "quote": "To enable Policy Tip UI to appear in Outlook for Android, iOS, and macOS, you must enable the policy listed in the following section in the Microsoft 365 Apps Admin Center.",
+      "quote": "Enable Purview Data Loss Prevention (DLP) policy tips in Outlook | (default) Disabled policy tips aren't shown Enabled policy tips are shown",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 27,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Customization > Policy Management > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook is a direct route to the control in the Microsoft 365 Apps admin center.",
-      "status": "contradicted",
+      "claim": "Customization > Policy Management > Create > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook reaches the email setting in the Microsoft 365 Apps admin center.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "On the Policy configurations page, select Create. ... On the Configure Settings page, select the policies that you want to include in the policy configuration.",
-      "severity": "blocker",
-      "fix": "Replace the path in both locations with 'Customization > Policy Management > Create > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook'. Add https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy to sources and note: 'When creating a configuration, enter its name and choose the user or group scope before Configure Settings.' Keep the existing policy-tip docs link, which supplies the final setting name."
+      "quote": "Under Customization, select Policy Management. On the Policy configurations page, select Create. ... On the Configure Settings page, select the policies that you want to include in the policy configuration.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 24,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "behaviour",
-      "claim": "The email policy-tip setting can be targeted to individuals or groups.",
+      "n": 28,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Configuration creation asks for its name and scope before Configure Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "On the Start with the basics page, enter a name (required) ... On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups, or to users who anonymously access documents using Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope; Governance controls; controls[0].scope",
+      "type": "applicability",
+      "claim": "The email policy-tip control can be targeted to individuals or groups within the organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
       "quote": "You can target policies to individuals or groups, so you can test and deploy policy tip UI as needed through your organization.",
@@ -295,43 +344,65 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 30,
       "where": "controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "Learn documents no API or automation operation for the Microsoft 365 Apps admin center policy-tip switch.",
+      "claim": "Microsoft Learn documents no API to configure this Microsoft 365 Apps admin center policy-tip switch as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Enable Purview Data Loss Prevention\" \"policy tips\" API PowerShell; Cloud Policy service Microsoft 365 Apps admin center Microsoft Graph API PowerShell configure policies. Read Cloud Policy overview and mobile tip reference; returned Exchange tip APIs do not set this switch.",
+      "quote": "Searched: Cloud Policy service Microsoft 365 Apps policy configuration API PowerShell Graph Enable Purview DLP policy tips Outlook; Cloud Policy API policy configuration Microsoft 365. Read Cloud Policy overview and API audit-schema excerpts; no configuration operation found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[0].note; What's changing; Scope; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed whether the email policy-tip switch or its targeting governs calendar events in Outlook for Mac.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outlook for Mac\" \"calendar\" \"DLP\" default policy enforcement actions; Outlook Mac calendar events DLP policy tips default licensing calendar invitations release channel. Read mobile policy-tip reference and Cloud Policy overview; neither connects this setting to calendar events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
+      "n": 31,
       "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The calendar capability's default, including automatic evaluation by existing Exchange-scoped policies, is not stated.",
+      "claim": "The default state of calendar-event DLP is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Outlook for Mac\" \"calendar\" \"DLP\" default policy enforcement actions. Read roadmap description, mobile policy-tip reference, deployment guidance and returned default Office 365 DLP policy excerpt; none states the calendar capability's arrival default.",
+      "quote": "Searched: Outlook for Mac calendar DLP default policy actions permissions release channel; Outlook Mac calendar DLP meeting invitations rollout Windows. Read roadmap, mobile reference and deployment guidance; none states the calendar default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 32,
+      "where": "What's changing; controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether the email policy-tip switch governs calendar events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac calendar DLP meeting invitations ExchangeLocation targeting policy tips rollout Windows. Opened mobile policy-tip reference and Cloud Policy overview; read support-matrix excerpts. Their policy-tip descriptions do not establish calendar applicability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether email policy-tip targeting applies to calendar events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac calendar DLP meeting invitations ExchangeLocation targeting policy tips rollout Windows. Opened mobile policy-tip reference and Cloud Policy overview; targeting is documented, but calendar targeting is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether existing Exchange-scoped policies automatically evaluate Mac calendar events at rollout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook for Mac calendar DLP default policy actions; Outlook Mac calendar DLP ExchangeLocation rollout. Read roadmap, deployment guidance, New-DlpCompliancePolicy and mobile reference; no statement of automatic calendar evaluation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Outlook for Microsoft 365 policy-tip reference says policy tips aren't supported for meeting invitations.",
+      "claim": "The Outlook for Microsoft 365 policy-tip reference says policy tips are not supported for meeting invitations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-ol365-win32-policy-tips",
       "quote": "Policy tips aren't supported for meeting invitations.",
@@ -339,32 +410,32 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not stated whether the meeting-invitation limitation applies to Mac or to this calendar change.",
+      "claim": "Microsoft has not explicitly clarified whether that meeting-invitation limitation applies to this planned Mac calendar change.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"DLP\" \"calendar events\" Outlook clients Windows permissions; \"Outlook for Mac\" \"calendar\" \"DLP\" default policy enforcement actions. Read the invitation note in the Microsoft 365 reference and the macOS reference; no explicit calendar-change qualification found.",
+      "quote": "Searched: Outlook Mac calendar DLP meeting invitations rollout Windows. Read Outlook for Microsoft 365 reference, mobile reference and support-matrix excerpts; none reconciles the existing meeting limitation with this planned calendar capability.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "No calendar-DLP change to sign-in or permissions is described.",
+      "claim": "No change to sign-in or permissions is described for the planned calendar capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"DLP\" \"calendar events\" Outlook clients Windows permissions. Read roadmap description, macOS policy-tip reference and deployment permissions; no calendar-specific sign-in or permission change found.",
+      "quote": "Searched: Outlook for Mac calendar DLP default policy actions permissions release channel. Read roadmap, mobile policy-tip reference and deployment guidance; no calendar-specific sign-in or permission change found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 38,
       "where": "Risk assessment: Security & identity; Scope; Governance controls",
       "type": "role",
-      "claim": "Creating and deploying DLP policies requires membership of a role group listed in the Learn deployment guidance.",
+      "claim": "DLP policy creation and deployment require membership in one of the Learn deployment page's listed role groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
       "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
@@ -372,19 +443,8 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "DLP policies are created and maintained in the Microsoft Purview portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
-      "quote": "Sign in to the Microsoft Purview portal. ... Go to Solutions > Data Loss Prevention > Policies > + Create policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
       "claim": "Learn documents Block as a general DLP action.",
       "status": "supported",
@@ -394,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
-      "claim": "Learn documents Block with override as a general DLP action that can require a reason.",
+      "claim": "Learn documents Block with override as a general DLP action, allowing a user to provide an override reason.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
       "quote": "Block with override: The user activity is blocked by default. ... your users are given the option to override the block and provide a reason for the override.",
@@ -405,120 +465,120 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "Microsoft has not documented which DLP actions apply specifically to calendar events in Outlook for Mac.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outlook for Mac\" \"calendar\" \"DLP\" default policy enforcement actions. Read roadmap description, deployment actions and macOS policy-tip reference; general actions are documented, but calendar-specific supported actions are not.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Microsoft has not stated when calendar-event DLP support reaches other Outlook clients.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"DLP\" \"calendar events\" Outlook clients Windows permissions; \"calendar events\" \"data loss prevention\" Outlook Mac licensing. Read returned support-matrix and Office for Mac release-note excerpts and Microsoft 365 invitation note; no other-client calendar rollout date found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because calendar-specific licensing has not been published.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
-      "severity": "minor",
-      "fix": "Set licensing.model to 'included'. Replace the notes with 'General Exchange Online DLP licensing includes Microsoft 365 E3 and Exchange Online Plan 2 among the qualifying plans listed in the Microsoft Purview service description. Calendar-specific licensing has not yet been published.' Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description to sources. Do not assert that the general entitlement confirms calendar-specific coverage."
-    },
-    {
-      "n": 38,
-      "where": "front matter: licensing.notes; summary; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No calendar-specific licence requirement is published; the general DLP licensing guidance points to enterprise plans and service descriptions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"calendar events\" \"data loss prevention\" Outlook Mac licensing. Read deployment and Microsoft 365 policy-tip licensing sections and Purview service-description DLP sections; general DLP licences exist, but no calendar-specific licence is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published a price specific to calendar-event DLP on Outlook for Mac.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Purview Data Loss Prevention Exchange Outlook licensing calendar events price pay as you go Copilot Credits. Read Purview service-description DLP licensing and returned pay-as-you-go service excerpts; no calendar-event DLP price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No calendar-event DLP meter, including Copilot Credits or pay-as-you-go billing, is documented as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Purview Data Loss Prevention Exchange Outlook licensing calendar events price pay as you go Copilot Credits. Read Purview service-description DLP sections and returned Copilot Credits and pay-as-you-go excerpts; no meter for Outlook calendar-event DLP found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 41,
-      "where": "Scope",
+      "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Coverage of every Outlook for Mac build or release channel is not stated.",
+      "claim": "Microsoft has not documented the specific DLP conditions and actions supported for Outlook for Mac calendar events.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Outlook Mac calendar events DLP policy tips default licensing calendar invitations release channel. Read roadmap description, macOS policy-tip reference and returned Office for Mac release-note excerpts; no calendar-DLP version or channel scope found.",
+      "quote": "Searched: Outlook for Mac calendar DLP default policy actions permissions release channel. Read roadmap, mobile policy-tip reference and deployment guidance; only general email actions and the roadmap's policy-enforcement description were found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Solutions > Data Loss Prevention > Policies > + Create policy opens DLP policy creation in the Microsoft Purview portal.",
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not stated when calendar DLP support reaches other Outlook clients.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
-      "quote": "Sign in to the Microsoft Purview portal. ... Go to Solutions > Data Loss Prevention > Policies > + Create policy.",
-      "severity": "minor",
-      "fix": "The path correctly opens policy creation but stops before scope and state. Retain it and replace the note's UI sentence with 'This path opens policy creation. For Exchange email, continue through Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Choose where to apply the policy > Exchange email; after configuring rules, choose Run the policy in simulation mode.' Change ui.docs to https://learn.microsoft.com/purview/dlp-create-policy-cc-email and add that URL to sources; keep the existing PowerShell and calendar-applicability qualifications."
+      "source": null,
+      "quote": "Searched: Outlook Mac calendar DLP meeting invitations targeting policy tips rollout Windows. Read new Outlook reference and support-matrix search excerpts, plus Mac and Outlook for Microsoft 365 references; no other-client calendar DLP date found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 43,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "New-DlpCompliancePolicy -Name <policy name> -ExchangeLocation All -Mode <PolicyMode> creates an email DLP policy with the specified state.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description lists the named Microsoft 365 enterprise plans, Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2 as qualifying general DLP licences.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-      "quote": "Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies ... The Mode parameter specifies the action and notification level of the DLP policy. ... Type: PolicyMode",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Which licenses provide the rights for a user to benefit from the service? Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "New-DlpCompliancePolicy runs in Security & Compliance PowerShell.",
+      "where": "summary; front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A calendar-specific DLP licence requirement has not yet been published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "source": null,
+      "quote": "Searched: Outlook for Mac calendar data loss prevention licensing; Outlook calendar events DLP licensing price meter Copilot Credits. Read Purview service description, mobile and Outlook for Microsoft 365 policy-tip references and deployment guidance; no calendar-specific entitlement found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a price specific to DLP on Outlook for Mac calendar events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook calendar events DLP licensing price meter Copilot Credits. Opened Purview service description and DLP references; no calendar-specific price found. Search results for Copilot billing describe other services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No feature-specific meter, including Copilot Credits or pay-as-you-go, is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook calendar events DLP licensing price meter Copilot Credits. Read Purview service description and DLP references; search billing excerpts concern agents and other Copilot services, not Outlook calendar DLP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included, based on the named general Exchange Online DLP entitlement, with calendar-specific details left open.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Data Loss Prevention: Data Loss Prevention (DLP) for Exchange Online, SharePoint Online, and OneDrive for Business ... Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Solutions > Data Loss Prevention > Policies > + Create policy opens policy creation in the Microsoft Purview portal for configuring scope and policy state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+      "quote": "Open the Data loss prevention solution and go to Policies > + Create policy. ... Choose where to apply the policy. Select only the Exchange email location. ... Select Next, then select Run the policy in simulation mode.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and the rendered path to 'Solutions > Data Loss Prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Choose where to apply the policy > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Run the policy in simulation mode'. The cited https://learn.microsoft.com/purview/dlp-create-policy-cc-email supplies these steps; configure and save the desired rule between Create rule and the policy-state choice."
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The cited Exchange email scenario selects Enterprise applications & devices, Custom category, Custom regulation, Exchange email, and simulation after defining rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+      "quote": "Select Enterprise applications & devices. Select Custom from the Categories list. Select Custom from the Regulations list. ... Select only the Exchange email location. ... Select Next, then select Run the policy in simulation mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name <policy name> -ExchangeLocation All -Mode <PolicyMode> creates an Exchange-scoped DLP policy with the selected action and notification mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies ... The valid value for this parameter is All. ... The Mode parameter specifies the action and notification level of the DLP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "controls[1].note; Governance controls table",
       "type": "command",
-      "claim": "The ExchangeLocation parameter accepts All rather than a mailbox list.",
+      "claim": "The ExchangeLocation parameter does not accept a mailbox list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
       "quote": "The ExchangeLocation parameter specifies whether to include email messages in the DLP policy. The valid value for this parameter is All.",
@@ -526,120 +586,109 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The printed call includes email for all users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-      "quote": "If you use -ExchangeLocation All by itself, the policy applies to email for all users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "The general DLP policy control is not confirmed to govern calendar events in Outlook for Mac.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outlook for Mac\" \"calendar\" \"DLP\" default policy enforcement actions. Read New-DlpCompliancePolicy ExchangeLocation, deployment scope, email policy-creation walkthrough and roadmap description; none specifies how Exchange email policy scope includes Mac calendar events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
+      "n": 52,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "General DLP deployment controls include policy scope.",
+      "claim": "General DLP deployment states include simulation, simulation with policy tips, on and off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "Every policy is scoped to one or more locations, such as Exchange, SharePoint in Microsoft 365, Teams, and Devices. ... You can further refine which instances of the location ... that the policy is applied to by configuring the include/exclude options",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Governance controls; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "General DLP policy states include simulation, simulation with policy tips, full enforcement and off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "Run the policy in simulation mode ... Run the policy in simulation mode and show policy tips while in simulation mode ... Turn it on right away: This is full enforcement mode. ... Keep it off: The policy is inactive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Governance controls; Governance guidance: At rollout; After rollout",
-      "type": "behaviour",
-      "claim": "Learn recommends managing policy actions incrementally, testing and tuning with a pilot group and simulation-mode tips before full enforcement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "Use three axes to control the policy deployment process: scope, state, and actions. Always take an incremental approach ... Change the state to Run the policy in simulation mode and show policy tips. Refine the scope of locations to support a pilot group if needed",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The macOS policy-tip reference says all actions for email communications are supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
-      "quote": "All actions and information types for email communications are supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The macOS policy-tip reference says all information types for email communications are supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
-      "quote": "All actions and information types for email communications are supported.",
+      "quote": "Run the policy in simulation mode ... Run the policy in simulation mode and show policy tips while in simulation mode ... Turn it on right away ... Keep it off",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The DLP deployment and Outlook for Microsoft 365 policy-tip pages refer readers to Microsoft 365 Enterprise Plans and service descriptions for licensing.",
+      "where": "controls[1].governs; controls[1].scope; Governance controls",
+      "type": "applicability",
+      "claim": "General DLP policies support location scope and inclusion or exclusion of mailbox instances within the tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "SKU/subscriptions licensing ... For information on licensing, see ... Microsoft 365 Enterprise Plans ... Microsoft 365 Service Descriptions",
+      "quote": "You can further refine which instances of the location (such as sites, groups, accounts, distribution groups, mailboxes, and devices) that the policy is applied to by configuring the include/exclude options for the location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends simulation with policy tips scoped to a pilot group before full enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Change the state to Run the policy in simulation mode and show policy tips. Refine the scope of locations to support a pilot group ... Change the state to Turn it on right away. The policy is fully deployed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed how the general Exchange DLP policy control governs this calendar capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac calendar DLP meeting invitations ExchangeLocation targeting rollout. Read roadmap, New-DlpCompliancePolicy, deployment guidance and mobile reference; the command describes email messages and no passage explains calendar scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not specified the Outlook for Mac builds or release channels covered by this calendar capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook for Mac calendar DLP default policy actions permissions release channel. Read roadmap, mobile reference, Mac preferences and release-note search excerpts; no calendar DLP build or channel requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The dedicated mobile/macOS Learn reference says all actions and information types for email communications are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "All actions and information types for email communications are supported.",
+      "severity": "minor",
+      "fix": "After the quoted support statement, add: 'Microsoft's broader DLP policy-tip support matrix instead describes Outlook Mac support as a subset, varying by version and licence.' Cite https://learn.microsoft.com/purview/dlp-policy-tips-reference#support-matrix-for-dlp-policy-tips-across-microsoft-apps, whose Outlook Mac row says 'Varies by version and license' and 'Subset', and add that URL to sources."
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn's Outlook policy-tip and DLP deployment guidance direct readers to Microsoft 365 Enterprise Plans and Microsoft 365 Service Descriptions for licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "SKU/subscriptions licensing: For information on licensing, see Microsoft 365 Enterprise Plans; Microsoft 365 Service Descriptions",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T06:25:39.389Z",
+    "at": "2026-11-24T07:39:41.533Z",
     "summary": {
-      "links": 6,
-      "unreachable": 0,
+      "links": 10,
+      "unreachable": 8,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-ol365-win32-policy-tips",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569717",
@@ -648,13 +697,33 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-        "ok": true,
-        "status": 200
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -663,13 +732,19 @@
         "side": "ui",
         "governs": "Whether Outlook shows Purview DLP policy tips (documented for email in Outlook for macOS)",
         "docs": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Customization",
           "Policy Management",
+          "Create",
+          "Configure Settings",
           "Enable Purview Data Loss Prevention  policy tips in Outlook"
         ],
         "missing": [
+          "Customization",
+          "Policy Management",
+          "Create",
+          "Configure Settings",
           "Enable Purview Data Loss Prevention  policy tips in Outlook"
         ]
       },
@@ -677,24 +752,29 @@
         "index": 1,
         "side": "ui",
         "governs": "Which mailboxes a DLP policy covers, and whether it simulates or enforces",
-        "docs": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
-        "reachable": true,
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+        "reachable": false,
         "segments": [
           "Solutions",
           "Data Loss Prevention",
           "Policies",
           "+ Create policy"
         ],
-        "missing": []
+        "missing": [
+          "Solutions",
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which mailboxes a DLP policy covers, and whether it simulates or enforces",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-        "reachable": true,
+        "reachable": false,
         "token": "New-DlpCompliancePolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -709,6 +789,12 @@
     {
       "date": "2026-11-17",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

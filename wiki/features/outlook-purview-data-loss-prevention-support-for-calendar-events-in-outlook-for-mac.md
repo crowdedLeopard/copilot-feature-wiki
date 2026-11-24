@@ -4,7 +4,7 @@ slug: "outlook-purview-data-loss-prevention-support-for-calendar-events-in-outlo
 roadmapId: 569717
 topic: "modern-work"
 products: ["Outlook"]
-summary: "Microsoft plans DLP policy support for calendar events in Outlook for Mac. Compliance and Exchange admins should check how existing Purview DLP policies would apply to meeting subjects and invites. Default and licence are not yet stated."
+summary: "Microsoft plans DLP policy support for calendar events in Outlook for Mac. Compliance and Exchange admins should check how existing Purview DLP policies would apply to meeting subjects and invites. Default and calendar-specific licensing are not yet stated."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for calendar events. The Learn DLP pages point to Microsoft 365 Enterprise Plans and the Microsoft 365 service descriptions for licensing and name no calendar-specific licence."
+  model: "included"
+  notes: "General Exchange Online DLP licensing includes Microsoft 365 E3 and Exchange Online Plan 2 among the qualifying plans listed in the Microsoft Purview service description. Calendar-specific licensing has not yet been published."
 audiences: ["compliance","security","m365-admin"]
 tags: ["outlook","dlp","purview","exchange","microsoft-365-apps","gcc","gcc-high","dod"]
 sources:
@@ -40,6 +40,18 @@ sources:
   - title: "New-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     kind: "learn"
+  - title: "Overview of Cloud Policy service for Microsoft 365"
+    url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+    kind: "learn"
+  - title: "Resolve issues that affect DLP policy tips"
+    url: "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
+  - title: "Help prevent sharing credit card numbers through email"
+    url: "https://learn.microsoft.com/purview/dlp-create-policy-cc-email"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-data-loss-prevention-to-restrict-processing-external-emails-in-m365-copi"]
 controls:
@@ -47,24 +59,24 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook"
+      path: "Customization > Policy Management > Create > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook"
       docs: "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref"
     api: null
-    note: "General control: documented for email policy tips in Outlook for Android, iOS and macOS; Microsoft has not confirmed it applies to calendar events. Can be targeted to individuals or groups."
+    note: "General control for email policy tips; not confirmed for calendar events. When creating a configuration, enter its name and choose the user or group scope before Configure Settings."
   - governs: "Which mailboxes a DLP policy covers, and whether it simulates or enforces"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
       path: "Solutions > Data Loss Prevention > Policies > + Create policy"
-      docs: "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications"
+      docs: "https://learn.microsoft.com/purview/dlp-create-policy-cc-email"
     api:
       kind: "powershell"
       call: "New-DlpCompliancePolicy -Name <policy name> -ExchangeLocation All -Mode <PolicyMode>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
-    note: "General control; the UI page documents another location type. Runs in Security & Compliance PowerShell. This call includes email for all users; -ExchangeLocation does not accept a mailbox list. Not confirmed for calendar events."
+    note: "Opens policy creation; for Exchange email continue via Enterprise applications & devices > Custom > Custom > Exchange email, then Run the policy in simulation mode. -ExchangeLocation takes no mailbox list. Not confirmed for calendar events."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-17"
@@ -77,26 +89,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected the Microsoft 365 Apps admin center path for the policy-tip setting, extended the Purview portal path, added the general Exchange DLP licensing entitlement and the conflicting troubleshooting note."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 52
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "156fc4dde747f4ee16e53c48cd22af56"
+  contradicted: 0
+  attempts: 0
+  hash: "98b5c77ff696783b2c46e8ef811407bf"
 ---
 
 ## What's changing
 
 Microsoft plans to let Microsoft Purview Data Loss Prevention (DLP) policies apply to calendar events in Outlook for Mac. The roadmap item states that organisations will be able to detect and help prevent the sharing of sensitive information in meeting subjects, descriptions and invite content, through policy tips, user remediation and policy enforcement.
 
-Microsoft Learn does not describe this calendar capability yet, so what follows about its behaviour is the roadmap's description. Learn does document DLP policy tips for email in Outlook for Android, iOS and macOS. That page states that "Policy Tip UI is turned off by default in Outlook for Android, iOS, and macOS" and that an administrator enables it with the policy "Enable Purview Data Loss Prevention (DLP) policy tips in Outlook" in the Microsoft 365 Apps admin center. Microsoft has not said whether the same switch, or the same default, applies to calendar events.
+Microsoft Learn does not describe this calendar capability yet, so what follows about its behaviour is the roadmap's description. Learn does document DLP policy tips for email in Outlook for Android, iOS and macOS. Microsoft's troubleshooting article still says policy tips are not supported for Outlook for Mac iOS clients, conflicting with this dedicated reference. The dedicated page states that "Policy Tip UI is turned off by default in Outlook for Android, iOS, and macOS" and that an administrator enables it with the policy "Enable Purview Data Loss Prevention (DLP) policy tips in Outlook" in the Microsoft 365 Apps admin center. Microsoft has not said whether the same switch, or the same default, applies to calendar events.
 
 The roadmap item is In development, with a target of November CY2026, release phase General Availability, platform Mac. It lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. The date is a target, not a commitment, and the item has no preview date or more-info link.
 
@@ -125,6 +141,8 @@ Microsoft has not stated what happens on arrival: whether existing Exchange-scop
 ## Cost and licensing
 
 Microsoft has not published a licence requirement, price or meter for DLP on calendar events in Outlook for Mac. The Learn DLP pages that cover Outlook policy tips and policy deployment point to Microsoft 365 Enterprise Plans and the Microsoft 365 service descriptions for licensing, and name no calendar-specific licence.
+
+The Microsoft Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2 among the licences that provide rights to benefit from DLP for Exchange Online, SharePoint Online and OneDrive for Business. That is general Exchange DLP entitlement; it does not confirm calendar-specific coverage, and calendar-specific licensing has not yet been published.
 
 The known cost is indirect: admin time to scope and test policies, and communication to Mac users. No Copilot Credits or pay-as-you-go meter is documented for this feature at the time of writing (November 2026). Check the licence guidance linked from the Learn page before budgeting for new users.
 
@@ -156,8 +174,8 @@ Existing Learn guidance for DLP policy tips in Outlook for Android, iOS and macO
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Outlook shows Purview DLP policy tips (documented for email in Outlook for macOS)</strong><br><small>Tenant</small><br><small class="controls__note">General control: documented for email policy tips in Outlook for Android, iOS and macOS; Microsoft has not confirmed it applies to calendar events. Can be targeted to individuals or groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which mailboxes a DLP policy covers, and whether it simulates or enforces</strong><br><small>Tenant</small><br><small class="controls__note">General control; the UI page documents another location type. Runs in Security &amp; Compliance PowerShell. This call includes email for all users; -ExchangeLocation does not accept a mailbox list. Not confirmed for calendar events.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Policies › + Create policy <a href="https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -ExchangeLocation All -Mode &lt;PolicyMode&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Outlook shows Purview DLP policy tips (documented for email in Outlook for macOS)</strong><br><small>Tenant</small><br><small class="controls__note">General control for email policy tips; not confirmed for calendar events. When creating a configuration, enter its name and choose the user or group scope before Configure Settings.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Create › Configure Settings › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which mailboxes a DLP policy covers, and whether it simulates or enforces</strong><br><small>Tenant</small><br><small class="controls__note">Opens policy creation; for Exchange email continue via Enterprise applications &amp; devices &gt; Custom &gt; Custom &gt; Exchange email, then Run the policy in simulation mode. -ExchangeLocation takes no mailbox list. Not confirmed for calendar events.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Policies › + Create policy <a href="https://learn.microsoft.com/purview/dlp-create-policy-cc-email" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -ExchangeLocation All -Mode &lt;PolicyMode&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -179,12 +197,9 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Medium. Users of Outlook for Mac who write meeting invites in the scope of a DLP policy would notice policy tips and any enforcement; users on other platforms are not named by the roadmap item.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Customization > Policy Management > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook is a direct route to the control in the Microsoft 365 Apps admin center. | Found: On the Policy configurations page, select Create. ... On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Replace the path in both locations with 'Customization > Policy Management > Create > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook'. Add https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy to sources and note: 'When creating a configuration, enter its name and choose the user or group scope before Configure Settings.' Keep the existing policy-tip docs link, which supplies the final setting name. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Why it matters; controls[0].note; Governance controls / behaviour: Learn documents email DLP policy tips for Outlook for Android, iOS and macOS. | Found: Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips with commonly used predicates and exceptions, advanced classifiers, and override capabilities. | Fix: Add after the email-support statement: 'Microsoft's troubleshooting article still says policy tips are not supported for Outlook for Mac iOS clients, conflicting with this dedicated reference.' Cite https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips#client-doesn't-support-mailtips. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because calendar-specific licensing has not been published. | Found: Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2 | Fix: Set licensing.model to 'included'. Replace the notes with 'General Exchange Online DLP licensing includes Microsoft 365 E3 and Exchange Online Plan 2 among the qualifying plans listed in the Microsoft Purview service description. Calendar-specific licensing has not yet been published.' Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description to sources. Do not assert that the general entitlement confirms calendar-specific coverage. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Solutions > Data Loss Prevention > Policies > + Create policy opens DLP policy creation in the Microsoft Purview portal. | Found: Sign in to the Microsoft Purview portal. ... Go to Solutions > Data Loss Prevention > Policies > + Create policy. | Fix: The path correctly opens policy creation but stops before scope and state. Retain it and replace the note's UI sentence with 'This path opens policy creation. For Exchange email, continue through Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Choose where to apply the policy > Exchange email; after configuring rules, choose Run the policy in simulation mode.' Change ui.docs to https://learn.microsoft.com/purview/dlp-create-policy-cc-email and add that URL to sources; keep the existing PowerShell and calendar-applicability qualifications. | Source: https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Solutions > Data Loss Prevention > Policies > + Create policy opens policy creation in the Microsoft Purview portal for configuring scope and policy state. | Found: Open the Data loss prevention solution and go to Policies > + Create policy. ... Choose where to apply the policy. Select only the Exchange email location. ... Select Next, then select Run the policy in simulation mode. | Fix: Extend controls[1].ui.path and the rendered path to 'Solutions > Data Loss Prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Choose where to apply the policy > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Run the policy in simulation mode'. The cited https://learn.microsoft.com/purview/dlp-create-policy-cc-email supplies these steps; configure and save the desired rule between Create rule and the policy-state choice. | Source: https://learn.microsoft.com/purview/dlp-create-policy-cc-email
+- [supported, minor] Why it matters / behaviour: The dedicated mobile/macOS Learn reference says all actions and information types for email communications are supported. | Found: All actions and information types for email communications are supported. | Fix: After the quoted support statement, add: 'Microsoft's broader DLP policy-tip support matrix instead describes Outlook Mac support as a subset, varying by version and licence.' Cite https://learn.microsoft.com/purview/dlp-policy-tips-reference#support-matrix-for-dlp-policy-tips-across-microsoft-apps, whose Outlook Mac row says 'Varies by version and license' and 'Subset', and add that URL to sources. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
 -->

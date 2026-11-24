@@ -83,11 +83,11 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device"
     api: null
     note: "Enabled by default per Learn. The portal setting controls peripheral-data ingestion; Microsoft says disabling it stops any BYOD room or desk reports and hides inventory devices. General control, not a dedicated analytics switch."
-  - governs: "Who can view portal reports and manage inventory"
+  - governs: "Portal-specific role assignments"
     scope: "tenant"
     ui:
       surface: "Teams Rooms Pro Management portal"
-      path: "Settings > Roles"
+      path: "Settings > Roles > role > Assignments > Add assignment"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac"
     api: null
     note: "Create or edit roles: Global Administrator, Teams Administrator or Teams Rooms Pro Manager. Assign roles: those, or a custom role with role management permissions. Administrative-unit-scoped Teams admins cannot open the portal."
@@ -143,19 +143,23 @@ changes:
     note: "Corrected the portal path for BYOD Rooms and Desk management, removed the peripheral script as an automation call, switched the enableBuildings call to Set-PlacesSettings and replaced the unsupported onboarding-date default with Learn's wording."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 103 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-24"
+    note: "Narrowed the portal role row to portal-specific role assignments with the full assignment path, and corrected the Get-PlacesSettings and Set-PlacesSettings role requirements."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 100 statements not yet confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 103
-  confirmed: 100
+  claims: 100
+  confirmed: 98
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "82022ca296224d16a4e780f0a41239e3"
+  contradicted: 2
+  attempts: 0
+  hash: "7bc95d1676d5ecb213588aeefb7b8aab"
 ---
 
 ## What's changing
@@ -218,7 +222,7 @@ Portal roles and licence purchase need the permissions listed in the controls ta
 - Decide which buildings and desks you want measured, and count them against the one-paid-to-three-single-space licence ratio before ordering.
 - Confirm which agreement (MCA or EA) your organisation buys on, and who holds the billing permissions the matching purchase route needs.
 - Check that enableBuildings is on for the tenant, because individual desks do not appear in the portal otherwise.
-- Review who holds Teams Rooms Pro Manager, Site Lead and the Entra roles with portal access, and add portal roles through Settings > Roles where needed.
+- Review who holds Teams Rooms Pro Manager, Site Lead and the Entra roles with portal access, and add portal roles through Settings > Roles > role > Assignments > Add assignment where needed.
 
 ### At rollout
 
@@ -241,7 +245,7 @@ Portal roles and licence purchase need the permissions listed in the controls ta
 <tbody>
 <tr><td data-label="Control"><strong>Which desks are licensed to produce analytics</strong><br><small class="controls__note">MCA: buy under Marketplace (billing account administrator or billing profile contributor). EA: Volume Licensing Center. The PowerShell page covers Teams add-on licences generally and does not name Shared Space.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › desk account › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All; Set-MgUserLicense -UserId $user -AddLicenses $addLicenses -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether peripheral data is ingested for BYOD rooms and desks</strong><br><small>Tenant</small><br><small class="controls__note">Enabled by default per Learn. The portal setting controls peripheral-data ingestion; Microsoft says disabling it stops any BYOD room or desk reports and hides inventory devices. General control, not a dedicated analytics switch.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › General › BYOD Rooms and Desk management <a href="https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can view portal reports and manage inventory</strong><br><small>Tenant</small><br><small class="controls__note">Create or edit roles: Global Administrator, Teams Administrator or Teams Rooms Pro Manager. Assign roles: those, or a custom role with role management permissions. Administrative-unit-scoped Teams admins cannot open the portal.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Roles <a href="https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Portal-specific role assignments</strong><br><small>Tenant</small><br><small class="controls__note">Create or edit roles: Global Administrator, Teams Administrator or Teams Rooms Pro Manager. Assign roles: those, or a custom role with role management permissions. Administrative-unit-scoped Teams admins cannot open the portal.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Roles › role › Assignments › Add assignment <a href="https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which peripherals are linked to each desk</strong><br><small class="controls__note">Run the downloaded Get-TeamsBYODSpaceDevices.ps1 script from its directory to collect peripheral information, then import the prepared file through the portal to update desk associations.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Planning › Inventory › Devices › Import <a href="https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Teams clients send peripheral and desk usage data</strong><br><small>User</small><br><small class="controls__note">Needs MicrosoftTeams 6.5.0 or later. Controls the peripheral-data feed Microsoft says is required to generate Bookable Desks reports. General collection control, not a dedicated analytics switch. Off by default in government clouds.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CSTeamsBYODAndDesksPolicy -Identity &lt;name&gt; -DeviceDataCollection Enabled; Grant-CSTeamsBYODAndDesksPolicy -PolicyName &lt;name&gt; -Identity &lt;user&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/bookable-desks" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether individual desks appear in the portal (enableBuildings)</strong><br><small>Tenant</small><br><small class="controls__note">Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles. Read-only check: Get-PlacesSettings -ReadFromPrimary. By default, buildings are not visible across Microsoft Places experiences.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -EnableBuildings 'Default:true'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -253,7 +257,7 @@ No dedicated switch for the new desk analytics is documented at the time of writ
 
 For portal roles, the RBAC page says creating, editing or assigning roles needs Global Administrator or Teams Administrator in Microsoft Entra ID, or Teams Rooms Pro Manager in the portal. It adds that assigning roles also works with a custom role that has role management permissions.
 
-The DeviceDataCollection policy needs MicrosoftTeams module 6.5.0 or later, and the bookable desks page says it is off by default for government clouds. The enableBuildings check and change use the Places cmdlets, which need the Exchange or Places TenantPlacesManagement roles named in the table.
+The DeviceDataCollection policy needs MicrosoftTeams module 6.5.0 or later, and the bookable desks page says it is off by default for government clouds. Get-PlacesSettings requires either Exchange Admin or Places TenantPlacesManagement; Set-PlacesSettings requires both Exchange MailRecipients and Places TenantPlacesManagement.
 
 ## Open questions
 
@@ -269,12 +273,11 @@ cost: Medium. The roadmap item says each desk needs a Microsoft Teams Shared Spa
 impact: Low. Administrators and portal role holders see the analytics; the roadmap item and Microsoft's notice describe no change for people who book desks.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].api; rendered controls table / absence: No API or automation is documented for controlling who can view portal reports and manage inventory. | Found: Create a role assignment for the directory provider: POST /roleManagement/directory/roleAssignments. Example 1: Create a role assignment with tenant scope: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments | Fix: Narrow controls[2].governs to 'Portal-specific role assignments' and narrow its automation absence to 'No API for portal-specific role assignments is documented'. The broad existing wording includes Entra roles, which the cited RBAC page says grant portal access and Microsoft Graph can assign; do not describe those assignments as having no automation. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
-- [contradicted, blocker] Governance controls: final paragraph, change permissions / role: The Places settings check and change need the Exchange or Places TenantPlacesManagement roles named in the table. | Found: You must have both the Exchange MailRecipients role and the Places TenantPlacesManagement role. | Fix: Replace the final sentence with 'Get-PlacesSettings requires either Exchange Admin or Places TenantPlacesManagement; Set-PlacesSettings requires both Exchange MailRecipients and Places TenantPlacesManagement.' Sources: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings and https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; rendered controls table; Governance guidance: Before rollout / admin-path: Settings > Roles reaches the portal role management page. | Found: In the left navigation of the Microsoft Teams Rooms Pro Management portal, expand Settings > Roles. Select the role you want to assign. In the role pane, select Assignments > Add assignment. | Fix: For adding portal assignments, extend the path to 'Settings > Roles > role > Assignments > Add assignment'. Keep the advice limited to portal roles; the cited page directs additional Entra built-in assignments to Microsoft Entra admin center. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to check the Desks usage report is represented in the controls table. | Found: After rollout: 'Check the Desks usage report for desks with no data'; the controls table has licensing, ingestion, roles, associations, client collection, enableBuildings and a dedicated-switch absence, but no report row. | Fix: The 'Check the Desks usage report' checklist step has no corresponding controls row. Do not add a row in this correction.
+- [supported, minor] Cost and licensing: single-space acquisition / licensing: Single-space licences are not provisioned automatically and must be actively acquired. | Found: The three single-space licenses are not generated or provisioned automatically. Purchasing the paid license creates the entitlement; you must then actively acquire the single-space licenses yourself. | Fix: Keep the acquisition instruction, and add: 'The Teams Shared Space licensing page instead says that when a Shared Space licence is provisioned for a desk or BYOD room, the admin will see three additional $0 Single Space licences; the Places page explicitly says to acquire them yourself.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks
+- [supported, minor] controls[0].ui; rendered licence-assignment row / admin-path: Desk licences are assigned through Microsoft 365 admin center > Users > Active users > desk account > Assign licenses. | Found: expand Users and select Active users. ... select it to open its details. Choose Assign licenses, select Microsoft Teams Shared Space, and save. | Fix: Complete controls[0].ui.path as 'Users > Active users > desk account > Assign licenses > Microsoft Teams Shared Space'; retain the same docs URL. The note may state: 'For a single-space licence, select Microsoft Teams Shared Space - Single instead.' | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks
+- [contradicted, minor] Governance guidance: After rollout; controls table / consistency: The checklist tells readers to check the Desks usage report, but the controls table has no report-access row. | Found: Checklist: 'Check the Desks usage report for desks with no data'. The seven control rows cover licensing, cloud ingestion, portal roles, peripheral association, client policy, enableBuildings and a dedicated-switch gap; none gives report navigation. | Fix: The After rollout step 'Check the Desks usage report' has no corresponding report-access row. Remove that checklist bullet; retain the existing report description in What's changing. Do not add a control row in this correction.
+- [contradicted, minor] Governance guidance: Before rollout; controls[2] / consistency: The checklist asks readers to review Entra roles with portal access, but the table's role row is expressly limited to portal-specific assignments. | Found: Checklist: 'Review who holds Teams Rooms Pro Manager, Site Lead and the Entra roles with portal access'. Table row: 'Portal-specific role assignments'. | Fix: The Before rollout instruction to review Entra roles has no matching control row. Narrow the existing step to 'Review who holds Teams Rooms Pro Manager and Site Lead, and add portal roles through Settings > Roles > role > Assignments > Add assignment where needed.' Keep the factual Entra role-access discussion in Risk assessment.
 -->

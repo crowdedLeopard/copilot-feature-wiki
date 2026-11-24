@@ -3,842 +3,58 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "Teams meeting policy: which meeting features does each user get?",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 87,
-    "confirmed": 87,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 36)"
+    ]
   },
-  "summary": "The page passes: Microsoft's documentation supports the meeting policy controls, assignment precedence and feature-specific licensing statements. The distinction between an organiser turning Copilot off and a policy setting an overridable Off default is correctly stated.",
+  "counts": {
+    "claims": 80,
+    "confirmed": 78,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The page names the wrong PowerShell operation for assigning a policy to a batch of users: Microsoft documents New-CsBatchPolicyAssignmentOperation, not Grant-CsTeamsMeetingPolicy. The listed control paths and calls are supported, and the cited pages that previously returned throttling errors opened successfully in this check.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What it is",
-      "type": "behaviour",
-      "claim": "A meeting policy is a set of settings controlling the meeting features available to organisers and participants.",
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Meeting policy settings can be edited at Teams admin center > Meetings > Meeting policies > policy > Edit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "As an admin, you can use meeting and events policies to control the features that are available to organizers and participants of meetings and events in your organization.",
+      "quote": "go to Meetings > Meeting policies or Events policies.\n2. Choose the policy by clicking to the left of the policy name, and then select Edit.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Meeting policies can be managed in the Teams admin centre.",
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -<parameter> <value> is a template for updating the settings of an existing meeting policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "Depending on the feature, you can manage meeting policies in the Microsoft Teams admin center or through PowerShell.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "The Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies that can be assigned to particular users to control Teams features related to meetings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Meeting policies can be managed with the Teams PowerShell module.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "MicrosoftTeams PowerShell module\nThe Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies that can be assigned to particular users to control Teams features related to meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Each user has one effective meeting policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
-      "quote": "A user has one effective policy for each policy type.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What it is; Why it matters; What to check",
-      "type": "behaviour",
-      "claim": "The Global policy applies where there is neither a direct custom assignment nor an applicable group assignment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "If a user isn't a member of any groups that are assigned a policy, the global (Org-wide default) policy for that policy type applies to the user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Administrators can edit the Global meeting policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "You can edit the global policy and any custom policies that you create.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Administrators can create named custom meeting policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "You can edit the settings in the global policy or create and assign one or more custom policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "A user can be assigned only one meeting policy and one events policy at a time.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "A user can be assigned only one meeting policy and one events policy at a time.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What it is; Risks and limits: Meeting policy is not events policy",
-      "type": "applicability",
-      "claim": "Events have recording settings in a separate events policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "Meetings and events each have their own recording policies that you can manage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What it is; Risks and limits: Meeting policy is not events policy",
-      "type": "applicability",
-      "claim": "Events have transcription settings in events policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies.\nSelect the policy that you want to edit or create a new one.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What it is: Who a setting applies to",
-      "type": "behaviour",
-      "claim": "Microsoft describes three implementation types: per-organiser, per-user, and their combination.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "Policies are implemented in one of the following ways:\nPer-organizer\nPer-user\nPer-organizer and per-user",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What it is: implementation table; Why it matters",
-      "type": "behaviour",
-      "claim": "For a per-organiser policy, participants inherit the organiser's policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "When you implement a per-organizer policy, all participants inherit the policy of the organizer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What it is: implementation table",
-      "type": "applicability",
-      "claim": "Who can bypass the lobby is Microsoft's example of a per-organiser policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "For example, Who can bypass the lobby is a per-organizer policy",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What it is: implementation table",
-      "type": "behaviour",
-      "claim": "A per-user policy allows or prevents a feature for each user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "When you implement a per-user policy, the policy allows or prevents a given feature for each user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What it is: implementation table",
-      "type": "applicability",
-      "claim": "Meet now in channel meetings is Microsoft's example of a per-user policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "For example, Meet now in channel meetings is a per-user policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What it is: implementation table",
-      "type": "behaviour",
-      "claim": "The combined implementation restricts participants based on their own policy and the organiser's policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "When you implement a combination of a per-organizer and per-user policy, certain features are restricted for participants based on their policy and the organizer's policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What it is: implementation table; controls[3].note",
-      "type": "applicability",
-      "claim": "Meeting recording is a per-organiser and per-user policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "For example, Meeting recording is a per-organizer and per-user policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What it is: Which policy a user gets; controls[2].note; What to check",
-      "type": "behaviour",
-      "claim": "A directly assigned policy takes precedence over group and Global policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
-      "quote": "If a user is directly assigned a policy (either individually or through a batch assignment), that policy takes precedence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What it is: Which policy a user gets; Governance controls",
-      "type": "behaviour",
-      "claim": "Without a direct assignment, the highest-ranked applicable group assignment determines the policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "the user inherits the policy of the group assignment that has the highest ranking.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What it is: Which policy a user gets",
-      "type": "behaviour",
-      "claim": "Rank 1 is the highest group assignment ranking.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "Smaller the number, the higher the ranking with 1 being the highest ranking.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What it is: Which policy a user gets",
-      "type": "behaviour",
-      "claim": "Policies can be assigned individually, in batches, or through groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
-      "quote": "Assign a policy directly to users, either individually or at scale through a batch assignment, or to a group that the users are members of.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What it is: Which policy a user gets",
-      "type": "behaviour",
-      "claim": "Policy assignments can be made in the Teams admin centre.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-with-policies",
-      "quote": "You can make and view assignments in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Why it matters; What to check",
-      "type": "behaviour",
-      "claim": "Changing Global affects users who have no custom policy assignment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "To apply changes to all users in your organization who don't have an existing policy assignment, use the Global policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Why it matters; controls[3].note",
-      "type": "applicability",
-      "claim": "The organiser needs recording permission for a meeting to be recorded.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "Both the organizer and recording initiator need to have recording permissions to record the meeting or event.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Why it matters; controls[3].note",
-      "type": "applicability",
-      "claim": "The person starting a recording also needs recording permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "Both the organizer and recording initiator need to have recording permissions to record the meeting or event.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; Risks and limits: Transcription needs two parties; controls[4].note",
-      "type": "applicability",
-      "claim": "The organiser's transcription policy must be on for their meeting to include a transcript.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "Transcription is both a per-organizer and per-user policy setting. For meetings and events to include transcripts, the organizer must have this setting turned on.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Why it matters; controls[4].note",
-      "type": "applicability",
-      "claim": "The user starting the recording or transcript must also have transcription enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "The user who starts the recording or transcript must also have this setting turned on.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The meeting policy overview and assignment pages state no licence for meeting policies themselves.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams meeting policy licensing meeting policies themselves price meter. Read meeting-policies-overview, policy-assignment-overview and assign-policies-users-and-groups on learn.microsoft.com/microsoftteams; none states a licence for policies themselves.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Those overview and assignment pages state no meter for meeting policies themselves.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams meeting policy licensing meeting policies themselves price meter. Read meeting-policies-overview, policy-assignment-overview and assign-policies-users-and-groups on learn.microsoft.com/microsoftteams; none states a meter for policies themselves.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing; controls[6].note",
-      "type": "licensing",
-      "claim": "Copilot in Teams meetings lists an add-on Microsoft Copilot licence for intended users as a prerequisite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "An add-on Microsoft Copilot license for intended users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Live translated transcription requires the meeting organiser to have Teams Premium.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "The meeting or event organizer must have a Teams Premium license for attendees to use live translated transcription.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Live translated captions in meetings require the organiser to have Teams Premium.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "The meeting or event organizer must have a Teams Premium license for attendees to use live translated captions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Teams Premium organisers can use meeting options to control who can record and transcribe.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "Organizers with a Teams Premium license can use their meeting options to control who can record and transcribe.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Meeting recordings are stored in the organiser's OneDrive or SharePoint storage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "It gets uploaded to the meeting organizer's OneDrive (private meetings) or SharePoint (channel meetings).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Transcripts are stored with meeting recordings in OneDrive and SharePoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Cost and licensing; Risks and limits: Allowing recording does not provide storage",
-      "type": "behaviour",
-      "claim": "AllowCloudRecording does not configure or validate recording storage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "-AllowCloudRecording controls whether users can record meetings; it doesn't configure or validate recording storage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risks and limits: A direct assignment silently beats a group assignment",
-      "type": "behaviour",
-      "claim": "A direct assignment must be removed before the user inherits a group policy of the same type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "you have to remove that policy from the user before they can inherit a policy of the same type from a group.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risks and limits: A direct assignment silently beats a group assignment",
-      "type": "behaviour",
-      "claim": "Microsoft documents bulk unassignment as a way to remove direct assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "When you unassign policies in bulk, you're removing policy assignments that were assigned to individual users through direct assignment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risks and limits: Group assignment has gaps; controls[1].note; What to check",
-      "type": "behaviour",
-      "claim": "Group assignments propagate only to direct members, not nested group members.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "Group policy assignments are only propagated to users who are direct members of the group. The assignments aren't propagated to members of nested groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risks and limits: Group assignment has gaps; What to check",
-      "type": "availability",
-      "claim": "Groups with HiddenGroupMembership enabled cannot use group policy assignment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "Groups with the HiddenGroupMembership setting enabled can't use group policy assignment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risks and limits: Group assignment has gaps",
-      "type": "default",
-      "claim": "Class Teams have HiddenGroupMembership enabled by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "Class Teams have this setting enabled by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risks and limits: Group assignment has gaps",
-      "type": "behaviour",
-      "claim": "Propagation of a group assignment to its members is a background operation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "the propagation of the policy assignment to members of the group is performed as a background operation and might take some time, depending on the size of the group.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risks and limits: Group assignment has gaps; Open questions",
-      "type": "absence",
-      "claim": "The group assignment article gives no group-size-specific propagation time.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams meeting policies licensing meter group policy propagation time large groups. Read learn.microsoft.com/microsoftteams/assign-policies-users-and-groups in full; it says propagation might take some time depending on group size, without a size-specific duration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risks and limits: Group assignment has gaps; Open questions",
-      "type": "behaviour",
-      "claim": "Microsoft's general Teams policy guidance says changes may take up to 24 hours to take effect.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-with-policies",
-      "quote": "Policies are managed through the Teams Admin Center or the Teams PowerShell module, and changes may take up to 24 hours to take effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risks and limits: Policies cannot be tidied freely",
-      "type": "behaviour",
-      "claim": "A policy cannot be deleted while users are assigned to it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "You can't delete a policy if users are assigned to it. You must first assign a different policy to all affected users, and then you can delete the original policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risks and limits: Policies cannot be tidied freely",
-      "type": "behaviour",
-      "claim": "A policy's name cannot be changed after creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "After you create a policy, its name can't be changed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risks and limits: An organiser turning Copilot off; What to check",
-      "type": "behaviour",
-      "claim": "An organiser turning Copilot off in meeting or event options also turns recording off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "When organizers turn off Copilot for their meeting or event, recording and transcription are also turned off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Risks and limits: An organiser turning Copilot off; What to check",
-      "type": "behaviour",
-      "claim": "An organiser turning Copilot off in meeting or event options also turns transcription off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "When organizers turn off Copilot for their meeting or event, recording and transcription are also turned off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Risks and limits: An organiser turning Copilot off; What to check",
-      "type": "default",
-      "claim": "The policy's Copilot Off value sets the organiser's default meeting option to Off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "When organizers with this policy create meetings and events, Copilot's default value in their meeting options is Off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Risks and limits: An organiser turning Copilot off; What to check",
-      "type": "behaviour",
-      "claim": "Organisers can override the policy's Copilot Off default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "Organizers can change this value to Only during the meeting or During and after the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Risks and limits: Allowing recording does not provide storage",
-      "type": "behaviour",
-      "claim": "A recording that cannot upload to OneDrive or SharePoint is held in temporary storage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "If a recording can't be uploaded to OneDrive or SharePoint, it's temporarily stored in async media storage",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Risks and limits: Allowing recording does not provide storage",
-      "type": "behaviour",
-      "claim": "The temporarily stored recording must be downloaded within 21 days or it is deleted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "must be downloaded within 21 days. Otherwise, the recording is deleted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Risks and limits: External participants",
-      "type": "availability",
-      "claim": "External participants cannot record meetings except through third-party compliance recording.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "External participants can't record meetings except when it's a Teams third-party compliance recording.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Risks and limits: Meeting policy is not events policy; controls[6].governs",
-      "type": "applicability",
-      "claim": "The meeting policy's Copilot setting also governs the default Copilot option for events.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "When organizers with this policy create meetings and events, Copilot's default value in their meeting options is Only during the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls; controls[0].note",
-      "type": "role",
-      "claim": "Teams Administrator can manage meeting policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Teams Administrator\nManage meetings, including meeting policies, configurations, and conference bridges.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls; controls[0].note",
-      "type": "role",
-      "claim": "Teams Communications Administrator can manage meeting policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Teams Communications Administrator\nManage meetings, including meeting policies, configurations, and conference bridges.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Governance controls; controls[0].note",
-      "type": "role",
-      "claim": "Teams Reader has read-only access to meeting policy settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Read everything in the Teams admin center, but not update anything",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "These administrator roles are assigned through Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "You can assign users or groups to these roles in Microsoft Entra ID.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Governance controls",
-      "type": "default",
-      "claim": "An assignment without a specified ranking receives the lowest ranking.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "If you don't specify a ranking, the policy assignment is given the lowest ranking.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Changing a group assignment's ranking in the admin centre requires removing and re-adding the assignment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "To change the ranking of a group assignment, you need to remove the group policy assignment first. Then, follow the steps above to assign the policy to a group.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "PowerShell Grant cmdlets can change an existing group assignment's ranking.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "After you assign a policy to a group, you can use the appropriate Grant cmdlet to change that group's policy assignment as follows:\n- Change the ranking",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Copilot documentation tabulates interactions between transcription policy and Copilot meeting options.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "This setting's value affects how, or if, Copilot works for your users. The following table shows how the transcription policy works with the organizer's Copilot in Teams meeting options:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Teams admin centre Activity log shows group policy operations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
-      "quote": "The activity log shows network record upload information, group policy operations from Teams admin center and PowerShell",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Activity log shows admin-centre batch policy operations for more than 20 users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
-      "quote": "batch policy operations (for more than 20 users) from the Teams admin center",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Activity log shows these policy operations for the last 30 days.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
-      "quote": "The activity log shows network record upload information, group policy operations from Teams admin center and PowerShell, and batch policy operations (for more than 20 users) from the Teams admin center, for the last 30 days.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "What to check",
-      "type": "command",
-      "claim": "Get-CsTeamsMeetingPolicy lists meeting policies configured in the organisation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingpolicy",
-      "quote": "Get-CsTeamsMeetingPolicy is called without any additional parameters; this returns a collection of all the teams meeting policies configured for use in your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "controls[4].note",
-      "type": "default",
-      "claim": "Transcription is on by default for new meeting policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "Toggle Transcription On or Off. This setting is On by default for new policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[5].note",
-      "type": "applicability",
-      "claim": "Live captions is a per-user policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "This setting is a per-user policy and applies during a meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[5].note",
-      "type": "behaviour",
-      "claim": "DisabledUserOverride permits users to turn on live captions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "DisabledUserOverride\nLive captions are off by default, but users with this assigned policy can turn on live captions during meetings or events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[6].note",
-      "type": "command",
-      "claim": "EnabledWithTranscript, EnabledWithTranscriptDefaultOn and Disabled are documented Copilot parameter values.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "On with saved transcript required | EnabledWithTranscript\nOn with transcript saved by default | EnabledWithTranscriptDefaultOn\nOff | Disabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Open questions: channel recording download",
-      "type": "absence",
-      "claim": "The recording page documents channel recording download control only as a PowerShell parameter, not an admin-centre toggle.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"ChannelRecordingDownload\" \"admin center\" toggle. Read learn.microsoft.com/microsoftteams/meeting-recording in full: its download section and PowerShell examples give -ChannelRecordingDownload, with no UI path.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Open questions: audit events",
-      "type": "absence",
-      "claim": "The cited pages do not name audit events for changes to meeting policy settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"meeting policy\" \"audit\" \"Set-CsTeamsMeetingPolicy\"; Teams policy changes audit log meeting policies administration activities Changed policy. Read ten cited pages and searched the Set reference for audit; no policy-setting audit event is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Meeting policies can be edited at Teams admin center > Meetings > Meeting policies > policy > Edit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "go to Meetings > Meeting policies or Events policies.\nChoose the policy by clicking to the left of the policy name, and then select Edit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -<parameter> <value> updates a meeting policy using its named settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Set-CsTeamsMeetingPolicy -Identity SalesMeetingPolicy -AllowTranscription $True\nThe command shown in Example 1 uses the Set-CsTeamsMeetingPolicy cmdlet to update an existing meeting policy with the Identity SalesMeetingPolicy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
       "where": "controls[1].ui",
       "type": "admin-path",
       "claim": "Group assignment is at Teams admin center > Meetings > Meeting policies > Group policy assignment > Add.",
@@ -849,10 +65,10 @@
       "fix": null
     },
     {
-      "n": 76,
+      "n": 4,
       "where": "controls[1].api",
       "type": "command",
-      "claim": "Grant-CsTeamsMeetingPolicy -Group <group ID> -PolicyName <policy name> -Rank <rank> assigns a meeting policy to a group.",
+      "claim": "Grant-CsTeamsMeetingPolicy -Group <group ID> -PolicyName <policy name> -Rank <rank> assigns a meeting policy to a group with a ranking.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
       "quote": "Grant-CsTeamsMeetingPolicy -Group d8ebfa45-0f28-4d2d-9bcc-b158a49e2d17 -PolicyName \"Retail Managers Meeting Policy\" -Rank 1",
@@ -860,7 +76,7 @@
       "fix": null
     },
     {
-      "n": 77,
+      "n": 5,
       "where": "controls[2].ui",
       "type": "admin-path",
       "claim": "Individual assignment is at Teams admin center > Meetings > Meeting policies > policy > Manage users > Assign users.",
@@ -871,7 +87,7 @@
       "fix": null
     },
     {
-      "n": 78,
+      "n": 6,
       "where": "controls[2].api",
       "type": "command",
       "claim": "Grant-CsTeamsMeetingPolicy -Identity <user> -PolicyName <policy name> assigns a meeting policy to an individual user.",
@@ -882,21 +98,21 @@
       "fix": null
     },
     {
-      "n": 79,
+      "n": 7,
       "where": "controls[3].ui",
       "type": "admin-path",
-      "claim": "Recording is controlled at Teams admin center > Meetings > Meeting policies > policy > Meeting recording.",
+      "claim": "The Meeting recording toggle is at Teams admin center > Meetings > Meeting policies > policy > Meeting recording.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "go to Meetings > Meeting policies.\nSelect an existing policy or create a new one.\nTurn the Meeting recording toggle On or Off.",
+      "quote": "go to Meetings > Meeting policies.\n2. Select an existing policy or create a new one.\n3. Turn the Meeting recording toggle On or Off.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 80,
+      "n": 8,
       "where": "controls[3].api",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowCloudRecording $true enables recording permission in that policy.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowCloudRecording $true allows meeting recording under that policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
       "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowCloudRecording $true",
@@ -904,21 +120,21 @@
       "fix": null
     },
     {
-      "n": 81,
+      "n": 9,
       "where": "controls[4].ui",
       "type": "admin-path",
-      "claim": "Transcription is controlled at Teams admin center > Meetings > Meeting policies > policy > Transcription.",
+      "claim": "The Transcription toggle is at Teams admin center > Meetings > Meeting policies > policy > Transcription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "go to Meetings > Meeting policies.\nSelect the policy that you want to edit or create a new one.\nToggle Transcription On or Off.",
+      "quote": "go to Meetings > Meeting policies.\n2. Select the policy that you want to edit or create a new one.\n3. Toggle Transcription On or Off.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
+      "n": 10,
       "where": "controls[4].api",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true enables transcription permission.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true allows meeting transcription under that policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
       "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
@@ -926,21 +142,21 @@
       "fix": null
     },
     {
-      "n": 83,
+      "n": 11,
       "where": "controls[5].ui",
       "type": "admin-path",
       "claim": "Live captions is at Teams admin center > Meetings > Meeting policies > policy > Live captions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "go to Meetings > Meeting policies.\nSelect the policy that you want to edit or create a new one.\nFrom the drop-down for Live captions, select Not enabled, but users can enable(default value) or Off.",
+      "quote": "go to Meetings > Meeting policies.\n2. Select the policy that you want to edit or create a new one.\n3. From the drop-down for Live captions, select Not enabled, but users can enable(default value) or Off.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 84,
+      "n": 12,
       "where": "controls[5].api",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -LiveCaptionsEnabledType Disabled prevents live captions.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -LiveCaptionsEnabledType Disabled turns off live captions for users with that policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
       "quote": "To turn off live captions for users with this policy, run the following script:\nSet-CsTeamsMeetingPolicy -Identity <policy name> -LiveCaptionsEnabledType Disabled",
@@ -948,70 +164,785 @@
       "fix": null
     },
     {
-      "n": 85,
+      "n": 13,
       "where": "controls[6].ui",
       "type": "admin-path",
-      "claim": "Copilot is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
+      "claim": "The Copilot default setting is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "go to Meetings > Meeting policies.\nSelect an existing policy or create a new one.\nGo to the Recording & transcription section and find the Copilot setting.",
+      "quote": "go to Meetings > Meeting policies.\n2. Select an existing policy or create a new one.\n3. Go to the Recording & transcription section and find the Copilot setting.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 86,
+      "n": 14,
       "where": "controls[6].api",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Enabled sets the organiser's default to Only during the meeting.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Enabled sets the Only during the meeting default for meetings and events organized by users with this policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "On | Enabled | When organizers with this policy create meetings and events, Copilot's default value in their meeting options is Only during the meeting.",
+      "quote": "To allow users to use Copilot Only during the meeting in meetings and events created by organizers with this policy:\nSet-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Enabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 87,
-      "where": "controls[1].note",
-      "type": "admin-path",
-      "claim": "The assignment article calls the group-assignment button Add group, unlike the recording article's Add label.",
+      "n": 15,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "A Teams meeting policy is a set of settings controlling the meeting features available to organizers and participants.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-      "quote": "Select the Group policy assignment tab.\nSelect Add group, and then in the Assign policy to grouppane, do the following:",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "you can use meeting and events policies to control the features that are available to organizers and participants of meetings and events in your organization.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Meeting policies can be managed in the Teams admin center or with the Teams PowerShell module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-with-policies",
+      "quote": "Policies are managed through the Teams Admin Center or the Teams PowerShell module",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Every user has one effective meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "A user has one effective policy for each policy type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is; Why it matters; What to check",
+      "type": "default",
+      "claim": "The Global policy applies when the user has neither a direct custom assignment nor an inherited group policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "If a user isn't directly assigned a policy or isn't a member of any groups that are assigned a policy, the user gets the global (Org-wide default) policy for that policy type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Administrators can edit the Global meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "You can edit the global policy and any custom policies that you create.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Administrators can create named custom meeting policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "Select Add.\n3. Enter a name and description for the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A user can be assigned only one meeting policy at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "A user can be assigned only one meeting policy and one events policy at a time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A user can be assigned only one events policy at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "A user can be assigned only one meeting policy and one events policy at a time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is; Risks and limits",
+      "type": "behaviour",
+      "claim": "Events policies are separate from meeting policies and have their own recording settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "Meetings and events each have their own recording policies that you can manage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is; Risks and limits",
+      "type": "behaviour",
+      "claim": "Events policies have their own transcription settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "go to Meetings > Events policies.\nTurn the Transcription for events up to 1k attendees toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: Who a setting applies to",
+      "type": "behaviour",
+      "claim": "Microsoft documents three implementation types for meeting and events policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "Policies are implemented in one of the following ways:\nPer-organizer\nPer-user\nPer-organizer and per-user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: implementation table; Why it matters",
+      "type": "behaviour",
+      "claim": "For a per-organizer policy, participants inherit the organizer's policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "When you implement a per-organizer policy, all participants inherit the policy of the organizer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: implementation table",
+      "type": "applicability",
+      "claim": "Who can bypass the lobby is Microsoft's example of a per-organizer policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "For example, Who can bypass the lobby is a per-organizer policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: implementation table",
+      "type": "behaviour",
+      "claim": "A per-user policy allows or prevents the feature for each user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "When you implement a per-user policy, the policy allows or prevents a given feature for each user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is: implementation table",
+      "type": "applicability",
+      "claim": "Meet now in channel meetings is Microsoft's example of a per-user policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "For example, Meet now in channel meetings is a per-user policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: implementation table",
+      "type": "behaviour",
+      "claim": "Combined policies restrict participants based on both their policy and the organizer's policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "certain features are restricted for participants based on their policy and the organizer's policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[3].note; What it is; Why it matters",
+      "type": "applicability",
+      "claim": "Recording is per-organizer and per-user: both the organizer and recording initiator need permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "Both the organizer and recording initiator need to have recording permissions to record the meeting or event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; controls[2].note; What it is; Risks and limits; What to check",
+      "type": "behaviour",
+      "claim": "A directly assigned policy takes precedence over inherited group policies and the Global policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "If a user is directly assigned a policy (either individually or through a batch assignment), that policy takes precedence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: Which policy a user gets",
+      "type": "behaviour",
+      "claim": "Without a direct assignment, the user inherits the highest-ranked applicable group policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "the user inherits the policy of the group assignment that has the highest ranking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: Which policy a user gets",
+      "type": "behaviour",
+      "claim": "Ranking 1 is the highest group assignment ranking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "Smaller the number, the higher the ranking with 1 being the highest ranking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: Which policy a user gets",
+      "type": "behaviour",
+      "claim": "Policies can be assigned to batches of users in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "To assign a policy to users in bulk:\nIn the left navigation of the Microsoft Teams admin center, select Users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: Which policy a user gets, final sentence",
+      "type": "command",
+      "claim": "Grant-CsTeamsMeetingPolicy is the PowerShell operation for assigning a policy to a batch of users.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "You use the New-CsBatchPolicyAssignmentOperation cmdlet to submit a batch of users and the policy that you want to assign.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'Policies can be assigned to individual users, to batches of users or to a group in the admin centre. In PowerShell, Grant-CsTeamsMeetingPolicy assigns a policy to an individual user or a group; New-CsBatchPolicyAssignmentOperation submits a batch assignment.' The cited assignment article documents the distinction."
+    },
+    {
+      "n": 37,
+      "where": "controls[4].note; Why it matters; Risks and limits",
+      "type": "applicability",
+      "claim": "Transcription is per-organizer and per-user: the organizer and person starting recording or transcription must have it enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[4].note",
+      "type": "default",
+      "claim": "Transcription is On by default for new meeting policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "This setting is On by default for new policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[5].note",
+      "type": "applicability",
+      "claim": "Live captions is a per-user policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "This setting is a per-user policy and applies during a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[5].note",
+      "type": "behaviour",
+      "claim": "DisabledUserOverride allows users to turn on live captions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Live captions are off by default, but users with this assigned policy can turn on live captions during meetings or events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[6].note; Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot in Teams meetings requires an add-on Microsoft Copilot license for intended users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "An add-on Microsoft Copilot license for intended users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[6].note",
+      "type": "command",
+      "claim": "Other Copilot parameter values are EnabledWithTranscript, EnabledWithTranscriptDefaultOn and Disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "On with saved transcript required | EnabledWithTranscript\nOn with transcript saved by default | EnabledWithTranscriptDefaultOn\nOff | Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Live translated transcription requires the meeting organizer to have Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "The meeting or event organizer must have a Teams Premium license for attendees to use live translated transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Live translated captions require the meeting organizer to have Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "The meeting or event organizer must have a Teams Premium license for attendees to use live translated captions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Organizers with Teams Premium can use meeting options to control who can record and transcribe.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "Organizers with a Teams Premium license can use their meeting options to control who can record and transcribe.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Meeting recordings are stored in the organizer's OneDrive or SharePoint storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "It gets uploaded to the meeting organizer's OneDrive (private meetings) or SharePoint (channel meetings).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; Risks and limits",
+      "type": "behaviour",
+      "claim": "AllowCloudRecording does not configure or validate recording storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "-AllowCloudRecording controls whether users can record meetings; it doesn't configure or validate recording storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing, opening paragraph",
+      "type": "absence",
+      "claim": "The meeting policy overview and policy-assignment pages state no license or meter for meeting policies themselves as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting policies license meter price policy assignment group propagation time large groups. Read meeting-policies-overview, policy-assignment-overview and assign-policies-users-and-groups on Learn; none states a license or meter for meeting policies themselves.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: A direct assignment silently beats a group assignment",
+      "type": "behaviour",
+      "claim": "Direct assignments must be removed to inherit group policies, and Microsoft documents removing them in bulk.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "As an admin, you can unassign policies in bulk to remove direct assignments so Global (Org-wide default) or group assignments take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Risks and limits; What to check",
+      "type": "behaviour",
+      "claim": "Group policy assignments propagate only to direct members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "Group policy assignments are only propagated to users who are direct members of the group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Group assignment has gaps; What to check",
+      "type": "behaviour",
+      "claim": "Group assignments do not propagate to members of nested groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "The assignments aren't propagated to members of nested groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: Group assignment has gaps; What to check",
+      "type": "behaviour",
+      "claim": "Groups with HiddenGroupMembership enabled cannot use group policy assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "Groups with the HiddenGroupMembership setting enabled can't use group policy assignment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: Group assignment has gaps",
+      "type": "default",
+      "claim": "Class Teams have HiddenGroupMembership enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "Class Teams have this setting enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: Group assignment has gaps",
+      "type": "behaviour",
+      "claim": "Propagation of group policy assignment to members runs in the background.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "the propagation of the policy assignment to members of the group is performed as a background operation and might take some time, depending on the size of the group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits; Open questions: group propagation",
+      "type": "absence",
+      "claim": "The group-assignment article gives no group-size-specific propagation time.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting policies license meter price policy assignment group propagation time large groups. Read all of assign-policies-users-and-groups; it says propagation might take some time depending on group size, but supplies no size-specific duration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits; Open questions: group propagation",
+      "type": "behaviour",
+      "claim": "Microsoft's general policy guidance says changes may take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-with-policies",
+      "quote": "changes may take up to 24 hours to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: Policies cannot be tidied freely",
+      "type": "behaviour",
+      "claim": "A policy cannot be deleted while users remain assigned to it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "You can't delete a policy if users are assigned to it. You must first assign a different policy to all affected users, and then you can delete the original policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: Policies cannot be tidied freely",
+      "type": "behaviour",
+      "claim": "A policy name cannot be changed after creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "After you create a policy, its name can't be changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: Copilot off; What to check",
+      "type": "behaviour",
+      "claim": "An organizer turning Copilot Off for a meeting or event also turns off recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "When organizers turn off Copilot for their meeting or event, recording and transcription are also turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: Copilot off; What to check",
+      "type": "behaviour",
+      "claim": "An organizer turning Copilot Off for a meeting or event also turns off transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "When organizers turn off Copilot for their meeting or event, recording and transcription are also turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: Copilot off; What to check",
+      "type": "default",
+      "claim": "The Copilot Off policy value sets a default organizers can override per meeting or event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "When organizers with this policy create meetings and events, Copilot's default value in their meeting options is Off. Organizers can change this value to Only during the meeting or During and after the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: External participants",
+      "type": "behaviour",
+      "claim": "External participants cannot record meetings except under third-party compliance recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "External participants can't record meetings except when it's a Teams third-party compliance recording.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits: Allowing recording does not provide storage",
+      "type": "behaviour",
+      "claim": "Recordings that cannot upload to OneDrive or SharePoint are stored temporarily and deleted unless downloaded within 21 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "If a recording can't be uploaded to OneDrive or SharePoint, it's temporarily stored in async media storage and must be downloaded within 21 days. Otherwise, the recording is deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].note; Governance controls: roles",
+      "type": "role",
+      "claim": "Teams Administrator can manage meeting policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Administrator\nManage meetings, including meeting policies, configurations, and conference bridges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].note; Governance controls: roles",
+      "type": "role",
+      "claim": "Teams Communications Administrator can manage meeting policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Communications Administrator\nManage meetings, including meeting policies, configurations, and conference bridges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[0].note; Governance controls: roles",
+      "type": "role",
+      "claim": "Teams Reader has read-only access to meeting policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Reader | Read everything in the Teams admin center, but not update anything",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: roles",
+      "type": "role",
+      "claim": "The listed Teams administrator roles are Microsoft Entra roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "You can assign users or groups to these roles in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: Order of work",
+      "type": "default",
+      "claim": "An assignment without an explicit ranking receives the lowest ranking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "If you don't specify a ranking, the policy assignment is given the lowest ranking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: Order of work",
+      "type": "behaviour",
+      "claim": "Changing a group assignment ranking in the Teams admin center requires removing and re-adding the assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "To change the ranking of a group assignment, you need to remove the group policy assignment first. Then, follow the steps above to assign the policy to a group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: Order of work",
+      "type": "command",
+      "claim": "PowerShell Grant cmdlets can change the ranking of an existing group assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
+      "quote": "After you assign a policy to a group, you can use the appropriate Grant cmdlet to change that group's policy assignment as follows:\n- Change the ranking",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: Settings that depend on one another",
+      "type": "behaviour",
+      "claim": "Transcription policy and Copilot interact, and Microsoft tabulates the combinations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "This setting's value affects how, or if, Copilot works for your users. The following table shows how the transcription policy works with the organizer's Copilot in Teams meeting options:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: Activity log",
+      "type": "behaviour",
+      "claim": "Policy assignments made in the Teams admin center can be tracked in its Activity log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "When you assign policies to users in the Microsoft Teams admin center, you can view the status of those policy assignments in the Activity log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: Activity log",
+      "type": "behaviour",
+      "claim": "The Activity log shows group policy operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "The activity log shows network record upload information, group policy operations from Teams admin center and PowerShell",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: Activity log",
+      "type": "behaviour",
+      "claim": "The Activity log shows admin-center batch policy operations for more than 20 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "batch policy operations (for more than 20 users) from the Teams admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: Activity log",
+      "type": "behaviour",
+      "claim": "The Activity log covers the last 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "batch policy operations (for more than 20 users) from the Teams admin center, for the last 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "What to check: List custom meeting policies",
+      "type": "command",
+      "claim": "Get-CsTeamsMeetingPolicy can list the meeting policies configured in the organization, including custom policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingpolicy",
+      "quote": "Get-CsTeamsMeetingPolicy is called without any additional parameters; this returns a collection of all the teams meeting policies configured for use in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Open questions: channel recording download",
+      "type": "absence",
+      "claim": "The recording page documents channel recording download control only as a PowerShell parameter, not an admin-center toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams ChannelRecordingDownload admin center toggle PowerShell only. Read meeting-recording in full and Learn excerpts from manage-meeting-recording-options; the recording article documents -ChannelRecordingDownload with PowerShell and no UI toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Open questions: audit events",
+      "type": "absence",
+      "claim": "The cited pages do not name audit events recording a change to a meeting policy or where those events appear.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting policy change audit events Set-CsTeamsMeetingPolicy audit log. Read cited policy pages and searched fetched audit-log-activities for meeting policy, Set-CsTeamsMeetingPolicy and policy changes; no meeting-policy-change event was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "What to check: List custom meeting policies; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to list meeting policies with Get-CsTeamsMeetingPolicy, but no controls row documents that read operation.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List custom meeting policies with Get-CsTeamsMeetingPolicy and confirm each one is still assigned to a group or user.\nThe corresponding table row instead gives Set-CsTeamsMeetingPolicy -Identity <policy name> -<parameter> <value>.",
+      "severity": "minor",
+      "fix": "Replace the checklist bullet with 'Review custom meeting policy settings and confirm each policy is still assigned to a group or user.' This removes the unrepresented read operation without adding a controls row."
     }
   ],
   "precheck": {
-    "at": "2026-11-17T08:14:02.831Z",
+    "at": "2026-11-24T07:39:43.504Z",
     "summary": {
       "links": 10,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 7,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 4,
       "apiCalls": 7,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
@@ -1025,8 +956,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
@@ -1035,13 +966,13 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingpolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-teams-with-policies",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1050,13 +981,17 @@
         "side": "ui",
         "governs": "Settings held in a meeting policy (global or custom)",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Edit"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Edit"
+        ]
       },
       {
         "index": 0,
@@ -1072,68 +1007,82 @@
         "side": "ui",
         "governs": "Which group receives a meeting policy",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Group policy assignment",
           "Add"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Group policy assignment",
+          "Add"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which group receives a meeting policy",
         "docs": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-        "reachable": true,
+        "reachable": false,
         "token": "Grant-CsTeamsMeetingPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Which meeting policy an individual user holds",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Manage users",
           "Assign users"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Manage users",
+          "Assign users"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Which meeting policy an individual user holds",
         "docs": "https://learn.microsoft.com/microsoftteams/assign-policies-users-and-groups",
-        "reachable": true,
+        "reachable": false,
         "token": "Grant-CsTeamsMeetingPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Whether users can record meetings",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Meeting recording"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting recording"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Whether users can record meetings",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMeetingPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 4,
@@ -1210,6 +1159,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

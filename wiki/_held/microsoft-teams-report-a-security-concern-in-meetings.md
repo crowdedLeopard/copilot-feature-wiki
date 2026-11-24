@@ -37,6 +37,9 @@ sources:
   - title: "Microsoft Defender for Office 365 support for Microsoft Teams"
     url: "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about"
     kind: "learn"
+  - title: "Use the Submissions page to submit suspected spam, phish, URLs, legitimate email getting blocked, and email attachments to Microsoft"
+    url: "https://learn.microsoft.com/defender-office-365/submissions-admin"
+    kind: "learn"
   - title: "Set-CsTeamsMeetingConfiguration"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration"
     kind: "learn"
@@ -57,15 +60,12 @@ related: []
 controls:
   - governs: "Whether users can report meetings and meeting participants"
     scope: "other"
-    ui:
-      surface: "Teams admin center"
-      path: "Policy or settings page that controls reporting for Teams meetings > Allow users to report meetings"
-      docs: "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting"
+    ui: null
     api:
       kind: "powershell"
       call: "Set-CsTeamsMeetingConfiguration -Identity Global -ReportMeeting Enabled|Disabled"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration"
-    note: "Role: Global Administrator or Teams Administrator. Learn does not say -ReportMeeting is the setting behind the admin centre toggle. The meeting page is marked Preview and gives no full path."
+    note: "Role: Global Administrator or Teams Administrator. Microsoft documents Allow users to report meetings in the Teams admin center, but has not published its navigation path. Learn does not say -ReportMeeting is the same setting."
   - governs: "Where reported Teams items are sent (Microsoft, reporting mailbox or both)"
     scope: "tenant"
     ui:
@@ -89,8 +89,8 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Defender portal"
-      path: "Submissions > User reported tab"
-      docs: "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide"
+      path: "Actions & submissions > Submissions > User reported tab"
+      docs: "https://learn.microsoft.com/defender-office-365/submissions-admin"
     api: null
     note: "Detailed submissions need Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, per Microsoft's notice. Also reachable from View submission in the Defender XDR incident."
   - governs: "Alerts raised by reported meetings and participants"
@@ -105,13 +105,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Teams admin center"
-      path: "Analytics & reports > Protection reports > View reports tab > User reported security submissions"
+      path: "Analytics & reports > Protection reports > View reports tab > Report > User reported security submissions"
       docs: "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal"
     api: null
     note: "The Learn page lists Calling, Chats and channels, and User categories only; a meetings category is not documented at the time of writing (November 2026)."
 confidence: "high"
 created: "2026-11-16"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-16"
@@ -128,19 +128,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 91 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 106 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed the unpublished Teams admin center navigation path for Allow users to report meetings, and completed the Defender Submissions and Teams Protection reports paths."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 106
-  confirmed: 105
-  unconfirmed: 1
-  contradicted: 0
-  attempts: 1
-  hash: "1ea8b089ac9835fbaabbf37159ce7cfa"
+  claims: 107
+  confirmed: 106
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "a19227c39892207f34b95ef9d748ada0"
 ---
 
 ## What's changing
@@ -227,12 +231,12 @@ Which licence a tenant needs to see meeting reports in the Teams admin center is
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can report meetings and meeting participants</strong><br><small class="controls__note">Role: Global Administrator or Teams Administrator. Learn does not say -ReportMeeting is the setting behind the admin centre toggle. The meeting page is marked Preview and gives no full path.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Policy or settings page that controls reporting for Teams meetings › Allow users to report meetings <a href="https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -ReportMeeting Enabled|Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can report meetings and meeting participants</strong><br><small class="controls__note">Role: Global Administrator or Teams Administrator. Microsoft documents Allow users to report meetings in the Teams admin center, but has not published its navigation path. Learn does not say -ReportMeeting is the same setting.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -ReportMeeting Enabled|Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Where reported Teams items are sent (Microsoft, reporting mailbox or both)</strong><br><small>Tenant</small><br><small class="controls__note">Call shown sends to Microsoft and the reporting mailbox (Exchange Online PowerShell). Parameters refer to chat messages; the SecOps guide says meeting reports follow the same Teams user reported settings.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Email &amp; collaboration › Teams user reported settings tab › Reported item destinations › Send the reported items to <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled $true -ReportChatMessageToCustomizedAddressEnabled $true -ReportChatMessageAddresses &quot;&lt;reporting-mailbox&gt;&quot;</code> <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Defender portal monitors reported Teams items</strong><br><small>Tenant</small><br><small class="controls__note">Role: Organization Management or Security Administrator. On by default for new tenants; existing tenants must enable it. Meaningful only if Teams reporting is on.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Email &amp; collaboration › Teams user reported settings tab › Microsoft Teams › Monitor reported items in Microsoft Teams <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Where administrators review reported meetings in Defender</strong><br><small>Tenant</small><br><small class="controls__note">Detailed submissions need Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, per Microsoft's notice. Also reachable from View submission in the Defender XDR incident.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Submissions › User reported tab <a href="https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Where administrators review reported meetings in Defender</strong><br><small>Tenant</small><br><small class="controls__note">Detailed submissions need Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, per Microsoft's notice. Also reachable from View submission in the Defender XDR incident.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Actions &amp; submissions › Submissions › User reported tab <a href="https://learn.microsoft.com/defender-office-365/submissions-admin" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Alerts raised by reported meetings and participants</strong><br><small>Tenant</small><br><small class="controls__note">Meeting reports use the reported-call alert policies. Manage Alerts is required to create and edit alert policies. Built-in policies can be turned off or on, given recipients and a daily notification limit; other settings can't be edited.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Email &amp; collaboration › Policies &amp; rules › Alert policy <a href="https://learn.microsoft.com/defender-xdr/alert-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Where administrators review user reports in Teams</strong><br><small>Tenant</small><br><small class="controls__note">The Learn page lists Calling, Chats and channels, and User categories only; a meetings category is not documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Analytics &amp; reports › Protection reports › View reports tab › User reported security submissions <a href="https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Where administrators review user reports in Teams</strong><br><small>Tenant</small><br><small class="controls__note">The Learn page lists Calling, Chats and channels, and User categories only; a meetings category is not documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Analytics &amp; reports › Protection reports › View reports tab › Report › User reported security submissions <a href="https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -261,8 +265,5 @@ impact: High. Microsoft's notice says the capability is enabled by default, so e
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].ui; Governance controls table / admin-path: Teams admin center > Policy or settings page that controls reporting for Teams meetings > Allow users to report meetings is the navigation path to meeting reporting. | Found: Searched: Teams admin center "Allow users to report meetings" navigation ReportMeeting; opened end-user-reporting-teams-meeting and submissions-teams. They name the policy but describe the first page generically, without a selectable navigation label. | Fix: Remove the generic navigation string from controls[0].ui and the rendered table; set that side to null. Retain the setting name in the note: 'Microsoft documents Allow users to report meetings in the Teams admin center, but has not published its navigation path.' Keep the documented PowerShell alternative.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance guidance; Governance controls table / admin-path: Reported meetings can be reviewed at Defender portal > Submissions > User reported tab. | Found: The **User reported** tab of the **Submissions** page at https://security.microsoft.com/reportsubmission?viewid=user: | Fix: Use the fuller path 'Actions & submissions > Submissions > User reported tab' and add https://learn.microsoft.com/defender-office-365/submissions-admin to sources. Its 'Admin options for user reported messages' section gives Actions & submissions > Submissions; the cited SecOps guide confirms meeting reports on that page. | Source: https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide
-- [supported, minor] controls[5].ui; Governance controls table / admin-path: User reports are at Teams admin center > Analytics & reports > Protection reports > View reports tab > User reported security submissions. | Found: In the left navigation of the Teams admin center, go to **Analytics & reports** > **Protection reports**. 2. On the **View reports** tab, under **Report**, select **User reported security submissions**. | Fix: Add the omitted heading: 'Analytics & reports > Protection reports > View reports tab > Report > User reported security submissions'. The existing note about the documented report categories can remain. | Source: https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal
+- [contradicted, blocker] Why it matters: second paragraph / default: If nobody acts, reports land in the Defender portal and Teams admin center. | Found: In the Microsoft Defender portal: On by default for new tenants. Existing tenants need to enable it. ... it also needs to be turned on in the Defender portal for user reported items to show up correctly on the User reported tab on the Submissions page. | Fix: Replace 'If nobody acts, reports land in the Defender portal and Teams admin center with no agreed owner' with 'Existing tenants need to enable Defender monitoring for submitted reports to show correctly on the User reported tab; without preparation'. Keep the remaining warning about missing user guidance and copying metadata when Microsoft is a destination. This carries the monitoring qualification stated at https://learn.microsoft.com/defender-office-365/submissions-teams. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
 -->

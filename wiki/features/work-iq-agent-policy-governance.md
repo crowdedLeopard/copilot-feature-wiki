@@ -113,15 +113,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 52 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 55 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 50
+  claims: 55
+  confirmed: 53
   unconfirmed: 2
   contradicted: 0
   attempts: 0
@@ -216,11 +218,12 @@ cost: Low, provisional. This is the incremental administration cost of the gover
 impact: Medium. It would affect admins and agent owners whose agents are subject to the new policies.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Governance controls: first paragraph after table / behaviour: In the initial release the policy layer is a single tenant-level switch. | Found: Searched: "Work IQ MCP" "policy" "API" "PowerShell". Read MCP policy governance in full; it documents on/off, supported mutation configuration and toggle-style and numeric settings, but does not say the layer consists of one switch. | Fix: Replace 'In the initial release the policy layer is a single tenant-level switch' with 'In the initial release, Work IQ MCP policy control is tenant-level'.
-- [unsupported, major] controls[1].note; Risk assessment: Security & identity; sources / behaviour: The current access-control guide is identified as preview documentation. | Found: Searched: "Manage AI experience access to Business Applications in Work IQ" "preview". Read that guide in full and matching results; the current guide has no preview label. Other results label individual Business apps workloads preview, not this guide. | Fix: Remove 'Source is preview documentation.' from controls[1].note and its rendered note, remove '(preview)' after 'access-control guide' in Security & identity, and use the current source title 'Manage AI experience access to Business Applications in Work IQ'. Keep the AI Administrator requirement unchanged.
+- [unsupported, major] controls[1].note; Risk assessment: Security & identity; sources; Governance controls table / behaviour: The current access-control guide is identified as preview documentation. | Found: Searched: "Manage AI experience access to Business Applications in Work IQ" "preview". Read that guide in full and matching excerpts; it has no preview label. Results label individual Business apps workloads preview, not this guide. | Fix: Remove 'Source is preview documentation.' from controls[1].note and its rendered note, remove '(preview)' after 'access-control guide' in Security & identity, and use the source title 'Manage AI experience access to Business Applications in Work IQ'. Keep the AI Administrator requirement unchanged.
+- [unsupported, major] Governance controls: first paragraph after table / behaviour: In the initial release the policy layer is a single tenant-level switch. | Found: Searched: "Work IQ" "policy" "Microsoft Graph" "settings". Read MCP policy guide in full; it documents on/off, supported mutation configuration and toggle-style and numeric settings, but does not say the layer consists of one switch. | Fix: Replace 'In the initial release the policy layer is a single tenant-level switch' with 'In the initial release, Work IQ MCP policy control is tenant-level'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; controls[0].note; Governance controls table / default: The MCP policy guide says mutation operations, including create, update, delete and sending email, are disallowed by default. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: Keep the attribution to the MCP policy guide and add: 'The Copilot Studio Work IQ guide separately says write operations are on by default, subject to organizational permissions and policies; check the applicable experience rather than assuming a uniform write default.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#work-iq-key-features, which says 'Write operations are on by default. Your organization's permissions and policies still apply.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] What's changing; controls[0].note; Governance controls table / default: The MCP policy guide says mutation operations, including create, update, delete and sending email, are disallowed by default. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: Keep the attribution to the MCP policy guide and add: 'The Copilot Studio Work IQ guide separately says write operations are on by default, subject to organizational permissions and policies; check the applicable experience rather than assuming a uniform write default.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#work-iq-key-features, which states 'Write operations are on by default. Your organization's permissions and policies still apply.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] controls[2].api; Governance controls table / command: POST /v1.0/servicePrincipals with appId fdcc1f02-fc51-4226-8753-f668596af7f7 provisions Work IQ for the organization. | Found: Set the method to POST and the URL to https://graph.microsoft.com/v1.0/servicePrincipals. Enter the following in the Request body. { "appId": "fdcc1f02-fc51-4226-8753-f668596af7f7" } | Fix: Set controls[2].api.call and the rendered call to 'POST /v1.0/servicePrincipals'. Add to the row note: 'The request body sets appId to fdcc1f02-fc51-4226-8753-f668596af7f7.' Keep the Azure CLI alternative. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq#enable-work-iq-api-in-your-organization
 -->

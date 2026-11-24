@@ -53,7 +53,7 @@ controls:
       kind: "graph"
       call: "GET /v1.0/copilot/admin/catalog/packages"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list"
-    note: "The API lists agents for reporting; it is not the export file. Learn describes the Graph agent APIs as preview and the reference prints a /beta/ request as well."
+    note: "The API lists agents for reporting; it is not the export file. Learn describes the Graph agent APIs as preview and the reference prints a /beta/ request as well. Access to the Package Management API requires a Microsoft Agent 365 licence."
 confidence: "medium"
 created: "2026-11-24"
 updated: "2026-11-24"
@@ -63,19 +63,23 @@ changes:
     note: "First briefing for this item: the roadmap's five new export fields are not yet named on Learn, so the page reports what the registry export documents today."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected: added the Microsoft Agent 365 licence requirement for the Graph List packages call, and removed the role-assignment checklist step."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 44
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "9b3dfb45a0a82f3aaa9116e99cc18115"
+  contradicted: 0
+  attempts: 0
+  hash: "df64bef28b7b029446311e2bfa77f5e8"
 ---
 
 ## What's changing
@@ -114,6 +118,8 @@ If nobody acts, nothing in the sources says existing behaviour changes: Microsof
 
 Microsoft Learn's agent registry page lists no licence for the export. The Agent Registry convergence page says viewing all agents in the Microsoft 365 admin center does not require a specific licence and that administrators only need an appropriate role, such as AI Reader or AI Administrator, to access the inventory view. The agent management overview lists, as a prerequisite, a subscription and licences for Microsoft 365, Microsoft Copilot or Microsoft Agent 365.
 
+The Graph reporting alternative requires a Microsoft Agent 365 licence, per the List packages reference; this is distinct from viewing the inventory.
+
 The registry pages publish no meter or separate charge for the export at the time of writing (November 2026). The indirect cost is admin time to run exports and the storage and handling of the files. A licence or rate specific to the new metadata fields is not yet published.
 
 ## Scope
@@ -125,7 +131,7 @@ The export sits in the registry under **Agents** > **All agents** > **Registry**
 ## Governance guidance
 
 ### Before rollout
-- Confirm which of your administrators hold the roles that Learn's agent management roles page marks as able to view agent registry information, and name who is responsible for running the export.
+- Name who is responsible for running the export.
 - Decide where exported files are stored and who may open them, because the column list includes Owner, Description and Instructions.
 
 ### At rollout
@@ -144,13 +150,13 @@ The export sits in the registry under **Agents** > **All agents** > **Registry**
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Exporting the agent inventory, with its metadata fields</strong><br><small>Tenant</small><br><small class="controls__note">The API lists agents for reporting; it is not the export file. Learn describes the Graph agent APIs as preview and the reference prints a /beta/ request as well.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Export <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/copilot/admin/catalog/packages</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Exporting the agent inventory, with its metadata fields</strong><br><small>Tenant</small><br><small class="controls__note">The API lists agents for reporting; it is not the export file. Learn describes the Graph agent APIs as preview and the reference prints a /beta/ request as well. Access to the Package Management API requires a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Export <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/copilot/admin/catalog/packages</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The export is a registry action. Microsoft Learn describes no admin setting that turns the export on or off, and no setting that selects its columns, at the time of writing (November 2026). The registry's **Customize view** action chooses the columns shown in the **All agents** list; Learn does not say that the choice carries into the export.
 
-The Graph row lists agents programmatically. It returns the agent list, not the export file, and the reference excerpt read does not confirm that it carries the five roadmap fields. Learn's registry page describes the Microsoft Graph agent APIs as preview and says they work with the AI Administrator role.
+The Graph row lists agents programmatically. It returns the agent list, not the export file, and the reference excerpt read does not confirm that it carries the five roadmap fields. Learn's registry page describes the Microsoft Graph agent APIs as preview and says they work with the AI Administrator role. Access to the Package Management API requires a Microsoft Agent 365 licence.
 
 ## Open questions
 
@@ -166,10 +172,8 @@ cost: Low. Learn says viewing the agent inventory needs no specific licence, onl
 impact: Low. Only administrators and auditors who run the export notice the change; makers and end users see nothing.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls; Cost and licensing / command: GET /v1.0/copilot/admin/catalog/packages is presented as the reporting alternative without its required Microsoft Agent 365 licence qualification. | Found: Access to the Package Management API requires a Microsoft Agent 365 license. ... GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages | Fix: Keep the documented call. Append to controls[0].note and the Graph paragraph: 'Access to the Package Management API requires a Microsoft Agent 365 licence.' Add to Cost and licensing: 'The Graph reporting alternative requires a Microsoft Agent 365 licence, per the List packages reference; this is distinct from viewing the inventory.' The cited reference already supports these additions. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to take stock of registry-viewing role assignments, but no control row covers those assignments. | Found: Confirm which of your administrators hold the roles ... able to view agent registry information ...; the only control row is 'Exporting the agent inventory, with its metadata fields'. | Fix: Replace that checklist bullet with 'Name who is responsible for running the export.' This removes the role-assignment inventory step that has no control row, without adding an unverified row.
+- [supported, minor] Governance controls / absence: Microsoft Learn documents no switch enabling or disabling the registry export. | Found: Searched: Microsoft 365 admin center agent inventory export disable enable setting select exported columns; read registry overview and search results. Viva Agent Dashboard export switches concern a different export, not the registry inventory. | Fix: Remove the sentence 'Microsoft Learn describes no admin setting that turns the export on or off, and no setting that selects its columns, at the time of writing (November 2026).' The standard requires absent controls named in prose to have null-sided table rows; removing this sentence avoids adding rows.
 -->

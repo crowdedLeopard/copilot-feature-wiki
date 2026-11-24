@@ -14,7 +14,7 @@ previewDate: "December CY2026"
 risk: "low"
 cost: "variable"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
@@ -70,19 +70,23 @@ changes:
     note: "Correction: cost rating set to variable for Azure key-management charges; Key Vault roles qualified to Azure Key Vault; status-check bullet replaced; Key Vault role-review step removed; review set coverage disagreement with the direct-export page noted."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Correction: default state set to Not stated, and the licence-count step now follows Learn's wording (Customer Key licences against Exchange or Teams licensed users, whichever is greater)."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 55
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 2
-  hash: "a32083fd36afccfeb4d7c9ee9473261d"
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "4e33266186b076e8718ba1128d9b2410"
 ---
 
 ## What's changing
@@ -132,7 +136,7 @@ Learn's review set page ties the behaviour to tenants configured with Customer K
 
 ### Before rollout
 - Confirm with your Customer Key service owner whether the tenant already uses Customer Key and who owns the Azure Key Vault or Managed HSM resources behind it.
-- Confirm your Customer Key licence count against the users assigned Exchange or Teams licences, since Learn says a tenant without enough eligible licences reverts to default service encryption for the multiple-workloads policy.
+- Confirm that, for Customer Key for Multiple Workloads, your tenant has at least as many Customer Key licences as users assigned Exchange or Teams licences, whichever is greater; Learn says insufficient eligible licences cause encryption to revert to default service encryption.
 - Ask your Microsoft contact or watch Message center for which data encryption policy type covers review sets before you commit to a key design.
 - Brief your eDiscovery administrators that, per Learn, review set storage is provisioned per case, and agree who contacts the key vault team if a case has a problem.
 
@@ -166,16 +170,7 @@ The onboarding service is documented for the Multiple Workloads and Exchange sce
 - Is a licence or charge specific to customer-managed keys on review sets planned? Watch the Purview service description.
 
 <!-- rationale
-risk: Low. The roadmap describes customer-managed keys as an option added to the Microsoft-managed encryption already in place, so existing protection stays; the risk that remains is key-management mistakes if you opt in.
+risk: Low. The roadmap describes customer-managed keys as an option added to the Microsoft-managed encryption already in place, so existing protection stays; the risk that remains is key-management mistakes if you adopt it.
 cost: Variable. Customer Key setup requires paid Azure resources: Key Vault bills transactions and premium hardware-backed keys monthly, while Managed HSM bills hourly. No review-set-specific charge is published.
 impact: Low. Compliance admins, key vault administrators and eDiscovery managers are the people who would notice; reviewers using a review set are not described as changing how they work.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The planned review-set CMK feature is admin-opt-in on arrival. | Found: Searched: eDiscovery review set CMK default enable switch PowerShell; read roadmap, Customer Key setup/overview and review-set ingestion. General Customer Key onboarding is documented, but no source states this planned feature's arrival default. | Fix: Set defaultState to "unknown". Keep the existing wording that Microsoft has not stated what changes on arrival; general Customer Key onboarding does not establish the default for this planned release.
-- [contradicted, blocker] Governance guidance: Before rollout, licence-count bullet / licensing: The multiple-workload licence-count check is stated against users assigned Exchange or Teams licences, without specifying which count governs. | Found: your tenant must have at least as many Customer Key licenses as users assigned Exchange or Teams licenses—whichever is greater. | Fix: Replace the licence-count bullet with: "Confirm that, for Customer Key for Multiple Workloads, your tenant has at least as many Customer Key licences as users assigned Exchange or Teams licences, whichever is greater; Learn says insufficient eligible licences cause encryption to revert to default service encryption." | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the checklist asks the reader to take stock of is represented in the controls table. | Found: Checklist: Confirm your Customer Key licence count against the users assigned Exchange or Teams licences. Table: Whether the tenant is onboarded to Customer Key. | Fix: The Customer Key licence-count review step has no corresponding controls-table row. Do not add a row as part of this correction.
 -->

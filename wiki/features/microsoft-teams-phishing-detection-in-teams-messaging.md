@@ -76,15 +76,17 @@ changes:
     note: "New briefing: AI phishing detection in Teams messaging, rolling out from November 2026, with the unconfirmed tenant parameter and related reporting controls."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 56 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 58 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 55
+  claims: 58
+  confirmed: 57
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -193,9 +195,10 @@ cost: Low. No licence or meter is published for this feature, so the only known 
 impact: Medium. It is on for the tenant without admin action, but Microsoft says it focuses on external first-contact chats, so users notice it only when a warning appears.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / command: Get-CsTeamsMessagingConfiguration reads the tenant's current messaging configuration. | Found: PS C:\> Get-CsTeamsMessagingConfiguration The command shown in Example 1 returns teams messaging configuration information for the current tenant. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration to the page's sources for the read-only command in Governance guidance. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration
-- [unsupported, minor] rationale: risk / behaviour: Detection only warns users. | Found: Searched: Teams context-aware phishing; Phishing content detection in Microsoft Teams. Read roadmap, MC1519866, Teams security guide and Set-CsTeamsMessagingConfiguration. Sources describe possible warnings, not an exclusive limit on behaviour. | Fix: Replace 'Detection stays inside Teams messaging and only warns users' with 'The roadmap and notice describe detection in Teams messaging and possible warnings to users'.
+- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions / licensing: The licensing model is unknown because no licence specific to this detection is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace the licensing notes with 'Each user in the organization must have a Teams license to use Teams, except for joining meetings anonymously. No licence specific to this detection is published.' Add https://learn.microsoft.com/microsoftteams/user-access to sources and use those same sentences at the start of Cost and licensing. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] Governance guidance: Before rollout / command / command: Get-CsTeamsMessagingConfiguration reads the current tenant messaging configuration. | Found: The command shown in Example 1 returns teams messaging configuration information for the current tenant. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration to sources for the read-only command in Governance guidance. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration
+- [unsupported, minor] rationale: risk / behaviour: Detection only warns users. | Found: Searched: Teams AI phishing content detection warnings block retention licensing government clouds; "Phishing content detection in Microsoft Teams". Read roadmap record, MC1519866, Teams security guide and Set reference; possible warnings are described, but no exclusive limit on behavior is stated. | Fix: Replace 'Detection stays inside Teams messaging and only warns users' with 'The roadmap and notice describe detection in Teams messaging and possible warnings to users'.
 -->

@@ -2,80 +2,96 @@
   "slug": "m365-copilot-initiate-copilot-chat-by-sharing-files-to-the-m365-copilot-app-on-iphone-and",
   "roadmapId": 500633,
   "title": "Microsoft 365 Copilot: share files from iPhone and iPad apps to start a Copilot Chat",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "3 blocking findings (claims 27, 32, 33)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 34,
-    "confirmed": 30,
-    "unconfirmed": 1,
-    "contradicted": 3,
-    "blocker": 3,
+    "claims": 43,
+    "confirmed": 43,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the briefing understates documented mobile data protection and account controls. Microsoft lists Copilot for iOS as supporting Intune app protection, while the briefing says its applicability is unconfirmed; blocking organisational Copilot Chat also does not establish that the iOS share target disappears.",
+  "summary": "The briefing passes: its rollout facts match the roadmap, and Microsoft documentation supports the licensing, account protections and organisational access control. Targeted searches confirmed the narrower documentation gaps about the iOS sharing route; the page appropriately asks administrators to test its account and policy behaviour.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "title; summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The feature belongs to Microsoft Copilot (Microsoft 365).",
+      "claim": "The feature targets iPhone and iPad on iOS.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "quote": "\"platforms\": [\"iOS\"]; \"When users on iPhone and iPad choose the action\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Scope; Risk assessment; rationale: risk",
+      "where": "summary; What's changing; Risk assessment: Data exposure; Scope",
       "type": "record",
-      "claim": "On iPhone and iPad, choosing Microsoft 365 Copilot when sharing a Word, Excel or PowerPoint file from a third-party app, including Files, uploads the file to chat.",
+      "claim": "The roadmap describes sharing Word, Excel or PowerPoint files.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "When users on iPhone and iPad choose the action to share a Word, Excel, or PowerPoint file from a third party app (including Files) and choose Microsoft 365 Copilot as the target app, the file will be uploaded to chat.",
+      "quote": "choose the action to share a Word, Excel, or PowerPoint file",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "record",
-      "claim": "After sharing the file, the user can open a preview.",
+      "claim": "Files can be shared from third-party apps, including Files.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users will then have the option to open a preview of the file or continue their conversation with Copilot Chat.",
+      "quote": "from a third party app (including Files)",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "title; summary; What's changing; Risk assessment: Data exposure; changes",
       "type": "record",
-      "claim": "After sharing the file, the user can continue the conversation with Copilot Chat.",
+      "claim": "Choosing Microsoft 365 Copilot as the share target uploads the file to chat.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users will then have the option to open a preview of the file or continue their conversation with Copilot Chat.",
+      "quote": "choose Microsoft 365 Copilot as the target app, the file will be uploaded to chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "After sharing, users can open a preview of the file.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will then have the option to open a preview of the file",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "After sharing, users can continue their conversation with Copilot Chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "or continue their conversation with Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: status; What's changing; changes",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -86,9 +102,9 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: targetDate; What's changing",
-      "type": "date",
+      "type": "record",
       "claim": "The roadmap target date is October CY2025.",
       "status": "supported",
       "source": "roadmap record",
@@ -97,9 +113,9 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: previewDate; What's changing",
-      "type": "date",
+      "type": "record",
       "claim": "The roadmap preview date is September CY2025.",
       "status": "supported",
       "source": "roadmap record",
@@ -108,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 10,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -119,20 +135,9 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The platform listed for this feature is iOS, described as iPhone and iPad.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"iOS\"]; \"When users on iPhone and iPad choose the action to share\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
-      "type": "availability",
+      "type": "record",
       "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
@@ -141,10 +146,21 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "Scope",
+      "n": 12,
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap names no administrator role or prerequisite.",
+      "claim": "The record identifies the product as Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing: Licence",
+      "type": "record",
+      "claim": "The roadmap item names no licence for this feature.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "When users on iPhone and iPad choose the action to share a Word, Excel, or PowerPoint file from a third party app (including Files) and choose Microsoft 365 Copilot as the target app, the file will be uploaded to chat.",
@@ -152,21 +168,21 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "No Microsoft Learn page describing this specific iOS share-to-chat feature was found.",
+      "n": 14,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap names no administrator role or prerequisite.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Copilot app iOS iPhone iPad share Word Excel PowerPoint Files 500633 setting default account; \"Copilot\" \"iOS\" \"sharing files\". Opened app overview and 2025 release notes; searched release notes for 500633, sharing files, share a file and third-party app: no matching feature.",
+      "source": "roadmap record",
+      "quote": "Users will then have the option to open a preview of the file or continue their conversation with Copilot Chat.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft Learn now calls the Microsoft 365 Copilot app Microsoft Copilot.",
+      "claim": "Learn now calls the Microsoft 365 Copilot app Microsoft Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-app-overview",
       "quote": "The Microsoft 365 Copilot app is now called Microsoft Copilot.",
@@ -174,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 16,
       "where": "Why it matters; rationale: risk",
       "type": "behaviour",
-      "claim": "Uploading a file is already a documented way to give Copilot Chat organisational content.",
+      "claim": "Learn already documents file upload as a way to give Copilot Chat organisational content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "To use organizational content with Copilot Chat: Copy and paste content, upload a file, or select a file when creating your prompt.",
@@ -185,21 +201,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: defaultState; Why it matters; summary",
-      "type": "default",
-      "claim": "The feature is user-opt-in: a user chooses to share a file, and no feature-specific administrator enablement requirement or further default was found.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When users on iPhone and iPad choose the action to share ... and choose Microsoft 365 Copilot as the target app, the file will be uploaded to chat. Searched: \"Copilot\" \"share\" \"iPhone\" \"chat\" admin setting; opened configure-copilot-admin-center; no share-route enablement setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
+      "n": 17,
       "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The included licensing model rests on Copilot Chat (Basic) being the standalone baseline experience included with eligible Microsoft 365 licences.",
+      "claim": "The included licensing model reflects Copilot Chat (Basic), the standalone baseline included with eligible Microsoft 365 licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses.",
@@ -207,43 +212,153 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Users with a Copilot licence get the full Microsoft Copilot app experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-app-overview",
-      "quote": "The app features available for work or school experiences depend on the Microsoft 365 license(s) assigned to the user. Users with a Copilot license get the full Microsoft Copilot app experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A licence specific to sharing files from other iOS apps to Copilot Chat is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Chat sharing file iOS app license meter file upload credit rate. Opened Copilot overview and app overview; read billing search excerpts. General Chat entitlement and agent billing are documented, but no separate licence for this share route was found.",
+      "quote": "Users with a Copilot license get the full Microsoft Copilot app experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "Cost and licensing: Meter; front matter: licensing.notes; rationale: cost",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
       "type": "absence",
-      "claim": "A credit rate or meter specific to sharing a file to the app is not published.",
+      "claim": "A licence specific to this iOS sharing feature is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Chat sharing file iOS app license meter file upload credit rate. Opened Copilot overview; read pay-as-you-go meters, billing rates and Copilot Credits report excerpts. These describe agent billing, not a rate or meter for the iOS share route.",
+      "quote": "Searched: Copilot Chat sharing files iPhone iPad licence meter pricing credits. Opened copilot/plan/copilot-overview and copilot/plan/copilot-app-overview; they state product licensing, not a separate entitlement for this share route.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No meter or credit rate specific to sharing a file into the app is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat sharing files iPhone iPad licence meter pricing credits. Read overview and excerpts from pay-as-you-go-meters and usage-based-billing-overview-copilot-credits; billing covers agents and named services, not this file-sharing action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature is user-opt-in: the user chooses to share a file, with no documented feature-specific enabling switch.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When users on iPhone and iPad choose the action to share a Word, Excel, or PowerPoint file",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The blocking path is Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Block app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, and then select Integrated Apps. Select the Available Apps list. Select an app from the Available Apps list to open the overview pane. Select Block app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The cited Integrated Apps controls are available only to Global Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].governs and note; Risk assessment: Change & support; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Blocking Copilot through Integrated Apps is a tenant control over organisational Copilot Chat access, including licensed users and the mobile app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "Blocking Copilot through Integrated Apps is a tenant-wide control that you can scope to specific users or groups, including licensed users. This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Blocked users see the Copilot Chat was turned off for your organization screen.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "Users blocked through Integrated Apps see the Copilot Chat was turned off for your organization experience when opening Copilot Chat in the Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The organisational Integrated Apps block is not the documented control for personal Microsoft-account access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-app-overview",
+      "quote": "IT admins of work or school environments can limit their users from accessing the Copilot app with their Microsoft account (personal account) by using Tenant Restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Governance controls; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Microsoft does not describe whether Integrated Apps blocking removes the iOS share target.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot iOS share extension sharing files target account administrator setting disable default. Opened manage-copilot-chat, copilot-app-overview and teams-apps-work-on-outlook-and-m365; none describes removal of the iOS share target.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "An automation call for the Integrated Apps Copilot Chat access block is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Integrated Apps block Copilot app PowerShell availability automation; \"Integrated apps\" \"PowerShell\" \"block\" \"Copilot\". Read manage-copilot-chat and Package Management API overview; the latter manages agents/tools, not Copilot Chat access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].ui and api; summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No dedicated UI or API switch for sharing files from other iOS apps into Copilot Chat is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot iOS share extension sharing files target account administrator setting disable default; Microsoft Graph Integrated Apps block Copilot app. Opened configure-copilot-admin-center and manage-copilot-chat; no setting or API specific to incoming iOS file sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Microsoft Learn page describing this specific sharing feature was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"iPhone\" \"sharing files\"; Copilot iOS share extension. Opened copilot-app-overview and both current and 2025 release notes; searched release notes for 500633, sharing files, third-party app and share extension without a feature match.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Copilot Chat users signed in with Microsoft Entra accounts receive Enterprise Data Protection for prompts and responses.",
+      "claim": "Users signed in with Microsoft Entra accounts receive Enterprise Data Protection for prompts and responses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts. With EDP, prompts and responses are protected",
@@ -251,7 +366,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Chats, files and protections remain separate according to the account used to sign in.",
@@ -262,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 33,
       "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Microsoft advises instructing users to sign in with a work or school account to receive enterprise protections.",
+      "claim": "Microsoft advises work or school sign-in to receive enterprise protections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
       "quote": "To help ensure users receive enterprise protections, instruct them to sign in with their work or school account when using Microsoft Copilot Chat.",
@@ -273,18 +388,18 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 34,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The Work label identifies the work or school experience in the app.",
+      "claim": "A Work label identifies the work or school experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
-      "quote": "These include a different background color for each account type, \"Work\" label under the user profile in the navigation pane, and the green data protection shield in their Microsoft Entra ID experience.",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-app-overview",
+      "quote": "Visual indicators in the app distinguish which account the user is logged into, including a \"Work\" label under the user's profile in the navigation pane when logged into work or school accounts.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 35,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "The Microsoft Entra ID experience shows a green data protection shield.",
@@ -295,21 +410,32 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not describe which signed-in account receives a file from this specific iOS sharing route.",
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Microsoft Copilot for iOS supports core Intune app protection policies, including data-transfer restrictions.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Copilot app iOS iPhone iPad share Word Excel PowerPoint Files 500633 setting default account. Opened app overview, Manage Copilot Chat and Intune data-transfer guidance. They describe account separation or generic work identity, not this route's destination-account selection.",
+      "source": "https://learn.microsoft.com/intune/app-management/ref-protected-apps",
+      "quote": "These apps support the core App Protection Policy settings ... Restricting data transfer and copy-and-paste functions ... | Microsoft Copilot | [iOS](https://apps.apple.com/app/microsoft-office/id541164041)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Security & identity; Governance controls",
+      "n": 37,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Intune iOS app protection policies have a Receive data from other apps setting.",
+      "claim": "Intune documents the Send org data to other apps setting for iOS app protection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/app-management/protection/manage-data-transfer-ios",
+      "quote": "configure the Send org data to other apps setting to Policy managed apps with Open-In/Share filtering value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Intune documents the Receive data from other apps setting for iOS app protection policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/intune/app-management/protection/manage-data-transfer-ios",
       "quote": "To specify how you want to allow an app to receive data from other apps, enable Receive data from other apps and then choose your preferred level of receiving data.",
@@ -317,98 +443,65 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk; Open questions",
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "Intune app protection and Receive data from other apps are not confirmed to govern the Microsoft Copilot app.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/intune/app-management/ref-protected-apps",
-      "quote": "These apps support the core App Protection Policy settings ... Restricting data transfer and copy-and-paste functions. Microsoft Copilot | iOS | [Core App Protection Policy settings] ✔",
-      "severity": "blocker",
-      "fix": "Replace the unconfirmed-applicability statements with: 'Microsoft lists Microsoft Copilot for iOS as supporting core Intune app protection policies, including data-transfer restrictions. Test how the assigned policy handles this share route.' Cite https://learn.microsoft.com/intune/app-management/ref-protected-apps and https://learn.microsoft.com/intune/app-management/protection/manage-data-transfer-ios. Narrow the open question to how the assigned policy behaves on this particular sharing route, rather than whether the app supports protection."
-    },
-    {
-      "n": 28,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Block app is the documented blocking path.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
-      "quote": "Select Settings, and then select Integrated Apps. Select the Available Apps list. Select an app from the Available Apps list to open the overview pane. Select Block app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "The cited Integrated Apps documentation limits these controls to Global Admins.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
-      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API for blocking the Copilot app itself through Integrated Apps is documented.",
+      "claim": "Microsoft does not describe which signed-in account receives a file shared through this specific iOS route.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Graph block Copilot app Integrated Apps API copilot application availability; \"Integrated Apps\" \"Copilot\" \"block\" \"Graph\". Opened copilotPackage-unblock; read copilotPackage-block reference excerpt. These govern catalog packages, not the Copilot app itself.",
+      "quote": "Searched: \"Copilot\" \"share extension\" \"account\"; Copilot iOS share extension sharing files target account administrator setting disable default. Opened copilot-app-overview and manage-copilot-chat; account separation is stated, but incoming share account selection is not.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[1]; summary; controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "No dedicated UI or API switch specific to the iOS share-to-chat feature is documented.",
+      "n": 40,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-06-09T23:15:32.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot\" \"share\" \"iPhone\" \"chat\" admin setting; \"Copilot\" \"iOS\" \"share\" \"switch\" \"Graph\". Opened configure-copilot-admin-center and Manage Copilot Chat; read sharing-settings excerpts. No dedicated inbound iOS sharing switch was found; response sharing is a different feature.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-09T23:15:32\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "controls[0].governs and note; Risk assessment: Change & support; Governance controls",
-      "type": "applicability",
-      "claim": "Blocking Copilot in Integrated Apps removes the whole mobile app experience and therefore its iOS share target.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Microsoft Graph block Copilot app Integrated Apps API copilot application availability. Opened Manage Copilot Chat, Integrated Apps guidance and app overview. These document blocking organisational Copilot access and a turned-off Chat screen, not removal of the iOS share target or personal app access.",
-      "severity": "blocker",
-      "fix": "Change controls[0].governs to 'Access to organisational Copilot Chat through the Copilot app'. Replace whole-app removal and share-target implications in its note and the prose with: 'Blocking Copilot through Integrated Apps blocks organisational Copilot Chat access, including for licensed users; blocked users see a Copilot Chat was turned off for your organization screen. Microsoft does not describe whether this removes the iOS share target.' Cite https://learn.microsoft.com/copilot/manage/manage-copilot-chat. Do not present this as a control over personal Microsoft-account access."
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Blocking Copilot in Integrated Apps is the only documented tenant control relevant to this feature.",
-      "status": "contradicted",
+      "n": 41,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The Microsoft Copilot app supports iOS devices as a mobile client.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-app-overview",
-      "quote": "IT admins of work or school environments can limit their users from accessing the Copilot app with their Microsoft account (personal account) by using Tenant Restrictions.",
-      "severity": "blocker",
-      "fix": "Replace 'The only tenant control documented is blocking the Copilot app in Integrated Apps, which removes the whole app rather than this route' with 'Integrated Apps provides a control over organisational Copilot Chat access, rather than a dedicated switch for this sharing route.' Remove the implication that blocking the app is the only documented tenant control; retain the open question about a dedicated share-route switch without that exclusivity."
+      "quote": "You can use the Microsoft Copilot app in the following client formats: ... Mobile app ... iOS devices",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 34,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist asks readers to check an Intune iOS app protection policy, but the controls table has no corresponding row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check whether your Intune app protection policy for iOS changes what the test does ... Intune's Receive data from other apps setting ... is not a row here.",
-      "severity": "minor",
-      "fix": "Remove the standalone checklist item 'Check whether your Intune app protection policy for iOS changes what the test does, and record the result for your service desk.' Keep the managed-device sharing test and the corrected explanation of Intune's documented reach; this correction does not add a controls row."
+      "n": 42,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that this feature changes existing behaviour without a user choosing the share action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot iOS share extension sharing files target account administrator setting disable default. Read roadmap, copilot-app-overview and configure-copilot-admin-center; none states an automatic change to existing behaviour for this share route.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The documented roadmap workflow consists of a user-started upload and the user's choice of a preview or continued conversation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "choose Microsoft 365 Copilot as the target app, the file will be uploaded to chat. Users will then have the option to open a preview of the file or continue their conversation with Copilot Chat.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T06:25:30.487Z",
+    "at": "2026-11-24T07:39:35.868Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -446,13 +539,18 @@
         "url": "https://learn.microsoft.com/intune/app-management/protection/manage-data-transfer-ios",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/app-management/ref-protected-apps",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
       {
         "index": 0,
         "side": "ui",
-        "governs": "Whether the Copilot app, and so its share target, is available in the tenant",
+        "governs": "Access to organisational Copilot Chat through the Copilot app",
         "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
         "reachable": true,
         "segments": [
@@ -466,5 +564,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

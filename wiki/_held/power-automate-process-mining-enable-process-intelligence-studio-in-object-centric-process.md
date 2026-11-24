@@ -107,18 +107,20 @@ changes:
     note: "Removed the unsupported Set-TenantSettings PowerShell call from the add-on capacity control and noted that the Set-TenantSettings reference does not document one."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 43
+  claims: 46
+  confirmed: 45
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "f7d196f87ca1dd2000fb873ac8fc894a"
 ---
 
@@ -194,8 +196,13 @@ cost: Low, provisional. No change to licensing is stated; existing Power Automat
 impact: Medium. The roadmap says it is enabled automatically for admins, makers and marketers, and it affects specific roles: process analysts and process owners.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for restricting who may allocate add-on capacity is not yet documented. | Found: pac admin update-tenant-settings: Update tenant settings. --setting-name: Name of the setting to be updated. --setting-value: Value of the setting to be updated. | Fix: Replace controls[1].api null with kind pac-cli, call 'pac admin update-tenant-settings --setting-name disableCapacityAllocationByEnvironmentAdmins --setting-value true', and docs https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings; update the table to match. The existing cited https://learn.microsoft.com/power-platform/admin/list-tenantsettings#definitions defines this Boolean as disabling capacity allocation by environment administrators. Add the CLI reference to sources. The narrow Set-TenantSettings-reference caveat may remain, but it does not justify reporting all automation absent. | Source: https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Governance controls table / absence: The Set-TenantSettings reference does not document a PowerShell call specifically for disableCapacityAllocationByEnvironmentAdmins. | Found: Searched: 'disableCapacityAllocationByEnvironmentAdmins update tenant settings API PowerShell'. Read the entire Set-TenantSettings reference: its example sets WalkMeOptOut and its parameters are RequestBody and ApiVersion; the capacity-allocation property is not present. | Fix: Add https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings to sources, and date the note's reference check 'at the time of writing (November 2026)'.
+- [supported, minor] Risk assessment: Data exposure / applicability: Access to process analytics follows process sharing permissions. | Found: Adding a viewer to a process shares analytics and insights with other people. A viewer can perform the following actions: ... View the process analytics | Fix: Add https://learn.microsoft.com/power-automate/process-mining-share to sources for the statement about process permissions. | Source: https://learn.microsoft.com/power-automate/process-mining-share
+- [supported, minor] front matter: licensing.model / licensing: Feature-specific licensing is unknown, while documented process mining licensing is the baseline. | Found: The Power Automate Premium license is a per-user license ... Process mining capabilities: Enable you to create a process ... view the analytics report in the web | Fix: Set licensing.model to included. Use the note: 'Process mining capabilities are included in Power Automate Premium; additional licensing specific to this change is not yet published.' Cite https://learn.microsoft.com/power-automate/process-advisor-overview#licensing. Only product-level licensing is documented, so unknown understates the published entitlement. | Source: https://learn.microsoft.com/power-automate/process-advisor-overview
+- [supported, minor] controls[0].api; Governance controls table / command: The printed PATCH call and currencyAllocations body allocate ProcessMiningDataStorage capacity using API version 2024-10-01. | Found: PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01; currencyAllocations; allocated: integer (int32); currencyType: ExternalCurrencyType; ProcessMiningDataStorage | Fix: Replace the call, in front matter and the rendered table, with 'PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01'. Add the note: 'The request body sets currencyAllocations with currencyType ProcessMiningDataStorage and allocated.' The printed body keys are correct, but the standard puts them in the note. | Source: https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment
+- [supported, minor] controls[1].note; Governance controls table / absence: The Set-TenantSettings reference does not document a PowerShell call specifically for disableCapacityAllocationByEnvironmentAdmins. | Found: Searched: 'disableCapacityAllocationByEnvironmentAdmins update tenant settings API Set-TenantSettings'. Read the full Set-TenantSettings reference: RequestBody and ApiVersion parameters; WalkMeOptOut example; no capacity-allocation property. | Fix: Date this narrow reference-check statement 'at the time of writing (November 2026)' and add https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings to sources.
 -->

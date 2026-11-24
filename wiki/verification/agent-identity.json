@@ -3,31 +3,39 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "Agent identity: whose permissions does an agent use?",
-  "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-24",
   "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 96,
-    "confirmed": 96,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 1
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 11)"
+    ]
   },
-  "summary": "The identity mechanisms, control paths and Graph calls are supported by Microsoft documentation, including the corrected blueprint credentials and restricted sign-in query. One minor correction remains: acknowledge that Microsoft's agent-management pages give a different Conditional Access licensing requirement from its dedicated licensing section.",
+  "counts": {
+    "claims": 99,
+    "confirmed": 98,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 9
+  },
+  "summary": "The Conditional Access UI route starts inside a policy without explaining how to reach or create that policy, so an administrator cannot follow it from the named portal. The other required control routes and calls were verified; all sixteen cited pages were accessible in this run. Minor corrections are needed for API notes, preview qualifications and conflicting Microsoft documentation.",
   "claims": [
     {
       "n": 1,
       "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Control maker credential options is in Power Platform admin center under Manage > Environments (or Environment groups) > environment > Settings > Product > Features > Copilot Studio agents.",
+      "claim": "Control maker credential options is under Manage > Environments (or Environment groups) > environment > Settings > Product > Features > Copilot Studio agents in Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
       "quote": "In the environment's details page, select Settings on the top menu bar. Expand the Product section, and select Features. ... Scroll to the Copilot Studio agents section. ... Under Control maker credential options",
@@ -38,10 +46,10 @@
       "n": 2,
       "where": "controls[0].api; Open questions",
       "type": "absence",
-      "claim": "An API for Control maker credential options was not found at the time of writing.",
+      "claim": "No API for the Copilot Studio maker-credential option was found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Control maker credential options\" API; PowerShell API Set-AdminPowerAppEnvironment pac; REST Power Platform maker credentials. Opened configure-no-maker-authentication, pac copilot-studio, and Environment Management Settings update reference; none documents this setting's API.",
+      "quote": "Searched: Copilot Studio Control maker credential options API PowerShell configure-no-maker-authentication; Power Platform environment settings API maker credentials credential options sharing embedded. Read configure-no-maker-authentication; no setting-specific API appeared.",
       "severity": null,
       "fix": null
     },
@@ -49,7 +57,7 @@
       "n": 3,
       "where": "controls[1].ui",
       "type": "admin-path",
-      "claim": "Sharing agents with embedded maker credentials is under Power Platform admin center > Manage > Environments > environment > Settings > Features.",
+      "claim": "Sharing agents with embedded maker credentials is under Manage > Environments > environment > Settings > Features in Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
       "quote": "Go to Manage > Environments, and then select the environment that you want to configure. ... Select Settings, and then select Features. ... Find Sharing agents with embedded maker credentials.",
@@ -60,10 +68,10 @@
       "n": 4,
       "where": "controls[1].api",
       "type": "absence",
-      "claim": "Microsoft does not document an automation equivalent for the embedded-maker-credentials sharing setting.",
+      "claim": "An API for the embedded-maker-credentials sharing control is not yet documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Sharing agents with embedded maker credentials\" API PowerShell environment settings; \"embedded maker credentials\" \"Power Platform API\" \"PowerShell\". Opened both configuration pages, pac copilot-studio and Environment Management Settings update; no setting-specific call.",
+      "quote": "Searched: Copilot Studio Sharing agents with embedded maker credentials API PowerShell environment setting; Power Platform environment settings API maker credentials credential options sharing embedded. Read both cited sharing-control pages; no operation setting this control appeared.",
       "severity": null,
       "fix": null
     },
@@ -71,10 +79,10 @@
       "n": 5,
       "where": "controls[2].ui",
       "type": "admin-path",
-      "claim": "The maker configures connector credentials at Agents > agent > Tools > tool > Overview > Details > Additional details > Credentials to use.",
+      "claim": "The connector credential setting is at Agents > agent > Tools > tool > Overview > Details > Additional details > Credentials to use in Copilot Studio.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors",
-      "quote": "Go to the connector tool Overview page. ... Under Details > Additional details > Credentials to use, select Maker-provided credentials.",
+      "quote": "Select Agents and select the agent ... Go to the Tools page ... Go to the connector tool Overview page. ... Under Details > Additional details > Credentials to use, select Maker-provided credentials.",
       "severity": null,
       "fix": null
     },
@@ -82,10 +90,10 @@
       "n": 6,
       "where": "controls[2].api",
       "type": "absence",
-      "claim": "No API equivalent is documented for the connector tool's Credentials to use choice.",
+      "claim": "An API operation setting a connector tool's Credentials to use option is not yet documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio connector tool \"Credentials to use\" Dataverse API authentication; botcomponent authentication ConnectionReference. Opened advanced-connectors and pac copilot-studio; read tool-authentication and botcomponent reference excerpts; no equivalent call found.",
+      "quote": "Searched: Copilot Studio connector tool Credentials to use maker provided credentials API; Copilot Studio connector tool YAML connectionProperties mode Maker Invoker credentials. Read advanced-connectors and configure-enduser-authentication; inventory and CLI results did not document this setter.",
       "severity": null,
       "fix": null
     },
@@ -93,7 +101,7 @@
       "n": 7,
       "where": "controls[3].ui",
       "type": "admin-path",
-      "claim": "Dataverse agent users are added through Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Agents > + Add agent.",
+      "claim": "Dataverse agent users are added at Manage > Environments > environment > Settings > Users + permissions > Agents > + Add agent in Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/create-users",
       "quote": "In the command bar, select Settings. ... Expand Users + permissions, and then select Agents. ... Select + Add agent from the command bar. The Add agent pane appears.",
@@ -104,62 +112,62 @@
       "n": 8,
       "where": "controls[3].api; Open questions",
       "type": "absence",
-      "claim": "No API for adding Dataverse agent users was found at the time of writing.",
+      "claim": "No API specifically documented for adding Dataverse agent users was found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse \"agent users\" API add agent systemuser; Dataverse \"agent users\" \"Web API\"; Power Apps developer \"agent user\" Create. Opened create-users and agent-users; read SystemUser reference and Web API results; no agent-user provisioning call found.",
+      "quote": "Searched: Dataverse agent users add agent API systemuser Entra agent identity; Dataverse Entra agent user sync API Add-AdminPowerAppsSyncUser supported agent users. Read create-users, agent-users, add-users-to-environment and SyncUser excerpts; no agent-specific Dataverse provisioning API appeared.",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "controls[4].ui; What to check",
+      "where": "controls[4].ui",
       "type": "admin-path",
-      "claim": "Agent identities are accessible in Microsoft Entra admin center at Entra ID > Agents > Agent identities.",
+      "claim": "Individual agent identities can be viewed and managed at Entra ID > Agents > Agent identities in Microsoft Entra admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
       "quote": "Browse to Entra ID > Agents > Agent identities. ... Select any agent identity to view its details, including name, description, status, owners, sponsors, granted permissions, and sign-in logs.",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "For the disabling operation, extend the path to 'Entra ID > Agents > Agent identities > agent identity > Disable', as documented at https://learn.microsoft.com/entra/agent-id/disable-agent-identities, which is already cited."
     },
     {
       "n": 10,
       "where": "controls[4].api",
       "type": "command",
-      "claim": "Microsoft Graph supports updating an agent identity with PATCH https://graph.microsoft.com/v1.0/servicePrincipals/{id}/microsoft.graph.agentIdentity.",
+      "claim": "PATCH https://graph.microsoft.com/v1.0/servicePrincipals/{id}/microsoft.graph.agentIdentity updates an agent identity, including its enabled state.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0",
       "quote": "Update the properties of an agentIdentity object. ... PATCH https://graph.microsoft.com/v1.0/servicePrincipals/{id}/microsoft.graph.agentIdentity",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Keep the call; add to the note: 'The request body sets accountEnabled to false to disable the identity, or true to enable it.' The v1.0 property is documented at https://learn.microsoft.com/graph/api/resources/agentidentity?view=graph-rest-1.0."
     },
     {
       "n": 11,
-      "where": "controls[5].ui; Risks and limits",
+      "where": "controls[5].ui",
       "type": "admin-path",
-      "claim": "Agent targeting is available under Assignments > Users, agents, or workload identities > Agents in Microsoft Entra Conditional Access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
-      "quote": "Instead, to scope policies to agent users, under Assignments > Users, agents, or workload identities, select Agents, and then target all agent users or specific agent users.",
-      "severity": null,
-      "fix": null
+      "claim": "The route from Microsoft Entra admin center to the Conditional Access agent control is Assignments > Users, agents, or workload identities > Agents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
+      "quote": "Browse to Entra ID > Conditional Access > Policies. ... Select New policy. ... Under Assignments, select Users, agents or workload identities.",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Entra ID > Conditional Access > Policies > New policy > Assignments > Users, agents, or workload identities > Agents'. The existing disable-agent-identities source supplies the entry route, and the row's agent-id source supplies the final Agents selection."
     },
     {
       "n": 12,
       "where": "controls[5].api",
       "type": "command",
-      "claim": "The documented Graph POST to the beta identity/conditionalAccess/policies endpoint creates an all-agent-identity block policy in report-only state using a policy JSON body.",
+      "claim": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies creates the documented agent-identity policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-      "quote": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies ... \"displayName\": \"Block all agent identities from accessing resources\" ... \"state\": \"enabledForReportingButNotEnforced\"",
-      "severity": null,
-      "fix": null
+      "quote": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies",
+      "severity": "minor",
+      "fix": "Set the call to 'POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies'. Move the description to the note: 'The example sets conditions.clientApplications.includeAgentIdServicePrincipals to [\"All\"], grantControls.builtInControls to [\"block\"], and state to \"enabledForReportingButNotEnforced\"; it reports rather than enforces blocking.'"
     },
     {
       "n": 13,
       "where": "controls[6].ui",
       "type": "admin-path",
-      "claim": "Agent sign-ins are viewed at Microsoft Entra admin center > Entra ID > Monitoring & health > Sign-in logs.",
+      "claim": "Agent sign-in logs are under Entra ID > Monitoring & health > Sign-in logs in Microsoft Entra admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
       "quote": "Browse to Entra ID > Monitoring & health > Sign-in logs.",
@@ -170,7 +178,7 @@
       "n": 14,
       "where": "controls[6].api",
       "type": "command",
-      "claim": "The documented agent-identity sign-in query is GET https://graph.microsoft.com/beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'.",
+      "claim": "The printed beta Graph GET query retrieves agent-identity service-principal sign-ins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
       "quote": "GET https://graph.microsoft.com/beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'",
@@ -179,12 +187,12 @@
     },
     {
       "n": 15,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Environment Admin can configure maker credential options for a single environment.",
+      "where": "controls[0].governs; summary",
+      "type": "applicability",
+      "claim": "Administrators can choose end-user credentials, maker-provided credentials or both for agent tools per environment or environment group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "Environment Admin for a single environment, or Power Platform Administrator/Global Admin for environment groups",
+      "quote": "Choose whether end-user or maker credentials (or both) can be selected by makers for agents in an environment, or for all agents in all environments in an environment group.",
       "severity": null,
       "fix": null
     },
@@ -192,7 +200,7 @@
       "n": 16,
       "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "Power Platform Administrator or Global Admin is required to configure maker credential options for environment groups.",
+      "claim": "Environment Admin can configure the maker-credential option for a single environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
       "quote": "Environment Admin for a single environment, or Power Platform Administrator/Global Admin for environment groups",
@@ -201,12 +209,12 @@
     },
     {
       "n": 17,
-      "where": "controls[0].scope; Why it matters",
-      "type": "applicability",
-      "claim": "The maker-credential control governs agents in the selected environment or environment group.",
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Power Platform Administrator or Global Admin is required to configure the maker-credential option for environment groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "Choose whether end-user or maker credentials (or both) can be selected by makers for agents in an environment, or for all agents in all environments in an environment group.",
+      "quote": "Environment Admin for a single environment, or Power Platform Administrator/Global Admin for environment groups",
       "severity": null,
       "fix": null
     },
@@ -214,7 +222,7 @@
       "n": 18,
       "where": "controls[0].note; Risks and limits",
       "type": "behaviour",
-      "claim": "Enforcing end-user credentials changes all tools for all agents in the affected environments immediately at runtime.",
+      "claim": "Enforcing end-user credentials immediately changes all tools for all agents in affected environments to require end-user credentials at runtime.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
       "quote": "All tools for all agents in the impacted environments instantly change to require end-user credentials at runtime.",
@@ -223,42 +231,9 @@
     },
     {
       "n": 19,
-      "where": "controls[0].governs",
-      "type": "behaviour",
-      "claim": "Administrators can permit maker-provided credentials, end-user credentials or both.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "You choose whether makers can select to use their own credentials for authenticating tool connections, to use the end-user's credentials, or to have access to both.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "Both End-user and Maker-provided credentials are enabled by default in the administrative control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "By default, both End-user and Maker-provided credentials are enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Environment-group maker credential settings override individual environment settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "If an environment is part of a managed group where the policy is enabled, you can't individually disable it for one environment in that group - environment group settings override any environment settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
       "where": "controls[1].scope",
       "type": "applicability",
-      "claim": "The embedded-maker-credentials setting is an environment-level control for Copilot Studio agents.",
+      "claim": "The embedded-maker-credentials sharing control applies at environment scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
       "quote": "The Sharing agents with embedded maker credentials setting is an environment-level control for Microsoft Copilot Studio agents.",
@@ -266,8 +241,8 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[1].note; Risks and limits",
+      "n": 20,
+      "where": "controls[1].note; Risks and limits; Open questions",
       "type": "availability",
       "claim": "The embedded-maker-credentials sharing control is in preview.",
       "status": "supported",
@@ -277,7 +252,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 21,
       "where": "controls[1].note; What to check",
       "type": "behaviour",
       "claim": "All sharing allowed detects unsafe credential use and informs makers without blocking sharing.",
@@ -288,10 +263,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "controls[1].note; What to check",
+      "n": 22,
+      "where": "controls[1].note; Why it matters; What to check",
       "type": "behaviour",
-      "claim": "Safe sharing enforced blocks applicable publishing or sharing paths for unsafe agents.",
+      "claim": "Safe sharing enforced blocks applicable share or publish paths for unsafe agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
       "quote": "Safe sharing enforced | Copilot Studio blocks applicable publish or share paths when an agent is unsafe for sharing.",
@@ -299,10 +274,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 23,
       "where": "controls[1].note; Risks and limits",
       "type": "behaviour",
-      "claim": "Enabling the embedded-credentials control does not retroactively unshare existing agents.",
+      "claim": "The sharing control does not retroactively unshare existing agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
       "quote": "The control doesn't retroactively unshare or disable existing agents.",
@@ -310,21 +285,21 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risks and limits",
+      "n": 24,
+      "where": "Risks and limits: embedded credentials",
       "type": "behaviour",
-      "claim": "Enabling the embedded-credentials control does not retroactively disable existing agents.",
+      "claim": "The sharing control does not retroactively disable existing agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
-      "quote": "The control doesn't retroactively unshare or disable existing agents.",
+      "quote": "Enabling enforcement doesn't retroactively unshare or disable agents that were previously shared.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risks and limits",
+      "n": 25,
+      "where": "Risks and limits: embedded credentials",
       "type": "behaviour",
-      "claim": "The embedded-credentials control enforces at sharing and publishing rather than blocking a running agent.",
+      "claim": "The embedded-credentials control acts at share and publish time, not while an agent runs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
       "quote": "The sharing agents with embedded maker credentials control governs sharing and publishing. It doesn't block an agent while the agent is running.",
@@ -332,7 +307,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 26,
       "where": "controls[2].note",
       "type": "behaviour",
       "claim": "Using maker-provided credentials for connector tools requires an authenticated channel.",
@@ -343,21 +318,21 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "controls[2].note; Why it matters",
+      "n": 27,
+      "where": "controls[2].note",
       "type": "default",
-      "claim": "The default credential option for connectors and flows is End user credentials.",
+      "claim": "Connector connections use user credentials by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
-      "quote": "The default option for connectors and flows is End user credentials, and the security scan provides a warning if the maker changes it to Maker-provided credentials.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors",
+      "quote": "By default, the connection uses user credentials.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[3].note; What it is",
+      "n": 28,
+      "where": "controls[3].note; What it is: Entra agent identity",
       "type": "availability",
-      "claim": "Adding Dataverse agent users is a preview feature.",
+      "claim": "Dataverse agent users are in preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/create-users",
       "quote": "Create an agent user (preview) ... This is a preview feature.",
@@ -365,32 +340,21 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "controls[3].note; What it is",
+      "n": 29,
+      "where": "controls[3].note; What it is: Entra agent identity",
       "type": "behaviour",
-      "claim": "An administrator chooses an agent user and adds it to the selected environment.",
+      "claim": "After choosing and adding an agent user to an environment, the administrator selects a security role for it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/create-users",
-      "quote": "Choose the agent user from the search list, and then select Add to add the agent.",
+      "quote": "Choose the agent user from the search list, and then select Add to add the agent. ... On the Manage security roles page, select a security role for your agent.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[3].note; What it is",
-      "type": "behaviour",
-      "claim": "The administrator assigns the added Dataverse agent a security role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
-      "quote": "On the Manage security roles page, select a security role for your agent. ... Select Save to apply the changes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 30,
       "where": "controls[4].note; Governance controls",
       "type": "role",
-      "claim": "Agent ID Administrator or Cloud Application Administrator can manage agent identities.",
+      "claim": "Agent ID Administrator can manage agent identities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
       "quote": "Manage agent identities | Agent ID Administrator or Cloud Application Administrator",
@@ -398,10 +362,21 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 31,
       "where": "controls[4].note; Governance controls",
       "type": "role",
-      "claim": "Agent identity owners can manage their own agents without those administrator roles.",
+      "claim": "Cloud Application Administrator can manage agent identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
+      "quote": "Manage agent identities | Agent ID Administrator or Cloud Application Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[4].note; Governance controls",
+      "type": "role",
+      "claim": "Agent identity owners can manage their own agents without those administrative roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
       "quote": "Agent identity owners can manage their own agents without these roles.",
@@ -409,19 +384,30 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 33,
       "where": "controls[4].note",
       "type": "role",
-      "claim": "The agentIdentity update API lists AgentIdentity.EnableDisable.All as a least-privileged permission.",
+      "claim": "The update API lists AgentIdentity.EnableDisable.All as a least-privileged permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0",
-      "quote": "Delegated (work or school account) | AgentIdentity.EnableDisable.All | AgentIdentity.ReadWrite.All",
+      "quote": "Delegated (work or school account) | AgentIdentity.EnableDisable.All ... Application | AgentIdentity.EnableDisable.All, AgentIdentity.CreateAsManager",
+      "severity": "minor",
+      "fix": "Replace the last sentence of the note with: 'The API lists AgentIdentity.EnableDisable.All as least privileged for delegated work or school accounts; its application-permission entry lists AgentIdentity.EnableDisable.All and AgentIdentity.CreateAsManager.'"
+    },
+    {
+      "n": 34,
+      "where": "controls[5].governs; summary",
+      "type": "applicability",
+      "claim": "Conditional Access governs agent identities and agents' user accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
+      "quote": "An agent can act on behalf of a signed-in user, use its own agent identity, or use its own agent user account.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Governance controls",
+      "n": 35,
+      "where": "Governance controls: roles",
       "type": "role",
       "claim": "Configuring Conditional Access policies requires Conditional Access Administrator.",
       "status": "supported",
@@ -431,439 +417,43 @@
       "fix": null
     },
     {
+      "n": 36,
+      "where": "controls[5].api; controls[5].note",
+      "type": "behaviour",
+      "claim": "The documented Graph policy example is report-only, not an enforcing block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
+      "quote": "\"state\": \"enabledForReportingButNotEnforced\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[5].api; controls[5].note",
+      "type": "applicability",
+      "claim": "The documented Graph example targets all agent identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
+      "quote": "\"includeAgentIdServicePrincipals\": [ \"All\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 38,
-      "where": "controls[6].note; Governance controls",
-      "type": "role",
-      "claim": "Viewing agent sign-in logs requires at least Reports Reader.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
-      "quote": "Sign in to the Microsoft Entra admin center as at least a Reports Reader.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[6].note; What to check",
-      "type": "behaviour",
-      "claim": "Agent type is an available sign-in log filter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
-      "quote": "Agent type: Choose from Agent ID user, Agent Identity, Agent Identity Blueprint or Not Agentic",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[6].note",
-      "type": "behaviour",
-      "claim": "Is Agent is an available sign-in log filter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
-      "quote": "Is Agent: Choose from No or Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[6].note",
-      "type": "behaviour",
-      "claim": "The printed Graph query returns only service-principal sign-in events for AgentIdentity, not every agent-related sign-in type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
-      "quote": "This request is limited to service principal sign-in events where the agent type is AgentIdentity. It doesn't retrieve all agent-related sign-in types.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "What it is: End user",
-      "type": "behaviour",
-      "claim": "With end-user credentials, the user signs into the connected service and the action runs as that user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "Once the user signs in with their own account for the required service, the agent proceeds with the action using the user's credentials. ... The action runs under the end-user's identity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "What it is: End user",
-      "type": "behaviour",
-      "claim": "An end-user-authenticated action cannot perform an operation for which the user lacks permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "If the user lacks permission for something, the agent is unable to do it on their behalf - by design.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "What it is: Maker-provided",
-      "type": "behaviour",
-      "claim": "Maker-provided connections authenticate with the maker's credentials instead of the interacting user's credentials.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "When someone uses the agent, the agent uses the maker's credentials, not the end user's credentials, to authenticate with connected services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "What it is: Maker-provided",
-      "type": "behaviour",
-      "claim": "Maker-provided credentials can expose data or actions unavailable to the end user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "Using maker credentials could lead to oversharing of data or capabilities - for example, an end user might retrieve information or perform actions that only the maker's account is permitted to do.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "What it is: Service identity",
-      "type": "behaviour",
-      "claim": "Microsoft names service principals, API keys and managed identities as examples of approved system identities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
-      "quote": "Agents that use an approved system identity, such as a service principal, API key, or managed identity, can be published when the associated connection supports the scenario.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "What it is: Service identity",
-      "type": "behaviour",
-      "claim": "Service-account access is governed by the permissions granted to that account.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/architecture/govern-service-accounts",
-      "quote": "When you create service accounts for automated use, they're granted permissions to access resources in Azure and Microsoft Entra ID.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "An agent can have its own identity in Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "An account used by an AI agent is referred to as an agent identity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "Entra agent-identity access depends on granted permissions and applicable policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
-      "quote": "If the required controls are satisfied, access is granted. ... If the required controls are not satisfied, access is denied.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "Microsoft Entra audit and sign-in logs capture agent activity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
-      "quote": "Agent identity activities are captured in Microsoft Entra audit and sign-in logs",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "What it is; What to check",
-      "type": "behaviour",
-      "claim": "The credentials choice is configured on the individual connector tool.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors",
-      "quote": "Go to the connector tool Overview page. ... Under Details > Additional details > Credentials to use, select Maker-provided credentials.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "An agent identity is a special service principal in Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "An agent identity is a special service principal in Microsoft Entra ID.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "Credentials are configured on the blueprint rather than the agent identity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "Credentials are configured on the blueprint, not the agent identity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "In multi-instance mode the blueprint impersonates its child agent identities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "In multi-instance mode, the blueprint impersonates its child agent identities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "In single-instance mode the Agent ID requests tokens directly.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "In single-instance mode, the blueprint and Agent ID share an OAuth client ID, and the Agent ID requests tokens directly.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "Copilot Studio automatically provisions Entra Agent IDs for new agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-      "quote": "Copilot Studio automatically provisions Entra Agent IDs for new agents. The timing of Entra Agent ID provisioning depends on the harness that powers the agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "What it is: Entra agent identity",
-      "type": "date",
-      "claim": "Agents created before the May 2026 implementation continue using traditional app registrations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-      "quote": "Existing agents that you created before Entra Agent ID was implemented in May 2026 continue using traditional app registrations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "Nobody in the tenant, including administrators, can generate tokens using a Copilot Studio Entra agent identity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-      "quote": "No one in your tenant - including tenant administrators - can generate tokens by using the agent identity. Microsoft fully controls the blueprint and authentication mechanism.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "An agent's user account is optional.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "Agent's user account (optional).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "An agent's user account is a separate object with an id different from the agent identity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "This second account is a user account in the Microsoft Entra tenant that is decorated as an AI agent. It has a different id than the agent identity",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "The agent identity and its agent user account have a one-to-one relationship.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "a 1:1 relationship is always established between an agent identity and its agent's user account.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "What it is: Entra agent identity",
-      "type": "behaviour",
-      "claim": "Agent user accounts support systems that require Microsoft Entra user-account authentication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-      "quote": "Some agents need access to systems that strictly require a Microsoft Entra user account be used for authentication. In these cases, an agent can be given a second account, called an agent's user account.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "What it is: Related patterns",
-      "type": "behaviour",
-      "claim": "Federated connectors in Microsoft 365 Copilot access data with the user's identity and permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Access data using the user's identity and permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "What it is: Related patterns",
-      "type": "behaviour",
-      "claim": "Federated connector tools that write data initially require the user's explicit approval.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Tools that create, update, or delete data initially require the user's explicit approval.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "What it is: Related patterns",
-      "type": "behaviour",
-      "claim": "Allow for conversation suppresses further approval prompts for the tool during that conversation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Allow for conversation | Runs the action and doesn't ask again for this tool for the rest of the current conversation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "What it is: Related patterns",
-      "type": "behaviour",
-      "claim": "Always allow can suppress subsequent approval prompts for that tool.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Always allow | Runs the action and doesn't ask again for this tool until the user changes the setting or the publisher changes the tool.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "What it is: Related patterns",
-      "type": "behaviour",
-      "claim": "Allow for conversation and Always allow permissions apply to an individual tool.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Always allow and Allow for conversation apply to the individual tool, not to the whole connector.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "What it is: Related patterns",
-      "type": "behaviour",
-      "claim": "In preview, a published agent with triggers can be shared for users to run with their own credentials.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
-      "quote": "Share an autonomous agent for users to run (preview) ... You can share a published agent that has triggers with users who need to run the agent by using their own credentials.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "What it is: Related patterns",
-      "type": "behaviour",
-      "claim": "Sharing that autonomous agent requires configuring its triggers and tools for user authentication first.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
-      "quote": "Before sharing, configure the agent's triggers and tools for user authentication.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Why it matters; Governance controls",
-      "type": "behaviour",
-      "claim": "Copilot Studio runs a security scan automatically before publishing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
-      "quote": "Copilot Studio automatically runs a security scan and warns makers before publishing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Why it matters; Governance controls",
-      "type": "behaviour",
-      "claim": "The security scan warns makers when they select maker-provided credentials for connectors and flows.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
-      "quote": "the security scan provides a warning if the maker changes it to Maker-provided credentials.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "There is no documented setting for the automatic maker security scan.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"security scan\" \"Copilot Studio\" disable configuration. Opened security-scan; read security-and-governance search excerpts. These describe automatic maker warnings, not a configurable scan setting; no setting found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The maker-credential setting's Copilot Studio page names no licence or meter for the setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-      "quote": "Prerequisites ... Power Platform admin permissions (Environment Admin for a single environment, or Power Platform Administrator/Global Admin for environment groups).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The embedded-credential setting's Copilot Studio page names no licence or meter for the setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
-      "quote": "To configure Sharing agents with embedded maker credentials, you need permission to manage settings for the target Power Platform environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
       "where": "Cost and licensing: Conditional Access",
       "type": "licensing",
-      "claim": "Microsoft 365 E7 is one qualifying licence plan for Conditional Access for agents.",
+      "claim": "Microsoft 365 E7, including Agent 365 and Microsoft Entra Suite, is a qualifying plan for Conditional Access for agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
       "quote": "Microsoft Entra ID Conditional Access for agents requires one of the following license plans: ... Microsoft 365 E7, which includes Agent 365 and Microsoft Entra Suite.",
       "severity": "minor",
-      "fix": "After the Conditional Access licensing bullet, add: \"Microsoft's agent-management and disable-agent-identities pages instead state that Conditional Access requires Entra ID P1; this differs from the dedicated Conditional Access for agents licensing section.\" Cite https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin and https://learn.microsoft.com/entra/agent-id/disable-agent-identities, both already in sources."
+      "fix": "After the Conditional Access licensing bullet, add: 'Microsoft's agent-management and disable-agent-identities pages instead state that Conditional Access requires Entra ID P1; this differs from the dedicated Conditional Access for agents licensing section.' Both https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin and https://learn.microsoft.com/entra/agent-id/disable-agent-identities were read and are already cited."
     },
     {
-      "n": 76,
+      "n": 39,
       "where": "Cost and licensing: Conditional Access",
       "type": "licensing",
-      "claim": "Microsoft 365 E7 includes Agent 365 and Microsoft Entra Suite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
-      "quote": "Microsoft 365 E7, which includes Agent 365 and Microsoft Entra Suite.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "Cost and licensing: Conditional Access",
-      "type": "licensing",
-      "claim": "Microsoft Agent 365 paired with at least Microsoft Entra P1 or Microsoft 365 E3 is the other documented qualifying plan.",
+      "claim": "Microsoft Agent 365 paired with at least Microsoft Entra P1 or Microsoft 365 E3 is another qualifying Conditional Access plan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
       "quote": "Microsoft Agent 365 license paired with at least Microsoft Entra P1 or Microsoft 365 E3.",
@@ -871,7 +461,7 @@
       "fix": null
     },
     {
-      "n": 78,
+      "n": 40,
       "where": "Cost and licensing: ID Protection",
       "type": "licensing",
       "claim": "ID Protection for agents requires Microsoft Entra ID P2 during preview.",
@@ -882,10 +472,395 @@
       "fix": null
     },
     {
-      "n": 79,
+      "n": 41,
+      "where": "controls[6].note; Governance controls",
+      "type": "role",
+      "claim": "Viewing agent sign-in logs requires at least Reports Reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Reports Reader.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[6].note; What to check",
+      "type": "behaviour",
+      "claim": "Agent type is a filter for agent sign-in logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "Agent type: Choose from Agent ID user, Agent Identity, Agent Identity Blueprint or Not Agentic",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "Is Agent is a filter for agent sign-in logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "Is Agent: Choose from No or Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "The printed Graph query returns only agent-identity service-principal events, not every agent-related sign-in category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "This request is limited to service principal sign-in events where the agent type is AgentIdentity. It doesn't retrieve all agent-related sign-in types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What it is: End user pattern",
+      "type": "behaviour",
+      "claim": "With end-user authentication, the user signs into the connected service and the action runs under that user's identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "Once the user signs in with their own account for the required service, the agent proceeds with the action using the user's credentials. ... The action runs under the end-user's identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What it is: End user pattern",
+      "type": "behaviour",
+      "claim": "An agent using end-user credentials cannot perform an action the user lacks permission to perform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "If the user lacks permission for something, the agent is unable to do it on their behalf - by design.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What it is: Maker-provided pattern; summary",
+      "type": "behaviour",
+      "claim": "With maker-provided authentication, connected-service operations use the maker's credentials rather than the end user's.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "When someone uses the agent, the agent uses the maker's credentials, not the end user's credentials, to authenticate with connected services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What it is: Maker-provided pattern",
+      "type": "behaviour",
+      "claim": "Maker credentials can expose data or capabilities that the interacting user could not access using their own account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "an end user might retrieve information or perform actions that only the maker's account is permitted to do",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What it is: Service identity pattern; summary",
+      "type": "behaviour",
+      "claim": "Microsoft calls service principals, API keys and managed identities approved system identities for supported connection scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
+      "quote": "Agents that use an approved system identity, such as a service principal, API key, or managed identity, can be published when the associated connection supports the scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What it is: Service identity pattern",
+      "type": "behaviour",
+      "claim": "Service-account data reach depends on the access permissions granted to it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/architecture/govern-service-accounts",
+      "quote": "When you create service accounts for automated use, they're granted permissions to access resources in Azure and Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "An Entra agent identity is a special service principal in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "An agent identity is a special service principal in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "Credentials are configured on the blueprint, not the agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "Credentials are configured on the blueprint, not the agent identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "In multi-instance mode the blueprint impersonates its child agent identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "In multi-instance mode, the blueprint impersonates its child agent identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "In single-instance mode the Agent ID requests tokens directly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "In single-instance mode, the blueprint and Agent ID share an OAuth client ID, and the Agent ID requests tokens directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "Copilot Studio automatically provisions Entra Agent IDs for new agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "Copilot Studio automatically provisions Entra Agent IDs for new agents. The timing of Entra Agent ID provisioning depends on the harness that powers the agent.",
+      "severity": "minor",
+      "fix": "Add '(preview)' to the automatic Entra Agent ID provisioning statement: the What's new page labels this capability '(Preview) Automatically create Microsoft Entra Agent IDs'. Cite https://learn.microsoft.com/microsoft-copilot-studio/whats-new."
+    },
+    {
+      "n": 56,
+      "where": "What it is: Entra agent identity",
+      "type": "date",
+      "claim": "Agents created before the May 2026 implementation continue to use traditional app registrations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "Existing agents that you created before Entra Agent ID was implemented in May 2026 continue using traditional app registrations.",
+      "severity": "minor",
+      "fix": "Replace the legacy-agent clause with: 'The agent-identities overview says agents created before May 2026 continue using app registrations; Microsoft's migration page instead says existing app-registration agents are being automatically migrated.' Cite https://learn.microsoft.com/microsoft-copilot-studio/govern-migrate-api-entra-agent-identity."
+    },
+    {
+      "n": 57,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "No one in the tenant, including tenant administrators, can generate tokens using a Copilot Studio Entra agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "No one in your tenant - including tenant administrators - can generate tokens by using the agent identity. Microsoft fully controls the blueprint and authentication mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "An agent's user account is optional and is a different object from the agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "Agent's user account (optional). ... an agent can be given a second account, called an agent's user account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "An agent's user account has a different ID from the agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "It has a different id than the agent identity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "An agent identity and its associated user account have a one-to-one relationship.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "a 1:1 relationship is always established between an agent identity and its agent's user account",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "What it is: Entra agent identity",
+      "type": "behaviour",
+      "claim": "The optional user account supports systems that require Microsoft Entra user-account authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "Some agents need access to systems that strictly require a Microsoft Entra user account be used for authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "What it is: Entra agent identity; controls[3].governs",
+      "type": "applicability",
+      "claim": "Dataverse can hold agent users associated with Entra agent identities to provide environment data access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
+      "quote": "These users have agent identities in Microsoft Entra Agent ID and are added into the Dataverse environment to get data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "What it is: Related patterns",
+      "type": "behaviour",
+      "claim": "Federated connectors access data using the user's identity and permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Access data using the user's identity and permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "What it is: Related patterns",
+      "type": "behaviour",
+      "claim": "Federated connector tools that create, update or delete data initially require the user's explicit approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Tools that create, update, or delete data initially require the user's explicit approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "What it is: Related patterns",
+      "type": "behaviour",
+      "claim": "Allow for conversation suppresses further approval prompts for that individual tool for the current conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Allow for conversation | Runs the action and doesn't ask again for this tool for the rest of the current conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "What it is: Related patterns",
+      "type": "behaviour",
+      "claim": "Always allow suppresses later approval prompts for an individual tool until its setting or the tool changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Always allow | Runs the action and doesn't ask again for this tool until the user changes the setting or the publisher changes the tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "What it is: Related patterns",
+      "type": "availability",
+      "claim": "Sharing a published agent with triggers for users to run with their own credentials is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Share an autonomous agent for users to run (preview) ... You can share a published agent that has triggers with users who need to run the agent by using their own credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "What it is: Related patterns",
+      "type": "behaviour",
+      "claim": "Before sharing an autonomous agent this way, the maker configures its triggers and tools for user authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Before sharing, configure the agent's triggers and tools for user authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Both End-user and Maker-provided credential choices are enabled by default in Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "By default, both End-user and Maker-provided credentials are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The default credential option for connectors and flows is End user credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
+      "quote": "The default option for connectors and flows is End user credentials",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Copilot Studio automatically runs a security scan before publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
+      "quote": "Copilot Studio automatically runs a security scan and warns makers before publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The security scan warns a maker who changes connectors or flows to maker-provided credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
+      "quote": "the security scan provides a warning if the maker changes it to Maker-provided credentials",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: security scan",
+      "type": "absence",
+      "claim": "No configurable setting for the automatic security scan is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio automatic security scan disable setting maker credentials audit interacting user logs. Read security-scan and security-and-governance excerpts; they describe automatic warnings, not a configurable scan control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Cost and licensing: maker-credential setting",
+      "type": "absence",
+      "claim": "The maker-credential setting's Copilot Studio page names no licence or meter for that setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Control maker credential options Sharing agents embedded credentials licensing meter price. Read configure-no-maker-authentication in full; its prerequisites name admin permissions, not a setting-specific licence or meter. Search returned general product billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Cost and licensing: embedded-credential setting",
+      "type": "absence",
+      "claim": "The embedded-credential setting's Copilot Studio page names no licence or meter for that setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Control maker credential options Sharing agents embedded credentials licensing meter price. Read configure-sharing-agents-embedded-maker-credentials in full; it names environment-management permission, not a setting-specific licence or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
       "where": "Cost and licensing: Directory quota",
-      "type": "cost",
-      "claim": "Each Copilot Studio Entra Agent ID counts as a directory object against the tenant resource quota.",
+      "type": "behaviour",
+      "claim": "Every Entra Agent ID created by Copilot Studio is a directory object that counts against tenant resource quota.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
       "quote": "Every Microsoft Entra Agent ID that Copilot Studio creates is a directory object in your tenant and counts against your tenant's resource quota in Microsoft Entra ID.",
@@ -893,32 +868,32 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 77,
       "where": "Cost and licensing: Directory quota",
       "type": "cost",
       "claim": "The normal default tenant resource quota is 50,000 directory objects.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-      "quote": "Tenant resource quota: 50,000 directory objects by default, or 300,000 if your tenant has a verified domain.",
+      "quote": "Tenant resource quota: 50,000 directory objects by default",
       "severity": null,
       "fix": null
     },
     {
-      "n": 81,
+      "n": 78,
       "where": "Cost and licensing: Directory quota",
       "type": "cost",
-      "claim": "A verified domain normally raises the tenant resource quota to 300,000 directory objects.",
+      "claim": "The normal tenant resource quota with a verified domain is 300,000 directory objects.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-      "quote": "Tenant resource quota: 50,000 directory objects by default, or 300,000 if your tenant has a verified domain.",
+      "quote": "300,000 if your tenant has a verified domain",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
+      "n": 79,
       "where": "Cost and licensing: Directory quota",
       "type": "cost",
-      "claim": "Self-service-signup tenants remain at 50,000 directory objects even after domain verification.",
+      "claim": "Self-service signup tenants retain a 50,000-object quota even after domain verification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
       "quote": "Tenants created through self-service signup remain at 50,000 even after a domain is verified.",
@@ -926,10 +901,10 @@
       "fix": null
     },
     {
-      "n": 83,
-      "where": "Cost and licensing",
+      "n": 80,
+      "where": "Cost and licensing: autonomous usage",
       "type": "cost",
-      "claim": "Each end user's autonomous-agent usage is totalled and billed through the hosting environment.",
+      "claim": "Each end user's autonomous agent usage is totalled and billed through the environment hosting the agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
       "quote": "Each end user's autonomous agent usage is totaled and billed through the underlying environment where the agent is hosted.",
@@ -937,10 +912,10 @@
       "fix": null
     },
     {
-      "n": 84,
+      "n": 81,
       "where": "Risks and limits: Enforcing end-user credentials",
       "type": "behaviour",
-      "claim": "Blocking maker credentials causes scheduled, autonomous-event and background agents without a live user sign-in to fail.",
+      "claim": "Preventing maker credentials causes scheduled, autonomous and background agents to fail for lack of live user sign-in.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
       "quote": "agents triggered by scheduled or autonomous events, or that attempt to run in the background, fail due to missing credentials. All agent triggers must involve an active user.",
@@ -948,10 +923,10 @@
       "fix": null
     },
     {
-      "n": 85,
+      "n": 82,
       "where": "Risks and limits: Conditional Access channel limitation",
-      "type": "behaviour",
-      "claim": "Copilot Studio connector scope visibility in Entra applies to all agents regardless of channel.",
+      "type": "applicability",
+      "claim": "Copilot Studio Entra connector-scope visibility applies to all agents regardless of channel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
       "quote": "Scope visibility in Microsoft Entra ID applies to all agents, regardless of channel.",
@@ -959,43 +934,43 @@
       "fix": null
     },
     {
-      "n": 86,
-      "where": "controls[5].note; Risks and limits; Open questions",
+      "n": 83,
+      "where": "controls[5].note; Risks and limits; What to check",
       "type": "applicability",
-      "claim": "Conditional Access enforcement on Copilot Studio agent identities for connector calls currently applies only in Microsoft Teams.",
+      "claim": "Conditional Access on the Copilot Studio agent identity is currently enforced for connector calls only when the agent runs in Microsoft Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-      "quote": "Scope enforcement at runtime — including Microsoft Entra Conditional Access on the agent identity — currently applies only when the agent runs in Microsoft Teams",
+      "quote": "Scope enforcement at runtime ... currently applies only when the agent runs in Microsoft Teams ... Other channels still call connectors using the existing Power Platform connector authentication flow",
       "severity": null,
       "fix": null
     },
     {
-      "n": 87,
+      "n": 84,
       "where": "Risks and limits: API keys",
       "type": "applicability",
-      "claim": "Resource access through an API key bypasses Entra authentication and token issuance, so Conditional Access does not apply to it.",
+      "claim": "Resource access using an API key bypasses Entra authentication and token issuance, so Conditional Access does not apply.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
-      "quote": "if an agent accesses resources using an API key, it bypasses the Microsoft Entra ID authentication and token issuance pipeline entirely and Conditional Access policies won't apply to them.",
+      "quote": "if an agent accesses resources using an API key, it bypasses the Microsoft Entra ID authentication and token issuance pipeline entirely and Conditional Access policies won't apply to them",
       "severity": null,
       "fix": null
     },
     {
-      "n": 88,
-      "where": "Risks and limits: Agent user accounts",
+      "n": 85,
+      "where": "Risks and limits: agent user account",
       "type": "applicability",
-      "claim": "A Conditional Access policy targeting an agent identity does not apply to the agent's user account.",
+      "claim": "A Conditional Access policy targeting an agent identity does not apply to its user account, which must be separately targeted through Agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
-      "quote": "A policy that targets an agent identity doesn't apply to the agent's user account, and a policy that targets the agent's user account doesn't apply to the agent identity.",
+      "quote": "A Conditional Access policy targeting agent identities won't apply to the agent's user account. ... under Assignments > Users, agents, or workload identities, select Agents, and then target all agent users or specific agent users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 89,
-      "where": "Risks and limits: Agent user accounts",
+      "n": 86,
+      "where": "Risks and limits: agent user account",
       "type": "applicability",
-      "claim": "Targeting agent identities through a blueprint likewise does not cover their agent user accounts.",
+      "claim": "Targeting agent identities through their blueprint still does not cover the agent's user account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
       "quote": "A Conditional Access policy targeting agent identities using agent identity blueprint covers only the agent identity, not the agent's user account.",
@@ -1003,10 +978,10 @@
       "fix": null
     },
     {
-      "n": 90,
+      "n": 87,
       "where": "Risks and limits: Entra scopes",
-      "type": "behaviour",
-      "claim": "The connector-scope behaviour applies to first-party and certified Power Platform connectors.",
+      "type": "applicability",
+      "claim": "Copilot Studio attaches connector scopes only for first-party and certified Power Platform connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
       "quote": "Today, this behavior applies to first-party and certified Power Platform connectors",
@@ -1014,24 +989,57 @@
       "fix": null
     },
     {
-      "n": 91,
+      "n": 88,
       "where": "Risks and limits: Entra scopes",
       "type": "behaviour",
-      "claim": "Custom connectors, MCP servers and REST API tools do not add API permissions to the Entra Agent ID.",
+      "claim": "Custom connectors added to agents do not add API permissions to the Entra Agent ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-      "quote": "custom connectors, MCP servers, and REST API tools added to agents don't add API permissions to the Entra Agent ID.",
+      "quote": "custom connectors, MCP servers, and REST API tools added to agents don't add API permissions to the Entra Agent ID",
       "severity": null,
       "fix": null
     },
     {
-      "n": 92,
+      "n": 89,
+      "where": "Risks and limits: Entra scopes",
+      "type": "behaviour",
+      "claim": "MCP servers added as tools do not add API permissions to the Entra Agent ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "custom connectors, MCP servers, and REST API tools added to agents don't add API permissions to the Entra Agent ID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Risks and limits: Entra scopes",
+      "type": "behaviour",
+      "claim": "REST API tools do not add API permissions to the Entra Agent ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "custom connectors, MCP servers, and REST API tools added to agents don't add API permissions to the Entra Agent ID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
       "where": "Risks and limits: Quota failures",
       "type": "behaviour",
-      "claim": "Reaching the tenant's Entra quota can prevent identity provisioning and cause agent creation to fail.",
+      "claim": "An Entra quota failure prevents identity creation and can stop a Copilot Studio agent from being created.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
       "quote": "If the tenant reaches its quota at that time, Copilot Studio can't create the Microsoft Entra Agent ID and the agent fails to be created.",
+      "severity": "minor",
+      "fix": "Replace the quota-failure bullet with: '**Quota failures can stop provisioning.** Standard-harness agents receive their Entra Agent ID at creation; Microsoft Copilot-harness agents receive it at first publication. Agent identities, together with other Entra resources, can use no more than 95% of the tenant quota; the quota is temporarily 600 directory objects during a tenant's first two days.' These qualifications are stated on the cited govern-agents-identities-overview page."
+    },
+    {
+      "n": 92,
+      "where": "Risks and limits: Disabling all agent identities",
+      "type": "behaviour",
+      "claim": "Microsoft warns that globally disabling agent identities can cause existing agents to fail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
+      "quote": "Globally disabling agent identities can cause existing agents to fail",
       "severity": null,
       "fix": null
     },
@@ -1039,21 +1047,21 @@
       "n": 93,
       "where": "Risks and limits: Disabling all agent identities",
       "type": "behaviour",
-      "claim": "Microsoft warns that globally disabling agent identities can make existing agents fail.",
+      "claim": "Microsoft warns that globally disabling agent identities can push teams toward less transparent application or service-principal identities.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-      "quote": "Existing agents running in your organization might begin to fail.",
+      "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
+      "quote": "push teams to use less transparent application or service principal identities",
       "severity": null,
       "fix": null
     },
     {
       "n": 94,
-      "where": "Risks and limits: Disabling all agent identities",
+      "where": "Governance controls: environment groups",
       "type": "behaviour",
-      "claim": "Microsoft warns that globally disabling agent identities can push teams toward less transparent application or service-principal identities.",
+      "claim": "Environment-group maker-credential settings override individual environment settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
-      "quote": "Globally disabling agent identities can cause existing agents to fail, degrade Microsoft product experiences, and push teams to use less transparent application or service principal identities.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "environment group settings override any environment settings",
       "severity": null,
       "fix": null
     },
@@ -1061,10 +1069,10 @@
       "n": 95,
       "where": "Governance controls: embedded-credentials documentation",
       "type": "admin-path",
-      "claim": "The second cited embedded-credentials Learn page documents a different route through Security > Threat detection, as the page explicitly acknowledges.",
+      "claim": "Microsoft documents both a Security > Threat detection route and an environment Settings > Features route for the embedded-credentials control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials",
-      "quote": "On the navigation pane, select Security, and then select Threat detection. ... Select Sharing agent with embedded maker credentials. A panel opens.",
+      "quote": "On the navigation pane, select Security, and then select Threat detection. ... Select Sharing agent with embedded maker credentials.",
       "severity": null,
       "fix": null
     },
@@ -1072,105 +1080,138 @@
       "n": 96,
       "where": "Open questions: audit attribution",
       "type": "absence",
-      "claim": "The maker-credential control pages do not explain how audit records attribute the interacting user when maker credentials are used.",
+      "claim": "Microsoft's maker-credential control pages do not explain how audit records distinguish the interacting user from the maker when a tool uses maker credentials.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"maker-provided credentials\" \"audit\" interacting user. Opened configure-no-maker-authentication, configure-sharing-agents-embedded-maker-credentials and the Power Platform sharing-control page; none specifies interacting-user audit attribution.",
+      "quote": "Searched: Copilot Studio automatic security scan disable setting maker credentials audit interacting user logs. Read both maker-credential control pages and Purview audit excerpts; none explained interacting-user attribution for maker-authenticated tool calls on those control pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "Open questions: Conditional Access beyond Teams",
+      "type": "absence",
+      "claim": "The cited Copilot Studio agent-identities page does not publish a date for Conditional Access enforcement on connector calls outside Teams.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio agent identity Conditional Access other channels outside Teams availability date. Read govern-agents-identities-overview; it says other-channel calls aren't yet evaluated and gives no extension date. Returned channel and migration excerpts did not state one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "What it is: Entra agent identity pattern; sources",
+      "type": "behaviour",
+      "claim": "Entra agent data access requires granted permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "permissions must be granted before the agent can access a resource",
+      "severity": "minor",
+      "fix": "Add the relied-on Microsoft sources https://learn.microsoft.com/graph/api/resources/agentidentity?view=graph-rest-1.0, https://learn.microsoft.com/microsoft-copilot-studio/whats-new and https://learn.microsoft.com/microsoft-copilot-studio/govern-migrate-api-entra-agent-identity."
+    },
+    {
+      "n": 99,
+      "where": "What it is: Entra agent identity pattern, Audit trail",
+      "type": "behaviour",
+      "claim": "Microsoft Entra audit and sign-in logs record agent activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "This article describes how agent identity activities are logged in Microsoft Entra ID and how to access those logs using the Microsoft Entra admin center and Microsoft Graph.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T14:05:53.505Z",
+    "at": "2026-11-24T07:39:43.344Z",
     "summary": {
       "links": 16,
-      "unreachable": 0,
+      "unreachable": 16,
       "uiPaths": 7,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 7,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/create-users",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/agent-id/agent-identities",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/architecture/govern-service-accounts",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1179,7 +1220,7 @@
         "side": "ui",
         "governs": "Whether makers may use maker-provided credentials, end-user credentials or both for tools",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -1189,14 +1230,22 @@
           "Copilot Studio agents",
           "Control maker credential options"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Copilot Studio agents",
+          "Control maker credential options"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether agents sharing or publishing with embedded maker credentials is detected only or blocked",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -1204,14 +1253,20 @@
           "Features",
           "Sharing agents with embedded maker credentials"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Features",
+          "Sharing agents with embedded maker credentials"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Which credentials each connector tool uses",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Tools",
@@ -1220,14 +1275,21 @@
           "Additional details",
           "Credentials to use"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Tools",
+          "Overview",
+          "Details",
+          "Additional details",
+          "Credentials to use"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Dataverse access for an agent user linked to an Entra agent identity",
         "docs": "https://learn.microsoft.com/power-platform/admin/create-users",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -1236,27 +1298,38 @@
           "Agents",
           "+ Add agent"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Users + permissions",
+          "Agents",
+          "+ Add agent"
+        ]
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Viewing, disabling and updating individual agent identities",
         "docs": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Entra ID",
           "Agents",
           "Agent identities"
         ],
-        "missing": []
+        "missing": [
+          "Entra ID",
+          "Agents",
+          "Agent identities"
+        ]
       },
       {
         "index": 4,
         "side": "api",
         "governs": "Viewing, disabling and updating individual agent identities",
         "docs": "https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/servicePrincipals/microsoft.graph.agentIdentity",
         "found": false
       },
@@ -1265,44 +1338,52 @@
         "side": "ui",
         "governs": "Conditional Access for agent identities and agent users",
         "docs": "https://learn.microsoft.com/entra/identity/conditional-access/agent-id",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Assignments",
           "Users, agents, or workload identities",
           "Agents"
         ],
-        "missing": []
+        "missing": [
+          "Assignments",
+          "Users, agents, or workload identities",
+          "Agents"
+        ]
       },
       {
         "index": 5,
         "side": "api",
         "governs": "Conditional Access for agent identities and agent users",
         "docs": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/identity/conditionalAccess",
-        "found": true
+        "found": false
       },
       {
         "index": 6,
         "side": "ui",
         "governs": "Sign-in records for agent identities",
         "docs": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Entra ID",
           "Monitoring & health",
           "Sign-in logs"
         ],
-        "missing": []
+        "missing": [
+          "Entra ID",
+          "Monitoring & health",
+          "Sign-in logs"
+        ]
       },
       {
         "index": 6,
         "side": "api",
         "governs": "Sign-in records for agent identities",
         "docs": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/auditLogs/signIns",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -1330,6 +1411,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 4,
       "model": "gpt-6.1-sol"
     }
   ]

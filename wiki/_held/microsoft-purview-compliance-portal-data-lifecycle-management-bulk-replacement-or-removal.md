@@ -25,8 +25,14 @@ sources:
   - title: "Microsoft 365 Roadmap item 392456"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=392456"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 392457"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=392457"
+    kind: "roadmap"
   - title: "Learn about retention policies and retention labels"
     url: "https://learn.microsoft.com/purview/retention"
+    kind: "learn"
+  - title: "Learn about records management"
+    url: "https://learn.microsoft.com/purview/records-management"
     kind: "learn"
   - title: "Get started with data lifecycle management"
     url: "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management"
@@ -85,26 +91,30 @@ changes:
     note: "First briefing for this roadmap item: Worldwide scope, roadmap status and target, and the existing retention label and role controls that apply."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: record-label wording now says the record must be locked in SharePoint and OneDrive, background framing reworded, one unmatched checklist step removed, and item 392457 added as a source."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 67 statements contradicted, 2 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "b36702c425080a0519b4594ab26c9615"
+  claims: 67
+  confirmed: 65
+  unconfirmed: 2
+  contradicted: 0
+  attempts: 2
+  hash: "f78ad552ad81b33957dc1a3a892b46de"
 ---
 
 ## What's changing
 
 Microsoft plans to let administrators replace or remove a retention label in bulk from the Microsoft Purview portal. The roadmap description says admins can do this across the entire tenant, or target specific content using KQL (Keyword Query Language) and static or adaptive scopes.
 
-Microsoft Learn does not describe this feature yet at the time of writing (November 2026), so what follows about its behaviour is the roadmap's description. What Learn documents today is the label behaviour any bulk action will meet: admins and end users can manually change or remove a standard retention label, and an existing label is not automatically replaced by another except in the cases the retention page lists. For labels that mark items as a record, only admins for the container can change or remove them manually, and a regulatory record label cannot be changed or removed manually. Whether bulk replacement follows those rules is not documented.
+Microsoft Learn does not describe this feature yet at the time of writing (November 2026), so what follows about its behaviour is the roadmap's description. For background, Learn documents existing label behaviour: admins and end users can manually change or remove a standard retention label, and an existing label is not automatically replaced by another except in the cases the retention page lists. For existing manual operations, only container admins can change or remove a record label; in SharePoint and OneDrive the record must be locked. A regulatory record label cannot be changed or removed manually. Whether bulk replacement follows those rules is not documented.
 
 The roadmap record for item 392456 gives the status as In development, with a target of December CY2026, for Worldwide (Standard Multi-Tenant) on the web. The release phase lists General Availability and Preview, and the record has no preview date. Microsoft lists the same feature under a second roadmap item, 392457, for GCC, GCC High and DoD, also In development with a December CY2026 target and listing General Availability only. This page covers 392456 alone.
 
@@ -124,7 +134,7 @@ No source says existing behaviour changes when this arrives, and Microsoft has n
 
 **Security & identity**
 - The role needed to run the action is not yet published. Learn names the Compliance Administrator role group, or a custom role group with the Retention Management role, for creating and managing retention policies and labels in general; confirm whether that covers this action.
-- Learn says labels that mark items as records are changed manually only by admins for the container, and regulatory record labels cannot be changed manually. Confirm how a bulk run treats both before relying on it.
+- For existing manual operations, only container admins can change or remove a record label; in SharePoint and OneDrive the record must be locked. Regulatory record labels cannot be changed manually. Confirm how a bulk run treats both before relying on it.
 
 **Autonomy & actions**
 - The roadmap describes an action that admins perform. No source describes scheduling, approval steps or an undo, so confirm whether a run can be previewed or reversed.
@@ -149,7 +159,6 @@ The roadmap says the action works tenant-wide or on targeted content selected wi
 
 ### Before rollout
 - Identify who holds the Compliance Administrator role group or the Retention Management role, and trim the list to people who should be able to change labels tenant-wide.
-- List which retention labels mark items as records or regulatory records, so you can ask Microsoft how a bulk run treats them.
 - Agree with the compliance owner when a bulk replacement or removal is justified, and who approves the KQL query or scope.
 
 ### At rollout
@@ -197,9 +206,8 @@ impact: Low. The roadmap describes an action that admins run from the Purview po
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Risk assessment: Security & identity / behaviour: Labels that mark items as records can be changed or removed manually by container admins, without stating a record-lock requirement. | Found: Manually remove | Yes | Yes ^1^ if admin for the container | No. Footnotes: ^1^ The record must be locked. | Fix: Replace the record-label clause in both sections with: 'For existing manual operations, only container admins can change or remove a record label; in SharePoint and OneDrive the record must be locked.' Cite https://learn.microsoft.com/purview/records-management, which distinguishes locked and unlocked records and says Exchange maps to the locked-record column. Keep the separate statement that treatment by the planned bulk action is not documented. | Source: https://learn.microsoft.com/purview/retention
-- [unsupported, blocker] What's changing / applicability: The documented existing label behaviour is behaviour any bulk action will meet. | Found: Searched: '"bulk" "retention label" "replacement"'; 'Purview bulk retention label removal default enable tenant switch role restricted administrator audit scheduling preview undo auto apply'. Read retention and records-management pages; neither ties the planned bulk portal action to these rules. | Fix: Replace 'What Learn documents today is the label behaviour any bulk action will meet:' with 'For background, Learn documents existing label behaviour:'. Retain 'Whether bulk replacement follows those rules is not documented.'
+- [unsupported, blocker] Governance guidance: After rollout; controls[2].note / applicability: Searching Changed retention label for a file after each bulk run allows its count to be compared with the full expected scope. | Found: Searched: Purview bulk retention label removal scheduling approval preview undo audit Changed retention label for a file restricted administrators. Read retention auditing and audit-search: the event covers SharePoint/OneDrive item changes, not a documented complete count for bulk runs. | Fix: Replace the After rollout bullet with: 'For existing SharePoint and OneDrive item-level label changes, search the audit log for "Changed retention label for a file"; confirm the bulk action's documented audit coverage before using event counts to validate a run.' The existing event is documented at https://learn.microsoft.com/purview/retention#auditing-retention-configuration-and-actions.
+- [unsupported, blocker] Governance controls: per-item Graph route / command: DELETE /drives/{drive-id}/items/{item-id}/retentionLabel is a complete Graph call to remove one item's label. | Found: Searched: opened driveitem-removeretentionlabel?view=graph-rest-1.0. The HTTP-request section gives the operation suffix, but its executable example uses https://graph.microsoft.com/v1.0/drives/.../items/.../retentionLabel; the briefing omits the required API version. | Fix: Replace the inline call with 'DELETE /v1.0/drives/{drive-id}/items/{item-id}/retentionLabel', retaining the existing Graph reference and the statement that it removes one item's label, not a bulk action.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: Microsoft lists the same bulk replacement or removal capability under item 392457. | Found: 392457: Admins can perform a bulk replacement or removal of a retention label using the Purview compliance portal. | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=392457 to sources as 'Microsoft 365 Roadmap item 392457', kind roadmap, to support the statements about the separate government-cloud item.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: Every governance checklist control is represented in the controls table. | Found: List which retention labels mark items as records or regulatory records ... Table rows: tenant-level switch; role membership; audit search. | Fix: The Before rollout step to inventory retention labels and their record or regulatory-record settings has no corresponding controls row. Remove that checklist bullet; do not add a new row during this correction.
+- [supported, minor] What's changing / behaviour: KQL means Keyword Query Language. | Found: Use Keyword Query Language (KQL) to auto-apply the retention labels that you created. KQL is the language used to build search queries. | Fix: Add https://learn.microsoft.com/purview/auto-apply-retention-labels-scenario to sources for the expansion of KQL. | Source: https://learn.microsoft.com/purview/auto-apply-retention-labels-scenario#auto-apply-retention-labels-to-documents
 -->

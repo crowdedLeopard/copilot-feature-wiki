@@ -3,32 +3,133 @@
   "roadmapId": 575288,
   "title": "Microsoft Teams: AI phishing detection in chat messages",
   "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "date": "2026-11-24",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [
     "claim 56: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
   ],
   "hold": null,
   "counts": {
-    "claims": 56,
-    "confirmed": 55,
+    "claims": 58,
+    "confirmed": 57,
     "unconfirmed": 1,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 3
   },
-  "summary": "The briefing passes: its rollout dates, automatic enablement and documented control paths and commands are supported. The risk rationale should not claim that detection only warns users, because Microsoft describes warnings without ruling out other behaviour. The read-only PowerShell command also needs its reference added to the sources.",
+  "summary": "The rollout details, automatic enablement and documented controls are supported. The risk rationale overstates the evidence by saying detection only warns users; the sources describe possible warnings without establishing that exclusive limit. Licensing should acknowledge the general Teams licence requirement, and the read-only PowerShell command needs its reference cited.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "front matter: roadmapId; sources",
       "type": "record",
-      "claim": "Microsoft Teams is introducing AI-powered phishing detection in messaging.",
+      "claim": "This briefing concerns roadmap item 575288, Microsoft Teams: Phishing Detection in Teams Messaging.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 575288, \"title\": \"Microsoft Teams: Phishing Detection in Teams Messaging\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products; title; summary",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap item is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, described as a target rather than a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap cloud list contains only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform list is Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-11T00:51:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:51:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Teams is introducing AI-powered phishing detection in messaging.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Teams is introducing AI-powered phishing detection",
@@ -36,40 +137,40 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 11,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Detection analyses conversation context.",
+      "claim": "Detection analyzes conversation context.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "uses conversation context to identify phishing and social engineering",
+      "source": "Message Center post MC1519866",
+      "quote": "The capability analyzes conversation context to identify suspicious behavior",
       "severity": null,
       "fix": null
     },
     {
-      "n": 3,
+      "n": 12,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Detection identifies potential phishing.",
+      "status": "supported",
+      "source": "Message Center post MC1519866",
+      "quote": "Teams will use AI-powered, context-aware detection to identify potential phishing and related suspicious behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "summary; What's changing; Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The capability identifies phishing.",
+      "claim": "Detection targets social engineering.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "uses conversation context to identify phishing and social engineering",
+      "source": "Message Center post MC1519866",
+      "quote": "to help identify phishing, social engineering, impersonation attempts, and deceptive intent",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
-      "where": "summary; What's changing; Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The capability identifies social engineering.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "uses conversation context to identify phishing and social engineering",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 14,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "record",
       "claim": "Detection targets impersonation attempts.",
@@ -80,7 +181,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 15,
       "where": "What's changing",
       "type": "record",
       "claim": "Detection targets deceptive intent.",
@@ -91,10 +192,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes detection as aimed at higher-risk messaging scenarios.",
+      "claim": "The roadmap describes higher-risk messaging scenarios as the feature's focus.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "in higher-risk messaging scenarios, primarily external first-contact chats",
@@ -102,10 +203,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "summary; What's changing; Scope: Who; rationale: impact",
+      "n": 17,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: impact",
       "type": "record",
-      "claim": "For most users, detection primarily focuses on external first-contact chats.",
+      "claim": "For most users, detection focuses on external first-contact chats.",
       "status": "supported",
       "source": "Message Center post MC1519866",
       "quote": "For most users, detection focuses on external first-contact chats.",
@@ -113,19 +214,8 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing; Risk assessment: Change & support; Scope: Who",
-      "type": "record",
-      "claim": "Teams mobile users in China may also receive protection for in-tenant conversations.",
-      "status": "supported",
-      "source": "Message Center post MC1519866",
-      "quote": "Teams mobile users in China may also receive additional phishing and fraud protection for in-tenant conversations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "n": 18,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: impact",
       "type": "record",
       "claim": "Users may see warnings when suspicious activity is detected.",
       "status": "supported",
@@ -135,18 +225,51 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "n": 19,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
       "type": "record",
-      "claim": "The detection can identify suspicious behaviour without a malicious link or file.",
+      "claim": "Teams mobile users in China may receive additional protection for in-tenant conversations.",
       "status": "supported",
       "source": "Message Center post MC1519866",
-      "quote": "identify suspicious behavior that may not include traditional indicators such as malicious links or files",
+      "quote": "Teams mobile users in China may also receive additional phishing and fraud protection for in-tenant conversations.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "The capability is used only for security protection.",
+      "status": "supported",
+      "source": "Message Center post MC1519866",
+      "quote": "This capability is used only for security protection and not for productivity, summarization, advertising, user monitoring, or other non-security purposes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "Customer message content is not retained by the detection system for model training or other secondary uses.",
+      "status": "supported",
+      "source": "Message Center post MC1519866",
+      "quote": "Customer message content is not retained by the detection system for model training or other secondary uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Suspicious behavior may lack malicious links or files.",
+      "status": "supported",
+      "source": "Message Center post MC1519866",
+      "quote": "suspicious behavior that may not include traditional indicators such as malicious links or files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
       "claim": "During initial quality validation, detection may run in the background without showing warnings.",
@@ -157,52 +280,30 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 24,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "Users may see phishing warnings after validation.",
+      "claim": "After validation, users may see a warning when potential phishing is detected.",
       "status": "supported",
       "source": "Message Center post MC1519866",
-      "quote": "After validation, users may see a warning when potential phishing is detected",
+      "quote": "After validation, users may see a warning when potential phishing is detected:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "The capability is used only for security protection.",
+      "n": 25,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The default state is on: the protection reaches its intended users without admin enablement.",
       "status": "supported",
       "source": "Message Center post MC1519866",
-      "quote": "This capability is used only for security protection and not for productivity, summarization, advertising, user monitoring, or other non-security purposes.",
+      "quote": "No admin action is required to enable this protection.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "The detection system does not retain customer message content for model training.",
-      "status": "supported",
-      "source": "Message Center post MC1519866",
-      "quote": "Customer message content is not retained by the detection system for model training or other secondary uses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "The detection system does not retain customer message content for other secondary uses.",
-      "status": "supported",
-      "source": "Message Center post MC1519866",
-      "quote": "Customer message content is not retained by the detection system for model training or other secondary uses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; controls[0].note; Scope: Prerequisites; Governance controls",
+      "n": 26,
+      "where": "What's changing; Scope; controls[0].note; Governance controls; Cost and licensing",
       "type": "record",
       "claim": "Microsoft's notice says no new admin configuration is required.",
       "status": "supported",
@@ -212,109 +313,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "The protection reaches its intended users without admin action to enable it, supporting defaultState on.",
-      "status": "supported",
-      "source": "Message Center post MC1519866",
-      "quote": "No admin action is required to enable this protection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: status; summary; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Rolling out.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "front matter: targetDate; What's changing; Scope: Rollout",
-      "type": "record",
-      "claim": "The roadmap target is November CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: clouds; What's changing; Scope: Clouds; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: platforms; What's changing; Scope: Platforms",
-      "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Targeted Release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:51:09.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-11T00:51:09\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Scope: Rollout; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "The notice schedules Targeted Release to begin in early November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1519866",
-      "quote": "Targeted Release: Beginning in early November 2026 and expected to complete by mid-November 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 27,
-      "where": "What's changing; Scope: Rollout",
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "record",
-      "claim": "The notice expects Targeted Release completion by mid-November 2026.",
+      "claim": "Targeted Release begins in early November 2026 and is expected to complete by mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1519866",
       "quote": "Targeted Release: Beginning in early November 2026 and expected to complete by mid-November 2026",
@@ -323,9 +325,9 @@
     },
     {
       "n": 28,
-      "where": "What's changing; Scope: Rollout; Governance guidance: At rollout",
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "record",
-      "claim": "The notice schedules General Availability (Worldwide) to begin in early December 2026.",
+      "claim": "General Availability (Worldwide) begins in early December 2026 and is expected to complete by mid-December 2026.",
       "status": "supported",
       "source": "Message Center post MC1519866",
       "quote": "General Availability (Worldwide): Beginning in early December 2026 and expected to complete by mid-December 2026",
@@ -334,20 +336,9 @@
     },
     {
       "n": 29,
-      "where": "What's changing; Scope: Rollout",
-      "type": "record",
-      "claim": "The notice expects General Availability (Worldwide) completion by mid-December 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1519866",
-      "quote": "General Availability (Worldwide): Beginning in early December 2026 and expected to complete by mid-December 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
       "where": "What's changing",
       "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
+      "claim": "The notice supplies no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1519866",
       "quote": "Act by: none",
@@ -355,10 +346,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 30,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends reviewing organisational guidance on interacting with unfamiliar external contacts.",
+      "claim": "Microsoft recommends reviewing guidance for interacting with unfamiliar external contacts.",
       "status": "supported",
       "source": "Message Center post MC1519866",
       "quote": "We recommend that admins review organizational guidance for interacting with unfamiliar external contacts",
@@ -366,8 +357,8 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Why it matters; Risk assessment: Change & support; Governance guidance: At rollout",
+      "n": 31,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
       "type": "record",
       "claim": "Microsoft recommends reminding users to report suspicious activity or incorrect detections through available Teams reporting experiences.",
       "status": "supported",
@@ -377,10 +368,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 32,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice identifies a change to how existing customer data is processed.",
+      "claim": "The notice answers Yes to whether this changes how existing customer data is processed, stored or accessed.",
       "status": "supported",
       "source": "Message Center post MC1519866",
       "quote": "Does the change alter how existing customer data is processed, stored, or accessed?Yes. Teams analyzes conversation context to detect suspicious behavior.",
@@ -388,10 +379,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 33,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice identifies new AI/ML capabilities that interact with customer data.",
+      "claim": "The notice answers Yes to whether the change introduces or significantly modifies AI/ML capabilities interacting with customer data.",
       "status": "supported",
       "source": "Message Center post MC1519866",
       "quote": "Does the change introduce or significantly modify AI/ML capabilities that interact with customer data?Yes.",
@@ -399,7 +390,73 @@
       "fix": null
     },
     {
+      "n": 34,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this specific AI context-aware phishing detection feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Phishing content detection in Microsoft Teams\"; \"ContentBasedPhishingCheck\" \"Teams\"; Teams AI phishing content detection warnings block retention licensing government clouds. Read Teams security guide, security best practices and Set-CsTeamsMessagingConfiguration; no feature description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence or meter for this detection.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The capability is used only for security protection, and users may see warnings when suspicious activity is detected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft's notice names no licence or meter for this detection.",
+      "status": "supported",
+      "source": "Message Center post MC1519866",
+      "quote": "No new admin configuration is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no licence specific to this detection is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included'. Replace the licensing notes with 'Each user in the organization must have a Teams license to use Teams, except for joining meetings anonymously. No licence specific to this detection is published.' Add https://learn.microsoft.com/microsoftteams/user-access to sources and use those same sentences at the start of Cost and licensing."
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence requirement specific to this detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AI context aware phishing detection license pricing meter; Microsoft Teams each user license required use Teams. Read Manage Teams licenses, Teams security guide, Set-CsTeamsMessagingConfiguration and AI overview search excerpts; no licence specific to this detection found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; front matter: licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "No meter or price specific to this detection is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AI context aware phishing detection license pricing meter; Teams context-aware phishing detection ContentBasedPhishingCheck admin center licensing price China. Read Manage Teams licenses, Teams security guide and Set-CsTeamsMessagingConfiguration; no feature price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "Scope: Prerequisites",
       "type": "record",
       "claim": "The notice names no prerequisites.",
@@ -410,76 +467,32 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing for this specific AI detection has not been published, supporting the unknown licensing model.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams phishing content detection license; read roadmap, MC1519866, Set-CsTeamsMessagingConfiguration and Defender for Office 365 support for Teams. Published licensing describes other protections, not this context-aware detection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter is published for this detection.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams AI context aware phishing content detection licensing admin settings; read roadmap, MC1519866, Set-CsTeamsMessagingConfiguration and Defender for Office 365 support for Teams. No feature-specific meter was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No price is published for this detection.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams phishing content detection license; read roadmap, MC1519866 and Defender for Office 365 support for Teams. No price for this context-aware detection was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this specific AI detection beyond the related, unreleased parameter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Phishing content detection in Microsoft Teams; Teams context-aware phishing; Teams phishing China. Read Teams security guide and Set-CsTeamsMessagingConfiguration. Results describe other protections or the explicitly unreleased parameter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
+      "n": 41,
       "where": "controls[0].ui; Governance controls",
       "type": "absence",
-      "claim": "No admin centre setting is documented for this context-aware detection at the time of writing.",
+      "claim": "Microsoft Learn documents no admin centre setting for this content-based phishing detection.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams ContentBasedPhishingCheck admin; Teams AI context aware phishing content detection admin settings. Opened Set-CsTeamsMessagingConfiguration and Teams security guide; no UI path for this detection was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "The MicrosoftTeams module documents Set-CsTeamsMessagingConfiguration -ContentBasedPhishingCheck Disabled as a tenant content-based phishing detection setting, with applicability to this rollout explicitly unconfirmed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
-      "quote": "### -ContentBasedPhishingCheck\n\nNote\n\nThis feature has not been released.\n\nThis setting enables content-based phishing detection for Teams messages in the tenant.\n\nPossible Values:\n\n- Enabled\n- Disabled",
+      "quote": "Searched: Teams content-based phishing detection admin UI Messaging safety; \"ContentBasedPhishingCheck\" \"Teams\". Read Set-CsTeamsMessagingConfiguration, Teams security guide and security best practices; results describe malicious URL protection, not a UI switch for this detection.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell documents Set-CsTeamsMessagingConfiguration -ContentBasedPhishingCheck Disabled for tenant content-based phishing detection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "This setting enables content-based phishing detection for Teams messages in the tenant.\n\nPossible Values:\n\n- Enabled\n- Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "controls[0].note; Governance controls; Open questions",
       "type": "behaviour",
-      "claim": "The content-based phishing parameter reference says its feature has not been released.",
+      "claim": "The ContentBasedPhishingCheck reference says its feature has not been released.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
       "quote": "### -ContentBasedPhishingCheck\n\nNote\n\nThis feature has not been released.",
@@ -487,21 +500,21 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[0].note; Governance guidance: Before rollout; Governance controls; Open questions",
+      "n": 44,
+      "where": "controls[0].note; Governance controls; Governance guidance; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not confirmed that the unreleased ContentBasedPhishingCheck parameter governs this announced rollout.",
+      "claim": "Microsoft has not confirmed that ContentBasedPhishingCheck governs this particular AI rollout.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams ContentBasedPhishingCheck admin; Teams context-aware phishing. Read Set-CsTeamsMessagingConfiguration and MC1519866: the reference says unreleased and the notice does not identify this parameter.",
+      "quote": "Searched: \"ContentBasedPhishingCheck\" \"Teams\"; Teams context-aware phishing detection ContentBasedPhishingCheck admin center licensing price China. Read Set reference and PowerShell release-note excerpt; generic content-based setting is marked unreleased, without identifying this AI rollout.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 45,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The tenant reporting setting is at Teams admin center > Messaging settings > Messaging safety > Report incorrect security detections.",
+      "claim": "Teams admin center > Messaging settings > Messaging safety > Report incorrect security detections is the documented reporting-setting path.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
       "quote": "In the left navigation, select **Messaging settings**.\n3. Scroll down to **Messaging safety** settings.\n4. Turn on the setting: **Report incorrect security detections**.",
@@ -509,21 +522,21 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 46,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "The MicrosoftTeams module documents Set-CsTeamsMessagingConfiguration -ReportIncorrectSecurityDetections Enabled to enable incorrect-detection reporting for Teams messages in the tenant.",
+      "claim": "Set-CsTeamsMessagingConfiguration -ReportIncorrectSecurityDetections Enabled enables end-user reporting of incorrect Teams-message security detections tenant-wide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
-      "quote": "### -ReportIncorrectSecurityDetections\n\nNote\n\nThis cmdlet is not available in GCC, GCCH and DOD.\n\nThis setting enables the end users to Report incorrect security detections in Teams messages in the tenant.\n\nPossible Values:\n\n- Enabled\n- Disabled",
+      "quote": "This setting enables the end users to Report incorrect security detections in Teams messages in the tenant.\n\nPossible Values:\n\n- Enabled\n- Disabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 47,
       "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "The incorrect-detection reporting page describes messages incorrectly flagged by Link Protection.",
+      "claim": "The reporting page describes messages incorrectly flagged by Link Protection as containing malicious URLs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
       "quote": "Users can report messages in Teams chats or channels that are incorrectly flagged by Link Protection as containing malicious URLs.",
@@ -531,21 +544,21 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[1].note; Risk assessment: Change & support; Governance controls; Open questions",
+      "n": 48,
+      "where": "controls[1].note; Governance controls; Risk assessment; Governance guidance; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not confirmed that Report incorrect security detections covers this context-aware phishing detection.",
+      "claim": "Microsoft has not explicitly confirmed that the incorrect-detection reporting experience covers this AI detection.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams context-aware phishing Security detections Report incorrect. Read End user reporting for Security, Set-CsTeamsMessagingConfiguration and MC1519866; none identifies the reporting switch as governing this new warning.",
+      "quote": "Searched: Teams content-based phishing detection admin UI Messaging safety; \"Phishing content detection in Microsoft Teams\". Read End user reporting for Security and Set-CsTeamsMessagingConfiguration; the documented incorrect-detection experience identifies Link Protection, not this AI detection.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[2].ui; Governance controls table",
+      "n": 49,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "The organisation's report is at Teams admin center > Analytics & reports > Protection reports > View reports > Security detections.",
+      "claim": "Teams admin center > Analytics & reports > Protection reports > View reports > Security detections is the documented report-selection path.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/security-detections-report",
       "quote": "In the left navigation of the Teams admin center, go to **Analytics & reports** > **Protection reports**.\n2. On the **View reports** tab, under **Report**, select **Security detections**.",
@@ -553,10 +566,21 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[2].governs; Governance controls",
+      "n": 50,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for the Teams Security detections report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Security detections report API Microsoft Graph PowerShell; \"Security detections\" \"report\" \"Teams\" API. Read Security detections report and Graph security API search excerpts; results concern other reports, Defender or identity risk, not an API for this report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].governs; Governance controls; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The Security detections report reviews Teams security detections, including impersonation, malicious URL and weaponizable file detections.",
+      "claim": "The Security detections report reviews detections for organizational Teams communications, including impersonation, malicious URL and weaponizable file detections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/security-detections-report",
       "quote": "The report includes detections generated by Teams security protections, such as impersonation, malicious URL, and weaponizable file detections.",
@@ -564,68 +588,46 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[2].note; Governance guidance: After rollout; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that this specific AI detection appears in the Security detections report.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams context-aware phishing Security detections Report incorrect; Teams AI context aware phishing content detection security detections report API Graph. Opened the Security detections report page and MC1519866; neither identifies this new detection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[2].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for the Teams Security detections report at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Security detections Graph API; Teams security detections report PowerShell API beta. Read the report page and Graph security API search excerpts; found CSV exports but no endpoint or cmdlet for this report.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 52,
-      "where": "Governance guidance: Before rollout",
-      "type": "command",
-      "claim": "Get-CsTeamsMessagingConfiguration reads the tenant's current messaging configuration.",
+      "where": "controls[2].note; Governance controls; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly confirmed that this AI detection appears in the Security detections report.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration",
-      "quote": "PS C:\\> Get-CsTeamsMessagingConfiguration\n\nThe command shown in Example 1 returns teams messaging configuration information for the current tenant.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration to the page's sources for the read-only command in Governance guidance."
+      "source": null,
+      "quote": "Searched: \"Security detections\" \"report\" \"Teams\" API; Teams AI phishing content detection warnings block retention licensing government clouds. Read Security detections report and Teams security guide; report lists general categories without identifying this context-aware AI rollout.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 53,
-      "where": "Risk assessment: Security & identity; Autonomy & actions",
-      "type": "absence",
-      "claim": "The supplied roadmap and notice do not describe blocking, removing messages or automated actions on accounts or senders.",
+      "where": "Governance guidance: Before rollout / command",
+      "type": "command",
+      "claim": "Get-CsTeamsMessagingConfiguration reads the current tenant messaging configuration.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: supplied roadmap and MC1519866, both read in full, for descriptions of blocking, removal and automated account or sender actions. Their stated response is that users may see warnings; neither source describes those other actions.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration",
+      "quote": "The command shown in Example 1 returns teams messaging configuration information for the current tenant.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmessagingconfiguration to sources for the read-only command in Governance guidance."
     },
     {
       "n": 54,
-      "where": "Open questions: warning text and user actions",
-      "type": "record",
-      "claim": "The supplied notice does not give the warning's wording or describe user actions from the warning.",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor the supplied notice describes blocking or removing messages.",
       "status": "supported",
-      "source": "Message Center post MC1519866",
-      "quote": "After validation, users may see a warning when potential phishing is detected:",
+      "source": null,
+      "quote": "Searched: Teams AI phishing content detection warnings block retention licensing government clouds. Read the full roadmap record and MC1519866; both describe possible warnings and neither describes blocking or removing messages.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "Open questions: US Government clouds",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Microsoft has not published further US Government cloud availability for this specific context-aware detection.",
+      "claim": "The feature sources do not describe automated actions on messages, accounts or senders.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams content-based phishing GCC. Read roadmap, MC1519866 and Set-CsTeamsMessagingConfiguration; search results concerned other protections and government releases, not availability of this context-aware detection.",
+      "quote": "Searched: Teams AI phishing content detection warnings block retention licensing government clouds; \"Phishing content detection in Microsoft Teams\". Read roadmap record, MC1519866, Teams security guide and Set reference; no automated action attributed to this specific AI feature found.",
       "severity": null,
       "fix": null
     },
@@ -636,20 +638,42 @@
       "claim": "Detection only warns users.",
       "status": "unsupported",
       "source": null,
-      "quote": "Searched: Teams context-aware phishing; Phishing content detection in Microsoft Teams. Read roadmap, MC1519866, Teams security guide and Set-CsTeamsMessagingConfiguration. Sources describe possible warnings, not an exclusive limit on behaviour.",
+      "quote": "Searched: Teams AI phishing content detection warnings block retention licensing government clouds; \"Phishing content detection in Microsoft Teams\". Read roadmap record, MC1519866, Teams security guide and Set reference; possible warnings are described, but no exclusive limit on behavior is stated.",
       "severity": "minor",
       "fix": "Replace 'Detection stays inside Teams messaging and only warns users' with 'The roadmap and notice describe detection in Teams messaging and possible warnings to users'."
+    },
+    {
+      "n": 57,
+      "where": "Open questions: warning",
+      "type": "record",
+      "claim": "The supplied notice does not describe the warning's wording or actions such as blocking or reporting the sender.",
+      "status": "supported",
+      "source": "Message Center post MC1519866",
+      "quote": "After validation, users may see a warning when potential phishing is detected:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Open questions: US Government clouds",
+      "type": "absence",
+      "claim": "Microsoft has not published further availability information for this AI detection in US Government clouds.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AI phishing content detection warnings block retention licensing government clouds; \"ContentBasedPhishingCheck\" \"Teams\". Read roadmap record, MC1519866, Teams security guide and Set reference; no US Government availability statement for this AI rollout found.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T03:37:49.742Z",
+    "at": "2026-11-24T07:39:41.651Z",
     "summary": {
       "links": 5,
-      "unreachable": 0,
+      "unreachable": 3,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -665,18 +689,18 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/security-detections-report",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -685,48 +709,64 @@
         "side": "api",
         "governs": "Tenant switch for content-based phishing detection in Teams messages",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMessagingConfiguration",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether users can report incorrect security detections in Teams messages",
         "docs": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Messaging settings",
           "Messaging safety",
           "Report incorrect security detections"
         ],
-        "missing": []
+        "missing": [
+          "Messaging settings",
+          "Messaging safety",
+          "Report incorrect security detections"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether users can report incorrect security detections in Teams messages",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMessagingConfiguration",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Review of security detections generated for Teams communications",
         "docs": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/security-detections-report",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Analytics & reports",
           "Protection reports",
           "View reports",
           "Security detections"
         ],
-        "missing": []
+        "missing": [
+          "Analytics & reports",
+          "Protection reports",
+          "View reports",
+          "Security detections"
+        ]
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

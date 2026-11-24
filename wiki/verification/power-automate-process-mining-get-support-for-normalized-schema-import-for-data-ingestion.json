@@ -2,34 +2,44 @@
   "slug": "power-automate-process-mining-get-support-for-normalized-schema-import-for-data-ingestion",
   "roadmapId": 577827,
   "title": "Power Automate process mining: import star schema (normalised) event data",
-  "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-24",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
-  "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 69,
-    "confirmed": 68,
-    "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 0,
-    "major": 0,
-    "minor": 1
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 58: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "2 blocking findings (claims 41, 42)"
+    ]
   },
-  "summary": "The briefing passes: the import workflow, storage prerequisites, licensing figures and Fabric controls are supported. It correctly distinguishes the launched roadmap status from Learn's preview label. One minor correction remains: the checklist asks administrators to check an environment prerequisite without a corresponding controls row.",
+  "counts": {
+    "claims": 64,
+    "confirmed": 59,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the Fabric automation shown only lists tenant settings; it cannot configure the OneLake access control beside it. The Fabric navigation also starts inside the Govern section rather than showing how to reach it. The import description and published licensing quantities are supported.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "claim": "The roadmap item is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
       "severity": null,
       "fix": null
     },
@@ -59,73 +69,40 @@
       "n": 4,
       "where": "front matter: releasePhase; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap lists General Availability as a release phase.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Preview\"\n  ]",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "front matter: releasePhase; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap also lists Preview as a release phase.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Preview\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: platforms; What's changing; Scope",
+      "where": "What's changing: more-info link",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "The roadmap item concerns Power Automate process mining.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"title\": \"Power Automate: Process mining - Get support for normalized schema import for data ingestion\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-22T23:45:51.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-22T23:45:51\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing: roadmap more-info link",
-      "type": "record",
-      "claim": "The roadmap's more-info link points to the object-centric semantic-model article.",
+      "claim": "The roadmap more-info link points to the object-centric semantic model article.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"moreInfoLink\": \"https://learn.microsoft.com/en-us/power-automate/object-centric-semantic-model\"",
@@ -133,30 +110,52 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "title; summary; What's changing; Why it matters",
+      "n": 8,
+      "where": "Why it matters: first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes reduced storage and faster ingestion compared with transforming data into a single table.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Support for star schema reduces storage volumes and speeds up ingestion performance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "behaviour",
-      "claim": "Normalized import reads a star schema with a thin event table and optional case and lookup tables linked by foreign keys instead of requiring a flattened event table.",
+      "claim": "Process Mining can ingest a star schema rather than requiring a single wide table.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
-      "quote": "Instead of flattening everything in your lakehouse into one CSV, you can point Process Mining directly at a star schema—a thin event table plus optional case and lookup tables, linked by foreign keys.",
+      "quote": "Power Automate Process Mining can ingest event data that isn't stored as a single wide table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "The star schema consists of a thin event table with optional case and lookup tables linked by foreign keys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
+      "quote": "a thin event table plus optional case and lookup tables, linked by foreign keys.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: first paragraph; Scope; rationale: risk",
+      "type": "availability",
+      "claim": "OneLake/Fabric and Azure Data Lake Storage Gen2 are supported sources for normalized import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
+      "quote": "OneLake / Microsoft Fabric: A lakehouse with managed Delta tables, or loose Parquet or CSV files under the Files/ area. Azure Data Lake Storage Gen2: A container with CSV, Parquet, or Delta-Parquet folders.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Scope; rationale: risk",
-      "type": "availability",
-      "claim": "The documented storage backends for normalized import are OneLake/Fabric and Azure Data Lake Storage Gen2.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
-      "quote": "It declares the storage backend (ADLS Gen2 or OneLake), the file format (CSV, Parquet, or Delta-Parquet), and a list of datasets.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Scope",
+      "where": "What's changing: first paragraph; Scope",
       "type": "behaviour",
       "claim": "Normalized import supports CSV, Parquet and Delta-Parquet formats.",
       "status": "supported",
@@ -166,10 +165,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "Scope: OneLake sources",
+      "n": 13,
+      "where": "Scope: sources",
       "type": "behaviour",
-      "claim": "The normalized-import UX guide lists managed Delta tables and loose Parquet or CSV files under a OneLake lakehouse's Files/ area.",
+      "claim": "OneLake sources may be managed Delta tables or loose Parquet or CSV files under Files/.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
       "quote": "OneLake / Microsoft Fabric: A lakehouse with managed Delta tables, or loose Parquet or CSV files under the Files/ area.",
@@ -177,32 +176,21 @@
       "fix": null
     },
     {
+      "n": 14,
+      "where": "What's changing: second paragraph; summary",
+      "type": "behaviour",
+      "claim": "A JSON configuration describes the tables and storage backend.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
+      "quote": "dataSource answers \"Where is the data and what does it look like on disk?\" It declares the storage backend (ADLS Gen2 or OneLake), the file format (CSV, Parquet, or Delta-Parquet), and a list of datasets.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 15,
-      "where": "Scope: ADLS Gen2 sources",
-      "type": "behaviour",
-      "claim": "The normalized-import UX guide lists an ADLS Gen2 container with CSV, Parquet or Delta-Parquet folders.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "Azure Data Lake Storage Gen2: A container with CSV, Parquet, or Delta-Parquet folders.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "summary; What's changing: JSON configuration",
-      "type": "behaviour",
-      "claim": "A JSON configuration describes the tables, storage backend and mappings to Process Mining attributes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "A JSON config file describing your tables and how they map to Process Mining attributes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
       "where": "What's changing; Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Normalized import authoring is JSON-only today.",
+      "claim": "Normalized import authoring is JSON-only with no in-product editor.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
       "quote": "Normalized import is JSON-only today—there's no in-product editor yet. You author one file and upload it to the service.",
@@ -210,65 +198,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing: in-product editor",
+      "n": 16,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
-      "claim": "There is no in-product editor for authoring the normalized-import configuration yet.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
-      "quote": "Normalized import is JSON-only today—there's no in-product editor yet.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "For OneLake, the JSON carries workspace and lakehouse IDs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "The JSON also carries the storage backend details (workspace/lakehouse IDs for OneLake, or subscription/resource group/storage account/container for ADLS Gen2).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "For ADLS Gen2, the JSON carries subscription, resource group, storage account and container details.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "The JSON also carries the storage backend details (workspace/lakehouse IDs for OneLake, or subscription/resource group/storage account/container for ADLS Gen2).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The storage backend is read from the JSON rather than chosen in the UI.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "You don't pick the backend in the UI—it's read from the JSON.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].ui; What's changing; Governance controls table",
-      "type": "admin-path",
-      "claim": "At make.powerautomate.com, the maker chooses an environment, then Process mining > + Start from blank > Case ID process mining > Normalized schema (preview).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "Choose your environment from the environment picker (top right).\nIn the left navigation, select Process mining.\nOn the Process mining home page, select + Start from blank.\nProcess type: Select Case ID process mining.\nData source: Select Normalized schema (preview).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing: browsing to the JSON file",
-      "type": "behaviour",
-      "claim": "The maker browses to and selects the JSON configuration file.",
+      "claim": "The maker browses to a JSON file in the New Process dialog.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
       "quote": "Choose normalized schema config file: Select Browse and select the .json file you authored.",
@@ -276,10 +209,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 17,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The service validates the JSON before continuing, and invalid JSON must be corrected and resubmitted.",
+      "claim": "The service validates the JSON before continuing and failed files must be corrected and resubmitted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
       "quote": "The service parses the JSON and runs the normalized-schema validator end-to-end before continuing. This step takes a few seconds.",
@@ -287,21 +220,21 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 18,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "After validation, a Mapping screen lets the maker review and adjust the mapping.",
+      "claim": "After validation, a Mapping screen lets the maker review and adjust the attribute mapping.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "When the JSON passes validation, the Mapping screen opens.\nUse this screen to review and adjust the mapping.",
+      "quote": "When the JSON passes validation, the Mapping screen opens. It's prepopulated from your JSON",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing: final workflow step",
-      "type": "admin-path",
-      "claim": "The documented final action is Save and analyze.",
+      "n": 19,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The maker selects Save and analyze after reviewing the mapping.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
       "quote": "When the mapping looks correct, select Save and analyze.",
@@ -309,10 +242,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing: resulting model",
+      "n": 20,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
-      "claim": "Learn says the resulting Process Mining model is identical regardless of the import path.",
+      "claim": "The resulting Process Mining model is identical regardless of the import path.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
       "quote": "The resulting Process Mining model is identical regardless of which import path fed it.",
@@ -320,30 +253,85 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Scope; Governance guidance: Before rollout",
+      "n": 21,
+      "where": "summary; What's changing; controls[0].note; Governance guidance; Open questions",
       "type": "availability",
-      "claim": "The feature requires an environment where Process Mining is enabled.",
+      "claim": "Learn labels the data source Normalized schema (preview).",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "A Power Automate environment where Process Mining is enabled, and a user account with rights to create processes in it.",
+      "quote": "Data source: Select Normalized schema (preview).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Scope; controls[0].note",
-      "type": "role",
-      "claim": "The user must have rights to create processes in the environment.",
+      "n": 22,
+      "where": "What's changing: final paragraph",
+      "type": "behaviour",
+      "claim": "The more-info article covers publishing object-centric models into Fabric, not normalized-schema ingestion.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "A Power Automate environment where Process Mining is enabled, and a user account with rights to create processes in it.",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "When you publish a process to Fabric workspace, it creates a new DirectLake semantic model and an empty Power BI report connected to the semantic model.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Risk assessment: Security & identity; Scope; Governance controls",
+      "n": 23,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Learn lists lower storage cost for normalized import because dimension values are stored once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
+      "quote": "| Storage cost | Higher (every event repeats case/dimension values) | Lower (dimensions stored once) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].ui; What's changing; Governance controls table",
+      "type": "admin-path",
+      "claim": "The maker entry path is environment > Process mining > + Start from blank > Case ID process mining > Normalized schema (preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
+      "quote": "Choose your environment from the environment picker (top right). In the left navigation, select Process mining. On the Process mining home page, select + Start from blank. Process type: Select Case ID process mining. Data source: Select Normalized schema (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API equivalent of starting a normalized-schema import is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" API PowerShell pac table entity; Power Automate normalized schema import admin disable setting Power Platform API Dataverse table entity reference import normalized. Read both normalized guides; no import operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1]; summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not document an administrator UI switch or API to disable normalized-schema import.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" \"disable\"; \"normalized\" \"process mining\" API PowerShell pac table entity. Read normalized UX and authoring guides and process-advisor-security. Results describe import and unrelated Copilot switches, not a normalized-import restriction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Normalized import is user-opt-in: a maker selects the data source and uploads a JSON configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
+      "quote": "Data source: Select Normalized schema (preview). Choose normalized schema config file: Select Browse and select the .json file you authored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Why it matters; Security & identity; Scope; Governance controls",
       "type": "role",
       "claim": "The Environment maker role can create, share and contribute to processes.",
       "status": "supported",
@@ -353,7 +341,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 29,
       "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "Administrators and system customizers can access all processes created in the environment.",
@@ -364,7 +352,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 30,
       "where": "Scope; Governance controls",
       "type": "role",
       "claim": "The Process Mining User security role can only view created process reports.",
@@ -375,32 +363,54 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 31,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "General process-mining Conditional Access guidance requires both Power Apps and Power Automate in the Cloud apps policy application.",
+      "claim": "Process mining Conditional Access policies must include Power Apps as well as Power Automate in Cloud apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "the following apps must be included in Cloud apps policy application:\nPower Apps\nPower Automate\nCurrently, having conditional access to only Power Automate isn't enough.",
+      "quote": "the following apps must be included in Cloud apps policy application: Power Apps; Power Automate. Currently, having conditional access to only Power Automate isn't enough.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The normalized-import articles describe no autonomous action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" scheduled incremental refresh; read both normalized-import articles in full. They describe user-authored JSON, user selection, validation, mapping review and Save and analyze, not autonomous actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The two normalized-schema articles do not describe scheduled or incremental refresh for a normalized process.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" scheduled incremental refresh. Read both normalized guides, OneLake and ADLS guides, and Edit and refresh processes excerpt. General source refresh is documented, but the two normalized articles contain no refresh discussion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Risk assessment: Data exposure; Scope; controls[2].note; Governance controls",
+      "where": "Risk assessment: Data exposure; Scope; Governance controls",
       "type": "applicability",
-      "claim": "The normalized-import UX guide requires the corresponding OneLake or ADLS Gen2 prerequisites to be met.",
+      "claim": "The normalized-import UX guide requires the respective OneLake or ADLS Gen2 prerequisites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "Respective prerequisites are met:\nOneLake: Learn more in Ingest data from Fabric OneLake\nADLS Gen2: Learn more in Bring your own Azure Data Lake Storage Gen2 or Bring your own network isolated Azure Data Lake Storage Gen2",
+      "quote": "Respective prerequisites are met: OneLake: Learn more in Ingest data from Fabric OneLake; ADLS Gen2: Learn more in Bring your own Azure Data Lake Storage Gen2 or Bring your own network isolated Azure Data Lake Storage Gen2.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Risk assessment: Data exposure; controls[2]; Governance guidance",
+      "where": "controls[2].governs; controls[2].note; Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "The OneLake prerequisites require the tenant setting allowing apps external to Fabric to access OneLake data to be on.",
+      "claim": "OneLake ingestion requires enabling the tenant setting allowing apps external to Fabric to access OneLake.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
       "quote": "Ensure that Users can access data stored in OneLake with apps external to the Fabric option is switched on in the OneLake tenant settings.",
@@ -411,7 +421,7 @@
       "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "role",
-      "claim": "The OneLake prerequisites require sharing the Fabric workspace with the Process Insight Prod service principal with an Admin role.",
+      "claim": "The OneLake prerequisites require sharing the Fabric workspace with the Process Insight Prod service principal with Admin role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
       "quote": "The Fabric workspace needs to be shared to the Process Insight Prod service principal with an Admin role.",
@@ -420,116 +430,94 @@
     },
     {
       "n": 37,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The documented import is initiated by a maker selecting the data source and uploading a configuration file.",
+      "claim": "The JSON contains workspace and lakehouse IDs for a OneLake source.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "Data source: Select Normalized schema (preview).\nChoose normalized schema config file: Select Browse and select the .json file you authored.",
+      "quote": "The JSON also carries the storage backend details (workspace/lakehouse IDs for OneLake",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[1]; summary; Why it matters; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No feature-specific administrator switch or API to disable normalized-schema import is documented at the time of writing.",
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The JSON contains subscription, resource group, storage account and container details for ADLS Gen2.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" \"disable\" \"tenant\"; \"normalized schema\" \"process mining\" administrator disable API PowerShell Dataverse import. Opened both normalized-import guides and process-advisor-security; no feature-specific switch found.",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
+      "quote": "or subscription/resource group/storage account/container for ADLS Gen2).",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API or automation equivalent for starting a normalized-schema import is documented.",
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The storage backend is chosen through the JSON, not in the UI.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"process mining\" \"normalized\" \"Power Platform API\" \"Dataverse\" \"pac\"; \"normalized schema\" \"process mining\" administrator disable API PowerShell Dataverse import. Opened both normalized-import guides; no equivalent call found.",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
+      "quote": "You don't pick the backend in the UI—it's read from the JSON.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Why it matters: default beyond the New Process dialog",
-      "type": "absence",
-      "claim": "Microsoft documents the maker's data-source selection but does not state a separate automatic rollout default for normalized import.",
+      "where": "Risk assessment: Security & identity; Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Process creators choose the storage location in the JSON, subject to storage-side prerequisites rather than unrestricted access from the maker role alone.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" existing processes default automatic. Read roadmap record and both normalized-import guides; documented workflow is manual data-source selection, with no separate automatic default stated.",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
+      "quote": "Respective prerequisites are met: OneLake: Learn more in Ingest data from Fabric OneLake; ADLS Gen2: Learn more in Bring your own Azure Data Lake Storage Gen2",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Why it matters: existing processes",
-      "type": "absence",
-      "claim": "No source examined says that existing processes change when nobody chooses normalized import.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" existing processes default automatic. Read roadmap record and both normalized-import guides; no automatic modification of existing processes described.",
-      "severity": null,
-      "fix": null
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Fabric control route starts at Configurations > Tenant settings > Users can access data stored in OneLake with apps external to Fabric.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/fabric/governance/onelake-catalog-govern",
+      "quote": "To open the Govern section, select the OneLake catalog icon in the Fabric navigation pane and then select Govern.",
+      "severity": "blocker",
+      "fix": "Set controls[2].ui.surface to 'Microsoft Fabric' and its path to 'OneLake catalog > Govern > Configurations > Tenant settings > Users can access data stored in OneLake with apps external to Fabric'. Add https://learn.microsoft.com/fabric/governance/onelake-catalog-govern to sources; retain the existing docs link for the control's last steps."
     },
     {
       "n": 42,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The normalized-import articles describe no autonomous action.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" existing processes default automatic; \"process mining\" \"normalized\" \"refresh\" \"schedule\". Opened both normalized-import guides; workflow is maker-initiated validation, mapping and analysis, not autonomous action.",
-      "severity": null,
-      "fix": null
+      "where": "controls[2].api; Governance controls table; Governance controls lead",
+      "type": "command",
+      "claim": "GET https://api.fabric.microsoft.com/v1/admin/tenantsettings is the automation equivalent for the OneLake external-app access control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
+      "quote": "Returns a list of the tenant settings. GET https://api.fabric.microsoft.com/v1/admin/tenantsettings",
+      "severity": "blocker",
+      "fix": "Remove controls[2].api: this GET only reads settings and cannot set the access control. Remove the GET from the rendered automation cell and remove the caller-permission clause tied to it from controls[2].note and the closing Governance controls paragraph. Do not present a read operation as equivalent configuration automation."
     },
     {
       "n": 43,
-      "where": "Risk assessment: Autonomy & actions; Open questions: refresh",
-      "type": "absence",
-      "claim": "The two normalized-schema articles do not describe scheduled or incremental refresh for normalized imports.",
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "The listed tenant-settings GET requires a Fabric administrator or service-principal authentication.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"process mining\" \"normalized\" \"refresh\" \"schedule\". Read both normalized-import guides and Edit and refresh processes, OneLake and ADLS Gen2 guides. General/source refresh is documented; neither normalized guide explains refresh of its multi-table configuration.",
+      "source": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
+      "quote": "The caller must be a Fabric administrator or authenticate using a service principal.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The JSON authoring article contains the server-side validation checklist.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Process Mining has a mixed licensing model combining Power Automate Premium user licences and tenant-wide capacity add-ons.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
-      "quote": "Validation checklist\nBefore submitting your configuration, review this list. The server runs every check before opening a single byte of data.",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The Power Automate Premium license is a per-user license with the following offerings: ... The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Why it matters; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Learn compares normalized import with flat import and lists lower storage cost because dimensions are stored once.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
-      "quote": "| Storage cost | Higher (every event repeats case/dimension values) | Lower (dimensions stored once) |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Why it matters: roadmap performance and storage",
-      "type": "record",
-      "claim": "The roadmap description says star-schema support reduces storage volumes and speeds ingestion.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Support for star schema reduces storage volumes and speeds up ingestion performance.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "Process mining is licensed as part of Microsoft Power Automate.",
@@ -540,21 +528,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "front matter: licensing.model; Cost and licensing",
-      "type": "licensing",
-      "claim": "Power Automate Premium is a per-user licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The Power Automate Premium license is a per-user license with the following offerings:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
+      "n": 46,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Each Power Automate Premium licence adds 50 MB of process-mining capacity to the tenant-wide pool.",
+      "claim": "Each Power Automate Premium licence adds 50 MB of process mining capacity to the tenant pool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
@@ -562,10 +539,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 47,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Premium's pooled process-mining capacity has a 100 GB total threshold, beyond which the Process Mining add-on is needed to process more data.",
+      "claim": "Premium-derived pooled capacity reaches a maximum of 100 GB, beyond which the Process Mining add-on is needed for more data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "When you reach 100 GB, you need to purchase the Power Automate Process Mining add-on to process more data.",
@@ -573,8 +550,8 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Cost and licensing: add-on eligibility",
+      "n": 48,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "The Process Mining add-on is tenant-wide and available for Power Automate Premium.",
       "status": "supported",
@@ -584,10 +561,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 49,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The Process Mining add-on adds 100 GB to the process-mining capacity pool.",
+      "claim": "The Process Mining add-on adds 100 GB to the process mining capacity pool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "An extra 100 GB of process mining capacity to the capacity pool, which users with the Power Automate Premium license can use.",
@@ -595,10 +572,10 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Cost and licensing: trial capacity",
+      "n": 50,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The trial offers 100 MB of process-mining capacity per process.",
+      "claim": "The trial includes limited process mining capacity of 100 MB per process.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "The trial offers limited process mining capacity of 100 MB per process.",
@@ -606,87 +583,54 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "summary; front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 51,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No separate licence specific to normalized import is named in the feature guides or the process-mining licensing prerequisites.",
+      "claim": "No separate licence specific to normalized import is named in the product licensing or feature articles.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" \"license\" \"price\" \"meter\". Read both normalized-import guides, process-advisor-overview Licensing and Prerequisites, and licensing FAQ Process Mining section; no normalized-import-specific licence named.",
+      "quote": "Searched: \"normalized\" \"process mining\" capacity licensing billing. Read normalized UX and authoring guides, process-advisor-overview licensing and prerequisites, and Power Platform licensing FAQs process-mining sections. General Power Automate licences are named, not a separate import licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price or separate meter specific to normalized import is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" capacity licensing billing; Power Automate normalized schema import licensing capacity price meter scheduled incremental refresh default. Read normalized guides, overview and licensing FAQs: no separate import meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Stored process data mostly uses Dataverse file capacity and a larger import can exhaust Dataverse storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Depending on the size of the process data you import, you might run out of Dataverse storage capacity. ... The process data we store uses mostly file capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The articles do not explain how normalized-import data is counted against process mining capacity or Dataverse file capacity.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" capacity licensing billing. Read normalized UX and authoring articles, process-advisor-overview capacity text and licensing FAQs. General stored-data capacity applies; no normalized-schema accounting calculation or treatment is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "Cost and licensing: Dataverse file capacity",
-      "type": "cost",
-      "claim": "Stored process data uses mostly Dataverse file capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The process data we store uses mostly file capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing: storage exhaustion",
-      "type": "cost",
-      "claim": "Depending on import size, process data can exhaust Dataverse storage capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "Depending on the size of the process data you import, you might run out of Dataverse storage capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Cost and licensing; Open questions: normalized data accounting",
-      "type": "absence",
-      "claim": "The cited pages do not explain how the normalized multi-table representation is counted against the process-mining pool and Dataverse file capacity.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" \"capacity\" calculation; \"process mining\" \"normalized\" \"capacity\" \"stored\". Read normalized guides, overview licensing/Dataverse capacity and licensing FAQ; general pools are stated, but no normalized-schema accounting formula.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Cost and licensing: feature-specific price",
-      "type": "absence",
-      "claim": "No price specific to normalized import is published in the checked documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" \"license\" \"price\" \"meter\". Read feature guides, overview Licensing and licensing FAQ. FAQ prices the general Process Mining capacity pack, not a separate normalized-import feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "rationale: cost",
-      "type": "absence",
-      "claim": "Learn names no separate normalized-import meter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"normalized schema\" \"process mining\" \"license\" \"price\" \"meter\". Read normalized guides, overview Licensing and licensing FAQ Process Mining section; general storage capacity is documented, but no normalized-import-specific meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The mixed licensing classification describes the documented combination of per-user Premium licensing and a tenant-wide capacity add-on.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The Power Automate Premium license is a per-user license\nThe Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Cost and licensing: usage reporting",
+      "where": "Cost and licensing: final paragraph",
       "type": "behaviour",
-      "claim": "Customers can assess their highest monthly Process Mining usage, including current and past usage data, in the Power Platform admin center.",
+      "claim": "Customers can assess highest monthly Process Mining usage using current and past usage data in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
       "quote": "Yes, customers can assess their highest monthly Process Mining usage to understand capacity needed. Current and past usage data are available in the Power Platform admin center.",
@@ -694,150 +638,161 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The OneLake external-app access setting is under OneLake catalog's Govern section > Configurations > Tenant settings > Users can access data stored in OneLake with apps external to Fabric.",
+      "n": 56,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check that Process Mining is enabled, but the controls table contains no matching environment control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import. Table rows cover the maker import entry, normalized-import disable switch and OneLake external-app access.",
+      "severity": "minor",
+      "fix": "Remove the first Before rollout bullet, 'Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import.' Retain the documented environment prerequisite in Scope."
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Data exposure, second bullet",
+      "type": "consistency",
+      "claim": "The page directs readers to review workspace Admin membership using a Fabric controls row that only addresses OneLake external-app tenant access.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review who holds Admin on that workspace (see the Fabric controls row). The Fabric row governs 'OneLake access for apps external to Fabric, which a OneLake source depends on'.",
+      "severity": "minor",
+      "fix": "Remove 'Review who holds Admin on that workspace (see the Fabric controls row).' Keep the preceding documented OneLake prerequisites."
+    },
+    {
+      "n": 58,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Other users and administrators see no change from normalized import.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" \"disable\"; \"normalized\" \"process mining\" API PowerShell pac table entity. Read both normalized-import guides and security article. They document maker import and process access, not a guarantee that other users or administrators see no change.",
+      "severity": "minor",
+      "fix": "Remove '; other users and administrators see no change' from the impact rationale, leaving 'Low. Makers and analysts who build process mining models from lakehouse data notice it.'"
+    },
+    {
+      "n": 59,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Normalized import requires an environment with Process Mining enabled and an account with rights to create processes.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
-      "quote": "OneLake tenant settings are configured in Configurations > Tenant settings in the Govern section of the OneLake catalog.\nUsers can access data stored in OneLake with apps external to Fabric",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
+      "quote": "A Power Automate environment where Process Mining is enabled, and a user account with rights to create processes in it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: notes",
+      "type": "applicability",
+      "claim": "Dataverse security roles govern access to process mining features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The JSON authoring article includes a validation checklist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
+      "quote": "Validation checklist: Before submitting your configuration, review this list. The server runs every check before opening a single byte of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters: second paragraph",
+      "type": "absence",
+      "claim": "Microsoft states no further arrival default beyond the documented maker-selectable data source.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate normalized schema import licensing capacity price meter scheduled incremental refresh default; \"normalized\" \"process mining\" \"disable\". Read roadmap and both normalized guides: maker selection is documented; no further arrival default is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 63,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "GET https://api.fabric.microsoft.com/v1/admin/tenantsettings is the documented Fabric tenant-settings endpoint.",
+      "where": "Why it matters: final sentence",
+      "type": "absence",
+      "claim": "No source says existing processes change if nobody adopts normalized import.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
-      "quote": "GET https://api.fabric.microsoft.com/v1/admin/tenantsettings",
+      "source": null,
+      "quote": "Searched: \"normalized\" \"process mining\" scheduled incremental refresh; \"normalized\" \"process mining\" \"disable\". Read roadmap and normalized UX and authoring guides: a new import path is described, not automatic conversion or changes to existing processes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
-      "where": "controls[2].note; Governance controls",
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
-      "claim": "The listed Fabric call reads tenant settings rather than changing them.",
+      "claim": "The JSON configuration maps physical columns to logical Process Mining attributes.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
-      "quote": "Returns a list of the tenant settings.\n| enabled | boolean | The status of the tenant setting. False - Disabled, True - Enabled. |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[2].note; Governance controls",
-      "type": "role",
-      "claim": "The Fabric tenant-settings API caller must be a Fabric administrator or authenticate using a service principal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
-      "quote": "The caller must be a Fabric administrator or authenticate using a service principal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "User-opt-in fits the documented maker-selected import workflow and the absence of a documented feature-specific admin switch.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "Data source: Select Normalized schema (preview).\nChoose normalized schema config file: Select Browse and select the .json file you authored.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance guidance: Before rollout, first bullet",
-      "type": "consistency",
-      "claim": "The checklist asks administrators to check that Process Mining is enabled, but the controls table has no corresponding environment-level control row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import. Table rows cover maker import entry, the missing normalized-import switch, and OneLake external-app access, not this environment check.",
-      "severity": "minor",
-      "fix": "Remove the first Before rollout bullet, 'Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import.' Keep the documented environment prerequisite in Scope."
-    },
-    {
-      "n": 68,
-      "where": "summary; What's changing; Risk assessment; controls[0].note; Open questions",
-      "type": "availability",
-      "claim": "Microsoft Learn still labels the data source Normalized schema (preview), unlike the roadmap's launched status and General Availability phase.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-      "quote": "Data source: Select Normalized schema (preview).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "What's changing: roadmap more-info article",
-      "type": "behaviour",
-      "claim": "The roadmap's more-info article is titled Export OCPM semantic model into Fabric workspace and describes exporting object-centric process models, not normalized-schema ingestion.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
-      "quote": "Export OCPM semantic model into Fabric workspace\nThe new optimized DirectLake semantic model leads to faster and more memory-efficient analysis of processes and is now available also for object centric processes.",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
+      "quote": "miningMetadata.ImportConfiguration.Attributes answers \"What does each column mean to Process Mining?\" It maps physical columns (or joined columns from lookup tables) to logical roles",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T04:20:13.724Z",
+    "at": "2026-11-24T07:39:42.508Z",
     "summary": {
       "links": 10,
-      "unreachable": 0,
+      "unreachable": 9,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-authoring-guide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-advisor-security",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577827",
@@ -851,36 +806,45 @@
         "side": "ui",
         "governs": "Where a maker starts a normalized-schema import",
         "docs": "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Process mining",
           "+ Start from blank",
           "Case ID process mining",
           "Normalized schema"
         ],
-        "missing": []
+        "missing": [
+          "Process mining",
+          "+ Start from blank",
+          "Case ID process mining",
+          "Normalized schema"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "OneLake access for apps external to Fabric, which a OneLake source depends on",
         "docs": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Configurations",
           "Tenant settings",
           "Users can access data stored in OneLake with apps external to Fabric"
         ],
-        "missing": []
+        "missing": [
+          "Configurations",
+          "Tenant settings",
+          "Users can access data stored in OneLake with apps external to Fabric"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "OneLake access for apps external to Fabric, which a OneLake source depends on",
         "docs": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
-        "reachable": true,
+        "reachable": false,
         "token": "api.fabric.microsoft.com/v1/admin/tenantsettings",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -890,6 +854,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

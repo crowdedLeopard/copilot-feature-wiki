@@ -40,17 +40,20 @@ sources:
   - title: "How to Manage Data Transfer Between iOS Apps in Microsoft Intune"
     url: "https://learn.microsoft.com/intune/app-management/protection/manage-data-transfer-ios"
     kind: "learn"
+  - title: "Microsoft Intune Protected Apps"
+    url: "https://learn.microsoft.com/intune/app-management/ref-protected-apps"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in","m365-copilot-capture-voice-notes-in-the-m365-copilot-mobile-app","app-management"]
 controls:
-  - governs: "Whether the Copilot app, and so its share target, is available in the tenant"
+  - governs: "Access to organisational Copilot Chat through the Copilot app"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Settings > Integrated Apps > Available Apps > app > Block app"
       docs: "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365"
     api: null
-    note: "Page says Global Admins only. Blocks the whole Copilot app experience, not just this share path; no setting specific to this share path is documented."
+    note: "Global Admins only. Blocks organisational Copilot Chat access, including for licensed users; blocked users see a turned-off screen. Not documented to remove the iOS share target or to govern personal-account access."
   - governs: "A switch for sharing files into Copilot Chat from other iOS apps"
     scope: "user"
     ui: null
@@ -65,19 +68,23 @@ changes:
     note: "New briefing: sharing Word, Excel and PowerPoint files from iPhone and iPad apps to the Copilot app starts a Copilot Chat; launched per the roadmap, no feature-specific admin setting documented."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 34 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after verification: Intune app protection now stated as listed for Microsoft Copilot on iOS, and the Integrated Apps control described as blocking organisational Copilot Chat access, not as removing the app or the only tenant control."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 34
-  confirmed: 30
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "cdfe8fedcc590ea7a4c8d560a673a636"
+  claims: 43
+  confirmed: 43
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a2e516ff3c2a709f7b1aa4bb42b52c6b"
 ---
 
 ## What's changing
@@ -101,13 +108,13 @@ Microsoft has not stated a default beyond the roadmap's description that a user 
 
 **Security & identity**
 - Learn says chats, files and protections stay separate by the account the user signs in with, and that users should sign in with their work or school account to receive enterprise protections. Which account a shared file goes to is not described.
-- Intune documents a Receive data from other apps setting for iOS app protection policies; Learn does not say whether it governs the Copilot app's share target.
+- Microsoft lists Microsoft Copilot for iOS as supporting core Intune app protection policies, including data-transfer restrictions. Test how the assigned policy handles this share route.
 
 **Autonomy & actions**
 - No change documented: the roadmap describes an upload the user starts, followed by a preview or a conversation the user continues.
 
 **Change & support**
-- Expect questions from iPhone and iPad users about where a shared file goes and which account it uses. The only tenant control documented is blocking the Copilot app in Integrated Apps, which removes the whole app rather than this route.
+- Expect questions from iPhone and iPad users about where a shared file goes and which account it uses. Integrated Apps provides a control over organisational Copilot Chat access, rather than a dedicated switch for this sharing route.
 
 ## Cost and licensing
 
@@ -129,10 +136,9 @@ The roadmap names Word, Excel and PowerPoint files shared from a third-party app
 
 ### At rollout
 - Test sharing a Word, Excel and PowerPoint file from the Files app on a managed iPhone or iPad, and record which account the file lands in.
-- Check whether your Intune app protection policy for iOS changes what the test does, and record the result for your service desk.
 
 ### After rollout
-- Decide whether blocking the Copilot app is acceptable if the test shows files reaching an account you do not want to receive them.
+- Decide whether blocking organisational Copilot Chat access through Integrated Apps is acceptable if the test shows files reaching an account you do not want to receive them; Microsoft does not describe whether this removes the iOS share target.
 - Watch the Learn page for the Copilot app and Message center for a page or setting specific to this share path.
 
 ## Governance controls
@@ -142,34 +148,24 @@ The roadmap names Word, Excel and PowerPoint files shared from a third-party app
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Copilot app, and so its share target, is available in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Page says Global Admins only. Blocks the whole Copilot app experience, not just this share path; no setting specific to this share path is documented.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Integrated Apps › Available Apps › app › Block app <a href="https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Access to organisational Copilot Chat through the Copilot app</strong><br><small>Tenant</small><br><small class="controls__note">Global Admins only. Blocks organisational Copilot Chat access, including for licensed users; blocked users see a turned-off screen. Not documented to remove the iOS share target or to govern personal-account access.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Integrated Apps › Available Apps › app › Block app <a href="https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>A switch for sharing files into Copilot Chat from other iOS apps</strong><br><small>User</small><br><small class="controls__note">No setting specific to this feature is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The documented control that reaches this feature is blocking the Copilot app in Integrated Apps. The page says its Integrated Apps controls are only available to Global Admins, and describes blocking Copilot there as a tenant-wide control that removes the Copilot app experience, so it is not a switch for the share path alone.
+The documented control that reaches this feature is blocking Copilot through Integrated Apps. The page says its Integrated Apps controls are only available to Global Admins. Blocking Copilot there blocks organisational Copilot Chat access, including for licensed users, and blocked users see a Copilot Chat was turned off for your organization screen. Microsoft does not describe whether this removes the iOS share target, and this is not a control over personal Microsoft-account access.
 
-Microsoft Learn documents no setting specific to sharing files to the Copilot app on iPhone and iPad at the time of writing (November 2026). Intune's Receive data from other apps setting for iOS app protection policies exists, but is not confirmed to govern the Copilot app, so it is not a row here.
+Microsoft Learn documents no setting specific to sharing files to the Copilot app on iPhone and iPad at the time of writing (November 2026). Microsoft lists Microsoft Copilot for iOS as supporting core Intune app protection policies, including data-transfer restrictions; Intune documents the Send org data to other apps and Receive data from other apps settings for iOS app protection policies. Test how the assigned policy handles this share route.
 
 ## Open questions
 
 - Does a file shared from another iOS app go to the user's work or school account or to a personal Microsoft account when both can be signed in? Watch the Microsoft Copilot app pages on Learn.
-- Does the Intune Receive data from other apps setting apply to the Copilot app's share target on iPhone and iPad?
+- How does an assigned Intune app protection policy behave on this particular sharing route on iPhone and iPad?
 - Is there a licence or meter specific to this feature, and does a shared file count toward any usage limit? Watch the Copilot overview and release notes pages.
-- Will Microsoft publish an admin setting for this share path, or is blocking the Copilot app the only tenant control?
+- Will Microsoft publish a dedicated admin setting for this share path? Watch the Learn page for the Copilot app and Message center.
 
 <!-- rationale
-risk: Low. A user picks one file and shares it to the app; Learn already describes uploading a file as a way to give Copilot Chat organisational content. Whether Intune app protection governs this share path is not confirmed.
+risk: Low. A user picks one file and shares it to the app; Learn already describes uploading a file as a way to give Copilot Chat organisational content. Microsoft lists Microsoft Copilot for iOS as supporting core Intune app protection policies; test how an assigned policy handles this share route.
 cost: Low. Learn says Copilot Chat (Basic) is included with eligible Microsoft 365 licences; a licence or meter specific to this feature is not yet published, so only admin and communication time is known.
 impact: Low. Only iPhone and iPad users who choose to share a file to the app notice it; nothing changes for other users or platforms.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls; rationale: risk; Open questions / absence: Intune app protection and Receive data from other apps are not confirmed to govern the Microsoft Copilot app. | Found: These apps support the core App Protection Policy settings ... Restricting data transfer and copy-and-paste functions. Microsoft Copilot | iOS | [Core App Protection Policy settings] ✔ | Fix: Replace the unconfirmed-applicability statements with: 'Microsoft lists Microsoft Copilot for iOS as supporting core Intune app protection policies, including data-transfer restrictions. Test how the assigned policy handles this share route.' Cite https://learn.microsoft.com/intune/app-management/ref-protected-apps and https://learn.microsoft.com/intune/app-management/protection/manage-data-transfer-ios. Narrow the open question to how the assigned policy behaves on this particular sharing route, rather than whether the app supports protection. | Source: https://learn.microsoft.com/intune/app-management/ref-protected-apps
-- [unsupported, blocker] controls[0].governs and note; Risk assessment: Change & support; Governance controls / applicability: Blocking Copilot in Integrated Apps removes the whole mobile app experience and therefore its iOS share target. | Found: Searched: Microsoft Graph block Copilot app Integrated Apps API copilot application availability. Opened Manage Copilot Chat, Integrated Apps guidance and app overview. These document blocking organisational Copilot access and a turned-off Chat screen, not removal of the iOS share target or personal | Fix: Change controls[0].governs to 'Access to organisational Copilot Chat through the Copilot app'. Replace whole-app removal and share-target implications in its note and the prose with: 'Blocking Copilot through Integrated Apps blocks organisational Copilot Chat access, including for licensed users; blocked users see a Copilot Chat was turned off for your organization screen. Microsoft does not describe whether this removes the iOS share target.' Cite https://learn.microsoft.com/copilot/manage/manage-copilot-chat. Do not present this as a control over personal Microsoft-account access.
-- [contradicted, blocker] Risk assessment: Change & support / absence: Blocking Copilot in Integrated Apps is the only documented tenant control relevant to this feature. | Found: IT admins of work or school environments can limit their users from accessing the Copilot app with their Microsoft account (personal account) by using Tenant Restrictions. | Fix: Replace 'The only tenant control documented is blocking the Copilot app in Integrated Apps, which removes the whole app rather than this route' with 'Integrated Apps provides a control over organisational Copilot Chat access, rather than a dedicated switch for this sharing route.' Remove the implication that blocking the app is the only documented tenant control; retain the open question about a dedicated share-route switch without that exclusivity. | Source: https://learn.microsoft.com/copilot/plan/copilot-app-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist asks readers to check an Intune iOS app protection policy, but the controls table has no corresponding row. | Found: Check whether your Intune app protection policy for iOS changes what the test does ... Intune's Receive data from other apps setting ... is not a row here. | Fix: Remove the standalone checklist item 'Check whether your Intune app protection policy for iOS changes what the test does, and record the result for your service desk.' Keep the managed-device sharing test and the corrected explanation of Intune's documented reach; this correction does not add a controls row.
 -->

@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
+  model: "included"
   notes: "Licensing specific to connectors in generative pages is not yet published. Model-driven apps already require a licence that provides Power Apps premium use rights; qualifying licences are listed in the Power Platform Licensing Guide."
 audiences: ["maker","power-platform-admin","security"]
 tags: ["power-apps","generative-pages","connectors","model-driven-apps","connection-references","gcc","gcc-high"]
@@ -49,11 +49,14 @@ sources:
   - title: "Connector endpoint filtering (preview)"
     url: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering"
     kind: "learn"
-  - title: "Which connectors may be used in an environment (Power Platform admin center)"
+  - title: "Connector action control"
     url: "https://learn.microsoft.com/power-platform/admin/connector-action-control"
     kind: "learn"
-  - title: "Which connectors may be used in an environment (PowerShell)"
+  - title: "New-DlpPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+    kind: "learn"
+  - title: "Create enhanced data connectors (preview)"
+    url: "https://learn.microsoft.com/connectors/custom-connectors/enhanced-connectors#structured-data"
     kind: "learn"
   - title: "Endpoint filtering for supported prebuilt connectors (preview) (PowerShell)"
     url: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering"
@@ -65,7 +68,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy"
+      path: "Security > Data and privacy > Data policy > New Policy > Prebuilt connectors"
       docs: "https://learn.microsoft.com/power-platform/admin/connector-action-control"
     api:
       kind: "powershell"
@@ -76,7 +79,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Data policy > policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints"
+      path: "Security > Data and privacy > Data policy > policy > Edit policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints"
       docs: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering"
     api:
       kind: "powershell"
@@ -91,16 +94,16 @@ controls:
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference"
     api:
       kind: "rest"
-      call: "GET [organization URI]/api/data/v9.2/connectionreferences"
+      call: "PATCH [organization URI]/api/data/v9.2/connectionreferences(<connectionreferenceid>)"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest"
-    note: "Dataverse Web API entity set; the reference lists POST, GET, PATCH and DELETE as supported operations. Default Solution comes from the generative pages prerequisites."
+    note: "Updates an existing connection reference; the request body sets connectionid, the Id of the connection in API hub. Default Solution comes from the generative pages prerequisites."
   - governs: "Switch specific to connectors in generative pages"
     scope: "environment"
     ui: null
     api: null
 confidence: "high"
 created: "2026-11-14"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
@@ -119,19 +122,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected after the check: endpoint-filtering admin path, connection reference API call, data policy path extended to Prebuilt connectors, licensing model set to included."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
+  claims: 56
   confirmed: 56
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "0693fd8a42992eb2518686f45ce21215"
+  contradicted: 0
+  attempts: 0
+  hash: "278d37849dab567bad51e368b04fa54a"
 ---
 
 ## What's changing
@@ -193,9 +200,9 @@ Makers of model-driven apps. Clouds: Worldwide, GCC and GCC High. The roadmap gi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which connectors may be used in an environment</strong><br><small>Environment</small><br><small class="controls__note">Platform data policies can disable connections whose connectors are blocked; resources using inactive connections fail at runtime. The feature-specific enforcement sequence is not described.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -NewPolicy $NewPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Endpoint filtering for supported prebuilt connectors (preview)</strong><br><small>Environment</small><br><small class="controls__note">Preview platform control for supported connectors and static endpoints selected at design time; rules do not apply to environment variables, custom inputs or dynamically bound runtime endpoints.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Data policy › policy › Prebuilt Connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Connection reference the page uses</strong><br><small>Maker</small><br><small class="controls__note">Dataverse Web API entity set; the reference lists POST, GET, PATCH and DELETE as supported operations. Default Solution comes from the generative pages prerequisites.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › New › More › Connection Reference <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [organization URI]/api/data/v9.2/connectionreferences</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors may be used in an environment</strong><br><small>Environment</small><br><small class="controls__note">Platform data policies can disable connections whose connectors are blocked; resources using inactive connections fail at runtime. The feature-specific enforcement sequence is not described.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Prebuilt connectors <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -NewPolicy $NewPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Endpoint filtering for supported prebuilt connectors (preview)</strong><br><small>Environment</small><br><small class="controls__note">Preview platform control for supported connectors and static endpoints selected at design time; rules do not apply to environment variables, custom inputs or dynamically bound runtime endpoints.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit policy › Prebuilt Connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Connection reference the page uses</strong><br><small>Maker</small><br><small class="controls__note">Updates an existing connection reference; the request body sets connectionid, the Id of the connection in API hub. Default Solution comes from the generative pages prerequisites.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › New › More › Connection Reference <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/connectionreferences(&lt;connectionreferenceid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch specific to connectors in generative pages</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -219,13 +226,8 @@ cost: Low. The only cost the sources show is maker and admin time for review and
 impact: Medium. Makers gain new data sources and app users see data from outside Dataverse.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The complete endpoint-filtering route starts at Data policy > policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints. | Found: On the navigation pane, select **Security** ... select **Data and privacy** ... select **Data policy**. Select an existing policy on the command bar and then select **Edit policy** | Fix: Replace controls[1].ui.path and the rendered route with 'Security > Data and privacy > Data policy > policy > Edit policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints'. The cited endpoint-filtering page supplies the last steps; the already-cited connector-action-control page supplies navigation and Edit policy. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
-- [contradicted, blocker] controls[2].api; Governance controls table / command: GET [organization URI]/api/data/v9.2/connectionreferences is the automation equivalent for configuring the connection reference. | Found: Entity set path: [organization URI]/api/data/v9.2/connectionreferences Operations supported: POSTGETPATCHDELETE connectionid | Edm.String | Id of the connection in API hub | Fix: Replace controls[2].api.call and the rendered call with 'PATCH [organization URI]/api/data/v9.2/connectionreferences(<connectionreferenceid>)'. Replace its note with 'Updates an existing connection reference; the request body sets connectionid, the Id of the connection in API hub. Default Solution comes from the generative pages prerequisites.' Keep the same reference URL. The GET endpoint exists, but only reads references. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: SharePoint, SQL and SaaS systems are examples of connector data sources. | Found: The following are some of the enhanced connectors that use this pattern: SalesForce SharePoint SQL Server Zendesk | Fix: Add https://learn.microsoft.com/connectors/custom-connectors/enhanced-connectors#structured-data to sources for the SQL and SaaS connector examples; the already-cited generative-page-external-tools page states that all Power Platform connectors are supported. | Source: https://learn.microsoft.com/connectors/custom-connectors/enhanced-connectors#structured-data
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown, despite the stated product-level premium use-rights requirement. | Found: Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to 'included'. Keep the notes naming the model-driven app requirement for Power Apps premium use rights and the narrower statement that licensing specific to connectors in generative pages has not been published. This is the standard's product-level licensing case, not a claim that all users already own a qualifying licence. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The data-policy route is Power Platform admin center > Security > Data and privacy > Data policy > New Policy. | Found: select **Security** ... select **Data and privacy** ... select **Data policy** ... select **New Policy** ... In the **Prebuilt connectors** section | Fix: Extend controls[0].ui.path and its rendered table entry to 'Security > Data and privacy > Data policy > New Policy > Prebuilt connectors'. The printed route is in the documented order but stops before the page listing the connectors. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
+- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Prebuilt connectors reaches connector classification. | Found: select Security ... select Data and privacy ... select Data policy ... select New Policy to create a new policy to configure ... In the Prebuilt connectors section, select a Blockable connector | Fix: For connector blocking, extend the path to 'Security > Data and privacy > Data policy > New Policy > Prebuilt connectors > connector > Block'. Set its docs to https://learn.microsoft.com/power-platform/admin/prevent-data-loss and cite that page. State in the row note that Block is available only for blockable connectors. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
 -->

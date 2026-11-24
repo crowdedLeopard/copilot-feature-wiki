@@ -59,15 +59,17 @@ changes:
     note: "New briefing: touchpad pinch-to-zoom on shared screens in Teams, rolling out in November 2026 and on by default per MC1532242."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 44 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 44
+  claims: 50
+  confirmed: 50
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -168,9 +170,10 @@ cost: Low. The only cost the sources show is admin time to inform users and supp
 impact: Medium. It is enabled for all meetings by default, but it applies to touchpad use on the Desktop and Mac platforms the roadmap lists and adds to the existing zoom controls.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: platforms; What's changing; Why it matters; Scope; rationale: impact / record: The roadmap lists Desktop and Mac as the platforms for the planned touchpad gesture. | Found: "platforms": ["Desktop", "Mac"] | Fix: After the platform statement in What's changing, add: "The roadmap lists Mac, but Microsoft's support article currently says: 'Mac trackpads don't support zoom in meetings. If you're on a Mac, use another option.'" Cite https://support.microsoft.com/en-us/office/share-content-in-microsoft-teams-meetings-fcc2bf59-aecd-4481-8f99-ce55dd836ce8 in sources. Preserve the roadmap's platform list rather than silently choosing between these sources.
-- [supported, minor] controls[0].api; Governance controls table / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -ScreenSharingMode <value> updates a meeting policy's screen-sharing mode. | Found: Set-CsTeamsMeetingPolicy [[-Identity] <XdsIdentity>] -ScreenSharingMode Determines the mode in which a user can share a screen in calls or meetings. | Fix: Keep the command unchanged. Set controls[0].api.docs and its rendered Learn link to https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps and add that reference to sources: the cited overview names the cmdlet and ScreenSharingMode, while this reference documents the full command, including Identity. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
+- [supported, minor] front matter: platforms; What's changing; Why it matters; Scope; rationale: impact / record: The roadmap lists Desktop and Mac for the touchpad capability. | Found: "platforms": ["Desktop", "Mac"] | Fix: Preserve the roadmap platform list. After the platform sentence in What's changing, add: "The roadmap lists Mac, but Microsoft's support article currently says: 'Mac trackpads don't support zoom in meetings. If you're on a Mac, use another option.'" Cite https://support.microsoft.com/en-us/office/share-content-in-microsoft-teams-meetings-fcc2bf59-aecd-4481-8f99-ce55dd836ce8 in sources.
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a licence specific to pinch-to-zoom. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included and cite https://learn.microsoft.com/microsoftteams/user-access. Replace the licensing notes and the first two licensing sentences with: "Except for joining Teams meetings anonymously, each user in the organisation needs a Teams licence to use Teams. Microsoft has not published a licence or meter specific to pinch-to-zoom." In Scope replace "Microsoft has not stated which roles or licences are needed" with "Microsoft has not stated any roles specific to pinch-to-zoom". Retain the low cost rating and narrow its rationale to feature-specific licensing. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] controls[0].api; Governance controls table / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -ScreenSharingMode <value> updates a policy's screen-sharing mode. | Found: Set-CsTeamsMeetingPolicy ... [[-Identity] <XdsIdentity>] ... [-ScreenSharingMode <String>]. Determines the mode in which a user can share a screen in calls or meetings. | Fix: Keep the command. Change controls[0].api.docs and its rendered Learn link to https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps and add that reference to sources. The current overview documents the control and parameter, while this reference also documents Identity and the full command. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
 -->

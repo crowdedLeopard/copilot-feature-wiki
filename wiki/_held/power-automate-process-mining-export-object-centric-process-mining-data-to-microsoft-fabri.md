@@ -100,18 +100,20 @@ changes:
     note: "Corrected after the independent check: the risk rationale and permissions wording now reflect that workspace roles grant implicit semantic-model permissions, and the workspace-access-list item is removed from the checklist."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 86
+  claims: 89
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "891e24d662591740a87e00aa6b72b841"
 ---
 
@@ -204,8 +206,12 @@ cost: Variable. The export uses Fabric capacity; F-capacity compute is billed th
 impact: Medium. Makers who own object-centric processes and analysts who build Power BI reports on the model notice it; other users do not.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api; Governance controls table / command: GET https://api.fabric.microsoft.com/v1/admin/tenantsettings is the automation equivalent for controlling external-app access to OneLake. | Found: Returns a list of the tenant settings. ... GET https://api.fabric.microsoft.com/v1/admin/tenantsettings | Fix: Remove the GET call from controls[1].api and the rendered automation cell: it only reads settings and cannot configure this control. The existing prose may retain it as a read-only inspection operation, explicitly not an automation equivalent. | Source: https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings
+- [contradicted, blocker] Governance controls; Security & identity; controls[1].note; Open questions / absence: Microsoft has not confirmed that its custom-workspace prerequisites govern the OCPM export. | Found: To connect the workspace to the process mining capability and then customize the default report (or create a new one), you need to: ... Ensure that ... option is switched on ... Assign admin access rights on the workspace to Process Insights service principal. | Fix: Remove the assertions that Microsoft has not confirmed applicability, and the corresponding applicability question. Replace the governance prose with: 'Microsoft's custom-workspace guidance requires the external-app OneLake setting to be on and Process Insights Prod to have admin access when connecting a workspace to the process mining capability.' In the row note retain only 'Prerequisite for connecting a workspace to the process mining capability.' This states the documented reach without inferring an OCPM-specific mechanism. | Source: https://learn.microsoft.com/power-automate/process-mining-fabric-workspace
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; rationale: cost / cost: F capacities are purchased through Azure and billed per second. | Found: You purchase F capacities through Azure, and Azure bills you per second with no commitment ... Pricing is regional, and Azure bills per second with a one-minute minimum. | Fix: Add 'with a one-minute minimum' after 'per second' in Cost and licensing and the cost rationale, as stated at https://learn.microsoft.com/fabric/enterprise/licenses. | Source: https://learn.microsoft.com/fabric/enterprise/licenses
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Power Automate maker path reaches Choose where to export and its Continue or Skip export choice. | Found: On the navigation pane to the left, select Process mining > Start here. ... Select Object-centric process mining. ... Under the Data source heading, select Azure Data Lake or OneLake and select Continue. | Fix: Use 'Process mining > Start here > Object-centric process mining > Data source > Azure Data Lake or OneLake > Continue > Choose where to export > Continue or Skip export' in controls[0].ui and the rendered table. Process name is a field to fill, not a navigation step. | Source: https://learn.microsoft.com/power-automate/object-centric-ingest-event-log
+- [supported, minor] Cost and licensing; rationale: cost / cost: Azure bills F-capacity compute per second. | Found: Pricing is regional, and Azure bills per second with a one-minute minimum. | Fix: Add 'with a one-minute minimum' immediately after 'per second' in Cost and licensing and the cost rationale, as stated at https://learn.microsoft.com/fabric/enterprise/licenses. | Source: https://learn.microsoft.com/fabric/enterprise/licenses
 -->

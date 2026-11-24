@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "The documented rule configuration requires Managed Environments, and the published Managed Environments licensing requirements apply to it. Notification-specific licensing is not yet published."
+  model: "included"
+  notes: "The documented rule configuration requires Managed Environments, included as an entitlement in Power Automate Premium and other qualifying licences listed at https://learn.microsoft.com/power-platform/admin/managed-environment-licensing. Notification-specific licensing is not yet published."
 audiences: ["power-platform-admin","service-owner","maker"]
 tags: ["power-automate","desktop-flows","managed-environments","quality-assurance","governance","monitoring","power-platform-admin-center"]
 sources:
@@ -46,11 +46,8 @@ controls:
       surface: "Power Automate portal"
       path: "Desktop flows > Flow checker > Flow checker configuration > Save"
       docs: "https://learn.microsoft.com/power-automate/desktop-flows/static-analysis"
-    api:
-      kind: "rest"
-      call: "GET /msdyn_analysisoverrides (Dataverse Web API RetrieveMultiple on the Analysis Override table)"
-      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_analysisoverride"
-    note: "Rule settings, not notifications. Learn names Analysis Override privileges for this feature; it does not state that the portal stores its settings in this table."
+    api: null
+    note: "Rule settings, not notifications."
   - governs: "Solution checker enforcement and rule exclusions that take precedence over Flow checker settings"
     scope: "environment"
     ui:
@@ -69,7 +66,7 @@ controls:
     note: "The roadmap describes these settings. Microsoft Learn documents no notification control at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-16T19:09:10"
 changes:
   - date: "2026-11-17"
@@ -82,19 +79,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed the Dataverse GET call and its explanation, licensing model now 'included' via the Managed Environments entitlement, and two checklist steps without control rows removed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "62f12c7cd02d9e91017a3d093185b8bb"
+  contradicted: 0
+  attempts: 0
+  hash: "06e14ea9e38fb3335c3198557f8fa314"
 ---
 
 ## What's changing
@@ -132,7 +133,7 @@ If nobody acts, Microsoft has not stated what happens: the sources do not say wh
 
 ## Cost and licensing
 
-The documented rule configuration requires Managed Environments. Microsoft publishes licensing requirements for that tier: all active usage requires a qualifying standalone licence or meter. Notification-specific licensing or charges are not yet published. Under known limitations the Flow checker page states: "Available only in Managed Environments." The wiki's page on [Managed Environments](/concepts/managed-environments/) covers that tier and its licensing condition; the Flow checker page does not restate it.
+The documented rule configuration requires Managed Environments. Microsoft publishes licensing requirements for that tier: all active usage requires a qualifying standalone licence or meter. The licensing requirements page states that managed environments are included as an entitlement in licences that include Power Automate Premium. Notification-specific licensing or charges are not yet published. Under known limitations the Flow checker page states: "Available only in Managed Environments." The wiki's page on [Managed Environments](/concepts/managed-environments/) covers that tier and its licensing condition; the Flow checker page does not restate it.
 
 The cost this briefing can support is admin time: deciding which rules to enable, which severity each gets and which parameter values to use, then telling makers. Pricing or a separate licence for notifications is not yet published.
 
@@ -144,12 +145,11 @@ The cost this briefing can support is admin time: deciding which rules to enable
 
 **Cloud and platform.** The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform. It lists no US Government cloud.
 
-**Prerequisite.** The Flow checker page lists availability only in Managed Environments as a known limitation. The same page also says that rule customisation is limited to enabling or disabling rules and configuring severity, while its Rule management section describes custom values for rules that support parameters in the Power Automate portal. Learn therefore gives two descriptions of what can be customised; the roadmap's thresholds, recurrence and scope are described only on the roadmap.
+**Prerequisite.** The Flow checker page lists availability only in Managed Environments as a known limitation. The same page also says that rule customisation is limited to enabling or disabling rules and configuring severity, while its Rule management section describes custom values for rules that support parameters in the Power Automate portal. Learn therefore gives two descriptions of what can be customised; Learn documents rule thresholds and environment scope, but not notification-specific thresholds, recurrence or scope.
 
 ## Governance guidance
 
 ### Before rollout
-- Confirm that the environments you care about are Managed Environments, as the Flow checker page lists that as a limitation.
 - Record the current rule settings in the **Flow checker configuration** pane, including severity and parameter values, so you can compare after any change.
 - Check whether Solution checker enforcement is set for the environment in the Power Platform admin center, because it takes precedence and locks rules in the portal.
 
@@ -159,7 +159,6 @@ The cost this briefing can support is admin time: deciding which rules to enable
 - Look in the Flow checker configuration for any notification option and record what it offers; Learn documents none at the time of writing.
 
 ### After rollout
-- Review the violations makers report, using the **Object name** column in solution checker results to identify the desktop flow.
 - Revisit the Flow checker page for notification documentation, and update the rules and communication once Microsoft documents notification types and delivery.
 
 ## Governance controls
@@ -169,7 +168,7 @@ The cost this briefing can support is admin time: deciding which rules to enable
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Flow checker rule enablement, severity and parameter values in an environment</strong><br><small>Environment</small><br><small class="controls__note">Rule settings, not notifications. Learn names Analysis Override privileges for this feature; it does not state that the portal stores its settings in this table.</small></td><td data-label="Admin UI"><strong>Power Automate portal</strong><br>Desktop flows › Flow checker › Flow checker configuration › Save <a href="https://learn.microsoft.com/power-automate/desktop-flows/static-analysis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET /msdyn_analysisoverrides (Dataverse Web API RetrieveMultiple on the Analysis Override table)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_analysisoverride" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Flow checker rule enablement, severity and parameter values in an environment</strong><br><small>Environment</small><br><small class="controls__note">Rule settings, not notifications.</small></td><td data-label="Admin UI"><strong>Power Automate portal</strong><br>Desktop flows › Flow checker › Flow checker configuration › Save <a href="https://learn.microsoft.com/power-automate/desktop-flows/static-analysis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Solution checker enforcement and rule exclusions that take precedence over Flow checker settings</strong><br><small>Environment</small><br><small class="controls__note">Managed Environments only. The function comes from the PowerApps-Samples repo. Learn says these settings override the portal configuration.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Edit Managed Environments › Solution checker enforcement <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-solution-checker" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>SetManagedEnvironmentSolutionCheckerEnforcementLevel -EnvironmentId &lt;environment-id&gt; -Level warn -RuleExclusions &quot;&lt;rule-names&gt;&quot;</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-solution-checker" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Flow checker notification types, thresholds, recurrence and scope</strong><br><small>Environment</small><br><small class="controls__note">The roadmap describes these settings. Microsoft Learn documents no notification control at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -177,7 +176,7 @@ The cost this briefing can support is admin time: deciding which rules to enable
 
 The portal configuration is the control that matches this roadmap item most closely, but it is documented as rule enablement, severity and parameter values, not as notifications. Solution checker enforcement in the Power Platform admin center takes precedence, and the Flow checker page notes that settings inherited from an environment group cannot be edited individually.
 
-The Dataverse row is included because the Flow checker page names Analysis Override privileges for this configuration. Learn does not say that the portal stores its settings in that table, so treat the row as the table those privileges relate to and not as a confirmed API for notifications. The PowerShell function is defined in the PowerApps-Samples repository and must be imported before use, according to the Solution checker enforcement page.
+The PowerShell function is defined in the PowerApps-Samples repository and must be imported before use, according to the Solution checker enforcement page.
 
 ## Open questions
 
@@ -193,13 +192,8 @@ cost: Low. Admin time is the known incremental cost for environments already ent
 impact: Medium. Desktop-flow makers see violations in the designer, and admins set rules for an environment.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table and notes / command: GET /msdyn_analysisoverrides is the automation counterpart for rule enablement, severity and parameter configuration. | Found: RetrieveMultiple ... GET /msdyn_analysisoverrides ... Query data. ... Update ... PATCH /msdyn_analysisoverrides(msdyn_analysisoverrideid) ... Update records. | Fix: Remove the GET call from controls[0].api and the rendered table: it only queries records, not the configuration this row governs. Remove the paragraph beginning 'The Dataverse row is included' and the table-storage qualifier from this row's note; neither establishes a configuring operation. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_analysisoverride
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing / licensing: Feature-specific notification licensing is unpublished, so the licensing model is unknown despite documented Managed Environments requirements. | Found: Managed environments are included as an entitlement in the following licenses: Power Apps Premium, Power Automate Premium, Microsoft Copilot Studio | Fix: Set licensing.model to 'included'. Replace the notes with 'The documented rule configuration requires Managed Environments, included as an entitlement in Power Automate Premium and other qualifying licences listed at https://learn.microsoft.com/power-platform/admin/managed-environment-licensing. Notification-specific licensing is not yet published.' | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-licensing
-- [supported, minor] Risk assessment: Security & identity / behaviour: The Flow checker page lists Warning as the severity for Unsafe password security. | Found: Unsafe password security ... Severity: Warning | Fix: Add: 'The solution checker rule list instead labels desktopflow-avoid-unsafe-password as High severity.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/use-powerapps-checker#best-practice-rules-used-by-solution-checker, whose desktop-flow row gives High. | Source: https://learn.microsoft.com/power-automate/desktop-flows/static-analysis
-- [supported, minor] Scope: Prerequisite, final sentence / absence: The roadmap's notification-specific thresholds, recurrence and scope are described only by the roadmap. | Found: Searched: desktop flow checker notifications notification types recurrence recipients default licensing Power Automate. Read static-analysis: rule thresholds and environment scope are documented, but notification-specific thresholds, recurrence and scope are not. | Fix: Replace 'the roadmap's thresholds, recurrence and scope are described only on the roadmap' with 'Learn documents rule thresholds and environment scope, but not notification-specific thresholds, recurrence or scope.'
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist asks administrators to check Managed Environment status and review solution checker results without corresponding controls rows. | Found: Confirm that the environments you care about are Managed Environments ... Review the violations makers report, using the Object name column ... Controls rows cover rule configuration, enforcement and notifications only. | Fix: Remove the checklist bullets beginning 'Confirm that the environments you care about' and 'Review the violations makers report'; neither has a corresponding controls row. Keep the existing Managed Environments prerequisite and the documented behaviour elsewhere.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Solution checker enforcement and exclusions are reached at Manage > Environments > environment > Edit Managed Environments > Solution checker enforcement. | Found: select Manage. ... select Environments. Select a managed environment. ... select Edit Managed Environments ... under Solution checker enforcement. ... Use the Excluded Rules dropdown list to select the rules to exclude from enforcement. | Fix: For rule exclusions, extend controls[1].ui.path and its rendered table cell to 'Manage > Environments > environment > Edit Managed Environments > Solution checker enforcement > Excluded Rules'. The current path correctly reaches the section containing both controls. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-solution-checker
 -->

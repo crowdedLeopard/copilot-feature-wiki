@@ -92,18 +92,20 @@ changes:
     note: "Corrected after verification: removed the unsupported claim about the Process Insight Prod prerequisite, added the environment step to the maker path and trimmed checklist steps that have no controls row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 68
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  claims: 64
+  confirmed: 59
+  unconfirmed: 1
+  contradicted: 4
+  attempts: 1
   hash: "53fccc8ad11215721bf2ec76fbe3d59b"
 ---
 
@@ -205,8 +207,13 @@ cost: Low. Learn names no separate licence or meter for normalised import; proce
 impact: Low. Makers and analysts who build process mining models from lakehouse data notice it; other users and administrators see no change.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The Fabric control route starts at Configurations > Tenant settings > Users can access data stored in OneLake with apps external to Fabric. | Found: To open the Govern section, select the OneLake catalog icon in the Fabric navigation pane and then select Govern. | Fix: Set controls[2].ui.surface to 'Microsoft Fabric' and its path to 'OneLake catalog > Govern > Configurations > Tenant settings > Users can access data stored in OneLake with apps external to Fabric'. Add https://learn.microsoft.com/fabric/governance/onelake-catalog-govern to sources; retain the existing docs link for the control's last steps. | Source: https://learn.microsoft.com/fabric/governance/onelake-catalog-govern
+- [contradicted, blocker] controls[2].api; Governance controls table; Governance controls lead / command: GET https://api.fabric.microsoft.com/v1/admin/tenantsettings is the automation equivalent for the OneLake external-app access control. | Found: Returns a list of the tenant settings. GET https://api.fabric.microsoft.com/v1/admin/tenantsettings | Fix: Remove controls[2].api: this GET only reads settings and cannot set the access control. Remove the GET from the rendered automation cell and remove the caller-permission clause tied to it from controls[2].note and the closing Governance controls paragraph. Do not present a read operation as equivalent configuration automation. | Source: https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks administrators to check that Process Mining is enabled, but the controls table has no corresponding environment-level control row. | Found: Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import. Table rows cover maker import entry, the missing normalized-import switch, and OneLake external-app access, not this environment check. | Fix: Remove the first Before rollout bullet, 'Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import.' Keep the documented environment prerequisite in Scope.
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist tells administrators to check that Process Mining is enabled, but the controls table contains no matching environment control. | Found: Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import. Table rows cover the maker import entry, normalized-import disable switch and OneLake external-app access. | Fix: Remove the first Before rollout bullet, 'Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import.' Retain the documented environment prerequisite in Scope.
+- [contradicted, minor] Risk assessment: Data exposure, second bullet / consistency: The page directs readers to review workspace Admin membership using a Fabric controls row that only addresses OneLake external-app tenant access. | Found: Review who holds Admin on that workspace (see the Fabric controls row). The Fabric row governs 'OneLake access for apps external to Fabric, which a OneLake source depends on'. | Fix: Remove 'Review who holds Admin on that workspace (see the Fabric controls row).' Keep the preceding documented OneLake prerequisites.
+- [unsupported, minor] rationale: impact / behaviour: Other users and administrators see no change from normalized import. | Found: Searched: "normalized" "process mining" "disable"; "normalized" "process mining" API PowerShell pac table entity. Read both normalized-import guides and security article. They document maker import and process access, not a guarantee that other users or administrators see no change. | Fix: Remove '; other users and administrators see no change' from the impact rationale, leaving 'Low. Makers and analysts who build process mining models from lakehouse data notice it.'
 -->

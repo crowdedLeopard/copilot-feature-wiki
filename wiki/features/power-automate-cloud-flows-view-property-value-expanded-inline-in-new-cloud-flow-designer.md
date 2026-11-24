@@ -28,6 +28,12 @@ sources:
   - title: "Explore the cloud flows designer"
     url: "https://learn.microsoft.com/power-automate/flows-designer"
     kind: "learn"
+  - title: "Use data operations"
+    url: "https://learn.microsoft.com/power-automate/data-operations"
+    kind: "learn"
+  - title: "View property value expanded inline in the new cloud flow designer"
+    url: "https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer"
+    kind: "learn"
   - title: "Types of Power Automate licenses"
     url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
     kind: "learn"
@@ -38,7 +44,7 @@ controls:
     scope: "maker"
     ui:
       surface: "Power Automate (maker)"
-      path: "Cloud flows designer > Collapse (configuration pane) > Layout"
+      path: "My flows > Cloud flows > flow > Edit > New designer (on) > Collapse (configuration pane) > Layout"
       docs: "https://learn.microsoft.com/power-automate/flows-designer"
     api: null
     note: "Maker-side. The Learn page does not say this is the control for the roadmap's property-value view; confirm."
@@ -49,7 +55,7 @@ controls:
     note: "No administrator setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-22T23:45:28"
 changes:
   - date: "2026-11-17"
@@ -62,19 +68,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 32 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 32 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected the Layout control's path to start at My flows and added the archived release plan's differing default and February 2026 target."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 40 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 32
-  confirmed: 31
+  claims: 40
+  confirmed: 40
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "db2e0d32646de8aa94a1271d5e1296e0"
+  contradicted: 0
+  attempts: 0
+  hash: "d756f4e6d813de0fbff8f85a2a50467e"
 ---
 
 ## What's changing
@@ -82,6 +92,8 @@ verification:
 The new cloud flow designer in Power Automate can show property values, and output values at runtime, directly on the action cards, so a maker can compare several steps at once. The roadmap item describes this as an inline view that avoids selecting each card to read its value in the side pane, which shows one step's value at a time.
 
 The roadmap states that the current side pane experience remains the default and that a maker can switch to the inline view and back at any time. It lists the feature as "Enabled for admins/makers/marketers automatically", which the wiki reads as availability to makers rather than a setting an administrator turns on.
+
+An archived release-plan excerpt indexed by Microsoft Learn describes inline display as the default and gives February 2026 as its general-availability target; this briefing follows the current roadmap record's side-pane default and June CY2026 target. The excerpt is at [View property value expanded inline in the new cloud flow designer](https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer).
 
 The Learn page on the cloud flows designer describes a **Layout** button that switches between inline and panel layouts: the inline layout shows an action's properties in an expanded card, and the panel layout shows them in the configuration pane and keeps cards compact. That page does not mention property values or run outputs on cards, so it is background for this feature, not a description of it.
 
@@ -139,7 +151,7 @@ The roadmap item refers to the new cloud flow designer and gives no prerequisite
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which layout a maker uses for action properties in the designer</strong><br><small>Maker</small><br><small class="controls__note">Maker-side. The Learn page does not say this is the control for the roadmap's property-value view; confirm.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>Cloud flows designer › Collapse (configuration pane) › Layout <a href="https://learn.microsoft.com/power-automate/flows-designer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which layout a maker uses for action properties in the designer</strong><br><small>Maker</small><br><small class="controls__note">Maker-side. The Learn page does not say this is the control for the roadmap's property-value view; confirm.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>My flows › Cloud flows › flow › Edit › New designer (on) › Collapse (configuration pane) › Layout <a href="https://learn.microsoft.com/power-automate/flows-designer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant or environment switch for the inline property value view</strong><br><small>Tenant</small><br><small class="controls__note">No administrator setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -159,12 +171,4 @@ Microsoft Learn documents no administrator setting or API for this view at the t
 risk: Low. It changes how makers view values they can already open in the designer; the roadmap says the side pane stays the default and makers choose when to switch.
 cost: Low. The only cost the sources show is maker time to learn the view; no licence or meter is stated for this feature, and the roadmap record states none.
 impact: Low. Only makers who author or debug cloud flows in the new designer will notice it, and only if they switch the view on.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The Power Automate maker path to the layout control is Cloud flows designer > Collapse (configuration pane) > Layout. | Found: On the navigation pane to the left, select My flows. In the Cloud flows tab, select the flow you want to open. On the command bar at the top, select Edit. The flow opens in the designer. | Fix: Replace controls[0].ui.path and the rendered path with "My flows > Cloud flows > flow > Edit > New designer (on) > Collapse (configuration pane) > Layout". Add https://learn.microsoft.com/power-automate/data-operations to sources for the route into the designer. Keep https://learn.microsoft.com/power-automate/flows-designer as docs: it documents the New designer toggle, Collapse button and Layout control. The current path starts inside the designer rather than at the maker portal's navigation. | Source: https://learn.microsoft.com/power-automate/data-operations
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters; Governance guidance; rationales / default: The side pane remains the default and makers choose the inline view, represented as user-opt-in. | Found: You can choose which experience you prefer. The current side pane experience remains the default. You can switch to the inline view whenever you want and switch back at any time. | Fix: Keep user-opt-in and the roadmap's side-pane default. Add to What's changing: "An archived release-plan excerpt indexed by Microsoft Learn describes inline display as the default and gives February 2026 as its general-availability target; this briefing follows the current roadmap record's side-pane default and June CY2026 target." Cite https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer. The excerpt says "The feature shows all that information inline by default" and "Feb 2026"; fetching its URL redirects to an overview marked archived as of October 2026.
 -->

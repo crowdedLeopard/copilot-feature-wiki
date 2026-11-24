@@ -43,6 +43,12 @@ sources:
   - title: "Create a table row using the Web API"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-entity-web-api"
     kind: "learn"
+  - title: "Power Automate licensing FAQ"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs"
+    kind: "learn"
+  - title: "Security roles and privileges for Dataverse"
+    url: "https://learn.microsoft.com/power-platform/admin/security-roles-privileges"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -64,7 +70,7 @@ controls:
     note: "Learn states no admin action is required to enable the feature and documents no switch to disable it at the time of writing (November 2026)."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-16T19:09:32"
 changes:
   - date: "2026-11-17"
@@ -81,19 +87,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-24"
+    note: "Correction: removed the claim that no admin setting limits who can create flow groups, narrowed the roles question, added the pay-as-you-go restriction on Process licenses, and noted what the usage report omits."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 56
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "80264bb176cc081174de4379cb19c053"
+  contradicted: 1
+  attempts: 0
+  hash: "2e9e5d102cda2217f57a357ea37ff09a"
 ---
 
 ## What's changing
@@ -134,13 +144,15 @@ Microsoft has not stated that anything changes for existing flows on arrival; th
 
 Flow groups need a Power Automate Process license with available capacity in the environment; creating a group fails if the environment has no Process capacity. Each Process license includes up to 250,000 actions per day, and a flow group takes one Process license, so the group's shared pool is 250,000 actions per day (Learn: [Share Process license capacity with flow groups](https://learn.microsoft.com/power-automate/flow-groups) and [Types of Power Automate licenses](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types)). Learn lists the Process license as a capacity license (paid).
 
+Process licenses cannot currently be used in a pay-as-you-go environment; use an environment that is not linked to an Azure subscription ([Power Automate licensing FAQ](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#action-limits-and-capacity-questions)).
+
 The flow group pages name no separate licence, price or meter for flow groups, and no price for the Process license itself. Flows already covered by a per-user Power Automate plan are not eligible for a group. Stacking Process licenses is not available for flow groups: a flow that needs more than 250,000 actions per day needs Process licenses assigned directly to that flow.
 
 The indirect cost is admin and maker time to size groups, create or verify them per environment and monitor the shared pool.
 
 ## Scope
 
-Flow groups apply to solution-aware cloud flows in a single environment, with Process capacity available in that environment and users who hold Power Automate maker permissions. The roadmap lists Worldwide (Standard Multi-Tenant) and the web platform; the record lists no other clouds. Learn describes a rollout that begins in July 2026 and continues across regions, so some environments may not show the **Flow groups** option yet.
+Flow groups apply to solution-aware cloud flows in a single environment, with Process capacity available in that environment and users who hold Power Automate maker permissions. Process licenses cannot currently be used in a pay-as-you-go environment; use an environment that is not linked to an Azure subscription ([Power Automate licensing FAQ](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#action-limits-and-capacity-questions)). The roadmap lists Worldwide (Standard Multi-Tenant) and the web platform; the record lists no other clouds. Learn describes a rollout that begins in July 2026 and continues across regions, so some environments may not show the **Flow groups** option yet.
 
 Not eligible: cloud flows not in a solution, desktop flows (RPA), business process flows, and flows already covered by a per-user Power Automate plan.
 
@@ -177,15 +189,15 @@ Not eligible: cloud flows not in a solution, desktop flows (RPA), business proce
 </tbody>
 </table>
 
-Flow groups are built by makers in Power Automate; the controls above govern the group itself. Learn documents no admin setting that turns flow groups off, or that limits who may create them beyond maker permissions, at the time of writing (November 2026), and the feature page states that no admin action is required to enable it.
+Flow groups are built by makers in Power Automate; the controls above govern the group itself. Learn documents no admin setting that turns flow groups off at the time of writing (November 2026), and the feature page states that no admin action is required to enable it.
 
-The Dataverse flowgroup table is documented with create, update, delete and retrieve operations; the reference does not say which roles may call them, so confirm roles before scripting. The Power Platform admin center has a Power Automate usage report that Learn recommends for deciding which flows need dedicated capacity ([Create and manage a flow group](https://learn.microsoft.com/power-automate/create-flow-group)); it reports usage and does not set a limit ([Monitor Power Automate usage and find flow group candidates](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/power-automate-usage-report)).
+The Dataverse flowgroup table is documented with create, update, delete and retrieve operations; the reference does not say which roles may call them, so confirm roles before scripting. The Power Platform admin center has a Power Automate usage report that Learn recommends for deciding which flows need dedicated capacity ([Create and manage a flow group](https://learn.microsoft.com/power-automate/create-flow-group)); it reports usage and does not set a limit ([Monitor Power Automate usage and find flow group candidates](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/power-automate-usage-report)). The Usage page shows consumption attributed to users; it does not show service-principal consumption or flows covered by Process or legacy Per-flow licenses.
 
 The Analytics usage check and the regular group-consumption review in the governance guidance have no monitoring row in the table above.
 
 ## Open questions
 
-- Which roles can create or change flow groups beyond "Power Automate maker permissions", and can an administrator restrict this? Watch the Learn pages on flow groups.
+- Which named security roles have the privileges to create or change flowgroup records? Watch the Learn pages on flow groups.
 - What happens to member flows when the group's shared 250,000 actions per day are exceeded? The flow group pages do not say.
 - Is there a price or extra meter for flow groups, or for the Process license they use, on the licensing pages? None is stated on the flow group pages.
 - When does the rollout finish across regions? Learn says it continues across regions without dates; check Message center.
@@ -196,12 +208,8 @@ cost: Medium. Flow groups require paid Power Automate Process capacity. Existing
 impact: Medium. Makers and flow owners who hold or request Process capacity see a new Flow groups page and licensing option.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first paragraph; Open questions: first bullet / absence: Learn documents no admin setting limiting who can create flow groups beyond maker permissions. | Found: To control access to data and resources, you can create or modify security roles and change the security roles that are assigned to users. ... | Create | Required to make a new record | | Fix: Replace the Governance controls sentence with 'Learn documents no admin setting that turns flow groups off at the time of writing (November 2026), and the feature page states that no admin action is required to enable it.' Narrow the first Open questions bullet to 'Which named security roles have the privileges to create or change flowgroup records? Watch the Learn pages on flow groups.' The cited flowgroup reference identifies a Dataverse table, and https://learn.microsoft.com/power-platform/admin/security-roles-privileges documents role-controlled record creation; the specific role assignments remain unpublished. | Source: https://learn.microsoft.com/power-platform/admin/security-roles-privileges
-- [contradicted, blocker] Scope: first paragraph; Cost and licensing: first paragraph / licensing: Solution-aware cloud flows in a single environment with available Process capacity and maker permissions are in scope, without a pay-as-you-go qualification. | Found: You can't currently use Process licenses in a pay-as-you-go environment. ... keep it in an environment that isn't linked to an Azure subscription and assign a Process license ... to a flow group that contains it. | Fix: Add to the Scope and Cost and licensing statements about the eligible environment: 'Process licenses cannot currently be used in a pay-as-you-go environment; use an environment that is not linked to an Azure subscription.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#action-limits-and-capacity-questions. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#action-limits-and-capacity-questions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: usage report paragraph / behaviour: The Power Platform admin center usage report reports consumption and is recommended for identifying flows needing dedicated capacity. | Found: Use the Usage page's top consumers and per-user flow breakdown to spot flows that could share capacity ... If a single high-volume flow drives a user's request consumption, consider assigning that flow a dedicated Process license. | Fix: Add to the usage-report paragraph: 'The Usage page shows consumption attributed to users; it does not show service-principal consumption or flows covered by Process or legacy Per-flow licenses.' Keep the existing source https://learn.microsoft.com/power-platform/admin/power-automate-licensing/power-automate-usage-report. Its Find candidates for flow groups section recommends dedicated Process capacity for a single high-volume flow. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/power-automate-usage-report
-- [contradicted, minor] Governance guidance; Governance controls: final paragraph / consistency: The Analytics and regular group-consumption checklist checks have no corresponding controls-table row. | Found: Identify candidate flows by their daily action count; Learn suggests the flow's Analytics page. ... Review group consumption regularly. ... The Analytics usage check and the regular group-consumption review ... have no monitoring row in the table above. | Fix: The Before rollout step 'Identify candidate flows by their daily action count' and After rollout step 'Review group consumption regularly' have no corresponding monitoring row in the controls table. This is a checklist/table completeness gap, not an instruction to add rows during correction.
+- [contradicted, minor] Governance guidance; Governance controls / consistency: All controls that the governance checklist asks readers to set or check have corresponding controls-table rows. | Found: Identify candidate flows by their daily action count ... Create the group ... and add each parent and child flow explicitly ... Review group consumption regularly ... The Analytics usage check and the regular group-consumption review ... have no monitoring row | Fix: The checklist's Analytics check, regular group-consumption review, member-flow additions and dedicated-license assignments have no corresponding controls-table rows. This is a checklist/table coverage finding, not a request to add rows.
 -->
