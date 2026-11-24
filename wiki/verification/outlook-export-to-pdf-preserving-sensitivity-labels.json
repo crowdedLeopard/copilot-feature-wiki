@@ -1,0 +1,616 @@
+{
+  "slug": "outlook-export-to-pdf-preserving-sensitivity-labels",
+  "roadmapId": 561651,
+  "title": "Outlook desktop: Create PDF from email that keeps the sensitivity label",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "3 blocking findings (claims 26, 27, 29)"
+    ]
+  },
+  "counts": {
+    "claims": 45,
+    "confirmed": 41,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 1,
+    "minor": 0
+  },
+  "summary": "Hold: the mandatory-labelling path starts inside a policy without explaining how to reach it, and its automation is incorrectly reported as undocumented. The Office policy row also gives a Group Policy navigation path for Cloud Policy, which uses a different interface. The roadmap facts and both registry values are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap feature belongs to Outlook.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans the creation of PDFs from email messages that preserves sensitivity labels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Ability to create PDFs from email messages and preserve Sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The planned feature is reached through File > Open & Export > Create PDF.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is accessible from File -> Open & Export -> Create PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Current Channel and General Availability as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Current Channel\", \"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record lists no other clouds and does not expressly exclude them.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]; \"description\": \"Ability to create PDFs from email messages and preserve Sensitivity labels. This feature is accessible from File -> Open & Export -> Create PDF.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The record does not distinguish Outlook for Windows, Outlook for Mac or new Outlook.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"], \"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "No minimum Outlook build for the new Create PDF feature is stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook export Create PDF sensitivity labels licence price meter minimum build. Read roadmap, Office-apps PDF support and Outlook capabilities-table search excerpts; none gives a build for Create PDF. Existing PDF-support and registry-workaround versions concern different capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Encryption inheritance for Outlook Create PDF is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook \"Create PDF\" sensitivity labels default admin policy encryption licensing. Read roadmap, Office-apps PDF support and the Print to PDF support page; none describes encryption inheritance for the planned Outlook export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap names no new permission, connection or identity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Ability to create PDFs from email messages and preserve Sensitivity labels. This feature is accessible from File -> Open & Export -> Create PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The cited Print to PDF support page was last updated on 26 August 2024.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+      "quote": "Last Updated: August 26, 2024",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Scope; Governance guidance; controls[0].governs; rationale: impact",
+      "type": "applicability",
+      "claim": "Mandatory labelling blocks Print to PDF for labelled content in Outlook Desktop.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+      "quote": "Outlook Desktop blocks printing to PDF if Mandatory Labeling is enabled. This change is in all M365 channels beginning in January 2024.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The Outlook Desktop mandatory-labelling Print to PDF block began in January 2024.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+      "quote": "This change is in all M365 channels beginning in January 2024.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The 2024 support page says Outlook Desktop did not support exporting files to PDF.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+      "quote": "This error can be misleading since Outlook Desktop does not support exporting files to PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Word, Excel and PowerPoint for Windows support exporting to PDF with the sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Office for Windows: Word, Excel, and PowerPoint support the following methods to convert an Office document into a PDF document: ... File > Export > PDF ... When the PDF is created, it inherits the label with any content markings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "PDFs created through the documented Word, Excel and PowerPoint conversion methods inherit content markings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "When the PDF is created, it inherits the label with any content markings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says Outlook does not currently support PDF attachments inheriting encryption from a labelled message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Outlook doesn't currently support PDF attachments inheriting encryption from a labeled message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Encrypted PDFs produced by the documented Office conversion methods can be opened with Microsoft Edge on Windows or Mac.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "For Windows, if the label applied encryption, that encryption is also inherited. Encrypted PDFs can be opened with Microsoft Edge on Windows or Mac.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Print to PDF removes the sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Because this option removes the sensitivity label, this option won't be available to users if you're using mandatory labeling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Print to PDF loses label encryption when encryption was applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "If users select this option, they are warned that the document or email will lose the protection of the label, and encryption (if applied), and must confirm to continue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment; controls[2].governs; controls[2].note; rationale: risk",
+      "type": "applicability",
+      "claim": "The Outlook-specific registry workaround applies only to Outlook Desktop and allows Print to PDF without preserving the label or encryption.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+      "quote": "The Outlook Team implemented a new registry key that only applies to Outlook Desktop. It enables printing to PDF without preserving the label or encryption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Label policy configuration > Policy settings > Require users to apply a label to their email or documents is a complete route from the portal navigation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. ... To edit an existing label policy, select it, and then select the Edit Policy button from the flyout pane.",
+      "severity": "blocker",
+      "fix": "Keep the surface Microsoft Purview portal; replace the path with 'Solutions > Information Protection > Publishing policies > policy > Edit Policy > Policy settings > Require users to apply a label to their email or documents'. Cite https://learn.microsoft.com/purview/create-sensitivity-labels for the route into the policy and retain https://learn.microsoft.com/purview/sensitivity-labels-office-apps for the setting. Remove the duplicate portal name and the non-navigation step 'Label policy configuration'."
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation is documented for the mandatory-labelling control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "DisableMandatoryInOutlook: Outlook apps that support this setting exempt Outlook messages from mandatory labeling. Example: Set-LabelPolicy -Identity Global -AdvancedSettings @{DisableMandatoryInOutlook=\"True\"}",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api null with kind 'powershell', call 'Set-LabelPolicy -Identity <policy> -AdvancedSettings @{DisableMandatoryInOutlook=\"True\"}', and docs https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy. Add to the note: 'This call exempts Outlook messages from mandatory labelling in Outlook apps that support the setting; it does not configure mandatory labelling for documents.'"
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Mandatory labelling is set per label policy, with a separate email checkbox that can be cleared in supported Outlook apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "When the Outlook app supports turning off mandatory labeling: ... Select Require users to apply a label to their email or documents. Then select Next > Next and clear the checkbox Require users to apply a label to their emails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The User Configuration/Administrative Templates/Microsoft Office 2016/Microsoft Save As PDF and Save As XPS add-ins path works in Group Policy or Cloud Policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Under Customization, select Policy Management. ... On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name, or you can create a custom filter.",
+      "severity": "blocker",
+      "fix": "Narrow controls[1].ui.surface to 'Group Policy' and retain the existing path and Office-apps docs URL. Add to the note: 'Configure Use the Sensitivity feature in Office to apply sensitivity labels to PDFs as Disabled.' The cited Office-apps page documents that exact Group Policy location; do not present it as Cloud Policy navigation."
+    },
+    {
+      "n": 30,
+      "where": "controls[1].api; Risk assessment: Change & support; Governance controls",
+      "type": "command",
+      "claim": "HKCU\\software\\policies\\microsoft\\office\\16.0\\common\\fixedformat disablepdfprotection (DWORD) = 1 disables PDF label handling for Print to PDF and export in Office applications.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+      "quote": "The registry key disables saving with labels for both the Print to PDF as well as the export option in the Office applications. ... HKEY_CURRENT_USER\\software\\policies\\microsoft\\office\\16.0\\common\\fixedformat DWORD: disablepdfprotection Value: 1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].api; Risk assessment; Governance guidance",
+      "type": "command",
+      "claim": "The Outlook workaround is HKCU\\Software\\Microsoft\\Office\\16.0\\Outlook\\Preferences disablepdfprotectioninoutlook (DWORD) = 1.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+      "quote": "Path: HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\16.0\\Outlook\\Preferences Name: disablepdfprotectioninoutlook (dword32) Value: 1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI setting is documented for the Outlook-specific printing workaround.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"disablepdfprotectioninoutlook\" Group Policy Cloud Policy; \"disablepdfprotectioninoutlook\". Read search results and the Print to PDF support page, which documents a registry value but no UI control for it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe Outlook Create PDF at the time of writing in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook \"Create PDF\" sensitivity labels default admin policy encryption licensing; Outlook export Create PDF sensitivity labels licence price meter minimum build. Read search results and Office-apps PDF support; no documentation of the new Outlook export was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state and what happens on arrival for Outlook Create PDF are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook \"Create PDF\" sensitivity labels default admin policy encryption licensing; Outlook \"Create PDF\" \"disablepdfprotection\" \"default\". Read roadmap, search results, Office-apps PDF support and Print to PDF support; none states the new export's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no administrator setting for Create PDF itself as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook \"Create PDF\" sensitivity labels default admin policy encryption licensing; Outlook \"Create PDF\" \"disablepdfprotection\" \"default\". Read search results, Office-apps PDF support, Set-LabelPolicy and Print to PDF support; none identifies a Create PDF switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance controls",
+      "type": "absence",
+      "claim": "Coverage of the new Outlook Create PDF by the existing Office PDF policy and registry settings is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook \"Create PDF\" \"disablepdfprotection\" \"default\". Read Office-apps Disabling PDF support and Print to PDF support: the former names Word, Excel and PowerPoint; the latter describes existing Office PDF creation, not the new Outlook export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is included, based on the published general sensitivity-labelling plan entitlement rather than a separate Create PDF licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2 | ... | Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service-description table lists Manual Sensitivity Labeling as Included in all the plan columns reproduced in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2 | ... | Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The same service-description page says sensitivity labelling, including automatic or policy-based labelling, requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate meter is documented for Outlook Create PDF.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook export Create PDF sensitivity labels licence price meter minimum build. Read service-description sensitivity-labelling section and Get started with sensitivity labels licensing search excerpt; no separate Outlook Create PDF meter is identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "A licence specific to Outlook Create PDF is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook export Create PDF sensitivity labels licence price meter minimum build; Outlook \"Create PDF\" sensitivity labels default admin policy encryption licensing. Read service-description sensitivity-labelling section, Office-apps PDF support and licensing search excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A price specific to Outlook Create PDF is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook export Create PDF sensitivity labels licence price meter minimum build. Read search results and service-description sensitivity-labelling section; no separate Create PDF price is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Outlook Desktop users in tenants requiring email labels have had no supported way to turn a labelled email into a PDF without dropping the label.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Outlook \"labelled email\" \"PDF\" preserve sensitivity supported export. Read search results, Office-apps PDF support and Print to PDF support; these establish native printing/export limitations, not the absence of every supported label-preserving workflow.",
+      "severity": "major",
+      "fix": "Replace the sentence with: 'Microsoft's August 2024 support page says Outlook Desktop cannot print PDFs with the label applied and does not support exporting files to PDF.' Retain the existing support-page citation."
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The July CY2026 target is past on the run date, while the supplied roadmap record still reports In development rather than a launch.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"July CY2026\", \"fetchedAt\": \"2026-11-13T21:57:28.515Z\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].scope and note; Governance controls",
+      "type": "applicability",
+      "claim": "Mandatory labelling is a tenant-managed label-policy setting whose enforcement applies to users assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "When the policy setting Require users to apply a label to their email and documents is selected, users assigned the policy must select and apply a sensitivity label in their Office apps.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T23:33:04.952Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561651",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Mandatory labelling for email and documents, which makes Print to PDF unavailable for labelled content",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "reachable": true,
+        "segments": [
+          "Microsoft Purview portal",
+          "Label policy configuration",
+          "Policy settings",
+          "Require users to apply a label to their email or documents"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Office policy that turns off label and encryption handling when creating PDFs",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "reachable": true,
+        "segments": [
+          "User Configuration/Administrative Templates/Microsoft Office 2016/Microsoft Save As PDF and Save As XPS add-ins",
+          "Use the Sensitivity feature in Office to apply sensitivity labels to PDFs"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Office policy that turns off label and encryption handling when creating PDFs",
+        "docs": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+        "reachable": true,
+        "token": "Registry value",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Outlook Desktop printing to PDF without preserving the label or encryption",
+        "docs": "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78",
+        "reachable": true,
+        "token": "Registry value",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

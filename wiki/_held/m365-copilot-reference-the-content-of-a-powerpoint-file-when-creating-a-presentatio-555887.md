@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
-  notes: "Learn's Copilot overview says users without the Microsoft 365 Copilot add-on licence can use Copilot in PowerPoint (Basic) and add-on users get the full experience (Premium). Which tier covers this capability is not yet published."
+  model: "included"
+  notes: "Reference file uses edit with Copilot in PowerPoint. The Microsoft Copilot service description marks edit with Copilot as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["powerpoint","m365-copilot","copilot","oversharing","restricted-content-discovery","licensing"]
 sources:
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
+    kind: "learn"
+  - title: "Microsoft Copilot"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot"
     kind: "learn"
   - title: "Assign or unassign licenses for users in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
@@ -81,19 +84,23 @@ changes:
     note: "Correction: removed the claim that licensed users gain the option if nobody acts, and the instruction to fix source-deck permissions."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected licensing: the Microsoft Copilot service description marks edit with Copilot as a Premium feature needing a Microsoft 365 Copilot licence; removed the unsupported 'no change' claim and narrowed what the control rows cover."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 52
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 2
-  hash: "71d23088ac6e86c678e52d8de003507b"
+  claims: 61
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 3
+  hash: "6772696193900065f92f0a317df3b035"
 ---
 
 ## What's changing
@@ -108,13 +115,13 @@ The roadmap record lists this item as Launched, General Availability, with a tar
 
 For a service owner this is a small, user-driven change: a deck a user picks with Reference file becomes source material for a new deck. Microsoft says existing file permissions apply, so in the wiki's view the realistic exposure is oversharing, meaning decks that people can open but should not be able to.
 
-Microsoft has not stated whether the capability is on by default or whether an admin setting governs it, and no source says existing behaviour changes. The useful work is confirming who holds the licence and whether permissions on shared decks are sound before users start reusing them.
+Microsoft has not stated whether the capability is on by default or whether an admin setting governs it. The useful work is confirming who holds the licence and whether permissions on shared decks are sound before users start reusing them.
 
 ## Risk assessment
 
 **Data exposure**
 
-- Copilot reads a PowerPoint file the user selects and reuses its text, style and theme. Microsoft says this respects file permissions, so a deck the user can open can feed a new deck. Oversharing on SharePoint or OneDrive decks is the mechanism to fix; the licence row and the Restricted Content Discovery row cover part of it.
+- Copilot reads a PowerPoint file the user selects and reuses its text, style and theme. Microsoft says this respects file permissions, so a deck the user can open can feed a new deck. Oversharing on SharePoint or OneDrive decks is the mechanism to fix. The rows govern licence assignment and SharePoint discoverability; neither changes file permissions.
 
 **Security & identity**
 
@@ -130,13 +137,15 @@ Microsoft has not stated whether the capability is on by default or whether an a
 
 ## Cost and licensing
 
-Learn's Copilot overview (Microsoft Copilot overview) describes three in-app tiers. A user without the Microsoft 365 Copilot add-on licence and without access to Copilot in Word, Excel, PowerPoint and OneNote is on Copilot Chat (Basic). A user without the add-on who can use Copilot in those apps is on Microsoft 365 Copilot (Basic), whose listed PowerPoint features include creating presentations from prompts or existing content. A user with the add-on has the full experience of Copilot in those apps (Premium). The overview adds that some features are subject to fair use limits. Which tier covers Reference file, and whether a fair use limit applies to it, is not yet published.
+Learn's Copilot overview (Microsoft Copilot overview) describes three in-app tiers. A user without the Microsoft 365 Copilot add-on licence and without access to Copilot in Word, Excel, PowerPoint and OneNote is on Copilot Chat (Basic). A user without the add-on who can use Copilot in those apps is on Microsoft 365 Copilot (Basic), whose listed PowerPoint features include creating presentations from prompts or existing content. A user with the add-on has the full experience of Copilot in those apps (Premium). The overview adds that some features are subject to fair use limits.
+
+Reference file is used through edit with Copilot in PowerPoint, which the Microsoft Copilot service description identifies as a Premium capability requiring a Microsoft 365 Copilot licence. Whether a fair use limit applies to Reference file is not yet published.
 
 Learn publishes no separate meter or price for this capability at the time of writing (November 2026). The release note names no licence. Indirect costs are admin time to check licence assignment and permissions, and help-desk briefing.
 
 ## Scope
 
-The roadmap record lists Worldwide (Standard Multi-Tenant) and the Desktop platform for this item; Mac and Web are separate roadmap items. Users need Copilot access in PowerPoint under one of the tiers above; Learn says users on Copilot Chat (Basic) don't have access to Copilot in PowerPoint. Rollout is gradual within a tenant, per the release notes. The roadmap record lists no other clouds, and this briefing does not say the capability is unavailable elsewhere. At least the License Administrator or User Administrator role is needed to assign licences.
+The roadmap record lists Worldwide (Standard Multi-Tenant) and the Desktop platform for this item; Mac and Web are separate roadmap items. Users need Copilot access in PowerPoint with a Microsoft 365 Copilot licence for the Premium editing experience; Learn says users on Copilot Chat (Basic) don't have access to Copilot in PowerPoint. Rollout is gradual within a tenant, per the release notes. The roadmap record lists no other clouds, and this briefing does not say the capability is unavailable elsewhere. At least the License Administrator or User Administrator role is needed to assign licences.
 
 ## Governance guidance
 
@@ -175,7 +184,7 @@ The licence row decides who has the tier Learn ties to Copilot in PowerPoint; th
 ## Open questions
 
 - Is Reference file on by default, and does any admin setting turn it off? The release note gives the user steps only; watch the Learn release notes and the Message center.
-- Which licence tier covers Reference file, and do fair use limits apply to it? Watch the Microsoft Copilot overview page.
+- Do fair use limits apply to Reference file? Watch the Microsoft Copilot overview page.
 - Does Restricted Content Discovery stop a file in a restricted SharePoint site from being used as a Reference file? Watch the Restricted Content Discovery page.
 - Why does the roadmap target (March CY2026) differ from the release-note date (July 01, 2026)? Watch the roadmap item.
 
@@ -188,8 +197,5 @@ impact: Medium. It reaches PowerPoint users on desktop who have Copilot access, 
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / behaviour: No source says existing behaviour changes. | Found: Previously, Copilot in power point could not directly use content or styling from another PowerPoint presentation as part of a presentation creation or editing workflow. With this update, users can: | Fix: Remove ', and no source says existing behaviour changes'. The release note explicitly describes a change from the previous creation and editing behaviour; keep the narrower statement about an unpublished feature-specific enablement state. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] front matter: licensing.model / licensing: Reference file has a mixed licensing model based on Basic and Premium in-app access. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^ ^2^Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Set licensing.model to 'included'. Replace the licensing notes with 'Reference file uses edit with Copilot in PowerPoint. The Microsoft Copilot service description marks edit with Copilot as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Scope; Open questions / absence: Microsoft has not published which licence tier covers Reference file, leaving Basic or Premium as possibilities. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^ ^2^Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Replace the tier-unknown statements with 'Reference file is used through edit with Copilot in PowerPoint, which the Microsoft Copilot service description identifies as a Premium capability requiring a Microsoft 365 Copilot licence.' In Scope replace 'under one of the tiers above' with 'with a Microsoft 365 Copilot licence for the Premium editing experience'. Remove the licence-tier part of the open question, retaining the question about feature-specific fair use limits. Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [unsupported, blocker] Risk assessment: Data exposure / applicability: The licence and Restricted Content Discovery rows cover part of the oversharing exposure from explicitly referenced SharePoint or OneDrive decks. | Found: Searched: Restricted Content Discovery Reference file PowerPoint selected presentation. Read restricted-content-discovery, assign-licenses-to-users and release-notes; no support for the rows governing explicitly referenced deck oversharing. | Fix: Replace '; the licence row and the Restricted Content Discovery row cover part of it' with '. The rows govern licence assignment and SharePoint discoverability; neither changes file permissions.' This keeps the distinction already documented at https://learn.microsoft.com/sharepoint/restricted-content-discovery and https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users.
+- [contradicted, blocker] Why it matters; Open questions / absence: Microsoft has not stated whether an admin setting governs Reference file or turns it off. | Found: If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: - Excel - OneNote - Outlook - PowerPoint - Word | Fix: In Why it matters, replace the sentence with: 'Microsoft has not stated a default specifically for Reference file or documented a switch specific to it. Broader connected-experience privacy controls can disable Copilot in PowerPoint on current Windows and Mac apps.' Cite https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-privacy. In the first Open questions bullet, remove 'and does any admin setting turn it off?' so it asks only 'Is Reference file on by default?' | Source: https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-privacy
 -->

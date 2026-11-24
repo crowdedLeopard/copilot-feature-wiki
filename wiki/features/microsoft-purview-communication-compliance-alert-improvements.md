@@ -40,17 +40,23 @@ sources:
   - title: "Plan for Microsoft Purview compliance and risk management solutions – GCC High deployments"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments"
     kind: "learn"
+  - title: "Alert policies in the Microsoft Defender portal"
+    url: "https://learn.microsoft.com/defender-xdr/alert-policies"
+    kind: "learn"
+  - title: "Investigate and remediate Communication Compliance alerts"
+    url: "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-compliance-portal-communication-compliance-alert-improvements","microsoft-purview-compliance-portal-communication-compliance-enhanced-policy-conditions","microsoft-purview-compliance-portal-communication-compliance-ability-to-set-a-retention-pe","insider-risk-management"]
 controls:
   - governs: "Alert policy triggers for a Communication Compliance policy: number of activities, period and specific users"
     scope: "other"
     ui:
-      surface: "Microsoft Purview portal"
-      path: "Alert policies"
-      docs: "https://learn.microsoft.com/purview/communication-compliance-policies"
+      surface: "Microsoft Defender portal"
+      path: "Email & collaboration > Policies & rules > Alert policy > policy > Edit > Edit Policy > Trigger settings"
+      docs: "https://learn.microsoft.com/defender-xdr/alert-policies"
     api: null
-    note: "Existing control, not the planned alert settings. Learn names the Alert policies page without giving its navigation route, and says PowerShell isn't supported for managing these policies."
+    note: "The linked Defender guidance permits modifying Trigger settings if applicable; the Communication Compliance page still refers to Alert policies in Microsoft Purview."
   - governs: "Alert frequency and email alert recipients per policy (the planned settings)"
     scope: "other"
     ui: null
@@ -65,19 +71,23 @@ changes:
     note: "First briefing on the GCC, GCC High and DoD roadmap item for Communication Compliance alert improvements; Learn does not yet describe the new settings."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 44 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the alert policy trigger control to the Microsoft Defender portal route Learn gives, and stated that the Communication Compliance and Communication Compliance Admins role groups can configure policies and settings."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 42
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "8c2f0a21a0bcb366c691b8dc5b994a9b"
+  claims: 50
+  confirmed: 50
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "73371855b7a4d1bf8b685c30922d26f6"
 ---
 
 ## What's changing
@@ -102,7 +112,7 @@ Microsoft has not stated what happens to existing policies when the settings arr
 
 **Security & identity**
 
-- Learn lists six roles or role groups for managing Communication Compliance features, including the Communication Compliance and Communication Compliance Admins role groups. Which of them can change the new settings is not documented.
+- Learn lists six roles or role groups for managing Communication Compliance features, including the Communication Compliance and Communication Compliance Admins role groups. Learn gives the Communication Compliance and Communication Compliance Admins role groups permission to configure policies and settings.
 
 **Autonomy & actions**
 
@@ -156,7 +166,7 @@ Indirect cost is reviewer and admin time: changing alert frequency changes how m
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Alert policy triggers for a Communication Compliance policy: number of activities, period and specific users</strong><br><small class="controls__note">Existing control, not the planned alert settings. Learn names the Alert policies page without giving its navigation route, and says PowerShell isn't supported for managing these policies.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Alert policies <a href="https://learn.microsoft.com/purview/communication-compliance-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Alert policy triggers for a Communication Compliance policy: number of activities, period and specific users</strong><br><small class="controls__note">The linked Defender guidance permits modifying Trigger settings if applicable; the Communication Compliance page still refers to Alert policies in Microsoft Purview.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Email &amp; collaboration › Policies &amp; rules › Alert policy › policy › Edit › Edit Policy › Trigger settings <a href="https://learn.microsoft.com/defender-xdr/alert-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Alert frequency and email alert recipients per policy (the planned settings)</strong><br><small class="controls__note">Roadmap only; Learn documents no path or API for these settings at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -169,7 +179,7 @@ The second row states that Learn describes no admin path or API for the planned 
 
 - Do existing policies keep today's single email every 24 hours when the new settings arrive, or does the default change? Watch Message center and the Communication Compliance policies page on Learn.
 - When will the roadmap's January CY2026 target be replaced by a new date, and does it differ for GCC, GCC High and DoD?
-- Which role groups can change alert frequency and email recipients, and can recipients sit outside the Communication Compliance role groups?
+- Can recipients sit outside the Communication Compliance role groups?
 - Do the new settings change the existing alert policy triggers (activities, window, users) or sit alongside them?
 - Is any licence or meter specific to the alert settings published beyond the Communication Compliance subscription requirements?
 
@@ -179,11 +189,8 @@ cost: Low. The only cost the sources show is admin and reviewer time; Communicat
 impact: Low. Communication Compliance admins and the reviewers who receive alert emails are the people who would notice a change.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].ui; rendered Governance controls table / admin-path: Microsoft Purview portal > Alert policies is the documented navigation route to the existing trigger control. | Found: Searched: "Communication Compliance" "Alert policies" "navigation" Purview. Read communication-compliance-policies and defender-xdr/alert-policies. The former names a page, not its navigation; the latter gives a route in Microsoft Defender. | Fix: Replace controls[0].ui with surface 'Microsoft Defender portal', path 'Email & collaboration > Policies & rules > Alert policy > policy > Edit > Edit Policy > Trigger settings', and docs 'https://learn.microsoft.com/defender-xdr/alert-policies'. Update the rendered row and note: 'The linked Defender guidance permits modifying Trigger settings if applicable; the Communication Compliance page still refers to Alert policies in Microsoft Purview.' Cite the Defender page.
-- [contradicted, blocker] Risk assessment: Security & identity; Open questions: roles / absence: Which role groups can change the new policy settings is not documented. | Found: Actions | Communication Compliance | Communication Compliance Admins | Communication Compliance Analysts | Communication Compliance Investigators | Communication Compliance Viewers ... Configure policies and settings | Yes | Yes | No | No | No | Fix: Replace 'Which of them can change the new settings is not documented' with 'Learn gives the Communication Compliance and Communication Compliance Admins role groups permission to configure policies and settings.' Remove the role-group portion of the open question, retaining 'Can recipients sit outside the Communication Compliance role groups?' | Source: https://learn.microsoft.com/purview/communication-compliance-permissions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Risk assessment: Autonomy & actions / behaviour: Alerts notify recipients of policy matches, and reviewers investigate and decide on remediation. | Found: After the required number of policy matches is met for a particular alert, the alert is created and email is sent to the alert recipient. ... From the Policy details page, you can review a summary of the activities, review, and act on policy matches on the Pending tab | Fix: Add 'https://learn.microsoft.com/purview/communication-compliance-investigate-remediate' to sources for the reviewer notification and remediation statements. | Source: https://learn.microsoft.com/purview/communication-compliance-investigate-remediate
+- [supported, minor] controls[0].ui; rendered controls table / admin-path: Existing alert triggers are reached in Microsoft Defender portal through Email & collaboration > Policies & rules > Alert policy > policy > Edit > Edit Policy > Trigger settings. | Found: Select the policy you want to update from the list. In the Actions column, select the three dots then select Edit. In the Edit Policy pane ... If applicable, you can also modify the Trigger settings for the policy. | Fix: Add the omitted column heading in controls[0].ui.path and the rendered table: 'Email & collaboration > Policies & rules > Alert policy > policy > Actions > Edit > Edit Policy > Trigger settings'. The cited page places Edit in the Actions column. | Source: https://learn.microsoft.com/defender-xdr/alert-policies
 -->

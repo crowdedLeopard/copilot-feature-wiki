@@ -1,0 +1,692 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-it-admins-will-be-able-to-enable-anthropic-models-by-sp",
+  "roadmapId": 557371,
+  "title": "Microsoft 365 Copilot: assign Anthropic model access to specific users and groups",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "3 blocking findings (claims 27, 35, 48)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 48,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the retention description omits Microsoft's warning that flagged content can be retained for two years and classification scores for seven years. The default field describes model availability rather than the new access control, and the briefing overlooks documented error messages for unassigned users.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes admin controls for managing Anthropic as a provider for specific users and groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature introduces admin controls for managing Anthropic as a model provider for specific users and groups in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap record has no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The listed products are Microsoft 365 and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft 365\", \"Microsoft Copilot (Microsoft 365)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Administrators can assign Anthropic provider access in the Microsoft 365 admin center for Copilot and Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "You can assign AI providers to selected users or groups in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Individual users can be assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Administrators can assign access to: Individual users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft Entra ID security groups can be assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Microsoft Entra ID security groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Nested security groups can be assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Nested security groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Up to 999 combined user and group assignments are supported per AI provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Up to 999 combined user and group assignments are supported per AI provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Assignments apply at provider level rather than model level, so this control does not select individual Claude models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Applied at the AI provider level, not the AI model level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "When assignments restrict access, only specified users or group members can use features relying on the provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "When access is restricted by user or group assignment, only the specified users or group members can use Copilot features that rely on that AI provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Unassigned users might be unable to access features depending on the provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Be unable to access Copilot features or capabilities that depend on that provider",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Unassigned users might experience agent behaviour changes where provider access is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Experience agent behavior changes where access to a model provider is required",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Provider assignments are enforced across Microsoft Copilot apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "This enforcement applies across: Microsoft Copilot apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Provider assignments are enforced for custom agents built in Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Custom agents built in Copilot Studio",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Assignments are enforced across the Microsoft 365 admin center and Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "Enforced across: Microsoft 365 admin center; Power Platform admin center (PPAC); Copilot Studio",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The printed Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences path reaches user and group selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "select Copilot > Settings > View all. ... select Anthropic, and Save. ... Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Copilot > Settings > User access > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Disable Anthropic as a Microsoft subprocessor path reaches the disable control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "select Copilot > Settings. ... On the User access page, select AI providers operating as Microsoft subprocessors. ... under Available subprocessors for your organization, select Disable Anthropic as a Microsoft subprocessor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No Graph or PowerShell operation for assigning Anthropic access to users and groups is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Anthropic AI provider users security groups Microsoft Graph PowerShell assign access disable subprocessor copilotAdminSetting API. Opened provider-access, connect-to-ai-subprocessor and copilotAdminSetting references; none documents an assignment operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation operation for disabling Anthropic as a Microsoft subprocessor is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Anthropic AI provider users security groups Microsoft Graph PowerShell assign access disable subprocessor copilotAdminSetting API. Opened connect-to-ai-subprocessor and copilotAdminSetting; results describe UI disabling, not an automation operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[].note; Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Changing these Microsoft 365 settings requires AI Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "You must be a member of the AI Administrator or Global Administrator role to perform this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new user and group access control is on by default.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: AI provider user group assignments Anthropic access restriction default all users Microsoft Copilot. Opened assignment and both Anthropic setting pages; they state regional model availability, not that the new assignment control starts enforcing by default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to unknown for this new control. State: 'Microsoft documents regional defaults for Claude model availability, but does not state the new assignment control's default enforcement state.' Keep the separately attributed regional availability facts."
+    },
+    {
+      "n": 28,
+      "where": "summary; Why it matters; Scope; controls[1].note; rationale: risk",
+      "type": "default",
+      "claim": "Claude models are on by default for most commercial customers outside EU/EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Scope",
+      "type": "default",
+      "claim": "Claude models are disabled by default in EU/EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default.",
+      "severity": "minor",
+      "fix": "After this attributed general default, add: 'The separate apps-only article says its setting is enabled by default for EU/EFTA/UK tenants created after March 25, 2026, so check the tenant's actual selection.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps."
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "availability",
+      "claim": "Claude models in Microsoft offerings are currently excluded from the EU Data Boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Claude models deployed in Microsoft offerings such as Microsoft Copilot, Researcher, Copilot Studio, Power Platform, and Copilot in Microsoft 365 apps are currently excluded from the EU Data Boundary",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "date",
+      "claim": "Learn says Claude models are coming into the EU Data Boundary starting in December 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "Claude models from Anthropic are coming into the EU Data Boundary starting in December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Governance guidance; Open questions; changes",
+      "type": "date",
+      "claim": "Setting option names and some selections change on December 9, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "If the All users for Microsoft 365 apps only option is currently selected, the selection will change to the All users option. If you haven't previously made any selection, your selection will change to All users.",
+      "severity": "minor",
+      "fix": "Replace 'options are renamed and some selections change' with: 'For EU/EFTA/UK tenants, All users for Microsoft 365 apps only is removed on December 9, 2026; that selection and no previous selection change to All users. Other selections, including No users, remain unchanged.'"
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft Product Terms and DPA govern Claude use where Anthropic is a Microsoft subprocessor rather than a Data Retention independent processor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Unless models are labeled \"Anthropic models with Data Retention,\" the Microsoft Product Terms and Microsoft Data Protection Addendum (DPA) apply",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Anthropic models with Data Retention operate under Anthropic's own terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Anthropic acts as an independent processor and use of Anthropic models with Data Retention is subject to acceptance of Anthropic's Commercial Terms of Service and Anthropic's Data Protection Addendum.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Anthropic stores most inputs and outputs for up to 30 days, with no longer-retention qualification given.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "If Anthropic's trust and safety classifiers identify potential violations of Anthropic's Usage Policy, Anthropic may retain content (inputs and outputs) for up to two years and trust and safety classification scores for up to seven years.",
+      "severity": "blocker",
+      "fix": "Append to the 30-day statement: 'If Anthropic's trust and safety classifiers identify potential Usage Policy violations, content may be retained for up to two years and trust and safety classification scores for up to seven years.'"
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "default",
+      "claim": "Data Retention models are off for all scenarios until a tenant admin explicitly opts in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "No users will have access to these models until the tenant admin explicitly opts in to enable use of Anthropic models with Data Retention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "The tenant admin must separately choose all or specific users or groups for Data Retention models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "The tenant admin must also choose which users (all or specific users or groups) can access and use these models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling Anthropic as a subprocessor removes users' Claude option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Once you disable Anthropic as an AI subprocessor, users won't have the option to use Claude models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The administrator can enable Claude again later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "You can choose to enable Claude models at a later date if desired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft Copilot users need a Microsoft Copilot licence and a qualifying prerequisite licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The access-control option uses the licensed product's existing entitlement, recorded as included.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot license: Required for licensed Microsoft Copilot capabilities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The cited Anthropic settings and assignment pages name no separate Claude licence, price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Claude Anthropic Microsoft Copilot models licensing separate price meter credits requirements. Opened connect-to-ai-subprocessor, provider-access and Copilot requirements; no separate Claude licence, price or meter appears on those pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Enabling a provider in Microsoft 365 does not automatically make its models available in Power Platform; a second admin action is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "External models require two separate admin actions. ... Enabling a provider in Microsoft 365 doesn't automatically make its models available in Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "A Power Platform system admin allows provider models in an environment or environment group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "Then, a Power Platform system admin allows the provider's models in an environment or environment group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: Power Platform environment path",
+      "type": "admin-path",
+      "claim": "Manage > Environments > environment > Settings > Product > Features reaches the environment's provider settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "On the Settings page, select Product > Features. On the Features page, turn each applicable model provider setting On or Off.",
+      "severity": "minor",
+      "fix": "Extend the path to 'Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > applicable model provider setting (On or Off)' as documented at https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses."
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Environment group rules are another documented way to manage external provider models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "If an environment is part of an environment group, use environment group rules to manage external models across the group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Open questions: unassigned users",
+      "type": "absence",
+      "claim": "Microsoft Learn says only that unassigned users might be unable to use a feature, without documenting what they see.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues#copilot-studio-agents",
+      "quote": "Users who aren't granted access to the model receive the \"Agent Blocked\" error.",
+      "severity": "blocker",
+      "fix": "Remove 'Learn says only that they might be unable to use it.' The narrower question 'What do unassigned users see across other Copilot experiences?' can remain; the known-issues page documents an Agent Blocked error for Copilot Studio agents added to Microsoft 365 Copilot or Teams."
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Assigned security group membership determines which group members receive provider access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "only the specified users or group members can use Copilot features that rely on that AI provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The change's supported cost is indirect administration, rated low, rather than a documented new model-specific charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+      "quote": "You can assign AI providers to selected users or groups in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to review security group membership, but the table has no membership-management row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review group membership on a schedule ...; table rows cover provider assignment and disabling Anthropic, not management of Entra security group membership.",
+      "severity": "minor",
+      "fix": "Remove the checklist instruction 'Review group membership on a schedule, because group changes change who can use Claude.' Retain the explanatory membership risk in Security & identity; do not add a control row."
+    },
+    {
+      "n": 52,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Claude's provider is Anthropic, distinct from the OpenAI provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "The Enable External Models settings include models from these providers: OpenAI; Anthropic; Mistral; xAI",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T23:32:57.188Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadminsetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557371",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and security groups can use Anthropic models in Copilot and Copilot Studio",
+        "docs": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Anthropic",
+          "Choose who can access Anthropic models for Copilot and generative AI experiences"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Anthropic is available as a Microsoft subprocessor at all",
+        "docs": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "User access",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Disable Anthropic as a Microsoft subprocessor"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

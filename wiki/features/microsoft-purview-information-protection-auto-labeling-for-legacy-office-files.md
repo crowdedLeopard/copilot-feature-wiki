@@ -1,10 +1,10 @@
 ---
-title: "Microsoft Purview: auto-labeling policies will cover legacy .doc, .xls and .ppt files"
+title: "Microsoft Purview: auto-labeling policies will cover legacy .doc, .xls and .ppt files (Worldwide)"
 slug: "microsoft-purview-information-protection-auto-labeling-for-legacy-office-files"
 roadmapId: 574363
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Microsoft plans to extend Purview service-side auto-labeling to .doc, .xls and .ppt files in SharePoint and OneDrive. New policies cover them automatically; existing policies need an edit and a rerun."
+summary: "Microsoft plans to extend Purview service-side auto-labeling to .doc, .xls and .ppt files in SharePoint and OneDrive (Worldwide tenants). New policies cover them automatically; existing policies need an edit and a rerun."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -18,18 +18,21 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "Learn lists service-side auto-labeling as included with Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). No licence or price specific to legacy formats is published at the time of writing (November 2026)."
+  notes: "The Microsoft Purview service description lists Client and service-side automatic sensitivity labeling as Included with plans such as Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5. No licence or price specific to legacy formats is published at the time of writing (November 2026)."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","auto-labeling","sensitivity-labels","information-protection","sharepoint","onedrive"]
 sources:
   - title: "Microsoft 365 Roadmap 574363"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=574363"
     kind: "roadmap"
-  - title: "MC1530948: Microsoft Purview | Information Protection: Auto-labeling support for legacy Microsoft Office file formats"
+  - title: "MC1530948: (Updated) Microsoft Purview | Information Protection: Auto-labeling support for legacy Microsoft Office file formats"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1530948"
     kind: "message-center"
   - title: "Automatically apply a sensitivity label to Microsoft 365 data"
     url: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
   - title: "Set-AutoSensitivityLabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchange/set-autosensitivitylabelpolicy"
@@ -38,7 +41,7 @@ sources:
     url: "https://learn.microsoft.com/purview/audit-log-enable-disable"
     kind: "learn"
 videos: []
-related: ["microsoft-purview-information-protection-auto-labeling-per-policy-coverage-report","microsoft-purview-auto-labeling-scalability-policy-management-and-reporting-enhancements","auditing"]
+related: ["microsoft-purview-information-protection-auto-labeling-for-legacy-office-fil-us-government","microsoft-purview-information-protection-auto-labeling-per-policy-coverage-report","microsoft-purview-auto-labeling-scalability-policy-management-and-reporting-enhancements","auditing","sensitivity-labels"]
 controls:
   - governs: "Whether an auto-labeling policy runs in simulation or enforces labels"
     scope: "tenant"
@@ -86,7 +89,7 @@ controls:
     note: "Run in Exchange Online PowerShell. Needs the Audit Logs role in Exchange Online."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-19"
+updated: "2026-11-24"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-18"
@@ -97,30 +100,34 @@ changes:
     note: "Corrected after verification: replaced the supported-formats sentence with what Learn lists, removed the encryption-prerequisite doubt, added the Choose locations wizard page to the locations path, and trimmed checklist steps with no control row."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
-version: 2
+  - date: "2026-11-24"
+    note: "Notice MC1530948 moved preview to late November 2026 and general availability to mid-December 2026; licensing now cites the Purview service description's service-side entry; title and summary name the Worldwide item."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 72
-  confirmed: 72
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "cfeccbf69a37d7f636610bdb2199575c"
+  hash: "b409c08fe429d792ed3c10ad01391b10"
 ---
 
 ## What's changing
 
 Microsoft plans to add the legacy Office formats Word (.doc), Excel (.xls) and PowerPoint (.ppt) to Microsoft Purview service-side auto-labeling, so that auto-labeling policies can evaluate and apply sensitivity labels to these files in SharePoint and OneDrive. Microsoft's notice MC1530948 says the formats will be supported in both simulation and enforcement.
 
-The notice describes two cases. New auto-labeling policies automatically support the formats. Existing policies need a small edit and another policy run to restart the crawl so that legacy files are evaluated; the notice gives the example of adding or removing a policy comment, saving the change and running the policy again. The notice sets no act-by date and shows an end date of 2026-12-27.
+The notice describes two cases. New auto-labeling policies automatically support the formats. Existing policies need a small edit and another policy run to restart the crawl so that legacy files are evaluated; the notice gives the example of adding or removing a policy comment, saving the change and running the policy again. The notice sets no act-by date and shows an end date of 2027-02-01.
 
-The notice gives the rollout as Public Preview beginning in early November 2026 and expected to complete by mid-November 2026, then General Availability beginning in late November 2026 and expected to complete by late November 2026. The roadmap record still shows the item as In development, with preview and general availability targeted for November CY2026, for Worldwide (Standard Multi-Tenant) on Web. The dates are Microsoft's targets.
+The notice was updated on 2026-11-24 and gives the rollout as Public Preview beginning in late November 2026 (previously early November) and expected to complete by early December 2026 (previously mid-November), then General Availability beginning in mid-December 2026 (previously late November) and expected to complete by late December 2026. The roadmap record still shows the item as In development, with preview and general availability both targeted for November CY2026, for Worldwide (Standard Multi-Tenant) on Web. The notice's dates are later than the roadmap's. All dates are Microsoft's targets.
 
-At the time of writing (November 2026), the Learn page on auto-labeling policies lists Word (.docx), PowerPoint (.pptx), Excel (.xlsx) and PDF files as supported for SharePoint and OneDrive and does not mention legacy formats. What follows about this change is therefore the roadmap's and the notice's description.
+Microsoft lists the feature under a second roadmap item, 578872, for GCC, GCC High and DoD, targeted for December CY2026; this page covers item 574363 only. At the time of writing (November 2026), the Learn page on auto-labeling policies lists Word (.docx), PowerPoint (.pptx), Excel (.xlsx) and PDF files as supported for SharePoint and OneDrive and does not mention legacy formats. What follows about this change is therefore the roadmap's and the notice's description.
 
 ## Why it matters
 
@@ -146,12 +153,12 @@ If nobody acts, the notice says existing policies need the edit and rerun to eva
 
 **Change & support**
 
-- The notice targets both public preview and general availability for November 2026, and the roadmap still says In development. Expect the Learn page and portal behaviour to change during that period.
+- The notice moved its preview and general availability dates later on 2026-11-24, and the roadmap still says In development. Expect the Learn page and portal behaviour to change during that period.
 - Simulation can take 12 hours to complete according to the Learn page, so schedule the edit-and-rerun step ahead of any change window.
 
 ## Cost and licensing
 
-**Licence.** The Learn page on auto-labeling lists service-side auto-labeling (SharePoint, OneDrive, Exchange) as included with the same SKUs as client-side auto-labeling: Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). It also says auto-labeling of files and emails isn't included with E3 or Business Premium.
+**Licence.** The Microsoft Purview service description lists Client and service-side automatic sensitivity labeling as Included with Microsoft 365 E5/A5/G5, Microsoft Purview Suite/GOV/FLW, Microsoft Defender + Purview Suite FLW and Microsoft 365 E5 Information Protection and Governance, and with Office 365 E5/A5/G5. The Learn page on auto-labeling points to that entry for service-side auto-labeling in SharePoint, OneDrive and Exchange, and says client-only entitlements don't establish service-side entitlement.
 
 **Meter.** Neither the notice nor the Learn page names a meter for legacy formats.
 
@@ -163,11 +170,11 @@ If nobody acts, the notice says existing policies need the edit and rerun to eva
 
 **Who and what.** The notice says organisations using Microsoft Purview service-side auto-labeling policies for files stored in SharePoint and OneDrive are affected. It names .doc, .xls and .ppt files; it does not mention Exchange.
 
-**Clouds and platforms.** The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform.
+**Clouds and platforms.** The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform. GCC, GCC High and DoD are covered by the separate roadmap item 578872.
 
-**Rollout.** Public Preview from early November 2026 and General Availability from late November 2026, per notice MC1530948. Existing policies need an edit and a rerun; new policies do not.
+**Rollout.** Public Preview from late November 2026 and General Availability from mid-December 2026, per notice MC1530948. Existing policies need an edit and a rerun; new policies do not.
 
-**Prerequisites.** The Learn page's pre-flight checklist lists auditing turned on (required for simulation) and sensitivity labels enabled for Office files in SharePoint and OneDrive, and says that to label files the label scope must include **Files & other data assets**. It also says auto-labeling isn't available in all regions because of a backend Azure dependency, and that the **Auto-labeling** page isn't visible in the Microsoft Purview portal if the tenant can't support it.
+**Prerequisites.** The Learn page's pre-flight checklist lists auditing turned on (required for simulation) and sensitivity labels enabled for Office files in SharePoint and OneDrive, and says that to label files the label scope must include **Files & other data assets**. It also says auto-labeling isn't currently available in all regions because of a backend Azure dependency, and that the **Auto-labeling** page isn't visible in the Microsoft Purview portal if the tenant can't support it.
 
 ## Governance guidance
 
@@ -208,12 +215,19 @@ The cmdlet reference states that Set-AutoSensitivityLabelPolicy is available onl
 ## Open questions
 
 - Does editing an existing policy through PowerShell (for example the Set-AutoSensitivityLabelPolicy -Comment parameter) restart the crawl in the same way as the portal edit the notice describes? Watch the Learn auto-labeling page and MC1530948.
-- Will Microsoft publish any licence or meter specific to legacy formats, or does the existing Microsoft 365 E5-tier entitlement cover them? Watch the Learn auto-labeling page and Message center.
+- Will Microsoft publish any licence or meter specific to legacy formats, beyond the entitlement the service description lists for service-side auto-labeling? Watch the Learn auto-labeling page and Message center.
 - Does a policy offer a way to include or exclude individual legacy formats? Watch the Learn auto-labeling page.
-- When will the roadmap status move from In development, given that the notice describes preview beginning in early November 2026? Watch the roadmap item.
+- When will the roadmap status move from In development, given that the notice now describes preview beginning in late November 2026? Watch the roadmap item.
 
 <!-- rationale
 risk: Medium. Once a policy covers legacy files, enforcement can label older files at scale; Microsoft's notice advises running a new or updated policy in simulation and reviewing the results before enabling it.
-cost: Low. Learn lists service-side auto-labeling as included with Microsoft 365 E5-tier licences, and no separate licence or meter for legacy formats is published; the known cost is admin time to edit and rerun policies.
+cost: Low. Microsoft's service description lists client and service-side automatic sensitivity labeling as included with Microsoft 365 E5-tier licences, and no separate licence or meter for legacy formats is published; the known cost is admin time to edit and rerun policies.
 impact: Medium. People who own legacy files in the SharePoint sites and OneDrive accounts a policy covers may find them labelled; users outside those locations are not affected by the notice.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Scope: Clouds and platforms / availability: A separate roadmap item, 578872, covers the same legacy-format feature for GCC, GCC High and DoD. | Found: "id":578872,"title":"Microsoft Purview: Information Protection-Auto-labeling for legacy Office files"; "cloudInstances":["GCC","GCC High","DoD"] | Fix: Add https://www.microsoft.com/releasecommunications/api/v2/m365?$filter=id%20eq%20578872 to sources as the Microsoft roadmap record supporting the government-item statement. | Source: https://www.microsoft.com/releasecommunications/api/v2/m365?$filter=id%20eq%20578872
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to compare labeling progress, but the controls table has no monitoring row. | Found: Compare the labelling progress against the 500,000 files per tenant per day ceiling ... Table rows cover activation, locations, policy edit and auditing, not labeling progress. | Fix: Remove the After rollout bullet 'Compare the labelling progress against the 500,000 files per tenant per day ceiling the Learn page gives.' It names a monitoring control with no corresponding table row; do not add a row in this correction.
 -->

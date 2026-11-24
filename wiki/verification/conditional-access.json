@@ -1,0 +1,1135 @@
+{
+  "slug": "conditional-access",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Conditional Access: which sign-ins does Microsoft Entra allow, and what must users do first?",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 76)"
+    ]
+  },
+  "counts": {
+    "claims": 84,
+    "confirmed": 81,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 7
+  },
+  "summary": "Hold: authentication contexts are not always inert without a Conditional Access policy. Microsoft documents a PIM fallback that requires MFA when a configured context has no matching policy. The main controls and licensing statements are supported, with smaller corrections needed for documentation differences and checklist coverage.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "Conditional Access is Microsoft Entra's policy engine for access decisions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Conditional Access is Microsoft's Zero Trust policy engine taking signals from various sources into account when enforcing policy decisions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A policy is an if-then statement requiring an action to access a resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Conditional Access policies at their simplest are if-then statements: if a user wants to access a resource, then they must complete an action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "Conditional Access is enforced after first-factor authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Conditional Access policies are enforced after first-factor authentication is completed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "Conditional Access can block access or require MFA, a compliant device or another grant control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Block access is the most restrictive decision. ... Require multifactor authentication ... Require the device to be marked as compliant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is: Evaluation comes after first-factor sign-in",
+      "type": "behaviour",
+      "claim": "Conditional Access is not a frontline defence against DoS attacks but can use signals from them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Conditional Access isn't intended to be an organization's frontline defense for scenarios like denial-of-service (DoS) attacks, but it can use signals from these events to determine access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A policy consists of Assignments defining who, what and where, and Access controls defining enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "The assignments section defines who, what, and where for the Conditional Access policy. ... The access controls portion of the Conditional Access policy controls how a policy is enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Policies can target users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Policies can be targeted to specific users, groups, and agents (Preview) giving admins fine-grained control over access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Policy assignments can include directory roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "This assignment can include all users, specific groups of users, directory roles, or external guest users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: agents (preview)",
+      "type": "applicability",
+      "claim": "Policies can target agents, described collectively as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Policies can be targeted to specific users, groups, and agents (Preview) giving admins fine-grained control over access.",
+      "severity": "minor",
+      "fix": "Qualify the preview statement: 'The overview labels agent targeting Preview; the targeting guide specifically marks agent-user targeting Preview.' Cite https://learn.microsoft.com/entra/identity/conditional-access/howto-target-agent-identities, which lists All agent identities without that marker and All agent users (Preview). Narrow the corresponding Open questions reference to agent-user targeting."
+    },
+    {
+      "n": 10,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Target resources include cloud apps, user actions and authentication contexts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "Target resources can include or exclude cloud applications, user actions, or authentication contexts that are subjected to the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Network locations are assignment signals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "Network contains IP addresses, geographies, and Global Secure Access' compliant network to Conditional Access policy decisions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Conditions include sign-in risk, device platforms, client apps and device filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "Conditions ... Sign-in risk ... Device platforms ... Client apps ... Filter for devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Access controls can block or grant with one or more requirements, followed by session controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "The grant control triggers enforcement of one or more controls. ... Once all grant controls are satisfied, session controls are applied",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "An enforced policy needs a name, users or groups, target resources and grant or block controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "A Conditional Access policy must include at least the following to be enforced: ... Name ... Users and/or groups ... Target resources ... Grant or Block controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: Everything that applies must be satisfied",
+      "type": "behaviour",
+      "claim": "Multiple policies can apply to one user and all applicable policies must be satisfied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "Multiple Conditional Access policies can apply to an individual user at any time. In this case, all applicable policies must be satisfied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: Everything that applies must be satisfied",
+      "type": "behaviour",
+      "claim": "Assignments in one policy are logically combined using AND.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "All assignments are logically combined using AND. If you have more than one assignment configured, all assignments must be satisfied to trigger a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Authentication strength",
+      "type": "behaviour",
+      "claim": "Authentication strength is a grant control specifying permitted authentication-method combinations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "An authentication strength is a Microsoft Entra Conditional Access control that specifies which combinations of authentication methods users can use to access a resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: Authentication strength",
+      "type": "behaviour",
+      "claim": "There are three built-in strengths: MFA, Passwordless MFA and Phishing-resistant MFA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "They can choose from three built-in authentication strengths: Multifactor authentication strength, Passwordless MFA strength, and Phishing-resistant MFA strength.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: Authentication strength",
+      "type": "behaviour",
+      "claim": "Administrators can create custom authentication strengths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "They can also create a custom authentication strength based on the authentication method combinations that they want to allow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: Authentication context",
+      "type": "behaviour",
+      "claim": "Authentication context secures data and actions in applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Authentication context secures data and actions in applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Authentication context",
+      "type": "behaviour",
+      "claim": "Authentication context definitions use identifiers c1 to c99.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Organizations can create up to 99 authentication context definitions (c1-c99).",
+      "severity": "minor",
+      "fix": "Add: 'The Entra guide documents c1-c99, while the cited beta Graph create reference lists c1-c25 as allowed id values.' Keep both citations: https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps and https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences?view=graph-rest-beta."
+    },
+    {
+      "n": 22,
+      "where": "What it is: Authentication context",
+      "type": "behaviour",
+      "claim": "Policies target published authentication contexts under Target resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Admins can select published authentication contexts in Conditional Access policies by going to Assignments > Target resources and selecting Authentication context from the Select what this policy applies to menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: User actions",
+      "type": "applicability",
+      "claim": "Policies can target registering security information and registering or joining devices rather than an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Admins might define a policy based on a user action like Register security information or Register or join devices, letting Conditional Access enforce controls around those actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: Report-only mode",
+      "type": "behaviour",
+      "claim": "Report-only evaluates and logs policies without enforcing them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "During sign-in, the system evaluates policies in report-only mode but doesn't enforce them. Results are logged in the Conditional Access and Report-only tabs of the Sign-in log details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Coverage tab shows which apps have Conditional Access policy coverage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "The Coverage tab shows a summary of applications with and without Conditional Access policy coverage over the past seven days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "An app with no applicable policy does not receive a Conditional Access access-control decision.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access",
+      "quote": "Access tokens are issued by default if a Conditional Access policy condition doesn't trigger an access control. This policy doesn't prevent the app from blocking access on its own.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "licensing",
+      "claim": "Security defaults are available to customers without Conditional Access licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Customers without licenses that include Conditional Access can make use of security defaults to block legacy authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; Cost and licensing; controls[0].note",
+      "type": "licensing",
+      "claim": "Conditional Access requires Microsoft Entra ID P1 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Using this feature requires Microsoft Entra ID P1 licenses.",
+      "severity": "minor",
+      "fix": "Retain the general P1 requirement, but add to Cost and licensing: 'For agent policies, Microsoft's licensing page additionally requires Microsoft 365 E7, or Microsoft Agent 365 paired with at least Microsoft Entra P1 or Microsoft 365 E3.' Add https://learn.microsoft.com/entra/fundamentals/licensing to sources; it gives these additional requirements whereas the overview gives the general P1 requirement."
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Business Premium customers can use Conditional Access features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Customers with Microsoft 365 Business Premium licenses can also use Conditional Access features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Sign-in-risk and user-risk policies require ID Protection, a Microsoft Entra ID P2 feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Risk-based Conditional Access policies (sign-in risk and user risk) require Microsoft Entra ID Protection, which is a Microsoft Entra ID P2 feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Interacting products including Workload ID, Intune and Purview require their appropriate licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "Other products and features that interact with Conditional Access policies require appropriate licensing for those products and features, including Microsoft Entra Workload ID, Microsoft Entra ID Protection, Microsoft Intune, and Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Licence expiry does not automatically disable or delete Conditional Access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "When the licenses required for Conditional Access expire, policies aren't automatically disabled or deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "After licence expiry remaining policies can be viewed and deleted but not updated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "You can view and delete remaining policies, but you can't update them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Conditional Access Optimization Agent needs at least P1 and Security Copilot SCUs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "quote": "The Conditional Access Optimization Agent with Microsoft Security Copilot ... The agent needs at least the Microsoft Entra ID P1 license and security compute units (SCU).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft documents no separate meter or per-policy charge for Conditional Access itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Conditional Access pricing separate per policy charge meter Entra ID P1 licensing. Opened Conditional Access overview and Entra fundamentals/licensing; reviewed licensing search results. They name licence requirements, not a Conditional Access per-policy meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risks and limits: Lockout",
+      "type": "behaviour",
+      "claim": "Combining a block policy with All resources can lock out administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access",
+      "quote": "Be careful when using block and all resources in a single policy. This combination could lock out admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risks and limits: Lockout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends excluding emergency access accounts and at least one account to prevent lockout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Emergency access or break-glass accounts to prevent lockout due to policy misconfiguration. ... Microsoft recommends you exclude at least one account to prevent yourself from being locked out due to misconfiguration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risks and limits: Report-only is not a full dry run",
+      "type": "behaviour",
+      "claim": "Report-only policies do not prompt for MFA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "Users aren't prompted for multifactor authentication or blocked by report-only policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risks and limits: Report-only is not a full dry run",
+      "type": "behaviour",
+      "claim": "Report-only policies do not prompt users to satisfy terms of use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "With report-only mode, the user isn't prompted to satisfy the required controls. For example, users aren't prompted for multifactor authentication challenges or terms of use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risks and limits: Report-only is not a full dry run",
+      "type": "applicability",
+      "claim": "Report-only cannot evaluate policies in the User Actions scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "Administrators can evaluate Conditional Access policies in report-only mode, except for items included in the \"User Actions\" scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risks and limits: Report-only is not a full dry run",
+      "type": "behaviour",
+      "claim": "Report-only compliant-device policies can prompt macOS, iOS and Android users to select a certificate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "Policies in report-only mode that require a compliant device can prompt users on macOS, iOS, and Android devices to select a device certificate during policy evaluation, even though device compliance isn't enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Group and role changes lag",
+      "type": "behaviour",
+      "claim": "Policies targeting roles or groups are evaluated only when a token is issued.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "Policies targeting roles or groups are evaluated only when a token is issued.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Group and role changes lag",
+      "type": "behaviour",
+      "claim": "Newly added role or group members are not subject to the policy until they get a new token.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "Newly added users to a role or group aren't subject to the policy until they get a new token.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: User-scoped policies do not cover service principals",
+      "type": "applicability",
+      "claim": "User-scoped Conditional Access policies do not block service-principal calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Calls made by service principals aren't blocked by Conditional Access policies scoped to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: User-scoped policies do not cover service principals",
+      "type": "applicability",
+      "claim": "Conditional Access for workload identities defines policies targeting service principals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Use Conditional Access for workload identities to define policies that target service principals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Device platform is weak evidence",
+      "type": "behaviour",
+      "claim": "Device platform is derived from unverified information such as changeable user agent strings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+      "quote": "The information used to determine the device platform comes from unverified sources, like user agent strings that can be changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Overlapping grants",
+      "type": "behaviour",
+      "claim": "Require MFA and Require authentication strength cannot be combined in one policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "You can't use the Require multifactor authentication and Require authentication strength grant controls together in the same Conditional Access policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: All resources reaches account recovery",
+      "type": "applicability",
+      "claim": "All resources policies cover onboarding and account recovery unless the global exclusion is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Policies targeting All resources also apply to onboarding and account recovery events unless you enable the global user-action exclusion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: All resources reaches account recovery",
+      "type": "behaviour",
+      "claim": "Those policies can require credentials users cannot yet provide during onboarding or recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "These policies can require credentials or other controls that users can't satisfy before they establish or restore their authentication methods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Policy ceiling",
+      "type": "behaviour",
+      "claim": "The tenant policy limit is 240, including On, Off and Report-only policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access",
+      "quote": "Conditional Access has a limit of 240 policies per tenant. This 240-policy limit includes Conditional Access policies in any state, including report-only mode, on, or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Entra admin center > Entra ID > Conditional Access > Policies > New policy reaches policy creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Browse to Entra ID > Conditional Access > Policies. Select New policy. ... Under Access controls > Grant, select Block access.",
+      "severity": "minor",
+      "fix": "The path reaches the correct form but stops before the grant/block control. Give the remaining route in the note: 'Configure policy assignments in New policy; the block control is at Entra ID > Conditional Access > Policies > New policy > Access controls > Grant > Block access.'"
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /v1.0/identity/conditionalAccess/policies creates a policy with targeting and grant or block controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies ... \"conditions\": { ... \"grantControls\": { \"operator\": \"OR\", \"builtInControls\": [ \"mfa\" ] }",
+      "severity": "minor",
+      "fix": "Keep the call and add to controls[0].note: 'The request body sets conditions for targeting and grantControls for grant or block requirements.' The cited conditionalAccessPolicy resource documents both properties."
+    },
+    {
+      "n": 53,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Entra ID > Conditional Access > Policies > New policy > Enable policy reaches the policy-state control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Browse to Entra ID > Conditional Access > Policies. Select New policy. ... set Enable policy to Report-only. ... move the Enable policy toggle from Report-only to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/identity/conditionalAccess/policies/{id} updates the policy, including its state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccesspolicy-update?view=graph-rest-1.0",
+      "quote": "Update the properties of a conditionalAccessPolicy object. ... PATCH https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/{id} ... For the list of properties, see conditionalAccessPolicy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The state property accepts enabled, disabled and enabledForReportingButNotEnforced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0",
+      "quote": "Specifies the state of the conditionalAccessPolicy object. The possible values are: enabled, disabled, enabledForReportingButNotEnforced. Required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Entra ID > Authentication methods > Authentication strengths > New authentication strength reaches custom-strength configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "Browse to Entra ID > Authentication methods > Authentication strengths. Select New authentication strength. ... Select the available methods that you want to allow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "POST /v1.0/policies/authenticationStrengthPolicies creates a custom authentication strength.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+      "quote": "Create a new custom authenticationStrengthPolicy object. ... POST https://graph.microsoft.com/v1.0/policies/authenticationStrengthPolicies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The allowedCombinations request-body property defines accepted authentication combinations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+      "quote": "allowedCombinations ... The authentication method combinations allowed by this authentication strength policy. ... Required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Administrators can create up to 15 custom authentication strengths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "As an administrator, you can create up to 15 custom authentication strengths to exactly suit your requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Built-in authentication strengths cannot be modified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "Built-in authentication strengths are always available and can't be modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Entra ID > Conditional Access > Authentication context > New authentication context reaches context-definition creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Manage authentication contexts by going to Entra ID > Conditional Access > Authentication context. ... Select New authentication context to create an authentication context definition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST /beta/identity/conditionalAccess/authenticationContextClassReferences creates a context using a beta endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences?view=graph-rest-beta",
+      "quote": "Create a new authenticationContextClassReference. ... POST https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationContextClassReferences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The beta context create request accepts id, displayName, description and isAvailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences?view=graph-rest-beta",
+      "quote": "You can specify the following properties when creating an authenticationContextClassReference. ... id ... displayName ... description ... isAvailable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Publish to apps makes a context available, corresponding to isAvailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences?view=graph-rest-beta",
+      "quote": "isAvailable ... Indicates whether the authenticationContextClassReference has been published by the security admin and is ready for use by apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Delegated Graph policy creation supports Conditional Access Administrator and Security Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-1.0",
+      "quote": "For delegated access using work or school accounts ... This operation supports the following built-in roles ... Security Administrator ... Conditional Access Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Security Reader can view Conditional Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access",
+      "quote": "Read Conditional Access policies and configurations. Security Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The policy creation guide requires at least Conditional Access Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Conditional Access Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The custom-strength guide requires at least Security Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Security Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The Graph custom-strength create reference supports both Conditional Access Administrator and Security Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+      "quote": "This operation supports the following built-in roles ... Conditional Access administrator ... Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Policy impact is available to administrators with at least Security Reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "The policy impact view of Conditional Access lets admins with at least the Security Reader role see a snapshot of the potential or existing impacts of policies on interactive sign-ins in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "On enforces policies, Report-only evaluates without enforcement and Off prevents application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access",
+      "quote": "move the Enable policy toggle from Report-only to On. ... Disabling a policy makes sure it doesn't apply when a user tries to sign in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "The Conditional Access Insights and Reporting workbook visualizes policy results including report-only results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "Use the Conditional Access Insights and Reporting workbook to view report-only and enforced policy results side by side for a specific time range, set of applications, and users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: How the controls interact",
+      "type": "licensing",
+      "claim": "The workbook requires P1 and a Log Analytics workspace receiving sign-in logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "The workbook requires Microsoft Entra ID P1 and a Log Analytics workspace that's receiving sign-in logs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: How the controls interact",
+      "type": "admin-path",
+      "claim": "Sign-in logs are at Entra ID > Monitoring & health > Sign-in logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+      "quote": "Browse to Entra ID > Monitoring & health > Sign-in logs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Authentication strengths need a policy reference to enforce their requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "Administrators can specify an authentication strength to access a resource by creating a Conditional Access policy with the Require authentication strength control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Authentication contexts do nothing until a policy references them.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-role-settings",
+      "quote": "if there are no Conditional Access policies in the tenant that target authentication context configured in PIM settings, during group membership/ownership activation, the multifactor authentication feature in Microsoft Entra ID is required",
+      "severity": "blocker",
+      "fix": "Remove 'and contexts' from 'Authentication strengths and contexts do nothing until a policy references them.' Microsoft documents a PIM MFA fallback when a configured context has no matching Conditional Access policy, so the unconditional statement about contexts is false."
+    },
+    {
+      "n": 77,
+      "where": "Open questions: apps publishing contexts",
+      "type": "applicability",
+      "claim": "Authentication context applies to custom, line-of-business, SharePoint and Defender for Cloud Apps-protected applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "These applications include custom applications, line-of-business (LOB) applications, SharePoint, or applications protected by Microsoft Defender for Cloud Apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Open questions: preview features",
+      "type": "availability",
+      "claim": "Policy impact is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+      "quote": "Administrators can use several options to review the potential results of policies in their environment: Workbooks; Sign-in logs; Policy impact (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Open questions: preview features",
+      "type": "availability",
+      "claim": "The Account onboarding and recovery global exclusion is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+      "quote": "Exclude onboarding and recovery from All resources policies (preview) ... Account onboarding and recovery (Preview) setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Open questions: preview features",
+      "type": "absence",
+      "claim": "Learn gives no general-availability date for the agent-targeting preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Conditional Access agent targeting preview generally available November 2026. Opened overview, agent-id and howto-target-agent-identities; no GA date found. The targeting guide specifically labels agent-user targeting Preview; the broader wording is corrected with the preview claim.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Open questions: preview features",
+      "type": "absence",
+      "claim": "Learn gives no general-availability date for the global onboarding and recovery exclusion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Conditional Access agent targeting account onboarding recovery exclusion policy impact preview general availability date. Opened Target resources and read Require identity verification search excerpts; no GA date for the exclusion found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Open questions: preview features",
+      "type": "absence",
+      "claim": "Learn gives no general-availability date for policy impact.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Conditional Access agent targeting account onboarding recovery exclusion policy impact preview general availability date. Opened Analyze Conditional Access Policy Impact and read its search results; it labels policy impact preview without a GA date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "What to check: Review Report-only results",
+      "type": "consistency",
+      "claim": "Every checklist control has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "What to check: 'Review Report-only results in the sign-in logs' versus the table's four rows: policy creation, policy state, authentication strengths and authentication contexts; none covers sign-in-log review.",
+      "severity": "minor",
+      "fix": "The checklist step 'Review Report-only results in the sign-in logs before moving the Enable policy setting to On' names sign-in-log review without a table row. Remove that checklist step; the supported sign-in-log guidance can remain in Governance controls."
+    },
+    {
+      "n": 84,
+      "where": "What to check: Check the Coverage tab",
+      "type": "consistency",
+      "claim": "The checklist's Coverage-tab control has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "What to check: 'Check the Coverage tab for apps with no policy' versus the table's four rows: policy creation, policy state, authentication strengths and authentication contexts; none covers Coverage.",
+      "severity": "minor",
+      "fix": "The checklist step 'Check the Coverage tab for apps with no policy, and decide whether an All resources policy is right' names Coverage without a table row. Remove that checklist step; the supported description of Coverage can remain in Why it matters."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T23:32:58.378Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/conditionalaccesspolicy-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a Conditional Access policy exists, who and what it targets, and its grant or block control",
+        "docs": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Conditional Access",
+          "Policies",
+          "New policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a Conditional Access policy exists, who and what it targets, and its grant or block control",
+        "docs": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/identity/conditionalAccess",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a policy is enforced (On), only evaluated and logged (Report-only), or off",
+        "docs": "https://learn.microsoft.com/entra/identity/conditional-access/policy-block-legacy-authentication",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Conditional Access",
+          "Policies",
+          "New policy",
+          "Enable policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a policy is enforced (On), only evaluated and logged (Report-only), or off",
+        "docs": "https://learn.microsoft.com/graph/api/conditionalaccesspolicy-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/identity/conditionalAccess",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which authentication method combinations a custom authentication strength accepts",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Authentication strengths",
+          "New authentication strength"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which authentication method combinations a custom authentication strength accepts",
+        "docs": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationStrengthPolicies",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Authentication contexts that apps can attach to resources and that policies can target",
+        "docs": "https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Conditional Access",
+          "Authentication context",
+          "New authentication context"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Authentication contexts that apps can attach to resources and that policies can target",
+        "docs": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-authenticationcontextclassreferences?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/identity/conditionalAccess",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -49,6 +49,12 @@ sources:
   - title: "copilotAdminSetting resource type"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadminsetting"
     kind: "learn"
+  - title: "Understand agent details in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details"
+    kind: "learn"
+  - title: "Set Up Your Development Environment for a Microsoft 365 Copilot Plugin"
+    url: "https://learn.microsoft.com/plugins/prerequisites"
+    kind: "learn"
 videos: []
 related: ["declarative-agents","m365-copilot-now-smarter-with-visuals-copilot-chat-leverages-embedded-images-for-richer-mo","m365-copilot-newly-created-declarative-agents-now-understand-referenced-scanned-pdfs","restricted-content-discovery","knowledge-grounding"]
 controls:
@@ -88,26 +94,30 @@ changes:
     note: "First briefing for this launched item: Learn has a release-notes entry but no feature page; controls are the agent block and Restricted Content Discovery, and no image-reading switch is documented."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: embedded file content is documented as text-only grounding, the whole-agent block is no longer called the only agent-level lever, Microsoft's general rollout model is noted, and the prerequisites page's SharePoint billing note is added."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 52
+  claims: 73
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "edcb7a1e0da7f2166851143fb2b3b48e"
+  contradicted: 0
+  attempts: 0
+  hash: "f6c9a81005c441fe565a104a3f11838d"
 ---
 
 ## What's changing
 
 Declarative agents can now use the images inside files, not only the text, when they ground an answer. The roadmap item says agents interpret and ground responses using images embedded in Word (.docx), PowerPoint (.pptx) and PDF files, so charts, diagrams and screenshots can inform what the agent says.
 
-Microsoft's Microsoft 365 Copilot release notes list the item on April 7, 2026 as "Smarter answers with embedded image understanding" and mark it [Windows]; the roadmap record lists the platform as Desktop. The release notes' suggested checks describe uploading a Word document, attaching a PowerPoint file or using a PDF and asking Copilot about the visuals. Microsoft Learn has no separate page for this item at the time of writing (November 2026), so the detail here comes from the roadmap description and that release-notes entry. Microsoft has not stated which knowledge sources of a declarative agent it covers, or whether it is on by default.
+Microsoft's Microsoft 365 Copilot release notes list the item on April 7, 2026 as "Smarter answers with embedded image understanding" and mark it [Windows]; the roadmap record lists the platform as Desktop. The release notes' suggested checks describe uploading a Word document, attaching a PowerPoint file or using a PDF and asking Copilot about the visuals. Microsoft Learn has no separate page for this item at the time of writing (November 2026), so the detail here comes from the roadmap description and that release-notes entry. Microsoft has not stated which other knowledge sources of a declarative agent it covers, or whether it is on by default.
 
 The roadmap record gives the status as Launched, the target date as March CY2026, the release phase as General Availability, the cloud as Worldwide (Standard Multi-Tenant) and the platform as Desktop. A separate roadmap item covers the same capability in Copilot Chat; see [Copilot Chat: answers draw on images embedded in Word, PowerPoint and PDF files](/features/m365-copilot-now-smarter-with-visuals-copilot-chat-leverages-embedded-images-for-richer-mo/).
 
@@ -122,7 +132,7 @@ Microsoft has not stated what happens on arrival or whether an administrator has
 **Data exposure**
 
 - Images inside Word, PowerPoint and PDF files can inform an agent's answer, so a screenshot or chart that holds sensitive figures is part of what the agent can use. Microsoft's knowledge-sources page says that when an agent uses SharePoint and OneDrive content as knowledge, Copilot searches the files, folders or sites that a user has access to, so existing oversharing carries through to what images reveal.
-- Where an agent uses embedded file content (files uploaded when the agent is built in Agent Builder), Microsoft says Purview Information Barriers isn't supported on embedded files and any user who can access the agent can see responses grounded in that content. Whether image reading applies to embedded file content is not stated.
+- Where an agent uses embedded file content (files uploaded when the agent is built in Agent Builder), Microsoft says Purview Information Barriers isn't supported on embedded files and any user who can access the agent can see responses grounded in that content. Microsoft’s agent-details page says embedded knowledge agents use only the text content of uploaded files for grounding; the image-understanding release note does not reconcile that limitation.
 - Restricted Content Discovery limits discovery of a SharePoint site's content in organisation-wide search and Microsoft Copilot responses. Its page says it doesn't affect experiences that operate on content already in use by the user, such as summarising an open document.
 
 **Security & identity**
@@ -136,11 +146,11 @@ Microsoft has not stated what happens on arrival or whether an administrator has
 **Change & support**
 
 - Answers from the same agent about the same file may change when its images are read. Expect questions about why a chart or screenshot is reflected, or not, in an answer.
-- No setting for image reading is documented, so the only agent-level lever is the whole-agent block (see the controls table), which stops the agent for every user.
+- No setting specifically for image reading is documented; the whole-agent block shown in the controls table stops the agent for every user.
 
 ## Cost and licensing
 
-Licence: Microsoft's knowledge-sources page lists, per capability or knowledge source, whether users need a Microsoft 365 Copilot licence or metered usage. It marks Copilot connectors, SharePoint, OneDrive and embedded file content as needing one or the other, and code interpreter, image generator and web search as not. It adds that SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot licence, and that file upload is available to users with usage billing enabled or with a Microsoft 365 Copilot licence.
+Licence: Microsoft's knowledge-sources page lists, per capability or knowledge source, whether users need a Microsoft 365 Copilot licence or metered usage. It marks Copilot connectors, SharePoint, OneDrive and embedded file content as needing one or the other, and code interpreter, image generator and web search as not. It adds that SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot licence, and that file upload is available to users with usage billing enabled or with a Microsoft 365 Copilot licence. Microsoft’s prerequisites page also lists SharePoint grounding as available with usage-based billing, so its licensing guidance differs from the knowledge-sources page.
 
 Meter: the release notes and the roadmap name no meter, price or credit rate for image understanding, and the knowledge-sources page does not say this capability is metered. A rate specific to this feature is not yet published.
 
@@ -154,7 +164,7 @@ Indirect costs: admin time for an oversharing review and user communication. Emb
 
 **Cloud and platform.** The roadmap record lists Worldwide (Standard Multi-Tenant) and Desktop; the release notes mark the entry [Windows]. The record does not list GCC, GCC High or DoD; that is a record fact, not a statement that the feature is unavailable there. Separately, Microsoft says embedded file content isn't supported in Microsoft 365 Government Community Cloud (GCC) environments.
 
-**Rollout.** Status is Launched, target March CY2026, release phase General Availability. Microsoft has not stated the default or any rollout mechanics.
+**Rollout.** Status is Launched, target March CY2026, release phase General Availability. Microsoft has not stated this feature’s default. The release-notes page describes a general safe deployment model that gradually expands from a subset of users within a tenant to the organisation.
 
 ## Governance guidance
 
@@ -194,7 +204,7 @@ A separate tenant setting, User access (Agents > Settings > User access), select
 ## Open questions
 
 - Is image understanding on by default for every existing declarative agent, and does an administrator have to do anything? Watch the Microsoft 365 Copilot release notes and Message center.
-- Which knowledge sources does it cover: SharePoint and OneDrive files, Copilot connectors, embedded file content or files a user attaches?
+- Which of the remaining knowledge sources does it cover: SharePoint and OneDrive files, Copilot connectors or files a user attaches?
 - Will Microsoft add a setting to turn image reading off for agents, and in which admin centre?
 - Does Restricted Content Discovery stop an agent reading images in files on a restricted site? The page describes its reach as organisation-wide search and Microsoft Copilot discovery scenarios.
 - Does any licence or credit meter apply to image understanding specifically, and is it available beyond Windows desktop?
@@ -203,14 +213,4 @@ A separate tenant setting, User access (Agents > Settings > User access), select
 risk: Medium. Charts and screenshots in files an agent can reach now inform its answers, and Microsoft Learn documents no setting that turns image reading off; the agent block and site-level discovery limits are the controls that exist.
 cost: Low. No charge or meter specific to this feature is published; the cost the sources show is admin time, plus the licence or metered usage that Microsoft says some agent knowledge sources already need.
 impact: Medium. People who use declarative agents grounded on Word, PowerPoint or PDF files may see answers that reflect images; Microsoft has not stated whether this is on by default.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure, embedded file content bullet; Open questions / absence: Whether image reading applies to embedded file content is not stated. | Found: Embedded knowledge agents support uploading files as knowledge sources. Copilot only uses the text content of these files for grounding. | Fix: Replace 'Whether image reading applies to embedded file content is not stated' with 'Microsoft’s agent-details page says embedded knowledge agents use only the text content of uploaded files for grounding; the image-understanding release note does not reconcile that limitation.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source. Narrow the knowledge-source open question to the remaining undocumented coverage rather than treating embedded-file behaviour as wholly unstated. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source
-- [contradicted, blocker] Risk assessment: Change & support / applicability: The only agent-level lever is the whole-agent block. | Found: When you delete an agent in the Microsoft 365 admin center, the agent is soft deleted. A soft-deleted agent is unavailable to its maker and end users | Fix: Replace 'No setting for image reading is documented, so the only agent-level lever is the whole-agent block (see the controls table), which stops the agent for every user' with 'No setting specifically for image reading is documented; the whole-agent block shown in the controls table stops the agent for every user.' Do not claim that blocking exhausts the documented agent-level controls. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, blocker] Scope: Rollout / absence: Microsoft has not stated any rollout mechanics. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace 'Microsoft has not stated the default or any rollout mechanics' with 'Microsoft has not stated this feature’s default. The release-notes page describes a general safe deployment model that gradually expands from a subset of users within a tenant to the organisation.' Keep the feature-specific default as unknown. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: The knowledge-sources page says SharePoint and OneDrive sources require the signed-in user to have an active Microsoft 365 Copilot licence. | Found: SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot license. | Fix: Keep the attribution, but append: 'Microsoft’s prerequisites page also lists SharePoint grounding as available with usage-based billing, so its licensing guidance differs from the knowledge-sources page.' Cite https://learn.microsoft.com/plugins/prerequisites#agent-capabilities-and-licensing-models, whose table marks Custom knowledge: SharePoint data as available for Copilot Chat with usage-based billing. | Source: https://learn.microsoft.com/plugins/knowledge-sources
 -->

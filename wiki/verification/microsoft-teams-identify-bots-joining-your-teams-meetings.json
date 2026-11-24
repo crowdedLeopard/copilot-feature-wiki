@@ -1,0 +1,805 @@
+{
+  "slug": "microsoft-teams-identify-bots-joining-your-teams-meetings",
+  "roadmapId": 558107,
+  "title": "Microsoft Teams: identify external bots joining meetings",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 49)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 60,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the statement that no cap or budget control applies goes beyond Microsoft's documentation; an unpublished charge does not establish that conclusion. The policy paths, approval default and rollout details are supported, but the licensing description and a disagreement between Microsoft's PowerShell value lists need clarification.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Teams detects external meeting assistant bots attempting to join meetings hosted by the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Microsoft Teams provides admins with controls to detect and manage external bots when they attempt to join meetings hosted in their organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes clearly represented bots waiting in the lobby and organisers explicitly and separately admitting them if required.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizers will be required to explicitly and separately admit these bots into the meeting, if really required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-05-19T22:45:25.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-19T22:45:25\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale",
+      "type": "default",
+      "claim": "Bot detection is on by default for all tenants.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "Bot detection will be enabled by default for all tenants. ... Keep the default setting, which requires organizers to approve detected bots before they join meetings (recommended).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The bot control is at Teams admin center > Meetings > Meeting policies > policy > Meeting join & lobby > Manage external bots and their access to meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "In the left navigation, select Meetings > Meeting policies. ... Select the policy you want to modify ... Under Meeting join & lobby, find Manage external bots and their access to meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -ExternalBotAccessMode RequireApprovalWhenDetected sets detected-bot approval for the named policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "Set-CsTeamsMeetingPolicy ... [[-Identity] <XdsIdentity>] ... [-ExternalBotAccessMode <String>] ... RequireApprovalWhenDetected: ... They will require approval before getting access to the meetings. This is the default value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The lobby admission control is at Teams admin center > Meetings > Meeting policies > policy > Meeting join & lobby > Who can admit from lobby.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+      "quote": "In the Teams admin center, expand Meetings and then select Meeting policies. ... Select the policy that you want to update. ... In the Meeting join & lobby sections, update the settings ... Who can admit from lobby",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -UsersCanAdmitFromLobby OrganizerAndCoOrganizersOnly sets the lobby admission default to organisers and co-organisers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+      "quote": "You can use the Set-CsTeamsMeetingPolicy PowerShell cmdlet ... To control who can admit users from the lobby, use the -UsersCanAdmitFromLobby parameter. ... Only allow organizers and co-organizers to admit participants from the lobby ... OrganizerAndCoOrganizersOnly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "Learn documents three options: do not detect bots, require approval when detected, and block all detected bots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Do not detect bots ... When detected, require approval before joining (default) ... Block all detected bots",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The other PowerShell values on the feature's Learn page are BlockDetectedBots and AllowBots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Do not detect bots | AllowBots ... Block all detected bots | BlockDetectedBots",
+      "severity": "minor",
+      "fix": "Replace the note's first sentence with 'The feature page lists BlockDetectedBots and AllowBots; the Set-CsTeamsMeetingPolicy reference instead names AllowAllBots for disabling detection.' Both URLs are already cited: https://learn.microsoft.com/microsoftteams/manage-external-bots and https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps."
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; What's changing; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The bot policy setting applies to meetings hosted by users assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "The setting applies to meetings hosted by users assigned the meeting policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "With approval required, detected bots wait in the lobby regardless of the meeting's lobby configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Detected bots are placed in the meeting lobby regardless of the meeting's lobby configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Registered bots appear in the lobby's Waiting section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "In the meeting lobby, registered bots appear in the Waiting section",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Unverified bots detected by Teams appear under Suspected threats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "unverified bots detected through behavioral and infrastructure signals appear under Suspected threats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Autonomy & actions; summary",
+      "type": "behaviour",
+      "claim": "Block all detected bots automatically blocks detected bots rather than asking an organiser to admit them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Detected bots are automatically blocked from joining the meeting. They aren't placed in the meeting lobby for organizer approval, and meeting organizers can't admit them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Do not detect bots leaves bots unmarked and subject to existing participant access and lobby settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Bots aren't detected or marked in the lobby or in the meeting. They appear as any other external participant in the meetings and follow the meeting's existing access and lobby settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Detection can miss bots, which continue to be governed by existing meeting access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Some bots may not be detected and may continue to join meetings according to existing meeting access settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Detection can incorrectly flag a human participant as a bot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Detection may incorrectly identify a human participant as a bot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Blocking can prevent wrongly flagged participants from joining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Participants incorrectly identified as bots may be prevented from joining the meeting. Where supported, eligible participants can use the email verification recovery experience to verify their identity and attempt to join.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Block all detected bots does not guarantee that all external bots are blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "The Block all detected bots option applies to bots identified by Teams detection mechanisms. It does not guarantee that all external bots will be blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; What's changing; Why it matters; controls[1].governs",
+      "type": "role",
+      "claim": "Organisers, and presenters depending on the meeting setting, explicitly admit detected bots under the approval option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Organizers (also presenters, depending on the meeting setting), need to explicitly admit these bots into the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "Who can admit from lobby defaults to Organizers and presenters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+      "quote": "When set to its default value of Organizers and presenters, only organizers and presenters can admit participants into the meeting from the lobby.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Who can admit from lobby sets a default that organisers can change through Meeting options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+      "quote": "This policy sets a default that your organizers can change through their Meeting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Under approval required, organisers can admit wrongly flagged people and use This is not a bot to correct their representation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Organizers can admit the participant from the lobby and use the This is not a bot option to correct the participant's representation in that meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft asks users to report undetected bots through the Feedback option in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Help improve the system by reporting any undetected external meeting bots to us via the Feedback option in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "External meeting bots can record or transcribe meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "These bots may: ... Record or transcribe meetings without participant awareness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "External bots can store meeting content in third-party systems outside the organisation's compliance boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Store meeting data in third-party systems outside of the organization's compliance boundaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "MC1251206 says detection logic analyses meeting join metadata to identify external automated bots.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "This change introduces detection logic that analyzes meeting join metadata to identify external automated bots attempting to join meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1251206 lists do not detect bots and require approval, but does not list blocking.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "A new meeting policy will be available in the Teams admin center that allows admins to configure how detected bots are handled (do not detect bots, require approval).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "MC1251206 says all organisations using Teams meetings are affected, including GCC tenants.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "Who is affected ... All organizations using Microsoft Teams meetings, including GCC tenants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1251206 was updated on 22 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "Updated September 22, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1251206 gives a Targeted Release rollout from mid-May 2026 to expected completion by early June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "Targeted Release: We will begin rolling out in mid-May 2026 and expect to complete by early June 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "MC1251206 gives Worldwide General Availability from early June 2026 to expected completion by the end of October 2026, previously mid-September.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "General Availability (Worldwide): We will begin rolling out in early June 2026 and expect to complete by end of October 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1251206 gives GCC General Availability from early June 2026 to expected completion by the end of October 2026, previously mid-September.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "General Availability (GCC): We will begin rolling out in early June 2026 and expect to complete by end of October 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's end date for the Message Center notice is 30 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "Published 2026-03-13; last updated 2026-09-22; Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Rollout",
+      "type": "record",
+      "claim": "The supplied Message Center notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Rollout",
+      "type": "record",
+      "claim": "Microsoft's notice says no action is required at this time.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "No action is required at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Who and where",
+      "type": "record",
+      "claim": "MC1251206 says the change cannot be controlled through Entra ID group membership at this time.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "It cannot be controlled through Entra ID group membership at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Who and where",
+      "type": "applicability",
+      "claim": "The feature's Learn applicability banner marks Meetings as applicable and Events as not applicable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "APPLIES TO: [Image of a checkmark for yes] Meetings [Image of a x for no] Events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Who and where",
+      "type": "applicability",
+      "claim": "The bot control can be configured through the org-wide default or a targeted meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Configure this meeting policy at the tenant level with the default org-wide meeting policy or configure for a specific user group/user by creating or modifying the appropriate targeted meeting policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost; Open questions",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no licence specific to bot detection has been published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Replace the licensing notes and the first licensing paragraph with 'A Microsoft Teams license is required for each user in the organisation to use Teams, except for joining meetings anonymously. Microsoft has not published a licence or meter specific to bot detection as of November 2026.' Cite https://learn.microsoft.com/microsoftteams/user-access. In the cost rationale replace 'A licence statement is not yet published' with 'No feature-specific licence or meter is published.' Replace the first open question with 'Will Microsoft publish any licence or meter specific to bot detection? Watch the Learn page and MC1251206.'"
+    },
+    {
+      "n": 48,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The feature's Learn page and MC1251206 name no licence, meter or charge specific to bot detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams external bot detection license ExternalBotAccessMode pricing; Teams licensing meetings. Read manage-external-bots, MC1251206, user-access and Teams add-on licenses; read Premium licensing search excerpts. No bot-detection licence, meter or charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "No cap or budget control applies because no charge is documented.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"external bots\" \"budget\" \"Teams\" spending cap; Teams external bot detection license pricing budget. Read manage-external-bots, Teams add-on licenses and user-access; searches found no statement that no cap or budget control applies to detection.",
+      "severity": "blocker",
+      "fix": "Remove 'No cap or budget control applies, because no charge is documented.' The narrower statement that no feature-specific meter or charge is published is already covered by the licensing paragraph."
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends piloting blocking with a selected group before organisation-wide application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Consider testing the blocking policy with a selected group of users before applying it organization-wide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Learn recommends monitoring audit logs for unusual participant activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Monitor audit logs for unusual participant activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends avoiding disabling detection unless specific business scenarios require it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Avoid disabling bot detection unless required for specific business scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "MC1251206 says Microsoft intends to provide more granular admin controls in future.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "In the future, we intend to provide more granular controls to admins, as appropriate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Learn gives Get-CsTeamsMeetingPolicy -Identity \"<policy name>\" | Select-Object Identity, ExternalBotAccessMode to read back the setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "To view the configured policy setting: Get-CsTeamsMeetingPolicy -Identity \"<policy name>\" | Select-Object Identity, ExternalBotAccessMode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The feature page's example setters print Set-CsTeamsEventsPolicy while its explanatory text names Set-CsTeamsMeetingPolicy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "You can use the Set-CsTeamsMeetingPolicy PowerShell cmdlet ... Set-CsTeamsEventsPolicy -Identity \"<policy name>\" -ExternalBotAccessMode RequireApprovalWhenDetected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The lobby page's admission example pairs the value with a different parameter from the one its text names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+      "quote": "To control who can admit users from the lobby, use the -UsersCanAdmitFromLobby parameter. ... Set-CsTeamsEventsPolicy -Identity <policy name> -AutoAdmittedUsers OrganizerAndCoOrganizersOnly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Change & support; rationale: impact",
+      "type": "record",
+      "claim": "Organisers see new indicators and approval prompts when detected bots attempt to join meetings.",
+      "status": "supported",
+      "source": "Message Center post MC1251206",
+      "quote": "Inform meeting organizers that they may see new indicators and approval prompts when detected bots attempt to join meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist tells administrators to monitor audit logs, but the controls table has no audit-monitoring row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: 'Monitor audit logs for unusual participant activity, as Learn recommends.' Controls table: only external-bot handling and who can admit from lobby.",
+      "severity": "minor",
+      "fix": "Remove the 'Monitor audit logs for unusual participant activity, as Learn recommends' checklist bullet, which has no corresponding controls row. Retain the open question about which audit events record detection, admission or blocking."
+    },
+    {
+      "n": 59,
+      "where": "What's changing; Why it matters; Risk assessment; rationale",
+      "type": "default",
+      "claim": "The default bot-policy value is When detected, require approval before joining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "When detected, require approval before joining (default) | RequireApprovalWhenDetected | Detected external bots are placed in the meeting lobby and require explicit approval before joining.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].note; Risk assessment; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends letting only organisers and co-organisers admit participants when bot approval is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "If you use the Require approval before joining option, configure meeting lobby settings so that only organizers and co-organizers can admit participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Who and where; controls[0].scope",
+      "type": "applicability",
+      "claim": "Learn describes the bot meeting-policy scope as user/group level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Scope: Meetings policies at a user / group level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Eligible wrongly flagged participants can use email verification recovery to attempt joining where supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+      "quote": "Where supported, eligible participants can use the email verification recovery experience to verify their identity and attempt to join.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T23:32:57.699Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558107",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1251206",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "How detected external bots are handled in meetings (detect and require approval, block, or do not detect)",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-external-bots",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting join & lobby",
+          "Manage external bots and their access to meetings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "How detected external bots are handled in meetings (detect and require approval, block, or do not detect)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can admit people from the lobby, which decides who can admit a detected bot",
+        "docs": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting join & lobby",
+          "Who can admit from lobby"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can admit people from the lobby, which decides who can admit a detected bot",
+        "docs": "https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

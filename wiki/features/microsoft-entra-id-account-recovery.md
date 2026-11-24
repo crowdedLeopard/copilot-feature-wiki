@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "May CY2026"
 previewDate: "November CY2025"
-risk: "medium"
+risk: "low"
 cost: "variable"
 impact: "low"
 defaultState: "admin-opt-in"
@@ -56,21 +56,21 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > Account recovery > Settings (preview)"
+      path: "Entra ID > Account recovery > Settings (preview) > Actions after recovery > Issue Temporary Access Pass"
       docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable"
     api: null
-    note: "Authentication Policy Administrator. Policy is disabled by default. The same blade holds the preview TAP issuance and stale-credential cleanup options."
+    note: "Authentication Policy Administrator. Tenant enablement is the Account recovery policy on the same settings page; it is disabled by default. Preview TAP and stale-credential cleanup options are under Actions after recovery."
   - governs: "Which users, provider, purpose and mode an identity verification profile uses for recovery"
     scope: "group"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Verified ID > ID verification profiles > Profiles"
+      path: "Verified ID > ID verification profiles > Profiles > Create profile"
       docs: "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile"
     api:
       kind: "graph"
       call: "POST /v1.0/identity/verifiedId/profiles"
       docs: "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0"
-    note: "Authentication Policy Administrator is least privileged. Select Recovery as purpose in the wizard; the request body's verifiedIdUsageConfigurations sets it."
+    note: "Creates the profile, not its user-group assignment or the tenant policy. acceptedIssuer sets the issuer; purpose sets Recovery and isEnabledForTestOnly sets evaluation or production. Set user scope in the admin UI."
 confidence: "high"
 created: "2026-11-24"
 updated: "2026-11-24"
@@ -80,19 +80,23 @@ changes:
     note: "New briefing for the Web roadmap item: documents the tenant policy (disabled by default), ID verification profiles, licensing and the Conditional Access limits."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 86 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after verification: risk now Low, earlier-preview tenants must enable the new policy, stale-credential cleanup described as the page states, and the profile row's API note narrowed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 92 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 80
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "7dc5d0414fb7331a23e52c68ac3878b3"
+  claims: 92
+  confirmed: 91
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "58b260484a56b42b949d9f117063c6bc"
 ---
 
 ## What's changing
@@ -109,7 +113,7 @@ The roadmap record gives status In development, a preview date of November CY202
 
 This changes how a tenant can answer its hardest support call: a user who has lost every authentication method. Learn says the feature uses automated identity proofing to reduce reliance on manual help desk verification, and that help desk staff can be manipulated into granting access. Moving that decision to a provider's ID check and name matching is a trust decision that security owners should make deliberately, not inherit.
 
-If nobody acts, the tenant policy stays disabled, so recovery for users who lost every method continues by whatever route you use today. Nothing in the sources says existing behaviour changes on arrival. The risk sits in enabling it carelessly: a wide profile scope, weak name-only matching or Conditional Access policies that block the journey.
+For tenants that have not used the earlier preview, if nobody acts the tenant policy stays disabled, so recovery for users who lost every method continues by whatever route you use today. Tenants already using the earlier preview must enable the new Account recovery policy to continue using recovery. The risk sits in enabling it carelessly: a wide profile scope, weak name-only matching or Conditional Access policies that block the journey.
 
 ## Risk assessment
 
@@ -123,7 +127,7 @@ If nobody acts, the tenant policy stays disabled, so recovery for users who lost
 - In Production mode, a user who completes verification receives a TAP by default, so the profile's group scope decides who can recover this way. Start with a small group in Evaluation mode.
 - Learn warns that name-only matching may not provide sufficient assurance for high-risk accounts and suggests a custom authentication extension for sensitive populations.
 - Exclusions in an ID verification profile apply across all profiles, and creating a profile turns on Verified ID as an authentication method for all users.
-- The preview option to turn TAP issuance off can also enable stale-credential cleanup, which deletes all previously registered authentication methods after recovery.
+- The preview option to turn TAP issuance off makes stale-credential cleanup available. When explicitly enabled, stale-credential cleanup deletes previously registered authentication methods only after successful recovery and replacement-passkey registration, preserves the new passkey, and does not make recovery fail if deletion fails.
 
 **Autonomy & actions**
 
@@ -160,8 +164,7 @@ If nobody acts, the tenant policy stays disabled, so recovery for users who lost
 
 - Confirm licences with the finance owner: Microsoft Entra ID P1, Face Check and the provider offer in the Microsoft Security Store, plus the Azure subscription role for the provider subscription.
 - Review the identity verification provider's privacy and data retention terms with your privacy and compliance leads before any user is in scope.
-- Check that users in the pilot group have first and last name properties matching their government ID, and that they are enabled for the Temporary Access Pass method in the Authentication methods policy.
-- Review Conditional Access policies, including those targeting **All resources**, for controls unsupported on the onboarding and recovery user action (see the global exclusion in the notes below).
+- Check that users in the pilot group have first and last name properties matching their government ID.
 
 ### At rollout
 
@@ -183,8 +186,8 @@ If nobody acts, the tenant policy stays disabled, so recovery for users who lost
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether account recovery is enabled for the tenant, and TAP issuance after recovery</strong><br><small>Tenant</small><br><small class="controls__note">Authentication Policy Administrator. Policy is disabled by default. The same blade holds the preview TAP issuance and stale-credential cleanup options.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Account recovery › Settings (preview) <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users, provider, purpose and mode an identity verification profile uses for recovery</strong><br><small>Group</small><br><small class="controls__note">Authentication Policy Administrator is least privileged. Select Recovery as purpose in the wizard; the request body's verifiedIdUsageConfigurations sets it.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Verified ID › ID verification profiles › Profiles <a href="https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/identity/verifiedId/profiles</code> <a href="https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether account recovery is enabled for the tenant, and TAP issuance after recovery</strong><br><small>Tenant</small><br><small class="controls__note">Authentication Policy Administrator. Tenant enablement is the Account recovery policy on the same settings page; it is disabled by default. Preview TAP and stale-credential cleanup options are under Actions after recovery.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Account recovery › Settings (preview) › Actions after recovery › Issue Temporary Access Pass <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users, provider, purpose and mode an identity verification profile uses for recovery</strong><br><small>Group</small><br><small class="controls__note">Creates the profile, not its user-group assignment or the tenant policy. acceptedIssuer sets the issuer; purpose sets Recovery and isEnabledForTestOnly sets evaluation or production. Set user scope in the admin UI.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Verified ID › ID verification profiles › Profiles › Create profile <a href="https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/identity/verifiedId/profiles</code> <a href="https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -202,21 +205,15 @@ Microsoft Learn documents no Microsoft Graph operation for the tenant-level Acco
 - Will Microsoft document an API or script route for the tenant Account recovery policy and its TAP and cleanup settings? Watch the Microsoft Graph reference.
 
 <!-- rationale
-risk: Medium. Disabled by default, but once enabled a user who passes third-party ID and face verification can receive a Temporary Access Pass, so name matching and Conditional Access scope need care.
+risk: Low. The tenant policy is disabled until an administrator enables it; third-party identity proofing, name matching and Conditional Access need review before opting in.
 cost: Variable. Learn lists Microsoft Entra ID P1 plus a Face Check licence, and the identity verification provider's charge depends on the offer subscribed to in the Microsoft Security Store.
 impact: Low. Admins configure it and only users in a profile's scope who have lost all authentication methods would use it; the tenant policy is disabled until an admin enables it.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[1].api; Governance controls / command: POST /v1.0/identity/verifiedId/profiles provides automation for the row's user scope, provider, purpose and mode. | Found: Searched: 'Microsoft Graph verifiedIdProfile assign groups include exclude recovery profile users scope'; read create-profile, verifiedIdProfile, verifiedIdUsageConfiguration and verifiedIdProfileConfiguration v1.0 references. They document creation and configuration, not group assignment. | Fix: Keep 'POST /v1.0/identity/verifiedId/profiles', but replace the row note with 'This call creates the profile, not its user-group assignment or the tenant policy. verifiedIdProfileConfiguration.acceptedIssuer sets the issuer; verifiedIdUsageConfigurations.purpose sets Recovery and isEnabledForTestOnly sets evaluation or production. Configure user scope through the admin UI.' The create reference is https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0.
-- [contradicted, blocker] Why it matters / default: Nothing in the sources says existing behaviour changes on arrival. | Found: If your tenant already uses account recovery from an earlier preview, you also need to enable the new policy to continue using the feature. | Fix: Replace 'Nothing in the sources says existing behaviour changes on arrival' with 'Tenants already using the earlier preview must enable the new Account recovery policy to continue using recovery.' Qualify the preceding no-action statement as applying to tenants that have not used the earlier preview. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable
-- [contradicted, blocker] Risk assessment: Security & identity / behaviour: Stale-credential cleanup deletes all previously registered authentication methods after recovery. | Found: After successful recovery and replacement-passkey registration, deletes all previously registered authentication methods while preserving the new passkey. If deletion fails, recovery remains successful. | Fix: Replace the cleanup clause with 'When explicitly enabled, stale-credential cleanup deletes previously registered authentication methods only after successful recovery and replacement-passkey registration, preserves the new passkey, and does not make recovery fail if deletion fails.' Keep its preview status and TAP-off requirement. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: Account recovery enablement and TAP issuance are under Microsoft Entra admin center > Entra ID > Account recovery > Settings (preview). | Found: Go to Entra ID > Account recovery. Open Settings (preview). Use Actions after recovery in Account recovery settings to choose how users register replacement methods. | Fix: Keep the documented route, but extend the TAP part to 'Entra ID > Account recovery > Settings (preview) > Actions after recovery > Issue Temporary Access Pass'; explain in the note that tenant enablement is the Account recovery policy on the same settings page. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable
-- [supported, minor] controls[1].ui; Governance controls / admin-path: Profile configuration is under Microsoft Entra admin center > Verified ID > ID verification profiles > Profiles. | Found: Go to Verified ID > ID verification profiles > Profiles. Select the profile name to open its configuration, or choose the action you need: Create profile. | Fix: For the creation instruction, extend the path to 'Verified ID > ID verification profiles > Profiles > Create profile'. Keep the note that Recovery is selected as the purpose in the wizard. | Source: https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: Medium risk is justified by exposure after enabling an otherwise disabled-by-default capability. | Found: Risk rationale: 'Medium. Disabled by default, but once enabled'. Schema: rate a tenant where nobody has acted; low includes 'nothing happens until an admin opts in'. | Fix: Set risk to 'low' and use 'Low. The tenant policy is disabled until an administrator enables it; third-party identity proofing, name matching and Conditional Access need review before opting in.' Keep the enabling risks in the body.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs review of Conditional Access policies but no controls-table row covers Conditional Access. | Found: Checklist: 'Review Conditional Access policies, including those targeting All resources'. Table rows cover Account recovery settings and ID verification profiles only. | Fix: Remove the Conditional Access checklist bullet because it has no matching controls-table row. Retain the verified explanation and reference in Governance controls; do not add a row as part of this correction.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs review of TAP eligibility in the Authentication methods policy but no controls-table row covers that policy. | Found: Checklist: 'they are enabled for the Temporary Access Pass method in the Authentication methods policy'. The table's TAP control concerns issuance after recovery, not authentication-method eligibility. | Fix: Remove 'and that they are enabled for the Temporary Access Pass method in the Authentication methods policy' from the checklist bullet. Retain the verified prerequisite in Scope; do not add a row as part of this correction.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Verified ID > ID verification profiles > Profiles > Create profile opens the profile creation wizard in Microsoft Entra admin center. | Found: Go to Verified ID > ID verification profiles. ... If you already have profiles, select Profiles > Create profile instead. | Fix: Keep the printed path and narrow controls[1].governs to 'Creating an identity verification profile' in front matter and the rendered table: Create profile starts the wizard rather than reaching its user-group, provider, purpose and mode controls. | Source: https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile
+- [supported, minor] controls[1].note; Governance controls table / command: isEnabledForTestOnly selects evaluation or production usage. | Found: isEnabledForTestOnly | Boolean | Sets profile usage for evaluation (test-only) or production. | Fix: Add https://learn.microsoft.com/graph/api/resources/verifiedidusageconfiguration?view=graph-rest-1.0 to sources to substantiate the documented meaning of isEnabledForTestOnly. | Source: https://learn.microsoft.com/graph/api/resources/verifiedidusageconfiguration?view=graph-rest-1.0
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist asks readers to inspect directory name fields, sign-in logs and profile audit logs, but the table has no rows for those controls. | Found: Check that users ... have first and last name properties ... Check the Conditional Access results in the sign-in logs ... use View audit logs ... Table rows: tenant recovery settings; profile creation. | Fix: Remove the checklist bullet beginning 'Check that users in the pilot group', the bullet beginning 'Check the Conditional Access results', and the clause ', and use View audit logs on the Profiles tab to review configuration changes'. Keep the verified explanatory prose; do not add control rows.
 -->

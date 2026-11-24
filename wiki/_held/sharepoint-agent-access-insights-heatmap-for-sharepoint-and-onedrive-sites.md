@@ -50,7 +50,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "SharePoint admin center"
-      path: "Agent governance > Agent access heatmap"
+      path: "Agent governance > Agent access heatmap > Generate report"
       docs: "https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report"
     api: null
     note: "Preview. Admin turns on data collection here if prompted, then generates reports. Needs SharePoint Administrator or AI Administrator, and an Agent 365 or E7 licence."
@@ -69,7 +69,7 @@ controls:
     scope: "site"
     ui:
       surface: "SharePoint admin center"
-      path: "Sites > Active sites > site > Settings > Restricted site access > Edit"
+      path: "Sites > Active sites > site > Settings > Restricted site access > Edit > Restrict SharePoint site access to only users in specified groups"
       docs: "https://learn.microsoft.com/sharepoint/restricted-access-control"
     api:
       kind: "powershell"
@@ -96,19 +96,23 @@ changes:
     note: "First briefing: planned agent access heatmap for SharePoint and OneDrive, documented in Learn as a preview that an admin must turn on and generate."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 91 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: added the shared channel qualification to restricted site access, removed the open question on Agent 365 pricing, extended two admin paths and narrowed two checklist steps."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 103 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 88
+  claims: 103
+  confirmed: 100
   unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "ecbe970576574aa1193c608eb1d7f8b3"
+  attempts: 2
+  hash: "81b52fd0cff6c47d3e10bfa5997b6c04"
 ---
 
 ## What's changing
@@ -135,7 +139,7 @@ If nobody acts, nothing is collected: Learn says reports are built from audit da
 
 **Security & identity**
 - Learn lists the SharePoint Administrator or AI Administrator role as the prerequisite. Anyone holding either role can open a report listing agents, sites and owners, so keep those role assignments reviewed.
-- The site actions change settings. **Restrict site access** limits a site to members of the groups chosen, and the restricted access control page says users outside the group cannot open the site or its content even with prior permissions or a shared link. Apply it only after the site owner has agreed.
+- The site actions change settings. **Restrict site access** limits a site to members of the groups chosen, and the restricted access control page says users outside the group cannot open the site or its content even with prior permissions or a shared link. For shared channel sites, this applies only to internal users in the resource tenant; external participants from another tenant are not evaluated against the policy, and their access remains governed by shared-channel and site permissions. Apply it only after the site owner has agreed.
 - **Restrict content discovery** keeps the site's content out of Microsoft 365 Copilot agent search and discovery without changing permissions, and its own page says users lose entry points such as the Copilot button on that site.
 
 **Autonomy & actions**
@@ -173,7 +177,7 @@ If nobody acts, nothing is collected: Learn says reports are built from audit da
 
 ### Before rollout
 - Confirm who holds the SharePoint Administrator or AI Administrator role and whether the tenant holds a Microsoft Agent 365 or Microsoft 365 E7 licence, as the Learn pages list both as prerequisites.
-- Decide whether to apply sensitivity labels to sites and to set up departments in catalog management before the first report. Learn says each report reflects the configuration in place when it was generated.
+- Check whether sites already carry sensitivity labels and whether departments are already populated in catalog management before the first report. Learn says each report reflects the configuration in place when it was generated.
 - Agree with site owners that they will be consulted before any restriction is applied, because Learn says the site owner usually knows whether an agent belongs with the content.
 
 ### At rollout
@@ -183,7 +187,7 @@ If nobody acts, nothing is collected: Learn says reports are built from audit da
 
 ### After rollout
 - Regenerate reports on a schedule and download a report before replacing it, because a new report for the same period replaces the old one.
-- Apply **Restrict content discovery** (row 2) or restricted site access (row 3) to a site only after the owner has reviewed the agents and operations shown; remember restricted site access needs the tenant-level setting turned on first.
+- Apply **Restrict content discovery** (row 2) or restricted site access (row 3) to a site only after the owner has reviewed the agents and operations shown; check first that the tenant-level setting for restricted site access is already allowed, because Learn says it must be enabled before it can be configured for individual sites.
 - Check the site's settings after applying a policy, because the policy status in the existing report does not update.
 - Keep the Reports > Agent insights report (row 4) in any script that already uses it.
 
@@ -194,9 +198,9 @@ If nobody acts, nothing is collected: Learn says reports are built from audit da
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>The agent access heatmap, its data collection and its reports</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Admin turns on data collection here if prompted, then generates reports. Needs SharePoint Administrator or AI Administrator, and an Agent 365 or E7 licence.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Agent governance › Agent access heatmap <a href="https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>The agent access heatmap, its data collection and its reports</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Admin turns on data collection here if prompted, then generates reports. Needs SharePoint Administrator or AI Administrator, and an Agent 365 or E7 licence.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Agent governance › Agent access heatmap › Generate report <a href="https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether a site's content is discoverable by Copilot and organisation-wide search (heatmap site action)</strong><br><small>Site</small><br><small class="controls__note">Its page says it applies to SharePoint sites, not OneDrive sites, and does not change permissions. Only SharePoint administrators manage it unless delegated.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which groups can access a site (restricted site access, a site action offered from the heatmap)</strong><br><small>Site</small><br><small class="controls__note">Site-level access restriction must first be allowed for the organisation. At least one group is needed to apply it to a site.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restricted site access › Edit <a href="https://learn.microsoft.com/sharepoint/restricted-access-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;siteurl&gt; -RestrictedAccessControl $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-access-control" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which groups can access a site (restricted site access, a site action offered from the heatmap)</strong><br><small>Site</small><br><small class="controls__note">Site-level access restriction must first be allowed for the organisation. At least one group is needed to apply it to a site.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restricted site access › Edit › Restrict SharePoint site access to only users in specified groups <a href="https://learn.microsoft.com/sharepoint/restricted-access-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;siteurl&gt; -RestrictedAccessControl $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-access-control" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>The existing agent access insights report under Reports &gt; Agent insights (today's alternative, not the heatmap)</strong><br><small>Tenant</small><br><small class="controls__note">A separate report that Learn says remains available. Needs at least SharePoint administrator; PowerShell use needs a SharePoint Advanced Management add-on or Microsoft Copilot licence.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Reports › Agent insights › Agent access <a href="https://learn.microsoft.com/sharepoint/insights-on-agent-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Start-SPOM365AgentAccessInsightsReport -ReportPeriodInDays 28</code> <a href="https://learn.microsoft.com/sharepoint/insights-on-agent-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -215,7 +219,7 @@ Row 4 is today's report under Reports > Agent insights, which Learn says remains
 - Will the heatmap reach GCC, GCC High and DoD as the roadmap lists, and will the licence requirement be the same there?
 - What does **Restrict content discovery** do when applied from the heatmap to a OneDrive account, given that the restricted content discovery page says OneDrive sites are not supported?
 - Is there a PowerShell cmdlet or API for the heatmap report and its data collection, or will the admin centre remain the only route?
-- Where will Microsoft publish the price of the Agent 365 licence, and does anything else (storage, audit retention) add cost for the heatmap's data collection?
+- Does anything else (storage, audit retention) add cost for the heatmap's data collection?
 
 <!-- rationale
 risk: Low. The heatmap is a reporting view built from audit data after an admin turns on data collection; any exposure comes from the optional site actions, such as restricting site access, that an admin applies from it.
@@ -226,10 +230,9 @@ impact: Low. Learn lists the SharePoint Administrator or AI Administrator role a
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / applicability: Users outside the restricted access group cannot open the site or its content even with prior permissions or a shared link. | Found: For shared channel sites, restricted access control applies only to internal users in the resource tenant. External participants accessing the shared channel from another tenant aren't evaluated against the restricted access control policy. | Fix: Add to this sentence: 'For shared channel sites, this applies only to internal users in the resource tenant; external participants from another tenant are not evaluated against the policy, and their access remains governed by shared-channel and site permissions.' Source: https://learn.microsoft.com/sharepoint/restricted-access-control#shared-and-private-channel-sites. | Source: https://learn.microsoft.com/sharepoint/restricted-access-control
-- [contradicted, blocker] Open questions: Agent 365 licence price / absence: Where Microsoft will publish the price of the Agent 365 licence remains an open question. | Found: Plans and pricing Agent 365 CAD $20.40 user/month, paid yearly (Annual commitment) Plus applicable tax | Fix: Replace the final Open questions bullet with 'Does anything else (storage, audit retention) add cost for the heatmap's data collection?' Microsoft already publishes Agent 365 licence pricing at https://www.microsoft.com/microsoft-agent-365#plans-and-pricing; the narrower claim that the cited heatmap pages contain no price can remain. | Source: https://www.microsoft.com/en-ca/microsoft-agent-365
+- [contradicted, blocker] summary; Why it matters; What's changing / default: An administrator always has to turn on data collection, and if nobody acts nothing is collected. | Found: In the SharePoint admin center, expand Agent governance, select Agent access heatmap, and turn on data collection if it isn't already on. | Fix: In the summary replace 'An admin has to turn on data collection and generate a report' with 'An admin generates a report and turns on data collection if it is not already on'. Replace 'If nobody acts, nothing is collected' with 'An admin must generate insights; data collection may already be on'. Do not equate manual report generation with a universally off collection default. Source: https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview. | Source: https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview
+- [contradicted, blocker] controls[1].note; Cost and licensing; Governance guidance: After rollout / licensing: The page presents restricted content discovery as an available site action without qualifying its entitlement beyond the heatmap's Agent 365 or E7 prerequisite. | Found: Ensure your organization has a Microsoft Copilot license. ... You can configure Restricted Content Discovery if your organization is licensed for Copilot and has SharePoint Advanced Management available. | Fix: Add to row 2's note and its rendered counterpart: 'Requires the organisation to be licensed for Microsoft Copilot and to have SharePoint Advanced Management available.' Add the same qualification to the advice to apply restricted content discovery. This requirement is stated at https://learn.microsoft.com/sharepoint/restricted-content-discovery; the heatmap's Agent 365 prerequisite alone does not state it. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table row 1; Governance guidance: At rollout / admin-path: The heatmap and its data collection and reports are reached at SharePoint admin center > Agent governance > Agent access heatmap. | Found: In the navigation pane, expand Agent governance, and then select Agent access heatmap. If you're prompted to turn on data collection, turn it on. Select Generate report. | Fix: For report generation, extend the path to 'Agent governance > Agent access heatmap > Generate report'. Retain the note that data collection is enabled on the heatmap page if prompted. The existing path reaches the correct page but stops before the report-generation control. | Source: https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report
-- [supported, minor] controls[2].ui; Governance controls table row 3 / admin-path: Restricted site access is reached at SharePoint admin center > Sites > Active sites > site > Settings > Restricted site access > Edit. | Found: In the Settings tab, select Edit in the Restricted site access section. Select the Restrict SharePoint site access to only users in specified groups check box. | Fix: Extend the path to 'Sites > Active sites > site > Settings > Restricted site access > Edit > Restrict SharePoint site access to only users in specified groups'. The existing path reaches the correct editing pane but stops before the deciding checkbox. | Source: https://learn.microsoft.com/sharepoint/restricted-access-control
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The governance checklist asks readers to configure site sensitivity labels, departments and tenant-level access restriction, but the table has no rows for those controls. | Found: Decide whether to apply sensitivity labels to sites and to set up departments in catalog management before the first report. Remember restricted site access needs the tenant-level setting turned on first. The table contains only the heatmap, two site policies and the existing report. | Fix: The Before rollout step for sensitivity labels and departments and the After rollout instruction to check tenant-level site access restriction have no corresponding control rows. Narrow these checklist instructions to checking whether the prerequisites are already satisfied rather than directing configuration of controls absent from the table; do not add rows.
+- [supported, minor] Scope: Timing; Governance guidance: At rollout / behaviour: The first report can be generated after 24 hours. | Found: You can generate your first report after 24 hours. | Fix: Keep the 24-hour guidance and add: 'The heatmap overview also says the first report can be generated within a few hours; the report-generation page specifies 24 hours.' Both pages are already cited: https://learn.microsoft.com/sharepoint/agent-access-heatmap-overview and https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report. | Source: https://learn.microsoft.com/sharepoint/agent-governance-generate-agent-access-report
+- [contradicted, minor] Governance guidance: Before rollout; After rollout / consistency: The checklist's controls are represented in the controls table. | Found: Check whether sites already carry sensitivity labels and whether departments are already populated in catalog management ... check first that the tenant-level setting for restricted site access is already allowed. Table rows: heatmap, two site policies, existing report. | Fix: The checklist checks site sensitivity labels, catalog management departments and the tenant-level restricted access setting without corresponding rows. Remove these control-check clauses from the checklist; retain their already documented prerequisites in Scope and the row 3 note. Do not add rows as part of this correction.
 -->

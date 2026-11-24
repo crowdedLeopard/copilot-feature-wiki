@@ -1,0 +1,619 @@
+{
+  "slug": "microsoft-purview-compliance-portal-data-loss-prevention-m365-groups-scoping-in-teams-dlp",
+  "roadmapId": 401127,
+  "title": "Microsoft Purview: Teams DLP policies scoped to Microsoft 365 Groups extend to 1:1 and group chats",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 38)"
+    ]
+  },
+  "counts": {
+    "claims": 47,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 7
+  },
+  "summary": "Hold: the PowerShell operation is presented as equivalent to selecting the Teams location, but its reference describes adding inclusions to an already configured Teams scope. The roadmap facts and automatic rollout are supported, and the briefing correctly identifies the difference between the roadmap description and current Learn documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap targets November CY2026, not a committed shipped date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-10-27T23:15:26.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-10-27T23:15:26\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes current protection for members of standard and shared channel chats associated with scoped Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When scoping policies to Microsoft 365 Groups in Teams DLP policies, members of Teams standard and shared channel chats associated with the groups are currently protected by the policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap plans automatic extension to standard and shared channel chats in other Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This change will automatically extend the protection to standard/shared channels chats in other Microsfot 365 Groups and 1:1/n (non-channel) chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap plans automatic extension to 1:1/n non-channel chats.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This change will automatically extend the protection to standard/shared channels chats in other Microsfot 365 Groups and 1:1/n (non-channel) chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says administrators will no longer need to add users, security groups or other Microsoft 365 groups to protect these chats.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "There is no longer a need to add users, security groups or other Microsoft 365 groups to protect these chats, except for customers that have enabled optical character recognition (OCR) in Teams chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "Customers with OCR enabled in Teams chat are excepted and still need the explicit additions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "There is no longer a need to add users, security groups or other Microsoft 365 groups to protect these chats, except for customers that have enabled optical character recognition (OCR) in Teams chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The planned extension is on by default for its intended policies and needs no administrator action to arrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This change will automatically extend the protection to standard/shared channels chats in other Microsfot 365 Groups and 1:1/n (non-channel) chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn already lists Microsoft 365 group-scoped policies as protecting 1:1/n chats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "| Microsoft 365 groups | 1:1/n chats | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists Microsoft 365 group-scoped policies as protecting standard, private and shared channel messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "| Microsoft 365 groups | Standard, private and shared channel messages | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "DLP enforcement in cross-tenant external-access chats follows the hosting tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "DLP policy enforcement in these cross-tenant conversations is based on the hosting tenant, which is the tenant that initiated the chat or thread.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The extension does not make home-tenant policies follow users into external-access chats hosted by another tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Therefore, in a cross-tenant conversation, a user's home-tenant DLP policies don't automatically follow the user into a conversation hosted by another tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Group-scoped Teams DLP depends on Microsoft 365 group membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference#policy-scoping",
+      "quote": "Teams chat and channel messages | Yes | - Distribution groups - Security groups - Mail-enabled security groups - Microsoft 365 groups (Group members only, not the group as an entity)",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/dlp-policy-reference#policy-scoping for the group-membership statement."
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Configured Teams DLP actions can automatically block messages containing sensitive information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "messages with sensitive information that are sent to external users are deleted. However, your tenant must be the initiator of the chat or the thread. This happens automatically, and within seconds, according to how your DLP policy is configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Flagged and blocked messages generate a sender activity entry saying Your message has been blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Flagged and blocked messages, activities are created stating \"Your message has been blocked\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Teams policy tips can offer the sender an override when allowed by the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "You can choose to allow users in your organization to override a DLP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Teams policy tips can let a sender notify an administrator to review the issue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Notice that the sender can opt to override the policy or notify an admin to review and resolve the issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Policy changes take approximately one hour to sync to user accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Allow approximately one hour for your changes to work their way through your data center and sync to user accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Teams message DLP is included in the qualifying licences named by the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Data loss prevention capabilities include Microsoft Teams chat and channel messages, including private channel messages for:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The listed qualifying plans are Office 365 E5/A5/G5, Microsoft 365 E5/A5/G5, Information Protection and Governance, and the named Compliance plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "- Office 365 E5/A5/G5\n- Microsoft 365 E5/A5/G5\n- Microsoft 365 E5/A5/G5 Information Protection and Governance\n- Microsoft 365 E5/A5/G5/F5 Compliance and F5 Security & Compliance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn says DLP protection in Teams Chat requires an E5 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Support for DLP protection in Teams Chat requires an E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users newly covered by Teams DLP must satisfy the licensing requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license",
+      "quote": "Teams chats, and devices are associated with a user account, so the user must have the required license assigned when a Purview policy or feature is used in these locations.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license for the requirement on newly covered users."
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Teams DLP page does not describe how licensing is assessed for newly covered group-scoped users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams DLP Microsoft 365 groups licensing users benefit license assessed scoping price meter. Read dlp-microsoft-teams and the Purview service description; the former lacks assessment details, while the latter documents which users need licences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate price or rate for this group-scoping extension is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams DLP Microsoft 365 groups licensing users benefit license assessed scoping price meter; \"Teams\" \"Microsoft 365 groups\" \"scoping\" \"price\" \"DLP\". Read Teams DLP, OCR overview and Purview service description; none publishes an extension-specific price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no new meter or licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This change will automatically extend the protection to standard/shared channels chats in other Microsfot 365 Groups and 1:1/n (non-channel) chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "OCR scanning is optional.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR scanning is an optional feature that you must enable at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "OCR must be enabled at tenant level and can scan images in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR scanning is an optional feature that you must enable at the tenant level. After you enable it, select the locations where you want to scan images. You can scan images in Exchange, SharePoint, OneDrive, Teams, Windows, and macOS devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "OCR requires Azure pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "To use OCR scanning, your organization's Global admin needs to verify that an Azure pay-as-you-go subscription is in place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The OCR cost estimator estimates expected scanning charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Use the OCR cost estimator to estimate the expected charges for your specific use cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "role",
+      "claim": "OCR configuration requires an applicable role group, such as Compliance administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "To create and deploy policies, your account must be a member of one of these role groups:\n\n- Compliance administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The printed Purview route reaches the Teams chat and channel messages location in an existing DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Sign in to the Microsoft Purview portal > Data loss prevention > Policies. Select a policy, and then choose Edit policy (the pencil icon). Navigate through the tool until you arrive at the Choose locations to apply the policy page. Select Teams chat and channel messages.",
+      "severity": "minor",
+      "fix": "Use 'Data loss prevention > Policies > policy > Edit policy > Choose locations to apply the policy > Teams chat and channel messages' in ui.path, starting after the surface name and including the selected policy. Apply the same route to the rendered table."
+    },
+    {
+      "n": 38,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-DlpCompliancePolicy -Identity <policy> -AddTeamsLocation <value> performs the same Teams-location selection as the UI side without further qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "The AddTeamsLocation parameter specifies the accounts, distribution groups, or mail-enabled security groups to add to the list of included Teams chat and channel messages if you used the value All for the TeamsLocation parameter.",
+      "severity": "blocker",
+      "fix": "Retain the existing call only with this qualification in the row note: '-AddTeamsLocation adds accounts, distribution groups or mail-enabled security groups to the Teams inclusion list when TeamsLocation is All; it is not the operation that selects the Teams location in the wizard.' Remove the prose implication that both surfaces perform the same location-enabling operation. The reference is https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy."
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Editing the Teams location requires a role with permission to edit DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "To perform this task, you must be assigned a role that has permissions to edit DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "Set-DlpCompliancePolicy runs in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data loss prevention > Policies reaches the DLP policy list for inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+      "quote": "Sign in to the Microsoft Purview portal > Data loss prevention > Policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Neither listed control surface is documented as a dedicated switch for the planned extension.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams DLP Microsoft 365 Groups 401127 scoping automatic extension disable switch exclusion OCR; \"Teams\" \"DLP\" \"group\" \"extension\" \"disable\". Read Teams DLP and Set-DlpCompliancePolicy; these document location/inclusion controls, not an extension switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Teams DLP policies can be tested in simulation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-simulation-mode-learn",
+      "quote": "For Exchange, Teams, Devices locations only items that are new during simulation are evaluated.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/dlp-simulation-mode-learn for the advice to test Teams rules in simulation."
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The DLP alerts dashboard supports Teams chat and channel policy violations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
+      "quote": "Microsoft Purview portal shows alerts for DLP policies that are enforced on the following workloads:\n1. Exchange email\n2. SharePoint sites\n3. OneDrive accounts\n4. Teams chat and channel messages",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started for reviewing Teams DLP alerts."
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Activity explorer includes Teams chat and channel DLP policy matches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer#activity-types",
+      "quote": "Additionally, Activity Explorer gathers DLP policy match events from Microsoft 365 workloads such as Exchange, SharePoint, OneDrive, Teams chat and channels, and on-premises SharePoint folders, libraries, and file shares.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/data-classification-activity-explorer#activity-types for the Teams Activity explorer recommendation."
+    },
+    {
+      "n": 46,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The described change concerns Microsoft 365 group-scoped Teams DLP policies, not a change to individually or security-group-scoped policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When scoping policies to Microsoft 365 Groups in Teams DLP policies, members of Teams standard and shared channel chats associated with the groups are currently protected by the policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names controls to check or monitor that are not represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether OCR is enabled for Teams chat; Test the rules ... in simulation; Review DLP alerts and Activity explorer ... The table contains only 'Whether a DLP policy applies to Teams chat and channel messages'.",
+      "severity": "minor",
+      "fix": "The OCR-setting check, simulation-mode recommendation, and DLP alerts/Activity explorer monitoring steps have no corresponding controls-table rows. Do not add rows as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T23:33:05.467Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=401127",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ocr-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a DLP policy applies to Teams chat and channel messages",
+        "docs": "https://learn.microsoft.com/purview/dlp-microsoft-teams",
+        "reachable": true,
+        "segments": [
+          "Microsoft Purview portal",
+          "Data loss prevention",
+          "Policies",
+          "Edit policy",
+          "Choose locations to apply the policy",
+          "Teams chat and channel messages"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a DLP policy applies to Teams chat and channel messages",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+        "reachable": true,
+        "token": "Set-DlpCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
