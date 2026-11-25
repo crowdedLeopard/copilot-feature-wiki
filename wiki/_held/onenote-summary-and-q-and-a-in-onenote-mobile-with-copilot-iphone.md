@@ -63,18 +63,20 @@ changes:
     note: "First briefing for this item: Copilot chat pane and Summary in OneNote on iPhone, rollout now targeted for the end of November 2026."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 41 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 40 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 38
+  claims: 40
+  confirmed: 36
   unconfirmed: 1
-  contradicted: 2
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "704b01658f618a6ff50bd705464a9cd5"
 ---
 
@@ -173,11 +175,12 @@ cost: Low. Microsoft's notice ties the pane to Microsoft 365 Copilot (Premium) l
 impact: Low. Only users with a Microsoft 365 Copilot (Premium) licence who open OneNote on an iPhone see the pane; Microsoft's notice says unlicensed users are not impacted.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first paragraph / behaviour: The exposure follows from existing permissions rather than from a new store of data. | Found: Searched: OneNote iPhone Copilot chat summaries responses storage interaction history stored. Read MC1307979 and Learn copilot/plan/microsoft-365-copilot-privacy#data-stored-about-user-interactions-with-microsoft-copilot; neither establishes the feature's no-new-store inference. | Fix: Remove 'rather than from a new store of data'. The notice establishes access to existing content, not this storage conclusion; Learn's privacy page says Copilot interactions in OneNote are stored.
+- [contradicted, blocker] Governance controls: final paragraphs; Open questions: first bullet / absence: Which existing Copilot setting can switch off this pane for a group of licensed users is not confirmed. | Found: If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: - Excel - OneNote - Outlook - PowerPoint - Word | Fix: Remove the first Open questions bullet and replace the unconfirmed-switch sentence with: 'Turning off connected experiences that analyze content makes Copilot features unavailable in current OneNote apps on iOS; this is a broader control, not a pane-only switch.' Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy. The following sentence on that page explicitly includes iOS. For group targeting, https://learn.microsoft.com/microsoft-365-apps/privacy/ios-privacy-preferences names the Cloud Policy setting 'Allow the use of connected experiences in Office that analyze content', and https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy documents scope to specific groups. Do not add a control row. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
+- [unsupported, major] Why it matters: first paragraph / behaviour: The exposure follows existing permissions rather than a new store of data. | Found: Searched: OneNote Copilot interactions stored history prompts responses iOS iPhone. Read MC1307979 and copilot/plan/microsoft-365-copilot-privacy; access restrictions do not establish this storage inference, and the latter documents stored OneNote Copilot interactions. | Fix: Delete 'rather than from a new store of data'. The notice supports the existing-access boundary but does not establish that storage conclusion.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells admins to review notebook sharing, but the controls table contains only licence assignment. | Found: Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open. / Which users hold the Microsoft 365 Copilot (Premium) licence the pane needs | Fix: Remove the checklist bullet 'Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open.' It names a control with no table row; do not add an unverified row.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating conflicts with the act-now definition for an automatic, imminent medium-risk rollout requiring a decision. | Found: action: "prepare" / risk: "medium" / defaultState: "on" / decide whether anyone who uses OneNote on iPhone should gain or lose it before the end of November 2026 | Fix: Change action from 'prepare' to 'act-now': on 18 November 2026, the automatic end-of-November rollout is within 60 days, the page rates risk medium, and it calls for a pre-rollout licence decision.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: Every control the governance checklist asks admins to review is represented in the controls table. | Found: Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open. / The only controls row is licence assignment. | Fix: Remove the Before rollout bullet beginning 'Review sharing on notebooks that hold sensitive content'. It asks admins to check a control absent from the table; do not add a row.
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the briefing's verified facts and the action scale on 25 November 2026. | Found: action: "prepare" / risk: "medium" / defaultState: "on" / decide whether anyone who uses OneNote on iPhone should gain or lose it before the end of November 2026 | Fix: Change action from 'prepare' to 'act-now': the automatic end-of-November rollout is within about 60 days of 25 November 2026, the page rates risk medium, and it asks for a licence decision before rollout.
 -->

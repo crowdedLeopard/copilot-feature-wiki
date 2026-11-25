@@ -94,19 +94,23 @@ changes:
     note: "Corrected after the independent check: removed the claim that detail beyond the release notes is not documented, removed the sensitivity-label question that Learn answers, and narrowed the risk rationale."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: removed the open question about Microsoft 365 Copilot (Basic) entitlement to Work IQ, which the Microsoft Copilot overview answers."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "8459a5bad118e8a766a170c6ba909dc1"
+  contradicted: 0
+  attempts: 0
+  hash: "6551c4173657457bd436d471be796323"
 ---
 
 ## What's changing
@@ -184,17 +188,10 @@ Learn's Microsoft Copilot overview says Work IQ can be turned on or off, without
 ## Open questions
 
 - What is the default state of Agent Mode in PowerPoint with Work IQ for a licensed user, and does anything change for tenants that do nothing? Watch Message center and the Microsoft 365 Copilot release notes.
-- Which licence does Agent Mode in PowerPoint need, and can users on the Microsoft 365 Copilot (Basic) licence use the Work IQ part? Watch the Microsoft Copilot overview on Learn.
 - Where is the Work IQ on/off setting that Learn's Microsoft Copilot overview describes, and does it switch off the Work IQ grounding in Agent Mode in PowerPoint?
 
 <!-- rationale
 risk: Medium. The feature gathers files, meetings and emails into new slides, so relevant authorised source content can end up in a deck; Learn's release note says it accesses only authorised content, which keeps existing permissions as the boundary.
 cost: Low. Learn says Work IQ is included with Microsoft 365 Copilot (Premium) and names no separate meter for this feature; the known cost is licence assignment and admin time.
 impact: Medium. Licensed users who build decks in PowerPoint on desktop will notice it; the roadmap lists Desktop as the only platform.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: licensing / absence: Whether Microsoft 365 Copilot (Basic) users are entitled to the Work IQ grounding part remains an open licensing question. | Found: Work IQ is included with Microsoft 365 Copilot (Premium) ... Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users don't have access to Microsoft Graph. | Fix: Remove the second Open questions bullet. The cited overview already documents Premium entitlement to Work IQ and distinguishes Basic users' manually supplied or pay-as-you-go content from automatic organisational grounding. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 -->

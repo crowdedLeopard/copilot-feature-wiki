@@ -72,15 +72,17 @@ changes:
     note: "Corrected licensing: Microsoft publishes licences for the advanced event features this option controls; noted Learn's feature comparison differs from the notice; Targeted Release wording now says it was scheduled."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 60 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 73 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
+  claims: 73
+  confirmed: 71
   unconfirmed: 2
   contradicted: 0
   attempts: 0
@@ -176,9 +178,10 @@ cost: Low. The cost the sources show is admin and organiser time for communicati
 impact: Medium. Organisers of meetings with presenters and webinars, and the production staff they designate, will see a new option in meeting options; other users will not.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Designated production staff will see the new option in meeting options. | Found: Searched: Teams production tools organizer control default setting meeting options policy; Teams webinar production tools control organizer licensing. Read MC1443520 and town hall Support article: staff are affected, but only organisers are explicitly said to see the new option. | Fix: Replace the impact rationale with: 'Medium. Organisers of meetings with presenters and webinars will see a new option in meeting options; Microsoft's notice also identifies designated production staff as affected.'
-- [unsupported, minor] rationale: impact / behaviour: Users other than organisers and designated production staff will not see the new option. | Found: Searched: Teams production tools organizer control default setting meeting options policy; Teams production tools Specific people webinar default production control. MC1443520 identifies affected groups; neither it nor the town hall article establishes an exhaustive dropdown visibility rule. | Fix: Remove 'other users will not' from the impact rationale.
+- [supported, minor] front matter: licensing.model / licensing: Licensing is unknown because Microsoft has not published an entitlement specific to the new dropdown. | Found: All eligible Teams licenses include the foundational capabilities needed to create and run events ... Advanced event features: These licenses provide the full Teams events feature set. | Fix: Set licensing.model to 'included', retaining the existing notes naming Office 365 E1, E3 and E5 and Microsoft 365 E3, E5 and E7 and the qualification that separate licensing for the dropdown is not specified. The cited https://learn.microsoft.com/microsoftteams/events-licensing publishes the product-level entitlement; absence of a dropdown-specific SKU does not make that entitlement unknown. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
+- [unsupported, minor] rationale: impact / behaviour: Designated production staff will see the new option in meeting options. | Found: Searched: Teams production tools organizer meeting options visibility designated staff. Read MC1443520 and town hall Support: organisers see the option and staff are affected, but neither states that designated staff see the dropdown. | Fix: Replace the impact rationale with: 'Medium. Organisers of meetings with presenters and webinars will see a new option in meeting options; Microsoft also identifies designated production staff as affected.'
+- [unsupported, minor] rationale: impact / behaviour: Users other than organisers and designated production staff will not see the new option. | Found: Searched: Teams production tools organizer meeting options visibility designated staff. Read MC1443520, town hall Support and Graph onlineMeetingBase: none establishes this exhaustive visibility rule for the new dropdown. | Fix: Remove 'other users will not' from the impact rationale; the replacement rationale in the preceding finding removes this unsupported visibility restriction.
 -->

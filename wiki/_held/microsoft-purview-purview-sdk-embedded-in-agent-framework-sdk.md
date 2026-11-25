@@ -84,18 +84,20 @@ changes:
     note: "Corrected the DLP policy-creation note (now points to Example 4), stated the Data Security for Gen AI Applications meter, noted Set-FeatureConfiguration is in Public Preview, and removed the unsupported audit checklist step."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 74
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "b192fe5c3d7c32c870e001f6c56aff7a"
 ---
 
@@ -195,8 +197,11 @@ cost: Variable. Microsoft Learn lists a Microsoft 365 E5 licence and pay-as-you-
 impact: Low. Developers and the security and compliance teams notice it; the Message Center post says there is no change to user experiences in Microsoft 365 services.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: defaultState / default: The default-state category is off, rather than identifying who opts into using the integration. | Found: The integration is not enabled automatically; it requires developer implementation within custom agents. | Fix: Set defaultState to "user-opt-in": the developer is the maker choosing to use the integration in agent code. The schema reserves "off" for an off-by-default statement that does not identify who enables it. Keep the existing explanation that implementation is required per custom agent.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to check has a corresponding controls-table row. | Found: Checklist: "Confirm pay-as-you-go billing is set up and budgeted against an Azure subscription before the middleware is deployed." The table contains only a DLP rule and a collection policy, with no billing-enablement row. | Fix: Replace that Before rollout bullet with: "Review expected pay-as-you-go consumption with FinOps before the middleware is deployed." This retains the budgeting advice without directing readers to check an unlisted configuration control.
+- [supported, minor] Governance controls / admin-path: The Purview portal's Data Lifecycle Management > Policies > Retention Policies route reaches retention-policy creation. | Found: In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy | Fix: Replace the retention sentence with: "The interactions can also be retained: Learn says to go to Data Lifecycle Management > Policies > Retention Policies in the Microsoft Purview portal and create a retention policy for the Enterprise AI apps location." This retains the correct route and makes the omitted policy-creation step explicit. | Source: https://learn.microsoft.com/purview/ai-entra-registered
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every configuration the governance checklist tells readers to check has a controls-table row. | Found: Checklist: "Confirm pay-as-you-go billing is set up and budgeted against an Azure subscription before the middleware is deployed." The controls table has only DLP and collection-policy rows. | Fix: Replace that Before rollout bullet with: "Review expected pay-as-you-go consumption with FinOps before the middleware is deployed." This preserves budgeting advice without directing readers to check an unlisted configuration control.
 -->

@@ -92,18 +92,20 @@ changes:
     note: "Corrected the licensing statement (event capabilities depend on the organiser's licence) and the event-type statement (the feature comparison lists the setting for events optimised for large audiences); updated open questions to match."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
+  claims: 66
   confirmed: 65
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "44f51da67c341d882133172ade153d32"
 ---
 
@@ -203,9 +205,12 @@ cost: Low. The only cost the sources show is admin and organiser time; licensing
 impact: Low. Only organisers who work with external producers and the presenters they pick notice it, and Microsoft's notice says existing events and configurations are not changed automatically.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model; licensing.notes / licensing: The feature's licensing model is unknown because its licensing has not been published. | Found: Event capabilities and attendee capacity vary based on the organizer's license. ... Advanced event features ... include ... production controls ... Enterprise ... Office 365 E1, E3, E5Microsoft 365 E3, E5, E7 | Fix: Set licensing.model to 'included'. Replace licensing.notes with: 'Production controls are included in Advanced event features, with event capabilities determined by the organiser licence; enterprise licences listed are Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7. Microsoft has not published a licence requirement specific to the external presenter holding production control.' Retain https://learn.microsoft.com/microsoftteams/events-licensing as the source. This is explicit production-controls entitlement, not merely a general Teams prerequisite. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [supported, minor] Risk assessment: Data exposure / behaviour: Production controllers can bring shared content onto the live stage. | Found: Only participants with control of production tools can bring the shared window on screen afterwards | Fix: Add https://support.microsoft.com/office/manage-what-attendees-see-in-teams-meetings-19bfd690-8122-49f4-bc04-c2c5f69b4e16 to sources for the statement about putting shared content on the live stage. | Source: https://support.microsoft.com/office/manage-what-attendees-see-in-teams-meetings-19bfd690-8122-49f4-bc04-c2c5f69b4e16
-- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP requires external-presenter verification. | Found: To require external presenters to verify their identity before joining events created by organizers with this policy ... Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP | Fix: Append to the join-verification row note: 'The join-verification guide documents this command; the Set-CsTeamsEventsPolicy reference still labels the policy preview and does not list -ExternalPresenterJoinVerification (November 2026).' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy for that discrepancy. | Source: https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP requires external-presenter verification. | Found: To require external presenters to verify their identity before joining events created by organizers with this policy ... Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP | Fix: Append to the join-verification row note: 'The join-verification guide documents this command; the Set-CsTeamsEventsPolicy reference still labels the policy preview and does not list -ExternalPresenterJoinVerification (November 2026).' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy for the discrepancy. | Source: https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification
+- [supported, minor] controls[2].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy creating events optimised for large audiences. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: ... Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Append to the scheduling-control row note: 'The scheduling guide documents this control without a preview label; the Set-CsTeamsEventsPolicy reference still labels the policy preview (November 2026).' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy for that discrepancy. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
 -->

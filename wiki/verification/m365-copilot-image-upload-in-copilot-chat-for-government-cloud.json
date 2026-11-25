@@ -1,0 +1,513 @@
+{
+  "slug": "m365-copilot-image-upload-in-copilot-chat-for-government-cloud",
+  "roadmapId": 551194,
+  "title": "Microsoft 365 Copilot Chat: image upload for GCC, GCC High and DoD",
+  "status": "verified-with-gaps",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 38,
+    "confirmed": 38,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The briefing passes: its roadmap facts, licensing description and admin path are supported, and targeted searches found no image-upload-only switch or published government-specific default. Minor corrections should acknowledge conflicting Microsoft guidance about government cloud processing and the reach of Integrated Apps blocking.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Users can upload images to Copilot Chat and seek insights based on them.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The image upload feature in Microsoft 365 Copilot allows users to upload images and seek insights from Copilot based on those images.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes parity with existing Copilot experiences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are bringing this capability to Government Cloud environments, delivering parity with existing Copilot experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap says this functionality operates within applicable Government Cloud boundaries.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while ensuring the functionality operates within applicable Government Cloud boundaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; title; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"GCC\", \"GCC High\", \"DoD\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The record modification timestamp is 2026-03-19T23:30:43.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-03-19T23:30:43\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "The Microsoft Copilot app is not available as a Mac desktop app in GCC, GCCH or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "The Microsoft Copilot app isn't available as a Mac desktop app for GCC/GCCH/DoD cloud environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "No Microsoft Learn page specifically describing this government-cloud image upload feature was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot government image upload GCC GCC High DoD; \"Copilot Chat\" \"image upload\" \"government\". Read service description, gov-overview, privacy-and-protections and returned release-note excerpts; none describes this government feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "General Copilot Chat documentation describes uploading a file with the '+' button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/privacy-and-protections",
+      "quote": "Users upload a file by selecting the '+' button in the chat box.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "General Copilot Chat documentation describes dragging and dropping a file into the chat box.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/privacy-and-protections",
+      "quote": "They can also drag and drop a file into the chat box.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The cited privacy page describes uploaded files but does not separately specify storage or discovery for uploaded images in government clouds.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat uploaded images storage OneDrive government retention. Read privacy-and-protections and architecture-data-protection-auditing search excerpt; both describe uploaded files, not a separate government-image storage or discovery rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The service description lists Chat as available in GCC, GCCH and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Chat | Yes | Yes^4^ | Yes^4^ | Yes^4^ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Copilot Chat is not available in the Edge sidebar in GCC, GCCH or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft Copilot Chat isn't available in the Edge sidebar for GCC/GCCH/DoD cloud environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The default state of government-cloud image upload is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat image upload disable admin setting government GCC default image upload. Read roadmap, government overview, service description and Copilot configuration page; no image-upload arrival default or enabling requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft says Copilot in US government clouds operates entirely within the customer's government cloud tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/gov-overview",
+      "quote": "Microsoft Copilot is available in GCC, GCC High, and DoD, and operates entirely within the customer's U.S. government cloud tenant.",
+      "severity": "minor",
+      "fix": "After the government-boundary paragraph add: 'Microsoft separately warns that optional Anthropic models for non-federal GCC customers process Customer Data outside its FedRAMP-authorized U.S. Government cloud.' Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc, which says: 'When enabled, these Anthropic AI models process Customer Data outside Microsoft’s FedRAMP-authorized U.S. Government cloud.'"
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft's government overview says prompts, responses and generated content stay in the government cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/gov-overview",
+      "quote": "Prompts, responses, and generated content stay in the government cloud.",
+      "severity": "minor",
+      "fix": "Qualify the repeated boundary statement in Risk assessment with: 'Microsoft separately warns that optional Anthropic models for non-federal GCC customers process Customer Data outside its FedRAMP-authorized U.S. Government cloud.' Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc alongside the general overview; do not infer that the image-upload feature itself uses those models."
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The privacy page says uploaded files are stored in the user's OneDrive for Business as part of enterprise data protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/privacy-and-protections",
+      "quote": "Uploaded files are stored in a user's OneDrive for Business as part of enterprise data protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The documented block-app route is Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Block app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, and then select Integrated Apps. ... Select the Available Apps list. ... Select an app from the Available Apps list to open the overview pane. ... Select Block app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or automation call was found for the Integrated Apps Copilot-app blocking control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Integrated Apps block Copilot app PowerShell Graph API block app. Read Integrated Apps and manage-copilot-chat pages and copilotPackage:block search reference; the latter blocks catalog packages, not the Copilot app, and does not establish this control's API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].ui/api; summary; Risk assessment; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No separate UI or API control for image upload alone in Copilot Chat was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat image upload disable admin setting government GCC default image upload; \"Copilot Chat\" \"image upload\" \"PowerShell\". Read configure-copilot-admin-center and manage-copilot-chat; results concern image generation or Copilot Studio, not this switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].governs/note; Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Blocking the Copilot app through Integrated Apps applies to Microsoft Copilot and Copilot Chat and can block Chat access broadly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/copilot/manage/manage-copilot-chat to sources for the broad blocking claim. Add to the existing control note: 'Microsoft guidance differs on Teams: Manage Copilot Chat says this block includes Teams, while the linked cross-application app page says Teams continues to honor Teams admin center settings.' The linked page states: 'The app is only be blocked in the Microsoft Copilot application and Outlook.'"
+    },
+    {
+      "n": 26,
+      "where": "controls[0].scope/note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Block app action applies to all users in the organization, rather than only to image upload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "When you choose to block an app, it is blocked for all users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "The cited Integrated Apps page describes its controls as available only to Global Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Managing Copilot settings requires an appropriate admin role such as AI Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "To manage Copilot settings in the Microsoft 365 admin center, use an appropriate admin role, such as AI Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes user-initiated image upload and insights, not an autonomous action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The image upload feature in Microsoft 365 Copilot allows users to upload images and seek insights from Copilot based on those images.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Risk assessment: Change & support; Cost and licensing",
+      "type": "licensing",
+      "claim": "Some Copilot Chat features are subject to fair use limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Some features are subject to fair use limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Whether government-cloud image upload is specifically subject to fair use limits is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat image upload licensing fair use limits GCC; \"Copilot Chat\" \"image\" \"upload\" \"fair use\". Read copilot-overview and support.microsoft.com/microsoft-365-copilot/limits-for-features-copilot-chat; neither identifies government image upload limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model/notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model rests on Copilot Chat (Basic) being included with eligible Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot overview describes the add-on license as giving access to the full Copilot experience in Word, Excel, PowerPoint and OneNote.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description identifies Microsoft 365 Copilot as an add-on plan with specific licensing prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No license requirement specific to this image-upload feature is published in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Chat\" \"image upload\" \"license\"; Copilot Chat image upload licensing fair use limits GCC. Read copilot-overview, service description and license-options search excerpt; they give product licensing, not a separate government image-upload entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to image upload is published in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot government image upload Copilot Chat GCC GCC High DoD admin disable licensing default; Copilot Chat image upload licensing fair use limits GCC. Read copilot-overview and roadmap; neither specifies an image-upload meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited Integrated Apps page does not specify whether its portal behaves identically in every government cloud.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot government image upload GCC GCC High DoD admin disable licensing default. Read the full teams-apps-work-on-outlook-and-m365 page; it gives generic portal steps, without government-cloud portal-parity statements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The separate Copilot image generation setting is documented as allowing or preventing image-generation experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "| Copilot image generation | Allow or prevent supported image-generation experiences. |",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T10:15:37.184Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=551194",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/gov-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/privacy-and-protections",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether users can use the Copilot app, which includes Copilot Chat, at all",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Block app"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

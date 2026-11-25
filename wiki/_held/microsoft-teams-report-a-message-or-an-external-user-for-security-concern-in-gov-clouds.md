@@ -78,18 +78,20 @@ changes:
     note: "Correction: licensing model changed to mixed, with the Defender add-on or subscription wording; report path now includes the Report step; risk rationale and After rollout checklist trimmed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 51
+  claims: 56
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "328c08577fc3a77d40ed4bc008e5da22"
 ---
 
@@ -187,9 +189,12 @@ cost: Low. The only cost the sources show is admin time to triage reports; Learn
 impact: Medium. Every user in a messaging policy that allows it sees new report options, and security admins gain a report queue to review and act on.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Open questions: reports sent to Microsoft or retained only in the tenant / absence: Whether reports from US Government tenants are also sent to Microsoft for analysis, rather than staying only in the tenant's Teams admin center report, remains undocumented. | Found: You might report security concerns that involve Teams communications, including messages, calls, meetings, or users. ... Report data is also shared with Microsoft for threat analysis and service protection. | Fix: Replace the open question 'Are reports from US Government tenants also sent to Microsoft for analysis, or do they stay in the tenant's Teams admin center report?' with 'Microsoft states that Teams security-report data is also shared with Microsoft for threat analysis and service protection.' Cite and add to sources https://learn.microsoft.com/microsoftteams/security-report-privacy. This general data-handling rule does not establish the Government-specific fifteen-message contextual-sharing detail. | Source: https://learn.microsoft.com/microsoftteams/security-report-privacy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Defender reporting label / admin-path: The Defender instructions label the reporting selection Security risk - Spam, phishing, malicious content. | Found: If reporting for Microsoft Purview Communication Compliance is turned off, users might not have the dropdown list to select Security risk - Spam, phishing, malicious content. Instead, they're shown a confirmation pop-up. | Fix: After the sentence giving the Defender label, add: 'Those instructions also say that if reporting for Microsoft Purview Communication Compliance is turned off, users might see a confirmation pop-up instead of the selection.' Keep the existing submissions-teams citation. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
-- [supported, minor] controls[1].ui; What's changing: report availability / admin-path: The report is reached through Analytics & reports > Protection reports > View reports > Report > User reported security submissions. | Found: In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports. ... On the View reports tab, under Report, select User reported security submissions. | Fix: In the cloud-disagreement paragraph add: 'The Teams reporting reference also lists User reported security submissions as unavailable in GCC, GCC High and DoD, in contrast to the roadmap.' Cite https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference#teams-reporting-reference, whose report row reads Public Yes, GCC No, GCCH No, DoD No, and add that URL to sources. | Source: https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal
+- [supported, minor] What's changing: Defender reporting label / admin-path: The Defender instructions label the selection Security risk - Spam, phishing, malicious content. | Found: If reporting for Microsoft Purview Communication Compliance is turned off, users might not have the dropdown list to select Security risk - Spam, phishing, malicious content. Instead, they're shown a confirmation pop-up. | Fix: After the sentence giving the Defender label, add: 'If reporting for Microsoft Purview Communication Compliance is turned off, users might see a confirmation pop-up instead of the selection.' Keep the existing submissions-teams citation. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
+- [supported, minor] controls[1].ui; What's changing: report availability / admin-path: The report is reached through Analytics & reports > Protection reports > View reports > Report > User reported security submissions. | Found: In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports. ... On the View reports tab, under Report, select User reported security submissions. | Fix: Add to the cloud-disagreement paragraph: 'The Teams reporting reference also lists User reported security submissions as unavailable in GCC, GCC High and DoD, in contrast to the roadmap.' Cite and add to sources https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference#teams-reporting-reference; its table lists Public Yes, GCC No, GCCH No and DoD No for this report. | Source: https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal
+- [contradicted, minor] front matter: action; Why it matters / consistency: The prepare action rating agrees with the page's account of an unknown-default optional capability with no stated change to existing behavior. | Found: action: "prepare" ... Microsoft has not stated what happens on arrival in these clouds, so no source says existing behaviour changes. | Fix: Set action to 'review'. The assessment scale assigns review to a new capability with an unstated default when no source says existing behavior changes; the page's own arrival-behavior paragraph takes that position.
 -->

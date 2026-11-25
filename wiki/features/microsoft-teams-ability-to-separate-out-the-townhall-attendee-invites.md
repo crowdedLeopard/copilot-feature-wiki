@@ -62,15 +62,17 @@ changes:
     note: "New briefing: town hall invites split by role, with the timeline MC1009930 updated on 16 November 2026."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 47 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 49 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 49
+  confirmed: 48
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -169,11 +171,12 @@ cost: Low. The roadmap item and Microsoft's notice MC1009930 name no licence or 
 impact: Medium. Town hall organizers, co-organizers and presenters get different invites from January 2027, so event teams notice; Microsoft's notice says the change arrives automatically.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEmailEditing Disabled disables email-template editing. | Found: The following example turns off -AllowEmailEditing so organizers and co-organizers can't edit email templates: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEmailEditing Disabled | Fix: Keep the command. Add to controls[1].note: 'The Set-CsTeamsEventsPolicy reference labels the policy as preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, which states 'Note that this policy is currently still in preview.' The cited email-management guide does not carry that qualification. | Source: https://learn.microsoft.com/microsoftteams/manage-email-communications
-- [supported, minor] controls[1].scope / applicability: The event email editing control is a user-level policy. | Found: User-level policy for tenant admin to configure options for customizing Teams events experiences. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps to sources; this also supplies the reference for the preview note on the command. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps
-- [unsupported, minor] rationale: risk / behaviour: The change adds no new data access. | Found: Searched: Teams town hall separate participant role invitation emails co-organizer data access change. Read roadmap, MC1009930, plan-events and manage-email-communications; none explicitly establishes that data access is unchanged. | Fix: Replace 'adds no new data access' in the risk rationale with 'describes no new data access'. This preserves the body's narrower statement without turning silence into a guarantee.
-- [supported, minor] summary; Why it matters; Governance guidance: Before rollout; rationale: impact / date: Users will receive the changed invitations from January 2027. | Found: Targeted Release: We will begin rolling out early January 2027 ... General Availability (Worldwide, GCC, GCC High): We will begin rolling out mid-January 2027 | Fix: In the summary replace 'Rolls out automatically from January 2027' with 'Automatic rollout is expected to begin in January 2027'. Qualify the other 'from January 2027' statements as 'with rollout expected to begin in January 2027'; keep the detailed Message Center windows unchanged.
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because Microsoft has not published licensing specific to separated town hall invites. | Found: All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings. | Fix: Set licensing.model to 'included'. Replace the licensing notes with 'Teams events are included in eligible licences, including Office 365 E3 and Microsoft 365 E3. Microsoft has not published licensing specific to role-separated invites.' Cite https://learn.microsoft.com/microsoftteams/events-licensing. In Cost and licensing and the cost rationale, replace the blanket unpublished-licensing statement with 'No licensing specific to role-separated invites is published.' | Source: https://learn.microsoft.com/microsoftteams/events-licensing
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEmailEditing Disabled turns off event email-template editing. | Found: The following example turns off -AllowEmailEditing so organizers and co-organizers can't edit email templates: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEmailEditing Disabled | Fix: Keep the command. Add 'The Set-CsTeamsEventsPolicy reference labels this policy as preview' to controls[1].note and the rendered row note. Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, which says 'Note that this policy is currently still in preview.' The email-management guide does not state that qualification. | Source: https://learn.microsoft.com/microsoftteams/manage-email-communications
+- [supported, minor] controls[1].scope; Governance controls table / applicability: The event email-editing policy has user-level scope. | Found: User-level policy for tenant admin to configure options for customizing Teams events experiences. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps to sources; keep the user scope. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps
+- [supported, minor] summary; Why it matters; Governance guidance: Before rollout; rationale: impact / date: The changed invitations arrive from January 2027. | Found: Targeted Release: We will begin rolling out early January 2027 General Availability (Worldwide, GCC, GCC High): We will begin rolling out mid-January 2027 | Fix: In the summary replace 'Rolls out automatically from January 2027' with 'Automatic rollout is expected to begin in January 2027'. In Why it matters, Before rollout and the impact rationale, replace 'from January 2027' with 'with rollout expected to begin in January 2027'. Keep the detailed attributed notice windows unchanged.
+- [unsupported, minor] rationale: risk / behaviour: The change adds no new data access. | Found: Searched: Teams town hall separate role invitations new data access security permissions change. Read the roadmap, MC1009930, Plan for Teams events, Manage email communications and Graph town hall API use cases; none establishes that data access is unchanged. | Fix: Replace 'adds no new data access' with 'describes no new data access' in the risk rationale, matching the body's narrower description of what the notices say.
 -->

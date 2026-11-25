@@ -18,7 +18,7 @@ defaultState: "on"
 action: "none"
 licensing:
   model: "included"
-  notes: "Microsoft Learn lists service-side auto-labeling as included with Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2. Separate licensing for these enhancements is not yet published."
+  notes: "Service-side auto-labeling entitlement is defined by the Client and service-side automatic sensitivity labeling row in the Microsoft Purview service description; Microsoft 365 E5 is included. The standalone AIP Premium P2 listing is for client-side auto-labeling. Separate licensing for these enhancements is not yet published."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","sensitivity-labels","information-protection","adaptive-scopes","sharepoint","sensitive-information-types","auditing","data-governance"]
 sources:
@@ -36,6 +36,9 @@ sources:
     kind: "learn"
   - title: "Use the Insights tab to analyze auto-labeling policies in Microsoft Purview"
     url: "https://learn.microsoft.com/purview/auto-label-insights-tab"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling"
     kind: "learn"
 videos: []
 related: ["microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl","microsoft-purview-unified-classification-management-experience","microsoft-purview-information-protection-sensitivity-labels-for-microsoft-entra-security-g"]
@@ -64,7 +67,7 @@ controls:
     note: "Scope Manager role creates the scope. Learn gives 50,000 sites per SharePoint adaptive scope for auto-labeling policies."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-11-11T00:52:46"
 changes:
   - date: "2026-11-18"
@@ -79,19 +82,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected the service-side auto-labeling licensing statement to the Microsoft Purview service description row, and removed the auditing and reporting checklist steps and the reporting-switch absence."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 67
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "34dd52855bdf3f3be377634262d19c2b"
+  contradicted: 1
+  attempts: 0
+  hash: "c37336bdb2b33a55a9adde4dbf300249"
 ---
 
 ## What's changing
@@ -129,7 +136,7 @@ If nobody acts, the notice says existing policies continue as they are. The prac
 
 ## Cost and licensing
 
-No separate licence or meter is published for these enhancements. The Learn page on automatically applying sensitivity labels lists service-side auto-labeling (SharePoint, OneDrive, Exchange) as included with Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone), and points to the Microsoft 365 licensing guidance for the per-SKU matrix.
+No separate licence or meter is published for these enhancements. The Learn page on automatically applying sensitivity labels says service-side auto-labeling (SharePoint, OneDrive, Exchange) is defined by the Client and service-side automatic sensitivity labeling entry in the feature matrix, and that client-only entitlements do not establish service-side entitlement. In the [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling), that row is Included for Microsoft 365 E5. The auto-labeling page's standalone Azure Information Protection Premium P2 listing is for client-side auto-labeling, not proof of service-side entitlement.
 
 The notice does not mention any charge. The indirect cost is admin time to revisit constrained policies and update reporting processes. Whether any of the new reports needs a different licence is not yet published.
 
@@ -149,11 +156,8 @@ The notice says the enhancements arrive automatically as the rollout reaches an 
 ### At rollout
 - Test any enlarged policy in simulation first and preserve results you need before rerunning, as Learn advises.
 - Evaluate whether sites can now be added by explicit selection (up to 1,000 in the portal) or by an adaptive scope, and filter with the SiteTemplate property where a scope should cover only some site types.
-- Confirm auditing is on for Microsoft 365, since Learn lists it as required for simulation.
 
 ### After rollout
-- For an enabled policy targeting SharePoint or OneDrive, review the policy details panel's Insights tab for SIT summaries. For the 30-day Labeling activity overview chart, select View details and open Overview in the newer full review experience.
-- Update reporting and operations procedures that rely on earlier views, as the notice recommends.
 - Watch the Message center and the Learn auto-labeling page for further timeline changes.
 
 ## Governance controls
@@ -170,28 +174,25 @@ The notice says the enhancements arrive automatically as the rollout reaches an 
 
 Creating or editing policies and scopes needs the roles Learn names: Compliance Administrator or Compliance Data Administrator to turn a policy on after simulation, and the Scope Manager role (in role groups including Compliance Administrator) to create an adaptive scope. Explicit site selection is capped at 1,000 per policy in the portal; Learn states that associating an adaptive scope by PowerShell does not increase the portal limit but replaces static site lists with dynamic membership.
 
-To review activity, go to Solutions > Information Protection > Policies > Auto-labeling policies, select a policy, then select View details. Learn describes the Overview, Labeled items and Labeling failures tabs and an Insights tab summarising detected sensitive information types. Microsoft has not stated a separate tenant switch for the new reporting, and the controls above are general auto-labeling controls, not switches for this rollout.
+To review activity, go to Solutions > Information Protection > Policies > Auto-labeling policies, select a policy, then select View details. Learn describes the Overview, Labeled items and Labeling failures tabs and an Insights tab summarising detected sensitive information types. The controls above are general auto-labeling controls, not switches for this rollout.
 
 ## Open questions
 
 - Is the notice's 30-day chart of files processed per day the same view as the **Labeling activity overview** chart that Learn describes, and where does each appear in the portal?
-- Do the new SIT detection summaries and processing visibility require any licence beyond the E5 or P2-tier licences Learn lists for auto-labeling?
+- Do the new SIT detection summaries and processing visibility require any licence beyond the eligible service-side auto-labeling licences? Watch the Microsoft Purview service description and the Learn auto-labeling page.
 - Will the new SiteTemplate filtering for policy configuration be documented as a policy-level setting, or does it remain an adaptive scope property as Learn describes it today?
 - Will Microsoft give a further timeline update, given general availability moved from late October to mid-November 2026? Watch MC1469958 in the Message center.
 
 <!-- rationale
 risk: Low. Microsoft's notice says existing auto-labeling policies keep working unchanged and the update expands processing capacity rather than changing labeling behaviour; the exposure that remains is larger policies you choose to build.
-cost: Low. The only cost the sources show is admin time to revisit policies. Microsoft has not published separate licensing for these enhancements; the Learn page ties auto-labeling to E5 or P2-tier licences.
+cost: Low. The only cost the sources show is admin time to revisit policies. Microsoft has not published separate licensing for these enhancements; service-side auto-labeling needs eligible service-side auto-labeling licences.
 impact: Low. Compliance and information protection admins notice the new limits and reports; Microsoft's notice expects no impact on end users.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions / licensing: The auto-labeling page lists Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and standalone AIP Premium P2 as service-side entitlements. | Found: Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Replace the four-plan service-side licensing statement in licensing.notes and Cost and licensing with: 'Service-side auto-labeling entitlement is defined by the Client and service-side automatic sensitivity labeling row in the Microsoft Purview service description; Microsoft 365 E5 is included. The auto-labeling page's standalone AIP Premium P2 listing is for client-side auto-labeling, not proof of service-side entitlement.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. Replace 'E5 or P2-tier licences' in the cost rationale with 'eligible service-side auto-labeling licences'. Replace 'the E5 or P2-tier licences Learn lists for auto-labeling' in Open questions with 'eligible service-side auto-labeling licences'. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: Auto-labeling is included with an eligible existing product subscription. | Found: Client and service-side automatic sensitivity labeling | Included | Included | Fix: Keep licensing.model as included and cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling for the service-side entitlement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The explicit-selection policy creation route is Purview > Solutions > Information Protection > Policies > Auto-labeling policies > Create auto-labeling policy. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Policies > Auto-labeling policies. ... Select + Create auto-labeling policy. | Fix: The route correctly opens the wizard but stops before site selection. Append to controls[0].note and its rendered counterpart: 'In the wizard, choose to apply a sensitivity label, select Custom > Custom policy, name the policy, choose a label and complete Assign admin units. On Choose locations where you want to apply the label, select the SharePoint Included or Excluded link to choose sites. Policies with administrative units selected must use All.' | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: SharePoint adaptive scopes are reached in Purview through Settings > Roles and scopes > Adaptive scopes. | Found: Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes. ... On the Adaptive scopes page, select + Create scope. | Fix: The route reaches the correct list but stops before configuring membership. Append to controls[1].note and its rendered counterpart: 'Select + Create scope, keep Full directory for a SharePoint site scope, select SharePoint sites as the scope type, then select membership properties and values. SharePoint site scopes cannot be created with administrative units selected.' | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist instructs readers to check auditing and reporting, and the prose asserts a missing reporting switch, but these have no controls rows. | Found: Confirm auditing is on for Microsoft 365 ... review the policy details panel's Insights tab ... Microsoft has not stated a separate tenant switch for the new reporting ... [table has only explicit site selection and adaptive scopes] | Fix: The auditing check, reporting review and reporting-switch absence have no corresponding controls rows. Without adding rows, remove the auditing and reporting instructions from the governance checklist and remove the separate-reporting-switch absence from Governance controls; retain the verified prerequisite and reporting facts elsewhere.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Solutions > Information Protection > Policies > Auto-labeling policies > Create auto-labeling policy is the portal entry point for explicit SharePoint targeting. | Found: Sign in to the Microsoft Purview portal ... **Solutions** > **Information Protection** > **Policies** > **Auto-labeling policies**. ... Select **+ Create auto-labeling policy**. | Fix: The path stops at the creation wizard. Extend it to 'Solutions > Information Protection > Policies > Auto-labeling policies > Create auto-labeling policy > Automatically apply label only > Choose info you want this label applied to > Custom > Custom policy > Choose a label to auto-apply > Assign admin units > Choose locations where you want to apply the label > SharePoint > Included', following https://learn.microsoft.com/purview/apply-sensitivity-label-automatically#creating-an-auto-labeling-policy. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Settings > Roles and scopes > Adaptive scopes opens the portal page for configuring adaptive scopes. | Found: Sign in to the Microsoft Purview portal > **Settings** > **Roles and scopes** > **Adaptive scopes**. ... On the **Adaptive scopes** page, select **+ Create scope**. | Fix: The path stops on the scope-list page. Extend it to 'Settings > Roles and scopes > Adaptive scopes > Create scope > Full directory > SharePoint sites > Advanced query builder' to reach the documented SharePoint membership-query control at https://learn.microsoft.com/purview/purview-adaptive-scopes#how-to-configure-an-adaptive-scope. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Checklist: 'Confirm that the roles you need are assigned'; 'Check whether any policy in your tenant uses administrative units'; 'Test any enlarged policy in simulation first'. The table has only explicit site selection and adaptive-scope targeting rows. | Fix: The role-assignment check, policy administrative-unit check and simulation step have no corresponding controls-table rows. Remove those three checklist bullets if strict checklist/table alignment is required; do not add control rows as part of this correction.
 -->

@@ -14,11 +14,11 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "unknown"
+defaultState: "on"
 action: "prepare"
 licensing:
-  model: "mixed"
-  notes: "Insider Risk Management needs a supported subscription and licences assigned to users; Microsoft's collection policy pages say the feature uses pay-as-you-go billing, per-user licensing or both. A rate or licence specific to this feature is not yet published."
+  model: "included"
+  notes: "Microsoft states that collection policies require licensing for the workload; including devices requires Endpoint DLP licensing. Insider Risk Management also needs a supported subscription and licences assigned to users. A meter specific to this feature is not yet published."
 audiences: ["compliance","security"]
 tags: ["purview","insider-risk-management","collection-policies","endpoint-dlp","device-onboarding","sensitive-information-types","gcc","gcc-high","dod"]
 sources:
@@ -40,6 +40,9 @@ sources:
   - title: "Get started with Insider Risk Management"
     url: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-compliance-portal-insider-risk-management-collection-policies-impact-on","insider-risk-management","endpoint-dlp","sensitive-information-types","classifiers"]
 controls:
@@ -60,19 +63,23 @@ changes:
     note: "First briefing for roadmap item 500639: IRM support for collection policies and automatic policies for device indicators."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after verification: default state now on, per the roadmap's automatic policy creation; licensing now follows the Purview service description (workload licence, Endpoint DLP for devices)."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 54 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 45
-  unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "1e17ecc4aa9f620c7ce0d009d1a33f61"
+  claims: 54
+  confirmed: 52
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 0
+  hash: "0f3034f974c04d8accd2d576257db1bb"
 ---
 
 ## What's changing
@@ -87,7 +94,7 @@ The roadmap record gives the status as In development with a target of September
 
 The point for an IRM owner is precedence. Microsoft Learn warns that when a device collection policy is deployed and it conflicts with what an IRM policy is set to monitor, the collection policy configuration takes precedence. An activity the collection policy filters out is not collected and is not available for review in Insider Risk Management. A collection policy built for another purpose, such as reducing noise in Activity explorer, can therefore thin out the evidence IRM analysts rely on.
 
-Microsoft has not stated what happens on arrival: the roadmap says policies will be created automatically for device-indicator IRM policies, but not whether that covers existing policies, or what those policies filter. Expect to confirm that your device-based IRM policies still collect the activities you intend to monitor once the feature reaches your tenant.
+The roadmap plans automatic background creation of required collection policies for device-indicator IRM policies; it does not specify their configuration or whether existing policies are covered. Expect to confirm that your device-based IRM policies still collect the activities you intend to monitor once the feature reaches your tenant.
 
 ## Risk assessment
 
@@ -111,9 +118,9 @@ Microsoft has not stated what happens on arrival: the roadmap says policies will
 
 ## Cost and licensing
 
-The licence is that of Insider Risk Management. Microsoft's Get started page says administrators need to confirm their organisation has a supported subscription and assign the appropriate licences to users, and points to the Microsoft 365 subscription requirements; it does not name a single licence in that passage.
+Collection policies have no separate licensing requirement, but require licensing for their workload; a collection policy that includes devices requires Endpoint DLP licensing ([Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies)). Separately, Microsoft's Get started page says administrators need to confirm their organisation has a supported subscription and assign the appropriate licences to users for Insider Risk Management, and points to the Microsoft 365 subscription requirements; it does not name a single licence in that passage.
 
-Microsoft's collection policy pages say the feature uses pay-as-you-go billing, per-user licensing or both, with usage shown in the Usage center in the Microsoft Purview portal. The collection policy reference lists pay-as-you-go for the Copilot experiences and Enterprise AI data sources and for non-Microsoft SASE integrations; devices is not in that list. A licence or rate specific to IRM support for collection policies is not yet published. Indirect cost is the admin time to review collection policies and IRM policies together.
+Microsoft's collection policy pages say the feature uses pay-as-you-go billing, per-user licensing or both, with usage shown in the Usage center in the Microsoft Purview portal. The collection policy reference lists pay-as-you-go for the Copilot experiences and Enterprise AI data sources and for non-Microsoft SASE integrations; devices is not in that list. A meter or rate specific to IRM support for collection policies is not yet published. Indirect cost is the admin time to review collection policies and IRM policies together.
 
 ## Scope
 
@@ -155,24 +162,21 @@ Collection policies are the only control read for this feature. They sit under t
 
 ## Open questions
 
-- What default applies when this feature arrives: are collection policies created automatically for existing device-indicator IRM policies, or only for new ones? Watch Message center and the roadmap item.
+- Are collection policies created automatically for existing device-indicator IRM policies, or only for new ones? Watch Message center and the roadmap item.
 - What conditions, activities and user scope do the automatically created collection policies carry, and can administrators edit or delete them? Watch the collection policies solution overview.
-- Is there a licence or pay-as-you-go meter specific to IRM use of collection policies? Watch Microsoft Purview billing models and the Usage center documentation.
+- Is there a pay-as-you-go meter or rate specific to IRM use of collection policies? Watch Microsoft Purview billing models and the Usage center documentation.
 - Will the target of September CY2025 be updated now that the item is still In development, and does availability differ in GCC, GCC High and DoD? Watch the roadmap item.
 
 <!-- rationale
-risk: Medium. A collection policy takes precedence over an Insider Risk Management policy, so a device activity it filters out is not collected and cannot be reviewed; the default for the automatic policies is not stated.
-cost: Low. The only cost the sources show is admin time; Insider Risk Management already needs a supported subscription, and a charge specific to this feature is not yet published.
+risk: Medium. A collection policy takes precedence over an Insider Risk Management policy, so a device activity it filters out is not collected and cannot be reviewed; the configuration of the automatic policies, and whether existing policies are covered, is not stated.
+cost: Low. The only cost the sources show is admin time; Insider Risk Management already needs a supported subscription, and a meter specific to this feature is not yet published.
 impact: Medium. Insider Risk Management administrators and analysts notice first, because the device signals they review can change; end users see no new screen on any source read.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions; rationale: risk / default: The default is unknown because Microsoft has not stated what happens on arrival. | Found: For device indicators based IRM policy, required collection policies will be automatically created in the background. | Fix: Set defaultState to 'on'. Replace the broad unstated-default wording with 'The roadmap plans automatic background creation of required collection policies for device-indicator IRM policies; it does not specify their configuration or whether existing policies are covered.' Keep those narrower questions open, including in the risk rationale.
-- [contradicted, blocker] Cost and licensing: opening sentence / licensing: The licence for this collection-policy use is simply that of Insider Risk Management. | Found: creating a collection policy that includes devices requires endpoint DLP licensing, as the device data source is available under that licensing tier. | Fix: Replace 'The licence is that of Insider Risk Management.' with 'Collection policies have no separate licensing requirement, but require licensing for their workload; a collection policy that includes devices requires Endpoint DLP licensing.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model for this device-indicator collection-policy change is mixed. | Found: There are no licensing requirements to apply collection policies. Instead, you must be licensed for the workload for which you're creating the policy. | Fix: Set licensing.model to 'included'. State in licensing.notes that collection policies require the licence for their workload, and device collection policies require Endpoint DLP licensing; retain the separate requirement for an appropriate IRM subscription. Cite the service description's Microsoft Purview Collection Policies section. Do not apply the generic pay-as-you-go cases for other data sources to this device change. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions / absence: The licensing requirement for IRM's device collection-policy use is not yet published. | Found: There are no licensing requirements to apply collection policies. Instead, you must be licensed for the workload for which you're creating the policy. For example, creating a collection policy that includes devices requires endpoint DLP licensing | Fix: Replace the unpublished-licence assertion with 'Microsoft states that collection policies require licensing for the workload; including devices requires Endpoint DLP licensing.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies. Remove the licence part of the corresponding open question; keep only the narrower unpublished feature-specific meter question. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [unsupported, major] Risk assessment: Security & identity / behaviour: No alert can be raised on an activity filtered out by the collection policy. | Found: Searched: collection policy filtered device activity no alert Insider Risk Management. Read collection-policies-solution-overview, insider-risk-management-settings-policy-indicators and policy-template search results; they state not collected or available for review, not the stronger alert guarantee | Fix: Remove 'and no alert can be raised on it'; retain the documented statement that the activity is not collected and is unavailable for review.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].scope; Governance controls table / applicability: Collection-policy governance is tenant-level, with user and data-source scoping. | Found: Collection policies are a configuration option in the Microsoft Purview portal that allows administrators to fine-tune what are the signals and data that are available to Purview solutions at the tenant level. | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies to sources. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [contradicted, minor] Governance guidance: Before rollout; After rollout; controls / consistency: Every control the governance checklist asks readers to review or monitor has a corresponding controls-table row. | Found: Inventory the IRM policies that use device indicators and the devices they cover, using the device onboarding status Microsoft documents. / Confirm in IRM alerts and Activity explorer that expected device activities still arrive for in-scope users. | Fix: The Before rollout inventory step names IRM policy and device-onboarding controls without corresponding rows; the final After rollout step names IRM alerts and Activity explorer without corresponding rows. The table contains only collection policies.
 -->

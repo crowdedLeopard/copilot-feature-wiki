@@ -2,31 +2,33 @@
   "slug": "microsoft-teams-adaptive-card-based-app-and-copilot-agent-link-unfurling-in-teams",
   "roadmapId": 515465,
   "title": "Microsoft Teams: add SharePoint agents to chats from the in-context store",
-  "status": "verified",
-  "date": "2026-11-18",
+  "status": "verified-with-gaps",
+  "date": "2026-11-25",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 61,
-    "confirmed": 61,
+    "claims": 63,
+    "confirmed": 62,
     "unconfirmed": 0,
-    "contradicted": 0,
+    "contradicted": 1,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "The briefing is supported by the roadmap, Microsoft's tenant notice and the cited documentation. Its licensing, billing and shared-chat permissions statements are accurate, and it clearly distinguishes general Teams controls from controls confirmed for this feature.",
+  "summary": "The rollout, default state, licensing, billing rates and general Teams controls are supported by Microsoft's notice and documentation. The checklist asks readers to check licensing and monitor consumption, but those controls are missing from the controls table.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; title; summary",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Users can discover and add SharePoint agents directly within Teams chats on Desktop and Mac.",
+      "claim": "Users can discover SharePoint agents and add them to Teams chats.",
       "status": "supported",
       "source": "Message Center post MC1193415",
       "quote": "With this release, users can discover and add SharePoint agents directly within Microsoft Teams chats on Desktop and Mac.",
@@ -35,42 +37,53 @@
     },
     {
       "n": 2,
-      "where": "What's changing; summary; Governance guidance",
+      "where": "summary; front matter: platforms; What's changing; Scope; rationale: risk",
       "type": "record",
-      "claim": "Add Agents and Bots in the chat roster dropdown opens an in-context store for agent discovery and selection.",
+      "claim": "The feature covers Desktop and Mac.",
       "status": "supported",
-      "source": "Message Center post MC1193415",
-      "quote": "Agents can be added via the Add Agents and Bots option in the chat roster dropdown, which opens the in-context store for discovery and selection.",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing",
+      "where": "summary; What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "SharePoint agents appear in the Teams Store under the Agents category.",
+      "claim": "The entry point is Add Agents and Bots in the chat roster dropdown.",
       "status": "supported",
       "source": "Message Center post MC1193415",
-      "quote": "SharePoint agents will be available in the Teams Store under the Agents category.",
+      "quote": "Agents can be added via the Add Agents and Bots option in the chat roster dropdown",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "What's changing; summary; Why it matters",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's notice says no admin action is required to enable the feature.",
+      "claim": "That option opens an in-context store for agent discovery and selection.",
       "status": "supported",
       "source": "Message Center post MC1193415",
-      "quote": "No admin action is required; the feature is enabled by default.",
+      "quote": "which opens the in-context store for discovery and selection.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "front matter: defaultState; summary; What's changing; Risk assessment; rationales",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "SharePoint agents also appear in the Teams Store under the Agents category.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "SharePoint agents are available in the Teams Store under the Agents category",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationales",
       "type": "default",
-      "claim": "The feature's default state is on.",
+      "claim": "The feature is enabled by default.",
       "status": "supported",
       "source": "Message Center post MC1193415",
       "quote": "No admin action is required; the feature is enabled by default.",
@@ -78,7 +91,18 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
+      "where": "summary; What's changing; Why it matters; Governance controls",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required for the feature to arrive.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "No admin action is required; the feature is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "What's changing; Governance controls; rationale: risk",
       "type": "record",
       "claim": "Microsoft's notice says existing policies are respected.",
@@ -89,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "Governance controls; rationale: risk",
       "type": "record",
-      "claim": "Microsoft's notice says no changes to admin controls are needed and names no feature-specific switch.",
+      "claim": "Microsoft's notice says no changes to admin controls are needed.",
       "status": "supported",
       "source": "Message Center post MC1193415",
       "quote": "Existing policies are respected; no changes to admin controls are needed.",
@@ -100,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 10,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -111,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -122,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 12,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists General Availability and Targeted Release.",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -133,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists only Worldwide (Standard Multi-Tenant), not GCC, GCC High or DoD.",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), not GCC, GCC High or DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -144,21 +168,21 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: platforms; Scope",
+      "n": 14,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap platforms are Desktop and Mac.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap description carries a January 29, 2026 note pausing rollout until March.",
+      "claim": "A January 29, 2026 roadmap note says rollout was paused until March.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Updated January 29, 2026: Due to a blocker we have paused rollout until March for this feature.",
@@ -166,35 +190,13 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "The supplied notice was last updated June 12, 2026.",
+      "claim": "The supplied notice was last updated on June 12, 2026.",
       "status": "supported",
       "source": "Message Center post MC1193415",
-      "quote": "Updated June 12, 2026: We have updated the timeline.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice schedules Targeted Release to begin in mid-October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1193415",
-      "quote": "Targeted Release: Rolling out in mid-October 2026 (previously mid-July)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice expects Targeted Release to complete in late October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1193415",
-      "quote": "expected to complete in late October 2026 (previously late July)",
+      "quote": "Published 2025-12-09; last updated 2026-06-12; Microsoft's end date 2026-12-28",
       "severity": null,
       "fix": null
     },
@@ -202,7 +204,29 @@
       "n": 17,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice schedules General Availability rollout to begin in late October 2026.",
+      "claim": "The notice schedules Targeted Release rollout to start in mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "Targeted Release: Rolling out in mid-October 2026 (previously mid-July)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice expects Targeted Release completion in late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "expected to complete in late October 2026 (previously late July).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice schedules General Availability rollout to start in late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1193415",
       "quote": "General Availability: Rolling out in late October 2026 (previously late July)",
@@ -210,18 +234,18 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
       "where": "What's changing; Why it matters; Scope",
       "type": "record",
-      "claim": "The notice expects General Availability rollout to complete by late November 2026.",
+      "claim": "The notice expects General Availability completion by late November 2026.",
       "status": "supported",
       "source": "Message Center post MC1193415",
-      "quote": "expected to complete by late November 2026 (previously late August)",
+      "quote": "expected to complete by late November 2026 (previously late August).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice's end date is December 28, 2026.",
@@ -232,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 22,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice sets no act-by date.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1193415",
       "quote": "Act by: none",
@@ -243,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap title concerns adaptive card-based app and Copilot-agent link unfurling, unlike its SharePoint-agent discovery description.",
+      "claim": "The roadmap title refers to adaptive card-based app and Copilot agent link unfurling, unlike its description of SharePoint agent discovery.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Teams: Adaptive card-based app & copilot agent link unfurling in Teams",
@@ -254,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
       "where": "Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap description mentions discovery in chats and channels.",
+      "claim": "The roadmap description includes channels as well as chats, while the supplied notice describes chats.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Discover and add SharePoint agents in chats and channels from in-context store.",
@@ -265,35 +289,13 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: licensing.model; summary; Why it matters; rationale: cost",
-      "type": "licensing",
-      "claim": "Mixed licensing accurately describes access through Copilot licensing or pay-as-you-go billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "You can manage who can access agents through Copilot license assignment. Or, if your organization has the pay-as-you-go billing set up, you can control who can access agents through the security groups assigned to the billing policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance",
-      "type": "record",
-      "claim": "Microsoft's notice asks for intended users to have E3 or E5 licensing with Teams.",
-      "status": "supported",
-      "source": "Message Center post MC1193415",
-      "quote": "Ensure that intended users have E3 or E5 (with Teams) licensing",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 25,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance",
-      "type": "record",
-      "claim": "The notice additionally names a Microsoft 365 Copilot licence or pay-as-you-go separately set up for SharePoint agents on Mac.",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated page for this in-context-store Teams capability.",
       "status": "supported",
-      "source": "Message Center post MC1193415",
-      "quote": "one of the following options: - Microsoft 365 Copilot license OR- Pay-as-you-go (PAYG) separately setup for SharePoint agents on MAC.",
+      "source": null,
+      "quote": "Searched: SharePoint agents Teams in-context store Add Agents and Bots licensing admin controls default; \"SharePoint agents\" \"in-context store\". Opened manage-access-agents-in-sharepoint, manage-apps and Support's Share an agent from SharePoint in Teams; no dedicated Learn page returned.",
       "severity": null,
       "fix": null
     },
@@ -301,7 +303,7 @@
       "n": 26,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "SharePoint-agent responses respect the requesting user's permissions on their data sources.",
+      "claim": "SharePoint agent responses exclude sources the asking user cannot access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "if a user has access to the agent but not to the site or document library it references, the agent's responses for this user don't include content from those restricted sources.",
@@ -312,7 +314,7 @@
       "n": 27,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "If some chat members cannot access an answer that the requester can access, the requester is told it cannot be automatically added to the chat.",
+      "claim": "If other chat members lack access to an answer the requester can see, Teams tells the requester the answer cannot be automatically added to the chat.",
       "status": "supported",
       "source": "https://support.microsoft.com/office/share-an-agent-from-sharepoint-in-teams-6dcbf7b5-8c13-44e5-a68a-dbd71fb76ad3",
       "quote": "If the user who asks the question has permission to see the answer, but some members in the chat group don't, the user sees a message explaining that the answer can't be automatically added to the chat.",
@@ -333,8 +335,8 @@
     {
       "n": 29,
       "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Restricted content discovery prevents content from the flagged site being added to other agents.",
+      "type": "applicability",
+      "claim": "Restricted content discovery prevents adding content from the flagged site to other agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "they don't have access to use the ready-made agent, create new agents, or add content from that site to any other agents.",
@@ -345,7 +347,7 @@
       "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Permissions on the .agent file determine who can access or edit the agent.",
+      "claim": "Permissions on the .agent file determine who can access or edit a SharePoint agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "The permissions on the `.agent` file determine who can access or edit the agent.",
@@ -355,41 +357,63 @@
     {
       "n": 31,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The notice describes adding agents to conversations for collaboration without describing additional agent actions.",
+      "type": "absence",
+      "claim": "Microsoft has not documented additional agent actions beyond answering for this in-context-store capability.",
       "status": "supported",
-      "source": "Message Center post MC1193415",
-      "quote": "This enables users to quickly bring SharePoint agents into conversations to support collaboration.",
+      "source": null,
+      "quote": "Searched: SharePoint agents Teams chat actions answering Add Agents and Bots documentation; \"SharePoint\" \"agents\" \"Teams\" \"actions\" \"SharePoint agents\". Read MC1193415, manage-access-agents-in-sharepoint and Support's Teams sharing page; no additional store-specific actions documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "Additional actions specific to agents added through this in-context-store feature are not documented.",
+      "where": "Risk assessment: Change & support; Why it matters",
+      "type": "licensing",
+      "claim": "Users without a Copilot licence or pay-as-you-go access may be unable to use discovered agents.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint agents Teams actions Add Agents and Bots; SharePoint agents Teams in-context store controls actions. Read Manage access to agents in SharePoint, Share an agent from SharePoint in Teams and Share an agent in Microsoft Teams; none describes additional actions specific to this store.",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "You can manage who can access agents through Copilot license assignment. Or, if your organization has the pay-as-you-go billing set up, you can control who can access agents through the security groups assigned to the billing policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Change & support; Governance controls",
-      "type": "applicability",
-      "claim": "The SharePoint-agent blocking control described in Microsoft 365 admin center currently affects Copilot Chat, not Teams.",
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft's notice suggests informing helpdesk staff about access and use questions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "Currently, blocking an agent only affects its availability in Copilot Chat. It doesn't yet apply to OneDrive, SharePoint, or Teams.",
+      "source": "Message Center post MC1193415",
+      "quote": "Inform helpdesk staff in case users have questions about accessing or using SharePoint agents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Cost and licensing; Risk assessment: Change & support",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The notice asks administrators to ensure intended users have E3 or E5 licensing with Teams.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "Ensure that intended users have E3 or E5 (with Teams) licensing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "Administrators can manage SharePoint-agent access through Copilot licence assignment.",
+      "claim": "Entitlement is mixed: the notice specifies a Microsoft 365 Copilot licence or pay-as-you-go separately set up for SharePoint agents on Mac.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "one of the following options: - Microsoft 365 Copilot license OR- Pay-as-you-go (PAYG) separately setup for SharePoint agents on MAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Copilot licence assignment is a documented way to manage SharePoint agent access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "You can manage who can access agents through Copilot license assignment.",
@@ -397,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Cost and licensing; Governance controls; Risk assessment: Change & support",
-      "type": "licensing",
-      "claim": "For pay-as-you-go, only users in the security group assigned to the billing policy have agent access.",
+      "n": 37,
+      "where": "Cost and licensing; Governance controls",
+      "type": "applicability",
+      "claim": "Under pay-as-you-go, agent access is restricted to users in the security group assigned to the billing policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "Only users in the security group assigned to the billing policy have access to agents.",
@@ -408,21 +432,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The SharePoint-agent Azure billing resource is used whenever a user without a Microsoft Copilot licence uses a SharePoint agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "That resource is used whenever a user without a Microsoft Copilot license uses a SharePoint agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
+      "n": 38,
       "where": "Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "A SharePoint-agent interaction uses 12 messages to respond to a single complex prompt.",
+      "claim": "Microsoft documents 12 messages for a SharePoint agent interaction responding to a single complex prompt.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
       "quote": "each interaction with a SharePoint agent uses 12 messages (10 messages for tenant graph grounding, and 2 messages for generative answers) to respond to a single complex prompt from the user.",
@@ -430,32 +443,21 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Tenant graph grounding accounts for 10 messages in that interaction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "10 messages for tenant graph grounding",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 39,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Generative answers account for 2 messages in that interaction.",
+      "claim": "The documented 12-message interaction comprises 10 grounding messages and 2 generative-answer messages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "2 messages for generative answers",
+      "quote": "10 messages for tenant graph grounding, and 2 messages for generative answers",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Cost and licensing; rationale: cost; Governance guidance",
+      "where": "Cost and licensing; Governance guidance: After rollout; rationale: cost; front matter: cost",
       "type": "cost",
-      "claim": "SharePoint-agent usage charges appear under the Copilot Studio meter on the invoice.",
+      "claim": "Pay-as-you-go SharePoint agent usage is billed under the Copilot Studio meter.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
       "quote": "Charges of SharePoint agent usage appear under the Copilot Studio meter in your invoice.",
@@ -480,7 +482,7 @@
       "claim": "A budget can be created in Microsoft Cost Management under Monitoring > Budgets.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "You can quickly create a budget under **Monitoring** > **Budgets** for your selected scope.",
+      "quote": "You can quickly create a budget under Monitoring > Budgets for your selected scope.",
       "severity": null,
       "fix": null
     },
@@ -488,7 +490,18 @@
       "n": 43,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Microsoft publishes a price of USD $0.01 per message for agents in SharePoint.",
+      "claim": "The SharePoint agents Azure billing resource is used whenever a user without a Microsoft Copilot licence uses a SharePoint agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "That resource is used whenever a user without a Microsoft Copilot license uses a SharePoint agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The published pay-as-you-go price for agents in SharePoint is USD $0.01 per message.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-pricing",
       "quote": "| Service | What's Counted? | What's billed? (USD) |\n| Agents in SharePoint | The number of messages used. | $0.01/message |",
@@ -496,194 +509,7 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Scope",
-      "type": "role",
-      "claim": "Learn lists SharePoint administrator as a prerequisite role for setting up SharePoint agents as an Azure billing resource.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "To set up SharePoint agents as a resource in Azure, you need to have at least the following permissions as:\n- A SharePoint administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 45,
-      "where": "Scope",
-      "type": "role",
-      "claim": "Setting up the SharePoint-agent Azure resource requires Owner or Contributor access to the Azure subscription.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "Owner or Contributor Azure roles to an Azure subscription",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Scope",
-      "type": "role",
-      "claim": "The setup also requires Owner or Contributor access to a resource group linked to that subscription.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "Owner or Contributor Azure roles to an Azure resource group linked to the same Azure subscription",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Scope",
-      "type": "role",
-      "claim": "The Azure Owner or Contributor roles are needed during billing setup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "You only need the Owner or Contributor Azure roles during the billing setup process.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "The general tenant-level Teams control is Teams admin center > Teams apps > Manage apps > app > Allow or Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "Sign in to the Teams admin center and access **Teams apps** > **Manage apps**.\n2. Select the app on the **Manage apps** page and select **Allow** or **Block** option.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "The MicrosoftTeams module documents Update-M365TeamsApp with -Id and Boolean -IsBlocked to modify app state.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "PS C:\\> Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The cmdlet reference describes its -IsBlocked $true example as unblocking, making that example unreliable guidance for a blocking command.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "PS C:\\> Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not specifically confirm Manage apps applicability to SharePoint agents discovered through the in-context store.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint agents Teams admin center Manage apps; SharePoint agents in-context Teams. Read learn.microsoft.com/microsoftteams/manage-apps and learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint; no store-specific applicability statement found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Teams Administrator is the role Learn names for using Teams admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "Admins can turn Microsoft Copilot for SharePoint on or off per user through the Copilot licence's service plans in Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "Under the license details page for Microsoft Copilot on the Microsoft 365 admin center, admins can turn 'Microsoft Copilot for SharePoint' on or off on a per-user basis.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Turning off that service plan also disables Copilot in OneDrive for the user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "However, this change also disables Copilot in OneDrive and on the SharePoint page authoring Copilot for that user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Turning off that service plan also disables SharePoint page-authoring Copilot for the user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "However, this change also disables Copilot in OneDrive and on the SharePoint page authoring Copilot for that user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "front matter: cost; Why it matters; rationale: cost",
-      "type": "cost",
-      "claim": "Variable cost correctly reflects metered pay-as-you-go SharePoint-agent usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-pricing",
-      "quote": "Your tenant is billed according to the details shown in the following table:\nAgents in SharePoint | The number of messages used. | $0.01/message",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "record",
-      "claim": "Microsoft's notice recommends briefing helpdesk staff about access to and use of SharePoint agents.",
-      "status": "supported",
-      "source": "Message Center post MC1193415",
-      "quote": "Inform helpdesk staff in case users have questions about accessing or using SharePoint agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "No Microsoft Learn page specifically documenting this in-context-store capability was found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint agents in-context Teams; SharePoint agents Teams in-context store Add agents and bots controls actions. Read Manage access to agents in SharePoint, manage-apps and training/Share an agent in Microsoft Teams; these cover surrounding features, not the roster store.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Restricted content discovery can turn off agent-related features on individual SharePoint sites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "As a SharePoint admin, you can turn off all agent-related features on individual sites by using the restricted content discovery feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Governance guidance: After rollout",
-      "type": "cost",
-      "claim": "Microsoft Cost Management provides consumption details for SharePoint agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "in Microsoft cost management, you can see a detailed breakdown by feature, including SharePoint agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
       "where": "Scope; rationale: impact",
       "type": "record",
       "claim": "Microsoft's notice identifies all Teams users on Desktop and Mac as affected.",
@@ -692,17 +518,215 @@
       "quote": "Who is affected: All users of Microsoft Teams on Desktop and Mac.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The SharePoint agents billing page requires a SharePoint administrator to set up the Azure resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "To set up SharePoint agents as a resource in Azure, you need to have at least the following permissions as:\n- A SharePoint administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Setup requires Owner or Contributor on the Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Owner or Contributor Azure roles to an Azure subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Setup requires Owner or Contributor on the resource group linked to that subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Owner or Contributor Azure roles to an Azure resource group linked to the same Azure subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Azure roles are needed during billing setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "You only need the Owner or Contributor Azure roles during the billing setup process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > app > Allow or Block is the documented general organisation-wide app control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and access Teams apps > Manage apps.\nSelect the app on the Manage apps page and select Allow or Block option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The MicrosoftTeams cmdlet Update-M365TeamsApp exposes -Id <app-id> and -IsBlocked <Boolean> to update tenant app state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp\n    -Id <String>\n    [-IsBlocked <Boolean>]\n\n-Id: Application ID of Microsoft Teams app.\n-IsBlocked: The state of the app in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The cmdlet reference describes an example using -IsBlocked $true as unblocking, warranting caution about the blocking direction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\n\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not specifically confirm that SharePoint agents from the in-context store appear in Manage apps or how that general control governs them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint agents Teams \"in-context\" \"Manage apps\" controls policy; \"SharePoint agents\" \"Teams admin center\". Opened manage-apps and manage-access-agents-in-sharepoint; found general app controls, but no explicit mapping of in-context-store SharePoint agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Learn gives Teams Administrator as the role for using Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Admins can turn Microsoft Copilot for SharePoint on or off per user through the Copilot licence service plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Under the license details page for Microsoft Copilot on the Microsoft 365 admin center, admins can turn 'Microsoft Copilot for SharePoint' on or off on a per-user basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off that service plan also disables Copilot in OneDrive for that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "However, this change also disables Copilot in OneDrive and on the SharePoint page authoring Copilot for that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off that service plan also disables SharePoint page authoring Copilot for that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "However, this change also disables Copilot in OneDrive and on the SharePoint page authoring Copilot for that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Restricted content discovery can turn off agent-related features per site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "As a SharePoint admin, you can turn off all agent-related features on individual sites by using the restricted content discovery feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking a SharePoint agent in Microsoft 365 admin center currently affects Copilot Chat, not Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Currently, blocking an agent only affects its availability in Copilot Chat. It doesn't yet apply to OneDrive, SharePoint, or Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft Cost Management can show SharePoint agent consumption separately within Copilot Studio charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Charges of SharePoint agent usage appear under the Copilot Studio meter in your invoice. However, in Microsoft cost management, you can see a detailed breakdown by feature, including SharePoint agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: Before rollout and After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist's licensing checks and consumption monitoring have corresponding rows in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm that intended users have E3 or E5 (with Teams) licensing ... Review pay-as-you-go consumption ... The only control row is 'Whether a Teams agent or app is allowed or blocked for the organisation'.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet beginning 'Confirm that intended users have E3 or E5' and the After rollout bullet beginning 'Review pay-as-you-go consumption': these checklist controls have no table rows. Retain the verified licensing and monitoring information in the body; do not add control rows as part of this correction."
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "record",
+      "claim": "Microsoft's supplied notice names no switch specific to this feature.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "No admin action is required; the feature is enabled by default.\nExisting policies are respected; no changes to admin controls are needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "The notice's rollout timeline has already moved.",
+      "status": "supported",
+      "source": "Message Center post MC1193415",
+      "quote": "General Availability: Rolling out in late October 2026 (previously late July) and expected to complete by late November 2026 (previously late August).",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T03:37:03.176Z",
+    "at": "2026-11-25T10:15:41.717Z",
     "summary": {
       "links": 9,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -723,33 +747,33 @@
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-pricing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/services/pay-as-you-go-setup-copilot",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -758,22 +782,26 @@
         "side": "ui",
         "governs": "Whether a Teams agent or app is allowed or blocked for the organisation",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Teams apps",
           "Manage apps",
           "Allow or Block"
         ],
-        "missing": []
+        "missing": [
+          "Teams apps",
+          "Manage apps",
+          "Allow or Block"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether a Teams agent or app is allowed or blocked for the organisation",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-        "reachable": true,
+        "reachable": false,
         "token": "Update-M365TeamsApp",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -795,6 +823,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

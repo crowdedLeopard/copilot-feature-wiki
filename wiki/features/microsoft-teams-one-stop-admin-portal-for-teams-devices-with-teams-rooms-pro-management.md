@@ -98,15 +98,17 @@ changes:
     note: "Correction: the general Teams Rooms Pro Management page's supported clouds now read 'all Microsoft clouds except DoD and Office 365 operated by 21Vianet'."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 132 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 128 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 132
-  confirmed: 131
+  claims: 128
+  confirmed: 127
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -225,10 +227,11 @@ cost: Low. The transition page ties portal access to Teams Rooms or Teams Shared
 impact: Low. Teams device administrators and help desks change portals, while room and phone users are not described as affected; the TAC retirement dates apply whether or not anyone acts.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: public-cloud retirement; summary / record: Public-cloud SIP administration retires from mid-November to the end of November 2026. | Found: SIP, MTR-A and Panels devices administration experience in TAC will start deprecating by Mid-November and will complete by end of November. | Fix: Keep the notice's dates. Add: 'The transition guide's FAQ still says deprecation begins and ends in October 2026; this briefing follows the later timeline in MC1227622.' The conflicting FAQ is at https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 under 'What is the deadline to migrate from TAC to PMP?'.
-- [supported, minor] Risk assessment: Change & support / behaviour: End-of-life devices get the latest Admin Agent. | Found: Microsoft will make the latest Admin agent version available which supports connectivity to the Pro Management Portal. | Fix: Replace 'End-of-life devices get the latest Admin Agent' with 'Microsoft makes the latest Admin Agent available for end-of-life devices'. This preserves the transition guide's narrower availability statement; https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp says Microsoft makes every effort to update these devices automatically and administrators remain responsible for ensuring they are updated. | Source: https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells readers to fix network and conditional access controls, but neither control has a row in the controls table. | Found: fix the network, Admin Agent version or conditional access cause. / Table rows: custom roles; tenant-wide pause; PMP ring adoption; TAC tag import. | Fix: Replace the first After rollout bullet with 'Check each device group in PMP for devices showing Device is not connected to IoT Hub.' This removes the unmatched instructions to change network or conditional access controls without adding table rows.
+- [supported, minor] summary; What's changing: TAC deprecation / record: TAC device administration starts retiring in November 2026. | Found: The deprecation of Teams device management capabilities in TAC will begin in November 2026 and will roll out in phases based on device type and feature readiness. | Fix: Keep the notice's dates. Add: "The transition guide's FAQ still says TAC device-management deprecation begins and ends in October 2026; this briefing follows the later timeline in MC1227622." The conflicting FAQ is at https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 under "What is the deadline to migrate from TAC to PMP?".
+- [supported, minor] Risk assessment: Change & support / behaviour: End-of-life devices get the latest Admin Agent. | Found: Microsoft will make the latest Admin agent version available which supports connectivity to the Pro Management Portal. | Fix: Replace "End-of-life devices get the latest Admin Agent" with "Microsoft makes the latest Admin Agent available for end-of-life devices". The transition guide promises availability, not successful installation; the Android update guide says Microsoft makes every effort to update these devices automatically and administrators remain responsible for ensuring they are updated. | Source: https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1
+- [supported, minor] controls[1].ui; Governance controls; Governance guidance: At rollout / admin-path: The tenant Android pause is at Updates > Update management > Android updates > Pause updates in PMP. | Found: go to Updates > Update management > Android updates and click on Pause updates action. | Fix: Keep controls[1].ui unchanged. In the At rollout checklist, extend "Updates > Update management > Android updates" to "Updates > Update management > Android updates > Pause updates" so the shortened prose route also ends at the control. | Source: https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist instructs readers to fix network and conditional access controls without corresponding controls-table rows. | Found: "fix the network, Admin Agent version or conditional access cause" / Controls table: custom roles; tenant-wide pause; PMP ring adoption; TAC tag import. | Fix: Replace the first After rollout bullet with "Check each device group in PMP for devices showing Device is not connected to IoT Hub." This removes the unmatched instructions to change network or conditional access controls without adding rows.
 -->

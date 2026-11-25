@@ -87,10 +87,12 @@ changes:
     note: "Corrected after the check: added the group-level policy prerequisite for the preview Graph applyOnce route, and reworded the Information Barriers and storage statements to match the Learn compliance and storage pages."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -197,4 +199,10 @@ The Cloud Policy overview lists Office Apps Administrator as the recommended rol
 risk: Medium. Microsoft's notice says the feature is on by default and transcribes captured audio, including from Zoom, Webex and Google Meet meetings in a browser, but names no capture-specific switch, so governance rests on consent policy and a policy setting that is not yet identified.
 cost: Low. The notice says a Microsoft 365 Copilot license is required and publishes no separate price or meter for capture; the indirect costs are admin time, user communication and Copilot Notebook storage counted against a quota.
 impact: Medium. Only users who already have access to Copilot Notebooks in OneNote on Windows are affected, but for them it arrives on by default, and capture can be suggested when a supported browser meeting is detected.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].api; Governance controls: first table row / command: POST /beta/admin/configurationManagement/configurationMonitors can apply a desired-state baseline once using the preview applyOnce mode. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors | mode | monitorMode | The monitor mode. The possible values are: `monitorOnly`, `applyOnce`, `unknownFutureValue`. Optional; defaults to `monitorOnly`. | | Fix: Keep the endpoint. Replace 'API is preview: applyOnce, resource microsoft.copilot.copilotpagesnotebooks, value 0 disables' in the front-matter note and rendered table with 'API is preview: set request-body mode to applyOnce and the baseline resourceType to microsoft.copilot.copilotpagesnotebooks with properties.value set to the string "0" to disable'. Keep the existing tenant-level and group-policy qualifications. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

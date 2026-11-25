@@ -3,30 +3,32 @@
   "roadmapId": 576810,
   "title": "Microsoft Dataverse: bulk delete gains run details and solution-aware jobs",
   "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "date": "2026-11-25",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 54,
-    "confirmed": 53,
+    "claims": 51,
+    "confirmed": 50,
     "unconfirmed": 1,
     "contradicted": 0,
     "blocker": 0,
     "major": 1,
-    "minor": 0
+    "minor": 3
   },
-  "summary": "The roadmap facts, governance paths and automation calls are supported, including the warning that imported deletion jobs run immediately. One descriptive comparison should be narrowed: Microsoft documents bulk deletion at scale but does not establish that it is one of only a few Dataverse tools that can do this.",
+  "summary": "The briefing passes: its roadmap facts, immediate execution of imported jobs, permissions and documented operations are supported. The comparison calling bulk delete one of the few tools for deleting records at scale is unsubstantiated; the control paths and API presentation also need small clarifications.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; Scope",
+      "where": "front matter: products; title; Scope",
       "type": "record",
-      "claim": "The roadmap product is Microsoft Dataverse.",
+      "claim": "The change concerns Microsoft Dataverse.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Dataverse\"]",
@@ -70,7 +72,7 @@
       "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Preview.",
+      "claim": "The record lists General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -81,7 +83,7 @@
       "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud; GCC, GCC High and DoD are not listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -92,7 +94,7 @@
       "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the platform listed in the roadmap record.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -101,20 +103,9 @@
     },
     {
       "n": 8,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap record does not list GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: defaultState; What's changing; Scope",
       "type": "default",
-      "claim": "The change is enabled for end users automatically, supporting defaultState on.",
+      "claim": "The change is on automatically, described by the roadmap as enabled for end users automatically.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled for:\n\nEnabled for end users automatically",
@@ -122,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap describes clearer job-level and record-level error details through a user interface.",
+      "claim": "The roadmap describes clearer job- and record-level error details through a user interface.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Bulk delete now provides clear, job- and record-level error details through an intuitive user interface.",
@@ -133,8 +124,8 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 10,
+      "where": "title; summary; What's changing",
       "type": "record",
       "claim": "The roadmap describes solution-aware bulk delete configurations that can move between environments.",
       "status": "supported",
@@ -144,21 +135,21 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "title; summary; What's changing; Risk assessment; Governance guidance",
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Bulk delete job errors can be reviewed on the Run details tab without rerunning the job.",
+      "claim": "Errors from a bulk delete job appear on its Run details tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Errors encountered during a bulk delete job are visible under a Run details tab.\n\nIf a job failed to run, open the latest completed job, and select the Run details tab to view all the errors that were encountered during the job.",
+      "quote": "Errors encountered during a bulk delete job are visible under a Run details tab.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing",
+      "n": 12,
+      "where": "What's changing: Run details fields",
       "type": "behaviour",
-      "claim": "Run details displays job status.",
+      "claim": "Run details shows the job status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "The top section clearly displays the following details:\n\n- Job status",
@@ -166,24 +157,35 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
+      "n": 13,
+      "where": "What's changing: Run details fields",
       "type": "behaviour",
-      "claim": "Run details displays start time.",
+      "claim": "Run details shows the start time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Start time",
+      "quote": "The top section clearly displays the following details:\n\n- Job status\n- Start time",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: Run details fields",
+      "type": "behaviour",
+      "claim": "Run details shows the end time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
+      "quote": "- Start time\n- End time",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing",
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Run details displays end time.",
+      "claim": "Run details shows the number of records deleted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "End time",
+      "quote": "- Number of records deleted",
       "severity": null,
       "fix": null
     },
@@ -191,38 +193,27 @@
       "n": 16,
       "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Run details displays the number of records deleted.",
+      "claim": "Run details shows the number of records that failed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Number of records deleted",
+      "quote": "- Number of records failed",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "where": "What's changing: Run details fields",
       "type": "behaviour",
-      "claim": "Run details displays the number of records failed.",
+      "claim": "Run details shows the number of errors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Number of records failed",
+      "quote": "- Number of errors, if any",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Run details displays the number of errors, if any.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Number of errors, if any",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
+      "where": "What's changing: Failed status",
       "type": "behaviour",
       "claim": "A Failed status indicates that the job did not start.",
       "status": "supported",
@@ -232,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 19,
       "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "BulkDeleteFailure stores failures for records not deleted and exposes information about the error.",
+      "claim": "Record deletion failures and their error information are stored in the BulkDeleteFailure table.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
       "quote": "A record of failures is stored in the Bulk Delete Failure (BulkDeleteFailure) table. You can retrieve information from the table about the error that caused the failure.",
@@ -243,21 +234,32 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "title; summary; What's changing; Why it matters",
+      "n": 20,
+      "where": "Why it matters; controls[1].note; Governance guidance",
       "type": "behaviour",
-      "claim": "Bulk delete jobs are solution-aware and can be added to solutions to move between environments.",
+      "claim": "A bulk delete job that fails or ends prematurely does not roll back records already deleted.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Bulk delete jobs are solution-aware, so you can add them to a solution to make them portable across environments.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
+      "quote": "If a bulk delete job fails or ends prematurely, the operation doesn't roll back any deleted records. The record data remains deleted.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing",
+      "n": 21,
+      "where": "Why it matters: opening sentence",
       "type": "behaviour",
-      "claim": "One or more bulk deletion jobs can be added as Data Life Cycle Config components.",
+      "claim": "Bulk delete is one of the few Dataverse tools that removes records at scale.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Dataverse bulk deletion \"one of the few\"; opened learn.microsoft.com/power-platform/admin/delete-bulk-records and learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk. Neither establishes the comparison with other tools.",
+      "severity": "major",
+      "fix": "Replace 'Bulk delete is one of the few Dataverse tools that removes records at scale' with 'Bulk delete removes Dataverse records at scale'."
+    },
+    {
+      "n": 22,
+      "where": "What's changing: solution-aware jobs; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "In the Power Apps maker portal an administrator can add one or more bulk deletion jobs to a solution as Data Life Cycle Config components.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "Select Add existing > More > Other > Data Life Cycle Config.\nSelect one or more bulk deletion jobs to add to the solution.",
@@ -266,9 +268,9 @@
     },
     {
       "n": 23,
-      "where": "What's changing; controls[2].note",
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Exporting and importing these solutions works the same as for other solution components.",
+      "claim": "Solutions containing bulk deletion jobs can be exported and imported like other solution components.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "Exporting and importing solutions containing bulk deletion jobs works the same as with other solution components.",
@@ -290,7 +292,7 @@
       "n": 25,
       "where": "What's changing; Scope",
       "type": "applicability",
-      "claim": "Only bulk deletion jobs created in Power Platform environments can be solution-aware.",
+      "claim": "Only bulk deletion jobs created in Power Platform environments can be solution aware.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "Only bulk deletion jobs created in Power Platform environments can be solution-aware.",
@@ -299,31 +301,20 @@
     },
     {
       "n": 26,
-      "where": "What's changing; Risk assessment",
+      "where": "What's changing; Risk assessment; controls[2].governs",
       "type": "behaviour",
-      "claim": "Only job definitions are portable through solutions.",
+      "claim": "Only job definitions move in the solution; deleted data is not included.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Only job definitions are portable.",
+      "quote": "Only job definitions are portable. Deleted data isn't included.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "What's changing; Risk assessment",
-      "type": "behaviour",
-      "claim": "Deleted data is not included in the portable solution.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Deleted data isn't included.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
       "where": "What's changing; Why it matters; Risk assessment; controls[2].note; rationale: risk",
       "type": "behaviour",
-      "claim": "Imported bulk deletion jobs run immediately on import rather than requiring a separate start step.",
+      "claim": "Imported bulk deletion jobs run immediately on import without a separate start action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "Imported bulk deletion jobs run immediately on import. Plan imports carefully.",
@@ -331,43 +322,21 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Why it matters; controls[1].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "If a bulk delete job fails or ends prematurely, records already deleted are not rolled back.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
-      "quote": "If a bulk delete job fails or ends prematurely, the operation doesn't roll back any deleted records. The record data remains deleted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Bulk delete is one of the few Dataverse tools that removes records at scale.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Dataverse bulk deletion tools \"one of\" \"few\"; opened https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk and https://learn.microsoft.com/power-platform/admin/delete-bulk-records. Neither establishes the comparison with other tools.",
-      "severity": "major",
-      "fix": "Replace 'Bulk delete is one of the few Dataverse tools that removes records at scale' with 'Bulk delete removes Dataverse records at scale'."
-    },
-    {
-      "n": 31,
-      "where": "Why it matters",
+      "n": 28,
+      "where": "Why it matters: existing unpackaged jobs",
       "type": "absence",
-      "claim": "Microsoft has not stated how these changes affect existing unpackaged bulk delete jobs.",
+      "claim": "Microsoft has not stated how these improvements affect existing unpackaged jobs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse \"solution-aware\" \"bulk\" \"existing\" jobs; opened https://learn.microsoft.com/power-platform/admin/delete-bulk-records and https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk. Neither describes a migration or change to unpackaged jobs.",
+      "quote": "Searched: \"bulk deletion\" \"existing\" \"solution-aware\"; \"bulk deletion\" \"solution\" \"existing jobs\". Opened learn.microsoft.com/power-platform/admin/delete-bulk-records and learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk; no change to unpackaged jobs is specified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment",
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance controls",
       "type": "behaviour",
-      "claim": "The wizard's Permanent deletion checkbox permanently removes records so they cannot be recovered.",
+      "claim": "Selecting the Bulk Deletion Wizard's Permanent deletion checkbox permanently removes records so they cannot be recovered.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "The Bulk Deletion Wizard includes a Permanent deletion checkbox. When selected, records deleted by the bulk delete job are permanently removed and can't be recovered.",
@@ -375,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Governance controls",
+      "n": 30,
+      "where": "Governance controls: Permanent deletion",
       "type": "behaviour",
-      "claim": "Permanent deletion skips moving a job's deleted records to deleted records tables when deleted record keeping is enabled.",
+      "claim": "For a job using Permanent deletion, enabled deleted record keeping is bypassed rather than moving its deleted records to deleted records tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "If deleted record keeping is turned on for your environment, this option skips the step of moving data to deleted records tables, which results in faster job execution.",
@@ -386,18 +355,18 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Risk assessment; Open questions",
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "The solution-aware bulk deletion notes do not identify a specific role or security privilege beyond admins.",
+      "claim": "The specific role or security privilege intended by admins for creating and importing these solutions is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse \"Data Life Cycle Config\" \"role\" import; Dataverse solution aware bulk deletion jobs Run details licensing license meter prerequisites existing jobs admins role. Opened https://learn.microsoft.com/power-platform/admin/delete-bulk-records; notes specify only admins.",
+      "quote": "Searched: \"bulk deletion\" \"solution\" \"role\" \"admins\"; \"bulk deletion\" \"import\" \"System Administrator\". Opened learn.microsoft.com/power-platform/admin/delete-bulk-records; its solution note names only 'admins', not a specific role or privilege.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 32,
       "where": "controls[0].note; Risk assessment; Governance controls",
       "type": "role",
       "claim": "Running a bulk delete job through the API requires BulkDelete privileges on the table types being deleted.",
@@ -408,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 33,
       "where": "controls[0].note; Risk assessment; Governance controls",
       "type": "role",
-      "claim": "Running a bulk delete job through the API also requires Delete privileges on those table types.",
+      "claim": "Running a bulk delete job through the API requires Delete privileges on the table types being deleted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
       "quote": "To run a bulk delete job, you must have BulkDelete and Delete privileges on the table types you're deleting.",
@@ -419,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 34,
       "where": "controls[0].note; Risk assessment; Governance controls",
       "type": "role",
-      "claim": "Running the job requires read permission on the records specified by QuerySet.",
+      "claim": "The API caller also needs read permission on the records specified in QuerySet.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
       "quote": "You must also have read permissions on the table records that you specify in the QuerySet property.",
@@ -430,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Governance controls",
+      "n": 35,
+      "where": "Governance controls: API permissions",
       "type": "role",
-      "claim": "A system administrator has the API permissions needed for bulk deletion by default.",
+      "claim": "A system administrator has the necessary bulk delete API permissions by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
       "quote": "A system administrator has the necessary permissions by default. Grant them to other users.",
@@ -441,21 +410,21 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment; Governance guidance",
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
-      "claim": "Bulk deletion supports recurring, periodic deletion jobs.",
+      "claim": "Bulk deletion supports periodic and recurring jobs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Delete data periodically.\nSchedule the start time of a recurring bulk delete.",
+      "quote": "- Delete data periodically.\n- Schedule the start time of a recurring bulk delete.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment",
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Bulk deletion can trigger a table's delete plug-in or workflow for each deleted record.",
+      "claim": "Bulk deletions can trigger plug-ins or workflows registered for the affected table's delete action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
       "quote": "If the delete action on a specific table type triggers a plug-in or a workflow (process), the bulk delete job triggers the plug-in or workflow every time it deletes a table record of that type.",
@@ -463,32 +432,21 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment",
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The roadmap and bulk deletion documentation describe no agent or AI action for these changes.",
+      "claim": "The sources describe no agent or AI action for these improvements.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse bulk deletion Run details solution aware jobs AI agent action; opened https://learn.microsoft.com/power-platform/admin/delete-bulk-records and https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk; read roadmap record. No AI or agent action is described.",
+      "quote": "Searched: \"bulk delete\" \"Run details\" \"Copilot\". Read roadmap record and learn.microsoft.com/power-platform/admin/delete-bulk-records; they describe error handling and solution-aware jobs, not an AI or agent action.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Licensing and a separate meter for these two bulk deletion improvements are not published, supporting the unknown licensing model.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse bulk delete Run details solution aware licensing pricing additional license meter. Opened https://learn.microsoft.com/power-platform/admin/delete-bulk-records and https://learn.microsoft.com/power-platform/admin/pricing-billing-skus; no terms specific to these improvements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing; Scope; Governance controls",
+      "n": 39,
+      "where": "controls[0].note; licensing.notes; Cost and licensing; Scope; Governance controls; rationale: cost",
       "type": "role",
-      "claim": "Updating bulk deletion settings in the Power Platform admin center requires System Administrator permissions.",
+      "claim": "The bulk deletion Learn page names System Administrator permissions for updating bulk delete settings in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "You can access bulk delete settings in the Microsoft Power Platform admin center. To update the settings, ensure you have System Administrator permissions.",
@@ -496,10 +454,32 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Cost and licensing",
+      "n": 40,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost; Open questions",
+      "type": "licensing",
+      "claim": "The licensing model for these bulk deletion improvements has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"bulk deletion\" \"solution-aware\" \"license\"; Dataverse bulk deletion licensing Power Apps license. Opened Learn: power-platform/admin/delete-bulk-records, pricing-billing-skus, powerapps-licensing-faq. No entitlement for these admin improvements is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor the bulk deletion Learn page names a licence or meter for these changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/power-platform Dataverse \"license\" \"bulk deletion\"; \"bulk deletion\" \"solution-aware\" \"license\". Read roadmap record and learn.microsoft.com/power-platform/admin/delete-bulk-records in full; neither names a licence or meter for the improvements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: storage",
       "type": "behaviour",
-      "claim": "Bulk deletion is documented as a way to manage consumption of system storage.",
+      "claim": "Bulk deletion is documented as helping manage system storage consumption by removing unneeded data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "The bulk deletion feature helps you delete data you no longer need so you can maintain data quality and manage the consumption of system storage.",
@@ -507,21 +487,21 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Scope",
+      "n": 43,
+      "where": "Scope: Run details prerequisites",
       "type": "absence",
-      "claim": "Learn does not describe a separate prerequisite or enablement flag for the Run details tab.",
+      "claim": "Learn does not describe a separate prerequisite or enabling flag for Run details.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse \"Run details\" \"bulk\" enable prerequisite. Opened https://learn.microsoft.com/power-platform/admin/delete-bulk-records; its error-handling section directs readers to open a completed job and select Run details without naming a separate prerequisite or flag.",
+      "quote": "Searched: \"bulk delete\" \"Run details\" \"enable\". Read learn.microsoft.com/power-platform/admin/delete-bulk-records, including its access requirement and Error handling section; no separate flag or prerequisite for Run details is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 44,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn's deployment example develops and tests a bulk deletion job in sandbox, validates it in preproduction, then imports the solution into production.",
+      "claim": "Microsoft's example develops and tests a bulk deletion job in a sandbox, validates it in preproduction, and imports its solution into production.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
       "quote": "For example, develop and test a bulk deletion job in a sandbox environment, validate it in preproduction, then import the solution into production.",
@@ -529,103 +509,92 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "n": 45,
+      "where": "controls[0].ui; Governance guidance: Before rollout; rendered controls table",
       "type": "admin-path",
-      "claim": "Bulk deletion settings are at Power Platform admin center > Manage > Environments > environment > Settings > Data management > Bulk deletion.",
+      "claim": "The Power Platform admin center route is Manage > Environments > environment > Settings > Data management > Bulk deletion.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "In the navigation pane, select Manage, then in the Manage pane, select Environments.\nOn the Environments page, select an environment.\nIn the command bar, select Settings.\nExpand Data management, then select Bulk deletion.",
+      "quote": "In the command bar, select Settings.\nExpand Data management, then select Bulk deletion.\nSelect New to run the Bulk Deletion Wizard to create a bulk deletion job with the records you want to delete.",
+      "severity": "minor",
+      "fix": "For creating a job, extend controls[0].ui.path to 'Manage > Environments > environment > Settings > Data management > Bulk deletion > New'. Keep the existing shorter route in the checklist for listing jobs. The cited page documents both."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; rendered controls table",
+      "type": "command",
+      "claim": "POST [Organization Uri]/api/data/v9.2/BulkDelete with the printed QuerySet, JobName, SendEmailNotification, ToRecipients, CCRecipients, RecurrencePattern and StartDateTime properties submits a bulk delete job.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
+      "quote": "POST [Organization Uri]/api/data/v9.2/BulkDelete HTTP/1.1\n\nSpecify the query expressions that describe the records to delete in the QuerySet property of your request.",
+      "severity": "minor",
+      "fix": "Set controls[0].api.call to 'POST [Organization Uri]/api/data/v9.2/BulkDelete', removing the inline request body. Add to its note: 'The request body sets QuerySet to identify the records to delete.' The tutorial's example and the cited BulkDelete Action reference confirm all seven printed property names."
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "The route to errors is Power Platform admin center > Manage > Environments > environment > Settings > Data management > Bulk deletion > job > Run details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
+      "quote": "If a job failed to run, open the latest completed job, and select the Run details tab to view all the errors that were encountered during the job.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "controls[0].api; Governance controls table",
+      "where": "controls[1].api; What's changing; rendered controls table",
       "type": "command",
-      "claim": "POST [Organization Uri]/api/data/v9.2/BulkDelete with QuerySet, JobName, SendEmailNotification, ToRecipients, CCRecipients, RecurrencePattern and StartDateTime submits a bulk delete job.",
+      "claim": "GET [Organization Uri]/api/data/v9.2/bulkdeletefailures is a read operation for bulk delete failure records.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
-      "quote": "POST [Organization Uri]/api/data/v9.2/BulkDelete HTTP/1.1\n\"JobName\": \"Bulk Delete Retained Contacts\",\n\"SendEmailNotification\": false,\n\"RecurrencePattern\": \"\",\n\"StartDateTime\": \"2023-03-07T05:00:00Z\",\n\"ToRecipients\": [],\n\"CCRecipients\": []",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/bulkdeletefailure",
+      "quote": "Record that was not deleted during a bulk deletion job.\nRetrieveMultiple ... GET /bulkdeletefailures\nEntitySetName: bulkdeletefailures",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "controls[1].ui; Governance controls table",
+      "where": "controls[2].ui; rendered controls table",
       "type": "admin-path",
-      "claim": "After reaching Bulk deletion through the documented environment settings path, open a job and select Run details to review its errors.",
+      "claim": "In Power Apps the route for adding a bulk deletion job is solution > Add existing > More > Other > Data Life Cycle Config.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "Expand Data management, then select Bulk deletion.\nIf a job failed to run, open the latest completed job, and select the Run details tab to view all the errors that were encountered during the job.",
-      "severity": null,
-      "fix": null
+      "quote": "To add a bulk deletion job to a solution, go to the Power Apps maker portal, create or open a solution ... Select Add existing > More > Other > Data Life Cycle Config.",
+      "severity": "minor",
+      "fix": "Use the full path 'Solutions > solution > Add existing > More > Other > Data Life Cycle Config'. Add https://learn.microsoft.com/power-apps/maker/data-platform/solutions-overview to sources; it states that Solutions is in the left navigation and that a solution is opened from that area. Keep the existing docs link for the control's final steps."
     },
     {
       "n": 50,
-      "where": "controls[1].api; Governance controls table; What's changing",
+      "where": "controls[2].api; controls[2].note; rendered controls table",
       "type": "command",
-      "claim": "GET [Organization Uri]/api/data/v9.2/bulkdeletefailures retrieves bulk deletion failure records.",
+      "claim": "pac solution import --path Solution.zip --environment <environment ID or URL> imports a solution into the target Dataverse environment and is a general solution import command.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/bulkdeletefailure",
-      "quote": "Record that was not deleted during a bulk deletion job.\nRetrieveMultiple Event: False | GET /bulkdeletefailures\nEntitySetName | bulkdeletefailures",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/solution",
+      "quote": "pac solution import\nImport the solution into Dataverse.\n--environment: Specifies the target Dataverse. The value may be a Guid or absolute https URL.\n--path: Path to solution zip file.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "controls[2].ui; Governance controls table; What's changing",
-      "type": "admin-path",
-      "claim": "In the Power Apps maker portal, open a solution and use Add existing > More > Other > Data Life Cycle Config to add bulk deletion jobs.",
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap contrasts the new error details with generic failures that administrators previously had to diagnose.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-      "quote": "To add a bulk deletion job to a solution, go to the Power Apps maker portal, create or open a solution, and then follow these steps:\nSelect Add existing > More > Other > Data Life Cycle Config.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "pac solution import --path Solution.zip --environment <environment ID or URL> is the general solution import command for the specified target Dataverse environment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/solution",
-      "quote": "pac solution import\nImport the solution into Dataverse.\n--environment -env\nSpecifies the target Dataverse. The value may be a Guid or absolute https URL.\n--path -p\nPath to solution zip file.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The BulkDeleteFailure endpoint provides a read-only view of failure details rather than a rollback operation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/bulkdeletefailure",
-      "quote": "RetrieveMultiple Event: False | GET /bulkdeletefailures\nRead-only columns/attributes\nThese columns/attributes return false for both IsValidForCreate and IsValidForUpdate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The roadmap record and bulk deletion feature page name no licence or meter for these improvements.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse bulk delete Run details solution aware licensing pricing additional license meter. Read roadmap record and opened https://learn.microsoft.com/power-platform/admin/delete-bulk-records in full; neither names a licence or meter for these improvements.",
+      "source": "roadmap record",
+      "quote": "Instead of generic failures, admins can quickly understand what went wrong and why, enabling faster troubleshooting, fewer reruns, and more efficient resolution of large-scale deletion jobs.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T06:52:45.961Z",
+    "at": "2026-11-25T10:15:39.648Z",
     "summary": {
       "links": 6,
-      "unreachable": 0,
+      "unreachable": 5,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -636,28 +605,28 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/bulkdelete",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/bulkdeletefailure",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/solution",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -666,7 +635,7 @@
         "side": "ui",
         "governs": "Creating, running and reviewing bulk delete jobs in an environment",
         "docs": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -674,23 +643,29 @@
           "Data management",
           "Bulk deletion"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Data management",
+          "Bulk deletion"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Creating, running and reviewing bulk delete jobs in an environment",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk",
-        "reachable": true,
+        "reachable": false,
         "token": "POST [Organization",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Job-level and record-level failure details for a bulk delete job",
         "docs": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -700,14 +675,22 @@
           "job",
           "Run details"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Data management",
+          "Bulk deletion",
+          "job",
+          "Run details"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Job-level and record-level failure details for a bulk delete job",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/bulkdeletefailure",
-        "reachable": true,
+        "reachable": false,
         "token": "GET [Organization",
         "found": false
       },
@@ -716,7 +699,7 @@
         "side": "ui",
         "governs": "Moving a bulk delete job definition between environments in a solution",
         "docs": "https://learn.microsoft.com/power-platform/admin/delete-bulk-records",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "solution",
           "Add existing",
@@ -724,16 +707,22 @@
           "Other",
           "Data Life Cycle Config"
         ],
-        "missing": []
+        "missing": [
+          "solution",
+          "Add existing",
+          "More",
+          "Other",
+          "Data Life Cycle Config"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Moving a bulk delete job definition between environments in a solution",
         "docs": "https://learn.microsoft.com/power-platform/developer/cli/reference/solution",
-        "reachable": true,
+        "reachable": false,
         "token": "pac solution import",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -743,6 +732,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

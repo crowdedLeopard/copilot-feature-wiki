@@ -79,18 +79,20 @@ changes:
     note: "First briefing for roadmap item 568782, covering the organisation-wide meeting and call troubleshooting pane and its role and licence conditions."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 77 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 75
+  claims: 80
+  confirmed: 76
   unconfirmed: 1
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "00411d72e8e26a7a8a2eeb45c0d4d5a2"
 ---
 
@@ -192,10 +194,14 @@ cost: Low. The only cost the sources show is admin time. Microsoft Learn says tr
 impact: Low. Teams administrators and support staff see a new Meetings and Calls experience; end users see no change described in the sources.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The feature is a read-only view with no change to autonomy or actions. | Found: Searched: "Teams admin center" "meetings" "read-only" "troubleshooting". Opened Monitor and troubleshoot Teams meetings and calls and read MC1462463; both describe monitoring, diagnostics and Copilot analysis, but neither explicitly guarantees read-only behaviour. | Fix: Replace 'No change: the sources describe a read-only monitoring and troubleshooting view.' with 'The sources describe monitoring, diagnostics and Copilot analysis.' In the risk rationale, replace 'a read-only view of meeting and call telemetry' with 'a view of meeting and call telemetry'.
+- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft has not said how Administrative Unit scoping applies to the new organisation-wide lists. | Found: If your organization uses Administrative Units (AUs), your AU assignment determines which users' meetings you can access. | Fix: Remove 'Microsoft has not said how that scoping applies to the new organisation-wide lists; confirm it before relying on it to limit visibility.' Keep the preceding sentence about Administrative Units scoping access: Learn states that prerequisite for the troubleshooting experience without a list-specific exception. | Source: https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls
+- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The sources describe a read-only experience with no change to autonomy or actions. | Found: Searched: Teams admin center meetings troubleshooting read-only callRecords. Opened troubleshooting and Teams roles articles; read MC1462463. They describe monitoring, diagnostics, exports and Copilot analysis, but do not guarantee read-only behaviour. | Fix: Replace 'No change: the sources describe a read-only monitoring and troubleshooting view.' with 'The sources describe monitoring, diagnostics and Copilot analysis.' In the risk rationale replace 'a read-only view of meeting and call telemetry' with 'a view of meeting and call telemetry'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: Every governance checklist control has a corresponding controls-table row. | Found: Confirm how Administrative Unit scoping behaves for delegated admins before you rely on it. ... Controls rows cover tenant role assignment, the troubleshooting route/call records feed and the tenant-wide switch; none covers Administrative Unit scoping. | Fix: The At rollout instruction to confirm Administrative Unit scoping has no corresponding controls-table row; remove that checklist instruction rather than adding an unverified control row.
+- [supported, minor] Cost and licensing / licensing: Other users retain real-time telemetry for the duration of the meeting. | Found: For all other users, the real-time telemetry is retained for the duration of the meeting. | Fix: Keep the cited current-experience statement, but add: 'The older real-time telemetry article instead says users without Teams Premium retain real-time telemetry for 24 hours.' Cite https://learn.microsoft.com/microsoftteams/use-real-time-telemetry-to-troubleshoot-poor-meeting-quality#where-to-find-per-user-real-time-troubleshooting-telemetry for that differing statement. | Source: https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls
+- [supported, minor] controls[0].note; Governance controls; Open questions / applicability: The row caveats the reach of the documented Teams admin roles for the organisation-wide lists. | Found: Teams Administrator ... Everything in the Microsoft Teams admin center and associated PowerShell controls | Fix: Replace 'Learn does not say which roles reach the new organisation-wide lists.' in controls[0].note and the rendered row with 'The roles page gives Teams Administrator access to everything in the Teams admin center; Teams Communications Support Specialist is limited to information for the specific user being searched for.' | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instruction to check Administrative Unit scoping has a corresponding controls-table row. | Found: Confirm how Administrative Unit scoping behaves for delegated admins before you rely on it. ... Controls cover tenant role assignment, the troubleshooting route/call-record feed, and the tenant-wide switch. | Fix: Remove the At rollout checklist item 'Confirm how Administrative Unit scoping behaves for delegated admins before you rely on it.' No control row covers that scoping check.
+- [contradicted, minor] Risk assessment: Data exposure; Governance guidance: Before rollout; Governance controls table / consistency: The documented absence of an export-specific restriction is represented in the controls table. | Found: Microsoft Learn documents no control over who may export ... Microsoft Learn documents no setting that limits who can export. ... The table has no export-restriction row. | Fix: Remove 'Microsoft Learn documents no control over who may export;' from Risk assessment and remove 'because Microsoft Learn documents no setting that limits who can export' from the Before rollout checklist item. Keep the advice on handling exported personal data.
 -->

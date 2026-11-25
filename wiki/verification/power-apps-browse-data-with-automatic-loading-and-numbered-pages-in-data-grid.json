@@ -2,50 +2,55 @@
   "slug": "power-apps-browse-data-with-automatic-loading-and-numbered-pages-in-data-grid",
   "roadmapId": 580454,
   "title": "Power Apps: automatic loading and numbered pages in the modern Data Grid",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-25",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "3 major findings"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 52,
-    "confirmed": 48,
-    "unconfirmed": 3,
+    "claims": 67,
+    "confirmed": 66,
+    "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
-    "major": 3,
-    "minor": 3
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the briefing makes three unsupported assertions about changing Items: returning to the first page, clearing search, and clearing sort. Microsoft documents those effects for Pagination or PageSize changes, but describes Items changes as rebuilding the paging source; the licensing description and search guidance also need small corrections.",
+  "summary": "The briefing passes: the roadmap facts, paging behaviour, maker settings and existing Power Apps entitlement are supported. The governance checklist names grid properties that are missing from the controls table, a minor completeness finding.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Scope; rationale: impact",
+      "where": "title; summary; What's changing; Scope",
       "type": "record",
-      "claim": "Makers can configure the modern Data Grid in canvas apps to load more records automatically as users scroll.",
+      "claim": "The feature is the modern Data Grid in Power Apps canvas apps.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Makers can configure the modern Data Grid in canvas apps to load more records automatically as users scroll",
+      "quote": "Makers can configure the modern Data Grid in canvas apps",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Governance guidance: At rollout; rationale: impact",
+      "where": "summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "Makers can instead display numbered pages with a configurable page size.",
+      "claim": "Makers can configure automatic loading as users scroll.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "load more records automatically as users scroll",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Makers can configure numbered pages.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "or display numbered pages with a configurable page size.",
@@ -53,10 +58,21 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The maker can configure the page size.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "display numbered pages with a configurable page size.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "summary; What's changing; Why it matters; Scope; rationale: risk",
       "type": "record",
-      "claim": "Existing apps retain their behaviour unless makers enable pagination.",
+      "claim": "Existing apps retain their current behaviour unless makers enable pagination.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Existing apps retain their current behavior unless makers enable pagination.",
@@ -64,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What's changing; controls[1].note; Risk assessment: Autonomy & actions",
+      "n": 6,
+      "where": "What's changing; rationale: risk",
       "type": "record",
-      "claim": "Connector limits still apply when pagination is used.",
+      "claim": "The roadmap says connector and formula delegation limits still apply.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Connector and formula delegation limits still apply.",
@@ -75,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: status; What's changing; Scope; Governance guidance; Open questions",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -86,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: targetDate; What's changing; Scope; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The roadmap target is December CY2026, not a committed delivery date.",
+      "claim": "The roadmap target is December CY2026, not a committed rollout date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -97,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The listed release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -108,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 10,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -119,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the listed platform.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -130,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The roadmap publishes no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -141,10 +157,21 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: defaultState; summary; Why it matters; Governance controls",
+      "n": 13,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap lists no other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; Scope; rationale: impact",
       "type": "default",
-      "claim": "Pagination is maker opt-in rather than requiring administrator enablement.",
+      "claim": "Pagination is maker opt-in rather than an automatic change to existing apps.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Existing apps retain their current behavior unless makers enable pagination.",
@@ -152,21 +179,21 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing",
+      "n": 15,
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Pagination accepts Pagination.None, Pagination.Auto, and Pagination.Number.",
+      "claim": "Pagination accepts Pagination.None, Pagination.Auto and Pagination.Number.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "The paging mode. Accepts `Pagination.None`, `Pagination.Auto`, or `Pagination.Number`.",
+      "quote": "Accepts `Pagination.None`, `Pagination.Auto`, or `Pagination.Number`.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
       "where": "What's changing; Scope",
       "type": "default",
-      "claim": "The default Pagination value is Pagination.None.",
+      "claim": "Pagination defaults to Pagination.None.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "The default is `Pagination.None`.",
@@ -174,10 +201,21 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Scope",
+      "type": "behaviour",
+      "claim": "Pagination.Auto loads more records from a pageable source as users scroll.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "Loads more records from a pageable source as users scroll.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Pagination.Number shows one page with first-page, previous-page, and next-page actions.",
+      "claim": "Pagination.Number shows one page with first-page, previous-page and next-page actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "Shows one page of records with first-page, previous-page, and next-page actions.",
@@ -185,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 19,
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "PageSize determines the records per fetch or numbered page.",
+      "claim": "PageSize controls the records per fetch or numbered page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "Set **Pagination** to choose how the grid loads and displays records, and **PageSize** to set the number of records per fetch or numbered page.",
@@ -196,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 20,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "A blank, zero, negative, or invalid PageSize falls back to 100.",
+      "type": "default",
+      "claim": "Blank, zero, negative or invalid PageSize values fall back to 100.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "A blank, zero, negative, or invalid value falls back to 100.",
@@ -207,29 +245,40 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Governance guidance: At rollout; Open questions",
-      "type": "absence",
-      "claim": "The Data Grid Learn page documents the properties but does not state their tenant release date or rollout status.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps Data Grid pagination disable tenant environment administrator control. Opened the full Data Grid reference, including Pagination and examples; no pagination release date or rollout status is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Scope",
+      "n": 21,
+      "where": "What's changing; controls[1].note; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "For a collection or inline table, pagination uses the records already present rather than incrementally loading additional remote records.",
+      "claim": "Pagination does not bypass delegation limits in Items or make a nondelegable formula delegable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "For an in-memory table or collection, displays the available records without simulating incremental server loading.",
+      "quote": "Turning on pagination doesn't make a nondelegable **Items** formula delegable or retrieve records that aren't in a collection.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Pagination does not bypass connector limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "Pagination doesn't bypass delegation limits in **Items**, connector limits, or the scope of an already populated collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Pagination does not enlarge the scope of an already populated collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "Pagination doesn't bypass delegation limits in **Items**, connector limits, or the scope of an already populated collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Changing Pagination or PageSize returns the grid to the first page.",
@@ -240,7 +289,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 25,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Changing Pagination or PageSize clears search text.",
@@ -251,7 +300,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 26,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Changing Pagination or PageSize clears the active sort.",
@@ -262,21 +311,32 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 27,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Learn documents Pagination and PageSize but gives no release date or status for them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Data Grid Pagination automatic loading connector request limits permission role identity release availability. Opened the cited Data Grid article in full; it documents both properties without a release date or status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Built-in search over a partly loaded source can return incomplete results.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "Built-in search over a partly loaded source can return incomplete results.",
+      "quote": "Built-in search over a partly loaded source can return incomplete results. Use a delegable **Items** formula when you need source-wide search.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 29,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Finding no matches among loaded records does not establish that the remote table has no matches.",
+      "claim": "No matches among loaded records does not prove the remote table has no matches.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "A search with no matches among loaded records doesn't prove that the remote table has no matches.",
@@ -284,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Risk assessment: Data exposure; What's changing; rationale: risk",
+      "n": 30,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "The grid's Items formula supplies its data source; pagination does not introduce another data source.",
+      "claim": "The grid's records come from its Items data source.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "**Items** – The data source for the grid. Accepts a Dataverse table, collection, or inline table expression.",
@@ -295,43 +355,109 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "n": 31,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "The pagination documentation describes no new data source or new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps modern Data Grid Pagination PageSize Searchable DelegateSearch; Power Apps Data Grid Pagination automatic loading connector request limits permission role identity release availability. Opened the Data Grid article; pagination uses Items and does not bypass its limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Search normally checks loaded records; source-wide search uses DelegateSearch true and a delegable Items filter.",
+      "claim": "Built-in search checks records the grid has loaded.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "1. Set **Searchable** to `true`.\n2. Set **DelegateSearch** to `true`.\n3. Use the grid's **SearchText** output in **Items** with a filter that your connector can delegate.",
-      "severity": "minor",
-      "fix": "Replace the At rollout search bullet with: 'For source-wide search, have makers set Searchable and DelegateSearch to true, then use the grid's SearchText output in Items with a filter their connector can delegate.' Use that same qualification in the Data exposure bullet."
+      "quote": "When **DelegateSearch** is `false`, search checks the grid's loaded records.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 26,
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The documented source-wide search procedure sets Searchable to true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "To handle search in Power Fx: 1. Set **Searchable** to `true`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The documented source-wide search procedure sets DelegateSearch to true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "2. Set **DelegateSearch** to `true`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Source-wide search uses the grid's SearchText output in Items with a filter the connector can delegate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "Use the grid's **SearchText** output in **Items** with a filter that your connector can delegate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The Data Grid article describes no new permission for pagination.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Data Grid Pagination automatic loading connector request limits permission role identity release availability. Opened the Data Grid article in full; pagination has no new permission requirement. Summary permissions concern AI row summaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "absence",
-      "claim": "Learn documents no new permission, administrator role, or identity prerequisite for pagination.",
+      "claim": "The Data Grid article names no administrator role for pagination.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Apps Data Grid pagination permission role; Power Apps Data Grid automatic loading pagination connector request limits permission identity. Read the full Data Grid reference; its administrator prerequisites concern AI row summaries, not pagination.",
+      "quote": "Searched: Power Apps Data Grid Pagination automatic loading connector request limits permission role identity release availability. Opened the Data Grid article in full; pagination names no administrator role. The administrator prerequisites concern AI row summaries.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The Data Grid article describes no new identity for pagination.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Data Grid Pagination automatic loading connector request limits permission role identity release availability. Opened the Data Grid article in full; its pagination section specifies no new execution identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "The Data Grid page does not describe the detailed interaction of automatic loading with connector request limits in a busy app.",
+      "claim": "The Data Grid article does not describe the effect of automatic loading on connector request limits in a busy app.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Apps Data Grid automatic loading pagination connector request limits permission identity. Read Data Grid and request-limit search excerpts: connector limits still apply, but no pagination-specific request accounting or busy-app interaction is described.",
+      "quote": "Searched: Power Apps Data Grid Pagination automatic loading connector request limits permission role identity release availability. Opened the Data Grid article; it says connector limits still apply but does not quantify automatic loading's request usage or busy-app interaction.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Change & support",
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Changing Items rebuilds the grid's paging source.",
+      "claim": "Changing Items rebuilds the paging source.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "When the **Items** formula changes, the grid rebuilds its paging source rather than replaying previously completed results.",
@@ -339,18 +465,18 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 41,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "A page number cannot be relied on to remain unchanged after Items, Pagination, or PageSize changes.",
+      "claim": "A page number cannot be relied on after changing Items, Pagination or PageSize.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "Don't depend on a page number remaining unchanged after changing **Items**, **Pagination**, or **PageSize**.",
+      "quote": "Changing the paging configuration rebuilds the paging view. Don't depend on a page number remaining unchanged after changing **Items**, **Pagination**, or **PageSize**.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 42,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "CurrentPage is an output.",
@@ -361,7 +487,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 43,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "ItemsCount is an output.",
@@ -372,7 +498,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 44,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "AllItemsLoaded is an output.",
@@ -383,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 45,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft says not to assign formulas to these outputs to implement paging.",
+      "claim": "Learn says not to assign formulas to CurrentPage, ItemsCount or AllItemsLoaded.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "**CurrentPage**, **ItemsCount**, and **AllItemsLoaded** are outputs. Don't assign formulas to them to implement custom paging.",
@@ -394,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 46,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "ItemsCount counts loaded records rather than the remote source's total records.",
+      "claim": "ItemsCount counts loaded records, not the server-side total.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "**ItemsCount** – The number of records currently loaded by the grid, not the total record count in the remote data source and not just the number of rows on the visible page.",
@@ -405,7 +531,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 47,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Enabling text wrapping on a column disables row virtualization.",
@@ -416,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 48,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "App checker flags columns with text wrapping enabled.",
+      "claim": "The app checker flags columns with text wrapping enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "The app checker flags columns with text wrapping enabled.",
@@ -427,32 +553,98 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No pagination-specific licence, price, or meter is published in the documentation checked.",
+      "n": 49,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "This canvas-app option uses the app's existing Power Apps entitlement, represented as included.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps Data Grid Pagination licensing license meter canvas apps licensing. Read Data Grid, Power Apps licensing FAQs, and licensing/meter search excerpts; no pagination-specific licence, price, or meter was found.",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Power Apps requires users to have an appropriate license to run apps, in alignment with the premium licensing requirements described in the Microsoft Power Platform Licensing Guide.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The licensing model is unknown because no pagination-specific licensing has been published.",
+      "claim": "Power Apps Premium is one published entitlement option.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
-      "quote": "Power Apps requires users to have an appropriate license to run apps, in alignment with the premium licensing requirements described in the Microsoft Power Platform Licensing Guide.",
-      "severity": "minor",
-      "fix": "Set licensing.model to 'included' for this option inside an already licensed app. Replace the licensing notes, licensing paragraph and corresponding cost-rationale wording with: 'The app's existing Power Apps entitlement applies; Power Apps Premium is one published option. No pagination-specific licence, price or meter is documented at the time of writing (November 2026).' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq and https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-apps. Replace the licensing open question with: 'Will Microsoft publish an additional licence or meter for pagination?'"
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-apps",
+      "quote": "**Power Apps Premium** is licensed per user and entitles the licensed user to build, modernize, and run unlimited custom applications",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 39,
+      "n": 51,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Data Grid page's licence and capacity eligibility wording concerns AI row summaries, not pagination.",
+      "claim": "Power Apps requires an appropriate entitlement to run apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Power Apps requires users to have an appropriate license to run apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Apps per app is a published licensing option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-apps",
+      "quote": "**Power Apps per app** enables individual users to run (one custom app or access one Power Pages website) for a specific business scenario based on the full capabilities of Power Apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Apps pay-as-you-go is a published entitlement option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-apps",
+      "quote": "**Power Apps pay-as-you-go** allows individual users to run applications (one app) without any licenses via an Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "absence",
+      "claim": "No pagination-specific licence is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Data Grid pagination licensing price meter premium. Opened the Data Grid article and both cited licensing FAQs; their pagination/product entitlement passages name no pagination-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No pagination-specific price is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Data Grid pagination licensing price meter premium. Opened the Data Grid article and both licensing FAQs; read pay-as-you-go meters search excerpts. Product prices are published, but no separate pagination price was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No pagination-specific meter is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Data Grid pagination licensing price meter premium. Opened Data Grid and licensing FAQs; read pay-as-you-go meters excerpts. The per-app meter counts unique monthly app users; no pagination-specific meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Data Grid article's licence and capacity eligibility checks concern AI row summaries, not pagination.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
       "quote": "The canvas grid also checks the shared **AI insight cards** (`EnableFormInsights`) setting and whether AI prompts are enabled. Allowing the canvas-specific feature doesn't override these settings or license and capacity eligibility checks.",
@@ -460,156 +652,123 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Makers enable modern controls and themes per app at Settings > Updates > New > Modern controls and themes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
-      "quote": "With your canvas app open for editing:\n1. On the command bar, select **Settings** > **Updates**.\n2. Select the **New** tab and then turn on **Modern controls and themes**.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[0].api; controls[0].note; Governance controls: first row",
-      "type": "absence",
-      "claim": "Learn documents no API operation for the per-app Modern controls and themes toggle.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps canvas app Modern controls and themes setting API PowerShell pac canvas app settings; Power Apps modern controls Power Platform API. Read overview-modern-controls and pac canvas; no operation setting this toggle was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls: second row",
-      "type": "admin-path",
-      "claim": "The per-app nondelegable-query Data row limit is at Settings > General > Data row limit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/delegation-overview",
-      "quote": "The default number of records is 500, but you can change this number for your app:\n1. Select **Settings**.\n2. Under **General**, change the **Data row limit** setting from 1 to 10,000.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].api; controls[1].note; Governance controls: second row",
-      "type": "absence",
-      "claim": "Learn documents no API operation for setting an app's Data row limit.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps Data row limit setting API PowerShell Power Platform CLI canvas app properties; Power Apps data row limit pac. Read delegation-overview and pac canvas; no operation setting this app property was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[2].ui; controls[2].api; Governance controls; Open questions; summary",
-      "type": "absence",
-      "claim": "No tenant-wide or environment-level switch for turning Data Grid pagination off is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps Data Grid pagination disable tenant environment administrator control. Read Data Grid and tenant-settings search excerpts; the returned grid opt-out is for model-driven read-only grids, and Data Grid's administrator settings govern AI summaries, not pagination.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[0].note; Governance controls: closing paragraphs",
-      "type": "applicability",
-      "claim": "The Modern controls and themes toggle enables the app's modern controls rather than choosing a pagination mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
-      "quote": "Select the **New** tab and then turn on **Modern controls and themes**.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Governance controls: closing paragraphs",
-      "type": "applicability",
-      "claim": "The Data row limit setting is not the control that enables pagination.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "Set **Pagination** to choose how the grid loads and displays records, and **PageSize** to set the number of records per fetch or numbered page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Governance guidance: After rollout, first bullet",
-      "type": "behaviour",
-      "claim": "Changing Items returns the grid to the first page.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Data Grid Items clears search sort. Read Data Grid, Change the paging configuration: first-page reset is stated for Pagination or PageSize; Items changes rebuild the paging source, without a stated first-page reset.",
-      "severity": "major",
-      "fix": "Replace the first After rollout bullet with: 'Retest an app whenever its Items formula, Pagination or PageSize changes. Changing Items rebuilds the paging source; changing Pagination or PageSize returns the grid to the first page and clears search and sort.'"
-    },
-    {
-      "n": 48,
-      "where": "Governance guidance: After rollout, first bullet",
-      "type": "behaviour",
-      "claim": "Changing Items clears the grid's search text.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Data Grid Items clears search sort. Read Data Grid, Change the paging configuration: clearing search text is stated for Pagination or PageSize, not for Items changes.",
-      "severity": "major",
-      "fix": "Replace the first After rollout bullet with: 'Retest an app whenever its Items formula, Pagination or PageSize changes. Changing Items rebuilds the paging source; changing Pagination or PageSize returns the grid to the first page and clears search and sort.'"
-    },
-    {
-      "n": 49,
-      "where": "Governance guidance: After rollout, first bullet",
-      "type": "behaviour",
-      "claim": "Changing Items clears the grid's active sort.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Data Grid Items clears search sort. Read Data Grid, Change the paging configuration: clearing active sort is stated for Pagination or PageSize, not for Items changes.",
-      "severity": "major",
-      "fix": "Replace the first After rollout bullet with: 'Retest an app whenever its Items formula, Pagination or PageSize changes. Changing Items rebuilds the paging source; changing Pagination or PageSize returns the grid to the first page and clears search and sort.'"
-    },
-    {
-      "n": 50,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist's paging and source-wide search configuration steps are represented in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'choose Pagination.Auto or Pagination.Number' and 'set DelegateSearch to true and filter in Items'. Table: Modern controls and themes; Data row limit; tenant or environment switch. No row represents those per-grid configuration steps.",
-      "severity": "minor",
-      "fix": "The At rollout steps for Pagination/PageSize and DelegateSearch/Items have no controls-table rows. Do not describe the existing modern-controls toggle or Data row limit row as representing those per-grid controls; this finding does not request new rows."
-    },
-    {
-      "n": 51,
+      "n": 58,
       "where": "Scope",
       "type": "behaviour",
       "claim": "Pagination.None makes one nonpageable fetch subject to the app's data row limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "Makes one nonpageable fetch, subject to the app's data row limit. Doesn't show a pager or fetch more records as users scroll.",
+      "quote": "`Pagination.None` | Makes one nonpageable fetch, subject to the app's data row limit.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "What's changing; Governance guidance: Before rollout; controls[1].note; rationale: risk",
+      "n": 59,
+      "where": "Scope; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Pagination does not make a nondelegable Items formula delegable.",
+      "claim": "Automatic mode displays a collection or inline table's available records rather than simulating incremental remote loading.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-      "quote": "Turning on pagination doesn't make a nondelegable **Items** formula delegable or retrieve records that aren't in a collection.",
+      "quote": "For an in-memory table or collection, displays the available records without simulating incremental server loading.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Modern controls and themes are enabled per app in the maker editor at Settings > Updates > New > Modern controls and themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
+      "quote": "With your canvas app open for editing: 1. On the command bar, select **Settings** > **Updates**. 2. Select the **New** tab and then turn on **Modern controls and themes**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "No API that sets the per-app Modern controls and themes toggle is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"Modern controls and themes\" API PowerShell pac canvas app settings; \"Modern controls and themes\" \"Power Platform API\" \"PowerShell\". Opened modern-controls overview, pac canvas and PowerShell support; no operation setting this toggle was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The per-app Data row limit for nondelegable processing is at Settings > General > Data row limit in the maker editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/delegation-overview",
+      "quote": "The default number of records is 500, but you can change this number for your app: 1. Select **Settings**. 2. Under **General**, change the **Data row limit** setting from 1 to 10,000.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "No API that sets an app's Data row limit is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"Data row limit\" API PowerShell pac canvas app settings; \"Data row limit\" \"Power Platform API\" \"PowerShell\". Opened delegation overview, pac canvas and PowerShell support; no operation setting this app limit was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2]; summary; Why it matters; Governance controls; rationale: impact",
+      "type": "absence",
+      "claim": "No tenant or environment pagination switch or pagination-specific administrator configuration requirement is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Data Grid pagination tenant environment administrator disable setting Power Platform API. Opened Data Grid, list-tenantsettings, settings-features and PowerShell support. No pagination switch or required admin action was found; AI summary controls govern a separate feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist tells makers to choose Pagination and configure Searchable and DelegateSearch, but these controls have no table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"Have makers choose `Pagination.Auto` or `Pagination.Number` per grid\"; \"set **Searchable** and **DelegateSearch** to `true`\". The table lists only modern controls and themes, Data row limit, and the absent tenant/environment switch.",
+      "severity": "minor",
+      "fix": "The At rollout steps for Pagination, Searchable and DelegateSearch have no corresponding controls-table row. Record this coverage gap; do not add control rows as part of this correction."
+    },
+    {
+      "n": 66,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The modern controls and themes toggle is not documented as a switch over whether pagination is used.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"Modern controls and themes\" API PowerShell pac canvas app settings; Power Apps Data Grid pagination tenant environment administrator disable setting Power Platform API. Opened modern-controls overview and Data Grid; pagination mode is a separate grid property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Data row limit is an existing per-app query setting rather than the choice of pagination mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "Set **Pagination** to choose how the grid loads and displays records. Pagination.None: Makes one nonpageable fetch, subject to the app's data row limit.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T07:21:15.989Z",
+    "at": "2026-11-25T10:15:31.453Z",
     "summary": {
-      "links": 4,
-      "unreachable": 3,
+      "links": 6,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -622,18 +781,28 @@
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/delegation-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-apps",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -642,36 +811,27 @@
         "side": "ui",
         "governs": "Whether modern controls and themes, including the Data Grid, are turned on in an app",
         "docs": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Settings",
           "Updates",
           "New",
           "Modern controls and themes"
         ],
-        "missing": [
-          "Settings",
-          "Updates",
-          "New",
-          "Modern controls and themes"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "How many records a nondelegable query can return in an app",
         "docs": "https://learn.microsoft.com/power-apps/maker/canvas-apps/delegation-overview",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Settings",
           "General",
           "Data row limit"
         ],
-        "missing": [
-          "Settings",
-          "General",
-          "Data row limit"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -680,6 +840,12 @@
     {
       "date": "2026-11-18",
       "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
       "version": 1,
       "model": "gpt-6.1-sol"
     }

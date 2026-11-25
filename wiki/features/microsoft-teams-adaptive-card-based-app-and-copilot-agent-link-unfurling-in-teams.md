@@ -80,17 +80,19 @@ changes:
     note: "Corrected after verification: the shared-chat permissions uncertainty is replaced with what Microsoft Support says, and checklist steps without controls table rows are removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 61
+  claims: 63
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "22a81553a47fc4db6586e6166372c945"
 ---
@@ -179,4 +181,10 @@ Other controls come from the SharePoint agents pages. Learn says admins can turn
 risk: Medium. The feature is on by default for Teams users on Desktop and Mac and puts agents into shared chats, while Microsoft's notice says no admin control changes are needed and existing policies are respected.
 cost: Variable. Users need a Microsoft 365 Copilot licence or tenant pay-as-you-go billing for SharePoint agents, which Microsoft documents as 12 messages per interaction on the Copilot Studio meter.
 impact: High. Microsoft's notice MC1193415 says all Teams users on Desktop and Mac are affected, and the feature is enabled by default.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: The checklist's licensing checks and consumption monitoring have corresponding rows in the controls table. | Found: Confirm that intended users have E3 or E5 (with Teams) licensing ... Review pay-as-you-go consumption ... The only control row is 'Whether a Teams agent or app is allowed or blocked for the organisation'. | Fix: Remove the Before rollout bullet beginning 'Confirm that intended users have E3 or E5' and the After rollout bullet beginning 'Review pay-as-you-go consumption': these checklist controls have no table rows. Retain the verified licensing and monitoring information in the body; do not add control rows as part of this correction.
 -->

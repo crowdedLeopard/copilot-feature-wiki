@@ -84,15 +84,17 @@ changes:
     note: "Corrected the licensing model to included: Teams use needs a Teams licence per Learn, with no licence or price specific to express face enrollment published."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -197,4 +199,10 @@ Room recognition is separate from enrollment. Learn recommends device settings, 
 risk: Medium. It creates a face profile (biometric data) from meeting video, but the roadmap says users opt in, and Learn documents related enrollment and Teams Rooms controls; no express-face setting is documented yet.
 cost: Low. Teams use needs a Teams licence; no licensing requirement or price specific to this feature is published, so the known cost is admin and communication time, plus the Teams Rooms Pro licence Learn states for room recognition.
 impact: Low. The roadmap says users create the profile after they opt in, so those who notice are opt-in users, room admins and privacy teams; Microsoft has not said who is prompted or when.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui; Governance controls table; Before rollout / admin-path: Teams Pro Management Portal > Rooms > Settings > Recognition > Configure with device settings reaches room face-recognition configuration. | Found: Select Rooms. ... Select Settings followed by the Recognition tab ... Enable Configure with device settings ... Modify to the desired configuration | Fix: Extend controls[2].ui.path and the matching table path to 'Rooms > Settings > Recognition > Configure with device settings > Face Recognition'. The cited page lists Face Recognition as the setting; the current path reaches its configuration page but stops before that control. | Source: https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition
 -->

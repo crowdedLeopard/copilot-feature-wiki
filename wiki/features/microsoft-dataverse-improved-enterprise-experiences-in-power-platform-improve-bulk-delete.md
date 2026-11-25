@@ -89,15 +89,17 @@ changes:
     note: "Corrected the BulkDelete API call to list all non-nullable body parameters, and reworded the impact rationale to what the documentation supports."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 54 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 51 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 51
+  confirmed: 50
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -201,8 +203,12 @@ cost: Low. The only cost the sources show is admin time; the Learn page names Sy
 impact: Low. The documented changes appear in bulk deletion settings and the solution explorer, so this briefing expects administrators and solution owners to notice them.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Bulk delete is one of the few Dataverse tools that removes records at scale. | Found: Searched: Dataverse bulk deletion tools "one of" "few"; opened https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk and https://learn.microsoft.com/power-platform/admin/delete-bulk-records. Neither establishes the comparison with other tools. | Fix: Replace 'Bulk delete is one of the few Dataverse tools that removes records at scale' with 'Bulk delete removes Dataverse records at scale'.
+- [unsupported, major] Why it matters: opening sentence / behaviour: Bulk delete is one of the few Dataverse tools that removes records at scale. | Found: Searched: Dataverse bulk deletion "one of the few"; opened learn.microsoft.com/power-platform/admin/delete-bulk-records and learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk. Neither establishes the comparison with other tools. | Fix: Replace 'Bulk delete is one of the few Dataverse tools that removes records at scale' with 'Bulk delete removes Dataverse records at scale'.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance guidance: Before rollout; rendered controls table / admin-path: The Power Platform admin center route is Manage > Environments > environment > Settings > Data management > Bulk deletion. | Found: In the command bar, select Settings. Expand Data management, then select Bulk deletion. Select New to run the Bulk Deletion Wizard to create a bulk deletion job with the records you want to delete. | Fix: For creating a job, extend controls[0].ui.path to 'Manage > Environments > environment > Settings > Data management > Bulk deletion > New'. Keep the existing shorter route in the checklist for listing jobs. The cited page documents both. | Source: https://learn.microsoft.com/power-platform/admin/delete-bulk-records
+- [supported, minor] controls[0].api; rendered controls table / command: POST [Organization Uri]/api/data/v9.2/BulkDelete with the printed QuerySet, JobName, SendEmailNotification, ToRecipients, CCRecipients, RecurrencePattern and StartDateTime properties submits a bulk delete job. | Found: POST [Organization Uri]/api/data/v9.2/BulkDelete HTTP/1.1 Specify the query expressions that describe the records to delete in the QuerySet property of your request. | Fix: Set controls[0].api.call to 'POST [Organization Uri]/api/data/v9.2/BulkDelete', removing the inline request body. Add to its note: 'The request body sets QuerySet to identify the records to delete.' The tutorial's example and the cited BulkDelete Action reference confirm all seven printed property names. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/delete-data-bulk
+- [supported, minor] controls[2].ui; rendered controls table / admin-path: In Power Apps the route for adding a bulk deletion job is solution > Add existing > More > Other > Data Life Cycle Config. | Found: To add a bulk deletion job to a solution, go to the Power Apps maker portal, create or open a solution ... Select Add existing > More > Other > Data Life Cycle Config. | Fix: Use the full path 'Solutions > solution > Add existing > More > Other > Data Life Cycle Config'. Add https://learn.microsoft.com/power-apps/maker/data-platform/solutions-overview to sources; it states that Solutions is in the left navigation and that a solution is opened from that area. Keep the existing docs link for the control's final steps. | Source: https://learn.microsoft.com/power-platform/admin/delete-bulk-records
 -->

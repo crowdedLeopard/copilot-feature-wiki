@@ -79,10 +79,10 @@ controls:
       kind: "powershell"
       call: "Add-ConnectorsToPolicy -PolicyName <policy-guid> -Connectors <connector-objects> -Classification <General|Confidential|Blocked>"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
-    note: "Not confirmed for the CLI commands. The UI path blocks a blockable connector in an existing policy. Classification: Non-business (General), Business (Confidential) or Blocked; each connector object needs id, type, name."
+    note: "Learn documents ACP and DLP checks when pa app add data-source adds a connector. The UI path blocks a blockable connector in an existing policy. Classification: Non-business (General), Business (Confidential) or Blocked."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-19"
+updated: "2026-11-25"
 roadmapModified: "2026-10-16T19:09:00"
 changes:
   - date: "2026-11-18"
@@ -109,19 +109,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-25"
+    note: "Corrected the data policy statements: Learn documents ACP and DLP checks in pa app add data-source, so the claim that no CLI policy enforcement is documented was replaced; the open question now concerns the standalone pa connection create command."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 74
-  confirmed: 73
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "4589a0c0c6886c3d731e24ef454a955a"
+  contradicted: 0
+  attempts: 0
+  hash: "3bd8c71f29f33f1b8fa692196a390bbd"
 ---
 
 ## What's changing
@@ -141,7 +145,7 @@ If nobody acts, nothing changes for tenants that have not enabled code apps: the
 ## Risk assessment
 
 **Data exposure**
-- After adding a connection as a data source, the app can call the generated services for that data source. The code apps overview lists data loss policy enforcement during app launch as a supported management capability. Whether a data policy also stops the connection being created from the CLI is not documented.
+- After adding a connection as a data source, the app can call the generated services for that data source. The code apps overview lists data loss policy enforcement during app launch as a supported management capability. Learn documents ACP and DLP checks in `pa app add data-source` before selecting or creating a connection; a blocked connector or one with all actions blocked returns exit code 2 without creating a connection or data source files. If the tenant cannot be identified or the policy service is unavailable, the CLI warns and continues without the add-time check.
 - The code apps overview says the end user sees a consent dialog for connector permissions.
 
 **Security & identity**
@@ -194,19 +198,19 @@ Release phases on the record are General Availability and Preview. Microsoft Lea
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether code apps run in an environment</strong><br><small>Environment</small><br><small class="controls__note">Power Platform admins and environment admins can set it; configurable for several environments through environment groups and rules. Learn lists the default as Off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Power Apps code apps › Enable code apps <a href="https://learn.microsoft.com/power-apps/developer/code-apps/overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which connectors code apps may use or combine</strong><br><small>Environment</small><br><small class="controls__note">Not confirmed for the CLI commands. The UI path blocks a blockable connector in an existing policy. Classification: Non-business (General), Business (Confidential) or Blocked; each connector object needs id, type, name.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › policy › Edit Policy › Prebuilt connectors › connector › Block <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-guid&gt; -Connectors &lt;connector-objects&gt; -Classification &lt;General|Confidential|Blocked&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors code apps may use or combine</strong><br><small>Environment</small><br><small class="controls__note">Learn documents ACP and DLP checks when pa app add data-source adds a connector. The UI path blocks a blockable connector in an existing policy. Classification: Non-business (General), Business (Confidential) or Blocked.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › policy › Edit Policy › Prebuilt connectors › connector › Block <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-guid&gt; -Connectors &lt;connector-objects&gt; -Classification &lt;General|Confidential|Blocked&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The environment setting decides whether code apps run at all: Learn says that if it is turned off, those apps do not run. It is documented as an environment setting that Power Platform admins and environment admins can change, and it can be configured for several environments at once with environment groups and rules. The .NET SDK exposes nullable Boolean PowerAppsAllowCodeApps on EnvironmentManagementSetting; the property reference does not give a runnable update operation.
 
-Data policies are a general Power Platform control. The code apps overview lists data loss policy enforcement during app launch as supported for code apps. Microsoft Learn does not say that a data policy blocks the CLI commands that list connectors or create connections, so treat the policy as a control over what the app can use, not over what developers can create.
+Data policies are a general Power Platform control. The code apps overview lists data loss policy enforcement during app launch as supported for code apps. The CLI reference says `pa app add data-source` checks the organisation's Advanced Connector Policies (ACP) and Data Loss Prevention (DLP) policies before selecting or creating a connection; a blocked connector, or one with all actions blocked, returns exit code 2 without creating a connection or data source files. If the CLI cannot identify the tenant or the policy service is unavailable, it warns and continues without that check. The `pa connection create` section of the CLI reference describes no such check for the standalone command.
 
 Tenant-level policies require the Power Platform Administrator role. Environment-level policies require Power Apps Environment Admin permissions, or the System Administrator role for environments with a Dataverse database. No admin control specific to the connector commands is documented at the time of writing (November 2026).
 
 ## Open questions
 
-- Does a data policy or any other admin control stop `pa connection create` from creating a connection to a blocked connector, or does it apply only when the app launches? Watch the Learn code apps pages.
+- Does a data policy or any other admin control stop the standalone `pa connection create` command from creating a connection to a blocked connector? Watch the Learn code apps pages.
 - What do the new agent.md files instruct coding agents to do, and which account do those agents act under? Microsoft Learn does not describe them yet.
 - Which of the CLI commands are in preview and which are generally available, given the roadmap lists both phases?
 - Do connectors with a Premium licence class change what end users need to run a code app built this way? Watch the code apps overview.
@@ -215,12 +219,4 @@ Tenant-level policies require the Power Platform Administrator role. Environment
 risk: Medium. Connections for code apps can now be created from a terminal, or by a coding agent running the CLI, without the maker portal; existing controls (the environment's code apps toggle and data policies) apply but need checking.
 cost: Low. No CLI-specific licence or meter is documented at the time of writing (November 2026); the known incremental cost is developer and admin time. Existing code-app licensing requirements still apply.
 impact: Low. Developers and makers who build code apps notice it; the code apps setting on an environment is documented as off by default, so most users see no change.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance controls; Open questions / absence: Connection creation from the CLI has no documented policy enforcement, so data policies govern app use rather than what developers can create. | Found: The command checks your organization's Advanced Connector Policies (ACP) and Data Loss Prevention (DLP) policies before selecting or creating a connection or retrieving datasets and tables. | Fix: Replace the broad absence in Data exposure and the 'not over what developers can create' conclusion with: 'Learn documents ACP and DLP checks in pa app add data-source before selecting or creating a connection; a blocked connector or one with all actions blocked returns exit code 2 without creating a connection or data source files. If the tenant cannot be identified or the policy service is unavailable, the CLI warns and continues without the add-time check; refresh does not repeat that check.' Cite https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli. Keep the narrower uncertainty about the standalone pa connection create command, and remove 'or does it apply only when the app launches?' from the open question. | Source: https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Governance controls table / applicability: The documented data policy control is not confirmed for CLI commands. | Found: [`pa app add data-source`](../reference/cli#pa-app-add-data-source-remarks) checks your organization's Advanced Connector Policies (ACP) and Data Loss Prevention (DLP) policies. A blocked connector can't be added. | Fix: Replace 'Not confirmed for the CLI commands.' in the row note and rendered table with 'Learn documents ACP and DLP checks when pa app add data-source adds a connector.' The existing cited connect-to-data page states this; the CLI reference gives the check's failure and bypass conditions. | Source: https://learn.microsoft.com/power-apps/developer/code-apps/how-to/connect-to-data
 -->

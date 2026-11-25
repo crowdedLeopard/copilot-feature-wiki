@@ -76,19 +76,23 @@ changes:
     note: "First briefing for this item: Learn does not yet describe it, so the page covers the roadmap text and the Agent Dashboard controls that sit beside it."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: removed an unsupported coverage inference and a content-access claim, qualified Global Administrator access for PIM-enabled tenants, and replaced the organisational data prerequisite."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 59
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "45ce46e268bd07e9a2416ef3f48eeb18"
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "531b86c189c8d51c085c6103fc7594a2"
 ---
 
 ## What's changing
@@ -101,7 +105,7 @@ The roadmap record gives the status as In development, with a preview target of 
 
 ## Why it matters
 
-This is reporting on activity that already happens, not a new agent or new access to content, so the exposure is about who can see usage data about employees and how it is grouped. The Agent Dashboard page says its analysed population includes every employee who has had agent activity, which means a tenant with SharePoint agents in use will have those employees in the metrics once the report applies.
+This is reporting on activity that already happens, not a new agent, so the exposure is about who can see usage data about employees and how it is grouped. The Agent Dashboard page says its analysed population includes every employee who has had agent activity.
 
 Microsoft has not stated what happens on arrival for this item, so no source says existing behaviour changes. The sensible move is to learn who can already open the Agent Dashboard and confirm the privacy settings before the report lands, rather than after leaders start quoting figures.
 
@@ -112,7 +116,7 @@ Microsoft has not stated what happens on arrival for this item, so no source say
 - The Microsoft 365 admin centre documents a unified exclusion list that hides chosen users from dashboard aggregates; it takes up to three days to take effect after removals.
 
 **Security & identity**
-- Access to the Agent Dashboard is automatic for a limited set of users in qualifying tenants: senior leaders identified from the Microsoft Entra ID manager attribute, Global administrators and enabled managers. Check who falls in that set before assuming the audience is small.
+- Access to the Agent Dashboard is automatic for a limited set of users in qualifying tenants: senior leaders identified from the Microsoft Entra ID manager attribute, Global administrators and enabled managers. In PIM-enabled tenants, Global Administrators might not have access and must be added explicitly through the web app access settings. The page also lists Viva Insights Analysts with global partition access and users with delegate access under automatic access using assigned access. Check who falls in that set before assuming the audience is small.
 - The page documents that Microsoft 365 Global Administrators can disable automatic access at any time.
 
 **Autonomy & actions**
@@ -138,7 +142,7 @@ Microsoft has not stated what happens on arrival for this item, so no source say
 
 **Clouds and platforms.** The record lists Worldwide (Standard Multi-Tenant) and Web; General Availability is the release phase. Agent Dashboard availability in national and regional clouds is described above.
 
-**Prerequisites.** Organisational data (person, manager and organisation attributes) must be uploaded for the dashboard, per the settings page. Whether this item needs anything more is not stated.
+**Prerequisites.** The Agent Dashboard uses Microsoft Entra ID organisational data by default; uploading an organisational data file is an alternative, not a prerequisite. Whether this item needs anything more is not stated.
 
 ## Governance guidance
 
@@ -152,7 +156,7 @@ Microsoft has not stated what happens on arrival for this item, so no source say
 - Review the Agent Dashboard policy and the web app policy if the report reaches users you did not intend.
 
 ### After rollout
-- Review who holds dashboard access, including the automatic access given to senior leaders, Global administrators and enabled managers.
+- Review who holds dashboard access, including the automatic access given to senior leaders and enabled managers, and to Global administrators (in PIM-enabled tenants, Global Administrators might not have access and must be added explicitly through the web app access settings).
 - Compare the report with the SharePoint Agent Insights report and Purview audit records if a figure looks wrong.
 
 ## Governance controls
@@ -187,15 +191,11 @@ cost: Low. No price or meter specific to this feature is published; the Agent Da
 impact: Low. Leaders, analysts and admins who use the dashboard notice it; Microsoft describes the Agent Dashboard as giving leaders and analysts insights into agent adoption.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters: first paragraph / applicability: Having SharePoint agents in use means those employees will be in the metrics once the report applies. | Found: Searched: SharePoint agent analytics Viva Insights report licensing price default roadmap 480726. Opened Agent Dashboard and dashboard settings; the Copilot view covers agents used within Microsoft Copilot and exclusions exist. No source guarantees this planned item's employee coverage. | Fix: Remove the inference beginning 'which means a tenant with SharePoint agents in use'. The quoted population statement can remain; it does not guarantee coverage of every SharePoint agent interaction.
-- [unsupported, major] Why it matters: first paragraph / behaviour: The planned analytics introduce no new access to content. | Found: Searched: SharePoint agent analytics Viva Insights report licensing price default roadmap 480726; "SharePoint agent analytics" "Viva Insights" default controls licensing. Opened Agent Dashboard, settings and Monitor agent usage; no text establishes this item's content-access design. | Fix: Remove 'or new access to content' from the first sentence of Why it matters; the roadmap establishes reporting, not its data-access implementation.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance guidance: After rollout / role: Global Administrators automatically have Agent Dashboard access in qualifying tenants. | Found: If you're a Privileged Identity Management (PIM) enabled tenant, global admins might not have access to the Agent Dashboard. If you want to give global admins access to the Agent Dashboard, add them explicitly using these steps. | Fix: Qualify both mentions of automatic Global Administrator access: 'In PIM-enabled tenants, Global Administrators might not have access and must be added explicitly through the web app access settings.' | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
-- [contradicted, blocker] Scope: Prerequisites / behaviour: Person, manager and organisation attributes must be uploaded for the dashboard. | Found: The Agent Dashboard can get organizational data in one of three ways: Through Microsoft Entra ID, which is the default setting | Fix: Replace the first Prerequisites sentence with: 'The Agent Dashboard uses Microsoft Entra ID organisational data by default; uploading an organisational data file is an alternative, not a prerequisite.' Keep the existing Agent Dashboard source. The settings page's required attributes qualify uploaded files, not every dashboard deployment. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The included model describes entitlement through existing product licensing, with no requirement specific to this item published. | Found: Microsoft Copilot plans include a Viva Insights service plan with personal insights as well as manager, leader, and advanced analysis for all employees with a Copilot license. | Fix: Keep 'included', add https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements to sources, and add to licensing.notes: 'Microsoft Copilot plans include a Viva Insights service plan; licensing specific to this roadmap item is not published.' | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
-- [supported, minor] licensing.notes; Cost and licensing; Scope; Open questions; rationale: cost / licensing: The Agent Dashboard page requires at least 50 assigned Microsoft Copilot licences and agent activity for the Copilot Agent Dashboard view. | Found: Copilot Agent Dashboard: Your organization must have at least 50 Microsoft Copilot licenses assigned and have agent activity. | Fix: After this requirement in Cost and licensing, add: 'The Copilot Dashboard availability table also lists Agent Dashboard as included with at least 50 assigned Viva Insights licences, so the two pages differ on eligibility.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard#feature-availability-based-on-licenses in sources. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: After rollout / role: Qualifying tenants automatically give senior leaders identified through the Entra ID manager hierarchy Agent Dashboard access. | Found: Users who are senior leaders within large teams as determined by their Entra ID data manager attribute can automatically view the report. | Fix: In the automatic-access bullet, add: 'The page also lists Viva Insights Analysts with global partition access and users with delegate access under automatic access using assigned access.' | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
+- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; Open questions; rationale: cost / licensing: The Agent Dashboard page requires at least 50 assigned Microsoft Copilot licences for the Copilot Agent Dashboard view. | Found: Copilot Agent Dashboard: Your organization must have at least 50 Microsoft Copilot licenses assigned and have agent activity. | Fix: Add to the Licence paragraph: 'Microsoft documentation differs: the Copilot Dashboard licensing table also lists Agent Dashboard as included with at least 50 Viva Insights licences, whereas the Agent Dashboard page requires at least 50 Microsoft Copilot licences.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard#feature-availability-based-on-licenses and add it to sources. Keep these as dashboard requirements, not confirmed requirements for this roadmap item. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
+- [supported, minor] controls[0].api; Governance controls table / command: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AgentDashboard -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone creates a tenant-wide policy disabling Agent Dashboard. | Found: Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> ... [-Everyone] ... $false: The feature is not enabled by the policy. | Fix: Add https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy to sources for the cmdlet syntax. The existing settings page supplies ModuleId VivaInsights, FeatureId AgentDashboard and the tenant-wide disable values; keep the call unchanged. | Source: https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy
+- [supported, minor] controls[1].api; Governance controls table / command: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId "Viva Insights web app" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone creates a tenant-wide policy disabling the Viva Insights web app. | Found: The Everyone switch specifies that the policy applies to all users in the organization. ... The IsFeatureEnabled parameter specifies whether or not the feature is enabled by the policy. | Fix: Add https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy to sources for the cmdlet syntax. The existing settings page supplies ModuleId VivaInsights, FeatureId Viva Insights web app and the tenant-wide disable values; keep the call unchanged. | Source: https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is included under existing product licensing, with no published requirement specific to this roadmap item. | Found: Microsoft Copilot plans also include manager, leader, and advanced analysis for all employees who have an assigned Copilot license. | Fix: Keep licensing.model as included under the standard's product-level licensing rule. Add https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements to sources and prepend to licensing.notes: 'Microsoft Copilot plans include manager, leader and advanced analysis for employees assigned a Copilot licence.' Retain the distinction between those product-level entitlements and this item's unpublished specific requirements. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
 -->

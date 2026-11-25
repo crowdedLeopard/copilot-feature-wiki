@@ -61,18 +61,20 @@ changes:
     note: "Corrected: the Set-CsTeamsMeetingPolicy reference documents BlockDetectedBots for automatic blocking; qualified AllowBots; removed two checklist items that had no controls row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 53
+  claims: 57
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "6abd15f0fb97a1df7572c7f4490873fb"
 ---
 
@@ -170,8 +172,12 @@ cost: Low. The only cost the sources show is admin time to pilot and assign the 
 impact: Low. Administrators who manage meeting policies see the new option; organisers and participants notice only in the users or groups where an administrator enables it.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing; controls[0].note; Governance guidance: Before rollout; Governance controls / behaviour: The feature guide still documents only two options and does not yet include automatic blocking. | Found: | Block all detected bots | *BlockDetectedBots* | Detected external bots are automatically blocked from joining meetings. They can't be admitted by meeting organizers or other participants. | | Fix: Replace every assertion that the feature guide lists only two options with 'The feature guide documents three options: Do not detect bots, When detected, require approval before joining (default), and Block all detected bots.' In the Before rollout bullet, remove the clause claiming the guide lists only two options. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
+- [contradicted, blocker] Risk assessment: Change & support; Open questions / absence: Microsoft has not said whether blocked participants get a lobby admission route or whether organizers can override blocking. | Found: Detected bots are automatically blocked from joining the meeting. They aren't placed in the meeting lobby for organizer approval, and meeting organizers can't admit them. | Fix: Replace the absence sentence with 'Under Block all detected bots, detected participants are not placed in the lobby for organizer approval and organizers cannot admit them. Where supported, eligible people incorrectly identified as bots can use email verification recovery to verify their identity and attempt to join.' Remove the Open questions bullet asking whether organizers can override blocking, or narrow it to 'What exact message does a blocked participant see?' Cite https://learn.microsoft.com/microsoftteams/manage-external-bots. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
+- [contradicted, blocker] Open questions: admin-center label / absence: The admin-center label for automatic blocking is not yet documented. | Found: | Block all detected bots | *BlockDetectedBots* | | Fix: Remove the Open questions bullet asking for the admin-center label: https://learn.microsoft.com/microsoftteams/manage-external-bots documents it as 'Block all detected bots'. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The setting is reached in Teams admin center through Meetings > Meeting policies > policy > Meeting Join and Lobby > Manage external bots and their access to meetings. | Found: This setting is present in the Meeting Join and Lobby section of Meeting policies. Look for "Manage external bots and their access to meetings" and select the appropriate option. | Fix: Add https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby to sources as the supporting navigation reference: it explicitly gives Meetings > Meeting policies > select the policy > Meeting join & lobby. The existing external-bots citation supplies the final setting. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
+- [supported, minor] front matter: licensing.model / licensing: Licensing is recorded as unknown because no feature-specific entitlement is published. | Found: Each user needs a user account and license before they can sign in and access Teams. | Fix: Set licensing.model to 'included' under the schema's rule for a new option inside a licensed product. Replace the notes with 'Teams users need a user account and Teams licence. No licence requirement or meter specific to this option is published in the checked sources.' Add https://learn.microsoft.com/microsoftteams/deploy-small-business to sources. | Source: https://learn.microsoft.com/microsoftteams/deploy-small-business#add-users-and-give-them-access-to-teams
 -->

@@ -1,0 +1,580 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-delete-schema-properties-via-copilot-connector-apis",
+  "roadmapId": 498919,
+  "title": "Microsoft 365 Copilot connectors: delete schema properties with the connector APIs",
+  "status": "verified-with-gaps",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 44,
+    "confirmed": 43,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "The roadmap facts and existing schema-management routes are supported, and targeted searches found no documented property-deletion operation. Correct the unsupported description of API use as manual, flag the admin schema documentation as preview, and name the schema request-body property in the control note.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans property deletion for custom Copilot connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We’re adding support for property deletion in custom Copilot connectors, giving admins and developers more control over schema evolution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The planned capability uses Copilot connector APIs to delete individual schema properties.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Use Copilot connector APIs to delete or drop individual schema properties that are no longer needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap describes keeping the schema current without full re-ingestion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Keep your connector schema clean and up-to-date without requiring full re-ingestion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap target is September CY2025, a past target at the November 2026 run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Developer and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The listed products are Microsoft 365 admin center and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365 admin center\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-07-25T22:15:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-07-25T22:15:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not yet document an operation for deleting an individual custom-connector schema property.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: externalConnectors schema delete property; Copilot connectors delete drop schema property API deletion existing ingested values permissions. Read manage-schema, Update schema and beta schema resource; methods are Create, Get and Update, with no property-deletion operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The existing admin schema route is Customization > Schema > Copilot connectors schema > View details > connection > Customize schema.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftsearch/manage-search-schema",
+      "quote": "go to the Schema page in the Customization section. ... Select View details under Copilot connectors schema. ... Select the connection for which you want to update the schema and select Customize schema.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/external/connections/{connectionId}/schema updates a connection's schema.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-schema-update?view=graph-rest-beta",
+      "quote": "Update the properties of a schema for an externalConnection. ... PATCH https://graph.microsoft.com/beta/external/connections/contosohr/schema ... supply a JSON representation of a schema object.",
+      "severity": "minor",
+      "fix": "Add to controls[0].note and the rendered note: 'The request body sets properties and requires baseType to be microsoft.graph.externalItem.' The beta reference documents both fields."
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "The admin search-schema update documentation concerns Microsoft-built connectors, not the custom-connector deletion capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftsearch/manage-search-schema",
+      "quote": "This section includes information about the update capabilities for the search schema of Microsoft built connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; What's changing; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "For Microsoft-built published connections, the documented way to remove an existing property is to delete and recreate the connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftsearch/manage-search-schema",
+      "quote": "You cannot delete an existing property for a published connection. To remove a property, you must delete and recreate a connection.",
+      "severity": "minor",
+      "fix": "Qualify the first discussion of this limitation and controls[0].note with 'The Manage search schema documentation is marked preview.' Keep the Microsoft-built connector qualification."
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists adding a property as a schema update capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "You can add a new property to your schema. While reingestion is not required, it is recommended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists adding or removing a search capability as a schema update capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "Add or remove a search capability ... You can modify search attributes for a property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists adding or removing an alias as a schema update capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "You can add or remove aliases for use in search queries. However, aliases that were autocreated by the system for refinable properties cannot be removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists adding or removing semantic labels as a schema update capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "You can assign or remove semantic labels. These labels influence experiences such as Relevance and Viva Topics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn recommends reindexing after a schema update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "After updating your schema, we recommend reindexing items to align them with the latest schema. Without reingestion, item behavior might be inconsistent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "Adding or removing a search capability requires reingestion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "Adding or removing a search capability requires reingestion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A connection schema is a flat list of properties defining how content is used across Microsoft 365 Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "The connection schema defines how your content is used across Microsoft 365 Copilot experiences. A schema is a flat list of all the properties you plan to add to the connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The deletion capability's default and arrival behaviour are not stated, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors property deletion permissions default rollout; Copilot connectors schema property deletion licensing price quota limits rollout default tenant setting block. Read roadmap, schema guide, Update schema, schema resource and prerequisites; no deletion default is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not published tenant actions required on arrival or said that existing behaviour changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors property deletion permissions default rollout. Read roadmap, schema-management guide, Update schema and prerequisites; results about federated or self-serve connector rollout do not describe schema property deletion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Schema changes affect how connection properties are exposed for search, query and retrieval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftsearch/manage-search-schema",
+      "quote": "By changing the search schema, you can control what users can search for, how users can search for it, and how you can present the results on Microsoft Search endpoints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes schema maintenance, not a new data source or a change to indexed-item visibility.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Use Copilot connector APIs to delete or drop individual schema properties that are no longer needed. ... Reduce developer overhead and simplify maintenance workflows as your data models evolve.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described deletion's effects on previously ingested values or attached aliases and semantic labels.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors delete drop schema property API deletion existing ingested values permissions; externalConnectors schema delete property. Read schema guide, Update schema and schema resource; no property-deletion semantics are documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "command",
+      "claim": "The existing schema update operation uses PATCH /external/connections/{connectionId}/schema.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-schema-update?view=graph-rest-beta",
+      "quote": "PATCH /external/connections/{connectionId}/schema",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "ExternalConnection.ReadWrite.OwnedBy is the existing update operation's least privileged application permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-schema-update?view=graph-rest-beta",
+      "quote": "Permission type | Least privileged permissions | Higher privileged permissions ... Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "ExternalConnection.ReadWrite.All is the higher privileged application permission for the existing schema update operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-schema-update?view=graph-rest-beta",
+      "quote": "Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "absence",
+      "claim": "Permissions and roles for the new property-deletion operation have not been documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors property deletion permissions default rollout; Copilot connectors delete drop schema property API deletion existing ingested values permissions. Read Update schema permissions, beta schema resource and prerequisites; none describes deletion-specific authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The roadmap describes the new API call as manual.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot connectors schema delete manual. Read roadmap, schema guide and Update schema; the roadmap names admins, developers and APIs but does not state that calls are manual.",
+      "severity": "major",
+      "fix": "Replace the bullet with 'No autonomous behaviour is described in the roadmap item; it describes admins and developers using Copilot connector APIs to delete individual schema properties.'"
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap does not describe autonomous behaviour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We’re adding support for property deletion in custom Copilot connectors, giving admins and developers more control over schema evolution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Aliases, semantic labels, filters and declarative-agent instructions can depend on schema properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "Aliases are friendly names assigned to properties. They are used in queries and in refinable property filters ... include property descriptions from your Copilot connector schema in the instruction set provided to the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft recommends including connector property descriptions in declarative-agent instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "If you're using a declarative agent (DA), you should include property descriptions from your Copilot connector schema in the instruction set provided to the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The included licensing model rests on the tenant's existing Microsoft 365 licensing requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Your tenant must have Microsoft 365 licenses. ... Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Available surfaces and connector types depend on the organization's licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "The surfaces available to your users (Microsoft Search, Microsoft 365 Copilot grounding, Copilot Chat agents) and the connector types you can deploy depend on your organization's licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "No licence, meter, credit rate, quota or cap specific to schema property deletion is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors schema deletion licensing quota price; Copilot connectors schema property deletion licensing price quota limits rollout default tenant setting block. Read prerequisites, schema guide and Update schema; ingestion quotas are not deletion-specific quotas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "The prerequisites page requires an AI administrator to configure and deploy Copilot connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; controls[0].note",
+      "type": "behaviour",
+      "claim": "The cited schema update endpoint is beta, subject to change and unsupported for production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-schema-update?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn documents no separate tenant switch allowing or blocking schema property deletion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors schema tenant block; Copilot connectors schema property deletion licensing price quota limits rollout default tenant setting block. Read prerequisites, schema guide and Update schema; federated connector blocking controls do not govern custom schema deletion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The prerequisites article covers synced and federated connectors rather than naming schema property deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "This article covers the prerequisites that apply to synced and federated connectors.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T10:15:31.759Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498919",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftsearch/manage-search-schema",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-schema-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Schema changes to a connector connection through the admin centre (existing route)",
+        "docs": "https://learn.microsoft.com/microsoftsearch/manage-search-schema",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Schema",
+          "Copilot connectors schema",
+          "View details",
+          "connection",
+          "Customize schema"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Schema changes to a connector connection through the admin centre (existing route)",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-schema-update?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/external/connections",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

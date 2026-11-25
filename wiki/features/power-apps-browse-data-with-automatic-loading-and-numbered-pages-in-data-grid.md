@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The Data Grid page documents Pagination and PageSize without naming a licence or meter for them."
+  model: "included"
+  notes: "The app's existing Power Apps entitlement applies; Power Apps Premium is one published option. No pagination-specific licence, price or meter is documented at the time of writing (November 2026)."
 audiences: ["maker","power-platform-admin","change-adoption"]
 tags: ["power-apps","canvas-apps","modern-controls","delegation","performance"]
 sources:
@@ -33,6 +33,12 @@ sources:
     kind: "learn"
   - title: "Query limitations: Delegation and query limits"
     url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/delegation-overview"
+    kind: "learn"
+  - title: "Power Apps licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
+    kind: "learn"
+  - title: "Power Platform licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-apps"
     kind: "learn"
 videos: []
 related: ["power-apps-new-canvas-controls-card-gallery-persona-avatar-group-and-metrics-card"]
@@ -60,7 +66,7 @@ controls:
     note: "Learn documents no such switch at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-11-17T19:05:12"
 changes:
   - date: "2026-11-18"
@@ -69,19 +75,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected what changing Items does to paging, qualified the source-wide search steps, and stated the existing Power Apps entitlement in place of an unknown licence."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 48
-  unconfirmed: 3
+  claims: 67
+  confirmed: 66
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "85e9cb742fd7dc3fe4a9dd3d0bc2759b"
+  attempts: 0
+  hash: "5a1b41d3c3d937c21ad737113bfed89f"
 ---
 
 ## What's changing
@@ -105,7 +115,7 @@ The practical risk is incomplete results that look complete. The Learn page warn
 **Data exposure**
 
 - No new data source is described. The grid shows records from its **Items** formula, so exposure stays with the connection or table the app already uses.
-- Partial results are the data risk. Built-in search checks loaded records only unless **DelegateSearch** is `true` and the maker writes a delegable **Items** filter, so users can act on a list that is missing matching records.
+- Partial results are the data risk. Built-in search checks loaded records only. For source-wide search, makers set **Searchable** and **DelegateSearch** to `true` and use the grid's **SearchText** output in **Items** with a filter their connector can delegate; without that, users can act on a list that is missing matching records.
 
 **Security & identity**
 
@@ -123,9 +133,9 @@ The practical risk is incomplete results that look complete. The Learn page warn
 
 ## Cost and licensing
 
-Microsoft has not published a licence or meter for this capability. The Data Grid page documents **Pagination** and **PageSize** without naming a licence, price or meter for them, and the roadmap item names none. The Learn page's licence and capacity eligibility wording applies to the separate AI row summaries feature, not to pagination.
+The app's existing Power Apps entitlement applies; Power Apps Premium is one published option. No pagination-specific licence, price or meter is documented at the time of writing (November 2026). The Power Apps licensing FAQ says Power Apps requires users to have an appropriate licence to run apps, and the Power Platform licensing FAQ lists Power Apps Premium, per app and pay-as-you-go options. The Learn page's licence and capacity eligibility wording applies to the separate AI row summaries feature, not to pagination.
 
-The cost the sources show is maker and tester time to choose a paging mode, set a page size and check delegation. Licensing is Not yet published for this item.
+The cost the sources show is maker and tester time to choose a paging mode, set a page size and check delegation.
 
 ## Scope
 
@@ -145,11 +155,11 @@ The feature applies to the modern Data Grid control in canvas apps. Makers set i
 
 - Confirm when the properties reach your tenant: the roadmap item is In development with a December CY2026 target, while Learn already documents them. Watch Message center and the roadmap item.
 - Have makers choose `Pagination.Auto` or `Pagination.Number` per grid and test with a realistic data volume, not an inline sample table.
-- Tell makers to set **DelegateSearch** to `true` and filter in **Items** where users need search across the whole source.
+- For source-wide search, have makers set **Searchable** and **DelegateSearch** to `true`, then use the grid's **SearchText** output in **Items** with a filter their connector can delegate.
 
 ### After rollout
 
-- Retest an app whenever its **Items** formula, **Pagination** or **PageSize** changes, since the grid returns to the first page and clears search and sort.
+- Retest an app whenever its **Items** formula, **Pagination** or **PageSize** changes. Changing **Items** rebuilds the paging source; changing **Pagination** or **PageSize** returns the grid to the first page and clears search and sort.
 - Collect user reports of missing records and check them against delegation and the data row limit first.
 
 ## Governance controls
@@ -172,24 +182,18 @@ The modern controls setting and the **Data row limit** are existing per-app sett
 ## Open questions
 
 - Which release and date will the **Pagination** and **PageSize** properties reach tenants, given that Learn documents them while the roadmap item is In development with a December CY2026 target? Watch the roadmap item and the Data Grid Learn page.
-- Is any licence or meter required for apps that use `Pagination.Auto` against a connector? Watch the Data Grid page and Power Apps licensing documentation.
+- Will Microsoft publish an additional licence or meter for pagination?
 - Will an administrator control for turning pagination off or restricting it be documented? Watch Message center.
 - How does automatic loading interact with the connector request limits in a busy app? Microsoft Learn does not describe it.
 
 <!-- rationale
 risk: Low. The roadmap item says existing apps keep their behaviour until makers enable pagination, and Learn lists no new data access; delegation limits still apply, so partial results remain a maker-side accuracy risk.
-cost: Low. The only cost the sources show is maker time to configure and test; the Data Grid page names no licence or meter for pagination, and licensing is not yet published for this item.
+cost: Low. The only cost the sources show is maker time to configure and test; the app's existing Power Apps entitlement applies, and no pagination-specific licence, price or meter is documented at the time of writing (November 2026).
 impact: Medium. Makers who build canvas apps with the modern Data Grid decide whether to use it; users of those apps then see scrolling or numbered pages, and administrators are not asked to act.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Governance guidance: After rollout, first bullet / behaviour: Changing Items returns the grid to the first page. | Found: Searched: Data Grid Items clears search sort. Read Data Grid, Change the paging configuration: first-page reset is stated for Pagination or PageSize; Items changes rebuild the paging source, without a stated first-page reset. | Fix: Replace the first After rollout bullet with: 'Retest an app whenever its Items formula, Pagination or PageSize changes. Changing Items rebuilds the paging source; changing Pagination or PageSize returns the grid to the first page and clears search and sort.'
-- [unsupported, major] Governance guidance: After rollout, first bullet / behaviour: Changing Items clears the grid's search text. | Found: Searched: Data Grid Items clears search sort. Read Data Grid, Change the paging configuration: clearing search text is stated for Pagination or PageSize, not for Items changes. | Fix: Replace the first After rollout bullet with: 'Retest an app whenever its Items formula, Pagination or PageSize changes. Changing Items rebuilds the paging source; changing Pagination or PageSize returns the grid to the first page and clears search and sort.'
-- [unsupported, major] Governance guidance: After rollout, first bullet / behaviour: Changing Items clears the grid's active sort. | Found: Searched: Data Grid Items clears search sort. Read Data Grid, Change the paging configuration: clearing active sort is stated for Pagination or PageSize, not for Items changes. | Fix: Replace the first After rollout bullet with: 'Retest an app whenever its Items formula, Pagination or PageSize changes. Changing Items rebuilds the paging source; changing Pagination or PageSize returns the grid to the first page and clears search and sort.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; Governance guidance: At rollout / behaviour: Search normally checks loaded records; source-wide search uses DelegateSearch true and a delegable Items filter. | Found: 1. Set **Searchable** to `true`. 2. Set **DelegateSearch** to `true`. 3. Use the grid's **SearchText** output in **Items** with a filter that your connector can delegate. | Fix: Replace the At rollout search bullet with: 'For source-wide search, have makers set Searchable and DelegateSearch to true, then use the grid's SearchText output in Items with a filter their connector can delegate.' Use that same qualification in the Data exposure bullet. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid
-- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because no pagination-specific licensing has been published. | Found: Power Apps requires users to have an appropriate license to run apps, in alignment with the premium licensing requirements described in the Microsoft Power Platform Licensing Guide. | Fix: Set licensing.model to 'included' for this option inside an already licensed app. Replace the licensing notes, licensing paragraph and corresponding cost-rationale wording with: 'The app's existing Power Apps entitlement applies; Power Apps Premium is one published option. No pagination-specific licence, price or meter is documented at the time of writing (November 2026).' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq and https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-apps. Replace the licensing open question with: 'Will Microsoft publish an additional licence or meter for pagination?' | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's paging and source-wide search configuration steps are represented in the controls table. | Found: Checklist: 'choose Pagination.Auto or Pagination.Number' and 'set DelegateSearch to true and filter in Items'. Table: Modern controls and themes; Data row limit; tenant or environment switch. No row represents those per-grid configuration steps. | Fix: The At rollout steps for Pagination/PageSize and DelegateSearch/Items have no controls-table rows. Do not describe the existing modern-controls toggle or Data row limit row as representing those per-grid controls; this finding does not request new rows.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The governance checklist tells makers to choose Pagination and configure Searchable and DelegateSearch, but these controls have no table row. | Found: Checklist: "Have makers choose `Pagination.Auto` or `Pagination.Number` per grid"; "set **Searchable** and **DelegateSearch** to `true`". The table lists only modern controls and themes, Data row limit, and the absent tenant/environment switch. | Fix: The At rollout steps for Pagination, Searchable and DelegateSearch have no corresponding controls-table row. Record this coverage gap; do not add control rows as part of this correction.
 -->

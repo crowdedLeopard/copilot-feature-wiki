@@ -14,11 +14,11 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Microsoft Learn's EDM overview names no licence for EDM and refers readers to the Microsoft 365 security and compliance licensing guidance. Nothing specific to RBAC upload authorisation is published."
+  model: "included"
+  notes: "EDM-based classification is included in Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance), and Microsoft E5/A5 Information Protection and Governance. Nothing specific to RBAC upload authorisation is published."
 audiences: ["security","compliance","m365-admin"]
 tags: ["purview","exact-data-match","information-protection","sensitive-information-types","authorisation","least-privilege"]
 sources:
@@ -27,6 +27,12 @@ sources:
     kind: "learn"
   - title: "Get started with exact data match sensitive information types in Microsoft Purview"
     url: "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-based-sits-overview"
+    kind: "learn"
+  - title: "Create notifications for exact data match activities"
+    url: "https://learn.microsoft.com/purview/sit-edm-notifications-activities"
+    kind: "learn"
+  - title: "Permissions in the Microsoft Purview portal"
+    url: "https://learn.microsoft.com/purview/purview-permissions"
     kind: "learn"
   - title: "Create, edit, or delete a security group in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/email/create-edit-or-delete-a-security-group"
@@ -65,19 +71,23 @@ changes:
     note: "First briefing for this roadmap item: documents today's EDM_DataUploaders method and records that the RBAC option is not yet described on Learn."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Correction: default state set to not stated, licensing set to included in the E5 subscriptions Learn lists for EDM, upload-group wording narrowed, and the role-holder review step removed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 43
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "1818a0210321b3e611750ccbcc8c4ce8"
+  claims: 47
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "923fcce228e9a88ff212bdb8a295346a"
 ---
 
 ## What's changing
@@ -90,9 +100,9 @@ The roadmap status is In development with a target of December CY2025. That mont
 
 ## Why it matters
 
-EDM upload rights decide who can load a hashed copy of your most sensitive tables (patient, customer or employee records) into Purview. Today that right is a membership list in a security group, which sits outside the Purview role model. The planned option would let the same decision follow the role-based approach Purview uses elsewhere, which fits Microsoft's own advice on the upload page to use roles with the fewest permissions.
+EDM upload rights decide who can load a hashed copy of your most sensitive tables (patient, customer or employee records) into Purview. Today's documented upload authorisation relies on membership of the EDM_DataUploaders security group. The planned option would let the same decision follow the role-based approach Purview uses elsewhere, which fits Microsoft's own advice on the upload page to use roles with the fewest permissions.
 
-If nobody acts, no source says existing behaviour changes: the roadmap describes a choice, and the documented EDM_DataUploaders requirement stays the documented method. The decision that matters is whether, once Microsoft publishes the details, you move the upload authorisation to RBAC or keep the group.
+Microsoft has not stated the RBAC control's default on arrival; no source says existing behaviour changes. If nobody acts, the roadmap describes a choice, and the documented EDM_DataUploaders requirement stays the documented method. The decision that matters is whether, once Microsoft publishes the details, you move the upload authorisation to RBAC or keep the group.
 
 ## Risk assessment
 
@@ -113,6 +123,8 @@ If nobody acts, no source says existing behaviour changes: the roadmap describes
 
 ## Cost and licensing
 
+EDM-based classification is included in Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance), and Microsoft E5/A5 Information Protection and Governance, according to the [EDM notifications page](https://learn.microsoft.com/purview/sit-edm-notifications-activities). Nothing specific to RBAC upload authorisation is published.
+
 Microsoft Learn's EDM overview names no licence for EDM and says to see the Microsoft 365 security and compliance licensing guidance "for complete licensing information". The hash-and-upload page lists a work or school Microsoft 365 account, a supported computer and a data file as prerequisites; it names no separate meter.
 
 A licence or charge specific to RBAC upload authorisation is not yet published. The cost the sources support is admin time to review group membership and, later, to move authorisation if you choose to.
@@ -127,7 +139,6 @@ The audience is whoever uploads EDM source tables and whoever administers the ED
 
 ### Before rollout
 - Inventory the members of the EDM_DataUploaders group and remove accounts that no longer load EDM data (see the first controls row).
-- Review who holds Groups Administrator, User Administrator and Global Administrator, because those roles can change the group.
 - Record which scripts or scheduled jobs sign the EDM Upload Agent in, and with which account.
 
 ### At rollout
@@ -166,15 +177,4 @@ The RBAC row is empty because Microsoft Learn documents no RBAC role or API for 
 risk: Low. The roadmap describes an optional way to authorise uploads of EDM source data; it does not describe new data access, and Learn documents no RBAC detail yet. Rated on today's group-based method continuing.
 cost: Low. The only cost the sources show is admin time to change who may upload; a licence statement specific to this change is not yet published.
 impact: Low. Only the administrators and data stewards who hash and upload EDM source tables would notice; end users do not.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The planned RBAC control is admin-opt-in. | Found: Searched: "exact data match" "RBAC" "default"; "EDM" "RBAC" upload authorization. Read the roadmap, EDM hash-and-upload, EDM overview and Purview permissions pages; none states an administrator enablement requirement or the control's arrival default. | Fix: Set defaultState to "unknown". Add: "Microsoft has not stated the RBAC control's default on arrival; no source says existing behaviour changes." Keep the review action and the risk rationale based on today's behaviour continuing.
-- [unsupported, major] Why it matters / behaviour: Today's EDM upload security group sits outside the Purview role model. | Found: Searched: exact data match EDM upload RBAC authorization role EDM_DataUploaders permissions audit. Read EDM hash-and-upload and Purview permissions; the former requires group membership, but neither explicitly describes the group's architectural relationship to the Purview role model. | Fix: Replace "Today that right is a membership list in a security group, which sits outside the Purview role model" with "Today's documented upload authorisation relies on membership of the EDM_DataUploaders security group."
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: Licensing is unknown because nothing specific to RBAC upload authorisation is published. | Found: EDM-based classification is included in these subscriptions: Office 365 E5; Microsoft 365 E5; Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance); Microsoft E5/A5 Information Protection and Governance | Fix: Set licensing.model to "included" under the standard's product-level licensing rule. Add to the notes and Cost and licensing: "EDM-based classification is included in Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance), and Microsoft E5/A5 Information Protection and Governance. Nothing specific to RBAC upload authorisation is published." Cite https://learn.microsoft.com/purview/sit-edm-notifications-activities. Do not claim that a separate RBAC entitlement has been confirmed. | Source: https://learn.microsoft.com/purview/sit-edm-notifications-activities
-- [supported, minor] Why it matters / behaviour: Purview already uses a role-based approach to permissions elsewhere. | Found: The Microsoft Purview portal uses the role-based access control (RBAC) permissions model. | Fix: Add https://learn.microsoft.com/purview/purview-permissions to sources to support the statement about Purview's existing role-based permissions model. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist's instruction to review administrator-role holders has a corresponding controls row. | Found: Review who holds Groups Administrator, User Administrator and Global Administrator ... Controls rows: Who may upload EDM data today: EDM_DataUploaders security group membership; RBAC authorisation of EDM uploads (planned). | Fix: Remove the Before rollout bullet "Review who holds Groups Administrator, User Administrator and Global Administrator, because those roles can change the group." It asks readers to review role assignments, which neither controls row covers; do not add a new row in this correction.
 -->

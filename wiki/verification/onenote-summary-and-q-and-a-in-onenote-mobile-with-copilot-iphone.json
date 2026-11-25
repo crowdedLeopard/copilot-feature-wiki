@@ -2,96 +2,36 @@
   "slug": "onenote-summary-and-q-and-a-in-onenote-mobile-with-copilot-iphone",
   "roadmapId": 422324,
   "title": "OneNote on iPhone: Copilot chat pane with page summaries and Q&A",
-  "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-25",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 37)"
+    ]
+  },
   "counts": {
-    "claims": 41,
-    "confirmed": 38,
+    "claims": 40,
+    "confirmed": 36,
     "unconfirmed": 1,
-    "contradicted": 2,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 1,
     "major": 1,
     "minor": 2
   },
-  "summary": "The briefing passes: the rollout, licence requirement and licence-assignment instructions match Microsoft's notice and documentation. Remove the unsupported inference about data storage, and align the action rating and notebook-sharing checklist with the editorial standard.",
+  "summary": "Hold: the briefing leaves an existing way to disable Copilot unconfirmed, although Microsoft documents connected-experience controls for OneNote on iOS. The rollout and licence-assignment instructions are supported, but the inference about there being no new data store is not established.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "Microsoft is introducing a Copilot chat pane in OneNote Mobile on iPhone.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "Microsoft is introducing a new Copilot chat pane in OneNote Mobile (iPhone) for users licensed with Microsoft 365 Copilot (Premium).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The Summary feature creates short summaries of longer OneNote pages to help users consume relevant information faster.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "With this new Summary feature in OneNote mobile, you can create a short and fluent summary of your longer pages which will help to consume relevant information faster.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Users can ask questions and receive real-time answers within their notes.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "With the Question and Answer at your fingertips, you can get real-time answers to your queries directly within your notes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "summary; licensing.notes; controls[0]; Cost and licensing; Scope; rationale: impact",
-      "type": "licensing",
-      "claim": "Users need a Microsoft 365 Copilot (Premium) licence to see the pane.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "Users with a Microsoft 365 Copilot (Premium) license will see a Copilot chat pane in the OneNote mobile app on iPhone",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "Cost and licensing; Risk assessment: Change & support; Governance guidance; rationale: impact",
-      "type": "record",
-      "claim": "Users without a Microsoft 365 Copilot (Premium) licence are not impacted.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "Users without a Microsoft 365 Copilot (Premium) license are not impacted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "summary; Why it matters",
-      "type": "record",
-      "claim": "Microsoft says no admin action is required before rollout.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "No admin action is required before rollout.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: status; What's changing; Scope; Open questions",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -102,7 +42,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 2,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -113,10 +53,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -124,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), not a US Government cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -135,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "iOS is the only platform listed in the roadmap record.",
+      "claim": "The roadmap lists only iOS as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"iOS\"]",
@@ -146,21 +97,32 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "Scope: Cloud and platform",
+      "n": 7,
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap record lists no US Government cloud.",
+      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and OneNote.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"OneNote\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 6 November 2026 at 23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "Microsoft inadvertently marked the roadmap item as rolling out and corrected it.",
+      "claim": "Microsoft corrected an inadvertent rolling-out status.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We inadvertently marked this item as rolling out and now have updated it to be accurate.",
@@ -168,32 +130,120 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
+      "n": 10,
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "MC1307979 was updated on 6 November 2026.",
+      "claim": "The feature creates short summaries of longer OneNote pages to help users consume relevant information faster.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this new Summary feature in OneNote mobile, you can create a short and fluent summary of your longer pages which will help to consume relevant information faster.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Question and Answer provides real-time answers directly within notes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With the Question and Answer at your fingertips, you can get real-time answers to your queries directly within your notes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft is introducing a Copilot chat pane in OneNote Mobile on iPhone.",
       "status": "supported",
       "source": "Message Center post MC1307979",
-      "quote": "Updated November 6, 2026: We have updated the timeline.",
+      "quote": "Microsoft is introducing a new Copilot chat pane in OneNote Mobile (iPhone) for users licensed with Microsoft 365 Copilot (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; licensing.notes; controls[0].governs; Cost and licensing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice requires a Microsoft 365 Copilot (Premium) licence for users to see the pane.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "Users with a Microsoft 365 Copilot (Premium) license will see a Copilot chat pane in the OneNote mobile app on iPhone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing; Governance guidance: At rollout; rationale: impact",
+      "type": "record",
+      "claim": "Users without the Premium licence are not impacted.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "Users without a Microsoft 365 Copilot (Premium) license are not impacted.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing; Scope; front matter: changes",
-      "type": "record",
-      "claim": "Microsoft's notice gives the end of November 2026 as the rollout start.",
+      "where": "front matter: defaultState; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "The pane reaches its licensed iPhone audience without admin action, so its default state is on.",
       "status": "supported",
       "source": "Message Center post MC1307979",
-      "quote": "We will begin rolling out end of November 2026 (previously end of October)",
+      "quote": "Users with a Microsoft 365 Copilot (Premium) license will see a Copilot chat pane in the OneNote mobile app on iPhone",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
+      "where": "What's changing; Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "The notice says existing Microsoft 365 Copilot controls, permissions and policies continue to apply.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "Existing Microsoft 365 Copilot controls, permissions, and policies continue to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Copilot processes OneNote content the user can already access, within existing Copilot data handling and security controls.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "Copilot chat processes OneNote content that users already have access to in order to generate summaries and answer questions, in accordance with existing Microsoft 365 Copilot data handling, permissions, and security controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice was updated on 6 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "Updated November 6, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The notice targets the start of Worldwide general-availability rollout for the end of November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "General Availability (Worldwide): We will begin rolling out end of November 2026 (previously end of October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Microsoft expects rollout to complete at the end of November 2026.",
+      "claim": "The notice expects rollout completion at the end of November 2026.",
       "status": "supported",
       "source": "Message Center post MC1307979",
       "quote": "expect to complete end of November 2026 (previously end of October)",
@@ -201,7 +251,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 21,
       "where": "What's changing; Risk assessment: Change & support; Governance guidance; Open questions",
       "type": "record",
       "claim": "The notice moved the rollout window from the end of October to the end of November 2026.",
@@ -212,87 +262,21 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: defaultState; Governance guidance: At rollout",
-      "type": "default",
-      "claim": "The pane arrives for eligible licensed iPhone users without admin enablement, corresponding to defaultState on.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "Users with a Microsoft 365 Copilot (Premium) license will see a Copilot chat pane in the OneNote mobile app on iPhone",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Risk assessment; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "Existing Microsoft 365 Copilot controls, permissions and policies continue to apply to the pane.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "Existing Microsoft 365 Copilot controls, permissions, and policies continue to apply.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
-      "type": "record",
-      "claim": "Copilot processes OneNote content the user already has permission to access under existing Copilot data handling and security controls.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "Copilot chat processes OneNote content that users already have access to in order to generate summaries and answer questions, in accordance with existing Microsoft 365 Copilot data handling, permissions, and security controls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The pane introduces generative AI analysis of users' note content.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "This update introduces Copilot chat capabilities within OneNote Mobile, allowing generative AI to analyze note content that the user has permission to access.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 22,
-      "where": "Why it matters: first paragraph",
-      "type": "behaviour",
-      "claim": "The exposure follows from existing permissions rather than from a new store of data.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: OneNote iPhone Copilot chat summaries responses storage interaction history stored. Read MC1307979 and Learn copilot/plan/microsoft-365-copilot-privacy#data-stored-about-user-interactions-with-microsoft-copilot; neither establishes the feature's no-new-store inference.",
-      "severity": "major",
-      "fix": "Remove 'rather than from a new store of data'. The notice establishes access to existing content, not this storage conclusion; Learn's privacy page says Copilot interactions in OneNote are stored."
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "No admin action is required before rollout.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 23,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The notice does not identify individual policies that cover the iPhone pane.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "Existing Microsoft 365 Copilot controls, permissions, and policies continue to apply.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The supplied notice describes summaries and answers, not actions taken on a user's behalf.",
-      "status": "supported",
-      "source": "Message Center post MC1307979",
-      "quote": "The Copilot chat pane allows users to generate concise summaries of longer OneNote pages and ask questions about their notes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft asks admins to ensure users who should access the feature have the Premium licence.",
+      "claim": "Microsoft asks admins to ensure intended users have the Premium licence.",
       "status": "supported",
       "source": "Message Center post MC1307979",
       "quote": "Ensure that users who should access this feature are assigned a Microsoft 365 Copilot (Premium) license.",
@@ -300,10 +284,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 24,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft suggests informing helpdesk staff and users about Copilot chat and Summary in OneNote mobile.",
+      "claim": "Microsoft suggests informing helpdesk staff and users about the pane and Summary feature.",
       "status": "supported",
       "source": "Message Center post MC1307979",
       "quote": "Consider informing helpdesk staff and users about the availability of Copilot chat and the Summary feature in OneNote mobile.",
@@ -311,7 +295,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 25,
       "where": "Why it matters; Governance guidance: After rollout",
       "type": "record",
       "claim": "Microsoft asks admins to review existing Copilot governance, compliance and usage policies against organisational requirements.",
@@ -322,13 +306,35 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 26,
       "where": "Scope: Prerequisites",
       "type": "record",
-      "claim": "The supplied notice names no prerequisite beyond the stated licence and iPhone scope.",
+      "claim": "The supplied notice names no prerequisite beyond the licence and the iPhone app audience already described.",
       "status": "supported",
       "source": "Message Center post MC1307979",
-      "quote": "Users with Microsoft 365 Copilot (Premium) licenses- Users accessing OneNote on iPhone- All Microsoft 365 tenants",
+      "quote": "Who is affected\n\n- Users with Microsoft 365 Copilot (Premium) licenses- Users accessing OneNote on iPhone- All Microsoft 365 tenants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice says existing policies apply without identifying individual policies for this pane.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "Existing Microsoft 365 Copilot controls, permissions, and policies continue to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice and roadmap describe summaries and answers, not autonomous actions in OneNote.",
+      "status": "supported",
+      "source": "Message Center post MC1307979",
+      "quote": "The Copilot chat pane allows users to generate concise summaries of longer OneNote pages and ask questions about their notes",
       "severity": null,
       "fix": null
     },
@@ -336,7 +342,7 @@
       "n": 29,
       "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 Copilot (Premium) is the Microsoft 365 Copilot add-on licensed experience.",
+      "claim": "The required Premium experience is licensed through the Microsoft 365 Copilot add-on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience",
@@ -350,7 +356,7 @@
       "claim": "The overview describes the Premium licence as providing the full Copilot experience in Word, Excel, PowerPoint and OneNote.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "quote": "You **have** the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
       "severity": null,
       "fix": null
     },
@@ -358,21 +364,21 @@
       "n": 31,
       "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "A price specific to the iPhone summary and Q&A feature is not published.",
+      "claim": "A price or meter specific to this iPhone summary and Q&A feature is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote iPhone Copilot summary feature price credits meter license. Opened Learn copilot/plan/copilot-overview and copilot/plan/copilot-license-options; read the notice. Found licence coverage, not a feature-specific price.",
+      "quote": "Searched: OneNote mobile iPhone Copilot Summary feature price billing credits licensing. Read Copilot overview, copilot-license-options and usage-based billing search excerpts; none names a price or meter specific to this pane.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Cost and licensing; Open questions",
+      "where": "What's changing",
       "type": "absence",
-      "claim": "A meter specific to this feature is not published.",
+      "claim": "No Microsoft Learn page specifically about this iPhone pane was found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote iPhone Copilot summary feature price credits meter license. Opened Learn microsoft-365/copilot/pay-as-you-go/meters and copilot/plan/copilot-overview. Neither identifies a meter for this OneNote feature.",
+      "quote": "Searched: OneNote iPhone Copilot chat pane Summary disable policy licensing price meter; \"422324\" \"OneNote\". Read release-notes search excerpts and Copilot overview; results cover other OneNote features, not this pane.",
       "severity": null,
       "fix": null
     },
@@ -380,10 +386,10 @@
       "n": 33,
       "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Licence assignment is at Microsoft 365 admin center > Billing > Licenses > product > Assign licenses.",
+      "claim": "Assign the product licence in the Microsoft 365 admin center under Billing > Licenses > product > Assign licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "In the admin center, go to the Billing > Licenses page.\n2. Select a product.\n3. On the product details page, select Assign licenses.",
+      "quote": "In the admin center, go to the **Billing** > Licenses page.\n2. Select a product.\n3. On the product details page, select **Assign licenses**.",
       "severity": null,
       "fix": null
     },
@@ -391,7 +397,7 @@
       "n": 34,
       "where": "controls[0].api",
       "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence to a user.",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a product licence to a user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
       "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
@@ -411,73 +417,62 @@
     },
     {
       "n": 36,
-      "where": "What's changing",
+      "where": "Governance controls: final paragraph",
       "type": "absence",
-      "claim": "Microsoft Learn has no page specifically documenting this iPhone summary and Q&A feature at the time of writing.",
+      "claim": "The cited Copilot admin-center settings page lists no setting named for OneNote.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote iPhone Copilot summary chat pane licensing price meter disable policy; \"OneNote\" \"iPhone\" \"Copilot\" \"Summary\" \"422324\". Read returned Learn release-note excerpts and the Copilot overview; results cover other OneNote features, not this item.",
+      "quote": "Searched: OneNote in the complete fetched Configure Microsoft Copilot settings in the Microsoft 365 admin center page. Its user access, data access, actions, other settings and app-experience sections name no OneNote setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Governance controls",
+      "where": "Governance controls: final paragraphs; Open questions: first bullet",
       "type": "absence",
-      "claim": "The cited Copilot settings page lists no setting named for OneNote.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: OneNote iPhone Copilot disable policy turn off chat pane admin. Opened Learn copilot/implement/configure-copilot-admin-center and read its complete settings lists; none names OneNote.",
-      "severity": null,
-      "fix": null
+      "claim": "Which existing Copilot setting can switch off this pane for a group of licensed users is not confirmed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps:\n\n- Excel\n- OneNote\n- Outlook\n- PowerPoint\n- Word",
+      "severity": "blocker",
+      "fix": "Remove the first Open questions bullet and replace the unconfirmed-switch sentence with: 'Turning off connected experiences that analyze content makes Copilot features unavailable in current OneNote apps on iOS; this is a broader control, not a pane-only switch.' Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy. The following sentence on that page explicitly includes iOS. For group targeting, https://learn.microsoft.com/microsoft-365-apps/privacy/ios-privacy-preferences names the Cloud Policy setting 'Allow the use of connected experiences in Office that analyze content', and https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy documents scope to specific groups. Do not add a control row."
     },
     {
       "n": 38,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Which existing setting can turn off this pane for a group of licensed users is not confirmed.",
-      "status": "supported",
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "The exposure follows existing permissions rather than a new store of data.",
+      "status": "unsupported",
       "source": null,
-      "quote": "Searched: OneNote iPhone Copilot disable policy turn off chat pane admin; \"OneNote\" \"iOS\" \"Copilot\" \"policy\". Opened Learn copilot/manage/manage-copilot-chat and configure-copilot-admin-center; their blocking guidance does not establish coverage of the OneNote iPhone pane.",
-      "severity": null,
-      "fix": null
+      "quote": "Searched: OneNote Copilot interactions stored history prompts responses iOS iPhone. Read MC1307979 and copilot/plan/microsoft-365-copilot-privacy; access restrictions do not establish this storage inference, and the latter documents stored OneNote Copilot interactions.",
+      "severity": "major",
+      "fix": "Delete 'rather than from a new store of data'. The notice supports the existing-access boundary but does not establish that storage conclusion."
     },
     {
       "n": 39,
       "where": "Governance guidance: Before rollout",
       "type": "consistency",
-      "claim": "The checklist tells admins to review notebook sharing, but the controls table contains only licence assignment.",
+      "claim": "Every control the governance checklist asks admins to review is represented in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open. / Which users hold the Microsoft 365 Copilot (Premium) licence the pane needs",
+      "quote": "Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open. / The only controls row is licence assignment.",
       "severity": "minor",
-      "fix": "Remove the checklist bullet 'Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open.' It names a control with no table row; do not add an unverified row."
+      "fix": "Remove the Before rollout bullet beginning 'Review sharing on notebooks that hold sensitive content'. It asks admins to check a control absent from the table; do not add a row."
     },
     {
       "n": 40,
       "where": "front matter: action",
       "type": "consistency",
-      "claim": "The prepare action rating conflicts with the act-now definition for an automatic, imminent medium-risk rollout requiring a decision.",
+      "claim": "The prepare action rating fits the briefing's verified facts and the action scale on 25 November 2026.",
       "status": "contradicted",
       "source": "page",
       "quote": "action: \"prepare\" / risk: \"medium\" / defaultState: \"on\" / decide whether anyone who uses OneNote on iPhone should gain or lose it before the end of November 2026",
       "severity": "minor",
-      "fix": "Change action from 'prepare' to 'act-now': on 18 November 2026, the automatic end-of-November rollout is within 60 days, the page rates risk medium, and it calls for a pre-rollout licence decision."
-    },
-    {
-      "n": 41,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap record supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
+      "fix": "Change action from 'prepare' to 'act-now': the automatic end-of-November rollout is within about 60 days of 25 November 2026, the page rates risk medium, and it asks for a licence decision before rollout."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T21:59:10.498Z",
+    "at": "2026-11-25T10:15:44.042Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -546,5 +541,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

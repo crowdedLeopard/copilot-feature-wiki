@@ -104,15 +104,17 @@ changes:
     note: "Correction: retention now states the general Audit rules, the Entra role precedence is qualified, unsupported read-only and no-access claims are removed, and search wording is narrowed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 72
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -219,4 +221,11 @@ Searching the audit log needs the *Audit Logs* or *View-Only Audit Logs* role. T
 risk: Low. The change adds audit records for permission checks: Microsoft's notice MC1473155 says it is on by default, needs no configuration and records only checks made after deployment.
 cost: Low. The only cost the sources show is admin time to update investigation and reporting procedures; Microsoft has not published a licence or meter for the two new operations.
 impact: Low. Microsoft's notice names Purview administrators and compliance administrators who review audit logs as the people affected; ordinary users see no change.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because no requirement specific to the two new audit operations is published. | Found: | Feature | Microsoft 365 E3/A3/A1/G3/F3/F1 | Office 365 E3/E1/A3/A1/G3/G1/F3 | Microsoft 365 Business Basic/Standard/Premium | | Audit (Standard) | Included | Included | Included | | Fix: Set licensing.model to included. Replace the opening licensing explanation with: 'General Audit licensing applies: Audit (Standard) is included in Microsoft 365 E3 and Microsoft 365 Business Basic, Standard and Premium, among other listed plans. Microsoft has not published a separate licence requirement for these two new operations.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description and retain the existing per-user and retention qualifications. Use the same narrower wording in licensing.notes and the cost rationale. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: Settings > Roles and scopes > Role groups is the Purview route for managing who can search and export the audit log. | Found: Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... select Choose users or Choose groups. | Fix: Extend controls[1].ui.path and the matching rendered cell to 'Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users'. The existing path reaches the correct role-group list but stops before its membership control. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

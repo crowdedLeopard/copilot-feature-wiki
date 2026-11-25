@@ -62,7 +62,7 @@ sources:
     url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
 videos: []
-related: ["microsoft-teams-automatic-recording-indicator-for-call-queue-calls-on-mobile","teams-intelligent-recap-without-saving-transcript"]
+related: ["microsoft-teams-automatic-recording-indicator-for-call-queue-calls-on-mobile","microsoft-teams-intelligent-call-recap-for-call-queue-calls-on-mobile"]
 controls:
   - governs: "Which users hold the Teams Premium, Teams Phone and Microsoft 365 Copilot licences the feature needs"
     scope: "user"
@@ -85,7 +85,7 @@ controls:
       kind: "powershell"
       call: "Set-CsCallQueue -Identity <Guid> -AutoRecordingTemplateId <String>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue"
-    note: "Existing control, not specific to Copilot. Template created under Voice > Templates and resources. The cmdlet page limits the parameter to Voice applications private preview customers; see notes below."
+    note: "Existing control, not specific to Copilot. The Teams administrator must also be a SharePoint site administrator for the site used by the template to assign it to a call queue or manage its authorized users list."
   - governs: "Whether Copilot can be used in Teams calls (documented for one-to-one and group calls)"
     scope: "user"
     ui:
@@ -112,7 +112,7 @@ controls:
     note: "No such control is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
+updated: "2026-11-25"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-16"
@@ -131,19 +131,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-25"
+    note: "Corrected: added the SharePoint site administrator requirement for assigning the recording template, replaced the claim that licence assignment is the only documented control with the notice's Copilot licence statement, and marked rollout completion dates as expected."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 73
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "a81398dd9b88d0cd8e750d77004a7e00"
+  claims: 70
+  confirmed: 70
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "eb7d1cc3b9ab84fc9465786ec696323a"
 ---
 
 ## What's changing
@@ -152,7 +156,7 @@ Microsoft plans to bring Copilot to the Queues app on Teams for Android and iOS.
 
 Microsoft's notice MC1552391 (published 2026-11-13) says Copilot is available for recorded call queue calls, as it is on desktop, and that the feature does not change how call recordings are created, stored or accessed. Microsoft Learn's Microsoft 365 Copilot release notes for October 27, 2026 describe the same flow in the Queues app: open a recorded call from unified call history, select the **Recap** tab and launch the Copilot Chat sidecar. Microsoft Learn has no page for the mobile feature itself at the time of writing (November 2026).
 
-The roadmap record shows status In development, a target of December CY2026, release phase General Availability, Worldwide (Standard Multi-Tenant) only, on Android and iOS. The notice gives the rollout window: Targeted Release begins late November 2026 and completes by early December 2026; General Availability begins early December 2026 and completes by mid December 2026. The notice sets no act-by date and says no admin action is required before rollout.
+The roadmap record shows status In development, a target of December CY2026, release phase General Availability, Worldwide (Standard Multi-Tenant) only, on Android and iOS. The notice gives the rollout window: Targeted Release begins late November 2026 and is expected to complete by early December 2026; General Availability begins early December 2026 and is expected to complete by mid December 2026. The notice sets no act-by date and says no admin action is required before rollout.
 
 ## Why it matters
 
@@ -200,7 +204,7 @@ No price, meter or Copilot Credits charge is stated for this feature in the road
 ### Before rollout
 
 - Review Microsoft 365 Copilot and Teams Premium licence assignments for intended users, as Microsoft's notice recommends. Assign missing licences where appropriate and confirm users also hold Teams Phone (licence assignment row).
-- Confirm that automatic recording is turned on for the call queues where users should use Copilot, as the notice recommends (Teams admin center > Voice > Call queue; automatic recording row).
+- Confirm that automatic recording is turned on for the call queues where users should use Copilot, as the notice recommends (Teams admin center > Voice > Call queue; automatic recording row). To assign an automatic recording template to a call queue, the Teams administrator must also be a SharePoint site administrator for the site used by the template.
 - Review who the automatic recording template lets representatives access, because that choice cannot be modified once the template is created.
 - Tell queue teams that Copilot works only on recorded calls.
 
@@ -222,16 +226,16 @@ No price, meter or Copilot Credits charge is stated for this feature in the road
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which users hold the Teams Premium, Teams Phone and Microsoft 365 Copilot licences the feature needs</strong><br><small>User</small><br><small class="controls__note">General licence assignment. Delegated Graph requests need a Microsoft Entra role such as License Administrator or User Administrator, or microsoft.directory/users/assignLicense. Application: LicenseAssignment.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which call queues record calls, and who can access the recordings</strong><br><small class="controls__note">Existing control, not specific to Copilot. Template created under Voice &gt; Templates and resources. The cmdlet page limits the parameter to Voice applications private preview customers; see notes below.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queue › call queue › Templates › Automatic recording template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;Guid&gt; -AutoRecordingTemplateId &lt;String&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which call queues record calls, and who can access the recordings</strong><br><small class="controls__note">Existing control, not specific to Copilot. The Teams administrator must also be a SharePoint site administrator for the site used by the template to assign it to a call queue or manage its authorized users list.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queue › call queue › Templates › Automatic recording template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;Guid&gt; -AutoRecordingTemplateId &lt;String&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot can be used in Teams calls (documented for one-to-one and group calls)</strong><br><small>User</small><br><small class="controls__note">General control: its page covers 1:1 and PSTN calls; Microsoft has not confirmed it applies to Copilot in the Queues app.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Copilot <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity &lt;policy name&gt; -Copilot Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Queues app is available in the Teams client</strong><br><small>Tenant</small><br><small class="controls__note">Set to Off, this also turns off Insights and Tasks. It removes the whole Queues app, not Copilot alone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Actions › Org-wide app settings › Microsoft apps <a href="https://learn.microsoft.com/microsoftteams/manage-queues-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>A separate switch for Copilot in the Queues app on mobile</strong><br><small>Tenant</small><br><small class="controls__note">No such control is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The recording template decides which calls exist for Copilot to use; it does not switch Copilot on or off. Its PowerShell parameter is restricted: the Set-CsCallQueue reference says -AutoRecordingTemplateId is for Voice applications private preview customers only and that saving a call queue through Teams admin center removes the setting, while the call queue setup page says automatic recording can be configured via PowerShell (August 13, 2026). Treat the Teams admin center path as the documented route until Microsoft reconciles the two.
+The recording template decides which calls exist for Copilot to use; it does not switch Copilot on or off. The template is created under Voice > Templates and resources > Templates > Automatic Recording > Add. Its PowerShell parameter is restricted: the Set-CsCallQueue reference says -AutoRecordingTemplateId is for Voice applications private preview customers only and that saving a call queue through Teams admin center removes the setting, while the call queue setup page says automatic recording can be configured via PowerShell (August 13, 2026). Treat the Teams admin center path as the documented route until Microsoft reconciles the two.
 
-The Teams calling policy **Copilot** setting is documented for one-to-one and group calls. Microsoft has not confirmed that it governs Copilot on call queue calls in the Queues app, so do not rely on it as a switch for this feature. Turning off the Queues app at org level is blunt and also turns off Insights and Tasks. Licence assignment is the one documented way to decide who gets Copilot there.
+The Teams calling policy **Copilot** setting is documented for one-to-one and group calls. Microsoft has not confirmed that it governs Copilot on call queue calls in the Queues app, so do not rely on it as a switch for this feature. Turning off the Queues app at org level is blunt and also turns off Insights and Tasks. Users need a Microsoft 365 Copilot licence to use Copilot there, according to MC1552391.
 
 ## Open questions
 
@@ -245,14 +249,9 @@ cost: Medium. Users need a Teams Premium licence for the Queues app and a Micros
 impact: Low. Only calling reps and supervisor leads in call queues, with the right licences and recorded calls, will see it; most Teams users are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls; Governance guidance: Before rollout / admin-path: Administrators can assign the recording template through Voice > Call queue > call queue > Templates > Automatic recording template, with no SharePoint administrator qualification stated. | Found: To assign an automatic recording template to a call queue or manage its authorized users list, the Teams administrator must also be a SharePoint site administrator for the site used by the template. | Fix: Keep the path. Add to controls[1].note and its rendered counterpart: 'To assign an automatic recording template to a call queue or manage its authorized users list, the Teams administrator must also be a SharePoint site administrator for the site used by the template.' Add that qualification to the Before rollout automatic-recording instruction. Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
-- [unsupported, blocker] Governance controls: final paragraph / applicability: Licence assignment is the one documented way to decide who gets Copilot in the Queues app. | Found: Searched: Teams Queues Copilot permissions recorded call history license; Copilot Queues app disable. Read manage-queues-app, copilot-teams-calling-transcription, voice applications policies and MC1552391; none states licence assignment is the sole control. | Fix: Replace 'Licence assignment is the one documented way to decide who gets Copilot there' with 'Users need a Microsoft 365 Copilot licence to use Copilot there, according to MC1552391.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / record: Targeted Release completes by early December 2026. | Found: expect to complete by early December 2026. | Fix: Replace 'completes by early December 2026' with 'is expected to complete by early December 2026'.
-- [supported, minor] What's changing / record: General Availability completes by mid December 2026. | Found: expect to complete by mid December 2026. | Fix: Replace 'completes by mid December 2026' with 'is expected to complete by mid December 2026'.
-- [supported, minor] controls[0].api; Governance controls / command: POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes user licences. | Found: POST /users/{id | userPrincipalName}/assignLicense addLicenses: objects that specify the licenses to add. removeLicenses: A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection. | Fix: Keep the call and add to controls[0].note and its rendered counterpart: 'The request body uses addLicenses to add licences and removeLicenses to remove licence skuIds; removeLicenses is required and can be empty.' | Source: https://learn.microsoft.com/graph/api/user-assignlicense
-- [supported, minor] controls[1].note; Governance controls / admin-path: The automatic recording template is created under Voice > Templates and resources. | Found: go to Voice > Templates and resources. Select Templates. Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. | Fix: Replace 'Template created under Voice > Templates and resources' with 'Template created under Voice > Templates and resources > Templates > Automatic Recording > Add' in the note and rendered table. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
+- [supported, minor] controls[0].api / command: POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes user licences. | Found: Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. POST /users/{id | userPrincipalName}/assignLicense | Fix: Keep the call unchanged. Add to controls[0].note: 'The request body uses addLicenses to assign licences and removeLicenses to remove them.' The v1.0 reference documents both properties. | Source: https://learn.microsoft.com/graph/api/user-assignlicense
+- [supported, minor] Governance guidance: Before rollout, automatic recording bullet / admin-path: Teams admin center > Voice > Call queue is the starting page for checking automatic recording. | Found: go to Voice > Call queue. Select the call queue you want to have automatic recording for. On the Templates tab, scroll to find the Automatic recording template section. | Fix: Expand the shortened parenthetical path to 'Teams admin center > Voice > Call queue > call queue > Templates > Automatic recording template', matching controls[1].ui. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
 -->

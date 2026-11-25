@@ -2,13 +2,13 @@
   "slug": "onenote-multimodal-capture-in-copilot-notebooks-windows",
   "roadmapId": 566322,
   "title": "OneNote: multimodal capture in Copilot Notebooks on Windows",
-  "status": "verified",
-  "date": "2026-11-18",
+  "status": "verified-with-gaps",
+  "date": "2026-11-25",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
@@ -20,13 +20,13 @@
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "The briefing passes: the roadmap and supplied Microsoft notice support the Windows rollout, eligibility and default availability. The documented control routes and preview restrictions check out, and the briefing explicitly preserves the unresolved capture policy and conflicting storage documentation.",
+  "summary": "The briefing matches the roadmap and Microsoft's supplied notice, including the default, licensing requirement and revised rollout window. The cited Learn controls and qualifications are supported; the preview Graph row needs only to name the request-body property that selects applyOnce.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; summary; What's changing; Scope",
       "type": "record",
       "claim": "Microsoft plans multimodal capture in Copilot Notebooks in OneNote on Windows.",
       "status": "supported",
@@ -37,9 +37,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "The planned experience captures audio, images and notes together.",
+      "claim": "The planned capture experience captures audio.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Capture audio, images, and notes in one experience",
@@ -48,17 +48,94 @@
     },
     {
       "n": 3,
-      "where": "What's changing",
+      "where": "summary; What's changing; rationale: cost",
       "type": "record",
-      "claim": "The roadmap describes Copilot turning capture into structured notes with insights, decisions and action items in a chosen notebook.",
+      "claim": "The planned capture experience captures images.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "then let Copilot turn them into structured notes with key insights, decisions, and action items, in a Copilot Notebook of your choice",
+      "quote": "Capture audio, images, and notes in one experience",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The planned capture experience captures notes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Capture audio, images, and notes in one experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Audio, images and notes are combined in one capture experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Capture audio, images, and notes in one experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Copilot turns the captured material into structured notes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "then let Copilot turn them into structured notes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The structured output includes key insights.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "structured notes with key insights, decisions, and action items",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The structured output includes decisions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "structured notes with key insights, decisions, and action items",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The structured output includes action items.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "structured notes with key insights, decisions, and action items",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The output is saved in a Copilot Notebook the user selects.",
+      "status": "supported",
+      "source": "Message Center post MC1405506",
+      "quote": "Captured content is saved to the selected Copilot Notebook and is available across endpoints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -69,18 +146,18 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
+      "n": 12,
+      "where": "front matter: targetDate; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap target is November CY2026.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"targetDate\": \"November CY2026\", \"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 6,
+      "n": 13,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Desktop.",
@@ -91,7 +168,18 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -102,40 +190,7 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target is November CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: roadmapModified; Scope",
-      "type": "record",
-      "claim": "The roadmap was last modified on 6 November 2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
+      "n": 16,
       "where": "front matter: products",
       "type": "record",
       "claim": "The roadmap products are OneNote and Microsoft Copilot (Microsoft 365).",
@@ -146,7 +201,18 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 17,
+      "where": "front matter: roadmapModified; Scope",
+      "type": "record",
+      "claim": "The roadmap record was last modified on 6 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1405506 was updated on 6 November 2026.",
@@ -157,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment; rationale: risk; rationale: impact",
+      "n": 19,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk and impact",
       "type": "record",
-      "claim": "Capture can be suggested or initiated when Zoom, Webex or Google Meet browser meetings are detected.",
+      "claim": "Capture can be suggested or initiated when supported browser meetings in Zoom, Webex or Google Meet are detected.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "Capture can be suggested or initiated when supported browser-based meetings are detected (Zoom, Webex, Google Meet).",
@@ -168,8 +234,8 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
       "claim": "Users can manually start capture from the OneNote system tray icon.",
       "status": "supported",
@@ -179,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 21,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Copilot generates a structured Copilot Page with insights, decisions and action items from capture.",
+      "claim": "The notice describes the generated output as a structured Copilot Page.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "Copilot generates a structured Copilot Page with insights, decisions, and action items based on captured content.",
@@ -190,18 +256,7 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Captured content is saved to the selected Copilot Notebook.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Captured content is saved to the selected Copilot Notebook",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
+      "n": 22,
       "where": "What's changing",
       "type": "record",
       "claim": "Captured content is available across endpoints.",
@@ -212,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
+      "n": 23,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk and impact",
       "type": "default",
-      "claim": "The feature is on by default for eligible users, without administrator action.",
+      "claim": "The feature is on by default for eligible users.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "The feature is available by default for eligible users.",
@@ -223,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 24,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice says no action is required.",
+      "claim": "Microsoft's notice says no action is required.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "No action is required.",
@@ -234,21 +289,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "summary; Why it matters; controls[1].note; Governance controls",
+      "n": 25,
+      "where": "What's changing; Scope; Why it matters",
       "type": "record",
-      "claim": "The notice says administrators can disable capture with a policy setting but does not identify that setting.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Admins can disable this feature using a policy setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Scope; changes",
-      "type": "record",
-      "claim": "The notice gives the rollout start as the end of November 2026.",
+      "claim": "The notice schedules rollout to begin at the end of November 2026.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "General Availability (Worldwide): Beginning end of November 2026 (previously end of October)",
@@ -256,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 26,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice gives expected rollout completion as the end of November 2026.",
+      "claim": "The notice schedules rollout completion at the end of November 2026.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "expected to complete end of November 2026 (previously end of October)",
@@ -267,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 27,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "The rollout moved from the end of October to the end of November 2026.",
+      "claim": "The notice moved the rollout from the end of October to the end of November 2026.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "Beginning end of November 2026 (previously end of October) and expected to complete end of November 2026 (previously end of October)",
@@ -278,18 +322,18 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 28,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's message end-date metadata is 31 December 2026.",
+      "claim": "The supplied notice metadata shows Microsoft's end date as 31 December 2026.",
       "status": "supported",
       "source": "Message Center post MC1405506",
-      "quote": "Microsoft's end date 2026-12-31",
+      "quote": "Published 2026-06-26; last updated 2026-11-06; Microsoft's end date 2026-12-31",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 29,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice sets no act-by date.",
@@ -300,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 30,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Learn describes multimodal capture as already generally available on OneNote for iPhone and iPad.",
+      "claim": "Learn's release notes describe multimodal capture as generally available on OneNote for iPhone and iPad.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
       "quote": "This capability is already generally available on OneNote for iPhone and iPad.",
@@ -311,57 +355,13 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 31,
       "where": "What's changing",
       "type": "date",
-      "claim": "The 27 October 2026 release notes describe multimodal capture as available on Android.",
+      "claim": "Learn's 27 October 2026 release notes describe multimodal capture as available on Android.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "October 27, 2026\nWhat changed: Multimodal capture is now available in OneNote Copilot Notebooks for Android",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Why it matters; rationale: risk",
-      "type": "record",
-      "claim": "The feature captures and transcribes conversations.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Organizations should ensure users follow applicable consent and recording policies before capturing or transcribing conversations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Why it matters; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "Microsoft asks organisations to inform users about transcription and consent policies and ensure applicable consent and recording policies are followed.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Inform users about organizational policies related to transcription and consent.- Organizations should ensure users follow applicable consent and recording policies before capturing or transcribing conversations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Captured audio, images and notes are new customer data.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Does the change store new customer data?Yes. Captured audio, images, and notes are stored in the user’s selected Copilot Notebook (SharePoint or OneDrive).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The notice identifies the selected Copilot Notebook in SharePoint or OneDrive as the captured data's storage location.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Captured audio, images, and notes are stored in the user’s selected Copilot Notebook (SharePoint or OneDrive).",
+      "quote": "## October 27, 2026\nUpdates released between October 13, 2026, and October 27, 2026.\n### OneNote\n- **Multimodal capture in Copilot Notebooks (Android)** [Android]",
       "severity": null,
       "fix": null
     },
@@ -369,7 +369,29 @@
       "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Microsoft 365 Copilot transcribes and processes the captured content.",
+      "claim": "Capture stores new customer data consisting of audio, images and notes.",
+      "status": "supported",
+      "source": "Message Center post MC1405506",
+      "quote": "Does the change store new customer data?Yes. Captured audio, images, and notes are stored in the user's selected Copilot Notebook (SharePoint or OneDrive).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice describes captured content as stored in the user's selected Copilot Notebook in SharePoint or OneDrive.",
+      "status": "supported",
+      "source": "Message Center post MC1405506",
+      "quote": "Captured audio, images, and notes are stored in the user's selected Copilot Notebook (SharePoint or OneDrive).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Captured content is transcribed and processed by Microsoft 365 Copilot.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "Content is transcribed and processed by Microsoft 365 Copilot to generate structured insights.",
@@ -377,10 +399,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
+      "where": "Why it matters; Governance guidance: Before rollout and At rollout",
+      "type": "record",
+      "claim": "Microsoft asks organizations to inform users about transcription and consent and ensure compliance with recording policies.",
+      "status": "supported",
+      "source": "Message Center post MC1405506",
+      "quote": "Inform users about organizational policies related to transcription and consent.- Organizations should ensure users follow applicable consent and recording policies before capturing or transcribing conversations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "record",
-      "claim": "Eligible users have Microsoft Entra ID work or school accounts.",
+      "claim": "The notice specifies work or school Microsoft Entra ID accounts.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "Available to commercial Microsoft 365 users with work or school (Entra ID) accounts",
@@ -388,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 37,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "record",
-      "claim": "Users must have Microsoft 365 desktop apps, including OneNote, installed on Windows.",
+      "claim": "Users need the Microsoft 365 desktop apps, including OneNote, installed on Windows.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "Users must have the Microsoft 365 desktop apps installed on Windows (including OneNote)",
@@ -399,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Security & identity",
+      "n": 38,
+      "where": "Scope",
       "type": "record",
-      "claim": "The notice describes no new identity or permission model.",
+      "claim": "The notice says the feature is available to commercial Microsoft 365 users.",
       "status": "supported",
       "source": "Message Center post MC1405506",
       "quote": "Available to commercial Microsoft 365 users with work or school (Entra ID) accounts",
@@ -410,29 +443,84 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "The compliance summary says Information Barriers are not supported for SharePoint Embedded content.",
+      "n": 39,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "Affected users have access to Copilot Notebooks in OneNote.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide",
-      "quote": "Information Barriers are not supported for content stored in SharePoint Embedded containers.",
+      "source": "Message Center post MC1405506",
+      "quote": "Users with access to Copilot Notebooks in OneNote",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Security & identity",
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "MC1405506 says capture requires a Microsoft 365 Copilot license.",
+      "status": "supported",
+      "source": "Message Center post MC1405506",
+      "quote": "Requires a Microsoft 365 Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature's licensing model is per-user.",
+      "status": "supported",
+      "source": "Message Center post MC1405506",
+      "quote": "Who is affected\n\n- Users with access to Copilot Notebooks in OneNote- Requires a Microsoft 365 Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Learn's requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements?view=o365-worldwide",
+      "quote": "### Copilot Notebooks\n\nUsers need the Microsoft Copilot or Copilot Chat license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No price, meter or credit rate specific to multimodal capture is published in the checked Microsoft material.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks OneNote multimodal capture audio transcription pricing meter credits license. Read MC1405506, cpcn-requirements, Microsoft Copilot licensing and capture release-note passages; no capture-specific rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "The requirements page says Copilot Notebook storage counts against the organization's SharePoint quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements?view=o365-worldwide",
+      "quote": "Storage counts against your organization's SharePoint quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
       "type": "behaviour",
-      "claim": "The compliance summary describes Copilot Notebooks as using SharePoint Embedded storage.",
+      "claim": "The storage page describes current notebooks as stored in OneDrive for Business and counting against the user's OneDrive storage limit.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide",
-      "quote": "Copilot Pages and Copilot Notebooks use SharePoint Embedded for storage.",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide",
+      "quote": "| **Storage location** | OneDrive for Business |\n| **Creation control** | Disable the Copilot Pages/Notebooks creation policy to prevent pages and notebooks from being created |\n| **Quota** | Counts against user's OneDrive storage limit |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 46,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "The storage page says notebooks created before November 2025 remain in SharePoint Embedded.",
@@ -443,186 +531,87 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 47,
       "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The storage page says current notebooks use OneDrive for Business.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide",
-      "quote": "Pages and Notebooks are stored in OneDrive for Business: the same visible file system where Word, Excel, and PowerPoint files live.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The notice describes no actions taken in other systems.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Copilot generates a structured Copilot Page with insights, decisions, and action items based on captured content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Feature entitlement is per-user through a Microsoft 365 Copilot licence.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Who is affected\n- Users with access to Copilot Notebooks in OneNote- Requires a Microsoft 365 Copilot license",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "MC1405506 says capture requires a Microsoft 365 Copilot licence.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Requires a Microsoft 365 Copilot license",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The Learn requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements?view=o365-worldwide",
-      "quote": "Copilot Notebooks\nUsers need the Microsoft Copilot or Copilot Chat license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
       "type": "absence",
-      "claim": "No price, meter or credit rate specific to multimodal capture is published.",
+      "claim": "The supplied notice describes no new identity or permission model.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote multimodal capture Copilot Notebooks pricing meter credits transcription price; \"Copilot Notebooks\" \"capture\" \"meter\" pricing. Opened cpcn-requirements, cpcn-storage, microsoft-365-copilot-licensing; read release-notes excerpts. No capture-specific rate found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing; Governance guidance: After rollout",
-      "type": "cost",
-      "claim": "The requirements page says notebook storage counts against the organisation's SharePoint quota.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements?view=o365-worldwide",
-      "quote": "Storage counts against your organization's SharePoint quota.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The storage page says current notebook storage counts against the user's OneDrive storage limit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide",
-      "quote": "Quota | Counts against user's OneDrive storage limit",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "record",
-      "claim": "Capture saves audio, images and notes into notebook storage.",
-      "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Captured audio, images, and notes are stored in the user’s selected Copilot Notebook (SharePoint or OneDrive).",
+      "quote": "Searched: read MC1405506 in full, including Who is affected, What will happen and Compliance considerations, for a new identity or permission model. The notice specifies work or school Entra ID accounts but describes no new model.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Scope; rationale: impact",
-      "type": "record",
-      "claim": "The affected audience is users with access to Copilot Notebooks in OneNote.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The supplied notice describes no actions taken in other systems.",
       "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Who is affected\n- Users with access to Copilot Notebooks in OneNote",
+      "source": null,
+      "quote": "Searched: read MC1405506 in full for actions in other systems. Its What will happen and Compliance considerations describe capture, processing, generated insights and saving to the selected notebook, not executing actions elsewhere.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "The notice says the feature is available to commercial Microsoft 365 users.",
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Learn's compliance summary says Information Barriers are not supported for content in SharePoint Embedded containers.",
       "status": "supported",
-      "source": "Message Center post MC1405506",
-      "quote": "Available to commercial Microsoft 365 users with work or school (Entra ID) accounts",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide",
+      "quote": "Information Barriers are not supported for content stored in SharePoint Embedded containers.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Microsoft 365 Apps admin center path is Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The compliance summary describes Copilot Notebooks as using SharePoint Embedded, unlike the current-storage description on the storage page.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
-      "quote": "Select Customization from the left pane. ... Select Policy Management. ... Create a new policy configuration or edit an existing one. ... Choose the scope ... In Configure Settings ... Create and view Copilot Pages and Copilot Notebooks",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide",
+      "quote": "Copilot Pages and Copilot Notebooks use SharePoint Embedded for storage.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the setting through an applyOnce baseline.",
+      "where": "controls[0].ui; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 Apps admin center path is Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "Create a new configurationMonitor object ... applies a desired-state baseline once in applyOnce mode. ... POST /admin/configurationManagement/configurationMonitors",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
+      "quote": "Select Customization from the left pane. ... Select Policy Management. ... Create a new policy configuration or edit an existing one. ... From the Choose the scope dropdown list ... In Configure Settings ... Create and view Copilot Pages and Copilot Notebooks",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "controls[0].note; Governance controls",
-      "type": "availability",
-      "claim": "The Graph Tenant Configuration Management applyOnce route is preview.",
+      "where": "controls[0].api; Governance controls: first table row",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply a desired-state baseline once using the preview applyOnce mode.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "These capabilities are available in preview through Microsoft Graph beta.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\n\n| mode | monitorMode | The monitor mode. The possible values are: `monitorOnly`, `applyOnce`, `unknownFutureValue`. Optional; defaults to `monitorOnly`. |",
+      "severity": "minor",
+      "fix": "Keep the endpoint. Replace 'API is preview: applyOnce, resource microsoft.copilot.copilotpagesnotebooks, value 0 disables' in the front-matter note and rendered table with 'API is preview: set request-body mode to applyOnce and the baseline resourceType to microsoft.copilot.copilotpagesnotebooks with properties.value set to the string \"0\" to disable'. Keep the existing tenant-level and group-policy qualifications."
     },
     {
       "n": 53,
-      "where": "controls[0].note",
+      "where": "controls[0].note; Governance controls: first table row",
       "type": "command",
-      "claim": "The baseline resource type for the Pages and Notebooks policy is microsoft.copilot.copilotpagesnotebooks.",
+      "claim": "The supported resource is microsoft.copilot.copilotpagesnotebooks and its value 0 disables the setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "\"resourceType\": \"microsoft.copilot.copilotpagesnotebooks\"",
+      "quote": "\"resourceType\": \"microsoft.copilot.copilotpagesnotebooks\" ... | value | Write | String | Allows or prevents creating and viewing Copilot Pages and Copilot Notebooks through Microsoft 365 Copilot Chat and Copilot Actions. `0` disables the setting; `1` enables the setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The resource's value property set to 0 disables the setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "value | Write | String | Allows or prevents creating and viewing Copilot Pages and Copilot Notebooks through Microsoft 365 Copilot Chat and Copilot Actions. 0 disables the setting; 1 enables the setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
       "where": "controls[0].note; Governance controls",
       "type": "applicability",
-      "claim": "TCM supports this setting only in tenant-level policies in the Microsoft 365 Apps admin center.",
+      "claim": "The preview TCM route supports these Copilot settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
       "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
@@ -630,76 +619,54 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 55,
       "where": "controls[0].note; Governance controls",
       "type": "command",
-      "claim": "applyOnce fails for the resource if the target setting is configured in any group-level policy.",
+      "claim": "The target setting must not be in any group-level policy because applyOnce fails for the resource if it is.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
+      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and `applyOnce` fail for that resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].ui; controls[1].api; summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "MC1405506 says administrators can disable capture with a policy but does not identify a documented UI setting or API specifically for that policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneNote Windows multimodal capture recording disable policy Copilot Notebooks; \"multimodal\" \"capture\" \"policy\" \"OneNote\" site:learn.microsoft.com/graph. Read MC1405506, cpcn-admin-configuration and utcm-copilot-resources; no capture-specific switch or API found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[0].note; Risk assessment; Governance controls; Open questions",
+      "where": "controls[0].note; Why it matters; Risk assessment: Data exposure; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Learn does not confirm that the general Pages and Notebooks setting disables multimodal capture in OneNote.",
+      "claim": "The checked documentation does not establish that the general Pages and Notebooks creation setting disables Windows multimodal capture.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote Windows multimodal capture disable policy recording Copilot Notebooks Cloud Policy Graph; \"multimodal capture\" \"policy\" Graph API PowerShell. Opened cpcn-admin-configuration and utcm-copilot-resources: creation/integration and Chat/Actions are described, not OneNote capture.",
+      "quote": "Searched: \"OneNote\" \"multimodal\" \"policy\" \"capture\". Read cpcn-admin-configuration and utcm-copilot-resources: creation/integration and Chat/Actions are described, not Windows capture; MC1405506 leaves its policy unnamed.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "controls[1].ui; controls[1].api; Governance controls table; Open questions",
-      "type": "absence",
-      "claim": "No named UI control or API operation for the capture-disable policy mentioned in MC1405506 is documented.",
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn documents a Cloud Policy setting for creating and viewing Copilot Pages and Copilot Notebooks.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"OneNote\" \"multimodal\" \"policy\" \"Windows\"; \"multimodal capture\" \"disable\"; \"multimodal capture\" \"policy\" Graph API PowerShell. Opened cpcn-admin-configuration, utcm-copilot-resources and Cloud Policy overview; no named capture-specific UI or API found.",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
+      "quote": "| **Copilot Pages and Copilot Notebooks creation** | Cloud Policy: *Create and view Copilot Pages and Copilot Notebooks* | Enabled |",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "role",
-      "claim": "Office Apps Administrator is a supported and recommended role for Cloud Policy administration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Governance guidance: At rollout",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Cloud Policy changes can take up to 90 minutes where policy configurations already existed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
-      "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Cloud Policy changes can take up to 24 hours where no policy configurations existed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
-      "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[0].governs; Governance controls",
-      "type": "behaviour",
-      "claim": "The policy's Disabled value makes Copilot Pages and Notebooks creation and integration unavailable.",
+      "claim": "The Disabled value makes Copilot Pages and Copilot Notebooks creation and integration unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
       "quote": "Disabled: Copilot Pages and Copilot Notebooks creation and integration aren't available to the users.",
@@ -707,7 +674,7 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 60,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "Disabling creation hides the Notebooks module in the Microsoft Copilot app.",
@@ -718,10 +685,10 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 61,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Disabling creation does not delete existing pages and notebooks.",
+      "claim": "Disabling creation does not delete existing items.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
       "quote": "Existing Copilot Pages and Notebooks aren't deleted. Users can still view and edit existing items if they have permission.",
@@ -729,13 +696,46 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Cloud Policy overview says policies are applied when the Office app is restarted.",
+      "n": 62,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "role",
+      "claim": "Office Apps Administrator is the recommended role for managing Cloud Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Policies from Cloud Policy are applied only when the Office app is restarted. The behavior is the same as with Group Policy.",
+      "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Cloud Policy settings are applied when the Office app is restarted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Policies from Cloud Policy are applied only when the Office app is restarted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn says a policy change can take up to 90 minutes where policy configurations already existed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
+      "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn says a policy change can take up to 24 hours where there were no policy configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
+      "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
       "severity": null,
       "fix": null
     },
@@ -743,23 +743,23 @@
       "n": 66,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The Pages and Notebooks Cloud Policy setting offers Enabled, Disabled and Not configured values and can be scoped to groups.",
+      "claim": "The Pages and Notebooks Cloud Policy setting has Enabled, Disabled and Not configured states.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
-      "quote": "choose either All users or select the group for which you want to apply the policy. ... For Create and view Copilot Pages and Copilot Notebooks ... Enabled ... Disabled ... Not configured",
+      "quote": "For Create and view Copilot Pages and Copilot Notebooks ... Enabled ... Disabled ... Not configured",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T20:03:45.840Z",
+    "at": "2026-11-25T10:15:43.918Z",
     "summary": {
       "links": 11,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -775,23 +775,23 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements?view=o365-worldwide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
@@ -805,18 +805,18 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -825,7 +825,7 @@
         "side": "ui",
         "governs": "Whether users can create and view Copilot Pages and Copilot Notebooks",
         "docs": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Customization",
           "Policy Management",
@@ -834,16 +834,23 @@
           "Configure Settings",
           "Create and view Copilot Pages and Copilot Notebooks"
         ],
-        "missing": []
+        "missing": [
+          "Customization",
+          "Policy Management",
+          "policy configuration",
+          "Choose the scope",
+          "Configure Settings",
+          "Create and view Copilot Pages and Copilot Notebooks"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether users can create and view Copilot Pages and Copilot Notebooks",
         "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/admin/configurationManagement",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -853,6 +860,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

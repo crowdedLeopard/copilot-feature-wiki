@@ -79,15 +79,17 @@ changes:
     note: "Corrected after verification: Screen sharing mode note now states what Learn says it governs; licensing is now Teams licensing (included), with only a simultaneous-sharing requirement unpublished; removed an organiser-option check with no controls row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 46
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -182,4 +184,10 @@ The Screen sharing mode row is today's alternative. It decides whether a user ca
 risk: Low. It adds a second simultaneous shared stream in meetings; Microsoft's notice MC1528014 identifies no compliance considerations and describes a tenant-level admin control and an organiser meeting option.
 cost: Low. Teams licensing is documented and no meter is documented for this feature at the time of writing (November 2026), so the known cost is admin time and user communication. A requirement specific to simultaneous sharing is not yet published.
 impact: High. Microsoft's notice says the capability is enabled for all meetings by default, changing default screen-sharing behaviour.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance guidance; Governance controls / admin-path: Teams admin center > Meetings > Meeting policies > policy > Content sharing reaches the page section containing the existing screen-sharing control. | Found: In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select the policy that you want to edit. Go to the Content sharing section. | Fix: Extend controls[1].ui.path and the repeated paths to 'Meetings > Meeting policies > policy > Content sharing > Screen sharing mode' in Teams admin center. The cited content-sharing policy page names Screen sharing mode as the setting in that section. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
 -->

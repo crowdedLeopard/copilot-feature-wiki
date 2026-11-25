@@ -67,15 +67,17 @@ changes:
     note: "Corrected after the independent check: default state now Not stated, licensing now included with the Exchange Online and new Outlook for Windows licence statements, and the admin allowance scope shown as Other."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 44
+  claims: 42
+  confirmed: 42
   unconfirmed: 0
   contradicted: 0
   attempts: 0

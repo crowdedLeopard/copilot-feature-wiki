@@ -92,15 +92,17 @@ changes:
     note: "Corrected after the independent check: cost now variable (SCU metering), Security Copilot data-sharing, Owner settings and Purview source statements aligned with Learn, and the Purview source toggle re-scoped to user."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -209,8 +211,9 @@ cost: Variable. Security Copilot-powered insights consume Security Compute Units
 impact: Low. It is aimed at administrators and compliance staff who troubleshoot DLP; Microsoft's notice says there is no impact to user workflows.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note; Governance controls / behaviour: The per-user source toggle is distinct from the organisation-wide plugin availability restriction. | Found: As an administrator, you have full control over which plugins are available across your organization. You can choose to make specific plugins accessible to everyone or restrict them to owners only. | Fix: Add https://learn.microsoft.com/copilot/security/manage-plugins to sources to substantiate the distinction between the per-user source toggle and organisation-wide plugin availability restrictions. | Source: https://learn.microsoft.com/copilot/security/manage-plugins
+- [supported, minor] controls[1].ui; Governance controls / row 2 / admin-path: The Microsoft 365 services data access control is reached in Security Copilot through Settings > Owner settings. | Found: In Security Copilot, go to Settings > Owner settings. | Fix: Complete controls[1].ui.path and the matching table path as 'Settings > Owner settings > Allow Security Copilot to access data from your Microsoft 365 services'. The cited page names this setting; the existing path stops on the correct page. | Source: https://learn.microsoft.com/copilot/security/privacy-data-security
+- [supported, minor] controls[2].note; Governance controls / behaviour: Organisation-wide plugin availability restrictions are distinct from the per-user source toggle. | Found: As an administrator, you have full control over which plugins are available across your organization. You can choose to make specific plugins accessible to everyone or restrict them to owners only. | Fix: Add https://learn.microsoft.com/copilot/security/manage-plugins to sources to substantiate the existing distinction between per-user source selection and organisation-wide plugin availability restrictions. | Source: https://learn.microsoft.com/copilot/security/manage-plugins
 -->

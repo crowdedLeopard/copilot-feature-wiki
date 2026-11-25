@@ -4,8 +4,8 @@ title: "Copilot Credits: the shared meter for usage-based AI billing"
 slug: "copilot-credits"
 summary: "Copilot Credits are the common currency Microsoft uses to meter agents, Cowork, Work IQ APIs and other usage-based AI services. Administrators use spending policies and a billing method to decide who may spend, how much, and who is billed."
 created: "2026-11-13"
-updated: "2026-11-19"
-version: 4
+updated: "2026-11-25"
+version: 5
 tags: ["copilot-credits","usage-based-billing","pay-as-you-go","p3","capacity-packs","cost-management","finops","spending-policies","m365-admin-center"]
 covers: ["usage-based-billing","pay-as-you-go","p3","capacity-packs"]
 sources:
@@ -57,7 +57,19 @@ sources:
   - title: "Purchase and manage Copilot Credits in usage-based billing"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-manage-buy-credits"
     kind: "learn"
-related: ["work-iq","managed-environments","spending-policies","copilot-studio-cost-management-m365-admin-center"]
+  - title: "Billing rates and management"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management"
+    kind: "learn"
+  - title: "Overview of usage-based billing"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
+    kind: "learn"
+  - title: "costManagementAlertSetting resource type"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/costmanagementalertsetting"
+    kind: "learn"
+  - title: "Monitor Copilot Credit spending"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending"
+    kind: "learn"
+related: ["work-iq","managed-environments","spending-policies","m365-pay-as-you-go-storage-for-onedrive"]
 controls:
   - governs: "Who may spend credits, with monthly policy and per-user limits (spending policy)"
     scope: "tenant"
@@ -74,7 +86,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > Add spending policy > Resources"
+      path: "Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific environments > monthly spending limit"
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs"
     api: null
     note: "Opt-in. Replaces Power Platform capacity allocations and billing plans for covered environments. After Resources, choose Specific environments or Specific resources; then set the monthly spending limit."
@@ -104,7 +116,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Products > Copilot Studio > Summary > Prepaid capacity > Manage Capacity > environment"
+      path: "Licensing > Products > Copilot Studio > Summary > Prepaid capacity > Manage Capacity > environment > Capacity overages > Draw from the available capacity in my tenant"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api:
       kind: "power-platform-api"
@@ -131,7 +143,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list"
     note: "Read-only; reader roles suffice. API gives service-level totals only, not the UI's policy, user, group or agent breakdowns. One completed UTC day per call; beta; credits, not prices."
 confidence: "medium"
-dependents: 68
+dependents: 150
 changes:
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
@@ -151,18 +163,22 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 125 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 127 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: agent-flow test runs are now excluded from the other-triggers statement, the blocked-requests bullet now notes the 125% enforcement rule, the credits-versus-currency statement reports the Cost field, and two admin paths were extended."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 133 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 127
-  confirmed: 126
+  claims: 133
+  confirmed: 133
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "94a1b4e0d33646a9a1b2905dd6875cbb"
+  contradicted: 0
+  attempts: 0
+  hash: "c236d9646cf1045432add787ad904cf8"
 ---
 
 ## What it is
@@ -173,7 +189,7 @@ The same currency covers Copilot Cowork, Copilot Studio, Power Platform workload
 
 **What consumes credits.** Advanced AI and frontier-model experiences can consume credits and require a user subscription licence (USL). Documented examples: metered Copilot Chat agents used by people without a Copilot licence, agent flows run by autonomous agents, and Cowork. On the Microsoft Copilot harness, billing starts when you start building, so previewing, testing and generating evaluations consume credits before anything is published.
 
-**What a Copilot licence covers.** Employee-facing use of standard-harness Copilot Studio agents is included in Microsoft 365 channels when the user is licensed and the agent operates using the authenticated licensed user's identity, within fair usage limits. For agent flows, inclusion applies only to runs started by the "When an agent calls the flow" trigger; other triggers consume credits. Computer-Using Agents are excluded. This inclusion is not documented for the Microsoft Copilot harness or Cowork.
+**What a Copilot licence covers.** Employee-facing use of standard-harness Copilot Studio agents is included in Microsoft 365 channels when the user is licensed and the agent operates using the authenticated licensed user's identity, within fair usage limits. For agent flows, inclusion applies only to runs started by the "When an agent calls the flow" trigger; outside test runs, agent flows using other triggers consume credits. Computer-Using Agents are excluded. This inclusion is not documented for the Microsoft Copilot harness or Cowork.
 
 ### Three ways to pay
 
@@ -197,7 +213,7 @@ This page gives no price per credit: Microsoft points to its Copilot Credits Gui
 
 **Licence.** Advanced AI experiences such as Cowork and Code consume credits and require a USL for access. Copilot Studio inclusion for licensed users is set out under What it is.
 
-**Where it is charged.** Pay-as-you-go and P3 are billed to the linked Azure subscription. Cowork, Copilot Studio and Work IQ API usage appear under one service, **Microsoft Copilot Studio**, on the Azure bill, and usage can take up to 24 hours to appear in Azure Cost Management. The Microsoft 365 admin center shows credits, not currency, and its Cost Management API reports credits without pricing or invoices. Non-Copilot services such as SharePoint storage use Billing > Pay-as-you-go instead; see [OneDrive pay-as-you-go storage](/features/m365-pay-as-you-go-storage-for-onedrive/).
+**Where it is charged.** Pay-as-you-go and P3 are billed to the linked Azure subscription. Cowork, Copilot Studio and Work IQ API usage appear under one service, **Microsoft Copilot Studio**, on the Azure bill, and usage can take up to 24 hours to appear in Azure Cost Management. The dashboard-comparison page says the Microsoft 365 admin center view uses credits rather than currency. Monitor Copilot Credit spending also documents a Cost field showing the estimated cost of AI usage in local currency, including negotiated rates; that estimate may not match the bill. The Cost Management API reports credits without pricing or invoices. Non-Copilot services such as SharePoint storage use Billing > Pay-as-you-go instead; see [OneDrive pay-as-you-go storage](/features/m365-pay-as-you-go-storage-for-onedrive/).
 
 ## Risks and limits
 
@@ -207,7 +223,7 @@ This page gives no price per credit: Microsoft points to its Copilot Credits Gui
 - **Resource-based policies skip AI Builder.** Do not move resources that use AI Builder to them; their credits are not covered.
 - **Agent limits are soft at the edges.** An agent can keep responding for some time after reaching its limit, and its limit does not stop the agent flows it calls. New flow runs stop only when the environment has no credits.
 - **Capacity allocations shrink the shared pool.** Credits allocated to environments in the Power Platform admin center reduce what Microsoft 365 admin center services can use.
-- **No credit source means blocked requests.** If no prepaid credits remain and pay-as-you-go is not enabled, requests are blocked.
+- **No credit source can mean blocked requests, and the rule differs by product.** The dashboard-comparison page says requests are blocked when limits or available credit sources are exhausted and pay-as-you-go is not enabled. For standard-harness prepaid custom agents, [Billing rates and management](https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#overage-enforcement) instead documents an overage grace period and enforcement at 125% of tenant prepaid capacity.
 - **Dashboards are not the invoice.** The admin centre can include non-billable usage; reconcile with the monthly billing record.
 
 ## Governance controls
@@ -218,10 +234,10 @@ This page gives no price per credit: Microsoft points to its Copilot Credits Gui
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who may spend credits, with monthly policy and per-user limits (spending policy)</strong><br><small>Tenant</small><br><small class="controls__note">Beta API. Body sets @odata.type (allUsersSpendingPolicy), displayName, periodLimit, perUserLimit, serviceSettings; creates an all-users policy, initially disabled. Needs Billing Administrator or Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy › Identity › Select agents and services › Set limits and alerts <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Spending limits for Copilot Studio environments or agents (resource-based policy)</strong><br><small>Environment</small><br><small class="controls__note">Opt-in. Replaces Power Platform capacity allocations and billing plans for covered environments. After Resources, choose Specific environments or Specific resources; then set the monthly spending limit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy › Resources <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Spending limits for Copilot Studio environments or agents (resource-based policy)</strong><br><small>Environment</small><br><small class="controls__note">Opt-in. Replaces Power Platform capacity allocations and billing plans for covered environments. After Resources, choose Specific environments or Specific resources; then set the monthly spending limit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy › Resources › Specific environments › monthly spending limit <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Billing method for a spending policy (prepaid capacity, P3 or pay-as-you-go)</strong><br><small>Tenant</small><br><small class="controls__note">API sets billingMethods on creation; prepaidCredits is a documented value. All-users policy, initially disabled; not an update to an existing policy. UI: Global or Billing administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Billing method <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Policy and per-user spending alerts</strong><br><small>Tenant</small><br><small class="controls__note">Notify-only. Beta API. Body sets isEnabled and thresholds; policy-level thresholds only, not per-user ones. Needs If-Match: &lt;parent-policy-ETag&gt;; recipients are managed separately and one must be linked before enabling.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy › Identity › Select agents and services › Set limits and alerts <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Prepaid credit allocation to an environment and overage behaviour</strong><br><small>Environment</small><br><small class="controls__note">Body: scope.environmentId, allocatedEntitlements (entitlementId MCSMessages, allocation, enforcementRules). TenantPool enabled=false caps at the allocation; a linked pay-as-you-go plan still bills. A published group rule can lock it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Prepaid capacity › Manage Capacity › environment <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Prepaid credit allocation to an environment and overage behaviour</strong><br><small>Environment</small><br><small class="controls__note">Body: scope.environmentId, allocatedEntitlements (entitlementId MCSMessages, allocation, enforcementRules). TenantPool enabled=false caps at the allocation; a linked pay-as-you-go plan still bills. A published group rule can lock it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Prepaid capacity › Manage Capacity › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monthly credit limit and hard stop for a Copilot Studio agent</strong><br><small>Agent</small><br><small class="controls__note">Does not stop agent flows the agent calls. Limits are not applied instantly.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Agents › agent › Set limit › Stop usage <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Credit consumption by policy, user, group, agent and service</strong><br><small>Tenant</small><br><small class="controls__note">Read-only; reader roles suffice. API gives service-level totals only, not the UI's policy, user, group or agent breakdowns. One completed UTC day per call; beta; credits, not prices.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management › Consumption <a href="https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate={startDate}&amp;endDate={endDate}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -248,15 +264,3 @@ This page gives no price per credit: Microsoft points to its Copilot Credits Gui
 - The Copilot Cost Management Graph API is in beta. When will it be supported for production use?
 - Will Azure bills show a separate line for Cowork? Microsoft says not currently.
 - Microsoft's setup pages name request routing for credit requests and Cowork model templates but this page gives no path or API for either. Where are they scripted?
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What it is: What a Copilot licence covers / cost: Agent flows using other triggers consume credits. | Found: Test runs: Agent flow runs that the agent starts from the test chat in Copilot Studio and test runs that you start in the flow designer, don't consume capacity for agent flow actions and aren't blocked by enforcement. | Fix: Replace 'other triggers consume credits' with 'outside test runs, agent flows using other triggers consume credits'. The same cited Billing rates and management page explicitly exempts agent-flow actions in test-chat and flow-designer test runs; this is separate from the licence inclusion. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is; sources / applicability: Customer conversations handled by Microsoft Contact Center Intelligence consume Copilot Credits. | Found: Handling customer conversations also consumes credits based on conversation complexity and modality. | Fix: Add the supporting pages missing from sources: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview (Contact Center Intelligence and billing from building onward), https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/costmanagementalertsetting (policy-level alert scope), and https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending (the conflicting documentation of currency-valued Cost fields). | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
-- [supported, minor] Risks and limits: No credit source means blocked requests / behaviour: Requests are blocked if prepaid credit sources are exhausted and pay-as-you-go is not enabled. | Found: No available Prepaid Capacity pack credits or Copilot Credit Pre-purchase plans (P3) commit units, and pay-as-you-go isn't enabled ... Requests are blocked when limits or available credit sources are exhausted. | Fix: Qualify this bullet: 'The dashboard-comparison page says requests are blocked when limits or available credit sources are exhausted and pay-as-you-go is not enabled. For standard-harness prepaid custom agents, Billing rates and management instead documents an overage grace period and enforcement at 125% of tenant prepaid capacity.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#overage-enforcement for the differing rule. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
-- [supported, minor] Cost and licensing: Where it is charged / cost: The Microsoft 365 admin center shows credits, not currency. | Found: Everything in this view is expressed in Copilot Credits, not currency. | Fix: Report the documentation disagreement: 'The dashboard-comparison page says the Microsoft 365 admin center view uses credits rather than currency. Monitor Copilot Credit spending also documents a Cost field showing estimated AI usage cost in local currency, including negotiated rates; that estimate may not match the bill.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending#consumption-tab. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
-- [supported, minor] controls[1].ui; Governance controls: resource-based policy row / admin-path: Resource-based spending limits are reached through Microsoft 365 admin center > Copilot > Cost Management > Configuration > Add spending policy > Resources. | Found: go to Copilot > Cost Management. ... Select Configuration, and then select Add spending policy. ... select Resources as its scope. ... Choose No limit or set a monthly spending limit for the policy. | Fix: The path reaches the correct wizard but stops before its resource choice and limit. For the environment route, extend it to 'Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific environments > monthly spending limit'; retain the note explaining the Specific resources alternative. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
-- [supported, minor] controls[4].ui; Governance controls: prepaid allocation row / admin-path: Environment allocation and overage settings are reached through Licensing > Products > Copilot Studio > Summary > Prepaid capacity > Manage Capacity > environment. | Found: Select the Summary tab. ... Select Manage Capacity from the Prepaid capacity card. ... select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Keep the printed route and append the setting being reviewed: ' > Copilot Credits' for allocation, or ' > Capacity overages > Draw from the available capacity in my tenant' for tenant-pool overage. The existing path stops on the right panel before these controls. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
--->

@@ -4,10 +4,10 @@
   "title": "Outlook: grant mailbox and folder delegate permissions from the new Outlook",
   "status": "held",
   "date": "2026-11-25",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-25",
     "reasons": [
-      "3 blocking findings (claims 17, 38, 49)"
+      "2 blocking findings (claims 12, 54)"
     ]
   },
   "counts": {
-    "claims": 52,
-    "confirmed": 49,
+    "claims": 56,
+    "confirmed": 53,
     "unconfirmed": 0,
     "contradicted": 3,
-    "blocker": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 1
+    "minor": 3
   },
-  "summary": "Hold: Microsoft documents policies restricting folder-permission changes in new Outlook, so the statement that no admin control is documented is misleading. The folder-permission UI is also documented, and the checklist incorrectly suggests using permission-granting commands to list existing delegates.",
+  "summary": "Hold: Microsoft Support documents folder and mailbox sharing permission levels in both new Outlook and Outlook on the web, which the briefing treats as unpublished. The existing Exchange controls and licensing statements check out, but the briefing needs to distinguish the stale roadmap status from the functionality Microsoft already documents.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "The roadmap plans for delegate access to mailboxes and folders to be granted from the new Outlook app.",
+      "claim": "The roadmap plans to let users grant mailbox and folder delegate access from new Outlook.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Delegate access for mailbox and folders can be granted from the new Outlook app.",
@@ -65,39 +65,6 @@
     },
     {
       "n": 4,
-      "where": "front matter: status; What's changing; Governance guidance",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: targetDate; What's changing; Governance guidance",
-      "type": "record",
-      "claim": "The roadmap target is July CY2026, a past target at the November 2026 run date while the record remains In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"July CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: products; Scope",
       "type": "record",
       "claim": "The roadmap product is Outlook.",
@@ -108,18 +75,29 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: clouds; What's changing; Scope",
+      "n": 5,
+      "where": "front matter: status; What's changing; Governance guidance",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
+      "claim": "The supplied roadmap record still lists In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The recorded target is July CY2026, a month preceding the November 2026 run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Web as the platform.",
@@ -130,7 +108,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -141,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "Scope",
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "GCC, GCC High and DoD are not listed in the roadmap record.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -152,140 +130,52 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 10,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap record does not identify particular user populations, licences or administrative roles in scope.",
+      "claim": "GCC, GCC High and DoD are not listed in the supplied roadmap cloud list.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Delegate access for mailbox and folders can be granted from the new Outlook app. Users will be able to view the permissions granted for a mailboxes and folders. #newoutlookforwindows",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
-      "where": "summary; What's changing; front matter: changes",
+      "n": 11,
+      "where": "summary; What's changing",
       "type": "absence",
-      "claim": "No Learn page found describes the specific new grant-and-view screens announced by this roadmap item.",
+      "claim": "No Microsoft Learn page describes this specific roadmap feature yet.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"417063\"; \"new Outlook\" \"delegate\" \"sharing\" \"permissions\". Read recipient permissions, calendar delegate permissions, folder-permission restrictions and add-in shared-folder setup excerpts; none describes the item's new grant-and-view screens.",
+      "quote": "Searched: new Outlook grant delegate mailbox folder permissions 417063; \"new Outlook\" \"delegate\" \"permissions\" \"sharing\" 417063. Opened cited Learn pages and Microsoft's Support sharing and delegate articles; found Support instructions, not a Learn feature page.",
+      "severity": "minor",
+      "fix": "Replace the documentation-gap wording with: 'Microsoft Support documents mailbox and folder sharing in new Outlook, while the supplied roadmap record still lists In development with a July CY2026 target.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081. Do not describe the roadmap as the only source about the functionality."
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said which permission types the new Outlook sharing screens grant, including folder roles.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081",
+      "quote": "In the Permissions section, select the Permission level dropdown and select the permissions you want to grant to this user.",
+      "severity": "blocker",
+      "fix": "Replace the blanket gap with: 'Microsoft Support documents folder permission levels in new Outlook, including Owner, Publishing Editor, Editor, Publishing Author, Author, Nonediting Author, Reviewer, Contributor, None and Custom. This does not establish that the screens grant Exchange Full Access or Send as.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081 and narrow the repeated open question to the remaining mailbox-level permissions."
+    },
+    {
+      "n": 13,
+      "where": "What's changing; controls notes; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly identify these roadmap screens as the implementation of the cited Exchange administrative operations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"grant\" \"delegate access\" \"permissions\"; 417063 delegate permissions. Read Exchange recipient/calendar permissions, Add-MailboxFolderPermission, and Support sharing instructions; none explicitly maps this roadmap item's screens to those administrative operations.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "The permission types granted by the specific new screens are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook grant delegate mailbox folder sharing permissions 417063 default policy; \"new Outlook\" \"delegate\" \"sharing\" \"permissions\". Read recipient and calendar permissions and new-Outlook add-in setup excerpts; no screen-specific permission mapping found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; controls[].note; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not documented whether these specific new screens read and write the permissions managed by the listed Exchange controls.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook grant delegate mailbox folder sharing permissions 417063 default policy; \"new Outlook\" \"delegate\" \"sharing\" \"permissions\". Read recipient permissions, Add-MailboxFolderPermission and calendar delegate permissions; no mapping to the planned screens found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
-      "type": "default",
-      "claim": "The arrival default of this roadmap capability is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"new Outlook\" \"delegate\" \"default\"; new Outlook grant delegate mailbox folder sharing permissions 417063 default policy. Read the record, calendar permissions and folder-permission restrictions; none states this planned capability's rollout default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "summary; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "No administrator control restricting users' delegate-sharing actions in new Outlook is documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
-      "quote": "Restrict users from changing folder permissions in classic Outlook, new Outlook, and Outlook on the Web",
-      "severity": "blocker",
-      "fix": "Replace the no-control statements with: 'Learn documents Cloud Policy restrictions on folder-permission changes in new Outlook, using Turn off sharing recommendation, Do not allow users to change permissions on folders, and Control Calendar Sharing. A switch specifically for all of this roadmap item's new screens is not documented.' Cite https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions. Narrow the open question to whether a separate switch covers the complete new capability; do not imply that existing folder-permission restrictions are absent."
-    },
-    {
-      "n": 18,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A licence or meter specific to this roadmap item is not published in the documentation checked.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook mailbox folder delegate sharing permissions license pricing meter. Read new Outlook licensing, recipient permissions and calendar delegate permissions; results describe existing delegation, not an item-specific licence or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The entitlement model is included in the product licence rather than a documented feature-specific add-on.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
-      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Using Outlook for Windows with a Microsoft 365 organisational email address requires a plan including desktop Microsoft 365 apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
-      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Business Standard and Business Premium are examples of qualifying plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
-      "quote": "For example, a Business Standard or Business Premium plan provides access to a Microsoft 365 email address and the desktop versions of Outlook and other Microsoft 365 apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Once a qualifying account is added, secondary accounts licensed for Business Basic or E1 can be added.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
-      "quote": "Once you add an account with a qualifying license to Outlook, you can add secondary accounts with licenses for products that don't include the desktop apps such as Business Basic or E1.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The cited Exchange recipient-permissions page names no licence for assigning Full Access, Send as or Send on behalf.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook mailbox folder delegate sharing permissions license pricing meter. Opened Manage permissions for recipients in Exchange Online in full; its prerequisites require assigned permissions and name no licence for these assignments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "What's changing",
       "type": "behaviour",
       "claim": "Users assigned Full Access, Send as or Send on behalf on another mailbox are called delegates.",
       "status": "supported",
@@ -295,40 +185,7 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Full Access allows a delegate to open the mailbox and view, add and remove its contents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "Allows the delegate to open the mailbox, and view, add and remove the contents of the mailbox.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Send as makes a message appear to come directly from the mailbox without indicating the delegate sent it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "Allows the delegate to send messages as if they came directly from the mailbox or group. There's no indication that the message was sent by the delegate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Send on behalf identifies the delegate in the From address.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "The From address of these messages clearly shows that the message was sent by the delegate",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "An Outlook calendar delegate has the Editor calendar role.",
@@ -339,7 +196,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "An Outlook calendar delegate has the Delegate sharing permission flag.",
@@ -350,10 +207,10 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What's changing; Governance controls",
+      "n": 17,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn recommends configuring delegate relationships from Outlook while the calendar owner is signed in.",
+      "claim": "Learn says to configure delegate relationships from Outlook while the calendar owner is signed in.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
       "quote": "Configure delegate relationships from Outlook while the calendar owner is signed in.",
@@ -361,120 +218,43 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Governance controls",
+      "n": 18,
+      "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Exchange Online PowerShell is appropriate for calendar folder permission administration.",
+      "claim": "Full Access permits opening a mailbox and viewing, adding and removing its contents.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
-      "quote": "Exchange Online PowerShell is appropriate for calendar folder permission administration and validation",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "Allows the delegate to open the mailbox, and view, add and remove the contents of the mailbox.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Governance controls",
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Exchange Online PowerShell is not the preferred method for creating a complete delegate relationship.",
+      "claim": "Send as makes a message appear to come directly from the mailbox without indicating the delegate.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
-      "quote": "it isn't the preferred method for creating a complete delegate relationship.",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "Allows the delegate to send messages as if they came directly from the mailbox or group. There's no indication that the message was sent by the delegate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Data exposure",
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Send on behalf identifies the delegate in the From address.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "The From address of these messages clearly shows that the message was sent by the delegate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "default",
-      "claim": "Calendar delegate access does not include viewing private items by default; CanViewPrivateItems is a separate flag.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
-      "quote": "CanViewPrivateItems lets the user view private calendar items. Delegate access doesn't include this capability by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "Exchange admin center > Recipients > Mailboxes > mailbox > Mailbox delegation reaches the mailbox delegate-permissions page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "In the EAC, click Recipients in the feature pane. ... Mailboxes: User or linked mailboxes. ... select the mailbox ... Click Mailbox Delegation",
-      "severity": "minor",
-      "fix": "The path reaches the correct page but stops before the assignment control. For Full Access, extend it to 'Recipients > Mailboxes > mailbox > Mailbox Delegation > Read and manage (Full Access) > Edit > Add members', using the same cited page."
-    },
-    {
-      "n": 35,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "Add-MailboxPermission -Identity <MailboxIdentity> -User <DelegateIdentity> -AccessRights FullAccess -InheritanceType All grants mailbox Full Access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "Add-MailboxPermission -Identity <MailboxIdentity> -User <DelegateIdentity> -AccessRights FullAccess -InheritanceType All [-AutoMapping $false]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "Add-RecipientPermission manages Send as permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "You use the Add-RecipientPermission and Remove-RecipientPermission cmdlets to manage the Send As permission for mailboxes and groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "Set-Mailbox with GrantSendOnBehalfTo manages Send on behalf permissions on mailboxes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "Set-Mailbox -Identity seanc@contoso.com -GrantSendOnBehalfTo hollyh",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[1].ui; Governance controls: folder-permission row",
-      "type": "absence",
-      "claim": "No UI is documented for setting which users hold permissions on a mailbox folder.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/troubleshoot/outlook/user-interface/cannot-copy-this-folder-because-it-may-contain-private-items",
-      "quote": "Right-click the folder that you want to move, and then select Properties. ... On the Permissions tab ... Select Add. ... Select your name, and then select Owner for the Permission Level.",
-      "severity": "blocker",
-      "fix": "Replace the null side with the documented existing Outlook UI: surface 'Outlook (classic)', path 'mailbox folder (right-click) > Properties > Permissions > Add > user > Add > OK > user > Permission Level', docs 'https://learn.microsoft.com/troubleshoot/outlook/user-interface/cannot-copy-this-folder-because-it-may-contain-private-items'. Qualify it as the existing Outlook folder-permission UI, not an Exchange admin center route or documentation of the planned new screens."
-    },
-    {
-      "n": 39,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "Add-MailboxFolderPermission -Identity <mailbox>:\\<folder> -User <user> -AccessRights <role> grants folder permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-mailboxfolderpermission",
-      "quote": "Add-MailboxFolderPermission -Identity ayla@contoso.com:\\Marketing -User ed@contoso.com -AccessRights Owner",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[1].note",
-      "type": "command",
-      "claim": "SharingPermissionFlags Delegate is documented for calendar folders.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-mailboxfolderpermission",
-      "quote": "This parameter only applies to calendar folders and can only be used when the AccessRights parameter value is Editor.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "default",
-      "claim": "By default, Full Access delegates on a user mailbox can read its IRM-protected messages.",
+      "claim": "Full Access delegates can read IRM-protected messages in a user mailbox by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/security/prevent-delegate-access-to-irm-messages",
       "quote": "By default, for a user mailbox, Information Rights Management (IRM)-protected email messages can be read by any delegate who has Full Access permission on the mailbox.",
@@ -482,32 +262,54 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "n": 22,
+      "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "behaviour",
-      "claim": "Learn gives client-dependent prevention methods for delegates reading protected messages.",
+      "claim": "Learn describes different methods for preventing IRM delegate access according to the client and scenario.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/security/prevent-delegate-access-to-irm-messages",
-      "quote": "User mailbox in Exchange Online | Method A or B | Method C | Method C | No prevention possible",
+      "quote": "Use the following table to determine the appropriate prevention method for each scenario.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Calendar delegate access does not include viewing private items by default; CanViewPrivateItems grants that ability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "CanViewPrivateItems lets the user view private calendar items. Delegate access doesn't include this capability by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether the roadmap item's new screens expose the private-calendar-item flag.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"delegate\" \"permissions\" \"sharing\" 417063; \"new Outlook\" \"grant\" \"delegate access\" \"permissions\". Read calendar delegate permissions and Support mailbox/folder sharing and delegate overview; no private-item flag for this item's screens was specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Sharing a mailbox subfolder requires permissions on the folder and its parent folders.",
+      "claim": "Folder sharing requires access on the shared folder and its parent folders, and partial grants can prevent opening it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/exchange/outlook-issues/cannot-access-another-mailbox-folder",
       "quote": "the user has to grant the other person access to the specific folder that the user wants to share and also to all other parent folders in the folder hierarchy.",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Qualify the existing guidance with: 'Microsoft Support says new Outlook and Outlook on the web preserve existing parent-folder permissions and automatically assign Folder visible where parent folders have no permissions assigned.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081 so readers are not told that these clients always require manual parent-folder grants."
     },
     {
-      "n": 44,
+      "n": 26,
       "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The root Mailbox folder must have at least Folder visible permissions for the default role.",
+      "claim": "The cited troubleshooting article requires at least Folder visible for the default role on the root Mailbox folder.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/exchange/outlook-issues/cannot-access-another-mailbox-folder",
       "quote": "The root folder (the Mailbox folder) in Outlook must be assigned at least Folder visible permissions for the default role.",
@@ -515,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 27,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Insufficient access to another user's mailbox folder can produce the stated Unable to open default folders error.",
+      "claim": "Insufficient mailbox-folder access can produce the stated Unable to open default folders error.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/exchange/outlook-issues/cannot-access-another-mailbox-folder",
       "quote": "Unable to open default folders-you do not have permissions to logon\n\nThis issue occurs if the user doesn't have sufficient permissions to access the mailbox folder.",
@@ -526,32 +328,98 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Scope; Governance controls",
-      "type": "role",
-      "claim": "The existing Exchange procedures require assigned permissions and refer readers to the Mailbox settings entry for the requirements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the \"Mailbox settings\" entry in the Feature permissions in Exchange Online article.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Documentation checked does not settle whether both Outlook on the web and new Outlook for Windows get the planned new screens.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"417063\" \"shared\" \"resource\" \"web\" \"Windows\"; \"new Outlook\" \"delegate\" \"sharing\" \"permissions\". Read the record and add-in setup excerpts for Web and new Outlook; no statement settling both clients' coverage by the planned screens found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
+      "n": 28,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap describes no agent or automated action.",
+      "claim": "The roadmap description specifies user grants and permission viewing, not an agent or automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Delegate access for mailbox and folders can be granted from the new Outlook app. Users will be able to view the permissions granted for a mailboxes and folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Delegation gives another person access, and their permitted actions depend on the granted permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "you can use the Exchange admin center (EAC) or Exchange Online PowerShell to assign permissions to a mailbox or group so that other users can access the mailbox",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "admin-path",
+      "claim": "The EAC Mailbox delegation view can be used to inventory mailbox-level delegates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "In the properties of the mailbox in the EAC, verify the delegate is or isn't listed in Mailbox delegation > Full Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Using Outlook for Windows with a Microsoft 365 organisational account requires a desktop-app plan, with Business Standard and Business Premium as examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "For example, a Business Standard or Business Premium plan provides access to a Microsoft 365 email address and the desktop versions of Outlook and other Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included in the product licence rather than an independently identified feature add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "After adding an account with a qualifying desktop licence, secondary Business Basic or E1 accounts can be added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "Once you add an account with a qualifying license to Outlook, you can add secondary accounts with licenses for products that don't include the desktop apps such as Business Basic or E1.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or meter specific to this roadmap item has been published beyond the product's general licensing requirements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"delegation\" license pricing meter; new Outlook grant delegate mailbox folder permissions 417063 default licensing admin disable. Read Outlook licensing, Exchange recipient permissions and Support sharing prerequisites; no item-specific add-on or meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Exchange recipient-permissions article does not list a licence prerequisite for assigning the three mailbox permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"delegation\" license pricing meter. Read Manage permissions for recipients in Exchange Online in full, including What do you need to know before you begin; it specifies assigned permissions, not a licence prerequisite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not specify licence requirements or configuration roles, or identify particular user cohorts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Delegate access for mailbox and folders can be granted from the new Outlook app. Users will be able to view the permissions granted for a mailboxes and folders. #newoutlookforwindows",
@@ -559,21 +427,32 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Governance guidance: Before rollout",
-      "type": "command",
-      "claim": "The cmdlets printed in the controls table can be used to list existing Full Access, Send as and Send on behalf delegates.",
-      "status": "contradicted",
+      "n": 37,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Administrators need assigned permissions to perform the existing Exchange recipient-permission procedures.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-      "quote": "This example assigns the delegate Raymond Sam the Full Access permission to the mailbox of Terry Adams.",
-      "severity": "blocker",
-      "fix": "Replace 'using the Exchange admin center Mailbox delegation view or the cmdlets in the controls table' with 'using the Exchange admin center Mailbox delegation view'. The table prints permission-granting operations, not the Get- operations documented for verification; do not direct readers to run those operations for an inventory."
+      "quote": "You need to be assigned permissions before you can perform this procedure or procedures.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 50,
+      "n": 38,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "The Exchange article points to the Mailbox settings entry in Feature permissions in Exchange Online for required permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "To see what permissions you need, see the \"Mailbox settings\" entry in the Feature permissions in Exchange Online article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The existing Exchange permission-management options differ by mailbox type.",
+      "claim": "Exchange permission support differs by recipient type, including user, shared and resource mailboxes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
       "quote": "Send on behalf: Messages sent by a delegate have \"<Delegate> on behalf of <Mailbox>\" in the From address. Note that this permission isn't available in the EAC for shared mailboxes.",
@@ -581,37 +460,202 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Scope; Open questions",
+      "n": 40,
+      "where": "summary; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Cloud Policy restrictions on folder-permission changes cover new Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Restrict users from changing folder permissions in classic Outlook, new Outlook, and Outlook on the Web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turn off sharing recommendation is one of the policies Microsoft says to enable for the folder restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Enable each of the following policies: Turn off sharing recommendation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Do not allow users to change permissions on folders is one of the required policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Do not allow users to change permissions on folders",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Control Calendar Sharing is one of the required policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Control Calendar Sharing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "These policies are configured in a policy configuration under Microsoft 365 Apps admin center > Customization > Policy Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Sign in to the Microsoft 365 Apps admin center. To view a list of policy configurations, select Customization > Policy Management. Create a new policy configuration, and select the applicable scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "The mailbox types covered by the planned new screens, including shared and resource mailboxes, are not stated.",
+      "claim": "A separate switch specifically covering all of this roadmap item's new screens is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"417063\" \"shared\" \"resource\" \"web\" \"Windows\"; new Outlook grant delegate mailbox folder sharing permissions 417063 default policy. Read the record, recipient-permission types and new-Outlook add-in setup excerpts; no planned-screen mailbox-type list found.",
+      "quote": "Searched: \"new Outlook\" delegate permissions default enable disable OwaMailboxPolicy; \"DelegateAccessEnabled\" \"new Outlook\". Read folder restrictions, Outlook access-policy search excerpts and Set-OwaMailboxPolicy's DelegateAccessEnabled excerpt; none states a switch's reach over all item 417063 screens.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The printed EAC path reaches Add members for Read and manage (Full Access).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "Click Mailbox Delegation and configure one or more of the following permissions: ... Read and manage (Full Access) ... To assign permissions to delegates, click Edit under the appropriate permission, and then click ... Add members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "The printed Add-MailboxPermission call grants FullAccess with the documented target, user and inheritance parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "Add-MailboxPermission -Identity <MailboxIdentity> -User <DelegateIdentity> -AccessRights FullAccess -InheritanceType All [-AutoMapping $false]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed classic Outlook folder Properties > Permissions path adds a user and reaches Permission Level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/outlook/user-interface/cannot-copy-this-folder-because-it-may-contain-private-items",
+      "quote": "Right-click the folder that you want to move, and then select Properties. ... On the Permissions tab, if you aren't listed, add your name. ... Select your name, and then select Owner for the Permission Level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Add-MailboxFolderPermission accepts the printed mailbox-folder identity, User and AccessRights role parameters to add folder permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-mailboxfolderpermission",
+      "quote": "Add-MailboxFolderPermission -Identity ayla@contoso.com:\\Marketing -User ed@contoso.com -AccessRights Owner\n\nThis example grants the Owner role to Ed on the Marketing folder in Ayla's mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "SharingPermissionFlags Delegate applies to calendar folders in the cmdlet examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-mailboxfolderpermission",
+      "quote": "The SharingPermissionFlags parameter assigns calendar delegate permissions. This parameter only applies to calendar folders and can only be used when the AccessRights parameter value is Editor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Add-RecipientPermission is used to grant Send as.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "You use the Add-RecipientPermission and Remove-RecipientPermission cmdlets to manage the Send As permission for mailboxes and groups.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Whether the planned new screens expose the private-calendar-item permission is not documented.",
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Set-Mailbox uses GrantSendOnBehalfTo to manage Send on behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
+      "quote": "Set-Mailbox -Identity seanc@contoso.com -GrantSendOnBehalfTo hollyh",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Exchange Online PowerShell is appropriate for calendar-folder permission administration but not preferred for creating a complete delegate relationship.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "Exchange Online PowerShell is appropriate for calendar folder permission administration and validation, but it isn't the preferred method for creating a complete delegate relationship.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope; Open questions",
+      "type": "availability",
+      "claim": "Microsoft has not stated whether both new Outlook for Windows and the web client have the mailbox/folder sharing screens.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081",
+      "quote": "Share and access a folder or mailbox in new Outlook ... Share and access a folder or mailbox in Outlook on the web",
+      "severity": "blocker",
+      "fix": "Replace the platform uncertainty with: 'The roadmap record lists Web and carries #newoutlookforwindows. Microsoft Support documents Sharing and permissions for mailbox and folder sharing in both new Outlook for Windows and Outlook on the web, although the supplied roadmap record remains In development.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081. Remove the repeated question about whether these two clients have sharing screens; retain the separate question about shared and resource mailbox coverage."
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review prevention of delegates reading IRM-protected messages, but the controls table has no corresponding control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether Full Access delegates reading IRM-protected messages is acceptable for those mailboxes; Learn describes prevention methods per client. / Table rows cover mailbox delegation and mailbox-folder permissions only.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet beginning 'Check whether Full Access delegates reading IRM-protected messages is acceptable'. This is the checklist control with no table row; do not add a new control row as part of this correction."
+    },
+    {
+      "n": 56,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated the arrival default specifically for this roadmap item.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"new Outlook\" \"delegate\" \"private items\" \"permissions\". Read calendar delegate permissions, Add-MailboxFolderPermission and private-item troubleshooting excerpts; these explain existing flags and clients, not the planned screens' private-item option.",
+      "quote": "Searched: new Outlook grant delegate mailbox folder permissions 417063 default licensing admin disable; \"new Outlook\" delegate permissions default enable disable OwaMailboxPolicy. Read record, folder restrictions and Support sharing instructions; none specifies item 417063's rollout default.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T07:21:07.579Z",
+    "at": "2026-11-25T10:15:37.431Z",
     "summary": {
-      "links": 7,
-      "unreachable": 0,
-      "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "links": 9,
+      "unreachable": 3,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -622,8 +666,8 @@
       },
       {
         "url": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
@@ -632,8 +676,8 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-mailboxfolderpermission",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/troubleshoot/exchange/outlook-issues/cannot-access-another-mailbox-folder",
@@ -647,6 +691,16 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/outlook/user-interface/cannot-copy-this-folder-because-it-may-contain-private-items",
         "ok": true,
         "status": 200
       }
@@ -657,35 +711,71 @@
         "side": "ui",
         "governs": "Which delegates hold Full Access on a mailbox (also Send as and Send on behalf)",
         "docs": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Recipients",
           "Mailboxes",
           "mailbox",
-          "Mailbox delegation"
+          "Mailbox Delegation",
+          "Read and manage",
+          "Edit",
+          "Add members"
         ],
-        "missing": []
+        "missing": [
+          "Recipients",
+          "Mailboxes",
+          "mailbox",
+          "Mailbox Delegation",
+          "Read and manage",
+          "Edit",
+          "Add members"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which delegates hold Full Access on a mailbox (also Send as and Send on behalf)",
         "docs": "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients",
-        "reachable": true,
+        "reachable": false,
         "token": "Add-MailboxPermission",
-        "found": true
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users hold permissions on a mailbox folder (for example Calendar with the Delegate flag)",
+        "docs": "https://learn.microsoft.com/troubleshoot/outlook/user-interface/cannot-copy-this-folder-because-it-may-contain-private-items",
+        "reachable": true,
+        "segments": [
+          "mailbox folder",
+          "Properties",
+          "Permissions",
+          "Add",
+          "Add",
+          "Permission Level"
+        ],
+        "missing": [
+          "mailbox folder"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users hold permissions on a mailbox folder (for example Calendar with the Delegate flag)",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-mailboxfolderpermission",
-        "reachable": true,
+        "reachable": false,
         "token": "Add-MailboxFolderPermission",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -84,15 +84,17 @@ changes:
     note: "New briefing: planned Unsubscribe button on Edge website notifications, with the existing notification policies as the documented controls."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 49 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 48
+  claims: 50
+  confirmed: 49
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -193,10 +195,10 @@ cost: Low. The only cost the roadmap record shows is admin and helpdesk time to 
 impact: Low. Users who receive website push notifications in Edge would see a new button; Microsoft has not said which notifications are eligible, so how many people notice is not yet known.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] rationale: cost / record: The roadmap record shows admin and helpdesk time to brief users as a cost. | Found: Searched: the complete supplied roadmap record for cost, admin time, helpdesk and briefing requirements. Also searched Microsoft Edge notifications unsubscribe button license price billing; no Microsoft statement of this support effort found. | Fix: Replace the cost rationale with 'Low. Expect admin and helpdesk time to brief users; Microsoft has not published a licence or meter for this feature.' This keeps the effort estimate as the wiki's analysis rather than attributing it to the roadmap.
+- [unsupported, major] rationale: cost / cost: The roadmap record shows admin and helpdesk time to brief users as the only cost. | Found: Searched: the complete supplied roadmap record for cost, admin time, helpdesk and briefing requirements; Microsoft Edge notifications unsubscribe button licensing license price meter. The record describes the button and enterprise policies, not support effort or costs. | Fix: Replace the cost rationale with 'Low. Expect admin and helpdesk time to brief users; Microsoft has not published a licence or meter for this feature.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: paragraph beginning 'The three policies' / behaviour: When NotificationsBlockedForUrls is unset, the global default comes from DefaultNotificationsSetting if set, otherwise personal configuration. | Found: If you don't set this policy, the global default value is used for all sites. This default value is from the DefaultNotificationsSetting policy if it's set, or from the user's personal configuration. | Fix: Replace 'Each page says that when' with 'The NotificationsAllowedForUrls and NotificationsBlockedForUrls reference pages say that when'. The DefaultNotificationsSetting page does not contain this fallback statement. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls
+- [supported, minor] Governance controls: sentence beginning 'Each page says' / behaviour: When NotificationsBlockedForUrls is unset, the global default comes from DefaultNotificationsSetting if set, otherwise personal configuration; the briefing attributes this to each policy page. | Found: If you don't set this policy, the global default value is used for all sites. This default value is from the DefaultNotificationsSetting policy if it's set, or from the user's personal configuration. | Fix: Replace 'Each page says that when' with 'The NotificationsAllowedForUrls and NotificationsBlockedForUrls reference pages say that when'. The DefaultNotificationsSetting reference does not contain this fallback statement. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls
 -->

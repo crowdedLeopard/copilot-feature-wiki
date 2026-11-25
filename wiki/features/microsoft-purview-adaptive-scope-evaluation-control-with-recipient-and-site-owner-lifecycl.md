@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
+  model: "included"
   notes: "For retention policies using adaptive scopes, Microsoft requires Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, Office 365 E5/A5/G5, or Microsoft 365 E5/A5/F5/G5 Information Protection and Governance. Any additional licence requirement specific to the lifecycle status controls is not yet published."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","adaptive-scopes","retention","data-lifecycle-management","governance","policy"]
@@ -63,7 +63,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Roles and scopes > Adaptive scopes > scope > Scope details"
+      path: "Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details"
       docs: "https://learn.microsoft.com/purview/purview-adaptive-scopes"
     api:
       kind: "powershell"
@@ -72,7 +72,7 @@ controls:
     note: "Existing control for checking who is in a scope. Learn says the member list can take up to five days to update."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-25"
 roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-17"
@@ -87,26 +87,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected: removed the open question on which date attributes take ISO 8601 durations, as Learn now lists them; added the Details step to the scope membership path; licensing model set to included."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
+  claims: 65
   confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "4276ea84645953212e3555bf312f9b25"
+  contradicted: 0
+  attempts: 0
+  hash: "6e2fac592f8d7262b7b38095475384d8"
 ---
 
 ## What's changing
 
 Microsoft plans to add lifecycle status evaluation controls to Microsoft Purview adaptive scopes. An adaptive scope is a query that defines a changing set of users, Microsoft 365 groups or sites, which a communication compliance, retention or auto-labeling policy can then target. The roadmap item says administrators will get explicit control over lifecycle-state evaluation for recipients and site owners. Microsoft's notice MC1450128 adds that administrators will control whether active, inactive and soft-deleted recipients and site owners are included in adaptive scope membership.
 
-Per MC1450128, newly created adaptive scopes will evaluate only active recipients and site owners by default. Inactive and soft-deleted recipients or site owners are not included unless an administrator configures it. Existing adaptive scopes continue to function as they do today and are not automatically modified, and administrators will be able to update existing scopes to use explicit lifecycle status criteria. The notice also says the advanced query builder will support ISO 8601 duration values for certain date-based attributes; it does not say which attributes.
+Per MC1450128, newly created adaptive scopes will evaluate only active recipients and site owners by default. Inactive and soft-deleted recipients or site owners are not included unless an administrator configures it. Existing adaptive scopes continue to function as they do today and are not automatically modified, and administrators will be able to update existing scopes to use explicit lifecycle status criteria. The notice also says the advanced query builder will support ISO 8601 duration values for certain date-based attributes; it does not say which attributes. Microsoft Learn now documents relative date filters in the advanced query builder; the roadmap and MC1450128 still give the rollout targets above.
 
 The roadmap record lists the item as In development, for Worldwide (Standard Multi-Tenant) on the Web, with a preview target of December CY2026 and general availability targeted for April CY2027. MC1450128 (updated 14 November 2026) gives Public Preview beginning and completing in December 2026 (previously mid-September and early October) and general availability for Worldwide beginning and completing in April 2027 (previously mid-October 2026 and mid-November 2026). The notice sets no act-by date and says no action is required before rollout.
 
@@ -137,7 +141,7 @@ If nobody acts, MC1450128 says existing scopes are not modified, and new scopes 
 
 - Existing scopes keep their current behaviour, so the tenant will hold scopes of two kinds. Document which are which, and update creation checklists, as the notice recommends.
 - Confirm whether scopes created by script receive the same default as scopes created in the portal; the notice does not say.
-- Date-based queries may change: the advanced query builder will accept ISO 8601 durations for certain attributes that the notice does not name.
+- Date-based queries may change: the advanced query builder will accept ISO 8601 durations for certain attributes that the notice does not name. Learn's Adaptive scopes page lists the supported date properties under Use relative date filters.
 
 ## Cost and licensing
 
@@ -181,7 +185,7 @@ Today, any role group with the Scope Manager role can create an adaptive scope; 
 <tbody>
 <tr><td data-label="Control"><strong>Whether a scope evaluates active, inactive and soft-deleted recipients and site owners</strong><br><small class="controls__note">Planned per MC1450128; the Adaptive scopes page and the New-AdaptiveScope reference document no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Scope query, including excluding or targeting inactive mailboxes today</strong><br><small class="controls__note">Existing control, not a control over the new feature. Learn documents IsInactiveMailbox for inactive mailboxes only. Needs the Scope Manager role. Keep Full directory if not restricting by administrative unit; select Users.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › + Create scope › administrative unit › scope type › Advanced query builder <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-AdaptiveScope -Name &lt;name&gt; -LocationType User -RawQuery &lt;OPATH query&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Scope membership review, including added and removed members</strong><br><small class="controls__note">Existing control for checking who is in a scope. Learn says the member list can take up to five days to update.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › scope › Scope details <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AdaptiveScopeMembers -Identity &lt;scope name&gt; -State Added</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Scope membership review, including added and removed members</strong><br><small class="controls__note">Existing control for checking who is in a scope. Learn says the member list can take up to five days to update.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › scope › Details › Scope details <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AdaptiveScopeMembers -Identity &lt;scope name&gt; -State Added</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -194,21 +198,10 @@ The advanced query filter on IsInactiveMailbox is documented for inactive mailbo
 - What will the lifecycle status settings be called, where will they sit in the Microsoft Purview portal, and will PowerShell or an API expose them? Watch the Adaptive scopes page on Microsoft Learn and MC1450128.
 - How do inactive and soft-deleted apply to each scope type (Users, SharePoint sites, Microsoft 365 Groups), and do the controls cover all three?
 - Do scopes created with New-AdaptiveScope get the active-only default, or only scopes created in the portal?
-- Which date attributes will accept ISO 8601 durations in the advanced query builder?
 - Which additional licensing, if any, do the new lifecycle status controls need? Watch the Microsoft Purview service description and the notice.
 
 <!-- rationale
 risk: Medium. Microsoft's notice MC1450128 says newly created scopes will evaluate only active recipients and site owners by default, so a policy targeted through a new scope may not reach inactive or soft-deleted ones unless an administrator opts in.
 cost: Low. The only cost the sources show is administrator time to review scope definitions and creation processes; additional licensing for the new controls is not yet published.
 impact: Low. Microsoft's notice names Purview administrators who create or manage adaptive scopes, and organisations that use them for policy targeting; it describes no end-user change.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: Which date attributes will accept ISO 8601 durations / absence: Which date attributes support ISO 8601 durations remains an unanswered documentation question. | Found: Users and Microsoft 365 Groups | WhenCreated, WhenCreatedUTC, WhenMailboxCreated, WhenChanged, WhenChangedUTC, WhenSoftDeleted SharePoint sites | Created, RefinableDate00 through RefinableDate19 | Fix: Remove the open question 'Which date attributes will accept ISO 8601 durations in the advanced query builder?' Microsoft now lists the properties in the cited Adaptive scopes page under Use relative date filters. Keep the narrower, accurate statement that MC1450128 itself does not name them. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: ISO 8601 support; Risk assessment: Change & support / record: The notice says the advanced query builder will support ISO 8601 durations for selected date attributes. | Found: This update also adds support for ISO 8601 duration values for selected date attributes in the adaptive scope advanced query builder. | Fix: Keep the notice attribution, but add: 'Microsoft Learn now documents relative date filters in the advanced query builder; the roadmap and MC1450128 still give the rollout targets above.' The cited https://learn.microsoft.com/purview/purview-adaptive-scopes now has a Use relative date filters section, so the briefing should report both sources rather than present that behaviour solely as a future notice description.
-- [supported, minor] controls[2].ui; Governance controls / admin-path: Scope membership review is reached at Settings > Roles and scopes > Adaptive scopes > scope > Scope details in the Microsoft Purview portal. | Found: Select Settings > Roles and scopes > Adaptive scopes. ... Select an existing adaptive scope from the list. ... From the Details flyout pane, select Scope details. | Fix: Set controls[2].ui.path and the corresponding rendered path to 'Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details'. Details is a flyout heading, not an additional selection. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown despite published product-level adaptive-scope licensing. | Found: If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights: | Fix: Set licensing.model to 'included'. Keep the existing notes naming the documented licences for retention policies using adaptive scopes and distinguishing the unpublished additional requirement specific to the new lifecycle controls. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

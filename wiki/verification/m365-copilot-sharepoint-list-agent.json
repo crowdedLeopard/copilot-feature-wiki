@@ -1,0 +1,523 @@
+{
+  "slug": "m365-copilot-sharepoint-list-agent",
+  "roadmapId": 534606,
+  "title": "Microsoft 365 Copilot: SharePoint list agent creates Microsoft Lists from prompts",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 38: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 35)"
+    ]
+  },
+  "counts": {
+    "claims": 38,
+    "confirmed": 36,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The feature description, roadmap details and both blocking controls are supported. The statement that Microsoft has not described rollout mechanics overlooks the cited release notes' deployment explanation; licensing also understates the published product-level requirement, and the promise of no admin-console changes lacks evidence.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the only platform listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this feature with SharePoint and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"SharePoint\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-03-16T23:00:10.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-03-16T23:00:10\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot users can create Microsoft Lists through prompts using the SharePoint list agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot users can now create Microsoft Lists through natural language prompts using the SharePoint list agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "The agent generates list schema, structure and setup from the information provided.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The agent generates list structure and setup based on the information provided.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The agent helps teams transform structured information into Microsoft Lists.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This agent helps teams to quickly transform structured information and Copilot responses to Microsoft Lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot-generated content can be converted into list content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Teams can convert structured information and Copilot-generated content into lists with less manual configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The documented creation workflow begins by opening Copilot and describing the desired list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Copilot and describe the list you want to create.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The documented workflow has the user review the generated structure and suggested fields before creating the list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Review the generated list structure and suggested fields.\n    - Create the Microsoft List and add or refine content as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Autonomy",
+      "type": "behaviour",
+      "claim": "The final documented step is to create the Microsoft List and add or refine content as needed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Create the Microsoft List and add or refine content as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "No dedicated Microsoft Learn page for this agent was found as of the run date.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\". Opened Microsoft 365 Copilot release notes; results for list knowledge sources and SharePoint agents describe different capabilities, not a dedicated page for this list-creation agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; summary; Why it matters; Scope; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the agent's default state or whether an administrator must enable it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" \"default state\"; \"SharePoint list agent\" admin switch enable disable block All agents. Opened release notes and agent-actions; neither states this agent's default or an enabling requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The sources do not describe this feature as replacing or changing existing list-creation behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\"; \"SharePoint list agent\" \"existing\" \"permissions\" \"default\" \"created\". Opened release notes; its feature entry describes a new prompt-based workflow, not replacement of existing list creation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not specified where lists created by this agent are stored.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" storage location identity edit existing lists prerequisites rollout. Opened release notes; no destination site or storage location is stated for this agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not specified who can see a list created by this agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" \"existing\" \"permissions\" \"default\" \"created\"; \"SharePoint list agent\" storage location identity edit existing lists prerequisites rollout. Opened release notes; no resulting-list audience is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified the identity the agent uses to create lists.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" storage location identity edit existing lists prerequisites rollout. Opened release notes; identity passthrough results concern the separate Foundry SharePoint grounding tool, not this agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified this agent's list-creation permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" \"existing\" \"permissions\" \"default\" \"created\". Opened release notes; results about .agent files, list knowledge sources and SharePoint Server permissions do not identify this agent's permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The sources do not say whether this agent can modify an existing list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" storage location identity edit existing lists prerequisites rollout. Opened release notes; its entry documents creating lists, while results about MCP editing tools do not establish this agent uses them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not identified the SharePoint list agent as a selectable entry under Agents > All agents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" admin switch enable disable block All agents. Opened agent-actions and release notes; neither identifies this list-creation agent in All agents. Agents created in SharePoint are not explicitly this agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; changes",
+      "type": "licensing",
+      "claim": "No agent-specific licence is published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Replace 'Licensing for this agent is not yet published' and equivalent unqualified statements with 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education subscription plans; no additional licence specific to the SharePoint list agent is published.' Keep the existing licence-options citation. This records the general product entitlement without claiming a separate agent licence."
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this list-creation agent is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" \"license\" \"Credits\"; \"SharePoint list agent\" licensing default permissions storage admin block rollout. Opened release notes and licence options; results metering list knowledge sources do not identify this agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The roadmap and release notes publish no agent-specific price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" licensing default permissions storage admin block rollout; \"SharePoint list agent\" \"license\" \"Credits\". Read roadmap, release-note entry and licence options; no price specific to this agent is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The agent-blocking path is Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select **Agents** > **All agents**.\n3. In the **All agents** page, select an agent from the list of agents.\n4. In the agent details pane that opens, immediately under the agent's name, select **Block** or **Unblock**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The cited Graph package-blocking API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].governs and scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The general agent block/unblock control restricts use of the selected agent across the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "**Block and unblock** | Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Admin-center governance actions apply to the selected agent rather than automatically to an entire containing package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "These actions apply to the selected agent. If the agent is included in a plugin, don't assume the action also applies to the whole plugin package, its skills, shared MCP servers, or connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not stated the rollout mechanics.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization.",
+      "severity": "blocker",
+      "fix": "Remove 'the rollout mechanics, ' from the final sentence of Scope. The release notes describe general Copilot deployment mechanics, although they give no feature-specific rollout window."
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "No administrative prerequisite specific to this list-creation agent is stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" storage location identity edit existing lists prerequisites rollout; \"SharePoint list agent\" admin switch enable disable block All agents. Opened release notes, licence options and agent-actions; no agent-specific admin prerequisite found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "rationale: risk",
+      "type": "absence",
+      "claim": "The available feature documentation describes no new data-access entitlement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" \"existing\" \"permissions\" \"default\" \"created\"; \"SharePoint list agent\" storage location identity edit existing lists prerequisites rollout. Opened release notes; no new data-access entitlement is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Administrators see nothing change in their consoles.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"SharePoint list agent\" \"admin center\" changes console; \"SharePoint list agent\" admin switch enable disable block All agents. Opened release notes and agent-actions; neither says admin consoles remain unchanged.",
+      "severity": "minor",
+      "fix": "Remove ', and admins see nothing change in their consoles' from the impact rationale."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T10:15:38.787Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 2,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=534606",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Blocking or unblocking an agent for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": false,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": [
+          "Agents",
+          "All agents",
+          "Block"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Blocking or unblocking an agent for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": false,
+        "token": "/beta/copilot/admin",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

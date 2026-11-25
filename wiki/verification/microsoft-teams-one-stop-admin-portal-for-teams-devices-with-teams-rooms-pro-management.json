@@ -3,24 +3,26 @@
   "roadmapId": 555235,
   "title": "Microsoft Teams: Android device management moves to the Teams Rooms Pro Management portal",
   "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "date": "2026-11-25",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 132,
-    "confirmed": 131,
+    "claims": 128,
+    "confirmed": 127,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 4
   },
-  "summary": "The briefing passes: its portal paths, access requirements, minimum Admin Agent versions and retirement windows are supported. Minor corrections should acknowledge an outdated FAQ, describe end-of-life updates as available rather than guaranteed, and remove checklist instructions for controls not represented in the table.",
+  "summary": "The briefing passes: its migration dates, access requirements and four portal controls are supported. Minor corrections should acknowledge the transition guide's conflicting FAQ, avoid promising automatic updates for end-of-life devices, and remove checklist instructions for controls absent from the table.",
   "claims": [
     {
       "n": 1,
@@ -37,7 +39,7 @@
       "n": 2,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -59,7 +61,7 @@
       "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -90,12 +92,12 @@
     },
     {
       "n": 7,
-      "where": "front matter: roadmapModified",
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-09-02T22:56:59.",
+      "claim": "The roadmap product is Microsoft Teams.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-02T22:56:59\"",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
@@ -103,7 +105,7 @@
       "n": 8,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Teams Android device management is transitioning from TAC to PMP.",
+      "claim": "Microsoft is moving Teams Android device management from TAC to PMP.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "we are transitioning Teams Android device management from the Teams admin center (TAC) to the Teams Rooms Pro Management portal (PMP).",
@@ -112,12 +114,12 @@
     },
     {
       "n": 9,
-      "where": "What's changing; Scope",
+      "where": "summary; What's changing; Scope",
       "type": "record",
       "claim": "Teams Rooms on Android are in scope.",
       "status": "supported",
       "source": "Message Center post MC1227622",
-      "quote": "Admins who manage Teams Rooms on Android, Teams phones, Teams panels, and SIP Phones.",
+      "quote": "Who is affected:\n\nAdmins who manage Teams Rooms on Android, Teams phones, Teams panels, and SIP Phones.",
       "severity": null,
       "fix": null
     },
@@ -157,8 +159,8 @@
     {
       "n": 13,
       "where": "What's changing; Scope",
-      "type": "availability",
-      "claim": "Teams Displays management is not migrated, in line with the end of support for the Teams Displays app.",
+      "type": "behaviour",
+      "claim": "Teams Displays management is not migrated, in line with the end of support for its app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "The management of Teams Displays won't be migrated from Teams Admin Center to Teams Rooms Pro Management portal. This is in line with the end of support for the Teams Displays app.",
@@ -168,8 +170,19 @@
     {
       "n": 14,
       "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The transition guide describes PMP as the primary portal for all Teams device management after transition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "Once the transition is complete, PMP becomes the primary portal for all Teams device management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
       "type": "record",
-      "claim": "PMP becomes the primary portal for all Teams device management.",
+      "claim": "MC1227622 describes PMP as the primary portal for all Teams device management.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "PMP will become the primary portal for all Teams device management.",
@@ -177,21 +190,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "PMP provides device inventory.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Complete device inventory, including metadata and app information.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PMP inventory includes device metadata.",
+      "claim": "PMP provides device inventories containing metadata and app information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Complete device inventory, including metadata and app information.",
@@ -202,10 +204,10 @@
       "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PMP inventory includes app information.",
+      "claim": "PMP provides remote restart.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Complete device inventory, including metadata and app information.",
+      "quote": "Remote actions (restart, log collection, sign-in, sign-out, provisioning, and more).",
       "severity": null,
       "fix": null
     },
@@ -213,7 +215,7 @@
       "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PMP supports remote restart.",
+      "claim": "PMP provides remote log collection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Remote actions (restart, log collection, sign-in, sign-out, provisioning, and more).",
@@ -224,7 +226,7 @@
       "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PMP supports remote log collection.",
+      "claim": "PMP provides remote sign-in.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Remote actions (restart, log collection, sign-in, sign-out, provisioning, and more).",
@@ -235,7 +237,7 @@
       "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PMP supports remote sign-in.",
+      "claim": "PMP provides remote sign-out.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Remote actions (restart, log collection, sign-in, sign-out, provisioning, and more).",
@@ -246,7 +248,7 @@
       "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PMP supports remote sign-out.",
+      "claim": "PMP provides device provisioning.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Remote actions (restart, log collection, sign-in, sign-out, provisioning, and more).",
@@ -257,17 +259,6 @@
       "n": 22,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PMP supports device provisioning.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Remote actions (restart, log collection, sign-in, sign-out, provisioning, and more).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing",
-      "type": "behaviour",
       "claim": "PMP provides update management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
@@ -276,29 +267,18 @@
       "fix": null
     },
     {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "PMP provides device settings and configuration profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "Device settings and configuration profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 24,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "PMP provides device settings management.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Device settings and configuration profiles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "PMP supports configuration profiles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Device settings and configuration profiles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "PMP provides device health monitoring.",
@@ -309,7 +289,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 25,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "PMP provides SIP device management.",
@@ -320,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Devices enrolled in TAC appear in PMP automatically.",
+      "n": 26,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The default is on because devices enrolled in TAC appear in PMP automatically.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Teams Devices including MTR-A, Teams Panels, Teams Phones and SIP Phones, that are enrolled in Teams Admin Center (TAC) appear automatically in Pro Management Portal (PMP).",
@@ -331,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 27,
       "where": "What's changing: notice metadata",
       "type": "record",
-      "claim": "The notice text identifies its timeline update as 28 October 2026.",
+      "claim": "The notice announces an October 28, 2026 timeline update.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "Updated October 28, 2026: We have updated the timeline.",
@@ -342,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 28,
       "where": "What's changing: notice metadata",
       "type": "record",
-      "claim": "The notice end date is 2027-03-01.",
+      "claim": "The supplied notice end date is 2027-03-01.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "Microsoft's end date 2027-03-01",
@@ -353,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 29,
       "where": "What's changing: notice metadata",
       "type": "record",
-      "claim": "The notice has no act-by date.",
+      "claim": "The supplied notice has no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "Act by: none",
@@ -364,41 +344,30 @@
       "fix": null
     },
     {
+      "n": 30,
+      "where": "What's changing: rollout",
+      "type": "record",
+      "claim": "Public-cloud rollout was complete as of July 2, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "General Availability (Worldwide): Effective July 2, 2026, the rollout is 100% complete across all regions in the Public cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing: rollout",
+      "type": "record",
+      "claim": "GCC High and DoD rollout was complete as of October 8, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "General Availability (GCC High and DoD): Effective October 8, 2026, the rollout is 100% complete across GCCH and DoD clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 32,
-      "where": "What's changing: rollout",
-      "type": "record",
-      "claim": "Public-cloud rollout was complete on 2 July 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1227622",
-      "quote": "Effective July 2, 2026, the rollout is 100% complete across all regions in the Public cloud.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "What's changing: rollout",
-      "type": "record",
-      "claim": "GCC High rollout was complete on 8 October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1227622",
-      "quote": "General Availability (GCC High and DoD): Effective October 8, 2026, the rollout is 100% complete across GCCH and DoD clouds.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "What's changing: rollout",
-      "type": "record",
-      "claim": "DoD rollout was complete on 8 October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1227622",
-      "quote": "General Availability (GCC High and DoD): Effective October 8, 2026, the rollout is 100% complete across GCCH and DoD clouds.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "What's changing: rollout",
+      "where": "What's changing: rollout; Open questions",
       "type": "record",
       "claim": "Microsoft expects GCC rollout to start in November 2026.",
       "status": "supported",
@@ -408,8 +377,8 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "What's changing: rollout",
+      "n": 33,
+      "where": "What's changing: rollout; Open questions",
       "type": "record",
       "claim": "Microsoft expects GCC rollout to finish by late November 2026.",
       "status": "supported",
@@ -419,21 +388,32 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "What's changing: public-cloud retirement; summary",
+      "n": 34,
+      "where": "summary; What's changing: TAC deprecation",
       "type": "record",
-      "claim": "Public-cloud SIP administration retires from mid-November to the end of November 2026.",
+      "claim": "TAC device administration starts retiring in November 2026.",
       "status": "supported",
       "source": "Message Center post MC1227622",
-      "quote": "SIP, MTR-A and Panels devices administration experience in TAC will start deprecating by Mid-November and will complete by end of November.",
+      "quote": "The deprecation of Teams device management capabilities in TAC will begin in November 2026 and will roll out in phases based on device type and feature readiness.",
       "severity": "minor",
-      "fix": "Keep the notice's dates. Add: 'The transition guide's FAQ still says deprecation begins and ends in October 2026; this briefing follows the later timeline in MC1227622.' The conflicting FAQ is at https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 under 'What is the deadline to migrate from TAC to PMP?'."
+      "fix": "Keep the notice's dates. Add: \"The transition guide's FAQ still says TAC device-management deprecation begins and ends in October 2026; this briefing follows the later timeline in MC1227622.\" The conflicting FAQ is at https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 under \"What is the deadline to migrate from TAC to PMP?\"."
     },
     {
-      "n": 38,
+      "n": 35,
       "where": "What's changing: public-cloud retirement",
       "type": "record",
-      "claim": "Public-cloud Teams Rooms on Android administration retires from mid-November to the end of November 2026.",
+      "claim": "Public-cloud SIP, Android Rooms and panel TAC administration starts retiring by mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "For public clouds - - SIP, MTR-A and Panels devices administration experience in TAC will start deprecating by Mid-November and will complete by end of November.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing: public-cloud retirement",
+      "type": "record",
+      "claim": "Public-cloud SIP, Android Rooms and panel TAC retirement completes by the end of November 2026.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "SIP, MTR-A and Panels devices administration experience in TAC will start deprecating by Mid-November and will complete by end of November.",
@@ -441,21 +421,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "What's changing: public-cloud retirement",
+      "n": 37,
+      "where": "What's changing: public-cloud phones",
       "type": "record",
-      "claim": "Public-cloud panels administration retires from mid-November to the end of November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1227622",
-      "quote": "SIP, MTR-A and Panels devices administration experience in TAC will start deprecating by Mid-November and will complete by end of November.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "What's changing: public-cloud retirement",
-      "type": "record",
-      "claim": "Public-cloud phones administration retires from early December to 15 December 2026.",
+      "claim": "Public-cloud phone TAC administration starts retiring by early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "Phones devices administration experience in TAC will start deprecating by early December and complete by December 15th.",
@@ -463,32 +432,43 @@
       "fix": null
     },
     {
+      "n": 38,
+      "where": "What's changing: public-cloud phones",
+      "type": "record",
+      "claim": "Public-cloud phone TAC retirement completes by December 15, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "Phones devices administration experience in TAC will start deprecating by early December and complete by December 15th.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing: government retirement",
+      "type": "record",
+      "claim": "GCC High and DoD TAC administration starts retiring by early December 2026, with phones on a separate schedule.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "For GCC-H and DoD, device administration experience in TAC will start deprecating by early December and will be completed by December 15th.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing: government retirement",
+      "type": "record",
+      "claim": "GCC High and DoD TAC retirement completes by December 15, 2026, with phones on a separate schedule.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "For GCC-H and DoD, device administration experience in TAC will start deprecating by early December and will be completed by December 15th.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 41,
       "where": "What's changing: government retirement",
       "type": "record",
-      "claim": "GCC High TAC administration retires from early December to 15 December 2026, with phones covered by the later government-phone window.",
-      "status": "supported",
-      "source": "Message Center post MC1227622",
-      "quote": "For GCC-H and DoD, device administration experience in TAC will start deprecating by early December and will be completed by December 15th.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "What's changing: government retirement",
-      "type": "record",
-      "claim": "DoD TAC administration retires from early December to 15 December 2026, with phones covered by the later government-phone window.",
-      "status": "supported",
-      "source": "Message Center post MC1227622",
-      "quote": "For GCC-H and DoD, device administration experience in TAC will start deprecating by early December and will be completed by December 15th.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "What's changing: government retirement",
-      "type": "record",
-      "claim": "GCC TAC administration retires from early January to 30 January 2027.",
+      "claim": "GCC TAC administration starts retiring by early January 2027.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "For GCC, devices administration experience in TAC will start deprecating by early January and will be completed by January 30th.",
@@ -496,10 +476,32 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 42,
       "where": "What's changing: government retirement",
       "type": "record",
-      "claim": "Phones administration in GCC, GCC High and DoD retires from early January to 30 January 2027.",
+      "claim": "GCC TAC retirement completes by January 30, 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "For GCC, devices administration experience in TAC will start deprecating by early January and will be completed by January 30th.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing: government phones",
+      "type": "record",
+      "claim": "Government-cloud phone TAC administration starts retiring by early January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1227622",
+      "quote": "Phones devices administration experience for all Sovereign cloud (GCC, GCC-H, DoD) customers will start deprecating by early January and will be completed by January 30th.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing: government phones",
+      "type": "record",
+      "claim": "Government-cloud phone TAC retirement completes by January 30, 2027.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "Phones devices administration experience for all Sovereign cloud (GCC, GCC-H, DoD) customers will start deprecating by early January and will be completed by January 30th.",
@@ -519,9 +521,9 @@
     },
     {
       "n": 46,
-      "where": "What's changing; Open questions",
+      "where": "What's changing: documentation disagreement; Open questions",
       "type": "availability",
-      "claim": "The general Pro Management page lists all Microsoft clouds except DoD and Office 365 operated by 21Vianet, unlike the transition guide's DoD portal listing.",
+      "claim": "The general PMP page lists all Microsoft clouds except DoD and Office 365 operated by 21Vianet.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
       "quote": "Supported clouds | All Microsoft clouds except DoD and Office 365 operated by 21Vianet.",
@@ -530,34 +532,34 @@
     },
     {
       "n": 47,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The change's default state is on because devices appear in PMP without an administrator migrating them.",
+      "where": "Why it matters; Cost and licensing; rationale: risk",
+      "type": "behaviour",
+      "claim": "After TAC deprecation, admins cannot update affected devices there and may need OEM firmware containing the required Admin Agent to restore PMP manageability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "No. Devices automatically appear in the Pro Management portal when Android device management reaches general availability. Make sure the required URLs are allowlisted and devices are on AA 830 version.",
+      "quote": "After the deprecation, admins will no longer be able to update these devices from TAC and may need to use the OEM portal to update firmware with required Admin Agent before the devices can be managed in PMP again.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The general Pro Management service monitors devices.",
+      "where": "Why it matters; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Administrators scoped to an Entra administrative unit cannot access PMP through that scope.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
-      "quote": "Microsoft Teams Rooms Pro management monitors devices, collects device data, and allows Microsoft to remotely access and manage room devices.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "If an admin is scoped to an Administrative Unit in Entra ID, they won't be able to access the portal.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The general Pro Management service collects device data.",
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "A fully privileged administrator can create PMP custom roles to delegate access for administrative-unit-scoped admins.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
-      "quote": "Microsoft Teams Rooms Pro management monitors devices, collects device data, and allows Microsoft to remotely access and manage room devices.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "have an administrator with full access create custom roles in the Pro Management Portal to delegate granular access.",
       "severity": null,
       "fix": null
     },
@@ -565,7 +567,7 @@
       "n": 50,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The general Pro Management service allows Microsoft to remotely access and manage room devices.",
+      "claim": "The general service page says PMP monitors room devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
       "quote": "Microsoft Teams Rooms Pro management monitors devices, collects device data, and allows Microsoft to remotely access and manage room devices.",
@@ -576,7 +578,29 @@
       "n": 51,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The general page describes collected data as specific to a room account, not an individual user.",
+      "claim": "The general service page says PMP collects device data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
+      "quote": "Microsoft Teams Rooms Pro management monitors devices, collects device data, and allows Microsoft to remotely access and manage room devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The general service page says Microsoft can remotely access and manage room devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
+      "quote": "allows Microsoft to remotely access and manage room devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The general service page describes collected data as specific to a room account, not an individual user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
       "quote": "Data collected is specific to a room account, not an individual user. Incidental references to an individual user may be present in the activity log during use of the device.",
@@ -584,10 +608,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 54,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Global Administrator is an Entra role that grants PMP access.",
+      "claim": "Global Administrator grants PMP access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
       "quote": "Global Administrator: Has full access to the Microsoft Teams Rooms Pro Management portal.",
@@ -595,35 +619,13 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Risk assessment: Security & identity; Scope",
-      "type": "role",
-      "claim": "Teams Administrator is an Entra role that grants PMP access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Either an appropriate Microsoft Entra ID role (Global Administrator, Teams Administrator, Teams Device Administrator, Global Reader).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Risk assessment: Security & identity; Scope",
-      "type": "role",
-      "claim": "Teams Device Administrator is an Entra role that grants PMP access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Either an appropriate Microsoft Entra ID role (Global Administrator, Teams Administrator, Teams Device Administrator, Global Reader).",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 55,
-      "where": "Risk assessment: Data exposure; Security & identity; Scope",
+      "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Global Reader is an Entra role that grants PMP access.",
+      "claim": "Teams Administrator grants PMP access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Global Reader: Read-only access to the Microsoft Teams Rooms Pro Management portal",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "Either an appropriate Microsoft Entra ID role (Global Administrator, Teams Administrator, Teams Device Administrator, Global Reader).",
       "severity": null,
       "fix": null
     },
@@ -631,21 +633,21 @@
       "n": 56,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Teams Rooms Pro Manager is a PMP built-in role.",
+      "claim": "Teams Device Administrator grants PMP access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Teams Rooms Pro Manager: Has full access to the Microsoft Teams Rooms Pro Management portal.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "Either an appropriate Microsoft Entra ID role (Global Administrator, Teams Administrator, Teams Device Administrator, Global Reader).",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "Risk assessment: Security & identity; Scope",
+      "where": "Risk assessment: Data exposure; Security & identity; Scope",
       "type": "role",
-      "claim": "Site Lead is a PMP built-in role.",
+      "claim": "Global Reader grants read-only PMP access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Site Lead: Organizes rooms, has access to reports and can manage tickets.",
+      "quote": "Global Reader: Read-only access to the Microsoft Teams Rooms Pro Management portal",
       "severity": null,
       "fix": null
     },
@@ -653,16 +655,38 @@
       "n": 58,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Site Technician is a PMP built-in role.",
+      "claim": "Teams Rooms Pro Manager is a PMP built-in access role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Site Technician: Manages tickets for specific rooms.",
+      "quote": "Teams Rooms Pro Manager: Has full access to the Microsoft Teams Rooms Pro Management portal.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Risk assessment: Security & identity; controls[0].note; Scope",
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Site Lead is a PMP built-in access role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "Or PMP built-in role (Teams Rooms Pro Manager, Site Lead, and Site Technician).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Site Technician is a PMP built-in access role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "Or PMP built-in role (Teams Rooms Pro Manager, Site Lead, and Site Technician).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].governs; Risk assessment: Security & identity; Scope",
       "type": "role",
       "claim": "PMP custom roles can grant access scoped to devices and device groups.",
       "status": "supported",
@@ -672,29 +696,18 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Why it matters; Risk assessment; Scope; Governance guidance",
-      "type": "role",
-      "claim": "An administrator scoped to an Entra administrative unit cannot access PMP using that access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Administrative units (AU): If an admin is scoped to an Administrative Unit in Entra ID, they won't be able to access the portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
+      "n": 62,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "The transition guide directs a full-access administrator to create custom PMP roles to delegate access for AU-scoped administrators.",
+      "claim": "Custom PMP roles allow administrators to limit what technicians can see and change.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "In that case, have an administrator with full access create custom roles in the Pro Management Portal to delegate granular access.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "By assigning roles to your portal users, you can limit what they can see and change. Each role has a set of permissions that determines what users with that role can access and change within your organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 63,
       "where": "Risk assessment: Security & identity; Scope; Governance guidance",
       "type": "applicability",
       "claim": "Unsupported conditional access policies on Teams resource accounts can prevent authentication and PMP manageability.",
@@ -705,10 +718,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 64,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Microsoft accelerates minimum Admin Agent deployment beyond the configured update-ring cadence.",
+      "claim": "Microsoft accelerates minimum Admin Agent deployment beyond configured update-ring cadence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Admin Agent on your devices will get updated at faster cadence than duration configured via update rings.",
@@ -716,10 +729,10 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 65,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Microsoft force-updates the minimum Admin Agent on devices whose automatic updates were permanently disabled.",
+      "claim": "Microsoft force-updates the minimum Admin Agent where auto updates were permanently disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Customers who have disabled auto updates permanently will have their devices forcefully auto-updated to the minimum Admin Agent version",
@@ -727,21 +740,21 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Risk assessment; controls[1].note; Governance guidance; rationale: risk",
+      "n": 66,
+      "where": "controls[1].note; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
       "type": "applicability",
-      "claim": "The mandatory minimum Admin Agent readiness updates are not pausable.",
+      "claim": "The required minimum Admin Agent updates cannot be paused.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "These admin Agent updates to minimum required Admin Agent for successfully managing their devices PMP are NOT PAUSABLE and are mandatory to manage your devices in PMP successfully.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "These Admin Agent updates to minimum required Admin Agent for successfully managing their devices PMP are NOT PAUSABLE and are mandatory to manage your devices in PMP successfully.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
+      "n": 67,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The PMP nightly Android update window is 12 AM to 5 AM device local time.",
+      "claim": "PMP's Android nightly update window is 12 AM to 5 AM device local time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
       "quote": "All auto-updates for Android devices occur only during the predefined nightly maintenance window defined for PMP, between 12 AM and 5 AM device local time.",
@@ -749,10 +762,10 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 68,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Administrators cannot configure a different PMP maintenance window yet.",
+      "claim": "PMP does not yet allow a different Android maintenance window.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
       "quote": "No, PMP does not let admins configure a custom maintenance window for device updates.",
@@ -760,10 +773,10 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Risk assessment; controls[2].note; Governance guidance",
+      "n": 69,
+      "where": "controls[2].note; Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
-      "claim": "Confirmation of PMP update-ring adoption is irreversible.",
+      "claim": "Confirmation of PMP ring adoption is irreversible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
       "quote": "This confirmation is irreversible. Once you confirm the transition to use PMP rings, any changes to auto-update phases in TAC will not have any effect on updates managed via PMP rings.",
@@ -771,10 +784,21 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "Risk assessment; Governance guidance",
+      "n": 70,
+      "where": "controls[2].note",
       "type": "behaviour",
-      "claim": "The default PMP mapping rolls out updates faster than TAC phases.",
+      "claim": "Confirmation triggers a one-time mapping from TAC phases to default PMP rings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "When you explicitly confirm update management through PMP, a one-time mapping assigns your devices to the corresponding default PMP update rings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft warns that the default PMP mapping rolls updates out faster than TAC phases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
       "quote": "As per default mapping explained above, updates in PMP will roll out faster than in TAC. Adjust your auto-update ring durations as soon as you start managing devices through PMP to avoid an unexpectedly fast rollout.",
@@ -782,21 +806,21 @@
       "fix": null
     },
     {
-      "n": 70,
+      "n": 72,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The TAC non-disruptive-updates setting is not migrated.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "The following settings are not migrated from Teams admin center (TAC) to Teams Rooms Pro Management (PMP) as part of this transition: ... Non-disruptive updates",
+      "quote": "The following settings are not migrated from Teams admin center (TAC) to Teams Rooms Pro Management (PMP) as part of this transition:\n\n1. Non-disruptive updates",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
+      "n": 73,
       "where": "Risk assessment: Change & support",
       "type": "default",
-      "claim": "PMP updates are non-disruptive by default.",
+      "claim": "PMP-managed updates are non-disruptive by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Updates managed through PMP are non-disruptive by default. If a device is in use when an update is scheduled, the update is automatically postponed until the device is no longer in use.",
@@ -804,21 +828,21 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 74,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The TAC maintenance-window setting is not migrated.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "The maintenance window setting is not migrated because it was not honored by Teams admin center.",
+      "quote": "Maintenance window - The maintenance window setting is not migrated because it was not honored by Teams admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
+      "n": 75,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft says TAC did not honour its maintenance-window setting.",
+      "claim": "Microsoft says TAC did not honor the maintenance-window setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "The maintenance window setting is not migrated because it was not honored by Teams admin center.",
@@ -826,8 +850,8 @@
       "fix": null
     },
     {
-      "n": 74,
-      "where": "Risk assessment: Change & support; Why it matters; Cost and licensing",
+      "n": 76,
+      "where": "Risk assessment: Change & support; Cost and licensing",
       "type": "behaviour",
       "claim": "TAC configuration profiles can be imported as PMP Settings Templates.",
       "status": "supported",
@@ -837,8 +861,8 @@
       "fix": null
     },
     {
-      "n": 75,
-      "where": "Risk assessment: Change & support; Cost and licensing",
+      "n": 77,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
       "claim": "TAC tags can be imported as PMP Groups.",
       "status": "supported",
@@ -848,32 +872,21 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Risk assessment: Change & support; Scope; Governance guidance",
-      "type": "applicability",
-      "claim": "A device with the IoT Hub connection error may require the Teams Devices network-security URLs to be allowed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Ensure required URLs listed in Teams Devices - Network Security are allowed on your network for both Teams Rooms on Windows and Teams Android devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "applicability",
-      "claim": "A device with the IoT Hub connection error may need the minimum Admin Agent version.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Ensure the device(s) are updated to the minimum Admin Agent version provided in the version requirements section.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 78,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Long-offline devices need administrator readiness steps.",
+      "claim": "An IoT Hub connectivity error can require checking allowed network URLs, the Admin Agent version or unsupported conditional access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "If your Teams Android devices: aren't visible, are unmanageable, or display \"Device is not connected to IoT Hub\" message within the Pro Management Portal:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Administrators are responsible for getting long-offline devices updated.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "if a device remains offline (powered off) for an extended period, Microsoft cannot automatically update it to the required Admin Agent version. In such cases, administrators are responsible for ensuring that the device is updated",
@@ -881,10 +894,10 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "n": 80,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Long-signed-out devices require a manual sign-in after updating to the latest eligible Admin Agent.",
+      "claim": "Long-signed-out devices require an administrator to sign in after updating the Admin Agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "administrators must sign in to the device at least once after it has been updated to the latest eligible Admin Agent version.",
@@ -892,10 +905,10 @@
       "fix": null
     },
     {
-      "n": 80,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "n": 81,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Devices on Admin Agent versions earlier than 794 require a manual OEM-firmware update.",
+      "claim": "Devices earlier than Admin Agent 794 require a manual OEM firmware update before automatic updating can catch up.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Devices with Admin Agent versions earlier than 794 Administrators must first manually update the device to a firmware version obtained from the OEM portal that includes Admin Agent version 794 or later.",
@@ -903,7 +916,7 @@
       "fix": null
     },
     {
-      "n": 81,
+      "n": 82,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "End-of-life devices get the latest Admin Agent.",
@@ -911,13 +924,13 @@
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Microsoft will make the latest Admin agent version available which supports connectivity to the Pro Management Portal.",
       "severity": "minor",
-      "fix": "Replace 'End-of-life devices get the latest Admin Agent' with 'Microsoft makes the latest Admin Agent available for end-of-life devices'. This preserves the transition guide's narrower availability statement; https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp says Microsoft makes every effort to update these devices automatically and administrators remain responsible for ensuring they are updated."
+      "fix": "Replace \"End-of-life devices get the latest Admin Agent\" with \"Microsoft makes the latest Admin Agent available for end-of-life devices\". The transition guide promises availability, not successful installation; the Android update guide says Microsoft makes every effort to update these devices automatically and administrators remain responsible for ensuring they are updated."
     },
     {
-      "n": 82,
+      "n": 83,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft says end-of-life device manageability has not been tested.",
+      "claim": "Microsoft has not tested PMP manageability for end-of-life devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "However, since these are not supported, managability hasn't been tested and may not work as expected.",
@@ -925,21 +938,10 @@
       "fix": null
     },
     {
-      "n": 83,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is mixed, reflecting the documented alternative licence and existing-enrolment routes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Org has at least one Teams Rooms Pro or Teams Rooms Basic or Teams Rooms Standard license, or ... Org has at least one Teams Shared Space license ... or ... Org has at least one Teams device already enrolled in PMP",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 84,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "At least one Teams Rooms Pro licence is one route to organisational PMP access.",
+      "claim": "At least one Teams Rooms Pro licence is one qualifying route to tenant portal access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Org has at least one Teams Rooms Pro or Teams Rooms Basic or Teams Rooms Standard license, or",
@@ -948,9 +950,9 @@
     },
     {
       "n": 85,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "At least one Teams Rooms Basic licence is one route to organisational PMP access.",
+      "claim": "At least one Teams Rooms Basic licence is one qualifying route to tenant portal access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Org has at least one Teams Rooms Pro or Teams Rooms Basic or Teams Rooms Standard license, or",
@@ -959,9 +961,9 @@
     },
     {
       "n": 86,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "At least one Teams Rooms Standard licence is one route to organisational PMP access.",
+      "claim": "At least one Teams Rooms Standard licence is one qualifying route to tenant portal access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Org has at least one Teams Rooms Pro or Teams Rooms Basic or Teams Rooms Standard license, or",
@@ -970,9 +972,9 @@
     },
     {
       "n": 87,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "At least one Teams Shared Space licence, formerly Shared devices, is another route to PMP access.",
+      "claim": "At least one Teams Shared Space licence, formerly Shared devices, is another tenant access route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Org has at least one Teams Shared Space license (formerly Shared devices), or",
@@ -981,9 +983,9 @@
     },
     {
       "n": 88,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "At least one Teams device already enrolled in PMP is another route to organisational access.",
+      "claim": "At least one Teams device already enrolled in PMP is an alternative tenant access route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Org has at least one Teams device already enrolled in PMP",
@@ -994,7 +996,7 @@
       "n": 89,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The existing-device route is described as primarily for phone-only customers without the listed licences.",
+      "claim": "The enrolled-device route is described as primarily for phone-only customers without the named licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "primarily applicable to the customers managing only Teams Phones and don’t have above-mentioned licenses",
@@ -1005,7 +1007,7 @@
       "n": 90,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "The transition guide says existing TAC phones enrol automatically after updating to AA 830 or later.",
+      "claim": "Existing TAC-enrolled Teams phones automatically enroll in PMP after updating to AA 830 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Existing Teams Phones enrolled in TAC automatically enroll in PMP after updating to Admin Agent version AA 830 version (1.0.0.202606082157.product) or later.",
@@ -1016,7 +1018,7 @@
       "n": 91,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "New phone customers must sign in to at least one phone for automatic enrolment and tenant provisioning.",
+      "claim": "New phone-only customers must sign in to a phone for automatic device enrollment and PMP tenant provisioning.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "New customers have to sign-in into at least one of their Teams Phones for the automatic enrollment of the device leading to the tenant provisioning into PMP.",
@@ -1027,10 +1029,10 @@
       "n": 92,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The cited transition and licensing pages publish no transition-specific price, meter, credit rate or usage charge.",
+      "claim": "The pages read publish no transition-specific price, meter, credit rate or usage charge.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Rooms Pro Management portal Android transition licensing price usage meter charge. Opened aboutunifieddevicemanagement-pmp1, androidupdatemanagementinpmp, update-management and rooms-licensing; no transition meter or price.",
+      "quote": "Searched: Teams Android device management transition Pro Management portal price meter charge licensing. Read aboutunifieddevicemanagement-pmp1, androidupdatemanagementinpmp, update-management, rooms-licensing and rooms-pro-management; no transition-specific price or meter.",
       "severity": null,
       "fix": null
     },
@@ -1038,10 +1040,10 @@
       "n": 93,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The cited pages list no separate PMP licence beyond the transition guide's access conditions.",
+      "claim": "The pages read name no separate PMP licence beyond the stated access conditions.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Rooms Pro Management portal Android transition licensing price usage meter charge. Opened aboutunifieddevicemanagement-pmp1, update-management and rooms-licensing; the transition FAQ says current access is included with Teams Rooms and Teams shared device licensing.",
+      "quote": "Searched: Teams Android device management transition Pro Management portal price meter charge licensing. Read the transition guide's access requirements and FAQ, rooms-licensing and update-management; no additional transition licence is named.",
       "severity": null,
       "fix": null
     },
@@ -1049,7 +1051,7 @@
       "n": 94,
       "where": "Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Teams Rooms Pro licences support PMP update-ring orchestration.",
+      "claim": "The update-management guide licenses Teams Rooms update-ring orchestration through Teams Rooms Pro.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/update-management",
       "quote": "Teams Rooms with Teams Rooms Pro licenses can orchestrate their updates through Teams Rooms Pro Management update rings.",
@@ -1060,7 +1062,7 @@
       "n": 95,
       "where": "Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Basic-licensed Teams Rooms receive updates automatically through the nightly maintenance window.",
+      "claim": "Basic or legacy-licensed Teams Rooms update automatically through the device nightly maintenance window.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/update-management",
       "quote": "For Teams Rooms devices that have a Teams Rooms Basic or legacy Teams Rooms license, their updates are managed through the device's nightly maintenance window automatically.",
@@ -1070,11 +1072,11 @@
     {
       "n": 96,
       "where": "Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "Legacy-licensed Teams Rooms receive updates automatically through the nightly maintenance window.",
+      "type": "absence",
+      "claim": "The Android update guide describes ring adoption generally without resolving a separate phone-and-panel ring-licensing distinction.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/update-management",
-      "quote": "For Teams Rooms devices that have a Teams Rooms Basic or legacy Teams Rooms license, their updates are managed through the device's nightly maintenance window automatically.",
+      "source": null,
+      "quote": "Searched: Teams Android device management transition Pro Management portal price meter charge licensing. Read androidupdatemanagementinpmp, update-management licensing requirements, rooms-licensing and the transition access requirements; no phone/panel-specific ring licence rule found.",
       "severity": null,
       "fix": null
     },
@@ -1082,7 +1084,7 @@
       "n": 97,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Microsoft's licensing page says Teams Rooms Basic is provided at no additional cost.",
+      "claim": "Teams Rooms Basic is provided at no additional cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
       "quote": "Microsoft Teams Rooms Basic provides core meeting experiences to organizations that purchase a certified Microsoft Teams Rooms system, at no additional cost.",
@@ -1093,29 +1095,40 @@
       "n": 98,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The service-plan comparison lists Microsoft Teams Rooms Pro Management under Pro, not Basic.",
+      "claim": "The service-plan comparison lists Microsoft Teams Rooms Pro Management under Pro and not Basic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| Microsoft Teams Rooms Pro Management |  | ✔ |",
+      "quote": "| Microsoft Teams Rooms Pro Management |  | ✔ |",
       "severity": null,
       "fix": null
     },
     {
       "n": 99,
-      "where": "Scope: Clouds",
-      "type": "admin-path",
-      "claim": "The public-cloud portal address is portal.rooms.microsoft.com.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed model reflects alternative portal-access entitlements and licence-dependent advanced management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Public / GCC: https://portal.rooms.microsoft.com",
+      "quote": "Org has at least one Teams Rooms Pro or Teams Rooms Basic or Teams Rooms Standard license, or",
       "severity": null,
       "fix": null
     },
     {
       "n": 100,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The known transition cost is indirect administrative work rather than a published new transition charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "The current access to PMP is included with Teams Rooms and Teams shared device licensing. Additional guidance to be provided if any licensing scenarios require attention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
       "where": "Scope: Clouds",
       "type": "admin-path",
-      "claim": "The GCC portal address is portal.rooms.microsoft.com.",
+      "claim": "The public and GCC portal address is portal.rooms.microsoft.com.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Public / GCC: https://portal.rooms.microsoft.com",
@@ -1123,7 +1136,7 @@
       "fix": null
     },
     {
-      "n": 101,
+      "n": 102,
       "where": "Scope: Clouds",
       "type": "admin-path",
       "claim": "The GCC High portal address is devices.gov.teams.microsoft.us.",
@@ -1134,10 +1147,10 @@
       "fix": null
     },
     {
-      "n": 102,
+      "n": 103,
       "where": "What's changing; Scope: Clouds; Open questions",
       "type": "admin-path",
-      "claim": "The transition guide gives devices.dod.teams.microsoft.us as the DoD portal address.",
+      "claim": "The transition guide supplies devices.dod.teams.microsoft.us as the DoD portal address.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "DoD: https://devices.dod.teams.microsoft.us/",
@@ -1145,73 +1158,84 @@
       "fix": null
     },
     {
-      "n": 103,
+      "n": 104,
       "where": "Scope: Clouds; Open questions",
       "type": "availability",
-      "claim": "The transition guide marks SIP device features NA for DoD.",
+      "claim": "The transition feature table marks SIP device features NA for DoD.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "| Area | Features | Public | GCCH | DoD | GCC |\n| SIP device management | SIP devices view | June 2026 (completed) | September 2026 (completed) | NA | November 2026 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 104,
-      "where": "Scope: Prerequisites; Governance guidance",
-      "type": "behaviour",
-      "claim": "Public-cloud devices require AA 830 (1.0.0.202606082157.product) or higher, whichever is eligible for the device.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Make sure your devices are updated to the minimum Admin Agent version AA 830 (1.0.0.202606082157.product) or higher (whichever is eligible for your devices)",
+      "quote": "| SIP device management | SIP devices view | June 2026 (completed) | September 2026 (completed) | NA | November 2026 |",
       "severity": null,
       "fix": null
     },
     {
       "n": 105,
-      "where": "Scope: Prerequisites; Governance guidance",
-      "type": "behaviour",
-      "claim": "GCC, GCC High and DoD devices require AA 856 (1.0.0.202607160723) or higher, whichever is eligible.",
+      "where": "Scope: Prerequisites; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "The transition requires network access to the URLs listed on the Teams Devices network-security page.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-      "quote": "This guidance applies to GCC, GCC-High, and DoD cloud customers. ... minimum Admin Agent version 856 (1.0.0.202607160723) or higher (whichever is eligible for your devices)",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "quote": "Ensure required URLs listed in Teams Devices - Network Security are allowed on your network for both Teams Rooms on Windows and Teams Android devices.",
       "severity": null,
       "fix": null
     },
     {
       "n": 106,
-      "where": "Scope: Prerequisites",
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Microsoft says government-cloud devices will soon be automatically updated to AA 856.",
+      "claim": "Public-cloud devices need AA 830 (1.0.0.202606082157.product) or higher, whichever is eligible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Government cloud customers (GCC, GCC-High, DoD) will soon have their devices auto-updated to minimum required Admin Agent version AA 856",
+      "quote": "minimum Admin Agent version AA 830 (1.0.0.202606082157.product) or higher (whichever is eligible for your devices)",
       "severity": null,
       "fix": null
     },
     {
       "n": 107,
-      "where": "Why it matters; rationale: risk",
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "After TAC device-management deprecation, administrators cannot update the affected devices from TAC.",
+      "claim": "GCC, GCC High and DoD devices need AA 856 (1.0.0.202607160723) or higher, whichever is eligible.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "After the deprecation, admins will no longer be able to update these devices from TAC",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "minimum Admin Agent version 856 (1.0.0.202607160723) or higher (whichever is eligible for your devices) to be able to manage Android devices in Teams Rooms Pro Management portal.",
       "severity": null,
       "fix": null
     },
     {
       "n": 108,
-      "where": "Why it matters; Cost and licensing",
+      "where": "Scope: Prerequisites",
       "type": "behaviour",
-      "claim": "Administrators may need OEM firmware containing the required Admin Agent before PMP can manage devices again.",
+      "claim": "Microsoft says government-cloud devices will soon be automatically updated to AA 856.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "may need to use the OEM portal to update firmware with required Admin Agent before the devices can be managed in PMP again.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "Government cloud customers (GCC, GCC-High, DoD) will soon have their devices auto-updated to minimum required Admin Agent version 856 (1.0.0.202607160723)",
       "severity": null,
       "fix": null
     },
     {
       "n": 109,
+      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "PMP custom-role creation is reached through Settings > Roles > Create role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Roles.\n2. Select Create role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 110,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft-documented API or PowerShell operation was found for PMP custom-role creation and device/group scope.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/powershell/module/teams \"Pro Management\" \"role\"; site:learn.microsoft.com/graph \"Teams Rooms\" \"role\" \"Pro Management\". Read rooms-pro-rbac and transition access requirements; no PMP custom-role operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 111,
       "where": "controls[0].note; Governance controls",
       "type": "role",
       "claim": "Creating a custom PMP role requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager.",
@@ -1222,10 +1246,10 @@
       "fix": null
     },
     {
-      "n": 110,
-      "where": "Governance controls",
+      "n": 112,
+      "where": "Governance controls: assigning roles",
       "type": "role",
-      "claim": "Assigning PMP roles also permits a custom role with role-management permissions.",
+      "claim": "Role assignment additionally permits a custom role with role-management permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
       "quote": "To assign roles, you must be a Global Administrator/ Teams Administrator or Teams Rooms Pro Manager role or have a custom role with role management permissions.",
@@ -1233,10 +1257,54 @@
       "fix": null
     },
     {
-      "n": 111,
+      "n": 113,
+      "where": "controls[1].ui; Governance controls; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The tenant Android pause is at Updates > Update management > Android updates > Pause updates in PMP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "go to Updates > Update management > Android updates and click on Pause updates action.",
+      "severity": "minor",
+      "fix": "Keep controls[1].ui unchanged. In the At rollout checklist, extend \"Updates > Update management > Android updates\" to \"Updates > Update management > Android updates > Pause updates\" so the shortened prose route also ends at the control."
+    },
+    {
+      "n": 114,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft-documented API or PowerShell operation was found for the PMP tenant-wide Android update pause.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Pro Management\" \"Pause\" \"API\"; site:learn.microsoft.com/powershell/module/teams \"Android\" \"pause\"; Teams Rooms Pro Management Android update rings tenant pause updates API Microsoft Graph Teams PowerShell. Read androidupdatemanagementinpmp; no matching operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 115,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The tenant-wide pause lasts two weeks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "All auto-update rollouts for entire fleet of Android devices in your tenant will be paused for 2 weeks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 116,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Updates automatically resume after the two-week pause.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "After 2 weeks, updates will auto-resume and updates rollout will restart automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 117,
       "where": "controls[1].note; Governance controls",
       "type": "role",
-      "claim": "The pause capability requires a role with Global - Grant all permission.",
+      "claim": "Setting or resuming the pause needs Global - Grant all permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
       "quote": "Any admin having role with 'Global - Grant all' permission should be able to set/resume this pause.",
@@ -1244,74 +1312,19 @@
       "fix": null
     },
     {
-      "n": 112,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Global Administrator has Global - Grant all permission by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-      "quote": "Global administrator and Teams administrator role have these permissions by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 113,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Teams Administrator has Global - Grant all permission by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-      "quote": "Global administrator and Teams administrator role have these permissions by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 114,
-      "where": "controls[0].ui; Governance controls table; Risk assessment; Governance guidance",
-      "type": "admin-path",
-      "claim": "Custom roles are created in the Teams Rooms Pro Management portal at Settings > Roles > Create role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Roles.\n2. Select Create role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 115,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No API or PowerShell operation is documented for creating PMP custom roles.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Pro Management' 'role' 'API' PowerShell; Microsoft Teams PowerShell module Teams Rooms Pro Management roles groups update rings pause Android; Microsoft Graph beta Teams Rooms Pro Management portal API custom roles groups Android updates. Opened rooms-pro-rbac; no PMP role operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 116,
-      "where": "controls[1].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "The tenant-wide Android pause is at Updates > Update management > Android updates > Pause updates in PMP.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-      "quote": "go to Updates > Update management > Android updates and click on Pause updates action. All auto-update rollouts for entire fleet of Android devices in your tenant will be paused for 2 weeks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 117,
-      "where": "controls[1].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No API or PowerShell operation is documented for the PMP tenant-wide Android pause.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Pro Management' 'pause updates' 'API' PowerShell; Microsoft Teams PowerShell module Teams Rooms Pro Management roles groups update rings pause Android; Microsoft Graph beta Teams Rooms Pro Management portal API custom roles groups Android updates. Opened androidupdatemanagementinpmp.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 118,
-      "where": "controls[2].ui; Governance controls table",
+      "where": "Governance controls: pause permissions",
+      "type": "role",
+      "claim": "Global Administrator and Teams Administrator have the required pause permission by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "Global administrator and Teams administrator role have these permissions by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 119,
+      "where": "controls[2].ui; Governance controls",
       "type": "admin-path",
       "claim": "PMP ring adoption is confirmed at Updates > Ring Configuration > Rings > Provide Confirmation.",
       "status": "supported",
@@ -1321,21 +1334,21 @@
       "fix": null
     },
     {
-      "n": 119,
+      "n": 120,
       "where": "controls[2].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No API or PowerShell route is documented for PMP ring adoption or PMP update-ring settings.",
+      "claim": "No Microsoft-documented API or PowerShell operation was found to confirm migration to PMP rings.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Pro Management' 'update rings' 'API' PowerShell; Microsoft Graph beta Teams Rooms Pro Management portal API custom roles groups Android updates. Opened androidupdatemanagementinpmp and update-management; no PMP ring API found.",
+      "quote": "Searched: \"Pro Management\" \"rings\" \"PowerShell\"; \"Pro Management\" \"update rings\" \"Graph\"; site:learn.microsoft.com/graph/api \"teamworkDevice\" \"update\" \"ring\". Read androidupdatemanagementinpmp, update-management and Graph excerpts; no PMP migration operation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 120,
-      "where": "controls[3].ui; Governance controls table; Governance guidance",
+      "n": 121,
+      "where": "controls[3].ui; Governance controls; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "TAC tags are imported in PMP at Settings > Groups > Import from Teams admin center.",
+      "claim": "TAC tags are imported in PMP through Settings > Groups > Import from Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "Go to Settings > Groups > Import from Teams admin center.",
@@ -1343,21 +1356,21 @@
       "fix": null
     },
     {
-      "n": 121,
+      "n": 122,
       "where": "controls[3].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No API or PowerShell route is documented for importing TAC device tags into PMP groups.",
+      "claim": "No Microsoft-documented API or PowerShell operation was found to import TAC tags as PMP groups.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Pro Management' 'Groups' 'API' import tags; Microsoft Graph beta Teams Rooms Pro Management portal API custom roles groups Android updates. Opened aboutunifieddevicemanagement-pmp1; Graph tag results concern users rather than PMP device groups.",
+      "quote": "Searched: \"Pro Management\" \"Import\" \"tags\" \"API\"; \"Pro Management\" \"groups\" \"PowerShell\". Read aboutunifieddevicemanagement-pmp1 tag-import instructions and Graph groups-overview search excerpt; no matching PMP import operation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 122,
-      "where": "controls[3].note; Governance controls table",
+      "n": 123,
+      "where": "controls[3].note; Governance controls",
       "type": "behaviour",
-      "claim": "Each imported tag becomes a group containing devices signed in with the accounts associated with that tag.",
+      "claim": "An imported tag creates a group containing devices signed in with the accounts associated with that tag.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
       "quote": "When you import a Tag, a corresponding Group is created containing the devices that are signed in with the accounts associated with that Tag.",
@@ -1365,43 +1378,10 @@
       "fix": null
     },
     {
-      "n": 123,
-      "where": "controls[1].note; Governance controls table; Governance guidance",
-      "type": "behaviour",
-      "claim": "A tenant-wide PMP pause lasts two weeks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-      "quote": "All auto-update rollouts for entire fleet of Android devices in your tenant will be paused for 2 weeks.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 124,
-      "where": "controls[1].note; Governance controls table",
+      "where": "Governance controls: TAC pause",
       "type": "behaviour",
-      "claim": "Updates resume automatically after the two-week pause.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-      "quote": "After 2 weeks, updates will auto-resume and updates rollout will restart automatically.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 125,
-      "where": "controls[2].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Confirmation triggers a one-time mapping from TAC phases to default PMP rings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-      "quote": "When you explicitly confirm update management through PMP, a one-time mapping assigns your devices to the corresponding default PMP update rings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 126,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "New TAC tenant-pause actions no longer affect automatic updates managed through PMP rings.",
+      "claim": "New tenant pause actions configured in TAC no longer affect automatic updates managed through PMP rings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
       "quote": "Tenant-level pause actions configured in TAC will be deprecated and will no longer affect automatic updates managed through PMP update rings. This deprecation takes effect immediately when update management capabilities become generally available in PMP.",
@@ -1409,10 +1389,21 @@
       "fix": null
     },
     {
-      "n": 127,
+      "n": 125,
+      "where": "Governance controls: older TAC surface",
+      "type": "behaviour",
+      "claim": "TAC remains available for manual device update actions until its device-management experience is retired.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
+      "quote": "until the TAC device management experience is deprecated completely, admins can still apply manual updates via TAC. However, Auto-updates are disabled via TAC",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 126,
       "where": "Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft asks administrators to update help desk and IT documentation to reference PMP.",
+      "claim": "Microsoft asks administrators to update internal helpdesk and IT documentation to reference PMP.",
       "status": "supported",
       "source": "Message Center post MC1227622",
       "quote": "Update internal helpdesk and IT documentation to reference PMP as the new management portal.",
@@ -1420,10 +1411,10 @@
       "fix": null
     },
     {
-      "n": 128,
-      "where": "Open questions: retirement dates",
+      "n": 127,
+      "where": "Open questions: conflicting retirement guidance",
       "type": "date",
-      "claim": "The Android update guide still refers to TAC deprecation starting in September, unlike the notice's later timeline.",
+      "claim": "The Android update guide still mentions TAC deprecation starting in September.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
       "quote": "Once device management experience in TAC is deprecated starting September (see timelines here), Teams Android devices will be by default updated as per rings defined in PMP.",
@@ -1431,57 +1422,24 @@
       "fix": null
     },
     {
-      "n": 129,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The low cost rating reflects known administrative transition work rather than a documented new transition charge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "The current access to PMP is included with Teams Rooms and Teams shared device licensing. Additional guidance to be provided if any licensing scenarios require attention.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 130,
-      "where": "rationale: impact; Why it matters",
-      "type": "record",
-      "claim": "The notice identifies device administrators as the affected audience, rather than describing an end-user experience change.",
-      "status": "supported",
-      "source": "Message Center post MC1227622",
-      "quote": "Who is affected:\n\nAdmins who manage Teams Rooms on Android, Teams phones, Teams panels, and SIP Phones.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 131,
-      "where": "Governance controls: older TAC surface",
-      "type": "behaviour",
-      "claim": "TAC remains an older management surface during the transition until the relevant workflows retire.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-      "quote": "Yes. The device management in TAC remains available during the transition period. Some workflows may redirect to PMP as features become available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 132,
+      "n": 128,
       "where": "Governance guidance: After rollout",
       "type": "consistency",
-      "claim": "The checklist tells readers to fix network and conditional access controls, but neither control has a row in the controls table.",
+      "claim": "The checklist instructs readers to fix network and conditional access controls without corresponding controls-table rows.",
       "status": "contradicted",
       "source": "page",
-      "quote": "fix the network, Admin Agent version or conditional access cause. / Table rows: custom roles; tenant-wide pause; PMP ring adoption; TAC tag import.",
+      "quote": "\"fix the network, Admin Agent version or conditional access cause\" / Controls table: custom roles; tenant-wide pause; PMP ring adoption; TAC tag import.",
       "severity": "minor",
-      "fix": "Replace the first After rollout bullet with 'Check each device group in PMP for devices showing Device is not connected to IoT Hub.' This removes the unmatched instructions to change network or conditional access controls without adding table rows."
+      "fix": "Replace the first After rollout bullet with \"Check each device group in PMP for devices showing Device is not connected to IoT Hub.\" This removes the unmatched instructions to change network or conditional access controls without adding rows."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T04:23:54.066Z",
+    "at": "2026-11-25T10:15:42.738Z",
     "summary": {
       "links": 8,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 4,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -1499,33 +1457,33 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/update-management",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1534,54 +1492,72 @@
         "side": "ui",
         "governs": "Who can manage devices in the portal (custom roles, device and group scope)",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Roles",
           "Create role"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Roles",
+          "Create role"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Tenant-wide pause of automatic Android device updates",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Updates",
           "Update management",
           "Android updates",
           "Pause updates"
         ],
-        "missing": []
+        "missing": [
+          "Updates",
+          "Update management",
+          "Android updates",
+          "Pause updates"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Moving Android auto-updates from TAC phases to PMP update rings",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Updates",
           "Ring Configuration",
           "Rings",
           "Provide Confirmation"
         ],
-        "missing": []
+        "missing": [
+          "Updates",
+          "Ring Configuration",
+          "Rings",
+          "Provide Confirmation"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Carrying TAC tags into PMP device groups",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Groups",
           "Import from Teams admin center"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Groups",
+          "Import from Teams admin center"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -1597,6 +1573,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

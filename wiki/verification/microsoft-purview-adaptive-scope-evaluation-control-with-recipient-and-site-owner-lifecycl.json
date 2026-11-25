@@ -2,39 +2,33 @@
   "slug": "microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl",
   "roadmapId": 568785,
   "title": "Microsoft Purview: lifecycle status controls for adaptive scope recipients and site owners",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-25",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "1 blocking finding (claim 66)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 66,
+    "claims": 65,
     "confirmed": 65,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: the briefing still treats the supported relative-date attributes as an open question, but Microsoft Learn now publishes them. The lifecycle-control documentation gap remains genuine, and both cited PowerShell references opened successfully; the licensing model and membership-review path also need minor corrections.",
+  "summary": "The briefing accurately separates the planned lifecycle controls from the existing scope-query and membership tools. The supplied notice supports the active-only default and rollout targets, and Microsoft Learn supports the licensing, paths and commands shown.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; What's changing",
       "type": "record",
-      "claim": "Microsoft plans explicit adaptive-scope lifecycle-state evaluation controls for recipients and site owners.",
+      "claim": "Microsoft plans lifecycle-state evaluation controls for adaptive scope recipients and site owners.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Purview Adaptive Scopes will provide administrators with explicit control over lifecycle-state evaluation for recipients and site owners",
@@ -48,37 +42,15 @@
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap general-availability target is April CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"April CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview target is December CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"December CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The listed release phases are General Availability and Preview.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -86,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 4,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), with no other clouds listed.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -97,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the listed platform.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,10 +80,32 @@
       "fix": null
     },
     {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability is targeted for April CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "Preview is targeted for December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-17T00:31:56.",
+      "claim": "The roadmap record was modified on 2026-11-17T00:31:56.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-17T00:31:56\"",
@@ -120,9 +114,141 @@
     },
     {
       "n": 9,
-      "where": "What's changing: notice update date",
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "An adaptive scope uses a query to define changing membership of users, groups or sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "An adaptive scope uses a query that you specify, so you can define the membership of users or groups included in that query. These dynamic queries run daily against the attributes or properties that you specify for the selected scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters",
+      "type": "applicability",
+      "claim": "Communication compliance, retention and auto-labeling policies can use adaptive scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "When you create a communication compliance policy, a policy for retention, or an auto-labeling policy, you can add an adaptive scope for your policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; controls[0].governs",
       "type": "record",
-      "claim": "The supplied notice was last updated on 14 November 2026.",
+      "claim": "The planned controls let administrators decide whether active, inactive and soft-deleted recipients and site owners are included in scope membership.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "This update gives administrators explicit control over whether active, inactive, and soft-deleted recipients and site owners are included in adaptive scope membership.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The change enforces active-only evaluation by default for newly created scopes, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "With this change, newly created adaptive scopes will evaluate only active recipients and site owners by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "New scopes exclude inactive recipients and site owners unless an administrator explicitly includes them.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Inactive and soft-deleted recipients or site owners will not be included unless explicitly configured by an administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "New scopes exclude soft-deleted recipients and site owners unless an administrator explicitly includes them.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Inactive and soft-deleted recipients or site owners will not be included unless explicitly configured by an administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Existing scopes retain their current behavior and are not automatically modified by rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Existing adaptive scopes will continue to function as they do today and will not be automatically modified as part of this rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Administrators will be able to update existing scopes to use explicit lifecycle criteria.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Administrators will also have the option to update existing adaptive scopes to use explicit lifecycle status evaluation criteria for recipients and site owners.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The notice announces ISO 8601 duration support for certain date attributes in the advanced query builder.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "This update also adds support for ISO 8601 duration values for selected date attributes in the adaptive scope advanced query builder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "The supplied notice does not name the date attributes that support durations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1450128 in full for date property names; it says only selected date attributes and certain date-based attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft Learn already documents relative date filters using ISO 8601 durations in the advanced query builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Use relative date filters in the advanced query builder to define scope membership by a rolling date range instead of a fixed date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Adaptive scopes page lists supported date properties under Use relative date filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Users and Microsoft 365 Groups | WhenCreated, WhenCreatedUTC, WhenMailboxCreated, WhenChanged, WhenChangedUTC, WhenSoftDeleted | SharePoint sites | Created, RefinableDate00 through RefinableDate19",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied Message Center record was last updated on 14 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1450128",
       "quote": "Published 2026-08-07; last updated 2026-11-14; Microsoft's end date 2027-05-31",
@@ -130,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing: Public Preview window",
+      "n": 22,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The notice targets Public Preview beginning and completing in December 2026, previously mid-September to early October.",
+      "claim": "The notice targets Public Preview beginning and completing in December 2026.",
       "status": "supported",
       "source": "Message Center post MC1450128",
       "quote": "Public Preview: Beginning in December 2026 (previously mid-September) and expected to complete in December 2026 (previously early October)",
@@ -141,10 +267,21 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing: General Availability window",
+      "n": 23,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The notice targets Worldwide general availability beginning and completing in April 2027, previously mid-October to mid-November 2026.",
+      "claim": "The previous preview window was mid-September to early October.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Public Preview: Beginning in December 2026 (previously mid-September) and expected to complete in December 2026 (previously early October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice targets Worldwide general availability beginning and completing in April 2027.",
       "status": "supported",
       "source": "Message Center post MC1450128",
       "quote": "General Availability (Worldwide): Beginning in April 2027 (previously mid-October 2026) and expected to complete in April 2027 (previously mid-November 2026)",
@@ -152,8 +289,19 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing: act-by date",
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous general availability window was mid-October 2026 to mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "General Availability (Worldwide): Beginning in April 2027 (previously mid-October 2026) and expected to complete in April 2027 (previously mid-November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
       "type": "record",
       "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
@@ -163,8 +311,8 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing: required action",
+      "n": 27,
+      "where": "What's changing",
       "type": "record",
       "claim": "Microsoft says no action is required before rollout.",
       "status": "supported",
@@ -174,118 +322,8 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The change defaults to evaluating active recipients in newly created scopes without an administrator configuring the new control.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "With this change, newly created adaptive scopes will evaluate only active recipients and site owners by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "default",
-      "claim": "New scopes evaluate active site owners by default.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Active recipients and site owners will be evaluated by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "default",
-      "claim": "Inactive recipients and site owners are excluded from new scopes unless explicitly configured.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Inactive and soft-deleted recipients or site owners will not be included unless explicitly configured by an administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "default",
-      "claim": "Soft-deleted recipients and site owners are excluded from new scopes unless explicitly configured.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Inactive and soft-deleted recipients or site owners will not be included unless explicitly configured by an administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "summary; What's changing; controls[0].governs",
-      "type": "record",
-      "claim": "Administrators will be able to include inactive and soft-deleted recipients.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Administrators can configure adaptive scopes to include inactive and/or soft-deleted recipients and site owners when needed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "summary; What's changing; controls[0].governs",
-      "type": "record",
-      "claim": "Administrators will be able to include inactive and soft-deleted site owners.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Administrators can configure adaptive scopes to include inactive and/or soft-deleted recipients and site owners when needed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "Existing adaptive scopes retain their current behaviour and are not automatically modified.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Existing adaptive scopes will continue to function as they do today and will not be automatically modified as part of this rollout.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Governance guidance: After rollout",
-      "type": "record",
-      "claim": "Administrators will have the option to update existing scopes to explicit lifecycle status criteria.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Administrators will also have the option to update existing adaptive scopes to use explicit lifecycle status evaluation criteria for recipients and site owners.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing: ISO 8601 support; Risk assessment: Change & support",
-      "type": "record",
-      "claim": "The notice says the advanced query builder will support ISO 8601 durations for selected date attributes.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "This update also adds support for ISO 8601 duration values for selected date attributes in the adaptive scope advanced query builder.",
-      "severity": "minor",
-      "fix": "Keep the notice attribution, but add: 'Microsoft Learn now documents relative date filters in the advanced query builder; the roadmap and MC1450128 still give the rollout targets above.' The cited https://learn.microsoft.com/purview/purview-adaptive-scopes now has a Use relative date filters section, so the briefing should report both sources rather than present that behaviour solely as a future notice description."
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "record",
-      "claim": "The supplied notice itself does not identify the individual date attributes.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Additionally, adaptive scopes will support ISO 8601 duration values for certain date-based attributes in the advanced query builder.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing: Learn link",
+      "n": 28,
+      "where": "What's changing",
       "type": "record",
       "claim": "The notice says its Adaptive scopes Learn link will be updated closer to general availability.",
       "status": "supported",
@@ -295,271 +333,40 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Scope; rationale: impact",
-      "type": "record",
-      "claim": "The notice names Purview administrators who create or manage adaptive scopes as affected.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Microsoft Purview administrators who create or manage adaptive scopes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Scope; rationale: impact",
-      "type": "record",
-      "claim": "The notice names organisations using adaptive scopes for Purview policy targeting as affected.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Organizations that use adaptive scopes for Microsoft Purview policy targeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft recommends reviewing current adaptive scope configurations and governance requirements.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Review current adaptive scope configurations and governance requirements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Why it matters; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft recommends deciding whether future scopes should include inactive or soft-deleted recipients and site owners.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Determine whether inactive or soft-deleted recipients and site owners should be included in future adaptive scope definitions.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 29,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft recommends updating scope creation processes and documentation where applicable.",
+      "where": "controls[0]; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "As of November 2026, no admin UI setting or automation for the planned lifecycle membership control is documented.",
       "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "Update adaptive scope creation processes and documentation, if applicable, to account for the new lifecycle status settings.",
+      "source": null,
+      "quote": "Searched: Purview adaptive scope lifecycle status recipients site owners soft deleted PowerShell setting licensing; adaptive scopes soft-deleted site owners setting. Opened Adaptive scopes, New-AdaptiveScope and Set-AdaptiveScope; no lifecycle setting or parameter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "An adaptive scope uses a query to define changing membership for policy targeting.",
+      "where": "Risk assessment: Security & identity; Scope; controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Creating an adaptive scope requires a role group containing Scope Manager.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "An adaptive scope uses a query that you specify, so you can define the membership of users or groups included in that query.",
+      "quote": "You need to assign the correct role groups to admins to create an adaptive scope. Any role group with the Scope Manager role can create an adaptive scope.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "Users is a supported adaptive scope type.",
+      "where": "Scope",
+      "type": "role",
+      "claim": "Learn lists Compliance Administrator, Compliance Data Administrator, Organization Management, Records Management, Communication Compliance and Communication Compliance Admins as built-in groups containing Scope Manager.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "For User and Microsoft 365 Group scopes: Use OPATH filtering syntax.",
+      "quote": "The Scope Manger role is included in the following built-in role groups: Compliance Administrator; Compliance Data Administrator; Organization Management; Records Management; Communication Compliance; Communication Compliance Admins",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "Microsoft 365 Groups is a supported adaptive scope type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "For User and Microsoft 365 Group scopes: Use OPATH filtering syntax.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "SharePoint sites is a supported adaptive scope type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "For SharePoint sites scopes: Use Keyword Query Language (KeyQL).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "What's changing; Why it matters",
-      "type": "applicability",
-      "claim": "A policy for retention can target an adaptive scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "When you create a communication compliance policy, a policy for retention, or an auto-labeling policy, you can add an adaptive scope for your policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "What's changing; Why it matters",
-      "type": "applicability",
-      "claim": "An auto-labeling policy can target an adaptive scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "When you create a communication compliance policy, a policy for retention, or an auto-labeling policy, you can add an adaptive scope for your policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "What's changing; Why it matters",
-      "type": "applicability",
-      "claim": "A communication compliance policy can target an adaptive scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "When you create a communication compliance policy, a policy for retention, or an auto-labeling policy, you can add an adaptive scope for your policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0]; What's changing; Risk assessment; Governance controls",
-      "type": "absence",
-      "claim": "No lifecycle-status setting or its UI path or automation is documented in the checked adaptive-scope guidance and references.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview adaptive scopes lifecycle status recipients site owners include inactive soft deleted portal PowerShell; opened Adaptive scopes, relative-date filters, New-AdaptiveScope and Set-AdaptiveScope. None documents the lifecycle selector or a lifecycle parameter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The existing query UI is Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > + Create scope > administrative unit > scope type > Advanced query builder.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes. ... select + Create scope. ... assign an administrative unit. ... Select the type of scope ... Alternatively, you can select Advanced query builder",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "New-AdaptiveScope -Name <name> -LocationType User -RawQuery <OPATH query> creates an existing user adaptive scope in advanced query mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
-      "quote": "New-AdaptiveScope\n    -Name <String>\n    -LocationType <DynamicBoundaryLocationType>\n    -RawQuery <String>\nThe RawQuery parameter switches the scope to advanced query mode. You use OPATH filter syntax for advanced query mode.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[2].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "Scope membership review is reached at Settings > Roles and scopes > Adaptive scopes > scope > Scope details in the Microsoft Purview portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Select Settings > Roles and scopes > Adaptive scopes. ... Select an existing adaptive scope from the list. ... From the Details flyout pane, select Scope details.",
-      "severity": "minor",
-      "fix": "Set controls[2].ui.path and the corresponding rendered path to 'Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details'. Details is a flyout heading, not an additional selection."
-    },
-    {
-      "n": 41,
-      "where": "controls[2].api; Governance controls; Governance guidance: After rollout",
-      "type": "command",
-      "claim": "Get-AdaptiveScopeMembers -Identity <scope name> -State Added retrieves current scope members, and State can also select removed members.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
-      "quote": "Get-AdaptiveScopeMembers -Identity \"US Finance Users\" -State Added\nThis example retrieves the current members of the adaptive scope US Finance Users.\nAdded: Current members of the adaptive scope.\nRemoved: Former members of the adaptive scope.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[1].note; Governance controls; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "IsInactiveMailbox in the advanced query builder is a documented way to exclude or target inactive mailboxes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "You must use the advanced query builder if you want to exclude inactive mailboxes. Or conversely, target just inactive mailboxes. For this configuration, use the OPATH property IsInactiveMailbox",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].note",
-      "type": "admin-path",
-      "claim": "The creation wizard offers Full directory when not restricting the adaptive scope by administrative unit, and Users is the user scope choice.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "If you don't want to restrict the adaptive scope by using administrative units, or your organization hasn't configured administrative units, keep the default of Full directory. ... first select Users as the scope type.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance controls",
-      "type": "role",
-      "claim": "A role group containing Scope Manager can create an adaptive scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Any role group with the Scope Manager role can create an adaptive scope.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Scope: built-in role groups",
-      "type": "role",
-      "claim": "Learn lists Compliance Administrator, Compliance Data Administrator, Organization Management, Records Management, Communication Compliance and Communication Compliance Admins as built-in groups containing Scope Manager.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "The Scope Manger role is included in the following built-in role groups:\n- Compliance Administrator\n- Compliance Data Administrator\n- Organization Management\n- Records Management\n- Communication Compliance\n- Communication Compliance Admins",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Governance controls: cmdlet permissions",
-      "type": "role",
-      "claim": "The New-AdaptiveScope reference requires assigned Security & Compliance PowerShell permissions and points to Purview compliance portal permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
-      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions. For more information, see Permissions in the Microsoft Purview compliance portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The scope membership UI shows Added for members currently in scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Review the State column in the list that shows Added for members within the adaptive scope",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The membership UI shows Removed for previous members that no longer match the query.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Removed if the member was previously in the adaptive scope but removed now they no longer match the scope query.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Adaptive scope queries run daily.",
@@ -570,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 33,
       "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Queries can take up to five days to fully populate, so Learn advises waiting before attaching a new scope to a policy.",
+      "claim": "Queries can take up to five days to populate, and Learn advises waiting before adding a new scope to a policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
       "quote": "It can take up to five days for the queries to fully populate and changes aren't immediate. Factor in this delay by waiting a few days before you add a newly created scope to a policy.",
@@ -581,10 +388,76 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 34,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The scope query builder is reached in Microsoft Purview through Settings > Roles and scopes > Adaptive scopes > + Create scope > administrative unit > scope type > Advanced query builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Settings > Roles and scopes > Adaptive scopes. On the Adaptive scopes page, select + Create scope. Follow the prompts ... assign an administrative unit. Select the type of scope ... Alternatively, you can select Advanced query builder",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "New-AdaptiveScope -Name <name> -LocationType User -RawQuery <OPATH query> creates a user adaptive scope using the specified advanced query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+      "quote": "New-AdaptiveScope -Name <String> -LocationType <DynamicBoundaryLocationType> -RawQuery <String> ... The RawQuery parameter switches the scope to advanced query mode. You use OPATH filter syntax for advanced query mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].ui; Risk assessment: Data exposure; Governance guidance",
+      "type": "admin-path",
+      "claim": "Scope membership is reached through Microsoft Purview Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Select Settings > Roles and scopes > Adaptive scopes. Select an existing adaptive scope from the list. From the Details flyout pane, select Scope details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].api; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Get-AdaptiveScopeMembers -Identity <scope name> -State Added retrieves current scope members, and State can also select removed members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
+      "quote": "Get-AdaptiveScopeMembers -Identity \"US Finance Users\" -State Added ... Added: Current members of the adaptive scope. Removed: Former members of the adaptive scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The membership State column identifies current members as Added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Review the State column in the list that shows Added for members within the adaptive scope",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The membership State column identifies former members that no longer match the query as Removed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Removed if the member was previously in the adaptive scope but removed now they no longer match the scope query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "controls[2].note; Governance controls",
       "type": "behaviour",
-      "claim": "The member details list can take up to five days to show added or removed members.",
+      "claim": "The member details list can take up to five days to reflect added or removed members.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
       "quote": "It might take up to five days for the member details list to update added or removed members.",
@@ -592,120 +465,43 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "Microsoft has not stated lifecycle-selector-specific evaluation timing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"adaptive scopes\" \"lifecycle\" \"five days\"; read Adaptive scopes, relative-date filters and MC1450128. The pages state general query/member-list delays but do not describe evaluation timing for the planned lifecycle selector.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "A role specifically authorised to change the new lifecycle selector has not been stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"adaptive scopes\" \"lifecycle\" \"role\" \"default\"; read Adaptive scopes, New-AdaptiveScope, Set-AdaptiveScope and MC1450128. Scope creation permissions are documented, but no lifecycle-selector-specific permission is described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "Neither the roadmap record nor the supplied notice describes a new identity or permission model.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "This update gives administrators explicit control over whether active, inactive, and soft-deleted recipients and site owners are included in adaptive scope membership.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The supplied feature descriptions do not describe an agent or autonomous action mechanism.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Purview Adaptive Scopes will provide administrators with explicit control over lifecycle-state evaluation for recipients and site owners, helping ensure policy targeting and scope membership remain aligned with organizational requirements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout; Open questions",
-      "type": "record",
-      "claim": "The notice does not separately describe scripted scope creation or distinguish PowerShell defaults from portal defaults.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "For newly created adaptive scopes:\n- Active recipients and site owners will be evaluated by default.\n- Inactive and soft-deleted recipients or site owners will not be included unless explicitly configured by an administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Scope; Open questions",
-      "type": "record",
-      "claim": "The notice does not map its recipient and site-owner lifecycle controls individually to the three adaptive scope types.",
-      "status": "supported",
-      "source": "Message Center post MC1450128",
-      "quote": "This update gives administrators explicit control over whether active, inactive, and soft-deleted recipients and site owners are included in adaptive scope membership.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Governance controls: existing query limitation",
-      "type": "absence",
-      "claim": "Learn does not document an IsInactiveMailbox-equivalent selector that includes soft-deleted recipients or evaluates site-owner lifecycle status.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"adaptive scopes\" \"soft-deleted\" \"site owners\" \"filter\" and \"PowerShell\"; read Adaptive scopes, relative-date filters, New-AdaptiveScope and Set-AdaptiveScope. WhenSoftDeleted is a date filter, not an eligibility or site-owner lifecycle selector.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Retention policies using adaptive scopes require one of the licence families listed in the briefing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft 365 E5/A5/G5\nMicrosoft Purview Suite/EDU/GOV/FLW\nMicrosoft Defender + Purview Suite FLW\nOffice 365 E5/A5/G5\nMicrosoft 365 E5/A5/F5/G5 Information Protection and Governance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No additional licence requirement specific to the lifecycle-status controls is published in the checked sources.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"adaptive scopes\" \"lifecycle\" \"license\" pricing; read Purview service description, Adaptive scopes, roadmap and MC1450128. General adaptive-scope retention licences are stated; no extra lifecycle-control licence or meter is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
+      "n": 41,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The licensing model is unknown despite published product-level adaptive-scope licensing.",
+      "claim": "The included licensing model represents an option within adaptive scopes under the named existing retention licensing requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
       "quote": "If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights:",
-      "severity": "minor",
-      "fix": "Set licensing.model to 'included'. Keep the existing notes naming the documented licences for retention policies using adaptive scopes and distinguishing the unpublished additional requirement specific to the new lifecycle controls."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 62,
-      "where": "Cost and licensing: unlicensed users",
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Users without a valid adaptive-scope licence do not have the policy settings applied to them.",
+      "claim": "Retention policies using adaptive scopes require one of the five licence families listed in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW; Microsoft Defender + Purview Suite FLW; Office 365 E5/A5/G5; Microsoft 365 E5/A5/F5/G5 Information Protection and Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Any additional licence requirement specific to the lifecycle controls is not yet published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview adaptive scopes lifecycle status controls price meter additional license. Opened Microsoft Purview service description and Adaptive scopes; read roadmap and MC1450128. Existing adaptive-scope licences are stated, but no additional lifecycle-control requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Learn says users without a valid adaptive scopes licence do not have policy settings applied.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
       "quote": "it might be because it includes users who don't have a valid license for adaptive scopes. These users don't have the policy settings applied to them.",
@@ -713,59 +509,246 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Cost and licensing: licence passage",
-      "type": "licensing",
-      "claim": "The Adaptive scopes passage about unlicensed query results does not itself name a qualifying licence.",
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Adaptive scopes page's unlicensed-user passage does not itself name a licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the Adaptive scopes validation tip for licence names; it says valid license for adaptive scopes without naming a plan. The briefing separately cites the service description's named licences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies Purview administrators who create or manage adaptive scopes as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Microsoft Purview administrators who create or manage adaptive scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies organizations using adaptive scopes for Purview policy targeting as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Organizations that use adaptive scopes for Microsoft Purview policy targeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "The notice describes no end-user change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1450128 in full, including Who is affected and What will happen; changes described are scope evaluation and administrator configuration, not an end-user experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor the notice describes a new identity or permission model.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the roadmap description and MC1450128 in full for identity, permissions and role requirements; neither describes a new model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "A role specifically for changing the planned lifecycle setting is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: adaptive scopes lifecycle role PowerShell. Opened Adaptive scopes, New-AdaptiveScope and Set-AdaptiveScope; read MC1450128. Scope creation permissions are documented, but no lifecycle-setting-specific role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The supplied descriptions do not describe an agent or autonomous action mechanism.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the roadmap, MC1450128 and Adaptive scopes for agents or autonomous actions. They describe administrator controls and scheduled scope queries, not an agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft does not specifically state whether changes to the planned lifecycle settings follow the existing evaluation timing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: adaptive scopes lifecycle licensing default evaluation timing. Opened Adaptive scopes, New-AdaptiveScope and Set-AdaptiveScope; read MC1450128. Existing query timing is documented; lifecycle-setting propagation is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The notice does not explicitly discuss the default for scripted versus portal scope creation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1450128 in full for PowerShell, script, API and portal distinctions. It says newly created adaptive scopes without naming a creation surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The notice does not explain how recipient and site-owner lifecycle controls map to the three adaptive scope types.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1450128 for Users, SharePoint sites and Microsoft 365 Groups scope-type mapping. It names recipients and site owners but gives no per-type mapping; Adaptive scopes has no lifecycle configuration section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing advanced query builder uses IsInactiveMailbox to exclude or specifically target inactive mailboxes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "When you use these commands to validate a user scope, if the number of recipients returned is higher than expected, it might be because it includes users who don't have a valid license for adaptive scopes. These users don't have the policy settings applied to them.",
+      "quote": "You must use the advanced query builder if you want to exclude inactive mailboxes. Or conversely, target just inactive mailboxes. For this configuration, use the OPATH property IsInactiveMailbox",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn documents no equivalent membership-inclusion filter for soft-deleted recipients or site owners.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: adaptive scopes soft-deleted site owners setting. Opened Adaptive scopes and New-AdaptiveScope. Relative-date documentation says a WhenSoftDeleted filter doesn't by itself make a deleted recipient eligible for scope membership; no equivalent inclusion control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note",
+      "type": "admin-path",
+      "claim": "Scope creation can retain Full directory when not restricting the scope by administrative unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "If you don't want to restrict the adaptive scope by using administrative units, or your organization hasn't configured administrative units, keep the default of Full directory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note",
+      "type": "admin-path",
+      "claim": "Users is the scope-type choice for the documented user-scope query route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "first select Users as the scope type",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Using New-AdaptiveScope in Security & Compliance PowerShell requires assigned Purview compliance permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions. For more information, see Permissions in the Microsoft Purview compliance portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing current adaptive scope configurations and governance requirements.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Review current adaptive scope configurations and governance requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends deciding whether future scopes should include inactive or soft-deleted recipients and site owners.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Determine whether inactive or soft-deleted recipients and site owners should be included in future adaptive scope definitions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating adaptive scope creation processes and documentation where applicable.",
+      "status": "supported",
+      "source": "Message Center post MC1450128",
+      "quote": "Update adaptive scope creation processes and documentation, if applicable, to account for the new lifecycle status settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not described specific policy outcomes from the new lifecycle membership controls beyond their targeting behavior.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview adaptive scopes lifecycle status policy outcomes inactive soft deleted retention evaluation controls. Read MC1450128 and Adaptive scopes; the notice specifies membership behavior, not downstream retention or labeling outcomes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
       "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The sources show administrative preparation work, while no additional direct cost for the new controls is specified.",
+      "type": "absence",
+      "claim": "The sources publish no additional direct charge for the lifecycle controls, so the low cost assessment is limited to administrative work and preserves the licensing uncertainty.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"adaptive scopes\" \"lifecycle\" \"license\" pricing; read Purview service description, Adaptive scopes and MC1450128. The notice recommends reviewing configurations and updating processes; no additional lifecycle-control charge or meter is specified.",
+      "quote": "Searched: Purview adaptive scopes lifecycle status controls price meter additional license. Opened Microsoft Purview service description and Adaptive scopes; read MC1450128. No lifecycle-specific charge or meter found; existing licence requirements are stated separately.",
       "severity": null,
       "fix": null
     },
     {
       "n": 65,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The checked sources do not describe policy-specific outcomes of the new active-only lifecycle default.",
+      "where": "Scope; controls[1].note",
+      "type": "behaviour",
+      "claim": "The documented scope types are Users, SharePoint sites and Microsoft 365 Groups, and the query tools shown are existing capabilities rather than the new lifecycle switch.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview adaptive scopes lifecycle status recipients site owners include inactive soft deleted portal PowerShell; read MC1450128, Adaptive scopes and relative-date filters. The notice states membership defaults, not policy-specific consequences of the lifecycle change.",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "There are three different types of adaptive scopes ... Users ... SharePoint sites ... Microsoft 365 Groups ... You must use the advanced query builder if you want to exclude inactive mailboxes.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Open questions: Which date attributes will accept ISO 8601 durations",
-      "type": "absence",
-      "claim": "Which date attributes support ISO 8601 durations remains an unanswered documentation question.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Users and Microsoft 365 Groups | WhenCreated, WhenCreatedUTC, WhenMailboxCreated, WhenChanged, WhenChangedUTC, WhenSoftDeleted\nSharePoint sites | Created, RefinableDate00 through RefinableDate19",
-      "severity": "blocker",
-      "fix": "Remove the open question 'Which date attributes will accept ISO 8601 durations in the advanced query builder?' Microsoft now lists the properties in the cited Adaptive scopes page under Use relative date filters. Keep the narrower, accurate statement that MC1450128 itself does not name them."
     }
   ],
   "precheck": {
-    "at": "2026-11-25T07:21:16.799Z",
+    "at": "2026-11-25T10:15:35.874Z",
     "summary": {
       "links": 6,
-      "unreachable": 2,
+      "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -791,13 +774,13 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -823,9 +806,9 @@
         "side": "api",
         "governs": "Scope query, including excluding or targeting inactive mailboxes today",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
-        "reachable": false,
+        "reachable": true,
         "token": "New-AdaptiveScope",
-        "found": false
+        "found": true
       },
       {
         "index": 2,
@@ -838,6 +821,7 @@
           "Roles and scopes",
           "Adaptive scopes",
           "scope",
+          "Details",
           "Scope details"
         ],
         "missing": []
@@ -847,9 +831,9 @@
         "side": "api",
         "governs": "Scope membership review, including added and removed members",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
-        "reachable": false,
+        "reachable": true,
         "token": "Get-AdaptiveScopeMembers",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -870,6 +854,12 @@
     {
       "date": "2026-11-20",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

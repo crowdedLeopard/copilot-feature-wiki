@@ -72,10 +72,12 @@ changes:
     note: "Correction: removed the claim that policy cannot constrain the rollout, reworded the notice's schedule as expected completion dates, and gave the full Intune path including app selection."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -179,4 +181,11 @@ The Intune row is an existing, general control for Teams on mobile. It governs h
 risk: Low. Microsoft's notice describes a user-side notification setting that leaves existing behaviour unchanged until a user changes it, and identifies no new data access or compliance considerations.
 cost: Low. The only cost the sources show is helpdesk and communication time; Microsoft has not published a licence or meter for this feature.
 impact: Medium. Users in Teams channels get new notification options, but the notice says existing notification behaviour stays as it is until a user changes their settings.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].api; Governance controls / command: The beta PATCH operation updates the iOS policy's notificationRestriction to blockOrganizationalData. | Found: PATCH https://graph.microsoft.com/beta/deviceAppManagement/iosManagedAppProtections/{iosManagedAppProtectionId} "notificationRestriction": "blockOrganizationalData" | Fix: Set controls[1].api.call and the rendered call to 'PATCH https://graph.microsoft.com/beta/deviceAppManagement/iosManagedAppProtections/{iosManagedAppProtectionId}'. Add to its note: 'The request body sets notificationRestriction to blockOrganizationalData.' | Source: https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-update?view=graph-rest-beta
+- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing; Open questions / licensing: Feature-specific licensing is not published, so the briefing uses licensing model unknown. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Set licensing.notes to 'Each user in the organization must have a Teams license before using Teams, except for joining meetings anonymously. No licence requirement specific to these channel notification presets is published.' Cite https://learn.microsoft.com/microsoftteams/user-access in sources and use the same distinction in Cost and licensing and the licensing open question. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

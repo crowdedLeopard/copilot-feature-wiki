@@ -4,7 +4,7 @@ slug: "m365-copilot-generative-ai-skills-for-create-in-m365-copilot-app-for-gove
 roadmapId: 498548
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Create in the Microsoft 365 Copilot app, with image, poster, banner, infographic, draft and form skills and brand kits, is launched for GCC and GCC High. Admins need no action; brand kit policies and licences are the controls."
+summary: "Create in the Microsoft 365 Copilot app, with image, poster, banner, infographic, draft and form skills and brand kits, is launched for GCC and GCC High. Brand kit policies and licences are the controls."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High"]
@@ -43,10 +43,10 @@ sources:
   - title: "Understand Microsoft U.S. government cloud environments for Microsoft 365 and Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/gov-overview"
     kind: "learn"
-  - title: "Which users hold the Microsoft 365 Copilot licence the AI-powered features in Create need (Microsoft 365 admin center)"
+  - title: "Assign licenses to users"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
-  - title: "Which users hold the Microsoft 365 Copilot licence the AI-powered features in Create need (PowerShell)"
+  - title: "Set-MgUserLicense"
     url: "https://learn.microsoft.com/powershell/module/microsoft.graph.users.actions/set-mguserlicense"
     kind: "learn"
 videos: []
@@ -93,19 +93,23 @@ changes:
     note: "First briefing for roadmap item 498548: Create generative-AI skills for GCC and GCC High, with brand kit policies and licensing."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: removed the claim that admins need no action, and aligned the organisation assets library statements with the brand kit governance page."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "b3544beb9a4e882c38eb0b75f42d4c5a"
+  claims: 68
+  confirmed: 66
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 2
+  hash: "41c2c430f0ec70dc3453e3aa0da64224"
 ---
 
 ## What's changing
@@ -126,7 +130,7 @@ Expect the most noise from brand kits. The brand kit governance page documents t
 
 **Data exposure**
 - Microsoft's government cloud overview says that for Microsoft Copilot, prompts, responses and generated content stay in the government cloud. Treat that as the baseline for Create and confirm it for your tenant.
-- Connecting an organisational asset library to Copilot makes its approved assets available to users in Create (the Visuals pane) and in Copilot Chat in PowerPoint and Word. Review the library's contents before you connect it.
+- Connecting an organisational asset library to Copilot and configuring it as searchable makes its approved assets available to users in Create (the Visuals pane) and in Copilot Chat in PowerPoint and Word. Review the library's contents before you connect it.
 
 **Security & identity**
 - Brand manager group membership is what grants publish and edit rights on official kits; group ownership alone does not. Keep the mail-enabled security group's membership under change control.
@@ -146,7 +150,7 @@ Expect the most noise from brand kits. The brand kit governance page documents t
 
 **Meter.** The Create article names no separate meter or charge for Create at the time of writing (November 2026).
 
-**Indirect costs.** Admin time to create the two mail-enabled security groups, configure the Cloud Policy settings and, if you want organisational assets in Create, set up and connect an organisation assets library.
+**Indirect costs.** Admin time to create the two mail-enabled security groups, configure the Cloud Policy settings and create an organisation assets library to connect to Copilot, which the brand kit governance page lists as a prerequisite before users create and publish kits.
 
 ## Scope
 
@@ -165,7 +169,7 @@ Expect the most noise from brand kits. The brand kit governance page documents t
 ### Before rollout
 - Create a mail-enabled security group for brand managers and a second one for users who may create and edit personal brand kits, as the brand kit governance page prescribes.
 - Decide which licensed users should hold Microsoft 365 Copilot, since the AI-powered features in Create need it.
-- Decide whether to connect an organisation assets library, and check what it contains first.
+- Create an organisation assets library to connect to Copilot before users create and publish brand kits, as the brand kit governance prerequisites require.
 
 ### At rollout
 - Set the Elevated role for Brand Managers policy to Enabled with the brand manager group's address, and confirm the policy scope is Tenant and its priority is 0.
@@ -211,9 +215,7 @@ impact: Medium. Staff who produce communications, newsletters and posters notice
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / default: Administrators need no action. | Found: Searched: Microsoft 365 Copilot Create automatically rollout admin action required existing users default switch. Opened Create getting-started, Copilot settings and brand kit governance pages; none states an unconditional no-admin-action rule. | Fix: Remove 'Admins need no action;' from the summary. The sources describe user-initiated Create use, but official brand kits require organization setup and the record does not state rollout actions.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: Connecting an organizational asset library to Copilot makes its approved assets available in Create's Visuals pane and Copilot Chat in PowerPoint and Word. | Found: After an administrator connects the library to Copilot and configures it as searchable, users in the organization can discover and use the assets in Microsoft Copilot. | Fix: Replace the sentence with 'Connecting an organisational asset library to Copilot and configuring it as searchable makes its approved assets available to users in Create (the Visuals pane) and in Copilot Chat in PowerPoint and Word.' Keep the cited brand kit governance page as the source. | Source: https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets
-- [contradicted, blocker] Cost and licensing: Indirect costs; Governance guidance: Before rollout / applicability: Setting up an organization assets library is optional when preparing brand kits. | Found: Before users can create and publish brand kits, complete the following prerequisites: Create an organization assets library to connect to Copilot. | Fix: Replace the indirect-cost sentence with 'Admin time to create the two mail-enabled security groups, configure the Cloud Policy settings and create an organisation assets library to connect to Copilot, which the brand kit governance page lists as a prerequisite before users create and publish kits.' Replace the library checklist bullet with 'Create an organisation assets library to connect to Copilot before users create and publish brand kits, as the brand kit governance prerequisites require.' | Source: https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: A low cost rating represents the documented add-on licensing requirement and licence assignment costs. | Found: cost: "low"; licensing.model: "add-on"; "Microsoft's service description says AI-powered features in Create need a Microsoft 365 Copilot licence, an add-on plan." The scale defines low as indirect cost only and medium as add-on licences for a subset. | Fix: Set cost to "medium" and replace the cost rationale with: "Medium. AI-powered features in Create require the Microsoft 365 Copilot add-on licence for the users who need them; the Create article names no separate meter. Admin setup adds indirect cost."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist's group creation and organization assets library checks have corresponding controls-table rows. | Found: Checklist: 'Create a mail-enabled security group ...' and 'Decide whether to connect an organisation assets library, and check what it contains first.' Table: license assignment, personal kit policy, official kit policy and individual Create switch only. | Fix: The Before rollout steps for creating the two mail-enabled security groups and checking or connecting an organisation assets library have no corresponding controls-table rows. The existing policy rows configure policy access, not group creation or library connection.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks administrators to configure or take stock of has a controls-table row. | Found: Before rollout asks readers to "Create a mail-enabled security group" and "Create an organisation assets library to connect to Copilot"; the table contains only licence assignment, two brand-kit policies and the individual-feature-switch gap. | Fix: The Before rollout steps for creating the two mail-enabled security groups and the organisation assets library have no matching controls-table rows. Remove those two checklist bullets; retain the already-supported prerequisite statements in Cost and licensing.
 -->
