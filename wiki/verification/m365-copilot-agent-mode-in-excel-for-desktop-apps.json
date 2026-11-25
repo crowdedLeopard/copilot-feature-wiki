@@ -1,0 +1,819 @@
+{
+  "slug": "m365-copilot-agent-mode-in-excel-for-desktop-apps",
+  "roadmapId": 542182,
+  "title": "Excel on Windows and Mac: Copilot Agent Mode (Edit with Copilot) builds and edits workbooks, with a choice of model",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "2 blocking findings (claims 20, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 53,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Hold: the governance checklist omits a required navigation step for the Anthropic setting, although the controls table gives the correct route. The description of Claude's contractual protections also needs the documented exception for models with Data Retention, and the regional default needs to acknowledge Microsoft's conflicting guidance.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Agent Mode in Copilot in Excel on Windows and Mac enables users to build and edit workbooks using multi-step workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agent Mode is releasing to Copilot in Excel on Windows and Mac enabling users to build and edit workbooks with Copilot using multi-step workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Cost and licensing",
+      "type": "record",
+      "claim": "Eligible licences can choose models including OpenAI and Anthropic.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Eligible licenses can now select which model to use, including both Open AI and Anthropic models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\", \"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; What's changing; Why it matters; changes",
+      "type": "behaviour",
+      "claim": "Microsoft now calls the workbook-editing capability formerly called Agent Mode Edit with Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Edit with Copilot in Excel to enhance your productivity (formerly Agent Mode)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The March 10, 2026 release notes associate Edit with Copilot in Excel with roadmap IDs 542182 and 527835.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "March 10, 2026 ... Edit with Copilot in Excel to enhance your productivity (formerly Agent Mode) ... Roadmap IDs: 542182, 527835",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The release notes list Windows, Web and Mac for Edit with Copilot in Excel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Edit with Copilot in Excel to enhance your productivity (formerly Agent Mode) [Windows, Web, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Edit with Copilot is an option in Copilot in Excel that builds and changes workbooks using tables, charts, PivotTables and formulas.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Edit with Copilot in Excel to build and change workbooks, using Excel tools like tables, charts, PivotTables, and formulas to complete complex data tasks faster.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Users who do not see the Let's edit together welcome message select Edit with Copilot from the tools menu in Copilot chat in Excel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Copilot chat in Excel and see \"Let's edit together\" welcome message. If you don't see the message, then go to the tools menu and select \"Edit with Copilot\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Edit with Copilot can execute Python code and output the results directly into the workbook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Edit with Copilot helps you work with Python in Excel by executing Python code for advanced analysis, automation, and data transformation with results outputted directly in your workbook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment",
+      "type": "date",
+      "claim": "The Python capability is documented in the August 2026 release notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "August 25, 2026 ... Updates released between August 11, 2026, and August 25, 2026. ... Use Python when Editing with Copilot in Excel [Windows, Mac, Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Microsoft says existing security and execution controls continue to help manage how Python code runs when editing with Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "You can now use Edit with Copilot to perform advanced data analysis (statistics, simulations, advanced visualizations etc.) with your workbook data. Existing security and execution controls continue to help manage how code runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; controls[1].governs",
+      "type": "behaviour",
+      "claim": "Users can select Claude in Edit with Copilot in Microsoft 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "In capabilities such as Edit with Copilot in Microsoft 365 apps or Researcher, users can select Claude.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "default",
+      "claim": "Claude models are on by default for most commercial-cloud customers outside the EU, EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "default",
+      "claim": "The default Claude setting in the EU, EFTA and UK is No users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "For these regions, the AI providers operating as Microsoft subprocessors setting for Claude models appears but the default is set to No users.",
+      "severity": "minor",
+      "fix": "After the regional-default statement, add: 'Microsoft's apps-only guidance gives a different default for tenants in the EU, EFTA and UK created after March 25, 2026: the apps-only setting is enabled by default. Check the tenant's actual setting.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps."
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Anthropic operates Claude models as a Microsoft subprocessor for the documented subprocessor offering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "To enable this, Anthropic has onboarded as a Microsoft subprocessor. ... As a subprocessor, Anthropic operates with Microsoft oversight through contractual safeguards and appropriate technical and organizational measures.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters: second paragraph",
+      "type": "behaviour",
+      "claim": "Claude processing is covered by Microsoft's Product Terms and Data Protection Addendum without a stated model exception.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Unless models are labeled \"Anthropic models with Data Retention,\" the Microsoft Product Terms and Microsoft Data Protection Addendum (DPA) apply to the use of Claude models from Anthropic through Microsoft's enterprise Online Services.",
+      "severity": "blocker",
+      "fix": "Replace the second sentence of the paragraph with: 'Where Anthropic is allowed, Excel content a user works on can be processed by Claude models. Microsoft's Product Terms and Data Protection Addendum apply unless the models are labelled \"Anthropic models with Data Retention\".' Keep the existing subprocessor-page citation."
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Claude processing in Copilot experiences in Excel, PowerPoint and Word occurs outside the EU Data Boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "When Claude models from Anthropic are used in Copilot experiences in Excel, PowerPoint, or Word, data processing for these models occurs outside of the EU Data Boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment; Governance guidance; Open questions",
+      "type": "date",
+      "claim": "Microsoft says Claude models are coming into the EU Data Boundary starting in December 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "Claude models from Anthropic are coming into the EU Data Boundary starting in December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; Why it matters; Risk assessment; Governance guidance; controls[1].note",
+      "type": "date",
+      "claim": "On December 9, 2026, EU, EFTA and UK tenants with the apps-only option selected or no selection move to All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "Starting on December 9, 2026 ... If the All users for Microsoft 365 apps only option is currently selected, the selection will change to the All users option. If you haven't previously made any selection, your selection will change to All users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Moving from the apps-only option to All users widens Claude access beyond Excel, PowerPoint and Word.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "Claude models from Anthropic are available only in Copilot experiences in the following Microsoft 365 apps: Excel PowerPoint Word. ... If you want to make Claude models available to your users beyond just Copilot experiences in Microsoft 365 apps, select All users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment; Scope; controls[1].note",
+      "type": "role",
+      "claim": "An AI Administrator or Global Administrator can configure the Anthropic setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "You must be a member of the AI Administrator or Global Administrator role to perform this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment; Governance guidance; controls[3].governs",
+      "type": "applicability",
+      "claim": "BlockContentAnalysisServices on a sensitivity label excludes labelled workbook content from Microsoft 365 Copilot in the named Office apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Although content with the configured sensitivity label will be excluded from Microsoft 365 Copilot in the named Office apps, the content remains available to Microsoft 365 Copilot for other scenarios.",
+      "severity": "minor",
+      "fix": "Add to controls[3].note: 'Support differs by client and app; check the minimum Office versions in the Prevent some connected experiences that analyze content and Prevent all connected experiences that analyze content rows of Microsoft's capabilities tables.' Cite https://learn.microsoft.com/purview/sensitivity-labels-office-apps."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment; controls[3].note",
+      "type": "applicability",
+      "claim": "Content with that sensitivity label remains available to Copilot in other scenarios such as Teams and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "The content remains available to Microsoft 365 Copilot for other scenarios. For example, in Teams, and in Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The label setting can stop services such as automatic and recommended labelling from working as designed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "However, when it's set, it means that some services won't work as designed, such as data loss prevention policy tips for Outlook, automatic and recommended labeling, and Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Show Changes pane includes on-card attribution showing Copilot edits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Now, the pane includes on-card attribution showing when Copilot made edits or suggestions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Copilot chat responses link to changed sheets, tables and ranges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "In Copilot in Excel, the response contains links to highlight where changes are made in your workbook. Navigate directly to new sheets, tables, ranges, and objects like charts and shapes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; controls[0]; rationale: cost and impact",
+      "type": "licensing",
+      "claim": "The service description marks Edit with Copilot as a Premium feature requiring a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote ... ^2^ ... Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is add-on, and Microsoft 365 Copilot has licensing prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "The service description lists Edit with Copilot as not currently available in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Edit with Copilot in Word, Excel, PowerPoint, and OneNote | Yes | Not currently available | Not currently available | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Edit with Copilot is available to its licensed audience without a new admin enablement step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "A new option is available in Copilot in Excel that enables you to edit your workbook through chat. ... Open Copilot chat in Excel and see \"Let's edit together\" welcome message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Licences are assigned in Microsoft 365 admin center through Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "Go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. ... Expand the Licenses section, select the boxes for the licenses that you want to assign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence through Microsoft Graph PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Anthropic control path through Copilot > Settings > View all and the provider and user-access headings reaches the user-scope control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models",
+      "quote": "Copilot > Settings > View all. ... Select AI providers operating as Microsoft subprocessors. ... under Available subprocessors for your organization, select Anthropic ... Under Choose who can access Anthropic models for Copilot and generative AI experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API for the Anthropic provider-access setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Anthropic AI providers operating as Microsoft subprocessors Microsoft Graph PowerShell API setting; \"Anthropic\" \"Graph\" \"settings\" \"API\". Opened connect-to-ai-subprocessor and copilotPolicySetting reference; no matching operation documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Allow the use of connected experiences in Office that analyze content is under Group Policy Management > User Configuration > Policies > Administrative Templates > Microsoft Office 2016 > Privacy > Trust Center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "Allow the use of connected experiences in Office that analyze content ... If you're using the Group Policy Management tool, all these policy settings are located under User Configuration\\Policies\\Administrative Templates\\Microsoft Office 2016\\Privacy\\Trust Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Setting the registry value UserContentDisabled to 2 disables connected experiences that analyse content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "| Allow the use of connected experiences in Office that analyze content | UserContentDisabled | 1=Enabled 2=Disabled |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling connected experiences that analyse content removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, rather than only Edit with Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: Excel OneNote Outlook PowerPoint Word",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The connected-experiences policy can also be implemented through Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "These policy settings can be implemented by using either Group Policy or Cloud Policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[3].ui; controls[3].note; Governance controls",
+      "type": "absence",
+      "claim": "BlockContentAnalysisServices is not available as a configuration in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: BlockContentAnalysisServices sensitivity label Purview portal PowerShell. Opened sensitivity-labels-office-apps: 'This configuration isn't available in the Microsoft Purview portal.'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[3].api; Governance controls",
+      "type": "command",
+      "claim": "Set-Label -Identity <label GUID> -AdvancedSettings @{BlockContentAnalysisServices=\"True\"} configures the label through Security & Compliance PowerShell; New-Label also supports this setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "You must use the PowerShell advanced setting BlockContentAnalysisServices with the Set-Label or New-Label cmdlet ... Set-Label -Identity \"8faca7b8-8d20-48a3-8ea2-0f96310a848e\" -AdvancedSettings @{BlockContentAnalysisServices=\"True\"}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[4]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No standalone tenant switch for Edit with Copilot in Excel is documented on either the admin UI or API surface in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Excel Edit with Copilot Agent Mode disable admin switch Cloud Policy sign in; \"Excel\" \"Edit with Copilot\" \"disable\" policy. Opened manage-privacy-controls, Copilot privacy and copilotPolicySetting; no standalone Excel editing switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The Graph copilotPolicySetting reference lists neither Anthropic nor Edit with Copilot among its supported settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Anthropic AI providers operating as Microsoft subprocessors Microsoft Graph PowerShell API setting. Read copilotPolicySetting Supported settings: copilotchatpinning, blockaccesstoopenfiles, imagegeneration, allowwebsearch, allowinadmincenters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No change to sign-in is documented for this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edit with Copilot Excel Agent Mode sign in identity authentication requirements. Read roadmap record, March 10 release notes and Business Central Copilot-in-Excel section; no changed sign-in mechanism for this item stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Model choice",
+      "type": "absence",
+      "claim": "The service description publishes no separate charge for selecting Claude or OpenAI models in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edit with Copilot Excel Claude OpenAI model selection separate charge price; \"Edit with Copilot\" \"model\" \"price\". Read Microsoft Copilot service description in full: add-on licensing and Premium feature footnote, no separate model-selection charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "Before this change Copilot in Excel only suggested, rather than edited workbooks.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Excel previously could edit workbook Agent Mode suggestions before; \"Excel\" \"Copilot\" \"previously\" \"edit\" \"Agent Mode\". Read release notes and Business Central Copilot section; neither states that earlier Copilot only suggested.",
+      "severity": "major",
+      "fix": "Replace 'For licensed users, Copilot in Excel stops being a helper that suggests and becomes one that edits.' with 'For licensed users, Edit with Copilot can build and change workbooks through chat.'"
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "admin-path",
+      "claim": "The Anthropic setting is reached directly through Copilot > Settings > AI providers operating as Microsoft subprocessors.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Go to the Microsoft 365 admin center and select Copilot > Settings > View all. Select AI providers operating as Microsoft subprocessors.",
+      "severity": "blocker",
+      "fix": "Replace the path in this bullet with 'Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors'. The omitted View all is a required selection, not a heading."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout, first bullet; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks owners to review Copilot-attributed edits in Show Changes, but the controls table has no row for this review surface.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask owners of critical workbooks to use the Show Changes pane to review Copilot-attributed edits. ... The table lists licence assignment, Anthropic access, connected experiences, labels and the standalone-switch absence, but not Show Changes.",
+      "severity": "minor",
+      "fix": "Change the first After rollout bullet to 'Ask owners of critical workbooks to review Copilot's edits before using the results.' This removes the checklist's instruction to use a control that has no table row without adding a row."
+    },
+    {
+      "n": 52,
+      "where": "Scope: Claude models",
+      "type": "availability",
+      "claim": "Claude models are unavailable for federal GCC customers and all customers in GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Claude models aren't available for federal customers in GCC or for any customers in GCC High and Department of Defense (DoD) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Governance controls; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Anthropic user and group assignments are enforced at provider level across Microsoft Copilot and Copilot Studio, restricting use to assigned users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "These assignments are applied at the provider level and enforced across Microsoft Copilot and Copilot Studio experiences. When access is limited by user or group membership, only the assigned users can use Copilot features or agents that rely on that AI provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "The workbook-editing capabilities previously called Agent Mode are now part of the regular Copilot in Excel experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/across-work-with-excel",
+      "quote": "The workbook-editing capabilities previously called Agent Mode are now part of the regular Copilot in Excel experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout, second bullet",
+      "type": "behaviour",
+      "claim": "Selecting No users or specific users and groups avoids the December 9 automatic change from apps-only or unset access to All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "If you've selected any other option, including No users, your selection won't change. ... Specific users and groups for all Copilot and generative AI experiences | Specific users and groups ... No users | No users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Excel and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Excel\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-02-13T23:15:55.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-02-13T23:15:55\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:15.506Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=542182",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/across-work-with-excel",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot licence that Edit with Copilot in Excel requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot licence that Edit with Copilot in Excel requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users may use Anthropic (Claude) models, including in Edit with Copilot",
+        "docs": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Anthropic",
+          "Choose who can access Anthropic models for Copilot and generative AI experiences"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Copilot features are available in Excel and other Office apps (connected experiences that analyse content)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "segments": [
+          "User Configuration",
+          "Policies",
+          "Administrative Templates",
+          "Microsoft Office 2016",
+          "Privacy",
+          "Trust Center",
+          "Allow the use of connected experiences in Office that analyze content"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether Copilot features are available in Excel and other Office apps (connected experiences that analyse content)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "token": "Registry value",
+        "found": false
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether workbooks with a given sensitivity label are excluded from Copilot in Office apps",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

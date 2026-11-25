@@ -2,37 +2,745 @@
   "slug": "microsoft-forms-enable-sensitivity-labels",
   "roadmapId": 528932,
   "title": "Microsoft Forms: sensitivity labels on forms and generated Excel files",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-25",
   "version": 2,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 1,
-  "hold": {
-    "reason": "unverified",
-    "since": "2026-11-25",
-    "reasons": [
-      "Written but not yet checked against Microsoft Learn."
-    ]
-  },
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 53,
+    "confirmed": 53,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
+  "summary": "The briefing accurately distinguishes the planned Forms labeling feature from existing Forms controls. The published paths and commands are supported, and searches found no Forms-specific labeling switch or rollout documentation. Licensing needs two clarifications: name the general Forms entitlement and acknowledge qualifications and conflicting wording in the Purview service description.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to enable sensitivity labels in Microsoft Forms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Forms will enable sensitivity labels, empowering organizations to control access and manage information protection directly within Forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; Scope; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says authors and co-authors will manually assign or edit sensitivity labels on forms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Authors and co-authors will be able to manually assign or edit sensitivity labels on forms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says only users with appropriate permissions will access labeled forms' design pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "ensuring that only users with appropriate permissions can access form design and response pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says only users with appropriate permissions will access labeled forms' response pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "ensuring that only users with appropriate permissions can access form design and response pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; summary; What's changing; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says Excel files generated from Forms will inherit sensitivity labels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Sensitivity labels will also be inherited by Excel files generated from Forms, maintaining consistent data protection across exported content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; summary; What's changing; Open questions",
+      "type": "record",
+      "claim": "The record's status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025, earlier than the run date of 25 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) as the cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The record has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record has no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-11-21T00:00:57.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-11-21T00:00:57\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this Forms sensitivity-labeling feature at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Forms enable sensitivity label form design response pages; opened Forms administrator-settings, set-up-microsoft-forms, admin-information and Purview sensitivity-labels. Results describe Office apps and Power Apps email forms, not this Forms feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists Word, Excel, PowerPoint and Outlook on Office desktop apps and Office for the web as supporting labels, and directs readers to other apps' documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Supported by Word, Excel, PowerPoint, and Outlook on the Office desktop apps and Office for the web. Supported on Windows, macOS, iOS, and Android. For other apps, check their documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default state of Forms label support is not stated, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity labels\" licensing price prerequisites rollout default permissions existing forms; read the roadmap, Forms administrator-settings and set-up-microsoft-forms, Purview sensitivity-labels and service description. No Forms-label default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0]; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No Forms-specific tenant switch for sensitivity labels is documented on either the admin UI or automation surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Forms\" sensitivity label tenant switch Graph formsSettings Set-Label Security Compliance PowerShell; opened Forms administrator-settings, formsSettings, adminforms-update and Set-Label; searched the full Set-Label reference for Forms. No Forms-label switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Forms data can be exported to Excel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/set-up-microsoft-forms",
+      "quote": "Form data, such as quiz results, can be easily exported to Excel for additional analysis or grading.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "absence",
+      "claim": "No source states that existing forms or their responses change when this feature arrives.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity labels\" licensing price prerequisites rollout default permissions existing forms; read the roadmap, Forms administrator-settings, set-up-microsoft-forms and Purview sensitivity-labels. No statement about changing existing forms found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap does not say whether workbooks already exported receive a label.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Sensitivity labels will also be inherited by Excel files generated from Forms, maintaining consistent data protection across exported content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap does not specify which label settings Forms honors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Forms will enable sensitivity labels, empowering organizations to control access and manage information protection directly within Forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Forms admin settings offer external sharing options for sending form links, collaborating, sharing results and sharing templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/formssettings?view=graph-rest-beta",
+      "quote": "isExternalSendFormEnabled; isExternalShareCollaborationEnabled; isExternalShareResultEnabled; isExternalShareTemplateEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "All four Forms external sharing options are checked by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "On the Microsoft Forms pane, the External sharing setting has four options, all of which are checked by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap does not explain how labels interact with existing external sharing settings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Authors and co-authors will be able to manually assign or edit sensitivity labels on forms, ensuring that only users with appropriate permissions can access form design and response pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no automatic or default labeling for Forms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Authors and co-authors will be able to manually assign or edit sensitivity labels on forms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Which permissions count as appropriate for labeled Forms design and response pages is not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Forms enable sensitivity label form design response pages; read the roadmap, Forms administrator-settings and Purview sensitivity-labels, plus sensitivity-label permission search excerpts. No definition of appropriate permissions for labeled Forms pages found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap item describes no agent, automation or background action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Authors and co-authors will be able to manually assign or edit sensitivity labels on forms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included for a new option within the already licensed Forms product, with feature-specific terms unconfirmed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/set-up-microsoft-forms",
+      "quote": "The following Office 365 Education and Microsoft 365 Apps for business customers can also use Microsoft Forms: ... Microsoft 365 Business Premium ... Microsoft 365 Enterprise E1, E3, and E5 plans",
+      "severity": "minor",
+      "fix": "Keep model included, but add to licensing.notes: 'Learn lists Microsoft 365 Business Premium and Microsoft 365 Enterprise E1, E3, and E5 plans among the plans whose customers can use Forms. No licence or price specific to labels in Forms is published.' The cited Set up Microsoft Forms page supports this product-level entitlement; do not imply that the Purview table confirms Forms-label entitlement."
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators need appropriate licenses to configure Information Protection functionality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "the administrator creating and managing Information Protection features must have the appropriate licenses for the following subscription plans to configure the functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "End users need appropriate licenses to use Information Protection functionality in their client applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Similarly, end users also need the appropriate licenses to use the functionality in their respective client applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Purview table lists Manual Sensitivity Labeling as Included for the Microsoft 365, OneDrive, EMS, Office 365 and AIP plans named in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2 |\n| Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": "minor",
+      "fix": "After the table-based entitlement sentence, add: 'The same section also says sensitivity labeling, including automatic or policy-based labeling, requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG), which conflicts with the broader manual-labeling table. It also requires a standard/Plan 1 licence to be assigned alongside a premium/Plan 2 licence for sensitivity labeling.' Keep the statement that Forms-specific entitlement is unconfirmed."
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The Purview service description does not mention Forms.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: full fetched Microsoft Purview service description for Forms; read its Information Protection sensitivity labeling section and plan tables. No Forms occurrence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No license specific to sensitivity labels in Forms is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity labels\" \"license\"; opened Forms set-up-microsoft-forms, Purview service description and sensitivity-labels; read get-started-with-sensitivity-labels licensing search excerpts. No Forms-label-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to sensitivity labels in Forms is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity labels\" licensing price prerequisites rollout default permissions existing forms; opened Forms set-up-microsoft-forms and Purview service description; read sensitivity-label licensing and billing search excerpts. No Forms-label price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap names no meter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Forms will enable sensitivity labels, empowering organizations to control access and manage information protection directly within Forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Purview service description names no manual-labeling meter, and no Forms-label-specific meter was published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity labels\" licensing price prerequisites rollout default permissions existing forms; read Purview service description Information Protection tables and get-started-with-sensitivity-labels billing excerpts. Manual labeling lists Included, not a meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "default",
+      "claim": "Forms itself is turned on for everyone in an organization by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/turn-off-turn-on-microsoft-forms",
+      "quote": "By default, Microsoft Forms is turned on for everyone in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Learn says an office apps administrator with application administrator role can control Forms organization settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "In the Microsoft 365 admin center, an office apps administrator with application administrator role can control external sharing settings, record names of people in their organization, and/or protect internal forms from phishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope; controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "The documented Forms administrator settings are available only for Office 365 Education and Microsoft 365 Apps for business customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "Administrator settings are only available for Office 365 Education and Microsoft 365 Apps for business customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "A role for configuring Forms-specific label support is not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity\" \"labels\" enable administrator; opened Forms administrator-settings and Purview sensitivity-labels; read get-started-with-sensitivity-labels permissions excerpt. General label-management roles exist, but no Forms-specific configuration role was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics for Forms sensitivity labels are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity labels\" licensing price prerequisites rollout default permissions existing forms; read roadmap, Forms administrator-settings, set-up-microsoft-forms and Purview sensitivity-labels. No Forms-label rollout mechanics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Prerequisites specific to enabling sensitivity labels in Forms are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity labels\" licensing price prerequisites rollout default permissions existing forms; Microsoft Forms enable sensitivity label form design response pages; read Forms set-up-microsoft-forms and Purview sensitivity-labels. No Forms-label prerequisites found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Forms external sharing settings are reached in Microsoft 365 admin center through Settings > Org settings > Services > Microsoft Forms > External sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "Select Settings > Org settings. ... On the Settings page, under the Services tab, click Microsoft Forms. ... On the Microsoft Forms pane, the External sharing setting has four options",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api; controls[1].note",
+      "type": "command",
+      "claim": "PATCH /beta/admin/forms updates company-wide Forms options through the settings property of type formsSettings, including external sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminforms-update?view=graph-rest-beta",
+      "quote": "PATCH https://graph.microsoft.com/beta/admin/forms ... | settings | formsSettings | Company-wide settings for Microsoft Forms. Required. | ... \"isExternalSendFormEnabled\": true, \"isExternalShareCollaborationEnabled\": false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Forms Graph API shown in the table is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminforms-update?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Per-user Forms license access is reached in Microsoft 365 admin center through Users > Active users > user > Manage product licenses > Licenses and Apps > Apps > Microsoft Forms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/turn-off-turn-on-microsoft-forms",
+      "quote": "choose Users > Active users. ... Select the box next to the name ... click Manage product licenses. ... on the Licenses and Apps tab, expand the Apps section and scroll down to the Microsoft Forms option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; controls[2].note",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId <user ID> -AddLicenses $addLicenses -RemoveLicenses @() can disable the Forms service plan through DisabledPlans inside AddLicenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.users.actions/set-mguserlicense",
+      "quote": "Set-MgUserLicense -UserId '38955658-c844-4f59-9430-6519430ac89b' -AddLicenses $addLicenses -RemoveLicenses @() ... [DisabledPlans <String[]>]: A collection of the unique identifiers for plans that have been disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning Forms off for an individual user stops that user using Forms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "When you turn off Microsoft Forms for a user, that person can't use Microsoft Forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].governs; controls[2].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The existing external sharing and per-user Forms access controls configure Forms generally, rather than the new sensitivity-label setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "can control external sharing settings, record names of people in their organization, and/or protect internal forms from phishing. ... When you turn off Microsoft Forms for a user, that person can't use Microsoft Forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Learn lists OrgSettings-Forms.ReadWrite.All as the least privileged permission for the Forms update API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminforms-update?view=graph-rest-beta",
+      "quote": "| Delegated (work or school account) | OrgSettings-Forms.ReadWrite.All | Not available. | ... | Application | OrgSettings-Forms.ReadWrite.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "formsSettings has seven properties for Bing image search, external sharing, phishing scanning and recording names, with no sensitivity-label property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/formssettings?view=graph-rest-beta",
+      "quote": "isBingImageSearchEnabled; isExternalSendFormEnabled; isExternalShareCollaborationEnabled; isExternalShareResultEnabled; isExternalShareTemplateEnabled; isInOrgFormsPhishingScanEnabled; isRecordIdentityByDefaultEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Sensitivity labels themselves are created and configured using the Microsoft Purview management solution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "The information on this page is for IT administrators who can create and configure those labels by using the Microsoft Purview management solution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "summary",
+      "type": "absence",
+      "claim": "No required administrator action for the planned Forms-label feature is known from the available sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Forms\" \"sensitivity\" \"labels\" enable administrator; read roadmap, Forms administrator-settings, set-up-microsoft-forms, admin-information, formsSettings and Purview sensitivity-labels. No required Forms-label action found; no Message Center notice was supplied.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:14.342Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=528932",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-forms/turn-off-turn-on-microsoft-forms",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-forms/set-up-microsoft-forms",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-forms/admin-information",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/formssettings?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/adminforms-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.graph.users.actions/set-mguserlicense",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Organisation-wide Forms options such as external sharing (existing control; does not govern labels)",
+        "docs": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Services",
+          "Microsoft Forms",
+          "External sharing"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Organisation-wide Forms options such as external sharing (existing control; does not govern labels)",
+        "docs": "https://learn.microsoft.com/graph/api/adminforms-update?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/forms",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether an individual user can use Microsoft Forms (existing control; does not govern labels)",
+        "docs": "https://learn.microsoft.com/microsoft-forms/turn-off-turn-on-microsoft-forms",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Manage product licenses",
+          "Licenses and Apps",
+          "Apps",
+          "Microsoft Forms"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether an individual user can use Microsoft Forms (existing control; does not govern labels)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.graph.users.actions/set-mguserlicense",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
   "history": [
     {
       "date": "2026-11-25",
       "status": "held",
       "version": 1,
       "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 2,
+      "model": "none"
     }
   ]
 }

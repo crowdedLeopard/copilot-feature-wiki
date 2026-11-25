@@ -25,6 +25,9 @@ sources:
   - title: "Advanced moderation in Viva Engage"
     url: "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance"
     kind: "learn"
+  - title: "AI Summarization and theme extraction FAQ"
+    url: "https://learn.microsoft.com/viva/engage/lmc-ai-summ-and-theme-extraction-faq"
+    kind: "learn"
   - title: "Admin roles for Advanced moderation and Keyword monitoring"
     url: "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article"
     kind: "learn"
@@ -79,7 +82,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/employeeExperience/roles/{engagementRoleId}/members"
       docs: "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0"
-    note: "Assigns the role only, not the advanced moderation permission. Needs EngagementRole.ReadWrite.All; native-mode networks only."
+    note: "Assigns the role only, not the advanced moderation permission. Needs EngagementRole.ReadWrite.All; native-mode networks only. The request body identifies the assignee through userId; Microsoft's HTTP example uses user@odata.bind."
   - governs: "Whether AI Summarization, which theme moderation is built on, processes Engage threads"
     scope: "tenant"
     ui:
@@ -100,19 +103,23 @@ changes:
     note: "New briefing: the off-by-default advanced moderation permission for Viva Engage corporate communicators, its licensing threshold and the role and AI Summarization controls."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected: private-community access for theme moderation now follows Microsoft's FAQ; removed two checklist steps on theme actions; added the request-body note to the Graph role row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
+  claims: 78
+  confirmed: 76
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "9a21bf079796332fc184880b7c8fb0b7"
+  attempts: 0
+  hash: "c17deb6dbe0ff0584d1d2810252f75b1"
 ---
 
 ## What's changing
@@ -135,7 +142,7 @@ If nobody acts, nothing changes: the permission is off until an admin assigns it
 
 **Data exposure**
 - Theme moderation is built on the AI Summarization service, which Learn says controls all AI data processing for the network and is enabled by default for all users. Granting this permission adds communicators as people who can direct that processing towards chosen themes; the AI Summarization control (table row 3) governs whether processing happens at all.
-- Detected conversations stay visible in the advanced moderation pages for 30 days; after that they are found through network export, eDiscovery or Engage search. Microsoft does not say whether communicators see matches from private communities they are not members of; see Open questions.
+- Detected conversations stay visible in the advanced moderation pages for 30 days; after that they are found through network export, eDiscovery or Engage search. Microsoft says AI summarization and theme extraction only access content within communities and groups each user has permission to view, and do not expose private-community content to unauthorized users ([AI Summarization and theme extraction FAQ](https://learn.microsoft.com/viva/engage/lmc-ai-summ-and-theme-extraction-faq)).
 
 **Security & identity**
 - The permission rides on the Corporate Communicator role, which Engage admins, network admins, verified admins and other corporate communicators can assign. A communicator can therefore add further communicators; whether a communicator can also grant the advanced moderation permission is not stated, as the pages name only admin roles for it.
@@ -165,13 +172,11 @@ The Engage admin roles page says Viva Engage admin roles other than Global and E
 
 ### Before rollout
 - List current corporate communicators in the Viva Engage admin center (Setup and configuration > Admin roles > Corporate communicator) and decide which, if any, should get advanced moderation.
-- Write down who may create themes, when Auto-mute and Email notification may be switched on for a theme, and who reviews detected conversations.
 - Confirm the tenant meets the 50% Viva Suite or Employee Communications and Communities threshold before promising AI themes to the communications team.
 - Check the AI Summarization setting (Setup & configuration > Manage analytics > Analytics settings > Feature access management) and do not disable it for the tenant without reading the warning that history data is retroactively deleted.
 
 ### At rollout
 - Assign the advanced moderation permission in Setup & Configuration > Admin Roles to the named communicators only.
-- Start each new theme with Auto-mute off, review its matches in Advanced moderation > Detected conversations, then decide whether to turn auto-mute on.
 - Tell the support desk that muted threads leave the Home feed and digests without notifying the author.
 
 ### After rollout
@@ -187,7 +192,7 @@ The Engage admin roles page says Viva Engage admin roles other than Global and E
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether a corporate communicator has the advanced moderation permission</strong><br><small>User</small><br><small class="controls__note">Off by default. Assigned by Verified, Network or Engage Admins per this page; the exact label of the permission on the Admin Roles page is not given.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Setup &amp; Configuration › Admin Roles <a href="https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who holds the Corporate Communicator role in Viva Engage</strong><br><small>User</small><br><small class="controls__note">Assigns the role only, not the advanced moderation permission. Needs EngagementRole.ReadWrite.All; native-mode networks only.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Setup and configuration › Admin roles › Corporate communicator › Add user <a href="https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/employeeExperience/roles/{engagementRoleId}/members</code> <a href="https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who holds the Corporate Communicator role in Viva Engage</strong><br><small>User</small><br><small class="controls__note">Assigns the role only, not the advanced moderation permission. Needs EngagementRole.ReadWrite.All; native-mode networks only. The request body identifies the assignee through userId; Microsoft's HTTP example uses user@odata.bind.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Setup and configuration › Admin roles › Corporate communicator › Add user <a href="https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/employeeExperience/roles/{engagementRoleId}/members</code> <a href="https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether AI Summarization, which theme moderation is built on, processes Engage threads</strong><br><small>Tenant</small><br><small class="controls__note">Managed by the Engage admin; supports tenant, group and user policies and user opt-out. Disabling for the tenant retroactively deletes summarisation history.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Setup &amp; configuration › Manage analytics › Analytics settings › Feature access management <a href="https://learn.microsoft.com/viva/engage/analytics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId &lt;ModuleId&gt; -FeatureId &lt;FeatureId from Get-VivaModuleFeature&gt; -Name &lt;policy name&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -199,7 +204,7 @@ The Engage admin roles page says Viva Engage admin roles other than Global and E
 
 ## Open questions
 
-- Do corporate communicators with the permission see theme and keyword matches from private communities they are not members of? Watch the advanced moderation page on Learn.
+- Do corporate communicators with the permission see keyword monitoring matches from private communities they are not members of? Watch the advanced moderation page on Learn.
 - Can a corporate communicator holding the permission configure the block-new-content action for a theme, or only admins? The page says admins configure blocking.
 - Which roles may assign the permission: Network and Verified admins only, or Engage Admins too, as the two Learn pages differ?
 - Are permission grants and theme changes written to the Microsoft Purview audit log, and under which activity names?
@@ -211,11 +216,9 @@ cost: Low. The permission is a role setting with no licence of its own published
 impact: Low. Only Engage admins and the corporate communicators they choose see the change; employees notice only through moderation actions such as muted conversations.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft does not say whether communicators can see theme matches from private communities they are not members of. | Found: The features only access content within communities and groups that each user has permission to view. The features don't expose content from private communities to unauthorized users. | Fix: Replace the theme-related absence with: 'Microsoft says AI summarization and theme extraction only access content within communities and groups each user has permission to view, and do not expose private-community content to unauthorized users.' Cite https://learn.microsoft.com/viva/engage/lmc-ai-summ-and-theme-extraction-faq. Remove theme moderation from the corresponding Open questions bullet; retain only the narrower keyword-dashboard question. | Source: https://learn.microsoft.com/viva/engage/lmc-ai-summ-and-theme-extraction-faq
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; controls[1].note / command: POST /v1.0/employeeExperience/roles/{engagementRoleId}/members assigns a Viva Engage role to a user, not the granular moderation permission. | Found: Create a new engagementRoleMember object that assigns a Viva Engage role to a user. POST https://graph.microsoft.com/v1.0/employeeExperience/roles/a40473a5-0fb4-a250-e029-f6fe33d07733/members | Fix: Keep the call. Add to controls[1].note and the matching rendered note: 'The request body identifies the assignee through userId; Microsoft's HTTP example uses user@odata.bind.' The cited create-member reference documents userId in its request-body table and user@odata.bind in its example. | Source: https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The checklist tells administrators to govern per-theme Auto-mute and Email notification, but the controls table has no corresponding theme-action row. | Found: Write down who may create themes, when Auto-mute and Email notification may be switched on for a theme. Table rows cover granular permission, Corporate Communicator role and AI Summarization, not theme actions. | Fix: Remove the checklist instruction 'Write down who may create themes, when Auto-mute and Email notification may be switched on for a theme, and who reviews detected conversations' and the At rollout instruction to start themes with Auto-mute off and later turn it on. Those theme-action controls have no table row; retain the already documented explanatory prose without adding a row.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to review and retire moderation themes is represented in the controls table. | Found: Review the theme list against the 30-theme limit and retire themes that produce noise. | Table rows cover permission assignment, Corporate Communicator role assignment and AI Summarization, not theme management. | Fix: Remove the After rollout checklist bullet beginning 'Review the theme list against the 30-theme limit'; theme management has no corresponding controls-table row. Do not add a row as part of this correction.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to use network export or eDiscovery is represented in the controls table. | Found: Use network export or eDiscovery for conversations older than 30 days, which drop out of the advanced moderation pages. | No controls-table row covers network export or eDiscovery. | Fix: Remove the After rollout checklist bullet beginning 'Use network export or eDiscovery'; neither mechanism has a controls-table row. Keep the supported retrieval information in Risk assessment and do not add rows as part of this correction.
 -->

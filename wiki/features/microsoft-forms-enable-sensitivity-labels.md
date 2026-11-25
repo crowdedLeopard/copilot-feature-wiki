@@ -96,7 +96,21 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 49 statements contradicted, 1 unconfirmed; taken offline until corrected"
   - date: "2026-11-25"
     note: "Corrected: removed the claim that existing Forms settings and Purview label configuration are the only levers, and dropped two checklist steps (label selection, audit log search) that had no control row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
 version: 2
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-25"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 53
+  confirmed: 53
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "216ec3aeb8c810dc53ae28cedab4aa87"
 ---
 
 ## What's changing
@@ -187,4 +201,11 @@ Labels themselves are created in the Microsoft Purview management solution; see 
 risk: Low. The roadmap describes a new labelling control that authors and co-authors apply manually, and no source says existing forms or responses change; the default state is not stated, so this rates today's behaviour continuing.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has published no licence, meter or price specific to labels in Forms, and the Purview service description lists manual labelling as included in several plans.
 impact: Medium. Form authors, co-authors and anyone who opens a labelled form's design or response pages would notice; the roadmap says only users with appropriate permissions can access those pages.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is included for a new option within the already licensed Forms product, with feature-specific terms unconfirmed. | Found: The following Office 365 Education and Microsoft 365 Apps for business customers can also use Microsoft Forms: ... Microsoft 365 Business Premium ... Microsoft 365 Enterprise E1, E3, and E5 plans | Fix: Keep model included, but add to licensing.notes: 'Learn lists Microsoft 365 Business Premium and Microsoft 365 Enterprise E1, E3, and E5 plans among the plans whose customers can use Forms. No licence or price specific to labels in Forms is published.' The cited Set up Microsoft Forms page supports this product-level entitlement; do not imply that the Purview table confirms Forms-label entitlement. | Source: https://learn.microsoft.com/microsoft-forms/set-up-microsoft-forms
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: The Purview table lists Manual Sensitivity Labeling as Included for the Microsoft 365, OneDrive, EMS, Office 365 and AIP plans named in the briefing. | Found: | Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2 | | Manual Sensitivity Labeling | Included | Included | Included | Included | Included | | Fix: After the table-based entitlement sentence, add: 'The same section also says sensitivity labeling, including automatic or policy-based labeling, requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG), which conflicts with the broader manual-labeling table. It also requires a standard/Plan 1 licence to be assigned alongside a premium/Plan 2 licence for sensitivity labeling.' Keep the statement that Forms-specific entitlement is unconfirmed. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

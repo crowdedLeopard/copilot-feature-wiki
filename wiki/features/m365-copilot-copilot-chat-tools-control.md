@@ -37,6 +37,9 @@ sources:
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
+  - title: "Manage agents in the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps"
+    kind: "learn"
 videos: []
 related: ["app-management","m365-copilot-app-blocks","m365-copilot-copilot-app-mode-handoffs"]
 controls:
@@ -66,19 +69,23 @@ changes:
     note: "Corrected: Scope gives Microsoft's general gradual rollout model for Copilot features; the Integrated Apps check separates blocking from availability; the Teams disagreement between two Learn pages is noted; the summary no longer says Learn states no admin action."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected: the page now says Microsoft Learn identifies Researcher and Analyst under Tools without an exhaustive menu list, drops the claim that the menu's features have unstated licence terms, and narrows who sees the menu."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 42
-  confirmed: 38
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 2
-  hash: "978d1fc9ae2fc15ff0f2368ff4c99f87"
+  confirmed: 42
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "cf887c84152d3cbb5ebbd4ef25857ff6"
 ---
 
 ## What's changing
@@ -87,11 +94,11 @@ The roadmap item describes **Tools** as a lightweight entry point in the Copilot
 
 The record lists the item as Launched, with release phase General Availability, a target of September CY2025, platforms Desktop and Web, and clouds Worldwide (Standard Multi-Tenant), GCC and DoD. GCC High is not listed on the record, which is a statement about the record and not about availability.
 
-Microsoft Learn does not describe the Tools menu at the time of writing (November 2026), so what the menu contains and how each entry behaves is the roadmap's description only. Microsoft has also not stated what happens on arrival, whether the menu is on by default or which users see it first.
+Microsoft Learn identifies Researcher and Analyst as available in Microsoft Copilot Chat under Tools ([Manage agents in the Microsoft 365 admin center](https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps)); the roadmap describes selecting Tools to discover and trigger capabilities. Microsoft has not stated what happens on arrival, whether the menu is on by default or which users see it first.
 
 ## Why it matters
 
-The menu changes how users reach Copilot features from the prompt box. Because it is a route to other capabilities, the questions for a service owner are which capabilities users can reach through it and whether the existing controls for those capabilities still apply. Microsoft has not published the list.
+The menu changes how users reach Copilot features from the prompt box. Because it is a route to other capabilities, the questions for a service owner are which capabilities users can reach through it and whether the existing controls for those capabilities still apply. Microsoft Learn identifies Researcher and Analyst under Tools but does not give an exhaustive menu list.
 
 Microsoft has not stated what happens if nobody acts, and no source says existing behaviour changes. Expect questions from users who see the menu, and plan to check the menu in a pilot account before answering them.
 
@@ -107,14 +114,14 @@ Microsoft has not stated what happens if nobody acts, and no source says existin
 - The roadmap says users discover and trigger features from the menu. No source says the menu starts actions on its own.
 
 **Change & support**
-- Menu contents are not documented, so help desk staff cannot be briefed from Microsoft Learn. Capture the entries users see and record them for support.
+- Microsoft Learn identifies Researcher and Analyst under Tools but does not give an exhaustive menu list. Capture the entries users see and record them for support.
 - Microsoft Learn documents no switch for the menu itself, so the documented levers act on the whole Copilot app.
 
 ## Cost and licensing
 
 Microsoft Learn's requirements page says Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription, and its requirements table lists a Microsoft Copilot licence as not required for eligible users. The roadmap item names no licence, meter or price for the Tools menu.
 
-A licence, credit rate or meter specific to the Tools menu is not yet published. Microsoft has not stated whether the features launched from the menu carry their own licence or meter terms, so check each feature's own page before budgeting.
+A licence, credit rate or meter specific to the Tools menu is not yet published. Check each feature's own page before budgeting.
 
 The indirect cost that is known is admin time to review the menu and brief users.
 
@@ -129,7 +136,7 @@ The Integrated Apps controls described below are available to Global Administrat
 ## Governance guidance
 
 ### Before rollout
-- Open Copilot Chat in a pilot account on web and desktop and list the entries the Tools menu shows, because Microsoft Learn does not list them.
+- Open Copilot Chat in a pilot account on web and desktop and list the entries the Tools menu shows, because Microsoft Learn identifies Researcher and Analyst under Tools but does not give an exhaustive menu list.
 - Check whether the Copilot app is blocked in Integrated Apps (Microsoft 365 admin center). Do not treat restricted app availability as equivalent to blocking: availability restrictions do not affect admin-deployed apps.
 - Ask the owners of features reached through the menu to confirm each feature's own licence and data controls.
 
@@ -138,8 +145,8 @@ The Integrated Apps controls described below are available to Global Administrat
 - Use a Global Administrator account for the Integrated Apps block, as the page documenting it limits those controls to Global Admins.
 
 ### After rollout
-- Watch Message center and the Microsoft 365 Copilot release notes for a Learn page or admin setting that covers the Tools menu.
-- Re-check the menu contents in a pilot account after Copilot updates, because the menu is not documented.
+- Watch Message center and the Microsoft 365 Copilot release notes for an admin setting that covers the Tools menu.
+- Re-check the menu contents in a pilot account after Copilot updates, because Microsoft Learn does not give an exhaustive menu list.
 
 ## Governance controls
 
@@ -168,17 +175,6 @@ The Integrated Apps page states that its controls are only available to Global A
 
 <!-- rationale
 risk: Low. The roadmap describes the menu as an entry point to existing Copilot features, and no source says it reads new data or acts on its own. The default state is not stated, so this rates today's behaviour continuing.
-cost: Low. Copilot Chat is available with an eligible Microsoft 365 subscription and no licence or meter specific to the Tools menu is published. Any terms of the features launched from the menu are not stated, so the known cost is admin time.
-impact: Medium. The menu sits in the prompt box on desktop and web, so Copilot Chat users see it. The roadmap does not say which users or tenants see it first.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; front matter: changes; Governance guidance: After rollout / absence: Microsoft Learn does not describe the Tools menu, so its contents and entry behaviour are known only from the roadmap. | Found: These tools are available in Microsoft Copilot Chat under Tools and can be invoked by the user anytime. | Fix: Replace the undocumented-menu statement with 'Microsoft Learn identifies Researcher and Analyst as available in Microsoft Copilot Chat under Tools; the roadmap describes selecting Tools to discover and trigger capabilities.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps and remove repeated claims that Learn does not describe the menu. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps
-- [contradicted, blocker] Why it matters; Risk assessment: Change & support; Governance guidance: Before rollout / absence: Microsoft has not published the menu's list of capabilities, so its contents cannot be used to brief the help desk from Learn. | Found: Researcher and Analyst are first-party Microsoft experiences built on the same foundation as Microsoft Copilot | Fix: Replace the statements that no contents are documented with 'Microsoft Learn identifies Researcher and Analyst under Tools but does not give an exhaustive menu list.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps. Retain the advice to inventory the entries visible in a pilot account. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps
-- [contradicted, blocker] Cost and licensing; rationale: cost / absence: Microsoft has not stated whether features launched from Tools carry their own licence or meter terms. | Found: The researcher agent is pre-installed in Copilot Chat for all worldwide users. Find it in the left navigation pane alongside other agents, giving you quick access to research tools as part of the Copilot Premium license. | Fix: Remove 'Microsoft has not stated whether the features launched from the menu carry their own licence or meter terms' and 'Any terms of the features launched from the menu are not stated'. Retain 'Check each feature's own page before budgeting' and the narrower statement that no menu-specific licence or meter is published. Learn identifies Researcher under Tools at https://learn.microsoft.com/copilot/manage/faq-researcher and publishes its licensing in the cited release notes. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Scope; Governance guidance: At rollout; Governance controls / role: The Integrated Apps page limits its documented controls to Global Administrators. | Found: The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins. Check your credentials before you proceed. | Fix: Keep the attributed Global Administrator requirement, but add: 'The Microsoft Copilot requirements page also says the AI Administrator role provides access to Copilot and AI administration capabilities without requiring Global Administrator permissions.' Cite https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements so readers can see the differing role guidance. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365
-- [unsupported, minor] rationale: impact / availability: Because the menu sits in the prompt box on desktop and web, Copilot Chat users see it. | Found: Searched: Copilot Chat Tools menu prompt box 497298 default rollout; Copilot Chat Tools menu rollout default administrator action. Read roadmap, Manage agents and Researcher FAQ. The record gives platforms; documentation identifies licensed users for Researcher, not menu visibility for all Chat user | Fix: Replace 'so Copilot Chat users see it' with 'so users who receive the menu encounter it while composing prompts'. Keep the existing qualification that the roadmap does not state which users or tenants see it first.
+cost: Low. Copilot Chat is available with an eligible Microsoft 365 subscription and no licence or meter specific to the Tools menu is published. The known cost is admin time.
+impact: Medium. The menu sits in the prompt box on desktop and web, so users who receive the menu encounter it while composing prompts. The roadmap does not say which users or tenants see it first.
 -->

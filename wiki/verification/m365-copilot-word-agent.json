@@ -1,0 +1,888 @@
+{
+  "slug": "m365-copilot-word-agent",
+  "roadmapId": 543420,
+  "title": "Microsoft Copilot: Word Agent drafts long-form Word documents through chat",
+  "status": "verified-with-gaps",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 64,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The briefing passes: its roadmap facts, licensing conflict, Anthropic dependency, December deadline and governance controls are supported. Minor corrections should qualify the regional default statement and expand the abbreviated checklist paths.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Word and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Word\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-02-20T00:00:24.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-02-20T00:00:24\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Word Agent handles research, structure and formatting, with multi-turn chat to refine drafts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Word Agent helps you handle research, structure, and formatting so you can stay focused on your ideas. Use multi‑turn chat to refine your draft or open it in Word for full editing and collaboration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes long-form, information-dense work such as strategic plans, policy documents and technical papers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It’s designed for long‑form, information‑dense work—like strategic plans, policy documents, and technical papers—making it easier to turn complex material into clear, well‑written content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can open the draft in Word for full editing and collaboration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Use multi‑turn chat to refine your draft or open it in Word for full editing and collaboration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "licensing.notes; What's changing; Cost and licensing; Scope; controls[3].note",
+      "type": "record",
+      "claim": "The roadmap says Word Agent is available to Microsoft 365 users with or without a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Available to Microsoft 365 users with or without a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Word Agent in Microsoft Copilot exclusively uses Anthropic models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "These agents exclusively use Anthropic's AI models. This AI model must be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; licensing.notes; What's changing; Cost and licensing; Scope; rationales",
+      "type": "licensing",
+      "claim": "Learn says Word Agent is a premium capability requiring a paid Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Word, Excel, and PowerPoint Agents are premium capabilities available only to users with a paid Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Cost and licensing; rationale: impact",
+      "type": "availability",
+      "claim": "Learn says the agents are unavailable to Copilot Chat users without a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "The agents aren't available to Copilot Chat users who don't have a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The agents in the Microsoft Copilot app are installed by Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Word, Excel, and PowerPoint Agents in the Microsoft Copilot app are installed by Microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: At rollout; rationale: impact",
+      "type": "availability",
+      "claim": "Licensed users see the agents in Tools and All Agents in the left navigation when Anthropic models are enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "For users with a paid Microsoft 365 Copilot license, the agents appear in the Tools menu and under All Agents in the left navigation pane when Anthropic models are enabled for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "Disabling Anthropic models makes Word Agent unavailable even to licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "If administrators disable Anthropic models, Word, Excel, and PowerPoint Agents are unavailable, including for users with a paid Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Word Agent is on for its licensed audience without admin installation where Anthropic is enabled, as in most commercial tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "For users with a paid Microsoft 365 Copilot license, the agents appear in the Tools menu and under All Agents in the left navigation pane when Anthropic models are enabled for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Scope",
+      "type": "default",
+      "claim": "Claude models are enabled by default for most commercial-cloud customers outside the EU, EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Prerequisite",
+      "type": "default",
+      "claim": "Claude models are disabled by default in the EU, EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default.",
+      "severity": "minor",
+      "fix": "Qualify both regional-default statements: 'The general provider page says Claude models are disabled by default in the EU, EFTA and UK; the Microsoft 365 apps page says apps-only access is enabled by default for tenants in those regions created after 25 March 2026.' The second statement is documented at https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps and concerns Copilot inside the apps, not the Word Agent."
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agents use Work IQ to retrieve files, emails, meetings and sites within the licensed user's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "The agents use Work IQ to retrieve information from files, emails, meetings, and sites that the licensed user has permission to access, similar to other Microsoft 365 Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: Work IQ parenthesis",
+      "type": "behaviour",
+      "claim": "Work IQ is an intelligence layer enabling Copilot and agents to access organizational data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Work IQ is an intelligence layer that enables agents access to reason over organizational data, content and tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft performs the agents' searches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Microsoft performs all searches, and only relevant context is shared with the reasoning model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Only relevant context is shared with the Anthropic reasoning model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Microsoft performs all searches, and only relevant context is shared with the reasoning model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Sensitivity labels are respected by these agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "So the data provided is limited to what you are authorized to view, with sensitivity labels and compliance policies fully respected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Compliance policies are respected by these agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "So the data provided is limited to what you are authorized to view, with sensitivity labels and compliance policies fully respected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Generated documents are saved in OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Generated content is stored securely in OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Documents created by the agents are saved within the organization's tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "All documents created by these agents are saved within your organization's tenant, maintaining governance and compliance standards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "date",
+      "claim": "Anthropic operates as a Microsoft subprocessor for these capabilities from 7 January 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Starting on January 7, 2026, Anthropic will operate as a Microsoft subprocessor for these Microsoft Copilot capabilities under Microsoft's direction and contractual safeguards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Microsoft Product Terms cover Anthropic's processing for these capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "This includes coverage under the Microsoft Product Terms and the Microsoft Data Protection Addendum (DPA) with Microsoft remaining accountable for Anthropic's compliance under our contractual commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The Microsoft Data Protection Addendum covers Anthropic's processing for these capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "This includes coverage under the Microsoft Product Terms and the Microsoft Data Protection Addendum (DPA) with Microsoft remaining accountable for Anthropic's compliance under our contractual commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Use of Anthropic models in Microsoft Copilot falls under Enterprise Data Protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "In addition, use of Anthropic models in Microsoft Copilot will fall under our Enterprise Data Protection and will be covered by the Customer Copyright Commitment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Word Agent Learn page currently excludes Anthropic models from the EU Data Boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Note that Anthropic models are currently excluded from EU Data Boundary and when applicable, in-country/region processing commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Word Agent Learn page excludes Anthropic models from applicable in-country processing commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Note that Anthropic models are currently excluded from EU Data Boundary and when applicable, in-country/region processing commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Rollout",
+      "type": "date",
+      "claim": "Learn describes a phased Anthropic-subprocessor rollout with full availability expected by the end of February 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Anthropic as a subprocessor is being introduced gradually and is not yet available to all organizations. During this phased rollout, some features may be limited for your organization. Full availability is expected by the end of February 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Office Agent can remain visible in the store even when Anthropic models are disabled and it cannot be used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "The Office Agent might still appear in the agent store, but users can't access or use it. Visibility in the agent store doesn't indicate that Anthropic models are enabled for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Users",
+      "type": "availability",
+      "claim": "Licensed users can use the agents in all officially supported Microsoft Copilot languages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Licensed users can use the agents in all officially supported Microsoft Copilot languages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Anthropic user and security-group assignments govern access at provider level across Microsoft Copilot and Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "These assignments are applied at the provider level and enforced across Microsoft Copilot and Copilot Studio experiences. When access is limited by user or group membership, only the assigned users can use Copilot features or agents that rely on that AI provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; controls[1].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Changing the Anthropic provider setting requires AI Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "You must be a member of the AI Administrator or Global Administrator role to perform this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Turning off Anthropic can also make other Claude-dependent features unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Some features are only available when Claude models are enabled. If you turn off Anthropic as a subprocessor, certain features may no longer be accessible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "summary; Why it matters; Governance guidance; changes",
+      "type": "date",
+      "claim": "Starting 9 December 2026, EU, EFTA and UK tenants with All users for Microsoft 365 apps only selected move to All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "Starting on December 9, 2026, the following setting changes are taking effect:\n- The All users for Microsoft 365 apps only option will no longer be available.\n- If the All users for Microsoft 365 apps only option is currently selected, the selection will change to the All users option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "date",
+      "claim": "The same 9 December 2026 change moves EU, EFTA and UK tenants with no prior selection to All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "If you haven't previously made any selection, your selection will change to All users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "date",
+      "claim": "The Microsoft 365 apps documentation says Claude models are coming into the EU Data Boundary starting in December 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+      "quote": "Claude models from Anthropic are coming into the EU Data Boundary starting in December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature is included within the paid Microsoft 365 Copilot entitlement described by Learn, with the roadmap disagreement disclosed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "As part of the premium, licensed Microsoft 365 Copilot experience, Word, Excel, and PowerPoint Agents can access organizational data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "For the already licensed audience, the low cost rating reflects indirect work rather than a separately documented Word Agent purchase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "As part of the premium, licensed Microsoft 365 Copilot experience, Word, Excel, and PowerPoint Agents can access organizational data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate Word Agent meter is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Word Agent' 'meter' billing; Word Agent Microsoft 365 Copilot without license billing meter pricing. Read wordexcelppt-agents, copilot-overview, usage-based-billing-overview-copilot-credits and pay-as-you-go-meters; none names a Word Agent meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The cited licence comparison names Copilot Cowork, Copilot Code and Autopilot for usage-based billing, not Word Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote, and access to Copilot Cowork, Copilot Code and Autopilot via usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "A documented licensing arrangement reconciling the roadmap's access without a paid Copilot licence has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Word Agent Microsoft 365 Copilot without license billing meter pricing; 'Word Agent' 'license' 'Copilot'. Read wordexcelppt-agents and copilot-overview; the feature's Learn page continues to require the paid licence and supplies no unlicensed arrangement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Anthropic user-access path is Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models",
+      "quote": "Go to the Microsoft 365 admin center and select Copilot > Settings > View all.\nSelect AI providers operating as Microsoft subprocessors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API or PowerShell operation for the Anthropic provider's user/group-access setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph PowerShell Anthropic AI providers operating as Microsoft subprocessors settings enable disable user group access copilotpolicysetting. Read connect-to-ai-subprocessor, copilot-ai-provider-user-sec-group-access and copilotPolicySetting; no applicable operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The disable path is Microsoft 365 admin center > Copilot > Settings > User access > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Disable Anthropic as a Microsoft subprocessor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#disable-connection-to-claude-models",
+      "quote": "On the AI providers operating as Microsoft subprocessors page, under Available subprocessors for your organization, select Disable Anthropic as a Microsoft subprocessor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API or PowerShell operation to disable Anthropic as the tenant's Microsoft subprocessor is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Anthropic' 'disable' 'PowerShell' 'Copilot'; Microsoft Graph PowerShell Anthropic AI providers operating as Microsoft subprocessors settings enable disable user group access copilotpolicysetting. Read connect-to-ai-subprocessor and copilotPolicySetting; no applicable operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Agents > All agents > agent > Block in the Microsoft 365 admin center reaches the organization-wide block control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\nIn the All agents page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].governs; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Administrators can block Microsoft-installed agents such as Word Agent for all users in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-agent-install",
+      "quote": "Organizations can govern agents in the Microsoft 365 admin center. There, administrators can block agents in their tenant, making them inaccessible to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The cited Graph block operation is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "The block operation requires the CopilotPackages.ReadWrite.All delegated permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Users > Active users > user > Licenses and Apps > Licenses in the Microsoft 365 admin center reaches individual licence assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Users > Active users page.\nSelect the row of the user that you want to assign a license to.\nIn the right pane, select Licenses and Apps.\nExpand the Licenses section, select the boxes for the licenses that you want to assign, then select Save changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a selected licence to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "admin-path",
+      "claim": "Copilot > Settings > AI providers operating as Microsoft subprocessors reaches the page holding the Anthropic selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#disable-connection-to-claude-models",
+      "quote": "Go to the Microsoft 365 admin center and select Copilot > Settings.\nOn the User access page, select AI providers operating as Microsoft subprocessors.",
+      "severity": "minor",
+      "fix": "Replace the abbreviated checklist path with the already documented user-access route: 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'."
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: At rollout, first bullet; Governance controls prose",
+      "type": "admin-path",
+      "claim": "Agents > All agents is where administrators block Word Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\nIn the All agents page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": "minor",
+      "fix": "Expand the prose block path to 'Agents > All agents > agent > Block', matching controls[2].ui."
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: After rollout, first bullet",
+      "type": "admin-path",
+      "claim": "Users > Active users is where administrators review individual Microsoft 365 Copilot licence assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Users > Active users page.\nSelect the row of the user that you want to assign a license to.\nIn the right pane, select Licenses and Apps.",
+      "severity": "minor",
+      "fix": "Expand the checklist path to 'Users > Active users > user > Licenses and Apps > Licenses', matching controls[3].ui."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:20.764Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=543420",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-agent-install",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#disable-connection-to-claude-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users can use Anthropic models, and so the Word Agent",
+        "docs": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Anthropic",
+          "Choose who can access Anthropic models for Copilot and generative AI experiences"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Anthropic models, and so the Word Agent, are available in the tenant at all",
+        "docs": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#disable-connection-to-claude-models",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "User access",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Disable Anthropic as a Microsoft subprocessor"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Blocking or unblocking the Word Agent for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Blocking or unblocking the Word Agent for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users hold the paid Microsoft 365 Copilot licence Learn says the agent requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which users hold the paid Microsoft 365 Copilot licence Learn says the agent requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

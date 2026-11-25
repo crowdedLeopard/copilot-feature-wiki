@@ -1,0 +1,737 @@
+{
+  "slug": "outlook-agents-for-m365-copilot-available-in-copilot-chat-in-classic-outlook-for-windows",
+  "roadmapId": 481559,
+  "title": "Outlook: declarative agents in Copilot Chat in classic Outlook for Windows",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 52: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page",
+    "claim 53: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 35)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 50,
+    "unconfirmed": 3,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Held because the Teams availability path omits its app-centric-management prerequisite: tenants still using permission policies cannot follow that route as written. Three descriptive claims also go beyond the documentation, while the roadmap facts, licensing rules and API calls are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: impact",
+      "type": "availability",
+      "claim": "Declarative agents are available in Copilot Chat in classic Outlook for Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "We added integrated extensibility experience support for declarative agents in Copilot Chat in Outlook. This release note covers availability in classic Outlook for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "Current Channel is the roadmap's listed release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Current Channel\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Desktop is the roadmap platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates this item with Outlook and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-02-24T00:15:57.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-02-24T00:15:57\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: definition of declarative agents",
+      "type": "behaviour",
+      "claim": "Declarative agents configure Copilot with custom instructions, knowledge and actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview",
+      "quote": "Declarative agents enable you to configure Copilot for specific scenarios by adding custom instructions, additional knowledge, and actions to automate business processes.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview to sources for the definition of declarative agents."
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The classic Outlook agent experience supports integrated extensibility including plugins, adaptive cards, card actions and task modules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Users are now able to customize their Copilot experience in classic Outlook with Declarative Agents through integrated extensibility experience (plugins, adaptive cards, card actions, task modules, etc.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The release note lists mail and calendar actions and enterprise connectors as Outlook integrations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Outlook integrations (mail and calendar actions, enterprise connectors)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The release note includes actions from extensibility providers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "and additional extensibility provider agent actions and orchestration logic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft says this aligns classic Outlook with other Copilot Chat experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This now aligns classic Outlook with other Copilot Chat experiences, delivering consistent agent capabilities across platforms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Users access Copilot Chat from the ribbon or sidebar in classic Outlook and interact with available agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "1. Open classic Outlook for Windows.\n2. Access Copilot Chat from the ribbon or sidebar.\n3. Interact with available Copilot agents to automate tasks or get assistance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; front matter: changes",
+      "type": "date",
+      "claim": "The release notes list item 481559 under September 23, 2026, later than the January CY2026 roadmap target.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## September 23, 2026\n### Outlook\nIntegrated extensibility experience capability for declarative agents for Microsoft 365 Copilot available in Copilot Chat in classic Outlook for Windows\nRoadmap ID: 481559",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; What's changing; rationale: risk",
+      "type": "default",
+      "claim": "The default state is on for the included declarative agent experience, subject to existing store settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "These agents are available by default and are found in the store based on your existing store settings for Teams and Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Included declarative agents appear in the store according to existing Teams and Microsoft 365 app store settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "These agents are available by default and are found in the store based on your existing store settings for Teams and Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Cost and licensing: Meter",
+      "type": "default",
+      "claim": "Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "Pay-as-you-go agents are turned off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "Agents grounded in instructions and public websites are included with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) and (Premium).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "Declarative agents that are grounded in instructions and public websites are included with Copilot Chat (Basic), and Microsoft 365 Copilot (Basic) and (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining included agents and metered shared-tenant-data agents for Basic licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "Agents that use public data are available for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licenses. Access to agents that use shared tenant data are pay-as-you-go only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing: Meter; Why it matters; Risk assessment: Data exposure; rationale: cost",
+      "type": "cost",
+      "claim": "For Basic licences, agents accessing shared tenant data such as SharePoint or Graph Connector content are billed by metered consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "For Copilot Chat (Basic) and Microsoft 365 (Basic) licenses, agents that access shared tenant data, such as SharePoint or Graph Connector content, are billed based on metered consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "Metered agents require setting up or using an existing Copilot Studio subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "You must set up or use an existing Copilot Studio subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Agent use comes with the Microsoft 365 Copilot (Premium) licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "The use of agents comes with Microsoft 365 Copilot (Premium) license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing: Licence",
+      "type": "default",
+      "claim": "No enabling action is needed for Microsoft 365 Copilot (Premium) agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "No action is needed to enable agents for Microsoft 365 Copilot (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "Pay-as-you-go setup in the Microsoft 365 admin center requires an Azure subscription in the Microsoft 365 tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "You must have an Azure subscription in the same tenant as Microsoft 365. If you don't have an Azure subscription, you can create one during the billing policy setup process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: Budget",
+      "type": "cost",
+      "claim": "A budget on a pay-as-you-go billing policy triggers email notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "When you set a budget amount, it triggers email notifications based on your organization's spending relative to that limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Budget",
+      "type": "cost",
+      "claim": "The budget is not enforced and does not prevent spending above it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "However, the system doesn't enforce the budget or prevent your organization from exceeding it. Usage can continue uninterrupted even after the budget is surpassed, ensuring no disruption to the service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: Budget",
+      "type": "behaviour",
+      "claim": "Turning pay-as-you-go off can take up to two hours to stop users using agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "When you turn off pay-as-you-go, it can take up to two hours for users to stop being able to use the agents. If the agent is unused, it stops being available when pay-as-you-go is turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Automation",
+      "type": "record",
+      "claim": "The roadmap record gives no licence or price of its own.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"We will be adding declarative agents support for agents in Copilot Chat in Outlook. This roadmap item tracks availability in classic Outlook for Windows.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The tenant-wide block control is at Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent its use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].governs; Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Agent Builder or Copilot Studio agents affects their availability and functionality in Outlook and other host products.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products, such as Microsoft Outlook",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking SharePoint or Microsoft Foundry agents only impacts availability in Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Teams admin center availability path is presented without requiring migration to app-centric management.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "All organizations don't have the app centric management feature available. If you see policies on the permission policies page, continue to use app permission policies or migrate to this feature on your own.",
+      "severity": "blocker",
+      "fix": "Keep the path, but prepend this sentence to controls[1].note and add it before the Teams path guidance: 'The Teams admin center path requires app-centric management; tenants still using app permission policies must continue using those policies or migrate to app-centric management.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management. This prerequisite is distinct from unified app management."
+    },
+    {
+      "n": 36,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/admin/catalog/packages/{id} updates which users or groups can access the package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}\nallowedUsersAndGroups: Users/groups for whom the package is available.\navailableTo: Enum value specifying which users or groups within the tenant can access this package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The update request body uses availableTo and allowedUsersAndGroups to set availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "allowedUsersAndGroups: Users/groups for whom the package is available.\navailableTo: Enum value specifying which users or groups within the tenant can access this package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls: update-call note",
+      "type": "command",
+      "claim": "availableTo is required when updating allowedUsersAndGroups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "availableTo: Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; controls[1].note; Cost and licensing: Automation; Governance controls",
+      "type": "licensing",
+      "claim": "Both Package Management API operations require a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; controls[1].note; Governance controls; Open questions",
+      "type": "availability",
+      "claim": "Both operations are beta APIs and Microsoft does not support their use in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; controls[1].governs",
+      "type": "applicability",
+      "claim": "Users or groups must be assigned to an app to allow them to add and use the app or Copilot agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "To allow users to add and use an app or a Copilot agent, you must assign users or groups to an app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Availability management; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Before unified app management migration, apps and Copilot agents must be allowed in both Teams admin center and Microsoft 365 admin center Integrated apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Availability management",
+      "type": "applicability",
+      "claim": "After unified app management migration, allowing the app or agent in either admin center is sufficient.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "If your organization is migrated to unified app management, allow apps and Copilot agents in Teams admin center or under the Integrated apps page in Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Availability changes take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "It takes up to 24 hours for the availability changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "In rare cases, availability changes take up to six days to appear in the client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "In rare cases, it might take up to six days for the changes to reflect in the client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "Every agent the catalogue offers to Copilot Chat users is now one click from their mail and calendar in classic Outlook.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'classic Outlook Copilot Chat agents all agents'. Opened release-notes and agents-overview. The release note documents declarative agents and interaction with available agents, not every catalogue agent or a universal one-click experience.",
+      "severity": "major",
+      "fix": "Replace 'so every agent your catalogue offers to Copilot Chat users is now one click from their mail and calendar' with 'so the declarative agent experience is now available within their mailbox client'."
+    },
+    {
+      "n": 47,
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "Agents with the documented Outlook integrations provide actions and assistance from within the mailbox client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Extending agent integrated extensibility experience support to classic Outlook for Windows allows more users to benefit from automated assistance and task management within their familiar email environment leveraging extensibility provider agent actions and orchestration logic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters: If nobody acts",
+      "type": "default",
+      "claim": "Existing store and availability settings determine the included agents users can see without new administrator action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "These agents are available by default and are found in the store based on your existing store settings for Teams and Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The classic Outlook release note does not describe whether agent actions require user confirmation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'classic Outlook agents confirm 481559'. Read the complete 481559 entry in release-notes, including What changed, Why and Try this. It lists actions but does not state whether confirmation is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions: classic Outlook build",
+      "type": "absence",
+      "claim": "The cited feature release note does not identify the first classic Outlook build carrying this experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'classic Outlook declarative agents build mail flow' and '481559 build'. Read the 481559 release-notes entry and roadmap record. Neither gives a build number; the targeted searches returned no feature-specific build requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot Chat users in classic Outlook encounter the agent experience in chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Access Copilot Chat from the ribbon or sidebar. Interact with available Copilot agents to automate tasks or get assistance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Mail flow is not changed by this item.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '481559 mail flow' and 'classic Outlook declarative agents build mail flow'. Read release-notes and the roadmap record. Neither states that mail flow is unchanged; results about Exchange mail flow do not establish this feature's effects.",
+      "severity": "minor",
+      "fix": "Remove 'mail flow and the rest of Outlook are not changed by this item' from the impact rationale."
+    },
+    {
+      "n": 53,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "The rest of Outlook is not changed by this item.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'classic Outlook declarative agents build mail flow'. Read release-notes and the roadmap record. They describe the added agent experience but do not state that all other Outlook behaviour is unchanged.",
+      "severity": "minor",
+      "fix": "Remove 'mail flow and the rest of Outlook are not changed by this item' from the impact rationale."
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: Teams admin center path applicability",
+      "type": "applicability",
+      "claim": "The documented Teams admin center availability procedure applies to apps and Copilot agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "To make any app or Copilot agent available to your organization in Teams admin center, follow these steps:",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:26.804Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=481559",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an agent is blocked for the whole organisation, including in Outlook",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an agent is blocked for the whole organisation, including in Outlook",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users and groups each agent is available to",
+        "docs": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Users and groups",
+          "Select to manage who this app is installed for or available to in your organization",
+          "Availability",
+          "Edit availability",
+          "Available to"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users and groups each agent is available to",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

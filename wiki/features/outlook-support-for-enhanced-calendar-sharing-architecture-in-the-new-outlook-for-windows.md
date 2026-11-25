@@ -68,26 +68,30 @@ changes:
     note: "New briefing: planned calendar-sharing architecture for delegates in new Outlook and on the web, with the documented improved model and its sync-history control."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected: clouds now reported as listed in the roadmap record, not as an exclusion; autonomy line narrowed to what the roadmap describes; upgrade qualified to eligible calendars; removed the MRM checklist step that had no control row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 49
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "823f6aae45cb615e14eb9d4455ab4b53"
+  claims: 50
+  confirmed: 50
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "ac9ffcea0611579763448923fd6ec437"
 ---
 
 ## What's changing
 
 Microsoft plans to move calendar sharing in new Outlook for Windows and Outlook on the web onto an "enhanced calendar-sharing architecture". The roadmap item states that the update improves the reliability of calendar sharing and ensures that the events delegates see are always up to date. Microsoft Learn does not describe this roadmap item yet, so what follows about its behaviour is the roadmap's description.
 
-The roadmap item does not name the architecture. The closest documented design is the [improved shared-calendar model in Exchange Online](https://learn.microsoft.com/exchange/sharing/calendar-share-overview): Exchange Online synchronises the calendar from the principal's mailbox to a local copy in the delegate's mailbox, and the delegate's Outlook client synchronises with that local copy. That model is available only where both mailboxes are hosted in Exchange Online, and existing shared calendars are upgraded to it in the background without users re-sharing or accepting new invitations. Whether this roadmap item brings that model to new Outlook and the web, or something else, is not stated.
+The roadmap item does not name the architecture. The closest documented design is the [improved shared-calendar model in Exchange Online](https://learn.microsoft.com/exchange/sharing/calendar-share-overview): Exchange Online synchronises the calendar from the principal's mailbox to a local copy in the delegate's mailbox, and the delegate's Outlook client synchronises with that local copy. That model is available only where both mailboxes are hosted in Exchange Online, and eligible existing shared calendars are upgraded to it in the background without users re-sharing or accepting new invitations. Whether this roadmap item brings that model to new Outlook and the web, or something else, is not stated.
 
 The roadmap record lists the item as **In development**, General Availability, for the Worldwide (Standard Multi-Tenant) cloud on Desktop and Web, with a target of **April CY2026**. That target has passed and the record was last modified in September 2025, so treat the date as out of date. No Message center post was supplied for this item.
 
@@ -107,7 +111,7 @@ Microsoft has not stated what happens on arrival: whether the new architecture s
 - No change: the roadmap item describes no new permission, role or sign-in. Delegate rights are still the calendar permissions the owner grants.
 
 **Autonomy & actions**
-- No change: nothing acts on its own beyond synchronisation.
+- The roadmap item describes no autonomous actions.
 
 **Change & support**
 - In the improved model an upgraded copy includes events from up to one year before the upgrade date by default, so a delegate may report older events missing. An administrator can move that boundary with `SharedCalendarSyncStartDate` (see the controls table).
@@ -127,7 +131,7 @@ Microsoft has not stated what happens on arrival: whether the new architecture s
 
 - **Users:** principals who share calendars and the delegates who manage them, in new Outlook for Windows and Outlook on the web (roadmap platforms: Desktop and Web).
 - **Mailboxes:** the documented improved model requires both the owner's and the recipient's mailboxes to be hosted in Exchange Online, explicit permission to the shared calendar and a supported Outlook client.
-- **Clouds:** Worldwide (Standard Multi-Tenant) only, as the record lists. No US Government cloud is listed.
+- **Clouds:** Worldwide (Standard Multi-Tenant) is the cloud listed in the roadmap record. No US Government cloud is listed.
 - **Out of scope:** classic Outlook for Windows, which has its own shared calendar improvements and Group Policy setting.
 - **Rollout:** not stated; the April CY2026 target has passed with the item still In development.
 
@@ -136,7 +140,6 @@ Microsoft has not stated what happens on arrival: whether the new architecture s
 ### Before rollout
 - List the principals and delegates in your organisation who manage shared calendars in new Outlook or Outlook on the web, and tell them Microsoft plans a change to how delegate views sync.
 - Give the help desk the Learn pages on the improved shared-calendar model and on missing older events, so a one-year history gap is not logged as data loss.
-- Ask the Exchange team whether any delegates' mailboxes carry an MRM policy that archives the whole mailbox, given the documented archiving of shared calendar folders in the improved model.
 
 ### At rollout
 - Watch Message center for a post about roadmap item 477373 that states the rollout window and the default.
@@ -173,14 +176,4 @@ Microsoft Learn documents no tenant or per-user switch for this change in new Ou
 risk: Low. The roadmap item describes a reliability change to calendar sharing that already exists; no source says it widens who can see a calendar or what a delegate can do.
 cost: Low. The only cost the sources show is admin and help desk time; no licence or meter specific to this change is published.
 impact: Medium. Delegates, such as executive assistants, and people who share their calendars notice how shared calendars sync; other users see no change.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Scope: Clouds / availability: The change is for Worldwide (Standard Multi-Tenant) only. | Found: Searched: 'new Outlook enhanced calendar sharing worldwide GCC government availability'; read roadmap clouds, Learn calendar-share-overview, and Government Cloud release-note excerpts. None states that this change excludes other clouds. | Fix: Replace the Clouds bullet with 'Worldwide (Standard Multi-Tenant) is the cloud listed in the roadmap record. No US Government cloud is listed.' The record does not establish an exclusion.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Nothing acts on its own beyond synchronisation. | Found: Searched: 'new Outlook calendar sharing enhanced architecture autonomous actions permissions change delegates'; read roadmap, calendar-share-overview and modern-sharing troubleshooting. They describe synchronisation but do not guarantee the absence of other autonomous behaviour. | Fix: Replace 'No change: nothing acts on its own beyond synchronisation.' with 'The roadmap item describes no autonomous actions.' This reports the scope of the notice without guaranteeing undocumented behaviour.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Existing shared calendars are upgraded to the improved model in the background. | Found: Eligible existing shared calendars are upgraded to the improved model in the background. | Fix: Replace 'existing shared calendars are upgraded to it in the background' with 'eligible existing shared calendars are upgraded to it in the background' to retain Microsoft's qualification. | Source: https://learn.microsoft.com/exchange/sharing/calendar-share-overview
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks administrators to take stock of MRM archiving policies, but the controls table has no corresponding retention-policy row. | Found: Ask the Exchange team whether any delegates' mailboxes carry an MRM policy that archives the whole mailbox ... Controls table: architecture availability and shared-calendar history boundary only. | Fix: The Before rollout step about taking stock of MRM archiving policies has no corresponding controls-table row. Remove that checklist bullet; retain the supported MRM explanation in Risk assessment. Do not add a control row.
 -->

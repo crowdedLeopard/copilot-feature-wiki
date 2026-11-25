@@ -15,7 +15,7 @@ risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "on"
-action: "review"
+action: "prepare"
 licensing:
   model: "included"
   notes: "Microsoft Copilot plans include a Viva Insights service plan with advanced analysis. The report needs at least 50 Copilot licences and one Copilot Studio licence (standalone, pay-as-you-go or bundled with Copilot) in the tenant. Nothing separate is published for the autonomous agent pages."
@@ -52,11 +52,11 @@ sources:
   - title: "Delete Copilot Studio agents data in Viva Insights (preview)"
     url: "https://learn.microsoft.com/viva/insights/advanced/admin/delete-copilot-studio-agents-data"
     kind: "learn"
+  - title: "Create unifiedRoleAssignment"
+    url: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0"
+    kind: "learn"
   - title: "Whether Copilot Studio sends agent data from an environment to Viva Insights (REST API)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization"
-    kind: "learn"
-  - title: "Who can run and view the Copilot Studio agents report (Insights Analyst role) (Microsoft Graph)"
-    url: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0"
     kind: "learn"
 videos: []
 related: ["microsoft-viva-copilot-analytics-agent-dashboard","autonomous-agents","microsoft-viva-agent-metrics-for-custom-reporting-in-insights-analyst-workbench"]
@@ -65,7 +65,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > Allow Copilot Studio to share data with Viva Insights"
+      path: "Manage > Environments > environment > Settings > Product > Features > Sharing Copilot Studio agent data with Viva Insights > Allow Copilot Studio to share data with Viva Insights"
       docs: "https://learn.microsoft.com/power-platform/admin/settings-features"
     api:
       kind: "rest"
@@ -76,7 +76,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > Allow cross-geo boundary sharing of aggregated analytics data"
+      path: "Manage > Environments > environment > Settings > Product > Features > Sharing Copilot Studio agent data with Viva Insights > Allow cross-geo boundary sharing of aggregated analytics data"
       docs: "https://learn.microsoft.com/power-platform/admin/settings-features"
     api:
       kind: "rest"
@@ -93,7 +93,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/roleManagement/directory/roleAssignments"
       docs: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0"
-    note: "Admin centre steps are performed by the Global Administrator; Privileged Role Administrator is the least privileged role for the Graph call."
+    note: "UI: Global Administrator. Graph: roleDefinitionId selects the role; delegated needs Privileged Role Administrator or a custom role; application needs RoleManagement.ReadWrite.Directory."
   - governs: "Deletion of all Copilot Studio agents data held in Viva Insights"
     scope: "tenant"
     ui: null
@@ -111,19 +111,23 @@ changes:
     note: "New briefing: autonomous agent pages and time and cost savings estimates in the Copilot Studio agents report, with the Power Platform data-sharing controls."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 75 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected the Graph role requirement for assigning Insights Analyst, completed the two Power Platform setting paths, removed an unsupported autonomy claim and two checklist items without table rows, and changed action to prepare."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 75
-  confirmed: 71
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "13f62bfa6f52dea9f054bc4c009af56b"
+  confirmed: 75
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "92e4f3c6b1e5a90edc901907bc04e845"
 ---
 
 ## What's changing
@@ -152,7 +156,7 @@ Microsoft's Viva Insights page says Copilot Studio data flows to Viva Insights b
 - Running the query requires the Insights Analyst role in Viva Insights. Review who holds it before the ROI pages circulate.
 
 **Autonomy & actions**
-- No change: the report reads metrics and takes no action on agents.
+- The report shows agent adoption and impact metrics.
 
 **Change & support**
 - The Copilot Studio documentation still says autonomous and generative agents are excluded, so makers and analysts may get conflicting answers.
@@ -182,8 +186,6 @@ Microsoft's Viva Insights page says Copilot Studio data flows to Viva Insights b
 
 ### At rollout
 - Ask analysts to run the Copilot Studio agents report and compare autonomous agent counts with the agent inventory makers expect.
-- Agree a local hourly rate and time multipliers with finance before the Agent assisted impact (cost) figures are shared.
-- Ask makers of key autonomous agents to enter maker-led savings in Copilot Studio so the report does not rely on inferred values.
 
 ### After rollout
 - Review Insights Analyst role assignments each quarter.
@@ -196,15 +198,15 @@ Microsoft's Viva Insights page says Copilot Studio data flows to Viva Insights b
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot Studio sends agent data from an environment to Viva Insights</strong><br><small>Environment</small><br><small class="controls__note">Dataverse Web API; the request body sets enablecopilotstudiosharedatawithvivainsights. Default On. Needs System Administrator or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Allow Copilot Studio to share data with Viva Insights <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(organizationid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether agent data may cross geo boundaries to the Viva Insights data location</strong><br><small>Environment</small><br><small class="controls__note">Dataverse Web API; the request body sets enablecopilotstudiocrossgeosharedatawithvivainsights. Default Off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Allow cross-geo boundary sharing of aggregated analytics data <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(organizationid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can run and view the Copilot Studio agents report (Insights Analyst role)</strong><br><small>User</small><br><small class="controls__note">Admin centre steps are performed by the Global Administrator; Privileged Role Administrator is the least privileged role for the Graph call.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Viva Insights › Add-on Plan › Insights Analyst › Add users <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/assign-user-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot Studio sends agent data from an environment to Viva Insights</strong><br><small>Environment</small><br><small class="controls__note">Dataverse Web API; the request body sets enablecopilotstudiosharedatawithvivainsights. Default On. Needs System Administrator or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Sharing Copilot Studio agent data with Viva Insights › Allow Copilot Studio to share data with Viva Insights <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(organizationid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether agent data may cross geo boundaries to the Viva Insights data location</strong><br><small>Environment</small><br><small class="controls__note">Dataverse Web API; the request body sets enablecopilotstudiocrossgeosharedatawithvivainsights. Default Off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Sharing Copilot Studio agent data with Viva Insights › Allow cross-geo boundary sharing of aggregated analytics data <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(organizationid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can run and view the Copilot Studio agents report (Insights Analyst role)</strong><br><small>User</small><br><small class="controls__note">UI: Global Administrator. Graph: roleDefinitionId selects the role; delegated needs Privileged Role Administrator or a custom role; application needs RoleManagement.ReadWrite.Directory.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Viva Insights › Add-on Plan › Insights Analyst › Add users <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/assign-user-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Deletion of all Copilot Studio agents data held in Viva Insights</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Run by the Viva Insights Administrator after registering an app with AdministratorSettings.ReadWrite; irreversible.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>.\CopilotAgentsDelete.ps1 -[ClientId] -[TenantId]</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/delete-copilot-studio-agents-data" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 - The two Power Platform settings are per environment. The Copilot Studio page says both can also be controlled for environment groups. Changing them needs the System Administrator security role or equivalent permissions; the Microsoft 365 services setting must also be on for data to flow.
-- Role assignment in the Microsoft 365 admin center is performed by the Global Administrator; the Graph call needs Privileged Role Administrator at least.
+- Role assignment in the Microsoft 365 admin center is performed by the Global Administrator. For delegated Graph access using work or school accounts, Privileged Role Administrator is the least privileged supported role, or a custom role can grant the required permissions. Application access requires RoleManagement.ReadWrite.Directory application permission.
 - Deleting Copilot Studio agents data is a preview script, cannot be undone, removes earlier query results and blocks new queries for one month.
 - Microsoft documents no setting that excludes only autonomous agents from the report at the time of writing (November 2026); the data-sharing setting is set per environment.
 
@@ -221,15 +223,8 @@ cost: Low. Microsoft Copilot plans include Viva Insights advanced analysis; the 
 impact: Low. Insights Analysts and the agent makers they report to notice; end users see nothing new.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The report reads metrics and takes no action on agents. | Found: Searched: 'Copilot Studio agents report Viva Insights read analytics takes actions on agents'; opened the report and analytics-viva-insights pages. They document data transfer, queries and report views, not agent execution or new end-user interactions. | Fix: Replace 'No change: the report reads metrics and takes no action on agents' with 'The report shows agent adoption and impact metrics.' The sources describe reporting, but do not explicitly state that no action on agents is possible.
-- [contradicted, blocker] controls[2].note; Governance controls table and prose / role: The Graph call needs Privileged Role Administrator at least, without qualifying the authentication type. | Found: Application | RoleManagement.ReadWrite.Directory ... For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role ... Privileged Role Administrator is the least privileged role supported for this operation. | Fix: Replace the Graph role requirement in controls[2].note, its table note and Governance controls prose with: 'For delegated Graph access using work or school accounts, Privileged Role Administrator is the least privileged supported role, or a custom role can grant the required permissions. Application access requires RoleManagement.ReadWrite.Directory application permission.' Reference: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The data-sharing control is in Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Allow Copilot Studio to share data with Viva Insights. | Found: select Manage ... select Environments ... select an environment ... select Settings. Expand Product, and then select Features. ... Sharing Copilot Studio agent data with Viva Insights ... Allow Copilot Studio to share data with Viva Insights | Fix: Set controls[0].ui.path and its table path to 'Manage > Environments > environment > Settings > Product > Features > Sharing Copilot Studio agent data with Viva Insights > Allow Copilot Studio to share data with Viva Insights'; this includes the documented section heading. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The cross-geo sharing control is in Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Allow cross-geo boundary sharing of aggregated analytics data. | Found: Sharing Copilot Studio agent data with Viva Insights ... Allow cross-geo boundary sharing of aggregated analytics data if your tenant preferred data location for Viva Insights is different from the location of your Copilot Studio environment | Fix: Set controls[1].ui.path and its table path to 'Manage > Environments > environment > Settings > Product > Features > Sharing Copilot Studio agent data with Viva Insights > Allow cross-geo boundary sharing of aggregated analytics data if your tenant preferred data location for Viva Insights is different from the location of your Copilot Studio environment'. The existing route reaches the right control but omits its section heading and the end of its label. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
-- [supported, minor] controls[2].api; Governance controls table / command: POST /v1.0/roleManagement/directory/roleAssignments assigns the Insights Analyst directory role. | Found: Create a role assignment for the directory provider: POST /roleManagement/directory/roleAssignments ... roleDefinitionId | String | Identifier of the unifiedRoleDefinition the assignment is for. | Fix: Keep the call unchanged and add to controls[2].note and its table note: 'The request body selects the Insights Analyst role with roleDefinitionId.' The cited v1.0 reference documents this property; the cited Microsoft Entra built-in roles reference identifies Insights Analyst as a directory role. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist asks readers to set local hourly rates and time multipliers and enter maker-led savings, but these controls have no table rows. | Found: Agree a local hourly rate and time multipliers with finance ... Ask makers of key autonomous agents to enter maker-led savings ... controls: data sharing, cross-geo sharing, Insights Analyst role, deletion. | Fix: Remove the two At rollout checklist bullets beginning 'Agree a local hourly rate and time multipliers' and 'Ask makers of key autonomous agents to enter maker-led savings'. Their controls have no rows; this correction does not add rows. The existing body explanation can remain.
-- [contradicted, minor] front matter: action / consistency: Action review is assigned although the launched report enhancement and its data flow arrive without an administrator choosing the change. | Found: action: review; defaultState: on; summary: no admin action is needed if the data feed is already on. The standard defines review as an optional capability or new control that changes nothing until an admin or maker chooses it. | Fix: Change action from 'review' to 'prepare': the report enhancement arrives on the existing data feed, and the low-risk, low-cost response is communication and checking existing reporting choices, not enabling an optional new capability.
+- [supported, minor] What's changing: Maker-led inputs / behaviour: Makers configure savings inputs in Copilot Studio. | Found: In Copilot Studio, you can calculate how much time or money an agent saves compared to other methods. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/analytics-cost-savings to sources for the statement that maker-led savings inputs are set in Copilot Studio. | Source: https://learn.microsoft.com/microsoft-copilot-studio/analytics-cost-savings
 -->

@@ -43,8 +43,17 @@ sources:
   - title: "Whether an agent is blocked for the whole organisation (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
-  - title: "Whether users can upload custom apps, which building toolkit agents requires (PowerShell)"
+  - title: "Set-CsTeamsAppSetupPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps"
+    kind: "learn"
+  - title: "Agent Registry in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
+    kind: "learn"
+  - title: "Build agents in Agent Builder"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-build-agents"
+    kind: "learn"
+  - title: "Set up your dev environment for extending Teams apps across Microsoft 365"
+    url: "https://learn.microsoft.com/microsoftteams/platform/m365-apps/prerequisites"
     kind: "learn"
 videos: []
 related: ["declarative-agents","knowledge-grounding","m365-copilot-now-smarter-with-visuals-declarative-agents-leverage-embedded-images-for-rich","copilot-credits","sensitivity-labels"]
@@ -60,17 +69,6 @@ controls:
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     note: "Blocks the whole agent, not only its embedded knowledge. Graph call is beta and needs a Microsoft Agent 365 licence for the Package Management API."
-  - governs: "Whether users can upload custom apps, which building toolkit agents requires"
-    scope: "user"
-    ui:
-      surface: "Teams admin center"
-      path: "Teams apps > Setup policies > Global (Org-wide default) > Upload custom apps"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites"
-    api:
-      kind: "powershell"
-      call: "Set-CsTeamsAppSetupPolicy -Identity <policy name> -AllowSideLoading $false"
-      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps"
-    note: "The cmdlet reference asks admins to create and modify app setup policies in the Teams admin center."
   - governs: "Tenant switch for embedded knowledge in declarative agents"
     scope: "tenant"
     ui: null
@@ -85,19 +83,23 @@ changes:
     note: "New briefing: embedded knowledge for toolkit-built declarative agents, with Learn's conflicting availability, licensing and the controls that apply."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected: access to embedded content now follows who can access the agent, not deployment; removed the Teams app setup policy cmdlet row and two checklist steps without a control row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 47
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "26d18612cc7a24725d9be305fa466903"
+  contradicted: 0
+  attempts: 0
+  hash: "2a6ad937e44dd037992dd66169711430"
 ---
 
 ## What's changing
@@ -112,7 +114,7 @@ Agent Builder, the no-code builder in Microsoft 365 Copilot, has its own file up
 
 ## Why it matters
 
-Embedded files move organisational content into the agent itself rather than leaving it in SharePoint or OneDrive, where site permissions decide who reads it. Microsoft states that Information Barriers are not supported on embedded files and that any user who can access the agent can see responses grounded in them. Who the agent is deployed to therefore becomes the access control for that content.
+Embedded files move organisational content into the agent itself rather than leaving it in SharePoint or OneDrive, where site permissions decide who reads it. Microsoft states that Information Barriers are not supported on embedded files and that any user who can access the agent can see responses grounded in them. Who can access the agent therefore becomes the access boundary for that content.
 
 Embedded knowledge is something a developer chooses to declare in an agent's manifest; Microsoft Learn documents no tenant-wide switch for it at the time of writing (November 2026). The decisions for a service owner are who may upload custom apps, which agents are allowed, and whether the tenant's usage-based billing should fund agents grounded in tenant data for unlicensed users.
 
@@ -142,7 +144,7 @@ Embedded knowledge is something a developer chooses to declare in an agent's man
 ## Scope
 
 - **Who builds:** developers using Microsoft 365 Agents Toolkit (the roadmap item says Teams Toolkit); building with it requires an administrator to allow custom app uploads.
-- **Who uses:** users the agent is deployed to, with a Microsoft 365 Copilot licence or in a tenant with usage-based billing.
+- **Who uses:** users who can access the agent, with a Microsoft 365 Copilot licence or in a tenant with usage-based billing.
 - **Clouds:** the roadmap record lists Worldwide (Standard Multi-Tenant). Microsoft states that embedded file content is not supported in GCC, and that usage-based billing is not supported in GCC or GCC High.
 - **Platform:** Developer, per the roadmap record.
 - **Limits:** up to 10 files of 1 MB each in the manifest.
@@ -150,13 +152,10 @@ Embedded knowledge is something a developer chooses to declare in an agent's man
 ## Governance guidance
 
 ### Before rollout
-- Decide which developers may upload custom apps, and scope the Teams app setup policy to them rather than the Global (Org-wide default) policy.
 - Agree with developers which documents may be embedded, given that Information Barriers do not apply and the agent-level sensitivity label is applied only to Agent Builder agents.
-- Confirm whether usage-based billing in the tenant should cover agents grounded in tenant data for users without a Microsoft 365 Copilot licence.
 
 ### At rollout
 - Ask developers to test the `EmbeddedKnowledge` capability in a development tenant first, since Learn marks the toolkit route as unavailable.
-- Limit each agent's deployment to the users entitled to read every embedded file.
 
 ### After rollout
 - Block any agent whose embedded files should not be visible to its audience, in the Microsoft 365 admin center or through the Graph block call.
@@ -170,12 +169,11 @@ Embedded knowledge is something a developer chooses to declare in an agent's man
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Blocks the whole agent, not only its embedded knowledge. Graph call is beta and needs a Microsoft Agent 365 licence for the Package Management API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether users can upload custom apps, which building toolkit agents requires</strong><br><small>User</small><br><small class="controls__note">The cmdlet reference asks admins to create and modify app setup policies in the Teams admin center.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Setup policies › Global (Org-wide default) › Upload custom apps <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsAppSetupPolicy -Identity &lt;policy name&gt; -AllowSideLoading $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant switch for embedded knowledge in declarative agents</strong><br><small>Tenant</small><br><small class="controls__note">Use agent blocking and custom app upload policy instead.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents no tenant setting that turns embedded knowledge on or off separately from the agent at the time of writing (November 2026); control sits with who may upload custom apps and which agents are allowed. The Teams cmdlet reference says app setup policies should be created and modified in the Teams admin center, not with `Set-CsTeamsAppSetupPolicy`. The Graph block call is a beta API, needs the CopilotPackages.ReadWrite.All delegated permission and, per its reference, a Microsoft Agent 365 licence for the Package Management API. For Agent Builder agents, the **All agents** page can filter to agents that use embedded files ([agent details](https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source)).
+Microsoft Learn documents no tenant setting that turns embedded knowledge on or off separately from the agent at the time of writing (November 2026); control sits with who may upload custom apps and which agents are allowed. Configure custom app uploads in Teams admin center > Teams apps > Setup policies > Global (Org-wide default) > Upload custom apps. Microsoft documents `Set-CsTeamsAppSetupPolicy` for completeness but says not to use it; create and modify app setup policies in the Teams admin center. The Graph block call is a beta API, needs the CopilotPackages.ReadWrite.All delegated permission and, per its reference, a Microsoft Agent 365 licence for the Package Management API. For Agent Builder agents, the **All agents** page can filter to agents that use embedded files ([agent details](https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source)).
 
 ## Open questions
 
@@ -187,16 +185,5 @@ Microsoft Learn documents no tenant setting that turns embedded knowledge on or 
 <!-- rationale
 risk: Medium. Microsoft states that Information Barriers are not supported on embedded files, so anyone who can reach the agent can see answers grounded in them; blocking the agent is the documented control.
 cost: Variable. Embedded file content needs a Microsoft 365 Copilot licence or usage-based billing, which is consumed as Copilot Credits; no rate specific to this capability is published.
-impact: Medium. Developers and makers who build declarative agents use it, and only the users of the agents they deploy see the results.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Scope: Who uses; Governance guidance: At rollout; rationale: impact / applicability: Who the agent is deployed to is the access boundary, and only users of agents deployed to them see the results. | Found: Under Publish, select the users or groups who can install the agent. Under Deploy (optional), select the users or groups who will have the agent preinstalled. | Fix: Replace 'Who the agent is deployed to therefore becomes the access control for that content' with 'Who can access the agent therefore becomes the access boundary for that content.' In Scope, say 'Users who can access the agent' instead of 'users the agent is deployed to'. Remove the At rollout bullet directing readers to limit deployment. End the impact rationale with 'users who can access those agents see the results'. Deployment alone controls preinstallation, not all access; the distinction is documented at https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#upload-custom-agent. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#upload-custom-agent
-- [contradicted, blocker] controls[1].api; rendered controls table / command: Set-CsTeamsAppSetupPolicy -Identity <policy name> -AllowSideLoading $false is offered as the automation administrators should use to configure custom app uploads. | Found: but do not use this cmdlet. We require that all creation and modification of app setup polices (not including the assignment or removal of policies from users) happens in the Microsoft Teams & Skype for Business Admin Center | Fix: Remove controls[1] and its rendered table row rather than offering this prohibited cmdlet as automation or falsely marking automation undocumented. In Governance controls, retain the verified UI as: 'Configure custom app uploads in Teams admin center > Teams apps > Setup policies > Global (Org-wide default) > Upload custom apps. Microsoft documents Set-CsTeamsAppSetupPolicy for completeness but says not to use it; create and modify app setup policies in the Teams admin center.' Retain the prerequisites and cmdlet references. Remove the Before rollout checklist bullet directing readers to scope the setup policy, since the corrected table will have no row for that control. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Agent Builder is a no-code builder in Microsoft 365 Copilot. | Found: Agent Builder provides a simple interface that you can use to quickly build declarative agents by using natural language. This article describes how to use Agent Builder to build an agent for Microsoft 365 Copilot. | Fix: Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-build-agents for the description of Agent Builder. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-build-agents
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to confirm tenant usage-based billing, but the controls table has no billing control row. | Found: Confirm whether usage-based billing in the tenant should cover agents grounded in tenant data for users without a Microsoft 365 Copilot licence. Controls table: agent blocking; custom app uploads; tenant embedded knowledge switch. | Fix: Remove the checklist bullet 'Confirm whether usage-based billing in the tenant should cover agents grounded in tenant data for users without a Microsoft 365 Copilot licence.' It asks readers to check a billing control absent from the table; retain the verified billing explanation in Cost and licensing.
-- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist asks administrators to limit each agent's audience, but the controls table contains no audience or access control row. | Found: Limit each agent's deployment to the users entitled to read every embedded file. Controls table: agent blocking; custom app uploads; tenant embedded knowledge switch. | Fix: Remove the At rollout bullet directing administrators to limit deployment or access: this control has no table row. Keep the corrected access-boundary explanation in Why it matters; do not add a new control row as part of this correction.
+impact: Medium. Developers and makers who build declarative agents use it, and users who can access those agents see the results.
 -->

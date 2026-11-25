@@ -1,0 +1,1001 @@
+{
+  "slug": "microsoft-purview-compliance-portal-data-loss-prevention-new-chatgpt-enterprise-connector",
+  "roadmapId": 401125,
+  "title": "Microsoft Purview: connector that brings ChatGPT Enterprise prompts and responses into Purview",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 74: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "3 blocking findings (claims 43, 44, 67)"
+    ]
+  },
+  "counts": {
+    "claims": 78,
+    "confirmed": 73,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing overstates who can search captured conversations and understates who can view their text. Its billing setup instructions also omit the different consent route required for existing classic Azure Purview customers; the roadmap facts and the connector's preview prerequisites are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap item remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is December CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap title places the ChatGPT Enterprise connector under Data Loss Prevention.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview compliance portal: Data Loss Prevention - New ChatGPT Enterprise connector to discover and bring prompts and responses into the scope of Purview features",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Collection through this connector requires administrator setup and a scan, so its default is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "You must run the connector scan before Microsoft Purview can manage the AI interactions for ChatGPT Enterprise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Managing these interactions requires consumption-based pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "Managing these AI interactions with Microsoft Purview requires you to enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A ChatGPT Enterprise plan is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "A ChatGPT Enterprise plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Cost and licensing; Scope; Risk assessment; Governance guidance",
+      "type": "licensing",
+      "claim": "An active Enterprise Microsoft Purview account is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "An active Enterprise Microsoft Purview account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "An Azure account with an active subscription is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "An Azure account with an active subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The connector extracts users' text prompts and responses from a registered ChatGPT Enterprise workspace into Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "When scanning ChatGPT Enterprise sources, Microsoft Purview supports: Extracting technical metadata, including: Text prompts; Text responses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; controls[0].note",
+      "type": "availability",
+      "claim": "Microsoft Learn documents the connector as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Connect to and manage ChatGPT Enterprise AI interactions in Microsoft Purview (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing",
+      "type": "applicability",
+      "claim": "Purview Auditing supports ChatGPT Enterprise AI interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "| Auditing | **✓** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Purview data classification supports ChatGPT Enterprise AI interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "| Data classification | **✓** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Data Lifecycle Management retention policies can govern captured ChatGPT Enterprise prompts and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "Use retention policies to automatically retain or delete user prompts and responses for AI apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Purview eDiscovery supports captured ChatGPT Enterprise interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "| eDiscovery | **✓** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Purview Communication Compliance supports captured ChatGPT Enterprise interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "| Communication compliance | **✓** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "Purview Insider Risk Management supports captured ChatGPT Enterprise interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "| Insider Risk Management | **✓** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "applicability",
+      "claim": "Data loss prevention is not supported for the connector's ChatGPT Enterprise interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "| Data loss prevention | **✕** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "applicability",
+      "claim": "Sensitivity labels are not supported for these ChatGPT Enterprise interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "| Sensitivity labels | **✕** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The scan can collect interactions from the current date or a selected past start date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Choose to scan all user interactions from the current date or pick a specific start date from past when configuring your scan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "OpenAI API limitations cause conversations to be ingested 24 hours after they occur.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Due to OpenAI's current API limitations, conversations are ingested 24 hours after they occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The connector's documented features apply only to ChatGPT Enterprise, not the consumer version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "These features only apply to the enterprise version of ChatGPT.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn directs readers to network data security and Edge for Business DLP documentation for consumer ChatGPT protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "For more information on the available Purview features for the consumer version, see Learn about Microsoft Purview Network Data Security and Learn about Data Loss Prevention for Cloud Apps in Edge for Business.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft is retiring Unified Catalog and classic Purview data governance capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Microsoft Purview Unified Catalog and classic Microsoft Purview data governance capabilities (formerly Azure Purview) are being retired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "availability",
+      "claim": "New Microsoft Purview data governance accounts can no longer be created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "New Microsoft Purview data governance accounts can no longer be created",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The retirement announcement does not affect Purview data security and compliance capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Microsoft Purview data security and compliance capabilities are not affected by this announcement",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Open questions",
+      "type": "date",
+      "claim": "Existing data governance capabilities remain in maintenance through November 12, 2027.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "existing data governance capabilities will remain in maintenance mode through November 12, 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment; Scope; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The connector uses an OpenAI API key credential mapped to an Azure Key Vault secret.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "For authentication method, select API key. For Key Vault connection, select the Azure key vault created for ChatGPT Enterprise. Enter the secret name and secret version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Purview requires at least read scope on the OpenAI API key to run a scan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Microsoft Purview needs at least the read scope to run a scan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators request read, delete, or both Compliance API scopes from OpenAI support, which verifies the key and grants them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Send an email to support@openai.com with: ... The requested scope (read, delete, or both). ... The Open AI team will verify the key and grant the requested Compliance API scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Scope; Governance controls; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "A collection policy allowing ingestion of prompts and responses is required alongside the connector scan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Have a collection policy allowing for the ingestion of prompts and responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "Registering and managing the source requires Data Source Administrator and Data Reader classic data governance permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Data Source Administrator and Data Reader Microsoft Purview Data Governance classic permissions must be assigned to register a source and manage it in the Microsoft Purview governance portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The governance portal registration route is Data Map > Data source > Register data source > ChatGPT Enterprise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Select Data Map in left navigation and select the Data source. Select Register data source. On register sources, select ChatGPT Enterprise and select Continue.",
+      "severity": "minor",
+      "fix": "Keep the connector-specific documented route, but add to the row note: 'The general Data Map registration guide instead labels the classic route Data Map > Sources > Register.' Cite https://learn.microsoft.com/purview/data-map-data-sources-register-manage, whose Register a new source section gives the differing classic labels."
+    },
+    {
+      "n": 37,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API to register or scan this ChatGPT Enterprise workspace connector.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview ChatGPT Enterprise register scan REST API data source types ChatGPT'; opened archive-chatgpt-interactions and REST Data Sources - Create Or Replace (2023-09-01), searched its full text for ChatGPT and DataSourceType; no ChatGPT source operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "A registered workspace's scan is created through Sources > workspace > New scan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Navigate to Sources. Select the registered ChatGPT Enterprise workspace. Select New scan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft recommends incremental scans for future scans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "For future scans, we recommend running an incremental scan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Creating new scans can cause duplicate data ingestion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Avoid creating a new scan to avoid duplicate ingestion of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Captured AI prompts and responses are stored in a user's mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "Because user prompts and responses for AI apps are stored in a user's mailbox",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Collected conversations become searchable in eDiscovery when the user's mailbox is a search source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "you can create a case and use search when a user's mailbox is selected as the source for a search query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure, first bullet",
+      "type": "role",
+      "claim": "Anyone holding eDiscovery roles can search ChatGPT conversations as well as Microsoft 365 content.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "For example, you might need to allow a user to manage data sources, but without access to search features.",
+      "severity": "blocker",
+      "fix": "Replace the second sentence with 'Searching captured ChatGPT conversations requires the appropriate eDiscovery search permissions; holding an eDiscovery role alone does not guarantee search access.' Cite https://learn.microsoft.com/purview/edisc-permissions."
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure, second bullet; Governance controls",
+      "type": "role",
+      "claim": "Only members of the Content Explorer Content Viewer role group can view prompt and response text in DSPM for AI.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/ai-microsoft-purview-permissions",
+      "quote": "| View the prompts and responses within AI Interaction events from activity explorer | ... | Content Explorer Content Viewer  Microsoft Purview Data Security AI Content Viewer |",
+      "severity": "blocker",
+      "fix": "Replace the exclusivity statement and the repeated requirement with 'Viewing prompt and response text in DSPM for AI (classic) requires Content Explorer Content Viewer or Microsoft Purview Data Security AI Content Viewer permissions.' Cite https://learn.microsoft.com/purview/ai-microsoft-purview-permissions."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "With content capture disabled, detected prompt and response content is limited to sensitive information, not full text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Without this setting enabled, content detected in prompts and responses is limited to sensitive information only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An enabled third-party integration can access and might store policy configuration including user identifiers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "If you choose to enable any third-party integration, it gains access to and might store some policy configuration, including user identifiers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Scans are subject to the new Purview billing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+      "quote": "Any scans run are subject to the new Microsoft Purview billing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Audit meter; rationale: cost",
+      "type": "cost",
+      "claim": "Audit bills non-Microsoft generative AI logs by the number of audit records processed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "| Audit solutions | Audit logs for user interactions with non-Microsoft generative AI applications | Number of audit records processed |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Communication Compliance meter; rationale: cost",
+      "type": "cost",
+      "claim": "Communication Compliance bills non-Microsoft AI interactions by text records scanned, with standard and premium categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Number of text records scanned ... Billing meters for communication compliance are broken down into two categories, standard, and premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Communication Compliance meter",
+      "type": "cost",
+      "claim": "One text record equals 1,000 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "1 text record = 1,000 characters",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Data Lifecycle Management meter; rationale: cost",
+      "type": "cost",
+      "claim": "Data Lifecycle Management meters non-Microsoft 365 Copilot or AI app prompts and responses under retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Number of non-Microsoft 365 Copilot or AI App interactions (prompts and responses) under a retention policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: eDiscovery meter; rationale: cost",
+      "type": "cost",
+      "claim": "The billing table meters eDiscovery storage of non-Microsoft AI data by gigabytes stored per day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Number gigabytes stored/day for storage of non-Microsoft 365 AI data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: Data Security for Gen AI Applications meter",
+      "type": "cost",
+      "claim": "Data Security for Gen AI Applications meters non-Microsoft AI prompts or responses by requests or messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Number of requests or messages for non-Microsoft 365 AI interactions (prompts or responses)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: Insider Risk Management meter",
+      "type": "cost",
+      "claim": "Insider Risk Management uses data security processing units for non-Microsoft 365 locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Detect risky behavior for non-Microsoft 365 locations when using Cloud and generative AI policy indicators | Data Security processing unit as measured on a daily basis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Consumption is billed to a linked Azure subscription on the monthly Azure bill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "you must associate your Microsoft 365 tenant with an active Azure subscription. ... An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Purview portal's Usage center helps administrators monitor pay-as-you-go usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "To help you understand and manage your usage, Microsoft Purview provides a Usage center in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The billing models page directs readers to Microsoft's Purview pay-as-you-go pricing page for pricing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Understand pricing and estimate your expected monthly costs for pay-as-you-go capabilities: Microsoft pay-as-you-go pricing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn gives no rate specific to this ChatGPT Enterprise connector.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview ChatGPT Enterprise connector pricing per scan rate spending limit'; opened archive-chatgpt-interactions, ai-chatgpt-enterprise and purview-billing-models; they give prerequisites and general meters, not a connector-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The billing models page publishes no spending limit for the listed AI-interaction meters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview billing models AI interactions spending limit budget cap'; read purview-billing-models in full. Its explicit overage limits concern Security Copilot SCUs, not the listed AI-interaction meters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope; controls[1].governs; Governance guidance",
+      "type": "behaviour",
+      "claim": "Collection policies can scope each data source to all, specific, or all-except users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "For each data source, you can choose to scope by: All users and groups (default); Specific users and groups; All except specific users and groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Collection policy management uses DLP Compliance Management or applicable role groups such as Organization Management and Compliance Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable roles. DLP Compliance Management ... Here's a list of applicable role groups. Organization Management; Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Collection policy creation starts at Data loss prevention > Classifiers > Collection policies > + Create policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Open the Data loss prevention solution and navigate to Classifiers > Collection policies. Select + Create policy.",
+      "severity": "minor",
+      "fix": "Keep this verified entry path and clarify controls[1].note: 'This path opens the collection policy wizard; it does not reach the user-scope or content-capture settings. Select the Enterprise AI data source and configure scope and content capture using the collection policy reference.' Retain https://learn.microsoft.com/purview/collection-policies-policy-reference."
+    },
+    {
+      "n": 63,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-FeatureConfiguration -Name \"<policy name>\" -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig '<JSON>' creates an enabled collection policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
+      "quote": "KnowYourData for collection policies ... Enable: The feature configuration is enabled. ... The ScenarioConfig parameter specifies additional information about the feature configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "IsIngestionEnabled in ScenarioConfig controls content capture.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
+      "quote": "\"IsIngestionEnabled\":true ... This example creates an enabled collection policy ... Captures all AI prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].note; Governance controls table",
+      "type": "availability",
+      "claim": "New-FeatureConfiguration is in Public Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
+      "quote": "This cmdlet is currently available in Public Preview, isn't available in all organizations, and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].note; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Enterprise AI is a pay-as-you-go collection policy data source that includes apps connected through Purview Data Map connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Enterprise AI: Non-Copilot AI apps ... connected to your org by using methods like ... Microsoft Purview Data Map connectors. ... Pay-as-you-go features ... Enterprise AI",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "Settings > Account details is the unqualified billing setup route for tenants using this connector.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-payg-consent-based-enablement",
+      "quote": "Applies to: Existing Azure Purview customers who are using the classic data governance pricing model. ... Open the Microsoft Purview portal > Settings > Account overview ... Select Review Consent",
+      "severity": "blocker",
+      "fix": "Qualify the existing Settings > Account details path as the new-customer route. Add to controls[2].note and replace the checklist sentence with: 'A Global Administrator enables billing; new customers use Settings > Account details, while existing classic Azure Purview customers use Settings > Account overview > Review Consent.' Cite https://learn.microsoft.com/purview/purview-payg-consent-based-enablement alongside the existing new-customer source; do not add another control row."
+    },
+    {
+      "n": 68,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for linking or consenting to Purview pay-as-you-go billing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview pay as you go enable Azure subscription billing REST API PowerShell' and 'Microsoft Purview enable pay-as-you-go billing API Microsoft.Purview accounts consent'; opened both subscription-based and consent-based enablement pages; found portal procedures only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The new-customer billing flow associates the Purview tenant with an Azure subscription and resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "The enablement flow requires you to associate your Microsoft Purview tenant to an Azure subscription. ... Select the resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Capturing AI content requires Content contains classifiers to be set to All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "To capture AI content, you must set the Content contains classifiers condition to All.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Solutions > DSPM for AI (classic) > Recommendations > Secure interactions from enterprise apps creates a one-click content-capture policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "Solutions > DSPM for AI (classic) ... Recommendations ... select Secure interactions from enterprise apps, which creates a one-click policy to capture prompts and responses from enterprise AI apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Retention for these interactions uses the Enterprise AI apps location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "create a retention policy to retain interactions with ChatGPT Enterprise by selecting the location Enterprise AI apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: Data Map scanning API paragraph",
+      "type": "absence",
+      "claim": "The documented Data Map scanning API data source types do not include ChatGPT Enterprise at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview ChatGPT Enterprise register scan REST API data source types ChatGPT'; searched the full REST Data Sources - Create Or Replace reference, API version 2023-09-01, for ChatGPT and read its DataSourceType enumeration; ChatGPT is absent.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/rest/api/purview/scanningdataplane/data-sources/create-or-replace for the reference surveyed, and narrow the sentence to 'The Data Sources - Create Or Replace reference for API version 2023-09-01 does not list ChatGPT Enterprise among its data source types at the time of writing (November 2026).'"
+    },
+    {
+      "n": 74,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "ChatGPT Enterprise users see no change in the app.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'ChatGPT Enterprise Purview connector users no change app prompts responses'; read archive-chatgpt-interactions and ai-chatgpt-enterprise. They describe extraction, setup and governance, but do not state that users see no app change.",
+      "severity": "minor",
+      "fix": "Remove 'ChatGPT Enterprise users see no change in the app' from the impact rationale; retain the sentence about compliance and security administrators setting up and working with the data."
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist names Key Vault access restrictions and usage/report monitoring without corresponding control rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'restrict who can read the Key Vault secret'; 'Check DSPM for AI reports and Activity explorer'; 'Watch the Usage center'. The table covers workspace connection, collection policy configuration and billing linkage only.",
+      "severity": "minor",
+      "fix": "Narrow the existing checklist without adding rows: remove 'and restrict who can read the Key Vault secret'; replace the report-check bullet with 'Allow at least a day for ingestion before assessing the pilot'; replace the Usage center bullet with 'Review the first monthly Azure bill with the agreed budget owner.'"
+    },
+    {
+      "n": 76,
+      "where": "Governance guidance: After rollout",
+      "type": "date",
+      "claim": "Microsoft recommends waiting at least a day before reviewing the collected data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "Wait at least a day for data, and then navigate to the Reports page to view the results of your policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DSPM for AI reports and Activity explorer can display collected interactions filtered to ChatGPT Enterprise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+      "quote": "Select View details for each of the report graphs to view detailed activities in the activity explorer. ... select the AI app category of Enterprise AI apps with the App filter of ChatGPT Enterprise",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The supplied roadmap record was modified at 2025-01-29T00:15:46.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-01-29T00:15:46\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:24.220Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=401125",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-chatgpt-enterprise",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a ChatGPT Enterprise workspace is connected to Purview as a data source",
+        "docs": "https://learn.microsoft.com/purview/archive-chatgpt-interactions",
+        "reachable": true,
+        "segments": [
+          "Data Map",
+          "Data source",
+          "Register data source",
+          "ChatGPT Enterprise"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users' enterprise AI prompts and responses are collected, and whether full text is captured",
+        "docs": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Classifiers",
+          "Collection policies",
+          "+ Create policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users' enterprise AI prompts and responses are collected, and whether full text is captured",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
+        "reachable": true,
+        "token": "New-FeatureConfiguration",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether pay-as-you-go billing, required by the connector, is linked to an Azure subscription",
+        "docs": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Account details"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

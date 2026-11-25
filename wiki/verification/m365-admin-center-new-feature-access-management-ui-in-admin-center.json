@@ -1,0 +1,937 @@
+{
+  "slug": "m365-admin-center-new-feature-access-management-ui-in-admin-center",
+  "roadmapId": 470140,
+  "title": "Microsoft 365 admin center: manage Viva feature access policies on a page as well as in PowerShell",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "5 blocking findings (claims 10, 29, 46, 52, 61)"
+    ]
+  },
+  "counts": {
+    "claims": 69,
+    "confirmed": 62,
+    "unconfirmed": 2,
+    "contradicted": 5,
+    "blocker": 5,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing infers an admin-opt-in default that Microsoft does not explicitly state and omits PowerShell version requirements for security groups and soft-disable policies. The main management paths and commands are documented, and the briefing correctly reports the disagreement about People Skills.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans an admin-centre interface for managing access to specific Viva features.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Through the new Feature Access management user interface, admins will be able to manage feature access settings directly in Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap says these policies previously could be managed only with PowerShell.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Previously, these policies could only be managed with Microsoft PowerShell cmdlets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Why it matters; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "Existing policies persist and can be managed through either the admin centre or PowerShell after rollout.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "After this rollout, admins can choose to use either Microsoft 365 admin center or PowerShell to manage feature access. Existing policies set for an organization will persist and can be managed in both places.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "January CY2025 is the roadmap target, which has passed by the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; Why it matters; Risk assessment: Autonomy; rationales",
+      "type": "default",
+      "claim": "The new control is admin-opt-in and nobody's access changes until an administrator creates, edits or deletes a policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Viva feature access management admin center new UI default existing policies no action required'; read the roadmap and control-access-admin-center, feature-access-management and manage-access-policies. They establish policy persistence and precedence, not an explicit arrival default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to unknown. Replace the unconditional no-change statements with 'Existing policies persist, according to the roadmap; Microsoft has not explicitly stated the new interface's default state on arrival.' Base the risk rationale on existing policies continuing, not a guaranteed absence of changes."
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Policy creation is covered by a supported version of Microsoft 365 or a Viva Suite licence, consistent with licensing model included.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Policy creation requires the following elements: A supported version of Microsoft 365 or a Viva Suite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Viva features governed by policies have their own licensing requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-viva-service-description",
+      "quote": "The following table lists the major Microsoft Viva features available across plans. Certain caveats apply. Available only as a standalone SKU or as part of the Viva Suite.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-viva-service-description for the feature-licensing statement. Replace 'licensed separately' with 'subject to their own licensing requirements' to avoid implying every feature needs a separate purchase."
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Settings > Viva > Settings > Manage feature access > Create a policy > feature > Access setting reaches the feature enablement control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select Create a policy. Name the policy and select the app and feature for which you'd like to set the policy. Select the Access setting option and choose On or Off to enable or disable the feature.",
+      "severity": "minor",
+      "fix": "Include the omitted app selection: 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting'. Apply the same correction to the rendered table."
+    },
+    {
+      "n": 14,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy with ModuleId, FeatureId, Name, IsFeatureEnabled $false and Everyone creates a tenant-wide disabling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Settings > Viva > Settings > Manage feature access > Create a policy > feature > Apply access settings to reaches policy targeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Name the policy and select the app and feature for which you'd like to set the policy. Select Everyone or Specific people and groups under Apply access settings to.",
+      "severity": "minor",
+      "fix": "Include the omitted app selection: 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Apply access settings to'. Apply the same correction to the rendered table."
+    },
+    {
+      "n": 16,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy supports the printed disabling-policy call using GroupIds for group email addresses or object IDs and UserIds for UPNs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "The GroupIds parameter specifies the email addresses or security group object IDs (GUIDs) of groups that the updated policy applies to. The UserIds parameter specifies the user principal names (UPNs) of the users that the policy applies to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Settings > Viva > Settings > Manage feature access > More actions > Edit policy reaches editing for an existing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select the Settings tab and select Manage feature access. Select the vertical ellipses (More actions) and choose Edit policy. Edit the desired fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Update-VivaModuleFeaturePolicy with ModuleId, FeatureId, PolicyId and GroupIds changes the groups an existing policy applies to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Update-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -PolicyId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -GroupIds group1@contoso.com,group2@contoso.com",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Settings > Viva > Settings > Manage feature access > policy > Delete policy reaches policy deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select the Settings tab and select Manage feature access. Select the policy you'd like to delete. Select Delete policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Remove-VivaModuleFeaturePolicy with ModuleId, FeatureId and PolicyId deletes the identified policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Remove-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -PolicyId xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The management page is reached through Settings > Viva > Settings > Manage feature access in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "From the Microsoft 365 admin center, select Viva from the settings menu. Select the Settings tab and select Manage feature access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Access setting On or Off enables or disables the chosen feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select the Access setting option and choose On or Off to enable or disable the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Some, but not all, features allow user opt-out controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Only some features have the controls available for admins to provide users with the option to opt out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The interface can target Everyone or Specific people and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select Everyone or Specific people and groups under Apply access settings to. If you didn't select Everyone, add the specific people and groups you want to apply the policy to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The admin-centre page supports viewing policy details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select the policy name to view the details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn documents management through both the admin centre and PowerShell despite the roadmap's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "To control access to specific Microsoft 365 and Microsoft Viva features, you can create and update policies in the Microsoft 365 admin center or in PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "The admin-centre documentation says People Skills policies can only be created through PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Policies for People Skills can only be created via PowerShell at this time. You cannot use the interface in Microsoft 365 admin center to create policies for People Skills features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "The PowerShell documentation says People Skills policies can be created and managed in either surface, conflicting with the admin-centre page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "You can create and manage People Skills feature access policies in the Microsoft 365 admin center or by using PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; controls[1].api",
+      "type": "command",
+      "claim": "Exchange Online PowerShell 3.2.0 or later is presented as the requirement for the management operations, including the offered security-group object IDs.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "If you need to use non-mail-enabled groups you must have access to Exchange PowerShell version 3.5.1 or later. If you need to setup policies with the user opted-out by default (soft-disable), you must have access to Exchange PowerShell version 3.8.0 or later.",
+      "severity": "blocker",
+      "fix": "Qualify the 3.2.0 requirement with 'Non-mail-enabled groups require version 3.5.1 or later; soft-disable policies require version 3.8.0 or later.' Add 'Security group object IDs require module v3.5.1-Preview2 or later; earlier versions accept only email addresses' to controls[1].note, as stated at https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy."
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment; Scope; controls[0].note",
+      "type": "role",
+      "claim": "The Who can manage access column specifies the administrator permissions for each feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Admins with correct permissions in the Microsoft 365 admin center or in PowerShell can create and manage access policies. For more information, see the Who can manage access column in the following feature table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Reflection is managed by the Insights admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Reflection | No | Insights admin | Viva Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The listed Pulse features are managed by the Viva Pulse admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Customization | No | Viva Pulse admin | Viva Pulse |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Global admin is the listed role for several Viva Insights features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Copilot Assisted Value | No | Global admin | Viva Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The management cmdlets require Global Administrators membership or the assigned feature-level roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "Currently, you need to be a member of the Global Administrators role or the roles that have been assigned at the feature level to run this cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "Viva Insights admin is a permitted role for features identified in the table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Analyst Report Publish | No | Viva Insights admin | Viva Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "AI admin is a permitted role for features identified in the table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Agent Dashboard | No | Global admin or AI admin | Viva Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "Engage admin manages AI Summarization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| AI Summarization | Yes | Engage admin | Viva Engage |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "Goals admin manages Copilot in Viva Goals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Goals | Copilot in Viva Goals | No | Goals admin | Viva Goals |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "Knowledge admin manages the listed People Skills features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| People Skills | Skills Inferencing | Yes__*__ | Knowledge admin | People Skills |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The new page reads no new data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Viva feature access management admin center reads data automatic policy changes'; read control-access-admin-center, feature-access-management and manage-access-policies. They describe policy management and stored user/group information, not a no-new-data guarantee.",
+      "severity": "major",
+      "fix": "Remove 'and reads no new data'. Retain the narrower statement that the page manages existing access policies."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enabling a feature through an access policy can give covered users access to that feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "When a user signs in to Microsoft 365, the policy settings are applied, and they only see the features that haven't been disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Custom user or group policies take precedence over the organisation-wide setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Custom policies take precedence over your org-wide settings. For example, if you have organization-wide access turned off, a custom policy could still allow access for specific users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "The organisation-wide setting applies when no custom policy covers a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "If there are no custom policies set for a user or group, the organizational setting will apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Policy changes take effect within 24 hours for most features, subject to feature-specific exceptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Changes to access policies take effect for the user within 24 hours, unless noted for a specific feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Copilot in Viva Engage policy changes might take up to 48 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Changes for Copilot in Viva Engage might take up to 48 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Changing an opt-out policy's Access setting to On or Off resets user opt-out preferences.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "However, it is important to know that if there are multiple changes to access settings within a 24-hour period, the user's preference may not reset to the default state.",
+      "severity": "blocker",
+      "fix": "Append 'Multiple changes to access settings within 24 hours may prevent the preference from resetting.' The later advice to avoid rapid changes does not qualify the unconditional reset statement itself."
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Risk assessment; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "UserIds, GroupIds or Everyone values supplied when updating a policy overwrite its existing users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Values that you specify for the -UserIds and -GroupIds parameters or the -Everyone parameter overwrite any existing users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Scope: Limits",
+      "type": "behaviour",
+      "claim": "Only one tenant-wide policy per feature is supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "only one tenant-wide policy is supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Scope: Limits",
+      "type": "behaviour",
+      "claim": "At most 10 policies per feature can be assigned to users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "You can assign a maximum of 10 policies per feature to users and groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Scope: Limits",
+      "type": "behaviour",
+      "claim": "A policy can be assigned to at most 20 users or groups in total.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "You can specify a maximum of 20 total users or groups (20 users and no groups, 10 users and 10 groups, etc.).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Limits",
+      "type": "behaviour",
+      "claim": "Policy names must be unique.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Policy names must be unique.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Open questions",
+      "type": "command",
+      "claim": "IsUserControlEnabled $true permits supported user opt-out under the briefing's unqualified PowerShell 3.2.0 requirement.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "This parameter is available in module version 3.3.0-Preview1 or later.",
+      "severity": "blocker",
+      "fix": "Qualify controls[0].note with 'IsUserControlEnabled requires module v3.3.0-Preview1 or later.'"
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The published policy-creation requirements name no separate price or meter for using the management page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva feature access management admin center policy management pricing meter license Viva features licenses'; opened feature-access-management and manage-access-policies. Their requirements specify licences, accounts, groups and PowerShell requirements, not a separate policy-management meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Apps covered",
+      "type": "applicability",
+      "claim": "The feature table covers Viva Engage, Glint, Goals, Insights, Pulse and People Skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "AI Summarization ... Viva Engage; Glint ... Copilot in Viva Glint; Goals ... Copilot in Viva Goals; Insights ... Agent Dashboard; Pulse ... Customization; People Skills ... Skills Inferencing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Apps covered",
+      "type": "applicability",
+      "claim": "The settings also apply to Agent 365 Business Analytics, marked Frontier preview, where applicable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "The settings described below also apply to Agent 365 Business Analytics (Frontier preview) where applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "The access controls are unavailable in GCC-High or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "The access controls described in this document aren't available in GCC-High or DoD. For GCC (Government Community Cloud), see the documentation for your specific app for availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Prerequisites include user accounts created in or synchronised to Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "User accounts created in or synchronized to Microsoft Entra ID; Microsoft 365 groups, Microsoft Entra security groups created in or synchronized to Microsoft Entra ID, or distribution groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].note; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-VivaModuleFeaturePolicy lists a feature's access policies and provides their IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/get-vivamodulefeaturepolicy",
+      "quote": "Use the Get-VivaModuleFeaturePolicy cmdlet to view the access policies for a specified feature in a Viva module in Viva. This cmdlet provides details about the policies, including the policy's identifier, name, and creation date.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/powershell/module/exchange/get-vivamodulefeaturepolicy for the policy-inventory statement."
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A user's effective policy follows scope precedence, with the most restrictive enablement policy winning within a scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "A user has one effective policy for each feature. The most restrictive Policy Scope Level takes precedence first. Then within a single Policy Scope Level, the most restrictive Enablement Policy takes precedence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names controls for policy inventory, role review and VFAM change-log review that have no corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List the existing policies ... with Get-VivaModuleFeaturePolicy; Check who holds the roles ...; Review the Viva Feature Access Management (VFAM) change logs in Microsoft Purview. The table contains creation, targeting, editing and removal rows only.",
+      "severity": "minor",
+      "fix": "Remove the policy-inventory, role-review and VFAM-log-review steps from the governance checklist, or keep their factual background in the existing prose. This correction does not require adding control rows."
+    },
+    {
+      "n": 61,
+      "where": "Open questions: soft-disable policy",
+      "type": "command",
+      "claim": "IsUserOptedInByDefault $false is presented as the parameter setting soft disable without its required companion parameters or module version.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "This parameter is available in module version 3.8.0-Preview2 or later. This parameter can be set only when the IsUserControlEnabled parameter is set to $true.",
+      "severity": "blocker",
+      "fix": "Replace the question's PowerShell premise with 'PowerShell sets soft disable using -IsFeatureEnabled $true -IsUserControlEnabled $true -IsUserOptedInByDefault $false; IsUserOptedInByDefault requires module v3.8.0-Preview2 or later.' The cited cmdlet's Example 5 gives this combination."
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "VFAM change logs in Microsoft Purview contain the history of policy creation, updates and deletions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "For a history of policy creation, updates, and deletions, see the Viva Feature Access Management (VFAM) change logs for your organization in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Some features support only tenant-wide policies, not user or group policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "Some features only support policies that apply to the entire tenant, not specific users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Get-VivaModuleFeature provides a feature's supported policy scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "You can refer to supported policy scopes for a feature using the Get-VivaModuleFeature cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Copilot policies can also be managed through Copilot settings in the Microsoft 365 admin center and remain in sync with the admin page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "You can manage Copilot policies through Copilot settings in the Microsoft 365 admin center. These policies remain in sync with policies managed through the admin page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Rapid successive enablement changes can prevent user opt-in or opt-out preferences from resetting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Avoid making changes to the enablement state for a feature less than 24 hours after making an initial change. Quick successive changes might not reset user opt in/out preferences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Scope precedence is user or group policies, then tenant policy, then feature defaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Policy Scope Levels (Most to Least Restrictive): User or Group Policies; Tenant Policy; Defaults",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Supported groups are Microsoft 365 groups, Entra security groups created in or synchronised to Entra ID, or distribution groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Microsoft 365 groups, Microsoft Entra security groups created in or synchronized to Microsoft Entra ID, or distribution groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope: Clouds; Open questions",
+      "type": "availability",
+      "claim": "For GCC availability, Learn directs administrators to the specific app's documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "For GCC (Government Community Cloud), see the documentation for your specific app for availability.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:16.034Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/feature-access-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/manage-access-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=470140",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a Viva feature is on or off for the people a policy covers",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "Create a policy",
+          "feature",
+          "Access setting"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a Viva feature is on or off for the people a policy covers",
+        "docs": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users and groups a new policy applies to",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "Create a policy",
+          "feature",
+          "Apply access settings to"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users and groups a new policy applies to",
+        "docs": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Changes to an existing policy's setting or the people it applies to",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "More actions",
+          "Edit policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Changes to an existing policy's setting or the people it applies to",
+        "docs": "https://learn.microsoft.com/viva/manage-access-policies",
+        "reachable": true,
+        "token": "Update-VivaModuleFeaturePolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Removal of an access policy",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "Delete policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Removal of an access policy",
+        "docs": "https://learn.microsoft.com/viva/manage-access-policies",
+        "reachable": true,
+        "token": "Remove-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

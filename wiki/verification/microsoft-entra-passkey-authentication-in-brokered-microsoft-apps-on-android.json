@@ -1,0 +1,742 @@
+{
+  "slug": "microsoft-entra-passkey-authentication-in-brokered-microsoft-apps-on-android",
+  "roadmapId": 409529,
+  "title": "Microsoft Entra ID: passkey sign-in to Microsoft apps on Android through Authenticator or Company Portal",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 48)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 49,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 2,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing incorrectly assures readers that older Android devices fall back to other sign-in methods. Conditional Access can instead block access when a user cannot use a method that satisfies the required authentication strength. The broker compatibility, licensing, roadmap facts and listed control operations are supported, but two additional descriptions need narrowing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft Entra ID users can use passkeys in Microsoft apps on Android with a broker such as Microsoft Authenticator or Microsoft Intune Company Portal installed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Entra ID users can now use a passkey to sign into Microsoft apps on Android devices where an authentication broker like Microsoft Authenticator or Microsoft Intune Company Portal is installed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; Governance guidance; rationale: impact",
+      "type": "availability",
+      "claim": "The supported Android brokers are Authenticator, Company Portal and Link to Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "| **Android** | Authenticator, Company Portal, or Link to Windows app |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; Why it matters; Scope; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "The Passkey (FIDO2) authentication method policy governs which targeted users can register and authenticate with Entra passkeys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "A passkey profile is a named set of policy rules that governs how users in targeted groups can register and authenticate with passkeys (FIDO2).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap general availability target is March CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is August CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"August CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A user choosing passkey sign-in in a brokered app such as Outlook is redirected to authenticate and returned to the app signed in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "They're redirected to sign in with passkey, and redirected back to Outlook as a signed in user after successful authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Passkey authentication is supported in third-party apps using the authentication broker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "Passkey authentication is also supported for third-party apps using the authentication broker.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Authenticator on Android supports passkey sign-in to Microsoft apps such as OneDrive, SharePoint and Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-sign-in-passkey-authenticator",
+      "quote": "You can use Authenticator on your Android device to seamlessly sign in with a passkey to other Microsoft apps, such as OneDrive, SharePoint, and Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "availability",
+      "claim": "OneDrive on Android does not support passkey sign-in without an authentication broker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "The following table lists Microsoft app support for passkey (FIDO2) without an authentication broker.\n| OneDrive | ✅ | ✅ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "availability",
+      "claim": "Outlook on Android does not support passkey sign-in without an authentication broker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "The following table lists Microsoft app support for passkey (FIDO2) without an authentication broker.\n| Outlook | ✅ | ✅ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "availability",
+      "claim": "Teams on Android does not support passkey sign-in without an authentication broker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "The following table lists Microsoft app support for passkey (FIDO2) without an authentication broker.\n| Teams | ✅ | ✅ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The matrix marks Word, Excel, PowerPoint, OneNote, Loop and Edge on Android as supporting passkeys without a broker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "| Word | ✅ | ✅ | ✅ |\n| PowerPoint | ✅ | ✅ | ✅ |\n| Excel | ✅ | ✅ | ✅ |\n| OneNote | ✅ | ✅ | ✅ |\n| Loop | N/A | ✅ | ✅ |\n| Edge | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "Learn already documents brokered passkey sign-in as supported despite the roadmap's In development status and elapsed targets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "Microsoft apps provide native support for passkey authentication for all users who have an authentication broker installed for their operating system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The brokered passkey capability is user-opt-in: an eligible user chooses to sign in with a passkey.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "If a user installed an authentication broker, they can choose to sign in with a passkey when they access an app such as Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model covers every Microsoft Entra ID edition, including Free, with no extra passkey licences required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Passkeys (FIDO2) are available in all Microsoft Entra ID editions, including Microsoft Entra ID Free. No extra licenses are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The none cost rating is supported by included passkey entitlement and Microsoft's statement that Authenticator passkeys come at no more cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app",
+      "quote": "Passkeys in Authenticator come at no more cost and travel with the user wherever they go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "No meter is documented for passkey sign-in.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Entra passkey FIDO2 pricing billing meter per authentication free Android broker Company Portal license'; read passkey enablement, Authenticator overview and Entra licensing. None names a passkey sign-in meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing: Indirect costs",
+      "type": "absence",
+      "claim": "No separate licence requirement specific to the Android Company Portal passkey broker scenario is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'passkey Android Company Portal broker licensing Intune license requirement passkey sign in meter billing'; read compatibility, passkey enablement, Entra licensing and Company Portal search excerpts. No broker-scenario-specific licence was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[3]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate UI or API switch is documented for Entra passkey sign-in specifically in brokered Android Microsoft apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph disable brokered passkey Android authentication Microsoft apps policy setting separate'; read matrix, enablement and FIDO2 Graph update. The external-IdP browser switch governs a different flow; no separate Entra-passkey broker switch was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Entra admin center route through Security, Authentication methods, Policies, Passkey (FIDO2), Enable and Target and Add target reaches target passkey-profile assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Browse to Entra ID > Security > Authentication methods > Policies.\nSelect Passkey (FIDO2).\nSelect Enable and Target.\nSelect Add target, and then choose All users or Select targets to choose specific groups.\nSelect the passkey profiles that you want to assign to a specific target.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 updates state, includeTargets, excludeTargets and passkeyProfiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2\n\"state\": \"disabled\",\n\"includeTargets\": [\n\"excludeTargets\": [],\n\"passkeyProfiles\": [",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Entra admin center route through Security, Authentication methods, Policies, Passkey (FIDO2), Configure and + Add passkey profile opens profile configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Browse to Entra ID > Security > Authentication methods > Policies.\nSelect Passkey (FIDO2).\nOn the Configure tab, select + Add passkey profile.\nFill in the profile details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The v1.0 FIDO2 configuration PATCH operation sets passkeyProfiles, including passkeyTypes and keyRestrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2\n\"passkeyProfiles\": [\n\"passkeyTypes\": \"deviceBound,synced\",\n\"keyRestrictions\": {",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Entra ID > Authentication methods > Authentication strengths > New authentication strength > Passkeys (FIDO2) is the documented custom-strength route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Browse to Entra ID > Authentication methods > Authentication strengths.\nSelect New authentication strength.\nProvide a Name for your new authentication strength.\nOptionally provide a Description.\nSelect Passkeys (FIDO2).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].api; controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/policies/authenticationStrengthPolicies creates a custom strength specifying permitted authentication methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/policies/authenticationStrengthPolicies\n\"allowedCombinations\": [\n        \"fido2\"\n    ]",
+      "severity": "minor",
+      "fix": "Keep the call unchanged. Append to controls[2].note and the rendered row note: 'The request body sets allowedCombinations to [\"fido2\"] to permit passkeys (FIDO2).'"
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "At least Authentication Policy Administrator is required to configure passkey profiles and targets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "The passkey enablement guide specifies at least Conditional Access Administrator for creating the custom authentication strength.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Conditional Access Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].note; Why it matters; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "A custom strength is enforced for protected resources by using it in a Conditional Access policy, rather than merely creating it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/authenticationstrengths-overview?view=graph-rest-1.0",
+      "quote": "After defining the authentication strength policy, you apply and enforce it for the protected resource using Microsoft Entra conditional access policies.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/api/resources/authenticationstrengths-overview?view=graph-rest-1.0 to sources for the distinction between defining a strength and applying it through Conditional Access."
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "After opting in to passkey profiles, an administrator cannot opt out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "After you opt in to enable passkey profiles, you can't opt out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Membership in an excluded group blocks passkey registration and sign-in entirely.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "If a user is a member of an excluded group in the Passkeys (FIDO2) authentication method policy, they're blocked from FIDO2 passkey registration or sign-in entirely",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Excluded-group membership takes precedence over included-group membership in the Passkey (FIDO2) policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "this takes precedence over them being in any Included groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Removing a previously allowed AAGUID prevents users from signing in with the previously registered method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "If you change key restrictions and remove an AAGUID that you previously allowed, users who previously registered an allowed method can no longer use it for sign-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "Group-based passkey profiles configure passkey types, attestation and provider restrictions by AAGUID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Passkey profiles enable granular group-based configurations for passkey (FIDO2) authentication. Instead of a single tenant-wide setting, you can define specific requirements such as attestation, passkey type (device-bound or synced), or Authenticator Attestation GUID (AAGUID) restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Passkeys provide phishing-resistant authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Passkeys are FIDO2-based credentials that provide strong, phishing-resistant authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Passkeys in Microsoft Authenticator are device-bound.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app",
+      "quote": "Passkeys in the Authenticator app are device-bound to ensure that they never leave the device they were created on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Authenticator creates Android passkeys in the Secure Element when supported, otherwise in the Trusted Execution Environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app",
+      "quote": "On Android, we create the passkey in the Secure Element on devices that support it, or fall back to the Trusted Execution Environment (TEE).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Synced passkeys, including Google Password Manager passkeys, are stored with the cloud passkey provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "This encrypted key is then synced and stored in the cloud passkey provider.\nGoogle Password Manager",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Synced passkeys do not support attestation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Synced passkeys do not support attestation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft advises treating synced passkeys as having the same security posture as other unattested authenticators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Treat synced passkeys as phishing-resistant credentials but with the same security posture as other unattested authenticators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Federated tenants; Open questions",
+      "type": "availability",
+      "claim": "The compatibility matrix states that third-party IdP passkey authentication is not supported in Microsoft apps on Android at this time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "Passkey authentication with a third-party IdP isn't supported in third-party apps using authentication broker, or Microsoft apps on Android, iOS, or macOS at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Federated tenants; Open questions",
+      "type": "availability",
+      "claim": "A separate Learn page documents generally available brokered browser authentication for external IdPs on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-passkey-browser-authentication-federated-identity-provider",
+      "quote": "Browser authentication for external IdPs is generally available in the Microsoft Entra public cloud.\nThe generally available experience supports only brokered authentication.\n| Android | Chrome configured as the default browser |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Native-app sign-in with a passkey in Microsoft Authenticator requires Android 14 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "Sign-in with passkey in Microsoft Authenticator to native apps requires Android 14 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Native-app sign-in with a FIDO2 security key requires Android 13 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+      "quote": "Sign-in with FIDO2 security key to native apps requires Android 13 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Older devices fall back to other authentication methods.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-how-it-works",
+      "quote": "If the authentication strength doesn't include a method that the user can register and use, Microsoft Entra ID blocks the user from signing in to the resource.",
+      "severity": "blocker",
+      "fix": "Remove 'Older devices fall back to other methods.' Alternatively replace it with 'Another sign-in method must satisfy the applicable authentication strength; if no included method can be registered and used, Microsoft Entra ID blocks access.' Cite https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-how-it-works for that replacement."
+    },
+    {
+      "n": 49,
+      "where": "Scope: Users",
+      "type": "availability",
+      "claim": "Passkey registration is not supported for internal or external guest users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Registration of passkey (FIDO2) credentials isn't supported for internal or external guest users, including B2B collaboration users in the resource tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "The previous passkey gap pushed Android users of Outlook, Teams and OneDrive back to weaker methods.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Android Outlook Teams OneDrive passkeys previously weaker methods broker support'; read the matrix, Authenticator sign-in guide and October 2024 Entra release-archive excerpt. They establish passkey support, not this historical fallback to weaker methods.",
+      "severity": "major",
+      "fix": "Replace the first sentence of Why it matters with 'A supported broker enables passkey sign-in in Outlook, Teams and OneDrive on Android.'"
+    },
+    {
+      "n": 51,
+      "where": "Why it matters: second paragraph",
+      "type": "behaviour",
+      "claim": "Users see the passkey sign-in option only if the Passkey (FIDO2) policy allows them a passkey.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Entra passkey sign in option visible users not enabled authentication methods policy'; read passkey enablement and Authenticator sign-in. These establish permission to register or authenticate, not that the sign-in option is hidden from every ineligible user.",
+      "severity": "major",
+      "fix": "Replace 'Users see the option only if the Passkey (FIDO2) policy allows them a passkey, and each user chooses whether to use it' with 'Users must be allowed by the Passkey (FIDO2) policy to register and sign in with a passkey; eligible users can choose passkey sign-in.'"
+    },
+    {
+      "n": 52,
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "An Authenticator passkey can be used for both compatible Android browser sign-in and native Microsoft app sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-sign-in-passkey-authenticator",
+      "quote": "Same-device authentication in a browser (Android)\nTo select your passkey, follow the steps in the Android operating system dialog.\nSame-device authentication in native Microsoft applications (Android)\nYou can use Authenticator on your Android device to seamlessly sign in with a passkey",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:18.991Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-sign-in-passkey-authenticator",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-passkey-browser-authentication-federated-identity-provider",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=409529",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and groups can register and use passkeys (FIDO2), and under which passkey profile",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Security",
+          "Authentication methods",
+          "Policies",
+          "Passkey",
+          "Enable and Target",
+          "Add target",
+          "target",
+          "passkey profiles"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users and groups can register and use passkeys (FIDO2), and under which passkey profile",
+        "docs": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationMethodsPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which passkey types and providers (for example Authenticator for Android) a passkey profile allows",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Security",
+          "Authentication methods",
+          "Policies",
+          "Passkey",
+          "Configure",
+          "+ Add passkey profile"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which passkey types and providers (for example Authenticator for Android) a passkey profile allows",
+        "docs": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationMethodsPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which authentication methods a custom authentication strength permits, for requiring passkeys",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Authentication strengths",
+          "New authentication strength",
+          "Passkeys"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which authentication methods a custom authentication strength permits, for requiring passkeys",
+        "docs": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationStrengthPolicies",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

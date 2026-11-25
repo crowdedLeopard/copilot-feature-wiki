@@ -1,0 +1,922 @@
+{
+  "slug": "sharepoint-modifications-in-the-embedded-container-type-creation-cmdlets-in-powershell",
+  "roadmapId": 472920,
+  "title": "SharePoint Embedded: container type creation and billing split across two PowerShell cmdlets",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "3 blocking findings (claims 18, 39, 52)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 62,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "The two-step creation and billing process and the roadmap details are supported. Hold for incomplete billing permission requirements: the cmdlet reference requires active time-bound billing permission, and both container type owners and consuming-tenant billing administrators also need Azure subscription access.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap record lists the item as In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is January CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing: roadmap description; title",
+      "type": "record",
+      "claim": "The roadmap separates container type creation from adding its billing profile.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The New-SPOContainerType cmdlet will only create a new container type. We are introducing the Add-SPOContainerTypeBilling cmdlet to add billing profile to the new container type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Current Learn documentation requires a separate billing-profile step after New-SPOContainerType for standard billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spocontainertype",
+      "quote": "In case of regular billing, the next step after creation is the addition of a billing profile using the Add-SPOContainerTypeBilling cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Add-SPOContainerTypeBilling attaches the Azure subscription ID, resource group and region to the specified container type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spocontainertypebilling",
+      "quote": "This cmdlet attaches the Azure subscription ID, resource group and region with the container type ID provided.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: container type definition",
+      "type": "behaviour",
+      "claim": "A container type defines the relationship between an app and its file containers, including billing accountability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/filestoragecontainertype?view=graph-rest-1.0",
+      "quote": "Associates a SharePoint Embedded application and a set of containers. A fileStorageContainerType, also called container type, defines settings, access privileges, and billing accountability.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/api/resources/filestoragecontainertype?view=graph-rest-1.0 to sources for the container type definition."
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A pass-through container type needs no billing profile attached in the developer tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "SharePoint Embedded Administrators and Global Administrators in the developer tenant don't set up a billing profile when creating a pass-through container type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "A trial container type has no billing profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spocontainertype",
+      "quote": "A trial container type does not have a billing profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: trial exception",
+      "type": "command",
+      "claim": "The -TrialContainerType switch creates a trial container type valid for 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spocontainertype",
+      "quote": "In Example 3, the cmdlet creates a trial container type, ContosoLegal, valid for 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated which SharePoint Online Management Shell version introduces the split.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'New-SPOContainerType Add-SPOContainerTypeBilling introduced module version existing scripts automatic default'; read both cmdlet references and create-apps-powershell. None states the first module version carrying the split.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the change's arrival behaviour for earlier scripts, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'New-SPOContainerType Add-SPOContainerTypeBilling introduced module version existing scripts automatic default'; read roadmap, both cmdlet references and create-apps-powershell. They describe the two-step operation, not automatic rollout or earlier-version script handling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters; Scope; Governance guidance; controls[3].governs",
+      "type": "role",
+      "claim": "New-SPOContainerType requires the SharePoint Embedded Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spocontainertype",
+      "quote": "You must be a SharePoint Embedded Administrator to run this cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Risk assessment; Scope; controls[1].note; controls[3].governs",
+      "type": "role",
+      "claim": "Add-SPOContainerTypeBilling requires the SharePoint Embedded Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spocontainertypebilling",
+      "quote": "You must be a SharePoint Embedded Administrator to run this cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Risk assessment: Security & identity; Scope; Governance guidance; controls[1].note",
+      "type": "role",
+      "claim": "The stated Azure prerequisites for Add-SPOContainerTypeBilling are owner or contributor rights on the subscription and resource group.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spocontainertypebilling",
+      "quote": "You also need to have owner or contributor permissions on an Azure subscription, with active time bound permission on billing, and on the Resource group.",
+      "severity": "blocker",
+      "fix": "Add the qualification 'with active time-bound permission on billing' to the Azure permission requirement for Add-SPOContainerTypeBilling in controls[1].note, the rendered note, Why it matters, Security & identity, Scope and the Before rollout permissions check, as stated at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spocontainertypebilling."
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The cmdlets read no content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'SharePoint Embedded cmdlets New-SPOContainerType Add-SPOContainerTypeBilling read content administrator automation'; read both complete cmdlet references. They document creation and billing attachment, but make no explicit statement that neither operation reads content.",
+      "severity": "major",
+      "fix": "Replace the Data exposure bullet with 'The documented operations create a container type and attach its billing profile.'"
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The two documented PowerShell operations are administrator-invoked commands.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "SharePoint Embedded Administrators and Global Administrators can use the SharePoint Online Management Shell to manage billing for any standard-billed container type in the developer tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft directs administrators to complete billing setup or resolve billing issues before production use of an Inactive app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+      "quote": "Inactive | Complete billing setup or resolve the billing issue before production use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Microsoft's validation procedure checks app billing status under SharePoint Embedded > Apps > Owned apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+      "quote": "Return to SharePoint Embedded > Apps. Open Owned apps. Confirm that the app appears in the owned app inventory. Confirm the owner list. Confirm the billing type. Check billing status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The billing model cannot change after creation; switching requires deleting and re-creating the container type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "Once a container type is created, its billing model can't be changed. To switch models, you must delete and re-create the container type with the desired billing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "SharePoint Embedded is a consumption-based, pay-as-you-go offering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "SharePoint Embedded is a consumption-based, pay-as-you-go offering, and you select billing at the container type level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "SharePoint Embedded billing goes through an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/reference/billing-meters",
+      "quote": "SharePoint Embedded uses pay-as-you-go billing through an Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Billing is selected per container type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "You select billing at the container type level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate cmdlet charge or new meter for this split.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint Embedded PowerShell billing cmdlets separate charge fee New-SPOContainerType Add-SPOContainerTypeBilling'; opened both cmdlet references, choose-billing-model and billing-meters. No separate cmdlet charge or split-specific meter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Standard billing setup requires an existing SharePoint tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "The billing setup requires: An existing SharePoint tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Billing setup requires an Azure subscription with an attached resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "An Azure subscription in the developer tenant. A resource group attached to the Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "Standard billing charges the tenant that owns or develops the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "With standard billing, all consumption-based charges are directly billed to the tenant that owns or develops the application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; Scope; What's changing",
+      "type": "cost",
+      "claim": "Pass-through billing charges the consuming tenant registered to use the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "With pass-through billing, consumption-based charges are billed directly to the tenant registered to use the SharePoint Embedded application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "The four generally available meters are storage, archived storage, API transactions and egress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/reference/billing-meters",
+      "quote": "SharePoint Embedded has four generally available billing meters plus one private preview agent message meter. ... Storage ... Archived storage ... API transactions ... Egress",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "An additional agent message meter is in private preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/reference/billing-meters",
+      "quote": "Pay-as-you-go message (private preview) | Message | SharePoint Embedded agent interactions and Copilot Retrieval API requests that use the preview sharePointEmbedded data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "Standard and pass-through container types use the same meters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/reference/billing-meters",
+      "quote": "Both standard billing container types and pass-through billing container types use the same meters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "Charges can be reviewed in Azure Cost Management for the linked subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+      "quote": "Use Azure Cost Management to confirm usage and prepare monitoring. ... Select the subscription linked to SharePoint Embedded billing. Open Cost analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: This change; rationale: cost",
+      "type": "cost",
+      "claim": "SharePoint PowerShell administrative actions are not charged as application API transactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/reference/billing-meters",
+      "quote": "Internal service calls, such as eDiscovery queries and admin actions in SharePoint admin center or SharePoint PowerShell, aren't charged as application transactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Caps",
+      "type": "absence",
+      "claim": "No spending cap specific to these cmdlets is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint Embedded Add-SPOContainerTypeBilling spending limit cap budget'; read both cmdlet references, choose-billing-model, billing-meters and setup-billing-microsoft-365-admin-center. None documents a cmdlet-specific spending cap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Caps",
+      "type": "cost",
+      "claim": "Microsoft recommends creating budgets and alerts in Azure Cost Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+      "quote": "Create budgets and alerts in Azure Cost Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Who it affects; Governance controls: Container type owners",
+      "type": "role",
+      "claim": "A non-administrator container type owner can attach billing through VS Code or MCP, without stating the owner's Azure permission prerequisite.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "A non-administrator container type owner can create and manage a standard billing profile for a container type they own through the SharePoint Embedded Visual Studio Code extension or Model Context Protocol (MCP) server. The owner also needs Owner or Contributor access to the Azure subscription.",
+      "severity": "blocker",
+      "fix": "Append 'The owner also needs Owner or Contributor access to the Azure subscription.' to the container type owner statements in Scope and Governance controls, as required at https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model."
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: Container type owners",
+      "type": "admin-path",
+      "claim": "The SharePoint Embedded VS Code extension offers Attach billing on a selected container type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "In the SharePoint Embedded Visual Studio Code extension, select the container type and use Attach billing. Then select the Azure subscription and resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: Container type owners",
+      "type": "command",
+      "claim": "The SharePoint Embedded MCP server's billing_setup tool connects a container type to Azure billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "In the SharePoint Embedded MCP server, use billing_setup to connect the container type to an Azure subscription and resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "The SharePoint Embedded overview says the service is not yet available in GCC High or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/overview",
+      "quote": "It is not yet available in Government Community Cloud High (GCC High) or Department of Defense (DoD).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Billing type is selected at SharePoint admin center > SharePoint Embedded > Apps > + Create app > Billing type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+      "quote": "In the left navigation, expand SharePoint Embedded. Select Apps. Select + Create app. ... Select billing type ... Billing type determines who pays for SharePoint Embedded consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "New-SPOContainerType -ContainerTypeName <ContainerTypeName> -OwningApplicationId <OwningApplicationId> -IsPassThroughBilling creates the pass-through billing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spocontainertype",
+      "quote": "New-SPOContainerType [-ContainerTypeName] <String> -OwningApplicationId <Guid> ... [-IsPassThroughBilling] ... This parameter is used to create a direct to customer billed container type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls table; Scope",
+      "type": "role",
+      "claim": "SharePoint Embedded Administrators and Global Administrators can create and manage apps in the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+      "quote": "You need the SharePoint Embedded Administrator role or Global Administrator privileges to create and manage SharePoint Embedded apps in the SharePoint admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls table; Governance guidance",
+      "type": "behaviour",
+      "claim": "User org denotes consuming-tenant pass-through billing, while Owner org denotes owning-organization standard billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+      "quote": "User org | The organization using the app sets up pay-as-you-go billing in the Microsoft 365 admin center. Owner org | Usage is billed to the organization that owns the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The standard billing route is SharePoint Embedded > Apps > + Create app > Owner org > Billing subscription setup > Setup now.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+      "quote": "If you select Owner org, choose when to connect the Azure billing subscription in Billing subscription setup. ... Setup now | You provide the Azure subscription and resource group during app creation, and billing is attached when the app is created.",
+      "severity": "minor",
+      "fix": "Include the omitted Billing type heading: set controls[1].ui.path and its rendered route to 'SharePoint Embedded > Apps > + Create app > Billing type > Owner org > Billing subscription setup > Setup now'."
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "Add-SPOContainerTypeBilling -ContainerTypeId <ContainerTypeId> -AzureSubscriptionId <AzureSubscriptionId> -ResourceGroup <ResourceGroup> -Region <Region> attaches standard billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spocontainertypebilling",
+      "quote": "Adds the mentioned billing profile details to a standard container type. ... Add-SPOContainerTypeBilling -ContainerTypeId <Guid> -AzureSubscriptionId <Guid> -ResourceGroup <String> -Region <String>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Setup later allows billing attachment from app details on the Installed apps tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+      "quote": "Setup later | The app is created without a billing subscription. You can attach billing later from the app details panel on the Installed apps tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Consuming-tenant billing setup follows Setup > Files and Content > Automate Content with Microsoft Syntex > Go to Syntex settings > Syntex services for > Apps > SharePoint Embedded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+      "quote": "Select Setup. In Files and Content, select Automate Content with Microsoft Syntex. Select Go to Syntex settings. Under Syntex services for, select Apps. Select SharePoint Embedded.",
+      "severity": "minor",
+      "fix": "Keep the cited route, but add: 'Microsoft also documents Setup > Billing and licenses > Activate pay-as-you-go services > Syntex services for > Apps > SharePoint Embedded in https://learn.microsoft.com/sharepoint/dev/embedded/publish/customer-tenant-setup-guide#step-5-set-up-billing-when-required.' Add that source."
+    },
+    {
+      "n": 51,
+      "where": "controls[2].api; Governance controls: Pass-through automation; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or API route is documented for the consuming tenant's pass-through billing setup.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint Embedded consuming tenant billing setup automation API PowerShell Microsoft.Syntex'; read setup-billing-microsoft-365-admin-center and consuming-tenant setup search excerpts. They document portal setup, not an automation operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note; Scope; Governance guidance: At rollout; Governance controls: Roles",
+      "type": "role",
+      "claim": "The pass-through setup role requirement is stated as Billing Administrator or Global Administrator without the Azure subscription permission prerequisite.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+      "quote": "You have the Billing Administrator or Global Administrator role. You have Owner or Contributor access to the Azure subscription used for billing.",
+      "severity": "blocker",
+      "fix": "Qualify the pass-through setup role requirement in controls[2].note and the corresponding prose and rendered note with 'also requiring Owner or Contributor access to the Azure subscription used for billing', as stated at https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center."
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "The SharePoint Embedded Administrator role alone does not grant access to consuming-tenant pass-through billing setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+      "quote": "The SharePoint Embedded Administrator role alone doesn't grant access to this billing procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Valid consuming-tenant platform billing must be configured before users can first access a pass-through app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+      "quote": "No user can access a pass-through SharePoint Embedded app before valid billing is configured for the SharePoint Embedded platform in the consuming tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The role assignment path is Microsoft 365 admin center > Users > Active users > user > Roles > Manage roles > SharePoint Embedded Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/admin-overview",
+      "quote": "Select Users, then select Active users. Select the user to assign the role to. Under Roles, select Manage roles. Search for and select SharePoint Embedded Administrator in the roles list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments creates a directory role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "Create a role assignment for the directory provider: POST /roleManagement/directory/roleAssignments ... POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[3].note; Governance controls table",
+      "type": "command",
+      "claim": "The directory role assignment body sets principalId, roleDefinitionId and directoryScopeId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "\"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\", \"principalId\": \"f8ca5a85-489a-49a0-b555-0a6d81e56f0d\", \"directoryScopeId\": \"/\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].note; Governance controls table",
+      "type": "role",
+      "claim": "A Global Administrator can assign the SharePoint Embedded Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/admin-overview",
+      "quote": "A Global Administrator assigns the SharePoint Embedded Administrator role in either Microsoft Entra or the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The SharePoint Embedded Administrator role is dedicated to SharePoint Embedded administration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/admin-overview",
+      "quote": "It's dedicated to SharePoint Embedded administration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The SharePoint Embedded Administrator role does not grant regular SharePoint site management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/admin-overview",
+      "quote": "It doesn't grant regular SharePoint site management access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: Graph alternative",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/storage/fileStorage/containerTypes creates a container type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/filestorage-post-containertypes",
+      "quote": "Create a new fileStorageContainerType in the owning tenant. ... POST https://graph.microsoft.com/v1.0/storage/fileStorage/containerTypes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: Graph alternative",
+      "type": "command",
+      "claim": "The Graph create operation accepts standard, trial and directToCustomer for billingClassification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/filestorage-post-containertypes",
+      "quote": "billingClassification ... The billing type. The possible values are: standard, trial, directToCustomer, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: Graph alternative",
+      "type": "default",
+      "claim": "Graph billingClassification defaults to standard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/filestorage-post-containertypes",
+      "quote": "The default value is standard. Optional.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: Graph alternative",
+      "type": "role",
+      "claim": "The Graph container type creation API requires the SharePoint Embedded admin or Global admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/filestorage-post-containertypes",
+      "quote": "Either the SharePoint Embedded admin role or the Global admin role is required to call this API.",
+      "severity": "minor",
+      "fix": "Replace the unqualified role sentence with 'The Graph API reference requires the SharePoint Embedded admin or Global admin role; Microsoft's container type creation guide instead says any non-guest user in the owning tenant can create a type with FileStorageContainerType.Manage.All delegated permission.' Cite https://learn.microsoft.com/sharepoint/dev/embedded/build/create-container-type#prerequisites alongside the API reference."
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: After rollout",
+      "type": "role",
+      "claim": "SharePoint Embedded Administrators can manage billing for any standard-billed container type in the developer tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+      "quote": "SharePoint Embedded Administrators and Global Administrators can manage billing for any standard-billed container type in the developer tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Open questions: Graph or REST equivalent to Add-SPOContainerTypeBilling",
+      "type": "absence",
+      "claim": "No Microsoft Graph or REST equivalent for attaching a standard billing profile is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint Embedded Graph REST attach billing profile container type Azure subscription API'; read choose-billing-model, Graph create, update and fileStorageContainerType resource references. No documented Graph or REST operation attaches the Azure billing profile.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T23:07:23.759Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=472920",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spocontainertype",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spocontainertypebilling",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/dev/embedded/plan/choose-billing-model",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/dev/embedded/reference/billing-meters",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/admin-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/filestorage-post-containertypes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/dev/embedded/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which billing model (standard or pass-through) a new container type uses",
+        "docs": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+        "reachable": true,
+        "segments": [
+          "SharePoint Embedded",
+          "Apps",
+          "+ Create app",
+          "Billing type"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which billing model (standard or pass-through) a new container type uses",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spocontainertype",
+        "reachable": true,
+        "token": "New-SPOContainerType",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Azure subscription, resource group and region a standard container type bills to",
+        "docs": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/create-apps-sharepoint-admin-center",
+        "reachable": true,
+        "segments": [
+          "SharePoint Embedded",
+          "Apps",
+          "+ Create app",
+          "Owner org",
+          "Billing subscription setup",
+          "Setup now"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which Azure subscription, resource group and region a standard container type bills to",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spocontainertypebilling",
+        "reachable": true,
+        "token": "Add-SPOContainerTypeBilling",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Pay-as-you-go billing for pass-through SharePoint Embedded apps in a consuming tenant",
+        "docs": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/setup-billing-microsoft-365-admin-center",
+        "reachable": true,
+        "segments": [
+          "Setup",
+          "Files and Content",
+          "Automate Content with Microsoft Syntex",
+          "Go to Syntex settings",
+          "Syntex services for",
+          "Apps",
+          "SharePoint Embedded"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Who holds the SharePoint Embedded Administrator role that runs both cmdlets",
+        "docs": "https://learn.microsoft.com/sharepoint/dev/embedded/admin/admin-overview",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Roles",
+          "Manage roles",
+          "SharePoint Embedded Administrator"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Who holds the SharePoint Embedded Administrator role that runs both cmdlets",
+        "docs": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

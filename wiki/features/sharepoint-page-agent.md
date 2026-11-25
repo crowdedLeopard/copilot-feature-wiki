@@ -66,19 +66,23 @@ changes:
     note: "Corrected two statements that called Block the only documented agent control; Block is now described as one documented way to restrict access to an agent."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected the After rollout checklist, which implied the status was unpublished; it now says to watch for changes to the In development status and for the unpublished default and licence."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 42
+  claims: 46
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "3cf76adc501975c658ed2de4002e6308"
+  contradicted: 0
+  attempts: 0
+  hash: "53e2a58cddb6d36aa3eefacae47d8777"
 ---
 
 ## What's changing
@@ -133,7 +137,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud and Web as the 
 
 ### After rollout
 - Ask site owners to review newly created pages for content that was not meant to be shared.
-- Re-check this page and the roadmap item for the status, default and licence, which Microsoft has not yet published.
+- Re-check this page and the roadmap item for changes to the In development status and for the default and licence, which Microsoft has not yet published.
 
 ## Governance controls
 
@@ -163,10 +167,4 @@ The Graph side is a beta API and, per its reference, needs a Microsoft Agent 365
 risk: Medium. The roadmap describes an agent that creates pages in SharePoint from chat, but Microsoft has not said which content it reads, where it saves pages or under whose identity, so rating assumes existing SharePoint permissions and the agent block apply.
 cost: Low. The only cost the sources show is admin time to review and communicate; a licence or meter for the Page Agent is not yet published.
 impact: Medium. The people who would notice are those who author SharePoint pages, such as site owners and communicators; Microsoft has not stated who gets the agent or when.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: After rollout, second bullet / consistency: The after-rollout checklist says Microsoft has not published the status, conflicting with the page's published In development status. | Found: The roadmap record gives the status as In development. / Re-check this page and the roadmap item for the status, default and licence, which Microsoft has not yet published. | Fix: Replace the second After rollout bullet with: 'Re-check this page and the roadmap item for changes to the In development status and for the default and licence, which Microsoft has not yet published.'
 -->

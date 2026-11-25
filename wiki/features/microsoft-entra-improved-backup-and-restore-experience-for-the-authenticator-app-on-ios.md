@@ -72,19 +72,23 @@ changes:
     note: "Corrected: TOTP no longer described as six-digit 30-second codes; Intune Block iCloud backup and Block iCloud Keychain sync now described as Learn states them; autonomy bullet narrowed to Learn's user-side steps; checklist row reference fixed."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected: passkey advice for a restored work account now includes Learn's note that a passkey in a synced credential manager might not need re-creating; removed the inference that no organisational credential moves to iCloud."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
+  claims: 62
   confirmed: 62
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "029b4ac9e5888be79698d790ccb1cf2e"
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "1515a458f00cfec182adff7221d18940"
 ---
 
 ## What's changing
@@ -104,11 +108,11 @@ Microsoft has not published an administrator control for the backup, so the deci
 ## Risk assessment
 
 **Data exposure**
-- Learn says that for a work or school account only the account name is restored, so no organisational sign-in credential is described as moving to iCloud. Personal Microsoft accounts and third-party accounts can have their verification code entry restored, so those one-time-code seeds sit in the user's Apple account backup (the roadmap describes the backup as end-to-end encrypted).
+- Learn says that for a work or school account only the account name is restored. Personal Microsoft accounts and third-party accounts can have their verification code entry restored, so those one-time-code seeds sit in the user's Apple account backup (the roadmap describes the backup as end-to-end encrypted).
 - The backup depends on the user's own iCloud Drive, iCloud Keychain and iCloud Backup settings. On supervised iOS/iPadOS devices, Block iCloud backup stops device backups to iCloud, and Block iCloud Keychain sync disables syncing credentials stored in Keychain to iCloud. Authenticator's documented iOS backup procedure requires iCloud Backup and iCloud Keychain to be enabled.
 
 **Security & identity**
-- A restored work account is not signed in: the user must sign in again, and Learn says that if passkeys are enforced for the account, a passkey must be set up for the new phone before the old device is removed. Use the passkey row in the controls table to check that self-service setup is allowed.
+- A restored work account is not signed in: the user must sign in again, and Learn says that if passkeys are enforced, set up a passkey for the new phone before removing the old device; if the passkey was saved to a synced credential manager, a new passkey might not be needed, but verify it is available before removing the old device. Use the passkey row in the controls table to check that self-service setup is allowed.
 - Learn says passkeys are handled separately from Authenticator account backup, and that a passkey saved only to the old phone needs a new passkey on the new phone, so users who erase the old phone early may be left without that sign-in method.
 
 **Autonomy & actions**
@@ -169,14 +173,7 @@ Intune has iOS/iPadOS device restriction settings named **Block iCloud backup** 
 - Is the feature generally available? The roadmap status is In development with an August CY2025 target, while Learn already documents the steps; watch the roadmap item for the status change.
 
 <!-- rationale
-risk: Low. Backup is a user-side iCloud setting, and for work or school accounts Learn says only the account name is restored, so no sign-in credential for the organisation moves.
+risk: Low. Backup is a user-side iCloud setting, and for work or school accounts Learn says only the account name is restored.
 cost: Low. The only cost shown is admin and help desk time for users who must sign in again on a new phone; a licence or meter for this feature is not yet published.
 impact: Low. Only users who turn on the iCloud backup and then change iPhone notice it, and nothing is documented as changing for anyone else.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / behaviour: If passkeys are enforced, a passkey must be set up for the new phone before removing the old device. | Found: If the passkey was saved to a synced credential manager, such as Microsoft Password Manager, Google Password Manager, or Apple iCloud Keychain, you might not need to create a new passkey. Verify the passkey is available before removing the old device. | Fix: Replace the clause beginning 'Learn says that if passkeys are enforced' with: 'Learn says that if passkeys are enforced, set up a passkey for the new phone before removing the old device; if the passkey was saved to a synced credential manager, a new passkey might not be needed, but verify it is available before removing the old device.' Keep the transfer-page citation. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone
-- [unsupported, major] rationale: risk; Risk assessment: Data exposure / behaviour: No organisational sign-in credential moves to iCloud because only the work account name is restored. | Found: Searched: Authenticator backup TOTP credentials iCloud; Authenticator backup Graph configuration. Read transfer page and roadmap. The transfer page states what is restored, not a complete inventory of what is uploaded; the record describes account-name and TOTP-credential backup without this exclusi | Fix: Replace the risk rationale with 'Low. Backup is a user-side iCloud setting, and for work or school accounts Learn says only the account name is restored.' In Data exposure, remove 'so no organisational sign-in credential is described as moving to iCloud'. Do not infer an upload exclusion from restore behaviour.
 -->
