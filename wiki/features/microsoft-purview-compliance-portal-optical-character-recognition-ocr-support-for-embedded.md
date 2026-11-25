@@ -55,6 +55,9 @@ sources:
   - title: "Start-SPOSiteOpticalCharacterRecognitionBackfill"
     url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spositeopticalcharacterrecognitionbackfill"
     kind: "learn"
+  - title: "Tutorial: Create and manage budgets"
+    url: "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-compliance-portal-optical-character-recognition-ocr-support-for-sharepoi","sensitive-information-types","microsoft-purview-compliance-portal-data-loss-prevention-optical-character-recognition-ocr","microsoft-purview-compliance-portal-ocr-audit-logs","classifiers"]
 controls:
@@ -76,12 +79,12 @@ controls:
       kind: "powershell"
       call: "Set-SPOTenant -OpticalCharacterRecognitionSelectedSitesList <String[]>"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant"
-    note: "SharePoint Administrator or Global Administrator. The panel offers All sites, Selected sites (up to 100) or No sites. The reference lists the parameter and its type but no description."
+    note: "SharePoint Administrator or Global Administrator. The call needs pay-as-you-go billing and OCR scope already set to SelectedSites, takes up to 100 site URLs and by default overwrites the selected-sites list."
   - governs: "Azure subscription that bills OCR and other document processing services"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Org settings > Pay-as-you-go services > Billing > Document processing services"
+      path: "Settings > Org settings > Services > Pay-as-you-go services > Billing > Document processing services > Set up billing and turn on services > Set up billing > Azure subscription"
       docs: "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing"
     api: null
     note: "Needs SharePoint Administrator or Global Administrator and owner or contributor rights on the Azure subscription. The same page covers disconnecting the subscription."
@@ -94,19 +97,23 @@ changes:
     note: "New briefing: embedded-image OCR for Office files and PDFs in SharePoint and OneDrive, its pay-as-you-go meter, the two scope settings and the GCC billing question."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 75 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected: dropped an unsupported 'until now' claim; noted that Azure budgets alert on OCR spend but do not stop it; described the Set-SPOTenant selected-sites parameter and its prerequisites; completed the billing path; removed three checklist steps with no control row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 70
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "e06c4131767f75063ac5065ffa6dae85"
+  claims: 87
+  confirmed: 87
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "8954eda4f433ec75c7dea2504d6c5b38"
 ---
 
 ## What's changing
@@ -119,7 +126,7 @@ OCR is an optional feature that is enabled at the tenant level. Once it is on, P
 
 ## Why it matters
 
-Until now a policy that looks for a credit card number or a classification marking reads the text of a file. With embedded-image support, the same policies can match text inside a screenshot pasted into a Word, PowerPoint or Excel file, or inside a scanned page of a PDF. Expect more matches in DLP and records management reports, and an OCR charge for every image scanned.
+OCR lets policies match sensitive text inside images as well as the text of a file. With embedded-image support, the same policies can match text inside a screenshot pasted into a Word, PowerPoint or Excel file, or inside a scanned page of a PDF. Expect more matches in DLP and records management reports, and an OCR charge for every image scanned.
 
 Microsoft Learn describes OCR as optional and as needing pay-as-you-go billing, so the sources do not say that existing behaviour changes for tenants that have not set it up. The setup page does say that once an Azure subscription is linked to pay-as-you-go, OCR is set up and enabled for all SharePoint sites, so settle the site scope before billing is connected.
 
@@ -150,7 +157,7 @@ Microsoft Learn describes OCR as optional and as needing pay-as-you-go billing, 
 
 **Estimating.** The OCR cost estimator (preview) projects costs before you enable OCR, but its limitations say that estimating embedded images in SharePoint and OneDrive, and images in PDFs there, is not supported, so the actual SharePoint and OneDrive bill may be higher than estimated.
 
-**Not yet published.** A rate or meter line specific to embedded images in Office files in SharePoint and OneDrive, and a spending cap or budget setting for OCR.
+**Not yet published.** A rate or meter line specific to embedded images in Office files in SharePoint and OneDrive, and a spending cap for OCR. Azure Cost Management budgets can monitor the Azure subscription used for OCR billing and send threshold alerts; they do not stop consumption ([Tutorial: Create and manage budgets](https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets)).
 
 ## Scope
 
@@ -168,7 +175,6 @@ Microsoft Learn describes OCR as optional and as needing pay-as-you-go billing, 
 - Ask the Global admin whether an Azure pay-as-you-go subscription is already linked for document processing; linking one enables OCR for all SharePoint sites unless you narrow the scope (billing and site scope rows).
 - Run the OCR cost estimator (preview) from the OCR settings page in the Purview portal (first row), and treat its SharePoint and OneDrive figures as a floor because embedded images are not estimated there.
 - Decide whether OCR should run on all sites, up to 100 selected sites, or no sites (second row), and list the sites that hold scanned forms, screenshots and image-heavy Office files.
-- List the DLP, records management and insider risk policies that use sensitive information types or trainable classifiers, and brief their owners that matches may now come from images.
 
 ### At rollout
 - Select the SharePoint and OneDrive locations and the groups to include or exclude in the Purview OCR settings (first row).
@@ -176,8 +182,6 @@ Microsoft Learn describes OCR as optional and as needing pay-as-you-go billing, 
 - Allow about an hour for settings to take effect before testing with a file that contains an image with test data.
 
 ### After rollout
-- Review Microsoft Cost Management for Azure for the OCR meter, and compare it with the estimate.
-- Decide whether existing content needs the backfill cmdlet, knowing that only images uploaded after OCR is enabled are scanned and that the backfill incurs cost.
 - Watch the roadmap item and Message center for a status change and for GCC-specific billing guidance.
 
 ## Governance controls
@@ -188,14 +192,14 @@ Microsoft Learn describes OCR as optional and as needing pay-as-you-go billing, 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which locations and groups Purview scans with OCR</strong><br><small>Tenant</small><br><small class="controls__note">Compliance admin configures it. Settings take about an hour to take effect. The estimator (preview) is on the same page.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Optical character recognition (OCR) <a href="https://learn.microsoft.com/purview/ocr-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which SharePoint sites OCR runs on</strong><br><small>Site</small><br><small class="controls__note">SharePoint Administrator or Global Administrator. The panel offers All sites, Selected sites (up to 100) or No sites. The reference lists the parameter and its type but no description.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Pay-as-you-go services › Settings › Document &amp; image services › Optical character recognition › Select the SharePoint libraries where you would like to enable optical character recognition › Edit <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/ocr" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -OpticalCharacterRecognitionSelectedSitesList &lt;String[]&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Azure subscription that bills OCR and other document processing services</strong><br><small>Tenant</small><br><small class="controls__note">Needs SharePoint Administrator or Global Administrator and owner or contributor rights on the Azure subscription. The same page covers disconnecting the subscription.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Pay-as-you-go services › Billing › Document processing services <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint sites OCR runs on</strong><br><small>Site</small><br><small class="controls__note">SharePoint Administrator or Global Administrator. The call needs pay-as-you-go billing and OCR scope already set to SelectedSites, takes up to 100 site URLs and by default overwrites the selected-sites list.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Pay-as-you-go services › Settings › Document &amp; image services › Optical character recognition › Select the SharePoint libraries where you would like to enable optical character recognition › Edit <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/ocr" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -OpticalCharacterRecognitionSelectedSitesList &lt;String[]&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Azure subscription that bills OCR and other document processing services</strong><br><small>Tenant</small><br><small class="controls__note">Needs SharePoint Administrator or Global Administrator and owner or contributor rights on the Azure subscription. The same page covers disconnecting the subscription.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › Pay-as-you-go services › Billing › Document processing services › Set up billing and turn on services › Set up billing › Azure subscription <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Two settings decide scope: the Purview OCR settings choose locations and groups, and the Microsoft 365 admin center setting chooses SharePoint sites. The SharePoint OCR page says the compliance admin can specify which SharePoint sites to include for DLP; if the two lists differ, the larger number of sites is enabled for OCR, and processing is not charged twice.
 
-Microsoft Learn documents no PowerShell, Graph or other API for the Purview OCR settings at the time of writing (November 2026). The Set-SPOTenant reference lists an -OpticalCharacterRecognitionSelectedSitesList parameter without describing it, so confirm what it does in a test tenant before scripting it.
+Microsoft Learn documents no PowerShell, Graph or other API for the Purview OCR settings at the time of writing (November 2026). The Set-SPOTenant reference documents -OpticalCharacterRecognitionSelectedSitesList as replacing, by default, the selected-sites list with up to 100 site URLs; it requires OCR scope SelectedSites and pay-as-you-go billing.
 
 Only the billing subscription and site selection are admin-centre settings; neither is a spending cap, and unlinking billing is a different step from choosing sites.
 
@@ -204,7 +208,7 @@ Only the billing subscription and site selection are admin-centre settings; neit
 - The roadmap shows this item as In development with a September CY2025 target, while Learn documents embedded-image OCR for SharePoint and OneDrive as supported. Has it reached every tenant, and will the roadmap record be updated? Watch the roadmap item and Message center.
 - How do GCC, GCC High and DoD tenants pay for OCR, given that the licensing page says pay-as-you-go is not yet available for GCC and says nothing about GCC High or DoD? Watch the document processing licensing page.
 - Which meter line applies to embedded images in Office files in SharePoint and OneDrive? The pricing page names embedded images only for Teams chats and email.
-- Is there a budget or cap that stops OCR charges? Watch the pay-as-you-go billing page.
+- Is there a cap that stops OCR charges? Watch the pay-as-you-go billing page.
 - Does the included monthly capacity end in June 2026 or December 2026? The pricing and try-out pages differ.
 
 <!-- rationale
@@ -213,16 +217,11 @@ cost: Variable. OCR is metered pay-as-you-go through an Azure subscription at $0
 impact: Low. Compliance and SharePoint admins configure it; end users would notice it where a policy matches text found in an image.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: opening sentence / behaviour: Until now, a policy looking for credit card numbers or classification markings read the text of a file rather than embedded image text. | Found: Searched: Purview OCR previously; read ocr-learn-about and documentprocessing/ocr-overview. They describe current support, not when this historical boundary applied; the roadmap supplies no prior-behaviour date. | Fix: Remove 'Until now' and replace the opening comparison with 'OCR lets policies match sensitive text inside images as well as the text of a file.'
-- [contradicted, blocker] Cost and licensing: Not yet published / absence: A budget setting for OCR spending is not yet published. | Found: You can create an Azure subscription budget for a monthly, quarterly, or annual period. | Fix: Remove 'or budget setting' from the unpublished claim. Replace it with 'Azure Cost Management budgets can monitor the Azure subscription used for OCR billing and send threshold alerts; they do not stop consumption.' Cite https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets. | Source: https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets
-- [contradicted, blocker] controls[1].api; controls[1].note; Governance controls table / command: Set-SPOTenant -OpticalCharacterRecognitionSelectedSitesList <String[]> sets which SharePoint sites OCR runs on without a stated scope prerequisite. | Found: This parameter can only be called if optical character recognition's scope is set to SelectedSites. The inputted list of site URLs cannot exceed 100 items. | Fix: Keep the call but qualify its note: 'Requires pay-as-you-go billing and OCR scope already set to SelectedSites. Supply up to 100 SharePoint site URLs; this call overwrites the existing selected-sites list by default.' The parameter does not select All sites or No sites. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant
-- [contradicted, blocker] controls[1].note; Governance controls / absence: The Set-SPOTenant reference lists OpticalCharacterRecognitionSelectedSitesList and its type without describing it. | Found: This parameter allows administrators to pass a list of SharePoint site URLs to modify the optical character recognition premium feature's selected sites list. By default this parameter overwrites the existing list with the user input list. | Fix: Remove both statements that the parameter is undescribed. Replace the prose with 'The Set-SPOTenant reference documents -OpticalCharacterRecognitionSelectedSitesList as replacing the selected-sites list with up to 100 site URLs; it requires OCR scope SelectedSites and pay-as-you-go billing.' | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed Microsoft 365 admin center path through Pay-as-you-go services and Optical character recognition reaches site selection at Edit. | Found: On the Optical character recognition panel, under Select the SharePoint libraries where you would like to enable optical character recognition, select Edit. | Fix: Extend the existing path after 'Edit' with ' > Enable optical character recognition in Microsoft 365 > All sites / Selected sites (up to 100) / No sites'. The current path is correct but stops before the scope options. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/ocr
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: Settings > Org settings > Pay-as-you-go services > Billing > Document processing services reaches the billing configuration. | Found: On the Services tab, select Pay-as-you-go services. | Fix: Use 'Settings > Org settings > Services > Pay-as-you-go services > Billing > Document processing services > Set up billing and turn on services > Set up billing > Azure subscription'. This restores the services-list tab and extends the route to the subscription control. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist asks readers to inventory policies, review Cost Management and consider backfill, but these controls have no corresponding rows. | Found: List the DLP, records management and insider risk policies ... Review Microsoft Cost Management for Azure ... Decide whether existing content needs the backfill cmdlet | Fix: The policy-inventory, Cost Management and backfill checklist steps have no control rows. Remove these checklist bullets to align the checklist with the existing table; this correction does not require adding rows.
-- [supported, minor] What's changing; Scope: Rollout / availability: The briefing presents documented Purview OCR behaviour without noting that another Microsoft page still calls its settings preview. | Found: Microsoft Purview includes OCR (preview) settings for Microsoft Purview Insider Risk Management, Microsoft Purview Data Loss Prevention, Microsoft Purview Data Loss Management, and auto-labeling. | Fix: Add: 'The Purview OCR page does not mark these settings preview, but the Communication Compliance policy documentation still calls the shared Purview OCR settings preview.' Cite https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings. | Source: https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings
+- [supported, minor] controls[1].ui; Governance controls: table / admin-path: The printed Microsoft 365 admin center site-selection path reaches Edit on the OCR panel. | Found: On the Optical character recognition panel, under Select the SharePoint libraries where you would like to enable optical character recognition, select Edit. | Fix: Append ' > Enable optical character recognition in Microsoft 365 > Selected sites (up to 100)' to controls[1].ui.path and its rendered table path. The existing steps are correct but stop before the site-scope setting; the same panel also offers All sites and No sites. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/ocr
+- [supported, minor] controls[2].note; Risk assessment / role: Billing setup requires owner or contributor rights on the Azure subscription. | Found: You must have owner or contributor rights to the Azure subscription that you want to use for pay-as-you-go billing. | Fix: Add to the billing permissions sentence: 'The separate Microsoft 365 billing setup page also requires Owner or Contributor rights to the resource group.' Cite https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup, whose Before you begin section says 'You must have Owner or Contributor rights to the Azure subscription and resource group.' | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing
+- [supported, minor] What's changing; Risk assessment; rationale: risk / applicability: Configured OCR extends existing insider risk policies to images, with SharePoint listed as a supported location. | Found: SharePoint sites | Data loss prevention Insider risk management Considers sensitive information types and trainable classifiers present in images for risk scoring. | Fix: Add: 'The insider risk setup page still describes these OCR settings as preview and lists Windows endpoints, SharePoint Online and Teams, not Exchange Online or OneDrive, for that preview.' Cite https://learn.microsoft.com/purview/insider-risk-management-configure#step-4-recommended-configure-prerequisites-for-policies. The cited general OCR page does not mark these settings preview. | Source: https://learn.microsoft.com/purview/ocr-learn-about
+- [supported, minor] Cost and licensing: Estimating; Governance guidance: Before rollout / behaviour: The preview OCR cost estimator projects costs before OCR is enabled. | Found: The tool scans your selected locations ... and projects how much OCR processing will cost before you enable it. | Fix: Qualify the estimator checklist sentence with: 'Use it only before OCR is enabled and if your tenant has not already used its one-time estimation opportunity; OCR and the estimator cannot run simultaneously, and the estimator cannot be re-enabled.' These restrictions are in the cited estimator page's Limitations section. | Source: https://learn.microsoft.com/purview/ocr-cost-estimator
 -->

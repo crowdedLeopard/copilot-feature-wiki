@@ -94,19 +94,9 @@ changes:
     note: "First briefing for this item: roadmap description only, with no Learn page on the feature and no label setting in the existing Forms admin controls."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 49 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
-verification:
-  status: "held"
-  date: "2026-11-25"
-  version: 1
-  model: "gpt-6.1-sol"
-  engine: "copilot"
-  claims: 49
-  confirmed: 47
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "8b118cd9f23e30607473b0d8963c573b"
+  - date: "2026-11-25"
+    note: "Corrected: removed the claim that existing Forms settings and Purview label configuration are the only levers, and dropped two checklist steps (label selection, audit log search) that had no control row."
+version: 2
 ---
 
 ## What's changing
@@ -138,7 +128,7 @@ Microsoft has not stated what happens on arrival, and no source says existing fo
 
 **Change & support**
 - The roadmap says only users with appropriate permissions can access a labelled form's design and response pages. Expect questions from collaborators who can no longer open a form they used to reach.
-- No Forms-specific tenant switch for labels is documented, so the only levers are the existing Forms settings and the label configuration you already manage in Microsoft Purview.
+- No Forms-specific tenant switch for labels is documented.
 
 ## Cost and licensing
 
@@ -155,7 +145,6 @@ Forms is turned on for everyone in an organisation by default, per Learn's Forms
 ## Governance guidance
 
 ### Before rollout
-- Identify which of your existing sensitivity labels you would want form authors to use, and agree who in compliance owns the answer. Labels are created and configured in the Microsoft Purview management solution, per Learn's sensitivity labels page.
 - Check the Forms external sharing options in the Microsoft 365 admin center and decide whether the current settings suit labelled forms.
 - Check which users have Forms switched on in their licence assignment, so you know who will be able to author labelled forms.
 
@@ -165,7 +154,6 @@ Forms is turned on for everyone in an organisation by default, per Learn's Forms
 - Brief the help desk that collaborators or respondents may be unable to open a labelled form.
 
 ### After rollout
-- Search the audit log for Forms activities and check whether label assignment is recorded (see /concepts/auditing/).
 - Review the Forms Graph settings and the admin settings pane for any label-related option Microsoft adds.
 
 ## Governance controls
@@ -199,14 +187,4 @@ Labels themselves are created in the Microsoft Purview management solution; see 
 risk: Low. The roadmap describes a new labelling control that authors and co-authors apply manually, and no source says existing forms or responses change; the default state is not stated, so this rates today's behaviour continuing.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has published no licence, meter or price specific to labels in Forms, and the Purview service description lists manual labelling as included in several plans.
 impact: Medium. Form authors, co-authors and anyone who opens a labelled form's design or response pages would notice; the roadmap says only users with appropriate permissions can access those pages.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Change & support / applicability: The only governance levers are the existing Forms settings and existing Microsoft Purview label configuration. | Found: Searched: '"Microsoft Forms" "sensitivity labels" "admin"' and 'Microsoft Forms sensitivity labels Graph formsSettings Set-Label PowerShell'. Opened Forms setup, admin settings, formsSettings and sensitivity-labels; no exclusive list or Forms enforcement of Purview settings found. | Fix: Replace the sentence with: 'No Forms-specific tenant switch for labels is documented.' The absence of a feature switch does not establish that the listed controls are the only levers or specify which existing Purview settings Forms will enforce.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and licensing.notes / licensing: The licensing model is included, with no Forms-specific labelling entitlement yet published. | Found: The following Office 365 Education and Microsoft 365 Apps for business customers can also use Microsoft Forms: | Fix: Keep model 'included' but prepend this sentence to licensing.notes: 'Microsoft Forms is available with Microsoft 365 Business Basic, Business Standard and Business Premium, among other plans listed on the Set up Microsoft Forms Learn page; no entitlement specific to labels in Forms is published.' That page is already cited. | Source: https://learn.microsoft.com/microsoft-forms/set-up-microsoft-forms
-- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: The Purview table lists manual sensitivity labelling as included in all the plan groups quoted by the briefing. | Found: | Manual Sensitivity Labeling | Included | Included | Included | Included | Included | ... Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG). | Fix: After the plan list add: 'The same section also says sensitivity labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG), which conflicts with its manual-labelling table; confirm the applicable entitlement before budgeting.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist asks administrators to review is represented in the controls table. | Found: Checklist: 'Identify which of your existing sensitivity labels' and 'Search the audit log for Forms activities'. Table: label-support switch, organisation-wide Forms options, and per-user Forms access only. | Fix: The label-configuration and audit-log checklist steps have no corresponding control rows. Remove the Before rollout bullet beginning 'Identify which of your existing sensitivity labels' and the After rollout bullet beginning 'Search the audit log'. Do not add control rows as part of this correction.
 -->

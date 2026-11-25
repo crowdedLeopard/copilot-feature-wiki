@@ -78,19 +78,23 @@ changes:
     note: "Corrected after the independent check: action now act-now; removed an unsupported storage claim and an unconfirmed-switch question; added the connected experiences control that makes Copilot unavailable in OneNote on iOS."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: removed the sentence calling licence assignment the only control tied to this feature, since the connected experiences setting also makes Copilot unavailable in OneNote on iOS."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 42
+  claims: 45
+  confirmed: 45
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "234690a9464fed65eac7ec5ec179e1a1"
+  contradicted: 0
+  attempts: 0
+  hash: "f44b5f6b829d6a2cddca5c7691c14278"
 ---
 
 ## What's changing
@@ -170,7 +174,7 @@ A price or meter specific to this feature is not yet published. Where users alre
 </tbody>
 </table>
 
-Microsoft's notice says existing Microsoft 365 Copilot controls, permissions and policies continue to apply to the pane. The only control read and tied to this feature is licence assignment, because the notice says the pane depends on the Copilot (Premium) licence. Assigning licences needs at least the License Administrator or User Administrator role, per the licence assignment page.
+Microsoft's notice says existing Microsoft 365 Copilot controls, permissions and policies continue to apply to the pane. Assigning licences needs at least the License Administrator or User Administrator role, per the licence assignment page.
 
 Turning off connected experiences that analyze content makes Copilot features unavailable in current OneNote apps on iOS; this is a broader control, not a pane-only switch ([Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy)). For iOS, the Cloud Policy setting is named 'Allow the use of connected experiences in Office that analyze content' ([Use preferences to manage privacy controls for Office on iOS devices](https://learn.microsoft.com/microsoft-365-apps/privacy/ios-privacy-preferences)), and Cloud Policy can scope a policy configuration to specific groups ([Overview of Cloud Policy service for Microsoft 365](https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy)).
 
@@ -184,10 +188,4 @@ Turning off connected experiences that analyze content makes Copilot features un
 risk: Medium. Generative AI reads OneNote content the user can already open, so existing Copilot permissions and policies decide what it can reach; Microsoft's notice says those controls continue to apply.
 cost: Low. Microsoft's notice ties the pane to Microsoft 365 Copilot (Premium) licences; a separate price for this feature is not yet published, so the cost shown is admin and helpdesk time.
 impact: Low. Only users with a Microsoft 365 Copilot (Premium) licence who open OneNote on an iPhone see the pane; Microsoft's notice says unlicensed users are not impacted.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first and second paragraphs / consistency: Licence assignment is the only control read and tied to this feature, despite the next paragraph documenting another applicable control. | Found: The only control read and tied to this feature is licence assignment ... Turning off connected experiences that analyze content makes Copilot features unavailable in current OneNote apps on iOS | Fix: Remove the sentence 'The only control read and tied to this feature is licence assignment, because the notice says the pane depends on the Copilot (Premium) licence.' Keep the following paragraph explaining the broader connected-experiences control.
 -->

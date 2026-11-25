@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for the SDK. Power Pages itself is licensed by authenticated user and anonymous user capacity, with pay-as-you-go meters for each, and Power Pages Web API calls require a Power Pages licence."
+  model: "mixed"
+  notes: "Not yet published for the SDK, nor how native-app users are counted. Power Pages itself is licensed by authenticated user and anonymous user capacity, with pay-as-you-go meters for each, and Power Pages Web API calls require a Power Pages licence."
 audiences: ["power-platform-admin","maker","security","finops"]
 tags: ["power-pages","mobile","web-api","authentication","authorisation","table-permissions","web-roles","dataverse","extensibility"]
 sources:
@@ -31,20 +31,26 @@ sources:
   - title: "Power Platform licensing FAQs"
     url: "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq"
     kind: "learn"
-  - title: "Configure site settings for websites"
-    url: "https://learn.microsoft.com/power-pages/configure/configure-site-settings"
-    kind: "learn"
-  - title: "Configuring table permissions"
-    url: "https://learn.microsoft.com/power-pages/security/table-permissions"
-    kind: "learn"
   - title: "Overview of sites as progressive web apps"
     url: "https://learn.microsoft.com/power-pages/configure/progressive-web-apps"
+    kind: "learn"
+  - title: "What is Power Pages?"
+    url: "https://learn.microsoft.com/power-pages/introduction"
+    kind: "learn"
+  - title: "Update and delete table rows by using the Web API"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows"
+    kind: "learn"
+  - title: "Which Dataverse tables a site exposes through the portals Web API (Portal Management app)"
+    url: "https://learn.microsoft.com/power-pages/configure/configure-site-settings"
     kind: "learn"
   - title: "Which Dataverse tables a site exposes through the portals Web API (REST API)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting"
     kind: "learn"
+  - title: "Which records and privileges web roles get on each table (Power Pages design studio)"
+    url: "https://learn.microsoft.com/power-pages/security/table-permissions"
+    kind: "learn"
   - title: "Which records and privileges web roles get on each table (REST API)"
-    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission"
     kind: "learn"
 videos: []
 related: ["power-pages-first-class-support-for-connector-apis-in-power-pages","power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver","power-pages-design-studio-configure-authentication-with-security-agent","power-pages-administration-and-governance-manage-external-authentication-providers-with-gr","power-pages-professional-developer-experiences-control-power-pages-components-using-client"]
@@ -53,24 +59,24 @@ controls:
     scope: "site"
     ui:
       surface: "Portal Management app"
-      path: "Website > Site settings"
+      path: "Website > Site settings > site setting"
       docs: "https://learn.microsoft.com/power-pages/configure/configure-site-settings"
     api:
       kind: "rest"
-      call: "POST [organization URI]/api/data/v9.2/mspp_sitesettings with body {\"mspp_name\":\"Webapi/<table-name>/enabled\",\"mspp_value\":\"true\",\"mspp_websiteid@odata.bind\":\"<website-entity-reference>\"}"
+      call: "POST [organization URI]/api/data/v9.2/mspp_sitesettings"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting"
-    note: "General control: Microsoft has not confirmed it applies to the SDK. Creates the enabled setting only, not a complete Web API configuration. Documented default for Webapi/<table-name>/enabled is False."
+    note: "General control, not confirmed for the SDK. Default for Webapi/<table-name>/enabled is False. The request body sets mspp_name to Webapi/<table-name>/enabled, mspp_value to true and mspp_websiteid@odata.bind to the website."
   - governs: "Which records and privileges web roles get on each table"
     scope: "site"
     ui:
       surface: "Power Pages design studio"
-      path: "Security > Protect > Table permissions"
+      path: "Security > Protect > Table permissions > table permission"
       docs: "https://learn.microsoft.com/power-pages/security/table-permissions"
     api:
       kind: "rest"
-      call: "GET [organization URI]/api/data/v9.2/powerpagecomponents"
-      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent"
-    note: "General control: Microsoft has not confirmed it applies to the SDK. A table permission takes effect only when associated with a web role. API: read-only inventory; type 18 = Table Permission. Not a permission-setting call."
+      call: "PATCH [organization URI]/api/data/v9.2/mspp_entitypermissions(<permission-id>)"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission"
+    note: "General control, not confirmed for the SDK. Updates a table permission: mspp_scope sets access type; mspp_read, mspp_write, mspp_create, mspp_delete, mspp_append and mspp_appendto set privileges. A web role link is still required."
   - governs: "Whether the SDK can be switched off for a site or tenant"
     scope: "tenant"
     ui: null
@@ -78,7 +84,7 @@ controls:
     note: "Learn documents no such control at the time of writing (November 2026)."
 confidence: "low"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-18"
@@ -91,19 +97,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: table permissions now use the PATCH update on mspp_entitypermissions, the site-setting call no longer prints a request body, both admin paths end at the record, and the licensing model is mixed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 72 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "6283cf641bdaebe31abd928ce8e0530f"
+  claims: 72
+  confirmed: 71
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "0305c0259cbb3e7961d511a30403f871"
 ---
 
 ## What's changing
@@ -176,8 +186,8 @@ Whether native app users are counted the same way is not yet published. Indirect
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which Dataverse tables a site exposes through the portals Web API</strong><br><small>Site</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the SDK. Creates the enabled setting only, not a complete Web API configuration. Documented default for Webapi/&lt;table-name&gt;/enabled is False.</small></td><td data-label="Admin UI"><strong>Portal Management app</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [organization URI]/api/data/v9.2/mspp_sitesettings with body {&quot;mspp_name&quot;:&quot;Webapi/&lt;table-name&gt;/enabled&quot;,&quot;mspp_value&quot;:&quot;true&quot;,&quot;mspp_websiteid@odata.bind&quot;:&quot;&lt;website-entity-reference&gt;&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which records and privileges web roles get on each table</strong><br><small>Site</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the SDK. A table permission takes effect only when associated with a web role. API: read-only inventory; type 18 = Table Permission. Not a permission-setting call.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Protect › Table permissions <a href="https://learn.microsoft.com/power-pages/security/table-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [organization URI]/api/data/v9.2/powerpagecomponents</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which Dataverse tables a site exposes through the portals Web API</strong><br><small>Site</small><br><small class="controls__note">General control, not confirmed for the SDK. Default for Webapi/&lt;table-name&gt;/enabled is False. The request body sets mspp_name to Webapi/&lt;table-name&gt;/enabled, mspp_value to true and mspp_websiteid@odata.bind to the website.</small></td><td data-label="Admin UI"><strong>Portal Management app</strong><br>Website › Site settings › site setting <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [organization URI]/api/data/v9.2/mspp_sitesettings</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which records and privileges web roles get on each table</strong><br><small>Site</small><br><small class="controls__note">General control, not confirmed for the SDK. Updates a table permission: mspp_scope sets access type; mspp_read, mspp_write, mspp_create, mspp_delete, mspp_append and mspp_appendto set privileges. A web role link is still required.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Protect › Table permissions › table permission <a href="https://learn.microsoft.com/power-pages/security/table-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/mspp_entitypermissions(&lt;permission-id&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the SDK can be switched off for a site or tenant</strong><br><small>Tenant</small><br><small class="controls__note">Learn documents no such control at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -200,14 +210,12 @@ cost: Low. The known costs are developer, maker and support time; SDK licensing 
 impact: Low. The roadmap item describes a developer capability, so makers and developers notice first; end users meet it only if a team ships a native app or kiosk built on it.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls: second row / command: GET /api/data/v9.2/powerpagecomponents is the automation alongside the control deciding table-permission records and privileges. | Found: Update operations use the HTTP PATCH verb. Pass a JSON object containing the properties you want to update to the URI that represents the record. | Fix: Replace the read-only inventory call with 'PATCH [organization URI]/api/data/v9.2/mspp_entitypermissions(<permission-id>)' and set docs to https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission. Replace the inventory/type-18 note with: 'Updates an existing table permission: mspp_scope sets the access type; mspp_read, mspp_write, mspp_create, mspp_delete, mspp_append and mspp_appendto set privileges. Association with a web role is still required.' Retain the SDK applicability caveat and apply the same replacement to the rendered row. The original GET exists and the note correctly calls it read-only, but it does not configure this control. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows
+- [unsupported, major] Why it matters / behaviour: Power Pages site-level controls were designed around the browser. | Found: Searched: Power Pages SDK native mobile table permissions web roles authentication identity providers progressive web apps. Read Web API overview, table-permissions and security-best-practices results. These describe server-side authorization, not controls designed around the browser. | Fix: Remove ', outside the browser your site-level controls were designed around' from the sentence about software installed on phones or shared devices. Keep the planned native-client use and the separate advice to verify which controls the SDK uses.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown, while the notes describe Power Pages' general licensing. | Found: Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month. | Fix: Set licensing.model to 'mixed' to reflect the published general product model. Retain the qualification that SDK-specific licensing and how native-app users are counted are not yet published; the website licensing FAQ does not settle those narrower questions. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages
-- [supported, minor] Why it matters / behaviour: An existing Power Pages site is a website. | Found: Microsoft Power Pages is a secure, enterprise-grade, low-code software as a service (SaaS) platform for creating, hosting, and administering modern external-facing business websites. | Fix: Add https://learn.microsoft.com/power-pages/introduction to sources; it supports the existing-website context but is not currently cited. | Source: https://learn.microsoft.com/power-pages/introduction
-- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: Portal Management app > Website > Site settings reaches the site-setting control. | Found: Using the Portal Management app, select Site settings under the Website section. ... To edit an existing setting, select the Site Setting listed in the grid. | Fix: Extend the existing-setting route to 'Website > Site settings > site setting' in front matter and the rendered table. The current route reaches the correct list but stops before opening the setting. | Source: https://learn.microsoft.com/power-pages/configure/configure-site-settings
-- [supported, minor] controls[0].api; Governance controls: first row / command: POST to /api/data/v9.2/mspp_sitesettings can create the enabled site setting using the printed name, value and website binding. | Found: Entity set path: [organization URI]/api/data/v9.2/mspp_sitesettings; Operations supported: POSTGETPATCHDELETE; mspp_name; mspp_value; mspp_websiteid | mspp_website | Fix: Set api.call and the rendered call to 'POST [organization URI]/api/data/v9.2/mspp_sitesettings', without a body. Add to the note: 'The request body sets mspp_name to Webapi/<table-name>/enabled, mspp_value to true, and mspp_websiteid@odata.bind to the website reference.' | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting
-- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: Power Pages design studio > Security > Protect > Table permissions reaches table-permission configuration. | Found: In the design studio from the side menu, select Security. ... in the Protect section, select Table permissions ... Select the table permission that you want to edit | Fix: Extend the existing-permission route to 'Security > Protect > Table permissions > table permission' in front matter and the rendered table. The current route reaches the correct list but stops before opening a permission. | Source: https://learn.microsoft.com/power-pages/security/table-permissions
+- [supported, minor] controls[0].ui / admin-path: Portal Management app > Website > Site settings > site setting reaches the record that controls Web API table exposure. | Found: select Site settings under the Website section. To edit an existing setting, select the Site Setting listed in the grid. Specify values for the fields provided: Name; Website; Value: The setting | Fix: Extend the existing-setting path to 'Website > Site settings > site setting > Value' in both the front matter and rendered table. The cited page identifies Value as the field to change. | Source: https://learn.microsoft.com/power-pages/configure/configure-site-settings
+- [supported, minor] controls[0].note / command: mspp_websiteid@odata.bind associates the new site setting with its website. | Found: To associate new records with existing records when you create them, use the @odata.bind annotation to set the value of navigation properties. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-table-row to sources. Its 'Associate table rows on create' section supports @odata.bind; the already cited mspp_sitesetting reference identifies mspp_websiteid as the website navigation property. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-table-row
+- [supported, minor] controls[1].ui / admin-path: Power Pages design studio > Security > Protect > Table permissions > table permission reaches the permission editor. | Found: select Security. On the left pane in the Protect section, select Table permissions to view table permissions. Select the table permission that you want to edit | Fix: Keep the route 'Security > Protect > Table permissions > table permission' and add to the row note: 'In the permission editor, change the access type, privileges and applicable roles.' The cited edit procedure documents these final editing steps. | Source: https://learn.microsoft.com/power-pages/security/table-permissions
 -->

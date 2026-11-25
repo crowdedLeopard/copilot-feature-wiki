@@ -68,24 +68,28 @@ changes:
     note: "First briefing for this item: roadmap plan for Authenticator iCloud backup on iOS, set beside the behaviour Learn already documents, with the passkey self-service control for restored devices."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 54 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected: TOTP no longer described as six-digit 30-second codes; Intune Block iCloud backup and Block iCloud Keychain sync now described as Learn states them; autonomy bullet narrowed to Learn's user-side steps; checklist row reference fixed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 49
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "83dbe621a1af4a63c070c36b00bada41"
+  claims: 64
+  confirmed: 62
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 2
+  hash: "029b4ac9e5888be79698d790ccb1cf2e"
 ---
 
 ## What's changing
 
-The roadmap item describes a better backup and restore experience for Microsoft Authenticator on iOS. Microsoft plans to let users back up account names, covering Microsoft work or school accounts, Microsoft personal accounts and third-party accounts such as Amazon or Google, using iCloud and iCloud Keychain. The roadmap text calls this end-to-end encrypted backup of account names and TOTP credentials (time-based one-time passcodes, the six-digit codes that refresh every 30 seconds). On a new iPhone the account names are meant to appear in the app automatically, and the user signs in to finish setup.
+The roadmap item describes a better backup and restore experience for Microsoft Authenticator on iOS. Microsoft plans to let users back up account names, covering Microsoft work or school accounts, Microsoft personal accounts and third-party accounts such as Amazon or Google, using iCloud and iCloud Keychain. The roadmap text calls this end-to-end encrypted backup of account names and TOTP credentials (time-based one-time passcodes). On a new iPhone the account names are meant to appear in the app automatically, and the user signs in to finish setup.
 
 Microsoft Learn already documents the behaviour on its page [Transfer Microsoft Authenticator account entries to a new phone](https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone). To back up on iOS, the user enables iCloud Drive, iCloud Keychain and iCloud Backup, then turns on the **Authenticator** toggle under **Apple Account > iCloud > Saved to iCloud**. After a restore, a work or school account comes back as its account name only and the user must sign in again. A personal Microsoft account that uses only a one-time password code has its verification code entry restored; if it also uses passwordless sign-in, only the account name is restored. Third-party accounts that use a one-time password code have the verification code entry restored.
 
@@ -101,14 +105,14 @@ Microsoft has not published an administrator control for the backup, so the deci
 
 **Data exposure**
 - Learn says that for a work or school account only the account name is restored, so no organisational sign-in credential is described as moving to iCloud. Personal Microsoft accounts and third-party accounts can have their verification code entry restored, so those one-time-code seeds sit in the user's Apple account backup (the roadmap describes the backup as end-to-end encrypted).
-- The backup depends on the user's own iCloud Drive, iCloud Keychain and iCloud Backup settings. The Intune iCloud settings named in the controls notes are the nearest device-level levers, though Learn does not say they cover Authenticator.
+- The backup depends on the user's own iCloud Drive, iCloud Keychain and iCloud Backup settings. On supervised iOS/iPadOS devices, Block iCloud backup stops device backups to iCloud, and Block iCloud Keychain sync disables syncing credentials stored in Keychain to iCloud. Authenticator's documented iOS backup procedure requires iCloud Backup and iCloud Keychain to be enabled.
 
 **Security & identity**
 - A restored work account is not signed in: the user must sign in again, and Learn says that if passkeys are enforced for the account, a passkey must be set up for the new phone before the old device is removed. Use the passkey row in the controls table to check that self-service setup is allowed.
 - Learn says passkeys are handled separately from Authenticator account backup, and that a passkey saved only to the old phone needs a new passkey on the new phone, so users who erase the old phone early may be left without that sign-in method.
 
 **Autonomy & actions**
-- No change: the feature runs only when a user turns on backup and restores on a new phone; Learn describes no background action by Microsoft or an administrator.
+- Learn documents user-side steps to enable backup and recover account entries on a new phone.
 
 **Change & support**
 - Expect tickets from users who see the red text on a restored work account, and from users whose restore is not offered: Learn's troubleshooting table says to check that backup was enabled on the old phone, that the same recovery account is used and that the restore is to the same device type.
@@ -130,8 +134,7 @@ The users in scope are people who use Microsoft Authenticator on an iPhone and t
 
 ### Before rollout
 - Test a backup on a pilot iPhone using the iCloud steps on the Learn transfer page, then restore to a second iPhone and record what a work or school account looks like afterwards.
-- Check whether your Intune iOS/iPadOS device restriction profiles set **Block iCloud backup** or **Block iCloud Keychain sync**, and confirm in a pilot whether they stop Authenticator backup, because Microsoft has not said they do.
-- Confirm that **Allow self-service set up** is Yes in the Passkey (FIDO2) settings (first controls row) for users you expect to re-register a passkey on a new phone.
+- Confirm that **Allow self-service set up** is Yes in the Passkey (FIDO2) settings (second controls row) for users you expect to re-register a passkey on a new phone.
 
 ### At rollout
 - Tell iPhone users to keep the old phone until sign-in works on the new one, as the Learn page instructs.
@@ -157,13 +160,12 @@ No administrator setting for Authenticator backup and restore is documented, so 
 
 The passkey row needs at least the Authentication Policy Administrator role. The page gives the Configure tab steps after opting in to passkey profiles, and says that after opting in you cannot opt out. The Graph call's body property is isSelfServiceRegistrationAllowed.
 
-Intune has iOS/iPadOS device restriction settings named **Block iCloud backup** and **Block iCloud Keychain sync** (Learn's [Apple device restriction settings](https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple) page, Cloud and Storage), and both require supervised devices from iOS/iPadOS 13.0. Microsoft Learn does not say that they govern the Authenticator backup, so they are not a table row; verify in a pilot.
+Intune has iOS/iPadOS device restriction settings named **Block iCloud backup** and **Block iCloud Keychain sync** (Learn's [Apple device restriction settings](https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple) page, Cloud and Storage), and both require supervised devices from iOS/iPadOS 13.0. On supervised iOS/iPadOS devices, Block iCloud backup stops device backups to iCloud, and Block iCloud Keychain sync disables syncing credentials stored in Keychain to iCloud. Authenticator's documented iOS backup procedure ([Transfer Microsoft Authenticator account entries to a new phone](https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone)) requires iCloud Backup and iCloud Keychain to be enabled.
 
 ## Open questions
 
 - Is there, or will there be, a tenant setting or Intune app configuration that lets administrators turn Authenticator iCloud backup off? Watch Message center and the Learn transfer page.
 - Which licence, if any, covers Authenticator backup and restore, and does the feature carry a price? Watch Microsoft Entra licensing pages.
-- Do the Intune **Block iCloud backup** and **Block iCloud Keychain sync** settings stop the Authenticator backup on supervised devices? Test in a pilot and watch Learn.
 - Is the feature generally available? The roadmap status is In development with an August CY2025 target, while Learn already documents the steps; watch the roadmap item for the status change.
 
 <!-- rationale
@@ -175,10 +177,6 @@ impact: Low. Only users who turn on the iCloud backup and then change iPhone not
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] What's changing: TOTP parenthesis / behaviour: The backed-up TOTP credentials are uniformly six-digit codes refreshing every 30 seconds. | Found: Searched: Microsoft Authenticator six-digit 30 seconds; Authenticator six-digit code. Opened transfer and Authenticator app concept pages; neither establishes a uniform six-digit length for all backed-up account types. | Fix: Replace the parenthesis with '(time-based one-time passcodes)', removing the blanket six-digit and refresh-interval description.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance guidance: Before rollout; Governance controls; Open questions / absence: Microsoft has not said whether the named Intune iCloud restrictions govern the services required by Authenticator backup. | Found: Block iCloud backup: Yes stops users from backing up devices to iCloud. ... Block iCloud Keychain sync: Yes disables syncing credentials stored in the Keychain to iCloud. | Fix: Replace the unconfirmed-applicability caveats with: 'On supervised iOS/iPadOS devices, Block iCloud backup stops device backups to iCloud, and Block iCloud Keychain sync disables syncing credentials stored in Keychain to iCloud. Authenticator's documented iOS backup procedure requires iCloud Backup and iCloud Keychain to be enabled.' Cite https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple and https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone. Remove the open question asking whether those prerequisite services can be restricted; do not claim a separate Authenticator-specific switch exists. | Source: https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature runs only when a user turns on backup and restores on a new phone, with no background action. | Found: Searched: Authenticator backup background. Read transfer and Authenticator app concept pages and roadmap record; they describe enabling backup and recovering entries, not an exclusive execution schedule or the absence of background backup after enablement. | Fix: Replace the bullet with: 'Learn documents user-side steps to enable backup and recover account entries on a new phone.' Cite https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs readers to review Intune iCloud restriction controls that are absent from the controls table. | Found: Check whether your Intune iOS/iPadOS device restriction profiles set Block iCloud backup or Block iCloud Keychain sync ... [The table contains only a tenant-wide backup switch gap and passkey self-service registration.] | Fix: Remove the Before rollout checklist bullet directing review of Intune restriction profiles; those controls have no table row. Keep the verified description of their reach in the controls notes.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The passkey self-service setting is in the first controls row. | Found: Passkey (FIDO2) settings (first controls row) ... [The first row is Tenant-wide switch for Authenticator account backup and restore on iOS; the passkey setting is the second row.] | Fix: Replace '(first controls row)' with '(second controls row)'.
+- [contradicted, blocker] Risk assessment: Security & identity / behaviour: If passkeys are enforced, a passkey must be set up for the new phone before removing the old device. | Found: If the passkey was saved to a synced credential manager, such as Microsoft Password Manager, Google Password Manager, or Apple iCloud Keychain, you might not need to create a new passkey. Verify the passkey is available before removing the old device. | Fix: Replace the clause beginning 'Learn says that if passkeys are enforced' with: 'Learn says that if passkeys are enforced, set up a passkey for the new phone before removing the old device; if the passkey was saved to a synced credential manager, a new passkey might not be needed, but verify it is available before removing the old device.' Keep the transfer-page citation. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone
+- [unsupported, major] rationale: risk; Risk assessment: Data exposure / behaviour: No organisational sign-in credential moves to iCloud because only the work account name is restored. | Found: Searched: Authenticator backup TOTP credentials iCloud; Authenticator backup Graph configuration. Read transfer page and roadmap. The transfer page states what is restored, not a complete inventory of what is uploaded; the record describes account-name and TOTP-credential backup without this exclusi | Fix: Replace the risk rationale with 'Low. Backup is a user-side iCloud setting, and for work or school accounts Learn says only the account name is restored.' In Data exposure, remove 'so no organisational sign-in credential is described as moving to iCloud'. Do not infer an upload exclusion from restore behaviour.
 -->

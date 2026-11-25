@@ -1,0 +1,940 @@
+{
+  "slug": "microsoft-viva-advanced-moderation-access-control-for-corporate-communicators",
+  "roadmapId": 479408,
+  "title": "Viva Engage: advanced moderation permission for corporate communicators",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 36)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 68,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing treats private-community access for theme moderation as undocumented, but Microsoft's AI summarization and theme extraction FAQ explicitly preserves users' existing content permissions. The roadmap facts, licensing threshold and listed control paths are supported; two minor corrections concern the Graph request-body note and checklist coverage.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is April CY2025, reported as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Teams and Surface Devices is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap item is a Microsoft Viva advanced moderation access control for corporate communicators.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Viva: Advanced moderation access control for corporate communicators\", \"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The record's modification timestamp is 2025-01-31T00:15:03.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-01-31T00:15:03\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The advanced moderation permission is off until an admin grants it, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "The advanced moderation permission is OFF by default. Verified Admins, Network Admins, and Engage Admins can assign the advanced moderation permission to corporate communicator accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "role",
+      "claim": "Network admins can grant the advanced moderation permission to corporate communicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Network admins and Verified admins can assign granular permissions to holders of Corporate Communicator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "role",
+      "claim": "Verified admins can grant the advanced moderation permission to corporate communicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Network admins and Verified admins can assign granular permissions to holders of Corporate Communicator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Scope; controls[0].note",
+      "type": "role",
+      "claim": "The admin roles article additionally names Engage Admins as permission assigners, unlike the advanced moderation article.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "Verified Admins, Network Admins, and Engage Admins can assign the advanced moderation permission to corporate communicator accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "Corporate communicators granted the permission can create and manage AI-based moderation themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "The advanced moderation permission allows Corporate Communicators to perform the following tasks: Create and manage AI-based moderation themes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Corporate communicators granted the permission can set up and monitor keywords across the network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "Set up and monitor keywords across the network",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Microsoft already documents permission-enabled access to the Advanced Moderation dashboard despite the roadmap's development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "Use the centralized Advanced Moderation dashboard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Permission holders can view and mute detected conversations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "View and take action on detected conversations (including mute, close, and dismiss)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Permission holders can close detected conversations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "View and take action on detected conversations (including mute, close, and dismiss)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Permission holders can dismiss detected conversations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "View and take action on detected conversations (including mute, close, and dismiss)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Advanced moderation tools are in the Engage Communications dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "You can find advanced moderation tools in the Communications Dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Theme moderation uses an LLM to monitor and optionally mute conversations matching defined themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Theme moderation, backed by a large language model (LLM) that monitors and optionally mutes conversations based on themes that you define.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Keyword monitoring detects exact terms or phrases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Keyword monitoring, which detects exact terms or phrases across your network.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Detected conversations gathers theme and keyword matches for triage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "The Detected conversations panel shows matched conversations for both theme moderation and keyword monitoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment; controls[2].governs",
+      "type": "applicability",
+      "claim": "Theme moderation is built on the Viva Engage AI Summarization service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "Theme moderation is built on the Viva Engage AI Summarization service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Viva Engage supports up to 30 simultaneous themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "Viva Engage supports concurrent use of up to 30 themes at a time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Adding a theme does not retroactively detect existing matching conversations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "Retroactive detection doesn't occur for existing conversations that match newly added themes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Auto-mute automatically mutes matching conversations without individual review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Auto-mute automatically mutes a conversation if it's a match for the theme filter",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Theme matches can trigger email notifications to named recipients in the network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Enable the Auto-mute and Email notification toggles. Add the names of anyone in the network who needs to see them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Muting does not notify affected users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Muting conversations doesn't notify users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Muted conversations leave the Home feed, storylines feed and email digests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Muting conversations in Engage removes the thread from the Home Feed, storylines feed, and email digests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Muted conversations remain discoverable through notifications, search and other feeds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Muted Engage conversations remain discoverable through notifications, search, and other feeds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; Governance controls; controls[2].governs",
+      "type": "applicability",
+      "claim": "The AI Summarization setting governs AI processing of Engage threads, including theme moderation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "Check your Viva Engage Admin Center settings to ensure that the AI Summarization setting reflects your network preferences. It controls all AI data processing for your network.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "AI Summarization is enabled by default for all network users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "By default, AI summarization is enabled and processes data across all users in your network unless you specify otherwise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Individual detected conversations cease being visible in advanced moderation pages after 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "After 30 days, individual conversations aren't visible in the advanced moderation pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Conversations no longer shown after 30 days can be found through network export, eDiscovery or Engage search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "You can find conversations through network export or eDiscovery tools, and through search in Viva Engage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not say whether communicators can see theme matches from private communities they are not members of.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-ai-summ-and-theme-extraction-faq",
+      "quote": "The features only access content within communities and groups that each user has permission to view. The features don't expose content from private communities to unauthorized users.",
+      "severity": "blocker",
+      "fix": "Replace the theme-related absence with: 'Microsoft says AI summarization and theme extraction only access content within communities and groups each user has permission to view, and do not expose private-community content to unauthorized users.' Cite https://learn.microsoft.com/viva/engage/lmc-ai-summ-and-theme-extraction-faq. Remove theme moderation from the corresponding Open questions bullet; retain only the narrower keyword-dashboard question."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly describe nonmember corporate communicators' access to private-community keyword matches inside the moderation dashboard.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage advanced moderation corporate communicators private communities access detected conversations. Opened lmc-keyword-monitoring-howto-for-admin-audience and manage-data-compliance: private email alerts contain links for community members; dashboard access for nonmembers is not explicit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Engage admins can assign the Corporate Communicator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Who can assign: Engage admin, network admin, verified admin, and other corporate communicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Network admins can assign the Corporate Communicator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Who can assign: Engage admin, network admin, verified admin, and other corporate communicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Verified admins can assign the Corporate Communicator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Who can assign: Engage admin, network admin, verified admin, and other corporate communicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Corporate communicators can assign further corporate communicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Who can assign: Engage admin, network admin, verified admin, and other corporate communicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft does not state that a corporate communicator can grant the advanced moderation permission.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage corporate communicator assign advanced moderation permission other corporate communicators. Opened lmc-keyword-monitoring-admin-article and eac-key-admin-roles-permissions: communicator role assignment is documented, but granular permission assignment names admin roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "Theme moderation supports automatic blocking of matching new posts, comments and replies, configured per theme by admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Theme moderation supports automatic blocking of new posts, comments, or replies if message content matches a specific theme. Configure a theme to block any new content that matches the theme.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "role",
+      "claim": "Blocks exempt content from network admins, corporate communicators and designated leaders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Admins can configure blocking and apply the feature across the network, including storylines or specific communities. Blocks don't apply to content from network admins, corporate communicators, and designated leaders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Theme moderation requires at least 50% of organization users to have Viva Suite or Viva Employee Communications and Communities, an organization-level threshold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Theme moderation requires at least 50% of users in your organization to have the Viva Suite license, or the Viva Employee Communications and Communities license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Keyword monitoring, detected conversations and the overall advanced moderation destination are included in the Microsoft 365 enterprise plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Keyword monitoring, detected conversations, and the overall advanced moderation destination are included in the Microsoft 365 enterprise plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects the premium theme threshold alongside enterprise-plan inclusion for other moderation tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "Theme moderation requires at least 50% of users in your organization to have the Viva Suite license, or the Viva Employee Communications and Communities license. The Microsoft 365 enterprise plan includes keyword monitoring, detected conversations, and the advanced moderation feature set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Other Viva Engage admin roles can administer premium features without an assigned premium licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Other Viva Engage admin roles can also administer premium features without an assigned premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No permission or theme-moderation meter is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage theme moderation pricing license meter credits advanced moderation permission. Read manage-data-compliance, comms-dashboard-advanced-moderation and Microsoft Viva plans and pricing; results describe licence entitlements, not a permission or theme-moderation consumption meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence for granting the advanced moderation permission itself is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage theme moderation pricing license meter credits advanced moderation permission. Read manage-data-compliance, lmc-keyword-monitoring-admin-article, eac-key-admin-roles-permissions and Microsoft Viva pricing; no separate permission licence was specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui; What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "Permission assignment is reached in Viva Engage admin center through Setup & Configuration > Admin Roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+      "quote": "Go to the Viva Engage Admin Center. Open Setup & Configuration. Select Admin Roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No automation operation that assigns the advanced moderation granular permission is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage advanced moderation permission corporate communicator Microsoft Graph PowerShell API assign granular permission; graph Viva Engage advanced moderation permission beta engagementRole permissions. Read Graph overview, engagementRoleMember and create member: role assignment only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note",
+      "type": "absence",
+      "claim": "The cited admin roles article does not supply the permission's exact setting label.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage advanced moderation permission Admin Roles setting label corporate communicator grant permission. Read lmc-keyword-monitoring-admin-article and manage-data-compliance; assignment directions end at Admin Roles without a selectable granular-permission label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The Corporate Communicator assignment route is Viva Engage admin center > Setup and configuration > Admin roles > Corporate communicator > Add user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "In the Viva Engage admin center, on the Setup and configuration tab, select Admin roles. Select the Corporate communicator tab > Add user to search for a user by name or email ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].api; controls[1].note",
+      "type": "command",
+      "claim": "POST /v1.0/employeeExperience/roles/{engagementRoleId}/members assigns a Viva Engage role to a user, not the granular moderation permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+      "quote": "Create a new engagementRoleMember object that assigns a Viva Engage role to a user. POST https://graph.microsoft.com/v1.0/employeeExperience/roles/a40473a5-0fb4-a250-e029-f6fe33d07733/members",
+      "severity": "minor",
+      "fix": "Keep the call. Add to controls[1].note and the matching rendered note: 'The request body identifies the assignee through userId; Microsoft's HTTP example uses user@odata.bind.' The cited create-member reference documents userId in its request-body table and user@odata.bind in its example."
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The Graph role assignment operation requires EngagementRole.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+      "quote": "Delegated (work or school account): EngagementRole.ReadWrite.All. Application: EngagementRole.ReadWrite.All.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "The Graph Viva Engage API supports native-mode networks only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
+      "quote": "The Viva Engage API in Microsoft Graph is only supported for Viva Engage networks in native mode. You can't use this API to manage legacy or external Viva Engage networks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph engagementRoleMember object describes a user-role association and its assignment date, without a granular moderation permission property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/engagementrolemember?view=graph-rest-1.0",
+      "quote": "Each role member links a predefined role to a specific user, and multiple users can be assigned to the same role. Properties: createdDateTime, id, userId. Relationships: user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "AI-related feature access management is reached through Viva Engage admin center > Setup & configuration > Manage analytics > Analytics settings > Feature access management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/analytics",
+      "quote": "Select the Setup & configuration tab, and select Manage analytics. Activate AI-related features from the Analytics settings page > Feature access management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy with ModuleId, FeatureId, Name, IsFeatureEnabled $false and Everyone creates an organization-wide disabling policy for the specified feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy",
+      "quote": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone. The FeatureId value is returned in the output of the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "The Engage admin manages AI Summarization feature access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "AI Summarization | Yes | Engage admin | Viva Engage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "AI Summarization supports network-wide, group and individual access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/engage-ai-summarization",
+      "quote": "Engage admins can create access policies in PowerShell to turn off AI summarization for the entire network, or for select groups and individuals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "AI Summarization supports a user opt-out enablement state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/engage-ai-summarization",
+      "quote": "Enabled with user opt out: Provides the same functionality as Enabled, except that users who have access to AI Summarization can turn it off for their user account through the setting in their personal analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling AI Summarization for the tenant stops processing and retroactively deletes tenant summarization history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/engage-ai-summarization",
+      "quote": "Stops all processing of Engage threads. If you disable AI summarization for the tenant, all history data in the tenant is retroactively deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn advises a user or group enablement policy to prevent deletion of all summarization data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/engage-ai-summarization",
+      "quote": "To prevent deletion of all summarization data, create a user or group enablement policy or a tenant with a disability policy when you change the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "AI Summarization control changes generally take effect within 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/engage-ai-summarization",
+      "quote": "Changes to the AI summarization control generally take effect within 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "Theme creators reach theme action toggles through Communications dashboard > Advanced moderation > Add theme.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+      "quote": "Go to Communications dashboard > Advanced moderation, and select Add theme. Enter a sensible category phrase in the Theme box. Enable the Auto-mute and Email notification toggles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Theme matches can be reviewed in Advanced moderation > Detected conversations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "When you add new themes, ongoing conversations that match themes start to populate the Advanced moderation > Detected conversations table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope: Prerequisite for themes",
+      "type": "applicability",
+      "claim": "AI Summarization must remain enabled for the users whose conversations theme moderation processes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+      "quote": "Theme moderation is built on the Viva Engage AI Summarization service. By default, AI summarization is enabled and processes data across all users in your network unless you specify otherwise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: Before rollout and At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to govern per-theme Auto-mute and Email notification, but the controls table has no corresponding theme-action row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Write down who may create themes, when Auto-mute and Email notification may be switched on for a theme. Table rows cover granular permission, Corporate Communicator role and AI Summarization, not theme actions.",
+      "severity": "minor",
+      "fix": "Remove the checklist instruction 'Write down who may create themes, when Auto-mute and Email notification may be switched on for a theme, and who reviews detected conversations' and the At rollout instruction to start themes with Auto-mute off and later turn it on. Those theme-action controls have no table row; retain the already documented explanatory prose without adding a row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T20:14:13.779Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/manage-data-compliance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/comms-dashboard-advanced-moderation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/engage-ai-summarization",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/analytics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/feature-access-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/engagementrolemember?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=479408",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a corporate communicator has the advanced moderation permission",
+        "docs": "https://learn.microsoft.com/viva/engage/lmc-keyword-monitoring-admin-article",
+        "reachable": true,
+        "segments": [
+          "Setup & Configuration",
+          "Admin Roles"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who holds the Corporate Communicator role in Viva Engage",
+        "docs": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+        "reachable": true,
+        "segments": [
+          "Setup and configuration",
+          "Admin roles",
+          "Corporate communicator",
+          "Add user"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who holds the Corporate Communicator role in Viva Engage",
+        "docs": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/employeeExperience/roles",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether AI Summarization, which theme moderation is built on, processes Engage threads",
+        "docs": "https://learn.microsoft.com/viva/engage/analytics",
+        "reachable": true,
+        "segments": [
+          "Setup & configuration",
+          "Manage analytics",
+          "Analytics settings",
+          "Feature access management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether AI Summarization, which theme moderation is built on, processes Engage threads",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

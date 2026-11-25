@@ -1,0 +1,703 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-embedded-knowledge-capability-support-for-declarative-a",
+  "roadmapId": 474448,
+  "title": "Microsoft 365 Copilot: embedded knowledge files in declarative agents built with the toolkit",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "2 blocking findings (claims 25, 46)"
+    ]
+  },
+  "counts": {
+    "claims": 51,
+    "confirmed": 47,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the automation table offers a Teams cmdlet that Microsoft explicitly says not to use. The briefing also treats deployment as the boundary for access, although Microsoft distinguishes who can install an agent from who receives it preinstalled.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "The roadmap describes developers and makers embedding PDF, Word and PowerPoint knowledge in declarative agents built with Teams Toolkit for grounding.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Developers and makers can embed knowledge (pdf, doc/docx, ppt) into their declarative agents built with Teams Toolkit for additional grounding capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Developer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Microsoft Learn calls the developer tool Microsoft 365 Agents Toolkit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "You can use the Microsoft 365 Agents Toolkit to build agents without a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Schema 1.9 documents EmbeddedKnowledge as using local files in the app package for grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "Indicates that the declarative agent can use files locally in the app package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Embedded files are identified by relative path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "Required. The file relative path for the embedded file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The manifest allows at most 10 embedded files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "Required. List of objects identifying files that contain knowledge the agent can use for grounding. Maximum size of the array is 10.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Each manifest embedded knowledge file has a maximum size of 1 MB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "Embedded knowledge files have a maximum file size of 1 MB",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The documented embedded file types are .doc, .docx, .ppt, .pptx, .xls, .xlsx, .txt and .pdf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "Word document (.doc, .docx)\nPowerPoint presentation (.ppt, .pptx)\nExcel workbook (.xls, .xlsx)\nPlain text (.txt)\nPortable Document Format (.pdf)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A developer declares EmbeddedKnowledge in the agent manifest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "`capabilities` | Array of Capabilities object | Optional. Contains an array of objects that define capabilities of the declarative agent. `name` | String | Required. Must be set to `EmbeddedKnowledge`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "Learn lists embedded file content as configurable in Agent Builder but not Agents Toolkit, conflicting with the launched roadmap record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+      "quote": "| Capability or knowledge source | Agent Builder | Agents Toolkit | License or metered usage required? |\n| Embedded file content | ✅ | ❌ | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The manifest's sensitivity label note says Embedded Files and the label property are not enabled yet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "Sensitivity labels are only applied to the agent, when the agent has Embedded Files. This property is not enabled yet, since Embedded Files are not enabled yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agent Builder is a no-code builder in Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-build-agents",
+      "quote": "Agent Builder provides a simple interface that you can use to quickly build declarative agents by using natural language. This article describes how to use Agent Builder to build an agent for Microsoft 365 Copilot.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-build-agents for the description of Agent Builder."
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agent Builder has a direct file upload route for embedded knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+      "quote": "If you're using Agent Builder to build your agent, you can upload files directly from your device or the cloud to embed the content for your agent to use as knowledge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agent Builder's embedded file upload limits differ from the manifest's 10-file, 1 MB limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+      "quote": "Users can upload up to 20 files per agent. | .doc, .ppt, .xls, .xlsx, .txt | 150 MB | | .docx, .pptx, and .pdf | 512 MB |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Agent Builder uploads are stored in SharePoint Embedded containers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+      "quote": "Copilot stores the uploaded files in tenant-owned SharePoint Embedded containers. It then embeds the file content as knowledge for the agent to use in responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Agent Builder embedded files count against tenant OneDrive and SharePoint capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+      "quote": "The embedded file content is stored in SharePoint Embedded. These files count against the OneDrive and SharePoint capacity in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "SharePoint and OneDrive knowledge retrieval is limited to content the user has access to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+      "quote": "When you configure your agent to use SharePoint and OneDrive content as knowledge, Copilot searches SharePoint and OneDrive files, folders, or sites that a user has access to for grounding information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Microsoft Purview Information Barriers are not supported on embedded files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+      "quote": "Microsoft Purview Information Barriers (IB) isn't supported on embedded files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Any user who can access the agent can see responses grounded in its embedded content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+      "quote": "Any user who can access the agent can see responses grounded in the embedded file content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Scope: Who uses; Governance guidance: At rollout; rationale: impact",
+      "type": "applicability",
+      "claim": "Who the agent is deployed to is the access boundary, and only users of agents deployed to them see the results.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#upload-custom-agent",
+      "quote": "Under Publish, select the users or groups who can install the agent. Under Deploy (optional), select the users or groups who will have the agent preinstalled.",
+      "severity": "blocker",
+      "fix": "Replace 'Who the agent is deployed to therefore becomes the access control for that content' with 'Who can access the agent therefore becomes the access boundary for that content.' In Scope, say 'Users who can access the agent' instead of 'users the agent is deployed to'. Remove the At rollout bullet directing readers to limit deployment. End the impact rationale with 'users who can access those agents see the results'. Deployment alone controls preinstallation, not all access; the distinction is documented at https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#upload-custom-agent."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment; Governance guidance; Open questions",
+      "type": "applicability",
+      "claim": "The service applies embedded-content sensitivity labels only to agents created in Agent Builder, not toolkit-created agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+      "quote": "The service only applies sensitivity labels if: You create the agent by using Microsoft Copilot Agent Builder. The agent includes embedded files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment; Scope; controls[1].governs",
+      "type": "applicability",
+      "claim": "Building and testing toolkit agents requires the administrator to allow custom app sideloading.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "To build agents with Agents Toolkit and other IDEs, you must have your admin enable the ability to sideload a custom app to your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "EmbeddedKnowledge adds grounding content rather than defining actions the agent can take.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "`files`: List of objects identifying files that contain knowledge the agent can use for grounding. `actions`: Optional. A list of 1-10 objects that identify plugins that provide actions accessible to the declarative agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Embedded file content has mixed entitlement: Microsoft 365 Copilot licensing or usage-based billing, and is unavailable to Copilot Chat users without usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom knowledge: Embedded file content | ❌ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: cost; licensing notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Usage-based billing is measured in Copilot Credits, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage-based billing (pay-as-you-go) - Tenants can enable agent access without a full license, with some limitations to agent configuration options. Consumption is measured in Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "applicability",
+      "claim": "Usage billing applies to agents grounded in tenant data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage billing applies to agents grounded in tenant data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Agents grounded in public data or instructions are free to use under the cited usage-based billing description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "while agents grounded in public data or instructions are free to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Usage-based billing requires an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "An Azure subscription and billing policy setup in the Microsoft 365 admin center are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Usage-based billing requires billing policy setup in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "An Azure subscription and billing policy setup in the Microsoft 365 admin center are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Embedded file content is not supported in GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+      "quote": "Embedded file content isn't supported in Microsoft 365 Government Community Cloud (GCC) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Usage-based billing is not supported in GCC or GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage-based billing isn't supported in Microsoft 365 Government Community Cloud High (GCCH) and Government Community Cloud (GCC) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A Copilot Credits rate specifically for embedded knowledge is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Credits embedded file content declarative agents billing rate tenant data grounding'; opened prerequisites and Billing rates and management. General answer and tenant graph rates are published, but no rate specifically for embedded knowledge was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The service storage location of toolkit-packaged embedded files is not published beyond their location in the app package.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'declarative agent toolkit EmbeddedKnowledge files storage SharePoint capacity'; opened knowledge-sources, manifest 1.9 and agent-details. Package-local files are documented; SharePoint Embedded storage text concerns Agent Builder uploads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The capacity treatment of toolkit-packaged embedded files is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'declarative agent toolkit EmbeddedKnowledge files storage SharePoint capacity'; opened knowledge-sources, manifest 1.9 and agent-details. The tenant-capacity statement is for Agent Builder uploads, not toolkit-packaged files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Embedded knowledge is maker-selected rather than automatically added to agents, expressed as user-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+      "quote": "`capabilities`: Optional. Contains an array of objects that define capabilities of the declarative agent. Embedded knowledge `name`: Required. Must be set to `EmbeddedKnowledge`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].ui; rendered controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > All agents > agent > Block blocks the selected agent for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].api; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block is the beta operation that blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; rendered controls table; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The block call needs the CopilotPackages.ReadWrite.All delegated permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Setup policies > Global (Org-wide default) > Upload custom apps is the documented sideloading path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "To enable sideloading, from Teams admin center, select Teams apps > Setup policies > Global (Org-wide default), and switch the Upload custom apps toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].api; rendered controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsAppSetupPolicy -Identity <policy name> -AllowSideLoading $false is offered as the automation administrators should use to configure custom app uploads.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps",
+      "quote": "but do not use this cmdlet. We require that all creation and modification of app setup polices (not including the assignment or removal of policies from users) happens in the Microsoft Teams & Skype for Business Admin Center",
+      "severity": "blocker",
+      "fix": "Remove controls[1] and its rendered table row rather than offering this prohibited cmdlet as automation or falsely marking automation undocumented. In Governance controls, retain the verified UI as: 'Configure custom app uploads in Teams admin center > Teams apps > Setup policies > Global (Org-wide default) > Upload custom apps. Microsoft documents Set-CsTeamsAppSetupPolicy for completeness but says not to use it; create and modify app setup policies in the Teams admin center.' Retain the prerequisites and cmdlet references. Remove the Before rollout checklist bullet directing readers to scope the setup policy, since the corrected table will have no row for that control."
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Teams cmdlet reference requires policy creation and modification in the admin centre rather than through this cmdlet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps",
+      "quote": "We require that all creation and modification of app setup polices (not including the assignment or removal of policies from users) happens in the Microsoft Teams & Skype for Business Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2]; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "No separate tenant-wide UI or API switch for embedded knowledge is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'declarative agent EmbeddedKnowledge embedded file content disable tenant admin switch Graph' and 'Microsoft Graph copilot admin settings embedded knowledge disable tenant EmbeddedKnowledge'; read knowledge-sources, agent-details, agent-actions and Copilot settings search excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "For Agent Builder agents, All agents can filter the inventory to agents using embedded file knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+      "quote": "In the All agents page in the Microsoft 365 admin center, you can filter the agent inventory to view only agents that use embedded files as knowledge sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to confirm tenant usage-based billing, but the controls table has no billing control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm whether usage-based billing in the tenant should cover agents grounded in tenant data for users without a Microsoft 365 Copilot licence. Controls table: agent blocking; custom app uploads; tenant embedded knowledge switch.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Confirm whether usage-based billing in the tenant should cover agents grounded in tenant data for users without a Microsoft 365 Copilot licence.' It asks readers to check a billing control absent from the table; retain the verified billing explanation in Cost and licensing."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: At rollout",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to limit each agent's audience, but the controls table contains no audience or access control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Limit each agent's deployment to the users entitled to read every embedded file. Controls table: agent blocking; custom app uploads; tenant embedded knowledge switch.",
+      "severity": "minor",
+      "fix": "Remove the At rollout bullet directing administrators to limit deployment or access: this control has no table row. Keep the corrected access-boundary explanation in Why it matters; do not add a new control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T20:14:10.056Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=474448",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/knowledge-sources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.9",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an agent is blocked for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an agent is blocked for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can upload custom apps, which building toolkit agents requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Setup policies",
+          "Global",
+          "Upload custom apps"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can upload custom apps, which building toolkit agents requires",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsAppSetupPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

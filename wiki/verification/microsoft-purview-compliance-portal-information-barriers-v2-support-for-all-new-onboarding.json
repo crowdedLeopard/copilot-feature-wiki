@@ -1,0 +1,978 @@
+{
+  "slug": "microsoft-purview-compliance-portal-information-barriers-v2-support-for-all-new-onboarding",
+  "roadmapId": 402516,
+  "title": "Microsoft Purview Information Barriers v2: 5,000 segments, multiple segments per user and people discoverability (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 69)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 68,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 8
+  },
+  "summary": "Hold: the rollout checklist tells administrators to leave policies inactive and then apply them, without activating them first. Microsoft states that inactive policies do not enforce barriers; the commands, licence statements and roadmap facts otherwise have support, with several small documentation qualifications to correct.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap describes IB v2 for all newly onboarding customers, although its description says it is now available.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Information Barriers v2 (IB v2) is now available for all new onboarding customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap's v2 segment limit is 5,000 per organisation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Large-scale segment support: The segment limit in organizations has increased to 5,000.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap's v2 assignment limit is 10 segments per user.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Multi-segment support: Users can be assigned to up to 10 segments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap offers discovery of IB-protected users while communication and collaboration policies still apply.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizations can now choose to allow IB-protected users to discover each other while adhering to IB communication and collaboration policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The record status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is March CY2026, already past on the November 2026 run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The record platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The record release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-06-05T23:00:34.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-06-05T23:00:34\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope: Services",
+      "type": "behaviour",
+      "claim": "IB policies restrict communication and collaboration between chosen groups in Teams, SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Block policies prevent one segment from communicating with another segment. ... behavior for these users and groups differs in Microsoft Teams, SharePoint, OneDrive, and in your global address list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An organisation is in Legacy, SingleSegment or MultiSegment mode depending on when it enabled IB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Depending on when you enabled IB in your organization, your organization is in either Legacy, SingleSegment, or MultiSegment organization mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "SingleSegment and MultiSegment organisations support up to 5,000 segments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "SingleSegment: Users in the organization can have 5000 segments but can only be assigned to one segment. ... MultiSegment: Users in the organization can have 5000 segments and can be assigned up to 10 segments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Legacy organisations have a maximum of 250 segments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "For organizations in Legacy mode, the maximum number of segments supported is 250",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Legacy organisations restrict each user to one segment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "users are restricted to being assigned to only one segment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Scope; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft says Legacy organisations are eligible for a future upgrade.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Organizations in Legacy mode are eligible to upgrade to the newest version of Information Barriers in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Assigning users to multiple segments requires MultiSegment mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "By using the multi-segment mode, you can assign users in your organization to up to 10 segments in Information Barriers instead of being limited to just one segment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: Exchange Online address book policies",
+      "type": "behaviour",
+      "claim": "Outside Legacy mode IB no longer uses Exchange Online address book policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "For organizations in SingleSegment or MultiSegment mode: Information Barriers no longer uses Exchange Online Address Book Policies (ABPs).",
+      "severity": "minor",
+      "fix": "Replace the sentence with: 'Get started with Information Barriers says SingleSegment and MultiSegment no longer use Exchange Online ABPs. Learn about Information Barriers instead says IB no longer relies on ABPs but can automatically create ABPs with empty address lists for users without one.' Cite https://learn.microsoft.com/purview/information-barriers#information-barriers-and-exchange-online."
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Non-IB users and groups are visible to segmented users outside Legacy mode, unlike Legacy allow-policy behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "For organizations in Legacy mode: For users defined in allow policies, non-IB groups and users aren't visible ... For organizations in SingleSegment or MultiSegment mode: Non-IB groups and users are visible to users included in IB segments and policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "IB policies are enforced for hidden users in SingleSegment and MultiSegment mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "When the organization is in SingleSegment or MultiSegment mode, IB policies are enforced for hidden users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].note; What's changing; Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "The people picker restriction is enabled by default and can prevent blocked users from discovering each other.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "By default, the people picker restriction is enabled for IB policies. For example, IB policies that block two specific users from communication can also restrict the users from seeing each other when using the people picker.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; What's changing",
+      "type": "applicability",
+      "claim": "Legacy organisations cannot enable or disable the people search restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-edit-segments-policies",
+      "quote": "Organizations in Legacy mode can't enable or disable search restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Multi-segment users are compatible when they share an assigned segment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "If users share assignment to the same segment, they're compatible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[3].note; What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft instructs multi-segment organisations to define all policies with an allow list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "For organizations using multi-segment support, define all Information Barriers policies with an allow list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The moderated meetings guide says multi-segment does not work with any Block policies configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-teams-moderated-meetings",
+      "quote": "If you configure any Block policies in your organization, multi-segment doesn't work. For multi-segment IBv2 to work, configure your organization with Allow policies only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk and impact",
+      "type": "default",
+      "claim": "The control is admin-opt-in: defining segments or policies restricts nobody until policies are activated and applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Defining segments doesn't affect users ... Defining (or editing) policies doesn't affect users until you set those policies to active status and then apply them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; What's changing; Why it matters; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Multi-segment support can be enabled only before any IB segments or policies are defined.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "To enable multiple segment support for organizations in SingleSegment mode, make sure that you don't currently have any IB segments or policies defined for your organization.",
+      "severity": "minor",
+      "fix": "Keep the prerequisite, but add: 'The multi-segment guide requires no existing segments or policies before enabling MultiSegment; the moderated meetings guide gives a different sequence, creating segments and policies before changing the mode.' Cite https://learn.microsoft.com/purview/information-barriers-teams-moderated-meetings. Replace 'is accepted only' with 'the multi-segment guide requires'."
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises against reverting to single-segment support after enabling multiple segments and configuring IB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "If you enable multiple segments and configure IB in your organization, don't revert to single segment support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no Purview portal setting to change the organisation's IB mode.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Information Barriers Microsoft Purview portal InformationBarrierMode people search restriction settings UI. Opened Get started, multi-segment, Manage policies and moderated meetings; mode changes are documented through Set-PolicyConfig, not a portal control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no Purview portal setting for the people picker restriction.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Information Barriers Microsoft Purview portal InformationBarrierMode people search restriction settings UI. Opened Get started, Manage policies and moderated meetings; the restriction is set through Set-PolicyConfig and no portal setting is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].api; What's changing; Governance controls",
+      "type": "command",
+      "claim": "Set-PolicyConfig -InformationBarrierMode 'MultiSegment' changes the tenant's IB mode through Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "Run the following cmdlet to enable multiple segment support in your organization: Set-PolicyConfig -InformationBarrierMode 'MultiSegment'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-PolicyConfig -InformationBarrierPeopleSearchRestriction 'Disabled' disables the tenant restriction in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-edit-segments-policies",
+      "quote": "Make sure to connect to the Security & Compliance PowerShell. ... Set-PolicyConfig -InformationBarrierPeopleSearchRestriction 'Disabled'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "Setting InformationBarrierPeopleSearchRestriction to Enabled restores the restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-edit-segments-policies",
+      "quote": "Use the Set-PolicyConfig cmdlet to enable the people picker restriction: Set-PolicyConfig -InformationBarrierPeopleSearchRestriction 'Enabled'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The segment creation route is Microsoft Purview portal > Information Barriers > Segments > New segment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Select the Information Barriers solution card. ... Select Segments. ... select New segment ... On the User group filter page, select Add to configure the group and user attributes for the segment.",
+      "severity": "minor",
+      "fix": "Extend controls[2].ui.path to 'Information Barriers > Segments > New segment > User group filter > Add', ending at the membership configuration control. The intervening Name page only collects a typed name."
+    },
+    {
+      "n": 36,
+      "where": "controls[2].api; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "New-OrganizationSegment -Name \"segmentname\" -UserGroupFilter \"attribute -eq 'attributevalue'\" creates a segment whose membership uses that directory filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "New-OrganizationSegment -Name \"segmentname\" -UserGroupFilter \"attribute -eq 'attributevalue'\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Portal segment membership is configured on the User group filter page using directory attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "On the User group filter page, select Add to configure the group and user attributes for the segment. Choose an attribute for the segment from the list of available attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Segments use populated directory attributes in Microsoft Entra ID or Exchange Online, including Department or MemberOf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "user account attributes ... are populated correctly in Microsoft Entra ID or Exchange Online. ... You can use Department, MemberOf, or any of the supported IB attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Editing the attributes used for segmentation can change a user's segment membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-edit-segments-policies",
+      "quote": "Edit user account attributes when users aren't included in segments they should be, to change which segments users are in, or to define segments by using different attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Scope: Roles",
+      "type": "role",
+      "claim": "IB policy management requires one of the four listed administrator or IB Compliance Management roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "To manage IB policies, you must be assigned one of the following roles: Microsoft 365 global administrator; Office 365 global administrator; Compliance administrator; IB Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The policy route is Microsoft Purview portal > Information Barriers > Policies > Create policy > Communication and collaboration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Select Policies. ... select Create policy ... On Communication and collaboration, select the policy type ... The policy options are either Allowed or Blocked.",
+      "severity": "minor",
+      "fix": "Extend controls[3].ui.path to 'Information Barriers > Policies > Create policy > Assigned segment > Choose segment > segment > Communication and collaboration > Allowed (or Blocked)'. Add to the note: 'The moderated meetings guide gives the policy-list route as Information Barriers > Policies > Policies.' That differing route is at https://learn.microsoft.com/purview/information-barriers-teams-moderated-meetings."
+    },
+    {
+      "n": 42,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "New-InformationBarrierPolicy with AssignedSegment and SegmentsAllowed creates an allow policy for the named assigned segment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "New-InformationBarrierPolicy -Name \"policyname\" -AssignedSegment \"segmentAname\" -SegmentsAllowed \"segmentBname\",\"segmentAname\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "An existing policy's Allowed or Blocked type cannot be changed after creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "You can't change the Allowed and Blocked status for segments after creating a policy. To change the status, delete the policy and create a new one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "The application route is Microsoft Purview portal > Information Barriers > Policy application > Apply all policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Select the Information Barriers solution card. ... Select Policy application. On the Policies application page, select Apply all policies",
+      "severity": "minor",
+      "fix": "Keep the cited route, but add to controls[4].note: 'The moderated meetings guide instead gives Information Barriers > Policies > Policy applications > Apply all policies.' The differing route is at https://learn.microsoft.com/purview/information-barriers-teams-moderated-meetings."
+    },
+    {
+      "n": 45,
+      "where": "controls[4].api; Governance controls",
+      "type": "command",
+      "claim": "Start-InformationBarrierPoliciesApplication applies all active IB policies using Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "When you finish setting your IB policies to active status, use the Start-InformationBarrierPoliciesApplication cmdlet in Security & Compliance PowerShell. ... Apply all active IB policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[4].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Policy application starts after approximately 30 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Allow 30 minutes for the system to start applying the policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[4].note; Risk assessment; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Policy application processes approximately 5,000 user accounts per hour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "The system applies policies user by user and processes about 5,000 user accounts per hour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Auditing can be enabled at Microsoft Purview portal > Audit > Start recording user and admin activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. ... Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true enables auditing through Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Connect to Exchange Online PowerShell. ... Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[5].note",
+      "type": "default",
+      "claim": "Audit logging is on by default for Microsoft 365 organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Audit logging is on by default for Microsoft 365 organizations. ... Auditing isn't enabled by default for Small and Medium Business (SMB) licenses ... unmanaged tenants that use free trials of enterprise licenses",
+      "severity": "minor",
+      "fix": "Qualify controls[5].note: 'Audit logging is on by default for Microsoft 365 organisations, except SMB licences and unmanaged tenants using free enterprise trials; verify the tenant's auditing status.' These exceptions are outside the government enterprise case described here."
+    },
+    {
+      "n": 51,
+      "where": "controls[5].governs; Scope; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Audit logging must be enabled to look up IB policy application status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "To look up the status of an IB policy application, audit logging must be turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Scoped directory search must be enabled in Teams at least 24 hours before defining the first IB policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Before you define your organization's first IB policy, you must enable scoped directory search in Microsoft Teams. Wait at least 24 hours after enabling scoped directory search before you set up or define IB policies.",
+      "severity": "minor",
+      "fix": "Retain the conservative 24-hour instruction, but add: 'Get started specifies at least 24 hours; Information Barriers in Microsoft Teams says at least a few hours.' Cite https://learn.microsoft.com/purview/information-barriers-teams#manage-segments-and-policies."
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "IB is licensed per user for users in segments defined under Assigned Segments in block or allow policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "While defining IB Policy (Block or Allow), users belonging to segments defined under \"Assigned Segments\" require licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service plan reference lists Information Barriers in Microsoft 365 E5 Compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/licensing-service-plan-reference",
+      "quote": "Microsoft 365 E5 Compliance | INFORMATION_PROTECTION_COMPLIANCE ... Information Barriers (c4801e8a-cb58-4c35-aca6-f2dcc106f287)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Get started page requires supporting subscriptions or add-ons and links to subscription requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "To access and use IB, your organization must have supporting subscriptions or add-ons. For more information, see the subscription requirements for Information Barriers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence or price specific to IB v2 or multi-segment mode is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Information Barriers v2 MultiSegment licensing pricing consumption meter separate licence. Read service description's IB section, E5 Compliance service-plan row, Get started and multi-segment guides; none gives a separate v2 or multi-segment licence or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "Microsoft documents no consumption meter for Information Barriers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Information Barriers Microsoft Purview licensing assigned segments v2 multi-segment price meter E5 Compliance; Information Barriers v2 MultiSegment licensing pricing consumption meter separate licence. Read service description IB section and licensing result; no IB meter stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Learn does not state the starting IB mode for newly onboarded government organisations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Information Barriers GCC High DoD new onboarding SingleSegment default mode availability; Information Barriers new organizations default SingleSegment mode onboarding. Read Get started, multi-segment and government search excerpts; no new-tenant starting mode stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The cited Get started and multi-segment pages describe the modes without cloud-specific availability distinctions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Information Barriers GCC High DoD new onboarding SingleSegment default mode availability. Read Get started and multi-segment guides in full; neither distinguishes modes by cloud. Government plan excerpts describe general IB availability, not new-onboarding mode defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "When OneDrive is configured for multi-segment IB, a multi-segment user's OneDrive automatically uses Owner Moderated mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "When you configure OneDrive for Information Barriers to support multiple segments ... A multi-segment user's OneDrive is automatically set to Owner Moderated mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "With SharePoint configured for multi-segment IB, a site created by a multi-segment user automatically uses Owner Moderated mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "When you configure SharePoint for Information Barriers to support multiple segments ... A user with multiple segments who creates a SharePoint site ... automatically uses Owner Moderated mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "With Teams configured for multi-segment IB, a team created by a multi-segment user automatically uses Implicit mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "When you configure Teams for Information Barriers to support multiple segments ... A user with multiple segments who creates a team automatically uses Implicit mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Resource owners decide membership subject to the relevant IB policies in Owner Moderated and Implicit modes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Only the resource owner can add new members per their IB policy. ... The owner can add members as long as they're compatible with the existing members of the resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls; Cost and licensing: Indirect costs",
+      "type": "applicability",
+      "claim": "IB must also be enabled for SharePoint and OneDrive to protect sites, including the site created with a team.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-sharepoint",
+      "quote": "Run the following command to enable Information Barriers in SharePoint and OneDrive: Set-SPOTenant -InformationBarriersSuspension $false ... To protect the Microsoft Teams sites by using Information Barriers control, enable Information Barriers in SharePoint for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-PolicyConfig in Security & Compliance PowerShell exposes InformationBarrierMode for checking the organisation's mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+      "quote": "Run the following cmdlet to verify your IB mode in the Security & Compliance PowerShell: Get-PolicyConfig ... If the value of the InformationBarrierMode property is SingleSegment",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Get-InformationBarrierPoliciesApplicationStatus reports whether policy application completed, failed or is in progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Get-InformationBarrierPoliciesApplicationStatus ... This cmdlet displays information about whether policy application completed, failed, or is in progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Get-ExoInformationBarrierRelationship can check the IB relationship for a pair of users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Get-ExoInformationBarrierRelationship -RecipientId1 meganb -RecipientId2 alexw ... This cmdlet returns information about users, such as attribute values and any IB policies that are applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The design must not assign more than one IB policy to a segment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "Don't assign more than one policy to a segment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: At rollout, policy creation bullet",
+      "type": "consistency",
+      "claim": "The checklist's instruction to leave policies inactive and then apply all policies omits the activation required by the body and rationale.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/information-barriers-policies",
+      "quote": "IB policies take effect when you set them to active status and apply the policies. ... Use the Set-InformationBarrierPolicy cmdlet with the Identity parameter and the State parameter set to Active to set a policy to active status.",
+      "severity": "blocker",
+      "fix": "Replace the checklist bullet with: 'Create one policy per assigned segment, leave it inactive until the set is complete, then set each policy to active status and apply all policies.' This adds the required activation step without adding a new command or control row."
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to check application status and user relationships, but neither monitoring control has a table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check Get-InformationBarrierPoliciesApplicationStatus until application completes ... Test pairs of users with Get-ExoInformationBarrierRelationship ... The table contains mode, people search, segments, policy creation, application and auditing rows only.",
+      "severity": "minor",
+      "fix": "Remove the two After rollout bullets beginning 'Check Get-InformationBarrierPoliciesApplicationStatus' and 'Test pairs of users with Get-ExoInformationBarrierRelationship' to align the checklist with its existing table; do not add rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T20:14:14.253Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 6,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/information-barriers-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/information-barriers-edit-segments-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/information-barriers-teams-moderated-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/users/licensing-service-plan-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=402516",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/information-barriers-sharepoint",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can be assigned to more than one segment (organisation IB mode)",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-multi-segment",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether IB-protected users can find each other in the people picker",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-edit-segments-policies",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users belong to each segment",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-policies",
+        "reachable": true,
+        "segments": [
+          "Information Barriers",
+          "Segments",
+          "New segment"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users belong to each segment",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-policies",
+        "reachable": true,
+        "token": "New-OrganizationSegment",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which segments an assigned segment may communicate with (allow or block policy)",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-policies",
+        "reachable": true,
+        "segments": [
+          "Information Barriers",
+          "Policies",
+          "Create policy",
+          "Communication and collaboration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which segments an assigned segment may communicate with (allow or block policy)",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-policies",
+        "reachable": true,
+        "token": "New-InformationBarrierPolicy",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Applying active IB policies to users",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-policies",
+        "reachable": true,
+        "segments": [
+          "Information Barriers",
+          "Policy application",
+          "Apply all policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Applying active IB policies to users",
+        "docs": "https://learn.microsoft.com/purview/information-barriers-policies",
+        "reachable": true,
+        "token": "Start-InformationBarrierPoliciesApplication",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether the unified audit log records activity, needed to look up IB policy application status",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Whether the unified audit log records activity, needed to look up IB policy application status",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

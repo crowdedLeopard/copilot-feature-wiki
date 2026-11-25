@@ -2,58 +2,41 @@
   "slug": "power-pages-sdk-software-development-kit",
   "roadmapId": 577419,
   "title": "Power Pages: SDK for native mobile apps and kiosks",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-25",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "1 blocking finding (claim 55)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 60,
-    "confirmed": 59,
-    "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
-    "major": 0,
-    "minor": 5
+    "claims": 72,
+    "confirmed": 71,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 3
   },
-  "summary": "Hold: the table-permission automation lists components but cannot change permissions, despite appearing beside a configuration control. The roadmap facts match the record, and targeted searches found no documentation resolving the SDK-specific licensing, default or administrator-switch questions.",
+  "summary": "The briefing passes: the roadmap targets, existing Power Pages controls and general licensing are supported, and searches confirmed the narrowly stated SDK documentation gaps. Remove the unsupported suggestion that site-level controls were designed around the browser; the admin paths also need their final editing steps and the website-binding explanation needs a citation.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans a Software Development Kit for Power Pages.",
+      "claim": "Microsoft plans a Power Pages SDK for native mobile applications.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Power Pages: SDK (Software Development Kit)",
+      "quote": "Power Pages: SDK (Software Development Kit). Build native mobile applications or kiosks using Power Pages as the backend foundation",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "title; summary; What's changing; rationale: impact",
-      "type": "record",
-      "claim": "The planned SDK supports building native mobile applications.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "title; summary; What's changing; rationale: impact",
       "type": "record",
       "claim": "The planned SDK supports building kiosks.",
@@ -64,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "summary; What's changing; Why it matters; rationale: risk",
       "type": "record",
-      "claim": "The roadmap describes Power Pages as the backend foundation for these applications.",
+      "claim": "The SDK uses Power Pages as its backend foundation.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "using Power Pages as the backend foundation",
@@ -75,10 +58,21 @@
       "fix": null
     },
     {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes authentication support.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 5,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The roadmap names authentication as a planned SDK capability.",
+      "claim": "The roadmap describes authorization support.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
@@ -87,9 +81,9 @@
     },
     {
       "n": 6,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap names authorization as a planned SDK capability.",
+      "claim": "The roadmap describes API support.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
@@ -98,9 +92,9 @@
     },
     {
       "n": 7,
-      "where": "What's changing",
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap names APIs as a planned SDK capability.",
+      "claim": "The roadmap describes data access as an SDK capability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
@@ -109,9 +103,9 @@
     },
     {
       "n": 8,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap names data access as a planned SDK capability.",
+      "claim": "The roadmap describes reusable mobile capabilities.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
@@ -120,17 +114,6 @@
     },
     {
       "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap names reusable mobile capabilities.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "and reusable mobile capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -141,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "n": 10,
+      "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "General Availability is targeted for March CY2027, not committed for that month.",
+      "claim": "General Availability is targeted for March CY2027, not committed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"March CY2027\"",
@@ -152,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "front matter: previewDate; What's changing; Why it matters; Scope; Open questions",
       "type": "record",
-      "claim": "Preview is targeted for January CY2027, not committed for that month.",
+      "claim": "Preview is targeted for January CY2027.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"January CY2027\"",
@@ -163,238 +146,194 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: releasePhase; What's changing; Risk assessment: Change & support",
+      "n": 12,
+      "where": "front matter: releasePhase; What's changing; Risk assessment; Scope",
       "type": "record",
-      "claim": "General Availability is a listed release phase.",
+      "claim": "The listed release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an assertion that others are excluded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "front matter: releasePhase; What's changing; Risk assessment: Change & support",
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "Preview is a listed release phase.",
+      "claim": "The platform listed on the roadmap is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "front matter: clouds; What's changing; Scope: Product and clouds",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap record says nothing about agents.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"; \"description\": \"Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "Scope: Product and clouds",
-      "type": "record",
-      "claim": "The roadmap lists no other cloud, without establishing that other clouds are excluded.",
+      "where": "summary; What's changing; front matter: confidence",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this native-mobile-and-kiosk SDK in November 2026.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile applications kiosks software development kit platforms languages authentication APIs prerequisites; \"Power Pages\" \"SDK\" \"native\" \"kiosks\". Read introduction, capabilities and PWA results; no matching SDK page.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "front matter: platforms; What's changing; Scope: Platforms; Open questions",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Web\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "summary; What's changing; front matter: changes",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this native-mobile-and-kiosk SDK.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" \"native\" mobile kiosks licensing; opened Web API overview and progressive web apps overview; results described websites and PWAs, not this SDK.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Scope: Platforms; Open questions",
-      "type": "absence",
-      "claim": "Supported SDK operating systems and device types are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" progressive web app supported languages platforms; read Power Pages system requirements and PWA overview results; neither specified platforms for this SDK.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
       "where": "What's changing",
       "type": "absence",
       "claim": "Supported SDK programming languages are not yet documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" progressive web app supported languages platforms; read developer capabilities and PWA results; no SDK programming-language support was stated.",
+      "quote": "Searched: Power Pages SDK native mobile applications kiosks software development kit platforms languages authentication APIs prerequisites. Read client API, SPA and Power Apps native mobile results; none specifies languages for this Power Pages SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The SDK's supported operating systems are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile applications kiosks software development kit platforms languages authentication APIs prerequisites; \"Power Pages\" \"SDK\" \"native\" \"kiosks\". Read PWA and native Power Apps results; neither documents this SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The SDK's supported identity providers are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile table permissions web roles authentication identity providers progressive web apps. Read authentication overview, authentication training and SPA results; no SDK-specific sign-in specification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified which Power Pages APIs this SDK calls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile applications kiosks software development kit platforms languages authentication APIs prerequisites. Opened web-api-overview and read client API, SPA and MCP results; no SDK API mapping.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "What's changing; Risk assessment: Data exposure; Governance controls; Open questions",
+      "where": "Scope: Prerequisites and roles",
       "type": "absence",
-      "claim": "Microsoft has not documented which APIs the SDK uses, including whether it uses the portals Web API.",
+      "claim": "SDK-specific prerequisites are not yet documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" \"table permissions\" \"Web API\"; opened Web API overview; read SPA and security results from SDK searches; none described the native SDK's API path.",
+      "quote": "Searched: \"Power Pages\" \"SDK\" default prerequisites roles enabled disabled. Read admin-roles, create-manage, component-framework and system-requirements results; these address websites or other features, not this SDK.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "The SDK's supported identity providers are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" authentication authorization prerequisites platforms languages kiosk; read authentication overview, local authentication and authentication white-paper results; no SDK-specific provider support appeared.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Sign-in flows for native SDK applications and unattended kiosks are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" authentication authorization prerequisites platforms languages kiosk; read authentication overview and SPA authentication results; no native-SDK or unattended-kiosk sign-in flow was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Scope: Prerequisites and roles",
-      "type": "absence",
-      "claim": "SDK prerequisites are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" authentication authorization prerequisites platforms languages kiosk; read authentication requirements and SPA results; none supplied prerequisites for this SDK.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
       "where": "Scope: Prerequisites and roles",
       "type": "absence",
       "claim": "SDK-specific required roles are not yet documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Pages SDK native mobile kiosks licensing default disable site tenant authentication supported platforms; read authentication and site-visibility results; no SDK role requirement was stated.",
+      "quote": "Searched: \"Power Pages\" \"SDK\" default prerequisites roles enabled disabled. Read admin-roles and Power Pages RBAC results; website editing and administrative API roles do not establish roles for the native-mobile SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; Why it matters; Scope; Open questions",
+      "type": "absence",
+      "claim": "The SDK's default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"SDK\" default prerequisites roles enabled disabled; Power Pages SDK enable disable tenant site admin setting default Power Platform API pac pages site settings. Read roadmap, list-tenantsettings and configure-site-settings; no SDK default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2]; Scope; Governance guidance: At rollout; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No SDK-specific site or tenant switch is documented on either the admin UI or automation surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK enable disable tenant site admin setting default Power Platform API pac pages site settings. Opened configure-site-settings, list-tenantsettings and pac power-pages; read admin-api operation results. None documents an SDK switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to SDK-built apps is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile licensing authenticated anonymous user capacity pricing. Opened licensing FAQs and web-api-overview; read pay-as-you-go-meters and licensing overview results. General website licensing is stated, not an SDK-specific requirement.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "front matter: defaultState; Why it matters; Scope: Rollout; Open questions",
-      "type": "default",
-      "claim": "The SDK's default state is unknown.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published how SDK native-app users count against website capacities or meters.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" disable enable tenant site settings default Power Platform API pac pages; opened site settings and admin APIs; read roadmap description; none stated the SDK's default.",
+      "quote": "Searched: Power Pages SDK native mobile licensing authenticated anonymous user capacity pricing. Read licensing FAQs Power Pages section and pay-as-you-go-meters search passage; website/browser counting is described but SDK-native counting is not.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is unknown, while the notes describe Power Pages' general licensing.",
+      "where": "controls[0].note; controls[1].note; Risk assessment; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed this SDK's use of site settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
-      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
-      "severity": "minor",
-      "fix": "Set licensing.model to 'mixed' to reflect the published general product model. Retain the qualification that SDK-specific licensing and how native-app users are counted are not yet published; the website licensing FAQ does not settle those narrower questions."
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile table permissions web roles authentication identity providers progressive web apps; \"Power Pages\" \"SDK\" progressive web apps native mobile authentication authorization table permissions. Read table-permissions and Web API overview; no SDK mapping.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "where": "What's changing",
       "type": "absence",
-      "claim": "Licensing specific to an SDK-built application is not yet published.",
+      "claim": "Microsoft has not described how this SDK relates to Power Pages PWAs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" \"licensing\" \"native mobile\"; opened licensing FAQ and Web API overview; read Power Pages licensing result; these describe website access, not SDK-specific entitlements.",
+      "quote": "Searched: \"Power Pages\" \"SDK\" progressive web apps native mobile authentication authorization table permissions. Opened progressive-web-apps and read SPA FAQ results; no relation to the roadmap SDK is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published whether native SDK application users are counted like website users.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" \"licensing\" \"native mobile\"; opened licensing FAQ, including authenticated and anonymous user definitions; these define website users without describing native SDK users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item names no licence.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item names no meter.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap description says nothing about agents.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap description says nothing about automatic actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Learn documents enabling a Power Pages site as a PWA with a native app-like look and feel.",
@@ -405,153 +344,54 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 30,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft has not documented how its PWA capability relates to the planned SDK.",
+      "type": "behaviour",
+      "claim": "The existing PWA mechanism uses browser support rather than documenting the planned native-app SDK.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" progressive web app supported languages platforms; opened progressive web apps overview; read build-and-distribute PWA results; no relationship to this SDK was stated.",
+      "source": "https://learn.microsoft.com/power-pages/configure/progressive-web-apps",
+      "quote": "PWAs are built for cross-platform interoperability through browser support that provides users with a native app–like experience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 31,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "An existing Power Pages site is a website.",
+      "claim": "A Power Pages site is a website.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/introduction",
       "quote": "Microsoft Power Pages is a secure, enterprise-grade, low-code software as a service (SaaS) platform for creating, hosting, and administering modern external-facing business websites.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-pages/introduction to sources; it supports the existing-website context but is not currently cited."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 37,
-      "where": "Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Power Pages sites expose Dataverse records subject to table permissions.",
+      "claim": "Power Pages sites use business data stored in Dataverse.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/table-permissions",
-      "quote": "Access to Dataverse records is automatically restricted in Power Pages when using forms, lists, Liquid, the Portals Web API, and other components accessing Dataverse tables.",
+      "source": "https://learn.microsoft.com/power-pages/introduction",
+      "quote": "With Power Pages, you can build sites by using the same shared business data stored in Microsoft Dataverse",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Power Pages generally uses capacity-based licensing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
-      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Authenticated user capacity is measured per website per month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
-      "quote": "Authenticated users per website/month",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Anonymous user capacity is measured per website per month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
-      "quote": "Anonymous users per website/month",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
-      "type": "cost",
-      "claim": "Power Pages has an authenticated-user pay-as-you-go meter counting actual unique users per website per month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
-      "quote": "Power Pages Authenticated user pay-as-you-go meter: A measure of the number of unique authenticated users per website per month.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
-      "type": "cost",
-      "claim": "Power Pages has an anonymous-user pay-as-you-go meter based on actual unique website users in a month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
-      "quote": "The Anonymous user pay-as-you-go meter enables customers to pay-as-you-go based on the actual number of anonymous users who have accessed a website in a month.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Portals Web API operations require a Power Pages licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
-      "quote": "Portals Web API operations require a Power Pages license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Anonymous users' Web API calls count towards anonymous user capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
-      "quote": "Web API calls made by anonymous users count towards the anonymous user capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Authenticated users' Web API calls require applicable authenticated user capacity licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
-      "quote": "Web API calls made by authenticated users (internal or external) don't count towards page views, but require applicable authenticated user capacity licenses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[0].governs; Risk assessment: Data exposure; Scope: Prerequisites and roles",
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance",
       "type": "applicability",
-      "claim": "A table's Webapi/<table-name>/enabled site setting controls whether the portals Web API exposes that table.",
+      "claim": "The portals Web API requires its enabled site setting for each table exposed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
-      "quote": "Webapi/<table-name>/enabled | Enables or disables the Web API for <table name>.",
+      "quote": "To enable the portals Web API for your site, configure the site settings for each table that you want to expose. Webapi/<table-name>/enabled: Enables or disables the Web API for <table name>.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].note; Governance controls: first row",
-      "type": "default",
-      "claim": "The documented default for Webapi/<table-name>/enabled is False.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
-      "quote": "Webapi/<table-name>/enabled | Enables or disables the Web API for <table name>. Default: False Valid values: True, False",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[1].governs; Risk assessment: Data exposure; Governance controls",
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Security & identity; Scope; Governance controls",
       "type": "applicability",
-      "claim": "The portals Web API follows table permissions granted through users' associated web roles.",
+      "claim": "Table permissions granted through associated web roles govern record access by the portals Web API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
       "quote": "The portal Web API accesses table (entity) records and follows the table permissions given to users through the associated web role.",
@@ -559,18 +399,18 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[1].note; Risk assessment: Data exposure; Scope; Governance controls",
-      "type": "behaviour",
+      "n": 35,
+      "where": "controls[1].note; Risk assessment; Scope; Governance controls",
+      "type": "applicability",
       "claim": "A table permission takes effect only when associated with at least one web role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/table-permissions",
-      "quote": "For a table permission to take effect, it has to be associated to one or more web roles.",
+      "quote": "For a table permission to take effect, it has to be associated to one or more web roles. Users who belong to web roles are granted the privileges you select for the associated table permission.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The portals Web API is not optimized for third-party services or application integration.",
@@ -581,123 +421,409 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Portal Management app > Website > Site settings reaches the site-setting control.",
+      "n": 37,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects general Power Pages subscription capacity and pay-as-you-go options, not a published SDK-specific plan.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/configure-site-settings",
-      "quote": "Using the Portal Management app, select Site settings under the Website section. ... To edit an existing setting, select the Site Setting listed in the grid.",
-      "severity": "minor",
-      "fix": "Extend the existing-setting route to 'Website > Site settings > site setting' in front matter and the rendered table. The current route reaches the correct list but stops before opening the setting."
-    },
-    {
-      "n": 52,
-      "where": "controls[0].api; Governance controls: first row",
-      "type": "command",
-      "claim": "POST to /api/data/v9.2/mspp_sitesettings can create the enabled site setting using the printed name, value and website binding.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting",
-      "quote": "Entity set path: [organization URI]/api/data/v9.2/mspp_sitesettings; Operations supported: POSTGETPATCHDELETE; mspp_name; mspp_value; mspp_websiteid | mspp_website",
-      "severity": "minor",
-      "fix": "Set api.call and the rendered call to 'POST [organization URI]/api/data/v9.2/mspp_sitesettings', without a body. Add to the note: 'The request body sets mspp_name to Webapi/<table-name>/enabled, mspp_value to true, and mspp_websiteid@odata.bind to the website reference.'"
-    },
-    {
-      "n": 53,
-      "where": "controls[0].note; Governance controls: first row",
-      "type": "behaviour",
-      "claim": "Creating only the enabled setting is not a complete portals Web API configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
-      "quote": "This setting is required unless Webapi/<table-name>/UseFieldsFromView is set to True and the configured system view contains at least one eligible column.",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Authenticated user capacity subscription license can be purchased for the anticipated number of unique, authenticated users. The Authenticated user pay-as-you-go meter enables customers to pay-as-you-go",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[1].ui; Governance controls: second row",
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Pages offers authenticated user capacity per website per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Pages offers anonymous user capacity per website per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "Power Pages has an authenticated user pay-as-you-go meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Authenticated user pay-as-you-go meter enables customers to pay-as-you-go based on the actual number of authenticated users who have accessed a website in a month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "Power Pages has an anonymous user pay-as-you-go meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Anonymous user pay-as-you-go meter enables customers to pay-as-you-go based on the actual number of anonymous users who have accessed a website in a month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The authenticated user meter measures unique authenticated users per website per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Meter Definition: Power Pages Authenticated user pay-as-you-go meter: A measure of the number of unique authenticated users per website per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Anonymous website users are counted as unique users in a calendar month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Anonymous users per website/month are calculated as unique users who access one or more anonymous pages of the website in a calendar month duration. Uniqueness is determined through a unique anonymous user ID stored in a browser cookie.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Portals Web API operations require a Power Pages licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Portals Web API operations require a Power Pages license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Web API calls by anonymous users count towards anonymous user capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Web API calls made by anonymous users count towards the anonymous user capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Authenticated users' Web API calls require applicable authenticated user capacity licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Web API calls made by authenticated users (internal or external) don't count towards page views, but require applicable authenticated user capacity licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Power Pages design studio > Security > Protect > Table permissions reaches table-permission configuration.",
+      "claim": "Portal Management app > Website > Site settings > site setting reaches the record that controls Web API table exposure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/configure-site-settings",
+      "quote": "select Site settings under the Website section. To edit an existing setting, select the Site Setting listed in the grid. Specify values for the fields provided: Name; Website; Value: The setting",
+      "severity": "minor",
+      "fix": "Extend the existing-setting path to 'Website > Site settings > site setting > Value' in both the front matter and rendered table. The cited page identifies Value as the field to change."
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST [organization URI]/api/data/v9.2/mspp_sitesettings creates a site setting whose name and value configure Web API exposure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting",
+      "quote": "Site specific settings or variables refferenced by the web site code files. Entity set path: [organization URI]/api/data/v9.2/mspp_sitesettings. Operations supported: POSTGETPATCHDELETE. mspp_name: Display name: Name. mspp_value: Edm.String; Display name: Value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note",
+      "type": "default",
+      "claim": "Webapi/<table-name>/enabled defaults to False.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Webapi/<table-name>/enabled | Enables or disables the Web API for <table name>. Default: False Valid values: True, False",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "mspp_name supplies the Webapi/<table-name>/enabled site setting name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting",
+      "quote": "Primary name column: mspp_name. mspp_name | Edm.String | The name of the custom entity. Display name: Name",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "mspp_value supplies the site setting value true to enable the named table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Site setting name | Site setting value: Webapi/incident/enabled | true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "mspp_websiteid@odata.bind associates the new site setting with its website.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-table-row",
+      "quote": "To associate new records with existing records when you create them, use the @odata.bind annotation to set the value of navigation properties.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-table-row to sources. Its 'Associate table rows on create' section supports @odata.bind; the already cited mspp_sitesetting reference identifies mspp_websiteid as the website navigation property."
+    },
+    {
+      "n": 53,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Power Pages design studio > Security > Protect > Table permissions > table permission reaches the permission editor.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/table-permissions",
-      "quote": "In the design studio from the side menu, select Security. ... in the Protect section, select Table permissions ... Select the table permission that you want to edit",
+      "quote": "select Security. On the left pane in the Protect section, select Table permissions to view table permissions. Select the table permission that you want to edit",
       "severity": "minor",
-      "fix": "Extend the existing-permission route to 'Security > Protect > Table permissions > table permission' in front matter and the rendered table. The current route reaches the correct list but stops before opening a permission."
+      "fix": "Keep the route 'Security > Protect > Table permissions > table permission' and add to the row note: 'In the permission editor, change the access type, privileges and applicable roles.' The cited edit procedure documents these final editing steps."
+    },
+    {
+      "n": 54,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH [organization URI]/api/data/v9.2/mspp_entitypermissions(<permission-id>) updates the identified table permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/mspp_entitypermissions. Display name: Table Permission. Primary key: mspp_entitypermissionid. Operations supported: POSTGETPATCHDELETE",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 55,
-      "where": "controls[1].api; Governance controls: second row",
+      "where": "controls[1].note",
       "type": "command",
-      "claim": "GET /api/data/v9.2/powerpagecomponents is the automation alongside the control deciding table-permission records and privileges.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows",
-      "quote": "Update operations use the HTTP PATCH verb. Pass a JSON object containing the properties you want to update to the URI that represents the record.",
-      "severity": "blocker",
-      "fix": "Replace the read-only inventory call with 'PATCH [organization URI]/api/data/v9.2/mspp_entitypermissions(<permission-id>)' and set docs to https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission. Replace the inventory/type-18 note with: 'Updates an existing table permission: mspp_scope sets the access type; mspp_read, mspp_write, mspp_create, mspp_delete, mspp_append and mspp_appendto set privileges. Association with a web role is still required.' Retain the SDK applicability caveat and apply the same replacement to the rendered row. The original GET exists and the note correctly calls it read-only, but it does not configure this control."
+      "claim": "mspp_scope sets the table permission's access type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "mspp_scope | Edm.Int32 | Display name: Access Type",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 56,
-      "where": "controls[1].note; Governance controls: second row",
-      "type": "behaviour",
-      "claim": "Site Component type 18 denotes Table Permission.",
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "mspp_read sets the read privilege.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent",
-      "quote": "powerpagecomponenttype ... 18 | Table Permission",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "mspp_read | Edm.Boolean | Controls whether the user can read a record.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[2].ui and api; Scope: Rollout; Governance guidance; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No SDK-specific on/off control for a site or tenant is documented on either the administrator UI or automation surface.",
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "mspp_write sets the update privilege.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" disable enable tenant site settings default Power Platform API pac pages; opened site settings and admin APIs; read tenant-settings and CLI results; no SDK switch was documented.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "mspp_write | Edm.Boolean | Controls whether the user can update a record.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed whether table permissions and web roles govern SDK-built native apps.",
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "mspp_create sets the create privilege.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" \"table permissions\" \"Web API\"; opened table permissions and Web API overview; read Power Pages security result; these cover site components without identifying the native SDK's data path.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "mspp_create | Edm.Boolean | The Create privilege controls whether you can create a record.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[0].note; Governance controls; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed whether the SDK uses existing Power Pages site settings.",
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "mspp_delete sets the delete privilege.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" disable enable tenant site settings default Power Platform API pac pages; opened site settings and Web API overview; neither describes this SDK or its configuration path.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "mspp_delete | Edm.Boolean | Controls whether the user can delete a record.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "mspp_append sets the Append privilege.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "mspp_append | Edm.Boolean | Controls whether the user can attach another record to the specified record. The Append and Append To permissions work in combination.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "mspp_appendto sets the Append To privilege.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+      "quote": "mspp_appendto | Edm.Boolean | Controls whether the user can append the specified record to another record. The Append and Append To permissions work in combination.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Power Pages site-level controls were designed around the browser.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile table permissions web roles authentication identity providers progressive web apps. Read Web API overview, table-permissions and security-best-practices results. These describe server-side authorization, not controls designed around the browser.",
+      "severity": "major",
+      "fix": "Remove ', outside the browser your site-level controls were designed around' from the sentence about software installed on phones or shared devices. Keep the planned native-client use and the separate advice to verify which controls the SDK uses."
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap record says nothing about automatic actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no meter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Build native mobile applications or kiosks using Power Pages as the backend foundation with support for authentication, authorization, APIs, data access, and reusable mobile capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is November 6, 2026, at 23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
       "where": "Why it matters",
       "type": "absence",
-      "claim": "No source found says the SDK changes existing sites automatically.",
+      "claim": "No source says existing Power Pages sites change when this SDK arrives.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"SDK\" disable enable tenant site settings default Power Platform API pac pages; read roadmap description and opened site settings and admin APIs; no automatic change to existing sites was stated.",
+      "quote": "Searched: \"Power Pages\" \"SDK\" default prerequisites roles enabled disabled; Power Pages SDK enable disable tenant site admin setting default Power Platform API pac pages site settings. Read roadmap, introduction and tenant-settings reference; no existing-site rollout change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].note; Risk assessment; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that table permissions govern SDK-built apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile table permissions web roles authentication identity providers progressive web apps. Read table-permissions, Web API overview and security results; no SDK data-path specification establishes that applicability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that web roles govern SDK-built apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile table permissions web roles authentication identity providers progressive web apps. Read table-permissions, Web API overview and web-role results; no SDK data-path specification establishes that applicability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "How a native app signs in through this SDK is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile table permissions web roles authentication identity providers progressive web apps. Read authentication overview and SPA authentication results; neither specifies native sign-in through this SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "How an unattended kiosk signs in through this SDK is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile applications kiosks software development kit platforms languages authentication APIs prerequisites; \"Power Pages\" \"SDK\" \"native\" \"kiosks\". Read authentication and kiosk search results; no matching SDK kiosk sign-in documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Scope: Platforms; Open questions",
+      "type": "absence",
+      "claim": "Supported SDK device types are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SDK native mobile applications kiosks software development kit platforms languages authentication APIs prerequisites; \"Power Pages\" \"SDK\" \"native\" \"kiosks\". Read PWA and Power Apps native-app results; neither specifies this SDK's device types.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T14:00:41.190Z",
+    "at": "2026-11-25T20:14:05.862Z",
     "summary": {
-      "links": 8,
-      "unreachable": 5,
+      "links": 10,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
       "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
@@ -710,11 +836,26 @@
       },
       {
         "url": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/progressive-web-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/introduction",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows",
         "ok": true,
         "status": 200
       },
@@ -724,24 +865,19 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-pages/security/table-permissions",
-        "ok": false,
-        "status": 429
-      },
-      {
-        "url": "https://learn.microsoft.com/power-pages/configure/progressive-web-apps",
-        "ok": false,
-        "status": 429
-      },
-      {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent",
-        "ok": false,
-        "status": 429
+        "url": "https://learn.microsoft.com/power-pages/security/table-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -753,7 +889,8 @@
         "reachable": true,
         "segments": [
           "Website",
-          "Site settings"
+          "Site settings",
+          "site setting"
         ],
         "missing": []
       },
@@ -762,7 +899,7 @@
         "side": "api",
         "governs": "Which Dataverse tables a site exposes through the portals Web API",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting",
-        "reachable": false,
+        "reachable": true,
         "token": "POST [organization",
         "found": false
       },
@@ -771,25 +908,22 @@
         "side": "ui",
         "governs": "Which records and privileges web roles get on each table",
         "docs": "https://learn.microsoft.com/power-pages/security/table-permissions",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Security",
           "Protect",
-          "Table permissions"
+          "Table permissions",
+          "table permission"
         ],
-        "missing": [
-          "Security",
-          "Protect",
-          "Table permissions"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which records and privileges web roles get on each table",
-        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent",
-        "reachable": false,
-        "token": "GET [organization",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_entitypermission",
+        "reachable": true,
+        "token": "PATCH [organization",
         "found": false
       }
     ],
@@ -805,6 +939,12 @@
     {
       "date": "2026-11-18",
       "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

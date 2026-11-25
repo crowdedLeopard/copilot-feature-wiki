@@ -62,19 +62,23 @@ changes:
     note: "First briefing for roadmap item 518641; Microsoft Learn does not yet document the Page Agent, so the page rests on the roadmap text."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 37 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected two statements that called Block the only documented agent control; Block is now described as one documented way to restrict access to an agent."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 37
-  confirmed: 36
+  claims: 43
+  confirmed: 42
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "6021f96ace1ff42b432a746f871bd696"
+  attempts: 2
+  hash: "3cf76adc501975c658ed2de4002e6308"
 ---
 
 ## What's changing
@@ -104,7 +108,7 @@ The practical task is to find out early what the agent reads, where it saves pag
 
 **Change & support**
 - The dates in the record are a year old and the status is still In development, so expect questions about availability that cannot yet be answered.
-- The one documented way to remove an agent from the organisation is the Block action on the All agents page. Learn does not say the Page Agent appears there.
+- The Block action on the All agents page is a documented way to restrict access to an agent. Learn does not say the Page Agent appears there.
 
 ## Cost and licensing
 
@@ -143,7 +147,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud and Web as the 
 </tbody>
 </table>
 
-The only control documented today is the existing Block action for agents, which applies to the selected agent for the whole organisation. The Learn page says that blocking an agent created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. Whether the Page Agent is such an agent, or appears in All agents at all, is not documented.
+The existing Block action for agents is documented, and it applies to the selected agent for the whole organisation. The Learn page says that blocking an agent created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. Whether the Page Agent is such an agent, or appears in All agents at all, is not documented.
 
 The Graph side is a beta API and, per its reference, needs a Microsoft Agent 365 license. A control specific to the Page Agent, such as a tenant switch or a site-level setting, is not yet documented on either surface.
 
@@ -164,5 +168,5 @@ impact: Medium. The people who would notice are those who author SharePoint page
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls; Risk assessment: Change & support / applicability: Block is the only documented control for agents and the one documented way to remove an agent from the organisation. | Found: You can uninstall first-party or external agents across the whole organization or for specific users or groups by using the same controls that work for any other agent in the Microsoft 365 admin center. | Fix: Replace 'The only control documented today is the existing Block action for agents' with 'The existing Block action for agents is documented'. Replace 'The one documented way to remove an agent from the organisation is the Block action on the All agents page' with 'The Block action on the All agents page is a documented way to restrict access to an agent'. Keep the existing caveats that Page Agent applicability is not documented. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
+- [contradicted, blocker] Governance guidance: After rollout, second bullet / consistency: The after-rollout checklist says Microsoft has not published the status, conflicting with the page's published In development status. | Found: The roadmap record gives the status as In development. / Re-check this page and the roadmap item for the status, default and licence, which Microsoft has not yet published. | Fix: Replace the second After rollout bullet with: 'Re-check this page and the roadmap item for changes to the In development status and for the default and licence, which Microsoft has not yet published.'
 -->

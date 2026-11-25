@@ -83,10 +83,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Policies > Create policy > Policy template > Data theft or Data leaks template > Policy indicators > Decide whether to use default or custom indicator thresholds > Specify custom thresholds"
+      path: "Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > Triggers for this policy > Policy indicators > custom indicator"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     api: null
-    note: "Create policy opens the workflow. On Policy template, choose a Data theft or Data leaks template; select the custom indicator on Policy indicators, then Specify custom thresholds. Custom triggers: Triggers page (Data leaks templates)."
+    note: "Data leaks example: I don't want to specify priority content right now; trigger User performs an exfiltration activity triggering event, Use default thresholds (Recommended). Then Specify custom thresholds on the next page."
 confidence: "medium"
 created: "2026-11-25"
 updated: "2026-11-25"
@@ -104,19 +104,23 @@ changes:
     note: "Corrected after the independent check: default state is now admin-opt-in for the documented preview (all global indicators are disabled by default), and the policy control's path now runs to the custom thresholds step."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: the policy control's admin path now follows the documented policy workflow pages for a Data leaks example, through Content to prioritize and Triggers for this policy to the custom indicator, with the choices on each page in the note."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "5de46136a1674e8893e2bca6b9f24db6"
+  contradicted: 0
+  attempts: 0
+  hash: "a47571736c8b4122631ad1ef9e0ce2e2"
 ---
 
 ## What's changing
@@ -192,7 +196,7 @@ Custom indicators work only in policies created from the Data theft and Data lea
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">Insider Risk Management Admins is a separate role group with the same configure right; Data Connector Admin, needed to create the connector, is assigned separately.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether third-party detections can be imported through the Insider Risk Indicators connector</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Needs the Data Connector Admin role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data connectors › My connectors › Add connector › Insider Risk Indicators (preview) <a href="https://learn.microsoft.com/purview/import-insider-risk-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which imported detections exist as custom indicators</strong><br><small>Tenant</small><br><small class="controls__note">The connector must exist first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators › Custom Indicators › Add custom indicator <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which policies use a custom indicator and at what threshold</strong><br><small>Tenant</small><br><small class="controls__note">Create policy opens the workflow. On Policy template, choose a Data theft or Data leaks template; select the custom indicator on Policy indicators, then Specify custom thresholds. Custom triggers: Triggers page (Data leaks templates).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › Data theft or Data leaks template › Policy indicators › Decide whether to use default or custom indicator thresholds › Specify custom thresholds <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which policies use a custom indicator and at what threshold</strong><br><small>Tenant</small><br><small class="controls__note">Data leaks example: I don't want to specify priority content right now; trigger User performs an exfiltration activity triggering event, Use default thresholds (Recommended). Then Specify custom thresholds on the next page.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › policy category › Data leaks › Content to prioritize › Triggers for this policy › Policy indicators › custom indicator <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -214,8 +218,8 @@ cost: Low. The cost the sources show is admin time to build the export, connecto
 impact: Low. Admins build the connector and policy, and analysts see custom indicator details in alerts, Activity explorer and the User timeline.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].ui; Governance controls table / admin-path: The printed policy route can go from Policy template directly to a Data theft or Data leaks template and then Policy indicators without further branching choices. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. On the Content to prioritize page ... Select one of the following choices | Fix: Replace the UI path, in front matter and the table, with this explicit Data leaks example: 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > I don't want to specify priority content right now > Triggers for this policy > User performs an exfiltration activity triggering event > triggering indicator > Use default thresholds (Recommended) > Policy indicators > custom indicator > Decide whether to use default or custom indicator thresholds > Specify custom thresholds'. Set the note to 'Example route for selecting a custom policy indicator in a Data leaks policy, with no priority content and a separately selected triggering indicator. On the final page set custom thresholds for the custom policy indicator. Custom triggers are selected separately on the Triggers page.' The category and indicator placeholders represent items the administrator chooses. The source documents these choices and their order at https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[3].ui; Governance controls table; controls[3].note / admin-path: The Data leaks example proceeds from Insider Risk Management > Policies > Create policy through Policy template, Content to prioritize and Triggers for this policy to Policy indicators and a custom indicator. | Found: On the Policy indicators page ... Select the indicators you want to apply to the policy. ... On the Decide whether to use default or custom indicator thresholds page ... Specify custom thresholds | Fix: Extend controls[3].ui.path and its rendered path to 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > Triggers for this policy > Policy indicators > custom indicator > Decide whether to use default or custom indicator thresholds > Specify custom thresholds'. Retain the existing note's workflow choices. The cited configure page documents the added threshold step; the current path already reaches the indicator selection control. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
 -->
