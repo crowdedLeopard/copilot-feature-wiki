@@ -1,0 +1,732 @@
+{
+  "slug": "microsoft-purview-compliance-manager-microsoft-defender-for-cloud-mdc-integration",
+  "roadmapId": 167331,
+  "title": "Microsoft Purview Compliance Manager: assess Azure, AWS and Google Cloud through Microsoft Defender for Cloud",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 13)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 55,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing says the integration's action statuses update automatically rather than through manual testing, but Microsoft requires manual testing for non-technical actions. The roadmap details and most configuration and licensing claims are supported; the control paths and checklist also need small corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes integration with Defender for Cloud to assess Microsoft 365, Azure, GCP and AWS with resource-level testing and cloud-specific guidance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Compliance Manager now integrates with Microsoft Defender for Cloud, allowing customers to assess their compliance posture across Microsoft 365, Azure, Google Cloud Platform, and Amazon Web Services with resource-level testing and cloud-specific guidance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025, earlier than the run date of 25 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2025-07-30T23:15:18.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-07-30T23:15:18\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn already describes the integration as available, unlike the roadmap's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "Compliance Manager now integrates with Microsoft Defender for Cloud",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Assessment creation includes choosing a supported regulation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "When you create an assessment in Compliance Manager, you’ll select a supported regulation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Assessment creation includes choosing one or more services to assess.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "then choose one or more services to assess.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Compliance Manager automatically monitors configurations of the selected services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "Compliance Manger then provides automatic monitoring of configurations in your selected services to determine whether controls are passing or failing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Scores and test statuses for the integration's actions update from Defender for Cloud signals, not from a person's test.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-improvement-actions",
+      "quote": "Technical actions are automatically tested and monitored. Non-technical actions must be manually tested. Manual actions don’t synchronize status between Compliance Manager and Defender for Cloud.",
+      "severity": "blocker",
+      "fix": "Replace the first Autonomy & actions sentence with: 'Technical actions implemented through Defender for Cloud are automatically tested and monitored; non-technical actions must be manually tested, and their statuses do not synchronise between Compliance Manager and Defender for Cloud.' In What's changing, narrow 'improvement actions that pertain to Azure and to non-Microsoft services' to 'automatically tested technical improvement actions that pertain to Azure and to non-Microsoft services'. Source: https://learn.microsoft.com/purview/compliance-manager-improvement-actions#implementation-and-testing."
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An unlisted non-Microsoft service can be added as a new service during assessment creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "If you want to assess a non-Microsoft service that isn't listed above, you can add it as a new service when you're creating a new assessment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Adding such a service uses the universal version of the regulation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "When you add a new service, the universal version of the underlying regulation is used",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Implementation and testing for the newly added unlisted service are manual.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "and you perform manual implementation and testing work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Adding a Defender for Cloud standard, including one monitoring AWS or GCP, automatically surfaces its resource-level compliance data in Compliance Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/regulatory-compliance-dashboard",
+      "quote": "When you add any standard to your compliance dashboard (including compliance standards monitoring other clouds like AWS and GCP), the resource-level compliance data is automatically surfaced in Compliance Manager for the same standard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Defender for Cloud calls these standards and Compliance Manager calls them regulations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "Defender for Cloud refers to “standards,” while Compliance Manager uses “regulations” to refer to the same thing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Why it matters; rationale: risk; Open questions",
+      "type": "default",
+      "claim": "What this roadmap change does on arrival in the US Government clouds is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Compliance Manager Defender for Cloud integration GCC GCC High DoD availability automatic default; \"Compliance Manager\" \"Defender for Cloud\" \"GCC\" \"default\". Read multicloud, cloud-settings, setup, improvement-actions and government deployment search excerpts; no government rollout default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Learn's pages do not mention GCC, GCC High or DoD, so the integration's applicability in those clouds is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Compliance Manager Defender for Cloud integration GCC GCC High DoD availability automatic default. Read multicloud and cloud-settings plus setup and GCC High/DoD deployment excerpts; government product availability is stated, but integration-specific coverage is not.",
+      "severity": "minor",
+      "fix": "Replace the clause with: 'The multicloud support and cloud settings pages do not specify the integration’s coverage in GCC, GCC High or DoD; the setup page separately confirms Compliance Manager product availability in those clouds.' The setup page is https://learn.microsoft.com/purview/compliance-manager-setup."
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Compliance Manager is available to organisations with Office 365 and Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Compliance Manager is available to organizations with Office 365 and Microsoft 365 licenses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "Compliance Manager is available to GCC Moderate, GCC High and DoD customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "and to US Government Community Cloud (GCC) Moderate, GCC High, and Department of Defense (DoD) customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Assessment availability and management capabilities depend on the licensing agreement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Assessment availability and management capabilities depend on your licensing agreement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed: Compliance Manager licence entitlement combines with Defender for Cloud plan-based charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "quote": "Defender CSPM (paid): Provides extra capabilities beyond the Foundational CSPM plan, including advanced CSPM tools for cloud visibility and compliance monitoring. Defender CSPM billing is based on specific resources enabled in your subscriptions or connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The integration requires at least one Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "Organizations must have at least one subscription within Microsoft Azure",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; Cost and licensing; Scope; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Defender for Cloud must be enabled before Compliance Manager can receive the cloud monitoring signals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "and then enable Defender for Cloud so that Compliance Manager can receive the necessary signals to monitor your cloud services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope; Governance guidance; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Relevant supported standards must be assigned to the cloud service subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "Once you have Defender for Cloud, you need to assign the relevant industry and regulatory standards to your subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The cloud settings page recommends Foundational CSPM or Defender CSPM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "We recommend enabling one of the two plans: Foundational CSPM or Defender CSPM",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Foundational CSPM is free.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "quote": "Foundational CSPM (free): Available at no cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Defender CSPM is a paid plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "quote": "Defender CSPM (paid): Provides extra capabilities beyond the Foundational CSPM plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; Governance guidance; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Defender CSPM billing depends on specific enabled resources in subscriptions or connectors, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "quote": "Defender CSPM billing is based on specific resources enabled in your subscriptions or connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Non-default compliance standards can be added when at least one paid Defender for Cloud plan is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/regulatory-compliance-dashboard",
+      "quote": "You can add more non-default compliance standards when at least one paid plan is enabled in Defender for Cloud.",
+      "severity": "minor",
+      "fix": "Keep the statement attributed to the dashboard page and add: 'The standards-assignment page separately says to onboard a Defender for Cloud plan except Defender for Servers Plan 1 or Defender for API Plan 1.' Cite https://learn.microsoft.com/azure/defender-for-cloud/assign-regulatory-compliance-standards, already in sources. Replace the rationale's unqualified 'non-default standards need a paid plan' with 'the compliance dashboard page says non-default standards need a paid plan'."
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No charge or meter specific to the Compliance Manager integration is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Compliance Manager Defender for Cloud multicloud integration licensing pricing charge meter; \"Compliance Manager\" \"Defender for Cloud\" \"integration\" \"price\". Read multicloud, cloud-settings, setup, CSPM pricing and cost-calculator; no integration-specific meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Access to Compliance Manager requires at least Compliance Manager Reader or Microsoft Entra Global Reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Users need at least the Compliance Manager reader role, or Microsoft Entra global reader role, to access Compliance Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Connecting AWS or GCP accounts requires admin permissions in those accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "Connecting to the accounts requires admin permissions in the AWS or GCP accounts being used",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Connecting AWS or GCP involves configuration steps inside AWS or GCP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "and some configuration steps within AWS or GCP. These steps are detailed in the wizard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Most Defender for Cloud setup functions require Azure Owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "Most setup functions require the user to hold the Owner role in Azure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "GCC High and DoD customers can set Compliance Manager permissions and roles only in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Customers in US Government Community (GCC) High and Department of Defense (DoD) environments can only set user permissions and roles for Compliance Manager in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "The Compliance Manager testing-source control does not change testing source for actions on services supported by Defender for Cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-improvement-actions",
+      "quote": "Testing source can’t be changed on actions for services supported by Defender for Cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A disputed automated testing result can be addressed by changing testing logic and scope in the related Defender for Cloud assessment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-improvement-actions",
+      "quote": "If you don’t agree with an automated testing result, you can go to the related assessment in Defender for Cloud to alter the testing logic and scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "An improvement action's overall score aggregates individual subscription scores within its service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-improvement-actions",
+      "quote": "The overall score you receive for the improvement action is an aggregate of the individual scores of each subscription within that service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "summary; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Setup uses Defender for Cloud for standards and plans, and the Microsoft Purview portal for Compliance Manager assessments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Sign in to the Microsoft Purview portal using credentials for an admin account in your Microsoft 365 organization: Select Compliance Manager on the left navigation pane. You arrive at your Compliance Manager dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The supported standards list gives FedRAMP High for Azure, not AWS or GCP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "Each standard is available to support Microsoft 365 in addition to the other cloud services listed in parentheses. FedRAMP High (Azure)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The supported standards list gives FedRAMP Moderate for Azure, not AWS or GCP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "Each standard is available to support Microsoft 365 in addition to the other cloud services listed in parentheses. FedRAMP Moderate (Azure)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Standards can begin to be assigned to connected AWS or GCP subscriptions within about an hour after connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "When you complete this process, you can begin assigning standards to your connected AWS or GCP subscriptions within about an hour",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Full data for connected AWS or GCP accounts can take up to 24 hours to appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "though full data can take up to 24 hours to appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Compliance Manager settings require Compliance Manager Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Compliance Manager settings are accessible by users who hold a Compliance Manager Administrator role or Global Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Adding a standard requires Owner or Policy Contributor permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/assign-regulatory-compliance-standards",
+      "quote": "You need Owner or Policy Contributor permissions to add a standard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Automatic testing is configured at Microsoft Purview portal > Settings > Compliance Manager > Testing source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "select the Settings icon at the top of the page, then select Compliance Manager. Select Testing source from the left navigation. Select your desired option for testing improvement actions:",
+      "severity": "minor",
+      "fix": "The path correctly reaches the page holding the control, but stops before the option. Set controls[0].ui.path to 'Settings > Compliance Manager > Testing source > Turn off automatic testing for all actions', and update the rendered path to match. Keep the note excluding Defender for Cloud actions. Source: https://learn.microsoft.com/purview/compliance-manager-setup#manage-automated-testing-settings."
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or PowerShell operation for the Compliance Manager Testing source setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Compliance Manager testing source automatic testing settings PowerShell Security Compliance Graph API; \"Compliance Manager\" \"Testing source\" \"PowerShell\"; \"Compliance Manager\" \"Testing source\" \"API\". Read setup and improvement-actions; no setting operation in returned references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls prose",
+      "type": "admin-path",
+      "claim": "The cloud settings page routes standard assignment through Environment settings, the subscription's Edit settings, and Policy settings > Security policy in Defender for Cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "In Defender for Cloud, select Environment settings on the left navigation. On the row for the subscription, select the ellipses on the far right and select Edit settings. On the left navigation, under Policy settings, select Security policy.",
+      "severity": "minor",
+      "fix": "Replace the route sentence with: 'The cloud settings page gives Defender for Cloud > Environment settings > subscription > Edit settings > Policy settings > Security policy > Industry & regulatory standards > standard > Enable. The standards-assignment page gives an alternative Azure portal route: Microsoft Defender for Cloud > Regulatory compliance > Manage compliance policies > account > Security policies > standard > On.' Sources: https://learn.microsoft.com/purview/compliance-manager-cloud-settings and https://learn.microsoft.com/azure/defender-for-cloud/assign-regulatory-compliance-standards."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Defender for Cloud's Add environment option connects AWS accounts or GCP projects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "In Defender for Cloud, select Environment settings on the left navigation. Select Add environment and choose either Amazon Web Services or Google Cloud Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Starting with a single account is the documented least-configuration setup option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+      "quote": "In the first step of Account details, at Onboard, select Single account. This option requires the least amount of configuration effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "An assessment can select the subscriptions in scope for a Defender for Cloud-monitored service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "When creating assessments, you can select a subscription if the service you choose for the assessment is monitored by Defender for Cloud. Your choice of subscription will affect the evaluation of improvement actions for that service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Changes to Compliance Manager automated testing settings are reflected in the audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Follow the instructions below to change your automated testing settings. When you change a setting, it will be reflected in the audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "The cloud-assessment capability requires setup before it can be used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+      "quote": "There are setup steps required before you can start building assessments for your cloud services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to configure controls absent from the table, which contains only the automatic testing-source setting.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Enable Defender for Cloud on the Azure subscription and assign the standard in Defender for Cloud; Connect AWS accounts or GCP projects with Add environment; in GCC High and DoD set the latter in Microsoft Entra ID. The one row is today's Compliance Manager setting for automatic testing.",
+      "severity": "minor",
+      "fix": "Remove the checklist instructions to enable Defender for Cloud, assign standards, connect AWS/GCP environments and set Compliance Manager roles: those controls have no table row. Retain their verified prerequisite and role descriptions in Scope and Cost and licensing. Replace 'Those steps are read from Learn but are not a row here because no call for that control was read' with 'The standard-assignment route is described here but is not represented in the controls table'; an unread automation call is not a reason to omit a documented UI control."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T07:21:05.395Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=167331",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/compliance-manager-multicloud",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/compliance-manager-cloud-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/compliance-manager-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/compliance-manager-improvement-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/regulatory-compliance-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/assign-regulatory-compliance-standards",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Automatic testing of improvement actions (does not cover actions for services Defender for Cloud supports)",
+        "docs": "https://learn.microsoft.com/purview/compliance-manager-setup",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Compliance Manager",
+          "Testing source"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

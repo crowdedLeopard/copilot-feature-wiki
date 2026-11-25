@@ -100,15 +100,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 76 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-25"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 75
+  claims: 73
+  confirmed: 72
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -215,9 +217,11 @@ cost: Variable. No separate charge for the view is published, but the credits it
 impact: Medium. Makers notice it: it puts credit figures beside their agents, and those figures will not match every admin report.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 accepts the printed environment scope, MCSMessages allocation quantity and enforcementRules body. | Found: Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" ` -Headers $headers -ContentType "application/json" -Body $allocationBody | Fix: Replace the call in the structured row and rendered table with 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01'. Replace the note's opening '<rule> is ...' sentence with 'The request body sets scope.environmentId and allocatedEntitlements, with entitlementId MCSMessages, allocation.quantity, and enforcementRules containing ruleType TenantPool and enabled true or false.' Retain the environment-group override qualification. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist directs readers to compare consumption reports, but the controls table has no reporting row. | Found: Compare a maker's Monitor figure with the Power Platform admin center consumption report for the same agent and period; controls rows cover monthly agent limits and environment credit allocation only. | Fix: Remove the After rollout checklist bullet beginning 'Compare a maker's Monitor figure with the Power Platform admin center consumption report'; it names a reporting control absent from the table. The existing explanation of billed versus non-billed figures can remain.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Manage Agents reaches the agent limit management page. | Found: On the **Summary** tab, select **Manage Agents**. The **Agents** page appears where you can: | Fix: Complete the path in the structured row and rendered table to 'Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit', then enter the monthly limit, configure notifications and enable Stop usage as needed. The cited manage-usage-microsoft-copilot-harness page gives these final steps. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits reaches the environment allocation panel in Power Platform admin center. | Found: Under the **Copilot Studio** heading, select **Manage Copilot Credits** or **Manage sessions**. | Fix: Complete the allocation path to 'Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Copilot Credits'. In the row note, state that tenant-pool draw is set in the same panel under 'Capacity overages > Draw from the available capacity in my tenant'. Apply the same change to the rendered table. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[1].api; Governance controls table / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 accepts the printed environment scope and allocatedEntitlements body. | Found: Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" ` -Headers $headers -ContentType "application/json" -Body $allocationBody | Fix: Replace the call in the structured row and rendered table with 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01'. Replace the note's opening '<rule> is ...' sentence with 'The request body sets scope.environmentId and allocatedEntitlements, with entitlementId MCSMessages, allocation.quantity, and enforcementRules containing ruleType TenantPool and enabled true or false.' Retain the environment-group override qualification. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, minor] Governance guidance: After rollout / consistency: The reporting checklist directs readers to a consumption-report control that is missing from the controls table. | Found: Compare a maker's Monitor figure with the Power Platform admin center consumption report for the same agent and period; controls rows cover monthly agent limits and environment credit allocation only. | Fix: Remove the After rollout checklist bullet beginning 'Compare a maker's Monitor figure with the Power Platform admin center consumption report'; it names a reporting control absent from the table. Retain the existing explanation of billed versus non-billed figures.
 -->

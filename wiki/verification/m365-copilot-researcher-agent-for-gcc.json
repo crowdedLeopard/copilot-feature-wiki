@@ -2,42 +2,36 @@
   "slug": "m365-copilot-researcher-agent-for-gcc",
   "roadmapId": 554928,
   "title": "Microsoft 365 Copilot: Researcher agent for GCC users",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-25",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "4 blocking findings (claims 42, 45, 47, 61)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 63,
-    "confirmed": 58,
+    "claims": 70,
+    "confirmed": 70,
     "unconfirmed": 0,
-    "contradicted": 5,
-    "blocker": 4,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 9
+    "minor": 2
   },
-  "summary": "Hold: the briefing mistakes GCC for the Microsoft Graph US Government L4 deployment when assessing blocking automation; GCC uses the worldwide Graph service. The web-search route also mixes creation and editing steps, its automation cannot govern group policies, and Microsoft documents an alternative to the claimed sole blocking switch.",
+  "summary": "The briefing accurately reports the launched GCC roadmap item and explicitly presents Microsoft's conflicting availability, blocking and compliance guidance. The controls are supported; minor corrections should complete the web-search navigation and name the Graph baseline property that changes web search.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; front matter: status; What's changing; Scope",
+      "where": "front matter: status; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Researcher for GCC as Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
@@ -59,15 +53,26 @@
       "claim": "The roadmap target is March CY2026.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"March CY2026\", \"previewDate\": null",
+      "quote": "\"targetDate\": \"March CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: clouds; Scope",
       "type": "record",
-      "claim": "This roadmap item lists GCC only.",
+      "claim": "This roadmap item lists only GCC.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"GCC\"]",
@@ -75,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The record lists Android, Desktop, iOS and Web.",
+      "claim": "The listed platforms are Android, Desktop, iOS and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Web\"]",
@@ -86,8 +91,19 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "summary; What's changing; rationale: risk",
+      "n": 7,
+      "where": "front matter: title, products",
+      "type": "record",
+      "claim": "The item concerns the Researcher agent in Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Copilot (Microsoft 365): Researcher Agent for GCC\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing",
       "type": "record",
       "claim": "The roadmap describes Researcher as an advanced deep reasoning assistant for complex, multi-step tasks.",
       "status": "supported",
@@ -97,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "summary; What's changing; Cost and licensing; Scope; rationale: cost",
+      "n": 9,
+      "where": "summary; What's changing; Cost and licensing; Scope",
       "type": "record",
-      "claim": "The record makes Researcher available to Microsoft 365 business and enterprise users with a Microsoft 365 Copilot add-on licence.",
+      "claim": "The roadmap names Microsoft 365 business and enterprise users with a Microsoft 365 Copilot add-on license as the audience.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Researcher will be available for Microsoft 365 business and enterprise users with a Microsoft 365 Copilot add-on license.",
@@ -108,98 +124,54 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model for this GCC capability is add-on.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
-      "quote": "Microsoft Copilot is available as an add-on in Government Community Cloud (GCC), Government Community Cloud High (GCC High), and Department of Defense (DoD) environments for the following plans.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; controls[2].note",
-      "type": "licensing",
-      "claim": "The service description requires a Microsoft 365 Copilot licence to access Researcher.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "Researcher^2^ | Yes | Yes | Yes | Not currently available. ^2^ Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft 365 Copilot is an add-on plan with licensing prerequisites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The licence options page lists Copilot as an add-on in GCC, GCC High and DoD for eligible plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
-      "quote": "Microsoft Copilot is available as an add-on in Government Community Cloud (GCC), Government Community Cloud High (GCC High), and Department of Defense (DoD) environments for the following plans.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
       "where": "What's changing",
       "type": "availability",
       "claim": "The service description lists Researcher as available in GCC.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "| Feature | Commercial/Worldwide | GCC | GCCH | DoD | Researcher^2^ | Yes | Yes | Yes | Not currently available |",
+      "quote": "| Researcher^2^ | Yes | Yes | Yes | Not currently available |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 11,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "The service description lists Researcher as available in GCC High.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "| Feature | Commercial/Worldwide | GCC | GCCH | DoD | Researcher^2^ | Yes | Yes | Yes | Not currently available |",
+      "quote": "| Feature | Commercial/Worldwide | GCC | GCCH | DoD |\n| Researcher^2^ | Yes | Yes | Yes | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The service description lists Researcher as not currently available in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Feature | Commercial/Worldwide | GCC | GCCH | DoD |\n| Researcher^2^ | Yes | Yes | Yes | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "The FAQ answers 'To be released soon' for sovereign cloud availability, unlike the roadmap and service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "Is Researcher agent available in Sovereign Clouds?\nTo be released soon.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Scope",
-      "type": "availability",
-      "claim": "The service description marks Researcher Not currently available in DoD.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "| Feature | Commercial/Worldwide | GCC | GCCH | DoD | Researcher^2^ | Yes | Yes | Yes | Not currently available |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Governance guidance; Open questions",
-      "type": "availability",
-      "claim": "The Researcher FAQ answers To be released soon for sovereign-cloud availability.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Is Researcher agent available in Sovereign Clouds? To be released soon.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
       "where": "What's changing; Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "The FAQ describes Researcher as operating entirely within the Microsoft 365 commercial data processing boundary.",
+      "claim": "The FAQ describes Researcher as operating within the Microsoft 365 commercial data processing boundary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Researcher is a first-party Microsoft experience built on the same foundation as Microsoft Copilot, operating entirely within the Microsoft 365 commercial data processing boundary.",
@@ -207,21 +179,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "behaviour",
-      "claim": "The government overview says Microsoft Copilot in GCC operates entirely within the customer's U.S. government cloud tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/gov-overview",
-      "quote": "Microsoft Copilot is available in GCC, GCC High, and DoD, and operates entirely within the customer's U.S. government cloud tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 15,
       "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "The FAQ says Researcher uses Microsoft Graph, connectors and the Bing index for recent web data.",
+      "claim": "Researcher accesses work data using Microsoft Graph.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Researcher uses Microsoft Graph, connectors, and Bing index for recent web data.",
@@ -229,10 +190,32 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Researcher can fetch data from connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "Can Researcher agent fetch data from Graph Connectors?\nYes, and future updates will allow connector configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The FAQ says Researcher remains accessible in Microsoft Copilot Chat under Tools.",
+      "claim": "Researcher uses the Bing index for recent web data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "Researcher uses Microsoft Graph, connectors, and Bing index for recent web data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The FAQ places Researcher in Copilot Chat under Tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "This tool will remain accessible in Microsoft Copilot Chat under Tools, even when Copilot agents are disabled for some or all users in Microsoft 365 admin center.",
@@ -240,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 19,
+      "where": "front matter: defaultState; What's changing; Why it matters",
       "type": "default",
-      "claim": "The FAQ describes Researcher as part of the core default experience for Microsoft Copilot licensed users.",
+      "claim": "Researcher is on as part of the core default experience for Copilot-licensed users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Researcher is part of the core default experience for Microsoft Copilot licensed users.",
@@ -251,24 +234,35 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "front matter: defaultState; Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "Researcher is on by default for Copilot-licensed GCC users if administrators do nothing.",
+      "n": 20,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The FAQ supplies no GCC-specific default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-agent-install",
-      "quote": "These agents and features, built by Microsoft, are preinstalled and/or pre-pinned in Microsoft Copilot for all licensed users. Currently, only Researcher and Analyst are deployed this way.",
-      "severity": "minor",
-      "fix": "Keep defaultState on. Cite https://learn.microsoft.com/copilot/manage/copilot-agent-install and attribute the default to its statement that Researcher is preinstalled and/or pre-pinned for all licensed users, rather than relying only on the commercial-boundary FAQ. Retain the existing sovereign-availability disagreement."
+      "source": null,
+      "quote": "Searched: Microsoft Copilot Researcher GCC default rollout mechanism; opened Researcher FAQ, agent installation and Copilot service description. FAQ states a general core default experience but no GCC-specific default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Rollout",
+      "type": "absence",
+      "claim": "No GCC-specific rollout mechanism or GCC Message Center post was supplied.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot Researcher GCC default rollout mechanism; read FAQ, agent installation, roadmap and supplied pre-check. Installation describes general Microsoft deployment, not a GCC rollout mechanism; no Message Center post is supplied.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 22,
-      "where": "What's changing; Scope: Rollout",
-      "type": "absence",
-      "claim": "The supplied sources give no GCC-specific Researcher default or rollout mechanism, and no GCC Message Center post was supplied.",
+      "where": "Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "The FAQ says users cannot disable Researcher.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Researcher GCC default. Opened Researcher FAQ, Copilot service description, government overview and Manage agents; no GCC-specific Researcher default or rollout procedure. Read task pre-check and roadmap: no Message Center post supplied.",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "How can users disable Researcher?\nUsers can't disable Researcher agent.",
       "severity": null,
       "fix": null
     },
@@ -276,29 +270,51 @@
       "n": 23,
       "where": "Why it matters; rationale: impact",
       "type": "behaviour",
-      "claim": "The FAQ says users cannot disable Researcher.",
+      "claim": "The FAQ says users cannot independently remove or unpin Researcher.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "How can users disable Researcher? Users can't disable Researcher agent.",
+      "quote": "No. Researcher agent is a core part of the Microsoft Copilot experience and users cannot independently remove or unpin it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Why it matters; rationale: impact",
-      "type": "behaviour",
-      "claim": "The FAQ says users cannot independently remove or unpin Researcher.",
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The installation page describes Researcher as preinstalled and/or pre-pinned for all licensed users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Researcher agent is a core part of the Microsoft Copilot experience and users cannot independently remove or unpin it.",
-      "severity": "minor",
-      "fix": "Add 'Microsoft's Agent installation page instead says individual users can share and unpin Microsoft-installed Researcher and Analyst agents.' Cite https://learn.microsoft.com/copilot/manage/copilot-agent-install; retain the attributed FAQ statement rather than choosing between the conflicting pages."
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-agent-install",
+      "quote": "These agents and features, built by Microsoft, are preinstalled and/or pre-pinned in Microsoft Copilot for all licensed users. Currently, only Researcher and Analyst are deployed this way.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 25,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Unlike the FAQ, the installation page says users can share and unpin these Microsoft-installed agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-agent-install",
+      "quote": "Individual users can share and unpin these agents as well.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment; Governance controls",
+      "type": "default",
+      "claim": "Web search is off by default in GCC and remains off unless Allow web search in Copilot is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "Web search is available, but is turned off by default.\nTo enable web search, use the Allow web search in Copilot policy in Cloud Policy service for Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The FAQ says archived emails are included as backfill when the primary inbox lacks sufficient data.",
+      "claim": "The FAQ says archived emails can backfill insufficient primary inbox data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Yes, archived emails are included as backfill when primary inbox lacks sufficient data.",
@@ -306,21 +322,21 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 28,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Researcher's access to work content follows the user's permissions.",
+      "claim": "Researcher's access to work content follows the user's existing access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
       "quote": "Researcher draws insights from both the web and your work content - including files, emails, meetings, and chats you have access to.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/copilot/manage/researcher-agent to sources for the user-permissions statement."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 27,
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "When web search is enabled, Copilot sends generated search queries to Bing.",
+      "claim": "When using web search, Copilot sends generated search queries to Bing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "Based on these terms, Copilot generates a search query that it sends to the Bing search service asking for more information.",
@@ -328,7 +344,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 30,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Bing search operates separately from Microsoft 365 with different data-handling practices.",
@@ -339,35 +355,13 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance controls",
-      "type": "default",
-      "claim": "Web search is off by default in GCC and remains off unless Allow web search in Copilot is configured.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "For United States government customers ... (GCC) or DoD offerings: Web search is available, but is turned off by default. If you don't configure the Allow web search in Copilot policy, web search remains turned off",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "applicability",
-      "claim": "Disabling Microsoft Copilot Work mode web search also disables web search in Researcher.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "If the IT admin chooses the Disabled in Microsoft Copilot Work mode; Enabled in Microsoft Copilot Web mode and Microsoft Copilot Chat option, web search in Researcher and Cowork in Microsoft Copilot will be disabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 31,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The Allow web search in Copilot policy is available only in Cloud Policy service, rather than an agent setting.",
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "The government overview describes Copilot as operating entirely within the customer's U.S. government cloud tenant, unlike the Researcher FAQ.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "The primary way that IT admins can control access to web search is by using the Allow web search in Copilot policy, which is available only in Cloud Policy service for Microsoft 365.",
+      "source": "https://learn.microsoft.com/copilot/plan/gov-overview",
+      "quote": "Microsoft Copilot is available in GCC, GCC High, and DoD, and operates entirely within the customer's U.S. government cloud tenant.",
       "severity": null,
       "fix": null
     },
@@ -375,7 +369,7 @@
       "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "The FAQ says Researcher adheres to DLP policies and follows the same policies as Microsoft Copilot.",
+      "claim": "The FAQ says Researcher adheres to DLP policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Yes, Researcher agent adheres to DLP policies and follows the same policies as Microsoft Copilot.",
@@ -385,41 +379,85 @@
     {
       "n": 33,
       "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The FAQ itself names no Researcher-specific Purview DLP location or rule action.",
+      "type": "applicability",
+      "claim": "The FAQ says Researcher follows the same policies as Microsoft Copilot.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Researcher agent Purview DLP location rule actions; Researcher GCC Purview audit eDiscovery prompts responses DLP. Read entire Researcher FAQ: its DLP answer names no location or action. This confirms only what the FAQ omits, not absence of general Copilot DLP controls.",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "Yes, Researcher agent adheres to DLP policies and follows the same policies as Microsoft Copilot.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Risk assessment: Security & identity; Governance guidance: After rollout; Open questions",
-      "type": "behaviour",
-      "claim": "The FAQ states that Researcher session content is not directly accessible to administrators or compliance tools by default.",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The FAQ names no Researcher-specific Purview DLP location or rule action.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "By default, no. The content of Researcher sessions isn't directly accessible to admins or compliance tools. Admins can see usage metrics (like how many times it's used) but not the actual conversation content.",
-      "severity": "minor",
-      "fix": "After this attributed statement, add 'Microsoft's web-search guidance, which explicitly applies to Researcher, instead says administrators can search, audit and eDiscover prompts and responses; confirm which guidance applies in GCC.' The source is the already-cited https://learn.microsoft.com/copilot/plan/manage-public-web-access. Frame the open question as this documentation conflict."
+      "source": null,
+      "quote": "Searched: Researcher GCC default enabled rollout DLP Purview location rule action; read the full Researcher FAQ. Its DLP answer states adherence to Copilot policies but names no Purview location or rule action.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "behaviour",
+      "claim": "The FAQ says Researcher session content is not directly accessible to admins or compliance tools by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "By default, no. The content of Researcher sessions isn't directly accessible to admins or compliance tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "behaviour",
+      "claim": "The web-search guidance instead says admins can search, audit and eDiscover prompts and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "Web search query logging is available so that admins can perform search, audit, and eDiscovery on the exact web search queries Copilot derived from the user's prompt. Admins can already perform these actions for prompts and responses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The web-search article explicitly applies to Researcher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "The information about web search in this article also applies to Researcher, Analyst, and Cowork in Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Researcher is a first-party Microsoft agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "The Researcher agent is a first-party Microsoft-built agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Researcher produces research reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
-      "quote": "Researcher agent is an intelligent assistant within Microsoft Copilot, designed to handle complex, multi-step research tasks. It delivers comprehensive, source-cited reports",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/copilot/manage/researcher-agent for production of research reports; the cited FAQ already supports its first-party status."
+      "quote": "It delivers comprehensive, source-cited reports to help you make informed decisions faster.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 36,
+      "n": 40,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The FAQ gives 10 to 45 minutes as the response-time range for highly complex queries.",
+      "claim": "The FAQ gives 10 to 45 minutes for highly complex Researcher responses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Researcher agent responses typically range from under five minutes for simple queries. Then 10 to 45 minutes for highly complex ones.",
@@ -427,197 +465,32 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
-      "claim": "The FAQ says future updates will allow connector configuration.",
+      "claim": "The FAQ describes connector configuration as a future update.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Can Researcher agent fetch data from Graph Connectors? Yes, and future updates will allow connector configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Change & support; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "The FAQ and Agent 365 actions documentation say administrators can block Researcher.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Change & support; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "The Manage agents page says Researcher does not fall under agent-related settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps",
-      "quote": "Researcher and Analyst are part of the core Copilot chat experience and will not fall under any agent-related settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Agent 365 actions page says the Edit users panel is disabled for Researcher and availability is managed by tenant-wide blocking.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Microsoft 365 admin center route to blocking is Agents > All agents > agent > Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "quote": "Yes, and future updates will allow connector configuration.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "controls[0].api; controls[0].note; Open questions",
-      "type": "absence",
-      "claim": "Blocking automation is not documented for GCC, with US Government L4 unavailability offered as the reason.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/deployments",
-      "quote": "Microsoft Graph for US Government L4 (GCC High) ... If you're working in a Microsoft 365 GCC environment, continue using the worldwide endpoints: https://portal.azure.com and https://graph.microsoft.com.",
-      "severity": "blocker",
-      "fix": "Do not treat GCC as L4. Replace the null API with the documented general package operation POST /beta/copilot/admin/catalog/packages/{id}/block, docs https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block. Set the note to 'Preview package-block API; requires a Microsoft Agent 365 licence. GCC uses the worldwide Graph endpoint. Microsoft pages disagree on whether Researcher is subject to agent settings; confirm the Researcher package and blocking behaviour before use.' Replace the Open questions API sentence with 'GCC uses the worldwide Graph endpoint; the package-block API supports the global service but requires an Agent 365 licence.' Cite the API page and https://learn.microsoft.com/graph/deployments."
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "The Researcher FAQ says administrators can block Researcher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "In addition, admins can block Researcher and Analyst agents.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 43,
-      "where": "controls[0].note; Governance controls table",
-      "type": "licensing",
-      "claim": "The package-block API requires a Microsoft Agent 365 licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block to sources; it is mentioned in the writer's evidence but not cited in the briefing."
-    },
-    {
-      "n": 44,
-      "where": "controls[0].note; Open questions",
-      "type": "availability",
-      "claim": "The package-block reference marks US Government L4 as unavailable.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet | ... | ✅ | ❌ | ❌ | ❌ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The web-search route is Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot, documented by the Cloud Policy overview.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "On the Policy configurations page, select Create. ... On the Choose the scope page ... On the Configure Settings page, select the policies that you want to include in the policy configuration.",
-      "severity": "blocker",
-      "fix": "Replace the path with 'Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow web search in Copilot'. Set ui.docs to https://learn.microsoft.com/copilot/plan/manage-public-web-access, which documents the control itself; retain the Cloud Policy overview in sources for the route into the wizard. The current overview link alone does not show the control's last step."
-    },
-    {
-      "n": 46,
-      "where": "controls[1].api; controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.copilot.allowwebsearch baseline in applyOnce mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "POST /admin/configurationManagement/configurationMonitors ... mode ... monitorOnly, applyOnce, unknownFutureValue ... An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
-      "severity": "minor",
-      "fix": "Keep the call. In the note explicitly name the request properties: 'Set mode to applyOnce and baseline.resources to resourceType microsoft.copilot.allowwebsearch, resourceVersion 1, with properties.value: \"0\" enables web search, \"1\" disables it, \"2\" disables Work mode only.' Values are documented at the already-cited https://learn.microsoft.com/graph/utcm-copilot-resources."
-    },
-    {
-      "n": 47,
-      "where": "controls[1].scope; controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "The web-search row presents its Graph operation as automation for a group-scoped control.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center. Before using TCM, ensure that the target setting isn't configured in any group-level policy ... monitoring, snapshots, remediation, and applyOnce fail for that resource.",
-      "severity": "blocker",
-      "fix": "Set controls[1].scope to tenant. Add to its note: 'The UI can also target users or groups, but this Graph route supports tenant-level policies only and fails if the setting is configured in any group-level policy.' Retain group-targeting advice only for the UI route."
-    },
-    {
-      "n": 48,
-      "where": "controls[1].note",
-      "type": "availability",
-      "claim": "The TCM overview says its service is available only in the global service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/unified-tenant-configuration-management-concept-overview",
-      "quote": "TCM as a service is available only in the global service, not in national clouds.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[1].note",
-      "type": "availability",
-      "claim": "The configurationMonitor creation reference marks US Government L4 supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet | ... | ✅ | ✅ | ✅ | ❌ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "AI Administrator is the least-privileged signed-in user role for remediation and applyOnce of the Copilot TCM resources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "TCM supports these Copilot settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The licence-assignment route is Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "Go to the Users > Active users page. Select the row of the user ... In the right pane, select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence using Microsoft Graph PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The FAQ says no reporting tool exists for Researcher and Analyst.",
+      "claim": "The FAQ says there is no reporting tool for Researcher and Analyst.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "No. There is no existing reporting tool for Copilot agents like Researcher and Analyst.",
@@ -625,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 44,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The FAQ also says administrators can see Researcher usage metrics.",
+      "claim": "The same FAQ says admins can see Researcher usage metrics.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Admins can see usage metrics (like how many times it's used) but not the actual conversation content.",
@@ -636,102 +509,300 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 45,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Researcher requires a Microsoft 365 Copilot license, supporting the add-on licensing model for GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.\nMicrosoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description identifies Copilot as an add-on with prerequisite licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing options page lists Copilot as an add-on for eligible GCC, GCC High and DoD plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available as an add-on in Government Community Cloud (GCC), Government Community Cloud High (GCC High), and Department of Defense (DoD) environments for the following plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate Researcher license, price, meter or GCC-specific credit rate is published in the checked licensing guidance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot Researcher licensing; Researcher GCC price meter credits license 25 queries pricing; Microsoft Copilot Researcher separate price credits meter GCC licensing. Opened FAQ, service description and license options: Copilot license and query limit, no separate Researcher rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
       "where": "Cost and licensing: Meter and limits",
       "type": "cost",
-      "claim": "The FAQ states a maximum of 25 Researcher queries per user per month, with GCC applicability left for confirmation in the briefing.",
+      "claim": "The FAQ states a maximum of 25 queries per user per month, with GCC applicability left open by the briefing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Are there any usage limits for Researcher agent in Microsoft 365? A maximum of 25 queries per user per month.",
+      "quote": "A maximum of 25 queries per user per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "The FAQ says Researcher is available in the Copilot mobile app on iOS and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "Yes, it's available on iOS and Android in the Copilot mobile app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The documented tenant blocking path is Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\nIn the All agents page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The package-block operation is a preview beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Open questions",
+      "type": "licensing",
+      "claim": "The package-block API requires a Microsoft Agent 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Open questions: Block action",
+      "type": "availability",
+      "claim": "The package-block API supports the global Graph service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "GCC uses the worldwide Microsoft Graph endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/deployments",
+      "quote": "If you're working in a Microsoft 365 GCC environment, continue using the worldwide endpoints: https://portal.azure.com and https://graph.microsoft.com.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate Researcher licence, price or Researcher-specific GCC meter or credit rate is published in the licensing documentation checked.",
+      "where": "Governance controls; Risk assessment: Change & support; controls[0].scope",
+      "type": "applicability",
+      "claim": "The Agent 365 actions page disables Edit users for Researcher and directs administrators to tenant-wide Block.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Researcher GCC price meter Copilot credits license Researcher; Researcher price meter. Read FAQ, service description, licence options, USL/UBB overview and Microsoft 365 Copilot pay-as-you-go meters; none gives a Researcher-specific GCC price or meter.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "Open questions",
-      "type": "behaviour",
-      "claim": "The Researcher FAQ says Claude can be enabled in Researcher.",
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "The Manage agents page conflicts with blocking guidance by saying Researcher does not fall under agent-related settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Can I enable Claude in Researcher agent? Yes. Learn more about enabling Claude in Researcher agent.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps",
+      "quote": "Researcher and Analyst are part of the core Copilot chat experience and will not fall under any agent-related settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Open questions",
-      "type": "availability",
-      "claim": "The Cowork GCC page says Anthropic models are not available in government clouds.",
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Web search is configured through Microsoft 365 Apps admin center > Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow web search in Copilot.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "Anthropic models aren't available in government clouds. The generic instruction that an admin can enable them doesn't apply here.",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Under Customization, select Policy Management.\nOn the Policy configurations page, select Create.\nOn the Start with the basics page, enter a name (required) and a description (optional), then select Next.",
       "severity": "minor",
-      "fix": "Narrow the question to 'Does the non-federal GCC Anthropic opt-in extend to Researcher? Microsoft's non-federal GCC page currently documents model-picker access only in Copilot Chat in the Microsoft Copilot app and on the web; federal GCC, GCC High and DoD customers are excluded.' Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc and https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor. The Cowork page is not sufficient to establish a blanket Researcher exclusion."
+      "fix": "Complete the path in controls[1].ui and its rendered row as 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing Cloud Policy source supplies the omitted heading and name-entry page; the cited web-search article supplies the final policy."
     },
     {
       "n": 60,
-      "where": "Governance guidance: After rollout",
-      "type": "consistency",
-      "claim": "The checklist asks readers to re-test audit and eDiscovery visibility, but neither control appears in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Re-test audit and eDiscovery visibility of Researcher activity with your compliance team ... Controls rows cover only agent blocking, web search and licence assignment.",
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can set web search using applyOnce mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode.",
       "severity": "minor",
-      "fix": "Remove the 'Re-test audit and eDiscovery visibility' checklist bullet; keep the documentation-conflict question in Open questions. No new control row is requested."
+      "fix": "Keep the call unchanged. Add to controls[1].note and the rendered row: 'The request body sets mode to applyOnce and includes a baseline resource with resourceType microsoft.copilot.allowwebsearch, resourceVersion 1 and properties.value: \"0\" enables web search in both experiences, \"1\" disables it in both, and \"2\" disables Work mode web search, including Researcher.' The resource and property values are documented at https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type."
     },
     {
       "n": 61,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "Blocking Researcher is the only documented switch for the agent itself.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-agent-install",
-      "quote": "Alternately, administrators can disable or restrict Copilot extensibility for their organization, however this will apply to non-Microsoft deployed agents, as well as Microsoft-deployed agents.",
-      "severity": "blocker",
-      "fix": "Replace 'Blocking Researcher is the only documented switch for the agent itself' with 'The Agent 365 actions page documents tenant-wide blocking for Researcher'. This removes the unsupported exclusivity without adding another control; retain the existing discussion of conflicting agent-setting documentation."
-    },
-    {
-      "n": 62,
-      "where": "Scope: Platforms",
-      "type": "availability",
-      "claim": "The FAQ says Researcher is available on iOS and Android in the Copilot mobile app.",
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The Graph web-search route uses preview applyOnce functionality.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Is the Researcher agent available on mobile devices (iOS and Android)? Yes, it's available on iOS and Android in the Copilot mobile app.",
+      "source": "https://learn.microsoft.com/graph/unified-tenant-configuration-management-concept-overview",
+      "quote": "Apply a baseline once with applyOnce (preview)\nA monitor in applyOnce mode applies its baseline in a background job on behalf of the administrator who created or updated it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[1].scope; Governance guidance: Before rollout",
+      "n": 62,
+      "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "The Cloud Policy web-search control can target users or user groups.",
+      "claim": "The Cloud Policy UI supports user and group targeting for web search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "This policy allows IT admins to either turn on or turn off web search for users or user groups across the tenant they manage",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].scope; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "TCM supports these Copilot settings only in tenant-level policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "TCM operations fail for a target setting configured in a group-level policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "AI Administrator is the least-privileged signed-in user role for Copilot TCM remediation and applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "User license assignment is available at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Users > Active users page.\nSelect the row of the user that you want to assign a license to.\nIn the right pane, select Licenses and Apps.\nExpand the Licenses section",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "Set-MgUserLicense with UserId, AddLicenses containing SkuId, and empty RemoveLicenses assigns a license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling Copilot Work mode web search also disables web search in Researcher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "If the IT admin chooses the Disabled in Microsoft Copilot Work mode; Enabled in Microsoft Copilot Web mode and Microsoft Copilot Chat option, web search in Researcher and Cowork in Microsoft Copilot will be disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Open questions: Anthropic",
+      "type": "availability",
+      "claim": "The non-federal GCC Anthropic page currently documents model-picker availability only in Copilot Chat in the Microsoft Copilot app and on the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+      "quote": "Currently, those models appear as an option in the dropdown model picker only in Copilot Chat in the Microsoft Copilot app and on the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Open questions: Anthropic",
+      "type": "availability",
+      "claim": "Claude models are unavailable for federal GCC customers and all GCC High and DoD customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Claude models aren't available for federal customers in GCC or for any customers in GCC High and Department of Defense (DoD) environments.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T05:48:44.236Z",
+    "at": "2026-11-25T07:21:11.202Z",
     "summary": {
-      "links": 15,
+      "links": 20,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 1,
-      "apiCalls": 2,
+      "apiCalls": 3,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -743,6 +814,16 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/researcher-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-agent-install",
         "ok": true,
         "status": 200
       },
@@ -792,7 +873,22 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/deployments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
         "ok": true,
         "status": 200
       },
@@ -827,21 +923,33 @@
         "missing": []
       },
       {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Researcher is available to the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
         "index": 1,
         "side": "ui",
         "governs": "Whether Researcher and Copilot can use web search",
-        "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "docs": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
         "reachable": true,
         "segments": [
           "Customization",
           "Policy Management",
-          "policy configuration",
+          "Create",
           "Choose the scope",
           "Configure Settings",
           "Allow web search in Copilot"
         ],
         "missing": [
-          "Allow web search in Copilot"
+          "Customization",
+          "Policy Management",
+          "Choose the scope",
+          "Configure Settings"
         ]
       },
       {
@@ -879,5 +987,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

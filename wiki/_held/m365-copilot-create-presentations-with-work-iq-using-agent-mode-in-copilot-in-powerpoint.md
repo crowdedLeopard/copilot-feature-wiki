@@ -49,6 +49,9 @@ sources:
   - title: "Restrict discovery of SharePoint sites and content"
     url: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
     kind: "learn"
+  - title: "Use Microsoft Purview to manage data security & compliance for Microsoft 365 Copilot & Microsoft 365 Copilot Chat"
+    url: "https://learn.microsoft.com/purview/ai-m365-copilot"
+    kind: "learn"
 videos: []
 related: ["work-iq","restricted-content-discovery","m365-copilot-powerpoint-agent","m365-copilot-reference-a-teams-meeting-or-chat-when-creating-a-presentation-with-ag-555884","m365-copilot-reference-files-saved-in-sharepoint-libraries-and-onedrive-folders-when-creat"]
 controls:
@@ -87,19 +90,23 @@ changes:
     note: "Corrected after the independent check: Work IQ licensing and meter wording, Restricted Content Discovery reach, the Work IQ on/off statement and one data-exposure sentence."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: removed the claim that detail beyond the release notes is not documented, removed the sensitivity-label question that Learn answers, and narrowed the risk rationale."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 52
+  claims: 60
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "943c93ade6ee22a681aecc436e8f9f14"
+  contradicted: 1
+  attempts: 3
+  hash: "8459a5bad118e8a766a170c6ba909dc1"
 ---
 
 ## What's changing
@@ -108,7 +115,7 @@ Agent Mode in Copilot in PowerPoint can now create a presentation based on a use
 
 The release notes give the user steps: open PowerPoint, select 'Edit with Copilot', choose to create a presentation based on your Work IQ, then review and customise the generated slides. They say the integration maintains data security by accessing only authorised content. Microsoft Learn describes Work IQ as an intelligence layer that enables agents access to reason over organizational data, content and tools.
 
-The roadmap record gives the status as Launched, with a target of March CY2026, the release phase General Availability, the platform Desktop and the cloud Worldwide (Standard Multi-Tenant). The release-notes date (July 01, 2026) and the roadmap target (March CY2026) are both reported as Microsoft gives them. Microsoft Learn describes this feature only in the release notes at the time of writing (November 2026), so detail beyond the roadmap description and those notes is not yet documented.
+The roadmap record gives the status as Launched, with a target of March CY2026, the release phase General Availability, the platform Desktop and the cloud Worldwide (Standard Multi-Tenant). The release-notes date (July 01, 2026) and the roadmap target (March CY2026) are both reported as Microsoft gives them. The feature-specific description on Microsoft Learn is in the release notes at the time of writing (November 2026). Learn's Microsoft Purview page for Copilot also says Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook support sensitivity label inheritance for newly created content.
 
 ## Why it matters
 
@@ -179,10 +186,9 @@ Learn's Microsoft Copilot overview says Work IQ can be turned on or off, without
 - What is the default state of Agent Mode in PowerPoint with Work IQ for a licensed user, and does anything change for tenants that do nothing? Watch Message center and the Microsoft 365 Copilot release notes.
 - Which licence does Agent Mode in PowerPoint need, and can users on the Microsoft 365 Copilot (Basic) licence use the Work IQ part? Watch the Microsoft Copilot overview on Learn.
 - Where is the Work IQ on/off setting that Learn's Microsoft Copilot overview describes, and does it switch off the Work IQ grounding in Agent Mode in PowerPoint?
-- How do sensitivity labels on source files carry into the generated deck?
 
 <!-- rationale
-risk: Medium. The feature gathers files, meetings and emails into new slides, so anything a user can reach can end up in a deck; Learn's release note says it accesses only authorised content, which keeps existing permissions as the boundary.
+risk: Medium. The feature gathers files, meetings and emails into new slides, so relevant authorised source content can end up in a deck; Learn's release note says it accesses only authorised content, which keeps existing permissions as the boundary.
 cost: Low. Learn says Work IQ is included with Microsoft 365 Copilot (Premium) and names no separate meter for this feature; the known cost is licence assignment and admin time.
 impact: Medium. Licensed users who build decks in PowerPoint on desktop will notice it; the roadmap lists Desktop as the only platform.
 -->
@@ -190,8 +196,5 @@ impact: Medium. Licensed users who build decks in PowerPoint on desktop will not
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing / absence: Detail beyond the roadmap description and this feature's release note is not yet documented. | Found: Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook support sensitivity label inheritance for newly created content. | Fix: Delete 'so detail beyond the roadmap description and those notes is not yet documented'. Keep the narrower statement that the feature-specific description is in the release notes; general Copilot documentation also covers its licensing, permissions and label inheritance. | Source: https://learn.microsoft.com/purview/ai-m365-copilot
-- [contradicted, blocker] Open questions: sensitivity labels / absence: How source-file sensitivity labels carry into the generated deck is an unanswered question. | Found: the sensitivity label from the source file is automatically inherited, with the label's protection settings. If multiple files are used to create new content, the sensitivity label with the highest priority is used for label inheritance. | Fix: Remove the question 'How do sensitivity labels on source files carry into the generated deck?'. Microsoft documents inheritance for newly created Copilot in PowerPoint content and selection of the highest-priority label when multiple files are used at https://learn.microsoft.com/purview/ai-m365-copilot. | Source: https://learn.microsoft.com/purview/ai-m365-copilot
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] rationale: risk / behaviour: Anything a user can reach can end up in a generated deck. | Found: If the user has VIEW but not EXTRACT, Copilot doesn't summarize the content, but it can return a link so the user can open it outside Copilot. Copilot and agents can't access content protected by DKE. | Fix: Replace 'anything a user can reach can end up in a deck' with 'relevant authorised source content can end up in a deck'. This removes the universal claim without adding new scope or changing the supported release-note statement. | Source: https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing
+- [contradicted, blocker] Open questions: licensing / absence: Whether Microsoft 365 Copilot (Basic) users are entitled to the Work IQ grounding part remains an open licensing question. | Found: Work IQ is included with Microsoft 365 Copilot (Premium) ... Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users don't have access to Microsoft Graph. | Fix: Remove the second Open questions bullet. The cited overview already documents Premium entitlement to Work IQ and distinguishes Basic users' manually supplied or pay-as-you-go content from automatic organisational grounding. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 -->

@@ -37,6 +37,9 @@ sources:
   - title: "Key roles for Viva Glint"
     url: "https://learn.microsoft.com/viva/glint/start/role-definitions"
     kind: "learn"
+  - title: "Manage Viva Glint confidentiality thresholds"
+    url: "https://learn.microsoft.com/viva/glint/setup/manage-confidentiality-thresholds"
+    kind: "learn"
 videos: []
 related: ["microsoft-viva-viva-glint-configure-data-retention-policy-for-viva-glint","microsoft-viva-viva-glint-enhanced-multiple-choice-questions-with-up-to-500-options","microsoft-viva-viva-glint-in-product-access-to-feature-announcements"]
 controls:
@@ -57,19 +60,23 @@ changes:
     note: "New briefing: planned Viva Glint Multi-attribute export enhancements, with today's documented behaviour, the Service Administrator control and open questions on access and scale."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected the licence-count statement to Learn's wording, added the PIM assignment qualification and the full export route, removed an unsupported impact claim and a checklist step with no controls row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 47
+  claims: 60
+  confirmed: 59
   unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "9b2e9f10a20a9ea9895e32de3b595fff"
+  contradicted: 0
+  attempts: 0
+  hash: "385d04d6f843e61563eaf48d30c18de8"
 ---
 
 ## What's changing
@@ -107,7 +114,7 @@ Microsoft has not stated what happens on arrival: whether the wider access is sw
 
 Learn's Viva Glint licensing page says the purchase of a Viva Suite or Viva Glint subscription plan is required for using Viva Glint, and that individual user licence assignment isn't required for using Viva Glint. The roadmap item names no separate licence, and no price or meter specific to this enhancement is published at the time of writing (November 2026).
 
-The indirect cost is administrator time: reviewing who holds the Viva Glint Service Administrator role and any newly authorised users, and revisiting confidentiality thresholds. Learn says the licence count must be greater than or equal to the number of active users in the app; whether new exporters count differently is not stated.
+The indirect cost is administrator time: reviewing who holds the Viva Glint Service Administrator role and any newly authorised users, and revisiting confidentiality thresholds. Learn says the total number of active licences in subscriptions should be greater than or equal to the number of active users in the app; support users do not count towards the organisation's Viva Glint licences. Whether new exporters count differently is not stated.
 
 ## Scope
 
@@ -119,7 +126,6 @@ Today, Learn says only Viva Glint Admins can access the export, which covers Eng
 
 ### Before rollout
 - Review who holds the Viva Glint Service Administrator role in the Microsoft 365 admin center, using the first row of the controls table, and remove people who no longer need access to all survey data.
-- Check the confidentiality and suppression thresholds configured for each survey programme, since the export adheres to them.
 - Decide, with HR and the survey owner, which roles you would want to be able to export attribute-level results, so you can judge Microsoft's announcement against that list.
 
 ### At rollout
@@ -127,7 +133,7 @@ Today, Learn says only Viva Glint Admins can access the export, which covers Eng
 - Test the export on a non-sensitive survey, selecting the same attributes in two different orders, and compare which cells are suppressed.
 
 ### After rollout
-- Confirm who can now see the Multi-attribute export tile under Reports and whether that matches your list.
+- Confirm who can now see the Multi-attribute export tile at Viva Glint Dashboard > Reports > Survey programs > survey > Multi-attribute export and whether that matches your list.
 - Update internal guidance for Glint administrators on how many attributes, and which questions, an export should include.
 
 ## Governance controls
@@ -143,6 +149,8 @@ Today, Learn says only Viva Glint Admins can access the export, which covers Eng
 
 Learn documents the Viva Glint Service Administrator assignment as a Microsoft 365 admin center task, available to a Microsoft 365 Global Administrator or a Viva Glint Tenant Administrator. The export page names its audience as Viva Glint Admins, while the role pages use the name Viva Glint Service Administrator (formerly Company Admin); confirm that these are the same group when the enhanced page is published.
 
+Viva Glint Tenant Administrators using PIM-enabled accounts must have direct assignment, not group assignment, to manage settings in the Microsoft 365 admin center.
+
 The row is today's access control for the app. It is not confirmed to be the control for the expanded audience, because Microsoft has not said who that audience is. Microsoft Learn documents no PowerShell or Graph operation for assigning Viva Glint Service Administrators at the time of writing (November 2026).
 
 ## Open questions
@@ -155,17 +163,11 @@ The row is today's access control for the app. It is not confirmed to be the con
 <!-- rationale
 risk: Medium. The roadmap says more people will be able to use an export that breaks survey scores down by attribute combinations, so confidentiality settings and role assignments matter more; who gains access is not yet stated.
 cost: Low. The only cost the sources show is admin time; Microsoft Learn states Viva Glint needs a Viva Suite or Viva Glint subscription, and no price specific to this enhancement is published.
-impact: Medium. Today Learn says Viva Glint Admins use this export; the roadmap says the audience expands, so Glint administrators and whoever is newly authorised will notice. Survey takers see no change.
+impact: Medium. Today Learn says Viva Glint Admins use this export; the roadmap says the audience expands, so Glint administrators and whoever is newly authorised will notice.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: second paragraph / licensing: The licence count must be greater than or equal to the number of active users in the app, without an exemption. | Found: The total number of active licenses in your subscriptions should be greater than or equal to the number of active users in the app. Support users don't count toward your organization's Viva Glint licenses. | Fix: Replace the licence-count sentence with: "Learn says the total number of active licences in subscriptions should be greater than or equal to the number of active users in the app; support users do not count towards the organisation's Viva Glint licences." Source: https://learn.microsoft.com/viva/glint/setup/glint-order-teams. | Source: https://learn.microsoft.com/viva/glint/setup/glint-order-teams
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Scope; Governance controls / role: A Microsoft 365 Global Administrator or Viva Glint Tenant Administrator assigns Service Administrators. | Found: Users can only be added/removed to this role by a Microsoft 365 Global Administrator or a Viva Glint Tenant Administrator from the Microsoft 365 Admin Center. PIM users assigned access through group assignment will encounter access errors until access rights are assigned through direct assignment. | Fix: Keep the role statement, and add its documented access qualification in Governance controls: "Viva Glint Tenant Administrators using PIM-enabled accounts must have direct assignment, not group assignment, to manage settings in the Microsoft 365 admin center." Source: https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps. | Source: https://learn.microsoft.com/viva/glint/setup/post-provisioning-next-steps
-- [supported, minor] Governance guidance: After rollout / admin-path: The Multi-attribute export tile is reached under Reports. | Found: Select Reports from the Viva Glint Dashboard. In the Survey programs list on the left, select a survey. Select the Multi-attribute export tile. | Fix: Replace "under Reports" with "at Viva Glint Dashboard > Reports > Survey programs > survey > Multi-attribute export". The omitted survey selection does not make the existing route wrong, but this gives the full documented route. | Source: https://learn.microsoft.com/viva/glint/reports/multi-attribute-export-report
-- [supported, minor] Governance guidance: Before rollout; Cost and licensing / behaviour: Confidentiality and suppression thresholds can be configured at the survey-program level. | Found: Use the guidance in this article to adjust confidentiality thresholds at the overall level or at the survey program level and understand the impact of those changes. | Fix: Add https://learn.microsoft.com/viva/glint/setup/manage-confidentiality-thresholds, titled "Manage Viva Glint confidentiality thresholds", to sources for the advice to check survey-program thresholds. | Source: https://learn.microsoft.com/viva/glint/setup/manage-confidentiality-thresholds
-- [unsupported, minor] rationale: impact / behaviour: Survey takers see no change from the enhancement. | Found: Searched: Viva Glint multi-attribute export select questions automated export survey takers. Read roadmap, multi-attribute-export-report and role-definitions; no survey-taker impact statement. | Fix: Remove "Survey takers see no change." from the impact rationale.
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to check confidentiality and suppression thresholds, but the controls table contains only Service Administrator assignment. | Found: Check the confidentiality and suppression thresholds configured for each survey programme, since the export adheres to them. Control table: Who holds the Viva Glint Service Administrator role. | Fix: Remove the Before rollout checklist bullet "Check the confidentiality and suppression thresholds configured for each survey programme, since the export adheres to them." It names a control with no table row; do not add a control row as part of this correction.
+- [unsupported, major] Why it matters / behaviour: The enhancement allows larger attribute combinations. | Found: Searched: "Viva Glint" "Multi-attribute" "enhanced" "scale" "access" "questions". Read roadmap and Learn multi-attribute-export-report; roadmap says only increased supported scale, and Learn still documents up to three attributes. | Fix: In Why it matters, replace 'and allowing larger attribute combinations' with 'and increasing the supported scale'. The roadmap does not identify which dimension of scale increases.
 -->

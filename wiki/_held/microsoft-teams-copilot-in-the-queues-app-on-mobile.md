@@ -129,18 +129,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-24"
+  status: "held"
+  date: "2026-11-25"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 78
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 75
+  confirmed: 73
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "a81398dd9b88d0cd8e750d77004a7e00"
 ---
 
@@ -243,11 +245,14 @@ cost: Medium. Users need a Teams Premium licence for the Queues app and a Micros
 impact: Low. Only calling reps and supervisor leads in call queues, with the right licences and recorded calls, will see it; most Teams users are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls; Governance guidance: Before rollout / admin-path: Administrators can assign the recording template through Voice > Call queue > call queue > Templates > Automatic recording template, with no SharePoint administrator qualification stated. | Found: To assign an automatic recording template to a call queue or manage its authorized users list, the Teams administrator must also be a SharePoint site administrator for the site used by the template. | Fix: Keep the path. Add to controls[1].note and its rendered counterpart: 'To assign an automatic recording template to a call queue or manage its authorized users list, the Teams administrator must also be a SharePoint site administrator for the site used by the template.' Add that qualification to the Before rollout automatic-recording instruction. Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
+- [unsupported, blocker] Governance controls: final paragraph / applicability: Licence assignment is the one documented way to decide who gets Copilot in the Queues app. | Found: Searched: Teams Queues Copilot permissions recorded call history license; Copilot Queues app disable. Read manage-queues-app, copilot-teams-calling-transcription, voice applications policies and MC1552391; none states licence assignment is the sole control. | Fix: Replace 'Licence assignment is the one documented way to decide who gets Copilot there' with 'Users need a Microsoft 365 Copilot licence to use Copilot there, according to MC1552391.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / record: Targeted Release completes by early December 2026. | Found: Targeted Release (Worldwide): We will begin rolling out on late November 2026 and expect to complete by early December 2026. | Fix: Replace 'completes by early December 2026' with 'is expected to complete by early December 2026'.
-- [supported, minor] What's changing / record: General Availability completes by mid December 2026. | Found: General Availability (Worldwide): We will begin rolling out on early December 2026 and expect to complete by mid December 2026. | Fix: Replace 'completes by mid December 2026' with 'is expected to complete by mid December 2026'.
-- [supported, minor] controls[0].api / command: POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes user licences. | Found: POST /users/{id | userPrincipalName}/assignLicense. addLicenses: objects that specify the licenses to add. removeLicenses: A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection. | Fix: Keep the call and add to controls[0].note: 'The request body uses addLicenses to add licences and removeLicenses to remove licence skuIds; removeLicenses is required and can be empty.' | Source: https://learn.microsoft.com/graph/api/user-assignlicense
-- [supported, minor] controls[1].note / admin-path: The automatic recording template is created under Voice > Templates and resources. | Found: go to Voice > Templates and resources. Select Templates. Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. | Fix: Replace 'Template created under Voice > Templates and resources' with 'Template created under Voice > Templates and resources > Templates > Automatic Recording > Add'. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
+- [supported, minor] What's changing / record: Targeted Release completes by early December 2026. | Found: expect to complete by early December 2026. | Fix: Replace 'completes by early December 2026' with 'is expected to complete by early December 2026'.
+- [supported, minor] What's changing / record: General Availability completes by mid December 2026. | Found: expect to complete by mid December 2026. | Fix: Replace 'completes by mid December 2026' with 'is expected to complete by mid December 2026'.
+- [supported, minor] controls[0].api; Governance controls / command: POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes user licences. | Found: POST /users/{id | userPrincipalName}/assignLicense addLicenses: objects that specify the licenses to add. removeLicenses: A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection. | Fix: Keep the call and add to controls[0].note and its rendered counterpart: 'The request body uses addLicenses to add licences and removeLicenses to remove licence skuIds; removeLicenses is required and can be empty.' | Source: https://learn.microsoft.com/graph/api/user-assignlicense
+- [supported, minor] controls[1].note; Governance controls / admin-path: The automatic recording template is created under Voice > Templates and resources. | Found: go to Voice > Templates and resources. Select Templates. Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. | Fix: Replace 'Template created under Voice > Templates and resources' with 'Template created under Voice > Templates and resources > Templates > Automatic Recording > Add' in the note and rendered table. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
 -->

@@ -1,0 +1,635 @@
+{
+  "slug": "microsoft-purview-compliance-portal-collection-policies-support-in-irm",
+  "roadmapId": 500639,
+  "title": "Microsoft Purview: collection policies support in Insider Risk Management",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "4 blocking findings (claims 11, 42, 43, 44)"
+    ]
+  },
+  "counts": {
+    "claims": 49,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 4,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the briefing omits Microsoft's published requirement for Endpoint DLP licensing when a collection policy includes devices. It also labels the default as unstated even though the roadmap explicitly plans automatic collection-policy creation for device-indicator IRM policies; the settings and treatment of existing policies remain unclear.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Purview as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is September CY2025, a past target as of November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2025\", \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans collection-policy support in Insider Risk Management.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, IRM will start supporting collection policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Collection policies scope classification using sensitive information types and activities for scoped users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Collection policies allow customers to scope classification (SITs - Sensitive Information Types) and activities for scoped users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap plans automatic background creation of required collection policies for device-indicator IRM policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For device indicators based IRM policy, required collection policies will be automatically created in the background.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The default is unknown because Microsoft has not stated what happens on arrival.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "For device indicators based IRM policy, required collection policies will be automatically created in the background.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'on'. Replace the broad unstated-default wording with 'The roadmap plans automatic background creation of required collection policies for device-indicator IRM policies; it does not specify their configuration or whether existing policies are covered.' Keep those narrower questions open, including in the risk rationale."
+    },
+    {
+      "n": 12,
+      "where": "What's changing; controls[0].governs",
+      "type": "behaviour",
+      "claim": "Collection policies filter which events are ingested into Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "They let you filter which events from both untrusted and trusted sources are ingested into Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Insider Risk Management can consume data ingested through collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "Once ingested, that data can be classified and used by various Microsoft Purview signal consuming solutions, such as Microsoft Purview Activity explorer, Microsoft Purview Insider Risk Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An event includes a condition such as content containing a sensitive information type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "An event is made up of two things: ... A condition, like Content contains, or File extension is. This requires the use of classifiers, like sensitive information types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An event also includes an activity such as copying a file to removable media.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "An activity that a user can take on a sensitive item, like File copied to removable media",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[0].note",
+      "type": "applicability",
+      "claim": "Learn already documents inclusion of IRM device indicators in collection-policy evaluations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Device indicators are included in collection policy evaluations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The cited Learn pages do not describe automatic creation of collection policies for IRM device indicators.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"collection policies\" \"automatically\" \"Insider\"; \"collection policies\" \"automatically created\" \"device\". Opened overview, reference, create/deploy and IRM indicators; automatic creation described for DSPM, not IRM device policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether automatic creation covers existing device-indicator IRM policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management collection policies automatically created existing device indicators default licensing price. Read roadmap, overview, reference, create/deploy and IRM indicators; no existing-versus-new qualification found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified the conditions, activities or user scope of the automatically created IRM collection policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"collection policies\" \"automatically created\" \"device\". Read roadmap, overview, reference, create/deploy and IRM indicators; no configuration of automatically created IRM collection policies found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The pages read do not say whether automatically created IRM collection policies can be viewed, edited or deleted.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"collection policies\" \"automatically\" \"Insider\". Opened overview and create/deploy; overview confirms viewing/editing DSPM-created policies, but does not identify those policies as IRM-created policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; controls[0].note; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "A deployed device collection policy takes precedence when it conflicts with an IRM policy's monitoring of device indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "When a device collection policy is configured and deployed, if there's a conflict between what the Insider Risk Management policy is configured to monitor and what the collection policy is configured to filter for, the collection policy configuration takes precedence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "A device activity filtered out by that collection policy is not collected or available for IRM review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "the activity isn't collected and isn't available for review in Insider Risk Management. This only applies to device indicators in Insider Risk Management policies, and only when a device collection policy is deployed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Collection policies can filter unwanted events before they reach Activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "With collection policies, you can filter out the events that you don't want to see before they get to activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Device collection policies can scope a data source to all users and groups, specific users and groups, or all except specific users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "For each data source, you can choose to scope by: All users and groups (default); Specific users and groups; All except specific users and groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Without conditions, a device collection policy detects all data, including data that does not match the organisation's classifiers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "If you don't add conditions, what gets detected depends on the data sources you select later: Devices: All data is detected, even if it doesn't match your organization's classifiers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Purview combines collection policies for the same data source into a single collection policy during evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "during policy evaluation, Microsoft Purview combines all the collection policies for a data source into a single collection policy for that data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Organization Management is an applicable role group for collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Compliance Administrator is an applicable role group for collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. ... Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Insider Risk Management Admin is an applicable role group for collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. ... Insider Risk Management Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Information Protection Admins is an applicable role group for collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. ... Information Protection Admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Data Security Viewers has read-only support for collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Data Security Viewers (read-only support)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Collection policies are reached in the Microsoft Purview portal through Solutions > Data Loss Prevention > Classifiers > Collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope; Governance controls",
+      "type": "admin-path",
+      "claim": "Collection policies are part of Classifiers and can alternatively be reached through Information Protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "Collection policies are a component of the Microsoft Purview portal Classifiers feature. ... Solutions > Information Protection > Classifiers > Collection policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell or Microsoft Graph operation is documented for creating or editing these event-filtering collection policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"collection policies\" \"Microsoft Graph\"; site:learn.microsoft.com/powershell/module/exchangepowershell \"CollectionPolicy\". Opened create/deploy and Graph security-datasecurityandgovernance-overview; found portal configuration and evaluation APIs, not policy creation/editing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Using Insider Risk Management requires a supported subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators must assign the appropriate IRM licences to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The cited Get started licensing passage links to subscription requirements rather than naming a single licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "For more information about subscriptions and licensing, see the subscription requirements for Insider Risk Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft's collection-policy documentation generally describes pay-as-you-go billing, per-user licensing or both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "This feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Purview provides a Usage center in its portal to understand and manage usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "To help you understand and manage your usage, Microsoft Purview provides a Usage center in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The collection-policy reference lists Copilot experiences, Enterprise AI and non-Microsoft SASE integrations as pay-as-you-go cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Copilot experiences; Enterprise AI; Unmanaged cloud app activity detected through non-Microsoft SASE and secure enterprise browser integrations via Microsoft Purview network data security",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Devices are not in the reference page's list of pay-as-you-go collection-policy data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Some collection policy data sources and features are pay-as-you-go ... Copilot experiences; Enterprise AI; Unmanaged cloud app activity detected through non-Microsoft SASE and secure enterprise browser integrations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: opening sentence",
+      "type": "licensing",
+      "claim": "The licence for this collection-policy use is simply that of Insider Risk Management.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "creating a collection policy that includes devices requires endpoint DLP licensing, as the device data source is available under that licensing tier.",
+      "severity": "blocker",
+      "fix": "Replace 'The licence is that of Insider Risk Management.' with 'Collection policies have no separate licensing requirement, but require licensing for their workload; a collection policy that includes devices requires Endpoint DLP licensing.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies."
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model for this device-indicator collection-policy change is mixed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "There are no licensing requirements to apply collection policies. Instead, you must be licensed for the workload for which you're creating the policy.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included'. State in licensing.notes that collection policies require the licence for their workload, and device collection policies require Endpoint DLP licensing; retain the separate requirement for an appropriate IRM subscription. Cite the service description's Microsoft Purview Collection Policies section. Do not apply the generic pay-as-you-go cases for other data sources to this device change."
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The licensing requirement for IRM's device collection-policy use is not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "There are no licensing requirements to apply collection policies. Instead, you must be licensed for the workload for which you're creating the policy. For example, creating a collection policy that includes devices requires endpoint DLP licensing",
+      "severity": "blocker",
+      "fix": "Replace the unpublished-licence assertion with 'Microsoft states that collection policies require licensing for the workload; including devices requires Endpoint DLP licensing.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies. Remove the licence part of the corresponding open question; keep only the narrower unpublished feature-specific meter question."
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No separate rate or meter specific to IRM device collection-policy support is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"collection policies\" \"Insider Risk Management\" \"licensing\" \"devices\". Opened collection-policy reference, create/deploy, Purview service description and purview-billing-models; no separate IRM device collection-policy meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Devices data source is devices onboarded to Microsoft 365 and managed by the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Devices onboarded to Microsoft 365 and managed by your org.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "IRM device indicators require device onboarding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "For both Windows and macOS devices, you must onboard devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "Collection-policy governance is tenant-level, with user and data-source scoping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Collection policies are a configuration option in the Microsoft Purview portal that allows administrators to fine-tune what are the signals and data that are available to Purview solutions at the tenant level.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-collection-policies to sources."
+    },
+    {
+      "n": 49,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "The sources read describe no new end-user screen for this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"collection policies\" \"automatically created\" \"device\". Read roadmap, collection overview, reference, create/deploy and IRM indicators; they describe policy administration and event filtering, not a new end-user screen.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T07:21:06.910Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=500639",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which events collection policies let Purview ingest, including device activities that Insider Risk Management reviews",
+        "docs": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Loss Prevention",
+          "Classifiers",
+          "Collection policies"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

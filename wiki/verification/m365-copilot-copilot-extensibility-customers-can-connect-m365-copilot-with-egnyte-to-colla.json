@@ -1,0 +1,995 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-customers-can-connect-m365-copilot-with-egnyte-to-colla",
+  "roadmapId": 513283,
+  "title": "Microsoft 365 Copilot: Egnyte connector for indexing Egnyte files",
+  "status": "verified-with-gaps",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 77,
+    "confirmed": 75,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "The briefing passes: the roadmap facts, licensing, access controls and operational limits are supported. The overview recommends restricted access but does not state a competing default; correct that comparison and clarify the setup route and supporting citations.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes connecting Microsoft 365 Copilot with Egnyte for secure file collaboration using a Copilot connector.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers can connect M365 Copilot with Egnyte to collaborate on secure file storage with Copilot Connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The record was modified at 2026-03-24T23:15:57.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-03-24T23:15:57\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "The connector indexes files stored in Egnyte for retrieval through Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "The Egnyte Microsoft 365 Copilot connector enables your organization to index files stored in Egnyte so users can retrieve them through Microsoft 365 Copilot and Microsoft Search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Indexed Egnyte files can appear in Microsoft Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Indexed content appears in Copilot answers and search results, subject to Egnyte access permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The feature is admin-opt-in: an administrator must configure and create the Egnyte connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "To add the Egnyte connector for your organization: 1. In the Microsoft 365 admin center, go to Copilot > Connectors. ... Choose Create to deploy the connection. The Egnyte connector starts indexing content right away.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The connector is included in the Microsoft 365 licensing appropriate to its Search or Copilot experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. ... If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 plus the Microsoft 365 Copilot add-on supports synced-connector Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 supports synced-connector Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "At the time of writing, Microsoft publishes no Egnyte-specific connector price or meter on the Egnyte and connector prerequisites pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Egnyte Copilot connector pricing meter license automatically deployed default admin connection'; opened Egnyte overview, deployment, admin setup and connectors/prerequisites. These describe setup and general licensing, not an Egnyte-specific price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; Governance controls table; What's changing",
+      "type": "admin-path",
+      "claim": "Access permissions are reached through Microsoft 365 admin center > Copilot > Connectors > Gallery > Egnyte > Custom setup > Customize user settings > Access permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Select the Connectors tab, and then choose Gallery. ... From the list of available connectors, select Egnyte. ... To customize these values, choose Custom setup. ... Customize user settings ... Access permissions",
+      "severity": "minor",
+      "fix": "The cited staged-rollout guide supports going from Copilot > Connectors to Gallery, so the shorter route is supported. To match the Egnyte deployment guide explicitly, use 'Copilot > Connectors > Connectors > Gallery > Egnyte > Custom setup > Customize user settings > Access permissions', explaining that the second Connectors is the tab; use 'Copilot > Connectors > Connectors > Gallery' in the deployment prose."
+    },
+    {
+      "n": 19,
+      "where": "controls[0].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no Graph or PowerShell operation for the Egnyte connection's setup-level access-permissions choice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Egnyte prebuilt connector access permissions Everyone Only people Microsoft Graph API PowerShell configure'; opened Egnyte deployment, manage-access-permissions, Graph externalConnection resource and update reference. No operation sets this prebuilt-connector choice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Admins can choose Everyone or Only people with access to this data source, with the latter recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Choose how Egnyte data should appear in Microsoft 365: - Only people with access to this data source (recommended) - Everyone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Why it matters; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Updating connection access permissions after creation is not currently supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "Updating access permissions after you create the connection isn't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Correcting connection access permissions requires deletion and recreation using Custom setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "In the connector pane, choose Delete to delete the existing connection. ... Recreate the connection using the Custom setup flow and explicitly configure access permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Staged rollout is edited in Microsoft 365 admin center > Copilot > Connectors > Your Connections > connection > Staged Rollout > Edit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "go to Copilot > Connectors > Your Connections. ... Find the connector that you want to modify. ... In the Staged Rollout column, next to Staged, choose Edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no Graph or PowerShell operation for this connector's staged-rollout audience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph externalConnection staged rollout limited audience API PowerShell' and 'site:learn.microsoft.com/graph externalConnection staged'; opened staged-rollout, Graph externalConnection resource and update reference. No staged-audience operation was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Staged rollout requires the AI administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "You must be an AI administrator to access this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Scope",
+      "type": "behaviour",
+      "claim": "The staged-rollout list accepts up to 100 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "You can only add up to 100 users and 15 Microsoft 365 groups to the staged rollout list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Scope",
+      "type": "behaviour",
+      "claim": "The staged-rollout list accepts up to 15 Microsoft 365 groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "You can only add up to 100 users and 15 Microsoft 365 groups to the staged rollout list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "Connector staged-rollout audience settings apply to all Search and Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "Staged rollout settings are applicable to all Search and Copilot experiences. ... only the users and groups you specified see connector data in results, depending on their permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The connection is deleted in Microsoft 365 admin center > Copilot > Connectors > Your Connections > connection > Delete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "go to Copilot > Connectors > Your Connections. ... Select the connector you want to review to open the details pane. ... In the connector pane, choose Delete to delete the existing connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "DELETE /v1.0/external/connections/{connectionsId} deletes an externalConnection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+      "quote": "Deletes an externalConnection object. ... DELETE /external/connections/{connectionsId} ... DELETE https://graph.microsoft.com/v1.0/external/connections/contosohr",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].note; Governance controls table",
+      "type": "role",
+      "claim": "ExternalConnection.ReadWrite.OwnedBy is the least-privileged permission for the Graph delete operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+      "quote": "Delegated (work or school account) | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All ... Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].governs; Governance controls table",
+      "type": "behaviour",
+      "claim": "Deleting the connection removes the items indexed through it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+      "quote": "To remove all items that were indexed via a connection, you can delete a connection.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/connecting-external-content-manage-connections to sources; it explicitly supports the row's indexed-data removal claim."
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Microsoft's March 24, 2026 Copilot release notes list the Egnyte connector and describe access to stored files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#march-24,-2026",
+      "quote": "March 24, 2026 ... Connect Copilot with Egnyte for secure file collaboration ... Roadmap ID: 513283 ... What changed: Copilot can now access files stored in Egnyte",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Egnyte connector starts indexing immediately after Create.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Choose Create to deploy the connection. The Egnyte connector starts indexing content right away.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The Egnyte connector indexes files, making it a synced rather than federated connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Data types indexed from Egnyte ... The connector indexes the following Egnyte data types: - Files stored in your Egnyte domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The connector does not index comments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Doesn't index comments and replies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The connector does not index replies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Doesn't index comments and replies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Developers can use the connector as a knowledge source in declarative agents built with Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Developers can use this connector as a knowledge source in declarative agents they build with Copilot Studio, Agent Builder in Microsoft 365 Copilot, or the Microsoft 365 Agents Toolkit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Developers can use the connector in declarative agents built with Agent Builder in Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Developers can use this connector as a knowledge source in declarative agents they build with Copilot Studio, Agent Builder in Microsoft 365 Copilot, or the Microsoft 365 Agents Toolkit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Developers can use the connector in declarative agents built with the Microsoft 365 Agents Toolkit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Developers can use this connector as a knowledge source in declarative agents they build with Copilot Studio, Agent Builder in Microsoft 365 Copilot, or the Microsoft 365 Agents Toolkit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The current Egnyte overview says incremental crawl is unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "It doesn't support incremental crawl.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Large file annotations may cause ingestion errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Large file annotations might cause ingestion errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Egnyte API rate limits can prevent successful crawls unless increased with Egnyte.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "API rate limits can prevent successful crawl operations unless those limits are increased with Egnyte.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Scope; Open questions",
+      "type": "default",
+      "claim": "The deployment guide lists a daily full crawl as the default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Full crawl: Default is every day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "summary; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The deployment guide's default access table says files accessible to any Egnyte user are visible to all Microsoft 365 tenant users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "| Users | Access permissions | All files accessible to any Egnyte user are visible to all Microsoft 365 users in your tenant. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Open questions: first bullet",
+      "type": "behaviour",
+      "claim": "The Egnyte deployment and overview pages state different default visibility settings.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Egnyte connector default access permissions quick setup Everyone Only people default'; opened egnyte-deployment and egnyte-overview. Deployment states a default; overview describes both choices and recommends source-restricted access, without specifying a different setup default.",
+      "severity": "major",
+      "fix": "Replace 'The two Learn pages also differ on default visibility (see Data exposure below), which is the point to resolve before the first crawl.' with 'The deployment guide lists tenant-wide visibility by default, while the overview recommends restricting access to people with access to the data source.' Remove the first Open questions bullet; the overview's recommendation does not establish a competing default."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Only people with access to this data source preserves Egnyte's native permission boundaries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Only people with access to this data source (recommended): Users see only the content they have access to in Egnyte.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure; controls[0].governs",
+      "type": "behaviour",
+      "claim": "Choosing Everyone exposes indexed data in search results to all users in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "Everyone: All indexed files appear in search results for all Microsoft 365 users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft warns that granting Everyone access can overshare sensitive content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "Incorrect access permission settings, such as granting access to Everyone, can lead to oversharing of sensitive content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Identity mapping can be configured when Egnyte user emails differ from Microsoft Entra ID user principal names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+      "quote": "If Egnyte user emails don't match Microsoft Entra ID user principal names, you can configure identity mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The connector authenticates using OAuth 2.0 with a client ID and secret.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "The following authentication type is supported: - OAuth 2.0 using Client ID and Secret (recommended)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The credentials must match an app registered as a Publicly Available Application in the Egnyte developer portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Make sure these values match the credentials assigned to the app that was created as a Publicly Available Application in the Egnyte developer portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "If connection failures prevent reliable delete detection, indexed items not rediscovered during crawls for 28 days are automatically removed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If connection failures prevent delete detection from running reliably, items that aren't rediscovered during crawls for 28 days are automatically removed from the Microsoft 365 index to maintain compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 of any plan supports synced connectors in Microsoft Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 plus a Copilot Studio licence supports synced-connector agents but not Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 + Copilot Studio license | ✅ | Agents only (no Copilot grounding) | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot pay-as-you-go supports synced-connector agents but not Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 Copilot pay-as-you-go | ✅ | Agents only (no Copilot grounding) | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Connector grounding in Copilot incurs no extra charges when the organization has Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Advanced features such as semantic search require at least one Microsoft 365 Copilot licence in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Advanced features such as semantic search require at least one Microsoft 365 Copilot license in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Deployment requires an Egnyte developer account with a registered application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "An Egnyte developer account with a registered application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Deployment requires a valid client ID and secret generated in the Egnyte developer portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "A valid client ID and secret generated in the Egnyte developer portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The deployment prerequisites require confirmation of an API rate limit appropriate to the expected crawl volume.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "A confirmed API rate limit appropriate for your expected crawl volume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Deployment requires Egnyte admin permissions in the Egnyte domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Egnyte admin permissions in your Egnyte domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope; Governance guidance: Before rollout; Governance controls",
+      "type": "role",
+      "claim": "Microsoft 365 connector deployment and management require the AI administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Egnyte instance URL has the form https://<domain>.egnyte.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-admin-setup",
+      "quote": "Egnyte Domain: Enter only the domain prefix (for example, if your Egnyte URL is https://<your-domain>.egnyte.com, enter your-domain).",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-admin-setup to sources; its example explicitly supplies the domain placeholder lost in the deployment page's rendered URL."
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The instance domain must match the domain configured in the Egnyte developer application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "This domain must match the domain configured in your Egnyte developer application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "default",
+      "claim": "All published files are selected by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "| Content | Index content | All published files are selected by default. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope",
+      "type": "default",
+      "claim": "Default Egnyte properties are indexed automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "| Content | Manage properties | Default Egnyte properties are indexed automatically. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope",
+      "type": "default",
+      "claim": "The content filter defaults to the last one year.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Select the time range for the data to be indexed. The default value is the last one year.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "During connection creation, Rollout to limited audience lets the admin specify users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "To roll out to a limited audience, choose the toggle next to Rollout to limited audience and specify the users and groups to roll the connector out to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Connection state can be checked on the Your Connections tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "You can view the connection state for your deployed connectors on the Your Connections tab in the admin center. The state shows in the Connection state column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The connection details pane shows configured permissions under Permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "Select the connector you want to review to open the details pane. ... Under Permissions, you can view the permissions set for the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A permanent crawl failure marks the connection Failed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If a permanent failure occurs, the connection is marked as Failed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Permanent crawl failures generate service health notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "notifications are sent to the service health dashboard under the Issues section for your organization to act on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Removing staged rollout makes connection results appear to all organization users who have access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "When you remove staged rollout, the connection results start appearing to all users in the organization who have access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Recreating the connection re-indexes its content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+      "quote": "Choose Create to deploy the connection. The Egnyte connector starts indexing content right away.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No Microsoft page read says the Egnyte connection is automatically supplied without admin creation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Egnyte Copilot connector pricing meter license automatically deployed default admin connection'; opened Egnyte deployment, overview, admin setup, connectors/prerequisites and the release-notes Egnyte passage. No automatic connection creation was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist names identity mapping, but the controls table has no identity-mapping row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether Egnyte user emails match Microsoft Entra ID user principal names, to choose the identity mapping option. ... Table controls: access permissions; staged rollout; delete connection.",
+      "severity": "minor",
+      "fix": "The Before rollout identity-mapping checklist step has no controls-table row. Remove that checklist bullet; retain the supported identity-mapping description in Risk assessment."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T07:21:06.086Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=513283",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can see indexed Egnyte files (set when the connection is created)",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/egnyte-deployment",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Gallery",
+          "Egnyte",
+          "Custom setup",
+          "Customize user settings",
+          "Access permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users and groups see connector results during a staged rollout",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Staged Rollout",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the connection exists and its indexed data is kept (delete)",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Delete"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether the connection exists and its indexed data is kept (delete)",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+        "reachable": true,
+        "token": "/v1.0/external/connections",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -4,7 +4,7 @@
   "roadmapId": null,
   "title": "Knowledge grounding: which data can a Copilot Studio agent answer from?",
   "status": "verified-with-gaps",
-  "date": "2026-11-21",
+  "date": "2026-11-25",
   "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -15,21 +15,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 99,
-    "confirmed": 99,
+    "claims": 100,
+    "confirmed": 100,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 3
   },
-  "summary": "The controls, credit rates and grounding limitations are supported by Microsoft documentation, and the changed Work IQ page does not contradict the explanation here. Minor corrections should complete the Dataverse search path, cite the source connecting its API property to search, and acknowledge Microsoft's separate restriction of included standard-harness usage to Microsoft 365 channels.",
+  "summary": "The documented controls, knowledge-source behavior and quoted billing rates are supported by Microsoft's current pages. Minor corrections should complete the Dataverse search path, clarify the Microsoft 365 channel qualification for included usage and add supporting source links.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What it is",
       "type": "behaviour",
-      "claim": "Knowledge sources ground Copilot Studio agent responses in enterprise content.",
+      "claim": "Knowledge grounding points an agent at content to ground its answers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "Knowledge sources ground your agent's responses in enterprise data.",
@@ -39,22 +39,22 @@
     {
       "n": 2,
       "where": "What it is",
-      "type": "admin-path",
-      "claim": "For standard-harness agents, makers can incorporate knowledge on the agent's Knowledge page.",
+      "type": "behaviour",
+      "claim": "Copilot Studio calls these enterprise-data grounding inputs knowledge sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "You can incorporate knowledge at the agent level, in the Knowledge page, or at the topic level, with a generative answers node in an agent topic.",
+      "quote": "When you add knowledge sources, agents can use enterprise data from Power Platform, Dynamics 365 data, websites, and external systems.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Knowledge can be incorporated in a generative answers node inside a topic.",
+      "where": "What it is: standard-harness navigation",
+      "type": "admin-path",
+      "claim": "Standard-harness makers can add knowledge on the agent's Knowledge page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "In Copilot Studio, you can also add knowledge sources to a generative answers topic node.",
+      "quote": "You can incorporate knowledge at the agent level, in the **Knowledge** page",
       "severity": null,
       "fix": null
     },
@@ -62,7 +62,18 @@
       "n": 4,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Published agents use their configured knowledge sources for grounding.",
+      "claim": "Knowledge can also be added in a generative answers node inside an agent topic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "or at the topic level, with a [generative answers node](nlu-boost-node) in an agent topic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A published agent uses its configured knowledge sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "Published agents that contain knowledge use the configured knowledge sources to ground the published agent.",
@@ -70,32 +81,43 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What it is: Public website row",
-      "type": "behaviour",
-      "claim": "Public website knowledge searches Bing and returns results only from provided websites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Searches the query input on Bing, only returns results from provided websites",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 6,
       "where": "What it is: Public website row",
       "type": "behaviour",
-      "claim": "Public website knowledge requires no authentication.",
+      "claim": "Public website knowledge searches Bing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "| Public website | External | Searches the query input on Bing, only returns results from provided websites | Generative mode: 25 websitesClassic mode: Four public URLs (for example, microsoft.com) | None |",
+      "quote": "Searches the query input on Bing",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
+      "where": "What it is: Public website row",
+      "type": "behaviour",
+      "claim": "Public website knowledge returns results only from the provided websites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "only returns results from provided websites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is: Public website authentication",
+      "type": "behaviour",
+      "claim": "Public website knowledge lists no authentication requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "| Public website | External | Searches the query input on Bing, only returns results from provided websites | Generative orchestration: 25 websitesClassic orchestration: Four public URLs (for example, *microsoft.com*) | None |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "What it is: Documents row",
       "type": "behaviour",
-      "claim": "Documents knowledge searches documents uploaded to Dataverse.",
+      "claim": "Document knowledge searches documents uploaded to Dataverse.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "Searches documents uploaded to Dataverse, returns results from the document contents",
@@ -103,35 +125,13 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What it is: Documents row",
-      "type": "behaviour",
-      "claim": "Documents knowledge has no source authentication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "| Documents | Internal | Searches documents uploaded to Dataverse, returns results from the document contents | Generative mode: All documentsClassic mode: Limited by the Dataverse file storage allocation | None |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What it is: SharePoint row",
-      "type": "behaviour",
-      "claim": "SharePoint knowledge connects to a SharePoint URL.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Connects to a SharePoint URL, uses GraphSearch to return results",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "What it is: SharePoint row",
+      "where": "What it is: Documents authentication",
       "type": "behaviour",
-      "claim": "SharePoint URL knowledge uses GraphSearch.",
+      "claim": "Uploaded document knowledge lists no user authentication requirement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Connects to a SharePoint URL, uses GraphSearch to return results",
+      "quote": "| Documents | Internal | Searches documents uploaded to Dataverse, returns results from the document contents | Generative orchestration: All documentsClassic orchestration: Limited by the Dataverse file storage allocation | None |",
       "severity": null,
       "fix": null
     },
@@ -139,18 +139,40 @@
       "n": 11,
       "where": "What it is: SharePoint row",
       "type": "behaviour",
-      "claim": "SharePoint knowledge uses the agent user's Microsoft Entra ID authentication.",
+      "claim": "A SharePoint knowledge source connects to a SharePoint URL.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "| SharePoint | Internal | Connects to a SharePoint URL, uses GraphSearch to return results | Generative mode: 25 URLsClassic mode: Four URLs per generative answers topic node | Agent user's Microsoft Entra ID authentication |",
+      "quote": "Connects to a SharePoint URL, uses GraphSearch to return results",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
+      "where": "What it is: SharePoint row",
+      "type": "behaviour",
+      "claim": "The SharePoint URL source uses GraphSearch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "uses GraphSearch to return results",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: SharePoint authentication",
+      "type": "behaviour",
+      "claim": "SharePoint knowledge uses the agent user's Microsoft Entra ID authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "| SharePoint | Internal | Connects to a SharePoint URL, uses GraphSearch to return results | Generative orchestration: 25 URLsClassic orchestration: Four URLs per generative answers topic node | Agent user's Microsoft Entra ID authentication |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What it is: Dataverse row",
       "type": "behaviour",
-      "claim": "Dataverse knowledge connects to tables in the configured Dataverse environment.",
+      "claim": "Dataverse knowledge searches tables in the configured Dataverse environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "Connects to the configured Dataverse environment and uses a retrieval-augmented generative technique in Dataverse to return results",
@@ -158,54 +180,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What it is: Dataverse row",
-      "type": "behaviour",
-      "claim": "Dataverse knowledge uses the agent user's Microsoft Entra ID authentication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Generative mode: UnlimitedClassic mode: Two Dataverse knowledge sources (and up to 15 tables per knowledge source) | Agent user's Microsoft Entra ID authentication",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What it is: Enterprise data using connectors row",
-      "type": "behaviour",
-      "claim": "Enterprise data using connectors connects to organisation data indexed by Microsoft Search.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Connects to connectors where your organization data is indexed by Microsoft Search",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "What it is: Enterprise data using connectors row",
+      "where": "What it is: Dataverse authentication",
       "type": "behaviour",
-      "claim": "Enterprise data using connectors uses the agent user's Microsoft Entra ID authentication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "| Enterprise data using connectors | Internal | Connects to connectors where your organization data is indexed by Microsoft Search | Generative mode: UnlimitedClassic mode: Two per custom agent | Agent user's Microsoft Entra ID authentication |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "With agent user authentication, responses surface only content the asking user can access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Agent user authentication for knowledge sources means that when a specific user asks a question of the agent, the agent only surfaces content that the specific user can access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "SharePoint, Dataverse and enterprise data with Copilot connectors require authentication configured.",
+      "claim": "Dataverse knowledge requires agent-user authentication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "If you're using SharePoint, Dataverse, or enterprise data with Microsoft Copilot connectors, you need to incorporate authentication.",
@@ -213,19 +191,63 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What it is; controls[2].governs",
-      "type": "applicability",
-      "claim": "Dataverse knowledge sources require Dataverse search enabled in the environment.",
+      "n": 16,
+      "where": "What it is: Enterprise data using connectors row",
+      "type": "behaviour",
+      "claim": "Enterprise connector knowledge uses organization data indexed by Microsoft Search.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-      "quote": "To use this knowledge source, Copilot Studio agents must use Dataverse search. If you can't add a Dataverse table to an agent, ask your administrator to turn on Dataverse search in your environment.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "Connects to connectors where your organization data is indexed by Microsoft Search",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Enterprise data authentication",
+      "type": "behaviour",
+      "claim": "Enterprise connector knowledge uses the agent user's Microsoft Entra ID authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "| Enterprise data using connectors | Internal | Connects to connectors where your organization data is indexed by Microsoft Search | Generative orchestration: UnlimitedClassic orchestration: Two per custom agent | Agent user's Microsoft Entra ID authentication |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: permissions",
+      "type": "behaviour",
+      "claim": "With agent-user authentication, the agent only surfaces content the asking user can access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "Agent user authentication for knowledge sources means that when a specific user asks a question to the agent, the agent only surfaces content that the specific user can access.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What it is",
+      "where": "What it is: authentication prerequisites",
+      "type": "behaviour",
+      "claim": "SharePoint, Dataverse and enterprise connector knowledge require configured authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "If you're using SharePoint, Dataverse, or enterprise data with Microsoft Copilot connectors, you need to incorporate authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is; controls[2].governs; What to check",
+      "type": "applicability",
+      "claim": "Dataverse table knowledge requires Dataverse search in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
+      "quote": "To use this knowledge source, Copilot Studio agents must use Dataverse search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Dataverse limit",
       "type": "behaviour",
       "claim": "A Dataverse knowledge source can contain up to 15 tables.",
       "status": "supported",
@@ -235,21 +257,21 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What it is",
+      "n": 22,
+      "where": "What it is: Dataverse authentication mode",
       "type": "behaviour",
       "claim": "Dataverse table knowledge requires Authenticate with Microsoft.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-      "quote": "Dataverse tables as knowledge sources require you to set your agent's authentication to Authenticate with Microsoft. The other two options, No authentication and Authenticate manually aren't currently supported.",
+      "quote": "Dataverse tables as knowledge sources require you to set your agent's authentication to **Authenticate with Microsoft**.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What it is",
+      "n": 23,
+      "where": "What it is: knowledge-source filtering",
       "type": "behaviour",
-      "claim": "Generative orchestration uses an internal GPT model to filter knowledge when there are more than 25 different sources.",
+      "claim": "Generative orchestration filters sources using an internal GPT model above 25 different sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "Generative orchestration filters knowledge sources by using an internal GPT model when there are more than 25 different knowledge sources.",
@@ -257,32 +279,32 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What it is",
+      "n": 24,
+      "where": "What it is: knowledge-source filtering",
       "type": "behaviour",
-      "claim": "Uploaded files are excluded from the 25-source search count.",
+      "claim": "Uploaded files do not count toward the 25-source search limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Files uploaded to the agent aren't part of the 25 knowledge source search limit.",
+      "quote": "[Files uploaded](knowledge-add-file-upload) to the agent aren't part of the 25 knowledge source search limit.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 25,
       "where": "What it is: A different sense",
       "type": "behaviour",
-      "claim": "Work IQ enables agents to reach Microsoft 365 and business data.",
+      "claim": "Work IQ lets agents reach Microsoft 365 and business data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "In addition to productivity data from Microsoft 365 applications, Work IQ also includes business and workflow data from Dynamics 365 and Power Platform, and data from connected enterprise systems through Copilot Connectors.",
+      "quote": "In addition to productivity data from Microsoft 365 applications, Work IQ also includes [business and workflow data](https://go.microsoft.com/fwlink/?LinkId=2379836) from Dynamics 365 and Power Platform",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Why it matters; Governance controls",
+      "n": 26,
+      "where": "Why it matters; Governance controls: maker choices",
       "type": "behaviour",
-      "claim": "Makers choose their agents' knowledge source types.",
+      "claim": "Makers choose the knowledge sources configured for their agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
       "quote": "Makers can choose which types of knowledge sources their agents can reference.",
@@ -290,87 +312,76 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "summary; Why it matters; controls[0].governs",
-      "type": "applicability",
-      "claim": "Administrators can restrict SharePoint and OneDrive, public website and document knowledge source types.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
-      "quote": "The Knowledge sources for agents setting in Power Platform admin center controls access to sources such as SharePoint, OneDrive, public websites, and documents such as files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; Open questions",
-      "type": "absence",
-      "claim": "The administrator setting's preview page does not state its default.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"knowledge sources for agents\" \"default\"; read learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule and environment-groups-rules, plus microsoft-copilot-studio/choose-knowledge-sources. No default for this rule was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 27,
-      "where": "Why it matters; controls[3].governs",
+      "where": "summary; Why it matters",
       "type": "applicability",
-      "claim": "Allow ungrounded responses controls whether a turn using no knowledge source or tool may answer from general knowledge.",
+      "claim": "Administrators can restrict the types of knowledge sources available to agents.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "When you turn on the Allow ungrounded responses setting, your agent can respond by using the model's general knowledge, even when it doesn't use any knowledge sources or tools.",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "The **Knowledge sources for agents** setting controls access to sources like SharePoint, public websites, and documents such as files.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Why it matters",
+      "where": "Why it matters; Open questions: default",
       "type": "absence",
-      "claim": "No admin-centre setting specifically for Allow ungrounded responses is documented at the time of writing.",
+      "claim": "The Knowledge sources for agents preview page does not state the setting's default.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Allow ungrounded responses\" API PowerShell admin center setting; site:learn.microsoft.com/microsoft-copilot-studio \"Allow ungrounded responses\". Read knowledge-copilot-studio, advanced-generative-actions and FAQ search excerpts; no admin-centre equivalent found.",
+      "quote": "Searched: \"Knowledge sources for agents\" \"default\"; opened Configure knowledge sources for agents in the Power Platform admin center and Choose knowledge sources for agents; no default stated on the preview page.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Why it matters; Risks and limits: Ungrounded answers stay possible",
+      "where": "Why it matters; Risks and limits; What to check",
       "type": "behaviour",
-      "claim": "With Allow ungrounded responses on, responses are not limited to configured sources.",
+      "claim": "Allow ungrounded responses permits general-knowledge answers without a knowledge source or tool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "The agent can then respond by using the model's general knowledge, so its answers aren't always grounded in your knowledge sources.",
+      "quote": "When you turn on the **Allow ungrounded responses** setting, your agent can respond by using the model's general knowledge, even when it doesn't use any knowledge sources or tools.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "summary; Cost and licensing",
-      "type": "cost",
-      "claim": "Grounded agent answers are metered in Copilot Credits.",
+      "where": "Why it matters: admin-centre setting",
+      "type": "absence",
+      "claim": "No admin-centre setting for Allow ungrounded responses is documented at the time of writing.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Copilot Credits are the unit that measures agent usage. You calculate the total cost based on the sum of the Copilot Credits your organization uses.",
+      "source": null,
+      "quote": "Searched: \"Allow ungrounded responses\" \"admin\" and \"Allow ungrounded responses\" admin API Dataverse bot configuration PowerShell; opened Knowledge sources summary and Agent (bot) reference. No admin-centre equivalent found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Cost and licensing",
-      "type": "applicability",
-      "claim": "The cited Billing rates and management article describes standard-harness agents.",
+      "where": "summary; Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot Credits meter grounded-answer usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "This article describes features used in agents or agent flows powered by the standard harness.",
+      "quote": "*Copilot Credits* are the unit that measures agent usage.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: billing-page scope",
+      "type": "applicability",
+      "claim": "The cited Billing rates and management page describes standard-harness agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "This article describes features used in agents or agent flows powered by the [standard harness](harnesses-overview#standard-harness).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Classic answer",
       "type": "cost",
-      "claim": "The classic answer billing rate is 1 Copilot Credit.",
+      "claim": "The standard-harness Classic answer rate is 1 Copilot Credit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
       "quote": "| Classic answer | 1 Copilot Credit | No charge |",
@@ -378,21 +389,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Cost and licensing",
+      "n": 34,
+      "where": "Cost and licensing: Generative answer",
       "type": "cost",
-      "claim": "The generative answer billing rate is 2 Copilot Credits.",
+      "claim": "The standard-harness Generative answer feature rate is 2 Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "| Generative answer | 2 Copilot Credits | No charge |",
+      "quote": "| Generative answer^2^ | 2 Copilot Credits | No charge |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Cost and licensing",
+      "n": 35,
+      "where": "Cost and licensing: Tenant graph grounding",
       "type": "cost",
-      "claim": "Tenant graph grounding for messages costs 10 Copilot Credits.",
+      "claim": "Tenant graph grounding for messages has a rate of 10 Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
       "quote": "| Tenant graph grounding for messages | 10 Copilot Credits | No charge |",
@@ -400,76 +411,87 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Cost and licensing",
+      "n": 36,
+      "where": "Cost and licensing: complex-prompt example",
       "type": "cost",
-      "claim": "Microsoft gives an example of a tenant graph grounded agent consuming 12 Copilot Credits for a complex prompt.",
+      "claim": "Microsoft illustrates a complex tenant-graph-grounded prompt using 12 Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "For example, an agent grounded in a tenant graph could use 12 Copilot Credits (10 Copilot Credits for tenant graph grounding, and 2 Copilot Credits for generative answers) to respond to a single complex prompt from a user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Microsoft Copilot harness billing charges Copilot Credits for LLM tokens.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "quote": "an agent grounded in a tenant graph could use 12 Copilot Credits (10 Copilot Credits for tenant graph grounding, and 2 Copilot Credits for generative answers) to respond to a single complex prompt from a user.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: Microsoft Copilot harness",
       "type": "cost",
-      "claim": "Microsoft Copilot harness billing charges for tools including knowledge and MCPs.",
+      "claim": "Microsoft Copilot harness billing charges Copilot Credits for LLM tokens.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "quote": "Copilot Credits are charged for large language model (LLM) tokens",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: Microsoft Copilot harness",
       "type": "cost",
-      "claim": "Microsoft Copilot harness billing charges for the harness itself.",
+      "claim": "Microsoft Copilot harness billing charges for tools including knowledge and MCPs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "quote": "tools (including knowledge and MCPs)",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "Cost and licensing: employee-facing inclusion",
-      "type": "licensing",
-      "claim": "The standard-harness billing page includes employee-facing usage in the Microsoft Copilot USL when the agent user is licensed and the agent uses that authenticated user's identity.",
+      "where": "Cost and licensing: Microsoft Copilot harness",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness billing also charges for the harness itself.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "are included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot, and the agent operates using the authenticated Microsoft Copilot USL user's identity.",
-      "severity": "minor",
-      "fix": "After this inclusion sentence add: 'The harness cost-management page limits standard-harness inclusion to Microsoft 365 channels and says usage in a channel outside Microsoft 365 is billed.' Cite and add https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness to sources; its table says 'Yes, in Microsoft 365 channels' and 'Billed when the user has no Microsoft 365 Copilot license, or when the agent is used in a channel outside Microsoft 365.' Retain attribution of the existing statement to the billing page."
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Included employee-facing usage is subject to fair usage limits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Usage is limited to fair usage limits. Microsoft reserves the right to update the limits as the product evolves, and new usage patterns emerge.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "and the harness itself. Any experience that uses one of these consumes credits.",
       "severity": null,
       "fix": null
     },
     {
+      "n": 40,
+      "where": "Cost and licensing: employee-facing inclusion",
+      "type": "licensing",
+      "claim": "The billing page includes employee-facing usage in the Copilot user subscription when the user has that licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "are included in the Microsoft 365 Copilot user subscription license (USL) when the user of the agent is licensed with Microsoft 365 Copilot",
+      "severity": "minor",
+      "fix": "Use 'Microsoft 365 Copilot user subscription license (USL)' and 'Microsoft 365 Copilot' in the inclusion sentence. After it add: 'The harness cost-management page limits standard-harness inclusion to Microsoft 365 channels and says usage outside Microsoft 365 channels is billed.' Cite https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness; its table says 'Yes, in Microsoft 365 channels' and 'Billed when the user has no Microsoft 365 Copilot license, or when the agent is used in a channel outside Microsoft 365.' Retain attribution of the existing inclusion statement to the billing page."
+    },
+    {
       "n": 41,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: employee-facing inclusion",
+      "type": "licensing",
+      "claim": "Included employee-facing usage requires operation under the authenticated licensed user's identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "and the agent operates using the authenticated Microsoft 365 Copilot USL user's identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: fair usage",
+      "type": "licensing",
+      "claim": "The inclusion is subject to fair usage limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Usage is limited to fair usage limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Agent Builder exception",
       "type": "cost",
-      "claim": "The billing page says generative answers incur charges unless the agent was created in Agent Builder in Microsoft 365 and the response does not use tenant graph grounding.",
+      "claim": "The billing page says generative answers incur charges unless created in Agent Builder in Microsoft 365 without tenant graph grounding.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
       "quote": "Agents incur charges for generative answer responses unless the agent is created in Agent Builder in Microsoft 365 and the response doesn't leverage tenant graph grounding.",
@@ -477,10 +499,10 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing",
+      "n": 44,
+      "where": "Cost and licensing: optional tenant graph grounding",
       "type": "behaviour",
-      "claim": "Tenant graph grounding is optional per agent.",
+      "claim": "Tenant graph grounding can be turned on or off for each agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
       "quote": "This capability is optional, and you can turn it on or off for each agent.",
@@ -488,10 +510,10 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Cost and licensing",
+      "n": 45,
+      "where": "Cost and licensing: tenant graph default",
       "type": "default",
-      "claim": "Microsoft 365 Copilot licensed users use tenant graph grounding semantic search by default.",
+      "claim": "Users with Microsoft 365 Copilot licences use tenant graph grounding semantic search by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "By default, all users with the Microsoft 365 Copilot licenses use tenant graph grounding semantic search.",
@@ -499,19 +521,19 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 46,
       "where": "Cost and licensing; controls[4].governs; What to check",
       "type": "cost",
-      "claim": "Enabling tenant graph semantic search for users without Microsoft 365 Copilot licences comes at extra cost.",
+      "claim": "Enabling tenant graph grounding for users without Microsoft 365 Copilot licences adds cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "However, if not all end users have Microsoft 365 Copilot licenses, turn on this setting to leverage semantic index for those users to improve quality. This feature comes at an extra cost.",
+      "quote": "if not all end users have Microsoft 365 Copilot licenses, turn on this setting to leverage semantic index for those users to improve quality. This feature comes at an extra cost.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[4].note; Cost and licensing",
+      "n": 47,
+      "where": "Cost and licensing; controls[4].note",
       "type": "behaviour",
       "claim": "Tenant graph grounding requires a configured semantic index.",
       "status": "supported",
@@ -521,43 +543,32 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[4].note; Cost and licensing",
-      "type": "licensing",
-      "claim": "Tenant graph grounding requires a Microsoft 365 Copilot licence in the agent's tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "This feature requires the agent to share a tenant with a Microsoft 365 Copilot license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[4].note; Cost and licensing",
-      "type": "licensing",
-      "claim": "At least one enterprise user must be assigned that Microsoft 365 Copilot licence to use the semantic index.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "To use a semantic index, the Microsoft 365 Copilot license must be assigned to at least one user in the enterprise.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 48,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Files added through Upload files > SharePoint are stored in Dataverse.",
+      "where": "Cost and licensing; controls[4].note",
+      "type": "licensing",
+      "claim": "A Microsoft 365 Copilot licence must be assigned to at least one user in the agent's tenant.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
-      "quote": "When you use Upload files > SharePoint as a knowledge source, your files are stored in Dataverse, where they're processed and indexed for use.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "This feature requires the agent to share a tenant with a Microsoft 365 Copilot license. It also requires that a semantic index is configured for use. To use a semantic index, the Microsoft 365 Copilot license must be assigned to at least one user in the enterprise.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: SharePoint uploads",
+      "type": "behaviour",
+      "claim": "Files added through Upload files > SharePoint are stored in Dataverse.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
+      "quote": "When you use **Upload files > SharePoint** as a knowledge source, your files are stored in Dataverse, where they're processed and indexed for use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: SharePoint storage",
       "type": "cost",
-      "claim": "Files added through Upload files > SharePoint consume data storage.",
+      "claim": "Files added through Upload files > SharePoint consume Dataverse data storage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
       "quote": "Your files and folders remain in Dataverse, so they do consume data storage.",
@@ -565,10 +576,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 51,
       "where": "Risks and limits: Ungrounded answers stay possible",
       "type": "behaviour",
-      "claim": "Turning Allow ungrounded responses off does not prevent general knowledge being combined with retrieved content.",
+      "claim": "Turning off Allow ungrounded responses does not prevent combining general knowledge with retrieved content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "The agent's underlying model might still incorporate general knowledge when it combines this knowledge with information it retrieves from knowledge sources or tools.",
@@ -576,10 +587,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 52,
       "where": "Risks and limits: Turning it off withholds answers",
       "type": "behaviour",
-      "claim": "With Allow ungrounded responses off, the agent blocks responses in turns that use no knowledge source or tool.",
+      "claim": "Turning off Allow ungrounded responses blocks responses from turns that used no knowledge source or tool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "When you turn off this setting, the agent blocks any response generated in a turn where it didn't use a knowledge source or tool.",
@@ -587,32 +598,32 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Risks and limits: Turning it off withholds answers",
-      "type": "behaviour",
-      "claim": "This blocking includes follow-up answers based on conversation history without calling a source or tool.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "This condition means the response is blocked if the agent answers a question from conversation history or general knowledge without calling a knowledge source or tool.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 53,
-      "where": "Risks and limits: Turning it off withholds answers",
+      "where": "Risks and limits: follow-up answers",
       "type": "behaviour",
-      "claim": "With Allow ungrounded responses off, a knowledge-source answer requires an in-text citation.",
+      "claim": "A follow-up answered only from conversation history can be blocked.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "When you turn off Allow ungrounded responses, the agent returns an answer from a knowledge source only when the answer includes an in-text citation to that source.",
+      "quote": "the response is blocked if the agent answers a question from conversation history or general knowledge without calling a knowledge source or tool.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Risks and limits: Turning it off withholds answers",
+      "where": "Risks and limits: citation requirement",
       "type": "behaviour",
-      "claim": "A correct knowledge-source answer without a citation is withheld when the setting is off.",
+      "claim": "With Allow ungrounded responses off, knowledge-source answers require an in-text source citation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "When you turn off **Allow ungrounded responses**, the agent returns an answer from a knowledge source only when the answer includes an in-text citation to that source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: correct uncited answers",
+      "type": "behaviour",
+      "claim": "The agent withholds a correct knowledge-source answer if it lacks a citation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "Occasionally, the model generates a correct answer from a knowledge source but doesn't include a citation for it. When that happens, the agent withholds the answer and responds as though it didn't find any information.",
@@ -620,35 +631,24 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Risks and limits: The Documents setting is narrow",
-      "type": "applicability",
-      "claim": "Disallowing Documents knowledge uploads blocks only local file uploads.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
-      "quote": "Configuring Documents knowledge source to not allow uploads only prevents local file uploads.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 56,
-      "where": "Risks and limits: The Documents setting is narrow",
+      "where": "Risks and limits: Documents setting",
       "type": "applicability",
-      "claim": "Blocking Documents does not block SharePoint or OneDrive files; those require restricting SharePoint + OneDrive.",
+      "claim": "Blocking Documents through the knowledge-source setting only prevents local file uploads.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
-      "quote": "It doesn't prevent makers from adding files from SharePoint or OneDrive. To not allow uploads from SharePoint or OneDrive, configure SharePoint + OneDrive to not allow access.",
+      "quote": "Configuring **Documents** knowledge source to not allow uploads only prevents local file uploads.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "Risks and limits: Uploaded files skip per-user checks",
-      "type": "behaviour",
-      "claim": "The upload files method allows anyone with permission to the agent to access the uploaded file.",
+      "where": "Risks and limits: SharePoint and OneDrive uploads",
+      "type": "applicability",
+      "claim": "Blocking Documents does not block SharePoint or OneDrive uploads; those require restricting SharePoint + OneDrive.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
-      "quote": "The upload files method allows anyone with permission to the agent to access the file.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
+      "quote": "It doesn't prevent makers from adding files from SharePoint or OneDrive.\n\nTo not allow uploads from SharePoint or OneDrive, configure **SharePoint + OneDrive** to not allow access.",
       "severity": null,
       "fix": null
     },
@@ -656,7 +656,18 @@
       "n": 58,
       "where": "Risks and limits: Uploaded files skip per-user checks",
       "type": "behaviour",
-      "claim": "SharePoint file and folder sources verify the user's permission before responding.",
+      "claim": "The file upload method permits anyone with access to the agent to access uploaded content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
+      "quote": "The upload files method allows anyone with permission to the agent to access the file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: SharePoint credentials",
+      "type": "behaviour",
+      "claim": "SharePoint sources verify the user's access credentials before answering.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
       "quote": "With SharePoint, the user's credentials are verified to ensure they have permission to access the file before providing responses.",
@@ -664,10 +675,10 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Risks and limits: Turning Dataverse search off breaks sources; What to check",
+      "n": 60,
+      "where": "Risks and limits: Dataverse search; What to check",
       "type": "behaviour",
-      "claim": "Microsoft says disabling Dataverse search deprovisions and removes the index within 12 hours.",
+      "claim": "Microsoft gives a 12-hour index-removal period after turning off Dataverse search, with a multi-day caveat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
       "quote": "Turning off Dataverse search deprovisions and removes the index within 12 hours.",
@@ -675,30 +686,41 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Risks and limits: Turning Dataverse search off breaks sources",
-      "type": "behaviour",
-      "claim": "Re-enabling Dataverse search after index removal requires a full sync taking an hour or more for average organisations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "If you turn on Dataverse search after it's been off for 12 hours, it creates a fresh index that needs to go through a full sync. Syncing can take an hour or more for average size organizations",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 61,
-      "where": "Risks and limits: Turning Dataverse search off breaks sources",
-      "type": "behaviour",
-      "claim": "A full Dataverse search sync can take a couple of days for large organisations.",
+      "where": "Risks and limits; controls[2].governs",
+      "type": "applicability",
+      "claim": "Turning off Dataverse search prevents uploaded-file and OneDrive or SharePoint upload knowledge experiences from working.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "Syncing can take an hour or more for average size organizations, and a couple of days for large organizations.",
+      "source": "https://learn.microsoft.com/power-apps/user/relevance-search-benefits",
+      "quote": "can't use the search capability in the Power Apps navigation bar or any generative AI experience that relies on Dataverse, like uploaded files or using OneDrive or SharePoint files (via upload) in Microsoft Copilot Studio agents",
       "severity": null,
       "fix": null
     },
     {
       "n": 62,
-      "where": "Risks and limits: Turning Dataverse search off breaks sources; What to check",
+      "where": "Risks and limits: rebuilding the search index",
+      "type": "behaviour",
+      "claim": "Rebuilding the Dataverse search index can take an hour or more for average-size organizations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
+      "quote": "Syncing can take an hour or more for average size organizations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: rebuilding the search index",
+      "type": "behaviour",
+      "claim": "A large organization's index rebuild can take a couple of days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
+      "quote": "and a couple of days for large organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits; What to check: multi-day caveat",
       "type": "behaviour",
       "claim": "Microsoft also cautions that index removal or provisioning can take multiple days depending on indexed volume.",
       "status": "supported",
@@ -708,21 +730,10 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[2].governs; Risks and limits: Turning Dataverse search off breaks sources",
-      "type": "applicability",
-      "claim": "Disabling Dataverse search prevents agent responses relying on uploaded files or SharePoint and OneDrive upload sources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/relevance-search-benefits",
-      "quote": "any generative AI experience that relies on Dataverse, like uploaded files or using OneDrive or SharePoint files (via upload) in Microsoft Copilot Studio agents, among other experiences.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Risks and limits: Web search reaches beyond your list",
+      "n": 65,
+      "where": "Risks and limits: standard-harness web search",
       "type": "behaviour",
-      "claim": "The standard-harness web search setting searches all public websites indexed by Bing.",
+      "claim": "Standard-harness web search searches all public websites indexed by Bing when triggered.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "It searches all public websites indexed by Bing.",
@@ -730,10 +741,10 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Risks and limits: Web search reaches beyond your list",
+      "n": 66,
+      "where": "Risks and limits: parallel web searches",
       "type": "behaviour",
-      "claim": "Standard-harness web search runs in parallel with searches of configured public website knowledge sources.",
+      "claim": "Standard-harness broad web search runs in parallel with configured public website source searches.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "This type of search happens in parallel with any searches of public websites you added as knowledge sources.",
@@ -741,10 +752,10 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Risks and limits: Web search reaches beyond your list",
+      "n": 67,
+      "where": "Risks and limits: Microsoft Copilot harness web search",
       "type": "behaviour",
-      "claim": "Microsoft Copilot harness agents keep existing website sources but do not use them while web search is on.",
+      "claim": "Microsoft Copilot harness agents keep but do not use configured websites while web search is on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-edit-source",
       "quote": "Websites you already added are kept but aren't used until you turn web search off.",
@@ -752,54 +763,54 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "controls[4].note; Risks and limits: The tenant graph option needs sign-in",
+      "n": 68,
+      "where": "Risks and limits: tenant graph sign-in; controls[4].note",
       "type": "behaviour",
-      "claim": "Tenant graph grounding with semantic search requires Authenticate with Microsoft user authentication.",
+      "claim": "Tenant graph grounding requires user authentication set to Authenticate with Microsoft.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "The Tenant graph grounding with semantic search feature requires that the agent's user authentication is set to Authenticate with Microsoft.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Knowledge sources for agents is reached through Power Platform admin center > Security > Data and privacy > Knowledge sources for agents > Environment groups or Environments > environment group or environment > Manage knowledge sources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "In the side pane, choose whether to sort by Environment groups or by Environments. Select the environment group or environment that you want to configure. After you select your environment group or environment, select Manage knowledge sources.",
+      "quote": "The **Tenant graph grounding with semantic search** feature requires that the agent's [user authentication](configuration-end-user-authentication) is set to **Authenticate with Microsoft**.",
       "severity": null,
       "fix": null
     },
     {
       "n": 69,
-      "where": "controls[0].api; Open questions",
-      "type": "absence",
-      "claim": "No API or PowerShell equivalent for the Knowledge sources for agents rule is documented.",
+      "where": "controls[0].ui; Governance controls: row 1",
+      "type": "admin-path",
+      "claim": "The Power Platform route is Security > Data and privacy > Knowledge sources for agents > Environment groups or Environments > environment group or environment > Manage knowledge sources.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"knowledge sources for agents\" \"PowerShell\"; \"Knowledge sources for agents\" API PowerShell default published agents; site:learn.microsoft.com/power-platform \"knowledge sources for agents\" \"API\". Read rule documentation, choose-knowledge-sources and Power Platform API reference excerpts.",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "In the side pane, choose whether to sort by **Environment groups** or by **Environments**.\n6. Select the environment group or environment that you want to configure.\n7. After you select your environment group or environment, select **Manage knowledge sources**.",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
-      "where": "controls[0].note; Governance controls",
-      "type": "availability",
-      "claim": "The Knowledge sources for agents setting has preview documentation.",
+      "where": "controls[0].api; Open questions: automation",
+      "type": "absence",
+      "claim": "No API or PowerShell equivalent for the Knowledge sources for agents rule is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "# Configure knowledge sources for agents in the Power Platform admin center (preview)\n[This article is prerelease documentation and is subject to change.]",
+      "source": null,
+      "quote": "Searched: \"Knowledge sources for agents\" \"API\" \"Power Platform\" and \"Knowledge sources for agents\" \"PowerShell\"; opened the rule, Rules for environment groups and PowerShell support search excerpts. No operation configuring this rule found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 71,
-      "where": "controls[0].scope; What to check",
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The Knowledge sources for agents setting's own documentation is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "# Configure knowledge sources for agents in the Power Platform admin center (preview)\n\n[This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[0].scope; What to check: environment groups and environments",
       "type": "applicability",
-      "claim": "Knowledge sources for agents can be configured at environment and environment-group levels.",
+      "claim": "Knowledge source restrictions can be configured at environment or environment-group level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
       "quote": "This setting is available at both the environment and environment group level.",
@@ -807,10 +818,10 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[0].note; Governance controls",
+      "n": 73,
+      "where": "controls[0].note; Governance controls: inheritance",
       "type": "behaviour",
-      "claim": "An environment-group configuration is distributed to its environments and cannot be modified there.",
+      "claim": "An environment-group configuration is distributed to its environments and cannot be changed there.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
       "quote": "if an admin sets the control at the environment group level, then it's distributed to the environment level and can't be modified there.",
@@ -818,65 +829,65 @@
       "fix": null
     },
     {
-      "n": 73,
-      "where": "controls[0].note; What to check",
-      "type": "behaviour",
-      "claim": "SharePoint + OneDrive offers None, All and Custom options.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "None: Don't use any SharePoint and OneDrive sites as knowledge sources. All: Use all SharePoint and OneDrive sites as knowledge sources. Custom: Select which SharePoint and OneDrive sites agents can use.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 74,
-      "where": "controls[0].note; What to check",
+      "where": "controls[0].note; What to check: SharePoint + OneDrive",
       "type": "behaviour",
-      "claim": "Public websites offers None, All and Custom options.",
+      "claim": "SharePoint + OneDrive offers None, All and Custom knowledge-source access choices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "None: Don't use any public websites as knowledge sources. All: Use all public websites as knowledge sources. Custom: Select which public websites agents can use.",
+      "quote": "**None**: Don't use any SharePoint and OneDrive sites as knowledge sources.\n        - **All**: Use all SharePoint and OneDrive sites as knowledge sources.\n        - **Custom**: Select which SharePoint and OneDrive sites agents can use.",
       "severity": null,
       "fix": null
     },
     {
       "n": 75,
-      "where": "controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "Custom source configuration can Allow or Deny individual SharePoint and OneDrive or public website URLs.",
+      "where": "controls[0].note; What to check: Public websites",
+      "type": "behaviour",
+      "claim": "Public websites offers None, All and Custom access choices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "Select either Allow or Deny under Access for each URL.",
+      "quote": "**None**: Don't use any public websites as knowledge sources.\n        - **All**: Use all public websites as knowledge sources.\n        - **Custom**: Select which public websites agents can use.",
       "severity": null,
       "fix": null
     },
     {
       "n": 76,
-      "where": "What to check: Knowledge sources for agents",
+      "where": "controls[0].note; Governance controls: Custom URLs",
       "type": "behaviour",
-      "claim": "Documents knowledge source configuration offers Yes or No.",
+      "claim": "Custom access allows Allow or Deny for individual SharePoint and OneDrive or public website URLs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "Yes: Agents can use uploaded documents as knowledge sources. No: Agents can't use uploaded documents as knowledge sources.",
+      "quote": "Select either **Allow** or **Deny** under **Access** for each URL.",
       "severity": null,
       "fix": null
     },
     {
       "n": 77,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "Blocking the connector is reached through Power Platform admin center > Security > Data and privacy > Data policy > policy > Edit Policy > Next > Next > connector > three dots > Block.",
+      "where": "What to check: Documents",
+      "type": "behaviour",
+      "claim": "Documents uses Yes or No to allow or disallow uploaded document knowledge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "Select the three dots (⋮) next to the connector, and then: To prevent agent makers from using the features associated with the connector, select Block.",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "**Yes**: Agents can use uploaded documents as knowledge sources.\n        - **No**: Agents can't use uploaded documents as knowledge sources.",
       "severity": null,
       "fix": null
     },
     {
       "n": 78,
-      "where": "controls[1].api",
+      "where": "controls[1].ui; Governance controls: row 2",
+      "type": "admin-path",
+      "claim": "The data-policy route is Security > Data and privacy > Data policy > policy > Edit Policy > Next > Next > connector > three dots > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Select the three dots (**⋮**) next to the connector, and then:\n\n    - To prevent agent makers from using the features associated with the connector, select **Block**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[1].api; Governance controls: row 2",
       "type": "command",
-      "claim": "Add-ConnectorsToPolicy -PolicyName <policy GUID> -Classification <group> -Connectors $connectors configures the connector group in a data policy.",
+      "claim": "Add-ConnectorsToPolicy accepts PolicyName, Classification and Connectors to change connector grouping in a DLP policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
       "quote": "Add-ConnectorsToPolicy\n    [-PolicyName] <String>\n    [-Classification] <String>\n    [-Connectors] <Object[]>\n    [[-ApiVersion] <String>]\n    [<CommonParameters>]",
@@ -884,21 +895,21 @@
       "fix": null
     },
     {
-      "n": 79,
+      "n": 80,
       "where": "controls[1].governs; controls[1].note; Governance controls; What to check",
       "type": "applicability",
-      "claim": "Knowledge source with SharePoint and OneDrive in Copilot Studio governs SharePoint knowledge added through Upload files > SharePoint.",
+      "claim": "Knowledge source with SharePoint and OneDrive in Copilot Studio governs SharePoint sources added through Upload files > SharePoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
-      "quote": "The Knowledge source with SharePoint and OneDrive in Copilot Studio connector governs SharePoint knowledge sources that you add through the Upload files > SharePoint experience.",
+      "quote": "The **Knowledge source with SharePoint and OneDrive in Copilot Studio** connector governs SharePoint knowledge sources that you add through the **Upload files** > **SharePoint** experience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 80,
+      "n": 81,
       "where": "controls[1].note",
       "type": "behaviour",
-      "claim": "Add-ConnectorsToPolicy moves connectors already classified elsewhere to the specified group.",
+      "claim": "The cmdlet moves already-classified connectors to the specified data-policy group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
       "quote": "If any of the connectors are already classified in a different group, they are moved to the specified group.",
@@ -906,106 +917,106 @@
       "fix": null
     },
     {
-      "n": 81,
-      "where": "controls[2].ui",
+      "n": 82,
+      "where": "controls[2].ui; Governance controls: row 3",
       "type": "admin-path",
-      "claim": "Dataverse search is reached through Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse search.",
+      "claim": "Dataverse search is under Manage > Environments > environment > Settings > Product > Features > Dataverse search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "In the command bar, select Settings. Expand Product, then select Features. Under Dataverse search, select the options you want to turn on:",
+      "quote": "Under **Dataverse search**, select the options you want to turn on:\n\n    - **Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences**",
       "severity": "minor",
-      "fix": "Complete controls[2].ui.path and its rendered table path as 'Manage > Environments > environment > Settings > Product > Features > Dataverse search > Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences'. The existing path reaches the correct section; https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization now names this selectable option under that section."
-    },
-    {
-      "n": 82,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "PATCH /organizations(organizationid) updates the organization, with isexternalsearchindexenabled as the writable setting property.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
-      "quote": "| UpdateEvent: True | PATCH /organizations(organizationid)See Update | Update records |",
-      "severity": null,
-      "fix": null
+      "fix": "Complete controls[2].ui.path and the corresponding rendered path as 'Manage > Environments > environment > Settings > Product > Features > Dataverse search > Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences'. The existing path reaches the correct section but stops before its documented AI and agent indexing option."
     },
     {
       "n": 83,
-      "where": "controls[2].note; Governance controls",
-      "type": "role",
-      "claim": "Microsoft's Dataverse search management instructions require signing in as a system administrator.",
+      "where": "controls[2].api; Governance controls: row 3",
+      "type": "command",
+      "claim": "PATCH /organizations(organizationid) is a documented writable Organization table operation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "Sign in to the Power Platform admin center as a system administrator.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+      "quote": "| `Update`Event: True | `PATCH` /organizations(*organizationid*)See [Update](/en-us/powerapps/developer/data-platform/webapi/update-delete-entities-using-web-api#basic-update)",
       "severity": null,
       "fix": null
     },
     {
       "n": 84,
-      "where": "controls[2].note",
+      "where": "controls[2].note; sources",
       "type": "applicability",
-      "claim": "The organization property isexternalsearchindexenabled indicates whether Dataverse search is enabled.",
+      "claim": "The Organization property isexternalsearchindexenabled carries whether Dataverse search is enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/search/overview",
-      "quote": "The IsExternalSearchIndexEnabled boolean column indicates whether search is enabled for the organization.",
+      "quote": "The [IsExternalSearchIndexEnabled](../reference/entities/organization#BKMK_IsExternalSearchIndexEnabled) boolean column indicates whether search is enabled for the organization.",
       "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-apps/developer/data-platform/search/overview to sources. It explicitly connects isexternalsearchindexenabled to Dataverse search; retain PATCH /organizations(organizationid), its existing Organization reference link and the note naming the request-body property."
+      "fix": "Add https://learn.microsoft.com/power-apps/developer/data-platform/search/overview to sources and cite it for the connection between isexternalsearchindexenabled and Dataverse search. Also add https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness to sources for the channel qualification identified in the employee-facing inclusion finding. Retain the Organization reference, PATCH operation and request-body property note."
     },
     {
       "n": 85,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "Allow ungrounded responses is reached in Copilot Studio through Agent > Settings > Generative AI > Knowledge > Allow ungrounded responses.",
+      "where": "controls[2].note; Governance controls: Dataverse role",
+      "type": "role",
+      "claim": "The documented Dataverse search management procedure says to sign in as a system administrator.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "The Allow ungrounded responses setting in the Knowledge section of your agent's Generative AI settings manages whether your agent can generate responses using only the model's general knowledge.",
+      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
+      "quote": "Sign in to the [Power Platform admin center](https://admin.powerplatform.microsoft.com/) as a system administrator.",
       "severity": null,
       "fix": null
     },
     {
       "n": 86,
-      "where": "controls[3].api; Open questions",
-      "type": "absence",
-      "claim": "No API or PowerShell equivalent for Allow ungrounded responses is documented.",
+      "where": "controls[3].ui; Governance controls: row 4",
+      "type": "admin-path",
+      "claim": "Allow ungrounded responses is at Agent > Settings > Generative AI > Knowledge > Allow ungrounded responses in Copilot Studio.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Allow ungrounded responses\" API PowerShell admin center setting; \"Allow ungrounded responses\" \"PowerShell\" \"Copilot Studio\". Read knowledge-copilot-studio, advanced-generative-actions, FAQ excerpts and rest/api/power-platform/copilotstudio/bots; no equivalent operation found.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "The **Allow ungrounded responses** setting in the **Knowledge** section of your agent's **Generative AI** settings manages whether your agent can generate responses using only the model's general knowledge.",
       "severity": null,
       "fix": null
     },
     {
       "n": 87,
-      "where": "controls[3].note",
-      "type": "behaviour",
-      "claim": "Allow ungrounded responses requires generative orchestration.",
+      "where": "controls[3].api; Open questions: automation",
+      "type": "absence",
+      "claim": "No documented API or PowerShell operation sets Allow ungrounded responses.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "This setting requires that the agent has generative orchestration turned on.",
+      "source": null,
+      "quote": "Searched: \"Allow ungrounded responses\" \"API\"; \"Allow ungrounded responses\" admin API Dataverse bot configuration PowerShell. Opened Knowledge sources summary and Agent (bot) reference; configuration has no documented key for this setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 88,
-      "where": "controls[4].ui",
-      "type": "admin-path",
-      "claim": "Tenant graph grounding with semantic search is reached in Copilot Studio through Agent > Settings > Generative AI > Tenant graph grounding with semantic search.",
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Allow ungrounded responses requires generative orchestration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "The Tenant graph grounding with semantic search setting on your agent's Generative AI settings page determines whether your agent uses semantic search to improve search results.",
+      "quote": "This setting requires that the agent has [generative orchestration](advanced-generative-actions) turned on.",
       "severity": null,
       "fix": null
     },
     {
       "n": 89,
-      "where": "controls[4].api; Open questions",
-      "type": "absence",
-      "claim": "No API or PowerShell equivalent for tenant graph grounding with semantic search is documented.",
+      "where": "controls[4].ui; Governance controls: row 5",
+      "type": "admin-path",
+      "claim": "Tenant graph grounding with semantic search is at Agent > Settings > Generative AI > Tenant graph grounding with semantic search.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Tenant graph grounding with semantic search\" API PowerShell configure; \"tenant graph grounding\" \"API\" \"Copilot Studio\". Read knowledge-copilot-studio, billing rates, relevant search excerpts and rest/api/power-platform/copilotstudio/bots; no equivalent operation found.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "The **Tenant graph grounding with semantic search** setting on your agent's **Generative AI** settings page determines whether your agent uses [semantic search](/en-us/microsoftsearch/semantic-index-for-copilot) to improve search results.",
       "severity": null,
       "fix": null
     },
     {
       "n": 90,
+      "where": "controls[4].api; Open questions: automation",
+      "type": "absence",
+      "claim": "No API or PowerShell equivalent for tenant graph grounding with semantic search is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"tenant graph grounding\" API PowerShell Dataverse bot configuration; \"tenant graph grounding\" \"configuration\" \"API\"; \"tenant graph grounding\" \"PowerShell\". Opened Knowledge sources summary and Agent (bot) reference; no setting key or operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
       "where": "controls[4].note",
       "type": "behaviour",
       "claim": "Tenant graph grounding with semantic search requires generative orchestration.",
@@ -1016,51 +1027,51 @@
       "fix": null
     },
     {
-      "n": 91,
-      "where": "Governance controls: preview status disagreement",
+      "n": 92,
+      "where": "Governance controls: conflicting availability descriptions",
       "type": "availability",
-      "claim": "The environment rules index lists Knowledge sources for agents without a preview label and calls unlabelled rules generally available, differing from the feature page.",
+      "claim": "The environment-group rules index lists Knowledge sources for agents without preview and treats unlabelled rules as generally available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/environment-groups-rules",
-      "quote": "| 12 | Knowledge sources for agents |\nThe rules that have \"(preview)\" in their name are in public preview, while rules without it are considered generally available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 92,
-      "where": "Governance controls: endpoint filtering disagreement; Open questions",
-      "type": "behaviour",
-      "claim": "The Choose knowledge sources page says endpoint filtering can allow or deny SharePoint and public website knowledge locations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
-      "quote": "Alternatively, if you want to allow or deny specific endpoints for SharePoint or public websites that makers can use as knowledge sources for their Copilot Studio agents, use endpoint filtering.",
+      "quote": "| 12 | [Knowledge sources for agents](knowledge-sources-for-agents-rule) |\n\nThe rules that have \"(preview)\" in their name are in public preview, while rules without it are considered generally available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 93,
-      "where": "Governance controls: endpoint filtering disagreement",
-      "type": "behaviour",
-      "claim": "The unstructured knowledge page also says endpoint filtering can restrict allowed SharePoint knowledge locations.",
+      "where": "controls[1].scope; Governance controls: data policies",
+      "type": "applicability",
+      "claim": "Data policies govern Copilot Studio agents in the environments included in the policy scope.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
-      "quote": "If your organization wants to prevent makers from adding SharePoint knowledge sources, configure a data policy that blocks this connector or use endpoint filtering to restrict allowed SharePoint locations.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
       "severity": null,
       "fix": null
     },
     {
       "n": 94,
-      "where": "Governance controls: endpoint filtering disagreement; Open questions",
-      "type": "behaviour",
-      "claim": "The endpoint filtering page's exclusive connector list names HTTP, SQL Server, Azure Blob Storage, SMTP and desktop automation, but not SharePoint or public website knowledge connectors.",
+      "where": "Governance controls: endpoint filtering; Open questions",
+      "type": "applicability",
+      "claim": "Copilot Studio's data-policy and knowledge-source choice pages say endpoint filtering can restrict SharePoint or public website knowledge locations.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-      "quote": "it's exclusively available for the following connectors:\n- HTTP\n- HTTP with Microsoft Entra ID (AD)\n- HTTP Webhook\n- SQL Server (includes using SQL Server Connector to access Azure Synapse data warehouse)\n- Azure Blob Storage\n- SMTP\n- Browser Automation\n- UI Automation",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
+      "quote": "if you want to allow or deny specific endpoints for SharePoint or public websites that makers can use as knowledge sources for their Copilot Studio agents, use [endpoint filtering](/en-us/power-platform/admin/connector-endpoint-filtering).",
       "severity": null,
       "fix": null
     },
     {
       "n": 95,
+      "where": "Governance controls: endpoint-filtering reference; Open questions",
+      "type": "absence",
+      "claim": "The endpoint-filtering reference's supported-connector list does not include SharePoint or public website knowledge connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched connector-endpoint-filtering for SharePoint and public websites; read its exclusive connector list: HTTP, HTTP with Microsoft Entra ID, HTTP Webhook, SQL Server, Azure Blob Storage, SMTP, Browser Automation, UI Automation. Neither knowledge connector is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
       "where": "Governance controls: monitoring",
       "type": "behaviour",
       "claim": "Copilot Studio documents analytics on a per-knowledge-source basis.",
@@ -1071,32 +1082,32 @@
       "fix": null
     },
     {
-      "n": 96,
-      "where": "Governance controls: monitoring",
+      "n": 97,
+      "where": "Governance controls: storage reporting",
       "type": "behaviour",
-      "claim": "Dataverse search storage reports show indexed tables and the capacity each consumes.",
+      "claim": "Dataverse search storage reports show indexed tables and their capacity consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "To export usage granular reports and view exactly which tables are being indexed and how much capacity each one consumes, see view dataverse search storage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 97,
-      "where": "Open questions: already published agents",
-      "type": "absence",
-      "claim": "The Knowledge sources for agents preview page does not say whether the rule applies to agents already published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Knowledge sources for agents\" API PowerShell default published agents. Read power-platform/admin/knowledge-sources-for-agents-rule, microsoft-copilot-studio/choose-knowledge-sources and agents-experience/knowledge-add-existing-copilot; no published-agent statement on the preview page.",
+      "quote": "To export usage granular reports and view exactly which tables are being indexed and how much capacity each one consumes, see [view dataverse search storage](configure-relevance-search-organization#view-dataverse-search-storage).",
       "severity": null,
       "fix": null
     },
     {
       "n": 98,
-      "where": "Open questions: admin web search setting",
+      "where": "Open questions: already-published agents",
+      "type": "absence",
+      "claim": "The Knowledge sources for agents preview page does not state whether the setting applies to already-published agents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Knowledge sources for agents\" \"published\"; read the complete Configure knowledge sources for agents preview page and Add knowledge sources to an agent (Microsoft Copilot). The preview page does not specify effects on already-published agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "Open questions: web-search toggle",
       "type": "behaviour",
-      "claim": "The Microsoft Copilot harness knowledge page says web search's toggle is disabled if an administrator turned web search off.",
+      "claim": "Microsoft says an administrator disabling Microsoft Copilot harness web search disables its maker toggle.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-edit-source",
       "quote": "If your admin turned off web search, the toggle is disabled and the setting isn't applied.",
@@ -1104,33 +1115,33 @@
       "fix": null
     },
     {
-      "n": 99,
-      "where": "Open questions: admin web search setting",
+      "n": 100,
+      "where": "Open questions: unnamed web-search admin setting",
       "type": "absence",
-      "claim": "The Microsoft Copilot harness knowledge page does not name the administrator setting that disables web search.",
+      "claim": "The Microsoft Copilot harness knowledge-management page does not name the admin setting that disables web search.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Copilot harness web search disabled administrator setting Power Platform admin center; site:learn.microsoft.com/microsoft-copilot-studio \"web search\" \"admin\" \"harness\". Read agents-experience/knowledge-edit-source and search excerpts; that page names no admin setting.",
+      "quote": "Searched: \"Microsoft Copilot harness\" \"web search\" \"admin\"; read Manage knowledge sources in an agent (Microsoft Copilot). Its web-search section says an admin can disable the toggle but gives no admin setting name or route.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T03:13:40.491Z",
+    "at": "2026-11-25T07:21:16.305Z",
     "summary": {
       "links": 18,
-      "unreachable": 0,
+      "unreachable": 12,
       "uiPaths": 5,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 5,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
@@ -1154,38 +1165,38 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-unstructured-data",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/user/relevance-search-benefits",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
@@ -1194,13 +1205,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-edit-source",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/environment-groups-rules",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
@@ -1209,13 +1220,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-generative-actions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-existing-copilot",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1242,7 +1253,7 @@
         "side": "ui",
         "governs": "Whether makers can add SharePoint knowledge sources through Upload files > SharePoint",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Security",
           "Data and privacy",
@@ -1253,7 +1264,16 @@
           "three dots",
           "Block"
         ],
-        "missing": []
+        "missing": [
+          "Security",
+          "Data and privacy",
+          "Data policy",
+          "Edit Policy",
+          "Next",
+          "Next",
+          "three dots",
+          "Block"
+        ]
       },
       {
         "index": 1,
@@ -1269,7 +1289,7 @@
         "side": "ui",
         "governs": "Whether Dataverse search is on in an environment, which Dataverse knowledge sources and uploaded files need",
         "docs": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -1278,43 +1298,59 @@
           "Features",
           "Dataverse search"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Dataverse search"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Whether Dataverse search is on in an environment, which Dataverse knowledge sources and uploaded files need",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
-        "reachable": true,
+        "reachable": false,
         "token": "PATCH /organizations(organizationid)",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Whether an agent may answer from the model's general knowledge without using a source or tool",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Generative AI",
           "Knowledge",
           "Allow ungrounded responses"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Generative AI",
+          "Knowledge",
+          "Allow ungrounded responses"
+        ]
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Whether an agent uses tenant graph grounding with semantic search, which adds a charge",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Generative AI",
           "Tenant graph grounding with semantic search"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Generative AI",
+          "Tenant graph grounding with semantic search"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -1346,6 +1382,12 @@
     },
     {
       "date": "2026-11-19",
+      "status": "verified-with-gaps",
+      "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
       "status": "verified-with-gaps",
       "version": 4,
       "model": "gpt-6.1-sol"

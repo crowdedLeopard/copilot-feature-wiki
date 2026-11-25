@@ -149,17 +149,19 @@ changes:
     note: "Corrected after the independent check: admin paths for spending-policy limits, alerts and agent limits, Graph and Power Platform API calls reduced to the operation, user-report wording, billing-policy default, Credits report path; removed the Auto-apply checklist item."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 125 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 127 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-25"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 125
-  confirmed: 125
+  claims: 127
+  confirmed: 126
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "94a1b4e0d33646a9a1b2905dd6875cbb"
 ---
 
@@ -247,8 +249,14 @@ This page gives no price per credit: Microsoft points to its Copilot Credits Gui
 - Will Azure bills show a separate line for Cowork? Microsoft says not currently.
 - Microsoft's setup pages name request routing for credit requests and Cowork model templates but this page gives no path or API for either. Where are they scripted?
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What it is: What a Copilot licence covers / cost: Agent flows using other triggers consume credits. | Found: Test runs: Agent flow runs that the agent starts from the test chat in Copilot Studio and test runs that you start in the flow designer, don't consume capacity for agent flow actions and aren't blocked by enforcement. | Fix: Replace 'other triggers consume credits' with 'outside test runs, agent flows using other triggers consume credits'. The same cited Billing rates and management page explicitly exempts agent-flow actions in test-chat and flow-designer test runs; this is separate from the licence inclusion. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is; sources / cost: Customer conversations handled by Microsoft Contact Center Intelligence consume Copilot Credits. | Found: Usage is billed based on consumption and measured in Copilot Credits. Creating and using agents, workflows, and apps consumes credits based on usage and rate of consumption. Handling customer conversations also consumes credits based on conversation complexity and modality. | Fix: Add these supporting Microsoft pages to sources: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview (Contact Center Intelligence and billing from building onward) and https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/costmanagementalertsetting (the alert API's policy-level scope). This consolidates the missing supporting references. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
+- [supported, minor] What it is; sources / applicability: Customer conversations handled by Microsoft Contact Center Intelligence consume Copilot Credits. | Found: Handling customer conversations also consumes credits based on conversation complexity and modality. | Fix: Add the supporting pages missing from sources: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview (Contact Center Intelligence and billing from building onward), https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/costmanagementalertsetting (policy-level alert scope), and https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending (the conflicting documentation of currency-valued Cost fields). | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
+- [supported, minor] Risks and limits: No credit source means blocked requests / behaviour: Requests are blocked if prepaid credit sources are exhausted and pay-as-you-go is not enabled. | Found: No available Prepaid Capacity pack credits or Copilot Credit Pre-purchase plans (P3) commit units, and pay-as-you-go isn't enabled ... Requests are blocked when limits or available credit sources are exhausted. | Fix: Qualify this bullet: 'The dashboard-comparison page says requests are blocked when limits or available credit sources are exhausted and pay-as-you-go is not enabled. For standard-harness prepaid custom agents, Billing rates and management instead documents an overage grace period and enforcement at 125% of tenant prepaid capacity.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#overage-enforcement for the differing rule. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
+- [supported, minor] Cost and licensing: Where it is charged / cost: The Microsoft 365 admin center shows credits, not currency. | Found: Everything in this view is expressed in Copilot Credits, not currency. | Fix: Report the documentation disagreement: 'The dashboard-comparison page says the Microsoft 365 admin center view uses credits rather than currency. Monitor Copilot Credit spending also documents a Cost field showing estimated AI usage cost in local currency, including negotiated rates; that estimate may not match the bill.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending#consumption-tab. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
+- [supported, minor] controls[1].ui; Governance controls: resource-based policy row / admin-path: Resource-based spending limits are reached through Microsoft 365 admin center > Copilot > Cost Management > Configuration > Add spending policy > Resources. | Found: go to Copilot > Cost Management. ... Select Configuration, and then select Add spending policy. ... select Resources as its scope. ... Choose No limit or set a monthly spending limit for the policy. | Fix: The path reaches the correct wizard but stops before its resource choice and limit. For the environment route, extend it to 'Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific environments > monthly spending limit'; retain the note explaining the Specific resources alternative. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
+- [supported, minor] controls[4].ui; Governance controls: prepaid allocation row / admin-path: Environment allocation and overage settings are reached through Licensing > Products > Copilot Studio > Summary > Prepaid capacity > Manage Capacity > environment. | Found: Select the Summary tab. ... Select Manage Capacity from the Prepaid capacity card. ... select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Keep the printed route and append the setting being reviewed: ' > Copilot Credits' for allocation, or ' > Capacity overages > Draw from the available capacity in my tenant' for tenant-pool overage. The existing path stops on the right panel before these controls. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
 -->

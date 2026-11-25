@@ -107,18 +107,20 @@ changes:
     note: "Corrected the end-user licence list for code apps to include Dynamics licences that include Power Apps use rights, as the code apps overview now states."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-25"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 74
-  confirmed: 74
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "4589a0c0c6886c3d731e24ef454a955a"
 ---
 
@@ -213,4 +215,12 @@ Tenant-level policies require the Power Platform Administrator role. Environment
 risk: Medium. Connections for code apps can now be created from a terminal, or by a coding agent running the CLI, without the maker portal; existing controls (the environment's code apps toggle and data policies) apply but need checking.
 cost: Low. No CLI-specific licence or meter is documented at the time of writing (November 2026); the known incremental cost is developer and admin time. Existing code-app licensing requirements still apply.
 impact: Low. Developers and makers who build code apps notice it; the code apps setting on an environment is documented as off by default, so most users see no change.
+-->
+
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Data exposure; Governance controls; Open questions / absence: Connection creation from the CLI has no documented policy enforcement, so data policies govern app use rather than what developers can create. | Found: The command checks your organization's Advanced Connector Policies (ACP) and Data Loss Prevention (DLP) policies before selecting or creating a connection or retrieving datasets and tables. | Fix: Replace the broad absence in Data exposure and the 'not over what developers can create' conclusion with: 'Learn documents ACP and DLP checks in pa app add data-source before selecting or creating a connection; a blocked connector or one with all actions blocked returns exit code 2 without creating a connection or data source files. If the tenant cannot be identified or the policy service is unavailable, the CLI warns and continues without the add-time check; refresh does not repeat that check.' Cite https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli. Keep the narrower uncertainty about the standalone pa connection create command, and remove 'or does it apply only when the app launches?' from the open question. | Source: https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].note; Governance controls table / applicability: The documented data policy control is not confirmed for CLI commands. | Found: [`pa app add data-source`](../reference/cli#pa-app-add-data-source-remarks) checks your organization's Advanced Connector Policies (ACP) and Data Loss Prevention (DLP) policies. A blocked connector can't be added. | Fix: Replace 'Not confirmed for the CLI commands.' in the row note and rendered table with 'Learn documents ACP and DLP checks when pa app add data-source adds a connector.' The existing cited connect-to-data page states this; the CLI reference gives the check's failure and bypass conditions. | Source: https://learn.microsoft.com/power-apps/developer/code-apps/how-to/connect-to-data
 -->

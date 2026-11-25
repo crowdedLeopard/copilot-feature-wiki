@@ -1,0 +1,1152 @@
+{
+  "slug": "semantic-model",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Dataverse semantic model: what do agents know about your business data, and who tunes it?",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 17)"
+    ]
+  },
+  "counts": {
+    "claims": 80,
+    "confirmed": 77,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 7
+  },
+  "summary": "The page incorrectly says automation is not documented for the model-driven app participation setting: Microsoft documents the setting and APIs for updating app setting values. The model description and listed UI routes are supported, but the page also needs qualifications about the new configuration experience and conflicting lifecycle-management documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Power Apps > environment > More > Discover all > AI > Semantic models lists models and associated apps or agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "select More, and if not in the More list, select Discover all, and then select Semantic models under AI section.\nAssociated apps or agents | Apps or agents that have access to this semantic model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "GET [Organization URI]/api/iq/v1.0/semanticmodel lists models; include=botinfo identifies their apps and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/ask/manage-semantic-models",
+      "quote": "GET [Organization URI]/api/iq/v1.0/semanticmodel?include=botinfo HTTP/1.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Power Apps > environment > More > Discover all > AI > Semantic models > model > Configure > Configure table sources > Included in model > table > Remove table removes a table from model scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Open the model and select Configure.\nUnder Configure table sources, select All tables to find an available table, or Included in model to review the current selection.\nSearch for the table display name and select the table.\nSelect Add table or Remove table, as appropriate.",
+      "severity": "minor",
+      "fix": "Keep the route, but qualify the Configure-based UI routes with: 'These routes require the new semantic model experience; its availability depends on the environment and the documented Dataverse and solution versions.' The FAQ states that the earlier experience uses Configuration instead of Configure: https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-faq."
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST [Organization URI]/api/iq/v1.0/semanticmodel creates a custom model with its table scope supplied in tables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/ask/manage-semantic-models",
+      "quote": "POST [Organization URI]/api/iq/v1.0/semanticmodel HTTP/1.1\n\"tables\": [\n    \"account\",\n    \"opportunity\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Power Apps > environment > More > Discover all > AI > Semantic models > model > Configure > Manage signals controls model-wide signal types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Open the model and select Configure.\nUnder Manage signals, turn the relevant signal On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Power Apps > environment > More > Discover all > AI > Semantic models > model > Glossary > Add term adds glossary entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+      "quote": "Open the semantic models page and select the model you want to update.\nSelect Glossary.\nIn Glossary, select Add term.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST [organization URI]/api/data/v9.2/copilotglossaryterms creates glossary terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm",
+      "quote": "Entity set path:\n[organization URI]/api/data/v9.2/copilotglossaryterms\nOperations supported:\nPOSTGETPATCHDELETE",
+      "severity": "minor",
+      "fix": "Keep the call and add to its note: 'The request body uses term for the term and description for its explanation.' Both properties are documented at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm."
+    },
+    {
+      "n": 8,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Power Apps > environment > More > Discover all > AI > Semantic models > model > Regenerate requests regeneration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/regenerate-semantic-model",
+      "quote": "Open the model you want to review from the semantic models page in Power Apps.\nSelect Regenerate in the model's command bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Manage > environment > Settings > Product > Features > Work IQ turns environment Work IQ features on or off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "select Manage.\nSelect the environment that you want to manage.\nOn the command bar, select Settings.\nSelect Product > Features.\nFind Work IQ, and then turn the setting on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[6].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot controls the tenant audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "In the left navigation pane, select Copilot > Settings.\nIn Copilot settings, select View all > Business Applications data in Work IQ available to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[7].ui",
+      "type": "admin-path",
+      "claim": "Power Apps > Apps > app > Edit > Settings > Features > Enable Microsoft 365 Copilot in model-driven apps controls app participation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "select Apps.\nFind the app that you want to manage, and then select Edit.\nOn the app navigation bar, select Settings.\nSelect Features.\nSet Enable Microsoft 365 Copilot in model-driven apps to On or Off.",
+      "severity": "minor",
+      "fix": "Keep the cited route, but note that https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot calls the single-app option 'Microsoft Copilot in model-driven apps'. Add that URL to sources rather than silently choosing one label."
+    },
+    {
+      "n": 12,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented API or PowerShell operation sets model signal types, views or relationships.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse semantic model signal settings regeneration API dvtablesearch entity reference; semantic model regeneration API PowerShell. Read manage-semantic-models, fine-tune-semantic-model-signals and webapi/reference/dvtablesearch; no signal-setting operation or schema was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented API or PowerShell operation requests semantic model regeneration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse semantic model regeneration API PowerShell regenerate action signals configuration. Read regenerate-semantic-model, manage-semantic-models and webapi/reference/dvtablesearch; results documented the UI and scheduled regeneration, not a regeneration call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[5].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation sets the environment Work IQ switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ environment setting Power Platform API pac admin PowerShell; Work IQ Set-AdminPowerAppEnvironment API; Dataverse intelligence organization API enabled settings. Read default-settings, manage-participation and organization-table excerpts; no deciding property documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[6].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation sets the tenant audience for Business Applications data in Work IQ available to Copilot.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Applications data Work IQ available Copilot tenant setting Microsoft Graph API; Work IQ tenant Graph settings API. Read default-settings and returned enable-work-iq excerpt; service-principal provisioning is not this audience switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The copilotglossaryterm entity supports POST, GET, PATCH and DELETE.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm",
+      "quote": "Operations supported:\nPOSTGETPATCHDELETE",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[7].api; Governance controls: What they do not enforce",
+      "type": "absence",
+      "claim": "No API or automation is documented for the model-driven app Work IQ participation setting.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+      "quote": "Creates or updates app/organization level override.\nAppUniqueName: Model-driven app unique name (Optional).\nSettingName: Setting definition unique name (Required).\nValue: Overridden value that needs to be set (Required).",
+      "severity": "blocker",
+      "fix": "Replace controls[7].api with REST 'POST [Organization URI]/api/data/v9.2/SaveSettingValue', docs https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue. Note that SettingName identifies m365copilotmodelappenabled, Value supplies its override, and AppUniqueName targets the app. The setting identifier is documented at https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq; the general setting-value API at https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code and POST action convention at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions establish the operation. Cite these pages and narrow the prose absence to signal and regeneration settings and the environment and tenant Work IQ switches."
+    },
+    {
+      "n": 18,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "The Dataverse semantic model gives agents and Copilot a shared business-aware understanding of Dataverse data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The Dataverse semantic model gives AI agents and Copilot experiences a shared, business-aware understanding of your Dataverse data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Makers and administrators tune table sources, signals and glossary terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Makers and administrators can then fine-tune each model's table sources and signals, and add domain-specific glossary terms for business language that automatic extraction can't infer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; Why it matters; Risks and limits",
+      "type": "applicability",
+      "claim": "Table selection and signals do not override Dataverse security roles or table, column and record access controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "They don't override or replace Dataverse security roles, table-, column-, or record-level access controls, or application-level configurations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The platform automatically provisions models for supported Dataverse Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The platform automatically provisions semantic models for supported Copilot experiences over Dataverse data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: Data scope",
+      "type": "behaviour",
+      "claim": "Data scope is the set of covered Dataverse tables with semantic indexing applied over them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The data scope defines the set of Dataverse tables covered by the semantic model. Semantic indexing is applied over those tables",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: System-inferred signals",
+      "type": "behaviour",
+      "claim": "Inferred signals include relationships, public and sub-grid views, form summaries, table summaries and optional sample rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Table relationships\nPublic views with join conditions and sub-grid views that define which records and columns are relevant for a scenario.\nForms summaries\nTable summaries\nSample data rows",
+      "severity": "minor",
+      "fix": "Change 'public and sub-grid views' in the building-block table to 'public views with join conditions and sub-grid views', retaining the documented qualification."
+    },
+    {
+      "n": 24,
+      "where": "What it is: Glossary",
+      "type": "behaviour",
+      "claim": "The glossary supplies terms, acronyms and definitions that inferred signals cannot infer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The glossary allows makers to add domain-specific terms, acronyms, synonyms, and definitions that system signals can't infer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Enabling Dataverse intelligence automatically provisions the model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Once Dataverse intelligence is enabled, the semantic model is provisioned automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The model regenerates automatically every 12 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The semantic model regenerates automatically every 12 hours to reflect schema changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Initial generation can take up to two hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Initial generation can take up to two hours",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Dataverse intelligence is now part of Business Applications in Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence",
+      "quote": "Dataverse intelligence is now part of Business Applications in Work IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Copilot in Power Apps consumes Dataverse semantic models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-faq",
+      "quote": "The semantic model is automatically consumed by the following experiences:\nCopilot in Power Apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Microsoft Copilot with Dataverse consumes Dataverse semantic models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-faq",
+      "quote": "The semantic model is automatically consumed by the following experiences:\nCopilot in Power Apps\nMicrosoft Copilot with Dataverse",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Sales Agent in Microsoft 365 consumes Dataverse semantic models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Sales Agent in Microsoft 365 — Uses Dataverse data to power sales scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Copilot Studio agents with Dataverse tables as knowledge consume the models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Microsoft Copilot Studio agents over Dataverse data — Agents built in Copilot Studio that use Dataverse tables as a knowledge source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A model's name reflects the source that provisioned it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Semantic models are named based on the source that provisioned them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is; Risks and limits",
+      "type": "behaviour",
+      "claim": "Changes to a shared model's signals, table controls or glossary apply to all experiences associated with that model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "If multiple apps or agents share the same semantic model (for example, Sales Agent and Copilot in Dynamics 365 Sales both use SalesSpecificQnA), changes to that model apply to all experiences associated with it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: Custom models; controls[1].note",
+      "type": "availability",
+      "claim": "Custom model creation is a preview feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Create a custom semantic model (preview)\nThis is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: Custom models",
+      "type": "behaviour",
+      "claim": "Custom models can serve a specific purpose through direct API and action calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "You can also create a custom model for a specific purpose. Custom models are currently usable through direct API and action calls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: Custom models",
+      "type": "behaviour",
+      "claim": "Creating a custom model does not automatically associate it with an app or agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "creation doesn't automatically associate a model with an app or agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What it is: The other meaning",
+      "type": "behaviour",
+      "claim": "Fabric Power BI semantic models describe an analytical domain using metrics and business-friendly terminology.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/data-warehouse/semantic-models",
+      "quote": "In Microsoft Fabric, Power BI semantic models are a logical description of an analytical domain, with metrics, business friendly terminology, and representation, to enable deeper analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What it is: The other meaning",
+      "type": "behaviour",
+      "claim": "Fabric and Power BI manage separate analytical semantic-model objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/data-warehouse/semantic-models",
+      "quote": "Semantic models are independent items in Fabric and can be managed via REST APIs to enumerate semantic models in a workspace, check for dependencies (reports/dashboards) and model content, and delete unused ones.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Business Applications in Work IQ is on by default for new public production environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The default-on rule excepts EU/EFTA, government-related and nonproduction environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "The following environments are exceptions:\nEuropean Union (EU) and European Free Trade Association (EFTA) environments\nGovernment-related environments\nNonproduction environments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; controls[5].governs",
+      "type": "applicability",
+      "claim": "Semantic modeling is one of the capabilities enabled by Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "When Work IQ is on, a new environment can use the following capabilities:\nSearch Power Apps and Dynamics 365 data by using Microsoft 365 Copilot Chat in-app and mainline search.\nSemantic modeling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence requirement or price specific to the semantic model.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse semantic model license pricing storage; semantic model licensing Dataverse. Read semantic-model-overview, fine-tune-semantic-model-signals, understand-costs and Work IQ api-overview. Consumer/API billing is documented, but no separate semantic-model licence or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Storage",
+      "type": "cost",
+      "claim": "Semantic modeling is among Work IQ features that use extra search-index storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Some features use extra storage for search indexes. These features include semantic modeling and access to Power Apps and Dynamics 365 data through Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Storage",
+      "type": "cost",
+      "claim": "All Dataverse indexes are reported at the Dataverse database capacity rate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
+      "quote": "All Dataverse indexes are reported at the Dataverse database capacity rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Storage; What to check",
+      "type": "cost",
+      "claim": "Dataverse search storage appears as DataverseSearch at environment level in capacity reporting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
+      "quote": "Storage consumed by Dataverse search is reported at the environment level as a table called DataverseSearch. It was previously named RelevanceSearch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Consumption",
+      "type": "cost",
+      "claim": "Business Applications in Work IQ costs follow the consuming experience, whose spending policy Microsoft says to configure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "For Business Applications in Work IQ, you track cost by the experiences people use rather than by a dedicated business applications category.\nConfigure the policy for the consuming experience rather than looking for a separate business applications spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: Not an access control",
+      "type": "behaviour",
+      "claim": "Removing a table from a semantic model does not delete the Dataverse table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Removing a table from the model doesn't delete the Dataverse table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Changes are not instant; controls[4].note",
+      "type": "behaviour",
+      "claim": "Saving configuration and requesting regeneration are separate operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Saving configuration and regenerating the model are separate operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Changes are not instant; controls[4].note",
+      "type": "behaviour",
+      "claim": "Regeneration does not include unsaved edits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/regenerate-semantic-model",
+      "quote": "Save changes before selecting Regenerate. Unsaved edits aren't included in the request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Changes are not instant",
+      "type": "behaviour",
+      "claim": "A regeneration-started message confirms request acceptance, not completion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/regenerate-semantic-model",
+      "quote": "A message that regeneration started successfully confirms that the request was accepted, not that generation has completed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[4].note; Risks and limits",
+      "type": "behaviour",
+      "claim": "Regeneration runs across all semantic models in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/regenerate-semantic-model",
+      "quote": "Regeneration runs across all semantic models in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: Generated content is read-only",
+      "type": "behaviour",
+      "claim": "Generated summaries, views and relationships cannot be edited directly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Generated summaries, views, and relationships are read-only.\nyou can't directly edit the generated content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].note; Risks and limits: Sample data rows",
+      "type": "default",
+      "claim": "Sample table rows is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "The Sample table rows signal is turned off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: Sample data rows",
+      "type": "behaviour",
+      "claim": "When enabled, the sample-row signal uses selected row values as context for agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "When available and enabled, it uses a selection of row values to give agents context about the table's content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: No environment copy or move",
+      "type": "behaviour",
+      "claim": "Semantic models do not support environment copy or move.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The semantic model currently doesn't support environment copy or move operations. After any environment copy or move, turn Dataverse Intelligence off and back on in the Power Platform Admin Center to force a restart.",
+      "severity": "minor",
+      "fix": "Replace the blanket statement with: 'The overview documents no support for environment copy or move and advises restarting Dataverse Intelligence afterwards. The configuration article also says semantic models are solution-aware and that their configuration can move between environments in solutions.' Both pages are already cited; the second is https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals#add-semantic-model-to-a-solution."
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: No environment copy or move",
+      "type": "behaviour",
+      "claim": "Models whose names contain Secondary_model do not carry over with environment copy or move.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-faq",
+      "quote": "Secondary_model is a naming convention that indicates the semantic model isn't ALM-compatible. If you see this term in a model name, the model doesn't carry over when you copy or move the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: Cloud availability",
+      "type": "availability",
+      "claim": "Business Applications in Work IQ is unavailable in sovereign and government clouds including DoD, GCC and GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Business Applications in Work IQ isn't currently available in sovereign or government cloud environments, including Department of Defense (DoD), Government Community Cloud (GCC), and GCC High.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What to check: Verify who holds roles",
+      "type": "consistency",
+      "claim": "The checklist asks readers to take stock of security-role assignments without a matching control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Verify who holds System Administrator or the Dataverse Search, Semantic Model and Environment Maker roles.",
+      "severity": "minor",
+      "fix": "Remove the role-assignment checklist bullet; retain the verified required-role information in Governance controls."
+    },
+    {
+      "n": 60,
+      "where": "What to check: Check DataverseSearch",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review capacity reporting without a matching control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check the DataverseSearch table in the Dataverse capacity report for index storage.",
+      "severity": "minor",
+      "fix": "Remove the capacity-report checklist bullet; retain the verified DataverseSearch reporting information in Cost and licensing."
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: Roles; What to check",
+      "type": "role",
+      "claim": "Managing a semantic model requires System Administrator or the combination of Dataverse Search, Semantic Model and Environment Maker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "You need either of the following security roles to manage the semantic model:\nSystem Administrator -or-\nDataverse Search, Semantic Model and Environment Maker.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Power Platform administrators manage Work IQ settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "Power Platform Administrator role to manage settings and assign other roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[5].note",
+      "type": "role",
+      "claim": "The environment-level Work IQ setting requires an environment administrator account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Use the environment-level setting to manage business skills, semantic modeling, and access to Dataverse data through Microsoft 365 Copilot Chat, Research, and Agent Builder. You need an environment administrator account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[6].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "The Microsoft 365 admin center audience setting requires a tenant administrator account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Use the tenant-level setting to manage whether Power Apps and Dynamics 365 data can be used in Microsoft 365 Copilot Chat across the tenant. You need a tenant administrator account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[7].note",
+      "type": "role",
+      "claim": "The app-level participation setting requires a maker account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Use the app-level setting to manage whether a model-driven app's tables, forms, and views are available in Microsoft 365 Copilot Chat, Research in Microsoft 365 Copilot, and Agent Builder. You need a maker account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[6].note",
+      "type": "default",
+      "claim": "All users is the default tenant audience option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "To turn on access for everyone, select All users. This option is the default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "The tenant audience options are No users, All users and Specific groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "To turn off access for everyone, select No users.\nTo turn on access for everyone, select All users.\nTo provide access to a limited audience, select Specific groups, and then add or remove groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[7].note",
+      "type": "behaviour",
+      "claim": "App participation changes must be saved and published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Set Enable Microsoft 365 Copilot in model-driven apps to On or Off.\nSelect Save.\nSelect Publish.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3].note; What to check",
+      "type": "behaviour",
+      "claim": "System-defined glossary entries can be edited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+      "quote": "You can edit them to better reflect your organization's terminology",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "System-defined glossary entries cannot be deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+      "quote": "The Delete action is disabled for system-defined entries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[2].note; Risks and limits: Generated content is read-only",
+      "type": "behaviour",
+      "claim": "The Configure page has per-table signal toggles and individual view and relationship toggles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "select the table, open Table signals, and turn the signal off.\nOpen the model, select Configure, and select an included table.\nOpen Views or Relationships to review the generated items.\nTurn the relevant view or relationship On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Model-wide signal settings take precedence over per-table settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-faq",
+      "quote": "A model-wide signal setting takes precedence over per-table settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Managing individual views and relationships requires the corresponding signal enabled at both model and table levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-faq",
+      "quote": "In Configure, turn the signal on under Manage signals, then turn it on for the included table under Table signals. To manage individual views or relationships, the corresponding signal must be enabled at both levels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: How the controls interact",
+      "type": "applicability",
+      "claim": "Turning off the tenant setting blocks Microsoft 365 Copilot Chat and Dataverse data sharing even for an app configured to share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "If you turn off this setting, data isn't shared between Microsoft 365 Copilot Chat and Dataverse, even if an app is configured to share data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: How the controls interact",
+      "type": "applicability",
+      "claim": "Turning off environment Work IQ makes semantic modeling unavailable there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "The Work IQ setting turns on business skills, semantic modeling, and access to Dataverse data through Microsoft 365 Copilot Chat, Research, and Agent Builder. If you turn off this setting, these features aren't available in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: What they do not enforce",
+      "type": "applicability",
+      "claim": "Participation settings do not prevent agentic access to environment data; Microsoft directs administrators to App Access controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "These participation settings don't prevent agentic access to environment data. Use App Access controls to manage that access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Open questions: Audit events",
+      "type": "absence",
+      "claim": "Microsoft's semantic model articles do not list audit events for table, signal or glossary changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse semantic model license pricing storage audit events table signals glossary changes; semantic model audit Dataverse. Read overview, FAQ, signals, glossary and regeneration; no model-change events listed. General Dataverse audit excerpts did not identify these changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls: How the controls interact; controls[7].governs",
+      "type": "applicability",
+      "claim": "Work IQ controls cascade through tenant, environment and app settings, with the app setting determining sharing and semantic-model use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "You manage Business Applications in Work IQ through a cascading set of settings at three levels:\nThe app-level setting determines which apps share data bidirectionally between Microsoft 365 Copilot Chat and Dataverse and use semantic modeling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Risks and limits: No environment copy or move",
+      "type": "behaviour",
+      "claim": "Microsoft advises turning Dataverse Intelligence off and on in the Power Platform admin center after an environment copy or move.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "After any environment copy or move, turn Dataverse Intelligence off and back on in the Power Platform Admin Center to force a restart.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Open questions: New experience availability",
+      "type": "availability",
+      "claim": "The new semantic model experience has documented Dataverse and solution version requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Dataverse version with Dynamics 365 apps enabled must be 9.2.26103.00144 or later version.\nAIPlatformExtensions Solution must be 1.0.0.373 or later version.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T07:21:05.106Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 8,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/regenerate-semantic-model",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/ask/manage-semantic-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/fabric/data-warehouse/semantic-models",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which semantic models exist in an environment and which apps and agents use them",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Discover all",
+          "Semantic models"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which semantic models exist in an environment and which apps and agents use them",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/ask/manage-semantic-models",
+        "reachable": true,
+        "token": "/v1.0/semanticmodel",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Dataverse tables a model covers",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Discover all",
+          "Semantic models",
+          "model",
+          "Configure",
+          "Configure table sources",
+          "Included in model",
+          "Remove table"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which Dataverse tables a model covers",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/ask/manage-semantic-models",
+        "reachable": true,
+        "token": "/v1.0/semanticmodel",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which signal types, views and relationships feed a model",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Discover all",
+          "Semantic models",
+          "model",
+          "Configure",
+          "Manage signals"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Glossary terms and definitions agents use",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Discover all",
+          "Semantic models",
+          "model",
+          "Glossary",
+          "Add term"
+        ],
+        "missing": [
+          "Discover all"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Glossary terms and definitions agents use",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm",
+        "reachable": true,
+        "token": "POST [organization",
+        "found": false
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "When a model is regenerated after a change",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/regenerate-semantic-model",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Discover all",
+          "Semantic models",
+          "model",
+          "Regenerate"
+        ],
+        "missing": [
+          "More",
+          "Discover all"
+        ]
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether Work IQ features, including semantic modeling, are on in an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Settings",
+          "Product",
+          "Features",
+          "Work IQ"
+        ],
+        "missing": []
+      },
+      {
+        "index": 6,
+        "side": "ui",
+        "governs": "Which users in the tenant can use Business Applications data in Work IQ with Copilot",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "Business Applications data in Work IQ available to Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 7,
+        "side": "ui",
+        "governs": "Whether a model-driven app takes part in Microsoft 365 Copilot Chat and semantic modeling",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "reachable": true,
+        "segments": [
+          "Apps",
+          "Edit",
+          "Settings",
+          "Features",
+          "Enable Microsoft 365 Copilot in model-driven apps"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

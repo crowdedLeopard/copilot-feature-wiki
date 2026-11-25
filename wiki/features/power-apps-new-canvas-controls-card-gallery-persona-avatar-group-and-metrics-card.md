@@ -76,15 +76,17 @@ changes:
     note: "Corrected after the independent check: Persona OnChange removed from the review step, example wording narrowed to Notify, premium-connector licensing reworded, and a rationale sentence aligned to the roadmap text."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -191,8 +193,9 @@ cost: Low. Microsoft Learn lists no licence or meter for these controls, so the 
 impact: Medium. Makers building canvas apps notice first, and end users see the controls only in apps that makers choose to update.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; Governance guidance; rationale: risk / behaviour: Persona's default User() formulas refer to the user signed in to the canvas app. | Found: In Power Apps, show the full name, the email address, and the picture that's associated with the user who's signed in to a canvas app. | Fix: Add https://learn.microsoft.com/power-apps/maker/canvas-apps/show-current-user to sources for the explanation of whose details the User() defaults display. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/show-current-user
+- [supported, minor] Risk assessment: Data exposure; Governance guidance; rationale: risk / behaviour: Persona's default User() formulas refer to the name, email and image of the user signed in to the canvas app. | Found: In Power Apps, show the full name, the email address, and the picture that's associated with the user who's signed in to a canvas app. | Fix: Add https://learn.microsoft.com/power-apps/maker/canvas-apps/show-current-user to sources for the explanation of whose details the User() defaults display. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/show-current-user
+- [supported, minor] front matter: licensing.model; summary; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because no licence specific to the four controls is published. | Found: While Power Apps Premium, Power Apps per app plans, and the Power Apps per app pay-as-you-go meter that give premium Power Apps usage rights satisfy the requirement generally, use rights differ by license and by the context the app runs in. | Fix: Set licensing.model to included. Replace the opening licensing gap wording with: 'The controls use the app's existing Power Apps entitlement; premium app options include Power Apps Premium, Power Apps per app plans and the Power Apps per-app pay-as-you-go meter. No licence or meter specific to these four controls is published.' Retain the existing premium-connector and pay-as-you-go explanations. Apply the same narrower gap wording in the summary, licensing notes, cost rationale and licensing open question. Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
 -->

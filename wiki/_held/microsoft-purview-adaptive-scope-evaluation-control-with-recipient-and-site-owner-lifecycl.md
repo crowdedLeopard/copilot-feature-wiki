@@ -85,18 +85,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 66
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "4276ea84645953212e3555bf312f9b25"
 ---
 
@@ -201,9 +203,12 @@ cost: Low. The only cost the sources show is administrator time to review scope 
 impact: Low. Microsoft's notice names Purview administrators who create or manage adaptive scopes, and organisations that use them for policy targeting; it describes no end-user change.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Open questions: Which date attributes will accept ISO 8601 durations / absence: Which date attributes support ISO 8601 durations remains an unanswered documentation question. | Found: Users and Microsoft 365 Groups | WhenCreated, WhenCreatedUTC, WhenMailboxCreated, WhenChanged, WhenChangedUTC, WhenSoftDeleted SharePoint sites | Created, RefinableDate00 through RefinableDate19 | Fix: Remove the open question 'Which date attributes will accept ISO 8601 durations in the advanced query builder?' Microsoft now lists the properties in the cited Adaptive scopes page under Use relative date filters. Keep the narrower, accurate statement that MC1450128 itself does not name them. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown even though the notes state the existing adaptive-scope licensing requirement. | Found: If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights: | Fix: Set licensing.model to included. Keep the existing notes naming the documented licences for retention policies using adaptive scopes and distinguishing any unpublished additional requirement specific to the planned lifecycle controls. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [supported, minor] controls[2].ui; Governance controls / admin-path: The membership review route is Settings > Roles and scopes > Adaptive scopes > scope > Scope details. | Found: Select an existing adaptive scope from the list. 4. From the Details flyout pane, select Scope details. | Fix: In controls[2].ui.path and the rendered table, use Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details. Details is the flyout heading, not an additional selection. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
+- [supported, minor] What's changing: ISO 8601 support; Risk assessment: Change & support / record: The notice says the advanced query builder will support ISO 8601 durations for selected date attributes. | Found: This update also adds support for ISO 8601 duration values for selected date attributes in the adaptive scope advanced query builder. | Fix: Keep the notice attribution, but add: 'Microsoft Learn now documents relative date filters in the advanced query builder; the roadmap and MC1450128 still give the rollout targets above.' The cited https://learn.microsoft.com/purview/purview-adaptive-scopes now has a Use relative date filters section, so the briefing should report both sources rather than present that behaviour solely as a future notice description.
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Scope membership review is reached at Settings > Roles and scopes > Adaptive scopes > scope > Scope details in the Microsoft Purview portal. | Found: Select Settings > Roles and scopes > Adaptive scopes. ... Select an existing adaptive scope from the list. ... From the Details flyout pane, select Scope details. | Fix: Set controls[2].ui.path and the corresponding rendered path to 'Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details'. Details is a flyout heading, not an additional selection. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown despite published product-level adaptive-scope licensing. | Found: If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights: | Fix: Set licensing.model to 'included'. Keep the existing notes naming the documented licences for retention policies using adaptive scopes and distinguishing the unpublished additional requirement specific to the new lifecycle controls. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

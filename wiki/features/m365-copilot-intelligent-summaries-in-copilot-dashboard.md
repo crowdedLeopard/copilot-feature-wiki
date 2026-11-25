@@ -50,7 +50,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Viva > Settings > Manage feature access > Create a policy > Access setting > On or Off"
+      path: "Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting > On or Off"
       docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
@@ -59,7 +59,7 @@ controls:
     note: "Choose the Viva Insights web app as the feature. Turning it off disables the whole app, not only intelligent summaries. The dashboard settings page permits the AI Administrator; the feature access overview lists Global admin."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-25"
 roadmapModified: "2026-08-26T22:50:58"
 changes:
   - date: "2026-11-23"
@@ -72,19 +72,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: the licence-count checklist step now says assigned licences, the web app policy path now includes the app and feature selections, and the checklist step pointing to an access control missing from the table was removed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 56
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "03ab9306d3be0a1932e10de0d8f8ac0b"
+  contradicted: 0
+  attempts: 0
+  hash: "d3fe9de6eb753134e4b0ed2c01c56423"
 ---
 
 ## What's changing
@@ -131,9 +135,8 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) only, with the Web pl
 ## Governance guidance
 
 ### Before rollout
-- Confirm how many Copilot and Viva Insights licences the tenant holds, since Learn lists intelligent summaries for tenants with at least 50 of either.
+- Confirm how many Copilot and Viva Insights licences are assigned in the tenant; Learn lists intelligent summaries for tenants with at least 50 assigned Copilot licences or at least 50 assigned Viva Insights licences.
 - Tell the helpdesk, training and adoption teams that AI-generated summaries and suggested prompts are coming to the Copilot Dashboard; the notice suggests notifying helpdesk or training teams.
-- Decide who in the organisation should see the dashboard, using the access settings described on Learn, because the summaries appear to people who open it.
 
 ### At rollout
 - Open the Copilot Dashboard once the summaries appear and read them against the adoption metrics shown beside them.
@@ -152,7 +155,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) only, with the Web pl
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Viva Insights web app, which contains the Copilot Dashboard, is on for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Choose the Viva Insights web app as the feature. Turning it off disables the whole app, not only intelligent summaries. The dashboard settings page permits the AI Administrator; the feature access overview lists Global admin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › Access setting › On or Off <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Viva Insights web app, which contains the Copilot Dashboard, is on for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Choose the Viva Insights web app as the feature. Turning it off disables the whole app, not only intelligent summaries. The dashboard settings page permits the AI Administrator; the feature access overview lists Global admin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app › feature › Access setting › On or Off <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -173,12 +176,8 @@ cost: Low. Learn ties intelligent summaries to tenants with 50 or more Copilot o
 impact: Low. Microsoft's notice names admins who use the Copilot Dashboard as the people affected and says there is no user workflow impact.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout / licensing: Counting the Copilot and Viva Insights licences the tenant holds establishes whether it meets the 50-licence eligibility threshold. | Found: Total number of Copilot assigned licenses in tenant | Viva Insights assigned license in the tenant (Yes or No) | Fix: Replace the first Before rollout bullet with 'Confirm how many Copilot and Viva Insights licences are assigned in the tenant; Learn lists intelligent summaries for tenants with at least 50 assigned Copilot licences or at least 50 assigned Viva Insights licences.' Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The web app policy route is Settings > Viva > Settings > Manage feature access > Create a policy > Access setting > On or Off. | Found: 3. Select Create a policy. 4. Name the policy and select the app and feature for which you'd like to set the policy. 5. Select the Access setting option and choose On or Off to enable or disable the feature. | Fix: Set controls[0].ui.path and the rendered table path to 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting > On or Off'. Keep the note choosing Viva Insights web app. The app and feature selections determine which control is configured and cannot be omitted as wizard text fields. Source: https://learn.microsoft.com/viva/control-access-admin-center. | Source: https://learn.microsoft.com/viva/control-access-admin-center
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: individual user and group access path / admin-path: Individual access is managed at Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users or Groups. | Found: Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard. At the top, select Users. Search for the people you'd like to add, and select them from the list. At the bottom, select Add. | Fix: Complete the add-access route as 'Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users or Groups > Add', noting that users or groups are selected before Add. Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells readers to use individual dashboard access settings, but the controls table does not include that control. | Found: Decide who in the organisation should see the dashboard, using the access settings described on Learn / The table contains only the Viva Insights web app on/off policy. | Fix: Remove the Before rollout bullet 'Decide who in the organisation should see the dashboard, using the access settings described on Learn, because the summaries appear to people who open it.' It directs readers to a control not present in the table; do not add a row in this correction.
+- [supported, minor] Governance controls: individual user/group access paragraph / admin-path: Learn documents a user/group access route at Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users or Groups. | Found: Manage access to the Viva Insights web app for individual users and groups ... Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard. ... At the top, select Users. ... At the top, select Groups. | Fix: Keep the printed route, but replace 'Learn also describes a separate way to manage which individual users and groups can open the Copilot Dashboard' with 'Learn also describes a way to manage individual users and groups who can access the Viva Insights web app'. Replace the final sentence with 'This route manages access to the Viva Insights web app, not intelligent summaries alone; Learn says the previous dashboard-only controls are no longer available.' Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
 -->

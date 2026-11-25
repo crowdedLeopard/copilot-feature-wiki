@@ -1,0 +1,838 @@
+{
+  "slug": "m365-copilot-admins-can-create-and-deploy-custom-model-context-protocol-mcp-connectors-acr",
+  "roadmapId": 501585,
+  "title": "Microsoft 365 Copilot: admins create custom MCP connectors in the admin centre",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "2 blocking findings (claims 47, 52)"
+    ]
+  },
+  "counts": {
+    "claims": 64,
+    "confirmed": 61,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing overstates the protection provided by user approval for write actions, because users can allow subsequent calls without confirmation. It also requires authentication registration for No Auth, which Microsoft documents as needing no setup. The roadmap facts, licensing and principal admin controls are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Admins can create custom MCP connectors in the Microsoft 365 admin centre and deploy them to surface organisational data in Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can create custom Model Context Protocol (MCP) connectors in the Microsoft 365 Admin Centre and deploy them across Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists Preview and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Preview\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The platform listed is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), not GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-04-02T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-04-02T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Custom connectors require an administrator to create or configure them before users can use them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "After you set up authentication, create the connector in the Microsoft 365 admin center. ... After you create a connector, it appears in the Your Connections list. From there, you can roll it out to users and manage its lifecycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "A Global Administrator can set up a custom federated connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Global Administrator or AI Administrator role in the Microsoft 365 admin center.",
+      "severity": "minor",
+      "fix": "Add to Scope: 'The connectors prerequisites page instead says that configuring and deploying Copilot connectors requires an AI administrator.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites; retain the custom setup page's Global Administrator or AI Administrator statement."
+    },
+    {
+      "n": 11,
+      "where": "summary; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "An AI Administrator can set up a custom federated connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Global Administrator or AI Administrator role in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The connector capability is included in the Microsoft 365 Copilot licence the user needs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Federated connectors require Microsoft 365 Copilot add-on licensing or Microsoft 365 E7 for tenants and users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "The prerequisites list a Microsoft 365 Copilot add-on licence for every user who queries a federated source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "A Microsoft 365 Copilot add-on license for every user who queries the federated source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Federated connectors are not supported with Copilot Studio licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Federated connectors are not supported with Microsoft 365 Copilot pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Connector grounding incurs no extra charges when the organisation has Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No price or credit rate specific to custom MCP connectors is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom MCP federated connectors pricing credit rate Microsoft 365 Copilot. Opened connectors/prerequisites and plugins/cost-considerations; results give included grounding and external service costs, not a custom connector rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The organisation's custom connector availability control is at Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "In the Microsoft 365 admin center, go to Agents > Settings > Agent and plugin access. ... Allow agents and plugins built by your organization (custom connectors)",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path to 'Agents > Settings > Agent and plugin access > Allow agents and plugins built by your organization'. The current route reaches the right page but leaves its deciding option in the note."
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API is documented for the tenant publisher-type setting governing custom connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Agent and plugin access User access settings Microsoft Graph PowerShell API organization custom connectors; Microsoft Graph agentSettings user access allowed agent types PowerShell settings. Opened agent-settings and manage-federated-connectors; no matching setter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Clearing the organisation publisher option sets existing custom connectors' staged rollout to No users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "When you clear an option, existing connectors of that type remain visible to admins in Copilot connectors > Your connections, but their staged rollout is set to No users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Admins can see every connector in Your connections even when it is unavailable to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Admins can see every connector in Your connections for governance, even when it's disabled, blocked, staged to No users, or its type is cleared in Agent and plugin access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "An individual connector setting takes precedence over bulk Agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "A setting you make on an individual connector takes precedence over the bulk Agent and plugin access setting. User access always applies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "User access is at Microsoft 365 admin center > Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API is documented for the tenant User access setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Agent and plugin access User access settings Microsoft Graph PowerShell API organization custom connectors; Microsoft Graph agentSettings user access allowed agent types PowerShell settings. Read agent-settings and search results; no matching User access operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note",
+      "type": "default",
+      "claim": "All users is the default User access option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "User access can select Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Specific users or groups - This option lets you select specific users or groups in your organization to have access to agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "User access can select No users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "No users - This option means that no users in the organization can access agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; summary; Scope; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "User access limits connector users, and connector staging cannot widen that population.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "User access in Agents > Settings applies to all agents and plugins, including federated connectors delivered as Microsoft 365 app packages. ... Only these users can use any connector. Connector staging can narrow but not widen this population.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "An individual connector is staged under Copilot > Connectors > Your connections > connector > Staged rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Copilot > Connectors > Your connections: Enable, disable, stage, or delete connectors. ... Select your connector. Select Staged rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API is documented for individual custom federated connector staged rollout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom federated MCP connectors Microsoft Graph API enable disable staged rollout block copilotPackage connector; \"federated\" \"connectors\" \"API\" \"staged\". Read setup, manage and staged-rollout excerpts; no connector staging API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[3].ui; Governance guidance: After rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Connector blocking is under Microsoft 365 admin center > Agents > Tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Agents > Tools: Block or unblock connectors and tools. ... Block (Agents > Tools) has the same effect as Disable.",
+      "severity": "minor",
+      "fix": "Extend controls[3].ui.path to 'Agents > Tools > connector > Block'. The current path reaches the tools list but stops before the documented blocking action."
+    },
+    {
+      "n": 33,
+      "where": "controls[3].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API specifically documents blocking custom federated connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: graph copilotPackage block federated connectors API staged rollout; \"copilotPackage: block\". Opened Package Management API overview and copilotpackage-block, plus plugins/plugin-type-connectors excerpt; package blocking does not explicitly identify federated connector blocking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Block has the same effect as Disable for a custom connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Block (Agents > Tools) has the same effect as Disable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The connector page provides Enable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Enable | Makes the connector available to its staged audience, within the users allowed by User access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].note; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Disable pauses a connector while retaining its configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Disable | Pauses the connector without removing its configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Delete permanently removes a custom connector and its configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Delete permanently removes a custom connector and its configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Deleting a custom connector cannot be undone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Delete permanently removes a custom connector and its configuration. You can't undo it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A custom federated connector uses an MCP server exposing tools to access internal system data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "A custom federated connector starts with a Model Context Protocol (MCP) server that exposes tools for Microsoft 365 Copilot to access data or take actions in your internal systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "When the connector exposes appropriate tools, Copilot can create, update or delete source data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Federated connector actions run in the connected service on behalf of the signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Actions run in the third-party service on behalf of the user and are limited by that user's permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The user's source-system permissions determine the data and actions available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "The authenticated user's identity and permissions in the source system govern tool access. Users can only access information they're authorized to view and change data they're authorized to modify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Federated connectors do not index external data into Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Don't index external data into Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data processed by non-Microsoft services is not subject to Microsoft agreements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Data processed by non-Microsoft services isn't subject to Microsoft agreements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Custom federated connectors support Microsoft Entra SSO, OAuth 2.0 and No Auth.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Custom federated connectors support three authentication methods. ... Microsoft Entra SSO ... OAuth 2.0 ... No Auth",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "No Auth means users do not need to authenticate to the source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "No Auth | Users don't need to authenticate. | None",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Governance guidance: Before rollout; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Creating a connector requires registering the chosen authentication method, including No Auth, in the Teams Developer Portal and entering its registration ID.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "No Auth | Users don't need to authenticate. | None ... For Microsoft Entra SSO, enter the SSO registration ID from the Teams Developer Portal. For OAuth 2.0, enter the OAuth registration ID from the Teams Developer Portal.",
+      "severity": "blocker",
+      "fix": "Replace the Before rollout authentication bullet with 'Choose Microsoft Entra SSO, OAuth 2.0 or No Auth. Register SSO or OAuth authentication in the Teams Developer Portal before creating the connector; No Auth requires no authentication setup.' Qualify the registration ID and authentication registration statements in What's changing and Cost and licensing with 'for Microsoft Entra SSO or OAuth 2.0'."
+    },
+    {
+      "n": 48,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Connector creation collects a display name, description and base URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Display name | The user-facing name for your connector. ... Description | A summary of your data source and the information it provides. ... Base URL | Your MCP server endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The creation route starts at Copilot > Connectors > Gallery, under Created by your org.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Select the Gallery tab. ... Under Created by your org, find the Create a new connector tile and select Add. ... On the Custom connector page, under Connect to MCP server, select Add.",
+      "severity": "minor",
+      "fix": "Replace the abbreviated creation routes with 'Copilot > Connectors > Gallery > Created by your org > Create a new connector > Add > Custom connector > Connect to MCP server > Add'. Both current routes stop early on the correct page."
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "An MCP server that restricts incoming source IP addresses must allow Microsoft's static egress IP addresses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "If your MCP server restricts incoming traffic by source IP address, allow the static egress IP addresses used by Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "Static egress is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Static egress is enabled by default; no manifest flag is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Tools that create, update or delete data require user approval, without an exception for subsequent calls.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Tools that create, update, or delete data initially require the user's explicit approval. Users can choose whether Copilot asks again for that tool ... Always allow | Runs the action and doesn't ask again for this tool until the user changes the setting or the publisher changes the tool.",
+      "severity": "blocker",
+      "fix": "Replace the approval statement in Risk assessment with 'Write, update and delete tools initially require explicit user approval. Users can choose Allow for conversation or Always allow for an individual tool, so subsequent calls can run without asking again.' Replace 'those actions need user approval' in the risk rationale with 'those tools initially require user approval, which users can persist for later calls'. Cite the existing federated connectors overview."
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Write, update and delete tools are part of the connector and are not enabled separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Write, update, and delete tools are part of the connector and aren't enabled separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "availability",
+      "claim": "Learn labels the admin-centre connector tools view as coming soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "View a connector's tools in the admin center (Coming soon)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Setting changes can take up to 10 minutes to propagate across Microsoft 365 experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Changes can take up to 10 minutes to take effect across Microsoft 365 experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Users might need to refresh Copilot or start a new conversation after a setting changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Users might need to refresh Copilot or start a new conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope",
+      "type": "role",
+      "claim": "SSO setup requires an appropriate Microsoft Entra admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "An appropriate Microsoft Entra admin role for single sign-on (SSO) authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The custom setup page lists access to the Teams Developer Portal as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Access to the Teams Developer Portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The connector availability page lists Global Administrator as a management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "To manage federated connectors, you need one of the following administrator roles: Global Administrator ... Search Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The connector availability page lists Search Administrator as a management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "To manage federated connectors, you need one of the following administrator roles: Global Administrator ... Search Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Deploy to all users makes the connector available to everyone included in User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Deploy to all users makes the connector available to everyone included in User access (Agents > Settings > User access).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "A non-admin test user can check connector visibility in Copilot Chat > Settings > Sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "quote": "Then sign in as a test user who isn't an admin, open Copilot Chat > Settings > Sources, and confirm the connector isn't listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Administrators can audit federated connector activity in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Can read data and, where a connector provides the tools, create, update, or delete data with the user's approval. Admins can audit activity in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist includes licence assignment checks and Purview audit review, but neither control has a table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm which Microsoft 365 Copilot licences are assigned ... Review Microsoft Purview audit data for connector activity ... Table rows cover Agent and plugin access, User access, staged rollout and tools blocking only.",
+      "severity": "minor",
+      "fix": "Remove the licence-assignment check and Purview-audit review bullets from Governance guidance to reconcile the checklist with the existing table. Retain the supported licensing discussion and Purview capability statement elsewhere; do not add rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T07:21:04.362Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=501585",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether custom connectors built by your organisation are available",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "Agent and plugin access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users or groups can use agents, plugins and connectors at all",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "User access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users or groups receive an individual custom connector",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your connections",
+          "Staged rollout"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether a connector is blocked in the tools list",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

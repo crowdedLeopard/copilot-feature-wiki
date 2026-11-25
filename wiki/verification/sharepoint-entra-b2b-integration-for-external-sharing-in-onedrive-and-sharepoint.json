@@ -1,0 +1,816 @@
+{
+  "slug": "sharepoint-entra-b2b-integration-for-external-sharing-in-onedrive-and-sharepoint",
+  "roadmapId": 557682,
+  "title": "OneDrive and SharePoint: external sharing moves to Microsoft Entra B2B guest accounts",
+  "status": "verified-with-gaps",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 60,
+    "confirmed": 59,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing's rollout, access-restoration steps, licensing model and control paths are supported by Microsoft documentation. Minor corrections should remove the already-answered billing question and acknowledge checklist controls missing from the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans to replace SharePoint OTP with Microsoft Entra B2B invitation and authentication for OneDrive and SharePoint external users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "OneDrive and SharePoint will use Microsoft Entra B2B as the invitation and authentication method for external users, replacing the legacy SharePoint One Time Passcode (SPO OTP) experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "External sharing will automatically create B2B guest accounts in the directory, subject to the invitation restrictions described elsewhere in the briefing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "External sharing will automatically create B2B guest accounts in your directory",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability, Preview and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope; changes",
+      "type": "date",
+      "claim": "Microsoft enabled the integration for new external sharing in commercial tenants between May and July 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Between May and July 2026, Microsoft enabled SharePoint and OneDrive integration with Microsoft Entra B2B for new external sharing in commercial tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; controls[2].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "EnableAzureADB2BIntegration no longer controls sharing behaviour in commercial tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "The EnableAzureADB2BIntegration setting no longer controls sharing behavior for these tenants, and the integration can't be disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Commercial tenants cannot disable the integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Microsoft Entra B2B integration can't be disabled in commercial tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Scope; changes",
+      "type": "date",
+      "claim": "Microsoft documents SharePoint OTP retirement for commercial tenants starting in October 2026, with the FAQ specifying rollout during October 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "SharePoint Online (SPO) one-time passcode (OTP) authentication will be retired for commercial tenants during October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft Entra B2B email one-time passcode remains supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Microsoft Entra B2B email one-time passcode authentication remains supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "type": "behaviour",
+      "claim": "A matching Entra B2B guest account allows external users to retain access to previously shared Specific people links after retirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "When SharePoint OTP retirement reaches your tenant, external users need a matching Microsoft Entra B2B guest account in your directory to access previously shared Specific people links. Users with a matching guest account retain access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "External users without a matching guest account receive access denied on previously shared Specific people links once retirement reaches the commercial tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "Once SharePoint OTP retirement reaches your commercial tenant during October 2026, users without a matching guest account receive access denied on previously shared Specific people links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance: At rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "An administrator can create the matching guest account using the original sharing link's email address, including proactively.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Yes. You can create a Microsoft Entra B2B guest account in advance using the email address associated with the original sharing link. A matching guest account lets the user retain access to previously shared content without resharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A user with sharing permission can share or reshare one file, folder or site to create the account and restore access without resharing every item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "Alternatively, a user with sharing permissions can share or reshare at least one file, folder, or site with the external user. This automatically creates the guest account in Microsoft Entra B2B.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Tenants are selected automatically for retirement and administrators cannot choose a specific date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "Tenants are selected automatically, and you can't choose a specific date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "type": "behaviour",
+      "claim": "Anyone/Anonymous links are unaffected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "No, SPO OTP retirement and use of Entra B2B for external sharing does not impact Anyone/Anonymous links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Invited external people receive directory accounts subject to Entra ID access policies such as multifactor authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Invited people outside your organization each get an account in the directory and are subject to Microsoft Entra ID access policies such as multifactor authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Entra organizational relationship settings, including Members can invite and Guests can invite, apply to SharePoint and OneDrive sharing as they do to Teams and Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "SharePoint and OneDrive sharing is subject to the Microsoft Entra organizational relationships settings, such as Members can invite and Guests can invite. As with Microsoft 365 Groups and Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The Entra setting prevails when more restrictive than the SharePoint or OneDrive setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "if a Microsoft Entra organizational relationship setting is more restrictive than a SharePoint or OneDrive setting, the Microsoft Entra setting prevails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enabling the integration leaves SharePoint sharing settings unchanged, including sites where external sharing is off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Enabling this integration doesn't change your sharing settings. For example, if you have site collections where external sharing is turned off, it remains off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Governance controls; rationale: impact",
+      "type": "behaviour",
+      "claim": "Commercial tenants cannot opt out of SharePoint OTP retirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "No. Commercial tenants can't opt out of SharePoint OTP retirement or disable Microsoft Entra B2B integration for new external sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A duplicate guest account is not created when a collaborator already has one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "If a Microsoft Entra B2B guest account already exists for a collaborator outside your organization, a duplicate is not created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "The change applies tenant-wide and cannot be scoped to individual sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "No. The change applies at the tenant level and can't be scoped to individual sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "Microsoft does not offer exceptions to this change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "6. Can exceptions be made to this change? Answer: No. This update is part of Microsoft's ongoing efforts to enhance security.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The recipient-experience comparison documents Conditional Access for guest accounts but not ad hoc external recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release",
+      "quote": "| | Guest account | Ad hoc external recipient | ... | Access controlled by Microsoft Entra Conditional Access policies | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Microsoft advises reviewing custom SharePoint and OneDrive domain restrictions for possible migration to the Entra B2B Allow/Deny list, which also affects Teams and Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Review any custom domain sharing restrictions in SharePoint and OneDrive and decide if they should be moved to the Microsoft Entra B2B Allow/Deny list. The Microsoft Entra ID Allow/Deny list also affects other Microsoft 365 services like Teams and Microsoft 365 Groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Guest invitation settings are in Microsoft Entra admin center > Entra ID > External Identities > External collaboration settings > Guest invite settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "Browse to Entra ID > External Identities > External collaboration settings. ... Under Guest invite settings, choose the appropriate settings:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authorizationPolicy sets who can invite external users through allowInvitesFrom.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authorizationPolicy ... allowInvitesFrom ... Indicates who can invite external users to the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Portal external collaboration settings require a role such as Global Administrator or External Identity Provider Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "In the Microsoft Entra admin center, you need a role that can update external collaboration settings, such as Global Administrator or External Identity Provider Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft lists Privileged Role Administrator as the least privileged role for the authorizationPolicy update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
+      "quote": "For delegated access using work or school accounts ... Privileged Role Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The portal route for inviting a guest is Microsoft Entra ID > Users > New user > Invite external user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/add-users-administrator",
+      "quote": "Browse to Microsoft Entra ID > Users. ... Select New user > Invite external user from the menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/invitations creates an invitation and a B2B guest user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/invitation-post",
+      "quote": "POST https://graph.microsoft.com/v1.0/invitations ... When the user is invited, a user entity (of userType Guest) is created and can be used to control access to resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The cited portal procedure specifies at least User Administrator to invite guest users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/add-users-administrator",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a User Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The portal invitation procedure automatically sends an invitation email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/add-users-administrator",
+      "quote": "An email invitation is automatically sent to the user. After you send the invitation, the user account is automatically added to the directory as a guest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOTenant -EnableAzureADB2BIntegration $true enables the integration where that legacy setting still controls it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "The following procedure applies only to tenants where the EnableAzureADB2BIntegration setting still controls the integration. ... Set-SPOTenant -EnableAzureADB2BIntegration $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The integration procedure requires SharePoint Administrator permissions or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Connect to SharePoint with permissions of a SharePoint Administrator or more in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].ui; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no SharePoint admin center UI setting for the integration at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint Entra B2B integration EnableAzureADB2BIntegration admin center UI setting. Opened sharepoint/sharepoint-azureb2b-integration and FAQ; examined search results for turn-external-sharing-on-or-off. The documented integration switch is PowerShell, not a portal control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The default state is on: the commercial-tenant change reaches users without administrator enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "Integration is already enabled for new external sharing in commercial tenants. ... Commercial tenants can't opt out of SharePoint OTP retirement",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Consumption is the documented guest licensing model because External ID MAU billing covers B2B collaboration guests in workforce tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "The MAU billing model for External ID applies to all guest users. Guest users include: External guests for B2B collaboration in Microsoft Entra workforce tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "MAU counts unique external users authenticating within a calendar month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "The basic External ID billing model is based on monthly active users (MAU), which is the count of unique external users who authenticate to your tenants within a calendar month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The MAU billing model offers a free tier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "MAU billing helps reduce your costs by offering a free tier and flexible, predictable pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The billing overview directs readers to the External ID pricing page for current rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "For the latest pricing details, see External ID pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: After rollout",
+      "type": "licensing",
+      "claim": "Workforce tenants must be linked to an Azure subscription for proper billing and feature access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "Microsoft Entra workforce tenants must be linked to an Azure subscription for proper billing and access to features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "admin-path",
+      "claim": "Linked subscriptions are under Microsoft Entra admin center > Entra ID > External Identities > Overview > Subscriptions > Linked subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "Go to Entra ID > External Identities > Overview. ... Under Subscriptions, select Linked subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The SharePoint integration page itself names no licence or meter for the integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive Entra B2B integration licensing meter guest MAU billing. Opened the SharePoint integration page, its FAQ and External ID pricing and billing overview; the SharePoint pages contain no integration-specific licence or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing; Open questions: guest MAU counting",
+      "type": "absence",
+      "claim": "The SharePoint pages do not separately state whether sharing-created guests are counted differently from other B2B guests.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive Entra B2B integration licensing meter guest MAU billing. Read the integration page and FAQ: neither discusses MAU. The External ID billing overview expressly covers all B2B collaboration guests in workforce tenants.",
+      "severity": "minor",
+      "fix": "Remove the final Open questions bullet beginning 'Are guests created by SharePoint sharing counted as monthly active users'. The cited https://learn.microsoft.com/entra/external-id/external-identities-pricing already says the MAU model applies to all guest users, including B2B guests in workforce tenants; retain that established rule in Cost and licensing."
+    },
+    {
+      "n": 50,
+      "where": "Scope; Open questions: government rollout",
+      "type": "absence",
+      "claim": "The integration page and FAQ give dates for commercial tenants without specifying the GCC, GCC High or DoD transition schedule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint Entra B2B integration GCC GCC High DoD rollout retirement commercial 2026. Read integration page and FAQ and government-cloud search excerpts; no government OTP-retirement schedule was stated. The feature pages qualify the dates as commercial.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Open questions: retirement indicator",
+      "type": "absence",
+      "claim": "Learn supplies no indicator to tell an administrator precisely when OTP retirement has reached their commercial tenant.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OTP retirement how to tell tenant retirement reached indicator status. Read integration FAQ and retirement FAQ. Automatic selection is documented, but no retirement-status indicator; Get-SPOTenant is explicitly not authoritative for commercial integration enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "On a SharePoint site the report route is Settings > Site usage > Shared with external users > Run report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharing-reports",
+      "quote": "Open the site where you want to run the report. ... On the Settings menu, select Site usage. ... In the Shared with external users section, select Run report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Site administrators can run the external sharing report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharing-reports",
+      "quote": "You must be a site admin to run the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The FAQ directs administrators to the report's User E-mail column to identify SPO OTP guests without B2B guest accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+      "quote": "At site level, use the external sharing report to get a list of guests invited via SPO OTP who do not yet have a Microsoft Entra B2B guest account. Refer to the \"User E-mail\" column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Microsoft recommends audit logs as a way to assess this change's impact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+      "quote": "Is there a way to report which previously shared links and external users are affected? Answer: Yes. You can use audit logs to assess the impact.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A B2B collaboration sign-in produces a sign-in log in the resource tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "When a B2B user signs into a resource tenant to collaborate, a sign-in log is generated in both the home tenant and the resource tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Tenant-wide invitation domain restrictions are under Entra ID > External Identities > External collaboration settings > Collaboration restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "Browse to Entra ID > External Identities > External collaboration settings. ... Under Collaboration restrictions, you can choose whether to allow or deny invitations to the domains you specify",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance versus Governance controls table",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to review or use is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask site admins to run the external sharing report ... Use sharing audit records ... Review guest sign-in logs ... confirm the tenant is linked to an Azure subscription. The table covers guest invite settings, guest creation and the legacy integration switch.",
+      "severity": "minor",
+      "fix": "The checklist's external sharing report, domain restriction review, sharing audit records, guest sign-in logs and linked Azure subscription check have no corresponding controls-table rows. This is a checklist/table coverage gap, not an incorrect path or command."
+    },
+    {
+      "n": 59,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost correctly describes the documented MAU-metered External ID guest billing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "External ID uses a basic monthly active users (MAU) billing model with optional premium add-ons for advanced scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-03-25T23:15:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-03-25T23:15:06\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T07:21:09.092Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557682",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/external-id/add-users-administrator",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sharing-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/invitation-post",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who in the organisation can invite external guests (applies to SharePoint and OneDrive sharing)",
+        "docs": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "External Identities",
+          "External collaboration settings",
+          "Guest invite settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who in the organisation can invite external guests (applies to SharePoint and OneDrive sharing)",
+        "docs": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
+        "reachable": true,
+        "token": "/v1.0/policies/authorizationPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Creating a matching guest account in advance for an external user",
+        "docs": "https://learn.microsoft.com/entra/external-id/add-users-administrator",
+        "reachable": true,
+        "segments": [
+          "Microsoft Entra ID",
+          "Users",
+          "New user",
+          "Invite external user"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Creating a matching guest account in advance for an external user",
+        "docs": "https://learn.microsoft.com/graph/api/invitation-post",
+        "reachable": true,
+        "token": "/v1.0/invitations",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "SharePoint and OneDrive integration with Microsoft Entra B2B (legacy switch)",
+        "docs": "https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

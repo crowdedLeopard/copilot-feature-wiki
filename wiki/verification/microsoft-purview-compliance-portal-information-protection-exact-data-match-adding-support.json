@@ -1,0 +1,608 @@
+{
+  "slug": "microsoft-purview-compliance-portal-information-protection-exact-data-match-adding-support",
+  "roadmapId": 176155,
+  "title": "Microsoft Purview: role-based access control for Exact Data Match upload authorisation",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 12)"
+    ]
+  },
+  "counts": {
+    "claims": 46,
+    "confirmed": 43,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The administrator opt-in default is not documented: the roadmap describes a choice but does not state how the new control behaves on arrival. The current security-group path and Graph operation are supported; the licensing notes should also acknowledge the published EDM subscription coverage.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft plans a choice of RBAC instead of EDM_DataUploaders membership to authorise EDM uploads.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers will be able to choose to leverage RBAC to authorize users for uploading data to the Exact Data Match (EDM) service instead of leveraging the EDM_DataUploaders security group for authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "General Availability is the roadmap release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the roadmap platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The roadmap record was last modified on 20 August 2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-08-20T23:00:26\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Scope",
+      "type": "record",
+      "claim": "No US Government cloud is listed on the roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The December CY2025 target has passed while the supplied record still reports In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The planned RBAC control is admin-opt-in.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"exact data match\" \"RBAC\" \"default\"; \"EDM\" \"RBAC\" upload authorization. Read the roadmap, EDM hash-and-upload, EDM overview and Purview permissions pages; none states an administrator enablement requirement or the control's arrival default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to \"unknown\". Add: \"Microsoft has not stated the RBAC control's default on arrival; no source says existing behaviour changes.\" Keep the review action and the risk rationale based on today's behaviour continuing."
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Licensing is unknown because nothing specific to RBAC upload authorisation is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-edm-notifications-activities",
+      "quote": "EDM-based classification is included in these subscriptions: Office 365 E5; Microsoft 365 E5; Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance); Microsoft E5/A5 Information Protection and Governance",
+      "severity": "minor",
+      "fix": "Set licensing.model to \"included\" under the standard's product-level licensing rule. Add to the notes and Cost and licensing: \"EDM-based classification is included in Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance), and Microsoft E5/A5 Information Protection and Governance. Nothing specific to RBAC upload authorisation is published.\" Cite https://learn.microsoft.com/purview/sit-edm-notifications-activities. Do not claim that a separate RBAC entitlement has been confirmed."
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; controls[0].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The current EDM upload account must belong to EDM_DataUploaders, so that group's membership governs upload authorisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "A work or school account for Microsoft 365. This account must be added to the EDM_DataUploaders security group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Authorising the EDM Upload Agent involves signing in with the account added to EDM_DataUploaders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "Sign in with your work or school Microsoft 365 account. (The account that was added to the EDM_DataUploaders security group.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "The EDM Upload Agent hashes sensitive source-table data and uploads it to Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "After you create an EDM schema and configure your sensitive information type, you use the EDM Upload Agent to hash your source data and securely upload it to Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "role",
+      "claim": "Groups Administrator can create security groups and add their members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "Role | Can create security groups and add members | Notes; Groups Administrator | Yes | Best least privilege option",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "role",
+      "claim": "User Administrator can create security groups and add their members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "Role | Can create security groups and add members | Notes; User Administrator | Yes | Most commonly used role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Risk assessment; Governance guidance",
+      "type": "role",
+      "claim": "Global Administrator can create security groups and add their members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "Role | Can create security groups and add members | Notes; Global Administrator | Yes | Grants full control, don't use",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The EDM upload page marks Global Administrator as \"don't use\".",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "Global Administrator | Yes | Grants full control, don't use",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft advises using roles with the fewest permissions on the EDM upload page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "Microsoft recommends that you use roles with the fewest permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Security-group members are managed in Microsoft 365 admin center through Teams & groups > Active teams and groups > Security groups > security group > Members > View all and manage members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/email/create-edit-or-delete-a-security-group",
+      "quote": "go to Teams & groups > Active teams and groups page. ... Go to the Security groups page ... Select the security group name ... on the Members tab, select View all and manage members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/groups/{group-id}/members/$ref adds a member to a security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+      "quote": "Add a member to a security or Microsoft 365 group. ... POST https://graph.microsoft.com/v1.0/groups/{group-id}/members/$ref",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The Graph POST request body uses @odata.id to identify the member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+      "quote": "When using the POST /groups/{group-id}/members/$ref syntax, supply a JSON object that contains an @odata.id property with a reference by ID to a supported group member object type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].ui and controls[1].api; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet document an admin UI or API control for the planned RBAC upload-authorisation option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EDM\" \"RBAC\" upload authorization; \"EDM\" \"upload\" \"RBAC\" \"PowerShell\". Opened EDM hash-and-upload, EDM overview and Purview permissions; results describe the security group and current agent authorisation, not the planned RBAC UI or operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "absence",
+      "claim": "The RBAC upload roles or role groups are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Exact Data Match\" \"RBAC\" \"audit\" roles permissions; exact data match EDM upload RBAC authorization role EDM_DataUploaders permissions audit. Opened Purview permissions, EDM overview and EDM hash-and-upload; no planned upload-role names found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Who can assign the planned RBAC upload roles is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Exact Data Match\" \"RBAC\" \"audit\" roles permissions. Opened Purview permissions and EDM hash-and-upload; the former gives general role management, but neither identifies assignments for the planned upload option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Audit representation of the planned RBAC upload roles is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Exact Data Match\" \"RBAC\" \"audit\" roles permissions. Read Purview permissions and Create notifications for exact data match activities; the latter lists EDM upload events but does not describe the planned RBAC roles' audit representation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether EDM_DataUploaders and the RBAC option can authorise uploads simultaneously.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: EDM Upload Agent RBAC authorization role API command group coexist requirements rollout; \"Exact Data Match\" \"RBAC\" \"group\" \"rollout\". Read EDM hash-and-upload, EDM overview and Purview permissions; no coexistence rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the EDM Upload Agent's authorisation commands change under RBAC.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EDM\" \"upload\" \"RBAC\" \"PowerShell\"; \"EDM\" \"RBAC\" upload authorization. Opened EDM hash-and-upload and read the configurable-matching search excerpt; only existing /Authorize instructions were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics for RBAC upload authorisation are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Exact Data Match\" \"RBAC\" \"group\" \"rollout\"; EDM Upload Agent RBAC authorization role API command group coexist requirements rollout. Read the supplied roadmap, EDM overview and EDM hash-and-upload; no rollout mechanics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Prerequisites specific to RBAC upload authorisation are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: EDM Upload Agent RBAC authorization role API command group coexist requirements rollout. Opened EDM hash-and-upload and EDM overview; their prerequisites describe current EDM workflows, not the planned RBAC option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the RBAC upload-authorisation option is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview exact data match licensing RBAC upload authorization license meter; \"RBAC\" \"EDM\" \"license\" charge pricing. Read EDM overview, EDM notifications and Microsoft 365 licensing guidance; found EDM subscriptions, not a separate RBAC entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A charge or meter specific to RBAC upload authorisation is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"RBAC\" \"EDM\" \"license\" charge pricing; Microsoft Purview exact data match licensing RBAC upload authorization license meter. Read EDM hash-and-upload, EDM overview, EDM notifications and Microsoft 365 licensing guidance; no RBAC-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The EDM overview itself names no EDM licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"exact data match\" \"licensing\" \"E5\". Read the entire EDM overview, especially Required licenses and permissions; it refers to licensing guidance without naming a subscription. This page-specific absence does not mean EDM licensing is unpublished elsewhere.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The EDM overview refers readers to Microsoft 365 security and compliance licensing guidance for complete licensing information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-based-sits-overview",
+      "quote": "See the Microsoft 365 security and compliance licensing guidance for complete licensing information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The upload page lists a supported computer among its prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "A computer with one of the following operating systems. This computer runs the EDM Upload Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The upload page lists a sensitive-information data file among its prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+      "quote": "Your sensitive information data file in .csv, .tsv, or pipe (|) format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The hash-and-upload page names no separate meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview exact data match licensing RBAC upload authorization license meter. Read the full EDM hash-and-upload page, including its prerequisites; it specifies technology, accounts, schema and files, but no meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The EDM overview says its tasks require Global Admin, Compliance Admin or Exchange Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-based-sits-overview",
+      "quote": "You must be a Global Admin, Compliance Admin, or Exchange Admin to perform the tasks described in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Today's EDM upload security group sits outside the Purview role model.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: exact data match EDM upload RBAC authorization role EDM_DataUploaders permissions audit. Read EDM hash-and-upload and Purview permissions; the former requires group membership, but neither explicitly describes the group's architectural relationship to the Purview role model.",
+      "severity": "major",
+      "fix": "Replace \"Today that right is a membership list in a security group, which sits outside the Purview role model\" with \"Today's documented upload authorisation relies on membership of the EDM_DataUploaders security group.\""
+    },
+    {
+      "n": 42,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Purview already uses a role-based approach to permissions elsewhere.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The Microsoft Purview portal uses the role-based access control (RBAC) permissions model.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/purview-permissions to sources to support the statement about Purview's existing role-based permissions model."
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; summary",
+      "type": "absence",
+      "claim": "No supplied source says existing upload behaviour changes if nobody acts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"exact data match\" \"RBAC\" \"default\"; \"Exact Data Match\" \"RBAC\" \"group\" \"rollout\". Read the roadmap, EDM hash-and-upload, EDM overview and Purview permissions; no automatic replacement of existing group authorisation was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes authorising users to upload data, not a new autonomous-agent behaviour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers will be able to choose to leverage RBAC to authorize users for uploading data to the Exact Data Match (EDM) service instead of leveraging the EDM_DataUploaders security group for authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist's instruction to review administrator-role holders has a corresponding controls row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review who holds Groups Administrator, User Administrator and Global Administrator ... Controls rows: Who may upload EDM data today: EDM_DataUploaders security group membership; RBAC authorisation of EDM uploads (planned).",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet \"Review who holds Groups Administrator, User Administrator and Global Administrator, because those roles can change the group.\" It asks readers to review role assignments, which neither controls row covers; do not add a new row in this correction."
+    },
+    {
+      "n": 46,
+      "where": "rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes an optional authorisation change rather than new data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers will be able to choose to leverage RBAC to authorize users for uploading data to the Exact Data Match (EDM) service instead of leveraging the EDM_DataUploaders security group for authorization.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T07:21:07.878Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-hash-upload",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sit-get-started-exact-data-match-based-sits-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/email/create-edit-or-delete-a-security-group",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=176155",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who may upload EDM data today: EDM_DataUploaders security group membership",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/email/create-edit-or-delete-a-security-group",
+        "reachable": true,
+        "segments": [
+          "Teams & groups",
+          "Active teams and groups",
+          "Security groups",
+          "security group",
+          "Members",
+          "View all and manage members"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who may upload EDM data today: EDM_DataUploaders security group membership",
+        "docs": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/groups/members",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "The workflows overview says workflows consume Copilot Studio capacity for each action they execute. A licence, rate or charge specific to service principal ownership is not yet published."
+  notes: "Workflows consume Copilot Credits through a fixed charge per action and additional usage-based charges for AI-node work. A licence, rate or charge specific to service principal ownership is not yet published."
 audiences: ["power-platform-admin","security","maker","service-owner"]
 tags: ["copilot-studio","copilot-harness","automation","entra-id","service-principals","copilot-credits"]
 sources:
@@ -42,6 +42,12 @@ sources:
     kind: "learn"
   - title: "Enforcement policy for agents consuming Copilot Credits"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/enforcement-policy-credits"
+    kind: "learn"
+  - title: "Overview of usage-based billing"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
+    kind: "learn"
+  - title: "Plan cost and credit consumption for workflows"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption"
     kind: "learn"
 videos: []
 related: ["agent-identity","microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node","copilot-credits","security-roles","microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents"]
@@ -77,19 +83,23 @@ changes:
     note: "Corrected the capacity statement: workflow runs are blocked when the environment has no Copilot Credits available, not when prepaid capacity alone is used up; extended the application user path; noted two checklist steps without table rows."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected the cost wording: workflows consume Copilot Credits through a fixed charge per action plus usage-based AI-node charges, and the open question now asks only about an ownership-specific rate or licence rule."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 63
+  claims: 60
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "c52398e70cf22c0ec7f4244e696e6216"
+  contradicted: 2
+  attempts: 0
+  hash: "5155448f11c433cb335dde03883897f3"
 ---
 
 ## What's changing
@@ -123,7 +133,7 @@ Power Automate already documents service principal application users owning and 
 
 ## Cost and licensing
 
-The licence a user needs for this feature is not yet published. Learn's workflows overview says workflows consume Copilot Studio capacity for each action they execute, and the workflows FAQ notes that the harness uses usage-based billing, so using, building, testing and evaluating agents might consume Copilot Credits. The meter is therefore Copilot Studio capacity, and the unit is the action a workflow executes.
+A licence requirement specific to service principal ownership is not yet published. Learn's workflows overview says workflows consume Copilot Studio capacity for each action they execute, and the workflows FAQ notes that the harness uses usage-based billing, so using, building, testing and evaluating agents might consume Copilot Credits. Workflows consume Copilot Credits through a fixed charge per action and additional usage-based charges for AI-node work, as the [Plan cost and credit consumption for workflows](https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption) page states.
 
 Use the Power Platform admin center > Licensing > Copilot Studio page to review the Agent flow actions used by each workflow. When the environment has no Copilot Credits available, new workflow runs are blocked until credits are available. Exhausting its prepaid allocation alone does not block runs if it can continue through tenant capacity or pay-as-you-go, as the [Enforcement policy for agents consuming Copilot Credits](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/enforcement-policy-credits) page states. Learn suggests pay-as-you-go billing to avoid interruption.
 
@@ -176,22 +186,19 @@ The workflow inventory step under Before rollout and the capacity check under At
 - Which identity does a workflow run under when a service principal owns it, and whose permissions do its connections use? Watch the Workflows overview on Microsoft Learn.
 - Does a service principal need to exist as an application user in the environment, and with which security role? Watch Message center and the Power Platform admin center documentation.
 - Is there an admin setting or API that limits who can assign a service principal as workflow owner? Watch the Workflows overview and the Power Platform admin documentation.
-- Does the Copilot Studio capacity meter apply to service-principal-owned workflows unchanged, given that Power Automate documents licensing implications for service principal application users? Watch the Copilot Studio licensing pages.
+- Is there a rate or licence rule specific to service principal ownership? Watch the Copilot Studio licensing pages.
 - Is the option off until someone chooses it, and what happens to workflows that a user already owns? Watch Message center for a notice.
 
 <!-- rationale
 risk: Medium. Ownership would move from a named person to an Entra app registration, which changes whose identity a workflow is tied to; Microsoft Learn does not yet describe the controls or the default, so rated on today's behaviour continuing.
-cost: Variable. Workflows consume Copilot Studio capacity for each action they execute, which is the meter; a rate or licence specific to service principal ownership is not yet published.
+cost: Variable. Workflows consume Copilot Credits through a fixed charge per action plus usage-based charges for AI-node work, which is the meter; a rate or licence specific to service principal ownership is not yet published.
 impact: Low. The people who notice are makers and administrators who own and maintain workflows; no source says end users see a change.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: capacity-meter applicability / absence: Whether the existing Copilot Studio capacity meter applies to service-principal-owned workflows remains unconfirmed. | Found: Agents, workflows, and apps powered by the Microsoft Copilot harness and customer conversations handled by Microsoft Contact Center Intelligence use a usage-based billing structure. | Fix: Replace this bullet with 'Is there a rate or licence rule specific to service principal ownership? Watch the Copilot Studio licensing pages.' The existing billing documentation covers Microsoft Copilot harness workflows without an ownership exclusion; retain uncertainty only about an ownership-specific rule. Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: first sentence / absence: The licence a user needs for this feature is not yet published. | Found: Searched: Copilot Studio workflows service principal ownership license pricing billing rate prerequisites; Copilot Studio Microsoft Copilot harness workflows author access user license requirements. Read workflows FAQ, billing overview and harness-access search excerpt; no ownership-specific licence | Fix: Narrow the sentence to 'A licence requirement specific to service principal ownership is not yet published.' General workflow billing is documented in the already-cited workflows FAQ; the current wording can be read as denying all published entitlement information.
-- [supported, minor] Cost and licensing: meter and unit; rationale: cost / cost: Copilot Studio capacity is consumed per executed workflow action. | Found: A workflow consumes credits in two ways: a fixed charge per action, and usage-based charges for the work that AI nodes perform. | Fix: Replace 'The meter is therefore Copilot Studio capacity, and the unit is the action a workflow executes' with 'Workflows consume Copilot Credits through a fixed charge per action and additional usage-based charges for AI-node work.' Cite https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption and make the rationale use the same qualified description. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The workflow-inventory checklist step lacks the controls-table counterpart required by the standard. | Found: Inventory the workflows on each Copilot Studio Workflows page ... The workflow inventory step under Before rollout and the capacity check under At rollout have no row in this table. | Fix: The 'Inventory the workflows on each Copilot Studio Workflows page' step under Before rollout lacks a corresponding table row. The explicit acknowledgement does not satisfy the checklist/table consistency rule; do not add an unverified row.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The environment-capacity checklist step lacks the controls-table counterpart required by the standard. | Found: Check that the capacity for each environment covers the new runs ... The workflow inventory step under Before rollout and the capacity check under At rollout have no row in this table. | Fix: The 'Check that the capacity for each environment covers the new runs' step under At rollout lacks a corresponding table row. The explicit acknowledgement does not satisfy the checklist/table consistency rule; do not add an unverified row.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The application-user UI route ends at + New app user > + Add an app after Manage > Environments > environment > Settings > Users + permissions > Application users. | Found: Select + New app user to open the Create a new app user pane. Select + Add an app to choose the registered Microsoft Entra application that was created for the selected user, and then select Add. | Fix: Set the path to 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > + Add an app'. This restores the omitted pane heading without changing the documented route. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The workflow inventory checklist control has no corresponding controls-table row. | Found: Inventory the workflows on each Copilot Studio Workflows page ... The workflow inventory step under Before rollout and the capacity check under At rollout have no row in this table. | Fix: Remove the Before rollout bullet beginning 'Inventory the workflows on each Copilot Studio Workflows page' and remove the corresponding workflow-inventory reference from the final Governance controls paragraph. The checklist currently asks readers to inspect a control absent from the table.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The environment capacity checklist control has no corresponding controls-table row. | Found: Check that the capacity for each environment covers the new runs ... The workflow inventory step under Before rollout and the capacity check under At rollout have no row in this table. | Fix: Remove the At rollout bullet beginning 'Check that the capacity for each environment covers the new runs' and the corresponding capacity-check reference from the final Governance controls paragraph. Do not add a control row as part of this correction.
 -->
