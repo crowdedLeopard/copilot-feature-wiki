@@ -105,15 +105,17 @@ changes:
     note: "Corrected after verification: Dataverse search path now ends at the agent-experience option and the control is described as an inspection; the credit-limit note now says limits apply to each agent; added the agent-flow qualification; removed the record-access checklist step."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 81
+  claims: 90
+  confirmed: 90
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -215,8 +217,10 @@ cost: Variable. Copilot Studio bills agent answers in Copilot Credits (generativ
 impact: Medium. Makers who build agents over Dataverse data and the users who ask those agents notice it; admins who own Dataverse environments need to know the search setting it depends on.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: A fresh index needs a full synchronization when search is turned back on. | Found: If you turn on Dataverse search after it's been off for 12 hours, it creates a fresh index that needs to go through a full sync. | Fix: Replace the second clause with: 'If Dataverse search is turned back on after being off for 12 hours, it creates a fresh index that needs a full sync.' This preserves the timing qualification in https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization. | Source: https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization
+- [supported, minor] Risk assessment: Data exposure / behaviour: A fresh index needs a full sync when Dataverse search is turned back on. | Found: If you turn on Dataverse search after it's been off for 12 hours, it creates a fresh index that needs to go through a full sync. | Fix: Replace the second clause with: 'If Dataverse search is turned back on after being off for 12 hours, it creates a fresh index that needs a full sync.' This preserves the timing qualification in https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization. | Source: https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization
+- [supported, minor] front matter: licensing.notes; Cost and licensing: employee-facing usage / licensing: Eligible standard-harness employee-facing agent usage is included in the Microsoft Copilot user subscription licence. | Found: Employee-facing usage scenarios (Business to Employee) of Copilot Studio agents and Copilot Studio tools and features that these agents invoke are included in the Microsoft 365 Copilot user subscription license (USL) | Fix: Replace 'Microsoft Copilot user subscription licence' with 'Microsoft 365 Copilot user subscription licence' in licensing.notes and the employee-facing usage paragraph, matching https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. Keep the existing authenticated-identity, fair-usage and harness qualifications. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [supported, minor] Governance controls: Knowledge sources for agents paragraph / admin-path: Knowledge sources for agents is located under Power Platform admin center > Security > Data and privacy. | Found: On the navigation pane, select Security. 3. Select the Data and privacy setting. 4. Select the Knowledge sources for agents setting. | Fix: Complete the parenthetical background path as 'Power Platform admin center > Security > Data and privacy > Knowledge sources for agents', as documented at https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule. Keep the existing preview and Dataverse applicability caveats. | Source: https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule
 -->

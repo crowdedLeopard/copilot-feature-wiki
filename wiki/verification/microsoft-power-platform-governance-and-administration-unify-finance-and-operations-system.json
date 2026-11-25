@@ -2,113 +2,52 @@
   "slug": "microsoft-power-platform-governance-and-administration-unify-finance-and-operations-system",
   "roadmapId": 581777,
   "title": "Power Platform admin center: unified System Administrator user and role management for finance and operations apps",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-25",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "2 blocking findings (claims 29, 54)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 74,
-    "confirmed": 70,
+    "claims": 83,
+    "confirmed": 83,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 8
+    "minor": 1
   },
-  "summary": "Hold: the team automation targets Microsoft Entra group teams, which are not the Owner-type teams supported by this preview. The briefing also overstates who can grant System Administrator access: permission to assign some Dataverse roles does not permit assigning a more privileged role. The roadmap facts and most preview details are supported.",
+  "summary": "The briefing accurately separates the planned general availability release from the documented preview, including role synchronisation and the risk of losing finance and operations-only admin assignments. The controls and licensing statements are supported; the team role path needs only the omitted three-dot menu step.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "front matter: status; What's changing; Scope",
       "type": "record",
-      "claim": "Microsoft plans unified System Administrator user and role management for finance and operations and Dataverse in Power Platform admin center.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Administrators can now manage system administrator users and security roles for both finance and operations apps and Dataverse from a single, unified experience in Power Platform admin center.",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing",
+      "where": "summary; front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The existing experience involves switching between finance and operations Users and Security configuration pages and Dataverse user and role pages.",
+      "claim": "General availability is targeted for January CY2027, rather than promised for that month.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Instead of switching between the finance and operations Users and Security configuration pages and the Dataverse user and role pages",
+      "quote": "\"targetDate\": \"January CY2027\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap includes adding users from the unified experience.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "admins can add and enable users, assign and remove roles, and review user access across both from one place.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap includes enabling users from the unified experience.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "admins can add and enable users",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap includes assigning roles from the unified experience.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "assign and remove roles",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap includes removing roles from the unified experience.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "assign and remove roles",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap includes reviewing access across both systems from one place.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "review user access across both from one place.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -119,43 +58,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes general availability as following a public preview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This generally available release follows the public preview",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: status; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap status is In development despite present-tense wording in its description.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\"; \"description\": \"Administrators can now manage system administrator users and security roles",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "summary; front matter: targetDate; What's changing; Scope",
-      "type": "record",
-      "claim": "January CY2027 is the target, not a committed availability date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\", \"status\": \"In development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 4,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in this roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -163,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the listed platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -174,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 6,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap record supplies no preview date.",
@@ -185,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 7,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The listed products match the supplied record.",
+      "claim": "The record associates the change with Power Platform governance and administration and Dynamics 365 Finance and Operations cross-app.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Power Platform governance and administration\", \"Dynamics 365 Finance and Operations cross-app\"]",
@@ -196,10 +102,98 @@
       "fix": null
     },
     {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes unified management of system administrator users and security roles for finance and operations apps and Dataverse in Power Platform admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can now manage system administrator users and security roles for both finance and operations apps and Dataverse from a single, unified experience in Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The existing workflow involves switching between finance and operations Users and Security configuration pages and Dataverse user and role pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Instead of switching between the finance and operations Users and Security configuration pages and the Dataverse user and role pages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists adding users in the unified experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "admins can add and enable users, assign and remove roles, and review user access across both from one place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists enabling users in the unified experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "admins can add and enable users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists assigning roles in the unified experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "assign and remove roles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists removing roles in the unified experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "assign and remove roles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists reviewing user access across both systems from one place.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "review user access across both from one place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap description presents a generally available release following public preview, despite the record's In development status.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This generally available release follows the public preview",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 16,
-      "where": "What's changing; Scope; Risk assessment",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft Learn documents this capability as a preview, and the briefing's detailed behaviour describes that preview.",
+      "claim": "Microsoft Learn documents this functionality as a preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Manage Finance and Operations environment admin users in Power Platform admin center (preview)",
@@ -208,9 +202,9 @@
     },
     {
       "n": 17,
-      "where": "What's changing; Why it matters; rationale: risk",
+      "where": "What's changing; Why it matters; Risk assessment",
       "type": "behaviour",
-      "claim": "Power Platform admin center becomes the authoritative source after unified admin user management is enabled.",
+      "claim": "After enablement, Power Platform admin center becomes the authoritative source for admin roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "After you turn on unified admin user management: 1. Power Platform admin center (PPAC) becomes the authoritative source.",
@@ -219,7 +213,7 @@
     },
     {
       "n": 18,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Admin users are maintained in Dataverse after enablement.",
       "status": "supported",
@@ -230,7 +224,7 @@
     },
     {
       "n": 19,
-      "where": "What's changing",
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Admin role assignments are maintained in Dataverse after enablement.",
       "status": "supported",
@@ -243,7 +237,7 @@
       "n": 20,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Updates automatically synchronize to finance and operations after enablement.",
+      "claim": "Updates automatically synchronise to finance and operations after enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Updates are automatically synchronized to Finance and Operations.",
@@ -252,20 +246,31 @@
     },
     {
       "n": 21,
-      "where": "What's changing; Scope: What is covered",
-      "type": "applicability",
-      "claim": "System Administrator users, including users inheriting the role through teams, are a supported scenario.",
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "System Administrator user management is a documented preview scenario.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "System Administrator users, including users who inherit the admin role through teams",
+      "quote": "This article describes these supported scenarios: - System Administrator users, including users who inherit the admin role through teams",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "What's changing; Scope: What is covered",
+      "where": "What's changing; Scope; controls[2].note",
       "type": "applicability",
-      "claim": "Environment Admin management, also called provisioning admin management, is a supported scenario.",
+      "claim": "The preview supports users inheriting System Administrator through Owner-type teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "System Administrator user and users inheriting admin role via teams (Owner type)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Environment Admin management, also called provisioning admin management, is a documented scenario.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Environment Admin, or provisioning admin, management",
@@ -273,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "System Administrator user changes must be made in Dataverse once the feature is enabled.",
+      "claim": "System Administrator user changes must be made in Dataverse after enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Any changes to System Administrator users must be made in Dataverse",
@@ -284,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Corresponding System Administrator changes in finance and operations are blocked after enablement.",
+      "claim": "Corresponding System Administrator changes are blocked in finance and operations after enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "corresponding changes are blocked in Finance and Operations.",
@@ -295,32 +300,76 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 26,
       "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "The preview page does not document management scenarios for other security roles.",
+      "claim": "The preview documentation does not describe unified management of other security roles beyond System Administrator and Environment Admin.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"unified admin user management\" synchronization approval agent roles; read unified-admin-user-management in full, including supported scenarios. It documents System Administrator and Environment Admin management, not additional role-management scenarios.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; Risk assessment: Data exposure; controls[1].note",
-      "type": "applicability",
-      "claim": "System Administrator role assignments made directly or through Owner teams in Dataverse or PPAC synchronize to finance and operations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "including changes to System Administrator role assignments made directly or through Owner teams in Dataverse, synchronize to Finance and Operations when performed from PPAC or Dataverse. The user then receives System Administrator access in Finance and Operations.",
+      "quote": "Searched: \"Unified admin user management\" security roles Environment Admin general availability January 2027. Opened the full unified-admin-user-management preview page; its supported scenarios and instructions cover those two admin roles.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance; rationale: risk",
+      "where": "Why it matters; Risk assessment; Governance controls",
       "type": "behaviour",
-      "claim": "Synchronization removes admin roles that exist only in finance and operations and not in Dataverse.",
+      "claim": "Direct System Administrator role assignments made in Power Platform admin center or Dataverse synchronise to finance and operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "changes to System Administrator role assignments made directly or through Owner teams in Dataverse, synchronize to Finance and Operations when performed from PPAC or Dataverse.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "System Administrator role assignments through Owner teams in Dataverse synchronise to finance and operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "changes to System Administrator role assignments made directly or through Owner teams in Dataverse, synchronize to Finance and Operations when performed from PPAC or Dataverse.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The synchronised user receives System Administrator access in finance and operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "The user then receives System Administrator access in Finance and Operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Someone authorised to assign the Dataverse System Administrator role can thereby grant System Administrator access in finance and operations after unification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "changes to System Administrator role assignments made directly or through Owner teams in Dataverse, synchronize to Finance and Operations when performed from PPAC or Dataverse. The user then receives System Administrator access in Finance and Operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated the general availability default or whether existing behaviour changes without tenant action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"unified admin user management\" general availability license prerequisites default enabled automatically. Opened preview page, unified overview and Feature management overview; no feature-specific GA default found. Preview enablement is not a GA default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Enabling the feature removes admin roles held only in finance and operations and not in Dataverse.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "admin roles that exist only in Finance and Operations and not in Dataverse are removed to prevent role drift.",
@@ -328,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 33,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Synchronization does not remove the finance and operations users themselves.",
+      "claim": "Synchronisation does not remove the users themselves from finance and operations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Synchronization doesn't remove users from Finance and Operations",
@@ -339,21 +388,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
+      "n": 34,
+      "where": "controls[1].note; Risk assessment; Governance controls",
       "type": "role",
-      "claim": "Anyone who can assign roles in Dataverse can therefore grant administrator access to ERP data.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "the person who is assigning the security role can't assign someone else to a security role that has more privileges than the assigner. For example, a CSR Manager can't assign another user to the System Administrator role.",
-      "severity": "blocker",
-      "fix": "Replace that sentence with: 'Anyone authorized to assign the Dataverse System Administrator role can therefore grant System Administrator access in finance and operations.' Permission to assign less privileged roles is not sufficient; keep the following privilege-elevation restriction and its existing citation."
-    },
-    {
-      "n": 30,
-      "where": "controls[1].note; Risk assessment: Data exposure; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "The minimum privileges for assigning security roles are Read and Assign on the Security Role table.",
+      "claim": "The minimum privileges for security role assignment are Read and Assign on the Security Role table.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "minimum privileges are Read and Assign on the Security Role table",
@@ -361,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Data exposure",
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "An assigner cannot grant a security role with more privileges than the assigner holds.",
+      "claim": "An assigner cannot grant a security role with more privileges than they hold.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "the person who is assigning the security role can't assign someone else to a security role that has more privileges than the assigner.",
@@ -372,10 +410,21 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity; controls[2].governs",
+      "n": 36,
+      "where": "Scope: Who can turn it on; Governance controls",
+      "type": "role",
+      "claim": "The user role assignment instructions tell the administrator to sign in as a System Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "Sign in to the Power Platform Admin center as a System Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Adding a user to a supported team holding System Administrator grants admin access.",
+      "claim": "Adding a user to an Owner team holding System Administrator grants admin access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "When you add a user to a team with the System Administrator role, you grant admin access.",
@@ -383,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Security & identity",
+      "n": 38,
+      "where": "Risk assessment: Security & identity; controls[2].governs",
       "type": "behaviour",
-      "claim": "Removing System Administrator from a team removes members' finance and operations admin access unless they hold the role directly.",
+      "claim": "Removing System Administrator from the team removes finance and operations admin access for members unless they hold the role directly.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "When you remove the System Administrator role from a team, all team members lose admin access in Finance and Operations unless they have the role assigned directly.",
@@ -394,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 39,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Team changes synchronize asynchronously.",
+      "claim": "Team membership and team role changes synchronise asynchronously, so the resulting access change need not be immediate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "The changes synchronize asynchronously.",
@@ -405,7 +454,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 40,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Each finance and operations environment has one Environment Admin.",
@@ -416,7 +465,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 41,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "The user ID Admin always represents the Environment Admin.",
@@ -427,30 +476,30 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 42,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The feature page describes no agent or autonomous agent action.",
+      "claim": "The preview page describes no agent or autonomous agent action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"unified admin user management\" synchronization approval agent roles; opened unified-admin-user-management. Its full text describes automatic synchronization and admin operations, not an agent or autonomous agent action.",
+      "quote": "Searched: \"unified admin user management\" end users approval agent synchronization. Opened full preview page; it describes automatic role synchronisation, not an agent or agent actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 43,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The feature page describes no approval step for synchronized changes.",
+      "claim": "The preview page describes no approval step for synchronised role changes.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"unified admin user management\" synchronization approval agent roles; opened unified-admin-user-management and read the synchronization and provisioning-admin procedures. No synchronization approval step is described.",
+      "quote": "Searched: \"unified admin user management\" end users approval agent synchronization. Opened full preview page; instructions describe automatic synchronisation and no approval step.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "n": 44,
+      "where": "Risk assessment: Change & support; Cost and licensing; rationale: cost",
       "type": "behaviour",
       "claim": "Microsoft advises Environment Admin changes only during planned downtime to avoid disrupting active batch jobs or running processes.",
       "status": "supported",
@@ -460,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 45,
       "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Deleting the provisioning admin or revoking System Administrator in Dataverse with fewer than three admins may not update finance and operations.",
+      "claim": "Deleting the provisioning admin or revoking System Administrator in Dataverse with fewer than three admins can fail to reflect the provisioning admin change in finance and operations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "If you delete the current provisioning admin or revoke the System Administrator role in Dataverse while the environment has fewer than three admins, provisioning admin changes might not be reflected in Finance and Operations.",
@@ -471,21 +520,32 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 46,
       "where": "Risk assessment: Change & support; Open questions",
       "type": "behaviour",
-      "claim": "The preview page gives differing removal thresholds: another System Administrator in one passage and at least three in another.",
+      "claim": "One passage says another System Administrator must exist before removing Environment Admin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "You can't remove the Environment Admin role unless another System Administrator exists. ... You can remove the Environment Admin (provisioning) role only when the environment has at least three System Administrators.",
+      "quote": "You can't remove the Environment Admin role unless another System Administrator exists.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "controls[2].note; Risk assessment; Scope; Governance guidance; Open questions",
+      "n": 47,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "A second passage requires at least three System Administrators to remove Environment Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "You can remove the Environment Admin (provisioning) role only when the environment has at least three System Administrators. If fewer than three admins exist, the deletion isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Risk assessment; Scope",
       "type": "applicability",
-      "claim": "Only Team type Owner is supported for admin user management in public preview; other team types are unsupported.",
+      "claim": "Non-owner team types are not supported for admin user management in public preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Non-owner teams aren't supported in public preview. Only teams with Team type = Owner are supported for admin user management.",
@@ -493,18 +553,29 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 49,
       "where": "Scope: Preview prerequisites; Governance guidance: Before rollout",
       "type": "availability",
-      "claim": "The preview requires Platform Update 72, version 7.0.7996.61 or later.",
+      "claim": "The preview requires Platform Update 72 (PU72).",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "This feature is available only in environments running the following versions: Platform Update 72 (PU72), version 7.0.7996.61 or later",
+      "quote": "This feature is available only in environments running the following versions: - Platform Update 72 (PU72), version 7.0.7996.61 or later",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 50,
+      "where": "Scope: Preview prerequisites; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The preview requires platform version 7.0.7996.61 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "Platform Update 72 (PU72), version 7.0.7996.61 or later",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "Scope: Preview prerequisites; Governance guidance: Before rollout",
       "type": "availability",
       "claim": "The preview requires Unified User Management Solution version 9.3.3445.2 or later.",
@@ -515,186 +586,10 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Scope: Preview prerequisites; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Update the solution through Environment > Resources > Dynamics apps or Applications, find Unified User Management, and select Update when Update available appears.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "To update the solution, go to Environment > Resources > Dynamics apps or Applications, search for Unified User Management, and select Update if the status shows Update available.",
-      "severity": "minor",
-      "fix": "Give the complete route: 'In Power Platform admin center, go to Manage > Environments > environment > Resources > Dynamics 365 apps, find Unified User Management, and select Update if Update available appears.' Cite https://learn.microsoft.com/power-platform/admin/manage-apps alongside the existing preview page; it supplies the route to the selected environment and app list."
-    },
-    {
-      "n": 46,
-      "where": "controls[0].note; Scope: Who can turn it on; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "A user with System Administrator in both Dataverse and finance and operations enables the preview in the finance and operations app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "A user with the System Administrator role in both Dataverse and Finance and Operations takes the following steps to turn on (Preview) Unified admin user management in the Finance and Operations app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Scope: Who can turn it on; Governance controls",
-      "type": "role",
-      "claim": "The role-assignment procedure tells the reader to sign in as System Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "Sign in to the Power Platform Admin center as a System Administrator. ... By default, the System Administrator security role has all the required privileges to assign security roles to any user, including assigning the System Administrator security role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The enablement path is Finance and Operations app > System administration > Workspace > Feature management > All > (Preview) Unified admin user management.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "Go to System administration > Workspace > Feature management. ... Select All. ... Turn on (Preview) Unified admin user management.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Importing the Feature management data entity with Enabled set to Yes enables an existing feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
-      "quote": "If you change the value of the Enabled field to Yes, the feature is enabled, and the Enable date field is set to the current date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].note; Governance controls prose and table",
-      "type": "applicability",
-      "claim": "Learn does not say whether the Feature management data entity covers this feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
-      "quote": "A data entity with the name Feature management lets you export the Feature management settings from one environment and then import them into another environment. This entity updates only existing features.",
-      "severity": "minor",
-      "fix": "Replace 'Learn does not say it covers this feature' and the matching prose caveat with: 'The data entity imports Feature management settings for existing features and applies the same rules as the Feature management workspace.' The preview page places this feature in that workspace; retain the existing reference."
-    },
-    {
-      "n": 51,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The user-role path is Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "Select Users + permissions, and then select Users. ... On the Users page select a user, and then select Manage security roles. ... Select or deselect security roles.",
-      "severity": "minor",
-      "fix": "The route reaches the correct role-management page. Complete it as 'Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles > security role' and clarify in the row note: 'These steps manage direct user role assignments; team-inherited roles are managed through the team.'"
-    },
-    {
       "n": 52,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "POST /api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref assigns a security role to a user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref\n{ \"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\" }",
-      "severity": "minor",
-      "fix": "Keep the printed call. Add to controls[1].note: 'The request body's @odata.id identifies the roles(<role ID>) record to assign.' The deterministic pre-check's missing-command lead is not confirmed: the exact endpoint is present in the cited reference."
-    },
-    {
-      "n": 53,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Owner-team role path is Manage > Environments > environment > Settings > Users and permissions > Teams > team > Manage security roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "Select the three dots next to the team that has the System Administrator role. ... Select Manage security roles. ... Scroll to System Administrator and then check or clear the System Administrator selection.",
-      "severity": "minor",
-      "fix": "Complete the path as 'Manage > Environments > environment > Settings > Users and permissions > Teams > team > Manage security roles > System Administrator'. Omitting the unlabelled three-dots button is not a blocker."
-    },
-    {
-      "n": 54,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "The Entra group-team alternate-key POST is the automation equivalent for assigning System Administrator to a supported Owner-type team.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-teams",
-      "quote": "A team can be one of the following types: Owner, Access, Microsoft Entra Security group, or Microsoft Entra Office group.",
-      "severity": "blocker",
-      "fix": "Replace controls[2].api.call with 'POST /api/data/v9.2/teams(<team ID>)/teamroles_association/$ref' and docs with https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/team. Replace the group-team caveat in the note and prose with: 'Target the Dataverse ID of a Team type Owner team. The request body's @odata.id identifies the /api/data/v9.2/roles(<role ID>) record for System Administrator.' Cite https://learn.microsoft.com/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api for the collection POST and @odata.id syntax. The team reference read in this run documents /api/data/v9.2/teams, teamid, and the role-valued teamroles_association collection."
-    },
-    {
-      "n": 55,
-      "where": "controls[2].note; Governance controls prose",
-      "type": "command",
-      "claim": "The printed teams(azureactivedirectoryobjectid=...,membershiptype=0)/teamroles_association/$ref call is documented for Microsoft Entra ID group teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-      "quote": "Assign a security role to a Microsoft Entra ID group team\nPOST [Organization URI]/api/data/v9.0/teams(azureactivedirectoryobjectid=<group team ID>,membershiptype=0)/teamroles_association/$ref",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].note; Governance controls prose",
-      "type": "behaviour",
-      "claim": "The Feature management entity exports and imports feature settings and updates only existing features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
-      "quote": "A data entity with the name Feature management lets you export the Feature management settings from one environment and then import them into another environment. This entity updates only existing features.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Governance controls prose",
-      "type": "behaviour",
-      "claim": "Make Environment Admin on the finance and operations Users page selects a System Administrator user as provisioning admin.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "Select a user who has the System Administrator role. ... Select Make Environment Admin. ... use Make Environment Admin on the Users page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Governance controls prose",
-      "type": "absence",
-      "claim": "The unified preview page does not give a navigation route to the finance and operations Users page.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"unified admin user management\" \"Make Environment Admin\" Users navigation; opened unified-admin-user-management. Its Make Environment Admin procedure starts by selecting a user; Known issues names Users but supplies no finance and operations navigation route.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "The default state and automatic rollout behaviour at general availability are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Unified admin user management\" general availability default enabled prerequisites license price meter; read roadmap record, unified-admin-user-management and Feature management overview. Preview enablement is documented; no feature-specific GA default or mandatory transition is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Cost and licensing; Scope: Preview prerequisites",
-      "type": "absence",
-      "claim": "Prerequisites specifically for general availability are not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Unified admin user management\" general availability default enabled prerequisites license price meter; opened unified-admin-user-management and finance-operations-apps-overview. The feature's published versions and role prerequisites are on its preview page, not a GA specification.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model; Cost and licensing",
       "type": "licensing",
-      "claim": "A licence is required to create or install any finance and operations app in Power Platform admin center.",
+      "claim": "The feature is treated as included within the licensed finance and operations experience, rather than as a separately published feature entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/finance-operations-apps-overview",
       "quote": "A license is required to create or install any finance and operations app in the Power Platform admin center.",
@@ -702,43 +597,43 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "The feature page's prerequisites name versions and System Administrator but no separate feature licence or meter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"unified admin user management\" licensing cost billing meter finance operations; opened unified-admin-user-management and finance-operations-apps-overview. The complete preview prerequisites contain versions and the System Administrator role, not a feature licence or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "front matter: licensing.model; Cost and licensing",
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The feature is treated as included in the finance and operations app's already-licensed admin experience.",
+      "claim": "The underlying unified experience requires a finance and operations app licence, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management, to create or install those apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/finance-operations-apps-overview",
-      "quote": "When you purchase a license for any finance and operations app, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management ... A license is required to create or install any finance and operations app in the Power Platform admin center.",
-      "severity": "minor",
-      "fix": "Keep model 'included', but name the product-level entitlement in licensing.notes and the Licence paragraph: 'The unified admin experience requires a licence for the applicable finance and operations app, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management. The preview feature page publishes no separate feature licence.' Retain the overview citation."
-    },
-    {
-      "n": 64,
-      "where": "Cost and licensing: Meter; Open questions",
-      "type": "absence",
-      "claim": "No meter or separate charge specifically for unified admin user management is published at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"unified admin user management\" licensing cost billing meter finance operations; opened unified-admin-user-management and finance-operations-apps-overview; read billing search excerpts. No result meters or prices unified admin user management.",
+      "quote": "When you purchase a license for any finance and operations app, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management, your tenant is granted various entitlements.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The preview page lists versions and System Administrator prerequisites but no separate feature licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Unified admin user management\" general availability default enabled prerequisites license pricing meter. Opened preview prerequisites and unified overview; the preview page names versions and System Administrator roles, not a separate licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: Meter; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft Learn publishes no feature-specific meter or separate charge for unified admin user management at the time of this check.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"unified admin user management\" \"license\" \"meter\" pricing. Opened preview page and unified overview; read Pay-as-you-go meters search excerpts. No meter or separate charge for admin user management found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
       "where": "Cost and licensing: Meter",
       "type": "record",
-      "claim": "The roadmap item states no price.",
+      "claim": "The roadmap item says nothing about price.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This generally available release follows the public preview and gives admins consistent, centralized identity and access administration for finance and operations environments.",
@@ -746,21 +641,197 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 57,
       "where": "Cost and licensing: Indirect costs; Open questions",
       "type": "absence",
-      "claim": "A licence specifically for the general availability release is not yet published.",
+      "claim": "No licence specific to this general availability release is published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Unified admin user management\" general availability default enabled prerequisites license price meter; \"unified admin user management\" licensing cost billing meter finance operations; opened feature preview and unified admin overview. No GA-specific feature licence is stated.",
+      "quote": "Searched: \"unified admin user management\" general availability license prerequisites default enabled automatically; \"unified admin user management\" \"license\" \"meter\" pricing. Opened preview page and unified overview; only the underlying app licence requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; Scope: Preview prerequisites",
+      "type": "absence",
+      "claim": "Prerequisites specific to the general availability release are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"unified admin user management\" general availability license prerequisites default enabled automatically. Opened full preview page and unified overview; found preview prerequisites, not a separate GA prerequisite statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].ui; Governance guidance: At rollout; rendered controls table",
+      "type": "admin-path",
+      "claim": "In the Finance and Operations app, System administration > Workspace > Feature management > All > (Preview) Unified admin user management reaches preview enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "Go to System administration > Workspace > Feature management. 2. Select All. 3. Turn on (Preview) Unified admin user management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].api; rendered controls table",
+      "type": "command",
+      "claim": "Importing the Feature management data entity with Enabled set to Yes enables the targeted existing feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
+      "quote": "If you change the value of the Enabled field to Yes, the feature is enabled, and the Enable date field is set to the current date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Feature management data entity updates only existing features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
+      "quote": "This entity updates only existing features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Feature management imports apply the same business rules as the Feature management workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
+      "quote": "The business logic in the entity also helps guarantee that the same rules that are used on the Feature management workspace are applied when the import is done.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles > security role reaches direct role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "Select Users + permissions, and then select Users. 6. On the Users page select a user, and then select Manage security roles. 7. Select or deselect security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].api; rendered controls table",
+      "type": "command",
+      "claim": "POST /api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref assigns a security role directly to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The documented user role assignment steps manage direct assignments only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "The specified steps help you manage only direct role assignments for the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Team-inherited roles are managed through the team rather than the user's direct assignment interface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-teams",
+      "quote": "Manage the security roles of a team ... Select a team and select its corresponding vertical ellipsis. Select Manage security roles. ... Select the role or roles you want",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
+      "where": "controls[2].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Manage > Environments > environment > Settings > Users and permissions > Teams > team > Manage security roles > System Administrator reaches the team role control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "Select the three dots next to the team that has the System Administrator role. 2. Select Manage security roles. 3. Scroll to System Administrator and then check or clear the System Administrator selection.",
+      "severity": "minor",
+      "fix": "Replace controls[2].ui.path and the rendered path with 'Manage > Environments > environment > Settings > Users and permissions > Teams > team > three dots > Manage security roles > System Administrator'. The cited preview page gives the three-dot menu step."
+    },
+    {
+      "n": 68,
+      "where": "controls[2].api; rendered controls table",
+      "type": "command",
+      "claim": "POST /api/data/v9.2/teams(<team ID>)/teamroles_association/$ref adds a role to the team's role collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/team",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/teams ... Collection-valued navigation properties ... teamroles\\_association | role | teamroles\\_association",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The team role call targets the Dataverse team identifier for an Owner-type team, not a Microsoft Entra group object identifier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/team",
+      "quote": "teamid | Edm.Guid | Unique identifier for the team. ... teamtype ... 0 | Owner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The team association request uses @odata.id to identify the /api/data/v9.2/roles(<role ID>) record for the role being assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api",
+      "quote": "\"@odata.id\": \"[Organization URI]/api/data/v9.2/roles(886b280c-6396-4d56-a0a3-2c1b0a50ceb0)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Scope: Preview prerequisites",
+      "type": "admin-path",
+      "claim": "Manage > Environments > environment > Resources > Dynamics 365 apps is the Power Platform admin center route to the environment's installed apps for updating Unified User Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-apps",
+      "quote": "In the Manage pane, select Environments. 4. On the Environments page, select an environment. 5. In the command bar, expand Resources, and then select Dynamics 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Scope: Preview prerequisites",
+      "type": "behaviour",
+      "claim": "Unified User Management can be updated by selecting Update when its status shows Update available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "search for Unified User Management, and select Update if the status shows Update available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[0].note; Scope; Governance guidance: At rollout; Governance controls",
+      "type": "role",
+      "claim": "Turning on the preview feature requires System Administrator in both Dataverse and finance and operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "A user with the System Administrator role in both Dataverse and Finance and Operations takes the following steps to turn on (Preview) Unified admin user management in the Finance and Operations app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft's enablement check is that Dataverse environment admins appear in the finance and operations app.",
+      "claim": "Microsoft's documented enablement check is that Dataverse environment admins appear in the finance and operations app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Verify that unified admin user management is turned on by checking that Dataverse environment admins appear in the Finance and Operations app.",
@@ -768,10 +839,32 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Governance controls prose",
+      "n": 75,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The unified preview page calls the user action Manage roles, while the role-assignment reference calls it Manage security roles.",
+      "claim": "The finance and operations Users page has a Make Environment Admin action for choosing the provisioning admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "After the change is reflected in Finance and Operations, use Make Environment Admin on the Users page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The unified preview page does not give the navigation route to the finance and operations Users page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"unified admin user management\" \"Make Environment Admin\" Users navigation path. Opened full preview page; Make Environment Admin instructions start with selecting a user and the known issue names Users without a route to it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The unified page calls the user role action Manage roles, while the user role assignment page calls it Manage security roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
       "quote": "Select the user and then select Manage roles.",
@@ -779,76 +872,76 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "front matter: risk; rationale: risk",
-      "type": "consistency",
-      "claim": "The medium risk rationale rates role loss after enabling the control rather than today's behaviour continuing with its GA default unknown.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "defaultState: \"unknown\"; risk: \"medium\"; rationale: 'Once the feature is turned on ... admin roles held only in finance and operations are removed'. The scale requires a new control with an unstated default to be rated on today's behaviour continuing.",
-      "severity": "minor",
-      "fix": "Set risk to 'low' and replace its rationale with: 'Low. The general availability default is not stated, so this rating assumes today's behaviour continues. Enabling the documented preview removes admin roles held only in finance and operations; reconcile assignments before opting in.' Keep the existing detailed discussion of opt-in role-loss risk."
-    },
-    {
-      "n": 70,
-      "where": "Governance guidance: Before rollout and At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist names solution updates, provisioning-admin changes and Owner-team creation, but the table has no rows for those operations.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'update the solution', 'Schedule any Environment Admin change', 'Create admin teams with Team type Owner'. Table: enable unified management, assign user roles, assign team roles.",
-      "severity": "minor",
-      "fix": "The solution-update, Environment Admin change and Create admin teams checklist steps have no corresponding controls rows. To correct without adding rows, remove these operation-specific checklist steps; retain their already-documented prerequisite and downtime information in Scope and Risk assessment."
-    },
-    {
-      "n": 71,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-25T00:10:31.",
+      "n": 78,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "The documented change concerns administrator access, and no end-user experience change is documented.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-25T00:10:31\"",
+      "source": null,
+      "quote": "Searched: \"unified admin user management\" end users approval agent synchronization. Opened full preview page and checked roadmap description; scenarios concern System Administrator and Environment Admin access, with no end-user experience change stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance guidance: Before rollout",
+      "n": 79,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The direct user role association request uses @odata.id to identify the roles(<role ID>) record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+      "quote": "\"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls",
       "type": "role",
-      "claim": "Microsoft advises having at least three admins before making the provisioning-admin changes described in its known issue.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "Before you make these changes in Dataverse, make sure the environment has at least three admins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "A synchronized System Administrator role assignment gives the user System Administrator access in finance and operations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
-      "quote": "The user then receives System Administrator access in Finance and Operations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Governance controls prose",
-      "type": "role",
-      "claim": "System Administrator includes the privileges needed to assign security roles, including System Administrator, to users.",
+      "claim": "The System Administrator security role has the privileges required to assign security roles, including System Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "By default, the System Administrator security role has all the required privileges to assign security roles to any user, including assigning the System Administrator security role.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Feature management data entity exports feature settings from an environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
+      "quote": "A data entity with the name Feature management lets you export the Feature management settings from one environment and then import them into another environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Feature management data entity imports feature settings into another environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
+      "quote": "A data entity with the name Feature management lets you export the Feature management settings from one environment and then import them into another environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's known-issue guidance advises at least three admins before deleting or revoking the provisioning admin in Dataverse.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/unified-admin-user-management",
+      "quote": "Before you make these changes in Dataverse, make sure the environment has at least three admins.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T03:16:21.297Z",
+    "at": "2026-11-25T04:34:53.620Z",
     "summary": {
-      "links": 6,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
@@ -879,6 +972,26 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/team",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api",
         "ok": true,
         "status": 200
       },
@@ -924,7 +1037,8 @@
           "Settings",
           "Users + permissions",
           "Users",
-          "Manage security roles"
+          "Manage security roles",
+          "security role"
         ],
         "missing": []
       },
@@ -949,7 +1063,8 @@
           "Settings",
           "Users and permissions",
           "Teams",
-          "Manage security roles"
+          "Manage security roles",
+          "System Administrator"
         ],
         "missing": []
       },
@@ -957,13 +1072,20 @@
         "index": 2,
         "side": "api",
         "governs": "Whether an Owner team holds System Administrator, and so grants admin access to its members",
-        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/team",
         "reachable": true,
-        "token": "POST /api/data/v9.0/teams(azureactivedirectoryobjectid=<group",
+        "token": "POST /api/data/v9.2/teams(<team",
         "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

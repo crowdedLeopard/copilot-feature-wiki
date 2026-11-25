@@ -4,7 +4,7 @@ slug: "m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-sto
 roadmapId: 503767
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Microsoft plans to let users attach local or OneDrive files in chats with custom engine agents, which Learn lists as unsupported today. No tenant-wide upload switch is documented. Target: January CY2027."
+summary: "Microsoft plans to let users attach local or OneDrive files in chats with custom engine agents, which Learn lists as unsupported today. No switch specific to this capability is documented yet. Target: January CY2027."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -58,6 +58,18 @@ sources:
   - title: "Agent management roles and permissions in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms"
     kind: "learn"
+  - title: "Supported Agent resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Which users or groups can access agents and plugins (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
 videos: []
 related: ["copilot-credits"]
 controls:
@@ -78,13 +90,16 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
-    api: null
-    note: "Controls tenant-wide access to agents and plugins, not file-upload behaviour. Options are All users (the default), No users, or specific users or groups."
-  - governs: "A tenant-wide switch for file upload to custom engine agents"
+    api:
+      kind: "graph"
+      call: "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Tenant-wide, not file-upload behaviour. UI options: All users (the default), No users, or specific users or groups. The API is preview and beta, with applyOnce for everyone or noOne only; details are in the notes below."
+  - governs: "An upload-specific tenant-wide switch for the planned custom engine agent capability"
     scope: "tenant"
     ui: null
     api: null
-    note: "No such setting is documented at the time of writing (November 2026)."
+    note: "A general Copilot file-upload policy is documented: microsoft.copilot.allowfileupload value \"1\" prevents uploads in both Microsoft 365 Copilot and Copilot Chat. A switch specific to this planned capability is not yet documented."
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-25"
@@ -108,19 +123,23 @@ changes:
     note: "Corrected after verification: removed the unsupported Agents admin guide assurance claim, replaced the metered-billing and default statements with the purchase guide's licence-specific wording, set licensing to mixed, and reworded two control notes."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-25"
+    note: "Corrected after verification: added the documented preview automation for User access and the general Copilot file-upload policy, and narrowed the no-switch statements to the planned capability."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 73
+  claims: 80
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "ed6c2b54d2a55fab6b916d3b51e088c5"
+  contradicted: 1
+  attempts: 3
+  hash: "9a14f6cd83c6cd81fbe72781f0b91508"
 ---
 
 ## What's changing
@@ -135,7 +154,7 @@ The record gives the status as In development and a target of January CY2027. Th
 
 Learn currently lists file attachments in custom engine agent chats as unsupported. Once upload ships, any user of a custom engine agent could hand it a file, and what that agent does with the file is a risk to assess agent by agent.
 
-The Learn comparison table of agent types lists custom engine agents as hosted in Microsoft 365 with Copilot Studio or externally with custom solutions such as Azure AI, and says the builder must ensure their own compliance, responsible AI practices and security. Confirm coverage for the particular agent rather than assuming it. Expect questions about which agents are approved to receive documents. The controls documented for agents act on a whole agent or on tenant-wide access to agents and plugins, and no tenant-wide switch is documented for the planned upload, so the decision is which agents stay available. Copilot Studio separately documents a maker-side File uploads setting for standard-harness agents; Microsoft has not confirmed its applicability to this roadmap change.
+The Learn comparison table of agent types lists custom engine agents as hosted in Microsoft 365 with Copilot Studio or externally with custom solutions such as Azure AI, and says the builder must ensure their own compliance, responsible AI practices and security. Confirm coverage for the particular agent rather than assuming it. Expect questions about which agents are approved to receive documents. The Block and User access controls documented for agents act on a whole agent or on tenant-wide access to agents and plugins. Microsoft documents a general Copilot file-upload policy, and a switch specific to the planned custom engine agent upload is not yet documented; see Governance controls. Copilot Studio separately documents a maker-side File uploads setting for standard-harness agents; Microsoft has not confirmed its applicability to this roadmap change.
 
 ## Risk assessment
 
@@ -196,12 +215,14 @@ The feature concerns custom engine agents. The record names no licence, role or 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether a custom engine agent is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Controls availability of the selected agent, not file-upload behaviour. For agents created with SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat. API is beta; needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Controls tenant-wide access to agents and plugins, not file-upload behaviour. Options are All users (the default), No users, or specific users or groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>A tenant-wide switch for file upload to custom engine agents</strong><br><small>Tenant</small><br><small class="controls__note">No such setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-wide, not file-upload behaviour. UI options: All users (the default), No users, or specific users or groups. The API is preview and beta, with applyOnce for everyone or noOne only; details are in the notes below.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>An upload-specific tenant-wide switch for the planned custom engine agent capability</strong><br><small>Tenant</small><br><small class="controls__note">A general Copilot file-upload policy is documented: microsoft.copilot.allowfileupload value &quot;1&quot; prevents uploads in both Microsoft 365 Copilot and Copilot Chat. A switch specific to this planned capability is not yet documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-No tenant-wide switch is documented for the planned roadmap upload capability at the time of writing (November 2026). Copilot Studio separately documents a maker-side File uploads setting for standard-harness agents (Settings > Generative AI > File processing capabilities > File uploads); Microsoft has not confirmed its applicability to this roadmap change. The controls in the table work on a whole agent or on tenant-wide access. Learn describes Block as restricting access to an agent across the organisation, and says that blocking an agent created with SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. The User access setting governs access to agents and plugins in general. Microsoft has not confirmed that either setting changes how uploads behave.
+Microsoft documents a general Copilot file-upload policy: microsoft.copilot.allowfileupload value "1" prevents uploads in both Microsoft 365 Copilot and Microsoft 365 Copilot Chat. A switch specific to this planned custom engine agent upload capability is not yet documented. Copilot Studio separately documents a maker-side File uploads setting for standard-harness agents (open the standard-harness agent in Copilot Studio, then select Settings > Generative AI > File processing capabilities > File uploads); Microsoft has not confirmed its applicability to this roadmap change. The Block control in the first row works on a whole agent, and the User access setting governs access to agents and plugins in general. Learn describes Block as restricting access to an agent across the organisation, and says that blocking an agent created with SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. Microsoft has not confirmed that either setting changes how uploads behave.
+
+Preview automation can apply a tenant-wide all-users or no-users baseline for User access: set mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All; the TCM service principal needs delegated CopilotPolicySettings.ReadWrite, and the signed-in user needs AI Administrator. The reference does not document specific-user/group assignment. The API is in /beta, where Learn says use in production applications is not supported.
 
 The Package Management API in the first row requires a Microsoft Agent 365 licence and is in /beta, where Learn says use in production applications is not supported. Learn lists AI Admin and Global Admin as the roles that configure, manage and deploy agents, on the [Agent management roles and permissions](https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms) page.
 
@@ -214,7 +235,7 @@ The Package Management API in the first row requires a Microsoft Agent 365 licen
 - Which surfaces will show the upload option beyond the Web platform named in the record?
 
 <!-- rationale
-risk: Medium. Uploaded files would go to custom engine agents whose storage, retention and logging Microsoft has not documented for this feature, and no tenant-wide switch for upload is documented.
+risk: Medium. Uploaded files would go to custom engine agents whose storage, retention and logging Microsoft has not documented for this feature, and no switch specific to this upload capability is documented yet.
 cost: Variable. For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, the purchase guide documents metered consumption for agents that access shared tenant data, and Learn mentions possible hosting costs; pricing for file upload itself is not yet published.
 impact: Medium. Only people who use custom engine agents on the web would notice, but those users would start sending documents to agents that their tenant, or a vendor, built and hosts.
 -->
@@ -222,8 +243,7 @@ impact: Medium. Only people who use custom engine agents on the web would notice
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for the tenant-wide User access setting is not yet documented. | Found: These resources also support remediation and applyOnce. ... useraccess resource type ... valueObject | Write | AgentUserAccessValueObject | Configures who can access agents and plugins. | Fix: Replace controls[1].api with graph call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Add to the existing note: 'Preview automation can apply a tenant-wide all-users or no-users baseline: set mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All; the TCM service principal needs delegated CopilotPolicySettings.ReadWrite, and the signed-in user needs AI Administrator. This reference does not document specific-user/group assignment.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Keep the preview and non-production qualification. | Source: https://learn.microsoft.com/graph/utcm-agent-resources
-- [contradicted, blocker] controls[2].ui and api; summary; Why it matters; Governance controls; rationale: risk / absence: No tenant-wide switch is documented for file upload to custom engine agents in Copilot. | Found: Controls whether users can upload files to Copilot. ... `1` prevents uploads in both [Microsoft 365 Copilot and Microsoft 365 Copilot Chat]. | Fix: Narrow controls[2].governs to 'An upload-specific tenant-wide switch for the planned custom engine agent capability'. Replace its note and every broad no-switch statement with: 'Microsoft documents a general Copilot file-upload policy: microsoft.copilot.allowfileupload value "1" prevents uploads in both Microsoft 365 Copilot and Microsoft 365 Copilot Chat. A switch specific to this planned custom engine agent upload capability is not yet documented.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#allowfileupload-resource-type. Do not claim that administrators have only agent-availability controls. Keep both null sides only for the newly narrowed, feature-specific control. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources#allowfileupload-resource-type
+- [contradicted, blocker] Cost and licensing: Microsoft 365 Copilot billing exemption / licensing: For Microsoft 365 Copilot licence holders, agents generally incur no charge for classic answers, generative answers or Microsoft Graph tenant grounding when using their authenticated identity in Copilot Chat, Teams or SharePoint. | Found: This article covers licensing details for agents powered by the standard harness. ... This usage can appear as non-billed credits in consumption reports, and it isn't billed to a pay-as-you-go meter. | Fix: Replace the exemption sentence with: "For agents powered by the standard harness, the Copilot Studio licensing page states that Microsoft 365 Copilot licence holders are not charged for classic answers, generative answers or Microsoft Graph tenant grounding when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint." Keep the citation https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: Copilot Studio parenthetical path / admin-path: The maker File uploads setting is under Settings > Generative AI > File processing capabilities > File uploads. | Found: Go to the Settings page for your agent, and select Generative AI. Navigate to the File processing capabilities section. Turn on File uploads. | Fix: Replace the parenthetical route with '(open the standard-harness agent in Copilot Studio, then select Settings > Generative AI > File processing capabilities > File uploads)' to make explicit which agent the relative route starts inside. | Source: https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis
+- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can apply the documented User access baseline once. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call. Add to controls[1].note: "The request body sets mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne." These details are already verified in the prose and at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

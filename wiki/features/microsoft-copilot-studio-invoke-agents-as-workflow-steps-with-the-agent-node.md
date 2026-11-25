@@ -18,7 +18,7 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "Copilot Studio bills workflow and agent usage in Copilot Credits. Microsoft Learn states that a Microsoft 365 Copilot licence covers workflows run inside a standard harness agent by a licensed user, and that they are billed in all other cases. No agent-node rate is published at the time of writing (November 2026)."
+  notes: "Copilot Studio bills workflow and agent usage in Copilot Credits. A Microsoft 365 Copilot licence covers workflows run inside a standard harness agent by a licensed user; they are billed in all other cases. Calling an agent node incurs 0.13 Copilot Credits, plus usage-based charges for the work it performs."
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Workflows overview (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview"
+    kind: "learn"
+  - title: "Plan cost and credit consumption for workflows"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption"
     kind: "learn"
   - title: "Overview of usage-based billing"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
@@ -64,6 +67,9 @@ sources:
   - title: "Microsoft 365 Roadmap 566998 (the same feature, listed again)"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
     kind: "roadmap"
+  - title: "Microsoft 365 Copilot release notes"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","data-policies","connectors","knowledge-grounding","copilot-studio-require-human-approval-for-tool-calls"]
 controls:
@@ -104,7 +110,7 @@ controls:
     note: "No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
@@ -239,19 +245,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 97 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 35
+  - date: "2026-11-25"
+    note: "Corrected after verification: the cost text now gives the 0.13 Copilot Credits charge for calling an agent node plus usage-based charges, the capacity-block statement follows Learn, and build-time billing is stated precisely."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 102 statements confirmed"
+version: 36
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 35
+  version: 36
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 94
+  claims: 102
+  confirmed: 102
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "6b2ef67f4b9baf893d7572b02a132956"
+  contradicted: 0
+  attempts: 0
+  hash: "3638194bf73c28dc472e60f4fcdccc4c"
 ---
 
 ## What's changing
@@ -288,13 +298,13 @@ The cost effect arrives through usage, not a purchase. The node page says that u
 **Change & support**
 
 - Evaluations are only available for new agents created in workflows, and a maker can run up to 20 evaluations per agent node per day. Expect makers to meet the credit and evaluation limits when iterating.
-- Once an environment's prepaid Copilot Studio capacity is fully consumed, new workflow runs are blocked until capacity is available, and running workflows complete normally. Learn says environment capacity controls apply to all Copilot Studio workloads in the environment, so plan the allocation for the other workflows that share it.
+- When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available; exhausting its prepaid allocation alone does not stop runs if tenant-pool capacity or linked pay-as-you-go billing remains available. Running workflows complete normally. Learn says environment capacity controls apply to all Copilot Studio workloads in the environment, so plan the allocation for the other workflows that share it.
 
 ## Cost and licensing
 
-Copilot Studio bills the agent node's usage in Copilot Credits. Microsoft Learn says that for experiences powered by the Microsoft Copilot harness, credits are charged for LLM tokens, tools (including knowledge and MCPs) and the harness itself, and that billing starts when makers start building, so testing and evaluating consume credits.
+Copilot Studio bills the agent node's usage in Copilot Credits. Microsoft Learn says that for experiences powered by the Microsoft Copilot harness, credits are charged for LLM tokens, tools (including knowledge and MCPs) and the harness itself. Testing, evaluation and describe-to-design creation consume credits before publication; manually adding actions and configuring parameters on the workflow canvas do not.
 
-The Learn cost table for Copilot Studio states that workflows are covered by a Microsoft 365 Copilot licence when run inside a standard harness agent by a licensed user, and billed in all other cases. No rate specific to the agent node is published at the time of writing (November 2026).
+The Learn cost table for Copilot Studio states that workflows are covered by a Microsoft 365 Copilot licence when run inside a standard harness agent by a licensed user, and billed in all other cases. Calling an agent node incurs 0.13 Copilot Credits, plus usage-based charges for the work it performs; the total varies with the agent's work ([Plan cost and credit consumption for workflows](https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption)).
 
 Capacity is controlled per environment: allocate credits and clear **Draw from the available capacity in my tenant** to cap prepaid consumption at the environment's allocation (first control below). Learn says that setting does not prevent consumption through a linked pay-as-you-go billing plan, and that Azure budgets and alerts notify administrators but do not stop Copilot Studio consumption. If no overage source is enabled, the environment can consume only its allocated prepaid credits.
 
@@ -319,7 +329,7 @@ The existing-agent picker lists published agents; alternatively, makers can defi
 ### After rollout
 
 - Review the **Credit usage (last 30 days)** column on the Workflows page and the **Agent flow actions** line in the Power Platform admin center each month.
-- Compare each environment's consumption with its allocation, and check whether any workflow runs were blocked by exhausted capacity.
+- Compare each environment's consumption with its allocation, and check whether any workflow runs were blocked because no Copilot Credits were available.
 - Reconfirm environment allocations after a new environment is created, since Learn says the draw-from-tenant option is selected by default for eligible environments with no allocation configuration.
 
 ## Governance controls
@@ -345,23 +355,12 @@ Platform controls outside the table: data policies govern Power Platform connect
 ## Open questions
 
 - Which identity does an agent node use when its attached connector actions or SharePoint knowledge run: the running user, the connection owner or the workflow owner? Watch the agent node page on Microsoft Learn.
-- What does a workflow run with an agent node cost in Copilot Credits? Watch the billing pages for the Microsoft Copilot harness.
+- What will our workflow consume in total, including the 0.13-credit node call and variable agent usage? Watch the billing pages for the Microsoft Copilot harness.
 - Will Microsoft add a setting dedicated to the agent node? Watch Message center and the Workflows overview.
 - Which parts of the feature are still in preview, given the roadmap lists both General Availability and Preview as release phases? Watch the roadmap item.
 
 <!-- rationale
 risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
-cost: Variable. The node's usage is billed in Copilot Credits, drawn from an environment's allocation or a linked pay-as-you-go plan, and no rate specific to the agent node is published.
+cost: Variable. The node's usage is billed in Copilot Credits, drawn from an environment's allocation or a linked pay-as-you-go plan; calling the node incurs 0.13 Copilot Credits plus usage-based charges for the work it performs.
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive a workflow's output see decisions made by an agent instead of a fixed rule.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost / absence: No agent-node rate is published in November 2026. | Found: Classification, inline agents, published agents, and Copilot nodes consume using the same usage-based model as standalone Microsoft Copilot harness agents. Calling the AI node incurs the 0.13 charge, plus usage-based charges for the work it performs. | Fix: Replace the no-rate statements with 'Calling an agent node incurs 0.13 Copilot Credits, plus usage-based charges for the work it performs; the total varies with the agent's work.' Cite https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption. Narrow the cost question to 'What will our workflow consume in total, including the 0.13-credit node call and variable agent usage?' | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption
-- [contradicted, blocker] Risk assessment: Change & support / behaviour: Once the environment's prepaid capacity is fully consumed, new workflow runs are blocked until capacity is available. | Found: When enabled, an environment can draw from the tenant pool after it exhausts its allocation or when no allocation is set. ... If the environment is linked to a pay-as-you-go billing plan, usage can continue through the linked Azure subscription. | Fix: Replace the sentence with 'When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available; exhausting its prepaid allocation alone does not stop runs if tenant-pool capacity or linked pay-as-you-go billing remains available.' Retain 'Running workflows complete normally.' Sources: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview and https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: Billing can begin while makers build. | Found: The Microsoft Copilot harness charges credits from the moment you start building. Experiences such as creating an automated solution with natural language, previewing and testing an agent, and generating and creating agent evaluations all consume credits. | Fix: Replace 'billing starts when makers start building, so testing and evaluating consume credits' with 'Testing, evaluation and describe-to-design creation consume credits before publication; manually adding actions and configuring parameters on the workflow canvas do not.' Cite https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption, which explicitly distinguishes manual authoring from billed build-time activities. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
-- [supported, minor] sources: Microsoft 365 Roadmap 566998 / behaviour: Roadmap item 566998 lists the same agent-node capability again. | Found: **Invoke agents as workflow steps with the agent node** [Web] ... **Roadmap ID:**[562222] ... **Invoke agents as workflow steps with the agent node** [Web] ... **Roadmap ID:**[566998] | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026 to sources as 'Microsoft 365 Copilot release notes', kind learn, to support the duplicate-capability source label. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells readers to review the Workflows-page Credit usage (last 30 days) control, but the table has no row for that surface. | Found: Review the **Credit usage (last 30 days)** column on the Workflows page and the **Agent flow actions** line in the Power Platform admin center each month. ... Credit consumption by workflow and environment: Power Platform admin center; Power Platform API. | Fix: Replace that checklist bullet with 'Review the **Agent flow actions** line in the Power Platform admin center each month.' The Workflows column itself is documented in https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview; this correction removes only the checklist control without a table row.
 -->

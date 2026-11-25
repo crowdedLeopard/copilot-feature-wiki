@@ -132,7 +132,7 @@ controls:
     note: "Portal summary reporting only; underlying activity events can be exported with Export-ActivityExplorerData. Wait at least a day for policy data."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-20"
+updated: "2026-11-25"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-13"
@@ -159,19 +159,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-25"
+    note: "Corrected after verification: the generative answer cost now gives the 2 Copilot Credit base feature rate and the separate 10 Copilot Credits per 1,000 tokens premium meter for reasoning models."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 7
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 74
+  confirmed: 73
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "efd9ef84d6470257d0ac5aa7e7c4c9a9"
+  attempts: 2
+  hash: "2c7a0900ab6a762c06c8e2f632ef108d"
 ---
 
 ## What's changing
@@ -209,7 +213,7 @@ Plan on label design, not on a switch. Microsoft's Copilot guidance ties access 
 
 ## Cost and licensing
 
-Ordinary agent usage follows Copilot Credits billing, which measures the time and effort an agent needs to retrieve information, respond to prompts and use actions. A generative answer costs 2 Copilot Credits, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion. Any additional upload-specific charge is not yet published (Learn: Licensing for agents powered by the standard harness; Billing rates and management).
+Ordinary agent usage follows Copilot Credits billing, which measures the time and effort an agent needs to retrieve information, respond to prompts and use actions. The base feature rate for a generative answer is 2 Copilot Credits. With a reasoning model, the Text and generative AI tools (premium) meter adds 10 Copilot Credits per 1,000 billed tokens, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion. Any additional upload-specific charge is not yet published (Learn: Licensing for agents powered by the standard harness; Billing rates and management).
 
 Using agents in Copilot Chat, Microsoft Teams or SharePoint for classic answers, generative answers or Microsoft Graph tenant grounding is not charged when the agent runs with the authenticated identity of a user who holds a Microsoft 365 Copilot licence. The Copilot Studio file-input page lists no licence for file input; whether labelled-upload support adds a licence is not yet published.
 
@@ -275,9 +279,8 @@ impact: Medium. Makers of agents on the Microsoft 365 channel, their users and t
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: first paragraph / cost: A generative answer costs 2 Copilot Credits, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion. | Found: When an agent uses a reasoning-capable language model, Copilot Studio bills by using two billing meters: feature rate and text and generative AI tools (premium). ... Total cost = feature rate for generative answers + text and generative AI tools (premium) per 1000 tokens. | Fix: Replace 'A generative answer costs 2 Copilot Credits, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion.' with 'The base feature rate for a generative answer is 2 Copilot Credits. With a reasoning model, the Text and generative AI tools (premium) meter adds 10 Copilot Credits per 1,000 billed tokens, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [contradicted, blocker] Governance controls: paragraph following table / absence: Microsoft has not confirmed that any of the listed controls governs the planned labelled uploads. | Found: Use the following sections to identify the Microsoft Purview capabilities that are supported for AI interactions with agents built in Microsoft Copilot Studio | Fix: Replace 'Microsoft has not confirmed that any of them governs the planned labelled uploads' with 'Microsoft documents DSPM for AI (classic) reporting for AI interactions with agents built in Copilot Studio; upload-specific label enforcement and label-based DLP coverage are not yet documented.' The report row is within that documented agent-interaction reach, not an unconfirmed control. Keep the subsequent DLP limitations. Source: https://learn.microsoft.com/purview/ai-copilot-studio. | Source: https://learn.microsoft.com/purview/ai-copilot-studio
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: The Purview label-encryption path starts at Solutions > Information Protection > Sensitivity labels and reaches Access control through Edit label, the file scope and Control access. | Found: make sure the Files & other data assets option is selected ... on the Choose protection settings for the types of items you selected page ... select Control access. ... On the Access control page | Fix: Keep the existing path, whose entry steps are supported by the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels. Append ' > Configure access control settings > Assign permissions now > Assign permissions > users or groups > Choose permissions' to reach the rights selector documented at https://learn.microsoft.com/purview/encryption-sensitivity-labels. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The custom DLP policy path reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork location. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the existing path and add to controls[2].note: 'Add a rule with Content contains > Sensitivity labels and the Prevent Copilot and Cowork from processing content action.' These remaining settings are documented in the cited page's Supported conditions and actions table. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] front matter: licensing.notes; Cost and licensing: second paragraph; rationale: cost / licensing: Classic answers, generative answers and Microsoft Graph tenant grounding in Copilot Chat, Teams or SharePoint are not charged for authenticated Microsoft 365 Copilot-licensed users. | Found: If you have a Microsoft 365 Copilot license, using agents in Copilot Chat, Microsoft Teams, or SharePoint for classic answers, generative answers, or Microsoft Graph tenant grounding isn't charged when the agent runs with your authenticated identity. | Fix: Add to the licensing notes and the corresponding Cost and licensing paragraph: 'This inclusion is for employee-facing usage of standard-harness agents and is subject to fair usage limits; the billing-rates page states that it does not apply to agents powered by the Microsoft Copilot harness.' Both pages are already cited; the qualification is in footnote 1 at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+- [supported, minor] controls[2].ui; Governance controls / admin-path: The printed Purview route correctly reaches the Copilot DLP policy location, but stops before configuring the sensitivity-label rule. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the printed route to the location and append to controls[2].note: 'After selecting the location, add a rule with Content contains > Sensitivity labels and set the action to Prevent Copilot and Cowork from processing content.' This completes the documented route to the rule without inventing intervening wizard labels; see https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[3].ui; Governance controls / admin-path: The printed label-edit route correctly reaches Access control but stops before selecting the permission settings. | Found: Follow the general instructions to create or edit a sensitivity label and make sure the Files & other data assets option is selected for the label's scope | Fix: Extend controls[3].ui.path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. The existing note can identify Copy and extract content(EXTRACT). The opening route is documented at the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels and the remaining steps at https://learn.microsoft.com/purview/encryption-sensitivity-labels; selecting the users or groups is the scope choice. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 -->

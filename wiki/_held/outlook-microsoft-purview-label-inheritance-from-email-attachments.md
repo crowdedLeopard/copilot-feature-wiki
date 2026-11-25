@@ -80,18 +80,20 @@ changes:
     note: "New briefing for roadmap item 569022, Launched with a September CY2026 target; notes that the Learn version table and the Office for Mac release notes disagree on Mac support."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 52
+  claims: 61
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "e9ce3674ffc8fcfeffb11d290464813d"
 ---
 
@@ -191,11 +193,13 @@ cost: Low. The only cost the sources show is admin time to set the label policy.
 impact: Medium. Outlook for Mac users in tenants that publish labels may see an email's label change when they attach labelled files, and recipients see any encryption the label applies.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing; Open questions; rationale: cost / absence: Which licence level covers attachment-label inheritance is not yet published. | Found: Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG). | Fix: Replace the unpublished-licence-level sentence with: 'The service description requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG) for automatic or policy-based sensitivity labeling; it does not name attachment inheritance separately.' Remove the open question asking whether the E3 manual-labeling row covers this feature, and replace 'which licence level covers it is not stated' in the cost rationale with 'the service description gives an E5 or IPG requirement for automatic or policy-based labeling'. Retain the narrower statement that no separate attachment-inheritance licensing row is published. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / applicability: Inheritance makes email-label-based mail-flow, DLP and encryption controls operate on the inherited attachment label. | Found: Any mail-flow or DLP related controls that are tied to the email's label ... is applied based on the email's attachments. | Fix: Add https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance to sources to support the email-label-based mail-flow and DLP applicability statement. | Source: https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance
-- [supported, minor] Risk assessment: Data exposure / behaviour: An inherited label's encryption can prevent recipients not authorized by its permissions from opening the email. | Found: When a document, email, or meeting invite is encrypted, access to the content is restricted ... Can be decrypted only by users authorized by the label's encryption settings. | Fix: Add https://learn.microsoft.com/purview/encryption-sensitivity-labels to sources for the statement about recipients being unable to open encrypted email. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
-- [supported, minor] Governance guidance: Before rollout / admin-path: Information Protection > Sensitivity labels identifies the label list used to review labels and their scopes. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: Expand the parenthetical route to 'Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels'. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks readers to review label publication, label scopes, priority and encryption, but the table contains only inheritance and recommendation settings. | Found: Check which labels are published to Mac users and confirm each is scoped to both files and emails ... Review label priority order ... List the labels that apply encryption | Fix: The publication, label-scope, priority and encryption review steps have no corresponding control rows. Remove these checklist bullets from Before rollout; do not add unverified control rows.
+- [supported, minor] Why it matters / applicability: Email-label-based mail-flow, DLP and encryption controls can operate on the label inherited from attachments. | Found: Any mail-flow or DLP related controls that are tied to the email's label ... is applied based on the email's attachments. ... If the inherited label includes any advanced controls, such as label encryption, the email has these controls applied | Fix: Add https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance to sources for the existing mail-flow and DLP applicability statement. | Source: https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance
+- [supported, minor] Risk assessment: Data exposure / behaviour: Recipients not authorized by an inherited label's encryption permissions may be unable to open the email. | Found: When a document, email, or meeting invite is encrypted, access to the content is restricted ... Can be decrypted only by users authorized by the label's encryption settings. | Fix: Add https://learn.microsoft.com/purview/encryption-sensitivity-labels to sources for the existing statement about recipients being unable to open encrypted emails. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
+- [supported, minor] Governance guidance: Before rollout / admin-path: Information Protection > Sensitivity labels identifies the label list used to review label scopes. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: Replace the parenthetical route with 'Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels'. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks readers to review label publication, scopes, priority and encryption, but the controls table has no rows for those controls. | Found: Check which labels are published to Mac users and confirm each is scoped to both files and emails ... Review label priority order ... List the labels that apply encryption; table: only inheritance and recommendation. | Fix: The label-publication, label-scope, label-priority and encryption review steps have no corresponding control rows. Remove the first three Before rollout checklist bullets; do not add control rows.
 -->

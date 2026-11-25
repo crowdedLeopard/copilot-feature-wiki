@@ -4,7 +4,7 @@ slug: "microsoft-teams-external-bot-detection-and-activity-reports-in-admin-cent
 roadmapId: 582050
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Microsoft plans admin center reporting on external bots detected in, and admitted to, meetings in your tenant. It is a visibility change; the bot policy that exists today is unchanged by this item and nothing is required yet."
+summary: "Microsoft plans admin center reporting on external bots detected in, and admitted to, meetings in your tenant. It is a visibility change; no source says existing bot behaviour changes with this item, and nothing is required yet."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Security detections report in Microsoft Teams"
     url: "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/security-detections-report"
+    kind: "learn"
+  - title: "Use Microsoft Teams administrator roles to manage Teams"
+    url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
     kind: "learn"
   - title: "Set-CsTeamsMeetingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
@@ -68,19 +71,23 @@ changes:
     note: "New briefing: planned Teams admin center reporting on external bots, with the existing bot meeting policy as today's control and the report's gaps listed."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 72 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: removed the claim that the bot policy is unchanged, narrowed the Security detections wording, replaced the report-role gap with the documented Teams Administrator access, and removed the audit-log checklist bullet."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
+  claims: 66
   confirmed: 66
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 1
-  hash: "26f8607cc5dd4ee6e54dd1aa5c575f94"
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "68befef73ba7afa433a6a05f994c6042"
 ---
 
 ## What's changing
@@ -89,7 +96,7 @@ The roadmap item says admins should be able to track the detection and meeting a
 
 What Learn does document is the detection the report would draw on. [Manage external bots and their access to meetings hosted in your organization](https://learn.microsoft.com/microsoftteams/manage-external-bots) says Teams identifies external AI bots from signals collected during the meeting join process, and applies a meeting policy setting with three options: do not detect bots, when detected require approval before joining (the default), and block all detected bots. In the meeting lobby, registered bots appear under **Waiting** and bots detected from behavioural and infrastructure signals appear under **Suspected threats**.
 
-Two points to keep apart. The roadmap item mentions events, but that Learn page's applies-to banner marks Meetings with a tick and Events with a cross. And the Teams reporting reference lists no external bot report today; the one Teams admin center security report it lists, Security detections, covers impersonation, malicious URL and weaponizable file detections, not bots. Columns, date ranges, export options and per-user detail for the new report are not published.
+Two points to keep apart. The roadmap item mentions events, but that Learn page's applies-to banner marks Meetings with a tick and Events with a cross. And the [Teams reporting reference](https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference) lists no external bot report today; the Security detections report it lists includes detections such as impersonation, malicious URL and weaponizable file, and its [page](https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/security-detections-report) does not list external bot detections. Columns, date ranges, export options and per-user detail for the new report are not published.
 
 ## Why it matters
 
@@ -101,7 +108,7 @@ Microsoft has not stated what happens on arrival: whether the report appears for
 
 **Data exposure**
 - The report would be built on bot detections, so it inherits the limits Learn lists: some bots may not be detected and may continue to join under existing meeting access settings, and detection may wrongly identify a human as a bot. Treat the report as a record of what Teams detected, not of every bot present.
-- Microsoft has not said whether the report shows participant names or emails. Learn says Teams admin center reports are open to the Teams or Skype for Business administrator role and to Global reader (tenant-level aggregate and no per-user or team data); whether this report follows that rule is not stated.
+- Microsoft has not said whether the report shows participant names or emails. Learn says Teams admin center reports are open to the Teams or Skype for Business administrator role and to Global reader (tenant-level aggregate and no per-user or team data). Microsoft documents [Teams Administrator access to all reports](https://learn.microsoft.com/microsoftteams/using-admin-roles) in the Teams admin center; report-specific permission details are not yet published.
 
 **Security & identity**
 - The policy option **Do not detect bots** means, per Learn, that bots are not detected or marked in the lobby or in the meeting. Confirm with Microsoft whether a report can show anything for users on that option.
@@ -124,7 +131,7 @@ Indirect cost is admin time: reading the report, tuning the meeting policy and b
 
 The roadmap record lists clouds Worldwide (Standard Multi-Tenant) and GCC, and platform Web. It states no other clouds; that is a record fact and not a statement that the report is unavailable elsewhere.
 
-The existing bot policy is a Teams meeting policy applied at user or group level, and Learn says the setting applies to meetings hosted by users assigned the policy. Learn says Teams admin center reports are open to the Teams or Skype for Business administrator role and to Global reader with tenant-level aggregate data only; which roles can open this report is not stated. Rollout mechanics, prerequisites and the report's date range are not published.
+The existing bot policy is a Teams meeting policy applied at user or group level, and Learn says the setting applies to meetings hosted by users assigned the policy. Learn says Teams admin center reports are open to the Teams or Skype for Business administrator role and to Global reader with tenant-level aggregate data only, and documents Teams Administrator access to all reports in the Teams admin center; report-specific permission details are not yet published. Rollout mechanics, prerequisites and the report's date range are not published.
 
 ## Governance guidance
 
@@ -140,7 +147,6 @@ The existing bot policy is a Teams meeting policy applied at user or group level
 
 ### After rollout
 - Compare the report's detections with organisers' and help desk reports of undetected or wrongly identified participants.
-- Keep reviewing audit logs for unusual participant activity, as Learn advises, because detection coverage is not complete.
 - Revisit the policy setting per user group when the report shows heavy detection volume for a group.
 
 ## Governance controls
@@ -155,14 +161,14 @@ The existing bot policy is a Teams meeting policy applied at user or group level
 </tbody>
 </table>
 
-The meeting policy row is the only documented control over how detected bots are handled today. Learn's prose and reference name Set-CsTeamsMeetingPolicy for the setting, but the page's PowerShell examples print Set-CsTeamsEventsPolicy; the row follows the cmdlet that carries the ExternalBotAccessMode parameter in the cmdlet reference. The reference lists the parameter's default value as RequireApprovalWhenDetected. The values the bot management page shows are AllowBots, RequireApprovalWhenDetected and BlockDetectedBots.
+The meeting policy row documents the existing admin setting for how detected bots are handled. Learn's prose and reference name Set-CsTeamsMeetingPolicy for the setting, but the page's PowerShell examples print Set-CsTeamsEventsPolicy; the row follows the cmdlet that carries the ExternalBotAccessMode parameter in the cmdlet reference. The reference lists the parameter's default value as RequireApprovalWhenDetected. The values the bot management page shows are AllowBots, RequireApprovalWhenDetected and BlockDetectedBots.
 
 Microsoft Learn documents no admin center report and no API for external bot detections at the time of writing (November 2026), so that row has both sides empty.
 
 ## Open questions
 
 - What will the report contain: detection counts only, or participant, meeting and outcome detail, with export? Watch the Teams reporting reference and Message center.
-- Which admin roles can open the report, and will per-user detail be hidden from Global reader as with other Teams reports?
+- Beyond the Teams Administrator access to all Teams admin center reports that Learn documents, what report-specific permissions apply, and will per-user detail be hidden from Global reader as with other Teams reports?
 - Will the report cover events as well as meetings, given the roadmap wording and the Learn page's applies-to banner that marks Events with a cross?
 - Will detections appear for users on the Do not detect bots option, or only for policies that detect bots?
 - Is a licence beyond the Teams licence needed for the report, and will it be available in GCC on the same date as Worldwide?
@@ -173,16 +179,9 @@ cost: Low. The only cost the sources show is admin time to read the reports; Mic
 impact: Low. The roadmap describes a tool for admins; Microsoft has not said that meeting organisers or participants see anything new.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / default: The bot policy that exists today is unchanged by this item. | Found: Searched: 'Teams external bot detection reports existing bot policy unchanged meeting behavior 582050'. Read roadmap record, Manage external bots, and Teams reporting reference; none promises unchanged policy behaviour on report arrival. | Fix: Replace 'the bot policy that exists today is unchanged by this item' with 'no source says existing bot behaviour changes with this item'.
-- [contradicted, blocker] What's changing / behaviour: Security detections is the only Teams admin center security report listed in the reporting reference. | Found: User reported security submissions report | Yes | No | No | No Security detections report | Yes | No | No | No | Fix: Replace 'the one Teams admin center security report it lists, Security detections' with 'the Security detections report it lists'. | Source: https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference
-- [unsupported, major] What's changing / behaviour: The Security detections report does not cover bots. | Found: Searched: 'Teams external bot detection report "API" "PowerShell"'; external bot detection activity report queries. Read Security detections overview and detection-type table: they give examples but do not explicitly exclude every bot-related detection. | Fix: Replace 'not bots' with 'its page does not list external bot detections'.
-- [contradicted, blocker] Risk assessment: Data exposure; Scope; Open questions / absence: Which roles can open this report is not stated. | Found: Teams Administrator ... Access all reports in the Microsoft Teams admin center | Fix: Replace the broad role gap with: 'Microsoft documents Teams Administrator access to all reports in the Teams admin center; report-specific permission details are not yet published.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles. Narrow the corresponding Open question to report-specific permissions. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
-- [contradicted, blocker] Governance controls / applicability: The meeting policy row is the only documented control over how detected bots are handled today. | Found: Organizers (also presenters, depending on the meeting setting), need to explicitly admit these bots into the meeting. If you use the Require approval before joining option, configure meeting lobby settings so that only organizers and co-organizers can admit participants. | Fix: Replace 'The meeting policy row is the only documented control over how detected bots are handled today.' with 'The meeting policy row documents the existing admin setting for how detected bots are handled.' | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; Scope; Governance guidance: Before rollout; Open questions / role: The reporting reference permits Global reader access to tenant-level aggregates but not per-user or team data. | Found: Global reader (only tenant-level aggregate and no per-user or team data). | Fix: After the role rule, add: 'Microsoft's Entra role reference instead says Global Reader cannot read Analytics & reports in Teams admin center; confirm access before assigning report review.' Cite https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#global-reader. | Source: https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference
-- [supported, minor] controls[0].note; Governance controls / command: The bot management page lists AllowBots as the PowerShell value for not detecting bots. | Found: Do not detect bots | AllowBots | Bots aren't detected or marked in the lobby or in the meeting. | Fix: In controls[0].note and the matching table note, replace 'Other values: AllowBots, BlockDetectedBots.' with 'Other values: BlockDetectedBots; the bot management page names AllowBots for disabling detection, while the cmdlet reference names AllowAllBots.' Add the same discrepancy to the existing Governance controls explanation; cite the already-listed Set-CsTeamsMeetingPolicy reference. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist asks readers to review audit logs, but the controls table has no audit-log row. | Found: Keep reviewing audit logs for unusual participant activity, as Learn advises ... The controls table contains only the external bot meeting policy and the planned admin center report. | Fix: Remove the After rollout checklist bullet 'Keep reviewing audit logs for unusual participant activity, as Learn advises, because detection coverage is not complete.' The source's audit-monitoring advice remains in Why it matters; do not add a control row.
+- [supported, minor] controls[0].note; Governance controls / command: The bot management page gives AllowBots as the detection-disabled PowerShell value. | Found: Do not detect bots | AllowBots | Bots aren't detected or marked in the lobby or in the meeting. | Fix: Remove 'AllowBots' from the unqualified 'Other values' note, leaving 'Other value: BlockDetectedBots.' After the sentence listing the bot management page's values, add: 'The Set-CsTeamsMeetingPolicy reference instead lists AllowAllBots for disabling detection; Microsoft's pages disagree on this value.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps, whose ExternalBotAccessMode section says 'AllowAllBots: Don't detect bots'. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
+- [supported, minor] Risk assessment: Data exposure; Scope; Governance guidance: Before rollout / role: The Teams reporting reference permits the Teams or Skype for Business administrator role to access Teams admin center reports. | Found: To access the reports, you must be assigned one of the following roles: Teams or Skype for Business administrator. | Fix: After the first general reporting-role statement, add: 'Microsoft's Teams enterprise deployment overview instead says these reports require a Global Administrator or Teams administrator; its role wording differs from the reporting reference.' Cite https://learn.microsoft.com/microsoftteams/deploy-enterprise-overview#teams-analytics-&-reports, which states 'To view these reports, you must be a global administrator or Teams administrator.' Keep the separately documented Teams Administrator access and report-specific permission caveat. | Source: https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference
 -->

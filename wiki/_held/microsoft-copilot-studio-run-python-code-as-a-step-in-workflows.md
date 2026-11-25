@@ -78,18 +78,20 @@ changes:
     note: "Corrected after verification: the billing gap now says Microsoft states that natural-language building and LLM use under the Copilot harness consume credits; added the full allocation path and Agent flow actions route."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 61
+  claims: 68
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "bf934ce2bafc0eb79ad49f4e52ff13b3"
 ---
 
@@ -196,9 +198,12 @@ cost: Variable. Workflows consume Copilot Studio capacity (Copilot Credits) for 
 impact: Medium. Makers who build workflows notice it first; admins notice through credit consumption and any data-handling questions.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing: Limits / cost: Once an environment's prepaid Copilot Studio capacity is fully consumed, new workflow runs are blocked until capacity is available. | Found: Under Capacity overages, choose how an environment can continue using Copilot Credits after it exhausts its allocated capacity: | Fix: Replace the first Limits sentence with: 'When an environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available; running workflows complete normally. Exhausting allocated prepaid credits does not by itself block runs when an enabled tenant-pool or pay-as-you-go overage source can supply credits.' Retain the cited workflows overview and capacity-management sources. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Power Platform admin center route reaches environment credit allocation on the Copilot Credits textbox. | Found: Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Keep the allocation path. To complete the same row's overage guidance, add to its note: 'For overages, follow Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Capacity overages, then select Draw from the available capacity in my tenant or Bill to my pay-as-you-go billing plan.' Both options are documented at https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
-- [contradicted, minor] Governance guidance: At rollout and After rollout; controls / consistency: The checklist directs readers to monitoring surfaces that have no corresponding controls-table row. | Found: Checklist: review Agent flow actions in the Copilot credit consumption details grid; compare Credit usage (last 30 days). Table: only Copilot Credit allocation and overage source, and Switch to turn the Code node off. | Fix: The At rollout step to review Agent flow actions and the After rollout step to compare Credit usage (last 30 days) have no controls-table row. Remove those two checklist bullets; retain the supported monitoring information in Risk assessment. Do not add rows in this correction.
+- [supported, minor] Cost and licensing: Meter / cost: The usage-based billing page says the Microsoft Copilot harness charges credits from the moment building starts. | Found: Unlike the standard harness, which starts billing after publish, the Microsoft Copilot harness charges credits from the moment you start building. | Fix: Replace the final Meter sentence with: 'Workflows can consume credits before publication: natural-language creation, testing and evaluation are billed, but manual canvas authoring, adding actions and configuring parameters are not.' Cite https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption, whose workflow-specific guidance qualifies the cited overview. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Power Platform admin center path reaches the environment's Copilot Credits allocation control. | Found: Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Keep the allocation path. Add to controls[0].note and the rendered row: 'For overages, follow Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Capacity overages, then select Draw from the available capacity in my tenant or Bill to my pay-as-you-go billing plan.' Both options are documented at https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls table / consistency: The checklist tells readers to check two monitoring controls without corresponding controls-table rows. | Found: Checklist: review Agent flow actions in the Copilot credit consumption details grid; compare Credit usage (last 30 days). Table: Copilot Credit allocation and overage source; Switch to turn the Code node off. | Fix: Remove the At rollout bullet directing readers to review Agent flow actions and the After rollout bullet directing them to compare Credit usage (last 30 days); neither has a controls-table row. Retain the supported credit-usage monitoring information in Risk assessment. Do not add rows.
 -->

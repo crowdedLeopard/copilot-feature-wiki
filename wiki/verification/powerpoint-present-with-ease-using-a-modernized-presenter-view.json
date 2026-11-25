@@ -3,7 +3,7 @@
   "roadmapId": 577179,
   "title": "PowerPoint for Mac: modernised Presenter View with a single control bar",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-25",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,21 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 45,
-    "confirmed": 45,
+    "claims": 50,
+    "confirmed": 49,
     "unconfirmed": 0,
-    "contradicted": 0,
+    "contradicted": 1,
     "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 2
   },
-  "summary": "The briefing accurately reports the planned Mac redesign and November 2026 roadmap target. Searches confirmed the documented gaps around its default, feature-specific licensing and administrative switch; the statement about delaying other changes needs one additional Microsoft citation.",
+  "summary": "The briefing passes: the roadmap facts match, and the updated November 24 release notes still do not announce the Presenter View redesign. The default and feature-specific control gaps remain unfilled. Minor corrections are needed for an uncited update-deployment source and checklist advice about a control missing from the table.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Roadmap item 577179 describes a redesigned Presenter View in PowerPoint for Mac.",
+      "claim": "Microsoft plans a redesigned Presenter View in PowerPoint for Mac.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Presenter View in PowerPoint for Mac has a refreshed design",
@@ -37,9 +37,9 @@
     },
     {
       "n": 2,
-      "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "where": "What's changing; Change & support; Governance guidance; rationale: impact",
       "type": "record",
-      "claim": "Presenter tools, slide navigation and the timer are grouped in one control bar.",
+      "claim": "Presenter tools are grouped in one control bar.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "presenter tools, slide navigation, and the timer now sit together in one control bar",
@@ -48,20 +48,31 @@
     },
     {
       "n": 3,
-      "where": "What's changing; Risk assessment",
+      "where": "What's changing; Change & support; Governance guidance; rationale: impact",
       "type": "record",
-      "claim": "The redesign updates the icons.",
+      "claim": "Slide navigation is grouped in that control bar.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "with updated icons and slide thumbnails",
+      "quote": "presenter tools, slide navigation, and the timer now sit together in one control bar",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "What's changing; Risk assessment",
+      "where": "What's changing; Change & support; Governance guidance; rationale: impact",
       "type": "record",
-      "claim": "The redesign updates the slide thumbnails.",
+      "claim": "The timer is grouped in that control bar.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "presenter tools, slide navigation, and the timer now sit together in one control bar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Data exposure",
+      "type": "record",
+      "claim": "The design includes updated icons.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with updated icons and slide thumbnails",
@@ -69,10 +80,21 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "n": 6,
+      "where": "What's changing; Data exposure",
       "type": "record",
-      "claim": "Presenters can choose to collapse the thumbnail pane.",
+      "claim": "The design includes updated slide thumbnails.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with updated icons and slide thumbnails",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; What's changing; Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Presenters can collapse the thumbnail pane.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can also collapse the thumbnail pane and the Next Slide and Notes pane",
@@ -80,18 +102,51 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 8,
+      "where": "summary; What's changing; Change & support; Governance guidance",
       "type": "record",
-      "claim": "Presenters can choose to collapse the Next Slide and Notes pane.",
+      "claim": "Presenters can collapse the Next Slide and Notes pane.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You can also collapse the thumbnail pane and the Next Slide and Notes pane to focus on what matters most as you present.",
+      "quote": "You can also collapse the thumbnail pane and the Next Slide and Notes pane",
       "severity": null,
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Item 577179 lists Mac as its platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed for item 577179.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase for item 577179 is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "Item 577179 is In development.",
@@ -102,18 +157,18 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 13,
       "where": "front matter: targetDate; summary; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap target for item 577179 is November CY2026, not a confirmed release date.",
+      "claim": "November CY2026 is the roadmap target, not a confirmed release date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\", \"targetDate\": \"November CY2026\"",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"November CY2026\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 14,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The record supplies no preview date.",
@@ -124,79 +179,24 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The release phase listed for item 577179 is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed for item 577179.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "Item 577179 lists the Mac platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Mac\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-10-22T22:58:40.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-22T22:58:40\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
+      "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft lists the modernized Presenter View under another roadmap item, 577178.",
+      "claim": "Microsoft lists the modernised Presenter View change under roadmap ids 577179 and 577178.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Item 577178: \"title\": \"PowerPoint: Present with ease using a modernized Presenter View\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "Item 577178 lists the Desktop platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Item 577178: \"platforms\": [ \"Desktop\" ]",
+      "quote": "577179 and 577178: \"title\": \"PowerPoint: Present with ease using a modernized Presenter View\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Item 577178 lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The separate item 577178 lists Desktop as its platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Item 577178: \"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "quote": "\"id\": 577178; \"platforms\": [\"Desktop\"]",
       "severity": null,
       "fix": null
     },
@@ -204,10 +204,10 @@
       "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "Item 577178 lists the General Availability release phase.",
+      "claim": "Item 577178 also lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Item 577178: \"releasePhase\": [ \"General Availability\" ]",
+      "quote": "\"id\": 577178; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
@@ -215,10 +215,10 @@
       "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "Item 577178 is In development.",
+      "claim": "Item 577178 also has a General Availability release phase.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Item 577178: \"status\": \"In development\"",
+      "quote": "\"id\": 577178; \"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
@@ -226,21 +226,21 @@
       "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "Item 577178 has a November CY2026 target.",
+      "claim": "Item 577178 is also In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Item 577178: \"targetDate\": \"November CY2026\"",
+      "quote": "\"id\": 577178; \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn has no page describing this modernized Presenter View.",
+      "type": "record",
+      "claim": "Item 577178 also targets November CY2026.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Presenter View\" \"modernized\"; PowerPoint Mac modernized Presenter View control bar collapse thumbnail Notes default switch back November 2026. Opened Office for Mac overview and release notes; results described other features or existing Presenter View.",
+      "source": "roadmap record",
+      "quote": "\"id\": 577178; \"targetDate\": \"November CY2026\"",
       "severity": null,
       "fix": null
     },
@@ -248,49 +248,71 @@
       "n": 21,
       "where": "What's changing",
       "type": "absence",
-      "claim": "The Office for Mac release notes for 4, 10 and 17 November 2026 list no Presenter View change.",
+      "claim": "Microsoft Learn has no page describing this redesign, so the feature description rests on the roadmap.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Presenter in the fetched release notes for Office for Mac; no matches. Read November 4, 10 and 17, 2026 entries: PowerPoint resolved issues say \"Quality and performance improvements.\" No feature entry names Presenter View.",
+      "quote": "Searched: PowerPoint modernized Presenter View Mac documentation. Read Office for Mac overview, per-app preferences and release notes; searched release-note text for Presenter/presenter. No redesign documentation found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The default state of the redesigned Presenter View is not stated.",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The Office for Mac release notes for 4, 10 and 17 November 2026 list no Presenter View change for PowerPoint.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"modernized Presenter View\" \"Mac\" \"default\"; PowerPoint Mac modernized Presenter View control bar collapse thumbnail Notes default switch back November 2026. Read roadmap, Mac overview, release notes and per-app preferences; none states the redesign's default.",
+      "quote": "Searched: Presenter/presenter in the fetched Office for Mac release notes. Read November 4, 10 and 17 sections: PowerPoint lists quality and performance improvements and, on November 10, security updates. November 24 also lists only quality and performance improvements.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "What's changing; Open questions; rationale: impact",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether presenters can return to the previous layout.",
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated whether the redesigned Presenter View is on by default, so defaultState is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: PowerPoint Mac modernized Presenter View control bar collapse thumbnail Notes default switch back November 2026; \"modernized Presenter View\" \"Mac\" \"default\". Opened Mac overview, release notes and per-app preferences; none documents reverting this redesign.",
+      "quote": "Searched: PowerPoint Mac Presenter View default redesign; modernized Presenter View default disable preference policy API November 2026. Read roadmap, Office for Mac overview, release notes, per-app and suite-wide preferences. No redesign default stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "controls[0].ui; controls[0].api; summary; Governance controls",
+      "where": "What's changing; Open questions; rationale: impact",
       "type": "absence",
-      "claim": "No administrative UI switch, preference, policy or API is documented for the modernized Presenter View.",
+      "claim": "Microsoft has not stated whether presenters can return to the previous layout.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"PowerPoint\" \"Mac\" \"Presenter View\" \"preference\"; \"PowerPoint\" \"Mac\" \"Presenter View\" API policy default. Read per-app preferences and suite-wide preference/API search excerpts; no redesign switch.",
+      "quote": "Searched: PowerPoint Mac Presenter View default redesign; modernized Presenter View default disable preference policy API November 2026. Read roadmap, Office for Mac overview, release notes and preference pages. No switch-back option documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Cost and licensing",
+      "where": "controls[0].ui and api; summary; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI setting or API is documented for switching the modernised Presenter View in PowerPoint for Mac.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Presenter View Mac policy preference Graph API disable modernized. Read per-app and suite-wide preferences, release notes, and search excerpts for PowerPoint API requirements and Mac idMSOs. No control over the redesign found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model and notes",
+      "type": "licensing",
+      "claim": "The licensing model is included under an existing Microsoft 365 plan that includes Office.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/mac/overview",
+      "quote": "For those users with a Microsoft 365 plan, these updates can also include new or improved features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "behaviour",
       "claim": "Office for Mac is updated approximately once a month.",
       "status": "supported",
@@ -300,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 28,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "For users with a Microsoft 365 plan, Office for Mac updates can include new or improved features.",
+      "claim": "For Microsoft 365 plan users, those updates can include new or improved features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/mac/overview",
       "quote": "For those users with a Microsoft 365 plan, these updates can also include new or improved features.",
@@ -311,7 +333,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 29,
       "where": "Cost and licensing; Scope; Open questions",
       "type": "licensing",
       "claim": "Office LTSC for Mac 2024 does not receive new features.",
@@ -322,7 +344,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 30,
       "where": "Cost and licensing; Scope; Open questions",
       "type": "licensing",
       "claim": "Office LTSC for Mac 2021 does not receive new features.",
@@ -333,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 31,
       "where": "Cost and licensing",
       "type": "record",
-      "claim": "The roadmap item does not name a licence for this feature.",
+      "claim": "The roadmap record does not name a licence for this feature.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Presenter View in PowerPoint for Mac has a refreshed design: presenter tools, slide navigation, and the timer now sit together in one control bar, with updated icons and slide thumbnails.",
@@ -344,62 +366,62 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is included within the Microsoft 365 Office for Mac product entitlement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/mac/overview",
-      "quote": "If you want to get new Office features on an ongoing basis, you should consider upgrading to a Microsoft 365 plan that includes Office.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a separate licence or a feature-specific list of eligible licences for the redesign.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: PowerPoint Mac modernized Presenter View licensing Microsoft 365 subscription price meter; \"modernized Presenter View\" \"licence\" \"price\". Opened Office for Mac overview and release notes; read Mac App Store licensing excerpt; only product-level entitlements found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No feature-specific price has been published for this redesign.",
+      "claim": "No separate licence for this redesign is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: PowerPoint Mac modernized Presenter View licensing Microsoft 365 subscription price meter; \"modernized Presenter View\" \"licence\" \"price\". Read Office for Mac overview and release notes; neither gives a price for the redesign and no relevant pricing result appeared.",
+      "quote": "Searched: PowerPoint Mac modernized Presenter View licence price meter Microsoft 365 subscription. Read Office for Mac overview and release notes; read Mac App Store licensing search excerpt. General Office entitlement is published, but no separate redesign licence found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "No feature-specific usage meter has been published for this redesign.",
+      "claim": "No price specific to this redesign is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: PowerPoint Mac modernized Presenter View licensing Microsoft 365 subscription price meter. Read Office for Mac overview and release notes and licensing search excerpts; no Presenter View meter was documented.",
+      "quote": "Searched: PowerPoint Mac modernized Presenter View licence price meter Microsoft 365 subscription. Read Office for Mac overview and release notes, and licensing search excerpts. No price specific to the redesign found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Scope: Users and licences; Open questions",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not published which Office for Mac versions or build first receive this redesign.",
+      "claim": "No meter specific to this redesign is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: PowerPoint Mac modernized Presenter View control bar collapse thumbnail Notes default switch back November 2026; Presenter in the full fetched Mac release notes. Read overview and November 4, 10 and 17 release entries; no redesign build or version is named.",
+      "quote": "Searched: PowerPoint Mac modernized Presenter View licence price meter Microsoft 365 subscription. Read Office for Mac overview and release notes, and licensing search excerpts. No meter for the redesign found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
+      "where": "Scope: Users and licences",
+      "type": "absence",
+      "claim": "Microsoft has not published a feature-specific list of licences receiving this redesign.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Mac modernized Presenter View licence price meter Microsoft 365 subscription. Read overview and release notes. General Microsoft 365 plan entitlement is documented; no redesign-specific licence list found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Users and licences; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published which Office for Mac versions or builds receive the redesign.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint modernized Presenter View Mac documentation; Presenter/presenter in Office for Mac release notes. Read latest November sections through November 24 and the overview. No build or version tied to the redesign found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Scope: Prerequisites",
       "type": "availability",
       "claim": "The release notes require a minimum of macOS 14 (Sonoma) to receive Microsoft 365 and Office app updates.",
@@ -410,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Change & support; Scope: Rollout",
+      "n": 38,
+      "where": "Change & support; Scope: Rollout",
       "type": "behaviour",
-      "claim": "Microsoft often rolls features out over time, so users may not see a feature simultaneously.",
+      "claim": "Microsoft often rolls out Office for Mac features over a period of time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/officeupdates/release-notes-office-for-mac",
       "quote": "We often roll out features over a period of time. This allows us to ensure that things are working smoothly before releasing the feature to a wider audience.",
@@ -421,19 +443,52 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Scope: Rollout",
-      "type": "absence",
-      "claim": "A rollout mechanism specific to the redesigned Presenter View is not stated.",
+      "n": 39,
+      "where": "Change & support",
+      "type": "behaviour",
+      "claim": "The general staged-rollout guidance supports the warning that two updated Macs may not show a new feature at the same moment.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: PowerPoint Mac modernized Presenter View control bar collapse thumbnail Notes default switch back November 2026; \"Presenter View\" \"modernized\". Read roadmap, Mac overview, release notes and Deploy updates for Office for Mac; no redesign-specific rollout mechanism.",
+      "source": "https://learn.microsoft.com/officeupdates/release-notes-office-for-mac",
+      "quote": "We often roll out features over a period of time. This allows us to ensure that things are working smoothly before releasing the feature to a wider audience. If you don’t see something described below, you get it eventually.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[0].note; Governance guidance: Before rollout; Governance controls",
+      "n": 40,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "A rollout mechanism specific to the Presenter View redesign is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Mac modernized Presenter View default disable preference policy API November 2026; modernized Presenter View Mac documentation. Read roadmap, overview and release notes through November 24. No feature-specific rollout mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Office for Mac per-app preference page lists one PowerPoint key, CustomerLoggingEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/mac/set-preference-per-app",
+      "quote": "CustomerLoggingEnabled; Domain: com.microsoft.word, com.microsoft.excel, com.microsoft.powerpoint, com.microsoft.onenote.mac, com.microsoft.outlook; Key: CustomerLoggingEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "CustomerLoggingEnabled enables verbose support logging rather than governing Presenter View.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/mac/set-preference-per-app",
+      "quote": "This key enables verbose mode logging for Customer Support escalations. It also places the Diagnostic logs in the device’s Documents folder for easier access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Governance guidance; Governance controls",
       "type": "behaviour",
       "claim": "Office for Mac updates are available through Microsoft AutoUpdate.",
       "status": "supported",
@@ -443,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[0].note; Governance guidance: Before rollout; Governance controls",
+      "n": 44,
+      "where": "controls[0].note; Governance guidance; Governance controls",
       "type": "behaviour",
-      "claim": "Administrators can download and deploy Office for Mac update packages using existing deployment tools.",
+      "claim": "Admins can deploy Office for Mac update packages using their existing software deployment tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/officeupdates/release-notes-office-for-mac",
       "quote": "If you're an admin and want to update the computers in your organization with your existing software deployment tools, you can download and deploy the update packages for each application.",
@@ -454,43 +509,21 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 45,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The per-app preference page lists one PowerPoint key, CustomerLoggingEnabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/mac/set-preference-per-app",
-      "quote": "### CustomerLoggingEnabled\nEnable verbose logging for Customer Support escalations.\n| **Domain** | `com.microsoft.word`, `com.microsoft.excel`, `com.microsoft.powerpoint`, `com.microsoft.onenote.mac`, `com.microsoft.outlook` |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "CustomerLoggingEnabled governs verbose logging for support, not Presenter View.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/mac/set-preference-per-app",
-      "quote": "This key enables verbose mode logging for Customer Support escalations. It also places the Diagnostic logs in the device’s Documents folder for easier access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Delaying an Office for Mac app update also delays the other changes in that update.",
+      "claim": "Delaying an Office for Mac app update also delays the other changes it carries.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/mac/deploy-updates-for-office-for-mac",
       "quote": "Individual security updates or other updates can't be downloaded and installed. Instead, Microsoft provides a new app bundle of an app, such as Word, that includes all the updates.",
       "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-365-apps/mac/deploy-updates-for-office-for-mac to sources to support the sentence 'Delaying an update also delays the other changes it carries.'"
+      "fix": "Add https://learn.microsoft.com/microsoft-365-apps/mac/deploy-updates-for-office-for-mac to sources, titled 'Deploy updates for Office for Mac', to support the sentence 'Delaying an update also delays the other changes it carries.'"
     },
     {
-      "n": 43,
+      "n": 46,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The roadmap description names no new data source, data access or sharing path.",
+      "claim": "The roadmap describes a layout change and names no new data source or sharing path.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Presenter View in PowerPoint for Mac has a refreshed design: presenter tools, slide navigation, and the timer now sit together in one control bar, with updated icons and slide thumbnails.",
@@ -498,7 +531,7 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 47,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "The roadmap describes no new sign-in, permission or external connection.",
@@ -509,19 +542,41 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 48,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "record",
-      "claim": "The roadmap describes presenter-operated controls rather than new automated or agent behaviour.",
+      "claim": "The roadmap describes no automated or agent behaviour.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can also collapse the thumbnail pane and the Next Slide and Notes pane to focus on what matters most as you present.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes tools operated by presenters during presentations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you present with Presenter View, the controls you need should be easy to find at a glance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to take stock of Office update delivery, but that control has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm how your Macs receive Office updates (Microsoft AutoUpdate or your own deployment tools). Table's sole control: Switch for the modernised Presenter View in PowerPoint for Mac.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet beginning 'Confirm how your Macs receive Office updates': it asks readers to take stock of update delivery, which has no controls-table row. Do not add a row as part of this correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-20T13:42:29.020Z",
+    "at": "2026-11-25T04:35:03.335Z",
     "summary": {
       "links": 4,
       "unreachable": 0,
@@ -556,5 +611,12 @@
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -135,15 +135,17 @@ changes:
     note: "Corrected after verification: AI Hub path now starts at Settings, the credit-limit question is replaced by what AI Hub documents, and the capacity and quiet-times calls, the AI prompts path and one checklist bullet are narrowed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 88
+  claims: 91
+  confirmed: 90
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -246,8 +248,11 @@ cost: Variable. The Learn page states that use consumes Copilot credits, billed 
 impact: Medium. Marketers building journeys and the customers receiving their emails notice it; Microsoft's preview pages make enablement an admin step, so other users are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout, first bullet; Governance controls / consistency: The checklist's instruction to review consumption reports has a corresponding monitoring control row. | Found: Review credit consumption in the Copilot Studio licensing reports and the environment's capacity status. ... Table rows govern AI agent availability, individual enablement, credit capacity and overage, cross-region movement, and quiet times; none governs reporting. | Fix: Remove the first After rollout checklist bullet, 'Review credit consumption in the Copilot Studio licensing reports and the environment's capacity status.' It names a monitoring control that has no corresponding row; do not add a control row as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls, first row / admin-path: Use AI agents is reached through Power Platform admin center > Copilot > Settings > Dynamics 365 Customer Insights – Journeys > AI agents > Use AI agents. | Found: Go to Power Platform Admin Center > Copilot > Settings. ... Scroll to the Dynamics 365 Customer Insights – Journeys section. ... Select AI agents. ... Set Use AI agents to On for the selected environment or environment group. | Fix: Include the target selection: 'Copilot > Settings > Dynamics 365 Customer Insights – Journeys > AI agents > environment or environment group > Use AI agents', in Power Platform admin center. The source is https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub. | Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub
+- [supported, minor] controls[2].ui; Governance controls, third row / admin-path: Copilot credit allocation and overage settings are reached through Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits. | Found: Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Complete the allocation path as 'Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Copilot Credits'. The same panel's 'Capacity overages' contains 'Draw from the available capacity in my tenant' and 'Bill to my pay-as-you-go billing plan'; name those controls in the note. Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity
+- [supported, minor] controls[4].ui; Governance controls, fifth row / admin-path: Quiet times configuration is reached in Journeys through Settings > Customer engagement > Quiet times. | Found: To set up quiet times, go to Settings > Customer engagement > Quiet times. If no quiet time setting exists, select the New button in the ribbon ... Once you select a quiet time setting ... Select Edit next to "No quiet time" for that channel. | Fix: Complete the existing-setting path as 'Settings > Customer engagement > Quiet times > quiet time setting > Edit', and note that Edit is next to the channel's quiet hours and that New is used when no setting exists. Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times. | Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times
+- [contradicted, minor] Governance guidance: After rollout, first bullet; Governance controls / consistency: The governance checklist and controls table cover the same controls, including consumption reporting. | Found: Review credit consumption in the Copilot Studio licensing reports and the environment's capacity status. ... Table controls: AI agent availability; individual enablement; credit capacity and overage; cross-region data movement; quiet times. | Fix: Remove the first After rollout bullet, 'Review credit consumption in the Copilot Studio licensing reports and the environment's capacity status.' It directs readers to a monitoring control absent from the table; do not add a control row as part of this correction.
 -->

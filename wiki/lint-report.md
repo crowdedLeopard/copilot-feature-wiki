@@ -1,33 +1,37 @@
 # Lint report
 
-Generated 2026-11-25T04:00:55.526Z. 809 briefings, 37 concepts, 0 quarantined.
-Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 23 held and not published.
+Generated 2026-11-25T05:18:25.311Z. 814 briefings, 36 concepts, 0 quarantined.
+Independent check: 264 verified, 586 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 27 held and not published.
 
 ## Errors (0)
 
-## Warnings (30)
+## Warnings (34)
 - _held/agent-365-control-plane-for-agents.md: held (parked since 2026-11-16, 6 attempts): 4 blocking findings (claims 30, 71, 73, 75)
+- _held/autonomous-agents.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 48)
 - _held/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: held (parked since 2026-11-16, 6 attempts): 5 blocking findings (claims 28, 48, 64, 66, 73)
 - _held/copilot-studio-mcp-tools-in-agents.md: held (parked since 2026-11-16, 6 attempts): 6 blocking findings (claims 20, 50, 51, 52, 68, 72)
-- _held/copilot-studio-purview-information-protection-labelled-files.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 61)
+- _held/copilot-studio-purview-information-protection-labelled-files.md: held (failed since 2026-11-25, 2 attempts): 1 blocking finding (claim 67)
 - _held/dataverse-agent-users-entra-agent-identity.md: held (parked since 2026-11-16, 6 attempts): 2 blocking findings (claims 33, 49)
-- _held/dynamics-365-finance-and-operations-cross-app-migrate-finance-and-operations-environments.md: held (failed since 2026-11-25, 2 attempts): 1 blocking finding (claim 64)
-- _held/dynamics-365-finance-business-performance-mcp-for-erp-analytics.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 49)
 - _held/facilitator.md: held (parked since 2026-11-22, 4 attempts): 1 blocking finding (claim 14)
 - _held/m365-admin-center-cross-tenant-orchestrated-migration.md: held (parked since 2026-11-16, 6 attempts): 4 blocking findings (claims 25, 53, 59, 70)
-- _held/m365-copilot-agent-365-business-analytics-experience.md: held (failed since 2026-11-25, 2 attempts): 1 blocking finding (claim 92)
-- _held/m365-copilot-agent-mode-in-word-for-enhanced-document-editing.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 28)
-- _held/m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in.md: held (failed since 2026-11-25, 2 attempts): 2 blocking findings (claims 66, 67)
-- _held/m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint-555877.md: held (failed since 2026-11-25, 1 attempt): 3 blocking findings (claims 19, 33, 34)
-- _held/m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint.md: held (failed since 2026-11-25, 1 attempt): 3 blocking findings (claims 30, 36, 37)
+- _held/m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in.md: held (failed since 2026-11-25, 3 attempts): 1 blocking finding (claim 68)
+- _held/m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint-555875.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 34)
+- _held/m365-copilot-create-presentations-with-work-iq-using-agent-mode-in-copilot-in-powerpoint.md: held (failed since 2026-11-25, 1 attempt): 4 blocking findings (claims 27, 41, 42, 44)
+- _held/m365-copilot-create-presentations-with-work-iq-using-agent-mode-in-powerpoint.md: held (failed since 2026-11-25, 1 attempt): 3 blocking findings (claims 21, 22, 44)
 - _held/microsoft-copilot-studio-conversational-configuration-of-connectors-in-copilot-studio.md: held (parked since 2026-11-18, 5 attempts): 2 blocking findings (claims 28, 70)
-- _held/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: held (failed since 2026-11-25, 1 attempt): 2 blocking findings (claims 31, 74)
-- _held/microsoft-intune-additional-granular-rbac-controls-to-manage-antivirus-firewall-bitlocker.md: held (failed since 2026-11-25, 1 attempt): 4 blocking findings (claims 29, 37, 42, 49)
-- _held/microsoft-power-platform-governance-and-administration-unify-finance-and-operations-system.md: held (failed since 2026-11-25, 1 attempt): 2 blocking findings (claims 29, 54)
-- _held/microsoft-purview-compliance-portal-unique-counting-of-edm-matches.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 17)
+- _held/microsoft-copilot-studio-generate-documents-from-the-agent-node-in-workflows.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 70)
+- _held/microsoft-copilot-studio-run-python-code-as-a-step-in-workflows.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 50)
+- _held/microsoft-copilot-studio-service-principal-owner-for-workflows.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 31)
+- _held/microsoft-copilot-studio-share-workflows-with-co-owners-for-collaborative-editing.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 37)
+- _held/microsoft-intune-new-enrollment-policies-experience-for-ios-ipados-ade.md: held (failed since 2026-11-25, 1 attempt): 5 blocking findings (claims 26, 34, 52, 53, 66)
+- _held/microsoft-purview-compliance-portal-insider-risk-management-discovery-of-sensitive-data-sh.md: held (failed since 2026-11-25, 1 attempt): 2 blocking findings (claims 40, 62)
+- _held/microsoft-purview-data-loss-prevention-collection-and-dlp-policies-for-intune-policy-manag.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 33)
+- _held/microsoft-purview-endpoint-data-loss-prevention-extend-purview-data-security-to-the-networ.md: held (failed since 2026-11-25, 1 attempt): 3 blocking findings (claims 14, 66, 74)
 - _held/microsoft-purview-integration-with-entra-gsa-internet-access-to-enable-sensitive-file-filt.md: held (parked since 2026-11-18, 5 attempts): 2 blocking findings (claims 68, 73)
-- _held/microsoft-teams-external-bot-detection-and-activity-reports-in-admin-center.md: held (failed since 2026-11-25, 1 attempt): 4 blocking findings (claims 14, 26, 39, 70)
+- _held/microsoft-teams-show-your-shared-content-on-both-room-displays.md: held (failed since 2026-11-25, 1 attempt): 5 blocking findings (claims 13, 34, 40, 44, 48)
+- _held/outlook-microsoft-purview-label-inheritance-from-email-attachments.md: held (failed since 2026-11-25, 1 attempt): 1 blocking finding (claim 45)
 - _held/power-apps-manage-model-driven-app-ai-features-from-consolidated-settings.md: held (parked since 2026-11-18, 6 attempts): 8 blocking findings (claims 24, 26, 27, 28, 29, 80, 81, 82)
+- _held/power-automate-cloud-flows-view-property-value-expanded-inline-in-new-cloud-flow-designer.md: held (failed since 2026-11-25, 1 attempt): 2 blocking findings (claims 22, 23)
 - _held/retention.md: held (parked since 2026-11-18, 4 attempts): 4 blocking findings (claims 71, 73, 77, 115)
 - features/m365-copilot-copilot-in-sharepoint.md: status drift. Briefing says cancelled, roadmap says launched (queued for refresh)
 - concepts/app-management.md: body link to missing concepts/facilitator
@@ -37,7 +41,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - concepts/meeting-transcripts.md: body link to missing concepts/retention
 - concepts/sensitivity-labels.md: body link to missing concepts/retention
 
-## Info (791)
+## Info (778)
 - features/access-rounded-corners-on-access-form-controls.md: control "Administrator switch for rounded corners on Access form controls" has neither an admin UI nor an API documented
 - features/access-rounded-corners-on-access-form-controls.md: low confidence, roadmap text only
 - features/copilot-studio-require-human-approval-for-tool-calls.md: control "The per-tool, per-agent approval toggle described on the roadmap" has neither an admin UI nor an API documented
@@ -46,15 +50,13 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/dynamics-365-contact-center-administrator-experiences-use-service-operations-agent-to-acce.md: control "Tenant or environment switch to turn Service Operations Agent off" has neither an admin UI nor an API documented
 - features/dynamics-365-contact-center-copilot-and-ai-innovation-use-agentic-simulations-to-evaluate.md: control "Tenant or environment switch to turn agentic simulations off" has neither an admin UI nor an API documented
 - features/dynamics-365-customer-service-manage-intraday-operations-with-ai-agent.md: control "Whether the Intraday Agent is available and which of its actions are allowed" has neither an admin UI nor an API documented
-- features/dynamics-365-finance-and-operations-cross-app-boost-productivity-with-copilot-boost-agent.md: related "dynamics-365-finance-business-performance-mcp-for-erp-analytics" is held and not published (the link is dropped from the page until it returns)
-- features/dynamics-365-finance-core-financials-enable-import-of-customer-payment-remittance-advice-f.md: related "dynamics-365-finance-business-performance-mcp-for-erp-analytics" is held and not published (the link is dropped from the page until it returns)
+- features/dynamics-365-finance-business-performance-mcp-for-erp-analytics.md: control "Dedicated on/off setting for the ERP Analytics MCP server" has neither an admin UI nor an API documented
 - features/dynamics-365-finance-core-financials-enable-import-of-customer-payment-remittance-advice-f.md: control "Enabling or disabling remittance advice import and AI processing" has neither an admin UI nor an API documented
 - features/dynamics-365-finance-core-financials-enable-import-of-customer-payment-remittance-advice-f.md: low confidence, roadmap text only
 - features/dynamics-365-sales-an-agentic-home-for-all-sales-ai.md: control "Whether sellers land in Sales agent instead of the dashboard" has neither an admin UI nor an API documented
 - features/dynamics-365-sales-seller-experiences-clone-and-share-sales-development-agent-configuratio.md: control "Whether managers can export or import a Sales Development agent configuration" has neither an admin UI nor an API documented
 - features/endpoint-data-loss-prevention-endpoint-dlp-now-supports-a-pre-curated-list-of-file-extensi.md: control "Tenant switch to keep free-form file extension entry in the File extension condition" has neither an admin UI nor an API documented
 - features/exchange-enable-high-volume-email-hve-for-external-recipients.md: control "Whether an HVE account may send to external recipients" has neither an admin UI nor an API documented
-- features/m365-admin-center-agents-usage-report.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
 - features/m365-admin-center-copilot-billing-and-usage-high-usage-users.md: control "Tenant switch for the high-usage users page" has neither an admin UI nor an API documented
 - features/m365-admin-center-copilot-settings-optimize-view.md: control "Whether the Optimize view is shown or can be switched off" has neither an admin UI nor an API documented
 - features/m365-admin-center-google-groups-to-m365-modern-groups-migration-service.md: control "Availability of the Google Groups migration service" has neither an admin UI nor an API documented
@@ -64,6 +66,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/m365-admin-center-unified-google-workspace-migration.md: control "Tenant switch to hide or turn off the Google Workspace migration page" has neither an admin UI nor an API documented
 - features/m365-app-inventory-update-repair.md: control "Tenant-wide switch to turn Update Repair off or restrict who can start Repair" has neither an admin UI nor an API documented
 - features/m365-copilot-add-agents-and-skills-from-the-plus-menu.md: control "Separate switch for the Agents and Skills plus-menu entry" has neither an admin UI nor an API documented
+- features/m365-copilot-agent-mode-in-word-for-enhanced-document-editing.md: control "Switch for Agent Mode in Word" has neither an admin UI nor an API documented
 - features/m365-copilot-ai-and-copilot-upskilling-nudges-in-microsoft-teams-by-learning-agent.md: control "A separate switch for Learning Agent nudges in Teams" has neither an admin UI nor an API documented
 - features/m365-copilot-app-blocks.md: control "Switch for App Blocks alone" has neither an admin UI nor an API documented
 - features/m365-copilot-ask-copilot-about-highlighted-response-content.md: control "Switch for highlighted-response questions alone" has neither an admin UI nor an API documented
@@ -94,7 +97,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/m365-copilot-federated-copilot-connectors-in-m365-copilot.md: control "Tenant-wide switch for all write, update and delete tools" has neither an admin UI nor an API documented
 - features/m365-copilot-initiate-copilot-chat-by-sharing-files-to-the-m365-copilot-app-on-iphone-and.md: related "m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in" is held and not published (the link is dropped from the page until it returns)
 - features/m365-copilot-initiate-copilot-chat-by-sharing-files-to-the-m365-copilot-app-on-iphone-and.md: control "A switch for sharing files into Copilot Chat from other iOS apps" has neither an admin UI nor an API documented
-- features/m365-copilot-insights-copilot-analytics-cowork-adoption-and-impact.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
 - features/m365-copilot-jpg-and-png-references-in-copilot-notebooks.md: control "Switch for JPG and PNG references in Copilot Notebooks" has neither an admin UI nor an API documented
 - features/m365-copilot-local-file-support-for-agent-mode-in-excel.md: control "Switch for local file support in Agent Mode in Excel" has neither an admin UI nor an API documented
 - features/m365-copilot-local-inferencing.md: control "Tenant choice of local inferencing for Copilot" has neither an admin UI nor an API documented
@@ -126,7 +128,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/m365-paygo-consumption-based-meter-for-your-extra-sharepoint-storage-needs.md: control "Hard spending cap that stops SharePoint storage billing" has neither an admin UI nor an API documented
 - features/m365-teams-channel-backup.md: control "Teams channel workload in backup policies" has neither an admin UI nor an API documented
 - features/m365-the-next-generation-of-file-and-folder-sharing.md: control "Tenant-wide default audience of the hero link" has neither an admin UI nor an API documented
-- features/microsoft-agent-365-registry-sync.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-agent-365-registry-sync.md: control "Tenant-wide switch to turn registry sync off" has neither an admin UI nor an API documented
 - features/microsoft-copilot-microsoft-m365-copilot-chat-can-now-better-match-search-results-from-tex.md: control "Whether this feature matches text inside images" has neither an admin UI nor an API documented
 - features/microsoft-copilot-microsoft-m365-copilot-chat-can-now-better-match-search-results-from-tex.md: low confidence, roadmap text only
@@ -135,21 +136,14 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: control "Tenant-wide switch that turns maker-to-maker agent sharing off" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-discover-and-use-shared-plugins-in-copilot-studio.md: control "Copilot Studio switch for the shared plugin registry connection" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-enable-express-mode-for-flows-invoked-by-an-agent-or-app.md: control "Tenant or environment switch for express mode" has neither an admin UI nor an API documented
-- features/microsoft-copilot-studio-generate-documents-from-the-agent-node-in-workflows.md: related "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-copilot-studio-generate-documents-from-the-agent-node-in-workflows.md: control "A switch to turn off file output from the Agent node" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-introducing-an-app-and-intent-first-agent-creation-experience.md: low confidence, roadmap text only
+- features/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: control "Switch dedicated to turning the agent node off" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents.md: control "Shared memory of an agent with an account" has neither an admin UI nor an API documented
-- features/microsoft-copilot-studio-run-python-code-as-a-step-in-workflows.md: related "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-copilot-studio-run-python-code-as-a-step-in-workflows.md: control "Switch to turn the Code node off for an environment or tenant" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-self-learning-for-copilot-studio-agents.md: control "Whether self-learning recommendations are available to makers" has neither an admin UI nor an API documented
-- features/microsoft-copilot-studio-service-principal-owner-for-workflows.md: related "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-copilot-studio-service-principal-owner-for-workflows.md: control "Whether a service principal can be set as a workflow owner" has neither an admin UI nor an API documented
-- features/microsoft-copilot-studio-share-workflows-with-co-owners-for-collaborative-editing.md: related "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-copilot-studio-streamlining-experiences-from-copilot-studio-agents-in-m365-copil.md: control "Tenant switch for the new agent response experience" has neither an admin UI nor an API documented
 - features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: control "Tenant-wide default for the feature" has neither an admin UI nor an API documented
 - features/microsoft-dataverse-build-your-low-code-hyperscale-backend-on-dataverse-build-your-agentic.md: control "A switch that allows or blocks the Dataverse SDK for Python itself" has neither an admin UI nor an API documented
 - features/microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d.md: control "Who can use the Dataverse plugin from a coding agent" has neither an admin UI nor an API documented
-- features/microsoft-dataverse-finance-and-operations-cross-application-integration-monitor-data-mana.md: related "dynamics-365-finance-and-operations-cross-app-migrate-finance-and-operations-environments" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-dataverse-improved-enterprise-experiences-in-power-platform-improve-bulk-delete.md: last checked 7 days ago (re-check due)
 - features/microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management.md: control "Controls specific to the management MCP server" has neither an admin UI nor an API documented
 - features/microsoft-defender-for-identity-unified-identity-timeline-on-the-identity-page.md: control "Tenant-wide switch to turn the unified identity timeline on or off" has neither an admin UI nor an API documented
@@ -185,7 +179,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-purview-data-lifecycle-management-retention-capabilities-based-on-files-last-acc.md: control "Last-accessed start option for retention policies and labels" has neither an admin UI nor an API documented
 - features/microsoft-purview-data-loss-prevention-adaptive-scopes-for-dlp-for-sharepoint.md: control "Which SharePoint sites a DLP policy covers, by adaptive scope" has neither an admin UI nor an API documented
 - features/microsoft-purview-data-loss-prevention-ai-powered-data-loss-prevention-policy-optimizer.md: low confidence, roadmap text only
-- features/microsoft-purview-data-loss-prevention-collection-and-dlp-policies-for-intune-policy-manag.md: control "Purview DLP policy for Intune MAM-protected mobile apps" has neither an admin UI nor an API documented
+- features/microsoft-purview-data-loss-prevention-apply-purview-network-data-security-dlp-policies-to.md: related "microsoft-purview-endpoint-data-loss-prevention-extend-purview-data-security-to-the-networ" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-purview-data-loss-prevention-dlp-policy-change-insights-with-security-copilot.md: control "Separate on/off switch for DLP policy change explanations" has neither an admin UI nor an API documented
 - features/microsoft-purview-data-loss-prevention-dlp-policy-change-insights-with-security-copilot.md: low confidence, roadmap text only
 - features/microsoft-purview-data-loss-prevention-extend-purview-data-security-to-the-network-layer-v.md: last checked 7 days ago (re-check due)
@@ -257,6 +251,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-teams-explicit-consent-for-recording-and-transcription-in-one-to-one-pstn-calls.md: control "A PSTN-only or keypad-only consent switch" has neither an admin UI nor an API documented
 - features/microsoft-teams-express-face-enrollment.md: last checked 7 days ago (re-check due)
 - features/microsoft-teams-express-face-enrollment.md: control "A dedicated switch for express face enrollment" has neither an admin UI nor an API documented
+- features/microsoft-teams-external-bot-detection-and-activity-reports-in-admin-center.md: control "Admin center report of external bot detection and meeting access activity" has neither an admin UI nor an API documented
 - features/microsoft-teams-external-presenter-support-for-event-group-chat.md: control "Switch for external presenters in event group chat" has neither an admin UI nor an API documented
 - features/microsoft-teams-external-presenters-can-access-production-controls-for-teams-events.md: last checked 7 days ago (re-check due)
 - features/microsoft-teams-facilitator-detects-and-answers-questions.md: control "A separate switch for proactive question detection and answers" has neither an admin UI nor an API documented
@@ -312,16 +307,11 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-teams-upload-custom-backgrounds-for-teams-events.md: control "Whether organisers and presenters can upload custom backgrounds in Manage what attendees see" has neither an admin UI nor an API documented
 - features/microsoft-teams-view-files-and-conversations-side-by-side.md: control "Admin setting for the side-by-side file and conversation view" has neither an admin UI nor an API documented
 - features/microsoft-teams-workflow-to-automatically-add-tag-members-to-relevant-channels.md: control "Tenant switch for the Join member to channel template alone" has neither an admin UI nor an API documented
-- features/microsoft-viva-agent-metrics-for-custom-reporting-in-insights-analyst-workbench.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-viva-agent-metrics-for-custom-reporting-in-insights-analyst-workbench.md: control "A switch for the agent query alone" has neither an admin UI nor an API documented
-- features/microsoft-viva-copilot-analytics-agent-365-dashboard-in-insights.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-viva-copilot-analytics-agent-365-reporting-availability-for-microsoft-platform-a.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-viva-engage-community-feed-improvements.md: control "Tenant-wide switch to keep the previous community feed default" has neither an admin UI nor an API documented
 - features/microsoft-viva-engage-improved-shared-messages-end-user-experience.md: control "Switch for the improved shared message experience" has neither an admin UI nor an API documented
 - features/microsoft-viva-enhanced-microsoft-copilot-in-viva-engage.md: control "An Engage-specific switch for the Copilot pane in Engage" has neither an admin UI nor an API documented
-- features/microsoft-viva-expanded-agent-coverage-in-agent-dashboard.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-viva-expanded-agent-coverage-in-agent-dashboard.md: control "Switch for third-party platform agents in the Agent 365 Dashboard" has neither an admin UI nor an API documented
-- features/microsoft-viva-interactive-insights-in-the-a365-business-analytics-app.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-viva-interactive-insights-in-the-a365-business-analytics-app.md: control "Enabling Interactive insights outside Frontier and enabling file uploads" has neither an admin UI nor an API documented
 - features/microsoft-viva-network-analytics-enhancements.md: control "Separate switch for people-manager filters, custom date ranges or faster refresh" has neither an admin UI nor an API documented
 - features/microsoft-viva-new-post-creation-experience-in-viva-enage.md: control "Tenant switch for the redesigned post creation experience" has neither an admin UI nor an API documented
@@ -352,6 +342,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/outlook-block-external-images-settings-update.md: control "Admin allowance for users to load all external content by default" has neither an admin UI nor an API documented
 - features/outlook-copilot-chat-pop-out-for-outlook-for-mac-and-ipad.md: control "Switch for the Copilot Chat pop-out in Outlook for Mac and iPad" has neither an admin UI nor an API documented
 - features/outlook-enhanced-user-interface-updates-for-iphone-and-ipad.md: control "Tenant-wide switch for the refreshed Outlook for iOS interface" has neither an admin UI nor an API documented
+- features/outlook-export-to-pdf-preserving-sensitivity-labels.md: related "outlook-microsoft-purview-label-inheritance-from-email-attachments" is held and not published (the link is dropped from the page until it returns)
 - features/outlook-more-visibility-into-usage-for-recoverable-items-storage.md: control "Whether the Recoverable Items usage display is shown" has neither an admin UI nor an API documented
 - features/outlook-offline-settings-days-of-email-to-save-admin-policy.md: control "Default value and user-change lock for "Days of email to save"" has neither an admin UI nor an API documented
 - features/outlook-reply-with-a-template-in-rules.md: control "Switch for the reply-with-template rule action alone" has neither an admin UI nor an API documented
@@ -385,7 +376,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/power-automate-bring-your-own-connection-in-attended-unattended-cloud-triggered-runs.md: control "Tenant or environment switch for bring your own connection in cloud runs" has neither an admin UI nor an API documented
 - features/power-automate-build-and-visualize-desktop-flows-using-flowchart-mode.md: control "Tenant or environment switch that allows or blocks flowchart mode" has neither an admin UI nor an API documented
 - features/power-automate-cloud-flows-share-process-license-capacity-across-workflows.md: control "Tenant or environment switch to turn flow groups off" has neither an admin UI nor an API documented
-- features/power-automate-cloud-flows-view-property-value-expanded-inline-in-new-cloud-flow-designer.md: control "Tenant or environment switch for the inline property value view" has neither an admin UI nor an API documented
 - features/power-automate-credentials-integration-with-delinea-secret-server.md: control "Setup and availability of the Delinea Secret Server credential provider" has neither an admin UI nor an API documented
 - features/power-automate-desktop-flow-libraries.md: control "Whether desktop flow libraries are available in an environment or tenant" has neither an admin UI nor an API documented
 - features/power-automate-desktop-flow-libraries.md: low confidence, roadmap text only
@@ -439,7 +429,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/sharepoint-esignature-for-m365-recipient-groups.md: control "A separate switch for recipient groups" has neither an admin UI nor an API documented
 - features/sharepoint-governance-reviews-dashboard-for-site-owners.md: control "Whether the Governance Reviews Dashboard is available to site owners" has neither an admin UI nor an API documented
 - features/sharepoint-new-m365-copilot-skills-for-sharepoint-administration.md: last checked 7 days ago (re-check due)
-- features/sharepoint-sharepoint-agent-usage-statistics-across-all-sharepoint-sites.md: related "m365-copilot-agent-365-business-analytics-experience" is held and not published (the link is dropped from the page until it returns)
+- features/sharepoint-organization-wide-page-templates.md: control "A separate switch or setting for organisation-wide page templates" has neither an admin UI nor an API documented
 - features/sharepoint-site-skills-in-copilot-in-sharepoint.md: control "Tenant-wide switch to turn site skills on or off" has neither an admin UI nor an API documented
 - features/teams-meetings-in-copilot-notebooks.md: control "A switch for meeting references in Copilot Notebooks, separate from the Notebooks policy" has neither an admin UI nor an API documented
 - features/universal-print-audit-logging.md: control "Separate switch for Universal Print audit records" has neither an admin UI nor an API documented
@@ -456,6 +446,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/work-iq-granular-mcp-policies.md: control "Per-platform, per-workload, per-agent or per-operation MCP restrictions" has neither an admin UI nor an API documented
 - features/work-iq-human-in-the-loop.md: control "Human-in-the-loop policy for Work IQ agents and agent flows" has neither an admin UI nor an API documented
 - features/work-iq-human-in-the-loop.md: low confidence, roadmap text only
+- features/work-iq-listen.md: related "autonomous-agents" is held and not published (the link is dropped from the page until it returns)
 - features/work-iq-listen.md: control "Tenant switch to turn Work IQ Listen on" has neither an admin UI nor an API documented
 - features/work-iq-memory-capabilities-expand-to-agents.md: low confidence, roadmap text only
 - features/work-iq-rest-endpoint-tools.md: control "A switch specific to REST endpoint tools in Work IQ" has neither an admin UI nor an API documented
@@ -499,10 +490,10 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/m365-change-meeting-organizer-via-powershell-cmdlet-in-exchange-online.md: orphan (no inbound related links)
 - features/m365-copilot-add-agents-and-skills-from-the-plus-menu.md: orphan (no inbound related links)
 - features/m365-copilot-admins-can-manage-access-more-precisely-with-support-for-nested-permissions-i.md: orphan (no inbound related links)
+- features/m365-copilot-agent-mode-in-word-for-enhanced-document-editing.md: orphan (no inbound related links)
 - features/m365-copilot-ask-copilot-about-highlighted-response-content.md: orphan (no inbound related links)
 - features/m365-copilot-branded-footer-in-the-m365-copilot-app.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-app-mode-handoffs.md: orphan (no inbound related links)
-- features/m365-copilot-copilot-chat-agent-mode-in-word-enables-conversational-support-to-create-edit.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-code.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-extensibility-adminx-pre-setup-guides-editability-actionable-errors-a.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-extensibility-customers-can-connect-m365-copilot-with-pagerduty-to-ac.md: orphan (no inbound related links)
@@ -511,6 +502,8 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/m365-copilot-copilot-extensibility-improved-discovery-of-copilot-connector-sources-in-m365.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-extensibility-it-admins-will-be-able-to-enable-anthropic-models-by-sp.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-extensibility-schema-recommendations-for-custom-connectors-in-m365-ad.md: orphan (no inbound related links)
+- features/m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint-555877.md: orphan (no inbound related links)
+- features/m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint.md: orphan (no inbound related links)
 - features/m365-copilot-dataverse-data-connected-to-m365-copilot.md: orphan (no inbound related links)
 - features/m365-copilot-declarative-agents-with-actions-available-in-gcc-high-and-dod.md: orphan (no inbound related links)
 - features/m365-copilot-developers-building-agents-in-azure-ai-foundry-can-ground-their-agent-in-file.md: orphan (no inbound related links)
@@ -523,7 +516,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/m365-copilot-initiate-copilot-chat-by-sharing-files-to-the-m365-copilot-app-on-iphone-and.md: orphan (no inbound related links)
 - features/m365-copilot-integrate-the-sales-development-agent-with-salesforce.md: orphan (no inbound related links)
 - features/m365-copilot-learning-agent-in-m365-copilot.md: orphan (no inbound related links)
-- features/m365-copilot-local-file-support-for-agent-mode-in-excel.md: orphan (no inbound related links)
 - features/m365-copilot-local-inferencing.md: orphan (no inbound related links)
 - features/m365-copilot-m365-copilot-search-supports-sharepoint-online-custom-properties-search.md: orphan (no inbound related links)
 - features/m365-copilot-makers-can-build-da-s-with-flexible-layouts-and-rich-ux-components.md: orphan (no inbound related links)
@@ -532,8 +524,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/m365-copilot-now-smarter-with-visuals-declarative-agents-leverage-embedded-images-for-rich.md: orphan (no inbound related links)
 - features/m365-copilot-people-skills-removal-and-deletion-admin-control.md: orphan (no inbound related links)
 - features/m365-copilot-realtime-voice-interactions-in-word-and-powerpoint.md: orphan (no inbound related links)
-- features/m365-copilot-reference-a-teams-meeting-or-chat-when-creating-a-presentation-with-ag-555883.md: orphan (no inbound related links)
-- features/m365-copilot-reference-a-teams-meeting-or-chat-when-creating-a-presentation-with-ag-555884.md: orphan (no inbound related links)
 - features/m365-copilot-reference-the-content-of-a-powerpoint-file-when-creating-a-presentatio-555887.md: orphan (no inbound related links)
 - features/m365-copilot-reference-the-content-of-a-powerpoint-file-when-creating-a-presentatio-555889.md: orphan (no inbound related links)
 - features/m365-copilot-reference-webpages-when-creating-a-presentation-with-agent-mode-in-pow-555893.md: orphan (no inbound related links)
@@ -559,10 +549,10 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-copilot-studio-discover-and-add-skills-from-the-skill-catalog.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-discover-and-use-shared-plugins-in-copilot-studio.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-enable-express-mode-for-flows-invoked-by-an-agent-or-app.md: orphan (no inbound related links)
-- features/microsoft-copilot-studio-generate-documents-from-the-agent-node-in-workflows.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-improvements-to-agent-evaluations-experience.md: orphan (no inbound related links)
+- features/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: orphan (no inbound related links)
+- features/microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-ppac-reporting-api.md: orphan (no inbound related links)
-- features/microsoft-copilot-studio-run-python-code-as-a-step-in-workflows.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-self-learning-for-copilot-studio-agents.md: orphan (no inbound related links)
 - features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: orphan (no inbound related links)
 - features/microsoft-dataverse-build-your-low-code-hyperscale-backend-on-dataverse-build-your-agentic.md: orphan (no inbound related links)
@@ -593,10 +583,12 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-entra-microsoft-security-copilot-app-lifecycle-management-agent-in-microsoft-ent.md: orphan (no inbound related links)
 - features/microsoft-entra-upcoming-changes-to-federatedtokenvalidationpolicy-default-settings.md: orphan (no inbound related links)
 - features/microsoft-entra-windows-hello-for-business-and-macos-platform-single-sign-on-can-now-be-us.md: orphan (no inbound related links)
+- features/microsoft-intune-additional-granular-rbac-controls-to-manage-antivirus-firewall-bitlocker.md: orphan (no inbound related links)
 - features/microsoft-intune-intune-settings-available-in-catalog-and-account-protection-template-for.md: orphan (no inbound related links)
 - features/microsoft-intune-macos-custom-compliance.md: orphan (no inbound related links)
 - features/microsoft-intune-windows-quality-update-management-policies.md: orphan (no inbound related links)
 - features/microsoft-power-platform-governance-and-administration-security-and-compliance-prevent-sen.md: orphan (no inbound related links)
+- features/microsoft-power-platform-governance-and-administration-unify-finance-and-operations-system.md: orphan (no inbound related links)
 - features/microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-us-government.md: orphan (no inbound related links)
 - features/microsoft-purview-communication-compliance-alert-improvements.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-manager-ai-powered-regulatory-templates.md: orphan (no inbound related links)
@@ -619,10 +611,12 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-purview-compliance-portal-information-protection-scan-existing-files-in-sharepoi.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-information-protection-sensitivity-label-support-in-en.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-insider-risk-management-collection-policies-impact-on.md: orphan (no inbound related links)
+- features/microsoft-purview-compliance-portal-insider-risk-management-generative-ai-apps-activities.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-insider-risk-management-microsoft-fabric-risk-indicato.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-scanner-data-export-for-custom-reporting.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-service-health-dashboard.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-tip-support-in-outlook-for-mac.md: orphan (no inbound related links)
+- features/microsoft-purview-compliance-portal-unique-counting-of-edm-matches.md: orphan (no inbound related links)
 - features/microsoft-purview-data-lifecycle-management-adaptive-protection-integration-with-data-life.md: orphan (no inbound related links)
 - features/microsoft-purview-data-lifecycle-management-auto-archive-for-exchange-online.md: orphan (no inbound related links)
 - features/microsoft-purview-data-lifecycle-management-azure-pst-import-us-government.md: orphan (no inbound related links)
@@ -632,7 +626,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-purview-data-loss-prevention-ai-powered-data-loss-prevention-policy-optimizer.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-apply-purview-network-data-security-dlp-policies-to.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-block-external-domain-user-action-in-dlp-for-sharep.md: orphan (no inbound related links)
-- features/microsoft-purview-data-loss-prevention-collection-and-dlp-policies-for-intune-policy-manag.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-endpoint-dlp-now-detects-sensitivity-labels-on-file.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-enriched-audit-data-for-matched-rules.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-export-dlp-and-label-policy-configurations.md: orphan (no inbound related links)
@@ -661,7 +654,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-purview-information-protection-rights-management-connector-certificate-based-aut.md: orphan (no inbound related links)
 - features/microsoft-purview-insider-risk-management-ability-to-preview-content-in-insider-risk-manag.md: orphan (no inbound related links)
 - features/microsoft-purview-insider-risk-management-data-security-triage-agent-in-irm-enhancements.md: orphan (no inbound related links)
-- features/microsoft-purview-insider-risk-management-pay-as-you-go-model-for-other-generative-ai-apps.md: orphan (no inbound related links)
 - features/microsoft-purview-insider-risk-management-reduce-temporary-file-noise-for-endpoint-activit.md: orphan (no inbound related links)
 - features/microsoft-purview-role-groups-ui-enhancements.md: orphan (no inbound related links)
 - features/microsoft-purview-use-sensitivity-labels-to-block-all-connected-experiences-that-analyze-c.md: orphan (no inbound related links)
@@ -686,13 +678,13 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-teams-events-now-support-up-to-20-000-registrations-making-it-easier-to-reach-an.md: orphan (no inbound related links)
 - features/microsoft-teams-explicit-recording-and-transcription-consent-for-pstn-participants-now-ava.md: orphan (no inbound related links)
 - features/microsoft-teams-express-voice-enrollment-in-microsoft-teams.md: orphan (no inbound related links)
+- features/microsoft-teams-external-bot-detection-and-activity-reports-in-admin-center.md: orphan (no inbound related links)
 - features/microsoft-teams-external-phone-call-routing-gcc-high-dod.md: orphan (no inbound related links)
 - features/microsoft-teams-facilitator-can-join-channel-meetings.md: orphan (no inbound related links)
 - features/microsoft-teams-facilitator-follow-up-mode.md: orphan (no inbound related links)
 - features/microsoft-teams-front-of-room-view-control-for-town-hall-in-teams-rooms-on-android-500378.md: orphan (no inbound related links)
 - features/microsoft-teams-front-of-room-view-control-for-town-hall-in-teams-rooms-on-android.md: orphan (no inbound related links)
 - features/microsoft-teams-hide-organizer-name-in-calendar-view-on-teams-panels.md: orphan (no inbound related links)
-- features/microsoft-teams-identify-bots-joining-your-teams-meetings.md: orphan (no inbound related links)
 - features/microsoft-teams-identify-custom-apps-that-need-updates-for-teams-private-and-shared-channe.md: orphan (no inbound related links)
 - features/microsoft-teams-impersonation-protection-for-teams-meetings.md: orphan (no inbound related links)
 - features/microsoft-teams-improved-device-settings-experience-on-teams-rooms-on-android.md: orphan (no inbound related links)
@@ -714,7 +706,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/microsoft-teams-proximity-join-support-for-attendees-in-teams-events-from-teams-rooms-on-w.md: orphan (no inbound related links)
 - features/microsoft-teams-recently-used-emojis-sync-across-devices.md: orphan (no inbound related links)
 - features/microsoft-teams-report-a-message-or-an-external-user-for-security-concern-in-gov-clouds.md: orphan (no inbound related links)
-- features/microsoft-teams-security-detection-report-in-teams-admin-center.md: orphan (no inbound related links)
 - features/microsoft-teams-set-and-manage-meeting-timers-in-teams-rooms-on-windows.md: orphan (no inbound related links)
 - features/microsoft-teams-sharing-recap-access.md: orphan (no inbound related links)
 - features/microsoft-teams-speaker-attribution-now-on-by-default-in-byod-rooms-with-enhanced-admin-co.md: orphan (no inbound related links)
@@ -778,7 +769,6 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/power-apps-prompt-columns-multiple-lines-of-text-output.md: orphan (no inbound related links)
 - features/power-apps-start-sharepoint-connected-canvas-apps-with-a-modern-responsive-template-previe.md: orphan (no inbound related links)
 - features/power-automate-build-and-visualize-desktop-flows-using-flowchart-mode.md: orphan (no inbound related links)
-- features/power-automate-cloud-flows-view-property-value-expanded-inline-in-new-cloud-flow-designer.md: orphan (no inbound related links)
 - features/power-automate-desktop-flows-encrypt-and-decrypt-data-with-pgp.md: orphan (no inbound related links)
 - features/power-automate-desktop-flows-measure-time-and-cost-savings-for-desktop-flows.md: orphan (no inbound related links)
 - features/power-automate-process-mining-analyze-processes-using-object-centric-process-mining.md: orphan (no inbound related links)
@@ -803,6 +793,7 @@ Independent check: 261 verified, 585 verified with gaps, 0 awaiting correction (
 - features/sharepoint-esignature-for-m365-recipient-groups.md: orphan (no inbound related links)
 - features/sharepoint-get-relevant-information-from-lists-in-knowledge-agent.md: orphan (no inbound related links)
 - features/sharepoint-governance-reviews-dashboard-for-site-owners.md: orphan (no inbound related links)
+- features/sharepoint-organization-wide-page-templates.md: orphan (no inbound related links)
 - features/sharepoint-power-automate-trigger-and-action-for-forms-in-sharepoint.md: orphan (no inbound related links)
 - features/sharepoint-powershell-support-for-brand-fonts-deletion.md: orphan (no inbound related links)
 - features/sharepoint-site-skills-in-copilot-in-sharepoint.md: orphan (no inbound related links)

@@ -79,15 +79,17 @@ changes:
     note: "Correction: added the New-FeatureConfiguration and Set-FeatureConfiguration cmdlets, limited the Devices data source to Windows devices, and removed an unsupported claim and checklist items without table rows."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 69 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 69
+  confirmed: 68
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -178,10 +180,10 @@ cost: Low. Learn's Purview service description says there are no licensing requi
 impact: Medium. Insider Risk Management analysts and the admins who create collection policies notice; end users see nothing change. Only device indicators are affected, and only when a device collection policy is deployed.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; front matter: licensing.notes; rationale: cost / cost: Some collection policy data sources use pay-as-you-go and require a linked Azure subscription. | Found: Some collection policy data sources and features are pay-as-you-go and require an Azure subscription to be linked before creating a policy. Copilot experiences; Enterprise AI; Unmanaged cloud app activity detected through non-Microsoft SASE and secure enterprise browser integrations | Fix: Narrow the cost rationale to the change being rated: 'Low. Applying device collection policies has no separate licensing requirement; endpoint DLP licensing applies. The indirect cost is administrator time to review policies.' Keep the existing explanation of other data sources in Cost and licensing. | Source: https://learn.microsoft.com/purview/collection-policies-policy-reference
-- [supported, minor] controls[0].ui; Governance controls table; Scope; Governance guidance: At rollout / admin-path: In the Microsoft Purview portal, Solutions > Data Loss Prevention > Classifiers > Collection policies reaches the collection policy list. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: Extend controls[0].ui.path to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities' to reach activity selection, and set controls[0].ui.docs to https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. That page describes the intervening optional conditions and Next steps. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
-- [unsupported, minor] rationale: impact / behaviour: End users see nothing change. | Found: Searched: Microsoft Purview device collection policies end user experience no change enforce activities; read collection policies overview, reference and service description. They describe filtering and lack of enforcement, not an assurance that end users see no change. | Fix: Remove 'end users see nothing change' from the impact rationale.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / cost: Some collection-policy data sources use pay-as-you-go and require a linked Azure subscription. | Found: Some collection policy data sources and features are pay-as-you-go and require an Azure subscription to be linked before creating a policy. | Fix: Keep the broader data-source explanation in Cost and licensing, but replace the cost rationale with: 'Low. Applying device collection policies has no separate licensing requirement; endpoint DLP licensing applies. The indirect cost is administrator time to review policies.' This rates the device-policy change rather than unrelated pay-as-you-go sources. | Source: https://learn.microsoft.com/purview/collection-policies-policy-reference
+- [supported, minor] controls[0].ui; Governance controls table; Scope; Governance guidance: At rollout / admin-path: Microsoft Purview portal > Solutions > Data Loss Prevention > Classifiers > Collection policies reaches the collection-policy list. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: Extend controls[0].ui.path and the table path to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities' and set controls[0].ui.docs to https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. The existing route correctly reaches the list but stops before activity selection; the deployment page documents the intervening conditions and Next steps. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
+- [unsupported, minor] rationale: impact / behaviour: End users see nothing change. | Found: Searched: "collection policies" "end users" enforcement experience. Read the collection-policy overview, reference, deployment page, service description and Graph overview. They describe collection and lack of enforcement, not unchanged end-user experience. | Fix: Remove 'end users see nothing change' from the impact rationale. Lack of enforcement does not establish that every end-user experience is unchanged.
 -->

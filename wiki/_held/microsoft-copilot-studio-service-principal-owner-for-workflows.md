@@ -68,18 +68,20 @@ changes:
     note: "New briefing: roadmap plan for service principal ownership of Copilot Studio workflows; Learn does not describe it yet."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 52
+  claims: 67
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 2
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "5e20d3392b471d1de38df3ead42a77c5"
 ---
 
@@ -174,10 +176,12 @@ cost: Variable. Workflows consume Copilot Studio capacity for each action they e
 impact: Low. The people who notice are makers and administrators who own and maintain workflows; no source says end users see a change.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Change & support; Cost and licensing; Governance guidance: At rollout / cost: Exhausting an environment's prepaid Copilot Studio capacity blocks new workflow runs until capacity is available. | Found: This condition occurs when the allocation is used up and the experience can't continue through the tenant's available capacity or a pay-as-you-go billing plan. | Fix: Replace the blocking statement in Risk assessment and Cost and licensing with 'When the environment has no Copilot Credits available, new workflow runs are blocked until credits are available. Exhausting its prepaid allocation alone does not block runs if it can continue through tenant capacity or pay-as-you-go.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/enforcement-policy-credits. In At rollout, replace 'because new workflow runs are blocked once prepaid capacity is consumed' with 'because new workflow runs are blocked when the environment has no Copilot Credits available'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/enforcement-policy-credits
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Security & identity; Governance guidance / admin-path: Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Application users reaches the application-user list. | Found: Select Manage in the navigation pane. In the Manage pane, select Environments. Then select an environment. Select Settings. Select Users + permissions, and then select Application users. | Fix: The path correctly reaches the list but stops before choosing an app registration. For controls[1].ui.path use 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > + Add an app', as documented at https://learn.microsoft.com/power-platform/admin/manage-application-users. Keep the existing shorter route in inventory advice. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's instruction to inventory workflow enablement and credit usage is represented in the controls table. | Found: Checklist: 'Inventory the workflows ... using the Enabled and Credit usage (last 30 days) columns'. The table contains only an undocumented ownership switch and application-user management. | Fix: The Before rollout workflow inventory step has no corresponding controls-table row. Record this as a checklist/table coverage gap; do not add a control row as part of this correction.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's instruction to check environment capacity is represented in the controls table. | Found: Checklist: 'Check that the capacity for each environment covers the new runs'. The table contains no capacity-monitoring control, although Cost and licensing gives Licensing > Copilot Studio. | Fix: The At rollout environment-capacity check has no corresponding controls-table row. Record this as a checklist/table coverage gap; do not add a control row as part of this correction.
+- [supported, minor] controls[1].ui; Governance controls; Security & identity; Governance guidance / admin-path: Manage > Environments > environment > Settings > Users + permissions > Application users reaches application-user management. | Found: Select Users + permissions, and then select Application users. Select + New app user to open the Create a new app user pane. Select + Add an app to choose the registered Microsoft Entra application | Fix: Set controls[1].ui.path and its rendered table path to 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > + Add an app', as documented at https://learn.microsoft.com/power-platform/admin/manage-application-users. Keep the shorter list route in inventory advice. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's workflow enablement and credit-usage inventory step is represented in the controls table. | Found: Checklist: 'Inventory the workflows ... using the Enabled and Credit usage (last 30 days) columns'. Controls table: only the undocumented ownership switch and application-user management. | Fix: Record a checklist/table coverage gap: the Before rollout workflow enablement and credit-usage inventory step has no controls-table row. Do not add a row as part of this correction.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's environment-capacity check is represented in the controls table. | Found: Checklist: 'Check that the capacity for each environment covers the new runs'. Controls table: only the undocumented ownership switch and application-user management. | Fix: Record a checklist/table coverage gap: the At rollout environment-capacity check has no controls-table row. Do not add a row as part of this correction.
 -->

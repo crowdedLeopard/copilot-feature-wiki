@@ -83,15 +83,17 @@ changes:
     note: "Corrected the policy applicability: communication compliance policies do not support SharePoint sites or OneDrive accounts in adaptive scopes."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 43
+  confirmed: 42
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -193,8 +195,8 @@ cost: Low. The only cost the sources show is administrator time to review scope 
 impact: Low. Purview administrators who create adaptive scopes would notice; the roadmap item describes no change for end users.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, third bullet / consistency: The checklist asks readers to confirm Scope Manager role assignments, but no controls-table row represents role-assignment review. | Found: Confirm who holds the Scope Manager role ... Controls: Whether a scope evaluates recipient and site owner lifecycle status; Scope query, including excluding or targeting inactive mailboxes today; Scope membership review, including added and removed members. | Fix: Replace the third Before rollout bullet with: "Decide which team will own the new setting once Microsoft names the role that manages it." This removes the checklist control that has no table row without adding an unverified control.
+- [contradicted, minor] Governance guidance: Before rollout, third bullet / consistency: The checklist asks readers to confirm Scope Manager role assignments without representing that review in the controls table. | Found: Confirm who holds the Scope Manager role ... Controls: Whether a scope evaluates recipient and site owner lifecycle status; Scope query, including excluding or targeting inactive mailboxes today; Scope membership review, including added and removed members. | Fix: Replace the third Before rollout bullet with: "Decide which team will own the new setting once Microsoft names the role that manages it."
 -->

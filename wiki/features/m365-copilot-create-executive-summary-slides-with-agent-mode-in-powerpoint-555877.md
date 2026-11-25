@@ -28,6 +28,12 @@ sources:
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
+  - title: "Microsoft Copilot requirements"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
+    kind: "learn"
+  - title: "user: assignLicense"
+    url: "https://learn.microsoft.com/graph/api/user-assignlicense"
+    kind: "learn"
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     kind: "learn"
@@ -63,19 +69,23 @@ changes:
     note: "First briefing for roadmap item 555877 (PowerPoint on the web): covers the roadmap description, the Copilot licence experiences and the licence-assignment control."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 37 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: Graph licence permission scopes, rollout wording (safe deployment model) and the third-party cookie prerequisite for PowerPoint on the web."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 37
-  confirmed: 34
+  claims: 45
+  confirmed: 45
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "d7d2966b8cebd0883b6d7c61b2f85dd2"
+  contradicted: 0
+  attempts: 0
+  hash: "f3116bcea7ac4909ebbb9ddcdd2f7143"
 ---
 
 ## What's changing
@@ -124,8 +134,8 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 
 - **Platform and cloud:** the roadmap record lists Web and Worldwide (Standard Multi-Tenant). Mac (555875) and Desktop (555876) are separate roadmap items.
 - **Users:** people with a Copilot experience that includes Copilot in PowerPoint, per Microsoft's Copilot overview. Which experience covers this feature is not yet published.
-- **Rollout:** the record gives status Launched, release phase General Availability and target March CY2026. Microsoft has not stated the rollout mechanics or default for this feature.
-- **Prerequisites:** none are stated for this feature.
+- **Rollout:** the record gives status Launched, release phase General Availability and target March CY2026. Microsoft describes a safe deployment model for Copilot features, gradually rolling out to a subset of users within a tenant before expanding across the organisation. A rollout window and default specific to executive summary slides are not stated.
+- **Prerequisites:** prerequisites additional to existing Copilot requirements are not stated for executive summary slides. Copilot in PowerPoint for the web requires third-party cookies to be enabled.
 
 ## Governance guidance
 
@@ -157,7 +167,7 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 
 Licence assignment decides which Copilot experience a user has. It is not a switch for this feature, and Microsoft has not said which experience includes it.
 
-Microsoft's Copilot settings page lists settings for user access, data access, Copilot actions and other areas, and none names PowerPoint, Agent Mode or executive summary slides at the time of writing (November 2026). Assigning licences needs at least the License Administrator or User Administrator role, and the Graph PowerShell route needs the User.ReadWrite.All permission scope, per the pages the table links to.
+Microsoft's Copilot settings page lists settings for user access, data access, Copilot actions and other areas, and none names PowerPoint, Agent Mode or executive summary slides at the time of writing (November 2026). Assigning licences needs at least the License Administrator or User Administrator role. The Graph PowerShell route accepts User.ReadWrite.All or another permission listed in the Assign license reference; LicenseAssignment.ReadWrite.All is the least-privileged permission.
 
 ## Open questions
 
@@ -171,10 +181,8 @@ cost: Low. Microsoft's Copilot overview lists Copilot in PowerPoint under the Ba
 impact: Low. People who build decks with Copilot in PowerPoint on the web notice it; the roadmap item names no change for other users and no administrator step.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / role: The Graph PowerShell licence-assignment route needs the User.ReadWrite.All permission scope. | Found: Assigning and removing licenses for a user requires the User.ReadWrite.All permission scope or one of the other permissions listed in the 'Assign license' Microsoft Graph API reference page. | Fix: Replace the permission clause with 'The Graph PowerShell route accepts User.ReadWrite.All or another permission listed in the Assign license reference; LicenseAssignment.ReadWrite.All is the least-privileged permission.' Cite https://learn.microsoft.com/graph/api/user-assignlicense, whose permissions table lists that least-privileged scope for delegated and application access. | Source: https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell
-- [contradicted, blocker] Scope: Rollout / absence: Microsoft has not stated rollout mechanics for this feature. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace the last Rollout sentence with 'Microsoft describes a safe deployment model for Copilot features, gradually rolling out to a subset of users within a tenant before expanding across the organisation. A rollout window and default specific to executive summary slides are not stated.' Keep the existing release-notes citation. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] Scope: Prerequisites; What's changing / absence: No prerequisites are stated for this feature. | Found: For Copilot to work in Word for the web, Excel for the web, and PowerPoint for the web, third-party cookies must be enabled. | Fix: Replace the Prerequisites bullet with 'Prerequisites additional to existing Copilot requirements are not stated for executive summary slides. Copilot in PowerPoint for the web requires third-party cookies to be enabled.' Cite https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements. Narrow any assertion that prerequisites are unstated to additional feature-specific prerequisites. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance guidance: Before rollout / admin-path: The checklist gives Users > Active users > Licenses and Apps as the route to checking a user's licences. | Found: In the admin center, go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section | Fix: Replace the checklist path with 'Users > Active users > user > Licenses and Apps > Licenses', matching the table and https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

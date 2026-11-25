@@ -64,7 +64,7 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-25"
 roadmapModified: "2026-07-08T23:11:07"
 changes:
   - date: "2026-11-23"
@@ -77,19 +77,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 40 statements confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 38 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after verification: the cost section no longer says a licence requirement specific to Agent Mode is unpublished; only a meter or credit rate specific to Agent Mode is."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 37
+  claims: 42
+  confirmed: 42
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "f671f30ef34d20712cb25901ad016d3d"
+  contradicted: 0
+  attempts: 0
+  hash: "30320c805c47c03cb828a639053f4c63"
 ---
 
 ## What's changing
@@ -128,7 +132,7 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 
 The Microsoft Copilot service description lists Edit with Copilot in Word, Excel, PowerPoint, and OneNote as a Microsoft 365 Copilot (Premium) feature and says a Microsoft 365 Copilot license is required to access it.
 
-A licence requirement, meter or credit rate specific to Agent Mode is not yet published, and the service description names no meter. The roadmap record names no licence. The extra cost known today is indirect: admin time to review licence assignment and user guidance.
+A meter or credit rate specific to Agent Mode is not yet published, and the service description names no meter. The roadmap record names no licence. The extra cost known today is indirect: admin time to review licence assignment and user guidance.
 
 ## Scope
 
@@ -183,10 +187,4 @@ The second row records that Microsoft Learn documents no admin setting for Agent
 risk: Medium. Copilot makes edits to documents on a user's chat request, and Microsoft Learn documents no switch for Agent Mode in Word, so the existing Copilot licence is the control to lean on.
 cost: Low. The Microsoft Copilot service description lists Edit with Copilot in Word as requiring a Microsoft 365 Copilot licence and names no meter; the known extra cost is admin time and user guidance.
 impact: Medium. Users who have Copilot in Word on Desktop, Mac or Web would notice it; Microsoft has not stated whether it is on by default, and Learn's service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing / absence: A licence requirement specific to Agent Mode is not yet published. | Found: Editing with Copilot in Excel, PowerPoint, and Word is a way to create content within the Microsoft Copilot experience for Microsoft 365 Personal, Family, and Premium plans. ... In previous releases, this was marketed as "Agent Mode" | Fix: Remove 'A licence requirement' from the absence sentence. Replace the sentence with 'A meter or credit rate specific to Agent Mode is not yet published.' Keep the preceding, supported enterprise service-description licence requirement; do not import the consumer plans into enterprise prerequisites. | Source: https://support.microsoft.com/office/copilot-frontier/get-started-editing-with-copilot-in-office
 -->

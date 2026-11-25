@@ -51,15 +51,17 @@ changes:
     note: "New briefing for the Windows desktop roadmap item; Microsoft Learn does not yet describe the feature, so it rests on the roadmap text."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 40 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 39
+  claims: 50
+  confirmed: 49
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -158,11 +160,11 @@ cost: Low. The only cost the sources show is admin and communication time; no li
 impact: Medium. People who present from PowerPoint for Windows with Presenter View will see a changed layout; the audience and other users do not.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] summary / behaviour: The redesign changes the presenter's screen, not data. | Found: Searched: '"PowerPoint" "modernized Presenter View" data access storage sharing security'; read the roadmap, About Microsoft 365 Apps and Current Channel notes. No source states data handling is unchanged; the roadmap describes layout changes. | Fix: Replace 'It changes the presenter's screen, not data.' in the summary with 'The roadmap describes layout changes and mentions no new data source, sharing or connection.'
+- [unsupported, major] summary / behaviour: The redesign changes the presenter's screen, not data. | Found: Searched: "PowerPoint" "modernized Presenter View" data access sharing storage security; read roadmap, About Microsoft 365 Apps, Current Channel and Presenter View support. None states data handling is unchanged; the roadmap describes layout changes. | Fix: Replace 'It changes the presenter's screen, not data.' with 'The roadmap describes layout changes and mentions no new data source, sharing or connection.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope; Open questions / record: The Mac redesign is tracked separately as roadmap item 577179. | Found: "id": 577179; "title": "PowerPoint: Present with ease using a modernized Presenter View"; "Presenter View in PowerPoint for Mac has a refreshed design" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=577179 to sources for the Mac comparison in What's changing and Scope.
-- [supported, minor] Why it matters; rationale: impact / behaviour: Presenter View is the presenter's working screen rather than the slide-only view shown to the audience. | Found: Using Presenter view is a great way to view your presentation with speaker notes on one computer (your laptop, for example), while only the slides themselves appear on the screen that your audience sees | Fix: Add https://support.microsoft.com/en-us/office/start-the-presentation-and-see-your-notes-in-presenter-view-4de90e28-487e-435c-9401-eb49a3801257 to sources for the presenter-versus-audience distinction and the speaker-notes background. | Source: https://support.microsoft.com/en-us/office/start-the-presentation-and-see-your-notes-in-presenter-view-4de90e28-487e-435c-9401-eb49a3801257
+- [supported, minor] What's changing; Scope; Open questions / record: The Mac redesign is tracked separately as roadmap item 577179. | Found: "id": 577179; "description": "When you present with Presenter View, the controls you need should be easy to find at a glance. Presenter View in PowerPoint for Mac has a refreshed design | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=577179 to sources for the Mac comparison in What's changing, Scope and Open questions.
+- [supported, minor] Why it matters; rationale: impact / behaviour: Presenter View is the presenter's working screen, distinct from the slide-only screen shown to the audience. | Found: Using Presenter view is a great way to view your presentation with speaker notes on one computer (your laptop, for example), while only the slides themselves appear on the screen that your audience sees | Fix: Add https://support.microsoft.com/en-us/office/start-the-presentation-and-see-your-notes-in-presenter-view-4de90e28-487e-435c-9401-eb49a3801257 to sources for the presenter-versus-audience distinction and the speaker-notes and next-slide pane background. | Source: https://support.microsoft.com/en-us/office/start-the-presentation-and-see-your-notes-in-presenter-view-4de90e28-487e-435c-9401-eb49a3801257
 -->

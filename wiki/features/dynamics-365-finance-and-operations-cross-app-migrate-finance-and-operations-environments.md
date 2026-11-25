@@ -40,6 +40,9 @@ sources:
   - title: "Stay compliant with user licensing requirements"
     url: "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement"
     kind: "learn"
+  - title: "Tenant Capacity Details - Get Tenant Capacity Details"
+    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/tenant-capacity-details/get-tenant-capacity-details"
+    kind: "docs"
 videos: []
 related: []
 controls:
@@ -57,8 +60,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Licensing > Capacity add-ons > Finance and Operations"
       docs: "https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity"
-    api: null
-    note: "Existing report that shows usage against entitlement; the migration page links it for resolving a capacity deficit."
+    api:
+      kind: "power-platform-api"
+      call: "GET https://api.powerplatform.com/licensing/tenantCapacity?api-version=2024-10-01"
+      docs: "https://learn.microsoft.com/rest/api/power-platform/licensing/tenant-capacity-details/get-tenant-capacity-details"
+    note: "Existing report. The API reports tenant capacity and consumption for FinOpsDatabase and FinOpsFile and availability through capacitySummary.finOpsStatus; it is not a migration control."
   - governs: "Whether a Power Platform environment is linked to the finance and operations environment (migration prerequisite)"
     scope: "environment"
     ui:
@@ -95,19 +101,23 @@ changes:
     note: "Corrected: added the last-sandbox warning that production updates cannot be promoted until production is migrated; scope now says the prerequisites specify no project role; removed the unsupported access-review advice."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-25"
+    note: "Corrected: the finance and operations storage capacity row now lists the Power Platform API tenant capacity operation, and the absence now covers only an API for starting the migration."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 73
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "2a9b1d4b5d661ad2e9b083a2d06b7165"
+  contradicted: 0
+  attempts: 0
+  hash: "f151353a955e144ce5925454a940072f"
 ---
 
 ## What's changing
@@ -190,14 +200,14 @@ Prerequisites on the Learn page: the environment is healthy with status **Deploy
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Starting the migration of a finance and operations environment to Power Platform admin center</strong><br><small>Environment</small><br><small class="controls__note">Public preview. One-way; performed per environment. The person must be an administrator of the linked Power Platform environment.</small></td><td data-label="Admin UI"><strong>Lifecycle Services</strong><br>project › Environments › environment › Full details › Power Platform migration (Preview) › Migrate to Power Platform Admin Center <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Finance and operations storage capacity that must be free before migration</strong><br><small>Tenant</small><br><small class="controls__note">Existing report that shows usage against entitlement; the migration page links it for resolving a capacity deficit.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Capacity add-ons › Finance and Operations <a href="https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Finance and operations storage capacity that must be free before migration</strong><br><small>Tenant</small><br><small class="controls__note">Existing report. The API reports tenant capacity and consumption for FinOpsDatabase and FinOpsFile and availability through capacitySummary.finOpsStatus; it is not a migration control.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Capacity add-ons › Finance and Operations <a href="https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>GET https://api.powerplatform.com/licensing/tenantCapacity?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/tenant-capacity-details/get-tenant-capacity-details" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a Power Platform environment is linked to the finance and operations environment (migration prerequisite)</strong><br><small>Environment</small><br><small class="controls__note">The Dataverse call verifies Power Platform integration status; it is not a migration control.</small></td><td data-label="Admin UI"><strong>Lifecycle Services</strong><br>project › Environments › environment › Full details › Power Platform migration (Preview) › Power Platform environment is linked <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.1/RetrieveFinanceAndOperationsIntegrationDetails</code> <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/power-platform/enable-power-platform-integration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The migration is started in Lifecycle Services, not in the Power Platform admin center; the Power Platform admin center becomes the management experience once it completes. Learn documents the prerequisite checks as four green-check conditions on the migration section: **Environment is in Deployed status**, **Power Platform environment is linked**, **Database storage capacity is available**, and **You are an administrator of the linked Power Platform environment**.
 
-Microsoft Learn documents no API for starting the migration or for the finance and operations storage report at the time of writing (November 2026). The Dataverse call in the last row only reports whether a link exists and returns the finance and operations environment details; the page does not state which role may call it.
+Microsoft Learn documents no API for starting the migration at the time of writing (November 2026). The Power Platform API reports tenant finance and operations capacity, consumption and availability. The Dataverse call in the last row only reports whether a link exists and returns the finance and operations environment details; the page does not state which role may call it.
 
 ## Open questions
 
@@ -210,10 +220,4 @@ Microsoft Learn documents no API for starting the migration or for the finance a
 risk: Medium. Migration starts only when an administrator chooses it, but it is one-way, takes the environment offline for about 15 minutes per AOS instance, and Learn does not recommend production use during public preview.
 cost: Medium. The migrated environment consumes Power Platform capacity, and a storage deficit must be cleared by freeing or purchasing capacity before migration. Admin time and downtime are indirect costs; a separate migration price is not yet published.
 impact: Medium. Environment administrators and developers change from Lifecycle Services to Power Platform admin center and Azure Pipelines, and users of a migrated environment notice the downtime window.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table; Governance controls / absence: Microsoft Learn documents no API for reporting finance and operations storage capacity. | Found: GET https://api.powerplatform.com/licensing/tenantCapacity?api-version=2024-10-01; CapacityType: FinOpsDatabase, FinOpsFile; TenantCapacityAndConsumptionModel: consumption, totalCapacity, status; CapacitySummary: finOpsStatus, finOpsStatusMessage. | Fix: Set controls[1].api to kind 'power-platform-api', call 'GET https://api.powerplatform.com/licensing/tenantCapacity?api-version=2024-10-01', docs 'https://learn.microsoft.com/rest/api/power-platform/licensing/tenant-capacity-details/get-tenant-capacity-details'. Append to its note: 'The API reports tenant capacity and consumption for FinOpsDatabase and FinOpsFile and finance and operations availability through capacitySummary.finOpsStatus; it is not a migration control.' Mirror that API in the rendered row, add its reference to sources, and replace the prose absence with: 'Microsoft Learn documents no API for starting the migration at the time of writing (November 2026). The Power Platform API reports tenant finance and operations capacity, consumption and availability.' | Source: https://learn.microsoft.com/rest/api/power-platform/licensing/tenant-capacity-details/get-tenant-capacity-details
 -->

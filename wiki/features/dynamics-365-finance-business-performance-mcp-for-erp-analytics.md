@@ -18,7 +18,7 @@ defaultState: "on"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "BPA is included as part of the Dynamics 365 Finance licence. Building in Copilot Studio needs its licence and agent-creation permissions. Copilot Studio agent usage can consume Copilot Credits; qualifying authenticated employee-facing use by Microsoft 365 Copilot licensed users is included. No server-specific licence or meter is published (November 2026)."
+  notes: "BPA is included as part of the Dynamics 365 Finance licence. Building in Copilot Studio needs its licence and agent-creation permissions. Copilot Credits can apply; employee-facing use by Microsoft 365 Copilot users is included for standard-harness agents within fair usage limits, not Microsoft Copilot harness agents. No server-specific meter is published (November 2026)."
 audiences: ["service-owner","security","maker","power-platform-admin"]
 tags: ["mcp","mcp-server","dynamics-365","finance-and-operations","analytics","power-bi","copilot-studio","row-level-security","semantic-model"]
 sources:
@@ -84,7 +84,7 @@ controls:
     note: "Secure dimensions first; enter a group name and select Next before choosing specific values. Dimensions that are not secured are visible to all users. Learn says the MCP server enforces row-level security by user role."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-20"
+updated: "2026-11-25"
 roadmapModified: "2026-10-16T19:08:46"
 changes:
   - date: "2026-11-19"
@@ -97,19 +97,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected the Copilot Studio inclusion to standard-harness agents within fair usage limits, excluding Microsoft Copilot harness agents; removed an external-model checklist bullet with no controls row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 86
+  claims: 89
+  confirmed: 89
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "74fca154e7024c70c108f9ded2b40297"
+  contradicted: 0
+  attempts: 0
+  hash: "bfe5e68334211f6939c732529c4960ea"
 ---
 
 ## What's changing
@@ -147,9 +151,9 @@ The roadmap says enabled for admins/makers/marketers automatically; Learn separa
 
 Learn states that BPA is "included as part of the Dynamics 365 Finance license" (BPA overview page). The Copilot Studio build guide lists Copilot Studio access, meaning a licence and permissions to create agents, as a prerequisite for building an agent there, and points to the technical details page for the environment and system prerequisites.
 
-Copilot Studio agents can consume Copilot Credits, the unit that measures agent usage ([Billing rates and management](https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management)). That page says employee-facing (Business to Employee) usage of Copilot Studio agents is included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot and the agent operates using that authenticated user's identity. The ERP Analytics MCP overview, Copilot Studio guide and FAQ name no execution rate, meter or price specific to this server at the time of writing (November 2026), so an Analytics MCP server-specific charge is not published.
+Copilot Studio agents can consume Copilot Credits, the unit that measures agent usage ([Billing rates and management](https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management)). For agents powered by the standard harness, that page says employee-facing (Business to Employee) usage is included in the Microsoft 365 Copilot user subscription licence when the user is licensed with Microsoft 365 Copilot and the agent operates using that authenticated user's identity, subject to fair usage limits. The inclusion does not apply to agents powered by the Microsoft Copilot harness, which are billed differently. The ERP Analytics MCP overview, Copilot Studio guide and FAQ name no execution rate, meter or price specific to this server at the time of writing (November 2026), so an Analytics MCP server-specific charge is not published.
 
-The separate Dynamics 365 ERP MCP server has its own billing rules on its page, and they are not Analytics MCP server execution pricing. For that server, Copilot Studio ordinarily bills at its Agent Action rate, but authenticated Business-to-Employee usage by a Copilot USL licensed user is included and does not incur additional tool-call credit consumption. On other clients, that server charges 0.1 Copilot Credits per tool call for standard user licences; Dynamics 365 Finance Premium and Dynamics 365 Supply Chain Management Premium are exempt from that execution charge. Whether anything similar applies to the Analytics server is not published. Indirect cost is admin time to set BPA roles and dimension groups and to test them.
+The separate Dynamics 365 ERP MCP server has its own billing rules on its page, and they are not Analytics MCP server execution pricing. For that server, Copilot Studio ordinarily bills at its Agent Action rate, but authenticated Business-to-Employee usage by a Copilot USL licensed user is included and does not incur additional tool-call credit consumption; the Copilot Studio billing page's harness qualification above applies to that inclusion too. On other clients, that server charges 0.1 Copilot Credits per tool call for standard user licences; Dynamics 365 Finance Premium and Dynamics 365 Supply Chain Management Premium are exempt from that execution charge. Whether anything similar applies to the Analytics server is not published. Indirect cost is admin time to set BPA roles and dimension groups and to test them.
 
 ## Scope
 
@@ -162,7 +166,6 @@ Coverage follows what BPA covers: Record-to-Report, Procure-to-Pay and Order-to-
 ### Before rollout
 - Check which finance and operations environments run version 10.0.38 or higher and BPA 2.4.3224 or higher, since Learn lists both as prerequisites.
 - Review BPA users, roles and dimension groups (see the controls table), because unsecured dimensions are visible to every BPA user.
-- Account for the documented external-model approval prerequisite when assessing the pilot.
 
 ### At rollout
 - Pilot with a small group of makers and run the same questions as users with different dimension groups, which Learn advises as a test of row-level security.
@@ -201,17 +204,12 @@ No dedicated switch to turn the ERP Analytics MCP server on or off is documented
 
 <!-- rationale
 risk: Medium. Agents can query finance data such as P&L, budgets and vendor performance as the signed-in user, and the documented controls are Business performance analytics roles and dimension groups; no dedicated on/off switch is documented.
-cost: Variable. Copilot Studio agents can consume Copilot Credits, although qualifying authenticated employee-facing usage by Microsoft 365 Copilot licensed users is included. No Analytics MCP server-specific execution rate is published.
+cost: Variable. Copilot Studio agents can consume Copilot Credits. Qualifying employee-facing usage by Microsoft 365 Copilot licensed users is included for standard-harness agents, within fair usage limits, but not for Microsoft Copilot harness agents. No Analytics MCP server-specific rate is published.
 impact: Low. Learn lists Business performance analytics and finance and operations roles as prerequisites, so the people who notice are makers building agents and analysts who hold those roles.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; licensing.notes; rationale: cost / licensing: Employee-facing Copilot Studio usage is included when the user has Microsoft 365 Copilot and the agent operates using that authenticated user's identity. | Found: The "No charge" inclusion doesn't apply to agents powered by the Microsoft Copilot harness. Usage is limited to fair usage limits. | Fix: Replace the inclusion sentence with: "For agents powered by the standard harness, employee-facing usage is included in the Microsoft 365 Copilot user subscription licence when the user is licensed with Microsoft 365 Copilot and the agent operates using that authenticated user's identity, subject to fair usage limits. The inclusion does not apply to agents powered by the Microsoft Copilot harness." Apply the harness qualification to the licensing notes, cost rationale and the separate ERP MCP inclusion sentence too. Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: The separate Dynamics 365 ERP MCP page says Copilot Studio ordinarily bills its tool calls at the fixed Agent Action rate. | Found: When you use the MCP server in Copilot Studio, the tool calls align with the Agent Action feature, which bills at a fixed rate per tool call. | Fix: Add after the separate ERP MCP fixed-rate statement: "Copilot Studio's current billing documentation differs: the rate card covers the standard harness, reasoning models add premium token charges, and agents powered by the Microsoft Copilot harness use separate usage-based billing." Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Business performance analytics > Administration > Set up user opens BPA user setup. | Found: In Business performance analytics, on the Administration or Users page, select Set up user. ... Assign at least one role and one dimension group to the user. | Fix: The route reaches the correct setup wizard but stops before its access controls. Extend controls[1].ui.path to "Administration > Set up user > Assign at least one role and one dimension group"; retain the note's user search and Next instructions. The cited security page documents the assignment step. | Source: https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security
-- [supported, minor] Governance controls / role: The security page says the first user signing in to BPA becomes the BPA admin. | Found: The first user who signs in to the app is assigned the BPA admin role. | Fix: Add after the first-user sentence: "The installation page differs: as of Business performance analytics version 2.5, installation does not create a BPA admin by default, and you must set up your current user as a BPA admin." Cite https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/install-bpa. | Source: https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells administrators to account for external-model approval, but that control has no controls-table row. | Found: Account for the documented external-model approval prerequisite when assessing the pilot. | Controls table: dedicated on/off setting; BPA user setup; BPA dimension groups. | Fix: Remove the checklist bullet "Account for the documented external-model approval prerequisite when assessing the pilot." Keep the already-supported external-model approval fact in Risk assessment; do not add a control row.
+- [supported, minor] Governance controls / role: The first user who signs in to BPA becomes the BPA admin. | Found: The first user who signs in to the app is assigned the BPA admin role. | Fix: Replace the sentence with: 'The security setup page says the first user who signs in becomes BPA admin; the installation page separately says that, as of BPA version 2.5, installation does not create an admin by default and the current user must be set up as a BPA admin.' Cite https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/install-bpa, whose Important notice states that version qualification. | Source: https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security
 -->

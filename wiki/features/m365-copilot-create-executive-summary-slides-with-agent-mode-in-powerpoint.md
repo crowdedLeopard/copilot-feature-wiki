@@ -25,7 +25,7 @@ sources:
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
-  - title: "Microsoft 365 Copilot release notes"
+  - title: "Release Notes for Microsoft 365 Copilot"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
@@ -53,7 +53,7 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "Existing route for licences, not a switch for this feature. Which licence covers executive summary slides is not yet published. Role: License Administrator or User Administrator."
+    note: "Existing route for licences, not a switch for this feature. Which licence covers executive summary slides is not yet published. Role: at least a License or User Administrator to assign licences."
 confidence: "medium"
 created: "2026-11-25"
 updated: "2026-11-25"
@@ -63,19 +63,23 @@ changes:
     note: "First briefing for roadmap item 555876 (PowerPoint on desktop): covers the roadmap description, the Copilot licence experiences and the licence-assignment control."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 39 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: rollout statement now cites Microsoft's gradual-rollout model, and the licence-assignment role and Graph permission wording now match Microsoft Learn."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 39
-  confirmed: 36
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "64493a60765322da21640216350be34e"
+  contradicted: 0
+  attempts: 0
+  hash: "00cc8a3fee7ae7b51754c583e78983e5"
 ---
 
 ## What's changing
@@ -124,14 +128,14 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 
 - **Platform and cloud:** the roadmap record lists Desktop and Worldwide (Standard Multi-Tenant). Mac (555875) and Web (555877) are separate roadmap items.
 - **Users:** people with a Copilot experience that includes Copilot in PowerPoint, per Microsoft's Copilot overview. Which experience covers this feature is not yet published.
-- **Rollout:** the record gives status Launched, release phase General Availability and target March CY2026. Microsoft has not stated the rollout mechanics or default for this feature.
+- **Rollout:** the record gives status Launched, release phase General Availability and target March CY2026. Microsoft says Copilot features gradually roll out to a subset of users within a tenant before expanding across the organisation. A rollout schedule and default specific to executive summary slides are not stated.
 - **Prerequisites:** none are stated for this feature.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Check which Copilot experience each PowerPoint desktop user holds, in Microsoft 365 admin center under Users > Active users > Licenses and Apps (first control in the table). A License Administrator or User Administrator is needed to view and change assignments.
+- Check which Copilot experience each PowerPoint desktop user holds, in Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses (first control in the table). Microsoft's licence page says you must be at least a License or User Administrator to assign licences.
 - Pick a pilot group of desktop PowerPoint users, and record whether Agent Mode and the Executive Summary slide appear for each licence experience.
 
 ### At rollout
@@ -151,13 +155,13 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold a Microsoft 365 Copilot licence (the licence experience that covers Copilot in PowerPoint)</strong><br><small>User</small><br><small class="controls__note">Existing route for licences, not a switch for this feature. Which licence covers executive summary slides is not yet published. Role: License Administrator or User Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold a Microsoft 365 Copilot licence (the licence experience that covers Copilot in PowerPoint)</strong><br><small>User</small><br><small class="controls__note">Existing route for licences, not a switch for this feature. Which licence covers executive summary slides is not yet published. Role: at least a License or User Administrator to assign licences.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Licence assignment decides which Copilot experience a user has. It is not a switch for this feature, and Microsoft has not said which experience includes it.
 
-Microsoft Learn's Copilot settings page lists settings for user access, data access, Copilot actions and other areas, and none names PowerPoint or executive summary slides at the time of writing (November 2026). Changing licences needs the License Administrator or User Administrator role, and the Graph PowerShell route needs the User.ReadWrite.All permission scope, per the pages the table links to.
+Microsoft Learn's Copilot settings page lists settings for user access, data access, Copilot actions and other areas, and none names PowerPoint or executive summary slides at the time of writing (November 2026). Assigning licences needs at least a License or User Administrator role, and the Graph PowerShell route requires User.ReadWrite.All or one of the other permissions listed in the Assign license Microsoft Graph API reference, per the pages the table links to.
 
 ## Open questions
 
@@ -169,14 +173,4 @@ Microsoft Learn's Copilot settings page lists settings for user access, data acc
 risk: Low. The roadmap describes a draft slide generated for the user's presentation, and Microsoft Learn describes no new data access, connection or autonomous action for it.
 cost: Low. Microsoft's Copilot overview lists Copilot in PowerPoint under the Basic and Premium licences; a licence tier or meter specific to this feature is not yet published, so the known cost is admin time.
 impact: Low. People who build decks with Copilot in PowerPoint on desktop notice it; the roadmap item names no change for other users and no administrator step.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Rollout / absence: Microsoft has not stated rollout mechanics for this Copilot feature. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace 'Microsoft has not stated the rollout mechanics or default for this feature' with 'Microsoft says Copilot features gradually roll out to a subset of users within a tenant before expanding across the organisation. A rollout schedule and default specific to executive summary slides are not stated.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] Governance guidance: Before rollout / role: A License Administrator or User Administrator is needed to view licence assignments. | Found: Global Reader: View administrator features and settings in admin centers that the Global Administrator can view. The Global Reader can't edit any settings. | Fix: Replace 'A License Administrator or User Administrator is needed to view and change assignments' with 'You must be at least a License or User Administrator to assign licences', as stated at https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. Do not claim those roles are required for viewing. | Source: https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles
-- [contradicted, blocker] Governance controls / role: The Graph PowerShell licence-assignment route requires the User.ReadWrite.All permission scope. | Found: Assigning and removing licenses for a user requires the User.ReadWrite.All permission scope or one of the other permissions listed in the 'Assign license' Microsoft Graph API reference page. | Fix: Replace the permission clause with 'the Graph PowerShell route requires User.ReadWrite.All or one of the other permissions listed in the Assign license Microsoft Graph API reference'. The reference at https://learn.microsoft.com/graph/api/user-assignlicense identifies LicenseAssignment.ReadWrite.All as least privileged; cite it if naming that alternative. | Source: https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / admin-path: Users > Active users > Licenses and Apps is the route for checking a user's assignments. | Found: Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section | Fix: Give the full route already used in the control row: 'Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses'. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

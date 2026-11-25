@@ -96,17 +96,19 @@ changes:
     note: "Corrected after the independent check: the 125% enforcement threshold now notes that an environment with remaining allocated prepaid capacity is not blocked, and the data policy path now includes the three-dots step."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 90
+  confirmed: 89
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "fce1b8b5cad5e6796f270c9d6f062019"
 ---
 
@@ -185,3 +187,9 @@ The trigger overview states no separate autonomous-agent-specific licence; gener
 - Does blocking the Microsoft Copilot Studio connector stop agents whose triggers were already published, or only the adding of new triggers? The data policy page describes preventing makers from adding them.
 - Which audit events, if any, record a trigger-started run in the unified audit log?
 - How do Managed Environment sharing controls map to **Can use** for shared autonomous agents in the Microsoft Copilot harness preview?
+
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing: Enforcement / cost: If the environment bills overage to a pay-as-you-go plan, agents are not blocked. | Found: Agents that an admin turned off, or that reached a monthly limit set to stop usage, are still blocked. | Fix: Replace the last sentence of the Enforcement bullet with: 'If the environment bills overage to a pay-as-you-go plan, running out of prepaid Copilot Credits does not block its agents; agents that an administrator turned off or that reached a monthly limit set to stop usage are still blocked.' Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+-->

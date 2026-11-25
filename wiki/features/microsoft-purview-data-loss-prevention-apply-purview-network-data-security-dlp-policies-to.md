@@ -94,15 +94,17 @@ changes:
     note: "Preview and general availability targets now read January CY2027 and March CY2027, as the roadmap record gives them; added the Purview service description's pay-as-you-go wording beside the GSA exception."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-25"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -204,8 +206,9 @@ cost: Medium. Network data security through Global Secure Access needs Microsoft
 impact: Medium. Users whose traffic routes through the Global Secure Access client and falls in the policy scope notice blocks and alerts; admins in Purview and Entra do the configuring.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed Purview path reaches Network and non-Microsoft secure browsers but omits the intervening cloud-app selection. | Found: Select + Add cloud apps. Select the Adaptive app scopes tab, then choose All unmanaged AI apps ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On | Fix: Replace controls[1].ui.path and its rendered table path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > + Add cloud apps > Adaptive app scopes > app scope > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. Set its docs to https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering, whose DLP steps document this route without the walkthrough's scenario-specific user inclusions. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
+- [supported, minor] Risk assessment: Security & identity; Scope / applicability: Learn lists an Entra ID joined device as a prerequisite, attributed in Scope to the DLP walkthrough. | Found: The Global Secure Access client requires a device (or virtual machine) that is either Microsoft Entra ID joined or Microsoft Entra ID Hybrid joined. | Fix: In Risk assessment replace 'an Entra ID joined device' with 'a Microsoft Entra ID joined or hybrid joined device'. In Scope replace 'the device must be Entra ID joined (the DLP walkthrough) or Microsoft Entra ID joined or hybrid joined (the content policy page)' with 'the device must be Microsoft Entra ID joined or hybrid joined (the content policy page)'. The current walkthrough refers readers to that page rather than giving a separate join requirement. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: At rollout / admin-path: The printed Purview route reaches Network and non-Microsoft secure browsers but omits the cloud-app selection in between. | Found: Select + Add cloud apps. Select the Adaptive app scopes tab, then choose All unmanaged AI apps ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On | Fix: Replace controls[1].ui.path and its rendered path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > + Add cloud apps > Adaptive app scopes > app scope > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. Use https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering for its docs, whose DLP procedure gives this route without the walkthrough's scenario-specific user inclusions. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
 -->

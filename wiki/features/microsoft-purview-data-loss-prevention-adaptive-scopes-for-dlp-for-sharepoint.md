@@ -92,15 +92,17 @@ changes:
     note: "Correction: removed the unsupported SharePointAdaptiveScopes command, fixed the static-site wizard path, and removed DLP-specific daily timing and validation claims."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -215,9 +217,9 @@ cost: Low. No licence or meter specific to adaptive scopes is published; DLP for
 impact: Low. Administrators who write DLP policies and adaptive scopes see the change; no source says what users of the affected sites will notice.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > + Create scope reaches adaptive scope creation. | Found: Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes. On the Adaptive scopes page, select + Create scope. | Fix: Extend the path to 'Settings > Roles and scopes > Adaptive scopes > + Create scope > Full directory > SharePoint sites'. Add to the row note: 'Then select the attributes or properties and enter their values to build the dynamic membership.' The cited page documents these remaining choices. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed Microsoft Purview DLP wizard path follows the cited Custom policy procedure through the SharePoint sites location selector. | Found: Select Data loss prevention > Policies > + Create policy. Select Enterprise applications & devices. Select Custom from both the Categories list and the Regulations list. Accept the default Full directory on the Assign admin units page. Choose where to apply the policy. | Fix: Keep the supported path and add to controls[2].note: 'The UI path reaches the SharePoint sites location selector; the cited procedure does not show selection of individual SharePoint sites.' This narrows the UI's claim without inventing further labels. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: At rollout / admin-path: Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > + Create scope reaches adaptive-scope creation. | Found: Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes. On the Adaptive scopes page, select + Create scope. | Fix: Extend controls[1].ui.path and the rendered route to 'Settings > Roles and scopes > Adaptive scopes > + Create scope > Full directory > SharePoint sites'. Add to the row note: 'Then select the attributes or properties and enter their values to build the dynamic membership.' These remaining steps are documented at https://learn.microsoft.com/purview/purview-adaptive-scopes. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed Purview DLP Custom-policy wizard route reaches Choose where to apply the policy > SharePoint sites. | Found: Select Data loss prevention > Policies > + Create policy. ... Select Custom from both the Categories list and the Regulations list. ... Accept the default Full directory on the Assign admin units page. ... Choose where to apply the policy. | Fix: Keep controls[2].ui.path and add to controls[2].note and the rendered note: 'The UI path reaches the SharePoint sites location selector; the cited procedure does not show selection of individual SharePoint sites.' Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
 -->

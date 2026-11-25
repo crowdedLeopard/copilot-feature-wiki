@@ -51,17 +51,19 @@ changes:
     note: "New briefing for the Mac listing of the modernised Presenter View; no admin control or default is documented yet."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 50
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "8ba07d31468fda02740a7f6c9424b0e1"
 ---
@@ -153,8 +155,9 @@ cost: Low. No separate licence or meter is published for this feature; the cost 
 impact: Medium. People who present with Presenter View in PowerPoint for Mac will see presenter tools, slide navigation and the timer in a new place, and Microsoft has not stated whether they can keep the old layout.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: Delaying an Office for Mac app update also delays the other changes in that update. | Found: Individual security updates or other updates can't be downloaded and installed. Instead, Microsoft provides a new app bundle of an app, such as Word, that includes all the updates. | Fix: Add https://learn.microsoft.com/microsoft-365-apps/mac/deploy-updates-for-office-for-mac to sources to support the sentence 'Delaying an update also delays the other changes it carries.' | Source: https://learn.microsoft.com/microsoft-365-apps/mac/deploy-updates-for-office-for-mac
+- [supported, minor] Governance controls / behaviour: Delaying an Office for Mac app update also delays the other changes it carries. | Found: Individual security updates or other updates can't be downloaded and installed. Instead, Microsoft provides a new app bundle of an app, such as Word, that includes all the updates. | Fix: Add https://learn.microsoft.com/microsoft-365-apps/mac/deploy-updates-for-office-for-mac to sources, titled 'Deploy updates for Office for Mac', to support the sentence 'Delaying an update also delays the other changes it carries.' | Source: https://learn.microsoft.com/microsoft-365-apps/mac/deploy-updates-for-office-for-mac
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to take stock of Office update delivery, but that control has no row in the controls table. | Found: Confirm how your Macs receive Office updates (Microsoft AutoUpdate or your own deployment tools). Table's sole control: Switch for the modernised Presenter View in PowerPoint for Mac. | Fix: Remove the Before rollout bullet beginning 'Confirm how your Macs receive Office updates': it asks readers to take stock of update delivery, which has no controls-table row. Do not add a row as part of this correction.
 -->

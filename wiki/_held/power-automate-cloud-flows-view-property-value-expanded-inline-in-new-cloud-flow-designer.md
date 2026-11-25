@@ -72,18 +72,20 @@ changes:
     note: "Corrected the Layout control's path to start at My flows and added the archived release plan's differing default and February 2026 target."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 40 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 38 statements contradicted, 2 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-24"
+  status: "held"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 40
-  unconfirmed: 0
+  claims: 38
+  confirmed: 36
+  unconfirmed: 2
   contradicted: 0
-  attempts: 0
+  attempts: 1
   hash: "d756f4e6d813de0fbff8f85a2a50467e"
 ---
 
@@ -171,4 +173,11 @@ Microsoft Learn documents no administrator setting or API for this view at the t
 risk: Low. It changes how makers view values they can already open in the designer; the roadmap says the side pane stays the default and makers choose when to switch.
 cost: Low. The only cost the sources show is maker time to learn the view; no licence or meter is stated for this feature, and the roadmap record states none.
 impact: Low. Only makers who author or debug cloud flows in the new designer will notice it, and only if they switch the view on.
+-->
+
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] What's changing: archived release-plan paragraph / default: An archived release-plan excerpt indexed by Microsoft Learn describes inline display as the default. | Found: Searched: exact feature title, feature URL, and 'inline view default Power Automate'; opened original and previous-versions feature URLs. Both redirect to the archived planned-features summary, which omits this feature; no supporting indexed excerpt was returned. | Fix: Remove the third paragraph of What's changing, beginning 'An archived release-plan excerpt', including its excerpt-link sentence. The current linked summary does not state an inline default for this feature, and no supporting excerpt was found in this run.
+- [unsupported, blocker] What's changing: archived release-plan paragraph / date: The archived release-plan excerpt gives February 2026 as this feature's general-availability target. | Found: Searched: 'Power Automate inline property values February 2026 release' and the full feature title with 'February 2026'; opened original and previous-versions feature URLs. Both redirect to planned-features, which omits this feature and its target. | Fix: Remove the third paragraph of What's changing, beginning 'An archived release-plan excerpt', including its excerpt-link sentence. Retain the supported June CY2026 roadmap target in the final paragraph; no February 2026 target could be verified.
 -->

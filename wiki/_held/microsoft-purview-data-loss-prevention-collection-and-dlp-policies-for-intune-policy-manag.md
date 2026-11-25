@@ -105,18 +105,20 @@ changes:
     note: "Correction: replaced the claim that roles for DLP policies are undocumented with the general DLP role groups, and removed an After rollout step that had no matching controls row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 53
+  claims: 50
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "9d5ccd5e314a33eaf06ea99ccb878d5b"
 ---
 
@@ -213,8 +215,11 @@ cost: Low. The only cost the sources show is admin time; the licence and any met
 impact: Medium. People who use Intune MAM-protected apps on mobile devices would notice clipboard actions being evaluated; admins in Purview and Intune configure it. Roughly who is affected depends on policy scope.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for configuring which events collection policies collect is not documented. | Found: Use the New-FeatureConfiguration cmdlet to create Microsoft Purview feature configurations within your organization, including: Collection policies. ... Includes UploadText and DownloadText activity for all supported classifiers. | Fix: Replace controls[1].api null with kind 'powershell', call 'New-FeatureConfiguration -Name <policy-name> -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig <collection-policy-JSON>', and docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration'. Add to the note: 'Security & Compliance PowerShell; public preview, not available in all organizations and subject to change. ScenarioConfig sets Activities, EnforcementPlanes and SensitiveTypeIds; Locations scopes the policy. The reference supplies the JSON syntax and examples.' Update the rendered automation cell to match. This is automation for existing collection policies, not confirmation of mobile integration support. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Solutions > Data Loss Prevention > Classifiers > Collection policies opens the collection policy list, where creation proceeds through + Create policy and + Add activities. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: Extend controls[1].ui.path to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities'. Replace the note's last sentence with 'Select + Create policy, supply a name and any optional conditions, then select + Add activities.' The steps are at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy, already cited. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Intune path reaches the clipboard setting through Apps > Protection > Create policy > iOS/iPadOS > Basics > Apps > Data protection. | Found: Select Apps > Protection. ... Select Create policy and select either iOS/iPadOS or Android. ... On the Basics page ... Apps page ... Data protection page ... including cut, copy, paste, and save-as restrictions. | Fix: Add the section heading documented by the already cited iOS settings reference: 'Apps > Protection > Create policy > iOS/iPadOS > Basics > Apps > Data protection > Data Transfer > Restrict cut, copy and paste between other apps'. The final setting is at https://learn.microsoft.com/intune/app-management/protection/ref-settings-ios; the pre-check's missing-label lead does not make this route wrong. | Source: https://learn.microsoft.com/intune/app-management/protection/create-policy
+- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Solutions > Data Loss Prevention > Classifiers > Collection policies opens the policy list, with + Create policy and + Add activities used to configure collection. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: Extend controls[1].ui.path to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities'. Replace the note's last sentence with 'Select + Create policy, supply a name and any optional conditions, then select + Add activities.' These steps remain documented at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
 -->
