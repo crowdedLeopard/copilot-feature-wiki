@@ -34,6 +34,9 @@ sources:
   - title: "Add a Copilot node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/microsoft-365-copilot-node-workflow"
     kind: "learn"
+  - title: "Plan cost and credit consumption for workflows"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption"
+    kind: "learn"
   - title: "Limit sharing"
     url: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     kind: "learn"
@@ -50,7 +53,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > managed environment > Edit Managed Environments > Manage sharing"
+      path: "Manage > Environments > managed environment > Edit Managed Environments > Manage sharing > Let people share solution-aware cloud flows"
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     api:
       kind: "powershell"
@@ -61,16 +64,16 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits"
+      path: "Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Copilot Credits"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api:
       kind: "power-platform-api"
       call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Role: Power Platform Administrator or Global Administrator, or an equivalent role that manages licensing and capacity. Learn says workflow runs are blocked once prepaid capacity is fully consumed."
+    note: "Role: Power Platform Administrator, Global Administrator or equivalent. When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-25"
 roadmapModified: "2026-11-19T21:30:10"
 changes:
   - date: "2026-11-20"
@@ -79,19 +82,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected the capacity-exhaustion wording to Learn's: new workflow runs, including test runs, are blocked when the environment has no Copilot Credits available. Also extended two control paths and removed an unsupported impact sentence."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 64
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "c23685f7c7808afc57653b32bb08773a"
+  claims: 60
+  confirmed: 59
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "d6893f2fd704a49c426dc4eaa9caf892"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ Microsoft has not stated what happens on arrival, and no source says existing wo
 
 **Change & support**
 
-- Co-owner runs draw on the same environment capacity as the owner's. Learn says that once an environment's prepaid Copilot Studio capacity is fully consumed, new workflow runs are blocked until capacity is available, while running workflows complete normally.
+- Co-owner runs draw on the same environment capacity as the owner's. Learn says that when the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available, while running workflows complete normally.
 - Expect ownership questions in support: who can still edit a workflow when its original maker leaves. Microsoft has not described this.
 
 ## Cost and licensing
@@ -134,7 +141,7 @@ Microsoft has not stated what happens on arrival, and no source says existing wo
 
 **Meter and where it appears.** Credits are consumed per action when a workflow runs, in the environment that hosts it. In the Power Platform admin center, Licensing > Copilot Studio shows the Agent flow actions used by each workflow.
 
-**What carries on when credits run out.** Learn says new workflow runs are blocked once an environment's prepaid capacity is fully consumed. The environment's overage setting decides whether it can draw on unallocated tenant capacity or bill a pay-as-you-go plan; that is the capacity row in the controls table. If no overage source is enabled, the capacity page says the environment can consume only its allocated prepaid credits.
+**What carries on when credits run out.** Learn says that when the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available. The environment's overage setting decides whether it can draw on unallocated tenant capacity or bill a pay-as-you-go plan; that is the capacity row in the controls table. If no overage source is enabled, the capacity page says the environment can consume only its allocated prepaid credits.
 
 **Not yet published.** A credit rate or licence requirement specific to co-owners or to sharing a workflow.
 
@@ -161,7 +168,6 @@ Microsoft has not stated what happens on arrival, and no source says existing wo
 
 ### After rollout
 
-- Review the Agent flow actions used by each workflow at Power Platform admin center > Licensing > Copilot Studio, and look for workflows whose consumption rises after they are shared.
 - Ask owners of sensitive workflows to reopen Share and check who the workflow is shared with.
 - Watch Message center and the Workflows pages on Microsoft Learn for the documented sharing behaviour.
 
@@ -172,14 +178,14 @@ Microsoft has not stated what happens on arrival, and no source says existing wo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who users can share flows and agents with, in managed environments</strong><br><small>Environment</small><br><small class="controls__note">Page names canvas apps, solution-aware cloud flows and agent flows, and agents; it does not mention Copilot Studio workflows. Existing alternative, not confirmed for workflows.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Credit capacity allocated to an environment and where it draws when that runs out</strong><br><small>Environment</small><br><small class="controls__note">Role: Power Platform Administrator or Global Administrator, or an equivalent role that manages licensing and capacity. Learn says workflow runs are blocked once prepaid capacity is fully consumed.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who users can share flows and agents with, in managed environments</strong><br><small>Environment</small><br><small class="controls__note">Page names canvas apps, solution-aware cloud flows and agent flows, and agents; it does not mention Copilot Studio workflows. Existing alternative, not confirmed for workflows.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing › Let people share solution-aware cloud flows <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Credit capacity allocated to an environment and where it draws when that runs out</strong><br><small>Environment</small><br><small class="controls__note">Role: Power Platform Administrator, Global Administrator or equivalent. When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Copilot Studio › Manage Copilot Credits › environment › Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Learn documents no setting specific to sharing workflows at the time of writing (November 2026). The two rows are existing controls that an administrator uses for nearby behaviour; neither is confirmed to govern workflow sharing itself.
 
-The sharing limits apply only in managed environments, and their note says rules are enforced when users try to share and do not affect users who already have access. Rules can take up to an hour to be enforced. The capacity row governs what workflow runs can consume, not who can share a workflow.
+The sharing limits apply only in managed environments, and their note says rules are enforced when users try to share and do not affect users who already have access. Rules can take up to an hour to be enforced. The capacity row governs what workflow runs can consume, not who can share a workflow. Learn's credit allocation tutorial says that if a published environment group rule governs Draw from the available capacity in my tenant, a change to an individual environment is rejected with the TenantPoolLockedByPolicy error, and the group rule has to be changed and republished.
 
 ## Open questions
 
@@ -191,19 +197,14 @@ The sharing limits apply only in managed environments, and their note says rules
 <!-- rationale
 risk: Medium. Co-owners can edit and run a workflow, and Microsoft has not said whose connection their runs use. The default state is not stated, so this rates existing behaviour continuing plus the new sharing route.
 cost: Variable. Workflows consume Copilot Studio capacity for each action they execute, metered in Copilot Credits, and co-owners can run them. No sharing-specific charge or co-owner licence is published.
-impact: Medium. Makers who build workflows notice it first, as co-owners and as the people asked to review connections before sharing. Other users see no change unless a workflow is shared with them.
+impact: Medium. Makers who build workflows notice it first, as co-owners and as the people asked to review connections before sharing.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Risk assessment: Change & support; Cost and licensing: What carries on / cost: New workflow runs are blocked once an environment's prepaid capacity is fully consumed. | Found: When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available. Running workflows complete normally. To avoid interruption, monitor capacity usage and consider turning on pay-as-you-go billing. | Fix: Replace every prepaid-exhaustion blocking statement, including controls[1].note and the rendered note, with: 'When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available.' Keep the separate explanation of tenant-pool and pay-as-you-go overage sources. Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Cost and licensing: Meter and where it appears / applicability: Workflow runs consume capacity in the environment hosting the workflow, including runs by a co-owner. | Found: Consider the environment where the workflow runs when you monitor consumption. Copilot Credits can come from shared tenant capacity allocated to the environment or from pay-as-you-go billing. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption to sources for the existing statement that workflow runs consume the hosting environment's capacity. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption
-- [supported, minor] Cost and licensing: What carries on; controls[1].governs; Governance guidance: Before rollout / applicability: The environment's overage configuration determines whether it can draw on unallocated tenant capacity. | Found: Selected: after the environment's allocated credits are consumed, it continues to draw from your tenant's unallocated capacity. If a published environment group rule governs Draw from the available capacity in my tenant, you can't override the setting for an individual environment. | Fix: Add to the capacity row's note: 'If a published environment-group rule governs Draw from the available capacity in my tenant, individual-environment overrides are rejected with TenantPoolLockedByPolicy; change and republish the environment-group rule instead.' Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist asks readers to review Agent flow actions consumption without a corresponding monitoring row. | Found: Review the Agent flow actions used by each workflow at Power Platform admin center > Licensing > Copilot Studio. The table contains only sharing-limit and capacity-allocation controls. | Fix: Remove the After rollout bullet beginning 'Review the Agent flow actions used by each workflow'; retain the reporting description in Cost and licensing. Do not add a control row as part of this correction.
-- [unsupported, minor] rationale: impact / behaviour: Other users see no change unless a workflow is shared with them. | Found: Searched: Copilot Studio workflows share co-owners sharing connection permissions licensing default admin setting. Read the roadmap, flows-overview and flow-designer; none guarantees that edits or runs of shared workflows have no effects on other users. | Fix: Remove 'Other users see no change unless a workflow is shared with them.' Retain the preceding impact rationale about makers and co-owners.
-- [supported, minor] controls[0].ui; Governance controls: sharing-limit UI / admin-path: Sharing limits are at Power Platform admin center > Manage > Environments > managed environment > Edit Managed Environments > Manage sharing. | Found: In the navigation pane, select Manage. In the Manage pane, select Environments. On the Environments page, select a managed environment. In the command bar, Edit Managed Environments. The sharing rules are located in the Manage sharing section. | Fix: For the flow rule discussed in the checklist, extend the existing UI path to 'Manage > Environments > managed environment > Edit Managed Environments > Manage sharing > Let people share solution-aware cloud flows'. The current path reaches the right section but stops before the setting. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
-- [supported, minor] controls[1].ui; Governance controls: capacity UI / admin-path: Capacity management is reached through Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits. | Found: Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Append ' > environment > Copilot Credits' to the existing capacity UI path. Add to its note: 'The panel's overage settings are Capacity overages > Draw from the available capacity in my tenant and Capacity overages > Bill to my pay-as-you-go billing plan.' | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
-- [supported, minor] controls[1].api; Governance controls: capacity API / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 writes environment credit allocations and tenant-pool draw configuration. | Found: $apiBaseUrl    = "https://api.powerplatform.com" $apiVersion    = "2024-10-01" ... Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call; the pre-check missed its interpolated URL. Add to controls[1].note: 'The request sets scope.environmentId and allocatedEntitlements with entitlementId MCSMessages, allocation.quantity, and enforcementRules containing ruleType TenantPool and enabled. This example configures tenant-pool draw, not the pay-as-you-go overage option.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[0].note; Risk assessment; Scope; Governance controls / applicability: Managed Environments sharing limits cover canvas apps, solution-aware cloud flows and agent flows, and agents in managed environments. | Found: In managed environments, admins can limit how broadly users can share canvas apps, flows, and agents. When selected: Users can share solution-aware cloud flows and agent flows with any number of individuals or security groups. | Fix: Add to controls[0].note: 'Agent sharing limits apply only to agents that require authentication.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits, which states that qualification. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
+- [supported, minor] controls[1].ui / admin-path: The capacity control is reached through Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Copilot Credits in the Power Platform admin center. | Found: Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Keep the allocation path. Add to controls[1].note: 'In the same allocation panel, under Capacity overages, select Draw from the available capacity in my tenant and/or Bill to my pay-as-you-go billing plan to configure overage sources.' The printed path reaches allocation but omits the overage controls the row also describes. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[1].api / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 writes environment Copilot Credit allocations and tenant-pool enforcement. | Found: $apiBaseUrl = "https://api.powerplatform.com" $apiVersion = "2024-10-01" Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call and add to controls[1].note: 'The request body identifies scope.environmentId and allocatedEntitlements.entitlementId MCSMessages, sets allocation.quantity, and sets enforcementRules with ruleType TenantPool and enabled true or false for tenant-capacity draw. The cited tutorial does not document a pay-as-you-go enforcement property.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's Share access review and the stated workflow-specific control gap are represented in the controls table. | Found: Ask owners of sensitive workflows to reopen Share and check who the workflow is shared with. / Learn documents no setting specific to sharing workflows ... / The table contains only managed-environment sharing limits and credit capacity. | Fix: Remove the After rollout bullet asking owners to reopen Share, since that checklist control has no table row; the roadmap fact can remain in What's changing. Remove 'Learn documents no setting specific to sharing workflows at the time of writing (November 2026)' from Governance controls, since no both-null row represents that gap. Do not add rows.
 -->

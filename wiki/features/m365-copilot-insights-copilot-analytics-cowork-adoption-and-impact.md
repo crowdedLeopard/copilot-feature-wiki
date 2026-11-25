@@ -103,15 +103,17 @@ changes:
     note: "Corrected the licence statement: advanced analysis, including consumption queries, needs at least 50 assigned Viva Insights licenses; clarified the Copilot Dashboard threshold and the manager minimum team size."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 101 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 93
+  claims: 101
+  confirmed: 101
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -226,8 +228,8 @@ cost: Low. Learn names no licence or meter for these views, so the known cost is
 impact: Medium. The reporting change reaches specific roles: Insights Analysts with global partition access, Managers and Microsoft 365 Global Administrators, rather than most users.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: Identification policies are reached in Microsoft 365 admin center through Settings > Org settings > Viva feature access > Viva Insights > identification feature. | Found: Go to Settings > Org settings > Viva feature access, select Viva Insights, choose the identification feature, and add a policy. | Fix: Keep the documented route and append this instruction to the row note: 'After choosing the identification feature, add a policy.' The cited page gives this final policy-creation step. | Source: https://learn.microsoft.com/viva/insights/identification-copilot-analytics
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Identification is reached in Microsoft 365 admin center through Settings > Org settings > Viva feature access > Viva Insights > identification feature. | Found: Go to Settings > Org settings > Viva feature access, select Viva Insights, choose the identification feature, and add a policy. | Fix: Keep the documented route and append to controls[0].note: 'After choosing the identification feature, add a policy.' The cited identification page documents this final policy-creation step. | Source: https://learn.microsoft.com/viva/insights/identification-copilot-analytics
 -->

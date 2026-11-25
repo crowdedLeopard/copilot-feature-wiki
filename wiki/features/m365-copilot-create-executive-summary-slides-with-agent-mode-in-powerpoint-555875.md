@@ -25,6 +25,12 @@ sources:
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
+  - title: "Data, Privacy, and Security for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
+    kind: "learn"
+  - title: "Microsoft Copilot requirements"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
+    kind: "learn"
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
@@ -37,8 +43,14 @@ sources:
   - title: "Microsoft 365 Roadmap item 555875"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=555875"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 555876"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=555876"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 555877"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=555877"
+    kind: "roadmap"
 videos: []
-related: ["m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint","m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint-555877","m365-copilot-powerpoint-agent","m365-copilot-reference-a-teams-meeting-or-chat-when-creating-a-presentation-with-agent-mod","m365-copilot-attach-and-reference-an-image-when-creating-a-presentation-with-copilot-in-po"]
+related: ["m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint","m365-copilot-create-executive-summary-slides-with-agent-mode-in-powerpoint-555877","m365-copilot-attach-and-reference-an-image-when-creating-a-presentation-with-copilot-in-po"]
 controls:
   - governs: "Which users hold a Microsoft 365 Copilot licence (the licence experience that covers Copilot in PowerPoint)"
     scope: "user"
@@ -60,19 +72,23 @@ changes:
     note: "First briefing for roadmap item 555875 (PowerPoint on Mac): covers the roadmap description, the Copilot licence experiences and the licence-assignment control."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 40 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after verification: removed the claim that licence assignment is the one Copilot control, added the Copilot controls and connected-experiences privacy control, and clarified prerequisites."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 39
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "3530fbb76af9f62336de10a61f569801"
+  contradicted: 0
+  attempts: 0
+  hash: "019ed7a9435ec8a2d4dd1d94f77b2f6b"
 ---
 
 ## What's changing
@@ -97,7 +113,7 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 
 **Security & identity**
 
-- Learn describes no permission or identity model specific to this feature, and the roadmap names none. Licence assignment is the one control the Copilot overview ties to Copilot in PowerPoint.
+- Learn describes no permission or identity model specific to this feature, and the roadmap names none. Microsoft's Copilot overview says that in the admin center, the Copilot controls manage Copilot Chat experiences, including Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium). Microsoft's privacy page says that turning off connected experiences that analyse content makes Microsoft Copilot features unavailable in PowerPoint when users run the most current version on Mac.
 
 **Autonomy & actions**
 
@@ -121,7 +137,7 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 - **Platform and cloud:** the roadmap record lists Mac and Worldwide (Standard Multi-Tenant). Desktop (555876) and Web (555877) are separate roadmap items.
 - **Users:** people with a Copilot experience that includes Copilot in PowerPoint, per Microsoft's Copilot overview. Which experience covers this feature is not yet published.
 - **Rollout:** the record gives status Launched, release phase General Availability and target March CY2026. A rollout schedule and default specific to executive summary slides are not stated.
-- **Prerequisites:** none are stated for this feature.
+- **Prerequisites:** no additional prerequisites specific to executive summary slides are stated; Microsoft Copilot's general requirements still apply.
 
 ## Governance guidance
 
@@ -165,13 +181,4 @@ Microsoft Learn documents no separate setting for executive summary slides at th
 risk: Low. The roadmap describes a draft slide generated for the user's presentation, and Microsoft Learn describes no new data access, connection or autonomous action for this feature.
 cost: Low. Microsoft's Copilot overview lists Copilot in PowerPoint under the Microsoft 365 Copilot (Basic) and (Premium) licences; a licence tier or meter specific to this feature is not yet published, so the known cost is admin time.
 impact: Low. People who build decks with Copilot in PowerPoint on Mac notice it; the roadmap item names no change for other users and no administrator step.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / applicability: Licence assignment is the one control the Copilot overview ties to Copilot in PowerPoint. | Found: In the admin center, use the Copilot controls to manage Copilot Chat experiences, including Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium). | Fix: Remove 'Licence assignment is the one control the Copilot overview ties to Copilot in PowerPoint.' The overview also documents controls for the Basic and Premium experiences; https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy additionally states that turning off connected experiences that analyze content makes Copilot unavailable in PowerPoint on current Mac clients. Keep the existing licence-assignment row as a licence control, not an exhaustive governance claim. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: other roadmap ids; Scope / record: The same feature has separate Mac, Desktop and Web records numbered 555875, 555876 and 555877 respectively. | Found: 555875: "platforms": ["Mac"]; 555876: "platforms": ["Desktop"]; 555877: "platforms": ["Web"]. Each title is "Microsoft Copilot (Microsoft 365): Create executive summary slides with Agent Mode in PowerPoint". | Fix: Cite the two additional records used in this paragraph: https://www.microsoft.com/microsoft-365/roadmap?id=555876 and https://www.microsoft.com/microsoft-365/roadmap?id=555877.
-- [supported, minor] Scope: Prerequisites / absence: No prerequisites specific to executive summary slides are stated. | Found: Searched: PowerPoint Agent Mode executive summary slides Mac 555875 licensing prerequisites fair use meter. Read roadmap and Microsoft Copilot requirements; product-level account, app and network requirements exist, but no additional executive-summary-specific prerequisites were found. | Fix: Replace 'Prerequisites: none are stated for this feature' with 'Prerequisites: no additional prerequisites specific to executive summary slides are stated; Microsoft Copilot's general requirements still apply.' Cite https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements.
 -->

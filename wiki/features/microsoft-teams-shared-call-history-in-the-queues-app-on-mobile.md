@@ -87,15 +87,17 @@ changes:
     note: "Corrected after the independent check: licensing model is now included with Teams Premium; removed two governance steps with no control row; extended two admin paths and added the Templates note."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
   contradicted: 0
   attempts: 0

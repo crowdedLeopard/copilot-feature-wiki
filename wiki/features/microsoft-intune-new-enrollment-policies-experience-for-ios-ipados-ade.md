@@ -40,6 +40,9 @@ sources:
   - title: "Microsoft Intune licensing"
     url: "https://learn.microsoft.com/intune/fundamentals/licensing"
     kind: "learn"
+  - title: "Microsoft Intune Government Service overview"
+    url: "https://learn.microsoft.com/intune/fundamentals/government-service"
+    kind: "learn"
   - title: "New iOS/iPadOS, visionOS, tvOS and macOS ADE enrollment policies experience"
     url: "https://techcommunity.microsoft.com/blog/intunecustomersuccess/new-iosipados-visionos-tvos-and-macos-ade-enrollment-policies-experience/4393531"
     kind: "blog"
@@ -66,19 +69,23 @@ changes:
     note: "First briefing for this item: covers the new Enrollment policies, enrollment time grouping, Company Portal changes and the gap between the roadmap status and Learn."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Correction: Company Portal is now described as optional with Setup Assistant with modern authentication, the Entra role requirement and Profiles path are completed, the factory-reset exception is added, and Azure Government now covers GCC High and DoD."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 69
+  claims: 91
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "dee486cdcc57ffd5651f63431ef31575"
+  contradicted: 1
+  attempts: 0
+  hash: "e40b588d6421dc786581ef88541f22af"
 ---
 
 ## What's changing
@@ -95,7 +102,7 @@ The roadmap record shows status In development with a target of January CY2026, 
 
 If you create iOS/iPadOS ADE policies, the new experience becomes the only place to do it. The blog says new profiles can no longer be created in the old experience, and Learn says the old experience will not receive new features. Plan to build new policies rather than edit old profiles.
 
-The practical risk is the Company Portal. Learn says to deploy it through Intune, not the App Store, so user-affinity enrolments that used to receive it from the profile now need an explicit app assignment. The gain is enrollment time grouping: without it, Learn says devices can take up to 8 hours after enrolment to receive all apps and policies.
+The practical change is the Company Portal. If you still need the Company Portal app, deploy it explicitly through Intune; new policies do not send it automatically. Company Portal is optional for enrollment with Setup Assistant with modern authentication and JIT registration. The gain is enrollment time grouping: without it, Learn says devices can take up to 8 hours after enrolment to receive all apps and policies.
 
 ## Risk assessment
 
@@ -125,19 +132,19 @@ Indirect costs are admin time to build and test new policies, and the Company Po
 
 The roadmap record lists Microsoft Intune, the iOS platform, General Availability, and the Worldwide, GCC, GCC High and DoD clouds. The Learn setup page covers iOS/iPadOS devices bought through Apple Business or Apple School Manager. The same blog also covers macOS, visionOS and tvOS; this briefing covers the iOS/iPadOS item only.
 
-Learn states a limit of 1,000 enrollment policies per enrollment token. Existing profiles are not changed by the new experience, per the blog. Learn's enrollment time grouping page says that feature for Apple ADE policies isn't available in some sovereign cloud environments, including Azure operated by 21Vianet and Azure Government; how that applies to the roadmap's GCC High and DoD entries is not stated.
+Learn states a limit of 1,000 enrollment policies per enrollment token. Existing profiles are not changed by the new experience, per the blog. Learn's enrollment time grouping page says that feature for Apple ADE policies isn't available in some sovereign cloud environments, including Azure operated by 21Vianet and Azure Government. Microsoft's Intune government service description says the GCC High and DoD offerings are built on the Microsoft Azure Government Cloud, so this restriction covers those deployments even though the roadmap lists them.
 
 ## Governance guidance
 
 ### Before rollout
-- Inventory existing profiles under Enrollment program tokens > token > Profiles, and note which use Company Portal authentication or the Company Portal single app mode option.
+- Inventory existing profiles under Microsoft Intune admin center > Devices > Device onboarding > Enrollment > Apple mobile > Enrollment program tokens > token > Profiles, and note which use Company Portal authentication or the Company Portal single app mode option.
 - Decide the authentication method for user-affinity policies; Learn recommends Setup Assistant with modern authentication and JIT registration.
-- Plan to deploy the Company Portal app as a required app, since a new policy does not send it.
+- Decide whether you still need the Company Portal app; if so, deploy it explicitly through Intune, because a new policy does not send it. It is optional for enrollment with Setup Assistant with modern authentication and JIT registration.
 - If you will use enrollment time grouping, create a static security group, add the Intune Provisioning Client as owner, and grant a policy author the enrollment time device membership assignment permission in a custom role.
 
 ### At rollout
 - Create new policies under Enrollment policies and set one as the default so synced devices do not fail to enrol.
-- Pilot each policy on a wiped test device, because later edits reach devices only after a factory reset.
+- Pilot each policy on a wiped test device, because later edits reach devices only after a factory reset, except changes to the device name template.
 - Review **Await final configuration** with the service desk, since the default for new policies is **Yes**.
 
 ### After rollout
@@ -156,7 +163,7 @@ Learn states a limit of 1,000 enrollment policies per enrollment token. Existing
 </tbody>
 </table>
 
-Enrollment time grouping is the one control the sources tie to this feature on both surfaces. Learn says choosing the group needs the enrollment time device membership assignment permission in a custom RBAC role under Enrollment programs, and adding the Intune Provisioning Client as group owner needs a Microsoft Entra Group Administrator or an existing group owner.
+Enrollment time grouping is the one control the sources tie to this feature on both surfaces. Learn says choosing the group needs the enrollment time device membership assignment permission in a custom RBAC role under Enrollment programs. Adding the Intune Provisioning Client as group owner requires a Microsoft Entra Group Administrator, an account holding microsoft.directory/groups/owners/update, or an existing owner of the security group.
 
 The enrollment time grouping page shows a DELETE request to remove the group, but the Graph reference for the clearEnrollmentTimeDeviceMembershipTarget action lists POST, so check the reference before scripting. Both are /beta calls.
 
@@ -165,24 +172,18 @@ The other settings, such as User Affinity, Await final configuration and locked 
 ## Open questions
 
 - Has the new experience reached all tenants and clouds? The roadmap shows In development with a January CY2026 target, while Learn documents the policies as current. Watch the roadmap item and What's new in Intune.
-- Does the enrollment time grouping page's note about some sovereign clouds, including Azure Government, apply to the GCC High and DoD clouds the roadmap lists?
 - Does the new experience offer the Company Portal authentication method? The blog says no; the Learn setup page still lists it.
 - Which Intune RBAC permissions are needed to create policies under Enrollment policies? The setup page names only the enrollment time device membership assignment permission, for the Device group setting.
 
 <!-- rationale
-risk: Medium. The new policies no longer send the Company Portal app automatically, so enrolment flows that relied on it need an explicit app deployment, and changes to an existing policy reach devices only after a factory reset.
+risk: Medium. The new policies no longer send the Company Portal app automatically, so if you still need it, deploy it explicitly through Intune (it is optional with Setup Assistant with modern authentication), and changes to an existing policy, except the device name template, reach devices only after a factory reset.
 cost: Low. The only cost the sources show is admin time to migrate policies; an Intune licence is already required, and no separate meter or price for this experience is published on the pages read.
 impact: Medium. Intune administrators who create enrolment policies notice first, and people setting up new corporate iPhones and iPads see different authentication choices and a locked wait at the end of setup.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Governance guidance: Before rollout; rationale: risk / applicability: User-affinity enrollments that previously received Company Portal now need explicit Company Portal app deployment. | Found: Sending the Company Portal app to ADE devices with user device affinity (optional) - iOS/iPadOS only. For Setup Assistant with modern authentication, the Company Portal is no longer required because of Just in Time registration and compliance Remediation | Fix: Replace the implication of mandatory deployment in Why it matters, the Before rollout checklist and the risk rationale with: 'If you still need the Company Portal app, deploy it explicitly through Intune; new policies do not send it automatically. Company Portal is optional for enrollment with Setup Assistant with modern authentication and JIT registration.' The cited blog states both points. | Source: https://techcommunity.microsoft.com/blog/intunecustomersuccess/new-iosipados-visionos-tvos-and-macos-ade-enrollment-policies-experience/4393531
-- [contradicted, blocker] Governance controls / role: Adding Intune Provisioning Client as group owner needs a Microsoft Entra Group Administrator or an existing group owner. | Found: you must be a Microsoft Entra Group Administrator (or hold the microsoft.directory/groups/owners/update permission), or be an existing owner of the security group. | Fix: Replace the role requirement with: 'Adding the Intune Provisioning Client as group owner requires a Microsoft Entra Group Administrator, an account holding microsoft.directory/groups/owners/update, or an existing owner of the security group.' This is the complete requirement at https://learn.microsoft.com/intune/device-enrollment/setup-time-grouping. | Source: https://learn.microsoft.com/intune/device-enrollment/setup-time-grouping
-- [contradicted, blocker] Scope; Open questions: sovereign clouds / absence: How the Azure Government exclusion applies to GCC High and DoD is not stated. | Found: The Intune GCC High and DoD offerings are built on the Microsoft Azure Government Cloud. Government cloud: This service is also known as GCC High or DoD. | Fix: Replace the unresolved caveat in Scope with: 'The enrollment time grouping page excludes Apple ADE enrollment time grouping in Azure Government. Microsoft's Intune government service description places GCC High and DoD in Azure Government, so this restriction covers those deployments even though the roadmap lists them.' Cite https://learn.microsoft.com/intune/fundamentals/government-service and remove the corresponding Open questions bullet. | Source: https://learn.microsoft.com/intune/fundamentals/government-service
-- [contradicted, blocker] Governance guidance: Before rollout, inventory bullet / admin-path: The inventory route is Enrollment program tokens > token > Profiles. | Found: Existing enrollment profiles will remain in Devices > Enrollment > Apple > Enrollment program tokens > select a token > Profiles. | Fix: Replace the part-way-in inventory route with 'Microsoft Intune admin center > Devices > Device onboarding > Enrollment > Apple mobile > Enrollment program tokens > token > Profiles'. The current prefix is documented at https://learn.microsoft.com/intune/device-enrollment/apple/setup-automated-ios and the Profiles destination at the cited blog. | Source: https://techcommunity.microsoft.com/blog/intunecustomersuccess/new-iosipados-visionos-tvos-and-macos-ade-enrollment-policies-experience/4393531
-- [contradicted, blocker] Governance guidance: At rollout; rationale: risk versus Risk assessment / consistency: The pilot advice and risk rationale say policy edits reach devices only after factory reset, while Risk assessment correctly exempts the device name template. | Found: Risk assessment: the device name template is the exception. At rollout: later edits reach devices only after a factory reset. Risk rationale: changes to an existing policy reach devices only after a factory reset. | Fix: Add 'except changes to the device name template' to the factory-reset statements in the At rollout pilot bullet and the risk rationale. Learn states that naming-template changes take effect at the next check-in: https://learn.microsoft.com/intune/device-enrollment/apple/setup-automated-ios.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance versus Governance controls / consistency: The checklist asks readers to review or configure controls that have no corresponding controls-table row. | Found: Decide the authentication method; deploy the Company Portal app as a required app; grant a policy author ... permission; set one as the default; Review Await final configuration; Review the Enrollment time grouping failures report. Table: only the enrollment time grouping group. | Fix: The Before rollout authentication, Company Portal assignment and custom-role permission steps, At rollout default-policy and Await final configuration steps, and After rollout failures-report step have no corresponding controls-table rows.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Device group control is reached through Devices > Device onboarding > Enrollment > Apple mobile > Enrollment program tokens > token > Enrollment policies > Create policy > iOS/iPadOS > Device group in Microsoft Intune admin center. | Found: Choose a token, and then select Enrollment policies. / Select Create policy > iOS/iPadOS. / For Basics, give the policy a Name and Description / Select Next. / On the Device group tab, optionally select a Microsoft Entra security group | Fix: Include the pass-through Basics wizard page: Devices > Device onboarding > Enrollment > Apple mobile > Enrollment program tokens > token > Enrollment policies > Create policy > iOS/iPadOS > Basics > Device group. Apply this to controls[0].ui.path and its rendered table text; the cited setup page documents the sequence. | Source: https://learn.microsoft.com/intune/device-enrollment/apple/setup-automated-ios
+- [contradicted, minor] Governance guidance versus Governance controls table / consistency: The governance checklist asks readers to check or configure several controls that do not appear in the controls table. | Found: set one as the default / Review Await final configuration / Review the Enrollment time grouping failures report. The table has only: Entra security group used for enrollment time grouping in an iOS/iPadOS policy. | Fix: The checklist controls with no table row are the Profiles inventory, authentication method, Company Portal deployment, security group creation and ownership, custom-role permission assignment, default enrollment policy, Await final configuration, failures report and device policy reassignment. These checklist steps are not represented by the existing Device group row; do not add control rows as part of this correction.
 -->

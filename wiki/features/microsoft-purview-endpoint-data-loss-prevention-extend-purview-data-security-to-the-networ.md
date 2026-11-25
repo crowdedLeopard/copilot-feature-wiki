@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "Learn lists Azure Firewall Premium with an AI Security add-on licence and a valid Microsoft Purview licence as prerequisites. Azure Firewall pricing is on the Azure pricing page; a Purview licence or meter specific to this integration is not yet published."
+  notes: "For the Azure Firewall preview, mapped accounts require Purview E5 (or equivalent) per-seat licences, and Azure Firewall Premium requires the AI Security add-on on all firewalls associated with the policy in a preview region. Purview pay-as-you-go setup is not required. Azure Firewall pricing is on the Azure pricing page."
 audiences: ["security","compliance","m365-admin","finops"]
 tags: ["purview","dlp","network-data-security","endpoint-dlp","insider-risk-management","azure-firewall"]
 sources:
@@ -66,7 +66,7 @@ controls:
     note: "Learn's steps use HTTPS:443 with TLS inspection enabled on the rule. Network rules are processed before application rules."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-25"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-20"
@@ -79,19 +79,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected licensing: Learn's Purview network data security page lists Azure Firewall (preview), requires Purview E5 per-seat licences for mapped accounts and no pay-as-you-go; the B2B guest exclusion covers it; noted the 3 MB versus 4 MB text limit."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 81
+  claims: 82
+  confirmed: 82
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "0efaa223e8e0f6b367a8ed268941f693"
+  contradicted: 0
+  attempts: 0
+  hash: "9efc40a838aea9b871d8d959c68a3289"
 ---
 
 ## What's changing
@@ -112,7 +116,7 @@ Microsoft has not stated a default, and no source says existing behaviour change
 
 **Data exposure**
 
-- Learn says that if Microsoft Purview inspection cannot complete, for example when a payload exceeds the supported size or an internal error occurs, traffic is allowed (fail-open). The maximum supported content size is 3 MB for file and text content, so a larger transfer is allowed through this control.
+- Learn says that if Microsoft Purview inspection cannot complete, for example when a payload exceeds the supported size or an internal error occurs, traffic is allowed (fail-open). The maximum supported content size is 3 MB for file and text content, so a larger transfer is allowed through this control. The general Purview network data security page instead gives inline limits of 4 MB for uploadText and downloadText and 3 MB for uploadFile and downloadFile; the two pages disagree on the text limit.
 - Learn says only traffic mapped to Microsoft Entra user IDs is inspected. Traffic from a source address with no entry in the mapping file is not inspected by this integration, and the roadmap's wording about background services and automated workloads does not say how such traffic gets a user context.
 - Learn says the preview inspects HTTPS on port 443 with TLS inspection enabled on the rule, and that an allowed transfer alone does not show DLP evaluation happened. Validate each activity separately.
 
@@ -136,7 +140,7 @@ Microsoft has not stated a default, and no source says existing behaviour change
 
 Learn lists these prerequisites for the preview: Azure Firewall Premium with an AI Security add-on licence, with the add-on enabled on all firewalls associated with the policy, and a valid Microsoft Purview licence. Azure Firewall AI Security concepts says AI Security is licensed as an add-on to Azure Firewall Premium and points to the Azure Firewall pricing page for prices. The Learn pages read give no price for the add-on.
 
-The Microsoft Purview network data security page gives licence combinations for Microsoft Entra Global Secure Access and for non-Microsoft SASE and secure browser solutions, and a pay-as-you-go request meter for the latter. It does not list Azure Firewall, so which Purview licence or meter applies to this integration is not yet published.
+The Microsoft Purview network data security page gives licence combinations for Microsoft Entra Global Secure Access, Azure Firewall (preview) and non-Microsoft SASE and secure browser solutions, and a pay-as-you-go request meter for the non-Microsoft solutions. The page explicitly lists Azure Firewall (preview). For the Azure Firewall preview, mapped accounts require Purview E5 (or equivalent) per-seat licences. Azure Firewall Premium requires the AI Security add-on enabled on all firewalls associated with the policy in a preview region. Purview pay-as-you-go setup is not required for this integration.
 
 Indirect costs from the prerequisites: a storage location and managed identity for the mapping file, working TLS inspection with a trusted certificate authority, and downtime to enable the add-on on an existing firewall.
 
@@ -146,7 +150,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) as the only cloud and
 
 Learn's preview page describes: Azure Firewall Premium with the AI Security add-on in East Asia, UK South and West Central US; configuration in the Azure portal only; a mapping file of up to 50,000 rows; at most one profile of each type in a security profile group; and inspection of HTTPS on port 443 with TLS inspection. The mapped users must be in the intended Purview policy scope, and Learn says Purview needs permissions to manage the relevant DLP policies and access to configure the Azure Firewall policy and its application rules.
 
-Learn's network data security page says Purview network data security policies do not apply to B2B guest users. That page describes the Purview feature in general and does not say this limit applies to the Azure Firewall integration specifically.
+Learn's network data security page says Purview network data security policies do not apply to B2B guest users. The page explicitly includes Azure Firewall (preview) among its network data security integrations, so this general policy exclusion covers that integration.
 
 ## Governance guidance
 
@@ -154,7 +158,7 @@ Learn's network data security page says Purview network data security policies d
 
 - Confirm with the Azure network team which firewalls are Premium, which are in East Asia, UK South or West Central US, and which policies would carry the DLP profile.
 - Decide who owns the source-IP-to-user mapping file, its storage location and the managed identity that reads it.
-- Ask Microsoft account contacts for the Purview licence and meter that apply to this integration, and for the add-on price on the Azure Firewall pricing page, before budgeting.
+- Check that the mapped accounts hold Purview E5 (or equivalent) per-seat licences, and ask Microsoft account contacts for the add-on price on the Azure Firewall pricing page, before budgeting.
 
 ### At rollout
 
@@ -189,24 +193,19 @@ The rows for the firewall list the controls Learn describes; the path begins at 
 ## Open questions
 
 - What is the default state at general availability, and does any existing firewall or Purview policy start inspecting traffic without an administrator configuring it? Watch the roadmap item and the Azure Firewall AI Security Learn pages.
-- Which Microsoft Purview licence or meter applies to Azure Firewall integration, given that the network data security page covers Global Secure Access and non-Microsoft SASE solutions but does not mention Azure Firewall?
+- What does the Azure Firewall AI Security add-on cost? The Learn pages read give no price and point to the Azure Firewall pricing page.
 - How will traffic from background services and automated workloads be given the Microsoft Entra user context that Learn says is needed for inspection?
 - Which Insider Risk Management signals will the integration provide, and where will alerts appear in Microsoft Purview and Microsoft Defender? The Learn pages read describe neither.
 - Will the preview limits (three regions, Azure portal only, HTTPS on port 443, 3 MB content size, fail-open) change by the roadmap's March CY2027 General Availability target?
 
 <!-- rationale
 risk: Medium. Learn describes a preview where traffic is inspected only if mapped to a Microsoft Entra user and TLS inspection works, and where inspection that cannot complete lets traffic through (fail-open). No source states what happens by default.
-cost: Medium. Learn lists Azure Firewall Premium with the AI Security add-on plus a Microsoft Purview licence as prerequisites; the add-on's price is not given on the Learn pages and no Purview meter for this integration is stated.
+cost: Medium. Learn lists Azure Firewall Premium with the AI Security add-on plus Purview E5 (or equivalent) per-seat licences for mapped accounts as prerequisites; the add-on's price is not given on the Learn pages.
 impact: Low. Learn describes configuration by administrators in the Azure portal and Microsoft Purview portal; people notice only if a DLP rule set to Block and a firewall profile set to Alert and deny restrict a transfer.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] licensing.notes; Cost and licensing; Governance guidance; Open questions; rationale: cost / absence: Which Purview licence or meter applies to the Azure Firewall integration is not yet published. | Found: Purview E5 (or equivalent) per-seat licenses applied to mapped accounts used with Azure Firewall ... Pay-as-you-go is not required to be set up for integration with Microsoft Entra Global Secure Access or Azure Firewall. | Fix: Replace this absence everywhere it appears, including licensing.notes, the cost rationale, budgeting advice and the licensing open question, with: 'For the Azure Firewall preview, mapped accounts require Purview E5 (or equivalent) per-seat licences. Azure Firewall Premium requires the AI Security add-on enabled on all firewalls associated with the policy in a preview region. Purview pay-as-you-go setup is not required for this integration.' Cite https://learn.microsoft.com/purview/dlp-network-data-security-learn. Keep the separate question about the Azure Firewall add-on price. | Source: https://learn.microsoft.com/purview/dlp-network-data-security-learn
-- [contradicted, blocker] Cost and licensing; Open questions / absence: The Purview network data security page does not list or mention Azure Firewall. | Found: Azure Firewall (preview): To learn more about the Azure Firewall integration, see Configure network DLP with Azure Firewall and Microsoft Purview (preview). | Fix: Remove 'It does not list Azure Firewall' and the open question's premise that the page does not mention Azure Firewall. Replace the cost paragraph's omission claim with 'The Purview network data security page explicitly lists Azure Firewall (preview).' The licensing replacement is given in the licensing finding. | Source: https://learn.microsoft.com/purview/dlp-network-data-security-learn
-- [contradicted, blocker] Scope / applicability: The general network data security page does not establish that the B2B guest exclusion applies to the Azure Firewall integration. | Found: Purview provides these capabilities through integrations with one or more ... firewall ... solutions: ... Azure Firewall (preview) ... Purview network data security policies don't apply to B2B guest users. | Fix: Replace the second sentence of the B2B paragraph with 'The page explicitly includes Azure Firewall (preview) among its network data security integrations, so this general policy exclusion covers that integration.' Cite https://learn.microsoft.com/purview/dlp-network-data-security-learn. | Source: https://learn.microsoft.com/purview/dlp-network-data-security-learn
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview path reaches Network and non-Microsoft secure browsers in the policy wizard. | Found: Select + Add cloud apps and scope the destination applications. ... Enable the Network and non-Microsoft secure browsers enforcement location. ... Select Create or customize advanced DLP rules > + Create rule | Fix: The route reaches the location but stops before the activities and actions named by the row. Extend controls[0].ui.path and its rendered counterpart to 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > Restrict browser and network activities', as documented at https://learn.microsoft.com/azure/firewall/configure-network-dlp. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
-- [supported, minor] Why it matters; Risk assessment: Data exposure; Open questions / behaviour: The Azure Firewall preview guide gives a 3 MB maximum for both file and text content. | Found: The maximum supported content size is 3 MB for both file and text content. | Fix: Keep the Azure Firewall guide's 3 MB statement, but add: 'The general Purview network data security page instead gives inline limits of 4 MB for uploadText/downloadText and 3 MB for uploadFile/downloadFile; the two pages disagree on the text limit.' Cite https://learn.microsoft.com/purview/dlp-network-data-security-learn. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview portal path runs through Data loss prevention, Policies, + Create policy, Inline web traffic, Custom, Custom policy, + Add cloud apps and Network and non-Microsoft secure browsers. | Found: select Data loss prevention > Policies > + Create policy. ... Select Inline web traffic > Custom > Custom policy ... Select + Add cloud apps ... Enable the Network and non-Microsoft secure browsers enforcement location. | Fix: Keep the documented route, but continue controls[0].ui.path to the action control: 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > Restrict browser and network activities > activity > Audit or Block'. The current route stops before the rule action that the row also governs; the continuation is documented at https://learn.microsoft.com/azure/firewall/configure-network-dlp. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
 -->

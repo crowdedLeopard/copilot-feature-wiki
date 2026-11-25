@@ -46,6 +46,12 @@ sources:
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
+  - title: "Deploying sensitivity labels with label policies for the Australian Government"
+    url: "https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance"
+    kind: "learn"
+  - title: "Restrict access to content by using sensitivity labels to apply encryption"
+    url: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
+    kind: "learn"
 videos: []
 related: ["sensitivity-labels","microsoft-purview-information-protection-sensitivity-label-inheritance-for-teams-meeting-a","outlook-purview-dlp-wait-on-send-support-for-mac","microsoft-purview-data-loss-prevention-count-of-labelled-documents-condition","outlook-purview-data-loss-prevention-support-for-calendar-events-in-outlook-for-mac"]
 controls:
@@ -73,7 +79,7 @@ controls:
     note: "Selectable only after the inherit option is selected. Without the recommend option the label is applied automatically, and users can still remove it or choose another label before sending."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-25"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-20"
@@ -82,19 +88,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected the licensing statement to the Purview service description's E5 or IPG requirement for automatic or policy-based labelling; removed the licence open question and the first three Before rollout checklist steps; added two source links."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e9ce3674ffc8fcfeffb11d290464813d"
+  contradicted: 0
+  attempts: 0
+  hash: "3e8605766fcbdc9b445e7c42d5376a34"
 ---
 
 ## What's changing
@@ -131,7 +141,7 @@ The setting lives in the label policy, and the Learn page describes it as someth
 
 ## Cost and licensing
 
-Licence: the Microsoft Purview service description says that sensitivity labelling, including automatic or policy-based labelling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance (IPG), and that administrators and users both need the appropriate licences. It lists Manual Sensitivity Labeling as included in Microsoft 365 E5, A5, G5, E3, A3, G3, F1, F3 and Business Premium, among other plans. The service description has no separate row for label inheritance from email attachments, so which of these levels covers this feature is not yet published.
+Licence: the Microsoft Purview service description says that sensitivity labelling, including automatic or policy-based labelling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance (IPG), and that administrators and users both need the appropriate licences. It lists Manual Sensitivity Labeling as included in Microsoft 365 E5, A5, G5, E3, A3, G3, F1, F3 and Business Premium, among other plans. The service description requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG) for automatic or policy-based sensitivity labeling; it does not name attachment inheritance separately, and it has no separate row for label inheritance from email attachments.
 
 Meter: no meter or price for this feature is published in the service description at the time of writing (November 2026). The roadmap item does not mention licensing.
 
@@ -148,9 +158,6 @@ Indirect cost: admin time to set the label policy and review label priority and 
 ## Governance guidance
 
 ### Before rollout
-- Check which labels are published to Mac users and confirm each is scoped to both files and emails (Information Protection > Sensitivity labels), because Learn says that is required for inheritance.
-- Review label priority order, since the highest priority label among the attachments is the one the email inherits.
-- List the labels that apply encryption and decide whether recipients should receive the same encryption on an email, as Learn says it is applied by default.
 - Test on a pilot Mac running the Outlook version you deploy, because the release notes and the Learn version table differ on Mac support.
 
 ### At rollout
@@ -184,22 +191,16 @@ Label scope (files and emails) is set on the label, not on the policy: Learn say
 
 - Which Outlook for Mac versions support label inheritance from email attachments? The release notes list it under 16.113, while the Learn capabilities table shows Not available for Outlook for Mac. Watch the Learn page Minimum versions for sensitivity labels in Office apps.
 - Does a label policy that already has the inherit option selected start to apply to Mac users after they update, or does Mac need a separate change? Watch Message center and the Learn page Manage sensitivity labels in Office apps.
-- Which licence level covers label inheritance from email attachments: the Microsoft 365 E3 manual labelling row or the E5 and Information Protection and Governance statement? Watch the Microsoft Purview service description.
 - Do the encryption cases that Learn lists for Windows, such as Double Key Encryption, behave the same in Outlook for Mac?
 
 <!-- rationale
 risk: Low. The feature only chooses among labels already published to the user, and the user can remove or change an automatically applied label before sending; the main exposure is encryption that the inherited label applies to the email.
-cost: Low. The only cost the sources show is admin time to set the label policy. The Purview service description names no separate meter or price for this feature, and which licence level covers it is not stated.
+cost: Low. The only cost the sources show is admin time to set the label policy. The Purview service description names no separate meter or price for this feature, and the service description gives an E5 or IPG requirement for automatic or policy-based labeling.
 impact: Medium. Outlook for Mac users in tenants that publish labels may see an email's label change when they attach labelled files, and recipients see any encryption the label applies.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; Open questions; rationale: cost / absence: Which licence level covers attachment-label inheritance is not yet published. | Found: Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG). | Fix: Replace the unpublished-licence-level sentence with: 'The service description requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG) for automatic or policy-based sensitivity labeling; it does not name attachment inheritance separately.' Remove the open question asking whether the E3 manual-labeling row covers this feature, and replace 'which licence level covers it is not stated' in the cost rationale with 'the service description gives an E5 or IPG requirement for automatic or policy-based labeling'. Retain the narrower statement that no separate attachment-inheritance licensing row is published. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / applicability: Email-label-based mail-flow, DLP and encryption controls can operate on the label inherited from attachments. | Found: Any mail-flow or DLP related controls that are tied to the email's label ... is applied based on the email's attachments. ... If the inherited label includes any advanced controls, such as label encryption, the email has these controls applied | Fix: Add https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance to sources for the existing mail-flow and DLP applicability statement. | Source: https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance
-- [supported, minor] Risk assessment: Data exposure / behaviour: Recipients not authorized by an inherited label's encryption permissions may be unable to open the email. | Found: When a document, email, or meeting invite is encrypted, access to the content is restricted ... Can be decrypted only by users authorized by the label's encryption settings. | Fix: Add https://learn.microsoft.com/purview/encryption-sensitivity-labels to sources for the existing statement about recipients being unable to open encrypted emails. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
-- [supported, minor] Governance guidance: Before rollout / admin-path: Information Protection > Sensitivity labels identifies the label list used to review label scopes. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: Replace the parenthetical route with 'Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels'. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks readers to review label publication, scopes, priority and encryption, but the controls table has no rows for those controls. | Found: Check which labels are published to Mac users and confirm each is scoped to both files and emails ... Review label priority order ... List the labels that apply encryption; table: only inheritance and recommendation. | Fix: The label-publication, label-scope, label-priority and encryption review steps have no corresponding control rows. Remove the first three Before rollout checklist bullets; do not add control rows.
+- [supported, minor] What's changing; Risk assessment; Governance guidance / behaviour: Inheritance does not replace a manually applied email label, even when that label has lower priority. | Found: When an email message has been manually labeled, that label won't be replaced by label inheritance from email attachments. | Fix: After this statement, add: 'Microsoft's Australian Government label-policy guidance also says that, when both inheritance options are selected, a manually labelled email can receive a recommendation to increase its sensitivity; the Office-apps page does not describe that exception.' Cite https://learn.microsoft.com/compliance/anz/pspf-label-publishing#label-inheritance, which says: 'In situations where a user has already applied a label, the second option comes into effect and recommend that the email's sensitivity is increased to match.' | Source: https://learn.microsoft.com/purview/sensitivity-labels-office-apps
 -->

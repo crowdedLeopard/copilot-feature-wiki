@@ -127,19 +127,23 @@ changes:
     note: "Corrected after verification: added the documented preview automation for User access and the general Copilot file-upload policy, and narrowed the no-switch statements to the planned capability."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-25"
+    note: "Corrected the Microsoft 365 Copilot billing statement so it is limited to agents powered by the standard harness, as the Copilot Studio licensing page states."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 79
+  claims: 84
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "9a14f6cd83c6cd81fbe72781f0b91508"
+  contradicted: 0
+  attempts: 0
+  hash: "f2ea6b8d3bfd0fde70234f815c811bcf"
 ---
 
 ## What's changing
@@ -177,7 +181,7 @@ The Learn comparison table of agent types lists custom engine agents as hosted i
 
 ## Cost and licensing
 
-For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, agents accessing shared tenant data are billed on metered consumption, according to the [Purchase and manage agents in Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat) guide. For Microsoft 365 Copilot licence holders, classic answers, generative answers and Microsoft Graph tenant grounding are not charged when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint, according to the [Copilot Studio licensing page](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing). Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users; no action is needed to enable agents for Microsoft 365 Copilot (Premium). The purchase guide documents Microsoft 365 Copilot (Premium) access and pay-as-you-go access for Basic users accessing shared tenant data; check the licensing for the selected agent and capabilities.
+For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, agents accessing shared tenant data are billed on metered consumption, according to the [Purchase and manage agents in Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat) guide. For agents powered by the standard harness, the [Copilot Studio licensing page](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing) states that Microsoft 365 Copilot licence holders are not charged for classic answers, generative answers or Microsoft Graph tenant grounding when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint. Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users; no action is needed to enable agents for Microsoft 365 Copilot (Premium). The purchase guide documents Microsoft 365 Copilot (Premium) access and pay-as-you-go access for Basic users accessing shared tenant data; check the licensing for the selected agent and capabilities.
 
 Hosting is a separate cost: the Plan licensing and cost page says hosting these agents might incur additional hosting costs. Whether file upload carries its own licence, meter or limit is not yet published. The Copilot Studio licensing page describes Copilot Credits as the common currency across Copilot Studio capabilities. See [Copilot Credits](/concepts/copilot-credits/) for how that meter works.
 
@@ -240,10 +244,9 @@ cost: Variable. For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, the
 impact: Medium. Only people who use custom engine agents on the web would notice, but those users would start sending documents to agents that their tenant, or a vendor, built and hosts.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Microsoft 365 Copilot billing exemption / licensing: For Microsoft 365 Copilot licence holders, agents generally incur no charge for classic answers, generative answers or Microsoft Graph tenant grounding when using their authenticated identity in Copilot Chat, Teams or SharePoint. | Found: This article covers licensing details for agents powered by the standard harness. ... This usage can appear as non-billed credits in consumption reports, and it isn't billed to a pay-as-you-go meter. | Fix: Replace the exemption sentence with: "For agents powered by the standard harness, the Copilot Studio licensing page states that Microsoft 365 Copilot licence holders are not charged for classic answers, generative answers or Microsoft Graph tenant grounding when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint." Keep the citation https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can apply the documented User access baseline once. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call. Add to controls[1].note: "The request body sets mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne." These details are already verified in the prose and at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] Why it matters / behaviour: The comparison table lists custom engine agents as hosted in Microsoft 365 with Copilot Studio or externally with solutions such as Azure AI. | Found: Hosted in Microsoft 365 with Copilot Studio or externally with custom solutions such as Azure AI. | Fix: After this table attribution add: 'The same comparison page also describes custom engine agents as requiring hosting outside Microsoft 365; the custom engine overview says hosting varies by development approach.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview
+- [supported, minor] Why it matters / behaviour: The comparison table says custom engine agent builders must ensure their own compliance, responsible AI practices and security. | Found: Must ensure your own compliance, RAI practices, and security measures. | Fix: After this attribution add: 'The custom engine overview separately says the Copilot Studio low-code approach offers built-in compliance via Microsoft Power Platform.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview
 -->

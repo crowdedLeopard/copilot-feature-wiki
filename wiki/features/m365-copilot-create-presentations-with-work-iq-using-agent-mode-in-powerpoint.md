@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "included"
   notes: "Microsoft's Copilot overview describes a Basic experience in PowerPoint without the Microsoft 365 Copilot add-on licence and a full experience with it. Work IQ is available to licensed users in all Microsoft 365 Copilot experiences. A rule specific to this feature is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["powerpoint","m365-copilot","work-iq","licensing"]
@@ -66,32 +66,36 @@ changes:
     note: "New briefing for the web item; Mac is listed separately as roadmap item 555872."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 52 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: the release-notes entry is marked Windows, licensing model is now included, and unsupported web steps, the one-prompt wording and the permissions-review step were removed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 51 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 47
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "9edfcee9bd6ceae5326794c53248d23f"
+  claims: 51
+  confirmed: 51
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "6b4b30e7e98b4453031224d8c7af33ed"
 ---
 
 ## What's changing
 
 The roadmap item states that Agent Mode in PowerPoint can now create presentations based on a user's Work IQ, so the user no longer has to find the right files, meetings and emails to build slides from. This item covers PowerPoint on the web. Microsoft lists the same feature under a second roadmap item, 555872, for Mac. Both records show Launched, March CY2026, General Availability and Worldwide (Standard Multi-Tenant), so the two pages differ only by platform.
 
-Microsoft's Work IQ overview describes Work IQ as a workplace intelligence layer that lets agents access and reason over organizational and business data. A Microsoft 365 Copilot release-notes entry dated 1 July 2026, listed under roadmap ID 555874, says Copilot in PowerPoint now uses Work IQ to gather relevant files, meetings and emails for a presentation. Its steps are to open PowerPoint, select 'Edit with Copilot' and choose to create a presentation based on your Work IQ. That entry carries a different roadmap ID from this page and does not name a platform in the text read.
+Microsoft's Work IQ overview describes Work IQ as a workplace intelligence layer that lets agents access and reason over organizational and business data. A Microsoft 365 Copilot release-notes entry dated 1 July 2026, listed under roadmap ID 555874, says Copilot in PowerPoint now uses Work IQ to gather relevant files, meetings and emails for a presentation. Its steps are to open PowerPoint, select 'Edit with Copilot' and choose to create a presentation based on your Work IQ. That entry carries a different roadmap ID from this page and is explicitly marked Windows.
 
 Microsoft Learn has no page for this capability on the web specifically at the time of writing (November 2026), so detail beyond the roadmap description and that release-notes entry is not available. The roadmap record gives no default, rollout mechanics or prerequisites.
 
 ## Why it matters
 
-The change widens what a Copilot-licensed user can pull into a PowerPoint deck in one prompt: files, meetings and emails reached through Work IQ. For a service owner the question is less about the feature and more about what those users can already reach. Microsoft says Work IQ requests run in the context of a specific user and access only what that user is allowed to see or do, so oversharing in SharePoint, OneDrive or Teams surfaces in generated slides.
+The change widens what a Copilot-licensed user can pull into a PowerPoint deck: files, meetings and emails reached through Work IQ. For a service owner the question is less about the feature and more about what those users can already reach. Microsoft says Work IQ requests run in the context of a specific user and access only what that user is allowed to see or do, so oversharing in SharePoint, OneDrive or Teams surfaces in generated slides.
 
 Microsoft has not stated what happens on arrival or whether an administrator has to enable anything, so no source says existing behaviour changes. Treat this as a capability your licensed PowerPoint users on the web may already have, and review it rather than wait for a notice.
 
@@ -136,12 +140,11 @@ Microsoft has not stated what happens on arrival or whether an administrator has
 ### Before rollout
 
 - Check which users hold the Microsoft 365 Copilot licence, using the licence row in the controls table, because the Copilot overview ties the full Copilot experience in PowerPoint to it.
-- Review SharePoint and OneDrive permissions on the sites your Copilot users can reach, because Work IQ requests run in the user's context.
 - Tell PowerPoint users on the web that a deck can draw on their own files, meetings and emails, and that they review it before sharing.
 
 ### At rollout
 
-- Test with a licensed pilot user in PowerPoint on the web: open Edit with Copilot and see whether the option to create a presentation based on Work IQ appears, as the release-notes steps describe.
+- Test with a licensed pilot user in PowerPoint on the web and record whether creating a presentation from Work IQ is available.
 - Test the same with a user who does not hold the add-on licence and record what they see.
 
 ### After rollout
@@ -168,21 +171,9 @@ The one row is the existing way to decide who holds the Microsoft 365 Copilot li
 - Can users on the Microsoft 365 Copilot (Basic) experience use the Work IQ option, or only users with the add-on licence?
 - Where are generated presentations saved, and which sensitivity labels apply to content gathered from labelled files?
 - Which Work IQ sources does Agent Mode in PowerPoint use, and are SharePoint sites excluded through Restricted Content Discovery left out of the results?
-- Does the 1 July 2026 release-notes entry under roadmap ID 555874 cover the web as well as desktop?
 
 <!-- rationale
 risk: Medium. The feature gathers a user's files, meetings and emails into new slides, and Microsoft says Work IQ requests run in that user's context, so existing permissions decide what can be exposed.
 cost: Low. The roadmap item names no meter or price; the known cost is the Microsoft 365 Copilot licence Microsoft ties to the full Copilot experience in PowerPoint, plus admin time. A licence rule specific to this feature is not yet published.
 impact: Medium. People who use Copilot in PowerPoint on the web see it directly; the roadmap item lists the Web platform and Worldwide (Standard Multi-Tenant) only.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Open questions: release-notes platform / availability: The release-notes entry does not name a platform, leaving its web applicability open. | Found: Create presentations with Work IQ using Agent Mode in Copilot in PowerPoint [Windows] | Fix: Replace 'does not name a platform in the text read' with 'is explicitly marked Windows'. Remove the final Open questions bullet about whether that entry covers the web; its stated scope is Windows. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [unsupported, blocker] Governance guidance: At rollout, first bullet / admin-path: Edit with Copilot followed by the Work IQ presentation option is a documented route in PowerPoint on the web. | Found: Searched: PowerPoint Edit with Copilot Work IQ web; Agent Mode in PowerPoint web. Opened release notes: the matching Work IQ instructions are under a Windows entry, not Web. | Fix: Replace the first At rollout bullet with 'Test with a licensed pilot user in PowerPoint on the web and record whether creating a presentation from Work IQ is available.' This removes the unverified web route and the attribution of that route to Microsoft.
-- [contradicted, blocker] front matter: licensing.model / consistency: The feature's licensing model is mixed. | Found: Briefing: model: mixed. Microsoft: Work IQ is included with Microsoft 365 Copilot (Premium), whereas the Work IQ API is a distinct usage-based billing offering. | Fix: Set licensing.model to 'included'. Keep the notes naming Microsoft 365 Copilot and the narrower uncertainty about Basic eligibility; the general Basic experience and separately billed Work IQ API do not establish mixed entitlement for this in-app option. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-- [unsupported, major] Why it matters: first sentence / behaviour: A user can gather the Work IQ material and create the deck in one prompt. | Found: Searched: PowerPoint Work IQ single prompt. Read the roadmap and release-notes entry: they describe creating presentations and selecting the Work IQ option, but do not specify that the process takes one prompt. | Fix: Remove 'in one prompt' from the first sentence of Why it matters.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, second bullet / consistency: The checklist asks administrators to review SharePoint and OneDrive permissions, but that control has no table row. | Found: Checklist: 'Review SharePoint and OneDrive permissions on the sites your Copilot users can reach'. Table: only 'Which users hold the Microsoft 365 Copilot licence'. | Fix: Remove the second Before rollout bullet that directs readers to review SharePoint and OneDrive permissions without a controls-table row. Do not add an unverified permissions row.
 -->

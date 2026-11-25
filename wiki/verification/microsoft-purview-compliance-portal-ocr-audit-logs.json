@@ -1,0 +1,769 @@
+{
+  "slug": "microsoft-purview-compliance-portal-ocr-audit-logs",
+  "roadmapId": 502527,
+  "title": "Microsoft Purview: audit logs for OCR transactions in Exchange and Teams",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 52: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "4 blocking findings (claims 44, 45, 47, 48)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 50,
+    "unconfirmed": 3,
+    "contradicted": 3,
+    "blocker": 4,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing overstates gaps in OCR audit documentation; Microsoft already describes related record schemas and general audit retention rules. It also makes unverified promises that OCR settings do not affect logging and that scanning charges will not change.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans audit logs for each OCR transaction in Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview compliance portal: OCR Audit logs; This feature is designed to provide Audit logs for each OCR transaction",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap's public preview scope is only Exchange and Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "this feature is only available in Exchange and teams workload for public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The preview target is September CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The release target is October CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) and no US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The roadmap record was last modified on September 3, 2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-09-03T23:00:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "date",
+      "claim": "Both roadmap targets have passed as of November 25, 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2025\", \"previewDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The OCR overview does not describe OCR transaction audit logs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OCR\" \"audit\" \"transaction\" Purview; read purview/ocr-learn-about in full. It documents scanning, billing, configuration and limits, not transaction audit logs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Graph documents a Compliance Exchange OCR audit record type in the Microsoft 365 unified audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-complianceexchangeocrauditrecord?view=graph-rest-1.0",
+      "quote": "Represents an audit record for Compliance Exchange OCR events. This resource captures information about these activities as part of the Microsoft 365 unified audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Graph documents a separate Content Discovery Platform OCR billing audit record type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-cdpocrbillingrecord?view=graph-rest-1.0",
+      "quote": "Represents an audit record for Content Discovery Platform (CDP) OCR billing events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not linked either documented Graph OCR record type to this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"complianceExchangeOcrAuditRecord\"; \"cdpOcrBillingRecord\"; \"OCR\" \"audit\" \"default\" \"502527\". Read both Graph resource pages and roadmap record; none identifies the types as roadmap item 502527.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; front matter: changes; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Learn does not yet document the audit logs delivered by this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OCR\" \"audit\" \"transaction\" Purview; \"complianceExchangeOcrAuditRecord\"; \"cdpOcrBillingRecord\". Read OCR overview, audit activities and both Graph types; related types exist but their mapping to this item is not stated.",
+      "severity": "minor",
+      "fix": "Replace the blanket documentation gap in the summary, change note and Change & support with: 'Learn documents related Exchange OCR and CDP OCR billing record types, but does not identify them as this roadmap item's per-transaction logs.'"
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Scope: Prerequisites",
+      "type": "default",
+      "claim": "Tenant-level Purview OCR scanning is optional and must be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR scanning is an optional feature that you must enable at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Each scanned image counts as one OCR transaction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Each image scanned counts as one transaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Each page of a PDF is charged separately for OCR scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "It also means that each page in a PDF file is charged separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "OCR scanning supports Exchange, SharePoint, OneDrive, Teams, Windows and macOS devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "You can scan images in Exchange, SharePoint, OneDrive, Teams, Windows, and macOS devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default state or arrival mechanics of this OCR audit logging feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview OCR audit logs default 502527; Purview tenant OCR configuration settings enable locations PowerShell Set OCR Graph API audit logging default disable. Read roadmap, OCR overview and both Graph OCR types; no feature-specific logging default stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no separate setting to disable OCR transaction audit logging.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview OCR tenant settings control whether transactions audit logged logging disable. Read OCR overview, audit enable/disable and Graph OCR record pages; found the general audit switch, not an OCR logging-specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; rationale: risk; rationale: impact",
+      "type": "absence",
+      "claim": "The sources do not describe changes to existing scanning, access or end-user behaviour from this item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OCR\" \"audit\" \"transaction\" Purview; Purview OCR audit logs default 502527. Read roadmap, OCR overview and Graph OCR types; none describes this item's changes to existing scanning, access or end-user behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing: Meter; rationale: cost",
+      "type": "licensing",
+      "claim": "OCR scanning needs an Azure pay-as-you-go subscription and billing set up through Microsoft Syntex.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "To use OCR scanning, your organization's Global admin needs to verify that an Azure pay-as-you-go subscription is in place. To use OCR, set up Microsoft Syntex pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing: Meter",
+      "type": "role",
+      "claim": "The Global admin can set up OCR billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Because it's an optional feature, your Global admin must set up pay-as-you-go billing to enable OCR.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Scope: Prerequisites",
+      "type": "role",
+      "claim": "The Compliance admin configures tenant OCR settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "The Compliance admin for your organization configures the OCR settings for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls: row 1",
+      "type": "admin-path",
+      "claim": "Tenant OCR location settings are in Microsoft Purview portal > Settings > Optical character recognition (OCR).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Select Settings. Select Optical character recognition (OCR) to enter your OCR configuration settings. Select the locations where you want to scan images. Select the groups that you want included or excluded from OCR scans.",
+      "severity": "minor",
+      "fix": "Keep the path, which reaches the correct configuration page, and add to row 1's note: 'Select the locations where you want to scan images and the groups to include or exclude.'"
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api; Governance controls: row 1",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for these tenant-level OCR location settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OCR\" \"PowerShell\" tenant Purview settings; Purview OCR tenant settings Security Compliance PowerShell Graph API ocrSettings locations Exchange Teams. Read OCR overview and Graph ocrSettings excerpt; the latter explicitly concerns an eDiscovery case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].ui; Governance controls: row 2",
+      "type": "admin-path",
+      "claim": "The audit search page is reached through Microsoft Purview portal > Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. Select the Audit solution card. On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api; Governance controls: row 2",
+      "type": "command",
+      "claim": "POST /v1.0/security/auditLog/queries creates an audit search query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-auditcoreroot-post-auditlogqueries?view=graph-rest-1.0",
+      "quote": "Create a new auditLogQuery object. POST https://graph.microsoft.com/v1.0/security/auditLog/queries",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Governance controls: row 2",
+      "type": "behaviour",
+      "claim": "The Audit Search Graph API provides programmatic access to the audit search experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-solutions-overview",
+      "quote": "The Audit Search Graph API allows you to programmatically access the audit search experience through Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Risk assessment: Data exposure; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Portal audit searching requires the Audit Logs or View-Only Audit Logs role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].ui; Governance controls: row 3",
+      "type": "admin-path",
+      "claim": "Auditing can be enabled through Microsoft Purview portal > Audit > Start recording user and admin activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity. Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[2].api; Governance controls: row 3",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true enables auditing in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Complete the following steps to turn on auditing by using Exchange Online PowerShell: Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].note; Governance controls: row 3",
+      "type": "behaviour",
+      "claim": "The Start recording user and admin activity banner appears when auditing is off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled checks auditing status in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "To verify that auditing is turned on for your organization, run the following command in Exchange Online PowerShell: Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The general unified audit switch governs audit availability, and turning auditing off makes portal audit searches return no results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "When you turn off auditing, searches of the audit log in Microsoft Purview return no results. Running the Search-UnifiedAuditLog cmdlet in Exchange Online PowerShell also returns no results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "SMB licences do not have auditing enabled by default and require manual enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Auditing isn't enabled by default for Small and Medium Business (SMB) licenses, including Microsoft 365 Business Basic, Business Standard, and Business Premium. In both these cases, you must manually enable auditing for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "default",
+      "claim": "Audit (Standard) is enabled by default for organisations with the appropriate subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-solutions-overview",
+      "quote": "Audit (Standard) is enabled by default for all organizations with the appropriate subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published an OCR-audit-record-specific tier or licence requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview OCR audit records licensing Audit Standard Premium retention ComplianceExchangeOcr CdpOcrBilling. Read audit overview, Purview service description, OCR overview and both Graph OCR types; product licences are stated, but no OCR-event-specific tier is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "Neither the OCR overview nor the audit overview publishes a separate meter for OCR audit logs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview OCR audit logs separate billing meter price retention license. Read OCR and audit overviews; OCR scanning is metered, but neither names a separate OCR-audit-log meter. Purview billing search excerpt meters non-Microsoft generative AI interactions, not OCR.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Audit (Standard) retains current records for 180 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-solutions-overview",
+      "quote": "In Audit (Standard), the system retains records for 180 days, which means you can search for activities that occurred within the past six months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Audit retention and searchability depend on the subscription and licences assigned to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The length of time that an audit record is retained (and searchable in the audit log) depends on your Office 365 or Microsoft 365 Enterprise subscription, and specifically the type of the license that is assigned to specific users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Indirect costs; Open questions",
+      "type": "absence",
+      "claim": "Which retention applies to OCR audit records is not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/audit-solutions-overview",
+      "quote": "Audit records generated by non-user entities (such as service principal actions, system events, and application activities) are retained for a fixed period of one year. This retention period isn't configurable and custom audit log retention policies don't apply to these records.",
+      "severity": "blocker",
+      "fix": "Replace the blanket retention gap with: 'Published unified-audit retention rules depend on the record's workload, originating identity and licensing. Non-user entity records have fixed one-year retention; Audit (Standard) user records have 180-day retention. Microsoft has not identified this roadmap item's originating identity or record mapping.' Keep the existing subscription-dependent statement and cite https://learn.microsoft.com/purview/audit-solutions-overview."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not described what an OCR audit record contains.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-complianceexchangeocrauditrecord?view=graph-rest-1.0",
+      "quote": "The audit data for this record type is returned as the auditData property in an auditLogRecord. dynamicProperties | microsoft.graph.security.auditRecordTypeDictionary | Inherited from auditData.",
+      "severity": "blocker",
+      "fix": "Replace the broad content gap with: 'Graph documents related OCR audit types with an auditData payload containing dynamicProperties, but does not enumerate their event-specific dynamic fields or link them to this roadmap item.' Keep the advice to inspect a sample, and use the same narrower gap in Why it matters. The cited Graph OCR pages and https://learn.microsoft.com/graph/api/resources/security-auditrecordtypedictionary?view=graph-rest-1.0 support this wording."
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Audit searches can be filtered by workload and individual records can be opened for their details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Workloads: Enter or search for workload services to search for activity related to the selected workloads. Select a specific activity to see more details about the activity in a fly-out window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls: row 1 and closing prose",
+      "type": "applicability",
+      "claim": "Tenant OCR settings do not change whether transactions are logged or what is logged.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview OCR tenant settings control whether transactions audit logged logging disable. Read OCR overview, audit enable/disable and both Graph OCR types; no passage states that tenant OCR settings cannot affect logging or logged contents.",
+      "severity": "blocker",
+      "fix": "Replace row 1's note sentence 'This controls OCR scanning, not whether OCR transactions are logged' with 'This controls OCR scanning.' Remove 'and do not change what is logged' from the closing Governance controls paragraph. Do not infer the interaction between the OCR setting and the new logging feature."
+    },
+    {
+      "n": 48,
+      "where": "rationale: cost",
+      "type": "cost",
+      "claim": "OCR scanning billing does not change with this item.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview OCR audit logs separate billing meter price retention license; \"OCR\" \"audit\" \"transaction\" Purview. Read roadmap, OCR and audit overviews and Graph OCR types; none promises unchanged OCR scanning billing when this item arrives.",
+      "severity": "blocker",
+      "fix": "Remove ', and that does not change with this item' from the cost rationale. Keep the documented statement that OCR scanning uses Azure pay-as-you-go billing."
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining OCR scanning consumption billing with Audit subscription requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "To use OCR, set up Microsoft Syntex pay-as-you-go billing. After you enter billing information in Microsoft Syntex, your Compliance admin can configure OCR in Microsoft Purview without any extra setup or licensing requirements.",
+      "severity": "minor",
+      "fix": "Retain mixed only with this clarifying sentence in licensing.notes: 'The mixed model describes OCR scanning's Azure billing prerequisite and existing Audit subscription requirements, not a published separate charge or OCR-event-specific entitlement for this roadmap item.' Keep the existing statement that the OCR-event-specific audit tier is unpublished."
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Licence; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no licence or charge for the audit logs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is designed to provide Audit logs for each OCR transaction; this feature is only available in Exchange and teams workload for public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes logging, not new scanning or enforcement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is designed to provide Audit logs for each OCR transaction",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "The roadmap describes this item's logs as being within the existing unified audit log.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"OCR\" \"audit\" \"transaction\" Purview; \"complianceExchangeOcrAuditRecord\"; \"cdpOcrBillingRecord\". Roadmap says only 'Audit logs'; Graph types state unified audit log membership but are not linked to this item.",
+      "severity": "minor",
+      "fix": "Remove 'within the existing audit log' from the risk rationale. The roadmap does not specify that mechanism, and the briefing itself says the related Graph types have not been identified as this item's output."
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "The Audit log activities page does not yet list OCR operation names.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OCR\" \"audit\" \"transaction\" Purview; OCR audit records licensing Audit Standard Premium retention. Fetched purview/audit-log-activities and searched its complete text for OCR and optical character; no OCR activity entry found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout, assigning audit roles; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist instructs administrators to assign audit roles, but the controls table has no row for role assignment.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Assign the Audit Logs or View-Only Audit Logs role to the compliance staff who will review OCR audit records (row 2). Row 2 governs searching audit records, not assigning roles.",
+      "severity": "minor",
+      "fix": "Remove the '(row 2)' reference from the role-assignment checklist bullet: row 2 documents search, not role assignment. Do not add a control row as part of this correction."
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The OCR overview points to the Microsoft Syntex Azure billing page for OCR pricing information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "You can find OCR pay-as-you-go pricing information on the Set up Microsoft Syntex billing in Azure page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The audit overview links the subscription requirements for Audit (Standard) and Audit (Premium).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-solutions-overview",
+      "quote": "Before you get started, review the subscription requirements for Audit (Standard) and Audit (Premium).",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T05:48:40.980Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/ocr-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-solutions-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/security-complianceexchangeocrauditrecord?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/security-cdpocrbillingrecord?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-auditcoreroot-post-auditlogqueries?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=502527",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which locations OCR scans, and so which OCR transactions occur",
+        "docs": "https://learn.microsoft.com/purview/ocr-learn-about",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Optical character recognition"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Searching audit records, including OCR records once they are documented",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Searching audit records, including OCR records once they are documented",
+        "docs": "https://learn.microsoft.com/graph/api/security-auditcoreroot-post-auditlogqueries?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/security/auditLog",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the unified audit log records activity for the organisation",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether the unified audit log records activity for the organisation",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

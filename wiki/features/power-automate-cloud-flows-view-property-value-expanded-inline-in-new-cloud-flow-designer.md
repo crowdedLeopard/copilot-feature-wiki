@@ -31,9 +31,6 @@ sources:
   - title: "Use data operations"
     url: "https://learn.microsoft.com/power-automate/data-operations"
     kind: "learn"
-  - title: "View property value expanded inline in the new cloud flow designer"
-    url: "https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer"
-    kind: "learn"
   - title: "Types of Power Automate licenses"
     url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
     kind: "learn"
@@ -55,7 +52,7 @@ controls:
     note: "No administrator setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-10-22T23:45:28"
 changes:
   - date: "2026-11-17"
@@ -74,19 +71,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 40 statements confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 38 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Removed the archived release-plan paragraph (its inline default and February 2026 target could not be verified); the page follows the roadmap record's side-pane default and June CY2026 target."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 36
-  unconfirmed: 2
+  claims: 42
+  confirmed: 42
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "d756f4e6d813de0fbff8f85a2a50467e"
+  attempts: 0
+  hash: "ab84c5bcbf409f6679f475aa898c1186"
 ---
 
 ## What's changing
@@ -94,8 +95,6 @@ verification:
 The new cloud flow designer in Power Automate can show property values, and output values at runtime, directly on the action cards, so a maker can compare several steps at once. The roadmap item describes this as an inline view that avoids selecting each card to read its value in the side pane, which shows one step's value at a time.
 
 The roadmap states that the current side pane experience remains the default and that a maker can switch to the inline view and back at any time. It lists the feature as "Enabled for admins/makers/marketers automatically", which the wiki reads as availability to makers rather than a setting an administrator turns on.
-
-An archived release-plan excerpt indexed by Microsoft Learn describes inline display as the default and gives February 2026 as its general-availability target; this briefing follows the current roadmap record's side-pane default and June CY2026 target. The excerpt is at [View property value expanded inline in the new cloud flow designer](https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer).
 
 The Learn page on the cloud flows designer describes a **Layout** button that switches between inline and panel layouts: the inline layout shows an action's properties in an expanded card, and the panel layout shows them in the configuration pane and keeps cards compact. That page does not mention property values or run outputs on cards, so it is background for this feature, not a description of it.
 
@@ -173,11 +172,4 @@ Microsoft Learn documents no administrator setting or API for this view at the t
 risk: Low. It changes how makers view values they can already open in the designer; the roadmap says the side pane stays the default and makers choose when to switch.
 cost: Low. The only cost the sources show is maker time to learn the view; no licence or meter is stated for this feature, and the roadmap record states none.
 impact: Low. Only makers who author or debug cloud flows in the new designer will notice it, and only if they switch the view on.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] What's changing: archived release-plan paragraph / default: An archived release-plan excerpt indexed by Microsoft Learn describes inline display as the default. | Found: Searched: exact feature title, feature URL, and 'inline view default Power Automate'; opened original and previous-versions feature URLs. Both redirect to the archived planned-features summary, which omits this feature; no supporting indexed excerpt was returned. | Fix: Remove the third paragraph of What's changing, beginning 'An archived release-plan excerpt', including its excerpt-link sentence. The current linked summary does not state an inline default for this feature, and no supporting excerpt was found in this run.
-- [unsupported, blocker] What's changing: archived release-plan paragraph / date: The archived release-plan excerpt gives February 2026 as this feature's general-availability target. | Found: Searched: 'Power Automate inline property values February 2026 release' and the full feature title with 'February 2026'; opened original and previous-versions feature URLs. Both redirect to planned-features, which omits this feature and its target. | Fix: Remove the third paragraph of What's changing, beginning 'An archived release-plan excerpt', including its excerpt-link sentence. Retain the supported June CY2026 roadmap target in the final paragraph; no February 2026 target could be verified.
 -->

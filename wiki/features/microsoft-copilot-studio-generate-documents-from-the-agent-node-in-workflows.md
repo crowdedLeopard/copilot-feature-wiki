@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "Microsoft's workflows overview says workflows consume Copilot Studio capacity for each action they execute, and its billing page meters Microsoft Copilot harness experiences in Copilot Credits. A rate specific to file output is not yet published."
+  notes: "Microsoft's workflows overview says workflows consume Copilot Studio capacity for each action they execute. The cost-management page separately lists workflows as covered by a Microsoft 365 Copilot license when run inside a standard harness agent by a licensed user, and billed in all other cases. A rate specific to file output is not yet published."
 audiences: ["maker","power-platform-admin","finops","security"]
 tags: ["copilot-studio","copilot-harness","copilot-credits","document-generation","agents","connectors","usage-based-billing","automation"]
 sources:
@@ -56,8 +56,8 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant"
-      docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness"
+      path: "Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant"
+      docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api:
       kind: "power-platform-api"
       call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01"
@@ -67,8 +67,8 @@ controls:
     scope: "agent"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Copilot Studio > Manage Agents > agent > Set limit"
-      docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness"
+      path: "Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit"
+      docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api: null
     note: "Turn on Stop usage to turn the agent off when it reaches the limit. Limits aren't applied instantly: an agent can keep responding for some time after reaching it, so allow margin. Notification threshold is set in the same pane."
   - governs: "A switch to turn off file output from the Agent node"
@@ -78,7 +78,7 @@ controls:
     note: "Credit allocations and agent limits govern spend, not file output."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-25"
 roadmapModified: "2026-11-19T21:30:10"
 changes:
   - date: "2026-11-20"
@@ -93,19 +93,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Correction: the workflow-blocking statement now says runs are blocked when no Copilot Credits are available, not when prepaid capacity is used up; completed both admin paths; added the cost-management page's licence note for workflows."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 82
+  claims: 65
+  confirmed: 64
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "1d5d3a97de1da2f81258a9fb33c4c7da"
+  attempts: 0
+  hash: "792abcdcd4098a2ad9ad13f8e11f4711"
 ---
 
 ## What's changing
@@ -139,11 +143,11 @@ Microsoft has not stated what happens on arrival, so no source says existing wor
 **Change & support**
 
 - Microsoft's workflows overview says results can vary when actions use AI. Plan for makers testing generated documents with the node's **Test** tab, and note that evaluations are documented as available only for new agents created in workflows, not for existing published agents.
-- When an environment's prepaid capacity is fully consumed, new workflow runs are blocked until capacity is available, while running workflows complete normally.
+- When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available. Running workflows complete normally. Exhausting the prepaid allocation alone does not establish that no credits are available: usage can continue through enabled tenant-capacity draw or a linked pay-as-you-go billing plan.
 
 ## Cost and licensing
 
-**Licence.** The agent node page carries Microsoft's note that the harness used to build the agent uses usage-based billing, and that using, building, testing and evaluating agents might consume Copilot Credits. The workflows overview says workflows consume Copilot Studio capacity for each action they execute. The billing overview says that for experiences powered by the Microsoft Copilot harness, credits are charged for large language model (LLM) tokens, tools and the harness itself. Credits are charged to the environment where the agent runs, from prepaid capacity or the environment's pay-as-you-go plan, and not to individual makers or users.
+**Licence.** The agent node page carries Microsoft's note that the harness used to build the agent uses usage-based billing, and that using, building, testing and evaluating agents might consume Copilot Credits. The workflows overview says workflows consume Copilot Studio capacity for each action they execute. The cost-management page separately lists workflows as covered by a Microsoft 365 Copilot license when run inside a standard harness agent by a licensed user, and billed in all other cases. The billing overview says that for experiences powered by the Microsoft Copilot harness, credits are charged for large language model (LLM) tokens, tools and the harness itself. Credits are charged to the environment where the agent runs, from prepaid capacity or the environment's pay-as-you-go plan, and not to individual makers or users.
 
 **Meter.** Copilot Credits. A credit rate for generating files in the Agent node is not yet published.
 
@@ -179,8 +183,8 @@ Makers add the node from **Workflows** in Copilot Studio and choose an existing 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment and whether it draws on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Body sets allocatedEntitlements[].enforcementRules: ruleType TenantPool, enabled false. A published environment-group rule makes it read-only; API updates fail with TenantPoolLockedByPolicy. A linked pay-as-you-go plan can still be billed.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">Turn on Stop usage to turn the agent off when it reaches the limit. Limits aren't applied instantly: an agent can keep responding for some time after reaching it, so allow margin. Notification threshold is set in the same pane.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment and whether it draws on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Body sets allocatedEntitlements[].enforcementRules: ruleType TenantPool, enabled false. A published environment-group rule makes it read-only; API updates fail with TenantPoolLockedByPolicy. A linked pay-as-you-go plan can still be billed.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">Turn on Stop usage to turn the agent off when it reaches the limit. Limits aren't applied instantly: an agent can keep responding for some time after reaching it, so allow margin. Notification threshold is set in the same pane.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>A switch to turn off file output from the Agent node</strong><br><small class="controls__note">Credit allocations and agent limits govern spend, not file output.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -203,12 +207,10 @@ cost: Variable. Workflows on the Microsoft Copilot harness are billed in Copilot
 impact: Medium. Makers who build workflows notice first; recipients of emailed or saved documents and capacity owners are affected if workflows start producing files at volume.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support, capacity bullet / behaviour: Fully consuming an environment's prepaid capacity blocks new workflow runs until capacity is available. | Found: When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available. Running workflows complete normally. To avoid interruption, monitor capacity usage and consider turning on pay-as-you-go billing. | Fix: Replace the capacity bullet with: 'When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available. Running workflows complete normally. Exhausting the prepaid allocation alone does not establish that no credits are available: usage can continue through enabled tenant-capacity draw or a linked pay-as-you-go billing plan.' Cite https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview and https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: The tenant-capacity draw setting is reached through Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant. | Found: Under Products, select Copilot Studio. Select Manage Copilot Credits. Select the environment. Enter the number of Copilot Credits to allocate. Under Capacity overages, clear Draw from the available capacity in my tenant. | Fix: The cited page supports the printed route, but the also-cited capacity page includes the Summary tab. Complete the front matter and rendered path to 'Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant' using https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
-- [supported, minor] controls[1].ui; Governance controls: row 2 / admin-path: The agent monthly-limit setting is at Power Platform admin center > Licensing > Copilot Studio > Manage Agents > agent > Set limit. | Found: In the Power Platform admin center, go to Licensing > Copilot Studio. Select Manage Agents. Select the agent, and then select Set limit. | Fix: Complete the front matter and rendered path to 'Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit'. The cited cost-management page gives Set limit; https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-monthly-consumption-limits-for-copilot-studio-agents gives Products and Summary. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
-- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / cost: The workflows overview says workflows consume Copilot Studio capacity for each action they execute. | Found: Workflows consume Copilot Studio capacity for each action they execute. | Fix: After this sentence in licensing.notes and Cost and licensing, add: 'The cost-management page separately lists workflows as covered by a Microsoft 365 Copilot license when run inside a standard harness agent by a licensed user, and billed in all other cases.' Cite https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness. This reports the differing guidance without changing the documented usage-based billing for Microsoft Copilot harness agents. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
+- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: The environment allocation control is at Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant. | Found: Select the Summary tab. ... Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. ... In the allocation panel, select an environment ... Under Capacity overages ... Select Draw from the available capacity in my tenant | Fix: Add the omitted heading: set controls[0].ui.path and its rendered path to 'Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant', as documented at https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] rationale: risk / applicability: Connector controls exist for Copilot Studio agents. | Found: To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block. | Fix: Add 'Configure data policies for agents', https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention, to sources to support the rationale's statement that connector controls exist. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist tells administrators to change a published environment-group rule, but the controls table has no row for that group-level control. | Found: Where a published environment-group rule governs that setting, change the group rule instead. ... Controls rows: environment credit allocation and tenant draw; individual agent monthly limit; file-output switch. | Fix: Remove 'Where a published environment-group rule governs that setting, change the group rule instead.' from the first Before rollout bullet. Retain the already documented group-rule qualification in Cost and licensing and controls[0].note; do not add a controls row.
 -->

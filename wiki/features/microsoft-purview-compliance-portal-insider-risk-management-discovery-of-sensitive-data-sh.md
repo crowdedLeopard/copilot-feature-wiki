@@ -37,6 +37,9 @@ sources:
   - title: "Create and deploy collection policies"
     url: "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy"
     kind: "learn"
+  - title: "Collection policy reference"
+    url: "https://learn.microsoft.com/purview/collection-policies-policy-reference"
+    kind: "learn"
   - title: "Enable Microsoft Purview pay-as-you-go features for new customers"
     url: "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement"
     kind: "learn"
@@ -68,7 +71,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Settings > Policy indicators > Built-in indicators"
+      path: "Insider Risk Management > Settings > Policy indicators > Built-in indicators > Network indicators"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators"
     api: null
     note: "Network indicators are described under built-in indicators. Learn says they need a collection policy and pay-as-you-go billing."
@@ -87,7 +90,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data Loss Prevention > Security Store"
+      path: "Data Loss Prevention > Security Store > Get solution"
       docs: "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy"
     api: null
     note: "Select Get solution for the partner, then follow that partner's steps. Partners can access some policy configuration, including user identifiers."
@@ -95,7 +98,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Account details"
+      path: "Settings > Account details > active Azure subscription > resource group"
       docs: "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement"
     api: null
     note: "Only a Global Administrator can enable pay-as-you-go. The enablement page is marked preview."
@@ -127,19 +130,23 @@ changes:
     note: "New briefing: Insider Risk Management network-layer discovery for GCC, GCC High and DoD, with the documented network indicator prerequisites, pay-as-you-go billing and controls."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 75 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected content-capture wording (needs Content contains classifiers set to All; excludes files), the first-data timing, and the meter statement; extended four control paths and removed a mismatched report pointer."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 71
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "cdddf79ad1f4df251596b47d8234afbe"
+  claims: 76
+  confirmed: 76
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "9749c466e9405576580b334082f085d1"
 ---
 
 ## What's changing
@@ -159,7 +166,7 @@ If nobody acts, Learn's description is that nothing is collected: all global ind
 ## Risk assessment
 
 **Data exposure**
-- Network indicators identify sensitive items shared through HTTP and HTTPS traffic, so IRM gains matches taken from employees' web activity. Learn says that if content capture is configured in a collection policy, the full conversation between the user and an AI app is captured and sent to Purview. Review that option before the collection policy goes live (collection policy row).
+- Network indicators identify sensitive items shared through HTTP and HTTPS traffic, so IRM gains matches taken from employees' web activity. Learn says that if content capture is enabled and Content contains classifiers is set to All, detected AI prompts and responses are captured and sent to Purview; this does not include content in files shared with generative AI. Review that option before the collection policy goes live (collection policy row).
 - If you integrate a non-Microsoft partner, Learn says it can access and possibly store some policy configuration, including user identifiers, under its own terms and privacy policy. Read those terms before choosing a partner (Security Store row).
 
 **Security & identity**
@@ -167,17 +174,17 @@ If nobody acts, Learn's description is that nothing is collected: all global ind
 - Learn says Purview network data security policies do not apply to B2B guest users, so guest traffic is not covered by those policies.
 
 **Autonomy & actions**
-- The roadmap item describes discovery. Learn says network data security DLP policies support Audit only and Block actions, which are set in DLP, not in IRM; this briefing does not assume either applies here.
+- The roadmap item describes discovery. Learn says network data security DLP policies support Audit only and Block actions, which are set in DLP, not in IRM; this briefing does not assume either applies here. Supported activities and actions may differ by integrated solution; check with the solution provider.
 
 **Change & support**
 - Billing is a new dependency: a Global Administrator must link an Azure subscription before pay-as-you-go features work (pay-as-you-go row), and the Usage center lists Insider Risk Management as not pausable.
-- Learn says to allow up to 24 hours for policies to reach the partner and for the first data to appear, so a new setup will look empty on day one.
+- Learn says to allow up to 24 hours for policies to reach the partner and for the first data to appear, so first data may take up to 24 hours to appear.
 
 ## Cost and licensing
 
 **Licence.** Learn's IRM setup page says administrators must verify that the organisation has a supported subscription and assign the appropriate licences, and points to Microsoft's subscription requirements. For network data security with non-Microsoft SASE (secure access service edge) and secure browser solutions, the network data security page names Purview E5 (or equivalent) per-seat licences and the pay-as-you-go billing model.
 
-**Meter.** Learn says the network indicator needs pay-as-you-go billing enabled. Pay-as-you-go is a consumption model billed through an Azure subscription, with an Azure bill generated at the end of the month. The billing models page gives two published meters nearby: IRM processing units (one unit is the compute to process 10,000 user activities for IRM's non-Microsoft 365 indicators) and, for network data security with non-Microsoft integrations, the request (each network call from a device or browser to a website or API). Which of these bills IRM's network indicator is not yet published.
+**Meter.** Learn says the network indicator needs pay-as-you-go billing enabled. Pay-as-you-go is a consumption model billed through an Azure subscription, with an Azure bill generated at the end of the month. The billing models page gives two published meters nearby: IRM processing units (one unit is the compute to process 10,000 user activities for IRM's non-Microsoft 365 indicators) and, for network data security with non-Microsoft integrations, the request (each network call from a device or browser to a website or API). Microsoft documents request-based billing for network data security with non-Microsoft integrations and processing-unit billing for IRM pay-as-you-go indicators. It does not explicitly describe whether network indicators incur additional IRM processing charges on top of network requests (at the time of writing, November 2026).
 
 **Watching spend.** The Purview Usage center (preview) shows pay-as-you-go usage by feature and lists both Insider Risk Management and in-transit protection of data at the network layer as not pausable. IRM's Reports page has pay-as-you-go usage reports by default. Azure's Cost Management + Billing shows consumption. No rate for this item is quoted here; the billing models page points to Microsoft's Azure pricing page.
 
@@ -203,7 +210,7 @@ Roles: Learn lists the Insider Risk Management Admin role group among those appl
 - Select the network indicators in IRM's policy indicators settings (policy indicators row).
 
 ### After rollout
-- Check pay-as-you-go consumption in the Usage center and in IRM's pay-as-you-go usage report during the first billing month (Usage center row).
+- Check pay-as-you-go consumption in the Usage center during the first billing month (Usage center row).
 - Allow up to 24 hours for first data, then review activity before tuning policies.
 - Record that B2B guest users fall outside network data security policies, and cover them by other means if they matter to your risk model.
 
@@ -214,10 +221,10 @@ Roles: Learn lists the Insider Risk Management Admin role group among those appl
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether IRM collects network indicators</strong><br><small>Tenant</small><br><small class="controls__note">Network indicators are described under built-in indicators. Learn says they need a collection policy and pay-as-you-go billing.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators › Built-in indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether IRM collects network indicators</strong><br><small>Tenant</small><br><small class="controls__note">Network indicators are described under built-in indicators. Learn says they need a collection policy and pay-as-you-go billing.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators › Built-in indicators › Network indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which network activity a collection policy collects, and whether content is captured</strong><br><small>Tenant</small><br><small class="controls__note">The cmdlet is in Public Preview, Security &amp; Compliance PowerShell, and creates collection policies in general. Confirm how it expresses the network setting before scripting.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Classifiers › Collection policies › + Create policy <a href="https://learn.microsoft.com/purview/collection-policies-create-deploy-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-FeatureConfiguration -FeatureScenario KnowYourData -ScenarioConfig &lt;JSON string&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which network partner is integrated with Purview</strong><br><small>Tenant</small><br><small class="controls__note">Select Get solution for the partner, then follow that partner's steps. Partners can access some policy configuration, including user identifiers.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Security Store <a href="https://learn.microsoft.com/purview/collection-policies-create-deploy-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether pay-as-you-go billing is linked to an Azure subscription</strong><br><small>Tenant</small><br><small class="controls__note">Only a Global Administrator can enable pay-as-you-go. The enablement page is marked preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which network partner is integrated with Purview</strong><br><small>Tenant</small><br><small class="controls__note">Select Get solution for the partner, then follow that partner's steps. Partners can access some policy configuration, including user identifiers.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Security Store › Get solution <a href="https://learn.microsoft.com/purview/collection-policies-create-deploy-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether pay-as-you-go billing is linked to an Azure subscription</strong><br><small>Tenant</small><br><small class="controls__note">Only a Global Administrator can enable pay-as-you-go. The enablement page is marked preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details › active Azure subscription › resource group <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Pay-as-you-go usage by feature</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Access is limited to the roles the page lists. Insider Risk Management is listed as not pausable.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Usage center › Pay-as-you-go <a href="https://learn.microsoft.com/purview/purview-billing-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can configure IRM policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">The cmdlet adds members to a management role group; Identity takes the role group name. The Insider Risk Management Admins role group also has the configure permission.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &lt;user principal name&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -230,28 +237,20 @@ The pay-as-you-go enablement and Usage center pages are marked preview. The `New
 ## Open questions
 
 - Do the network indicators described on Learn apply in GCC, GCC High and DoD, and from when? The roadmap target (January CY2026) has passed with the status still In development. Watch the roadmap item and Message center.
-- Which meter bills IRM's network indicator: IRM processing units, network data security requests, or both? Watch the billing models page.
+- Do network indicators incur additional IRM processing charges on top of network data security requests? Microsoft documents both meters but does not explicitly say. Watch the billing models page.
 - Is pay-as-you-go billing, which the network indicator needs, available to tenants in your government cloud? Watch the billing models and enablement pages.
 - Which third-party network partners will be supported in government clouds? Watch the Security Store in Purview Data Loss Prevention.
 - Does the network indicator use a collection policy's content capture, and are captured conversations visible to IRM analysts? Watch the policy indicators page.
 
 <!-- rationale
 risk: Medium. Opt-in, but once set up it feeds sensitive-content matches from employees' network traffic into Insider Risk Management, and Learn says a non-Microsoft partner can access some policy configuration, including user identifiers.
-cost: Variable. Learn says the network indicator needs pay-as-you-go billing, an Azure-billed consumption model, on top of Insider Risk Management's per-user subscription; which meter bills this indicator is not yet published.
+cost: Variable. Learn says the network indicator needs pay-as-you-go billing, an Azure-billed consumption model, on top of Insider Risk Management's per-user subscription; whether it adds IRM processing charges on top of network requests is not explicitly described.
 impact: Low. It adds signals for compliance administrators and Insider Risk Management analysts; the roadmap item describes no change to what end users see.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance guidance: At rollout / behaviour: Configuring content capture in a collection policy captures the full user-AI conversation, without any further configuration qualification. | Found: To capture AI content, you must set the Content contains classifiers condition to All. This capability doesn't include content in files shared with generative AI | Fix: Replace the capture sentence with: 'If content capture is enabled and Content contains classifiers is set to All, detected AI prompts and responses are captured and sent to Purview; this does not include content in files shared with generative AI.' Cite https://learn.microsoft.com/purview/collection-policies-policy-reference. | Source: https://learn.microsoft.com/purview/collection-policies-policy-reference
-- [unsupported, major] Risk assessment: Change & support / behaviour: A new network setup will look empty on day one. | Found: Searched: 'Purview network data security first data appear 24 hours minimum delay collection policies'; opened network data security and read timing results. The network page gives an up-to-24-hour allowance, not a mandatory empty first day. | Fix: Replace 'so a new setup will look empty on day one' with 'so first data may take up to 24 hours to appear'.
-- [contradicted, blocker] Cost and licensing: Meter; Open questions; rationale: cost / absence: Which meter bills the IRM network indicator is not yet published. | Found: Insider risk management is a pay-as-you-go feature that uses a processing unit based meter. It includes pay-as-you-go indicators. ... Microsoft Purview network data security pay-as-you-go uses requests as its unit of measure. | Fix: Replace the absence with: 'Microsoft documents request-based billing for network data security with non-Microsoft integrations and processing-unit billing for IRM pay-as-you-go indicators. It does not explicitly describe whether network indicators incur additional IRM processing charges on top of network requests.' Use that narrower additional-charge question in Open questions and the cost rationale, retaining the published meter descriptions and citing https://learn.microsoft.com/purview/purview-billing-models and https://learn.microsoft.com/purview/dlp-network-data-security-learn. | Source: https://learn.microsoft.com/purview/purview-billing-models
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The network indicator is reached through Microsoft Purview portal > Insider Risk Management > Settings > Policy indicators > Built-in indicators. | Found: In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators. Policy indicators are organized into two tabs: Built-in indicators | Fix: Append the documented Network indicators section to the path: 'Insider Risk Management > Settings > Policy indicators > Built-in indicators > Network indicators'. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Collection-policy creation starts at Data loss prevention > Classifiers > Collection policies > + Create policy. | Found: Open the Data loss prevention solution and navigate to Classifiers > Collection policies. Select + Create policy. | Fix: Keep the documented entry path but add to the row note: 'This opens the creation wizard; configure conditions, activities and data sources, choose content capture, enable Network and non-Microsoft secure browsers, then select Turn on.' | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
-- [supported, minor] controls[2].ui; controls[2].note; Governance controls table / admin-path: Network-partner integration is available through Data Loss Prevention > Security Store. | Found: open the Data Loss Prevention solution and choose Security Store in the left navigation bar. Select Get solution for the SASE or non-Microsoft secure browser solution provider you want to integrate with. | Fix: Extend controls[2].ui.path to 'Data Loss Prevention > Security Store > Get solution'. Keep the note that subsequent steps depend on the selected provider. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: Pay-as-you-go enablement is reached through Settings > Account details. | Found: This can also be done from Settings > Account details. Select your active Azure subscription from the list. Select the resource group. | Fix: Extend controls[3].ui.path to 'Settings > Account details > active Azure subscription > resource group', retaining the preview and Global Administrator notes. | Source: https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Network data security DLP supports Audit only and Block actions. | Found: Network data security supports Audit only and Block actions. ... The activities and actions supported may differ depending on integrated solution. | Fix: Add to the DLP-actions sentence: 'Supported activities and actions may differ by integrated solution; check with the solution provider.' Keep the existing statement that these DLP actions are not assumed to apply to this IRM release. | Source: https://learn.microsoft.com/purview/dlp-network-data-security-learn
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells readers to check IRM's pay-as-you-go report but points to a row containing only Usage center. | Found: Check pay-as-you-go consumption in the Usage center and in IRM's pay-as-you-go usage report ... (Usage center row). The row's path is Usage center > Pay-as-you-go. | Fix: Remove 'and in IRM's pay-as-you-go usage report' from the After rollout checklist bullet so it directs readers only to the existing Usage center row. Keep the supported report description in Cost and licensing.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Collection-policy creation starts at Microsoft Purview portal > Data loss prevention > Classifiers > Collection policies > + Create policy. | Found: Open the Data loss prevention solution and navigate to Classifiers > Collection policies. Select + Create policy. | Fix: Keep the path, which correctly reaches policy creation. Add to controls[1].note: 'The wizard then configures conditions, activities, data sources and user scope, content capture, Network and non-Microsoft secure browsers, and Turn on.' These later choices are documented at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
+- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: New-FeatureConfiguration -FeatureScenario KnowYourData -ScenarioConfig <JSON string> creates collection policies in general, with the note explicitly leaving network-specific expression unconfirmed. | Found: KnowYourData for collection policies ... The ScenarioConfig parameter specifies additional information about the feature configuration. ... Includes UploadText and DownloadText activity for all supported classifiers. Captures all AI prompts. | Fix: Clarify controls[1].note as: 'Public Preview, available only in Security & Compliance PowerShell and not in all organizations. ScenarioConfig configures collection-policy activities and content capture; reference examples use Activities and IsIngestionEnabled, but do not document the network enforcement-plane value.' Keep the call as general collection-policy automation, not a verified network-specific configuration. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration
 -->

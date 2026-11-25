@@ -163,19 +163,23 @@ changes:
     note: "Corrected after verification: the generative answer cost now gives the 2 Copilot Credit base feature rate and the separate 10 Copilot Credits per 1,000 tokens premium meter for reasoning models."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 7
+  - date: "2026-11-25"
+    note: "Corrected after verification: the controls note now says Microsoft documents DSPM for AI (classic) reporting for Copilot Studio agent interactions, with upload-specific label enforcement and DLP coverage not yet documented."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 8
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 7
+  version: 8
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 73
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "2c7a0900ab6a762c06c8e2f632ef108d"
+  contradicted: 0
+  attempts: 0
+  hash: "9d5c509e31bb05f39b83350ac65b8542"
 ---
 
 ## What's changing
@@ -259,7 +263,7 @@ Label review and agent retesting also take time: compliance time to review label
 </tbody>
 </table>
 
-Everything in the table except the two gap rows is an existing Purview or Copilot Studio control. Microsoft has not confirmed that any of them governs the planned labelled uploads; the DLP page states that DLP does not scan the contents of files uploaded directly into prompts for Microsoft 365 Copilot, and Copilot Studio agent DLP coverage is documented only for SharePoint knowledge sources.
+Everything in the table except the two gap rows is an existing Purview or Copilot Studio control. Microsoft documents DSPM for AI (classic) reporting for AI interactions with agents built in Copilot Studio; upload-specific label enforcement and label-based DLP coverage are not yet documented. The DLP page states that DLP does not scan the contents of files uploaded directly into prompts for Microsoft 365 Copilot, and Copilot Studio agent DLP coverage is documented only for SharePoint knowledge sources.
 
 The Learn page for the DLP location lists the Purview Data Security AI Admin role, among others, as able to create or edit these policies. Enabling sensitivity labels for SharePoint and OneDrive needs a global administrator when done in the portal. The maker setting File uploads is per agent and governs existing file input only.
 
@@ -276,11 +280,9 @@ cost: Variable. Existing agent usage is measured in Copilot Credits; qualifying 
 impact: Medium. Makers of agents on the Microsoft 365 channel, their users and the compliance team that owns the label taxonomy would notice; users without agents on that channel would not.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph following table / absence: Microsoft has not confirmed that any of the listed controls governs the planned labelled uploads. | Found: Use the following sections to identify the Microsoft Purview capabilities that are supported for AI interactions with agents built in Microsoft Copilot Studio | Fix: Replace 'Microsoft has not confirmed that any of them governs the planned labelled uploads' with 'Microsoft documents DSPM for AI (classic) reporting for AI interactions with agents built in Copilot Studio; upload-specific label enforcement and label-based DLP coverage are not yet documented.' The report row is within that documented agent-interaction reach, not an unconfirmed control. Keep the subsequent DLP limitations. Source: https://learn.microsoft.com/purview/ai-copilot-studio. | Source: https://learn.microsoft.com/purview/ai-copilot-studio
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls / admin-path: The printed Purview route correctly reaches the Copilot DLP policy location, but stops before configuring the sensitivity-label rule. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the printed route to the location and append to controls[2].note: 'After selecting the location, add a rule with Content contains > Sensitivity labels and set the action to Prevent Copilot and Cowork from processing content.' This completes the documented route to the rule without inventing intervening wizard labels; see https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] controls[3].ui; Governance controls / admin-path: The printed label-edit route correctly reaches Access control but stops before selecting the permission settings. | Found: Follow the general instructions to create or edit a sensitivity label and make sure the Files & other data assets option is selected for the label's scope | Fix: Extend controls[3].ui.path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. The existing note can identify Copy and extract content(EXTRACT). The opening route is documented at the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels and the remaining steps at https://learn.microsoft.com/purview/encryption-sensitivity-labels; selecting the users or groups is the scope choice. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed Purview DLP path reaches the Copilot location on the policy wizard's Locations page. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Extend controls[2].ui.path to 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Content contains > Sensitivity labels'. The existing path reaches the correct location but stops before selecting the label condition documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: The printed sensitivity-label editing path reaches the Access control page for label encryption. | Found: make sure the Files & other data assets option is selected for the label's scope ... on the Choose protection settings for the types of items you selected page ... select Control access. ... On the Access control page | Fix: Extend controls[3].ui.path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now'. Keep the EXTRACT note. The entry route and scope step are supported by the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels; the additional options are documented at https://learn.microsoft.com/purview/encryption-sensitivity-labels. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 -->

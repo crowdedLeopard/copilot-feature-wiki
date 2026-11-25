@@ -73,7 +73,7 @@ controls:
       kind: "powershell"
       call: "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true"
       docs: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
-    note: "Needs a Microsoft Copilot licence and SharePoint Advanced Management. Learn covers Microsoft Copilot discovery generally and does not name Agent Mode in PowerPoint; it excludes content already in use, such as an open document."
+    note: "Needs a Microsoft Copilot licence and SharePoint Advanced Management. Applies to Microsoft Copilot discovery scenarios, including tenant-wide content discovery; not content already in use, such as an open document."
 confidence: "medium"
 created: "2026-11-25"
 updated: "2026-11-25"
@@ -83,19 +83,23 @@ changes:
     note: "First briefing: Agent Mode in Copilot in PowerPoint can build presentations from Work IQ; Learn documents it only in release notes, with licensing tied to Work IQ."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 51 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: Work IQ licensing and meter wording, Restricted Content Discovery reach, the Work IQ on/off statement and one data-exposure sentence."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 46
-  unconfirmed: 2
+  claims: 55
+  confirmed: 52
+  unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "5a55c2ca5d008288c35110770d0123e0"
+  attempts: 2
+  hash: "943c93ade6ee22a681aecc436e8f9f14"
 ---
 
 ## What's changing
@@ -115,7 +119,7 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 ## Risk assessment
 
 **Data exposure**
-- The release notes say Copilot gathers relevant files, meetings and emails for the deck. Learn's Copilot privacy page says Copilot works with content in Microsoft Graph that the user has permission to access, so any over-permissioned site or mailbox feeds slides. The controls that apply are Restricted Content Discovery for chosen SharePoint sites and licence assignment (see the controls table).
+- The release notes say Copilot gathers relevant files, meetings and emails for the deck. Learn's Copilot privacy page says Copilot works with content in Microsoft Graph that the user has permission to access, so existing oversharing can make sensitive source material available to Copilot when it gathers relevant content. The controls that apply are Restricted Content Discovery for chosen SharePoint sites and licence assignment (see the controls table).
 - Generated slides can combine content from several sources into one file that is then easy to share, so presenters need to check what a deck contains before it leaves their hands.
 
 **Security & identity**
@@ -131,7 +135,7 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 
 Learn's Microsoft Copilot overview says Work IQ is included with Microsoft 365 Copilot (Premium), and the Work IQ overview says that for licensed users Work IQ is available in all Microsoft 365 Copilot experiences and agents. Learn's privacy page says access to full work data as part of Work IQ and semantic indexing is only available for users with the Microsoft Copilot license.
 
-The Work IQ API is a separate usage-based billing offering, which Learn says is billed in Copilot Credits for custom apps, agents and integrations. Whether Agent Mode in PowerPoint draws on that meter is not stated; Learn names no separate meter, price or licence for Agent Mode in PowerPoint at the time of writing (November 2026). The indirect cost is admin time for licence assignment and any site-level restrictions.
+The Work IQ API is a separate usage-based billing offering, which Learn says is billed in Copilot Credits for custom apps, agents and integrations. Work IQ in Microsoft 365 Copilot (Premium) is included; the distinct Work IQ API offering is usage-based for custom apps, agents and integrations ([Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview)). Learn names no separate feature-specific meter, price or licence for Agent Mode in PowerPoint at the time of writing (November 2026). The indirect cost is admin time for licence assignment and any site-level restrictions.
 
 ## Scope
 
@@ -162,20 +166,20 @@ The users in scope are those with the Microsoft Copilot licence, since Learn say
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence that gives access to Work IQ</strong><br><small>User</small><br><small class="controls__note">At least License Administrator or User Administrator. Learn ties Work IQ to Microsoft 365 Copilot (Premium); it names no licence specific to Agent Mode in PowerPoint.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which SharePoint sites Microsoft Copilot can discover content from</strong><br><small>Site</small><br><small class="controls__note">Needs a Microsoft Copilot licence and SharePoint Advanced Management. Learn covers Microsoft Copilot discovery generally and does not name Agent Mode in PowerPoint; it excludes content already in use, such as an open document.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint sites Microsoft Copilot can discover content from</strong><br><small>Site</small><br><small class="controls__note">Needs a Microsoft Copilot licence and SharePoint Advanced Management. Applies to Microsoft Copilot discovery scenarios, including tenant-wide content discovery; not content already in use, such as an open document.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Both controls in the table are general Copilot controls, not settings for Agent Mode in PowerPoint. Licence assignment decides who can use Work IQ at all. Restricted Content Discovery governs which SharePoint sites Microsoft Copilot can discover; Learn states it for Microsoft Copilot discovery scenarios and does not name this feature.
+Both controls in the table are general Copilot controls, not settings for Agent Mode in PowerPoint. Licence assignment controls entitlement to Work IQ grounding included with Microsoft 365 Copilot (Premium); Work IQ API access is independent of that licence and is usage-based ([Work IQ overview](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/)). Restricted Content Discovery applies to Microsoft Copilot discovery scenarios, including tenant-wide content discovery; it does not affect experiences on content already in use, such as summarising an open document ([Restrict discovery of SharePoint sites and content](https://learn.microsoft.com/sharepoint/restricted-content-discovery)).
 
-Learn's Microsoft Copilot overview says an administrator can turn Work IQ on or off and that, with Work IQ off, Copilot responses are not grounded in Microsoft Graph and Work IQ. How that setting relates to Agent Mode in PowerPoint is an open question below. Restricted Content Discovery does not change permissions, and by default only SharePoint administrators can manage it.
+Learn's Microsoft Copilot overview says Work IQ can be turned on or off, without identifying the setting or who controls it. It adds that, with Work IQ off, Copilot responses are not grounded in Microsoft Graph and Work IQ. How that setting relates to Agent Mode in PowerPoint is an open question below. Restricted Content Discovery does not change permissions, and by default only SharePoint administrators can manage it.
 
 ## Open questions
 
 - What is the default state of Agent Mode in PowerPoint with Work IQ for a licensed user, and does anything change for tenants that do nothing? Watch Message center and the Microsoft 365 Copilot release notes.
 - Which licence does Agent Mode in PowerPoint need, and can users on the Microsoft 365 Copilot (Basic) licence use the Work IQ part? Watch the Microsoft Copilot overview on Learn.
 - Where is the Work IQ on/off setting that Learn's Microsoft Copilot overview describes, and does it switch off the Work IQ grounding in Agent Mode in PowerPoint?
-- Does Agent Mode in PowerPoint use the same discovery boundary that Restricted Content Discovery sets for Microsoft Copilot, and how do sensitivity labels on source files carry into the generated deck?
+- How do sensitivity labels on source files carry into the generated deck?
 
 <!-- rationale
 risk: Medium. The feature gathers files, meetings and emails into new slides, so anything a user can reach can end up in a deck; Learn's release note says it accesses only authorised content, which keeps existing permissions as the boundary.
@@ -186,11 +190,8 @@ impact: Medium. Licensed users who build decks in PowerPoint on desktop will not
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing / absence: Whether Agent Mode in PowerPoint draws on the Work IQ API meter is not stated. | Found: Work IQ is included with Microsoft 365 Copilot (Premium), whereas the Work IQ API is a distinct usage-based billing offering that can be purchased and consumed independently for custom apps, agents, and integrations. | Fix: Replace 'Whether Agent Mode in PowerPoint draws on that meter is not stated' with 'Work IQ in Microsoft 365 Copilot (Premium) is included; the distinct Work IQ API offering is usage-based for custom apps, agents and integrations.' Keep the narrower statement that no separate feature-specific meter or price is published. Cite https://learn.microsoft.com/copilot/plan/copilot-overview. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-- [contradicted, blocker] Governance controls; Open questions / absence: Whether Restricted Content Discovery governs this feature's Copilot discovery boundary remains an open question. | Found: Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery. | Fix: Replace the prose caveat with 'Restricted Content Discovery applies to Microsoft Copilot discovery scenarios, including tenant-wide content discovery; it does not affect experiences on content already in use, such as summarising an open document.' In the final open question, remove 'Does Agent Mode in PowerPoint use the same discovery boundary that Restricted Content Discovery sets for Microsoft Copilot, and' so it asks only about sensitivity labels. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [unsupported, blocker] Governance controls / role: The Microsoft Copilot overview says an administrator can turn Work IQ on or off. | Found: Searched: "Work IQ" administrator "turn" "off" "Copilot responses"; "Work IQ" "on or off" admin PowerPoint. Read Copilot overview and Work IQ API tenant setup; overview says 'You can turn Work IQ on or off' without specifying an administrator or an admin control. | Fix: Replace 'Learn's Microsoft Copilot overview says an administrator can turn Work IQ on or off' with 'Learn's Microsoft Copilot overview says Work IQ can be turned on or off, without identifying the setting or who controls it.' Do not attribute the API setup, MCP policy or Business Applications controls to this in-PowerPoint setting.
-- [contradicted, blocker] Governance controls / licensing: Licence assignment decides who can use Work IQ at all. | Found: Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing. Users without a Microsoft 365 Copilot license are billed based on usage. | Fix: Replace 'Licence assignment decides who can use Work IQ at all' with 'Licence assignment controls entitlement to Work IQ grounding included with Microsoft 365 Copilot (Premium); Work IQ API access is independent of that licence and is usage-based.' Cite the already listed Work IQ overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Any over-permissioned site or mailbox feeds slides. | Found: Searched: "Agent Mode in Copilot in PowerPoint"; "PowerPoint" "Work IQ" "Restricted Content Discovery". Read release notes, Copilot privacy and Restricted Content Discovery; they describe relevant authorised retrieval, not guaranteed inclusion of every accessible site or mailbox. | Fix: Replace 'so any over-permissioned site or mailbox feeds slides' with 'so existing oversharing can make sensitive source material available to Copilot when it gathers relevant content.' This preserves the risk analysis without claiming that every accessible source is used.
+- [contradicted, blocker] What's changing / absence: Detail beyond the roadmap description and this feature's release note is not yet documented. | Found: Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook support sensitivity label inheritance for newly created content. | Fix: Delete 'so detail beyond the roadmap description and those notes is not yet documented'. Keep the narrower statement that the feature-specific description is in the release notes; general Copilot documentation also covers its licensing, permissions and label inheritance. | Source: https://learn.microsoft.com/purview/ai-m365-copilot
+- [contradicted, blocker] Open questions: sensitivity labels / absence: How source-file sensitivity labels carry into the generated deck is an unanswered question. | Found: the sensitivity label from the source file is automatically inherited, with the label's protection settings. If multiple files are used to create new content, the sensitivity label with the highest priority is used for label inheritance. | Fix: Remove the question 'How do sensitivity labels on source files carry into the generated deck?'. Microsoft documents inheritance for newly created Copilot in PowerPoint content and selection of the highest-priority label when multiple files are used at https://learn.microsoft.com/purview/ai-m365-copilot. | Source: https://learn.microsoft.com/purview/ai-m365-copilot
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Governance controls: table / applicability: The control's documentation describes Copilot discovery generally without naming Agent Mode in PowerPoint. | Found: Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery. | Fix: Replace 'Learn covers Microsoft Copilot discovery generally and does not name Agent Mode in PowerPoint' in the row note with 'Applies to Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery.' Retain the exception for content already in use. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
+- [contradicted, minor] rationale: risk / behaviour: Anything a user can reach can end up in a generated deck. | Found: If the user has VIEW but not EXTRACT, Copilot doesn't summarize the content, but it can return a link so the user can open it outside Copilot. Copilot and agents can't access content protected by DKE. | Fix: Replace 'anything a user can reach can end up in a deck' with 'relevant authorised source content can end up in a deck'. This removes the universal claim without adding new scope or changing the supported release-note statement. | Source: https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing
 -->

@@ -4,8 +4,8 @@ title: "Autonomous agents: what runs an agent when no one is in the conversation
 slug: "autonomous-agents"
 summary: "Autonomous agents in Copilot Studio act on an event trigger or a schedule instead of a user prompt. Administrators decide whether makers may add triggers, whose credentials run them and how much they consume."
 created: "2026-11-20"
-updated: "2026-11-20"
-version: 3
+updated: "2026-11-25"
+version: 4
 tags: ["autonomous-agents","copilot-studio","agents","human-in-the-loop","maker-credentials","data-policies","copilot-credits","guardrails","monitoring"]
 covers: []
 sources:
@@ -82,7 +82,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     note: "Managed environments only. The setting is the extended setting solutionCloudFlows-limitSharingMode on the governance configuration; disableSharing turns sharing off."
 confidence: "medium"
-dependents: 11
+dependents: 13
 changes:
   - date: "2026-11-20"
     note: "First page on autonomous agents: what starts them, whose credentials they use, what they consume and the two controls that gate them."
@@ -98,18 +98,22 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-25"
+    note: "Corrected the Enforcement bullet: with pay-as-you-go overage, running out of prepaid credits does not block agents, but agents an administrator turned off or that hit a stop-usage monthly limit are still blocked."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 93 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 89
+  claims: 93
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "fce1b8b5cad5e6796f270c9d6f062019"
+  contradicted: 0
+  attempts: 0
+  hash: "435a526cfadae63494e87f4b0e7070b8"
 ---
 
 ## What it is
@@ -140,7 +144,7 @@ In the standard harness the author's credentials run every authenticated trigger
 For standard-harness agents, event trigger activity counts towards Copilot Credit consumption. Each trigger payload is processed like a message from a user, and the agent's response is billed at the Copilot Credits billing rates, in which trigger steps count as agent actions (5 Copilot Credits). In the Microsoft Copilot harness preview, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs) and the harness itself. Rates and capacity are explained in [Copilot Credits](/concepts/copilot-credits/); caps on who can consume them are in [Spending policies](/concepts/spending-policies/).
 
 - **Microsoft 365 Copilot licence.** The agent-flow "No charge" exemption does not apply when the agent runs autonomously: flow runs called by an autonomous agent consume Copilot Credits and are subject to enforcement even if users hold Microsoft 365 Copilot licences.
-- **Enforcement.** Under the prepaid capacity model, which covers autonomously triggered usage, enforcement is triggered when the tenant reaches 125% of its prepaid capacity, and it blocks the environment's agents. An environment with remaining allocated prepaid capacity is not blocked by the tenant reaching 125% while that allocation remains available. If the environment bills overage to a pay-as-you-go plan, agents are not blocked.
+- **Enforcement.** Under the prepaid capacity model, which covers autonomously triggered usage, enforcement is triggered when the tenant reaches 125% of its prepaid capacity, and it blocks the environment's agents. An environment with remaining allocated prepaid capacity is not blocked by the tenant reaching 125% while that allocation remains available. If the environment bills overage to a pay-as-you-go plan, running out of prepaid Copilot Credits does not block its agents; agents that an administrator turned off or that reached a monthly limit set to stop usage are still blocked.
 - **Preview sharing.** Each end user's autonomous agent usage is totalled and billed through the environment hosting the agent.
 
 The trigger overview states no separate autonomous-agent-specific licence; general authoring access requirements are documented in [Licensing for agents powered by the standard harness](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing).
@@ -187,9 +191,3 @@ The trigger overview states no separate autonomous-agent-specific licence; gener
 - Does blocking the Microsoft Copilot Studio connector stop agents whose triggers were already published, or only the adding of new triggers? The data policy page describes preventing makers from adding them.
 - Which audit events, if any, record a trigger-started run in the unified audit log?
 - How do Managed Environment sharing controls map to **Can use** for shared autonomous agents in the Microsoft Copilot harness preview?
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Enforcement / cost: If the environment bills overage to a pay-as-you-go plan, agents are not blocked. | Found: Agents that an admin turned off, or that reached a monthly limit set to stop usage, are still blocked. | Fix: Replace the last sentence of the Enforcement bullet with: 'If the environment bills overage to a pay-as-you-go plan, running out of prepaid Copilot Credits does not block its agents; agents that an administrator turned off or that reached a monthly limit set to stop usage are still blocked.' Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
--->

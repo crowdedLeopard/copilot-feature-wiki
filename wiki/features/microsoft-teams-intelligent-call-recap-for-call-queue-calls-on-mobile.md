@@ -87,15 +87,17 @@ changes:
     note: "Correction: licensing model set to included, rollout bullet now states Microsoft's plan and expected completion, recording template path extended to the settings, and three checklist items without control rows removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -195,4 +197,10 @@ The Queues app can be turned off org-wide in the Teams admin center, but Learn s
 risk: Low. Microsoft's notice MC1558032 says recap is only for recorded and transcribed calls and for users who already have access to the recording, and that recording creation, storage and access do not change.
 cost: Low. The only cost the sources show is admin time to review licences; Queues app users already need Teams Phone and Teams Premium, and a licence specific to recap on call queue calls is not yet published.
 impact: Medium. Calling representatives and supervisors who use the Queues app on Teams mobile are the people who see the new View recap option; other users do not.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Scope: Prerequisites from Learn / behaviour: The automatic recording template needs call answering set to a group or channel. | Found: Call answering must use a group or channel. Users and Shifts are not supported | Fix: Replace the call-answering clause with: 'The setup page says call answering must use a group or channel, with Users and Shifts unsupported; the licensing reference instead says to use Microsoft 365 security groups to assign representatives, and also excludes Shifts (https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing).' Both cited pages were read; report their different wording without resolving it. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
 -->

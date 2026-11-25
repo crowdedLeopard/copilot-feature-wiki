@@ -55,6 +55,9 @@ sources:
   - title: "New-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     kind: "learn"
+  - title: "New-FeatureConfiguration"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration"
+    kind: "learn"
   - title: "Microsoft Purview data security and governance APIs"
     url: "https://learn.microsoft.com/graph/security-datasecurityandgovernance-overview"
     kind: "learn"
@@ -79,10 +82,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Data Loss Prevention > Classifiers > Collection policies"
+      path: "Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities"
       docs: "https://learn.microsoft.com/purview/collection-policies-solution-overview"
-    api: null
-    note: "Role listed: DLP Compliance Management. No mobile managed-app data source is listed at the time of writing (November 2026). This route opens the policy list; use + Create policy, then + Add activities."
+    api:
+      kind: "powershell"
+      call: "New-FeatureConfiguration -Name <policy-name> -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig <collection-policy-JSON>"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration"
+    note: "Role listed: DLP Compliance Management. No mobile managed-app data source is listed at the time of writing (November 2026). Select + Create policy, supply a name and any optional conditions, then select + Add activities."
   - governs: "Purview DLP policy for Intune MAM-protected mobile apps"
     scope: "tenant"
     ui: null
@@ -90,7 +96,7 @@ controls:
     note: "Planned per the roadmap item; no portal location or cmdlet parameter documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-25"
 roadmapModified: "2026-10-06T22:56:31"
 changes:
   - date: "2026-11-21"
@@ -107,19 +113,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Correction: the collection policies row now gives the New-FeatureConfiguration PowerShell cmdlet (public preview) instead of 'Not yet documented', and the Purview portal path and note now follow the Create policy steps."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "9d5ccd5e314a33eaf06ea99ccb878d5b"
+  claims: 61
+  confirmed: 60
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "cba82caec004c50207135599755c34d1"
 ---
 
 ## What's changing
@@ -192,12 +202,14 @@ Clouds and platforms: the record lists Worldwide (Standard Multi-Tenant) and the
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Clipboard sharing between apps under Intune app protection</strong><br><small>App</small><br><small class="controls__note">Existing Intune control, not a control over the new Purview capability. UI setting: Restrict cut, copy and paste between other apps. The request body sets allowedOutboundClipboardSharingLevel.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Apps › Protection › Create policy › iOS/iPadOS › Basics › Apps › Data protection › Restrict cut, copy and paste between other apps <a href="https://learn.microsoft.com/intune/app-management/protection/create-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/deviceAppManagement/iosManagedAppProtections</code> <a href="https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which events Purview collects from supported data sources</strong><br><small>Tenant</small><br><small class="controls__note">Role listed: DLP Compliance Management. No mobile managed-app data source is listed at the time of writing (November 2026). This route opens the policy list; use + Create policy, then + Add activities.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Classifiers › Collection policies <a href="https://learn.microsoft.com/purview/collection-policies-solution-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which events Purview collects from supported data sources</strong><br><small>Tenant</small><br><small class="controls__note">Role listed: DLP Compliance Management. No mobile managed-app data source is listed at the time of writing (November 2026). Select + Create policy, supply a name and any optional conditions, then select + Add activities.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Classifiers › Collection policies › + Create policy › + Add activities <a href="https://learn.microsoft.com/purview/collection-policies-solution-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-FeatureConfiguration -Name &lt;policy-name&gt; -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig &lt;collection-policy-JSON&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Purview DLP policy for Intune MAM-protected mobile apps</strong><br><small>Tenant</small><br><small class="controls__note">Planned per the roadmap item; no portal location or cmdlet parameter documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The table shows two documented existing controls, distinct from the planned mobile DLP capability. The Intune app protection policy is the current way to limit clipboard sharing in managed mobile apps; it is an Intune control, and Learn does not say Purview DLP reads or overrides it. Collection policies govern which events Purview collects and are not enforcement.
+
+The collection policy automation in row 2 is the New-FeatureConfiguration cmdlet in Security & Compliance PowerShell, which Learn marks as public preview, not available in all organizations and subject to change. Its ScenarioConfig parameter sets Activities, EnforcementPlanes and SensitiveTypeIds, and Locations scopes the policy; the reference supplies the JSON syntax and examples. This is automation for existing collection policies, not confirmation of mobile integration support.
 
 The third row states a gap: at the time of writing (November 2026), Learn documents no Purview DLP location or cmdlet parameter for Intune MAM-protected mobile apps. The Intune Graph operation shown creates an iOS/iPadOS policy; Android policies are not covered by this row.
 
@@ -218,8 +230,5 @@ impact: Medium. People who use Intune MAM-protected apps on mobile devices would
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for configuring which events collection policies collect is not documented. | Found: Use the New-FeatureConfiguration cmdlet to create Microsoft Purview feature configurations within your organization, including: Collection policies. ... Includes UploadText and DownloadText activity for all supported classifiers. | Fix: Replace controls[1].api null with kind 'powershell', call 'New-FeatureConfiguration -Name <policy-name> -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig <collection-policy-JSON>', and docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration'. Add to the note: 'Security & Compliance PowerShell; public preview, not available in all organizations and subject to change. ScenarioConfig sets Activities, EnforcementPlanes and SensitiveTypeIds; Locations scopes the policy. The reference supplies the JSON syntax and examples.' Update the rendered automation cell to match. This is automation for existing collection policies, not confirmation of mobile integration support. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Intune path reaches the clipboard setting through Apps > Protection > Create policy > iOS/iPadOS > Basics > Apps > Data protection. | Found: Select Apps > Protection. ... Select Create policy and select either iOS/iPadOS or Android. ... On the Basics page ... Apps page ... Data protection page ... including cut, copy, paste, and save-as restrictions. | Fix: Add the section heading documented by the already cited iOS settings reference: 'Apps > Protection > Create policy > iOS/iPadOS > Basics > Apps > Data protection > Data Transfer > Restrict cut, copy and paste between other apps'. The final setting is at https://learn.microsoft.com/intune/app-management/protection/ref-settings-ios; the pre-check's missing-label lead does not make this route wrong. | Source: https://learn.microsoft.com/intune/app-management/protection/create-policy
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Solutions > Data Loss Prevention > Classifiers > Collection policies opens the policy list, with + Create policy and + Add activities used to configure collection. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: Extend controls[1].ui.path to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities'. Replace the note's last sentence with 'Select + Create policy, supply a name and any optional conditions, then select + Add activities.' These steps remain documented at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
+- [unsupported, blocker] controls[1].ui; Governance controls: second row / admin-path: The linked collection overview documents the printed route through + Create policy and + Add activities. | Found: Searched: "Purview" "Intune" "mobile apps" "collection policies". Opened collection-policies-solution-overview: navigation ends at Collection policies. Opened collection-policies-create-deploy-policy: it gives + Create policy and + Add activities. | Fix: Change controls[1].ui.docs and the corresponding rendered UI Learn link to https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. Keep the printed path: Microsoft Purview portal > Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities. The overview supplies the initial navigation and the creation page supplies the final steps; both are already cited.
 -->

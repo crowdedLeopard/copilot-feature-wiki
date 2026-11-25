@@ -98,15 +98,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 81
+  claims: 86
+  confirmed: 86
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -215,10 +217,10 @@ cost: Medium. Access rests on Microsoft 365 Copilot or Viva Insights licences, a
 impact: Medium. Analysts, leaders and Insights admins in GCC and GCC High tenants with eligible licences notice most; the roadmap also says eligible users see updated Insights app features.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The web app policy can be reached in the Microsoft 365 admin center through Viva > Settings > Manage feature access > Create a policy. | Found: From the Microsoft 365 admin center, select Viva from the settings menu. Select the Settings tab and select Manage feature access. Select Create a policy. | Fix: Complete controls[0].ui.path and its rendered path to 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting', selecting Viva Insights and Viva Insights web app. The current route stops on the correct policy-creation page. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The analyst publishing policy can be reached in the Microsoft 365 admin center through Viva > Settings > Manage feature access > Create a policy. | Found: Select Create a policy. Name the policy and select the app and feature for which you'd like to set the policy. Select the Access setting option and choose On or Off to enable or disable the feature. | Fix: Complete controls[1].ui.path and its rendered path to 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting', selecting Viva Insights and Analyst report publish. The current route stops on the correct policy-creation page. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [supported, minor] Cost and licensing; Governance guidance: Before rollout / licensing: The environment requirements page says at least 50 assigned Viva Insights licences are required for advanced analysis and the Copilot Dashboard. | Found: At least 50 assigned Viva Insights licenses are required to access advanced analysis and the Microsoft Copilot Dashboard. | Fix: Retain the attribution but append: 'The Copilot Dashboard page gives different dashboard requirements: viewers need neither a paid Viva Insights nor a Copilot licence, and data processing starts with 50 assigned Viva Insights licences or one assigned Copilot licence including the Viva Insights service plan.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard. Replace the first Before rollout bullet with 'Count assigned licences against the environment requirements page for advanced analysis, and check the Copilot Dashboard page separately for dashboard access and feature eligibility.' | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
+- [supported, minor] Cost and licensing; Governance guidance: Before rollout / licensing: The environment requirements page says at least 50 assigned Viva Insights licenses are required for the Copilot Dashboard. | Found: At least 50 assigned Viva Insights licenses are required to access advanced analysis and the Microsoft Copilot Dashboard. | Fix: Retain the attribution and append: 'The Copilot Dashboard page gives different dashboard requirements: viewers need neither a paid Viva Insights nor a Copilot licence, and data processing starts with 50 assigned Viva Insights licences or one assigned Copilot licence including the Viva Insights service plan.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard. Replace the first Before rollout bullet with 'Count assigned licences against the environment requirements page for advanced analysis, and check the Copilot Dashboard page separately for dashboard access and feature eligibility.' | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The web app policy is reached in the Microsoft 365 admin center through Viva > Settings > Manage feature access > Create a policy. | Found: From the Microsoft 365 admin center, select Viva from the settings menu. Select the Settings tab and select Manage feature access. Select Create a policy. | Fix: Complete controls[0].ui.path and its rendered path to 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting', selecting Viva Insights and Viva Insights web app. The existing route stops early on the correct policy-creation page. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The analyst publishing policy is reached in the Microsoft 365 admin center through Viva > Settings > Manage feature access > Create a policy. | Found: Select Create a policy. Name the policy and select the app and feature for which you'd like to set the policy. Select the Access setting option and choose On or Off to enable or disable the feature. | Fix: Complete controls[1].ui.path and its rendered path to 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting', selecting Viva Insights and Analyst report publish. The existing route stops early on the correct policy-creation page. | Source: https://learn.microsoft.com/viva/control-access-admin-center
 -->

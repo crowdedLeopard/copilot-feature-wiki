@@ -4,37 +4,39 @@
   "title": "Microsoft Copilot: Agent Mode in PowerPoint builds presentations from Work IQ",
   "status": "held",
   "date": "2026-11-25",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
-  "notes": [],
+  "notes": [
+    "claim 51: severity blocker on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
   "hold": {
     "reason": "failed",
     "since": "2026-11-25",
     "reasons": [
-      "4 blocking findings (claims 27, 41, 42, 44)"
+      "2 blocking findings (claims 33, 50)"
     ]
   },
   "counts": {
-    "claims": 51,
-    "confirmed": 46,
-    "unconfirmed": 2,
+    "claims": 55,
+    "confirmed": 52,
+    "unconfirmed": 0,
     "contradicted": 3,
-    "blocker": 4,
-    "major": 1,
+    "blocker": 2,
+    "major": 0,
     "minor": 1
   },
-  "summary": "Hold: the briefing leaves Work IQ billing and SharePoint discovery protection uncertain even though Microsoft's general rules cover this licensed Copilot experience. It also attributes an unspecified Work IQ switch to administrators and overstates licence assignment as controlling every route to Work IQ.",
+  "summary": "Hold: Microsoft documents sensitivity-label inheritance for new Copilot presentations, but the briefing presents it as an unanswered question and says further detail is undocumented. The risk rationale also overstates the content Copilot can use: being able to access a file does not override encryption and extraction restrictions.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Agent Mode in Copilot in PowerPoint creates presentations based on a user's Work IQ.",
+      "claim": "Agent Mode in Copilot in PowerPoint can create presentations based on the user's Work IQ.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Now with Agent Mode in Copilot in PowerPoint, you can create presentations based on your Work IQ.",
@@ -43,6 +45,17 @@
     },
     {
       "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes avoiding the work of finding the files, meetings and emails needed to compose relevant slides.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Build rich presentations without the heavy lift of finding all the right files, meetings, and emails to compose relevant slides.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; summary; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -53,7 +66,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is March CY2026.",
@@ -64,7 +77,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap gives no preview date.",
@@ -75,10 +88,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -86,8 +99,8 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: platforms; summary; What's changing; Scope; rationale: impact",
+      "n": 7,
+      "where": "front matter: platforms; summary; Scope; rationale: impact",
       "type": "record",
       "claim": "Desktop is the only platform listed in the roadmap record.",
       "status": "supported",
@@ -97,21 +110,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap cloud is Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap record does not list US Government clouds.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -122,7 +124,7 @@
       "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-04-21T23:00:01.",
+      "claim": "The roadmap modified timestamp is 2026-04-21T23:00:01.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-04-21T23:00:01\"",
@@ -131,141 +133,42 @@
     },
     {
       "n": 10,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap description names no rollout mechanism.",
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Work IQ within Microsoft 365 Copilot (Premium) is included with that licensed experience.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Now with Agent Mode in Copilot in PowerPoint, you can create presentations based on your Work IQ. Build rich presentations without the heavy lift of finding all the right files, meetings, and emails to compose relevant slides.",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Work IQ is included with Microsoft 365 Copilot (Premium), whereas the Work IQ API is a distinct usage-based billing offering",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Copilot automatically gathers relevant files, meetings and emails to help build presentations.",
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default state of this PowerPoint Work IQ capability on arrival.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Copilot in PowerPoint now uses Work IQ to automatically gather relevant files, meetings, and emails to help build presentations.",
+      "source": null,
+      "quote": "Searched: PowerPoint Work IQ default Edit with Copilot; Work IQ PowerPoint switch default state. Read release notes, Copilot overview and Work IQ overview; results about API enablement and Business Applications defaults do not state this feature's arrival default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The release-notes entry is under July 01, 2026.",
+      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing",
+      "type": "absence",
+      "claim": "Learn names no licence specific to Agent Mode in PowerPoint beyond the published Work IQ entitlement.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-01,-2026",
-      "quote": "## July 01, 2026\n**Roadmap ID:** 555874\nCopilot in PowerPoint now uses Work IQ to automatically gather relevant files, meetings, and emails to help build presentations.",
+      "source": null,
+      "quote": "Searched: PowerPoint Work IQ Agent Mode pricing licensing; Agent Mode in Copilot in PowerPoint license price. Read Copilot overview, Work IQ overview and release notes; results describe general Copilot licensing, separate Copilot-app agents and Work IQ API billing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing; Scope",
-      "type": "availability",
-      "claim": "The release notes list this feature for Windows.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Create presentations with Work IQ using Agent Mode in Copilot in PowerPoint [Windows]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "admin-path",
-      "claim": "The release notes tell the user to open PowerPoint and select Edit with Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Open PowerPoint and select 'Edit with Copilot'.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The user chooses to create a presentation based on Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Choose to create a presentation based on your Work IQ.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The release notes direct the user to review and customise the generated slides.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Review and customize the generated slides with the gathered content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
-      "type": "behaviour",
-      "claim": "The integration accesses only authorised content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "This integration reduces manual effort and improves content relevance while maintaining data security by accessing only authorized content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Work IQ is an intelligence layer enabling agents to access and reason over organisational data, content and tools.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Work IQ is an intelligence layer that enables agents access to reason over organizational data, content and tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "This replaces manual searching and compiling of presentation source material with automatic gathering.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Copilot in PowerPoint now uses Work IQ to automatically gather relevant files, meetings, and emails to help build presentations. Previously, users manually searched for and compiled these resources.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Copilot works with Microsoft Graph content the user has permission to access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
-      "quote": "Content in Microsoft Graph, such as emails, chats, and documents that you have permission to access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Work IQ is included with Microsoft 365 Copilot (Premium), supporting an included licensing model for this capability.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Although both use the Work IQ platform, Work IQ is included with Microsoft 365 Copilot (Premium), whereas the Work IQ API is a distinct usage-based billing offering",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Work IQ is available in all Microsoft 365 Copilot experiences and agents for licensed users.",
+      "claim": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents.",
@@ -273,10 +176,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Risk assessment: Change & support; Cost and licensing; Scope; controls[0].governs",
+      "n": 14,
+      "where": "Risk assessment: Change & support; Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "Full work-data grounding through Work IQ and semantic indexing in the licensed Copilot experience requires the Microsoft Copilot licence.",
+      "claim": "Full work data through Work IQ and semantic indexing is available only to users with the Microsoft Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/privacy-and-protections",
       "quote": "Access to full work data as part of Work IQ and semantic indexing is only available for users with the Microsoft Copilot license.",
@@ -284,74 +187,8 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The Work IQ API is a distinct usage-based offering for custom apps, agents and integrations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "the Work IQ API is a distinct usage-based billing offering that can be purchased and consumed independently for custom apps, agents, and integrations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Work IQ API usage consumes Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft Learn names no separate licence specific to Agent Mode in PowerPoint.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent Mode\" \"PowerPoint\" \"Work IQ\" default licensing admin; \"PowerPoint\" \"Work IQ\" \"Copilot Credits\" pricing license. Read release notes, Copilot overview, Work IQ overview and pricing search results; no separate feature-specific licence or price.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Whether Agent Mode in PowerPoint draws on the Work IQ API meter is not stated.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Work IQ is included with Microsoft 365 Copilot (Premium), whereas the Work IQ API is a distinct usage-based billing offering that can be purchased and consumed independently for custom apps, agents, and integrations.",
-      "severity": "blocker",
-      "fix": "Replace 'Whether Agent Mode in PowerPoint draws on that meter is not stated' with 'Work IQ in Microsoft 365 Copilot (Premium) is included; the distinct Work IQ API offering is usage-based for custom apps, agents and integrations.' Keep the narrower statement that no separate feature-specific meter or price is published. Cite https://learn.microsoft.com/copilot/plan/copilot-overview."
-    },
-    {
-      "n": 28,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated this feature's default state on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent Mode\" \"PowerPoint\" \"Work IQ\" default licensing admin; \"Agent Mode in Copilot in PowerPoint\". Read record, release-notes entry, Copilot overview, Work IQ overview and tenant API setup; none states this feature's arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing; front matter: changes",
-      "type": "absence",
-      "claim": "At November 2026, Microsoft Learn describes this specific feature in release notes rather than a dedicated detailed feature page.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent Mode in Copilot in PowerPoint\"; \"Agent Mode\" \"PowerPoint\" \"Work IQ\" default licensing admin. Read release notes and returned excerpts; other hits describe Copilot-app agents or Work IQ APIs, not this in-PowerPoint capability.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[0].ui; Governance controls: table",
+      "n": 15,
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
       "claim": "User licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
       "status": "supported",
@@ -361,10 +198,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[0].api; Governance controls: table",
+      "n": 16,
+      "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence using Microsoft Graph PowerShell.",
+      "claim": "Microsoft Graph PowerShell assigns a user licence using Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @().",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
       "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
@@ -372,7 +209,29 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 17,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Restricted Content Discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "PowerShell enables Restricted Content Discovery using Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Use PowerShell\nOpen PowerShell as an administrator and run the following command:\nSet-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "controls[0].note; Governance guidance: Before rollout",
       "type": "role",
       "claim": "Assigning licences requires at least License Administrator or User Administrator.",
@@ -383,32 +242,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[1].ui; Governance controls: table",
-      "type": "admin-path",
-      "claim": "Restricted Content Discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[1].api; Governance controls: table",
-      "type": "command",
-      "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables Restricted Content Discovery for a site.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "Enable Restricted Content Discovery for a site\nUse PowerShell\nSet-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[1].note; Governance controls: table",
+      "n": 20,
+      "where": "controls[1].note; Governance controls table",
       "type": "licensing",
-      "claim": "Restricted Content Discovery needs Copilot licensing and available SharePoint Advanced Management capabilities.",
+      "claim": "Restricted Content Discovery requires the organisation to be licensed for Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Ensure your organization has a Microsoft Copilot license. Restricted Content Discovery is intended for Microsoft Copilot deployment and governance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].note; Governance controls table",
+      "type": "licensing",
+      "claim": "Restricted Content Discovery also requires SharePoint Advanced Management to be available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
       "quote": "You can configure Restricted Content Discovery if your organization is licensed for Copilot and has SharePoint Advanced Management available.",
@@ -416,10 +264,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[1].governs and note; Risk assessment; Governance guidance: At rollout",
+      "n": 22,
+      "where": "controls[1].governs; controls[1].note; Risk assessment; Governance controls",
       "type": "applicability",
-      "claim": "Restricted Content Discovery limits SharePoint content discovery in Microsoft Copilot.",
+      "claim": "Restricted Content Discovery is a site-level control over Microsoft Copilot discovery scenarios, including tenant-wide content discovery.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
       "quote": "Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery.",
@@ -427,107 +275,8 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Microsoft describes Restricted Content Discovery as a temporary governance control while access is reviewed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "Restricted Content Discovery is designed as a temporary governance control that gives organizations time to review and right-size access while continuing their Copilot deployment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Restricted Content Discovery does not change permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "Restricted Content Discovery doesn't change existing permissions. Users who already have access to content can continue to access that content directly.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[1].note; Governance controls: table",
-      "type": "applicability",
-      "claim": "The control's documentation describes Copilot discovery generally without naming Agent Mode in PowerPoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery.",
-      "severity": "minor",
-      "fix": "Replace 'Learn covers Microsoft Copilot discovery generally and does not name Agent Mode in PowerPoint' in the row note with 'Applies to Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery.' Retain the exception for content already in use."
-    },
-    {
-      "n": 41,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Whether Restricted Content Discovery governs this feature's Copilot discovery boundary remains an open question.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery.",
-      "severity": "blocker",
-      "fix": "Replace the prose caveat with 'Restricted Content Discovery applies to Microsoft Copilot discovery scenarios, including tenant-wide content discovery; it does not affect experiences on content already in use, such as summarising an open document.' In the final open question, remove 'Does Agent Mode in PowerPoint use the same discovery boundary that Restricted Content Discovery sets for Microsoft Copilot, and' so it asks only about sensitivity labels."
-    },
-    {
-      "n": 42,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "The Microsoft Copilot overview says an administrator can turn Work IQ on or off.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" administrator \"turn\" \"off\" \"Copilot responses\"; \"Work IQ\" \"on or off\" admin PowerPoint. Read Copilot overview and Work IQ API tenant setup; overview says 'You can turn Work IQ on or off' without specifying an administrator or an admin control.",
-      "severity": "blocker",
-      "fix": "Replace 'Learn's Microsoft Copilot overview says an administrator can turn Work IQ on or off' with 'Learn's Microsoft Copilot overview says Work IQ can be turned on or off, without identifying the setting or who controls it.' Do not attribute the API setup, MCP policy or Business Applications controls to this in-PowerPoint setting."
-    },
-    {
-      "n": 43,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "When Work IQ is off, Copilot responses are not grounded in Microsoft Graph and Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "When Work IQ is off, Copilot responses aren't grounded in Microsoft Graph and Work IQ.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Governance controls",
-      "type": "licensing",
-      "claim": "Licence assignment decides who can use Work IQ at all.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.\nUsers without a Microsoft 365 Copilot license are billed based on usage.",
-      "severity": "blocker",
-      "fix": "Replace 'Licence assignment decides who can use Work IQ at all' with 'Licence assignment controls entitlement to Work IQ grounding included with Microsoft 365 Copilot (Premium); Work IQ API access is independent of that licence and is usage-based.' Cite the already listed Work IQ overview."
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Any over-permissioned site or mailbox feeds slides.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Agent Mode in Copilot in PowerPoint\"; \"PowerPoint\" \"Work IQ\" \"Restricted Content Discovery\". Read release notes, Copilot privacy and Restricted Content Discovery; they describe relevant authorised retrieval, not guaranteed inclusion of every accessible site or mailbox.",
-      "severity": "major",
-      "fix": "Replace 'so any over-permissioned site or mailbox feeds slides' with 'so existing oversharing can make sensitive source material available to Copilot when it gathers relevant content.' This preserves the risk analysis without claiming that every accessible source is used."
-    },
-    {
-      "n": 46,
-      "where": "controls[1].note; Governance guidance: At rollout; Governance controls: table",
+      "n": 23,
+      "where": "controls[1].note; Governance guidance: At rollout; Governance controls",
       "type": "applicability",
       "claim": "Restricted Content Discovery does not affect experiences on content already in use, such as summarising an open document.",
       "status": "supported",
@@ -537,40 +286,337 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft Learn publishes no separate feature-specific price for Agent Mode in PowerPoint.",
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Copilot in PowerPoint automatically gathers relevant files, meetings and emails using Work IQ to build presentations.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"PowerPoint\" \"Work IQ\" \"Copilot Credits\" pricing license. Read Copilot overview, Work IQ overview, pricing search results and release notes; none names a separate price for this feature.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot in PowerPoint now uses Work IQ to automatically gather relevant files, meetings, and emails to help build presentations.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft Learn publishes no separate feature-specific meter for Agent Mode in PowerPoint.",
+      "n": 25,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release notes list this feature under July 01, 2026.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"PowerPoint\" \"Work IQ\" \"Copilot Credits\" pricing license. Read Work IQ overview, Copilot overview, release notes and pricing results; the published Work IQ API meter is distinct from included Copilot grounding, with no separate meter for this feature.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-01,-2026",
+      "quote": "July 01, 2026\nCreate presentations with Work IQ using Agent Mode in Copilot in PowerPoint\nRoadmap ID: 555874",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The release-notes entry lists Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Create presentations with Work IQ using Agent Mode in Copilot in PowerPoint [Windows]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The release notes instruct users to open PowerPoint and select Edit with Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open PowerPoint and select 'Edit with Copilot'.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users choose to create a presentation based on their Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Choose to create a presentation based on your Work IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The documented user workflow includes reviewing and customising the generated slides.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Review and customize the generated slides with the gathered content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The release notes say this integration accesses only authorised content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This integration reduces manual effort and improves content relevance while maintaining data security by accessing only authorized content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Work IQ is an intelligence layer enabling agents to access and reason over organisational data, content and tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Work IQ is an intelligence layer that enables agents access to reason over organizational data, content and tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "At the time of writing, Learn's feature-specific description of this roadmap item is in the release notes rather than a dedicated feature page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Work IQ create presentations; Agent Mode PowerPoint Work IQ default license meter admin switch. Read release notes and returned excerpts; Office Document Tools for Work IQ and Copilot-app agents describe different surfaces, not a dedicated page for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Detail beyond the roadmap description and this feature's release note is not yet documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
+      "quote": "Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook support sensitivity label inheritance for newly created content.",
+      "severity": "blocker",
+      "fix": "Delete 'so detail beyond the roadmap description and those notes is not yet documented'. Keep the narrower statement that the feature-specific description is in the release notes; general Copilot documentation also covers its licensing, permissions and label inheritance."
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Before this integration, users manually searched for and compiled the presentation's source resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, users manually searched for and compiled these resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft Copilot works with Microsoft Graph content that the user has permission to access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "Content in Microsoft Graph, such as emails, chats, and documents that you have permission to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "The user's permissions remain an access boundary for Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "Semantic Index honors the user identity-based access boundary so that the grounding process only accesses content that the current user is authorized to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The generated presentation can combine gathered content from several source resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot in PowerPoint now uses Work IQ to automatically gather relevant files, meetings, and emails to help build presentations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].governs; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft 365 Copilot licence assignment controls entitlement to the included Work IQ grounding experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/privacy-and-protections",
+      "quote": "Access to full work data as part of Work IQ and semantic indexing is only available for users with the Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API is a distinct usage-based offering for custom apps, agents and integrations, separate from included Work IQ in Copilot Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Work IQ is included with Microsoft 365 Copilot (Premium), whereas the Work IQ API is a distinct usage-based billing offering that can be purchased and consumed independently for custom apps, agents, and integrations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ API usage is billed in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "licensing",
+      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Learn publishes no separate feature-specific meter or price for Agent Mode in PowerPoint at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Work IQ Agent Mode pricing licensing; Agent Mode in Copilot in PowerPoint license price. Read Copilot overview, Work IQ overview, release notes and licensing search excerpts; billing passages concern Work IQ API, not this included PowerPoint experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Why it matters",
       "type": "absence",
       "claim": "No source says this feature changes existing behaviour for users without the Copilot licence.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Agent Mode\" \"PowerPoint\" \"Work IQ\" default licensing admin; \"Agent Mode in Copilot in PowerPoint\". Read record, release notes, Copilot overview and privacy pages; none describes an automatic behaviour change for unlicensed users from this feature.",
+      "quote": "Searched: PowerPoint Work IQ default Edit with Copilot; Agent Mode in Copilot in PowerPoint license price. Read release notes, Copilot overview, privacy and protections; no change to unlicensed users' existing PowerPoint behaviour is stated for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft describes Restricted Content Discovery as a temporary governance control while access and permissions are reviewed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery is designed as a temporary governance control that gives organizations time to review and right-size access while continuing their Copilot deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Restricted Content Discovery does not change existing permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't change existing permissions. Users who already have access to content can continue to access that content directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "By default only SharePoint administrators can manage Restricted Content Discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Microsoft Copilot overview says Work IQ can be turned on or off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You can turn Work IQ on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The overview says that when Work IQ is off, Copilot responses are not grounded in Microsoft Graph and Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "When Work IQ is off, Copilot responses aren't grounded in Microsoft Graph and Work IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls; Open questions: Work IQ on/off",
+      "type": "absence",
+      "claim": "The Copilot overview does not identify the Work IQ on/off setting or its operator, and its relationship to this PowerPoint mode remains unspecified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ turn off setting administrator Copilot; Work IQ on or off Copilot setting. Read Copilot overview and search excerpts; Business Applications controls govern Dataverse data, not the overview's full Microsoft Graph grounding toggle or this PowerPoint mode.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
+      "where": "Open questions: sensitivity labels",
+      "type": "absence",
+      "claim": "How source-file sensitivity labels carry into the generated deck is an unanswered question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
+      "quote": "the sensitivity label from the source file is automatically inherited, with the label's protection settings.\nIf multiple files are used to create new content, the sensitivity label with the highest priority is used for label inheritance.",
+      "severity": "blocker",
+      "fix": "Remove the question 'How do sensitivity labels on source files carry into the generated deck?'. Microsoft documents inheritance for newly created Copilot in PowerPoint content and selection of the highest-priority label when multiple files are used at https://learn.microsoft.com/purview/ai-m365-copilot."
+    },
+    {
+      "n": 51,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "Anything a user can reach can end up in a generated deck.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
+      "quote": "If the user has VIEW but not EXTRACT, Copilot doesn't summarize the content, but it can return a link so the user can open it outside Copilot.\nCopilot and agents can't access content protected by DKE.",
+      "severity": "minor",
+      "fix": "Replace 'anything a user can reach can end up in a deck' with 'relevant authorised source content can end up in a deck'. This removes the universal claim without adding new scope or changing the supported release-note statement."
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list US Government clouds for this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap description names no rollout mechanism.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Now with Agent Mode in Copilot in PowerPoint, you can create presentations based on your Work IQ. Build rich presentations without the heavy lift of finding all the right files, meetings, and emails to compose relevant slides.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
       "where": "Scope",
       "type": "record",
       "claim": "The roadmap description names no release channel.",
@@ -581,7 +627,7 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 55,
       "where": "Scope",
       "type": "record",
       "claim": "The roadmap description names no admin prerequisite.",
@@ -593,7 +639,7 @@
     }
   ],
   "precheck": {
-    "at": "2026-11-25T04:34:59.954Z",
+    "at": "2026-11-25T05:48:39.576Z",
     "summary": {
       "links": 9,
       "unreachable": 0,
@@ -700,5 +746,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

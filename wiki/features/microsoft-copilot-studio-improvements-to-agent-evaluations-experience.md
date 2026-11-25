@@ -119,16 +119,18 @@ changes:
     note: "Corrected after the independent check: Microsoft Copilot harness test methods, the two credit API calls now shown without request bodies, and a checklist step without a controls row removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 101 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 108 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 101
-  confirmed: 101
-  unconfirmed: 0
+  claims: 108
+  confirmed: 107
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
   hash: "984c013b479e94989ef73a6aa06066f0"
@@ -242,4 +244,13 @@ On the maker side, the **Agent viewer** sharing role controls who can manage an 
 risk: Medium. Generated test cases are built with a connected account's access, can include sensitive data it can reach, and are visible to any maker with access to the agent.
 cost: Variable. Microsoft documents that evaluating Copilot harness agents can consume Copilot Credits, and the Evaluate view shows an estimated credit total per run; no evaluation rate is listed for other agents.
 impact: Low. Makers who build and test agents notice the change; end users and most administrators do not.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Data exposure / behaviour: Richer explanations and cited knowledge sources will put more source material in results. | Found: Searched: Copilot Studio evaluations reasoning traces results access only maker initiated new views tool side effects isolated. Read roadmap, analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-view; no additional-content guarantee found. | Fix: Replace the sentence with 'Treat the planned richer explanations and cited knowledge sources as a potential additional exposure to review.' Neither the roadmap nor the evaluation documentation specifies how much additional source content these views will reveal.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: Caps / cost: Environment allocations and agent monthly limits are general controls for containing credit spend. | Found: An agent's monthly limit doesn't stop the agent flows that the agent calls. Agent flows are billed and checked for capacity separately | Fix: Add to the Caps paragraph: 'An agent monthly limit does not stop agent flows it calls; those flows are billed and checked against environment capacity separately. Manage the environment allocation, tenant-capacity draw and pay-as-you-go billing plan to control that consumption.' The existing allocation note already warns that pay-as-you-go usage can continue. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] Governance controls: maker side / admin-path: Share in the agent's Copilot Studio menu is the entry point for assigning Agent viewer. | Found: Open the agent and select the three dots (**...**) > **Share** ... Under **Has permissions for this agent as**, select **Agent viewer** from the role list. | Fix: Expand the parenthesis to 'Copilot Studio > agent > Share > user or group > Has permissions for this agent as > Agent viewer'. The existing prose reaches the sharing page but leaves the role-selection steps to the linked documentation. | Source: https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results
 -->

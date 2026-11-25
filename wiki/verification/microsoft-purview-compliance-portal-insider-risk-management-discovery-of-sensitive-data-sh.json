@@ -2,39 +2,33 @@
   "slug": "microsoft-purview-compliance-portal-insider-risk-management-discovery-of-sensitive-data-sh",
   "roadmapId": 501539,
   "title": "Microsoft Purview Insider Risk Management: discover sensitive data shared to cloud apps and websites via the network layer",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-25",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "2 blocking findings (claims 40, 62)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 75,
-    "confirmed": 71,
-    "unconfirmed": 1,
-    "contradicted": 3,
-    "blocker": 2,
-    "major": 1,
-    "minor": 6
+    "claims": 76,
+    "confirmed": 76,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
   },
-  "summary": "Hold for corrections to billing and content capture. Microsoft documents request-based billing for the network collection and processing-unit billing for Insider Risk Management, while content capture requires the classifiers condition to be set to All. The roadmap facts and most of the documented controls are supported.",
+  "summary": "The briefing accurately distinguishes the government-cloud roadmap plan from Microsoft's documentation of existing network indicators. Licensing, prerequisites, content-capture qualifications and timing are supported; the collection-policy route and the explanation of its general-purpose PowerShell command need minor clarification.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans discovery of sensitive files shared to cloud applications and websites, including generative AI.",
+      "claim": "Roadmap item 501539 plans IRM discovery of sensitive files and text shared to any cloud application or website, including generative AI, via the network layer.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "With this update, Insider Risk Management will support the discovery of sensitive files and text shared to any cloud application or website (inc. GenAI) via network layer.",
@@ -43,20 +37,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The planned discovery also covers sensitive text.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "discovery of sensitive files and text shared to any cloud application or website (inc. GenAI)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "The planned capability integrates third-party network partners, capturing data at the network layer.",
+      "claim": "The planned capability integrates third-party network partners and captures data at the network layer.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This capability is based on integration with 3rd party network partners (with data being captured via network layer).",
@@ -64,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "IRM correlates signals to identify insider risks such as IP theft, data leakage and security violations.",
+      "claim": "IRM correlates signals to identify risks including IP theft, data leakage and security violations.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Purview Insider Risk Management correlates various signals to identify potential malicious or inadvertent insider risks, such as IP theft, data leakage, and security violations.",
@@ -75,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "Users are pseudonymised by default.",
+      "claim": "The roadmap says users are pseudonymised by default.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Built with privacy by design, users are pseudonymized by default",
@@ -86,10 +69,21 @@
       "fix": null
     },
     {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says IRM has role-based access controls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "role-based access controls and audit logs are in place to help ensure user-level privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 6,
       "where": "What's changing",
       "type": "record",
-      "claim": "Role-based access controls protect user-level privacy.",
+      "claim": "The roadmap says IRM has audit logs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "role-based access controls and audit logs are in place to help ensure user-level privacy.",
@@ -98,20 +92,9 @@
     },
     {
       "n": 7,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Audit logs are in place to help ensure user-level privacy.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "role-based access controls and audit logs are in place to help ensure user-level privacy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap status remains In development.",
+      "claim": "The supplied roadmap record still has status In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -119,51 +102,7 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap target is January CY2026, a target month already past on the November 2026 run date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap publishes no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: clouds; summary; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -174,10 +113,54 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD, without listing other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is January CY2026, a target month already past on the November 2026 run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "front matter: roadmapModified; What's changing",
       "type": "record",
-      "claim": "The record was last modified on 8 September 2025.",
+      "claim": "The supplied record was last modified on 8 September 2025.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2025-09-08T23:45:21\"",
@@ -185,208 +168,21 @@
       "fix": null
     },
     {
+      "n": 14,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 15,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The documented IRM network indicator is admin-opt-in, with global indicators disabled until an administrator selects them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is mixed: per-seat licensing plus pay-as-you-go for non-Microsoft network integrations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Network data security with non-Microsoft SASE and secure browser solutions requires: Purview E5 (or equivalent) per-seat licenses and the Microsoft Purview pay-as-you-go billing model.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "IRM administrators must verify a supported Microsoft 365 subscription and assign appropriate user licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
-      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "summary; licensing.notes; Cost and licensing; controls[0].note; rationale: cost",
-      "type": "licensing",
-      "claim": "The documented network indicator requires pay-as-you-go billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "Network indicators: To use this indicator, enable pay-as-you-go billing in your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Non-Microsoft SASE and secure browser network data security requires Purview E5 or equivalent per-seat licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Network data security with non-Microsoft SASE and secure browser solutions requires: Purview E5 (or equivalent) per-seat licenses",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The network indicator is reached through Microsoft Purview portal > Insider Risk Management > Settings > Policy indicators > Built-in indicators.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators. Policy indicators are organized into two tabs: Built-in indicators",
-      "severity": "minor",
-      "fix": "Append the documented Network indicators section to the path: 'Insider Risk Management > Settings > Policy indicators > Built-in indicators > Network indicators'."
-    },
-    {
-      "n": 21,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for setting IRM policy indicators.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Insider Risk Management policy indicators settings PowerShell Microsoft Graph API network indicators'; read policy indicators and IRM settings results. No operation for changing these settings found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Collection-policy creation starts at Data loss prevention > Classifiers > Collection policies > + Create policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "Open the Data loss prevention solution and navigate to Classifiers > Collection policies. Select + Create policy.",
-      "severity": "minor",
-      "fix": "Keep the documented entry path but add to the row note: 'This opens the creation wizard; configure conditions, activities and data sources, choose content capture, enable Network and non-Microsoft secure browsers, then select Turn on.'"
-    },
-    {
-      "n": 23,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "New-FeatureConfiguration -FeatureScenario KnowYourData -ScenarioConfig <JSON string> creates collection policies in general.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
-      "quote": "KnowYourData for collection policies. The ScenarioConfig parameter specifies additional information about the feature configuration. Type: String.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[2].ui; controls[2].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "Network-partner integration is available through Data Loss Prevention > Security Store.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "open the Data Loss Prevention solution and choose Security Store in the left navigation bar. Select Get solution for the SASE or non-Microsoft secure browser solution provider you want to integrate with.",
-      "severity": "minor",
-      "fix": "Extend controls[2].ui.path to 'Data Loss Prevention > Security Store > Get solution'. Keep the note that subsequent steps depend on the selected provider."
-    },
-    {
-      "n": 25,
-      "where": "controls[2].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for the Purview Security Store network-partner integration.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview Security Store partner integration PowerShell REST API configure'; opened collection-policy creation and network data security pages. Results describe portal integration or unrelated app APIs, not a configuration operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Pay-as-you-go enablement is reached through Settings > Account details.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
-      "quote": "This can also be done from Settings > Account details. Select your active Azure subscription from the list. Select the resource group.",
-      "severity": "minor",
-      "fix": "Extend controls[3].ui.path to 'Settings > Account details > active Azure subscription > resource group', retaining the preview and Global Administrator notes."
-    },
-    {
-      "n": 27,
-      "where": "controls[3].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for enabling this Purview pay-as-you-go billing association.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview pay-as-you-go enable billing Azure subscription link PowerShell REST API'; opened Purview enablement and billing models. No Purview association operation found; Power Platform and Windows billing results concern different products.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[4].ui; Governance controls table; Cost and licensing",
-      "type": "admin-path",
-      "claim": "Feature-level pay-as-you-go usage is shown at Microsoft Purview portal > Usage center > Pay-as-you-go.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
-      "quote": "To access the Usage center > Pay-as-you-go and Usage center > Premium usage pages",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[4].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for the Purview Usage center.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview Usage center pay-as-you-go usage reports API PowerShell'; opened Usage center and IRM reports. No Usage center operation found; Copilot Credit and Power Platform report APIs are not Purview Usage center APIs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[5].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Role-group membership is edited through Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-      "quote": "Select Settings ... select Roles and groups, then select Roles groups ... Select the Insider Risk Management role group, then select Edit. Select Choose users",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[5].api; controls[5].note; Governance controls table",
-      "type": "command",
-      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member <user principal name> adds a member to the named management role group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-      "quote": "The Identity parameter specifies the role group to add a member to. The Member parameter specifies who you want to add to the role group. ... User ID or user principal name (UPN)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[0].note; What's changing",
-      "type": "behaviour",
-      "claim": "Network indicators are built-in IRM indicators.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "Built-in indicators: Insider Risk Management includes the following built-in indicators. ... Network indicators",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Network indicators include HTTP and HTTPS traffic from third-party network security solutions.",
+      "claim": "Learn's IRM network indicators include HTTP and HTTPS traffic from third-party network security solutions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
       "quote": "These indicators include HTTP and HTTPS network traffic from third party network security solutions.",
@@ -394,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 16,
       "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "The documented indicators identify sensitive items shared in these network interactions.",
+      "claim": "Network indicators identify sensitive items shared through those interactions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
       "quote": "You can identify sensitive items that are being shared through these interactions.",
@@ -405,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 17,
       "where": "What's changing; controls[0].note; Scope; Governance controls",
       "type": "applicability",
-      "claim": "A collection policy is a prerequisite for detecting network traffic activities in IRM.",
+      "claim": "Network traffic detection requires a collection policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
       "quote": "Detection of network traffic activities requires creation of a collection policy as a prerequisite.",
@@ -416,10 +212,54 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 18,
+      "where": "summary; controls[0].note; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn requires pay-as-you-go billing to use the IRM network indicator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Network indicators ... To use this indicator, enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "All global IRM indicators are disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Admin-opt-in describes Learn's network-indicator setup, qualified in the body as not establishing the government-cloud release default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; controls[1].governs",
+      "type": "behaviour",
+      "claim": "A collection policy determines which activities are collected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Choose which activities to detect. Supported activities are specific to the data sources you want to include.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
       "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "The integrated partner solution monitors traffic and sends data to Microsoft Purview for classification.",
+      "claim": "Integrated network solutions monitor traffic and send data to Purview for classification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "The integrated solutions monitor network traffic and send the data to Microsoft Purview for classification and policy evaluation.",
@@ -427,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Monitoring-only communication via collection policies is asynchronous.",
+      "claim": "Monitoring-only network data security through collection policies communicates asynchronously.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "If you are using network data security for monitoring only via collection policies, the communication is asynchronous.",
@@ -438,43 +278,21 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 24,
       "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "The cited Learn documentation does not establish when these network indicators and integrations are available in GCC, GCC High and DoD.",
+      "claim": "The cited documentation does not establish government-cloud availability of the documented network indicators.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'network GCC Purview indicators billing availability' and 'Insider Risk Management network indicators billing processing units requests meter GCC GCC High DoD'; read network, indicator and GCC High planning pages. No cloud-specific network entry found.",
+      "quote": "Searched: Insider Risk Management network indicators GCC GCC High DoD availability pay as you go; opened policy indicators, network data security, setup, billing and GCC High deployment guidance. No network-indicator government-cloud availability statement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The network data security Learn page carries no government-cloud qualification.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'network GCC Purview indicators billing availability'; opened and read dlp-network-data-security-learn in full and the GCC High planning page. The network page states no GCC, GCC High or DoD qualification.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Configuring content capture in a collection policy captures the full user-AI conversation, without any further configuration qualification.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
-      "quote": "To capture AI content, you must set the Content contains classifiers condition to All. This capability doesn't include content in files shared with generative AI",
-      "severity": "blocker",
-      "fix": "Replace the capture sentence with: 'If content capture is enabled and Content contains classifiers is set to All, detected AI prompts and responses are captured and sent to Purview; this does not include content in files shared with generative AI.' Cite https://learn.microsoft.com/purview/collection-policies-policy-reference."
-    },
-    {
-      "n": 41,
+      "n": 25,
       "where": "controls[2].note; Risk assessment: Data exposure; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "An integrated non-Microsoft partner can access policy configuration including user identifiers.",
+      "claim": "Non-Microsoft integrated partners can access policy configuration including user identifiers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "If you choose to integrate with non-Microsoft partners, they will be able to access and possibly store some policy configuration, including user identifiers.",
@@ -482,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 26,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The non-Microsoft partner may store that policy configuration.",
+      "claim": "Non-Microsoft partners might store that policy configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "they will be able to access and possibly store some policy configuration, including user identifiers.",
@@ -493,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The partner's terms, conditions and privacy policy govern use and storage of that configuration.",
+      "claim": "The partner's terms and privacy policy govern its use and storage of that data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Their terms, conditions, and privacy policy will govern the usage and storage of this data.",
@@ -504,19 +322,41 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[5].note; Risk assessment: Security & identity; Governance controls",
-      "type": "role",
-      "claim": "The Insider Risk Management and Insider Risk Management Admins groups have Configure policies and settings permission.",
+      "n": 28,
+      "where": "Risk assessment: Data exposure; controls[1].governs; Governance guidance",
+      "type": "behaviour",
+      "claim": "Enabling collection-policy content capture sends detected AI prompts and responses to Purview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-      "quote": "Actions | Insider Risk Management | Insider Risk Management Admins ... Configure policies and settings | Yes | Yes | No | No | No | No",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "If you configure content capture in the collection policy, the full conversation that happens between the user and the AI app is captured and sent to Microsoft Purview as well.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance: After rollout",
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Capturing AI content requires Content contains classifiers to be set to All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "To capture AI content, you must set the Content contains classifiers condition to All.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "AI content capture does not include content in files shared with generative AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "This capability doesn't include content in files shared with generative AI",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
       "type": "applicability",
       "claim": "Purview network data security policies do not apply to B2B guest users.",
       "status": "supported",
@@ -526,32 +366,43 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 32,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Network data security DLP supports Audit only and Block actions.",
+      "claim": "Network data security DLP policies support Audit only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Network data security supports Audit only and Block actions. ... The activities and actions supported may differ depending on integrated solution.",
-      "severity": "minor",
-      "fix": "Add to the DLP-actions sentence: 'Supported activities and actions may differ by integrated solution; check with the solution provider.' Keep the existing statement that these DLP actions are not assumed to apply to this IRM release."
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "applicability",
-      "claim": "The described Audit only and Block actions are configured through DLP policies, not the IRM network-indicator setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Supported network data security data loss prevention policy configuration: The Microsoft Purview side of the configuration is done via a data loss prevention policy.",
+      "quote": "Supported network data security data loss prevention policy configuration ... Actions - Network data security supports Audit only and Block actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[3].note; Risk assessment: Change & support; Scope; Governance guidance",
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Network data security DLP policies support Block, without the briefing asserting that IRM itself blocks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Supported network data security data loss prevention policy configuration ... Actions - Network data security supports Audit only and Block actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Supported activities and actions can differ by integrated solution, and Microsoft advises checking with the provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "The activities and actions supported may differ depending on integrated solution. Check with your solution provider for details on supported activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].note; Risk assessment; Scope; Governance guidance; Governance controls",
       "type": "role",
-      "claim": "Only a Global Administrator can enable the pay-as-you-go model.",
+      "claim": "Only a Global Administrator can enable Purview pay-as-you-go.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
       "quote": "Only an account in the Global Administrator role can enable the pay-as-you-go model",
@@ -559,76 +410,21 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "n": 36,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
       "type": "licensing",
-      "claim": "Pay-as-you-go enablement associates the tenant with an active Azure subscription and a resource group in that subscription.",
+      "claim": "Pay-as-you-go enablement links the tenant to an active Azure subscription and resource group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
-      "quote": "An Azure subscription in the same tenant as Microsoft Purview. An Azure resource group in that subscription. ... The Azure subscription must be active to bill against before you can enable the pay-as-you-go billing model.",
+      "quote": "The Azure subscription must be active to bill against before you can enable the pay-as-you-go billing model. ... Select the resource group.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[3].note; Governance controls",
-      "type": "availability",
-      "claim": "The pay-as-you-go enablement feature is marked preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
-      "quote": "This featue is in preview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[4].note; Cost and licensing; Governance controls",
-      "type": "availability",
-      "claim": "The Purview Usage center is in preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
-      "quote": "The Microsoft Purview Usage center feature is in preview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[4].note; Governance controls",
-      "type": "role",
-      "claim": "Usage center access is limited to the roles listed in its documentation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
-      "quote": "the account you use must have one of the following roles: Global Reader; Security Reader; Global Admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[4].note; Risk assessment: Change & support; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Insider Risk Management is listed as not pausable in Usage center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
-      "quote": "Feature name | Pausable | Detailed report available ... Insider Risk Management | No | Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Cost and licensing: Watching spend",
-      "type": "behaviour",
-      "claim": "In-transit protection of data at the network layer is listed as not pausable in Usage center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
-      "quote": "In-transit protection of data at the network layer | No | Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
+      "n": 37,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Allow up to 24 hours for policies to reach the integrated solution and the first data to appear.",
+      "claim": "Microsoft says to allow up to 24 hours for policy distribution and the first network data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "allow up to 24 hours for your policies to be distributed to the network security solution and for the first data to show up.",
@@ -636,21 +432,10 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "A new network setup will look empty on day one.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Purview network data security first data appear 24 hours minimum delay collection policies'; opened network data security and read timing results. The network page gives an up-to-24-hour allowance, not a mandatory empty first day.",
-      "severity": "major",
-      "fix": "Replace 'so a new setup will look empty on day one' with 'so first data may take up to 24 hours to appear'."
-    },
-    {
-      "n": 57,
+      "n": 38,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "After the services communicate, request data may take up to 30 minutes to appear in the audit log and activity explorer.",
+      "claim": "Once services fully communicate, request data can take up to 30 minutes to appear in the audit log and activity explorer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Once the two services fully communicate with each other, it can take up to 30 minutes for data about a request from a client to a website or cloud app to appear in the audit log and activity explorer.",
@@ -658,32 +443,87 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Cost and licensing: Meter; Why it matters; rationale: cost",
-      "type": "cost",
-      "claim": "Pay-as-you-go is consumption billing through an Azure subscription with an Azure bill generated at month end.",
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "IRM setup requires checking the organisation's supported subscription and assigning appropriate user licences.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "The pay-as-you-go billing model is a consumption billing model. ... An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "An IRM processing unit represents compute required to process 10,000 user activities corresponding to selected non-Microsoft 365 indicators.",
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Network data security with non-Microsoft SASE and secure browsers requires Purview E5 or equivalent per-seat licences plus pay-as-you-go.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "Insider Risk Management processes user activities corresponding to the non-Microsoft 365 indicators selected in data theft and data leak policies ... a processing unit represents the compute required to process 10,000 such user activities.",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Network data security with non-Microsoft SASE and secure browser solutions requires: Purview E5 (or equivalent) per-seat licenses and the Microsoft Purview pay-as-you-go billing model.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
+      "n": 41,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects per-seat licensing combined with consumption billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Purview E5 (or equivalent) per-seat licenses and the Microsoft Purview pay-as-you-go billing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Purview pay-as-you-go is usage-based consumption billing, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The pay-as-you-go billing model is a consumption billing model. ... you're charged based on your usage of various pay-as-you-go features, based on the unit of consumption for the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Consumption is Azure-billed, with an Azure bill generated at month end.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The billing mechanisms are Azure based ... An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "Network data security with non-Microsoft SASE and secure browser integrations uses requests as its billing unit.",
+      "claim": "IRM pay-as-you-go indicators use a processing-unit meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Insider risk management is a pay-as-you-go feature that uses a processing unit based meter. It includes pay-as-you-go indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "One IRM processing unit represents the compute to process 10,000 non-Microsoft 365 user activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Insider Risk Management processes user activities corresponding to the non-Microsoft 365 indicators ... For Insider Risk Management, a processing unit represents the compute required to process 10,000 such user activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Network data security with non-Microsoft integrations bills by requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Network data security uses the request as unit of measure for pay-as-you-go billing purposes when using non-Microsoft SASE and secure browser integrations.",
@@ -691,32 +531,65 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 47,
       "where": "Cost and licensing: Meter",
       "type": "cost",
       "claim": "A request is each network call from a device or browser to a website or API.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "A request is each network call made from a device or browser to a website or API.",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "For pay-as-you-go billing, a request is each network call a device or browser makes to a website or API.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 48,
       "where": "Cost and licensing: Meter; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "Which meter bills the IRM network indicator is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "Insider risk management is a pay-as-you-go feature that uses a processing unit based meter. It includes pay-as-you-go indicators. ... Microsoft Purview network data security pay-as-you-go uses requests as its unit of measure.",
-      "severity": "blocker",
-      "fix": "Replace the absence with: 'Microsoft documents request-based billing for network data security with non-Microsoft integrations and processing-unit billing for IRM pay-as-you-go indicators. It does not explicitly describe whether network indicators incur additional IRM processing charges on top of network requests.' Use that narrower additional-charge question in Open questions and the cost rationale, retaining the published meter descriptions and citing https://learn.microsoft.com/purview/purview-billing-models and https://learn.microsoft.com/purview/dlp-network-data-security-learn."
+      "claim": "The documentation does not explicitly establish whether network indicators incur additional IRM processing charges on top of requests.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management network indicators billing processing units requests additional charges; opened billing models, network data security and policy indicators. They describe both meters but do not explicitly settle additive network-indicator charges.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 63,
-      "where": "Cost and licensing: Watching spend; Governance guidance: After rollout",
+      "n": 49,
+      "where": "controls[4].governs; Cost and licensing: Watching spend",
       "type": "behaviour",
-      "claim": "IRM's Reports page includes pay-as-you-go usage reports by default.",
+      "claim": "Usage center shows pay-as-you-go consumption by feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The Usage center provides detailed information on Total Units Used about your pay-as-you-go billing usage by feature and by workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[4].note; Risk assessment; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Usage center lists Insider Risk Management as not pausable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "| Feature name | Pausable | Detailed report available | ... | Insider Risk Management | No | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Watching spend",
+      "type": "behaviour",
+      "claim": "Usage center lists in-transit protection at the network layer as not pausable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "| Feature name | Pausable | Detailed report available | ... | In-transit protection of data at the network layer | No | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Watching spend",
+      "type": "behaviour",
+      "claim": "IRM's Reports page has a pay-as-you-go usage report by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-reports",
       "quote": "Pay-as-you-go usage reports ... This report is available in the Reports page by default.",
@@ -724,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 53,
       "where": "Cost and licensing: Watching spend",
-      "type": "admin-path",
-      "claim": "Consumption and billing information is available under Azure portal > Cost Management + Billing.",
+      "type": "behaviour",
+      "claim": "Azure Cost Management + Billing shows consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
       "quote": "All consumption and billing information is available in the Azure portal under Cost Management + Billing.",
@@ -735,10 +608,21 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 54,
+      "where": "Cost and licensing: Watching spend",
+      "type": "cost",
+      "claim": "The billing models page links to Microsoft's Azure pricing page rather than this briefing quoting a rate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Cost estimator tools ... Microsoft pay-as-you-go pricing (https://azure.microsoft.com/pricing/details/purview/)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
       "where": "Scope",
       "type": "availability",
-      "claim": "IRM is available in tenants hosted in regions and countries supported by its Azure service dependencies.",
+      "claim": "IRM setup describes availability in tenant regions and countries supported by Azure service dependencies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
       "quote": "Insider Risk Management is currently available in tenants hosted in geographical regions and countries supported by Azure service dependencies.",
@@ -746,10 +630,43 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 56,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The collection-policy page lists Insider Risk Management Admin among applicable role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. ... Insider Risk Management Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[5].governs; Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management role group can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | ... | Configure policies and settings | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[5].note; Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management Admins role group can also configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | ... | Configure policies and settings | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Governance guidance: Before rollout",
       "type": "role",
-      "claim": "Microsoft advises keeping at least one member in the built-in IRM or IRM Admins role group used.",
+      "claim": "Microsoft advises keeping at least one member in the chosen built-in IRM administrator role group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
       "quote": "Make sure you always have at least one user in the built-in Insider Risk Management or Insider Risk Management Admins role groups (depending on the option you choose)",
@@ -757,7 +674,172 @@
       "fix": null
     },
     {
+      "n": 60,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Network indicators are under Microsoft Purview portal > Insider Risk Management > Settings > Policy indicators > Built-in indicators > Network indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators. ... Policy indicators are organized into two tabs: Built-in indicators ... Network indicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no automation for configuring IRM policy indicators at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management policy indicators network settings PowerShell Set InsiderRiskManagementPolicy indicators; Security Compliance PowerShell Insider Risk Management global policy indicators configuration cmdlets. Read policy-indicator and settings documentation; no setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Collection-policy creation starts at Microsoft Purview portal > Data loss prevention > Classifiers > Collection policies > + Create policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Open the Data loss prevention solution and navigate to Classifiers > Collection policies. Select + Create policy.",
+      "severity": "minor",
+      "fix": "Keep the path, which correctly reaches policy creation. Add to controls[1].note: 'The wizard then configures conditions, activities, data sources and user scope, content capture, Network and non-Microsoft secure browsers, and Turn on.' These later choices are documented at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy."
+    },
+    {
+      "n": 63,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "New-FeatureConfiguration -FeatureScenario KnowYourData -ScenarioConfig <JSON string> creates collection policies in general, with the note explicitly leaving network-specific expression unconfirmed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
+      "quote": "KnowYourData for collection policies ... The ScenarioConfig parameter specifies additional information about the feature configuration. ... Includes UploadText and DownloadText activity for all supported classifiers. Captures all AI prompts.",
+      "severity": "minor",
+      "fix": "Clarify controls[1].note as: 'Public Preview, available only in Security & Compliance PowerShell and not in all organizations. ScenarioConfig configures collection-policy activities and content capture; reference examples use Activities and IsIngestionEnabled, but do not document the network enforcement-plane value.' Keep the call as general collection-policy automation, not a verified network-specific configuration."
+    },
+    {
+      "n": 64,
+      "where": "controls[2].ui; Governance controls table; Scope; Governance guidance",
+      "type": "admin-path",
+      "claim": "Partner integration starts at Microsoft Purview portal > Data Loss Prevention > Security Store > Get solution, followed by provider-specific steps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "open the Data Loss Prevention solution and choose Security Store in the left navigation bar. Select Get solution for the SASE or non-Microsoft secure browser solution provider you want to integrate with. Complete the steps required by the integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No Microsoft Learn API for Security Store partner integration is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Security Store SASE partner integration API PowerShell configure; opened collection-policy deployment and network data security, and read Purview API overview results. They document provider-specific onboarding, not a Security Store configuration API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Pay-as-you-go linkage can be configured at Microsoft Purview portal > Settings > Account details > active Azure subscription > resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "This can also be done from Settings > Account details. Select your active Azure subscription from the list. ... Select the resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 67,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for this tenant pay-as-you-go enablement at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview pay-as-you-go enable billing tenant Azure subscription API PowerShell; opened enablement and billing models. Results document portal consent; unrelated Azure Purview governance-account and Power Platform billing operations do not establish this tenant-linking operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Pay-as-you-go usage is under Microsoft Purview portal > Usage center > Pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "To access the Usage center > Pay-as-you-go and Usage center > Premium usage pages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for the Purview Usage center surface at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Usage center pay-as-you-go usage API PowerShell; Purview Usage center API. Opened billing usage and read API results. Azure consumption APIs exist, but no Purview Usage center API was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[5].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "IRM group membership is configured at Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users in Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings ... select Roles and groups, then select Roles groups ... Select the Insider Risk Management role group, then select Edit. Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[5].api; controls[5].note; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member <user principal name> adds a user to that management role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[4].note; Governance controls; Cost and licensing",
+      "type": "availability",
+      "claim": "Microsoft marks Usage center as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The Microsoft Purview Usage center feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[4].note; Governance controls",
+      "type": "role",
+      "claim": "Usage center access is limited to the roles listed on its page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "the account you use must have one of the following roles: Global Reader; Security Reader; Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[3].note; Governance controls",
+      "type": "availability",
+      "claim": "The pay-as-you-go enablement page is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "This featue is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
       "where": "controls[1].note; Governance controls",
       "type": "availability",
       "claim": "New-FeatureConfiguration is in Public Preview and is available only in Security & Compliance PowerShell.",
@@ -768,98 +850,21 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[1].governs; Governance guidance: At rollout",
+      "n": 76,
+      "where": "Governance guidance: At rollout",
       "type": "applicability",
-      "claim": "A network collection policy determines activities and user scope, with a content-capture choice.",
+      "claim": "A collection policy can scope network monitoring to selected users and groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "Select + Add activities. ... Select Edit scope on the Unmanaged cloud apps row. ... Leave the default option of Don't capture content ... Ensure Network and non-Microsoft secure browsers is enabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance controls; Why it matters",
-      "type": "applicability",
-      "claim": "Selecting the IRM network indicator alone does not satisfy the documented collection prerequisites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "To use this indicator, enable pay-as-you-go billing in your organization. ... Detection of network traffic activities requires creation of a collection policy as a prerequisite.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Cost and licensing: Watching spend",
-      "type": "cost",
-      "claim": "The billing models page links to Microsoft's Azure-hosted Purview pricing page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "Microsoft pay-as-you-go pricing (https://azure.microsoft.com/pricing/details/purview/)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance guidance: After rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist tells readers to check IRM's pay-as-you-go report but points to a row containing only Usage center.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check pay-as-you-go consumption in the Usage center and in IRM's pay-as-you-go usage report ... (Usage center row). The row's path is Usage center > Pay-as-you-go.",
-      "severity": "minor",
-      "fix": "Remove 'and in IRM's pay-as-you-go usage report' from the After rollout checklist bullet so it directs readers only to the existing Usage center row. Keep the supported report description in Cost and licensing."
-    },
-    {
-      "n": 72,
-      "where": "Scope: Roles",
-      "type": "role",
-      "claim": "The Insider Risk Management Admin role group is listed as applicable to collection policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "Here's a list of applicable role groups. ... Insider Risk Management Admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The roadmap description does not state whether the new network-discovery capability is enabled on arrival.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "With this update, Insider Risk Management will support the discovery of sensitive files and text shared to any cloud application or website (inc. GenAI) via network layer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Cost and licensing: Watching spend; controls[4].governs",
-      "type": "behaviour",
-      "claim": "The Usage center shows pay-as-you-go consumption by feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
-      "quote": "The Usage center provides detailed information on Total Units Used about your pay-as-you-go billing usage by feature and by workload.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Scope: Prerequisites; Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Network collection requires a configured provider integration, set up through the Purview Security Store.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "Visibility into the network traffic is provided by an integrated Secure Access Service Edge (SASE) or non-Microsoft secure browser provider, so it requires the integration to be configured and enabled.",
+      "quote": "Select Edit scope on the Unmanaged cloud apps row. Select the Include only specific option, and on the Included tab select + Add inclusions. Search for the US Sales group, select it, and select Add.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T04:34:57.826Z",
+    "at": "2026-11-25T05:48:37.643Z",
     "summary": {
-      "links": 13,
+      "links": 14,
       "unreachable": 0,
       "uiPaths": 6,
       "uiPathsWithMissingWords": 0,
@@ -890,6 +895,11 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
         "ok": true,
         "status": 200
       },
@@ -945,7 +955,8 @@
           "Insider Risk Management",
           "Settings",
           "Policy indicators",
-          "Built-in indicators"
+          "Built-in indicators",
+          "Network indicators"
         ],
         "missing": []
       },
@@ -980,7 +991,8 @@
         "reachable": true,
         "segments": [
           "Data Loss Prevention",
-          "Security Store"
+          "Security Store",
+          "Get solution"
         ],
         "missing": []
       },
@@ -992,7 +1004,9 @@
         "reachable": true,
         "segments": [
           "Settings",
-          "Account details"
+          "Account details",
+          "active Azure subscription",
+          "resource group"
         ],
         "missing": []
       },
@@ -1036,5 +1050,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -106,18 +106,20 @@ changes:
     note: "Added the Standard/Plan 1 licence requirement for Information Protection for Office 365 and AIP, and removed the checklist step that chose Engage and SharePoint default labels from the label settings row."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 92 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 96 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-23"
+  status: "held"
+  date: "2026-11-25"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 92
+  claims: 96
+  confirmed: 95
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "af6c7348af673f7c9d776a7304feadc9"
 ---
 
@@ -215,9 +217,11 @@ cost: Low. The Purview service description lists Manual Sensitivity Labeling as 
 impact: Medium. Community admins and anyone creating a Viva Engage community see the label choices and the default label; members see the label in the community banner.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing, final sentence / availability: The Microsoft Viva compliance overview still says sensitivity labels are not supported in Viva Engage. | Found: The Viva Engage features eDiscovery, Data Retention, and sensitivity labels are supported by Microsoft Purview; data loss prevention isn't supported. | Fix: Replace the final sentence with 'The Viva Engage sensitivity labels page and the Microsoft Viva compliance overview both document sensitivity label support in Viva Engage.' Keep the existing links to https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling and https://learn.microsoft.com/viva/viva-compliance. | Source: https://learn.microsoft.com/viva/viva-compliance
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels reaches the labels page for configuring privacy and guest access. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: The path stops on the correct page. Extend it for an existing label to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > Privacy'. The same wizard also has the External user access control. The first part is documented at https://learn.microsoft.com/purview/create-sensitivity-labels and the wizard settings at https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites; both are already cited. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [supported, minor] controls[2].ui; controls[2].note; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies reaches the page for publishing selected labels to users and groups. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. On the Label policies page, select Publish label to start the Create policy configuration. | Fix: Extend controls[2].ui.path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish'. This completes the route to choosing the labels included in the policy, as documented at https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels reaches the page for configuring label privacy and guest access. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: Extend controls[1].ui.path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > Privacy'. The same wizard also contains External user access. The route is documented across https://learn.microsoft.com/purview/create-sensitivity-labels and https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites, both already cited. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies reaches the page for choosing labels in a publishing policy. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. | Fix: Extend controls[2].ui.path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish', as documented at https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 -->

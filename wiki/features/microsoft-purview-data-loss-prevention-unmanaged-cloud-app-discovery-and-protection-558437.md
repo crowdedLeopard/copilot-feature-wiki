@@ -120,15 +120,17 @@ changes:
     note: "Corrected the network DLP policy row: the New-DlpCompliancePolicy EnforcementPlanes parameter accepts Network. Added the roadmap item for the Palo Alto Prisma Access integration as a source."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 100 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 85
+  claims: 100
+  confirmed: 99
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -239,10 +241,10 @@ cost: Variable. Learn says network data security with non-Microsoft secure brows
 impact: Low. Purview, security and billing administrators decide whether to enable it; users are affected only where a policy is configured to audit or block their browser activity.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: The printed new-DLP-policy path reaches Network and non-Microsoft secure browsers. | Found: Select + Add cloud apps. Select the Adaptive app scopes tab ... Select Edit scope ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On | Fix: The printed steps are correct but omit the cloud-app and group scope selection. For the cited scenario, give: Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Edit scope > Include only specific > + Add inclusions > Specific users and groups > group > Choose where to enforce the policy > Network and non-Microsoft secure browsers. Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
-- [supported, minor] controls[2].ui; Governance guidance: At rollout / admin-path: The printed collection-policy path reaches the Network and non-Microsoft secure browsers option. | Found: Leave the default option of Don't capture content and select Next. ... Ensure Network and non-Microsoft secure browsers is enabled and select Next. | Fix: Expand the correct but abbreviated scenario route to: Data loss prevention > Classifiers > Collection policies > + Create policy > + Add condition > Content contains > Classifiers > Edit > Scope for classifiers > Exclude classifiers > + Exclude classifiers > Choose Classifiers > classifiers > + Add activities > activities > + Add data source > Unmanaged cloud apps > cloud apps > Edit scope > Include only specific > Included > + Add inclusions > group > Don't capture content > Network and non-Microsoft secure browsers. Lower-case placeholders identify the classifiers, activities, apps and group the administrator chooses. Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist tells readers to configure is represented in the controls table. | Found: Checklist: "Create the network DLP policy with the Audit only action before switching to Block". The DLP control row governs "Network enforcement plane for a new DLP policy" and explicitly says "not its rules or Audit only/Block". | Fix: Narrow that At rollout checklist bullet to 'Create the network DLP policy with the Network and non-Microsoft secure browsers enforcement plane enabled.' The table has no action-setting row; do not add a row as part of this correction.
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The printed new-DLP-policy route reaches Network and non-Microsoft secure browsers. | Found: Select + Add cloud apps. ... Select the Adaptive app scopes tab ... Select Edit scope ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On | Fix: Include the omitted app/group scope selection: Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Edit scope > Include only specific > + Add inclusions > Specific users and groups > group > Choose where to enforce the policy > Network and non-Microsoft secure browsers. Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
+- [supported, minor] controls[2].ui; Governance controls / admin-path: The printed collection-policy route reaches Network and non-Microsoft secure browsers. | Found: Select Edit scope on the Unmanaged cloud apps row. ... Leave the default option of Don't capture content and select Next. ... Ensure Network and non-Microsoft secure browsers is enabled | Fix: Expand the abbreviated scenario route to: Data loss prevention > Classifiers > Collection policies > + Create policy > + Add condition > Content contains > Classifiers > Edit > Scope for classifiers > Exclude classifiers > + Exclude classifiers > Choose Classifiers > classifiers > + Add activities > activities > + Add data source > Unmanaged cloud apps > cloud apps > Edit scope > Include only specific > Included > + Add inclusions > group > Don't capture content > Network and non-Microsoft secure browsers. Lower-case placeholders denote the selections to make. Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's Audit only/Block configuration advice is represented in the controls table. | Found: Checklist: "Create the network DLP policy with the Audit only action before switching to Block". Control note: "creates the policy container, not its rules or Audit only/Block". | Fix: Replace that At rollout bullet with: 'Create the network DLP policy with the Network and non-Microsoft secure browsers enforcement plane enabled, and scope it to the groups you intend to cover.' Do not add a control row.
 -->

@@ -72,15 +72,17 @@ changes:
     note: "Correction: default state is now Not stated for the licence-free Agent 365 view; admin paths completed from Learn; two checklist steps without a controls row removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -178,8 +180,10 @@ cost: Low. The roadmap says no Agent 365 licence is needed for the view, so the 
 impact: Medium. Leaders, delegates and analysts who have Agent Dashboard access notice it; Learn limits automatic access to a defined set of senior leaders, administrators and delegates rather than all users.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; controls[1].api / command: The shared Add-VivaModuleFeaturePolicy syntax supports every printed parameter and the $false and Everyone values. | Found: Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> ... [-Everyone] ... $false: The feature is not enabled by the policy. | Fix: Add https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps to sources as the command syntax reference; retain both calls unchanged. | Source: https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps
+- [supported, minor] controls[0].api; Governance controls table / command: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AgentDashboard -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone disables Agent Dashboard for the tenant. | Found: Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> ... [-Everyone] ... $false: The feature is not enabled by the policy. | Fix: Add https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps to sources as the command syntax reference. Retain controls[0].api.call and its existing feature-specific docs link unchanged. | Source: https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps
+- [supported, minor] controls[1].api; Governance controls table / command: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId "Viva Insights web app" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone disables the Viva Insights web app for everyone. | Found: The Everyone switch specifies that the policy applies to all users in the organization. ... $false: The feature is not enabled by the policy. | Fix: Add https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps to sources as the command syntax reference. Retain controls[1].api.call and its existing feature-specific docs link unchanged. | Source: https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps
+- [supported, minor] controls[1].note; Scope; Governance controls / role: The cited manage settings page permits AI Administrators to manage Viva Insights web app access. | Found: Manage access to the Viva Insights web app for individual users and groups ... Applies to: AI Administrator; Enable or disable the Viva Insights web app ... Applies to: AI Administrator | Fix: Add to controls[1].note: 'The feature-specific manage settings page permits AI Administrators; the general feature-access-management table lists Global admin for the Viva Insights web app.' Cite https://learn.microsoft.com/viva/feature-access-management in sources. Retain the existing role and calls. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
 -->

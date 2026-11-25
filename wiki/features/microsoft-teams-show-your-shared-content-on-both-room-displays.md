@@ -37,6 +37,9 @@ sources:
   - title: "Settings available for remote management in Teams Rooms Pro management portal"
     url: "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available"
     kind: "learn"
+  - title: "Manage Microsoft Teams Room Systems"
+    url: "https://learn.microsoft.com/training/modules/configure-deploy-manage-teams-devices/3-manage-microsoft-teams-room-systems"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-front-of-room-view-control-for-town-hall-in-teams-rooms-on-android-500378","microsoft-teams-breakout-room-support-on-teams-rooms-on-android","microsoft-teams-front-of-room-view-control-for-webinars-and-structured-meetings-in-teams-r"]
 controls:
@@ -44,7 +47,7 @@ controls:
     scope: "other"
     ui:
       surface: "Teams admin center"
-      path: "Configuration profiles > General > Dual display mode"
+      path: "Devices > Teams Rooms on Android > Configuration profiles > General > Dual display mode"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/room-planning-guidance"
     api: null
     note: "Prerequisite for any dual display behaviour. Release notes say it is disabled by default and set per configuration profile. Not confirmed to govern the new feature itself."
@@ -62,19 +65,23 @@ changes:
     note: "First briefing for roadmap item 582052: HDMI content on both displays in Teams Rooms on Android; no Android setting is documented yet."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after verification: full Teams admin center path to Dual display mode, HDMI wording, touch-console prerequisite, and the role and control-scope statements."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 54 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 43
-  unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "9e84d4933bde3022f23dfeb17c67fbec"
+  claims: 54
+  confirmed: 52
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 0
+  hash: "15681bcab06fb78f9b2bd83c2d6c91a2"
 ---
 
 ## What's changing
@@ -95,7 +102,7 @@ The practical exposure is configuration drift. Microsoft's release notes warn th
 
 **Data exposure**
 - The roadmap describes shared content appearing on both of the room's own displays. It does not mention content leaving the room or being shared into a meeting, so treat anything beyond the two displays as something to confirm.
-- Anything a presenter connects over HDMI becomes visible on both screens, so presenters should expect a wider audience in the room than a single screen gives.
+- HDMI-shared content can appear on both screens when people start the two-screen display from the room controls, so presenters should expect a wider audience in the room than a single screen gives.
 
 **Security & identity**
 - No change is described: the roadmap item mentions no sign-in, permission or identity change for the room account.
@@ -119,7 +126,7 @@ A licence requirement, price or meter specific to showing content on both displa
 - **Devices:** Microsoft Teams Rooms on Android with dual displays. Learn describes a touch console as required for dual display configurations.
 - **Content:** content shared through an HDMI connection, in or out of a Teams meeting, per the roadmap description.
 - **Clouds and platform:** the roadmap lists Worldwide (Standard Multi-Tenant) and Android. No other cloud is listed on the roadmap item.
-- **Rollout:** In development, targeted for January CY2027. Rollout mechanics, release channel and prerequisites beyond dual display mode are not yet published.
+- **Rollout:** In development, targeted for January CY2027. Rollout mechanics, release channel and additional prerequisites specific to the new HDMI duplication option are not yet published.
 
 ## Governance guidance
 
@@ -144,14 +151,14 @@ A licence requirement, price or meter specific to showing content on both displa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a Teams Rooms on Android device runs in dual display mode</strong><br><small class="controls__note">Prerequisite for any dual display behaviour. Release notes say it is disabled by default and set per configuration profile. Not confirmed to govern the new feature itself.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Configuration profiles › General › Dual display mode <a href="https://learn.microsoft.com/microsoftteams/rooms/room-planning-guidance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a Teams Rooms on Android device runs in dual display mode</strong><br><small class="controls__note">Prerequisite for any dual display behaviour. Release notes say it is disabled by default and set per configuration profile. Not confirmed to govern the new feature itself.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Devices › Teams Rooms on Android › Configuration profiles › General › Dual display mode <a href="https://learn.microsoft.com/microsoftteams/rooms/room-planning-guidance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether HDMI content is shown on both displays in Teams Rooms on Android</strong><br><small class="controls__note">Not yet documented. The roadmap says admins will have settings; Learn names none for Android at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Dual display mode is the one documented control that bears on this feature: it decides whether a Teams Rooms on Android device runs in dual display mode at all. The release notes say it is disabled by default and must be enabled in the configuration profile. The room guidance gives the Teams admin center path, and a matching on-device setting under Home screen > Settings > Teams admin settings > General.
+Dual display mode is a documented prerequisite control for this feature: it decides whether a Teams Rooms on Android device runs in dual display mode at all. The release notes say it is disabled by default and must be enabled in the configuration profile. The room guidance gives the Teams admin center path, and a matching on-device setting under Home screen > Settings > Teams admin settings > General > Turn on dual display mode.
 
-The settings the roadmap says admins will get for this feature are not yet documented for Teams Rooms on Android. The Android tab of the Teams Rooms Pro Management portal settings page says the full settings list documentation is coming soon. An Allow content duplication setting appears on the Teams Rooms on Windows tab of that page, so do not treat it as a control for this feature. Roles required for the Android settings are not yet published.
+The settings the roadmap says admins will get for this feature are not yet documented for Teams Rooms on Android. The Android tab of the Teams Rooms Pro Management portal settings page says the full settings list documentation is coming soon. An Allow content duplication setting appears on the Teams Rooms on Windows tab of that page, so do not treat it as a control for this feature.
 
 ## Open questions
 
@@ -166,14 +173,10 @@ cost: Low. Rooms already need a Teams Rooms licence and no feature-specific char
 impact: Low. Only people who present from a laptop over HDMI in Teams Rooms on Android rooms with two displays will notice it, and the roadmap says it is controlled from the room.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls / admin-path: Configuration profiles > General > Dual display mode is the complete Teams admin center route to the Android control. | Found: To manage Teams Rooms devices, open the Microsoft Teams admin center and go to Devices > Teams Rooms on Android, Teams Rooms on Windows, or Surface Hubs. | Fix: Replace the path in controls[0].ui and the rendered table with 'Devices > Teams Rooms on Android > Configuration profiles > General > Dual display mode'. Cite https://learn.microsoft.com/training/modules/configure-deploy-manage-teams-devices/3-manage-microsoft-teams-room-systems for the navigation and retain https://learn.microsoft.com/microsoftteams/rooms/room-planning-guidance for the control's final steps. | Source: https://learn.microsoft.com/training/modules/configure-deploy-manage-teams-devices/3-manage-microsoft-teams-room-systems
-- [contradicted, blocker] Risk assessment: Data exposure / default: Anything a presenter connects over HDMI becomes visible on both screens. | Found: content you share through an HDMI connection can now appear on both screens at once. You can start or stop showing your content on both screens from the room controls. | Fix: Replace 'Anything a presenter connects over HDMI becomes visible on both screens' with 'HDMI-shared content can appear on both screens when people start the two-screen display from the room controls'. Do not state that connecting HDMI automatically activates the new behaviour.
-- [contradicted, blocker] Scope: Rollout / absence: Prerequisites beyond dual display mode are not yet published. | Found: A touch console is required for dual display configurations. Dual display mode without a touch console is not supported nor certified. | Fix: Replace 'prerequisites beyond dual display mode are not yet published' with 'additional prerequisites specific to the new HDMI duplication option are not yet published'. This preserves the already stated touch-console prerequisite instead of denying it. | Source: https://learn.microsoft.com/microsoftteams/rooms/room-planning-guidance
-- [contradicted, blocker] Governance controls: roles / absence: Roles required for the Android settings are not yet published. | Found: Teams Device Administrator | Manage devices configured for use with the Teams service. | Manage device configuration and updates, review device health and status of connected peripherals, set up and apply configuration profiles, and restart devices. | Fix: Remove 'Roles required for the Android settings are not yet published.' General Android device and configuration-profile administration roles are documented; the absence of the new duplication setting does not establish an absence of administration roles. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles#teams-roles-and-capabilities
-- [contradicted, blocker] Governance controls: opening paragraph / absence: Dual display mode is the one documented control that bears on this HDMI presentation feature. | Found: On a Teams Rooms on Android device, you can disable HDMI ingest audio and automatic HDMI content sharing onto the front-of-room display (which also disables automatic sharing into a Teams meeting). | Fix: Replace 'Dual display mode is the one documented control that bears on this feature' with 'Dual display mode is a documented prerequisite control for this feature'. Existing Android HDMI-sharing controls also bear on presentation behaviour, even though the new duplication-specific control is undocumented. | Source: https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh#home-screen-actions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: on-device path / admin-path: The on-device route to the matching dual display setting is Home screen > Settings > Teams admin settings > General. | Found: On the device: Home screen > Settings > Teams admin settings > General > Turn on dual display mode > Swap screen. | Fix: Extend the on-device path to 'Home screen > Settings > Teams admin settings > General > Turn on dual display mode'. General is the correct page, but the printed path stops before the control. | Source: https://learn.microsoft.com/microsoftteams/rooms/room-planning-guidance
+- [supported, minor] controls[0].note; Governance controls table / applicability: The documented dual-display prerequisite control is not confirmed to govern the new feature itself. | Found: If you're deploying Teams Rooms on Android devices with dual displays, be aware that dual display mode must be explicitly enabled in the configuration profile. | Fix: Replace 'Not confirmed to govern the new feature itself.' in controls[0].note and the rendered table with 'Enables Android dual display mode; it does not document the new HDMI duplication setting.' The release notes cover Android dual-display rooms generally. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
+- [unsupported, minor] rationale: impact / behaviour: Only people presenting from a laptop over HDMI in dual-display Android rooms will notice the change. | Found: Searched: Teams Rooms Android HDMI content both displays duplication settings default January 2027 582052 license. Read roadmap, release notes and room guidance; none restricts the people noticing the change to laptop presenters rather than other room occupants. | Fix: Replace the impact rationale with 'Low. The change concerns HDMI presentations in Teams Rooms on Android with two displays; the roadmap describes making presentations easier to see from anywhere in the room.' Keep the low rating.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells administrators to check room licence assignments without a corresponding control row. | Found: Check which Teams Rooms licence each dual display room holds. Controls table: Whether a Teams Rooms on Android device runs in dual display mode; Whether HDMI content is shown on both displays in Teams Rooms on Android. | Fix: The Before rollout step 'Check which Teams Rooms licence each dual display room holds' has no corresponding licence-assignment control row. The existing two rows cover display configuration only.
 -->

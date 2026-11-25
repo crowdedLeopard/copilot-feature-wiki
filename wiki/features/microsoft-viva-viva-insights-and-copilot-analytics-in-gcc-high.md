@@ -90,15 +90,17 @@ changes:
     note: "Corrected after verification: VFAM access controls are documented as unavailable in GCC-High and DoD, removed the claim that the roadmap supersedes Learn, and added the Viva service description licence threshold."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 79 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-23"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
   contradicted: 0
   attempts: 0
