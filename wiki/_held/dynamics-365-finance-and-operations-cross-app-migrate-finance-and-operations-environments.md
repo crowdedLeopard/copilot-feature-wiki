@@ -72,7 +72,7 @@ controls:
     note: "The Dataverse call verifies Power Platform integration status; it is not a migration control."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-21"
+updated: "2026-11-25"
 roadmapModified: "2026-10-01T23:00:07"
 changes:
   - date: "2026-11-17"
@@ -91,19 +91,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Corrected: added the last-sandbox warning that production updates cannot be promoted until production is migrated; scope now says the prerequisites specify no project role; removed the unsupported access-review advice."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 69
+  claims: 74
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "a3b6d3888f32b5723aefaebfef6f57dc"
+  contradicted: 1
+  attempts: 2
+  hash: "2a9b1d4b5d661ad2e9b083a2d06b7165"
 ---
 
 ## What's changing
@@ -120,7 +124,7 @@ The Learn page is marked as prerelease and says the feature is in public preview
 
 This is an opt-in change that rewires how an environment is operated, so the main decision is when to take it and in what order. The Learn steps start with an administrator selecting **Migrate to Power Platform Admin Center** and typing the environment name. If nobody acts, the documented steps do not start.
 
-The cost of getting the order wrong falls on the team that runs deployments. After a sandbox is migrated, Lifecycle Services deployment and promotion workflows no longer manage it, so Azure Pipelines that produce Power Platform unified packages need to exist and be tested first. The roadmap lists Dynamics 365 Commerce among the products, yet the Learn page says environments that use Commerce functionality are not supported in public preview and that the prerequisite check does not detect Commerce usage, so that check falls to the administrator.
+The cost of getting the order wrong falls on the team that runs deployments. After a sandbox is migrated, Lifecycle Services deployment and promotion workflows no longer manage it, so Azure Pipelines that produce Power Platform unified packages need to exist and be tested first. Keep at least one sandbox in Lifecycle Services until you are ready to migrate production; migrating the last sandbox while production remains there prevents promotion of updates, including custom code changes, to production until production is migrated. The roadmap lists Dynamics 365 Commerce among the products, yet the Learn page says environments that use Commerce functionality are not supported in public preview and that the prerequisite check does not detect Commerce usage, so that check falls to the administrator.
 
 ## Risk assessment
 
@@ -130,7 +134,7 @@ The cost of getting the order wrong falls on the team that runs deployments. Aft
 
 **Security & identity**
 
-- The person who starts the migration must be an administrator of the linked Power Platform environment, and the Lifecycle Services page checks this. Learn's fix for a failed check is to have an existing administrator assign an appropriate environment admin role, so review who holds that role before migration day.
+- The person who starts the migration must be an administrator of the linked Power Platform environment, and the Lifecycle Services page checks this. Learn's fix for a failed check is to have an existing administrator assign an appropriate environment admin role.
 
 **Autonomy & actions**
 
@@ -155,7 +159,7 @@ Indirect costs are admin time, an out-of-hours maintenance window, and the work 
 
 The roadmap lists Worldwide (Standard Multi-Tenant) and the Web platform, with release phases General Availability and Preview. Learn lists self-service sandbox environments as supported and self-service production as possibly showing the action but not recommended during public preview. Cloud-hosted developer environments are not supported, and environments that use Dynamics 365 Commerce functionality are not supported during public preview.
 
-Prerequisites on the Learn page: the environment is healthy with status **Deployed** in Lifecycle Services, it is linked to a Power Platform environment, any Power Platform storage capacity deficit is resolved, and the person starting the migration is an administrator of the linked Power Platform environment. The page says you do not have to enable dual-write to migrate. The page names no Lifecycle Services project role.
+Prerequisites on the Learn page: the environment is healthy with status **Deployed** in Lifecycle Services, it is linked to a Power Platform environment, any Power Platform storage capacity deficit is resolved, and the person starting the migration is an administrator of the linked Power Platform environment. The page says you do not have to enable dual-write to migrate. The migration prerequisites do not specify a Lifecycle Services project role.
 
 ## Governance guidance
 
@@ -163,7 +167,7 @@ Prerequisites on the Learn page: the environment is healthy with status **Deploy
 
 - List every environment in each Lifecycle Services project and identify any that use Dynamics 365 Commerce functionality, because the migration prerequisite check does not detect it.
 - Review the Finance and Operations storage capacity report (see the controls table) and resolve any deficit, since database capacity is validated before migration.
-- Confirm each candidate environment is in **Deployed** status and linked to a Power Platform environment, and agree who will be the administrator of that linked environment.
+- Confirm each candidate environment is in **Deployed** status and linked to a Power Platform environment, and confirm the person starting migration is an administrator of the linked environment.
 - Deploy Unified Developer Environments and build and test Azure Pipelines that produce Power Platform unified packages before the first migration.
 
 ### At rollout
@@ -176,7 +180,7 @@ Prerequisites on the Learn page: the environment is healthy with status **Deploy
 
 - Validate sign-in, environment details, monitoring, backup, restore, copy and update operations in the Power Platform admin center, and deploy a validated customisation through the new Azure Pipelines process.
 - Run an environment copy and validate the target before migrating further environments, and hold further migrations if validation finds an issue.
-- Plan production last, and re-read the Learn page before then for the production recommendation.
+- Plan production last, and re-read the Learn page before then for the production recommendation. Keep at least one sandbox in Lifecycle Services until you are ready to migrate production; migrating the last sandbox while production remains there prevents promotion of updates, including custom code changes, to production until production is migrated.
 
 ## Governance controls
 
@@ -211,8 +215,5 @@ impact: Medium. Environment administrators and developers change from Lifecycle 
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Governance guidance: After rollout / behaviour: Lifecycle Services deployment and promotion workflows stop managing a migrated sandbox, with the guidance planning production last. | Found: If production is still managed in Lifecycle Services, you can't promote updates, including custom code changes, to production until you migrate production to the Power Platform admin center. | Fix: Keep the statement about migrated sandbox workflows, but append its documented last-sandbox qualification: 'Keep at least one sandbox in Lifecycle Services until you are ready to migrate production; migrating the last sandbox while production remains there prevents promotion of updates, including custom code changes, to production until production is migrated.' Carry that qualification into the production-last checklist bullet. Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center#recommended-migration-sequence. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center
-- [contradicted, blocker] Scope / absence: The migration page names no Lifecycle Services project role. | Found: Manage the environment through Lifecycle Services project roles, such as Project owner | Assign the Power Platform administrator role in Microsoft Entra ID or an environment admin role. | Fix: Replace 'The page names no Lifecycle Services project role' with 'The migration prerequisites do not specify a Lifecycle Services project role.' The updated article names Project owner only when explaining post-migration administration alternatives, not as a migration prerequisite. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / consistency: The guidance asks readers to review and agree administrator access without a corresponding access-management control in the table. | Found: review who holds that role before migration day; agree who will be the administrator of that linked environment. The controls table contains migration initiation, capacity reporting and integration-status checks, not access management. | Fix: Remove 'so review who holds that role before migration day' and replace 'agree who will be the administrator of that linked environment' with 'confirm the person starting migration is an administrator of the linked environment'. Do not add a control row.
+- [contradicted, blocker] controls[1].api; Governance controls table; Governance controls / absence: Microsoft Learn documents no API for reporting finance and operations storage capacity. | Found: GET https://api.powerplatform.com/licensing/tenantCapacity?api-version=2024-10-01; CapacityType: FinOpsDatabase, FinOpsFile; TenantCapacityAndConsumptionModel: consumption, totalCapacity, status; CapacitySummary: finOpsStatus, finOpsStatusMessage. | Fix: Set controls[1].api to kind 'power-platform-api', call 'GET https://api.powerplatform.com/licensing/tenantCapacity?api-version=2024-10-01', docs 'https://learn.microsoft.com/rest/api/power-platform/licensing/tenant-capacity-details/get-tenant-capacity-details'. Append to its note: 'The API reports tenant capacity and consumption for FinOpsDatabase and FinOpsFile and finance and operations availability through capacitySummary.finOpsStatus; it is not a migration control.' Mirror that API in the rendered row, add its reference to sources, and replace the prose absence with: 'Microsoft Learn documents no API for starting the migration at the time of writing (November 2026). The Power Platform API reports tenant finance and operations capacity, consumption and availability.' | Source: https://learn.microsoft.com/rest/api/power-platform/licensing/tenant-capacity-details/get-tenant-capacity-details
 -->

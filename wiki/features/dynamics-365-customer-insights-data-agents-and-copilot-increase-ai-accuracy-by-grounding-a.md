@@ -118,15 +118,17 @@ changes:
     note: "Corrected the Microsoft Entra consent path to start at App registrations, added the registry Block step and the Tools section to the control paths, and added the fair usage limits statement."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 96 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-25"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
-  confirmed: 95
+  claims: 96
+  confirmed: 96
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -239,8 +241,8 @@ cost: Variable. Copilot Studio agent usage is metered in Copilot Credits, subjec
 impact: Medium. Makers who build agents and the sellers, marketers and service staff who use them notice it; most users and tenant defaults do not change.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: The Entra client-app permission path begins at Entra ID > App registrations and ends at Grant admin consent. | Found: Browse to Entra ID > App registrations and select New registration. Select API permissions under Manage on your app registration's Overview page. | Fix: In controls[3].ui and its rendered table, use 'Entra ID > App registrations > client app > Manage > API permissions > Add a permission > APIs my organization uses > Agent 365 Tooling Gateway (search by app ID) > McpServers.D365CustomerInsights.All (delegated permission) > Grant admin consent'. Manage is the omitted heading, not a different route. The navigation is at https://learn.microsoft.com/entra/identity-platform/quickstart-register-app and the permission steps are at the existing gateway citation. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-register-app
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: The Entra client-app consent path starts at Entra ID > App registrations > client app and continues through API permissions to Grant admin consent. | Found: Browse to Entra ID > App registrations and select New registration. Select API permissions under Manage on your app registration's Overview page. | Fix: In controls[3].ui and its rendered table, use 'Entra ID > App registrations > client app > Manage > API permissions > Add a permission > APIs my organization uses > Agent 365 Tooling Gateway (search by app ID) > McpServers.D365CustomerInsights.All (delegated permission) > Grant admin consent'. Manage is the omitted heading. The navigation source is already cited: https://learn.microsoft.com/entra/identity-platform/quickstart-register-app. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-register-app
 -->

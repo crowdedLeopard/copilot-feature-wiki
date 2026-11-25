@@ -93,15 +93,17 @@ changes:
     note: "Correction: removed the clause saying no source says existing behaviour changes, since the release note describes changed request discovery."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 61
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -197,8 +199,8 @@ cost: Low. The only cost the sources show is admin time. The release note names 
 impact: Low. Admins who handle licensing notice it. Microsoft has not said whether it changes anything users see.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; rendered table; What's changing; Governance guidance; Governance controls / admin-path: Billing > Licenses > Requests in the Microsoft 365 admin center reaches the existing self-service request process. | Found: select Billing > Licenses. On the Licenses page, select the Requests tab. Select the row that contains the request you want to review. Assign licenses to each user through the default Approve the selected license requests option. | Fix: For the all-users approval route, extend controls[1].ui.path to 'Billing > Licenses > Requests > request > Approve the selected license requests > Approve'. Add to its note: 'Select all user checkboxes before choosing Approve.' Keep the existing qualification that this process is not confirmed as the new page. Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests. | Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests
+- [supported, minor] controls[1].ui; rendered table; What's changing; Governance guidance; Governance controls / admin-path: Billing > Licenses > Requests in the Microsoft 365 admin center reaches the existing self-service request process. | Found: select Billing > Licenses. On the Licenses page, select the Requests tab. Select the row that contains the request you want to review. Assign licenses to each user through the default Approve the selected license requests option. | Fix: For the all-users approval route, extend controls[1].ui.path to 'Billing > Licenses > Requests > request > Approve the selected license requests > Approve'. Add to its note: 'Select all user checkboxes before choosing Approve.' Keep the qualification that this process is not confirmed as the new page. Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests. | Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests
 -->

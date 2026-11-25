@@ -157,18 +157,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 6
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-24"
+  status: "held"
+  date: "2026-11-25"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
+  claims: 72
   confirmed: 71
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "efd9ef84d6470257d0ac5aa7e7c4c9a9"
 ---
 
@@ -270,9 +272,12 @@ cost: Variable. Existing agent usage is measured in Copilot Credits; qualifying 
 impact: Medium. Makers of agents on the Microsoft 365 channel, their users and the compliance team that owns the label taxonomy would notice; users without agents on that channel would not.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing: first paragraph / cost: A generative answer costs 2 Copilot Credits, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion. | Found: When an agent uses a reasoning-capable language model, Copilot Studio bills by using two billing meters: feature rate and text and generative AI tools (premium). ... Total cost = feature rate for generative answers + text and generative AI tools (premium) per 1000 tokens. | Fix: Replace 'A generative answer costs 2 Copilot Credits, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion.' with 'The base feature rate for a generative answer is 2 Copilot Credits. With a reasoning model, the Text and generative AI tools (premium) meter adds 10 Copilot Credits per 1,000 billed tokens, subject to the documented Microsoft 365 Copilot-licensed, authenticated employee-facing usage inclusion.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The Purview DLP path reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork location in the custom policy wizard. | Found: Go to Data Loss Prevention > Policies and select + Create policy. 3. Select the Custom template, then Custom policy. 4. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the existing path and add to controls[2].note: 'Add a rule with Content contains > Sensitivity labels and the Prevent Copilot and Cowork from processing content action.' The cited page's Supported conditions and actions table documents the remaining label-blocking control. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: The label-encryption path starts at the Purview portal and reaches Access control through the label scope and Control access option. | Found: make sure the Files & other data assets option is selected for the label's scope ... on the Choose protection settings for the types of items you selected page, make sure you select Control access. ... On the Access control page | Fix: The already-cited create-sensitivity-labels page supplies Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label. Append ' > Configure access control settings > Assign permissions now' to the current path. Add to controls[3].note: 'To set individual rights, assign the intended users or groups and select Choose permissions.' These remaining steps are on https://learn.microsoft.com/purview/encryption-sensitivity-labels. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: The Purview label-encryption path starts at Solutions > Information Protection > Sensitivity labels and reaches Access control through Edit label, the file scope and Control access. | Found: make sure the Files & other data assets option is selected ... on the Choose protection settings for the types of items you selected page ... select Control access. ... On the Access control page | Fix: Keep the existing path, whose entry steps are supported by the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels. Append ' > Configure access control settings > Assign permissions now > Assign permissions > users or groups > Choose permissions' to reach the rights selector documented at https://learn.microsoft.com/purview/encryption-sensitivity-labels. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The custom DLP policy path reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork location. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the existing path and add to controls[2].note: 'Add a rule with Content contains > Sensitivity labels and the Prevent Copilot and Cowork from processing content action.' These remaining settings are documented in the cited page's Supported conditions and actions table. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] front matter: licensing.notes; Cost and licensing: second paragraph; rationale: cost / licensing: Classic answers, generative answers and Microsoft Graph tenant grounding in Copilot Chat, Teams or SharePoint are not charged for authenticated Microsoft 365 Copilot-licensed users. | Found: If you have a Microsoft 365 Copilot license, using agents in Copilot Chat, Microsoft Teams, or SharePoint for classic answers, generative answers, or Microsoft Graph tenant grounding isn't charged when the agent runs with your authenticated identity. | Fix: Add to the licensing notes and the corresponding Cost and licensing paragraph: 'This inclusion is for employee-facing usage of standard-harness agents and is subject to fair usage limits; the billing-rates page states that it does not apply to agents powered by the Microsoft Copilot harness.' Both pages are already cited; the qualification is in footnote 1 at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 -->

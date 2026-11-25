@@ -75,18 +75,20 @@ changes:
     note: "Corrected after verification: Learn's Current Channel notes describe Agent mode in Word; licensing now follows the service description's Microsoft 365 Copilot licence requirement; Graph permission wording and rollout details fixed."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 40 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 38 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-23"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 40
+  claims: 38
+  confirmed: 37
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "f671f30ef34d20712cb25901ad016d3d"
 ---
 
@@ -181,4 +183,10 @@ The second row records that Microsoft Learn documents no admin setting for Agent
 risk: Medium. Copilot makes edits to documents on a user's chat request, and Microsoft Learn documents no switch for Agent Mode in Word, so the existing Copilot licence is the control to lean on.
 cost: Low. The Microsoft Copilot service description lists Edit with Copilot in Word as requiring a Microsoft 365 Copilot licence and names no meter; the known extra cost is admin time and user guidance.
 impact: Medium. Users who have Copilot in Word on Desktop, Mac or Web would notice it; Microsoft has not stated whether it is on by default, and Learn's service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word.
+-->
+
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing / absence: A licence requirement specific to Agent Mode is not yet published. | Found: Editing with Copilot in Excel, PowerPoint, and Word is a way to create content within the Microsoft Copilot experience for Microsoft 365 Personal, Family, and Premium plans. ... In previous releases, this was marketed as "Agent Mode" | Fix: Remove 'A licence requirement' from the absence sentence. Replace the sentence with 'A meter or credit rate specific to Agent Mode is not yet published.' Keep the preceding, supported enterprise service-description licence requirement; do not import the consumer plans into enterprise prerequisites. | Source: https://support.microsoft.com/office/copilot-frontier/get-started-editing-with-copilot-in-office
 -->

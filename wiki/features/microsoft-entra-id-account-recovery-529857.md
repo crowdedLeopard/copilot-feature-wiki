@@ -49,6 +49,9 @@ sources:
   - title: "Create verifiedIdProfile"
     url: "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0"
     kind: "learn"
+  - title: "verifiedIdUsageConfiguration resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/verifiedidusageconfiguration?view=graph-rest-1.0"
+    kind: "learn"
   - title: "Update conditionalAccessSettings"
     url: "https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta"
     kind: "learn"
@@ -62,7 +65,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > Account recovery > Settings (preview)"
+      path: "Entra ID > Account recovery > Settings (preview) > Account recovery policy"
       docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable"
     api: null
     note: "Authentication Policy Administrator. Disabled by default; enable it in the settings blade. A profile alone does not enable it."
@@ -70,21 +73,21 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > Account recovery > Settings (preview) > Actions after recovery"
+      path: "Entra ID > Account recovery > Settings (preview) > Actions after recovery > Issue Temporary Access Pass"
       docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable"
     api: null
-    note: "TAP on by default; turning it off and cleanup are preview. With attestation required, TAP-free is supported only on Android. For users enrolled through Android Management API (AM API), keep TAP issuance on and issue a TAP at completion."
-  - governs: "Who recovers, with which provider and validation rules (ID verification profile)"
+    note: "TAP on by default; turning it off and cleanup are preview. With attestation required, TAP-free is supported only on Android. For Android Management API (AM API) users, keep TAP on. Cleanup is in the same Actions after recovery section."
+  - governs: "Identity verification profile issuer, validation rules and usage purpose"
     scope: "group"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Verified ID > ID verification profiles > Profiles"
-      docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable"
+      path: "Verified ID > ID verification profiles > Profiles > Create profile > Profile purpose > Recovery > Profile mode > User group selection > Identity Verification Provider > Configure account validation"
+      docs: "https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile"
     api:
       kind: "graph"
       call: "POST /v1.0/identity/verifiedId/profiles"
       docs: "https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0"
-    note: "The request body property verifiedIdUsageConfigurations sets the purpose (recovery, onboarding or all). Authentication Policy Administrator is the least-privileged role for the API."
+    note: "verifiedIdUsageConfigurations sets the purpose; use recovery. verifiedIdProfileConfiguration sets issuer and claim validation. The API documents no user-group assignment. Least-privileged role: Authentication Policy Administrator."
   - governs: "Whether All resources Conditional Access policies also apply to recovery (global exclusion)"
     scope: "tenant"
     ui:
@@ -113,19 +116,23 @@ changes:
     note: "Corrected after the independent check: the rollout test step now says Evaluation mode does not recover accounts and Production is for a deliberate end-to-end test with a small group."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 104 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: the profile control now covers issuer, validation rules and purpose (the API documents no user-group assignment), and three control paths now reach the setting."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 100 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 104
-  confirmed: 103
-  unconfirmed: 1
+  claims: 100
+  confirmed: 100
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "4012e3a1807942b22969834698ffbeb7"
+  attempts: 0
+  hash: "fb97adb0a8bf0df3c70714d588797e4a"
 ---
 
 ## What's changing
@@ -215,9 +222,9 @@ The Account recovery overview in the Microsoft Entra admin center includes a cos
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the tenant's Account recovery policy is enabled</strong><br><small>Tenant</small><br><small class="controls__note">Authentication Policy Administrator. Disabled by default; enable it in the settings blade. A profile alone does not enable it.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Account recovery › Settings (preview) <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>TAP issuance and stale-credential cleanup after recovery</strong><br><small>Tenant</small><br><small class="controls__note">TAP on by default; turning it off and cleanup are preview. With attestation required, TAP-free is supported only on Android. For users enrolled through Android Management API (AM API), keep TAP issuance on and issue a TAP at completion.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Account recovery › Settings (preview) › Actions after recovery <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who recovers, with which provider and validation rules (ID verification profile)</strong><br><small>Group</small><br><small class="controls__note">The request body property verifiedIdUsageConfigurations sets the purpose (recovery, onboarding or all). Authentication Policy Administrator is the least-privileged role for the API.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Verified ID › ID verification profiles › Profiles <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/identity/verifiedId/profiles</code> <a href="https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the tenant's Account recovery policy is enabled</strong><br><small>Tenant</small><br><small class="controls__note">Authentication Policy Administrator. Disabled by default; enable it in the settings blade. A profile alone does not enable it.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Account recovery › Settings (preview) › Account recovery policy <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>TAP issuance and stale-credential cleanup after recovery</strong><br><small>Tenant</small><br><small class="controls__note">TAP on by default; turning it off and cleanup are preview. With attestation required, TAP-free is supported only on Android. For Android Management API (AM API) users, keep TAP on. Cleanup is in the same Actions after recovery section.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Account recovery › Settings (preview) › Actions after recovery › Issue Temporary Access Pass <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Identity verification profile issuer, validation rules and usage purpose</strong><br><small>Group</small><br><small class="controls__note">verifiedIdUsageConfigurations sets the purpose; use recovery. verifiedIdProfileConfiguration sets issuer and claim validation. The API documents no user-group assignment. Least-privileged role: Authentication Policy Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Verified ID › ID verification profiles › Profiles › Create profile › Profile purpose › Recovery › Profile mode › User group selection › Identity Verification Provider › Configure account validation <a href="https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/identity/verifiedId/profiles</code> <a href="https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether All resources Conditional Access policies also apply to recovery (global exclusion)</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Beta API: exclusions.allResourcesExclusions.userActionExclusions sets it via userAction accountrecovery, state enabled or disabled; supply the complete collection. Beta APIs are not supported for production applications.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Conditional Access › Settings (Preview) › Global exclusions › Account onboarding and recovery (Preview) <a href="https://learn.microsoft.com/entra/identity/conditional-access/policy-require-identity-verification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/identity/conditionalAccess/settings</code> <a href="https://learn.microsoft.com/graph/api/conditionalaccesssettings-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -240,15 +247,4 @@ Passkeys (FIDO2) must be enabled in the Authentication methods policy for users 
 risk: Low. Learn says the Account recovery policy is disabled by default, so nothing changes until an admin enables it; once enabled it becomes a route to restore credentials, so profile scope and Conditional Access need care.
 cost: Medium. Learn requires Microsoft Entra ID P1 plus a Face Check licence (add-on, or through Entra Suite), and the identity verification provider is bought separately through the Microsoft Security Store.
 impact: Low. Admins configure it, and only users who lose all registered authentication methods in a profile's scope go through recovery.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[2].api; controls[2].governs; Governance controls table / command: The listed create-profile API controls who can recover by setting the profile's user-group scope. | Found: Searched: Microsoft Graph verifiedIdProfile create profiles user group include exclude assignment scope. Read Create verifiedIdProfile request properties and verifiedIdProfile/verifiedIdUsageConfiguration resources: no group targeting property or relationship; portal documentation configures groups. | Fix: Narrow controls[2].governs and its table label to 'Identity verification profile issuer, validation rules and usage purpose'. Keep POST /v1.0/identity/verifiedId/profiles, but add to the note: 'The request body uses verifiedIdProfileConfiguration for issuer and claim-validation configuration. The cited create-profile API does not document user-group assignment.' This removes the unsupported promise that this call configures who can recover without adding another row.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The recovery policy is found in Microsoft Entra admin center at Entra ID > Account recovery > Settings (preview). | Found: Go to Entra ID > Account recovery. Open Settings (preview). ... In Account recovery settings, enable the tenant's Account recovery policy. | Fix: The route reaches the correct page but stops before the policy control. Set controls[0].ui.path and its table cell to 'Entra ID > Account recovery > Settings (preview) > Account recovery policy', following https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: TAP issuance and cleanup are under Entra ID > Account recovery > Settings (preview) > Actions after recovery. | Found: Use Actions after recovery in Account recovery settings to choose how users register replacement methods. ... Issue Temporary Access Pass ... Stale credential cleanup | Fix: The path reaches the settings section but omits the setting labels. Use 'Entra ID > Account recovery > Settings (preview) > Actions after recovery > Issue Temporary Access Pass' for the UI path, and append to the existing note: 'Stale credential cleanup is in the same Actions after recovery section.' Keep the table consistent with https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable
-- [supported, minor] controls[2].ui; Governance guidance: At rollout; Governance controls table / admin-path: ID verification profiles are configured at Verified ID > ID verification profiles > Profiles in the Entra admin center. | Found: Create and manage profiles in Verified ID > ID verification profiles > Profiles. For provider selection, user groups, profile mode, and account-validation steps, follow Create an ID verification profile. Select Recovery as the profile purpose. | Fix: The route stops on the correct profile list. For creating a recovery profile, extend it to 'Verified ID > ID verification profiles > Profiles > Create profile > Profile purpose > Recovery > Profile mode > User group selection > Identity Verification Provider > Configure account validation', using the wizard steps at the already cited https://learn.microsoft.com/entra/verified-id/how-to-create-id-verification-profile. Keep the table and rollout guidance consistent. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable
-- [supported, minor] controls[2].note; Governance controls table / command: verifiedIdUsageConfigurations sets the profile purpose to recovery, onboarding or all. | Found: verifiedIdUsageConfigurations ... Collection defining the usage purpose for the profile. The possible values are: recovery, onboarding, all, unknownFutureValue. Required. | Fix: The create reference lists these values, but https://learn.microsoft.com/graph/api/resources/verifiedidusageconfiguration?view=graph-rest-1.0 says 'Currently only recovery is supported.' Replace the purpose sentence with 'The request body property verifiedIdUsageConfigurations sets the purpose; use recovery for account recovery.' Cite that resource reference and do not imply onboarding and all are currently supported API scenarios. | Source: https://learn.microsoft.com/graph/api/identityverifiedidroot-post-profiles?view=graph-rest-1.0
 -->

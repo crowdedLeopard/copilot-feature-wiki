@@ -80,7 +80,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/prevent-data-loss"
     api:
       kind: "powershell"
-      call: "Add-ConnectorToBusinessDataGroup -PolicyName <policy name> -ConnectorName <connector name>"
+      call: "Add-ConnectorToBusinessDataGroup -PolicyName <policy ID> -ConnectorName <connector identifier>"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectortobusinessdatagroup?view=pa-ps-latest"
     note: "Applies to flows in environments in the policy's scope. This route classifies a selected connector as Business, like the PowerShell example. The connectors this template uses are not yet published."
   - governs: "Who can manage tags, whose membership triggers the workflow"
@@ -122,19 +122,23 @@ changes:
     note: "Licensing now shows Microsoft 365 seeded licences (standard-connector cloud flows) as the published entitlement; the roadmap target date text now matches the record (November CY2026)."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-25"
+    note: "Correction: the data policy PowerShell call now takes a policy ID and a connector identifier, and the after-rollout checklist no longer mentions flow ownership."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 57
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "7e46531d2a761c1310a1ac86011cebb7"
+  contradicted: 1
+  attempts: 0
+  hash: "d052b4074b3d1a9807ba28eb1ba18c4b"
 ---
 
 ## What's changing
@@ -195,7 +199,7 @@ Learn's Power Automate licensing page says users with seeded licences from Micro
 - Pilot it in one team with a location-based or project-based tag before encouraging wider use.
 
 ### After rollout
-- Review which teams have configured the workflow and who owns each flow.
+- Review which teams have configured the workflow.
 - Check tag sizes against the 200-member tag limit for groups that grow.
 
 ## Governance controls
@@ -206,7 +210,7 @@ Learn's Power Automate licensing page says users with seeded licences from Micro
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Workflows app is allowed in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Learn says flows created from the Workflows app need the app enabled here. Blocking it blocks all Workflows templates, not only this one. Needs the Teams Administrator role.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;application ID&gt; -IsBlocked &lt;Boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which connectors flows in the default environment may use</strong><br><small>Environment</small><br><small class="controls__note">Applies to flows in environments in the policy's scope. This route classifies a selected connector as Business, like the PowerShell example. The connectors this template uses are not yet published.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › policy › Edit Policy › Prebuilt connectors › connector › Move to Business <a href="https://learn.microsoft.com/power-platform/admin/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorToBusinessDataGroup -PolicyName &lt;policy name&gt; -ConnectorName &lt;connector name&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectortobusinessdatagroup?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors flows in the default environment may use</strong><br><small>Environment</small><br><small class="controls__note">Applies to flows in environments in the policy's scope. This route classifies a selected connector as Business, like the PowerShell example. The connectors this template uses are not yet published.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › policy › Edit Policy › Prebuilt connectors › connector › Move to Business <a href="https://learn.microsoft.com/power-platform/admin/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorToBusinessDataGroup -PolicyName &lt;policy ID&gt; -ConnectorName &lt;connector identifier&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectortobusinessdatagroup?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can manage tags, whose membership triggers the workflow</strong><br><small>Tenant</small><br><small class="controls__note">The Manage tags article says PowerShell cannot manage tags; the Set-CsTeamsTargetingPolicy reference documents -ManageTagsPermissionMode for tag permissions. Not stated whether it also governs who can configure the workflow.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams › Teams settings › Tagging › Who can manage tags <a href="https://learn.microsoft.com/microsoftteams/manage-tags" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsTargetingPolicy -Identity &lt;policy name&gt; -ManageTagsPermissionMode &lt;mode&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant switch for the Join member to channel template alone</strong><br><small>Tenant</small><br><small class="controls__note">No template-specific setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -229,10 +233,8 @@ cost: Low. The only cost the sources show is admin and team-owner time; the lice
 impact: Low. Team owners who set the template up and members added to the tag notice it; nothing changes for anyone else by default, according to MC1540351.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / command: Add-ConnectorToBusinessDataGroup -PolicyName <policy name> -ConnectorName <connector name> accepts a policy name to select the policy. | Found: -PolicyName: The policy name identifier. ... Add-ConnectorToBusinessDataGroup -PolicyName e25a94b2-3111-468e-9125-3d3db3938f13 -ConnectorName shared_office365users ... -ConnectorName: The connector's identifier. | Fix: Replace the call in controls[1].api and its rendered table cell with 'Add-ConnectorToBusinessDataGroup -PolicyName <policy ID> -ConnectorName <connector identifier>'; the reference requires identifiers, not the policy's display name. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectortobusinessdatagroup?view=pa-ps-latest
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks readers to review flow ownership, but the controls table has no flow-ownership control. | Found: Review which teams have configured the workflow and who owns each flow. / The table lists app availability, connector data policies, tag-management permissions and the absent template-only switch. | Fix: Remove 'and who owns each flow' from the After rollout checklist item; flow ownership has no row in the controls table.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to take stock of configured workflows, but the controls table has no corresponding inventory control. | Found: Review which teams have configured the workflow. Whether the Workflows app is allowed in the organisation Which connectors flows in the default environment may use Who can manage tags, whose membership triggers the workflow Tenant switch for the Join member to channel template alone | Fix: Remove the After rollout bullet 'Review which teams have configured the workflow.' It names a take-stock operation not represented in the controls table; do not add a new control row in this correction.
 -->

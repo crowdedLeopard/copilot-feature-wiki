@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "The Microsoft Purview service description lists Manual Sensitivity Labeling as Included in the plans in its table, and says labelling including automatic labelling requires Microsoft 365 E5 or Information Protection and Governance. A licence specific to this feature is not yet published."
+  notes: "The Purview service description lists Manual Sensitivity Labeling as Included in its plan table, and says labelling including automatic labelling requires Microsoft 365 E5 or Information Protection and Governance. For Information Protection for Office 365 and AIP, a Standard/Plan 1 licence must also be assigned alongside a premium/Plan 2 licence. Nothing specific to this feature is published."
 audiences: ["m365-admin","security","compliance","end-user"]
 tags: ["outlook","sensitivity-labels","information-protection","purview"]
 sources:
@@ -86,19 +86,23 @@ changes:
     note: "Corrected the mandatory labelling path, added its Set-LabelPolicy call, narrowed the PDF policy surface to Group Policy, and reworded the claim about Outlook's Print to PDF limits to the support page's words."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected the licensing: added that a Standard/Plan 1 licence must also be assigned alongside a premium/Plan 2 licence for Information Protection for Office 365 and AIP."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "d0dd436f3c1e09b90b25d09a8f25aae2"
+  contradicted: 0
+  attempts: 0
+  hash: "721111251d6693ed5bd2265caea884f6"
 ---
 
 ## What's changing
@@ -136,6 +140,8 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 ## Cost and licensing
 
 No separate meter is documented for this feature at the time of writing. The Microsoft Purview service description lists Manual Sensitivity Labeling as Included in the plans in its table (Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium, OneDrive for Business Plan 2, Enterprise Mobility + Security E3/E5, Office 365 E5/A5/E3/A3, and Azure Information Protection Plan 1 and 2). The same page says that sensitivity labelling, including automatic or policy-based labelling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance.
+
+For Information Protection for Office 365 and AIP, a Standard/Plan 1 licence must also be assigned alongside a premium/Plan 2 licence for users to access sensitivity labelling.
 
 A licence or price specific to Create PDF in Outlook is not yet published. Indirect cost is admin time to review the mandatory labelling policy and any registry workaround, and user communication.
 
@@ -190,8 +196,9 @@ cost: Low. The only cost the sources show is admin and user-communication time; 
 impact: Medium. People who save labelled email as PDF in Outlook for Windows desktop notice it, most of all in tenants with mandatory labelling, where Print to PDF is blocked.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: manual-labelling plan list / licensing: Manual Sensitivity Labeling is Included in the listed Microsoft 365, OneDrive, EMS, Office 365 and AIP Plan 1 and Plan 2 plans. | Found: A standard/Plan 1 license must be assigned in addition to the premium/P2 license for users to have access to sensitivity labeling for Information Protection for Office 365 and AIP, even if the premium licenses/Plan 2 are assigned. | Fix: Keep the accurate Included table and plan list, but append this qualification to the licensing notes and the paragraph listing plans: 'For Information Protection for Office 365 and AIP, a Standard/Plan 1 licence must also be assigned alongside a premium/Plan 2 licence for users to access sensitivity labelling.' Cite the existing Microsoft Purview service description. Its table supports the list, but the omitted assignment requirement changes which licences administrators must assign. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Data exposure; Open questions / behaviour: The cited Office-apps page states that Outlook does not currently support PDF attachments inheriting encryption from a labelled message. | Found: Outlook doesn't currently support PDF attachments inheriting encryption from a labeled message. | Fix: Keep the attribution to the Office-apps page, but add: 'Separately, the Message encryption FAQ documents server-side encryption of PDF attachments when enabled in Exchange Online; that is attachment protection, not Create PDF export.' Cite https://learn.microsoft.com/purview/ome-faq, which says 'When you send an email, the Office 365 service encrypts PDF file attachments' and includes new Outlook Desktop, web, Mac, iOS and Android. | Source: https://learn.microsoft.com/purview/sensitivity-labels-office-apps
+- [supported, minor] front matter: licensing.model / licensing: The feature is treated as included within the surrounding product's licensing, with no feature-specific entitlement published. | Found: To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps. | Fix: Retain licensing.model as included. Cite https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options and add to licensing.notes and Cost and licensing: 'For Outlook for Windows desktop with a Microsoft 365 organizational email address, a plan that includes the desktop versions of Microsoft 365 apps is required.' Keep the existing statement that no licence specific to Create PDF is published. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options#single-account-scenarios-in-new-outlook
 -->

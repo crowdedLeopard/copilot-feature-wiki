@@ -51,15 +51,17 @@ changes:
     note: "First briefing for this roadmap item: a Liquid Glass-style interface refresh for Outlook for iOS on iPhone and iPad, on by default with no documented admin control."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 39 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 51 statements confirmed"
 version: 1
 verification:
   status: "verified"
-  date: "2026-11-24"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 39
-  confirmed: 39
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
   contradicted: 0
   attempts: 0

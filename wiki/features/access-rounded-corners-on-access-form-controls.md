@@ -54,15 +54,17 @@ changes:
     note: "New briefing: planned CornerRadius property for Access form controls; Learn has no page on it yet."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 3 of 37 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 3 of 40 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 37
-  confirmed: 33
+  claims: 40
+  confirmed: 36
   unconfirmed: 3
   contradicted: 1
   attempts: 0
@@ -150,11 +152,11 @@ cost: Low. Access is part of Microsoft 365 Apps, and no feature-specific licence
 impact: Low. Only people who design or use Access desktop forms would notice a rounded control; administrators have nothing to configure in a documented admin centre.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: risk / behaviour: CornerRadius adds no data access. | Found: Searched: '"Access" "CornerRadius" data access permissions identity automation'; read the roadmap, Access object model and both cited release-note pages. The roadmap describes appearance but no source explicitly establishes that data access is unchanged. | Fix: In the risk rationale, replace 'it adds no data access' with 'the roadmap describes no new data access'. Keep this as a statement about the roadmap's description, not a guarantee of implementation behaviour.
-- [unsupported, minor] rationale: risk / behaviour: CornerRadius adds no identity behaviour. | Found: Searched: '"Access" "CornerRadius" data access permissions identity automation'; read the roadmap, Access object model and both cited release-note pages. No source states that CornerRadius makes no identity changes. | Fix: Replace the risk rationale sentence with: 'Low. The roadmap describes a cosmetic property for form controls and mentions no new data access, identity behaviour or automated actions; Microsoft has not stated whether existing forms change on arrival.'
-- [unsupported, minor] rationale: risk / behaviour: CornerRadius adds no automation. | Found: Searched: '"Access" "CornerRadius" data access permissions identity automation'; read the roadmap, Access object model and both cited release-note pages. No source explicitly establishes that CornerRadius adds no automation. | Fix: Replace the risk rationale sentence with: 'Low. The roadmap describes a cosmetic property for form controls and mentions no new data access, identity behaviour or automated actions; Microsoft has not stated whether existing forms change on arrival.'
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: Every control the governance checklist asks the reader to check appears in the controls table. | Found: Checklist: 'Check which update channel the Microsoft 365 Apps devices of those users are on'. The controls table contains only 'Administrator switch for rounded corners on Access form controls'. | Fix: The 'Check which update channel' checklist step has no corresponding controls-table row. Remove that checklist bullet; do not add an unverified control row.
+- [unsupported, minor] rationale: risk / behaviour: CornerRadius adds no data access. | Found: Searched: "Access" "CornerRadius" data access permissions identity automation; read the roadmap, Access Object model and both cited release-note pages. No source explicitly establishes unchanged data access. | Fix: Replace the risk rationale with: 'Low. The roadmap describes a cosmetic property for form controls and mentions no new data access, identity behaviour or automated actions; Microsoft has not stated whether existing forms change on arrival.'
+- [unsupported, minor] rationale: risk / behaviour: CornerRadius adds no identity behaviour. | Found: Searched: "Access" "CornerRadius" data access permissions identity automation; read the roadmap, Access Object model and both cited release-note pages. No source explicitly establishes unchanged identity behaviour. | Fix: Replace the risk rationale with: 'Low. The roadmap describes a cosmetic property for form controls and mentions no new data access, identity behaviour or automated actions; Microsoft has not stated whether existing forms change on arrival.'
+- [unsupported, minor] rationale: risk / behaviour: CornerRadius adds no automation. | Found: Searched: "Access" "CornerRadius" data access permissions identity automation; read the roadmap, Access Object model and both cited release-note pages. No source explicitly establishes that CornerRadius adds no automation. | Fix: Replace the risk rationale with: 'Low. The roadmap describes a cosmetic property for form controls and mentions no new data access, identity behaviour or automated actions; Microsoft has not stated whether existing forms change on arrival.'
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks the reader to check appears in the controls table. | Found: Checklist: 'Check which update channel the Microsoft 365 Apps devices of those users are on'. The controls table contains only 'Administrator switch for rounded corners on Access form controls'. | Fix: Remove the Before rollout bullet beginning 'Check which update channel': it has no corresponding controls-table row. Do not add a control row.
 -->

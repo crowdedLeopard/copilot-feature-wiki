@@ -98,15 +98,17 @@ changes:
     note: "Corrected: removed the claim that recording-access settings govern who can query calls with Copilot, fixed the first Before rollout step, and extended the recording template path."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
 version: 4
 verification:
   status: "verified"
-  date: "2026-11-23"
+  date: "2026-11-25"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
   contradicted: 0
   attempts: 0

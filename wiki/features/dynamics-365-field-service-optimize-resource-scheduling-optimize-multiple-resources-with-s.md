@@ -122,17 +122,19 @@ changes:
     note: "Correction: default state set to on for existing agent organisations and action to prepare; interactive capacity-point qualification added; three checklist steps without control rows removed or narrowed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 87
+  claims: 90
+  confirmed: 89
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "cc70e59f759f901cca28240603fa6386"
 ---
@@ -239,8 +241,10 @@ cost: Variable. Learn says the agent bills in Copilot Studio credits (prepaid ca
 impact: Medium. Dispatchers and the admins who build goals, scopes and plans notice it. It does not change anything for tenants that have not turned the agent on.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note; Governance controls prose and table / command: The writable msdyn_optimizationmethod property accepts 192350000 for Optimize, 192350001 for Do Not Move and 192350002 for Ignore. | Found: Writable columns/attributes ... msdyn_OptimizationMethod ... LogicalName | msdyn_optimizationmethod ... 192350000 | Optimize ... 192350001 | Do Not Move ... 192350002 | Ignore | Fix: Add https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus to sources; it documents the writable msdyn_optimizationmethod property and its three option values. | Source: https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus
+- [supported, minor] Cost and licensing: Limits on spend / cost: Learn says depleted quota makes AI capabilities unavailable until capacity is added. | Found: When the quota is depleted, AI capabilities are unavailable until more capacity is added. | Fix: Replace the last sentence with: 'The agent setup page says depleted quota makes AI capabilities unavailable until more capacity is added. Copilot Studio billing guidance differs: if an environment bills overage to pay-as-you-go, exhausting prepaid credits does not block its agents and uncovered usage is billed to the plan.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management alongside the setup page. | Source: https://learn.microsoft.com/dynamics365/field-service/soa-setup
+- [supported, minor] controls[2].note; Governance controls prose and table / command: Writable msdyn_optimizationmethod accepts 192350000 for Optimize, 192350001 for Do Not Move and 192350002 for Ignore. | Found: Writable columns/attributes msdyn_OptimizationMethod LogicalName | msdyn_optimizationmethod 192350000 | Optimize 192350001 | Do Not Move 192350002 | Ignore | Fix: Add https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus to sources; it documents the writable msdyn_optimizationmethod column and its three option values. | Source: https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The credit-consumption review checklist step has no corresponding monitoring control row. | Found: Review credit consumption in the Power Platform admin center, and Azure Cost Management for pay-as-you-go, after the first week of multi-resource runs. The table rows cover agent enablement, user roles, booking status and plan Apply method. | Fix: Remove the 'Review credit consumption in the Power Platform admin center, and Azure Cost Management for pay-as-you-go, after the first week of multi-resource runs' checklist bullet; the monitoring locations remain stated in Cost and licensing. Do not add a control row in this correction.
 -->

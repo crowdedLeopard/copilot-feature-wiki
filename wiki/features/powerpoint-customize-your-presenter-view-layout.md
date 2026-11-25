@@ -54,10 +54,12 @@ changes:
     note: "New briefing: Mac Presenter view layout controls; no admin setting, licence or default beyond the roadmap is documented yet."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 41 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 41 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -153,10 +155,10 @@ cost: Low. No separate licence, price or meter is published for this feature; th
 impact: Low. Only Mac users who present notice it, and the roadmap says the existing layout remains the default unless the presenter changes it.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Speaker notes are part of the presentation file. | Found: represents a notes slide part, one of the parts of a PresentationML presentation file package, and a part that is required for each notes slide in a presentation file | Fix: Add https://learn.microsoft.com/office/open-xml/presentation/working-with-notes-slides to sources for the statement that speaker notes are part of the presentation file. | Source: https://learn.microsoft.com/office/open-xml/presentation/working-with-notes-slides
-- [supported, minor] Governance controls: final paragraph / applicability: Managing update timing controls delivery of updated Office for Mac builds rather than independently enabling or disabling this layout capability. | Found: you can download and deploy the update packages for each application. ... We often roll out features over a period of time. | Fix: Replace 'That controls when the feature arrives, not whether presenters can use it.' with 'That controls when an updated app build is installed; Microsoft can also roll out features over a period of time.' | Source: https://learn.microsoft.com/officeupdates/release-notes-office-for-mac
-- [supported, minor] Governance controls: Office for Mac preferences and Cloud Policy sentence / absence: The cited Office for Mac preferences pages and the Cloud Policy overview contain no Presenter view setting. | Found: Searched: PowerPoint Mac Presenter view layout customization admin policy preferences disable API Cloud Policy. Opened preferences-office, set-preference-per-app and admin-center/overview-cloud-policy; read their settings and policy descriptions and found no Presenter view setting. | Fix: Add https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy to sources for the existing statement about that overview.
+- [supported, minor] Risk assessment: Data exposure / behaviour: Speaker notes are part of the presentation file. | Found: The <notes/> element is the root element of the PresentationML Notes Slide part. | Fix: Add https://learn.microsoft.com/office/open-xml/presentation/working-with-notes-slides to sources for the statement that speaker notes are part of the presentation file. | Source: https://learn.microsoft.com/office/open-xml/presentation/working-with-notes-slides
+- [supported, minor] Governance controls: preferences and Cloud Policy sentence / absence: The Office for Mac preferences pages and Cloud Policy overview list no Presenter view setting. | Found: Searched: PowerPoint Mac Presenter view layout customization admin policy disable preferences API Cloud Policy. Read preferences-office, set-preference-per-app and admin-center/overview-cloud-policy; none lists a Presenter view setting. | Fix: Add https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy to sources for the existing statement about the Cloud Policy overview.
+- [supported, minor] controls[0].note; Governance controls: final paragraph / applicability: Update timing is the documented administrative delivery lever, rather than an independent switch for layout customisation. | Found: you can download and deploy the update packages for each application. ... We often roll out features over a period of time. | Fix: Replace the last sentence of controls[0].note with 'Microsoft documents update delivery through Microsoft AutoUpdate or your deployment tools; Microsoft can also roll out features over a period of time.' Replace the final governance paragraph with 'Microsoft documents Office for Mac update delivery through Microsoft AutoUpdate (MAU) or existing software deployment tools. That controls when an updated app build is installed; Microsoft can also roll out features over a period of time.' | Source: https://learn.microsoft.com/officeupdates/release-notes-office-for-mac
 -->

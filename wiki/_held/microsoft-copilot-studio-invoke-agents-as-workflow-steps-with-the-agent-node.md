@@ -237,18 +237,20 @@ changes:
     note: "Corrected after verification: the Learn page identifies success criteria for workflow agents as a preview capability, replacing the statement that it names no preview part."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 97 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 35
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-24"
+  status: "held"
+  date: "2026-11-25"
   version: 35
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
+  claims: 97
   confirmed: 94
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "6b2ef67f4b9baf893d7572b02a132956"
 ---
 
@@ -353,9 +355,13 @@ cost: Variable. The node's usage is billed in Copilot Credits, drawn from an env
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive a workflow's output see decisions made by an agent instead of a fixed rule.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost / absence: No agent-node rate is published in November 2026. | Found: Classification, inline agents, published agents, and Copilot nodes consume using the same usage-based model as standalone Microsoft Copilot harness agents. Calling the AI node incurs the 0.13 charge, plus usage-based charges for the work it performs. | Fix: Replace the no-rate statements with 'Calling an agent node incurs 0.13 Copilot Credits, plus usage-based charges for the work it performs; the total varies with the agent's work.' Cite https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption. Narrow the cost question to 'What will our workflow consume in total, including the 0.13-credit node call and variable agent usage?' | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption
+- [contradicted, blocker] Risk assessment: Change & support / behaviour: Once the environment's prepaid capacity is fully consumed, new workflow runs are blocked until capacity is available. | Found: When enabled, an environment can draw from the tenant pool after it exhausts its allocation or when no allocation is set. ... If the environment is linked to a pay-as-you-go billing plan, usage can continue through the linked Azure subscription. | Fix: Replace the sentence with 'When the environment has no Copilot Credits available, new workflow runs, including test runs, are blocked until credits are available; exhausting its prepaid allocation alone does not stop runs if tenant-pool capacity or linked pay-as-you-go billing remains available.' Retain 'Running workflows complete normally.' Sources: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview and https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] sources: Microsoft 365 Roadmap 566998 / behaviour: Roadmap item 566998 lists the same agent-node capability again. | Found: Invoke agents as workflow steps with the agent node [Web] ... Roadmap ID: 562222 ... Invoke agents as workflow steps with the agent node [Web] ... Roadmap ID: 566998 | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026 to sources as 'Microsoft 365 Copilot release notes', kind learn, to support the statement that the two roadmap IDs describe the same capability. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist asks readers to review the Workflows-page Credit usage (last 30 days) column without a corresponding controls-table row. | Found: Review the Credit usage (last 30 days) column on the Workflows page and the Agent flow actions line in the Power Platform admin center each month. The consumption row lists only the Power Platform admin center and its API. | Fix: Replace that checklist bullet with 'Review the **Agent flow actions** line in the Power Platform admin center each month.' This removes the checklist control with no row without adding a new row.
+- [supported, minor] Cost and licensing / cost: Billing can begin while makers build. | Found: The Microsoft Copilot harness charges credits from the moment you start building. Experiences such as creating an automated solution with natural language, previewing and testing an agent, and generating and creating agent evaluations all consume credits. | Fix: Replace 'billing starts when makers start building, so testing and evaluating consume credits' with 'Testing, evaluation and describe-to-design creation consume credits before publication; manually adding actions and configuring parameters on the workflow canvas do not.' Cite https://learn.microsoft.com/microsoft-copilot-studio/guidance/workflows-credit-consumption, which explicitly distinguishes manual authoring from billed build-time activities. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
+- [supported, minor] sources: Microsoft 365 Roadmap 566998 / behaviour: Roadmap item 566998 lists the same agent-node capability again. | Found: **Invoke agents as workflow steps with the agent node** [Web] ... **Roadmap ID:**[562222] ... **Invoke agents as workflow steps with the agent node** [Web] ... **Roadmap ID:**[566998] | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026 to sources as 'Microsoft 365 Copilot release notes', kind learn, to support the duplicate-capability source label. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells readers to review the Workflows-page Credit usage (last 30 days) control, but the table has no row for that surface. | Found: Review the **Credit usage (last 30 days)** column on the Workflows page and the **Agent flow actions** line in the Power Platform admin center each month. ... Credit consumption by workflow and environment: Power Platform admin center; Power Platform API. | Fix: Replace that checklist bullet with 'Review the **Agent flow actions** line in the Power Platform admin center each month.' The Workflows column itself is documented in https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview; this correction removes only the checklist control without a table row.
 -->

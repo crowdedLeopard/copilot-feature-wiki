@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Licensing for file upload is not yet published. The Agents admin guide documents Copilot Studio agents in Copilot Chat under Microsoft 365 Copilot licences or pay-as-you-go models; check the licensing for the selected agent and capabilities."
+  model: "mixed"
+  notes: "General access to agents is included with Microsoft 365 Copilot (Premium); shared-tenant-data agents for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users require pay-as-you-go. Check the licensing for the selected agent and capabilities. Licensing specific to this planned file-upload option is not yet published."
 audiences: ["m365-admin","security","service-owner","compliance"]
 tags: ["m365-copilot","agents","extensibility","file-upload","onedrive","custom-engine-agents","data-governance"]
 sources:
@@ -52,6 +52,12 @@ sources:
   - title: "Licensing for agents powered by the standard harness"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
     kind: "learn"
+  - title: "Purchase and manage agents in Copilot Chat"
+    url: "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat"
+    kind: "learn"
+  - title: "Agent management roles and permissions in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms"
+    kind: "learn"
 videos: []
 related: ["copilot-credits"]
 controls:
@@ -65,7 +71,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "General control: not confirmed for file upload. For agents created with SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat. API is beta; needs a Microsoft Agent 365 licence."
+    note: "Controls availability of the selected agent, not file-upload behaviour. For agents created with SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat. API is beta; needs a Microsoft Agent 365 licence."
   - governs: "Which users or groups can access agents and plugins"
     scope: "tenant"
     ui:
@@ -73,7 +79,7 @@ controls:
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
     api: null
-    note: "General control: Microsoft has not confirmed it applies to file upload. Options are All users (the default), No users, or specific users or groups."
+    note: "Controls tenant-wide access to agents and plugins, not file-upload behaviour. Options are All users (the default), No users, or specific users or groups."
   - governs: "A tenant-wide switch for file upload to custom engine agents"
     scope: "tenant"
     ui: null
@@ -81,7 +87,7 @@ controls:
     note: "No such setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
+updated: "2026-11-25"
 roadmapModified: "2026-11-11T00:53:22"
 changes:
   - date: "2026-11-16"
@@ -98,19 +104,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 69 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Corrected after verification: removed the unsupported Agents admin guide assurance claim, replaced the metered-billing and default statements with the purchase guide's licence-specific wording, set licensing to mixed, and reworded two control notes."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 66
-  unconfirmed: 1
+  claims: 75
+  confirmed: 73
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "3fb0d11e3ca4bd02d235a5cd09b5de2c"
+  attempts: 2
+  hash: "ed6c2b54d2a55fab6b916d3b51e088c5"
 ---
 
 ## What's changing
@@ -125,7 +135,7 @@ The record gives the status as In development and a target of January CY2027. Th
 
 Learn currently lists file attachments in custom engine agent chats as unsupported. Once upload ships, any user of a custom engine agent could hand it a file, and what that agent does with the file is a risk to assess agent by agent.
 
-The Learn comparison table of agent types lists custom engine agents as hosted in Microsoft 365 with Copilot Studio or externally with custom solutions such as Azure AI, and says the builder must ensure their own compliance, responsible AI practices and security. The Agents admin guide gives conflicting general guidance, saying both approaches adhere to the security, compliance and Responsible AI requirements for Microsoft 365; confirm coverage for the particular agent rather than assuming it. Expect questions about which agents are approved to receive documents. The controls documented for agents act on a whole agent or on tenant-wide access to agents and plugins, and no tenant-wide switch is documented for the planned upload, so the decision is which agents stay available. Copilot Studio separately documents a maker-side File uploads setting for standard-harness agents; Microsoft has not confirmed its applicability to this roadmap change.
+The Learn comparison table of agent types lists custom engine agents as hosted in Microsoft 365 with Copilot Studio or externally with custom solutions such as Azure AI, and says the builder must ensure their own compliance, responsible AI practices and security. Confirm coverage for the particular agent rather than assuming it. Expect questions about which agents are approved to receive documents. The controls documented for agents act on a whole agent or on tenant-wide access to agents and plugins, and no tenant-wide switch is documented for the planned upload, so the decision is which agents stay available. Copilot Studio separately documents a maker-side File uploads setting for standard-harness agents; Microsoft has not confirmed its applicability to this roadmap change.
 
 ## Risk assessment
 
@@ -148,7 +158,7 @@ The Learn comparison table of agent types lists custom engine agents as hosted i
 
 ## Cost and licensing
 
-For custom engine agents in general, the Agents admin guide says agents that access shared tenant data, such as SharePoint or Graph Connector content, are billed based on metered consumption, and that agents using metered consumption are off by default for users in Microsoft Copilot Chat. The same guide documents Copilot Studio agents in Copilot Chat under Microsoft 365 Copilot licences or pay-as-you-go models; check the licensing for the selected agent and capabilities.
+For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, agents accessing shared tenant data are billed on metered consumption, according to the [Purchase and manage agents in Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat) guide. For Microsoft 365 Copilot licence holders, classic answers, generative answers and Microsoft Graph tenant grounding are not charged when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint, according to the [Copilot Studio licensing page](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing). Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users; no action is needed to enable agents for Microsoft 365 Copilot (Premium). The purchase guide documents Microsoft 365 Copilot (Premium) access and pay-as-you-go access for Basic users accessing shared tenant data; check the licensing for the selected agent and capabilities.
 
 Hosting is a separate cost: the Plan licensing and cost page says hosting these agents might incur additional hosting costs. Whether file upload carries its own licence, meter or limit is not yet published. The Copilot Studio licensing page describes Copilot Credits as the common currency across Copilot Studio capabilities. See [Copilot Credits](/concepts/copilot-credits/) for how that meter works.
 
@@ -156,7 +166,7 @@ Hosting is a separate cost: the Plan licensing and cost page says hosting these 
 
 The record lists Worldwide (Standard Multi-Tenant) as the cloud and Web as the platform, with General Availability as the release phase and a target of January CY2027. It lists no US Government cloud, which is a record fact and not a statement that the feature is unavailable there.
 
-The feature concerns custom engine agents. The record names no licence, role or prerequisite. Admin roles that Learn lists for configuring, managing and deploying agents in the Microsoft 365 admin center are AI Admin and Global Admin; Global Reader is view-only.
+The feature concerns custom engine agents. The record names no licence, role or prerequisite. Admin roles that Learn lists for configuring, managing and deploying agents in the Microsoft 365 admin center are AI Admin and Global Admin; Global Reader is view-only. See [Agent management roles and permissions](https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms).
 
 ## Governance guidance
 
@@ -185,15 +195,15 @@ The feature concerns custom engine agents. The record names no licence, role or 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a custom engine agent is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">General control: not confirmed for file upload. For agents created with SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat. API is beta; needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to file upload. Options are All users (the default), No users, or specific users or groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a custom engine agent is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Controls availability of the selected agent, not file-upload behaviour. For agents created with SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat. API is beta; needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Controls tenant-wide access to agents and plugins, not file-upload behaviour. Options are All users (the default), No users, or specific users or groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>A tenant-wide switch for file upload to custom engine agents</strong><br><small>Tenant</small><br><small class="controls__note">No such setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 No tenant-wide switch is documented for the planned roadmap upload capability at the time of writing (November 2026). Copilot Studio separately documents a maker-side File uploads setting for standard-harness agents (Settings > Generative AI > File processing capabilities > File uploads); Microsoft has not confirmed its applicability to this roadmap change. The controls in the table work on a whole agent or on tenant-wide access. Learn describes Block as restricting access to an agent across the organisation, and says that blocking an agent created with SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. The User access setting governs access to agents and plugins in general. Microsoft has not confirmed that either setting changes how uploads behave.
 
-The Package Management API in the first row requires a Microsoft Agent 365 licence and is in /beta, where Learn says use in production applications is not supported. Learn lists AI Admin and Global Admin as the roles that configure, manage and deploy agents.
+The Package Management API in the first row requires a Microsoft Agent 365 licence and is in /beta, where Learn says use in production applications is not supported. Learn lists AI Admin and Global Admin as the roles that configure, manage and deploy agents, on the [Agent management roles and permissions](https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms) page.
 
 ## Open questions
 
@@ -205,22 +215,15 @@ The Package Management API in the first row requires a Microsoft Agent 365 licen
 
 <!-- rationale
 risk: Medium. Uploaded files would go to custom engine agents whose storage, retention and logging Microsoft has not documented for this feature, and no tenant-wide switch for upload is documented.
-cost: Variable. The Agents admin guide documents metered consumption for agents that access shared tenant data, and Learn mentions possible hosting costs; pricing for file upload itself is not yet published.
+cost: Variable. For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, the purchase guide documents metered consumption for agents that access shared tenant data, and Learn mentions possible hosting costs; pricing for file upload itself is not yet published.
 impact: Medium. Only people who use custom engine agents on the web would notice, but those users would start sending documents to agents that their tenant, or a vendor, built and hosts.
 -->
 
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The Agents admin guide says both agent approaches adhere to Microsoft 365 security, compliance and Responsible AI requirements. | Found: Searched: custom engine agents Both approaches adhere; Agents Both approaches adhere to. Opened m365-agents-admin-guide and its redirected Manage agents page; neither states the attributed assurance. agents-overview gives that assurance for declarative agents. | Fix: Remove 'The Agents admin guide gives conflicting general guidance, saying both approaches adhere to the security, compliance and Responsible AI requirements for Microsoft 365;'. Retain the advice to confirm coverage for the particular agent rather than assuming it.
-- [contradicted, blocker] Cost and licensing; rationale: cost / cost: For custom engine agents in general, agents accessing shared tenant data are billed on metered consumption. | Found: If you have a Microsoft 365 Copilot license, using agents in Copilot Chat, Microsoft Teams, or SharePoint for classic answers, generative answers, or Microsoft Graph tenant grounding isn't charged when the agent runs with your authenticated identity. | Fix: Replace the billing statement with 'For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, agents accessing shared tenant data are billed on metered consumption. For Microsoft 365 Copilot licence holders, classic answers, generative answers and Microsoft Graph tenant grounding are not charged when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint.' Cite https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat and https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. In the cost rationale, qualify metered shared-data access with 'for Copilot Chat (Basic) and Microsoft 365 (Basic) licences' and attribute it to the purchase guide, not the redirected Agents admin guide. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
-- [contradicted, blocker] Cost and licensing / default: Agents using metered consumption are off by default for users in Microsoft Copilot Chat generally. | Found: Pay-as-you-go agents are turned off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users. ... No action is needed to enable agents for Microsoft 365 Copilot (Premium). | Fix: Replace the default statement with 'Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users; no action is needed to enable agents for Microsoft 365 Copilot (Premium).' Attribute it to and cite https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat, not the redirected Agents admin guide. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
+- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for the tenant-wide User access setting is not yet documented. | Found: These resources also support remediation and applyOnce. ... useraccess resource type ... valueObject | Write | AgentUserAccessValueObject | Configures who can access agents and plugins. | Fix: Replace controls[1].api with graph call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Add to the existing note: 'Preview automation can apply a tenant-wide all-users or no-users baseline: set mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All; the TCM service principal needs delegated CopilotPolicySettings.ReadWrite, and the signed-in user needs AI Administrator. This reference does not document specific-user/group assignment.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Keep the preview and non-production qualification. | Source: https://learn.microsoft.com/graph/utcm-agent-resources
+- [contradicted, blocker] controls[2].ui and api; summary; Why it matters; Governance controls; rationale: risk / absence: No tenant-wide switch is documented for file upload to custom engine agents in Copilot. | Found: Controls whether users can upload files to Copilot. ... `1` prevents uploads in both [Microsoft 365 Copilot and Microsoft 365 Copilot Chat]. | Fix: Narrow controls[2].governs to 'An upload-specific tenant-wide switch for the planned custom engine agent capability'. Replace its note and every broad no-switch statement with: 'Microsoft documents a general Copilot file-upload policy: microsoft.copilot.allowfileupload value "1" prevents uploads in both Microsoft 365 Copilot and Microsoft 365 Copilot Chat. A switch specific to this planned custom engine agent upload capability is not yet documented.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#allowfileupload-resource-type. Do not claim that administrators have only agent-availability controls. Keep both null sides only for the newly narrowed, feature-specific control. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources#allowfileupload-resource-type
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls table / applicability: The correctly documented general Block control is described as not confirmed for file upload. | Found: Block or unblock agents for the entire organization by using the same controls that work for any other app in the Microsoft 365 admin center. | Fix: Replace 'General control: not confirmed for file upload.' with 'Controls availability of the selected agent, not file-upload behaviour.' Keep the SharePoint/Foundry host exception and the API qualifications. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [supported, minor] controls[1].note; Governance controls table / applicability: The correctly documented User access control is described as not confirmed to apply to file upload. | Found: Use User access to control how members of your organization access and install agents and plugins. | Fix: Replace 'General control: Microsoft has not confirmed it applies to file upload.' with 'Controls tenant-wide access to agents and plugins, not file-upload behaviour.' Keep the documented options. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Copilot Studio agents in Copilot Chat have Microsoft 365 Copilot licence or pay-as-you-go licensing routes. | Found: Access to agents that use shared tenant data are pay-as-you-go only. ... The use of agents comes with Microsoft 365 Copilot (Premium) license. | Fix: Replace the attribution to the Agents admin guide with 'The Purchase and manage agents in Copilot Chat guide documents Microsoft 365 Copilot (Premium) access and pay-as-you-go access for Basic users accessing shared tenant data; check the licensing for the selected agent and capabilities.' Add https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat to sources; retain the already-cited Copilot Studio licensing page. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing: The licensing model is unknown because licensing specific to the planned file-upload option has not been published. | Found: Searched: custom engine agents file upload licensing credits limits. Read cost-considerations, billing-licensing, manage-agents-copilot-chat and overview-custom-engine-agent; general agent access licensing is documented, but no separate licence for the planned upload option is specified. | Fix: Set licensing.model to 'mixed'. Use notes: 'General access to agents is included with Microsoft 365 Copilot (Premium); shared-tenant-data agents for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users require pay-as-you-go. Check the licensing for the selected agent and capabilities. Licensing specific to this planned file-upload option is not yet published.' Cite https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat. Keep the upload-specific licensing question open.
-- [supported, minor] Scope; Governance controls: final paragraph / role: AI Admin can configure, manage and deploy agents in the Microsoft 365 admin center. | Found: AI Administrator | ✔ | ✔ | ✔ ... Install, modify, approve, and manage agent configurations | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms to sources and cite it for the role statements. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms
-- [supported, minor] Scope; Governance controls: final paragraph / role: Global Admin can configure, manage and deploy agents in the Microsoft 365 admin center. | Found: Global Administrator | ✔ | ✔ | ✔ ... Install, modify, approve, and manage agent configurations | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms to sources and cite it for the role statements. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms
-- [supported, minor] Scope / role: Global Reader has view-only access to agent tools and settings. | Found: Global Reader | ✔ | ✔ | ✖* ... * Read Only – Tools and settings | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms to sources and cite it for the role statements. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms
+- [supported, minor] Governance controls: Copilot Studio parenthetical path / admin-path: The maker File uploads setting is under Settings > Generative AI > File processing capabilities > File uploads. | Found: Go to the Settings page for your agent, and select Generative AI. Navigate to the File processing capabilities section. Turn on File uploads. | Fix: Replace the parenthetical route with '(open the standard-harness agent in Copilot Studio, then select Settings > Generative AI > File processing capabilities > File uploads)' to make explicit which agent the relative route starts inside. | Source: https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis
 -->

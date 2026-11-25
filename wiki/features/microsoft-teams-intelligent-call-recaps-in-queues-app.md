@@ -109,15 +109,17 @@ changes:
     note: "Corrected the SharePoint site administrator requirement for recording templates, the impact rationale and the transcription wording; removed two checklist items with no controls row."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -224,8 +226,8 @@ cost: Medium. Queues app users need Teams Phone and a Teams Premium licence per 
 impact: Medium. The change concerns recorded call queue calls viewed in the Queues app; Microsoft has not documented which roles can see a recap.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Clouds and platforms / availability: The Queues app management page lists desktop, Mac, VDI, touch Teams phones, iOS and Android support, but not web support. | Found: The Queues app is currently supported on Teams desktop, Mac, and Virtualized Desktop Infrastructure (VDI) clients, Teams phones (touch devices only), and iOS and Android mobile clients. It's not supported on web clients. | Fix: After the Queues app platform sentence, add: 'Microsoft's Teams Premium overview platform table still lists Mobile as No for the Queues app, conflicting with the management page.' Cite https://learn.microsoft.com/microsoftteams/enhanced-teams-experience#platform-support-for-queues-app, whose Queues app row says 'Mobile | No'. | Source: https://learn.microsoft.com/microsoftteams/manage-queues-app
+- [supported, minor] Scope: Clouds and platforms / availability: The Queues app management page lists desktop, Mac, VDI, touch Teams phones, iOS and Android as supported platforms. | Found: The Queues app is currently supported on Teams desktop, Mac, and Virtualized Desktop Infrastructure (VDI) clients, Teams phones (touch devices only), and iOS and Android mobile clients. | Fix: After the Queues app platform sentence, add: 'Microsoft's Teams Premium overview platform table lists Mobile as No for the Queues app, conflicting with the management page.' Cite https://learn.microsoft.com/microsoftteams/enhanced-teams-experience#platform-support-for-queues-app, whose table says '| Queues app | Yes | Yes | No | No |' under Windows, Mac, Mobile and Web. | Source: https://learn.microsoft.com/microsoftteams/manage-queues-app
 -->

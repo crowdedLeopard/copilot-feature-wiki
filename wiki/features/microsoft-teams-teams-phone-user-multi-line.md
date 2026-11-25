@@ -59,16 +59,16 @@ controls:
       call: "Set-CsPhoneNumberPolicyAssignment -TelephoneNumber <number> -PolicyType <policy type> -PolicyName <policy name>"
       docs: "https://learn.microsoft.com/microsoftteams/multi-line"
     note: "Number-level policies do not fall back to the user's policies. Dial Out Restriction and Shared Call Routing Policy are PowerShell only. Assign policy appears when none are assigned; otherwise Edit policy opens the Edit policies panel."
-  - governs: "Which users have alternate lines, and their emergency locations"
-    scope: "tenant"
+  - governs: "Emergency locations assigned to alternate numbers"
+    scope: "other"
     ui:
       surface: "Teams admin center"
       path: "Voice > Phone Numbers > phone number > Edit > Assign/unassign > Emergency location"
       docs: "https://learn.microsoft.com/microsoftteams/multi-line"
     api:
       kind: "powershell"
-      call: "Get-CsPhoneNumberAssignment -AssignedPstnTargetId <user>"
-      docs: "https://learn.microsoft.com/microsoftteams/multi-line"
+      call: "Set-CsPhoneNumberAssignment -TelephoneNumber <number> -LocationId <location id>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csphonenumberassignment"
     note: "The Assigned as column and its Alternate filter show alternate numbers. For Operator Connect numbers, the ability to set or change the emergency location depends on the operator; contact the operator for details."
 confidence: "high"
 created: "2026-11-24"
@@ -83,19 +83,23 @@ changes:
     note: "Corrected after verification: licensing model set to included, unsupported charging sentence removed, primary-line removal qualified, Operator Connect emergency-location caveat and MC1253752 rollout wording added."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected the emergency-location control row: its PowerShell side is now Set-CsPhoneNumberAssignment with -LocationId, not Get-CsPhoneNumberAssignment, which only displays phone numbers."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 94
+  confirmed: 94
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "e679f006b07e3e3bad7c50f52d484ec3"
+  contradicted: 0
+  attempts: 0
+  hash: "23148ca1fe0d7e693c9221cdf8b2c493"
 ---
 
 ## What's changing
@@ -189,7 +193,7 @@ The indirect cost is admin time: assigning each number, setting its emergency lo
 <tbody>
 <tr><td data-label="Control"><strong>Whether a user has alternate phone numbers, and which</strong><br><small>User</small><br><small class="controls__note">Teams Administrator, Teams Communications Administrator or Teams Telephony Administrator. The user needs a primary line first. Teams PowerShell module 7.6.0 or later.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › Manage users › user › Account tab › Assigned phone number › Assign alternate phone number <a href="https://learn.microsoft.com/microsoftteams/multi-line" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsPhoneNumberAssignment -Identity &lt;user&gt; -TelephoneNumber &lt;number&gt; -NumberType &lt;type&gt; -AssignmentCategory Alternate</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csphonenumberassignment" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Policies applied to an individual alternate number</strong><br><small class="controls__note">Number-level policies do not fall back to the user's policies. Dial Out Restriction and Shared Call Routing Policy are PowerShell only. Assign policy appears when none are assigned; otherwise Edit policy opens the Edit policies panel.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › Manage users › user › Account tab › Assigned phone number › alternate number › Policies › Assign policy › Assign policies <a href="https://learn.microsoft.com/microsoftteams/multi-line" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsPhoneNumberPolicyAssignment -TelephoneNumber &lt;number&gt; -PolicyType &lt;policy type&gt; -PolicyName &lt;policy name&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/multi-line" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users have alternate lines, and their emergency locations</strong><br><small>Tenant</small><br><small class="controls__note">The Assigned as column and its Alternate filter show alternate numbers. For Operator Connect numbers, the ability to set or change the emergency location depends on the operator; contact the operator for details.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Phone Numbers › phone number › Edit › Assign/unassign › Emergency location <a href="https://learn.microsoft.com/microsoftteams/multi-line" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-CsPhoneNumberAssignment -AssignedPstnTargetId &lt;user&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/multi-line" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Emergency locations assigned to alternate numbers</strong><br><small class="controls__note">The Assigned as column and its Alternate filter show alternate numbers. For Operator Connect numbers, the ability to set or change the emergency location depends on the operator; contact the operator for details.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Phone Numbers › phone number › Edit › Assign/unassign › Emergency location <a href="https://learn.microsoft.com/microsoftteams/multi-line" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsPhoneNumberAssignment -TelephoneNumber &lt;number&gt; -LocationId &lt;location id&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csphonenumberassignment" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -210,10 +214,4 @@ The multi-line page uses -PhoneNumber and -PhoneNumberType, which the cmdlet ref
 risk: Medium. Alternate lines add numbers that need their own emergency location, and several policies must be set per number because they do not fall back to the user's policies.
 cost: Low. Learn says alternate lines have the same licensing requirements as the user's primary number, so the visible cost is admin time; forwarding calls may add cost depending on licensing.
 impact: Low. Only users an admin gives extra numbers notice it; Microsoft's notice says the feature is off by default and the admin must configure it.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].api; Governance controls table / command: Get-CsPhoneNumberAssignment -AssignedPstnTargetId <user> is the automation counterpart to the row's emergency-location configuration path. | Found: This cmdlet displays information about one or more phone numbers. You can filter the phone numbers to return by using different parameters. | Fix: Keep this row for emergency-location configuration: change governs to 'Emergency locations assigned to alternate numbers', scope to 'other', api.call to 'Set-CsPhoneNumberAssignment -TelephoneNumber <number> -LocationId <location id>', and api.docs to 'https://learn.microsoft.com/powershell/module/microsoftteams/set-csphonenumberassignment'. That reference states that -LocationId assigns the location to the phone number. Keep the existing UI path and Operator Connect caveat. Apply the same changes to the rendered row; do not add a row. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/get-csphonenumberassignment
 -->

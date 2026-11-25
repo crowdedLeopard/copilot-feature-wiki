@@ -99,15 +99,17 @@ changes:
     note: "Corrected after verification: Capacity overages options are now described as documented, and the monitoring, path, API-tutorial and checklist statements the check flagged are aligned with the cited pages."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 77
+  claims: 62
+  confirmed: 61
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -217,9 +219,11 @@ cost: Variable. Copilot Credits meter usage against prepaid capacity packs of 25
 impact: Low. Administrators configure it, and only users in a policy's scope notice, and only if the prepaid credits run out.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api; controls[2].note; Governance controls table / command: PUT /licensing/allocationsV2?api-version=2024-10-01 sets the TenantPool enforcement rule for MCSMessages. | Found: $apiVersion = "2024-10-01" entitlementId = "MCSMessages" @{ ruleType = "TenantPool"; enabled = $false } Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call unchanged. Replace the first sentence of controls[2].note with: 'The request body sets allocatedEntitlements[].enforcementRules with ruleType TenantPool and enabled true or false for entitlementId MCSMessages.' These fields are shown at https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, minor] Governance guidance: At rollout and After rollout / consistency: The checklist directs readers to allocate capacity, monitor consumed and remaining credits, and set Overage notification without table rows for those controls. | Found: The allocation amount, monitoring and overage notification steps ... are not mapped as rows in the controls table. Monitor credits consumed and remaining ... Set the Overage notification ... | Fix: Remove the checklist directives to allocate capacity, monitor consumed and remaining credits, and set Overage notification because they have no table rows. Replace the At rollout allocation bullet with 'Review Draw from the available capacity in my tenant in the Power Platform admin center (row 3).' Do not add rows.
+- [supported, minor] summary; Why it matters; Cost and licensing; Governance guidance; rationale: risk / behaviour: Copilot Chat is unavailable for standalone-policy users when prepaid credits are exhausted until the next monthly period. | Found: When prepaid credits are exhausted, Copilot Chat is unavailable for those users until credits replenish at the next billing cycle. | Fix: Keep the standalone-policy statement, but add: 'The Copilot Studio billing rates page separately describes enforcement for custom agents under prepaid capacity at 125% of tenant capacity, with possible exemptions for Microsoft 365 Copilot licensed users; it does not reconcile that description with the standalone Copilot Chat policy description.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#overage-enforcement. | Source: https://learn.microsoft.com/copilot/implement/copilot-capacity-packs
+- [supported, minor] controls[2].api; controls[2].note; Governance controls table / command: PUT /licensing/allocationsV2?api-version=2024-10-01 sets the TenantPool enforcement rule for MCSMessages. | Found: $apiVersion = "2024-10-01" ... entitlementId = "MCSMessages" ... @{ ruleType = "TenantPool"; enabled = $false } ... Invoke-RestMethod -Method Put ... -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call. Replace the first sentence of controls[2].note with: 'The request body sets allocatedEntitlements[].enforcementRules with ruleType TenantPool and enabled true or false for entitlementId MCSMessages.' The fields are documented at https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] Governance controls: commerce setup entry point / admin-path: The commerce setup page gives Copilot > Cost management > Classic Billing & usage as the entry point for Connection status in Manage billing policy connections. | Found: go to Copilot > Cost management . In the banner at the top of the dashboard, select Classic Billing & usage. ... select the Pay-as-you-go tab. ... Select the service ... In the Manage billing policy connections side panel ... select the Connection status toggle | Fix: Replace the sentence with: 'The commerce setup page gives a different route: Microsoft 365 admin center > Copilot > Cost management > Classic Billing & usage > Pay-as-you-go > service > Manage billing policy connections > billing policy > Connection status.' Keep the existing setup-page citation. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot
+- [contradicted, minor] Governance guidance: At rollout and After rollout / consistency: The checklist directs administrators to allocate capacity, monitor consumed and remaining credits and set Overage notification without corresponding controls-table rows. | Found: The allocation amount, monitoring and overage notification steps ... are not mapped as rows in the controls table. ... Monitor credits consumed and remaining ... Set the Overage notification | Fix: Replace the At rollout allocation bullet with 'Review Draw from the available capacity in my tenant in the Power Platform admin center (row 3).' Remove the After rollout bullets directing readers to monitor consumed and remaining credits and set Overage notification, because these controls have no table rows. Do not add rows.
 -->

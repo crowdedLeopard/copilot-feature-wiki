@@ -1,0 +1,726 @@
+{
+  "slug": "microsoft-intune-additional-granular-rbac-controls-to-manage-antivirus-firewall-bitlocker",
+  "roadmapId": 498899,
+  "title": "Microsoft Intune: granular RBAC permissions for endpoint security workloads",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 53: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "4 blocking findings (claims 29, 37, 42, 49)"
+    ]
+  },
+  "counts": {
+    "claims": 53,
+    "confirmed": 48,
+    "unconfirmed": 3,
+    "contradicted": 2,
+    "blocker": 4,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the assignment guidance omits the exception for unlicensed administrators in nested groups, and the cited Graph assignment reference does not document setting the administrator groups. The licensing paragraph also omits the unlicensed-administrator exception and promises unchanged EDR licensing without supporting documentation. The roadmap facts and the description of the partly completed permission transition are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans separate RBAC permission sets for Intune endpoint security workloads.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Expanded granular RBAC controls to manage Endpoint Security workloads. The ‘Security baselines’ permission previously included all security policies and now all security workloads have their own permission set",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the Security baselines permission previously included all security policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The ‘Security baselines’ permission previously included all security policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap title names Antivirus, Firewall, BitLocker and Endpoint Detection and Response.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Intune: Additional granular RBAC controls to manage Antivirus, Firewall, BitLocker, and Endpoint Detection and Response endpoint security workloads",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is November CY2025, which has passed at the November 2026 run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS and Mac platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2025-10-01T23:01:01.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-10-01T23:01:01\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; changes",
+      "type": "behaviour",
+      "claim": "Learn describes a partly completed transition from unified Security baselines permissions to workload-specific permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Intune is transitioning from using the unified Security baselines permission for all endpoint security workloads to granular permissions for individual policy types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Learn lists a granular Application control for Business permission for its policies and reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Application control for Business - Application control policies and reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Learn lists granular Attack surface reduction permissions for most, but not all, ASR profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Attack surface reduction - Most Attack surface reduction policies. ... Some profiles use the granular Attack surface reduction permission while others require Security baselines permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Learn lists a granular Endpoint detection and response permission for EDR policies and reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Endpoint detection and response - EDR policies and reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "All Antivirus policy profiles currently require Security baselines permissions, sharing that permission category with other policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Security baselines permission (unified access): Antivirus policies (all profiles)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Account protection policies currently require Security baselines permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Security baselines permission (unified access): ... Account protection policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "Disk encryption policies currently require Security baselines permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Security baselines permission (unified access): ... Disk encryption policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "Firewall policies currently require Security baselines permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Security baselines permission (unified access): ... Firewall policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The granular Antivirus permission might be temporarily visible in some tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "The granular permission of Antivirus for endpoint security policies might be temporarily visible in some Tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "The granular Antivirus permission is not released.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "This permission isn't released and isn't supported for use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The granular Antivirus permission is unsupported for use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "This permission isn't released and isn't supported for use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Intune ignores configurations of the granular Antivirus permission, so selecting it grants nothing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Configurations of the Antivirus permission are ignored by Intune.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft says it will announce granular Antivirus permission availability in What's new in Microsoft Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "When Antivirus becomes available to use as a granular permission, well announce its availability in the What's new in Microsoft Intune article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The cited endpoint security policies Learn page does not mention this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 498899 in the fully opened Manage device security with endpoint security policies page; no roadmap item reference. Learn search: \"498899\" Intune RBAC rollout default licensing; no relevant item-specific result.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated the permission split's default state or what happens on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune endpoint security granular RBAC permissions default enabled existing roles migration November 2026. Opened manage-policies, create-custom-role, assign-role and What's new; checked roadmap. No default or enablement switch stated for this split.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Change & support; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether existing custom or built-in roles gain, keep or lose workload access when the new permissions arrive.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune granular endpoint security RBAC permissions existing custom roles migration automatic default Security baselines Antivirus Firewall Disk encryption. Opened manage-policies, create-custom-role, assign-role and What's new; no migration or inheritance rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn documents no released workload-specific alternative to Security baselines for granting Antivirus, Firewall or Disk encryption policy access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune Firewall Antivirus Disk encryption policies permission Security baselines custom role granular. Read manage-policies and custom-role permissions; searched What's new for granular, RBAC and Antivirus permission. No released alternative found for these endpoint security policy types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Device configurations View Reports also provides endpoint security policy report access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "The View Reports right for Device configurations also provides access to endpoint security policy reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Every member of an assigned Admin Group receives the role's permissions without qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role",
+      "quote": "If your tenant allows unlicensed admins, Intune role assignments only apply to direct members of the assigned security group. Members of nested groups do not receive these assignments by default.",
+      "severity": "blocker",
+      "fix": "Qualify both occurrences: 'Every direct member receives the role's permissions. If the tenant allows unlicensed admins, nested-group members do not receive the assignment by default; a nested-group user with an Intune licence does receive the role.' Cite https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions; Scope",
+      "type": "applicability",
+      "claim": "Intune RBAC permissions govern administrators' management access rather than granting end users administrative roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role",
+      "quote": "RBAC roles to users who administer your Intune subscription. RBAC roles are assigned to groups, and not individual users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Defender portal security settings management uses the same Intune RBAC permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Security settings management through the Defender portal uses the same Intune RBAC permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Enabled Multi Admin Approval can require a second administrator to approve role permission, admin group or member group assignment changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/create-custom-role",
+      "quote": "When this setting is on, a second administrator must approve changes to roles. These changes can include updates to role permissions, admin groups, or member group assignments. The change takes effect only after the approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope; Open questions",
+      "type": "role",
+      "claim": "Learn names Endpoint Security Manager, Help Desk Operator and Read Only Operator as built-in roles with endpoint security access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+      "quote": "Endpoint Security Manager - Full management capabilities across all endpoint security policies. Help Desk Operator - Limited operational tasks and read access. Read Only Operator - View-only access to policies and reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Custom roles can include any Intune RBAC permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/overview#rbac-roles",
+      "quote": "These custom roles can include any Intune RBAC permission, allowing for refined admin access and support for the principle of least-privileged access within the organization.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/intune/fundamentals/role-based-access-control/overview to sources for the statement that custom roles can include any Intune RBAC permission."
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Learn says the Microsoft Entra Intune Service Administrator role is needed to create, edit or assign custom roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/create-custom-role",
+      "quote": "To create, edit, or assign roles, your account must have the following role in Microsoft Entra ID: Intune Service Administrator",
+      "severity": "minor",
+      "fix": "Retain the attribution to the custom-role page, but add: 'The assignment page instead documents Intune Role Administrator as the least-privileged built-in role, or a custom role with Roles Assign/Create/Delete/Read/Update and Organization Read, for managing RBAC roles and assignments.' Cite https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role. Apply this qualification to the control note and repeated role requirement."
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "The permissions are a new option within the licensed Intune service, so the licensing model is included.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/licensing",
+      "quote": "Microsoft Intune Plan 1: the base service. Cloud-based unified endpoint management for devices and apps. ... An Intune license is required for any user or device that benefits directly or indirectly from the Microsoft Intune service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Any user or device benefiting from Intune requires an Intune licence, without an administrator exception.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/intune/fundamentals/licensing",
+      "quote": "Administrators can sign in to and manage Microsoft Intune without an assigned Intune license. This access is enabled by default for tenants created after July 2021 and applies to all administrator roles",
+      "severity": "blocker",
+      "fix": "Add to both the licensing notes and paragraph: 'Administrators can manage Intune without an assigned Intune licence when unlicensed admin access is enabled, which is the default for tenants created after July 2021. Older tenants can enable it; nested-group administrators still require an Intune licence.' Cite https://learn.microsoft.com/intune/fundamentals/licensing#unlicensed-admin-access."
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Intune Plan 1 is the base service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/licensing",
+      "quote": "Microsoft Intune Plan 1: the base service. Cloud-based unified endpoint management for devices and apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence, price or meter specific to the granular endpoint security permissions is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune granular RBAC permissions license price meter Plan 1; \"498899\" Intune RBAC rollout default licensing. Read Intune licensing, manage-policies and EDR prerequisites; checked roadmap. Found general Intune and Defender requirements, no split-specific licence, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The EDR policy page lists Microsoft Intune Plan 1 as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/deploy-edr",
+      "quote": "Prerequisites ... License ... Microsoft Intune Plan 1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The EDR policy prerequisites include Microsoft Defender licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/deploy-edr",
+      "quote": "You need licenses for Microsoft Defender: Defender for Endpoint Plan 1 license per user; Microsoft 365 E5/A5/G5 (includes Defender for Endpoint Plan 2); Microsoft Defender XDR (standalone)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The permission split does not change the EDR licensing prerequisites.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Intune granular RBAC permissions license price meter Plan 1; \"498899\" Intune RBAC rollout default licensing. Read licensing, manage-policies and deploy-edr prerequisites; checked roadmap. None states that the planned split preserves EDR licensing.",
+      "severity": "blocker",
+      "fix": "Remove '; the permission split does not change that'. Retain only the documented present EDR prerequisites."
+    },
+    {
+      "n": 43,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Feature-specific rollout mechanics are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"498899\" Intune RBAC rollout default licensing; Intune endpoint security granular RBAC permissions default enabled existing roles migration November 2026. Read roadmap, manage-policies and searched What's new for RBAC/granular; no feature-specific rollout mechanics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The custom-role permission list documents Endpoint Detection and Response, Attack Surface Reduction and Security baselines categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/create-custom-role",
+      "quote": "Endpoint Detection and Response | Read | Read Endpoint Detection and Response (EDR) profiles. ... Attack Surface Reduction | Read | Read Attack Surface Reduction (ASR) profiles. ... Security baselines | Update | Update Security Baseline profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited custom-role permission list has no Antivirus, Firewall or Disk encryption category at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Antivirus, Firewall, Disk encryption, Endpoint Detection and Attack Surface in create-custom-role. Found EDR, ASR and Security baselines, but no Antivirus, Firewall or Disk encryption entry. Read manage-policies: Antivirus might temporarily appear in tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Intune admin center > Tenant administration > Roles > All roles > Create > Permissions reaches custom-role permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/create-custom-role",
+      "quote": "choose Tenant administration > Roles > All roles > Create. ... On the Basics page, enter a name and description ... On the Permissions page, choose the permissions you want to use with this role.",
+      "severity": "minor",
+      "fix": "Use the full route 'Tenant administration > Roles > All roles > Create > Basics > Permissions'. The omitted Basics page contains name and description fields, not a deciding policy or template choice."
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/deviceManagement/roleDefinitions creates a role definition whose rolePermissions sets its allowed permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-create?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/deviceManagement/roleDefinitions ... rolePermissions ... List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Tenant administration > Roles > All roles > role > Assignments > + Assign is the route into the role assignment wizard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role",
+      "quote": "go to Tenant administration > Roles > All roles. ... Select the role you want to assign and then select Assignments > + Assign. ... On the Admin Groups page, select Add groups ... On the Scope (Groups) page, add groups",
+      "severity": "minor",
+      "fix": "Extend the route to 'Tenant administration > Roles > All roles > role > Assignments > + Assign > Basics > Admin Groups > Add groups > group > Scope (Groups)'. The printed route is correct but stops at the wizard entrance rather than its administrator and scope controls."
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The cited POST /v1.0/deviceManagement/roleDefinitions/{roleDefinitionId}/roleAssignments reference documents setting both administrator groups and managed users or devices.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: graph roleAssignment create Intune members resourceScopes deviceAndAppManagementRoleAssignment. Read generic and derived assignment create/resource references. The nested call documents resourceScopes, not members; derived create documents members at /roleAssignments.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api.call with 'POST /v1.0/deviceManagement/roleAssignments' and its docs with https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroleassignment-create?view=graph-rest-1.0. Add to the note: 'Creates a deviceAndAppManagementRoleAssignment; the request body sets members for administrator security groups and resourceScopes for managed users or devices.' The existing generic roleAssignment reference documents resourceScopes but no members property."
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance guidance: At rollout; Governance controls",
+      "type": "role",
+      "claim": "The assignment wizard's Admin Groups page selects the groups receiving the role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role",
+      "quote": "On the Admin Groups page, select Add groups and then choose a group that contains the users you want to assign the roles permissions to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance guidance: At rollout; Governance controls",
+      "type": "role",
+      "claim": "The assignment wizard's Scope (Groups) page selects which users or devices those administrators can manage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role",
+      "quote": "On the Scope (Groups) page, add groups that contain only the users or devices that the members of the Admin Groups you selected in the previous step should be allowed to manage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The printed role-definition Graph call creates a new definition rather than editing an existing role's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-create?view=graph-rest-1.0",
+      "quote": "Create a new roleDefinition object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "End users and devices are not affected by the permission split.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Intune granular endpoint security RBAC permissions existing custom roles migration automatic default Security baselines Antivirus Firewall Disk encryption. Read roadmap and manage-policies. They describe administrative permissions, but do not promise no effect on end users or devices.",
+      "severity": "minor",
+      "fix": "Remove 'end users and devices are not affected by a permission split' from the impact rationale. Keep the low-impact judgement focused on administrators who author or hold roles."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T03:16:22.257Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498899",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/create-custom-role",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-create?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/intune-rbac-roleassignment-create?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/fundamentals/licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/deploy-edr",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which endpoint security permissions a custom Intune role grants",
+        "docs": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/create-custom-role",
+        "reachable": true,
+        "segments": [
+          "Tenant administration",
+          "Roles",
+          "All roles",
+          "Create",
+          "Permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which endpoint security permissions a custom Intune role grants",
+        "docs": "https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-create?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/deviceManagement/roleDefinitions",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which administrators hold a role and which users or devices they manage",
+        "docs": "https://learn.microsoft.com/intune/fundamentals/role-based-access-control/assign-role",
+        "reachable": true,
+        "segments": [
+          "Tenant administration",
+          "Roles",
+          "All roles",
+          "role",
+          "Assignments",
+          "+ Assign"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which administrators hold a role and which users or devices they manage",
+        "docs": "https://learn.microsoft.com/graph/api/intune-rbac-roleassignment-create?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/deviceManagement/roleDefinitions",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

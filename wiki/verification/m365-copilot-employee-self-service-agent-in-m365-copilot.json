@@ -3,7 +3,7 @@
   "roadmapId": 487836,
   "title": "Microsoft 365 Copilot: Employee Self-Service agent for HR and IT questions and tasks",
   "status": "verified-with-gaps",
-  "date": "2026-11-21",
+  "date": "2026-11-25",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,32 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 81,
-    "confirmed": 80,
+    "claims": 90,
+    "confirmed": 89,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
     "minor": 6
   },
-  "summary": "The briefing passes: its roadmap facts, licensing, approval requirement and listed controls are supported by Microsoft documentation. Minor corrections should clarify the audience wizard and sandbox recommendation, acknowledge conflicting guidance about Teams blocking, and identify checklist controls missing from the table.",
+  "summary": "The briefing's rollout facts, licensing routes, approval controls and Graph operations are supported by the roadmap and Microsoft documentation. Minor corrections should distinguish the publishing wizard from audience selection, describe sandbox deployment as a recommendation, and acknowledge the conflicting guidance about blocking in Teams.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "The Employee Self-Service agent in Microsoft 365 Copilot answers workplace policy questions and acts on HR and IT tasks.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The Employee Self-Service Agent in M365 Copilot expedites answers for the most common workplace policy-related questions and takes action on key HR and IT related tasks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "claim": "Roadmap item 487836 is Launched.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
@@ -47,7 +36,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is November CY2025.",
@@ -58,13 +47,24 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is August CY2025.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"August CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap feature is Employee Self-Service Agent in Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Copilot (Microsoft 365): Employee Self-Service Agent in M365 Copilot\", \"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
@@ -83,7 +83,7 @@
       "n": 6,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS, Mobile and Web.",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mobile and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mobile\", \"Web\"]",
@@ -103,45 +103,45 @@
     },
     {
       "n": 8,
-      "where": "front matter: products",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "claim": "The roadmap says the agent answers common workplace policy questions.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "quote": "expedites answers for the most common workplace policy-related questions",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "What's changing; Open questions",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not specify whether it covers custom engine agents or declarative agents.",
+      "claim": "The roadmap says the agent takes action on key HR and IT tasks.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "connecting employees to authorized knowledge bases and HR/IT systems of record for faster resolution time and a streamlined employee experience.",
+      "quote": "takes action on key HR and IT related tasks",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Employee Self-Service declarative agents are prebuilt Copilot Studio templates.",
+      "type": "record",
+      "claim": "The roadmap says the agent connects employees to authorised knowledge bases and HR/IT systems of record.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
-      "quote": "They provides prebuilt Copilot declarative agent templates ... Copilot Studio declarative agent templates",
+      "source": "roadmap record",
+      "quote": "connecting employees to authorized knowledge bases and HR/IT systems of record",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The declarative agent starters include HR and IT templates.",
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap record does not identify whether it covers the declarative agents or custom engine agent.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
-      "quote": "Employee Self-Service agent starters are agent templates designed around specific domains, starting with HR and IT.",
+      "source": "roadmap record",
+      "quote": "The Employee Self-Service Agent in M365 Copilot expedites answers for the most common workplace policy-related questions and takes action on key HR and IT related tasks",
       "severity": null,
       "fix": null
     },
@@ -149,7 +149,51 @@
       "n": 12,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Hub starter brings HR, IT and other specialized agents together.",
+      "claim": "Microsoft documents declarative and custom engine forms of Employee Self-Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
+      "quote": "This article applies to the Employee Self-Service HR, Employee Self-Service IT, and Employee Self-Service Hub declarative agent templates. ... For custom engine agents, see Publish the Employee Self-Service agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Employee Self-Service declarative agents are prebuilt Copilot Studio templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
+      "quote": "They provides prebuilt Copilot declarative agent templates that organizations can configure and extend",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An HR declarative agent starter is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
+      "quote": "HR agent starter: Helps employees quickly find answers and get guidance for common HR needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An IT declarative agent starter is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
+      "quote": "IT agent starter: Helps employees solve common IT issues through guided troubleshooting and automated support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Hub starter brings specialised agents together.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "The Employee Self-Service Hub agent starter lets organizations bring together HR, IT, and other specialized agents into a single employee self-service experience.",
@@ -157,10 +201,21 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Employee Self-Service declarative agents run inside Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
+      "quote": "Employee Self-Service is implemented as declarative agents that run within the Microsoft 365 Copilot experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Declarative agents can use SharePoint organizational HR and IT knowledge.",
+      "claim": "The declarative agents can use SharePoint HR and IT knowledge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "SharePoint: Organizational HR and IT knowledge.",
@@ -168,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 19,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Declarative agents can use ServiceNow knowledge articles.",
+      "claim": "The declarative agents can use ServiceNow knowledge articles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "ServiceNow knowledge: ServiceNow knowledge base articles made available through the Microsoft 365 Copilot Graph connector.",
@@ -179,21 +234,21 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 20,
       "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "Declarative agents include preconfigured supported Workday HR self-service workflows.",
+      "claim": "The declarative agents connect to Workday for supported HR self-service workflows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
-      "quote": "Employee Self-Service declarative agents also include preconfigured scenarios for: Workday: Supported HR self-service workflows.",
+      "quote": "Workday: Supported HR self-service workflows.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 21,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Declarative agents support ServiceNow HRSD and ITSM actions including getting, creating and updating cases.",
+      "claim": "The declarative agents include ServiceNow HRSD and ITSM actions for getting cases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "ServiceNow HRSD and ITSM: Supported ServiceNow actions, including getting, creating, and updating cases",
@@ -201,7 +256,29 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 22,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The declarative agents can create ServiceNow cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
+      "quote": "ServiceNow HRSD and ITSM: Supported ServiceNow actions, including getting, creating, and updating cases",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The declarative agents can update ServiceNow cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
+      "quote": "ServiceNow HRSD and ITSM: Supported ServiceNow actions, including getting, creating, and updating cases",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The custom engine agent is the earlier Employee Self-Service experience.",
@@ -209,21 +286,32 @@
       "source": "https://learn.microsoft.com/copilot/employee-self-service/overview",
       "quote": "This documentation applies to the Employee Self-Service Custom Engine Agent. If you're deploying the latest Employee Self-Service experience, see Employee Self-Service Declarative Agents.",
       "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/copilot/employee-self-service/overview for the description of the custom engine agent as the earlier experience."
+      "fix": "Add https://learn.microsoft.com/copilot/employee-self-service/overview to sources for the description of the custom engine agent as the earlier experience."
     },
     {
-      "n": 18,
+      "n": 25,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The custom engine agent is published to Microsoft Copilot and approved in the admin center.",
+      "claim": "The custom engine agent can be published to the Microsoft Copilot channel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
-      "quote": "Then check Make agent available in Microsoft Copilot. ... Select Submit for admin approval to send the Employee Self-Service agent Teams app to your administrator.",
+      "quote": "Select Edit details in the details pane for Microsoft Teams. Then check Make agent available in Microsoft Copilot.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 26,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "default",
+      "claim": "Custom engine agent deployment requires administrator approval and selected-user deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
+      "quote": "Approval is the final step to deploy the Employee Self-Service agent to your users through Integrated apps. ... Select Deploy app. Then choose the set of users you want to deploy the app to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "What's changing; rationale: impact",
       "type": "availability",
       "claim": "Employees can access Employee Self-Service through the Microsoft Copilot mobile app on iOS and Android.",
@@ -234,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 28,
       "where": "What's changing; Governance guidance: Before rollout; Open questions",
       "type": "availability",
-      "claim": "Learn still states that access to declarative agents is rolling out in waves.",
+      "claim": "Learn says access to the declarative agents is rolling out in waves despite the roadmap's Launched status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "Access to Employee Self-Service declarative agents is rolling out in waves.",
@@ -245,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 29,
       "where": "What's changing; Governance guidance: Before rollout",
       "type": "availability",
-      "claim": "Microsoft advises working with the Microsoft account team to determine organizational availability.",
+      "claim": "Learn tells organisations to work with their Microsoft account team to determine availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "Work with your Microsoft account team to determine availability for your organization.",
@@ -256,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 30,
       "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "English is the only formally validated language for Employee Self-Service scenarios.",
+      "type": "availability",
+      "claim": "English is currently the only formally validated language for Employee Self-Service scenarios.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "English is currently the only language that has been formally validated for Employee Self-Service scenarios.",
@@ -267,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 31,
       "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The agent requires administrative approval and audience assignment before employee rollout, making it admin-opt-in.",
+      "claim": "The agent is admin-opt-in: approval and audience assignment are required before employee rollout.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
       "quote": "Publish the Employee Self-Service declarative agent, obtain administrator approval, and assign the intended audience before you roll it out to employees in Microsoft 365 Copilot Chat.",
@@ -278,10 +366,32 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 32,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Submitting the production agent from Copilot Studio requests catalogue availability rather than granting everyone access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
+      "quote": "Submitting that production agent for admin approval requests catalog availability; it doesn't by itself grant access to everyone in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Administrator approval and audience assignment determine who can discover and use the declarative agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
+      "quote": "Approval and audience assignment determine who can discover and use the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Learn instructs administrators to check that answers and citation links respect employees' source permissions.",
+      "claim": "Learn says answers and citations should respect the employee's source permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
       "quote": "Verify access to each enabled knowledge source. Check that answers and citation links respect the employee's source permissions.",
@@ -289,18 +399,18 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Data exposure; Why it matters",
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Catalog approval determines discoverability with audience assignment but does not grant access to restricted data.",
+      "claim": "Catalogue approval does not grant access to restricted data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
-      "quote": "Approval and audience assignment determine who can discover and use the agent. Knowledge-source and external-system permissions still apply; catalog approval doesn't grant access to restricted data.",
+      "quote": "Knowledge-source and external-system permissions still apply; catalog approval doesn't grant access to restricted data.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "default",
       "claim": "The custom engine agent uses Microsoft Entra authentication by default.",
@@ -311,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Authenticate manually is the option for using another identity provider.",
+      "claim": "Authenticate manually is the documented option for using another identity provider.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
       "quote": "If your organization needs to use a different identity provider than Microsoft Entra, then you need to choose the Authenticate manually option",
@@ -322,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 38,
       "where": "Risk assessment: Security & identity",
       "type": "availability",
-      "claim": "The Microsoft Copilot channel is unavailable with authentication options other than Authenticate with Microsoft.",
+      "claim": "The Microsoft Copilot channel is unavailable when authentication options other than Authenticate with Microsoft are used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
       "quote": "Microsoft Copilot channel isn't available for the Employee Self-Service agent while using options other than Authenticate with Microsoft.",
@@ -333,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 39,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Employees might receive a first-use consent prompt for SSO-enabled Power Platform connectors.",
+      "claim": "First-use employees might receive consent prompts for SSO-enabled Power Platform connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
       "quote": "When employees use the Employee Self-Service agent for the first time, end users might be prompted to provide consent to SSO-enabled Power Platform connectors when interacting with the agent.",
@@ -344,54 +454,54 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Disabling the connector consent prompt is not available as a self-service setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Employee Self-Service SSO connector consent disable self service configuration rollback declarative ALM. Opened /copilot/employee-self-service/publish; its consent section explicitly says this setting isn't currently available as a self-service configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
+      "n": 40,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Organizations request disabling the consent prompt through a Microsoft 365 admin center support request.",
+      "claim": "Disabling the documented SSO consent prompt is not currently a self-service configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
-      "quote": "Submit a support request through the Microsoft 365 admin center. In your request, specify that you want to disable the SSO consent form for the Employee Self-Service agent and authorize the connection on behalf of all users.",
+      "quote": "This setting isn't currently available as a self-service configuration. Customers who prefer to disable this per-user consent prompt can request to have the feature disabled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "Declarative agent lifecycle management has no built-in approval flows.",
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft documents requesting SSO consent-prompt disabling through support in the Microsoft 365 admin center.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Employee Self-Service SSO connector consent disable self service configuration rollback declarative ALM. Opened /copilot/employee-self-service/declarative-agent-publish and read ALM search excerpts; both explicitly state ALM has no built-in approvals.",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
+      "quote": "Submit a support request through the Microsoft 365 admin center. ... specify that you want to disable the SSO consent form for the Employee Self-Service agent and authorize the connection on behalf of all users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "Rollback is not currently supported for declarative agent lifecycle management.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Employee Self-Service SSO connector consent disable self service configuration rollback declarative ALM. Opened /copilot/employee-self-service/declarative-agent-publish: rollback isn't currently supported; ALM search excerpts describe new authoring, not rollback.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 42,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "A configuration defect is corrected in Dev, published, validated in Test and promoted again.",
+      "claim": "Declarative agent lifecycle management has no built-in approval flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
+      "quote": "ALM doesn't provide built-in approval flows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Rollback is not currently supported in the declarative agent lifecycle process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
+      "quote": "rollback isn't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A defective declarative release is corrected in Dev, validated in Test and promoted again.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
       "quote": "If you find a defect, correct it in Dev, publish, validate in Test, and promote again.",
@@ -399,54 +509,43 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Change & support",
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The custom engine agent might appear in the Microsoft Teams app after publishing.",
+      "claim": "The custom engine agent might appear in Microsoft Teams after publishing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
-      "quote": "While the agent might appear in the Microsoft Teams app after publishing, it isn't supported in the standalone Teams experience.",
+      "quote": "While the agent might appear in the Microsoft Teams app after publishing",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 46,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "availability",
       "claim": "The custom engine agent is not supported in the standalone Teams experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
-      "quote": "While the agent might appear in the Microsoft Teams app after publishing, it isn't supported in the standalone Teams experience.",
+      "quote": "it isn't supported in the standalone Teams experience. Users who access it from Teams might encounter errors or broken functionality.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Governance controls; Governance guidance: At rollout",
+      "n": 47,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout; Governance controls",
       "type": "applicability",
-      "claim": "Learn documents blocking the custom engine agent in the Teams admin center.",
+      "claim": "Learn documents redirecting users to Copilot or blocking the custom engine agent in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
-      "quote": "Block the agent in Teams Use the Teams admin center to prevent it from appearing in Teams.",
+      "quote": "Redirect users from Teams to Copilot Create a topic in Copilot Studio that detects Teams access and displays a redirect message. ... Block the agent in Teams Use the Teams admin center to prevent it from appearing in Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Blocking the custom engine agent in Teams does not affect its availability in Microsoft Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
-      "quote": "Blocking the agent in Teams doesn't affect availability in Microsoft Copilot. Users can still access it via Copilot Business Chat.",
-      "severity": "minor",
-      "fix": "After this statement add: 'However, the Teams governance page says tenants migrated to unified app management can allow or block an agent in either admin center; confirm your tenant's management model before treating a Teams block as isolated from Copilot.' Cite https://learn.microsoft.com/microsoftteams/manage-apps#allow-or-block."
-    },
-    {
-      "n": 39,
+      "n": 48,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Publishing can take more than 48 hours.",
+      "claim": "Microsoft documents the possibility of custom engine publishing taking more than 48 hours.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
       "quote": "Workaround if publishing takes more than 48 hours",
@@ -454,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 49,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Learn provides an agent-manifest download and upload workaround for delayed publishing.",
+      "claim": "Learn gives a downloaded-manifest upload workaround for publishing delays.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
       "quote": "Use the Download.zip option to download the agent manifest. ... Upload the download manifest file from the previous step and follow the rest of the process",
@@ -465,32 +564,21 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing.model; summary; rationale: cost",
+      "n": 50,
+      "where": "front matter: licensing.model; summary; Why it matters; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The licensing model is mixed, combining licensed inclusion with Copilot Credit consumption.",
+      "claim": "Licensing is mixed, with Microsoft 365 Copilot licence inclusion and Copilot Credit consumption routes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
-      "quote": "With a Microsoft 365 Copilot license: Employee self-service agent usage is included in the license ... Without a Microsoft 365 Copilot license: Employee self-service agent usage consumes Copilot Credits.",
+      "quote": "With a Microsoft 365 Copilot license: Employee self-service agent usage is included in the license when the agent uses the authenticated employee's identity. ... Without a Microsoft 365 Copilot license: Employee self-service agent usage consumes Copilot Credits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing; Why it matters; Scope",
+      "n": 51,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "Employee usage billing depends on the employee's Microsoft 365 Copilot license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
-      "quote": "Employee usage is billed based on the employee's Microsoft 365 Copilot license and the agent capabilities they use:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing; Why it matters",
-      "type": "licensing",
-      "claim": "Usage is included with a Microsoft 365 Copilot license when the agent uses the authenticated employee's identity.",
+      "claim": "Microsoft 365 Copilot licensed employee usage is included when the agent uses the authenticated employee's identity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "With a Microsoft 365 Copilot license: Employee self-service agent usage is included in the license when the agent uses the authenticated employee's identity.",
@@ -498,10 +586,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 52,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Fair usage limits and exclusions qualify licensed inclusion.",
+      "claim": "Fair usage limits and exclusions apply to the licensed employee inclusion.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "Fair usage limits and exclusions apply.",
@@ -509,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
+      "n": 53,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Scope; rationale: cost",
       "type": "cost",
-      "claim": "Usage without a Microsoft 365 Copilot license consumes Copilot Credits, supporting variable cost.",
+      "claim": "Employee usage without a Microsoft 365 Copilot licence consumes Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "Without a Microsoft 365 Copilot license: Employee self-service agent usage consumes Copilot Credits.",
@@ -520,7 +608,7 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 54,
       "where": "Cost and licensing; Governance guidance: Before rollout; Governance controls",
       "type": "cost",
       "claim": "Pay-as-you-go billing or Copilot Credit capacity must be available to the environment before enabling unlicensed employee access.",
@@ -531,7 +619,7 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 55,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "One interaction can consume credits for multiple capabilities.",
@@ -542,10 +630,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 56,
       "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance: Before rollout",
       "type": "licensing",
-      "claim": "Makers need Copilot Studio access and required target-environment permissions.",
+      "claim": "Makers need Copilot Studio access to install, configure and publish the declarative agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "To install, configure, and publish Employee Self-Service declarative agents, makers need access to Copilot Studio and the required permissions in the target Power Platform environment.",
@@ -553,10 +641,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 57,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "A Microsoft 365 Copilot license includes Copilot Studio access for extending Microsoft 365 Copilot with agents.",
+      "claim": "A Microsoft 365 Copilot licence includes Copilot Studio access for extending Microsoft 365 Copilot with agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "A Microsoft 365 Copilot license includes access to Copilot Studio to extend Microsoft 365 Copilot with agents.",
@@ -564,7 +652,7 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 58,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "A Copilot Studio User License can instead be assigned to each maker.",
@@ -575,10 +663,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 59,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The custom engine agent includes Workday, SAP SuccessFactors and ServiceNow premium connectors at no additional cost.",
+      "claim": "The custom engine prerequisites include Workday, SAP SuccessFactors and ServiceNow premium connectors at no additional cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
       "quote": "The Employee Self-Service agent includes the Workday, SAP SuccessFactors, and ServiceNow premium connectors at no additional cost.",
@@ -586,10 +674,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 60,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Appropriate licenses for those third-party systems are still required.",
+      "claim": "Appropriate third-party system licences are still required for those integrations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
       "quote": "However, you still need the appropriate licenses for those third-party systems to integrate them with the agent.",
@@ -597,10 +685,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 61,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "The custom engine agent uses agent flows.",
+      "claim": "The custom engine prerequisites say the agent uses agent flows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
       "quote": "The Employee Self-Service agent uses agent flows.",
@@ -608,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "The custom engine agent requires Copilot Studio capacity.",
+      "n": 62,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot Studio capacity must be set up for the custom engine agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
       "quote": "You need to set up the Copilot Studio capacity.",
@@ -619,10 +707,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 63,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The custom engine prerequisites page says users without assigned Copilot licenses are billed pay-as-you-go.",
+      "claim": "The custom engine prerequisites say users without assigned Copilot licences are billed pay-as-you-go.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
       "quote": "Users without assigned licenses are automatically billed on a Pay-as-you-go basis.",
@@ -630,21 +718,32 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 64,
       "where": "Cost and licensing; Open questions",
       "type": "cost",
-      "claim": "Microsoft's Billing rates and management page publishes current Copilot Credit rates.",
+      "claim": "Microsoft's Billing rates and management page publishes current Copilot Credit rates and licensing exclusions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Copilot Credits billing rates ... Classic answer | 1 Copilot Credit ... Generative answer | 2 Copilot Credits ... Agent action | 5 Copilot Credits",
+      "quote": "Classic answer | 1 Copilot Credit | No charge ... The \"No charge\" inclusion doesn't apply to agents powered by the Microsoft Copilot harness. Usage is limited to fair usage limits.",
       "severity": "minor",
-      "fix": "Link 'billing rates page' to https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and add that page to sources; no rates need to be added."
+      "fix": "Link 'billing rates page' to https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and add that URL to sources. No rates need to be added."
     },
     {
-      "n": 57,
+      "n": 65,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Makers and environment administrators need Copilot Studio access and Power Platform environment permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
+      "quote": "Environment admins and makers | Copilot Studio | Copilot Studio licensing and subscriptions ... Power Platform administrator ... Power Platform maker",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
       "where": "Scope",
       "type": "role",
-      "claim": "The prerequisites page lists Global admin for assigning user roles in the Microsoft admin center.",
+      "claim": "The prerequisites list Global admin for assigning user roles in the Microsoft admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
       "quote": "Global admin | User who has permissions to configure and delegate other roles | Assign user roles | Microsoft admin center",
@@ -652,21 +751,21 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 67,
       "where": "Scope; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "The prerequisites page lists Power Platform administrator for environment configuration, role assignment and agent installation.",
+      "claim": "The prerequisites list Power Platform administrator for installing the agent and assigning Power Platform roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
-      "quote": "Power Platform administrator ... Create environments ... Assign user roles ... Install the Employee Self-Service agent",
+      "quote": "Power Platform administrator ... Create environments - Assign user roles - Install the Employee Self-Service agent",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 68,
       "where": "Scope; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "The prerequisites page lists Power Platform maker for configuring the Employee Self-Service agent.",
+      "claim": "The prerequisites list Power Platform maker for configuring the agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
       "quote": "Power Platform maker | User who has permission to make changes in a specific Power Platform environment. ... Configure the Employee Self-Service agent",
@@ -674,21 +773,21 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 69,
       "where": "Scope: Rollout",
       "type": "behaviour",
-      "claim": "Learn describes deployment through Copilot Studio starting in a sandbox.",
+      "claim": "Learn describes declarative agent deployment through Copilot Studio starting in a sandbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "Add the Employee Self-Service declarative agent package through Copilot Studio. We recommend starting in a sandbox environment",
       "severity": "minor",
-      "fix": "Replace the sentence's deployment clause with 'Learn says the declarative agents are deployed through Copilot Studio and recommends starting in a sandbox'; retain the separately supported one-at-a-time statement."
+      "fix": "Replace the deployment clause with 'Learn says the declarative agents are deployed through Copilot Studio and recommends starting in a sandbox'; retain the separately supported one-at-a-time statement."
     },
     {
-      "n": 61,
+      "n": 70,
       "where": "Scope: Rollout",
       "type": "behaviour",
-      "claim": "HR and IT declarative agent starters must be deployed one at a time.",
+      "claim": "The HR and IT declarative starters must be deployed one at a time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
       "quote": "You can use both starters as part of the same Employee Self-Service experience, but they must be deployed one at a time.",
@@ -696,7 +795,7 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 71,
       "where": "Scope: Rollout",
       "type": "behaviour",
       "claim": "Dev, Test and Prod are quality gates in the same Power Platform environment.",
@@ -707,19 +806,19 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[0].ui",
+      "n": 72,
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Microsoft 365 admin center block control is at Agents > All agents > agent > Block.",
+      "claim": "The block control is at Microsoft 365 admin center > Agents > All agents > agent > Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... immediately under the agent's name, select Block or Unblock.",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[0].api",
+      "n": 73,
+      "where": "controls[0].api; Governance controls table",
       "type": "command",
       "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
       "status": "supported",
@@ -729,10 +828,10 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[0].note; Governance controls; rationale: risk",
+      "n": 74,
+      "where": "controls[0].note; Governance guidance: After rollout; rationale: risk",
       "type": "applicability",
-      "claim": "The admin center block action restricts agent access across the organization.",
+      "claim": "The agent block control prevents users across the organisation from using the selected agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
       "quote": "Block and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
@@ -740,65 +839,65 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[0].note; controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The printed Package Management API calls are beta.",
+      "n": 75,
+      "where": "controls[0].note; Governance controls: Graph calls",
+      "type": "command",
+      "claim": "The Package Management Graph operations require delegated permissions and do not offer application permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. ... Application | Not available. | Not available.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "The printed Package Management API calls require delegated permissions rather than application permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All ... Application | Not available. | Not available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[0].note; controls[1].note; Governance controls",
+      "n": 76,
+      "where": "controls[0].note; controls[1].note; Governance controls: Graph calls",
       "type": "licensing",
-      "claim": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[1].ui; Governance guidance: At rollout",
+      "n": 77,
+      "where": "controls[0].note; controls[1].note; Governance controls: Graph calls",
+      "type": "command",
+      "claim": "Both printed Package Management Graph calls use the beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported. ... PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[1].ui; controls[1].note; Governance guidance: At rollout; Governance controls table",
       "type": "admin-path",
       "claim": "The audience approval route is Microsoft 365 admin center > Agents > All agents > Requests > agent > Publish to store.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-publish",
       "quote": "Select Agents > All agents > Requests. ... Select the submitted Employee Self-Service agent. ... Select Publish to store to open the publishing wizard. ... Select the users or groups that can install the agent.",
       "severity": "minor",
-      "fix": "The path correctly reaches the publishing wizard but stops before audience selection. Keep the path and change the note's first sentence to 'Publish to store opens the publishing wizard; in that wizard, select the users or groups that can install the agent.'"
+      "fix": "Keep the path and replace the note's first sentence with 'Publish to store opens the publishing wizard; in that wizard, select the users or groups that can install the agent.' Apply the same note change to the rendered controls table."
     },
     {
-      "n": 70,
-      "where": "controls[1].api",
+      "n": 79,
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} updates package audience settings.",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} updates package audience and deployment settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... allowedUsersAndGroups ... Users/groups for whom the package is available.",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... allowedUsersAndGroups ... acquireUsersAndGroups ... availableTo ... deployedTo",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "controls[1].note",
+      "n": 80,
+      "where": "controls[1].note; Governance controls table",
       "type": "command",
-      "claim": "The package update request uses allowedUsersAndGroups and availableTo to set who can access the package.",
+      "claim": "The update request body uses allowedUsersAndGroups and availableTo to configure who can access the package.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
       "quote": "allowedUsersAndGroups ... Users/groups for whom the package is available. ... availableTo ... Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups.",
@@ -806,10 +905,10 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance controls",
+      "n": 81,
+      "where": "Governance controls: Availability",
       "type": "applicability",
-      "claim": "Blocking a Copilot Studio agent affects Microsoft Copilot and other host products including Outlook and Teams.",
+      "claim": "Blocking a Copilot Studio agent affects availability and functionality in Microsoft Copilot and other hosts such as Outlook and Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
       "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products",
@@ -817,10 +916,21 @@
       "fix": null
     },
     {
-      "n": 73,
+      "n": 82,
+      "where": "Governance controls: Availability",
+      "type": "applicability",
+      "claim": "The custom engine publishing page says blocking the agent in Teams does not affect availability in Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/publish",
+      "quote": "Blocking the agent in Teams doesn't affect availability in Microsoft Copilot. Users can still access it via Copilot Business Chat.",
+      "severity": "minor",
+      "fix": "After this statement add 'However, the Teams governance page says tenants migrated to unified app management can allow or block an agent in either admin center; confirm your tenant's management model before treating a Teams block as isolated from Copilot.' Cite https://learn.microsoft.com/microsoftteams/manage-apps#allow-or-block."
+    },
+    {
+      "n": 83,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The Copilot Studio Monitor tab provides declarative agent usage and employee feedback.",
+      "claim": "The Copilot Studio Monitor tab shows declarative agent usage and employee feedback.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-monitor-telemetry-feedback",
       "quote": "After you publish your Employee Self-Service declarative agent, use the Monitor tab in Microsoft Copilot Studio to review its usage and employee feedback.",
@@ -828,10 +938,10 @@
       "fix": null
     },
     {
-      "n": 74,
-      "where": "Governance guidance: After rollout",
+      "n": 84,
+      "where": "Governance guidance: After rollout; Governance controls: feedback sharing",
       "type": "applicability",
-      "claim": "Microsoft 365 admin center feedback sharing must be allowed before developers see reactions and comments in Monitor.",
+      "claim": "An administrator must allow feedback sharing before developers can see reactions and comments for agents published to the Microsoft Copilot channel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-monitor-telemetry-feedback",
       "quote": "For agents published to the Microsoft Copilot channel, an administrator must allow feedback sharing in the Microsoft 365 admin center before developers can view reactions and comments in Monitor.",
@@ -839,10 +949,10 @@
       "fix": null
     },
     {
-      "n": 75,
-      "where": "Governance controls",
+      "n": 85,
+      "where": "Governance controls: feedback sharing",
       "type": "admin-path",
-      "claim": "The feedback sharing setting is at Microsoft 365 admin center > Agents > Settings > Agent feedback sharing.",
+      "claim": "Agent feedback sharing is at Microsoft 365 admin center > Agents > Settings > Agent feedback sharing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-monitor-telemetry-feedback",
       "quote": "In the Microsoft 365 admin center, go to Agents > Settings > Agent feedback sharing.",
@@ -850,8 +960,8 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Governance controls",
+      "n": 86,
+      "where": "Governance controls: feedback sharing",
       "type": "default",
       "claim": "Agent feedback sharing is off by default.",
       "status": "supported",
@@ -861,63 +971,52 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Governance guidance; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist names governance checks beyond the two controls represented in the table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'an administrator must allow feedback sharing in the Microsoft 365 admin center'. Table rows: 'Whether the Employee Self-Service agent is available to any user in the organisation'; 'Which users or groups can install or receive the approved Employee Self-Service declarative agent'.",
-      "severity": "minor",
-      "fix": "Flag that the checklist's billing/capacity, maker access and role assignment, Teams blocking, feedback sharing and Purview audit checks have no corresponding controls-table rows. Do not add rows in this correction."
-    },
-    {
-      "n": 78,
+      "n": 87,
       "where": "Governance guidance: After rollout",
       "type": "applicability",
-      "claim": "Learn documents Microsoft Purview audit as a route for auditing employee interactions with Employee Self-Service agents.",
+      "claim": "Microsoft Purview audit is a documented route for reviewing end-user interactions with Employee Self-Service agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/auditing-logging",
-      "quote": "Audit with Microsoft Purview ... Microsoft Purview provides features for a comprehensive audit record of end-user activities when interacting with agents.",
+      "quote": "Audit with Microsoft Purview ... Microsoft Purview provides features for a comprehensive audit record of end-user activities when interacting with agents. Learn how to audit user interactions with agents in Microsoft Purview.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Scope",
-      "type": "licensing",
-      "claim": "The prerequisites page lists Copilot Studio licensing and access for environment admins and makers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/employee-self-service/prerequisites",
-      "quote": "Environment admins and makers | Copilot Studio | Copilot Studio licensing and subscriptions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap says the agent connects employees to authorized knowledge bases and HR/IT systems of record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "connecting employees to authorized knowledge bases and HR/IT systems of record for faster resolution time and a streamlined employee experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Employee Self-Service declarative agents run inside Microsoft 365 Copilot.",
+      "n": 88,
+      "where": "Governance controls: spending",
+      "type": "applicability",
+      "claim": "The environment's pay-as-you-go plan or available Copilot Credit capacity governs the documented consumption route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
-      "quote": "Employee Self-Service is implemented as declarative agents that run within the Microsoft 365 Copilot experience.",
+      "quote": "Employee self-service agent usage consumes Copilot Credits. Configure pay-as-you-go billing or make Copilot Credit capacity available to the environment before you enable employee access.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 89,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The cost rating is variable because unlicensed employee usage consumes metered Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/employee-self-service/declarative-agent-overview",
+      "quote": "Without a Microsoft 365 Copilot license: Employee self-service agent usage consumes Copilot Credits. Configure pay-as-you-go billing or make Copilot Credit capacity available to the environment",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist's governance controls are not all represented by controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'an administrator must allow feedback sharing in the Microsoft 365 admin center'; 'Search the Microsoft Purview audit log'. Table: only whole-organisation availability and approved-agent audience rows.",
+      "severity": "minor",
+      "fix": "Flag that the checklist's billing/capacity, maker access and role assignment, Teams blocking, feedback sharing and Purview audit checks have no corresponding controls-table rows. Do not add rows in this correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-21T14:01:53.555Z",
+    "at": "2026-11-25T03:16:48.583Z",
     "summary": {
       "links": 11,
       "unreachable": 0,
@@ -1033,5 +1132,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

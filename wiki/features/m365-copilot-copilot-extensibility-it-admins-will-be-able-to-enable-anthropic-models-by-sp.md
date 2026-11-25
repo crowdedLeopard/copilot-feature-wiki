@@ -78,19 +78,23 @@ changes:
     note: "Corrected after the independent check: default state now unknown for the assignment control, Anthropic's longer retention for flagged content added, the Agent Blocked error documented, December 9, 2026 changes restated, and the group-membership checklist step removed."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: noted that environment groups need Managed Environments and removed the unsupported claim about which models tenants first assessed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 56
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "0074ebbb1983d99494cec4322b2b0b52"
+  claims: 54
+  confirmed: 54
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "702dcf5815ed7593c792a817b237761b"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ The roadmap item describes admin controls for Anthropic as a model provider for 
 
 ## Why it matters
 
-Claude models are a different processor from the OpenAI models many tenants first assessed. Learn says Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK), and that Claude models in Microsoft offerings are currently excluded from the EU Data Boundary. If nobody acts in those regions, Claude models are therefore already available to users, and the user and group control is how a service owner narrows that to an approved population. Microsoft documents these regional defaults for Claude model availability, but does not state the new assignment control's default enforcement state.
+Claude models are a different processor from the OpenAI models. Learn says Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK), and that Claude models in Microsoft offerings are currently excluded from the EU Data Boundary. If nobody acts in those regions, Claude models are therefore already available to users, and the user and group control is how a service owner narrows that to an approved population. Microsoft documents these regional defaults for Claude model availability, but does not state the new assignment control's default enforcement state.
 
 In the EU, EFTA and UK, Learn's general default is the reverse: Claude models are disabled by default. The separate apps-only article says its setting is enabled by default for EU/EFTA/UK tenants created after March 25, 2026, so check the tenant's actual selection. For EU/EFTA/UK tenants, All users for Microsoft 365 apps only is removed on December 9, 2026; that selection and no previous selection change to All users. Other selections, including No users, don't change. A tenant that has never chosen an option should check it now rather than discover the new value later.
 
@@ -167,7 +171,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant) only, with platform Web. Lea
 
 Both rows are set by the AI Administrator or Global Administrator role. The assignment row limits who can use Anthropic; the disable row removes the Claude option for everyone, and Learn says you can enable Claude models again later.
 
-Copilot Studio and Power Platform have a second layer. After a provider is enabled in Microsoft 365, a Power Platform system admin allows its models in an environment (Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > applicable model provider setting (On or Off)) or through environment group rules, per the Power Platform page "Allow external language models for generative responses". Learn says the Microsoft 365 setting is the first step and does not by itself make models available there.
+Copilot Studio and Power Platform have a second layer. After a provider is enabled in Microsoft 365, a Power Platform system admin allows its models in an environment (Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > applicable model provider setting (On or Off)) or through environment group rules, per the Power Platform page "Allow external language models for generative responses". For the environment-group route, environments in the group must be Managed Environments. Learn says the Microsoft 365 setting is the first step and does not by itself make models available there.
 
 Anthropic models with Data Retention have their own opt-in in the Microsoft 365 admin center, off for all scenarios until the tenant admin enables them and chooses which users or groups may use them.
 
@@ -185,11 +189,8 @@ cost: Low. The Learn pages read name no separate licence, price or meter for Ant
 impact: Medium. Only users left out of an assignment notice, because Copilot features that depend on Anthropic may be unavailable to them or behave differently; admins make the change.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: Power Platform environment group rules / applicability: The alternative environment-group rule route is presented without its Managed Environments prerequisite. | Found: If an environment is part of an environment group, use environment group rules to manage external models across the group. ... Environments in an environment group must be managed environments. | Fix: Add immediately after the sentence offering environment group rules: 'For the environment-group route, environments in the group must be Managed Environments.' Cite https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses. | Source: https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses
-- [unsupported, major] Why it matters: opening sentence / behaviour: Many tenants first assessed OpenAI models before Claude. | Found: Searched: Microsoft Copilot OpenAI models Anthropic different processor initial models tenants assessed. Read application-card and model-availability excerpts, plus the cited Anthropic implementation page: none states which models tenants first assessed. | Fix: Remove 'many tenants first assessed' from the opening sentence of Why it matters.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters: opening sentence / behaviour: Claude's Anthropic processor is different from OpenAI. | Found: Claude Opus and Claude Sonnet models provided by Anthropic ... GPT models provided by OpenAI | Fix: Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card for the comparison of model providers in Why it matters. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card#models-and-training-data
+- [supported, minor] Why it matters / behaviour: Claude models use a different processor from OpenAI models. | Found: Anthropic is a subprocessor for Microsoft Copilot. ... OpenAI is a subprocessor for Microsoft Copilot. | Fix: Add https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card to sources for the sentence identifying the different processors. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card
 -->

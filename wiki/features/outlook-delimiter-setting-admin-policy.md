@@ -61,15 +61,17 @@ changes:
     note: "Corrected after verification: pilot advice now says pilot tenant, autonomy bullet reworded, licensing now included in Exchange Online, and risk and impact rationales narrowed."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 32 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 40 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-24"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 32
-  confirmed: 32
+  claims: 40
+  confirmed: 40
   unconfirmed: 0
   contradicted: 0
   attempts: 0

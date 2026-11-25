@@ -111,19 +111,23 @@ changes:
     note: "Corrected after verification: removed the after-rollout bullet that had no controls row, added the roadmap record for item 578872 as a source, and aligned the target dates in the text with the roadmap record."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-25"
+    note: "Corrected after verification: the comparison of the notice's dates with the roadmap's target months now says preview completion falls after the roadmap's November CY2026 preview target month."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 84 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 91
+  claims: 84
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "4044965ee1f5730f063e5857131195ee"
+  contradicted: 0
+  attempts: 0
+  hash: "8fd9f19c159843b4e75875de8a34ba0a"
 ---
 
 ## What's changing
@@ -132,7 +136,7 @@ Microsoft plans to add the legacy Office formats Word (.doc), Excel (.xls) and P
 
 The notice describes two cases. New auto-labeling policies automatically support the formats. Existing policies need a small edit and another policy run to restart the crawl so that legacy files are evaluated; the notice gives the example of adding or removing a policy comment, saving the change and running the policy again. The notice sets no act-by date and shows an end date of 2027-02-01.
 
-The notice was updated on 2026-11-24 and gives the rollout as Public Preview beginning in late November 2026 (previously early November) and expected to complete by early December 2026 (previously mid-November), then General Availability beginning in mid-December 2026 (previously late November) and expected to complete by late December 2026. The roadmap record still shows the item as In development, with preview targeted for November CY2026 and general availability for December CY2026, for Worldwide (Standard Multi-Tenant) on Web. The notice's dates fall within the roadmap's target months. All dates are Microsoft's targets.
+The notice was updated on 2026-11-24 and gives the rollout as Public Preview beginning in late November 2026 (previously early November) and expected to complete by early December 2026 (previously mid-November), then General Availability beginning in mid-December 2026 (previously late November) and expected to complete by late December 2026. The roadmap record still shows the item as In development, with preview targeted for November CY2026 and general availability for December CY2026, for Worldwide (Standard Multi-Tenant) on Web. The notice's preview and general availability start dates fall within the roadmap's target months; preview completion is expected by early December 2026, after the roadmap's November CY2026 preview target month. All dates are Microsoft's targets.
 
 Microsoft lists the feature under a second roadmap item, 578872, for GCC, GCC High and DoD, targeted for December CY2026; this page covers item 574363 only. At the time of writing (November 2026), the Learn page on auto-labeling policies lists Word (.docx), PowerPoint (.pptx), Excel (.xlsx) and PDF files as supported for SharePoint and OneDrive and does not mention legacy formats. What follows about this change is therefore the roadmap's and the notice's description.
 
@@ -229,10 +233,4 @@ The cmdlet reference states that Set-AutoSensitivityLabelPolicy is available onl
 risk: Medium. Once a policy covers legacy files, enforcement can label older files at scale; Microsoft's notice advises running a new or updated policy in simulation and reviewing the results before enabling it.
 cost: Low. Microsoft's service description lists client and service-side automatic sensitivity labeling as included with Microsoft 365 E5-tier licences, and no separate licence or meter for legacy formats is published; the known cost is admin time to edit and rerun policies.
 impact: Medium. People who own legacy files in the SharePoint sites and OneDrive accounts a policy covers may find them labelled; users outside those locations are not affected by the notice.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: rollout comparison / record: The notice's dates fall within the roadmap's target months. | Found: Public Preview: Beginning in late November 2026 (previously early November) and expected to complete by early December 2026 (previously mid-November) | Fix: Replace 'The notice's dates fall within the roadmap's target months.' with 'The notice's preview and general availability start dates fall within the roadmap's target months; preview completion is expected by early December 2026, after the roadmap's November CY2026 preview target month.'
 -->

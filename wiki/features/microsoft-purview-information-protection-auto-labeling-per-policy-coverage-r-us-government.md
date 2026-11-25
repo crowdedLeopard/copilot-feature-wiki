@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "The report is a view inside service-side auto-labeling, whose published entitlement is the E5 / P2-tier licensing on the Learn page; no separate report-specific licence or charge is documented as of November 2026. The Purview service description says AIP P1 must be assigned alongside AIP P2 for sensitivity labeling."
+  notes: "The report is a view inside service-side auto-labeling, whose published entitlement is the Client and service-side automatic sensitivity labeling entry in the Microsoft Purview service description; no report-specific licence or charge is documented as of November 2026. If AIP P2 is assigned, AIP P1 must also be assigned."
 audiences: ["compliance","m365-admin","security"]
 tags: ["purview","information-protection","sensitivity-labels","auto-labeling","monitoring","gcc","gcc-high","dod"]
 sources:
@@ -72,19 +72,23 @@ changes:
     note: "Correction: added the AIP P1 assignment requirement with its source, linked roadmap item 568935 as a source, and updated status to Rolling out per the current roadmap record."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Correction: licensing now follows the Purview service description's service-side automatic labeling entitlement (AIP P2 standalone and E5 Compliance removed), with matching cost and impact rationales."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 68
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "24c8119e0aab2d3fc85c3fcd039b5cd1"
+  claims: 75
+  confirmed: 75
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "93902e00793f52b462e1aff8283953c1"
 ---
 
 ## What's changing
@@ -120,7 +124,7 @@ Microsoft has not stated what happens on arrival, including whether the report a
 
 ## Cost and licensing
 
-Learn's auto-labeling page lists service-side auto-labeling (SharePoint, OneDrive, Exchange) as included with Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). The same page says auto-labeling of files and emails is not included at the E3 or Business Premium level. The [Microsoft Purview service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling) additionally says that AIP P1 must be assigned alongside AIP P2 for sensitivity labeling to be available.
+The [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling) lists client and service-side automatic sensitivity labeling as included with Microsoft 365 E5/A5/G5, Microsoft Purview Suite/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5 Information Protection and Governance, and Office 365 E5/A5/G5. Learn's auto-labeling page says that with E3 or Business Premium, manual labeling entitlement doesn't include automatic labeling. The service description additionally says that if AIP P2 is assigned to a user, that user must also have AIP P1 assigned for sensitivity labeling to be available.
 
 The coverage report is a view inside that auto-labeling surface. No separate licence or meter for the coverage report is documented as of November 2026. The indirect cost is admin time to review the report and to rerun simulation so that coverage is available again after 30 days.
 
@@ -174,15 +178,6 @@ The second row is today's alternative: it reports labeling progress for enabled 
 
 <!-- rationale
 risk: Low. The report is a view of labeling outcomes for policies already turned on, and the roadmap description says nothing about it labelling, moving or deleting files itself.
-cost: Low. Learn lists service-side auto-labeling with E5 and Azure Information Protection Premium P2 tier licences and documents no separate charge for the report; the cost to plan for is admin time.
-impact: Low. Only administrators and analysts who monitor auto-labeling policies see the report; end users are not mentioned in the roadmap description.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: first paragraph / licensing: Learn's auto-labeling page lists Microsoft 365 E5 Compliance as an included service-side auto-labeling entitlement. | Found: Client-side auto-labeling (Office apps) ... Microsoft 365 E5 Compliance ... Service-side auto-labeling ... Check the Client and service-side automatic sensitivity labeling entry ... Client-only entitlements don't establish service-side entitlement. | Fix: Replace the first licensing sentence with: 'The Microsoft Purview service description lists client and service-side automatic sensitivity labeling as included with Microsoft 365 E5/A5/G5, Microsoft Purview Suite/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5 Information Protection and Governance, and Office 365 E5/A5/G5.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-- [contradicted, blocker] Cost and licensing; front matter: licensing.notes; rationale: cost / licensing: Learn lists Azure Information Protection Premium P2 standalone as an included service-side auto-labeling entitlement. | Found: Client-side auto-labeling (Office apps) ... Azure Information Protection Premium P2 (standalone) ... Service-side auto-labeling ... Client-only entitlements don't establish service-side entitlement. | Fix: Use the service-side licensing sentence supplied for the first licensing paragraph, without AIP P2 standalone. Replace the licensing-notes opening with 'The report is a view inside service-side auto-labeling, whose published entitlement is the Client and service-side automatic sensitivity labeling entry in the Microsoft Purview service description.' Replace the cost rationale with 'Low. The Microsoft Purview service description lists service-side automatic sensitivity labeling in its included feature matrix; no separate report-specific charge is documented, so the cost to plan for is admin time.' Keep the separately supported AIP P1 assignment statement as a conditional requirement, not as proof of service-side entitlement. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Only administrators and analysts who monitor auto-labeling policies see the report. | Found: Searched: 'View coverage auto-labeling report default enable role license GCC'; 'Purview coverage simulation report PowerShell Graph API enable default role license government'. Read coverage and per-policy review sections; no exhaustive coverage-report audience statement. | Fix: Replace the impact rationale with 'Low. The roadmap describes a report for administrators monitoring enforced auto-labeling policies; end users are not mentioned in its description.'
+cost: Low. The Microsoft Purview service description lists service-side automatic sensitivity labeling in its included feature matrix; no separate report-specific charge is documented, so the cost to plan for is admin time.
+impact: Low. The roadmap describes a report for administrators monitoring enforced auto-labeling policies; end users are not mentioned in its description.
 -->

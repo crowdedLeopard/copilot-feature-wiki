@@ -75,15 +75,17 @@ changes:
     note: "Corrected after the independent check: the existing offline switch is described as allowing or blocking offline use, the Exchange admin center path is given in full, and an unmatched checklist bullet was removed."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 36 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 38 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-23"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 36
+  claims: 38
+  confirmed: 38
   unconfirmed: 0
   contradicted: 0
   attempts: 0

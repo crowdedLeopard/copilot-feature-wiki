@@ -31,6 +31,9 @@ sources:
   - title: "Manage federated connector availability"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors"
     kind: "learn"
+  - title: "Copilot connectors overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview"
+    kind: "learn"
   - title: "Agent settings in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
     kind: "learn"
@@ -72,13 +75,13 @@ controls:
     scope: "app"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot connectors > Your connections"
+      path: "Copilot connectors > Your connections > Staged rollout > Add staging"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview"
     api: null
     note: "Enable or disable the connector, or use Add staging in the Staged rollout column. Roles: see Scope."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-18"
@@ -91,19 +94,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 97 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Correction: replaced the claim that Learn documents exactly three admin controls, noted that the general connectors overview still calls federated connectors read-only, and gave the staging path and test-user path in full."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 93 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 96
+  claims: 93
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "db6df98f1ef5db602e01bff56d36e2cb"
+  contradicted: 0
+  attempts: 0
+  hash: "d03f57135365e13b5d12d5241c9daf4e"
 ---
 
 ## What's changing
@@ -112,9 +119,9 @@ The roadmap item states that admins can govern and manage federated Copilot conn
 
 Microsoft Learn describes federated Copilot connectors as connectors that use Model Context Protocol (MCP) to fetch data from an external system in real time, using the user's identity and permissions, without indexing that data into Microsoft 365. They are used from Microsoft 365 Copilot Chat, agents, Cowork, Copilot in Word, Excel, PowerPoint and Outlook, and the Researcher agent.
 
-The admin controls Learn documents are three. **Agent and plugin access** allows or blocks connectors in bulk by publisher type (Microsoft, your organisation, external publishers), including connectors released later. **User access** sets the maximum population of users for any agent or plugin, including connectors. **Copilot connectors > Your connections** lets an admin enable or disable an individual connector and limit it to users or Microsoft Entra ID groups with staged rollout. A setting on an individual connector takes precedence over the bulk setting; User access always applies, and changes can take up to 10 minutes to take effect.
+Learn documents the following three availability controls. **Agent and plugin access** allows or blocks connectors in bulk by publisher type (Microsoft, your organisation, external publishers), including connectors released later. **User access** sets the maximum population of users for any agent or plugin, including connectors. **Copilot connectors > Your connections** lets an admin enable or disable an individual connector and limit it to users or Microsoft Entra ID groups with staged rollout. A setting on an individual connector takes precedence over the bulk setting; User access always applies, and changes can take up to 10 minutes to take effect.
 
-Where a connector provides the tools, Copilot can also create, update or delete data in the connected system on the user's behalf. Learn says these tools initially need the user's explicit approval, that the Researcher agent stays read-only, and that write, update and delete tools are part of the connector and are not enabled separately. The connector's Tools view in the admin center is marked "Coming soon" on the overview page.
+Where a connector provides the tools, Copilot can also create, update or delete data in the connected system on the user's behalf. The general connectors overview still says federated connectors are read-only, alongside a note that write actions start in early October 2026; the feature-specific overview documents write actions. Learn says these tools initially need the user's explicit approval, that the Researcher agent stays read-only, and that write, update and delete tools are part of the connector and are not enabled separately. The connector's Tools view in the admin center is marked "Coming soon" on the overview page.
 
 ## Why it matters
 
@@ -166,7 +173,7 @@ The pages read publish no separate credit rate or meter for federated connectors
 - Clear the publisher types you do not want in **Agent and plugin access**, then turn on only the specific connectors you need from **Your connections**.
 - Pilot a connector with a group by using **Add staging** in the **Staged rollout** column; staging cannot extend beyond User access.
 - Tell users and the help desk that actions run with the user's own permissions in the third-party service and that write actions ask for approval.
-- Test as a test user in Copilot Chat **Settings** > **Sources** after the changes have had up to 10 minutes to apply.
+- Test as a test user in Microsoft 365 Copilot Chat > ... > **Settings** > **Sources** after the changes have had up to 10 minutes to apply.
 
 ### After rollout
 - Review enabled connectors whenever a publisher adds tools, because new or changed write-capable tools return to Needs approval.
@@ -182,7 +189,7 @@ The pages read publish no separate credit rate or meter for federated connectors
 <tbody>
 <tr><td data-label="Control"><strong>Which publisher types of connectors are available, including future connectors</strong><br><small>Tenant</small><br><small class="controls__note">Preview TCM: mode applyOnce, resourceType microsoft.agent.allowedagenttypes, resourceVersion 1; valueObject sets areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed. AI Administrator, delegated.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Maximum set of users who can use any agent, plugin or connector</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific users or groups, No users. Preview TCM: mode applyOnce, resourceType microsoft.agent.useraccess, userAssignmentCategory everyone or noOne only. AI Administrator, delegated.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether an individual connector is on, and which users or groups get it</strong><br><small>App</small><br><small class="controls__note">Enable or disable the connector, or use Add staging in the Staged rollout column. Roles: see Scope.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot connectors › Your connections <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an individual connector is on, and which users or groups get it</strong><br><small>App</small><br><small class="controls__note">Enable or disable the connector, or use Add staging in the Staged rollout column. Roles: see Scope.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot connectors › Your connections › Staged rollout › Add staging <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -201,14 +208,4 @@ The manage page also lists Agents > Tools for tool-level and connector-level blo
 risk: Medium. Federated connectors can read, and where a connector provides the tools, change data in third-party systems, but the admin center settings and initial tool approval cover much of that exposure, although users can allow a tool for the conversation or persistently.
 cost: Low. Each user needs a Microsoft 365 Copilot add-on licence (or Microsoft 365 E7), and Learn says connector grounding is included with it at no extra charge; the remaining cost is admin time.
 impact: Medium. Admins configure it, and licensed users who connect a source see it in Copilot Chat, agents and the Office apps, so a change to the settings is noticed by those users.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Governance controls / behaviour: The admin controls Learn documents are three. | Found: | **Tools block / unblock** | **Agents** > **Tools** | Tool-level and connector-level blocking. | | Fix: Replace 'The admin controls Learn documents are three.' with 'Learn documents the following three availability controls.' This removes the exhaustive count and agrees with the later paragraph acknowledging the further Agents > Tools control. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui / admin-path: Individual connector enablement and staging are reached at Microsoft 365 admin center > Copilot connectors > Your connections. | Found: Admins can manage federated Copilot connectors in the Microsoft 365 admin center by choosing **Copilot connectors** > **Your connections**. | Fix: The path correctly reaches the list but stops before the control. For staging, use 'Copilot connectors > Your connections > Staged rollout > Add staging'; retain the note that individual connectors can also be enabled or disabled there. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
-- [supported, minor] What's changing; Risk assessment: Autonomy & actions; rationale: risk / behaviour: Copilot can create data in a connected system when the connector provides the tools. | Found: Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf. | Fix: After the write-action description, add: 'The general connectors overview still says federated connectors are read-only, alongside a note that write actions start in early October 2026; the feature-specific overview documents write actions.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview, whose conflicting text is 'Federated connectors are read-only; they can search and fetch content but can't write data back.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
-- [supported, minor] Governance guidance: At rollout / admin-path: Test-user connector visibility can be checked in Copilot Chat > Settings > Sources. | Found: Select the ellipsis (**...**) menu, and then select **Settings**. ... In the settings dialog, select **Sources** in the left pane. | Fix: Replace the test-user navigation with 'Microsoft 365 Copilot Chat > ... > Settings > Sources'. The omitted ellipsis is a permitted minor path omission. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->
