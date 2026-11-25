@@ -31,6 +31,9 @@ sources:
   - title: "Manage sensitivity labels in Office apps"
     url: "https://learn.microsoft.com/purview/sensitivity-labels-office-apps"
     kind: "learn"
+  - title: "Create and configure sensitivity labels and their policies"
+    url: "https://learn.microsoft.com/purview/create-sensitivity-labels"
+    kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "docs"
@@ -44,21 +47,24 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Microsoft Purview portal > Label policy configuration > Policy settings > Require users to apply a label to their email or documents"
+      path: "Solutions > Information Protection > Publishing policies > policy > Edit Policy > Policy settings > Require users to apply a label to their email or documents"
       docs: "https://learn.microsoft.com/purview/sensitivity-labels-office-apps"
-    api: null
-    note: "Set per label policy. Learn describes a separate checkbox to clear mandatory labelling for email where the Outlook app supports it."
+    api:
+      kind: "powershell"
+      call: "Set-LabelPolicy -Identity <policy> -AdvancedSettings @{DisableMandatoryInOutlook=\"True\"}"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy"
+    note: "Set per label policy. Learn also describes a checkbox to clear it for email. This call exempts Outlook messages from mandatory labelling in Outlook apps that support the setting; it does not configure mandatory labelling for documents."
   - governs: "Office policy that turns off label and encryption handling when creating PDFs"
     scope: "user"
     ui:
-      surface: "Group Policy or Cloud Policy service for Microsoft 365"
+      surface: "Group Policy"
       path: "User Configuration/Administrative Templates/Microsoft Office 2016/Microsoft Save As PDF and Save As XPS add-ins > Use the Sensitivity feature in Office to apply sensitivity labels to PDFs"
       docs: "https://learn.microsoft.com/purview/sensitivity-labels-office-apps"
     api:
       kind: "other"
       call: "Registry value HKEY_CURRENT_USER\\software\\policies\\microsoft\\office\\16.0\\common\\fixedformat disablepdfprotection (DWORD) = 1"
       docs: "https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78"
-    note: "Learn names Word, Excel and PowerPoint for the policy; the support page says the registry key covers Print to PDF and export in Office applications. Coverage of Outlook Create PDF is not stated."
+    note: "Configure Use the Sensitivity feature in Office to apply sensitivity labels to PDFs as Disabled. Learn names Word, Excel and PowerPoint for the policy; Outlook Create PDF coverage is not stated."
   - governs: "Outlook Desktop printing to PDF without preserving the label or encryption"
     scope: "user"
     ui: null
@@ -69,26 +75,30 @@ controls:
     note: "Applies to Outlook Desktop only. Weakens protection: PDFs printed with it set do not keep the label or encryption."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-05-08T22:15:03"
 changes:
   - date: "2026-11-24"
     note: "First briefing for roadmap item 561651: a label-preserving Create PDF in Outlook desktop, with the existing Print to PDF block and workarounds as context."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 45 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected the mandatory labelling path, added its Set-LabelPolicy call, narrowed the PDF policy surface to Group Policy, and reworded the claim about Outlook's Print to PDF limits to the support page's words."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-24"
-  version: 1
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 41
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "1a4f472978b7037961c573f2369c3140"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "d0dd436f3c1e09b90b25d09a8f25aae2"
 ---
 
 ## What's changing
@@ -103,7 +113,7 @@ The roadmap status is In development with a target of July CY2026. That month ha
 
 ## Why it matters
 
-If your tenant requires labels on email, Outlook Desktop users have had no supported way to turn a labelled email into a PDF without dropping the label. The documented workaround is a registry key that prints to PDF without preserving the label or encryption, which weakens the protection you applied. A route that keeps the label would let you stop relying on that workaround.
+Microsoft's August 2024 support page says Outlook Desktop cannot print PDFs with the label applied and does not support exporting files to PDF. The documented workaround is a registry key that prints to PDF without preserving the label or encryption, which weakens the protection you applied. A route that keeps the label would let you stop relying on that workaround.
 
 Microsoft has not stated what happens on arrival, so base planning on no source saying that existing behaviour changes. Expect help-desk questions from users who find the new menu entry and from users who still see the blocked Print to PDF message.
 
@@ -157,8 +167,8 @@ The record does not say whether it targets Outlook for Windows, Outlook for Mac 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Mandatory labelling for email and documents, which makes Print to PDF unavailable for labelled content</strong><br><small>Tenant</small><br><small class="controls__note">Set per label policy. Learn describes a separate checkbox to clear mandatory labelling for email where the Outlook app supports it.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Microsoft Purview portal › Label policy configuration › Policy settings › Require users to apply a label to their email or documents <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Office policy that turns off label and encryption handling when creating PDFs</strong><br><small>User</small><br><small class="controls__note">Learn names Word, Excel and PowerPoint for the policy; the support page says the registry key covers Print to PDF and export in Office applications. Coverage of Outlook Create PDF is not stated.</small></td><td data-label="Admin UI"><strong>Group Policy or Cloud Policy service for Microsoft 365</strong><br>User Configuration/Administrative Templates/Microsoft Office 2016/Microsoft Save As PDF and Save As XPS add-ins › Use the Sensitivity feature in Office to apply sensitivity labels to PDFs <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value HKEY_CURRENT_USER\software\policies\microsoft\office\16.0\common\fixedformat disablepdfprotection (DWORD) = 1</code> <a href="https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Mandatory labelling for email and documents, which makes Print to PDF unavailable for labelled content</strong><br><small>Tenant</small><br><small class="controls__note">Set per label policy. Learn also describes a checkbox to clear it for email. This call exempts Outlook messages from mandatory labelling in Outlook apps that support the setting; it does not configure mandatory labelling for documents.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Publishing policies › policy › Edit Policy › Policy settings › Require users to apply a label to their email or documents <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-LabelPolicy -Identity &lt;policy&gt; -AdvancedSettings @{DisableMandatoryInOutlook=&quot;True&quot;}</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Office policy that turns off label and encryption handling when creating PDFs</strong><br><small>User</small><br><small class="controls__note">Configure Use the Sensitivity feature in Office to apply sensitivity labels to PDFs as Disabled. Learn names Word, Excel and PowerPoint for the policy; Outlook Create PDF coverage is not stated.</small></td><td data-label="Admin UI"><strong>Group Policy</strong><br>User Configuration/Administrative Templates/Microsoft Office 2016/Microsoft Save As PDF and Save As XPS add-ins › Use the Sensitivity feature in Office to apply sensitivity labels to PDFs <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value HKEY_CURRENT_USER\software\policies\microsoft\office\16.0\common\fixedformat disablepdfprotection (DWORD) = 1</code> <a href="https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Outlook Desktop printing to PDF without preserving the label or encryption</strong><br><small>User</small><br><small class="controls__note">Applies to Outlook Desktop only. Weakens protection: PDFs printed with it set do not keep the label or encryption.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Preferences disablepdfprotectioninoutlook (DWORD) = 1</code> <a href="https://support.microsoft.com/en-us/office/print-to-pdf-is-blocked-if-mandatory-labeling-is-enabled-328c575c-9db9-4879-953b-a5e176f61e78" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -180,11 +190,8 @@ cost: Low. The only cost the sources show is admin and user-communication time; 
 impact: Medium. People who save labelled email as PDF in Outlook for Windows desktop notice it, most of all in tenants with mandatory labelling, where Print to PDF is blocked.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Label policy configuration > Policy settings > Require users to apply a label to their email or documents is a complete route from the portal navigation. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. ... To edit an existing label policy, select it, and then select the Edit Policy button from the flyout pane. | Fix: Keep the surface Microsoft Purview portal; replace the path with 'Solutions > Information Protection > Publishing policies > policy > Edit Policy > Policy settings > Require users to apply a label to their email or documents'. Cite https://learn.microsoft.com/purview/create-sensitivity-labels for the route into the policy and retain https://learn.microsoft.com/purview/sensitivity-labels-office-apps for the setting. Remove the duplicate portal name and the non-navigation step 'Label policy configuration'. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [contradicted, blocker] controls[0].api; Governance controls table / absence: No automation is documented for the mandatory-labelling control. | Found: DisableMandatoryInOutlook: Outlook apps that support this setting exempt Outlook messages from mandatory labeling. Example: Set-LabelPolicy -Identity Global -AdvancedSettings @{DisableMandatoryInOutlook="True"} | Fix: Replace controls[0].api null with kind 'powershell', call 'Set-LabelPolicy -Identity <policy> -AdvancedSettings @{DisableMandatoryInOutlook="True"}', and docs https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy. Add to the note: 'This call exempts Outlook messages from mandatory labelling in Outlook apps that support the setting; it does not configure mandatory labelling for documents.' | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The User Configuration/Administrative Templates/Microsoft Office 2016/Microsoft Save As PDF and Save As XPS add-ins path works in Group Policy or Cloud Policy. | Found: Under Customization, select Policy Management. ... On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name, or you can create a custom filter. | Fix: Narrow controls[1].ui.surface to 'Group Policy' and retain the existing path and Office-apps docs URL. Add to the note: 'Configure Use the Sensitivity feature in Office to apply sensitivity labels to PDFs as Disabled.' The cited Office-apps page documents that exact Group Policy location; do not present it as Cloud Policy navigation. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [unsupported, major] Why it matters / behaviour: Outlook Desktop users in tenants requiring email labels have had no supported way to turn a labelled email into a PDF without dropping the label. | Found: Searched: Outlook "labelled email" "PDF" preserve sensitivity supported export. Read search results, Office-apps PDF support and Print to PDF support; these establish native printing/export limitations, not the absence of every supported label-preserving workflow. | Fix: Replace the sentence with: 'Microsoft's August 2024 support page says Outlook Desktop cannot print PDFs with the label applied and does not support exporting files to PDF.' Retain the existing support-page citation.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: manual-labelling plan list / licensing: Manual Sensitivity Labeling is Included in the listed Microsoft 365, OneDrive, EMS, Office 365 and AIP Plan 1 and Plan 2 plans. | Found: A standard/Plan 1 license must be assigned in addition to the premium/P2 license for users to have access to sensitivity labeling for Information Protection for Office 365 and AIP, even if the premium licenses/Plan 2 are assigned. | Fix: Keep the accurate Included table and plan list, but append this qualification to the licensing notes and the paragraph listing plans: 'For Information Protection for Office 365 and AIP, a Standard/Plan 1 licence must also be assigned alongside a premium/Plan 2 licence for users to access sensitivity labelling.' Cite the existing Microsoft Purview service description. Its table supports the list, but the omitted assignment requirement changes which licences administrators must assign. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

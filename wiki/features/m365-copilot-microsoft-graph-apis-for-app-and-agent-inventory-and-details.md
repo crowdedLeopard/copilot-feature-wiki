@@ -76,29 +76,33 @@ controls:
       kind: "graph"
       call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Preview, beta endpoint. Delegated CopilotPackages.ReadWrite.All only. A neighbouring control in the same API family, not part of the inventory read."
+    note: "Preview, beta endpoint. Delegated CopilotPackages.ReadWrite.All only. Same API family, not part of the inventory read. For agents created using SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-05-08T22:15:03"
 changes:
   - date: "2026-11-24"
     note: "First briefing: documents the List packages and Get package details Graph endpoints, their Agent 365 licence requirement and the differences between the roadmap and Learn."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after verification: block is qualified for SharePoint and Foundry agents, the role requirement is limited to the two read APIs, and the unsupported 'nothing happens until called' claim is removed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-24"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 72
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "d4260469e8299bfe09767d71c40d34d6"
+  claims: 74
+  confirmed: 74
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "35a4f41b59581ed437a81f226a2a9e9a"
 ---
 
 ## What's changing
@@ -113,7 +117,7 @@ The roadmap record gives the status as Launched, with a preview date of March CY
 
 This gives a tenant a scriptable inventory of its agents and, with a filter, its tools, so compliance checks, audits and reporting no longer depend on reading the Registry in the Microsoft 365 admin center. The details endpoint returns fields an auditor asks for, including publisher, version, owners, categories, sensitivity, supported hosts and element details.
 
-The main decision is licensing and access, not risk. Microsoft has not stated a default for the endpoints in the pages read at the time of writing (November 2026), and no source says existing behaviour changes, so nothing happens in a tenant until someone calls them. If your agent governance relies on Agent 365, check that the licence the API requires is already in place.
+The main decision is licensing and access, not risk. Microsoft has not stated a default for the endpoints in the pages read at the time of writing (November 2026), and no source says existing behaviour changes. If your agent governance relies on Agent 365, check that the licence the API requires is already in place.
 
 ## Risk assessment
 
@@ -125,7 +129,7 @@ The main decision is licensing and access, not risk. Microsoft has not stated a 
 - The block operation lists a delegated permission only (`CopilotPackages.ReadWrite.All`); Learn shows application permission as not available.
 
 **Autonomy & actions**
-- List packages and Get package details are read operations. The same API family has operations that change state, among them update, block, unblock and reassign, which Learn marks preview; block prevents use of the package across the organisation.
+- List packages and Get package details are read operations. The same API family has operations that change state, among them update, block, unblock and reassign, which Learn marks preview; block prevents use of the package across the organisation. For agents created using SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat.
 
 **Change & support**
 - Scripts built on the default List packages call miss tools such as plugins, MCP servers and skills unless they filter on `elementTypes`, and miss Power Platform connectors entirely.
@@ -158,7 +162,7 @@ Callers need the AI admin or Global admin role, per the Agent 365 Graph API page
 ### After rollout
 - Schedule inventory pulls with a `lastModifiedDateTime ge` filter to find recently changed agents.
 - Review agents whose `availableTo` or `deployedTo` shows they reach all users, and pass the owner to the team that built them.
-- Use the block row below when an agent must be withdrawn, and note that the Graph block call is preview.
+- Use the block row below when an agent must be withdrawn, and note that the Graph block call is preview. For agents created using SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat.
 
 ## Governance controls
 
@@ -168,13 +172,13 @@ Callers need the AI admin or Global admin role, per the Agent 365 Graph API page
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Reading the tenant's agent inventory</strong><br><small>Tenant</small><br><small class="controls__note">Read-only. Needs AI admin or Global admin and CopilotPackages.Read.All; returns agents by default. Get package details is GET /v1.0/copilot/admin/catalog/packages/{id}.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Registry <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/copilot/admin/catalog/packages</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Blocking an agent for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Preview, beta endpoint. Delegated CopilotPackages.ReadWrite.All only. A neighbouring control in the same API family, not part of the inventory read.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Blocking an agent for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Preview, beta endpoint. Delegated CopilotPackages.ReadWrite.All only. Same API family, not part of the inventory read. For agents created using SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The inventory endpoints do not change anything: the Registry row is the way to read the same inventory in the admin centre, and the block row is the one control from this API family that stops use of an agent. Blocking applies to the selected agent; Learn says that if the agent is included in a plugin, you should not assume the action also applies to the whole plugin.
+The inventory endpoints do not change anything: the Registry row is the way to read the same inventory in the admin centre, and the block row is the one control from this API family that blocks an agent in the applicable Microsoft Copilot hosts. Blocking applies to the selected agent; Learn says that if the agent is included in a plugin, you should not assume the action also applies to the whole plugin.
 
-The Graph block operation lists a delegated permission only, so run it as a signed-in administrator rather than as an app. Access to every operation here depends on the Agent 365 licence and, per the Agent 365 Graph API page, the AI admin or Global admin role.
+The Graph block operation lists a delegated permission only, so run it as a signed-in administrator rather than as an app. Access to these Graph operations requires a Microsoft Agent 365 licence. The List packages and Get package details APIs require the AI admin or Global admin role, per the Agent 365 Graph API page.
 
 ## Open questions
 
@@ -189,13 +193,9 @@ cost: Medium. Learn says access to the Package Management API requires a Microso
 impact: Low. Administrators and developers who script agent governance notice it; end users see no change from the read endpoints.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance controls: final sentence / role: Per the Agent 365 Graph API page, every operation here, including Graph block, requires the AI admin or Global admin role. | Found: Searched: 'CopilotPackages.ReadWrite.All block AI admin Global admin role application permissions' and 'copilotPackage block role'; read graph-api, block and agent-roles-perms. graph-api names only the two read APIs; the roles table covers admin-center actions, not Graph block. | Fix: Replace the final sentence with 'Access to these Graph operations requires a Microsoft Agent 365 licence. The List packages and Get package details APIs require the AI admin or Global admin role, per the Agent 365 Graph API page.' Keep the separately documented delegated permission for block.
-- [contradicted, blocker] controls[1].governs; Risk assessment; Governance guidance; Governance controls / applicability: The blocking control withdraws an agent for the whole organisation without a host-specific qualification. | Found: However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. | Fix: Qualify the block row's note and the withdrawal guidance with 'For agents created using SharePoint or Microsoft Foundry, blocking only affects availability in Microsoft Copilot Chat.' Replace 'stops use of an agent' in Governance controls with 'blocks an agent in the applicable Microsoft Copilot hosts'. The qualification is at https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [unsupported, blocker] Why it matters: second paragraph / default: Nothing happens in a tenant until someone calls the endpoints. | Found: Searched: 'copilot/admin/catalog/packages default enabled tenant setting' and 'Package Management API default'; read package overview, List packages, Get details, graph-api and Registry. Read-only requests are documented, but no statement establishes tenant behaviour on arrival. | Fix: Delete ', so nothing happens in a tenant until someone calls them' from Why it matters. Keep 'Microsoft has not stated a default for the endpoints in the pages read at the time of writing (November 2026), and no source says existing behaviour changes.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Governance controls / behaviour: Application permission permits reading package information without a signed-in user. | Found: In app-only access, the app calls Microsoft Graph with its own identity, without a signed-in user. | Fix: Add https://learn.microsoft.com/graph/permissions-overview to sources for the explanation of delegated and application execution. | Source: https://learn.microsoft.com/graph/permissions-overview
-- [supported, minor] front matter: licensing.model; rationale: cost / licensing: The licensing model is add-on: tenants without Agent 365 or E7 need the additional Agent 365 subscription. | Found: Microsoft Agent 365 is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions and is also included with Microsoft 365 E7. | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources to support the separate-subscription entitlement underlying licensing.model. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [supported, minor] Risk assessment: Security & identity / behaviour: An app with the application permission can read package information without a signed-in user. | Found: CopilotPackages.Read.All ... DisplayText | Read all packages information ... Description | Allows the app to read packages information without a signed-in user. | Fix: Add https://learn.microsoft.com/graph/permissions-reference and https://learn.microsoft.com/graph/permissions-overview to sources for the explanations of app-only and delegated access. | Source: https://learn.microsoft.com/graph/permissions-reference#all-permissions
+- [supported, minor] front matter: licensing.model; rationale: cost / licensing: Agent 365 can be added separately when it is not already included in the tenant's plan, supporting the add-on model. | Found: Microsoft Agent 365 is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions and is also included with Microsoft 365 E7. | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources to support the separate subscription option used by the add-on model and cost rationale. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 -->

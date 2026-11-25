@@ -98,15 +98,17 @@ changes:
     note: "Roadmap target moved from November to December CY2026; the release-notes entry is now cited by version only. Controls and ratings unchanged."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 53
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -207,9 +209,9 @@ cost: Low. The only cost the sources show is admin and helpdesk time for communi
 impact: Medium. Users who save passwords in Edge get a new right-click entry without admin action; administrators get no new setting for it.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls table / applicability: PasswordManagerEnabled is not documented as governing this option. | Found: If you disable this policy, users can't save and add new passwords, but they can still use previously saved passwords. | Fix: Remove 'Not documented as governing this option.' from controls[0].note and the matching table note. Keep the documented qualification that disabling this policy still permits use of previously saved passwords, as stated at https://learn.microsoft.com/deployedge/microsoft-edge-policies/passwordmanagerenabled. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/passwordmanagerenabled
-- [supported, minor] controls[2].governs, note; Risk assessment: Security & identity; Governance guidance / behaviour: WithDevicePassword requires device authentication before saved-password autofill. | Found: If you set this policy to 'WithDevicePassword', users have to enter their device password (or preferred mode of authentication under Windows) to prove their identity before their password is autofilled. | Fix: Add to controls[2].note and its matching table note: 'The prompt frequency defaults to Ask permission once per browsing session; users can change it to Always ask permission.' This qualification is stated at https://learn.microsoft.com/deployedge/microsoft-edge-policies/primarypasswordsetting. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/primarypasswordsetting
+- [supported, minor] controls[0].note; Governance controls table / applicability: PasswordManagerEnabled is not documented as governing this option. | Found: If you disable this policy, users can't save and add new passwords, but they can still use previously saved passwords. | Fix: Remove 'Not documented as governing this option.' from controls[0].note and its matching table note. Keep 'Existing policy. When disabled, users can still use previously saved passwords.' as supported by https://learn.microsoft.com/deployedge/microsoft-edge-policies/passwordmanagerenabled. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/passwordmanagerenabled
+- [supported, minor] controls[2].governs, note; Risk assessment: Security & identity; Governance guidance / behaviour: WithDevicePassword requires users to prove their identity through device authentication before a saved password is autofilled. | Found: If you set this policy to 'WithDevicePassword', users have to enter their device password (or preferred mode of authentication under Windows) to prove their identity before their password is autofilled. | Fix: Add to controls[2].note and its matching table note: 'The prompt frequency defaults to Ask permission once per browsing session; users can change it to Always ask permission.' This qualification is documented at https://learn.microsoft.com/deployedge/microsoft-edge-policies/primarypasswordsetting. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/primarypasswordsetting
 -->

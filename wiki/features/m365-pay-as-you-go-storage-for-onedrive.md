@@ -5,7 +5,7 @@ roadmapId: 562352
 topic: "modern-work"
 products: ["OneDrive"]
 summary: "A new metered service, Microsoft 365 OneDrive Storage, lets administrators raise selected users' OneDrive limits above their licence and pay for the overage. Nothing changes until an administrator sets up billing."
-status: "in-development"
+status: "rolling-out"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
@@ -53,7 +53,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Billing > Pay-as-you-go > Services > Connect a policy"
+      path: "Billing > Pay-as-you-go > Services > Connect a policy > policy > Connection status"
       docs: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
     api: null
     note: "Disconnect by turning off the Connection status toggle for the service. Roles and Azure prerequisites in Scope."
@@ -61,7 +61,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Users > Active users > user > OneDrive > Storage used > Edit"
+      path: "Users > Active users > user > OneDrive > Storage used > Edit > Maximum storage for this user"
       docs: "https://learn.microsoft.com/sharepoint/change-user-storage"
     api:
       kind: "powershell"
@@ -72,7 +72,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Billing > Pay-as-you-go > policy > Budget > Settings"
+      path: "Billing > Pay-as-you-go > policy > Budget > Settings > Send email alerts > Add more"
       docs: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
     api: null
     note: "Budget applies per billing policy only and does not stop billing. Spending is on the same Budget tab."
@@ -80,7 +80,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "SharePoint admin center"
-      path: "Settings > Storage limit"
+      path: "Settings > Storage limit > Default storage limit"
       docs: "https://learn.microsoft.com/onedrive/set-default-storage-space"
     api:
       kind: "powershell"
@@ -89,26 +89,30 @@ controls:
     note: "General control: Microsoft has not confirmed how it interacts with OneDrive Storage. Values above a user's licence are rounded down."
 confidence: "high"
 created: "2026-11-16"
-updated: "2026-11-16"
-roadmapModified: "2026-10-06T22:56:31"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the OneDrive Storage pay-as-you-go service, its set-up path, meter, budget behaviour and per-user limit controls."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 73 statements not yet confirmed"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: the data-exposure bullet now states only what the setup documentation covers; admin paths are given in full; status now reads Rolling out, as the roadmap record does."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-23"
-  version: 1
+  status: "verified"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
-  unconfirmed: 1
+  claims: 74
+  confirmed: 74
+  unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "4081fab66548405b5aba3aafaaff045a"
+  hash: "4d2ddca94d27d41714eb9e47f4f94a2b"
 ---
 
 ## What's changing
@@ -117,7 +121,7 @@ Microsoft is adding Microsoft 365 OneDrive Storage, a pay-as-you-go service that
 
 On Learn, the service works through a billing policy in the Microsoft 365 admin center. After the policy is connected to the service, an administrator raises the individual user's OneDrive storage limit above the licensed quota. Learn says the maximum value remains 25,600 GB and that only usage above the licensed quota is billed. If an administrator later disconnects the service while accounts are over their quota, enforcement of the quota resumes.
 
-The roadmap item is In development, with a preview date of July CY2026 and a General Availability target of November CY2026, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC1477185 (published 2026-09-22, updated 2026-10-06) says public preview is available to all commercial tenants, and General Availability rollout begins in early November 2026 and is expected to complete by early December 2026. The same post says Microsoft is no longer releasing to gov clouds at this time and will announce that separately. The post sets no act-by date and says no action is required if you do not want to use pay-as-you-go storage.
+The roadmap item is Rolling out, with a preview date of July CY2026 and a General Availability target of November CY2026, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC1477185 (published 2026-09-22, updated 2026-10-06) says public preview is available to all commercial tenants, and General Availability rollout begins in early November 2026 and is expected to complete by early December 2026. The same post says Microsoft is no longer releasing to gov clouds at this time and will announce that separately. The post sets no act-by date and says no action is required if you do not want to use pay-as-you-go storage.
 
 ## Why it matters
 
@@ -128,7 +132,7 @@ Plan it as a finance decision as much as an admin one. Decide who may approve ra
 ## Risk assessment
 
 **Data exposure**
-- No new data access: the service changes how much a user's own OneDrive can hold, not who can read it. Billing setup asks for a Region, which Learn says determines where the tenant ID and usage data are stored.
+- Microsoft documents additional storage above licensed quotas; the cited setup documentation does not discuss changes to content-access permissions. Billing setup asks for a Region, which Learn says determines where the tenant ID and usage data are stored.
 
 **Security & identity**
 - Setup needs Azure rights and a Microsoft 365 role. Learn lists Owner or Contributor on the Azure subscription and resource group, and SharePoint Administrator or Global Administrator for the admin centre. Keep that role set narrow, since connecting a policy creates a recurring charge.
@@ -160,13 +164,13 @@ Plan it as a finance decision as much as an admin one. Decide who may approve ra
 ## Governance guidance
 
 ### Before rollout
-- Identify OneDrive accounts approaching or exceeding their licensed quota, as MC1477185 recommends, using Active users > OneDrive > Storage used in the Microsoft 365 admin center.
+- Identify OneDrive accounts approaching or exceeding their licensed quota, as MC1477185 recommends, using Users > Active users > user > OneDrive > Storage used in the Microsoft 365 admin center.
 - Decide who owns the Azure subscription and resource group that will carry the charge, and confirm they hold Owner or Contributor on both.
 - Agree a monthly budget and alert recipients with finance before creating the billing policy, since the budget cannot stop spend.
 - Compare against OneDrive Extra Storage capacity packs for the few users who need more space.
 
 ### At rollout
-- Create the billing policy at Billing > Pay-as-you-go and choose the Microsoft 365 OneDrive Storage service in Step 4.
+- Create the billing policy at Billing > Pay-as-you-go > Billing policies > Add a billing policy and choose the Microsoft 365 OneDrive Storage service in Step 4.
 - Set the budget and add alert thresholds below 100% so recipients are warned early.
 - Raise the storage limit only for named users, per the Active users or Set-SPOSite controls below.
 
@@ -182,10 +186,10 @@ Plan it as a finance decision as much as an admin one. Decide who may approve ra
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether pay-as-you-go OneDrive storage is connected and billed</strong><br><small>Tenant</small><br><small class="controls__note">Disconnect by turning off the Connection status toggle for the service. Roles and Azure prerequisites in Scope.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Services › Connect a policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users may exceed their licensed OneDrive quota</strong><br><small>User</small><br><small class="controls__note">Learn says this applies if the tenant has Microsoft 365 OneDrive Storage enabled. The user's limit is set via the Maximum storage for this user option.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › OneDrive › Storage used › Edit <a href="https://learn.microsoft.com/sharepoint/change-user-storage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;OneDrive site URL&gt; -StorageQuota &lt;MB&gt; -StorageQuotaWarningLevel &lt;MB&gt;</code> <a href="https://learn.microsoft.com/sharepoint/change-user-storage" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Spending alerts for the billing policy</strong><br><small>Tenant</small><br><small class="controls__note">Budget applies per billing policy only and does not stop billing. Spending is on the same Budget tab.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › policy › Budget › Settings <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Default OneDrive storage limit for all users (existing control)</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed how it interacts with OneDrive Storage. Values above a user's licence are rounded down.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Settings › Storage limit <a href="https://learn.microsoft.com/onedrive/set-default-storage-space" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -OneDriveStorageQuota &lt;quota&gt;</code> <a href="https://learn.microsoft.com/onedrive/set-default-storage-space" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether pay-as-you-go OneDrive storage is connected and billed</strong><br><small>Tenant</small><br><small class="controls__note">Disconnect by turning off the Connection status toggle for the service. Roles and Azure prerequisites in Scope.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Services › Connect a policy › policy › Connection status <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users may exceed their licensed OneDrive quota</strong><br><small>User</small><br><small class="controls__note">Learn says this applies if the tenant has Microsoft 365 OneDrive Storage enabled. The user's limit is set via the Maximum storage for this user option.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › OneDrive › Storage used › Edit › Maximum storage for this user <a href="https://learn.microsoft.com/sharepoint/change-user-storage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;OneDrive site URL&gt; -StorageQuota &lt;MB&gt; -StorageQuotaWarningLevel &lt;MB&gt;</code> <a href="https://learn.microsoft.com/sharepoint/change-user-storage" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Spending alerts for the billing policy</strong><br><small>Tenant</small><br><small class="controls__note">Budget applies per billing policy only and does not stop billing. Spending is on the same Budget tab.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › policy › Budget › Settings › Send email alerts › Add more <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Default OneDrive storage limit for all users (existing control)</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed how it interacts with OneDrive Storage. Values above a user's licence are rounded down.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Settings › Storage limit › Default storage limit <a href="https://learn.microsoft.com/onedrive/set-default-storage-space" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -OneDriveStorageQuota &lt;quota&gt;</code> <a href="https://learn.microsoft.com/onedrive/set-default-storage-space" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -206,17 +210,4 @@ The budget page gives the path Copilot > Billing & usage, while the Billing node
 risk: Medium. Nothing is billed until an administrator connects a billing policy, but once connected, a budget only sends alerts: Microsoft states that reaching 100% of the budget does not stop the service or billing.
 cost: Variable. Metered per GB per month of OneDrive data above each account's licensed entitlement; Microsoft's pricing page lists $0.20/GB/month, billed through an Azure subscription.
 impact: Low. Administrators set it up, and only the users whose storage limit is raised see more space; users who stay within their licensed quota notice nothing.
--->
-
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The service introduces no new data access and does not change who can read a user's OneDrive content. | Found: Searched: "OneDrive Storage" "permissions" "pay-as-you-go". Read add-storage-space, Billing-node setup and pay-as-you-go-services; Graph OneDrive search excerpts discuss general sharing but do not state this service leaves permissions unchanged. | Fix: Replace 'No new data access: the service changes how much a user's own OneDrive can hold, not who can read it' with 'Microsoft documents additional storage above licensed quotas; the cited setup documentation does not discuss changes to content-access permissions.' Keep the billing-region sentence.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: connection row / admin-path: The service can be connected at Microsoft 365 admin center > Billing > Pay-as-you-go > Services > Connect a policy. | Found: go to Billing > Pay-as-you-go. On the Pay-as-you-go page, select the Services tab. For the service that you want to connect, in the Billing policy column, select Connect a policy. | Fix: Extend controls[0].ui.path and the matching table path to 'Billing > Pay-as-you-go > Services > Connect a policy > policy > Connection status'. The cited page says to find the policy in the side panel and set its Connection status toggle to Connected. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
-- [supported, minor] controls[1].ui; Governance controls: per-user row / admin-path: The per-user control is at Microsoft 365 admin center > Users > Active users > user > OneDrive > Storage used > Edit. | Found: expand Users and select Active users. Select the user whose storage you want to change. Go to the OneDrive tab. Under Storage used, select Edit. Choose the Maximum storage for this user option and set the storage limit. | Fix: Extend controls[1].ui.path and the matching table path to 'Users > Active users > user > OneDrive > Storage used > Edit > Maximum storage for this user'. The existing path reaches the correct pane but stops before the option already named in the note. | Source: https://learn.microsoft.com/sharepoint/change-user-storage
-- [supported, minor] controls[2].ui; Governance controls: budget row / admin-path: Budget preferences are at Microsoft 365 admin center > Billing > Pay-as-you-go > policy > Budget > Settings. | Found: go to Billing > Pay-as-you-go. On the Pay-as-you-go page, select the policy that you want to manage. In the policy panel, select the Budget tab. To configure your budget and alert preferences, select Settings. | Fix: Extend controls[2].ui.path and the matching table path to 'Billing > Pay-as-you-go > policy > Budget > Settings > Send email alerts > Add more' for the spending-alert threshold control. The cited page places additional alert thresholds under Send email alerts. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
-- [supported, minor] controls[3].ui; Governance controls: default storage row / admin-path: The existing tenant default OneDrive storage setting is at SharePoint admin center > Settings > Storage limit. | Found: Go to Settings in the new SharePoint admin center... Select the OneDrive Storage limit setting. In the Default storage limit box, enter the default storage amount (in GB), and then select Save. | Fix: Extend controls[3].ui.path and the matching table path to 'Settings > Storage limit > Default storage limit'. The existing path reaches the pane that contains the control. | Source: https://learn.microsoft.com/onedrive/set-default-storage-space
-- [supported, minor] Governance guidance: Before rollout / admin-path: The Active users > OneDrive > Storage used view in the Microsoft 365 admin center lets administrators inspect users' storage. | Found: In the left pane, select Users, and then select Active users. Select the user. Select the OneDrive tab. Next to "Storage used," look at the max value | Fix: Replace the abbreviated checklist path with 'Users > Active users > user > OneDrive > Storage used'. The table already supplies the user-selection step. | Source: https://learn.microsoft.com/onedrive/set-default-storage-space
-- [supported, minor] Governance guidance: At rollout / admin-path: Billing policies are created at Billing > Pay-as-you-go. | Found: Sign in to the Microsoft 365 admin center, and then go to Billing > Pay-as-you-go. On the Billing policies tab, select Add a billing policy. | Fix: Expand the policy-creation path in the checklist to 'Billing > Pay-as-you-go > Billing policies > Add a billing policy'. The existing abbreviated path stops on the page listing the policies. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
 -->

@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Neither the roadmap item nor MC1470424 names a licence or meter for these navigation controls, and the Viva Engage service description names none for them."
+  model: "included"
+  notes: "Viva Engage Core or Yammer enterprise comes with Microsoft 365. If Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan; if it is not enforced, users can still access the Core experience. Microsoft has not published a licence requirement specific to these navigation controls."
 audiences: ["service-owner","change-adoption","end-user"]
 tags: ["viva-engage","user-experience","personalisation","teams","outlook","adoption"]
 sources:
@@ -28,6 +28,9 @@ sources:
   - title: "MC1470424: (Updated) Microsoft Viva Engage: New left navigation controls for collapsing, resizing, and managing favorites"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1470424"
     kind: "message-center"
+  - title: "Viva Engage setup requirements"
+    url: "https://learn.microsoft.com/viva/engage/setup"
+    kind: "learn"
   - title: "Limits in Viva Engage for Microsoft 365"
     url: "https://learn.microsoft.com/office365/servicedescriptions/limits-viva-engage"
     kind: "learn"
@@ -50,8 +53,8 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026). MC1470424 states that no admin configuration is required."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-24"
-roadmapModified: "2026-09-23T22:59:12"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-17"
     note: "First briefing for this item; reports that the roadmap (50), MC1470424 (unlimited) and the Microsoft 365 limits page (10) give different favourites limits."
@@ -65,19 +68,23 @@ changes:
     note: "MC1470424 was updated on 24 November 2026: rollout is now expected to complete by early January 2027 (previously end of October 2026), and the notice's end date is 15 February 2027."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
-version: 3
+  - date: "2026-11-25"
+    note: "Correction: licensing is now stated from the Viva Engage setup requirements page (Core comes with Microsoft 365; Core Service Plan needed where licensing is enforced); the rest is unchanged."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
+version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-24"
-  version: 3
+  status: "verified"
+  date: "2026-11-25"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 48
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "13b031b194cfa4898c434733d1a0dde0"
+  hash: "8c4aaebe361a3ba345e4072e8e1caeb2"
 ---
 
 ## What's changing
@@ -118,7 +125,7 @@ The practical effects are on helpdesk and training. Screenshots and instructions
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or a meter for these navigation controls. MC1470424 says Viva Engage users who access Viva Engage on the web, including in Teams and Outlook, are affected, and it names no licence or charge. The Viva Engage service description refers readers to the Microsoft 365 plan comparison pages for the subscriptions that enable Viva Engage and names nothing specific to these controls. Licensing is Not yet published.
+Viva Engage Core or Yammer enterprise comes with Microsoft 365. If Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan; if it is not enforced, users can still access the Core experience ([Viva Engage setup requirements](https://learn.microsoft.com/viva/engage/setup)). Microsoft has not published a licence requirement specific to these navigation controls. MC1470424 says Viva Engage users who access Viva Engage on the web, including in Teams and Outlook, are affected, and it names no licence or charge. The Viva Engage service description refers readers to the Microsoft 365 plan comparison pages for the subscriptions that enable Viva Engage and names nothing specific to these controls.
 
 The cost the sources do show is indirect: time for helpdesk briefing, community manager communication and updates to internal training material, all recommended in MC1470424.
 
@@ -170,10 +177,4 @@ Microsoft Learn documents no tenant setting or API for these left navigation con
 risk: Low. Microsoft's notice MC1470424 describes user-initiated, additive changes that leave navigation destinations and community membership unchanged, and states that no admin configuration is required.
 cost: Low. The only cost the sources show is admin time for helpdesk briefing and training updates; Microsoft has not published a licence or meter for these controls, and the sources name none.
 impact: Medium. The controls reach Viva Engage users on the web, in Teams and in Outlook, but Microsoft says no visible change occurs unless a user chooses to use them.
--->
-
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; Cost and licensing / licensing: The licensing model is unknown and licensing is Not yet published. | Found: If you do enforce Viva Engage licensing ... each user must have ... a Microsoft 365 license ... a Viva Engage Core Service Plan. ... Viva Engage Core or Yammer enterprise ... Engage core experiences ... Microsoft 365 | Fix: Set licensing.model to included and cite https://learn.microsoft.com/viva/engage/setup. Replace 'Licensing is Not yet published' and the opening licensing note with: 'Viva Engage Core or Yammer enterprise comes with Microsoft 365. If Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan; if it is not enforced, users can still access the Core experience. Microsoft has not published a licence requirement specific to these navigation controls.' | Source: https://learn.microsoft.com/viva/engage/setup
 -->

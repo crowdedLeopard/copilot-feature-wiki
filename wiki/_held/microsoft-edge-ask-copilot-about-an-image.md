@@ -75,18 +75,20 @@ changes:
     note: "Corrected after verification: licensing model set to unknown, and the roadmap's statement that the two named policies control availability is now reported as stated, with the image-specific interaction listed as an open question."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 66
+  claims: 70
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 5
+  attempts: 1
   hash: "9dfc911ad567052080a923f0ac2c8fee"
 ---
 
@@ -187,4 +189,16 @@ EdgeEntraCopilotPageContext is mandatory-only, and the page says it cannot be se
 risk: Medium. Images from web pages go to Copilot, and Learn does not say whether the page-content policy or its data loss prevention exclusion covers images, so the existing controls only mostly cover it.
 cost: Low. The only cost the sources show is admin time to review two Edge policies; a licence or meter specific to this feature is not yet published.
 impact: Medium. Users signed in to Edge with a work account who right-click images would notice it; Microsoft has not stated whether it arrives on by default.
+-->
+
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing; changes: new briefing; Governance controls / absence: Microsoft Learn does not describe the image context-menu feature yet. | Found: This includes page summarization, video summarization, sharing an image with Copilot from the context menu ("Ask Copilot about this image"), and other contextual queries. | Fix: Replace the current absence statement with: 'Microsoft Learn now explicitly includes sharing an image from the context menu ("Ask Copilot about this image") in EdgeEntraCopilotPageContext. The roadmap still lists the feature as In development, targeted for January CY2027.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext
+- [contradicted, blocker] controls[0].note; What's changing; Why it matters; Governance controls; rationale: risk / absence: The EdgeEntraCopilotPageContext documentation does not mention or confirm coverage of images. | Found: This includes page summarization, video summarization, sharing an image with Copilot from the context menu ("Ask Copilot about this image"), and other contextual queries. | Fix: Replace 'the policy page does not mention images' in controls[0].note and the rendered row with 'The policy explicitly covers sharing an image with Copilot from the context menu.' Replace prose and rationale statements that this policy's image coverage is unconfirmed with the same documented reach. Keep the existing Entra-profile and version qualifications. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext
+- [contradicted, blocker] What's changing; Governance controls / absence: The EdgeEntraCopilotPageContext documentation does not mention the image context menu. | Found: sharing an image with Copilot from the context menu ("Ask Copilot about this image") | Fix: Replace the statement that both policy pages omit the context menu with: 'EdgeEntraCopilotPageContext explicitly covers the image context-menu action; Microsoft365CopilotChatIconEnabled documents toolbar visibility but not its image-menu interaction.' | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions; rationale: risk / absence: Learn leaves it unconfirmed whether its DLP-protected-page content exclusion covers the image-sharing action. | Found: sharing an image with Copilot from the context menu ("Ask Copilot about this image") Copilot can't access page content on pages protected by data loss prevention (DLP) policies, even if this policy is enabled. | Fix: Replace the image-coverage caveat with: 'The policy's documented contextual queries include image sharing, and Copilot cannot access page content on DLP-protected pages even when the policy is enabled.' Remove the open question and rationale premise that Microsoft has not confirmed this policy's DLP coverage for the image action. Pilot testing can remain advice to validate enforcement. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: The policy's regional access defaults are not a statement about this image feature, and their applicability remains unknown. | Found: sharing an image with Copilot from the context menu ("Ask Copilot about this image") Access is enabled by default in non-EU regions. Access is disabled by default in EU regions. | Fix: Replace the last sentence of the regional-default bullet with: 'These are the access defaults for the documented contextual queries, including image sharing; the page does not state whether the image menu entry itself appears automatically on rollout.' Remove the question about whether the EU access default applies, retaining only the question about menu appearance. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: A licence specific to the image option is not published, so the briefing sets the licensing model to unknown. | Found: Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription. | Fix: Set licensing.model to 'included' for the product-level entitlement and replace the notes with: 'Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription. Licensed Microsoft Copilot capabilities require a Microsoft Copilot licence and a qualifying prerequisite licence. No image-option-specific licence requirement is published.' Retain https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements as the citation. This corrects the unknown-model understatement without asserting an image-specific licence. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
 -->

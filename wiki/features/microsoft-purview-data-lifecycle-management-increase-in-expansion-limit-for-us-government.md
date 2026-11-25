@@ -5,7 +5,7 @@ roadmapId: 573702
 topic: "governance"
 products: ["Microsoft Purview"]
 summary: "Eligible Exchange Online archive mailboxes with auto-expanding archiving on can grow to 3 TB instead of 1.5 TB in GCC, GCC High and DoD. Microsoft says no action is needed where the feature is already on."
-status: "in-development"
+status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
@@ -20,7 +20,7 @@ licensing:
   model: "included"
   notes: "The 3 TB ceiling applies to mailboxes assigned an eligible licence such as Office 365 G5 or Microsoft 365 G5 (full list on Microsoft Learn); all other licences stay at 1.5 TB. Microsoft's notice says no per-GB consumption charge is introduced."
 audiences: ["m365-admin","compliance","service-owner"]
-tags: ["purview","data-lifecycle-management","exchange","licensing","retention","powershell","ediscovery","gcc","gcc-high","dod"]
+tags: ["purview","data-lifecycle-management","exchange","archive-mailboxes","licensing","retention","powershell","ediscovery","gcc","gcc-high","dod"]
 sources:
   - title: "Microsoft 365 Roadmap 573702"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=573702"
@@ -35,7 +35,7 @@ sources:
     url: "https://learn.microsoft.com/purview/enable-autoexpanding-archiving"
     kind: "learn"
 videos: []
-related: ["microsoft-purview-data-lifecycle-management-increase-in-expansion-limit-for-auto-expanding","microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-mailboxes"]
+related: ["microsoft-purview-data-lifecycle-management-increase-in-expansion-limit-for-auto-expanding","microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-ma-us-government"]
 controls:
   - governs: "Auto-expanding archiving for the whole organisation"
     scope: "tenant"
@@ -55,26 +55,30 @@ controls:
     note: "Archive mailbox must be enabled first; Mail Recipients role suffices. Can't be turned off. Needs cloud primary and archive mailboxes; for an on-premises primary with a cloud archive, use Set-OrganizationConfig -AutoExpandingArchive."
 confidence: "high"
 created: "2026-11-19"
-updated: "2026-11-19"
-roadmapModified: "2026-10-06T22:56:31"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-19"
     note: "First briefing for the GCC, GCC High and DoD roadmap item (In development, target November CY2026, notice MC1521615): the 3 TB ceiling for eligible licences and the two PowerShell controls."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
-version: 1
+  - date: "2026-11-25"
+    note: "Roadmap status moved from In development to Launched; the notice still gives a mid-November to early December 2026 rollout for GCC, GCC High and DoD. Ratings, licences and controls re-checked and unchanged."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 79
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "6291f1621169c9f7f9bf301988ba2e8a"
+  hash: "d54a9333aeb3c1482b5233d2278d1994"
 ---
 
 ## What's changing
@@ -83,7 +87,7 @@ Microsoft is raising the maximum size of an auto-expanding archive for eligible 
 
 Microsoft's notice MC1521615 (published 22 October 2026) gives the detail. Eligible mailboxes that already have auto-expanding archiving enabled can grow to a maximum of 3 TB per mailbox. The notice says no additional configuration is required for them, no per-GB consumption charge is introduced, existing archive content, retention configurations, policies and holds are unchanged, and no new administrator workflow or user interface is introduced. Mailboxes without an eligible licence stay limited to 1.5 TB.
 
-The roadmap item is In development, General Availability, GCC, GCC High and DoD, Web, with a target of November CY2026, which is a target and not a delivery date. The notice gives a rollout for GCC, GCC High and DoD that begins in mid-November 2026 and is expected to complete by early December 2026, with no act-by date. Microsoft Learn's archive pages carry a banner with a rollout of mid-October to late October 2026 and no cloud named, and their body text still gives 1.5 TB as the limit at the time of writing (November 2026).
+The roadmap item now shows status Launched, General Availability, GCC, GCC High and DoD, Web, with a target of November CY2026. The notice gives a rollout for GCC, GCC High and DoD that begins in mid-November 2026 and is expected to complete by early December 2026, with no act-by date, so the roadmap status and the notice's expected completion date differ and a tenant may not have the change yet. Microsoft Learn's archive pages carry a banner with a rollout of mid-October to late October 2026 and no cloud named, and their body text still gives 1.5 TB as the limit at the time of writing (November 2026).
 
 ## Why it matters
 
@@ -110,7 +114,7 @@ The increase needs no admin action for mailboxes that already have auto-expandin
 
 The increase applies to mailboxes assigned one of these licences, as listed on Microsoft Learn and in Microsoft's notice: Office 365 E5, A5 or G5; Microsoft 365 E5, A5 or G5; Microsoft 365 Purview Suite; Microsoft 365 Purview Suite FLW, EDU or GOV; Microsoft Defender + Purview Suite FLW; Microsoft 365 F5 Compliance; Microsoft 365 F5 Security + Compliance; or the combination of the eDiscovery & Audit, Insider Risk Management and Information Protection & Governance mini suites. Learn adds that qualifying offerings that include Microsoft Purview E5 capabilities, such as E7, also support the increase, and that for all other licences the existing 1.5 TB limit remains unchanged.
 
-Microsoft's notice says no per-GB consumption charge is introduced, and Learn says that if auto-expanding archiving is already enabled, no additional configuration or per-GB charge applies. Indirect costs are admin time to check licence assignments and to update documentation, and any licence change for users whose archives need more than 1.5 TB. Microsoft Learn's archive pages state no price for moving a user to an eligible licence.
+Microsoft's notice says no per-GB consumption charge is introduced, and Learn says that if auto-expanding archiving is already enabled, no additional configuration or per-GB charge applies. Indirect costs are admin time to check licence assignments and to update documentation, and any licence change for users whose archives need more than 1.5 TB.
 
 ## Scope
 
@@ -121,6 +125,7 @@ The change applies to Exchange Online archive mailboxes that have auto-expanding
 ## Governance guidance
 
 ### Before rollout
+- Review licence assignments for users with large archive mailboxes to confirm eligibility; Microsoft's notice recommends this.
 - Decide whether auto-expanding archiving should be on for the whole organisation or only for specific users, using the two controls in the table below, and note that both are irreversible once applied. The per-user command requires both the primary and archive mailboxes to be cloud-based; for an on-premises primary mailbox with a cloud-based archive, Learn says to use the organisation-wide command.
 
 ### At rollout
@@ -157,4 +162,10 @@ Neither control selects the 1.5 TB or 3 TB ceiling: Microsoft's notice ties the 
 risk: Low. Microsoft's notice says existing archive content, retention policies and holds are unchanged; the change raises a storage ceiling for mailboxes that already have auto-expanding archiving, which an administrator turned on.
 cost: Low. Microsoft's notice MC1521615 says no per-GB consumption charge is introduced; the cost is admin time and a licence check, because mailboxes without an eligible licence stay at 1.5 TB.
 impact: Low. Administrators and the users with the largest archives notice it; the notice says no new workflow or user interface is introduced, and mailboxes without an eligible licence are unaffected.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist directs administrators to review licence assignments, but the controls table contains no corresponding licence-assignment row. | Found: Review licence assignments for users with large archive mailboxes to confirm eligibility; Microsoft's notice recommends this. The two controls rows govern only organisation-wide and specific-user auto-expanding archiving. | Fix: The Before rollout licence-assignment review has no corresponding controls-table row. Remove that checklist bullet; retain the supported licence-review recommendation in Why it matters. Do not add a new control row in this correction.
 -->

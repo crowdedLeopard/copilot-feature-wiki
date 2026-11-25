@@ -89,16 +89,18 @@ changes:
     note: "Corrected the daily cap scope (Analytics and Basic tables only) and its REST call, removed the feature-enablement controls row, and trimmed checklist steps that had no controls row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 73 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
+  claims: 73
   confirmed: 71
-  unconfirmed: 0
+  unconfirmed: 1
   contradicted: 1
   attempts: 0
   hash: "3bcb04ea55a7c35e0a12fd9a5ee8c16c"
@@ -202,8 +204,12 @@ cost: Variable. Learn says sending telemetry to Azure Application Insights incur
 impact: Low. Administrators, integration owners and support teams who watch data management import and export jobs notice it; end users see no change.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The signals are read-only reporting of job start, end and status. | Found: Searched: finance operations DMF telemetry event fields error messages entity file names modifies jobs; opened Available telemetry and Monitoring and telemetry overview. They document logging and monitoring, but do not explicitly characterize the signals as read-only. | Fix: Replace 'The signals are read-only reporting of job start, end and status.' with 'The signals report job start, end and status.' Available telemetry documents those three reporting functions.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs readers to enable Monitoring and Telemetry, but that control has no table row. | Found: Checklist: Enable the Monitoring and Telemetry feature in the Feature management workspace. Table: resource registry, telemetry types and workspace daily ingestion cap only. | Fix: Remove the At rollout checklist bullet 'Enable the **Monitoring and Telemetry** feature in the **Feature management** workspace.' Keep the documented prerequisite in Scope; do not add a controls row.
+- [supported, minor] controls[2].api / command: The printed PUT workspace operation at api-version=2026-03-01 sets properties.workspaceCapping.dailyQuotaGb with the supplied location. | Found: PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2026-03-01 ... properties.workspaceCapping ... dailyQuotaGb ... The workspace daily quota for ingestion. | Fix: Replace controls[2].api.call and its rendered cell with 'PUT https://management.azure.com/subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.OperationalInsights/workspaces/<ws>?api-version=2026-03-01'. Append to controls[2].note: 'The request body sets properties.workspaceCapping.dailyQuotaGb.' The endpoint, version and printed body keys are documented; remove the body from the call to follow the standard. | Source: https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs enabling Monitoring and Telemetry, but the controls table has no row for that control. | Found: Checklist: Enable the Monitoring and Telemetry feature in the Feature management workspace. Table: Application Insights resource registry, telemetry types, and workspace daily ingestion cap. | Fix: Remove the At rollout bullet 'Enable the **Monitoring and Telemetry** feature in the **Feature management** workspace.' Keep the documented prerequisite in Scope; do not add a controls row.
+- [supported, minor] Why it matters / cost: The emitted telemetry spend is charged through Azure rather than through Dynamics 365. | Found: This article describes the different ways that Azure Monitor charges for usage and how to evaluate charges on your Azure bill. | Fix: Add 'Azure Monitor cost and usage' at https://learn.microsoft.com/azure/azure-monitor/fundamentals/cost-usage to sources to support the statement that the charges appear on the Azure bill. | Source: https://learn.microsoft.com/azure/azure-monitor/fundamentals/cost-usage
 -->

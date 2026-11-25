@@ -88,15 +88,17 @@ changes:
     note: "Corrected licensing to mixed and cost to variable, citing the prerequisites page; qualified hosting and known-issues statements and removed the Purview checklist step."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -207,4 +209,10 @@ Microsoft Learn documents no switch specific to custom engine agents for GCC Hig
 risk: Medium. A custom engine agent brings its own orchestrator and model, which for pro-code builds are builder-hosted outside Microsoft 365; the admin block control covers availability, but Microsoft has not stated a default or tenant switch for GCC High.
 cost: Variable. Builder-operated agents can incur Azure hosting and model consumption charges; a separate meter specific to this GCC High release is not named.
 impact: Medium. Makers and developers in GCC High tenants and the users they publish agents to notice it; the roadmap lists the Web platform only.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Change & support / behaviour: The known-issues page lists proactive notifications for those agents as unsupported. | Found: | Proactive notifications | Proactive notifications aren't supported. | | Fix: After the proactive-notifications statement, add: 'A separate Learn page documents proactive messaging for Bot Framework custom engine agents, so the messaging documentation also differs: https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-asynchronous-flow.' Add that URL to sources. Its introduction says these patterns allow agents to respond without a user-initiated message; it does not confirm GCC High availability. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues
 -->

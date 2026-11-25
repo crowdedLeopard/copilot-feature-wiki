@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "May CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
@@ -28,7 +28,7 @@ sources:
   - title: "Manage access to agents in SharePoint"
     url: "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint"
     kind: "learn"
-  - title: "Use agents with pay-as-you-go billing"
+  - title: "Set up SharePoint agents for pay-as-you-go billing"
     url: "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing"
     kind: "learn"
   - title: "Upgrade agents in SharePoint and OneDrive"
@@ -73,26 +73,30 @@ controls:
     note: "Learn says the Agent icon is hidden on the site's global header and the site's content is not surfaced in Microsoft Copilot. The page does not describe Teams chat. Needs Copilot licensing and SharePoint Advanced Management."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-05-21T23:15:57"
 changes:
   - date: "2026-11-24"
     note: "First briefing for this item: roadmap description, Learn's SharePoint agent licensing, block and Restricted Content Discovery controls, and the March 2027 .agent file end date."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: cost is now variable (pay-as-you-go messages for .agent files), a data-exposure bullet now follows Learn's permissions wording, and the pay-as-you-go open question now states what Learn documents."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-24"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 60
+  claims: 63
+  confirmed: 59
   unconfirmed: 0
   contradicted: 4
-  attempts: 1
-  hash: "216ac56f24bbc67cb7eadd2db56acaaf"
+  attempts: 0
+  hash: "f820c211d32cc0f1d3199d98fc7bf89f"
 ---
 
 ## What's changing
@@ -112,7 +116,7 @@ The controls differ by surface. Learn says blocking an agent created by using Sh
 ## Risk assessment
 
 **Data exposure**
-- Learn says agents in SharePoint respond to users based on their access permissions to the data, so oversharing in a site that an agent uses as a knowledge source becomes visible to anyone who can chat with that agent. Site permissions are the control, as the Learn page on managing access to agents describes.
+- Learn says agents in SharePoint respond to users based on their access permissions to the data, so overshared content can be returned to users who already have permission to that content. Site permissions are the control, as the Learn page on managing access to agents describes.
 - Learn says Restricted Content Discovery on a site removes the Agent icon from the site's global header and prevents the site's content from being surfaced in Microsoft Copilot or organisation-wide search. The page does not describe its effect on Teams chat, so test before relying on it for this feature.
 
 **Security & identity**
@@ -177,20 +181,21 @@ Restricted Content Discovery is a site-level setting managed by SharePoint admin
 - Is chatting with a SharePoint agent in Teams on by default, or does an administrator or user have to turn it on? Watch the roadmap item and Message center.
 - Which agent type does the Teams chat use: .agent files, or agents created in Microsoft Copilot Agent Builder? This decides whether the March 2027 end date applies.
 - Does the Teams admin center's app management cover these agents, and is there a Teams-specific block for SharePoint-created agents?
-- Does pay-as-you-go billing for SharePoint agents apply to Teams chat, and at what rate? Watch the SharePoint agents billing page on Microsoft Learn.
+- For .agent files, SharePoint agents pay-as-you-go uses the Azure resource whenever a user without a Microsoft Copilot licence uses a SharePoint agent.
 
 <!-- rationale
 risk: Medium. Learn says blocking an agent created by using SharePoint only affects Microsoft Copilot Chat, so the main block control does not cover Teams; agent answers follow each user's data permissions.
-cost: Low. Learn says users with a Microsoft Copilot licence can use agents in SharePoint; pay-as-you-go applies to users without one, and no Teams-specific rate is published. The known cost is admin time.
+cost: Variable. Unlicensed users of .agent files consume pay-as-you-go messages billed under the Copilot Studio meter; interactive use by authenticated Microsoft Copilot users in Microsoft 365 apps and services is included at no extra cost.
 impact: Medium. Teams users who hold a Copilot licence, or are covered by a pay-as-you-go policy, get a new way to reach SharePoint agents; the roadmap does not say how many tenants or users see it first.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Oversharing in an agent's source site becomes visible to anyone who can chat with that agent. | Found: if a user has access to the agent but not to the site or document library it references, the agent's responses for this user don't include content from those restricted sources. | Fix: Replace 'oversharing in a site that an agent uses as a knowledge source becomes visible to anyone who can chat with that agent' with 'overshared content can be returned to users who already have permission to that content'. Keep the citation to https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint. | Source: https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint
-- [contradicted, blocker] Open questions: pay-as-you-go applicability / absence: Whether SharePoint agents pay-as-you-go applies to Teams chat remains undocumented. | Found: That resource is used whenever a user without a Microsoft Copilot license uses a SharePoint agent. | Fix: Replace the final Open questions bullet with 'For .agent files, SharePoint agents pay-as-you-go uses the Azure resource whenever a user without a Microsoft Copilot licence uses a SharePoint agent.' Cite https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing and https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents. The latter states that SharePoint agents pay-as-you-go only applies to .agent files; do not leave that documented case open. | Source: https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost rating is low and the known cost is admin time. | Found: cost: Low. ... The known cost is admin time. / each interaction with a SharePoint agent [uses] 12 messages ... with charges shown under the Copilot Studio meter on the invoice. | Fix: Set cost to 'variable'. Replace the cost rationale with 'Variable. Unlicensed users of .agent files consume pay-as-you-go messages billed under the Copilot Studio meter; interactive use by authenticated Microsoft Copilot users in Microsoft 365 apps and services is included at no extra cost.' This follows https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing and the .agent scope in https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents. Do not infer indirect-only cost from the absence of a separate Teams rate.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; controls / consistency: Every control the governance checklist tells readers to check appears in the controls table. | Found: Check permissions on the sites ... whether a billing policy exists ... Review Microsoft Cost Management ... / controls lists only agent blocking and Restricted Content Discovery. | Fix: The Before rollout steps 'Check permissions on the sites those agents use' and 'whether a billing policy exists', and the After rollout step 'Review Microsoft Cost Management for SharePoint agent charges' have no matching control rows. These are the checklist/table gaps; do not add control rows during correction.
+- [supported, minor] Risk assessment: Change & support / behaviour: All .agent agents in a single Teams chat must be upgraded at the same time. | Found: you need to upgrade all agents used in the chat at the same time or else one upgraded agent will render all other (.agent file) agents unusable. | Fix: Keep the upgrade guidance, but add: 'Microsoft's Teams-sharing training instead says only one agent can be added at a time; the training and upgrade guidance differ on multiple agents in a chat.' Cite https://learn.microsoft.com/training/modules/use-no-code-agents-sharepoint/3-share-agent-microsoft-teams. | Source: https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents
+- [supported, minor] controls[1].note; Risk assessment: Data exposure; Governance controls table / applicability: Restricted Content Discovery prevents the site's content from being surfaced in Microsoft Copilot or organisation-wide search. | Found: The restricted content discovery policy leaves site access unchanged but prevents the site's content from being surfaced in Microsoft Copilot or organization-wide search for all users. | Fix: Qualify the statement everywhere it appears: 'Restricted Content Discovery limits organisation-wide search and Microsoft Copilot discovery scenarios, but does not affect experiences operating on content already in use, such as summarising an open document.' The latter qualification is in the already-cited https://learn.microsoft.com/sharepoint/restricted-content-discovery FAQ and narrows the access-management page's broader wording. | Source: https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to check site permissions, but the controls table has no site-permissions row. | Found: Check permissions on the sites those agents use ... Controls table: organisation-wide agent blocking; site Restricted Content Discovery. | Fix: Remove the 'Check permissions on the sites those agents use' checklist bullet, leaving the existing permissions explanation in Risk assessment. The checklist currently names a control absent from the table; do not add a row in this correction.
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to take stock of pilot users' licence assignments, but the controls table has no licensing row. | Found: Decide whether pilot users hold a Microsoft Copilot licence ... Controls table: organisation-wide agent blocking; site Restricted Content Discovery. | Fix: Remove the 'Decide whether pilot users hold a Microsoft Copilot licence or will rely on pay-as-you-go billing, and whether a billing policy exists' checklist bullet. Keep its supported licensing information in Cost and licensing; do not add a row in this correction.
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks readers to check whether a billing policy exists, but the controls table has no billing-policy row. | Found: Decide ... whether a billing policy exists. ... Controls table: organisation-wide agent blocking; site Restricted Content Discovery. | Fix: Remove the same 'Decide whether pilot users hold a Microsoft Copilot licence or will rely on pay-as-you-go billing, and whether a billing policy exists' checklist bullet. This is the same edit as the licence-checklist correction, not an additional edit.
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist asks readers to review Microsoft Cost Management charges, but the controls table has no consumption-monitoring row. | Found: Review Microsoft Cost Management for SharePoint agent charges if a pay-as-you-go policy is connected. ... Controls table: organisation-wide agent blocking; site Restricted Content Discovery. | Fix: Remove the Microsoft Cost Management checklist bullet because its monitoring control has no table row. Do not add a row in this correction.
 -->

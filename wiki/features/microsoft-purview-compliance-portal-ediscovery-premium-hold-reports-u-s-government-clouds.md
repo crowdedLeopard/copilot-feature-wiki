@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
-targetDate: "February CY2027"
+targetDate: "May CY2027"
 previewDate: null
 risk: "low"
 cost: "low"
@@ -53,7 +53,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users"
+      path: "Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users"
       docs: "https://learn.microsoft.com/purview/edisc-permissions"
     api:
       kind: "powershell"
@@ -73,8 +73,8 @@ controls:
     note: "Path from the cloud-unspecified preview page; the Government path is not stated. The cmdlet is taken from Learn's sample script and reads hold status; it is not a switch for the report."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
-roadmapModified: "2026-08-17T22:52:47"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-22"
     note: "New briefing: planned eDiscovery (Premium) hold reports for GCC, GCC High and DoD, targeted February CY2027."
@@ -84,11 +84,15 @@ changes:
     note: "Correction: Government plan pages now cited as also listing hold reports as In development, seven-day sync wording matched to Learn, licensing set to included per the service description, and role-assignment path refined."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
-version: 2
+  - date: "2026-11-25"
+    note: "Correction: role-assignment path now includes the Role groups for Microsoft Purview solutions heading; target date updated to May CY2027 to match the current roadmap record."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-22"
-  version: 2
+  status: "verified"
+  date: "2026-11-25"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 67
@@ -96,7 +100,7 @@ verification:
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "17482094ed7ca0e463b922880cf113d6"
+  hash: "6f707dd077d962e1019df6bef4c233da"
 ---
 
 ## What's changing
@@ -107,7 +111,7 @@ The roadmap supplies the Government release target; Microsoft's Government deplo
 
 According to that page, the hold report is a built-in report on all hold policies in the tenant. It lists every location in those policies, whether enabled or disabled, with columns such as case name, hold name, location, location error and policy status. You can sort, filter, group and customise columns, and download the whole report to a .csv file. The page also notes that the report syncs policy and location status no more than once every seven days.
 
-The roadmap record gives a target of February CY2027, the status In development and the release phase General Availability. Treat the date as a target, not a commitment.
+The roadmap record gives a target of May CY2027, the status In development and the release phase General Availability. Treat the date as a target, not a commitment.
 
 ## Why it matters
 
@@ -139,7 +143,7 @@ The Microsoft Purview service description includes eDiscovery (premium) in Micro
 
 ## Scope
 
-The roadmap lists GCC, GCC High and DoD, the Web platform and the release phase General Availability, with a February CY2027 target. The record applies to the Microsoft Purview portal and eDiscovery (Premium).
+The roadmap lists GCC, GCC High and DoD, the Web platform and the release phase General Availability, with a May CY2027 target. The record applies to the Microsoft Purview portal and eDiscovery (Premium).
 
 Per Learn's cloud-unspecified preview page, the report covers all hold policies in the tenant, including holds from cases without premium features, and shows Exchange mailbox and SharePoint site locations. eDiscovery Administrators see all cases; eDiscovery Managers see only cases they belong to. Rollout mechanics and prerequisites specific to Government clouds are not stated.
 
@@ -166,7 +170,7 @@ Per Learn's cloud-unspecified preview page, the report covers all hold policies 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can view the hold report (eDiscovery Administrator and eDiscovery Manager role groups)</strong><br><small>Tenant</small><br><small class="controls__note">Documented for eDiscovery in the Purview portal; Government pages list hold reports as In development. This first Choose users assigns Managers; -Member takes a mail-enabled security group (Managers subgroup, not Administrators).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Role groups › eDiscovery Manager › Edit › Manage eDiscovery Manager › Choose users <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember &quot;eDiscoveryManager&quot; -Member &lt;name of security group&gt;</code> <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can view the hold report (eDiscovery Administrator and eDiscovery Manager role groups)</strong><br><small>Tenant</small><br><small class="controls__note">Documented for eDiscovery in the Purview portal; Government pages list hold reports as In development. This first Choose users assigns Managers; -Member takes a mail-enabled security group (Managers subgroup, not Administrators).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Role groups › Role groups for Microsoft Purview solutions › eDiscovery Manager › Edit › Manage eDiscovery Manager › Choose users <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember &quot;eDiscoveryManager&quot; -Member &lt;name of security group&gt;</code> <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Viewing and downloading the hold report (preview path; scripted alternative)</strong><br><small>Tenant</small><br><small class="controls__note">Path from the cloud-unspecified preview page; the Government path is not stated. The cmdlet is taken from Learn's sample script and reads hold status; it is not a switch for the report.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Dashboards › Hold report (preview) <a href="https://learn.microsoft.com/purview/edisc-hold-report" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-CaseHoldPolicy &lt;hold policy name&gt; -Case &lt;case ID&gt; -DistributionDetail</code> <a href="https://learn.microsoft.com/purview/edisc-hold-report-script" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -186,10 +190,4 @@ The path and script in the second row come from Microsoft's preview documentatio
 risk: Low. The report is a read-only view of existing hold policies, and Learn's preview hold report page limits access to eDiscovery Administrators and eDiscovery Managers; Microsoft has not stated a default for Government clouds.
 cost: Low. Learn names no meter or price for the hold report; the only cost shown is admin time and the premium eDiscovery subscription the preview page requires. Government licensing specific to this report is not yet published.
 impact: Low. The preview documentation names eDiscovery Administrator and eDiscovery Manager permissions for viewing the report, so the people who notice it are eDiscovery administrators and managers, not other users.
--->
-
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Managers are assigned at Microsoft Purview portal > Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users. | Found: Go to Settings > Role groups. ... On Role groups for Microsoft Purview solutions, select eDiscovery Manager. ... Select Edit. ... On Manage eDiscovery Manager, select Choose users or Choose groups. | Fix: Include the omitted page heading: Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users. Keep the note that this assigns Managers, not Administrators. | Source: https://learn.microsoft.com/purview/edisc-permissions
 -->

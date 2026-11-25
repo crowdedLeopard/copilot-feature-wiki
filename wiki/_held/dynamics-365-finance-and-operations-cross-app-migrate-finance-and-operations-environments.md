@@ -89,18 +89,20 @@ changes:
     note: "Corrected the cost rating to medium and the licensing model to included, citing the finance and operations user licensing page and the capacity effect."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 68
+  claims: 72
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "a3b6d3888f32b5723aefaebfef6f57dc"
 ---
 
@@ -206,8 +208,11 @@ cost: Medium. The migrated environment consumes Power Platform capacity, and a s
 impact: Medium. Environment administrators and developers change from Lifecycle Services to Power Platform admin center and Azure Pipelines, and users of a migrated environment notice the downtime window.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Why it matters; Governance guidance: After rollout / behaviour: Lifecycle Services deployment and promotion workflows stop managing a migrated sandbox, with the guidance planning production last. | Found: If production is still managed in Lifecycle Services, you can't promote updates, including custom code changes, to production until you migrate production to the Power Platform admin center. | Fix: Keep the statement about migrated sandbox workflows, but append its documented last-sandbox qualification: 'Keep at least one sandbox in Lifecycle Services until you are ready to migrate production; migrating the last sandbox while production remains there prevents promotion of updates, including custom code changes, to production until production is migrated.' Carry that qualification into the production-last checklist bullet. Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center#recommended-migration-sequence. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center
+- [contradicted, blocker] Scope / absence: The migration page names no Lifecycle Services project role. | Found: Manage the environment through Lifecycle Services project roles, such as Project owner | Assign the Power Platform administrator role in Microsoft Entra ID or an environment admin role. | Fix: Replace 'The page names no Lifecycle Services project role' with 'The migration prerequisites do not specify a Lifecycle Services project role.' The updated article names Project owner only when explaining post-migration administration alternatives, not as a migration prerequisite. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / consistency: The guidance tells readers to review administrator access, but the controls table has no administrator-access management row. | Found: review who holds that role before migration day; agree who will be the administrator of that linked environment. The table has migration initiation, storage reporting and integration-status checks, but no access-management control. | Fix: The instruction to review who holds the linked-environment administrator role has no corresponding controls-table row. Remove 'so review who holds that role before migration day' and narrow the checklist clause to 'confirm the person starting migration is an administrator of the linked environment'; do not add a new control row.
+- [contradicted, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / consistency: The guidance asks readers to review and agree administrator access without a corresponding access-management control in the table. | Found: review who holds that role before migration day; agree who will be the administrator of that linked environment. The controls table contains migration initiation, capacity reporting and integration-status checks, not access management. | Fix: Remove 'so review who holds that role before migration day' and replace 'agree who will be the administrator of that linked environment' with 'confirm the person starting migration is an administrator of the linked environment'. Do not add a control row.
 -->

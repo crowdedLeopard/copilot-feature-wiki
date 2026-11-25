@@ -59,18 +59,20 @@ changes:
     note: "New briefing: roadmap-only description of the Intraday Agent, with the related existing workforce alerts and their enable setting."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 55 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
+  claims: 64
+  confirmed: 60
   unconfirmed: 1
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "d7b8423838f89a0163f132c8d3907e01"
 ---
 
@@ -172,8 +174,15 @@ cost: Low. Licensing and any meter are not yet published, so the only cost the s
 impact: Medium. Supervisors, schedulers and service representatives in contact centres would notice first, because their breaks, shifts and channel assignments are what the agent is described as changing.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Scope: Who is affected / behaviour: Schedulers receive the Intraday Agent's alerts and recommendations. | Found: Searched: "Intraday Agent"; "Intraday Agent" Dynamics 365 licensing enable roles approval audit default. Read the roadmap and opened Contact center agents overview and WEM app; the roadmap names supervisors as recipients, not schedulers. | Fix: Replace the Who is affected bullet with: "**Who is affected:** supervisors who receive its alerts and recommendations, and service representatives whose schedules it may change."
+- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft has not said which account or role the agent acts under. | Found: Workforce Engagement Management capabilities are covered under Customer Service. ... Agents read and update Dataverse by using the signed-in user's permissions. | Fix: Replace the account/acting-role absence with: "Microsoft's general Dynamics 365 agent guidance covers Customer Service and Workforce Engagement Management and says agents read and update Dataverse using the signed-in user's permissions. Intraday Agent-specific identity details are not yet documented." Cite https://learn.microsoft.com/dynamics365/developer/agent-capabilities-data-residency. Retain the separate question about roles that configure this agent. | Source: https://learn.microsoft.com/dynamics365/developer/agent-capabilities-data-residency
+- [contradicted, blocker] Risk assessment: Data exposure / absence: Microsoft has not published which supporting services process the agent's data. | Found: Entra ID, Dataverse, Dataverse MCP, and Power Platform process authentication and request data. | Fix: Narrow the services absence to: "Intraday-specific table and service dependencies are not yet documented. Microsoft's general Customer Service agent guidance identifies Entra ID, Dataverse, Dataverse MCP and Power Platform as services processing authentication and request data." Cite https://learn.microsoft.com/dynamics365/developer/agent-capabilities-data-residency. | Source: https://learn.microsoft.com/dynamics365/developer/agent-capabilities-data-residency
+- [contradicted, blocker] Risk assessment: Data exposure / absence: Microsoft has not published where the agent's processing happens. | Found: Agent service routing can select a healthy processing deployment, and transient processing can occur outside the geography selected for Dataverse. | Fix: Replace the processing absence with: "Microsoft's general Customer Service agent guidance says transient processing can occur outside the geography selected for Dataverse; that geography alone does not identify every supporting service's location. Confirm the Intraday Agent's specific processing, cache and diagnostic boundaries before enabling it." Cite https://learn.microsoft.com/dynamics365/developer/agent-capabilities-data-residency. | Source: https://learn.microsoft.com/dynamics365/developer/agent-capabilities-data-residency
+- [unsupported, major] Scope: Who is affected / behaviour: Schedulers receive the Intraday Agent's alerts and recommendations. | Found: Searched: "Intraday Agent" "schedulers"; "Intraday Agent" Dynamics 365 Customer Service. Read roadmap, WEM overview and Workforce Management overview; the record names supervisors as recipients, not schedulers. | Fix: Replace the bullet with: "**Who is affected:** supervisors who receive its alerts and recommendations, and service representatives whose schedules it may change."
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing / licensing: Licensing is recorded as unknown because no Intraday-specific licence or meter is published. | Found: An active subscription to Microsoft Dynamics 365 Customer Service Enterprise in your tenant for each user. | Fix: Set licensing.model to included under the standard's product-level licensing rule. Replace the notes with: "Copilot Service workspace requires an active Microsoft Dynamics 365 Customer Service Enterprise subscription for each user. Intraday Agent-specific licensing and metering are not yet published." Cite https://learn.microsoft.com/dynamics365/customer-service/implement/customer-service-workspace-system-requirements and use the same distinction in Cost and licensing; do not claim that this establishes the agent's eventual price. | Source: https://learn.microsoft.com/dynamics365/customer-service/implement/customer-service-workspace-system-requirements
+- [supported, minor] Governance guidance: After rollout / behaviour: An existing intraday performance report lets supervisors compare planned and actual staffing and performance. | Found: Supervisors and workforce managers can use the report to compare planned and actual performance interval by interval, broken out by channel and queue | Fix: Change the checklist sentence to: "Check the existing preview intraday performance report and adherence history report to review planned versus actual performance and schedule adherence before and after the agent's changes." Cite https://learn.microsoft.com/dynamics365/contact-center/use/workforce-management-use-performance-report. | Source: https://learn.microsoft.com/dynamics365/contact-center/use/workforce-management-use-performance-report
+- [supported, minor] Governance guidance: After rollout / behaviour: An existing adherence report compares representative schedules with actual work activity over time. | Found: The adherence history report shows how customer service representative schedules align with actual work activity over time. | Fix: Add https://learn.microsoft.com/dynamics365/contact-center/use/workforce-management-use-adherence-history-report to sources for the existing report recommended in Governance guidance. | Source: https://learn.microsoft.com/dynamics365/contact-center/use/workforce-management-use-adherence-history-report
 -->

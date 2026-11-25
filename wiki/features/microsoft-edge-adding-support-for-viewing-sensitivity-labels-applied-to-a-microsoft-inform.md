@@ -87,17 +87,19 @@ changes:
     note: "Corrected after the independent check: the Stable channel release notes document the feature (version 138.0.3351.55, controlled rollout); action is now prepare."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 42 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 42
+  claims: 42
+  confirmed: 40
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 2
   attempts: 0
   hash: "ad5257502ba9d130ed433c4acdd8bfdd"
 ---
@@ -191,9 +193,10 @@ cost: Low. Microsoft Learn says a licence is required for MIP and names no separ
 impact: Low. The roadmap describes a read-only display of the label for people who open MIP protected PDFs in Edge; it does not describe any change to who can open them.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Risk assessment: Change & support; Governance guidance / availability: The policy reference plans NewPDFReaderEnabled obsolescence starting in Edge 162. | Found: The policy will remain supported for a minimum of 6 major releases and is planned to become obsolete starting in Microsoft Edge version 162. | Fix: Add to the retirement sentence: 'Microsoft's September 2026 PDF-partnership FAQ instead schedules removal of the legacy PDF engine in Edge 156.' Cite https://techcommunity.microsoft.com/blog/microsoftedgeinsider/microsoft-edge-and-adobe-partner-to-improve-the-pdf-experience/3733481; its FAQ says 'The PDF engine in the Microsoft Edge built-in PDF reader is scheduled to be removed in Edge version 156.' Keep the policy reference's 162 plan attributed to that reference. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist instructs administrators to review label display names, but the controls table contains no sensitivity-label configuration control. | Found: Review label display names for wording that would confuse users or disclose sensitive detail. | Table controls: Whether Edge uses the new Adobe Acrobat powered PDF reader (deprecated policy); A setting that shows or hides the sensitivity label in the PDF viewer. | Fix: Remove the Before rollout bullet 'Review label display names for wording that would confuse users or disclose sensitive detail.' Do not add a controls row.
+- [supported, minor] controls[0].note; Risk assessment: Change & support; Governance guidance: Before rollout / availability: The policy reference plans NewPDFReaderEnabled obsolescence starting in Edge 162. | Found: The policy will remain supported for a minimum of 6 major releases and is planned to become obsolete starting in Microsoft Edge version 162. | Fix: Keep the Edge 162 plan explicitly attributed to the policy reference. Add: "Microsoft's September 2026 PDF-partnership FAQ instead says: 'The PDF engine in the Microsoft Edge built-in PDF reader is scheduled to be removed in Edge version 156.'" Cite https://techcommunity.microsoft.com/blog/microsoftedgeinsider/microsoft-edge-and-adobe-partner-to-improve-the-pdf-experience/3733481. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist instructs administrators to inventory sensitivity-labelled content, but the controls table has no content-inventory control. | Found: Inventory sensitivity-labelled content in the Microsoft Purview portal to identify PDFs to test. | Table controls: Whether Edge uses the new Adobe Acrobat powered PDF reader (deprecated policy); A setting that shows or hides the sensitivity label in the PDF viewer. | Fix: Remove the Before rollout bullet "Inventory sensitivity-labelled content in the Microsoft Purview portal to identify PDFs to test." Do not add a controls row.
+- [contradicted, minor] Governance guidance: Before rollout; After rollout; Governance controls / consistency: The checklist tells administrators to review and correct label names or descriptions, but the controls table has no label-configuration control. | Found: Review label display names for wording that would confuse users or disclose sensitive detail. | correct the label names or descriptions where it does not. | Table contains only PDF-reader selection and an undocumented label-display toggle. | Fix: Remove the Before rollout bullet "Review label display names for wording that would confuse users or disclose sensitive detail." Replace the After rollout bullet with "Collect user feedback on whether the label display matches your classification scheme." Do not add a controls row.
 -->

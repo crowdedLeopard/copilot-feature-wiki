@@ -4,7 +4,7 @@ slug: "microsoft-intune-intune-settings-available-in-catalog-and-account-protect
 roadmapId: 501456
 topic: "governance"
 products: ["Microsoft Intune"]
-summary: "The roadmap says Intune will expose the 'Adminless' settings in the settings catalog and account protection template. Learn already documents catalog policies for Administrator protection, off by default. Admins plan a pilot."
+summary: "Intune will expose 'Adminless' settings in the settings catalog and account protection template. Learn documents catalog policies for Administrator protection: normally off; enabled by default for Windows security baseline users from October 2026."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -43,39 +43,43 @@ sources:
 videos: []
 related: []
 controls:
-  - governs: "Whether Administrator protection is enabled and which elevation prompt is used, via a settings catalog policy"
+  - governs: "Creation of a settings catalog policy; Administrator protection settings are configured separately"
     scope: "group"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Settings catalog > Configuration settings > Add settings"
+      path: "Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Settings catalog > Configuration settings > Add settings > Local Policies Security Options > User Account Control Type Of Admin Approval Mode"
       docs: "https://learn.microsoft.com/intune/device-configuration/settings-catalog/"
     api:
       kind: "graph"
       call: "POST /beta/deviceManagement/configurationPolicies"
       docs: "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta"
-    note: "In the settings picker choose Local Policies Security Options, then User Account Control Type Of Admin Approval Mode. Needs at least Policy and Profile Manager. Graph reference is beta and does not name these settings."
+    note: "Graph creates the policy container only; it does not enable Administrator protection or set its elevation prompt. In the UI, set Local Policies Security Options using the two settings Learn names. Needs at least Policy and Profile Manager."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2025-10-01T23:01:01"
 changes:
   - date: "2026-11-24"
     note: "New briefing: Intune settings catalog route for Administrator protection, what the account protection template page does and does not list, and the gap between the roadmap status and Learn."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: baseline users can get Administrator protection by default without the Intune policy, and the Graph call only creates the policy container."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-24"
-  version: 1
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 67
+  claims: 72
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "70053636641d0580b3de347af44097d7"
+  contradicted: 2
+  attempts: 2
+  hash: "079979a9d0e347fd5a451d08505cd38a"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ The operational cost is support load. Learn lists cases where the feature breaks
 
 **Security & identity**
 
-- Learn says each admin operation needs interactive user authorisation, with no auto-elevations, and describes integration with Windows Hello. A device that does not receive the policy keeps its current elevation behaviour.
+- Learn says each admin operation needs interactive user authorisation, with no auto-elevations, and describes integration with Windows Hello. Windows security baseline users can have Administrator protection enabled by default by the October 2026 Windows security update even without this Intune policy.
 - The Learn page says to not enable it on devices managed with Windows LAPS. Check whether any Intune LAPS policy targets the same devices before assigning.
 - Elevated apps do not receive SSO credentials from the standard session, so domain or cloud sign-in must be repeated in the elevated session.
 
@@ -158,15 +162,17 @@ The known costs are indirect: pilot and testing time, support calls from the app
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Administrator protection is enabled and which elevation prompt is used, via a settings catalog policy</strong><br><small>Group</small><br><small class="controls__note">In the settings picker choose Local Policies Security Options, then User Account Control Type Of Admin Approval Mode. Needs at least Policy and Profile Manager. Graph reference is beta and does not name these settings.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Create › New policy › Windows 10 and later › Settings catalog › Configuration settings › Add settings <a href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/configurationPolicies</code> <a href="https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Creation of a settings catalog policy; Administrator protection settings are configured separately</strong><br><small>Group</small><br><small class="controls__note">Graph creates the policy container only; it does not enable Administrator protection or set its elevation prompt. In the UI, set Local Policies Security Options using the two settings Learn names. Needs at least Policy and Profile Manager.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Create › New policy › Windows 10 and later › Settings catalog › Configuration settings › Add settings › Local Policies Security Options › User Account Control Type Of Admin Approval Mode <a href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/configurationPolicies</code> <a href="https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The settings catalog is the route Learn documents for Intune. Creating the policy needs at least the Policy and Profile Manager built-in role.
 
-The account protection template (Endpoint security > Account protection > Create policy, platform Windows) is documented with Account protection, Local admin password solution (Windows LAPS) and Local user group membership profiles. Its page says the Account protection profile settings are also in the settings catalog and describes Windows Hello for Business and Credential Guard. It does not list Administrator protection, so the table gives only the catalog route.
+The account protection template (Microsoft Intune admin center > Endpoint security > Manage > Account protection > Create policy > Windows > Account protection) is documented with Account protection, Local admin password solution (Windows LAPS) and Local user group membership profiles. Its page says the Account protection profile settings are also in the settings catalog and describes Windows Hello for Business and Credential Guard. It does not list Administrator protection, so the table gives only the catalog route.
 
-The Graph row is the general settings catalog policy creation call. The reference page read does not name the Administrator protection settings, so the call is a way to script a catalog policy, not documentation of these two settings. The Administrator protection page also lists group policy and a Windows Security toggle (preview) as other ways to enable it; these are outside Intune and are not rows.
+The Graph row is the general settings catalog policy creation call. The reference page read does not name the Administrator protection settings, so the call creates a catalog policy and is not documentation of these two settings. The Administrator protection page also lists group policy and a Windows Security toggle (preview) as other ways to enable it; these are outside Intune and are not rows.
+
+The checklist's Windows security baseline check, elevation-event capture and Intune policy-status review have no row in the table, which lists only the settings catalog policy.
 
 ## Open questions
 
@@ -181,14 +187,11 @@ cost: Low. An Intune licence is required for devices that use Intune; the Learn 
 impact: Medium. People on devices that receive the policy approve every admin action interactively, and a reboot is required, so affected user groups notice; devices without the policy are not changed by the Intune settings.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; rationale: impact / default: A device that does not receive the policy keeps its current elevation behaviour. | Found: If your organization uses Windows security baselines, Administrator protection becomes enabled by default with the October 2026 Windows security update. | Fix: Replace 'A device that does not receive the policy keeps its current elevation behaviour' with 'Windows security baseline users can have Administrator protection enabled by default by the October 2026 Windows security update even without this Intune policy.' Retain the rationale's narrower attribution to changes made by the Intune settings themselves. | Source: https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/
-- [contradicted, blocker] controls[0].api; Governance controls table / command: POST /beta/deviceManagement/configurationPolicies is the automation equivalent for enabling Administrator protection and choosing its elevation prompt. | Found: Create a new deviceManagementConfigurationPolicy object. ... name | String | Policy name ... settingCount | Int32 | Number of settings | Fix: Narrow controls[0].governs to 'Creation of a settings catalog policy; Administrator protection settings are configured separately'. Retain the valid POST /beta/deviceManagement/configurationPolicies call, but change the note to 'Graph creates the policy container only; it does not enable Administrator protection or set its elevation prompt. In the UI, configure Local Policies Security Options using the two settings named in What's changing. Needs at least Policy and Profile Manager.' The setting-creation reference is https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-create?view=graph-rest-beta, but it does not identify these feature-specific settings, so do not substitute an inferred feature-specific call. | Source: https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta
+- [contradicted, blocker] controls[0].ui / admin-path: The control's linked settings catalog page documents the route through Local Policies Security Options to User Account Control Type Of Admin Approval Mode. | Found: In Configuration settings, select Add settings. In the settings picker, select a category to see all the available settings. | Fix: Set controls[0].ui.docs and the corresponding UI Learn link in the rendered table to https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/#configuration. That cited page documents Local Policies Security Options and User Account Control Type Of Admin Approval Mode; the already-cited settings catalog page supplies the preceding route. The route itself is supported by the two pages together. | Source: https://learn.microsoft.com/intune/device-configuration/settings-catalog/
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters / default: Administrator protection is off by default. | Found: The feature is off by default. ... If your organization uses Windows security baselines, Administrator protection becomes enabled by default with the October 2026 Windows security update. | Fix: Keep the documented general default, but replace the summary's unqualified 'off by default' with 'normally off; enabled by default for Windows security baseline users with the October 2026 update'. The body already gives this exception. | Source: https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Intune admin centre route reaches Add settings for a Windows settings catalog policy. | Found: Select Devices > Manage devices > Configuration > Create > New policy. ... Windows 10 and later ... Profile type: Select Settings catalog. ... In Configuration settings, select Add settings. | Fix: Use 'Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Settings catalog > Create > Basics > Configuration settings > Add settings > Local Policies Security Options > User Account Control Type Of Admin Approval Mode'. The final category and setting are documented at https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/. Retain the other prompt-setting name in the note. | Source: https://learn.microsoft.com/intune/device-configuration/settings-catalog/
-- [supported, minor] Governance controls: account protection template path / admin-path: Endpoint security > Account protection > Create policy, platform Windows, reaches the account protection profile-selection route. | Found: go to Endpoint Security > Account protection > Create Policy*. For Platform select Windows, and then choose from the following Profiles: | Fix: For the Account protection profile, give 'Microsoft Intune admin center > Endpoint security > Manage > Account protection > Create policy > Windows > Account protection'. The current abbreviated route stops at the profile-selection page; it is not a route to Administrator protection. | Source: https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist names controls and monitoring actions that have no corresponding controls-table row. | Found: Checklist: 'Check whether your Windows security baselines already set'; 'Capture elevation events'; 'Review Intune policy status'. Table: only the settings catalog creation/configuration row. | Fix: The Before rollout Windows security baseline check and the After rollout elevation-event capture and Intune policy-status review have no controls-table rows. Record this coverage gap without adding rows as part of this correction.
+- [supported, minor] What's changing; Governance controls; Open questions / absence: The cited Account protection reference page does not list Administrator protection settings. | Found: Searched: "Administrator protection settings in Account protection policies". Read Account protection policy in full: it omits them. Intune's October 26, 2026 release-note excerpt instead says it now includes two Administrator protection settings in endpoint security Account protection policies. | Fix: After the reference-page omission, add: "However, Intune's October 26, 2026 release notes state that endpoint security Account protection policies now include two Administrator protection settings: the Administrator Approval Mode type and elevation prompt behavior." Cite https://learn.microsoft.com/intune/whats-new/#week-of-october-26,-2026-service-release-2610 in sources. Replace the open question about whether the template will gain the settings with this documented availability; retain the separate question about the name Adminless.
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Checklist controls for reviewing LAPS targeting, checking the Windows security baseline, capturing elevation events, and reviewing policy status have no corresponding table rows. | Found: Check whether any Intune LAPS policy targets the same devices before assigning. ... The checklist's Windows security baseline check, elevation-event capture and Intune policy-status review have no row in the table | Fix: Replace the final Governance controls paragraph with: "The checklist's Intune LAPS targeting review, Windows security baseline check, elevation-event capture and Intune policy-status review have no corresponding row in the controls table." This identifies the checklist/table gap without adding unverified control rows.
 -->

@@ -86,15 +86,17 @@ changes:
     note: "Correction: policy controls now shown as user (per-profile) scope; reworded the availability and DLP statements in Why it matters; removed the DLP review checklist step."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -187,9 +189,9 @@ cost: Low. The only cost the sources show is admin time to review the policies; 
 impact: High. It changes what happens when users click links in Outlook emails: a side pane opens without the user asking, for every user the feature reaches.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; controls[0].note; Governance controls / availability: The policy page marks the policy as not yet supported, so the briefing treats its behaviour as planned. | Found: This policy is not yet supported. When support becomes available, eligible links from Outlook emails sent from the same tenant can open with the Copilot side pane. | Fix: After the not-yet-supported statement, add: 'Microsoft's Intune June 8, 2026 release notes describe this policy and automatic opening from Edge 148 in present terms, while the policy reference still says it is not yet supported and the roadmap remains In development.' Cite https://learn.microsoft.com/intune/whats-new/#week-of-june-8,-2026-service-release-2605. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled
-- [supported, minor] Governance controls / applicability: EdgeEntraCopilotPageContext covers Microsoft 365 Copilot Chat and enterprise-data-protected Copilot in the Edge side pane. | Found: This chart covers the behavior of Microsoft 365 Copilot Chat in Edge for Business which is accessible in the sidepane. | Fix: Add https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results to sources for the Copilot Chat side-pane identification. The cited EdgeEntraCopilotPageContext reference gives its reach as Copilot experiences in the side pane, including Microsoft 365 Copilot Business Chat and Microsoft Copilot with enterprise data protection. | Source: https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results
+- [supported, minor] What's changing; controls[0].note; Governance controls; Governance guidance: After rollout / availability: The policy reference says the auto-open policy is not yet supported, so its behaviour is described as planned. | Found: This policy is not yet supported. When support becomes available, eligible links from Outlook emails sent from the same tenant can open with the Copilot side pane. | Fix: After the not-yet-supported statement, add: 'Microsoft's Intune June 8, 2026 release notes describe automatic opening from Edge 148 in present terms, while the policy reference still says it is not yet supported and the roadmap remains In development.' Cite https://learn.microsoft.com/intune/whats-new/#week-of-june-8,-2026-service-release-2605, which says: 'Starting in Microsoft Edge version 148, when users open eligible links from Outlook emails sent from the same tenant, Microsoft Edge automatically opens the Copilot side pane with contextual insights.' | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled
+- [supported, minor] Governance controls: paragraph below table / applicability: EdgeEntraCopilotPageContext covers Microsoft 365 Copilot Chat in the Edge side pane. | Found: This chart covers the behavior of Microsoft 365 Copilot Chat in Edge for Business which is accessible in the sidepane. Please use our EdgeEntraCopilotPageContext group policy to block Copilot’s access to page content in your tenant. | Fix: Add https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results to sources for the existing statement identifying Microsoft 365 Copilot Chat in the Edge side pane. | Source: https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results
 -->

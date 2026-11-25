@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "November CY2026"
+targetDate: "December CY2026"
 previewDate: "November CY2026"
 risk: "medium"
 cost: "low"
@@ -24,6 +24,9 @@ tags: ["purview","auto-labeling","sensitivity-labels","information-protection","
 sources:
   - title: "Microsoft 365 Roadmap 574363"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=574363"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 578872"
+    url: "https://www.microsoft.com/releasecommunications/api/v2/m365?$filter=id%20eq%20578872"
     kind: "roadmap"
   - title: "MC1530948: (Updated) Microsoft Purview | Information Protection: Auto-labeling support for legacy Microsoft Office file formats"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1530948"
@@ -89,8 +92,8 @@ controls:
     note: "Run in Exchange Online PowerShell. Needs the Audit Logs role in Exchange Online."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-24"
-roadmapModified: "2026-10-13T23:01:05"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-18"
     note: "First briefing for this item: covers the notice's rollout window, the edit-and-rerun step for existing policies, and the controls that govern auto-labeling policies."
@@ -104,19 +107,23 @@ changes:
     note: "Notice MC1530948 moved preview to late November 2026 and general availability to mid-December 2026; licensing now cites the Purview service description's service-side entry; title and summary name the Worldwide item."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
-version: 3
+  - date: "2026-11-25"
+    note: "Corrected after verification: removed the after-rollout bullet that had no controls row, added the roadmap record for item 578872 as a source, and aligned the target dates in the text with the roadmap record."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-24"
-  version: 3
+  status: "held"
+  date: "2026-11-25"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 92
+  confirmed: 91
   unconfirmed: 0
   contradicted: 1
-  attempts: 0
-  hash: "b409c08fe429d792ed3c10ad01391b10"
+  attempts: 1
+  hash: "4044965ee1f5730f063e5857131195ee"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ Microsoft plans to add the legacy Office formats Word (.doc), Excel (.xls) and P
 
 The notice describes two cases. New auto-labeling policies automatically support the formats. Existing policies need a small edit and another policy run to restart the crawl so that legacy files are evaluated; the notice gives the example of adding or removing a policy comment, saving the change and running the policy again. The notice sets no act-by date and shows an end date of 2027-02-01.
 
-The notice was updated on 2026-11-24 and gives the rollout as Public Preview beginning in late November 2026 (previously early November) and expected to complete by early December 2026 (previously mid-November), then General Availability beginning in mid-December 2026 (previously late November) and expected to complete by late December 2026. The roadmap record still shows the item as In development, with preview and general availability both targeted for November CY2026, for Worldwide (Standard Multi-Tenant) on Web. The notice's dates are later than the roadmap's. All dates are Microsoft's targets.
+The notice was updated on 2026-11-24 and gives the rollout as Public Preview beginning in late November 2026 (previously early November) and expected to complete by early December 2026 (previously mid-November), then General Availability beginning in mid-December 2026 (previously late November) and expected to complete by late December 2026. The roadmap record still shows the item as In development, with preview targeted for November CY2026 and general availability for December CY2026, for Worldwide (Standard Multi-Tenant) on Web. The notice's dates fall within the roadmap's target months. All dates are Microsoft's targets.
 
 Microsoft lists the feature under a second roadmap item, 578872, for GCC, GCC High and DoD, targeted for December CY2026; this page covers item 574363 only. At the time of writing (November 2026), the Learn page on auto-labeling policies lists Word (.docx), PowerPoint (.pptx), Excel (.xlsx) and PDF files as supported for SharePoint and OneDrive and does not mention legacy formats. What follows about this change is therefore the roadmap's and the notice's description.
 
@@ -191,7 +198,6 @@ If nobody acts, the notice says existing policies need the edit and rerun to eva
 
 ### After rollout
 
-- Compare the labelling progress against the 500,000 files per tenant per day ceiling the Learn page gives.
 - Re-read the Learn page on auto-labeling and Message center for updates to the supported formats, as the page does not yet describe them.
 
 ## Governance controls
@@ -225,9 +231,8 @@ cost: Low. Microsoft's service description lists client and service-side automat
 impact: Medium. People who own legacy files in the SharePoint sites and OneDrive accounts a policy covers may find them labelled; users outside those locations are not affected by the notice.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope: Clouds and platforms / availability: A separate roadmap item, 578872, covers the same legacy-format feature for GCC, GCC High and DoD. | Found: "id":578872,"title":"Microsoft Purview: Information Protection-Auto-labeling for legacy Office files"; "cloudInstances":["GCC","GCC High","DoD"] | Fix: Add https://www.microsoft.com/releasecommunications/api/v2/m365?$filter=id%20eq%20578872 to sources as the Microsoft roadmap record supporting the government-item statement. | Source: https://www.microsoft.com/releasecommunications/api/v2/m365?$filter=id%20eq%20578872
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to compare labeling progress, but the controls table has no monitoring row. | Found: Compare the labelling progress against the 500,000 files per tenant per day ceiling ... Table rows cover activation, locations, policy edit and auditing, not labeling progress. | Fix: Remove the After rollout bullet 'Compare the labelling progress against the 500,000 files per tenant per day ceiling the Learn page gives.' It names a monitoring control with no corresponding table row; do not add a row in this correction.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing: rollout comparison / record: The notice's dates fall within the roadmap's target months. | Found: Public Preview: Beginning in late November 2026 (previously early November) and expected to complete by early December 2026 (previously mid-November) | Fix: Replace 'The notice's dates fall within the roadmap's target months.' with 'The notice's preview and general availability start dates fall within the roadmap's target months; preview completion is expected by early December 2026, after the roadmap's November CY2026 preview target month.'
 -->

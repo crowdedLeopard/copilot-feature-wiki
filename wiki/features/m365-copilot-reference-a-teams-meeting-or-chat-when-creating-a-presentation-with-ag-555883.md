@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "March CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
@@ -59,7 +59,7 @@ controls:
     note: "General licence assignment, not a switch for this feature. Needs at least License Administrator or User Administrator."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-06-02T23:00:40"
 changes:
   - date: "2026-11-24"
@@ -70,19 +70,23 @@ changes:
     note: "Corrected after the independent check: the sensitivity-label limitation for Teams meetings and chat is now stated, the default is user-opt-in, and an unsupported review step was removed."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: cost rating raised to medium, because Microsoft Copilot is included with Microsoft 365 E7 or needs an add-on for eligible plans."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-24"
-  version: 2
+  status: "verified"
+  date: "2026-11-25"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 41
+  claims: 48
+  confirmed: 48
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "3e82c49ce7e3bdafd4c1c04f3dfd95c8"
+  contradicted: 0
+  attempts: 0
+  hash: "70300a7175a3ca90a2d8970581df5175"
 ---
 
 ## What's changing
@@ -166,12 +170,6 @@ The table lists the only control a page read ties to this feature's availability
 
 <!-- rationale
 risk: Medium. Teams meeting and chat content becomes source material for presentation files, and Microsoft's pages say Copilot only surfaces data the user can already view, so existing permissions are the main control.
-cost: Low. Microsoft's licensing page lists Microsoft Copilot as available with Microsoft 365 E7 or as an add-on; no separate meter or charge for this feature is published, so the cost is licence assignment and admin time.
+cost: Medium. Microsoft Copilot is included with Microsoft 365 E7 or requires an add-on for eligible plans, so users without that entitlement may need an add-on licence. No separate meter or charge for this referencing feature is published.
 impact: Medium. People who build decks in PowerPoint on the web with Copilot will notice it, and they choose it by naming a meeting or chat in a prompt.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost is Low, limited to licence assignment and admin time because no separate feature meter or charge is published. | Found: Briefing: "Low. ... so the cost is licence assignment and admin time." Microsoft: "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans." | Fix: Set cost to medium. Replace the cost rationale with: "Medium. Microsoft Copilot is included with Microsoft 365 E7 or requires an add-on for eligible plans, so users without that entitlement may need an add-on licence. No separate meter or charge for this referencing feature is published." Retain the existing product licensing citation: https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-licensing. | Source: https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-licensing
 -->

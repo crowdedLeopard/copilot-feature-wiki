@@ -86,18 +86,20 @@ changes:
     note: "Correction: the Graph row now gives the configurationMonitors call with the Copilot Pages resource in the note; added the storage and Notebooks licence disagreements; removed four checklist items that had no controls row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 88
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "74af52eaf9afdb791b5c609869a91e3d"
 ---
 
@@ -203,8 +205,14 @@ cost: Low. Licensing for the new capability is not yet published; the only cost 
 impact: Medium. People who create or share Pages in Microsoft 365 Copilot Chat would notice first; the roadmap item names the Web platform and does not say who receives it automatically.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Data exposure / applicability: Whether the new reports in Pages follow existing Pages labelling is not stated. | Found: The sections below outline governance, lifecycle, and compliance capabilities applicable to all Copilot Pages and Copilot Notebooks storage types. | Fix: Replace 'Whether the new reports follow the same storage and labelling is not stated.' with 'Learn documents sensitivity labels for Copilot Pages across storage types; its storage pages disagree as described below.' The compliance summary states that its capabilities apply to all Copilot Pages storage types, not only older Pages. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary
+- [contradicted, blocker] Scope: final sentence / applicability: Whether the published Pages prerequisites also apply to the new capability is not stated. | Found: Users need a OneDrive license and an active OneDrive site. For full functionality including @mentions, users need an Exchange Online mailbox. | Fix: Replace 'Whether these also apply to the new capability is not stated.' with 'These are the published requirements for Copilot Pages; no additional prerequisite specific to the new reports and dashboards option was found.' The requirements describe Pages generally, the class of content the roadmap says this option creates. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: After creation is disabled, users can still view and edit existing items if they have permission. | Found: Users can still view and edit existing items if they have permission. | Fix: After this sentence add: 'The TCM reference gives a narrower Copilot Chat result: "When disabled, Copilot Chat doesn't provide live access to view or edit shared Loop files" (https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type).' | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because no licence specific to the new capability is published. | Found: Users need a OneDrive license and an active OneDrive site. If a OneDrive site exists and the license is later removed, Copilot Pages continue to work. | Fix: Set licensing.model to "included". Set licensing.notes to "Copilot Pages require a OneDrive licence and an active OneDrive site. No licence specific to the new reports and dashboards option is yet published." Replace the first Cost and licensing sentence with that same qualification; retain the narrower open question about any feature-specific entitlement. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements
+- [supported, minor] controls[0].api; Governance controls table / command: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors with displayName, mode="applyOnce" and baseline applies the Pages setting described in the note. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors Content-Type: application/json | Fix: Replace controls[0].api.call and the rendered call with 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors'. Add 'The request body uses mode="applyOnce" and an inline baseline.' to the row note. Keep its existing resourceType, resourceVersion and properties.value details; leave headers and the remaining body to the reference. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] Governance controls: disabled creation / behaviour: After creation is disabled, users with permission can still view and edit existing items. | Found: Users can still view and edit existing items if they have permission. | Fix: After this sentence add: 'The TCM reference gives a narrower Copilot Chat result: "When disabled, Copilot Chat doesn't provide live access to view or edit shared Loop files" (https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type).' Both descriptions were independently read in this check. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
+- [supported, minor] controls[0].note; controls[1].note; What's changing; Governance controls; Open questions; rationale: risk / applicability: The correctly documented Pages policies are presented as general controls not confirmed for the new reports and dashboards. | Found: IT administrators can control creation and use of Copilot Pages and Copilot Notebooks through Cloud Policy settings. | Fix: Replace the creation-policy caveat and its repeated open question with 'The creation policy governs creation and integration of Copilot Pages and Copilot Notebooks.' Replace the code-preview caveat with 'The code-preview policy governs AI-generated code previews in Copilot Chat and Copilot Pages; whether the new interactive elements use code previews is not stated.' Keep the genuine implementation-dependency question rather than implying Pages fall outside the policies' published reach. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
 -->

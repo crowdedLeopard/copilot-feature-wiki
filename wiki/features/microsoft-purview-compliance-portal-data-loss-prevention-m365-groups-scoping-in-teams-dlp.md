@@ -34,6 +34,21 @@ sources:
   - title: "Set-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy"
     kind: "learn"
+  - title: "Data loss prevention policy reference: policy scoping"
+    url: "https://learn.microsoft.com/purview/dlp-policy-reference#policy-scoping"
+    kind: "learn"
+  - title: "Microsoft Purview service description: which users need a license"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license"
+    kind: "learn"
+  - title: "Learn about DLP simulation mode"
+    url: "https://learn.microsoft.com/purview/dlp-simulation-mode-learn"
+    kind: "learn"
+  - title: "Get started with the DLP alerts dashboard"
+    url: "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started"
+    kind: "learn"
+  - title: "Activity explorer"
+    url: "https://learn.microsoft.com/purview/data-classification-activity-explorer#activity-types"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -41,35 +56,39 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Microsoft Purview portal > Data loss prevention > Policies > Edit policy > Choose locations to apply the policy > Teams chat and channel messages"
+      path: "Data loss prevention > Policies > policy > Edit policy > Choose locations to apply the policy > Teams chat and channel messages"
       docs: "https://learn.microsoft.com/purview/dlp-microsoft-teams"
     api:
       kind: "powershell"
       call: "Set-DlpCompliancePolicy -Identity <policy> -AddTeamsLocation <value>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy"
-    note: "Needs a role with permission to edit DLP policies; run the cmdlet in Security & Compliance PowerShell."
+    note: "-AddTeamsLocation adds accounts, distribution groups or mail-enabled security groups to the Teams inclusion list when TeamsLocation is All; it is not the operation that selects the Teams location in the wizard."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2025-10-27T23:15:26"
 changes:
   - date: "2026-11-24"
     note: "First briefing for roadmap item 401127: Teams DLP scoping to Microsoft 365 Groups extends to 1:1/n chats, with the OCR exception."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected the Set-DlpCompliancePolicy row: -AddTeamsLocation edits the Teams inclusion list, not the location choice; the admin path now starts after the portal name."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-24"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
+  claims: 51
+  confirmed: 50
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "b4b6c4ef03d3c4641db950d6092c69a1"
+  contradicted: 1
+  attempts: 0
+  hash: "41f8e124ccae21efbd7c7e8df90de924"
 ---
 
 ## What's changing
@@ -148,11 +167,11 @@ The change concerns Teams DLP policies scoped to Microsoft 365 Groups. Policies 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a DLP policy applies to Teams chat and channel messages</strong><br><small>Tenant</small><br><small class="controls__note">Needs a role with permission to edit DLP policies; run the cmdlet in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Microsoft Purview portal › Data loss prevention › Policies › Edit policy › Choose locations to apply the policy › Teams chat and channel messages <a href="https://learn.microsoft.com/purview/dlp-microsoft-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpCompliancePolicy -Identity &lt;policy&gt; -AddTeamsLocation &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP policy applies to Teams chat and channel messages</strong><br><small>Tenant</small><br><small class="controls__note">-AddTeamsLocation adds accounts, distribution groups or mail-enabled security groups to the Teams inclusion list when TeamsLocation is All; it is not the operation that selects the Teams location in the wizard.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › policy › Edit policy › Choose locations to apply the policy › Teams chat and channel messages <a href="https://learn.microsoft.com/purview/dlp-microsoft-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpCompliancePolicy -Identity &lt;policy&gt; -AddTeamsLocation &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Both rows govern which Teams conversations a DLP policy evaluates; neither is documented as a switch for the planned extension itself. The Learn page says you must hold a role with permission to edit DLP policies to change the Teams location. Where OCR is on, the roadmap says to keep users, security groups or Microsoft 365 groups listed explicitly.
+The row governs which Teams conversations a DLP policy evaluates, through the Teams chat and channel messages location in the policy wizard. The Learn page says you must hold a role with permission to edit DLP policies to change the Teams location. Where OCR is on, the roadmap says to keep users, security groups or Microsoft 365 groups listed explicitly.
 
 ## Open questions
 
@@ -167,16 +186,9 @@ cost: Low. The roadmap item names no new meter or licence; the Learn page says T
 impact: Medium. Users in tenants with group-scoped Teams DLP policies are the ones who may notice blocked or flagged messages in chats; tenants without such policies see no change.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls / command: Set-DlpCompliancePolicy -Identity <policy> -AddTeamsLocation <value> performs the same Teams-location selection as the UI side without further qualification. | Found: The AddTeamsLocation parameter specifies the accounts, distribution groups, or mail-enabled security groups to add to the list of included Teams chat and channel messages if you used the value All for the TeamsLocation parameter. | Fix: Retain the existing call only with this qualification in the row note: '-AddTeamsLocation adds accounts, distribution groups or mail-enabled security groups to the Teams inclusion list when TeamsLocation is All; it is not the operation that selects the Teams location in the wizard.' Remove the prose implication that both surfaces perform the same location-enabling operation. The reference is https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: Group-scoped Teams DLP depends on Microsoft 365 group membership. | Found: Teams chat and channel messages | Yes | - Distribution groups - Security groups - Mail-enabled security groups - Microsoft 365 groups (Group members only, not the group as an entity) | Fix: Cite https://learn.microsoft.com/purview/dlp-policy-reference#policy-scoping for the group-membership statement. | Source: https://learn.microsoft.com/purview/dlp-policy-reference#policy-scoping
-- [supported, minor] Cost and licensing / licensing: Users newly covered by Teams DLP must satisfy the licensing requirement. | Found: Teams chats, and devices are associated with a user account, so the user must have the required license assigned when a Purview policy or feature is used in these locations. | Fix: Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license for the requirement on newly covered users. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license
-- [supported, minor] controls[0].ui / admin-path: The printed Purview route reaches the Teams chat and channel messages location in an existing DLP policy. | Found: Sign in to the Microsoft Purview portal > Data loss prevention > Policies. Select a policy, and then choose Edit policy (the pencil icon). Navigate through the tool until you arrive at the Choose locations to apply the policy page. Select Teams chat and channel messages. | Fix: Use 'Data loss prevention > Policies > policy > Edit policy > Choose locations to apply the policy > Teams chat and channel messages' in ui.path, starting after the surface name and including the selected policy. Apply the same route to the rendered table. | Source: https://learn.microsoft.com/purview/dlp-microsoft-teams
-- [supported, minor] Governance guidance: Before rollout / applicability: Teams DLP policies can be tested in simulation mode. | Found: For Exchange, Teams, Devices locations only items that are new during simulation are evaluated. | Fix: Cite https://learn.microsoft.com/purview/dlp-simulation-mode-learn for the advice to test Teams rules in simulation. | Source: https://learn.microsoft.com/purview/dlp-simulation-mode-learn
-- [supported, minor] Governance guidance: After rollout / applicability: The DLP alerts dashboard supports Teams chat and channel policy violations. | Found: Microsoft Purview portal shows alerts for DLP policies that are enforced on the following workloads: 1. Exchange email 2. SharePoint sites 3. OneDrive accounts 4. Teams chat and channel messages | Fix: Cite https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started for reviewing Teams DLP alerts. | Source: https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started
-- [supported, minor] Governance guidance: After rollout / applicability: Activity explorer includes Teams chat and channel DLP policy matches. | Found: Additionally, Activity Explorer gathers DLP policy match events from Microsoft 365 workloads such as Exchange, SharePoint, OneDrive, Teams chat and channels, and on-premises SharePoint folders, libraries, and file shares. | Fix: Cite https://learn.microsoft.com/purview/data-classification-activity-explorer#activity-types for the Teams Activity explorer recommendation. | Source: https://learn.microsoft.com/purview/data-classification-activity-explorer#activity-types
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist names controls to check or monitor that are not represented in the controls table. | Found: Check whether OCR is enabled for Teams chat; Test the rules ... in simulation; Review DLP alerts and Activity explorer ... The table contains only 'Whether a DLP policy applies to Teams chat and channel messages'. | Fix: The OCR-setting check, simulation-mode recommendation, and DLP alerts/Activity explorer monitoring steps have no corresponding controls-table rows. Do not add rows as part of this correction.
+- [supported, minor] Cost and licensing: second paragraph / cost: The OCR cost estimator can estimate scanning charges. | Found: You can use the OCR cost estimator tool (preview) to estimate your optical character recognition (OCR) scanning costs. The tool scans your selected locations ... and projects how much OCR processing will cost before you enable it. | Fix: Change 'through the OCR cost estimator' to 'through the OCR cost estimator (preview)'. The preview designation is stated at https://learn.microsoft.com/purview/ocr-cost-estimator. | Source: https://learn.microsoft.com/purview/ocr-cost-estimator
+- [contradicted, minor] Governance guidance; controls / consistency: The checklist names OCR settings, simulation mode, DLP alerts and Activity explorer without corresponding controls-table rows. | Found: 'Check whether OCR is enabled for Teams chat'; 'Test the rules ... in simulation'; 'Review DLP alerts and Activity explorer'. The only controls-table row is 'Whether a DLP policy applies to Teams chat and channel messages'. | Fix: The Before rollout steps checking OCR and using simulation mode, and the After rollout step reviewing DLP alerts and Activity explorer, have no corresponding controls-table rows. Do not treat the Teams location row as documenting those controls.
 -->

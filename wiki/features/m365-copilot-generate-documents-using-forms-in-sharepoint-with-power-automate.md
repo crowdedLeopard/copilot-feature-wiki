@@ -77,15 +77,17 @@ changes:
     note: "Corrected after verification: the data policy row now gives the full path to moving SharePoint to the Business group and the Add-ConnectorsToPolicy command, the data policy roles are stated as the page gives them, and the unpublished storage-figure claim is removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
+  claims: 58
+  confirmed: 57
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -191,8 +193,9 @@ cost: Medium. Users who create and configure the forms need a Microsoft Copilot 
 impact: Medium. Makers building flows and content managers who own templates notice it; people who submit forms need only the form link, and nothing is documented that changes what other users see.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The controls table covers every control the governance checklist asks administrators to review. | Found: Review Edit permissions on the libraries ... Check which Microsoft Copilot licences are assigned ... Review the destination libraries for who can open the generated documents. The sole table row concerns connector combinations. | Fix: The Before rollout steps to review library Edit permissions and Copilot licence assignments, and the After rollout step to review generated-document access, have no corresponding controls-table rows.
+- [supported, minor] What's changing: second paragraph / admin-path: A content manager starts turning a Word template into a form through the Forms command in a SharePoint document library. | Found: In a SharePoint document library, select Forms from the command bar. Select Document generation form to start the form creation process. | Fix: Complete the sentence's route as 'Forms > Document generation form' in a SharePoint document library, as documented at https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The governance checklist's permission and licence controls are represented in the controls table. | Found: Review Edit permissions ... Check which Microsoft Copilot licences are assigned ... Review the destination libraries for who can open the generated documents. The sole controls-table row governs connector combinations. | Fix: The Before rollout steps to review library Edit permissions and Copilot licence assignments, and the After rollout step to review generated-document access, have no corresponding controls-table rows. Do not add rows as part of this correction.
 -->

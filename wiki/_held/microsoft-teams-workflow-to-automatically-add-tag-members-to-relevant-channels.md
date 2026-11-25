@@ -9,16 +9,16 @@ status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Android","Desktop","Mac","Web"]
-targetDate: "March CY2027"
-previewDate: "November CY2026"
+targetDate: "November CY2026"
+previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this template. Learn says Microsoft 365 seeded licences entitle users to cloud flows with standard connectors, but the connectors this template uses are not published."
+  model: "included"
+  notes: "Microsoft 365 seeded licences include cloud flows with standard connectors. No template-specific licence statement or connector list is published, so whether this entitlement is sufficient for the template remains unconfirmed."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","channels","power-automate","automation","data-policies"]
 sources:
@@ -101,8 +101,8 @@ controls:
     note: "No template-specific setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
-roadmapModified: "2026-11-19T00:53:06"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-19"
     note: "First briefing for this item, including MC1540351's updated general availability rollout of mid-March 2027."
@@ -118,19 +118,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
-version: 3
+  - date: "2026-11-25"
+    note: "Licensing now shows Microsoft 365 seeded licences (standard-connector cloud flows) as the published entitlement; the roadmap target date text now matches the record (November CY2026)."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
-  version: 3
+  status: "held"
+  date: "2026-11-25"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 59
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
-  hash: "adc8d8feb6556ca6a318f6c95290b4f1"
+  contradicted: 2
+  attempts: 1
+  hash: "7e46531d2a761c1310a1ac86011cebb7"
 ---
 
 ## What's changing
@@ -139,7 +143,7 @@ Microsoft is adding a Workflows app template called **Join member to channel whe
 
 The notice says the template applies to channels that all team members can access by default: standard channels, and shared channels that are shared with everyone on the team. It says nothing changes by default: the template is optional and does not run until someone in a team configures it. Microsoft Learn does not describe this template yet, so what this page says about its behaviour comes from the roadmap item and MC1540351.
 
-The roadmap item is **In development**, with a preview target of November CY2026 and a general availability target of March CY2027, for Worldwide (Standard Multi-Tenant) on Android, Desktop, Mac and Web. MC1540351 (updated 2026-11-19) gives Targeted Release as a gradual rollout from November 2026 through January 2027. It gives General Availability (Worldwide) as starting mid-March 2027, previously mid-December 2026, and completing by end of March 2027. The notice sets no act-by date.
+The roadmap item is **In development**, with a target date of November CY2026, for Worldwide (Standard Multi-Tenant) on Android, Desktop, Mac and Web. MC1540351 (updated 2026-11-19) gives Targeted Release as a gradual rollout from November 2026 through January 2027. It gives General Availability (Worldwide) as starting mid-March 2027, previously mid-December 2026, and completing by end of March 2027. The notice sets no act-by date.
 
 ## Why it matters
 
@@ -225,8 +229,10 @@ cost: Low. The only cost the sources show is admin and team-owner time; the lice
 impact: Low. Team owners who set the template up and members added to the tag notice it; nothing changes for anyone else by default, according to MC1540351.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api; Governance controls table / command: Add-ConnectorToBusinessDataGroup -PolicyName <policy name> -ConnectorName <connector name> accepts a policy name to select the policy. | Found: -PolicyName: The policy name identifier. ... Add-ConnectorToBusinessDataGroup -PolicyName e25a94b2-3111-468e-9125-3d3db3938f13 -ConnectorName shared_office365users ... -ConnectorName: The connector's identifier. | Fix: Replace the call in controls[1].api and its rendered table cell with 'Add-ConnectorToBusinessDataGroup -PolicyName <policy ID> -ConnectorName <connector identifier>'; the reference requires identifiers, not the policy's display name. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectortobusinessdatagroup?view=pa-ps-latest
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is classified as unknown because this template's entitlement and connectors are not yet published. | Found: Users gain limited rights to use Power Automate if they inherited seeded plans from licenses tied to other Microsoft products: - Microsoft 365 (formerly Office 365) / Dynamics 365 Enterprise / Dynamics 365 Professional / Dynamics 365 Team Member | Fix: Set licensing.model to included to acknowledge the published product-level entitlement. Replace licensing.notes with: 'Microsoft 365 seeded licences include cloud flows with standard connectors. No template-specific licence statement or connector list is published, so whether this entitlement is sufficient for the template remains unconfirmed.' Retain the template-specific uncertainty in the body and cost rationale. Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks readers to review flow ownership, but the controls table has no flow-ownership control. | Found: Review which teams have configured the workflow and who owns each flow. / The table lists app availability, connector data policies, tag-management permissions and the absent template-only switch. | Fix: Remove 'and who owns each flow' from the After rollout checklist item; flow ownership has no row in the controls table.
 -->

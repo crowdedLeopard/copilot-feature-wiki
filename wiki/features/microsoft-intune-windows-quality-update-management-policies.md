@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "included"
   notes: "Learn lists Microsoft Intune Plan 1 and a Windows licence that includes the Autopatch entitlement for quality update policies. The Autopatch prerequisites page lists qualifying licences, including Microsoft 365 Business Premium and Windows Enterprise E3 or E5."
 audiences: ["m365-admin","security","change-adoption"]
 tags: ["intune","windows-autopatch","windows-quality-updates","microsoft-graph","policy","gcc"]
@@ -40,8 +40,11 @@ sources:
   - title: "Approval method and deferral for each Windows quality update type (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-create?view=graph-rest-beta"
     kind: "learn"
-  - title: "Approving or pausing an individual quality update release for a policy (Microsoft Graph)"
+  - title: "Approving an individual quality update release for a policy (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-bulkaction?view=graph-rest-beta"
+    kind: "learn"
+  - title: "windowsQualityUpdatePolicyActionType enum type"
+    url: "https://learn.microsoft.com/graph/api/resources/intune-softwareupdate-windowsqualityupdatepolicyactiontype?view=graph-rest-beta"
     kind: "learn"
 videos: []
 related: []
@@ -56,8 +59,8 @@ controls:
       kind: "graph"
       call: "POST /beta/deviceManagement/windowsQualityUpdatePolicies"
       docs: "https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-create?view=graph-rest-beta"
-    note: "Role: Policy and Profile manager or a custom role. Beta endpoint. The request body property approvalSettings carries approvalMethodType and deferredDeploymentInDay; hotpatchEnabled sets hotpatch."
-  - governs: "Approving or pausing an individual quality update release for a policy"
+    note: "Role: Policy and Profile manager, or a custom role with the permissions listed in Scope. Beta endpoint. The request body property approvalSettings carries approvalMethodType and deferredDeploymentInDay; hotpatchEnabled sets hotpatch."
+  - governs: "Approving an individual quality update release for a policy"
     scope: "group"
     ui:
       surface: "Microsoft Intune admin center"
@@ -67,29 +70,33 @@ controls:
       kind: "graph"
       call: "POST /beta/deviceManagement/windowsQualityUpdatePolicies/{windowsQualityUpdatePolicyId}/bulkAction"
       docs: "https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-bulkaction?view=graph-rest-beta"
-    note: "Beta endpoint. The request body takes action and ids; the reference example sets action to suspend and the page does not describe other action values."
+    note: "Beta endpoint. The request body takes action and ids; action=approve approves a quality update and action=suspend pauses it. To pause a release in the UI, follow the same route and select Pause instead of Approve."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2025-10-03T22:00:02"
 changes:
   - date: "2026-11-24"
     note: "First briefing for the GCC roadmap item; it separates the roadmap record from what Learn documents for Windows quality update policies."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: licensing model set to included, custom-role requirements and Windows Insider enrolment exception added, approval and pause separated in the controls, LTSC disagreement reported, and unsupported statements removed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-24"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "6ac382f857edd7021a7ab273bcb7ac3c"
+  claims: 82
+  confirmed: 82
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "aa7835775d75ed9ab1735271bacdc938"
 ---
 
 ## What's changing
@@ -112,12 +119,12 @@ It is optional. Learn says devices without a quality update policy continue to r
 
 **Data exposure**
 
-- The feature manages update delivery and reads no document content. Learn says reporting for this feature needs your organisation to allow Intune to access Windows diagnostic data from enrolled devices, and that telemetry must be on at a minimum setting of Required.
+- The feature manages update delivery. Learn says reporting for this feature needs your organisation to allow Intune to access Windows diagnostic data from enrolled devices, and that telemetry must be on at a minimum setting of Required.
 
 **Security & identity**
 
 - Patch lag is the main exposure. In a policy, only monthly security updates default to automatic; the other three types default to manual. Learn says that where a device has both a cloud-based quality update policy and a legacy quality update policy (with only the hotpatch setting), monthly security updates are not offered until you approve them manually or automatically. Check each type's approval method when you create the policy.
-- Creating and editing policies needs the Policy and Profile manager role or a custom role with the Device configurations permissions that Learn lists, so scope who holds it.
+- Learn says to manage this feature you use the Policy and Profile manager role or a custom role with the Device configurations permissions Assign, Create, Delete, View Reports, Update and Read, plus permissions providing visibility into and access to managed devices, such as Organization/Read and Managed devices/Read. Scope who holds either.
 
 **Autonomy & actions**
 
@@ -129,7 +136,7 @@ It is optional. Learn says devices without a quality update policy continue to r
 - Learn says quality update policy deferrals override deferrals from update ring policies, while update ring settings such as deadlines and grace periods stay active. Expect support questions where both policy types target the same device.
 - Learn says the approval method of an existing policy cannot be changed, so a wrong choice means a new policy.
 - If a policy has hotpatch enabled, approving non-security updates does not deliver them to the device; Learn says to disable the hotpatch setting to receive them.
-- Windows Enterprise LTSC is not supported, and Windows 10 devices in Extended Security Updates take .NET Framework updates from Windows Update client settings, so the policy approvals cover only the operating system updates on them.
+- The Intune Manage Windows quality updates page says Windows Enterprise LTSC is unsupported for this policy type and directs administrators to update rings; the Windows Autopatch overview and prerequisites pages separately say Autopatch supports quality-update management for currently serviced Windows 10/11 LTSC devices. Windows 10 devices in Extended Security Updates take .NET Framework updates from Windows Update client settings, so the policy approvals cover only the operating system updates on them.
 
 ## Cost and licensing
 
@@ -141,19 +148,16 @@ The indirect cost is administrator time: manual approvals each month, pausing re
 
 The roadmap record lists the GCC cloud, the Desktop platform and the General Availability release phase for item 501450, with status In development and a target of February CY2026. The Worldwide equivalent is roadmap item 501449.
 
-Learn says the policy type supports Windows Pro, Pro Education, Enterprise and Education editions, on devices that are managed by Intune and are Microsoft Entra joined or Microsoft Entra hybrid joined. Devices need telemetry on at a minimum setting of Required and the Microsoft Account Sign-In Assistant service (`wlidsvc`) enabled and running. Windows Enterprise LTSC is not supported; Learn says to use update ring policies instead. Learn says devices targeted by a quality update policy are automatically enrolled in Windows Autopatch, and that a device no longer assigned to any quality update policy stays enrolled for 24 hours before it is unenrolled.
+Learn says the policy type supports Windows Pro, Pro Education, Enterprise and Education editions, on devices that are managed by Intune and are Microsoft Entra joined or Microsoft Entra hybrid joined. Devices need telemetry on at a minimum setting of Required and the Microsoft Account Sign-In Assistant service (`wlidsvc`) enabled and running. The Intune Manage Windows quality updates page says Windows Enterprise LTSC is unsupported for this policy type and directs administrators to update rings; the Windows Autopatch overview and prerequisites pages separately say Autopatch supports quality-update management for currently serviced Windows 10/11 LTSC devices. Learn says managed devices targeted by a quality update policy are automatically enrolled in Windows Autopatch, except devices running Windows Insider builds: those devices are not enrolled for quality updates and the policy approval settings do not apply. It also says that a device no longer assigned to any quality update policy stays enrolled for 24 hours before it is unenrolled.
 
-To manage policies, Learn says to use an account with the Policy and Profile manager role or a custom role with the listed Device configurations permissions. To view reports, it lists Endpoint Security Manager, Read Only Operator, Help Desk Operator or a custom role with the Managed devices View Reports permission.
+To manage policies, Learn says to use an account with the Policy and Profile manager role or a custom role with the Device configurations permissions Assign, Create, Delete, View Reports, Update and Read, plus permissions providing visibility into and access to managed devices, such as Organization/Read and Managed devices/Read. To view reports, it lists Endpoint Security Manager, Read Only Operator, Help Desk Operator or a custom role with the Managed devices View Reports permission.
 
 ## Governance guidance
 
 ### Before rollout
 
 - Decide per update type whether approval is automatic or manual, and name who approves the manual types each month; the Create policy settings row holds the choice, and Learn says it cannot be changed later.
-- List the devices that already receive update ring policies, because a quality update policy's approval settings and deferrals take priority for devices that have both.
-- Check that assigned devices meet the prerequisites: a supported Windows edition, Microsoft Entra join, telemetry at Required and the `wlidsvc` service running.
 - Confirm the licences Learn names (Microsoft Intune Plan 1 and a Windows licence with the Autopatch entitlement) cover every assigned user or device.
-- Assign the Policy and Profile manager role, or an equivalent custom role, only to the administrators who will own approvals.
 
 ### At rollout
 
@@ -165,7 +169,6 @@ To manage policies, Learn says to use an account with the Policy and Profile man
 
 - Review the Approved policies column for releases marked Needs review so no manual type waits unapproved.
 - Pause a release from the Manage updates page when an update causes problems, allowing up to eight hours for devices to apply the pause.
-- Review reports as Endpoint Security Manager, Read Only Operator or Help Desk Operator, and remove devices from policies deliberately, remembering the 24-hour Autopatch enrolment window.
 
 ## Governance controls
 
@@ -174,8 +177,8 @@ To manage policies, Learn says to use an account with the Policy and Profile man
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Approval method and deferral for each Windows quality update type</strong><br><small>Group</small><br><small class="controls__note">Role: Policy and Profile manager or a custom role. Beta endpoint. The request body property approvalSettings carries approvalMethodType and deferredDeploymentInDay; hotpatchEnabled sets hotpatch.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage updates › Windows updates › Quality updates › Create › Windows quality update policy › Settings <a href="https://learn.microsoft.com/windows/deployment/windows-autopatch/manage/windows-autopatch-windows-quality-update-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/windowsQualityUpdatePolicies</code> <a href="https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-create?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Approving or pausing an individual quality update release for a policy</strong><br><small>Group</small><br><small class="controls__note">Beta endpoint. The request body takes action and ids; the reference example sets action to suspend and the page does not describe other action values.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage updates › Windows updates › Quality updates › Manage updates › release › Approved policies › policy › Approve <a href="https://learn.microsoft.com/windows/deployment/windows-autopatch/manage/windows-autopatch-windows-quality-update-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/windowsQualityUpdatePolicies/{windowsQualityUpdatePolicyId}/bulkAction</code> <a href="https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-bulkaction?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Approval method and deferral for each Windows quality update type</strong><br><small>Group</small><br><small class="controls__note">Role: Policy and Profile manager, or a custom role with the permissions listed in Scope. Beta endpoint. The request body property approvalSettings carries approvalMethodType and deferredDeploymentInDay; hotpatchEnabled sets hotpatch.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage updates › Windows updates › Quality updates › Create › Windows quality update policy › Settings <a href="https://learn.microsoft.com/windows/deployment/windows-autopatch/manage/windows-autopatch-windows-quality-update-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/windowsQualityUpdatePolicies</code> <a href="https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-create?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Approving an individual quality update release for a policy</strong><br><small>Group</small><br><small class="controls__note">Beta endpoint. The request body takes action and ids; action=approve approves a quality update and action=suspend pauses it. To pause a release in the UI, follow the same route and select Pause instead of Approve.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage updates › Windows updates › Quality updates › Manage updates › release › Approved policies › policy › Approve <a href="https://learn.microsoft.com/windows/deployment/windows-autopatch/manage/windows-autopatch-windows-quality-update-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/windowsQualityUpdatePolicies/{windowsQualityUpdatePolicyId}/bulkAction</code> <a href="https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-bulkaction?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -196,16 +199,9 @@ cost: Low. Learn names Microsoft Intune Plan 1 and a Windows licence with the Au
 impact: Medium. Intune and update administrators set the policies; users on assigned Windows devices notice only when and whether updates arrive and when restarts follow.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The path ending in Approved policies > policy > Approve governs both approving and pausing an individual release. | Found: To pause a cloud-based quality update deployment: Select the X of Y under Approved policies to see which policies are approved. Select the desired policies and select Pause. | Fix: Change controls[1].governs and the rendered row label to 'Approving an individual quality update release for a policy'. Keep the approval path. Add to its note: 'To pause a release in the UI, follow the same route and select Pause instead of Approve.' The cited overview documents both actions. | Source: https://learn.microsoft.com/windows/deployment/windows-autopatch/manage/windows-autopatch-windows-quality-update-overview
-- [contradicted, blocker] front matter: licensing.model / licensing: The feature has a mixed licensing model. | Found: Windows Autopatch is available to the following licenses: Microsoft 365 Business Premium ... Windows 10/11 Enterprise E3 or E5 (included in Microsoft 365 F3, E3, or E5). | Quality updates | ✔️ | ✔️ | ✔️ | ✔️ | | Fix: Set licensing.model to 'included'. Keep the licensing notes naming Microsoft Intune Plan 1 and the Windows Autopatch entitlement: the feature is included in the named qualifying licences, not documented as a combination of add-on or consumption entitlement models. | Source: https://learn.microsoft.com/windows/deployment/windows-autopatch/prepare/windows-autopatch-prerequisites
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The feature reads no document content. | Found: Searched: Windows quality update policies Windows Autopatch document content diagnostic data privacy. Opened Manage Windows quality updates, the quality-update overview and Windows Autopatch Privacy; none states that this feature reads no document content. | Fix: Replace 'The feature manages update delivery and reads no document content.' with 'The feature manages update delivery.' Keep the separately supported diagnostic-data reporting requirements.
-- [contradicted, blocker] Risk assessment: Security & identity; Scope; controls[0].note; Governance guidance / role: Policy and Profile manager or a custom role with the listed Device configurations permissions suffices to manage policies. | Found: Custom role that includes: The Device configurations permissions Assign, Create, Delete, View Reports, Update, and Read; Permissions that provide visibility into and access to managed devices in Intune (for example, Organization/Read, Managed devices/Read) | Fix: Replace the custom-role description with 'a custom role with Device configurations permissions Assign, Create, Delete, View Reports, Update and Read, plus permissions providing visibility into and access to managed devices, such as Organization/Read and Managed devices/Read'. Retain Policy and Profile manager as the built-in alternative. Apply this qualification in Risk assessment and Scope; make controls[0].note refer to these full custom-role requirements. | Source: https://learn.microsoft.com/intune/device-updates/windows/manage-quality-updates
-- [contradicted, blocker] Scope / behaviour: Devices targeted by a quality update policy are automatically enrolled in Windows Autopatch. | Found: If you add devices running Windows Insider builds to the approval policy, these devices won't be enrolled in Windows Autopatch for quality updates. Therefore, approval settings from the quality update policy don't apply. | Fix: Replace the enrolment sentence with 'Managed devices targeted by a quality update policy are automatically enrolled in Windows Autopatch, except devices running Windows Insider builds: those devices are not enrolled for quality updates and the policy approval settings do not apply.' Keep the cited overview as the source. | Source: https://learn.microsoft.com/windows/deployment/windows-autopatch/manage/windows-autopatch-windows-quality-update-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance controls table / command: POST /beta/deviceManagement/windowsQualityUpdatePolicies/{windowsQualityUpdatePolicyId}/bulkAction can approve or pause quality updates. | Found: POST https://graph.microsoft.com/beta/deviceManagement/windowsQualityUpdatePolicies/{windowsQualityUpdatePolicyId}/bulkAction action | windowsQualityUpdatePolicyActionType ids | String collection | Fix: Add https://learn.microsoft.com/graph/api/resources/intune-softwareupdate-windowsqualityupdatepolicyactiontype?view=graph-rest-beta to sources. Replace the API portion of controls[1].note with 'Beta endpoint. The request body takes action and ids; action=approve approves a quality update and action=suspend pauses it.' The linked enum reference explicitly documents both meanings. | Source: https://learn.microsoft.com/graph/api/intune-softwareupdate-windowsqualityupdatepolicy-bulkaction?view=graph-rest-beta
-- [supported, minor] Risk assessment: Change & support; Scope / availability: Windows Enterprise LTSC is unsupported for this policy type and Learn directs administrators to update rings instead. | Found: Windows Enterprise LTSC (Long Term Service Channel) isn't supported. Use update ring policies instead. | Fix: Replace the LTSC statement with 'The Intune Manage Windows quality updates page says Windows Enterprise LTSC is unsupported for this policy type and directs administrators to update rings; the cited Windows Autopatch overview and prerequisites pages separately say Autopatch supports quality-update management for currently serviced Windows 10/11 LTSC devices.' This reports the disagreement without changing the documented Intune restriction. | Source: https://learn.microsoft.com/intune/device-updates/windows/manage-quality-updates
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The governance checklist tells administrators to inspect update rings and telemetry, assign roles, review reports and remove policy assignments, without corresponding control rows. | Found: List the devices that already receive update ring policies; Check ... telemetry at Required; Assign the Policy and Profile manager role; Review reports ... and remove devices from policies. The table has only approval-settings and release-action rows. | Fix: Remove the Before rollout bullets beginning 'List the devices', 'Check that assigned devices', and 'Assign the Policy and Profile manager role', and the After rollout bullet beginning 'Review reports'. Retain their factual prerequisites, role information and enrolment timing in Scope. Do not add unverified control rows.
+- [supported, minor] What's changing; Scope / record: Roadmap item 501449 has the same title and describes the equivalent capability. | Found: "id": 501449, "title": "Microsoft Intune: Windows Quality Update management policies" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=501449 to sources as 'Microsoft 365 Roadmap 501449', kind roadmap, for the Worldwide comparison.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The creation route in Microsoft Intune admin center is Devices > Manage updates > Windows updates > Quality updates > Create > Windows quality update policy > Settings. | Found: Select Devices > Manage updates > Windows updates > Quality updates. ... Select Create. ... Select Windows quality update policy. ... Under Settings, choose your approval method configuration | Fix: For the automatic deferral control, extend the path to 'Devices > Manage updates > Windows updates > Quality updates > Create > Windows quality update policy > Settings > Make updates available after'. Retain the note explaining that approval methods are chosen under Settings; the intervening Basics name entry and Next do not need to be path steps. | Source: https://learn.microsoft.com/windows/deployment/windows-autopatch/manage/windows-autopatch-windows-quality-update-overview
 -->

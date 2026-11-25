@@ -94,16 +94,18 @@ changes:
     note: "Corrected after the independent check: the Copilot Credits tenant-capacity setting now notes that a published environment group rule overrides it (TenantPoolLockedByPolicy), and checklist items without a table row are worded as considerations."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 75 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 75
-  confirmed: 74
-  unconfirmed: 0
+  confirmed: 73
+  unconfirmed: 1
   contradicted: 1
   attempts: 0
   hash: "1083b80aaf864930a080a0d081c03b76"
@@ -215,9 +217,11 @@ cost: Variable. For agents on the Microsoft Copilot harness, Microsoft's billing
 impact: Medium. Makers decide whether to add the source, and users of those agents then get answers drawn from SQL data; admins notice through credit consumption and data policy behaviour.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The general connector-blocking UI path is Security > Data and privacy > Data policy > New Policy > Next > Next > three dots > Block. | Found: Select **Next**. The **Add an environment** page appears. ... select the environment in the **Available** tab, and then select **Add to policy**. ... Select **Next**. The **Assign connectors** page appears. ... Select the three dots (**⋮**) next to the connector | Fix: Clarify the omitted scope selections in controls[0].ui and its rendered row: 'Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > ⋮ > Block'. The cited page also instructs the reader to enter the policy name after New Policy. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [contradicted, minor] Governance guidance versus controls / consistency: Every control the governance checklist asks readers to inspect has a corresponding controls-table row. | Found: Identify ... which makers can edit agents ... Check that makers write a specific knowledge name and description ... Watch credit consumption ... Review agents ... tables and views ... The table contains only connector data policies and environment credit allocation. | Fix: The author-permission inventory, knowledge-name/description check, consumption-monitoring step and selected-table/view review have no controls-table rows. Remove these checklist steps if retaining the current two-row table; no additional control row is requested by this correction.
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The connector-blocking route is Security > Data and privacy > Data policy > New Policy > Next > Next > three dots > Block. | Found: Select Next. The Add an environment page appears. ... select the environment in the Available tab, and then select Add to policy. ... Select Next. The Assign connectors page appears. | Fix: Replace controls[0].ui.path and its rendered path with 'Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > ⋮ > Block'. These omitted selections choose the policy scope and connector; the cited page supports the route. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [supported, minor] controls[1].api; Governance controls: second row / command: PUT licensing/allocationsV2 at version 2024-10-01 sets MCSMessages allocation and disables the TenantPool rule through the printed body properties. | Found: Invoke-RestMethod -Method Put ... -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" ... scope = @{ environmentId = $environmentId } ... entitlementId = "MCSMessages" ... @{ ruleType = "TenantPool"; enabled = $false } | Fix: Set controls[1].api.call and its rendered call to 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01'. Add to the note: 'The body sets scope.environmentId and allocatedEntitlements entries with entitlementId MCSMessages, allocation.quantity and enforcementRules containing ruleType TenantPool and enabled false.' The automatic endpoint warning is a false positive: the article constructs the URL from apiBaseUrl and apiVersion. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [unsupported, minor] rationale: risk / behaviour: This Microsoft Copilot source reads live business rows. | Found: Searched: Azure SQL knowledge live Microsoft Copilot. Read knowledge-add-azure-sql-tables and knowledge-real-time-connectors. The former states reading structured data; explicit real-time/no-data-movement guarantees on the latter are scoped to the standard harness. | Fix: Replace 'The agent reads live business rows through a SQL connection a maker sets up' with 'The agent answers questions by reading structured data through a SQL connection a maker sets up'. Do not carry the standard-harness real-time guarantee into this source.
+- [contradicted, minor] Governance guidance versus Governance controls / consistency: The governance checklist's controls are all represented in the controls table. | Found: Identify ... which makers can edit agents ... Check that makers write a specific knowledge name and description ... Watch credit consumption ... Review agents ... tables and views ... The table gives only connector classification and environment credit allocation. | Fix: The maker-permission inventory, knowledge-name/description check, credit-consumption monitoring and selected-table/view review have no table rows. Remove those checklist steps if keeping the current two-row table; this correction requests no additional rows.
 -->

@@ -14,7 +14,7 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "on"
+defaultState: "unknown"
 action: "act-now"
 licensing:
   model: "included"
@@ -40,6 +40,9 @@ sources:
   - title: "copilotAdminSetting resource type"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadminsetting"
     kind: "learn"
+  - title: "Known issues for Microsoft 365 Copilot extensibility"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 557371"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=557371"
     kind: "roadmap"
@@ -64,26 +67,30 @@ controls:
     note: "For regions where Anthropic is on by default. Users then have no option to use Claude models. Copilot Studio and Power Platform have further settings in the Power Platform admin center."
 confidence: "high"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-04-27T23:15:13"
 changes:
   - date: "2026-11-24"
     note: "New briefing: Learn's user and group assignment for Anthropic models, its regional defaults and the December 9, 2026 option changes."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 52 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: default state now unknown for the assignment control, Anthropic's longer retention for flagged content added, the Agent Blocked error documented, December 9, 2026 changes restated, and the group-membership checklist step removed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-24"
-  version: 1
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 48
+  claims: 58
+  confirmed: 56
   unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "932b667e11219da271b359b8d62ac1d2"
+  contradicted: 1
+  attempts: 2
+  hash: "0074ebbb1983d99494cec4322b2b0b52"
 ---
 
 ## What's changing
@@ -96,14 +103,14 @@ The roadmap item describes admin controls for Anthropic as a model provider for 
 
 ## Why it matters
 
-Claude models are a different processor from the OpenAI models many tenants first assessed. Learn says Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK), and that Claude models in Microsoft offerings are currently excluded from the EU Data Boundary. If nobody acts in those regions, Claude models are therefore already available to users, and the user and group control is how a service owner narrows that to an approved population.
+Claude models are a different processor from the OpenAI models many tenants first assessed. Learn says Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK), and that Claude models in Microsoft offerings are currently excluded from the EU Data Boundary. If nobody acts in those regions, Claude models are therefore already available to users, and the user and group control is how a service owner narrows that to an approved population. Microsoft documents these regional defaults for Claude model availability, but does not state the new assignment control's default enforcement state.
 
-In the EU, EFTA and UK the default is the reverse: Claude models are disabled by default. Learn also says that from December 9, 2026 the setting's options are renamed and some selections change, so a tenant that has never chosen an option should check it now rather than discover the new value later.
+In the EU, EFTA and UK, Learn's general default is the reverse: Claude models are disabled by default. The separate apps-only article says its setting is enabled by default for EU/EFTA/UK tenants created after March 25, 2026, so check the tenant's actual selection. For EU/EFTA/UK tenants, All users for Microsoft 365 apps only is removed on December 9, 2026; that selection and no previous selection change to All users. Other selections, including No users, don't change. A tenant that has never chosen an option should check it now rather than discover the new value later.
 
 ## Risk assessment
 
 **Data exposure**
-- Where Anthropic operates as a Microsoft subprocessor, Learn says the Microsoft Product Terms and Data Protection Addendum apply. Models labelled "Anthropic models with Data Retention" are different: Learn says Anthropic stores most inputs and outputs for up to 30 days, under Anthropic's own terms. Those models are off for everyone until the tenant admin opts in and chooses which users or groups can access them.
+- Where Anthropic operates as a Microsoft subprocessor, Learn says the Microsoft Product Terms and Data Protection Addendum apply. Models labelled "Anthropic models with Data Retention" are different: Learn says Anthropic stores most inputs and outputs for up to 30 days, under Anthropic's own terms. If Anthropic's trust and safety classifiers identify potential Usage Policy violations, content may be retained for up to two years and trust and safety classification scores for up to seven years. Those models are off for everyone until the tenant admin opts in and chooses which users or groups can access them.
 - Learn says Claude models in Microsoft offerings are currently excluded from the EU Data Boundary. It also says Claude models are coming into the EU Data Boundary starting in December 2026. Check which statement applies to your tenant at the time you decide.
 
 **Security & identity**
@@ -127,7 +134,7 @@ The indirect cost is admin time: choosing or building security groups, setting t
 
 The assignment covers individual users, Microsoft Entra ID security groups and nested security groups, up to 999 combined assignments per AI provider. It is enforced across the Microsoft 365 admin center, the Power Platform admin center and Copilot Studio, per Learn.
 
-The roadmap lists Worldwide (Standard Multi-Tenant) only, with platform Web. Learn's default differs by region: on for most commercial customers outside the EU, EFTA and UK, and disabled by default in those regions. Changing the setting requires the AI Administrator or Global Administrator role.
+The roadmap lists Worldwide (Standard Multi-Tenant) only, with platform Web. Learn's default differs by region: on for most commercial customers outside the EU, EFTA and UK, and disabled by default in those regions. The separate apps-only article says its setting is enabled by default for EU/EFTA/UK tenants created after March 25, 2026, so check the tenant's actual selection. Changing the setting requires the AI Administrator or Global Administrator role.
 
 ## Governance guidance
 
@@ -143,8 +150,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant) only, with platform Web. Lea
 - Test an agent that uses Claude with an assigned and an unassigned account.
 
 ### After rollout
-- Review group membership on a schedule, because group changes change who can use Claude.
-- Re-check the setting before December 9, 2026, when Learn says option names and some selections change.
+- Re-check the setting before December 9, 2026, when Learn says the All users for Microsoft 365 apps only option is removed for EU/EFTA/UK tenants.
 - Watch Message center for Anthropic changes, including any move of Claude models into the EU Data Boundary.
 
 ## Governance controls
@@ -161,7 +167,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant) only, with platform Web. Lea
 
 Both rows are set by the AI Administrator or Global Administrator role. The assignment row limits who can use Anthropic; the disable row removes the Claude option for everyone, and Learn says you can enable Claude models again later.
 
-Copilot Studio and Power Platform have a second layer. After a provider is enabled in Microsoft 365, a Power Platform system admin allows its models in an environment (Power Platform admin center > Manage > Environments > environment > Settings > Product > Features) or through environment group rules, per the Power Platform page "Allow external language models for generative responses". Learn says the Microsoft 365 setting is the first step and does not by itself make models available there.
+Copilot Studio and Power Platform have a second layer. After a provider is enabled in Microsoft 365, a Power Platform system admin allows its models in an environment (Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > applicable model provider setting (On or Off)) or through environment group rules, per the Power Platform page "Allow external language models for generative responses". Learn says the Microsoft 365 setting is the first step and does not by itself make models available there.
 
 Anthropic models with Data Retention have their own opt-in in the Microsoft 365 admin center, off for all scenarios until the tenant admin enables them and chooses which users or groups may use them.
 
@@ -171,23 +177,19 @@ Anthropic models with Data Retention have their own opt-in in the Microsoft 365 
 - Does Microsoft publish a licence or price specific to Claude models in Copilot? None is documented on the pages read; watch the Microsoft Copilot requirements page and Message center.
 - Does the roadmap item correspond exactly to the Specific users and groups option? The record has no more-info link, so watch the roadmap entry and the Learn page "Assign AI provider access to users and groups".
 - How will the December 9, 2026 option changes, documented on the EU, EFTA and UK page, apply to tenants outside those regions? Watch the Message center post Learn names.
-- What do unassigned users see in Copilot when a feature needs Anthropic? Learn says only that they might be unable to use it.
+- What do unassigned users see across other Copilot experiences? The known-issues page documents an "Agent Blocked" error for Copilot Studio agents added to Microsoft 365 Copilot or Teams.
 
 <!-- rationale
-risk: Medium. Learn says Claude models are on by default for most commercial customers and sit outside the EU Data Boundary, so the user and group control only limits exposure once an admin sets it.
+risk: Medium. Learn says Claude models are on by default for most commercial customers and sit outside the EU Data Boundary; Learn does not state the default for the new user and group assignment control.
 cost: Low. The Learn pages read name no separate licence, price or meter for Anthropic models; the known cost is admin time and the Copilot licence users already need.
 impact: Medium. Only users left out of an assignment notice, because Copilot features that depend on Anthropic may be unavailable to them or behave differently; admins make the change.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The new user and group access control is on by default. | Found: Searched: AI provider user group assignments Anthropic access restriction default all users Microsoft Copilot. Opened assignment and both Anthropic setting pages; they state regional model availability, not that the new assignment control starts enforcing by default. | Fix: Set defaultState to unknown for this new control. State: 'Microsoft documents regional defaults for Claude model availability, but does not state the new assignment control's default enforcement state.' Keep the separately attributed regional availability facts.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Anthropic stores most inputs and outputs for up to 30 days, with no longer-retention qualification given. | Found: If Anthropic's trust and safety classifiers identify potential violations of Anthropic's Usage Policy, Anthropic may retain content (inputs and outputs) for up to two years and trust and safety classification scores for up to seven years. | Fix: Append to the 30-day statement: 'If Anthropic's trust and safety classifiers identify potential Usage Policy violations, content may be retained for up to two years and trust and safety classification scores for up to seven years.' | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [contradicted, blocker] Open questions: unassigned users / absence: Microsoft Learn says only that unassigned users might be unable to use a feature, without documenting what they see. | Found: Users who aren't granted access to the model receive the "Agent Blocked" error. | Fix: Remove 'Learn says only that they might be unable to use it.' The narrower question 'What do unassigned users see across other Copilot experiences?' can remain; the known-issues page documents an Agent Blocked error for Copilot Studio agents added to Microsoft 365 Copilot or Teams. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues#copilot-studio-agents
+- [contradicted, blocker] Governance controls: Power Platform environment group rules / applicability: The alternative environment-group rule route is presented without its Managed Environments prerequisite. | Found: If an environment is part of an environment group, use environment group rules to manage external models across the group. ... Environments in an environment group must be managed environments. | Fix: Add immediately after the sentence offering environment group rules: 'For the environment-group route, environments in the group must be Managed Environments.' Cite https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses. | Source: https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses
+- [unsupported, major] Why it matters: opening sentence / behaviour: Many tenants first assessed OpenAI models before Claude. | Found: Searched: Microsoft Copilot OpenAI models Anthropic different processor initial models tenants assessed. Read application-card and model-availability excerpts, plus the cited Anthropic implementation page: none states which models tenants first assessed. | Fix: Remove 'many tenants first assessed' from the opening sentence of Why it matters.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Scope / default: Claude models are disabled by default in EU/EFTA and UK. | Found: Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default. | Fix: After this attributed general default, add: 'The separate apps-only article says its setting is enabled by default for EU/EFTA/UK tenants created after March 25, 2026, so check the tenant's actual selection.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [supported, minor] Why it matters; Governance guidance; Open questions; changes / date: Setting option names and some selections change on December 9, 2026. | Found: If the All users for Microsoft 365 apps only option is currently selected, the selection will change to the All users option. If you haven't previously made any selection, your selection will change to All users. | Fix: Replace 'options are renamed and some selections change' with: 'For EU/EFTA/UK tenants, All users for Microsoft 365 apps only is removed on December 9, 2026; that selection and no previous selection change to All users. Other selections, including No users, remain unchanged.' | Source: https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps
-- [supported, minor] Governance controls: Power Platform environment path / admin-path: Manage > Environments > environment > Settings > Product > Features reaches the environment's provider settings. | Found: On the Settings page, select Product > Features. On the Features page, turn each applicable model provider setting On or Off. | Fix: Extend the path to 'Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > applicable model provider setting (On or Off)' as documented at https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses. | Source: https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks administrators to review security group membership, but the table has no membership-management row. | Found: Review group membership on a schedule ...; table rows cover provider assignment and disabling Anthropic, not management of Entra security group membership. | Fix: Remove the checklist instruction 'Review group membership on a schedule, because group changes change who can use Claude.' Retain the explanatory membership risk in Security & identity; do not add a control row.
+- [supported, minor] Why it matters: opening sentence / behaviour: Claude's Anthropic processor is different from OpenAI. | Found: Claude Opus and Claude Sonnet models provided by Anthropic ... GPT models provided by OpenAI | Fix: Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card for the comparison of model providers in Why it matters. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card#models-and-training-data
 -->

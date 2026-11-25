@@ -5,7 +5,7 @@ roadmapId: 572677
 topic: "governance"
 products: ["Microsoft Purview"]
 summary: "Purview plans a per-policy report comparing enforced auto-labeling with the latest simulation, for GCC, GCC High and DoD. It is a new view for admins who run auto-labeling; the roadmap names no required action."
-status: "in-development"
+status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
@@ -18,18 +18,24 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "The report is a view inside service-side auto-labeling, whose published entitlement is the E5 / P2-tier licensing on the Learn page; no separate report-specific licence or charge is documented as of November 2026. Government-cloud entitlements sit on a separate licensing guidance page."
+  notes: "The report is a view inside service-side auto-labeling, whose published entitlement is the E5 / P2-tier licensing on the Learn page; no separate report-specific licence or charge is documented as of November 2026. The Purview service description says AIP P1 must be assigned alongside AIP P2 for sensitivity labeling."
 audiences: ["compliance","m365-admin","security"]
 tags: ["purview","information-protection","sensitivity-labels","auto-labeling","monitoring","gcc","gcc-high","dod"]
 sources:
   - title: "Microsoft 365 Roadmap 572677"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=572677"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 568935"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=568935"
+    kind: "roadmap"
   - title: "Automatically apply a sensitivity label to Microsoft 365 data"
     url: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
     kind: "learn"
   - title: "Get-AutoSensitivityLabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
 videos: []
 related: ["microsoft-purview-information-protection-auto-labeling-per-policy-coverage-report","microsoft-purview-auto-labeling-scalability-policy-management-and-reporting-enhancements","sensitivity-labels"]
@@ -55,26 +61,30 @@ controls:
     note: "Security & Compliance PowerShell only. Shows labeling progress, not the comparison with simulation. Review-page roles: Compliance Administrator, Compliance Data Administrator, Information Protection Admin, Information Protection Analyst."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
-roadmapModified: "2026-09-23T22:59:12"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-21"
     note: "New briefing on the per-policy auto-labeling coverage report for GCC, GCC High and DoD, which Learn already documents as a preview report."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
-version: 1
+  - date: "2026-11-25"
+    note: "Correction: added the AIP P1 assignment requirement with its source, linked roadmap item 568935 as a source, and updated status to Rolling out per the current roadmap record."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 1
+  status: "held"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 59
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
-  hash: "ffddf8ca413962683efc6e21f0dc90fa"
+  claims: 71
+  confirmed: 68
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
+  hash: "24c8119e0aab2d3fc85c3fcd039b5cd1"
 ---
 
 ## What's changing
@@ -85,7 +95,7 @@ Microsoft Learn already documents the report as **Coverage by simulation context
 
 Learn groups files into **Observed files**, **Labeled during enforcement**, **Not labeled during enforcement**, **Found in simulation**, **No simulation match found**, **Pending**, **Not yet attempted** and **Failed to apply label**. Selecting a bucket opens a file list. Learn says coverage is based on labeling activity after the latest simulation run and is available for 30 days; after that **View coverage** is unavailable until the policy is run in simulation again. Learn also says the report is not an all-time policy total and not an exact reconciliation between simulation and enforcement.
 
-The roadmap record lists this item as In development, with a target of November CY2026, release phase General Availability, for GCC, GCC High and DoD on the web. Microsoft lists the same feature under a second roadmap item, 568935, for Worldwide (Standard Multi-Tenant), which the roadmap shows as Launched with a target of October CY2026. The two items are separate records; this page covers the government-cloud item.
+The roadmap record lists this item as Rolling out, with a target of November CY2026, release phase General Availability, for GCC, GCC High and DoD on the web. Microsoft lists the same feature under a second roadmap item, [568935](https://www.microsoft.com/microsoft-365/roadmap?id=568935), for Worldwide (Standard Multi-Tenant), which the roadmap shows as Launched with a target of October CY2026. The two items are separate records; this page covers the government-cloud item.
 
 ## Why it matters
 
@@ -110,7 +120,7 @@ Microsoft has not stated what happens on arrival, including whether the report a
 
 ## Cost and licensing
 
-Learn's auto-labeling page lists service-side auto-labeling (SharePoint, OneDrive, Exchange) as included with Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). The same page says auto-labeling of files and emails is not included at the E3 or Business Premium level.
+Learn's auto-labeling page lists service-side auto-labeling (SharePoint, OneDrive, Exchange) as included with Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). The same page says auto-labeling of files and emails is not included at the E3 or Business Premium level. The [Microsoft Purview service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling) additionally says that AIP P1 must be assigned alongside AIP P2 for sensitivity labeling to be available.
 
 The coverage report is a view inside that auto-labeling surface. No separate licence or meter for the coverage report is documented as of November 2026. The indirect cost is admin time to review the report and to rerun simulation so that coverage is available again after 30 days.
 
@@ -118,7 +128,7 @@ For entitlements in Government clouds, the Learn page points to Microsoft's per-
 
 ## Scope
 
-The roadmap item lists GCC, GCC High and DoD, for the web, with release phase General Availability and a target of November CY2026. Status is In development, so the dates are targets.
+The roadmap item lists GCC, GCC High and DoD, for the web, with release phase General Availability and a target of November CY2026. Status is Rolling out, so the dates are targets.
 
 Prerequisites on the Learn page: the policy includes SharePoint or OneDrive, has completed simulation and is turned on. An Exchange-only policy gets no file coverage, and rerunning it in simulation does not enable it. Learn says turning a policy from **Ready to turn on** to **On** needs Compliance Administrator or Compliance Data Administrator. For the per-policy review pages, Learn lists Compliance Administrator, Compliance Data Administrator, Information Protection Admin or Information Protection Analyst. No role is stated for the coverage report alone.
 
@@ -168,9 +178,11 @@ cost: Low. Learn lists service-side auto-labeling with E5 and Azure Information 
 impact: Low. Only administrators and analysts who monitor auto-labeling policies see the report; end users are not mentioned in the roadmap description.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing: first paragraph / licensing: Learn's auto-labeling page lists Microsoft 365 E5 Compliance as an included service-side auto-labeling entitlement. | Found: Client-side auto-labeling (Office apps) ... Microsoft 365 E5 Compliance ... Service-side auto-labeling ... Check the Client and service-side automatic sensitivity labeling entry ... Client-only entitlements don't establish service-side entitlement. | Fix: Replace the first licensing sentence with: 'The Microsoft Purview service description lists client and service-side automatic sensitivity labeling as included with Microsoft 365 E5/A5/G5, Microsoft Purview Suite/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5 Information Protection and Governance, and Office 365 E5/A5/G5.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [contradicted, blocker] Cost and licensing; front matter: licensing.notes; rationale: cost / licensing: Learn lists Azure Information Protection Premium P2 standalone as an included service-side auto-labeling entitlement. | Found: Client-side auto-labeling (Office apps) ... Azure Information Protection Premium P2 (standalone) ... Service-side auto-labeling ... Client-only entitlements don't establish service-side entitlement. | Fix: Use the service-side licensing sentence supplied for the first licensing paragraph, without AIP P2 standalone. Replace the licensing-notes opening with 'The report is a view inside service-side auto-labeling, whose published entitlement is the Client and service-side automatic sensitivity labeling entry in the Microsoft Purview service description.' Replace the cost rationale with 'Low. The Microsoft Purview service description lists service-side automatic sensitivity labeling in its included feature matrix; no separate report-specific charge is documented, so the cost to plan for is admin time.' Keep the separately supported AIP P1 assignment statement as a conditional requirement, not as proof of service-side entitlement. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; front matter: licensing.notes; rationale: cost / licensing: The cited auto-labeling page includes service-side auto-labeling with Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). | Found: Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone) | Fix: Keep the attributed list, but add: 'The Microsoft Purview service description additionally says that AIP P1 must be assigned alongside AIP P2 for sensitivity labeling to be available.' Cite https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling and add that page to sources. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-- [supported, minor] What's changing / record: Roadmap item 568935 is a separate record for the same per-policy coverage report. | Found: 568935: "title": "Microsoft Purview: Information Protection-Auto-labeling per-policy coverage report"; its description matches the government-cloud item's report description. | Fix: Add the source 'Microsoft 365 Roadmap 568935' with URL https://www.microsoft.com/microsoft-365/roadmap?id=568935 to sources, and link that URL on the mention of item 568935 in What's changing.
+- [unsupported, minor] rationale: impact / behaviour: Only administrators and analysts who monitor auto-labeling policies see the report. | Found: Searched: 'View coverage auto-labeling report default enable role license GCC'; 'Purview coverage simulation report PowerShell Graph API enable default role license government'. Read coverage and per-policy review sections; no exhaustive coverage-report audience statement. | Fix: Replace the impact rationale with 'Low. The roadmap describes a report for administrators monitoring enforced auto-labeling policies; end users are not mentioned in its description.'
 -->

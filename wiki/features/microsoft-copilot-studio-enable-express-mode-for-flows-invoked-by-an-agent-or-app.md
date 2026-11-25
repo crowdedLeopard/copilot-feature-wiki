@@ -83,15 +83,17 @@ changes:
     note: "Correction: cost rating changed to variable (actions stay metered), unsupported 'actions unchanged' claim replaced, billing exemptions and the 100-action safe limit qualified."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -190,4 +192,10 @@ The nearest existing administrator control stops a whole flow, so it is a blunt 
 risk: Low. Makers choose it flow by flow, and Microsoft's page describes no new data access; the exposure is flows failing at the documented express mode limits.
 cost: Variable. Express mode adds no surcharge, but flow actions remain subject to Copilot Studio metering and its documented exemptions.
 impact: Low. Makers who build agent flows notice it; Microsoft documents it as a per-flow toggle, and flow response failures can affect the calling agent or app.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] summary; What's changing; Risk assessment: Autonomy & actions / behaviour: Turning on express mode helps called flows finish inside the two-minute window. | Found: This feature increases the likelihood that agent flows can complete within the two-minute window and provide a response in time. | Fix: In the summary, replace 'so flows called by an agent or app finish inside the two-minute window' with 'to increase the likelihood that flows called by an agent or app finish inside the two-minute window'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode
 -->

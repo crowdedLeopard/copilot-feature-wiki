@@ -66,15 +66,17 @@ changes:
     note: "Corrected the Data exposure bullet to the routes to organisational content that the Microsoft Copilot overview documents for Copilot Chat (Basic)."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 49
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -167,8 +169,9 @@ cost: Low. The only cost the sources show is admin and support time; no licence 
 impact: Medium. The roadmap item targets Copilot Chat users on Android, Desktop, iOS, Mac and Web, so people who use Copilot Chat may notice new interactive answers; Microsoft has not said whether every user gets it.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / applicability: Integrated Apps blocking blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Attribute the sentence to Manage Copilot Chat and append: 'The general Integrated Apps reference differs: it says the app is blocked only in the Microsoft Copilot application and Outlook, while Teams continues to honor Teams admin center settings.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app for that qualification. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
+- [supported, minor] Governance controls / prose below table / applicability: According to Manage Copilot Chat, Integrated Apps blocking can be scoped to specific users or groups, including licensed users. | Found: is a tenant-wide control that you can scope to specific users or groups, including licensed users. | Fix: After that sentence add: 'The general Integrated Apps reference instead says that Block app blocks the app for all users in the organization.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app, which states: 'When you choose to block an app, it is blocked for all users in your organization.' | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
+- [supported, minor] Governance controls / prose below table / applicability: Integrated Apps blocking blocks Copilot in Teams. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Replace the sentence beginning 'It blocks Copilot' with: 'Manage Copilot Chat says this setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web. The general Integrated Apps reference differs: it says the app is blocked only in the Microsoft Copilot application and Outlook, while Teams continues to honor Teams admin center settings.' Cite https://learn.microsoft.com/copilot/manage/manage-copilot-chat and https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
 -->

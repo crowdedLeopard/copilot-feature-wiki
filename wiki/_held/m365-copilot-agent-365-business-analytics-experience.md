@@ -161,18 +161,20 @@ changes:
     note: "Corrected the default state: in the Frontier preview, qualifying leaders, managers and global admins have access by default; general-availability rollout is not yet published."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 116 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 115 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 6
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-24"
+  status: "held"
+  date: "2026-11-25"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 116
-  confirmed: 115
+  claims: 115
+  confirmed: 113
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "8de8bc7c99c917acd7fc538f59ff1818"
 ---
 
@@ -271,9 +273,11 @@ cost: Low for core app access in a tenant meeting the 50-assigned-Copilot-licenc
 impact: Medium. Executives, general managers and managers of larger teams are the audience.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The low cost rating treats the change as indirect-cost-only despite its separately licensed third-party analytics capability. | Found: cost: "low"; licensing.model: "mixed"; "An Agent 365 licence is not required to access the app but is required to view data on third-party agents" | Fix: Set cost to 'medium'. Replace the cost rationale with: 'Medium. Core app access in a tenant meeting the 50-assigned-Copilot-licence prerequisite does not require an Agent 365 licence, but viewing third-party agent data requires that licence. Allow for administration and finance time; the introduction specifies no separate app price.' This preserves the verified core-access qualification while accounting for the paid capability in the mixed licensing model.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Business Analytics > Manage > Access management reaches the access-management page. | Found: In Business Analytics, on the left, under Manage, select Access management. On the Access management home page, under Permission sets, select Manage. | Fix: For the export and identification settings, extend controls[0].ui.path to 'Manage > Access management > Permission sets > Manage > permission set'. Keep the note naming Export and Identification and the separate custom-policy route. The current path reaches the correct page but stops before the settings. | Source: https://learn.microsoft.com/a365-business-analytics/manage/access
-- [contradicted, minor] front matter: action / consistency: The prepare rating understates the action scale for automatically available preview access targeted within about 60 days. | Found: action: "prepare"; risk: "medium"; previewDate: "November CY2026"; "In the Frontier preview, qualifying leaders and managers and global admins have access by default". | Fix: Set action to 'act-now'. On the November 24, 2026 run, the November preview target and December GA target fall within about 60 days, preview access is automatic for qualifying users, and the medium-risk access/export decisions need attention before users rely on the app. Keep the GA rollout caveat.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Business Analytics > Manage > Access management reaches the page for controlling capabilities and data scope. | Found: In Business Analytics, on the left, under Manage, select Access management. On the Access management home page, under Permission sets, select Manage. | Fix: For Export and Identification, extend controls[0].ui.path to 'Manage > Access management > Permission sets > Manage > permission set'. Keep the note identifying Export and Identification and the separate custom-policy route. The existing path reaches the correct page but stops before these settings. | Source: https://learn.microsoft.com/a365-business-analytics/manage/access
+- [contradicted, minor] front matter: action / consistency: The prepare rating understates the action scale for automatic preview access and targets within about 60 days. | Found: action: "prepare"; risk: "medium"; previewDate: "November CY2026"; targetDate: "December CY2026"; "In the Frontier preview, qualifying leaders and managers and global admins have access by default" | Fix: Set action to 'act-now'. On November 25, 2026, the November preview and December GA targets fall within about 60 days, qualifying users have automatic preview access, and access/export decisions require attention under the medium-risk assessment. Preserve the statement that GA rollout mechanics are not yet published.
 -->

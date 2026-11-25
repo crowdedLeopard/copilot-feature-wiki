@@ -9,8 +9,8 @@ status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Android","Desktop","iOS","Mac"]
-targetDate: "March CY2027"
-previewDate: "November CY2026"
+targetDate: "November CY2026"
+previewDate: null
 risk: "low"
 cost: "low"
 impact: "medium"
@@ -40,11 +40,8 @@ sources:
   - title: "Add-TeamUser"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/add-teamuser?view=teams-ps"
     kind: "learn"
-  - title: "Set-CsTeamsChannelsPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy?view=teams-ps"
-    kind: "learn"
 videos: []
-related: ["microsoft-teams-granular-channel-notification-controls"]
+related: []
 controls:
   - governs: "Tenant or team switch for the onboarding workflow"
     scope: "tenant"
@@ -64,37 +61,41 @@ controls:
     note: "Existing control, not a control over the new workflow: it adds a member to a team, and Microsoft has not said whether it starts the workflow."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
-roadmapModified: "2026-11-19T00:53:06"
+updated: "2026-11-25"
+roadmapModified: "2026-11-25T00:10:31"
 changes:
   - date: "2026-11-19"
     note: "First briefing for roadmap item 573452, using the 18 November 2026 update to MC1518033 that moved General Availability to mid-March 2027."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 36 statements confirmed"
-version: 1
+  - date: "2026-11-25"
+    note: "Roadmap record now shows a November CY2026 target and no preview date; MC1518033 still gives mid-March 2027 for General Availability, and both are reported."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 39 statements confirmed"
+version: 2
 verification:
   status: "verified"
-  date: "2026-11-19"
-  version: 1
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 36
+  claims: 39
+  confirmed: 39
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "841d3662b439e0ad224ffecc3cb13636"
+  hash: "50f4af1cc224139a982fc2c7cab58654"
 ---
 
 ## What's changing
 
 Microsoft Teams is adding an onboarding workflow that connects new team members to relevant channels when they join a team. In Microsoft's notice MC1518033, the change is that team owners can automatically add new members to relevant channels through the workflow when members are added to a team.
 
-Microsoft Learn does not describe this workflow yet, so what follows is the roadmap item's and the notice's description. Neither says which channel types the workflow supports, how an owner sets it up, or whether it is on for every team on arrival. MC1518033 was updated on 18 November 2026 and says it clarifies the supported channel types, but the post as supplied does not list them.
+Microsoft Learn does not describe this workflow yet, so what follows is the roadmap item's and the notice's description. Neither says how an owner sets it up or whether it is on for every team on arrival. MC1518033 was updated on 18 November 2026 and says it clarifies the supported channel types, but the post as supplied does not list them.
 
-The roadmap item is In development, with a preview target of November CY2026 and a General Availability target of March CY2027. It lists Worldwide (Standard Multi-Tenant), the Android, Desktop, iOS and Mac platforms, and the General Availability and Targeted Release phases.
+The roadmap item is In development with a target of November CY2026 and no preview date. It lists Worldwide (Standard Multi-Tenant), the Android, Desktop, iOS and Mac platforms, and the General Availability and Targeted Release phases.
 
-MC1518033 gives the rollout as follows: Targeted Release (R3.6) proceeds gradually from November 2026 through January 2027. General Availability (Worldwide) begins in mid-March 2027 (previously early December 2026) and is expected to complete by end of March 2027 (previously mid-December 2026).
+MC1518033 gives a later rollout than the roadmap target: Targeted Release (R3.6) proceeds gradually from November 2026 through January 2027. General Availability (Worldwide) begins in mid-March 2027 (previously early December 2026) and is expected to complete by end of March 2027 (previously mid-December 2026). The notice is the later and more specific statement, so plan on its dates.
 
 ## Why it matters
 
@@ -106,7 +107,7 @@ The notice says no admin action is required and suggests telling team owners. Mi
 
 **Data exposure**
 
-- Standard channels are visible and accessible to all members of a team, according to Microsoft Learn, so connecting a member to a standard channel does not by itself widen who can read it. Private channels are limited to team members and guests specifically added to them. Microsoft has not said whether the workflow can add people to private or shared channels, so ask before assuming it cannot.
+- Standard channels are visible and accessible to all team members, according to Microsoft Learn, so connecting a member to a standard channel does not by itself widen who can read it. Private channels are limited to team members and guests specifically added to them. Microsoft has not said whether the workflow can add people to private or shared channels, so ask before assuming it cannot.
 
 **Security & identity**
 
@@ -118,12 +119,12 @@ The notice says no admin action is required and suggests telling team owners. Mi
 
 **Change & support**
 
-- Expect questions from new members about channels they did not choose, and from owners about how to set the workflow up. Microsoft documents no admin switch for the workflow at the time of writing (November 2026), so the response is communication to team owners, not central configuration.
+- Expect questions from new members about channels they did not choose, and from owners about how to set the workflow up. Microsoft Learn documents no admin switch for the workflow at the time of writing (November 2026), so the response is communication to team owners, not central configuration.
 - The General Availability date moved from early December 2026 to mid-March 2027 in the 18 November 2026 update to MC1518033, so internal guidance written to the earlier date needs revising.
 
 ## Cost and licensing
 
-No licence or charge specific to the onboarding workflow is published. The roadmap item and MC1518033 name none, and the Teams service description lists feature availability by plan without an entry for this workflow.
+No licence or charge specific to the onboarding workflow is published. The roadmap item and MC1518033 name none, and the Teams service description's feature availability table has no entry for this workflow.
 
 The Teams service description says Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU, so the workflow, which sits inside Teams, would rest on the Teams licence your users already hold. Whether Microsoft attaches any further condition is not yet published.
 
@@ -135,7 +136,7 @@ The indirect cost is admin and owner time: briefing team owners and answering me
 
 **Clouds and platforms:** the roadmap item lists Worldwide (Standard Multi-Tenant) and the Android, Desktop, iOS and Mac platforms. Other clouds are not listed on the roadmap item.
 
-**Rollout:** Targeted Release (R3.6) from November 2026 through January 2027; General Availability (Worldwide) from mid-March 2027, expected to finish by end of March 2027, per MC1518033.
+**Rollout:** Targeted Release (R3.6) from November 2026 through January 2027; General Availability (Worldwide) from mid-March 2027, expected to finish by end of March 2027, per MC1518033. The roadmap item's own target is November CY2026.
 
 **Channel types:** the notice says it clarifies the supported channel types; which types are supported is not stated in the post as supplied or on Microsoft Learn.
 
@@ -180,9 +181,10 @@ The second row is today's way to add people to a team. It adds members to a team
 - Is the workflow on by default for every team, or does each team owner set it up? Watch MC1518033 and the roadmap item for the answer.
 - Is there an admin setting, policy or API to limit or monitor the workflow, and is its activity recorded in an audit log?
 - Does adding a member through the Teams admin center, PowerShell or Microsoft Entra group sync start the workflow, or only adding a member in the Teams client?
+- The roadmap record still shows a November CY2026 target while MC1518033 gives mid-March 2027 for General Availability: which date will the roadmap item settle on?
 
 <!-- rationale
-risk: Low. The roadmap and MC1518033 describe connecting people to channels when they join a team, and Microsoft has not said which channel types are covered, so the rating assumes team access boundaries are unchanged.
-cost: Low. Microsoft's notice and the roadmap item name no licence, meter or charge for the workflow, so the only cost the sources show is the admin time to brief team owners.
+risk: Low. The roadmap item and MC1518033 describe connecting people to channels when they join a team, and Microsoft has not said which channel types are covered, so the rating assumes team access boundaries are unchanged.
+cost: Low. Microsoft's notice and the roadmap item name no licence, meter or charge for the workflow, so the only cost the sources show is the admin time to brief team owners. A workflow-specific licence is not yet published.
 impact: Medium. Team owners and anyone newly added to a team would notice it; MC1518033 describes a team-owner workflow, not a change to every user's default experience.
 -->

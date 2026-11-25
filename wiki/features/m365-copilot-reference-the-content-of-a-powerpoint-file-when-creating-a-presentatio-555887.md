@@ -34,6 +34,9 @@ sources:
   - title: "Microsoft Copilot"
     url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot"
     kind: "learn"
+  - title: "Data, Privacy, and Security for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
+    kind: "learn"
   - title: "Assign or unassign licenses for users in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
@@ -73,7 +76,7 @@ controls:
     note: "By default only SharePoint administrators can manage it. Existing control; Learn doesn't say it covers Reference file."
 confidence: "medium"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-06-03T23:00:57"
 changes:
   - date: "2026-11-24"
@@ -88,19 +91,23 @@ changes:
     note: "Corrected licensing: the Microsoft Copilot service description marks edit with Copilot as a Premium feature needing a Microsoft 365 Copilot licence; removed the unsupported 'no change' claim and narrowed what the control rows cover."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-25"
+    note: "Correction: Why it matters now says Microsoft has stated no default or switch specific to Reference file, and that connected-experience privacy controls can disable Copilot in PowerPoint; the open question no longer asks about an admin setting."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
-  date: "2026-11-24"
-  version: 3
+  status: "verified-with-gaps"
+  date: "2026-11-25"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "6772696193900065f92f0a317df3b035"
+  contradicted: 0
+  attempts: 0
+  hash: "70ca02692a4d1a66f13a8228329cf951"
 ---
 
 ## What's changing
@@ -115,7 +122,7 @@ The roadmap record lists this item as Launched, General Availability, with a tar
 
 For a service owner this is a small, user-driven change: a deck a user picks with Reference file becomes source material for a new deck. Microsoft says existing file permissions apply, so in the wiki's view the realistic exposure is oversharing, meaning decks that people can open but should not be able to.
 
-Microsoft has not stated whether the capability is on by default or whether an admin setting governs it. The useful work is confirming who holds the licence and whether permissions on shared decks are sound before users start reusing them.
+Microsoft has not stated a default specifically for Reference file or documented a switch specific to it. Broader connected-experience privacy controls can disable Copilot in PowerPoint on current Windows and Mac apps. The useful work is confirming who holds the licence and whether permissions on shared decks are sound before users start reusing them.
 
 ## Risk assessment
 
@@ -183,7 +190,7 @@ The licence row decides who has the tier Learn ties to Copilot in PowerPoint; th
 
 ## Open questions
 
-- Is Reference file on by default, and does any admin setting turn it off? The release note gives the user steps only; watch the Learn release notes and the Message center.
+- Is Reference file on by default? The release note gives the user steps only; watch the Learn release notes and the Message center.
 - Do fair use limits apply to Reference file? Watch the Microsoft Copilot overview page.
 - Does Restricted Content Discovery stop a file in a restricted SharePoint site from being used as a Reference file? Watch the Restricted Content Discovery page.
 - Why does the roadmap target (March CY2026) differ from the release-note date (July 01, 2026)? Watch the roadmap item.
@@ -194,8 +201,8 @@ cost: Low. Learn names no separate meter or price for this capability; the cost 
 impact: Medium. It reaches PowerPoint users on desktop who have Copilot access, but each user chooses whether to reference a file.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Open questions / absence: Microsoft has not stated whether an admin setting governs Reference file or turns it off. | Found: If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: - Excel - OneNote - Outlook - PowerPoint - Word | Fix: In Why it matters, replace the sentence with: 'Microsoft has not stated a default specifically for Reference file or documented a switch specific to it. Broader connected-experience privacy controls can disable Copilot in PowerPoint on current Windows and Mac apps.' Cite https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-privacy. In the first Open questions bullet, remove 'and does any admin setting turn it off?' so it asks only 'Is Reference file on by default?' | Source: https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-privacy
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Restricted Content Discovery is configured in SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot. | Found: In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Keep the cited path. Add to the control note: 'Microsoft's readiness guide alternatively labels the setting Restrict content discovery > On.' Cite https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing, which says 'Under Restrict content discovery, select On.' | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 -->

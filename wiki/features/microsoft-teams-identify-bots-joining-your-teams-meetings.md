@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The Learn page and MC1251206 name no licence or meter for bot detection; MC1251206 says all organisations using Microsoft Teams meetings are affected."
+  model: "included"
+  notes: "A Microsoft Teams license is required for each user in the organisation to use Teams, except for joining meetings anonymously (Manage Teams licenses). Microsoft has not published a licence or meter specific to bot detection as of November 2026."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["teams","external-meeting-bots","meeting-policy","meeting-controls","admin-controls","privacy","gcc"]
 sources:
@@ -37,6 +37,9 @@ sources:
   - title: "Set-CsTeamsMeetingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
     kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-block-all-identified-external-bots-automatically-from-joining-your-meeting","microsoft-teams-configure-a-list-of-allowed-external-meeting-notetaker-bots-for-your-teams","meeting-policy","microsoft-teams-report-a-security-concern-in-meetings"]
 controls:
@@ -50,7 +53,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -ExternalBotAccessMode RequireApprovalWhenDetected"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
-    note: "Other values on the Learn page: BlockDetectedBots and AllowBots (do not detect bots). Applies to meetings hosted by users assigned the policy."
+    note: "The feature page lists BlockDetectedBots and AllowBots; the Set-CsTeamsMeetingPolicy reference instead names AllowAllBots for disabling detection. Applies to meetings hosted by users assigned the policy."
   - governs: "Who can admit people from the lobby, which decides who can admit a detected bot"
     scope: "user"
     ui:
@@ -64,26 +67,30 @@ controls:
     note: "Sets a default that organisers can change in Meeting options. Existing control, not specific to bots; Learn's tip on the bot page recommends organisers and co-organisers only."
 confidence: "high"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-25"
 roadmapModified: "2026-05-19T22:45:25"
 changes:
   - date: "2026-11-24"
     note: "First briefing for roadmap item 558107, with the Teams meeting policy option, its three values and the default."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after verification: licensing now cites the Teams licence requirement, the AllowAllBots value is noted, and the unsupported cap statement and audit-log bullet were removed."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-24"
-  version: 1
+  status: "verified"
+  date: "2026-11-25"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "14ef3f84d2843dd9d719915b1db835c1"
+  claims: 66
+  confirmed: 66
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "aa2631d79780c6dcbf8ca1e482798f46"
 ---
 
 ## What's changing
@@ -122,9 +129,9 @@ The wiki's view: keep the default, decide deliberately which policies should use
 
 ## Cost and licensing
 
-The Learn page for this feature and MC1251206 name no licence and no meter for bot detection, so the licence position is not yet published. MC1251206 says the change affects all organisations using Microsoft Teams meetings, including GCC tenants.
+A Microsoft Teams license is required for each user in the organisation to use Teams, except for joining meetings anonymously ([Manage Teams licenses](https://learn.microsoft.com/microsoftteams/user-access)). Microsoft has not published a licence or meter specific to bot detection as of November 2026. MC1251206 says the change affects all organisations using Microsoft Teams meetings, including GCC tenants.
 
-The known cost is indirect: admin time to choose a meeting policy option, a pilot if you want to test blocking, and communication to organisers and the helpdesk. No cap or budget control applies, because no charge is documented.
+The known cost is indirect: admin time to choose a meeting policy option, a pilot if you want to test blocking, and communication to organisers and the helpdesk.
 
 ## Scope
 
@@ -154,7 +161,6 @@ The known cost is indirect: admin time to choose a meeting policy option, a pilo
 ### After rollout
 
 - Read back the setting with `Get-CsTeamsMeetingPolicy -Identity "<policy name>" | Select-Object Identity, ExternalBotAccessMode`, as Learn gives it.
-- Monitor audit logs for unusual participant activity, as Learn recommends.
 - Avoid choosing **Do not detect bots** unless a specific business scenario needs it, and watch Message center for the expanded admin controls MC1251206 says Microsoft intends to provide.
 
 ## Governance controls
@@ -164,7 +170,7 @@ The known cost is indirect: admin time to choose a meeting policy option, a pilo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>How detected external bots are handled in meetings (detect and require approval, block, or do not detect)</strong><br><small>User</small><br><small class="controls__note">Other values on the Learn page: BlockDetectedBots and AllowBots (do not detect bots). Applies to meetings hosted by users assigned the policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting join &amp; lobby › Manage external bots and their access to meetings <a href="https://learn.microsoft.com/microsoftteams/manage-external-bots" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExternalBotAccessMode RequireApprovalWhenDetected</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>How detected external bots are handled in meetings (detect and require approval, block, or do not detect)</strong><br><small>User</small><br><small class="controls__note">The feature page lists BlockDetectedBots and AllowBots; the Set-CsTeamsMeetingPolicy reference instead names AllowAllBots for disabling detection. Applies to meetings hosted by users assigned the policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting join &amp; lobby › Manage external bots and their access to meetings <a href="https://learn.microsoft.com/microsoftteams/manage-external-bots" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExternalBotAccessMode RequireApprovalWhenDetected</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can admit people from the lobby, which decides who can admit a detected bot</strong><br><small>User</small><br><small class="controls__note">Sets a default that organisers can change in Meeting options. Existing control, not specific to bots; Learn's tip on the bot page recommends organisers and co-organisers only.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting join &amp; lobby › Who can admit from lobby <a href="https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -UsersCanAdmitFromLobby OrganizerAndCoOrganizersOnly</code> <a href="https://learn.microsoft.com/microsoftteams/who-can-bypass-meeting-lobby" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -175,7 +181,7 @@ The lobby row is a related control, not a bot setting: Learn says organisers can
 
 ## Open questions
 
-- Which licence, if any, does bot detection need? Watch the Learn page and MC1251206.
+- Will Microsoft publish any licence or meter specific to bot detection? Watch the Learn page and MC1251206.
 - Does the **Block all detected bots** option, described on Learn but not in MC1251206's two-option list, apply in GCC tenants as the roadmap item does? Watch Message center and the Learn page.
 - Which audit events record bot detection, lobby admission or blocking, so that the audit-log monitoring Learn recommends can be targeted?
 - Will Microsoft correct the Learn PowerShell examples that print `Set-CsTeamsEventsPolicy` for a meeting policy setting?
@@ -183,16 +189,6 @@ The lobby row is a related control, not a bot setting: Learn says organisers can
 
 <!-- rationale
 risk: Medium. Detected bots are held in the lobby by default, but Microsoft says some bots go undetected and then follow the meeting's existing access settings.
-cost: Low. Neither the Learn page nor Message center names a licence or meter for this feature; the known cost is admin time to review policies and brief organisers. A licence statement is not yet published.
+cost: Low. Neither the Learn page nor Message center names a licence or meter for this feature; the known cost is admin time to review policies and brief organisers. No feature-specific licence or meter is published.
 impact: Medium. Meeting organisers see new lobby labels and approval prompts, and by default they must admit detected bots before they join.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing / cost: No cap or budget control applies because no charge is documented. | Found: Searched: "external bots" "budget" "Teams" spending cap; Teams external bot detection license pricing budget. Read manage-external-bots, Teams add-on licenses and user-access; searches found no statement that no cap or budget control applies to detection. | Fix: Remove 'No cap or budget control applies, because no charge is documented.' The narrower statement that no feature-specific meter or charge is published is already covered by the licensing paragraph.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note / command: The other PowerShell values on the feature's Learn page are BlockDetectedBots and AllowBots. | Found: Do not detect bots | AllowBots ... Block all detected bots | BlockDetectedBots | Fix: Replace the note's first sentence with 'The feature page lists BlockDetectedBots and AllowBots; the Set-CsTeamsMeetingPolicy reference instead names AllowAllBots for disabling detection.' Both URLs are already cited: https://learn.microsoft.com/microsoftteams/manage-external-bots and https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost; Open questions / licensing: The licensing model is unknown because no licence specific to bot detection has been published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the licensing notes and the first licensing paragraph with 'A Microsoft Teams license is required for each user in the organisation to use Teams, except for joining meetings anonymously. Microsoft has not published a licence or meter specific to bot detection as of November 2026.' Cite https://learn.microsoft.com/microsoftteams/user-access. In the cost rationale replace 'A licence statement is not yet published' with 'No feature-specific licence or meter is published.' Replace the first open question with 'Will Microsoft publish any licence or meter specific to bot detection? Watch the Learn page and MC1251206.' | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist tells administrators to monitor audit logs, but the controls table has no audit-monitoring row. | Found: After rollout: 'Monitor audit logs for unusual participant activity, as Learn recommends.' Controls table: only external-bot handling and who can admit from lobby. | Fix: Remove the 'Monitor audit logs for unusual participant activity, as Learn recommends' checklist bullet, which has no corresponding controls row. Retain the open question about which audit events record detection, admission or blocking.
 -->

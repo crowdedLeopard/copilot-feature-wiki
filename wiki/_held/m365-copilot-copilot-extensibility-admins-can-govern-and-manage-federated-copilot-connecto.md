@@ -89,18 +89,20 @@ changes:
     note: "Correction: added preview Tenant Configuration Management Graph automation for Agent and plugin access and User access, set the arrival default to not stated, and removed the egress checklist bullet and per-action approval wording."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 97 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 83
+  claims: 97
+  confirmed: 96
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "db6df98f1ef5db602e01bff56d36e2cb"
 ---
 
@@ -199,4 +201,14 @@ The manage page also lists Agents > Tools for tool-level and connector-level blo
 risk: Medium. Federated connectors can read, and where a connector provides the tools, change data in third-party systems, but the admin center settings and initial tool approval cover much of that exposure, although users can allow a tool for the conversation or persistently.
 cost: Low. Each user needs a Microsoft 365 Copilot add-on licence (or Microsoft 365 E7), and Learn says connector grounding is included with it at no extra charge; the remaining cost is admin time.
 impact: Medium. Admins configure it, and licensed users who connect a source see it in Copilot Chat, agents and the Office apps, so a change to the settings is noticed by those users.
+-->
+
+<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing; Governance controls / behaviour: The admin controls Learn documents are three. | Found: | **Tools block / unblock** | **Agents** > **Tools** | Tool-level and connector-level blocking. | | Fix: Replace 'The admin controls Learn documents are three.' with 'Learn documents the following three availability controls.' This removes the exhaustive count and agrees with the later paragraph acknowledging the further Agents > Tools control. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui / admin-path: Individual connector enablement and staging are reached at Microsoft 365 admin center > Copilot connectors > Your connections. | Found: Admins can manage federated Copilot connectors in the Microsoft 365 admin center by choosing **Copilot connectors** > **Your connections**. | Fix: The path correctly reaches the list but stops before the control. For staging, use 'Copilot connectors > Your connections > Staged rollout > Add staging'; retain the note that individual connectors can also be enabled or disabled there. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] What's changing; Risk assessment: Autonomy & actions; rationale: risk / behaviour: Copilot can create data in a connected system when the connector provides the tools. | Found: Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf. | Fix: After the write-action description, add: 'The general connectors overview still says federated connectors are read-only, alongside a note that write actions start in early October 2026; the feature-specific overview documents write actions.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview, whose conflicting text is 'Federated connectors are read-only; they can search and fetch content but can't write data back.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] Governance guidance: At rollout / admin-path: Test-user connector visibility can be checked in Copilot Chat > Settings > Sources. | Found: Select the ellipsis (**...**) menu, and then select **Settings**. ... In the settings dialog, select **Sources** in the left pane. | Fix: Replace the test-user navigation with 'Microsoft 365 Copilot Chat > ... > Settings > Sources'. The omitted ellipsis is a permitted minor path omission. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->

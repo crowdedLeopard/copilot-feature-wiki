@@ -3,11 +3,11 @@
   "roadmapId": 501456,
   "title": "Microsoft Intune: Administrator protection settings in the settings catalog and account protection template",
   "status": "held",
-  "date": "2026-11-24",
-  "version": 1,
+  "date": "2026-11-25",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-24",
     "reasons": [
-      "2 blocking findings (claims 33, 57)"
+      "1 blocking finding (claim 58)"
     ]
   },
   "counts": {
-    "claims": 70,
-    "confirmed": 67,
+    "claims": 72,
+    "confirmed": 70,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 2,
+    "contradicted": 2,
+    "blocker": 1,
     "major": 0,
-    "minor": 4
+    "minor": 2
   },
-  "summary": "Hold: the automation column presents policy creation as configuring Administrator protection, but the referenced operation only creates the policy container. The assurance that devices without the Intune policy keep their current elevation behaviour also overlooks Microsoft's documented automatic enablement for Windows security baseline users.",
+  "summary": "Hold: the control's Learn link documents generic policy creation but not the Administrator protection settings at the end of its path. The path is supported by another cited Microsoft page, so correcting the link resolves that blocker. Intune release notes also document Administrator protection in Account protection policies, which the briefing should acknowledge alongside the less complete reference page.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap plans configurable Adminless settings in the Intune settings catalog and account protection template.",
+      "claim": "The roadmap plans configurable Adminless settings in the Intune settings catalog.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Adminless settings able to be configured in settings catalog and account protection template.",
@@ -43,6 +43,17 @@
     },
     {
       "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap also plans configurable Adminless settings in the account protection template.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Adminless settings able to be configured in settings catalog and account protection template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap description is one sentence and does not define Adminless.",
@@ -53,29 +64,40 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: status; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 4,
-      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap target is November CY2025, not a delivery commitment.",
+      "claim": "The roadmap product is Microsoft Intune.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2025\", \"status\": \"In development\"",
+      "quote": "\"products\": [\"Microsoft Intune\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target, rather than a committed delivery date, is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -86,18 +108,7 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Desktop.",
@@ -108,7 +119,18 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -119,7 +141,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2025-10-01T23:01:01.",
@@ -130,19 +152,19 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 12,
       "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "The cited pages do not identify Adminless as the roadmap name for Administrator protection; the page explicitly treats that connection as an inference.",
+      "claim": "The pages read do not explicitly identify Adminless as the roadmap's name for Administrator protection.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Intune Adminless Administrator protection account protection template settings; Administrator protection Windows new data access autonomous behavior Adminless name Intune. Read Administrator protection and Account protection policy; neither equates the names.",
+      "quote": "Searched: \"Adminless\" \"Administrator protection\" Intune; read the roadmap description, Administrator protection, Account protection policy, and Intune release-note search excerpts. None explicitly equates the two names.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Scope",
+      "n": 13,
+      "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
       "claim": "Administrator protection is a Windows 11 platform security feature.",
       "status": "supported",
@@ -152,21 +174,21 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 14,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Administrator protection keeps users deprivileged and grants just-in-time elevation.",
+      "claim": "Administrator protection keeps users deprivileged between administrative operations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "keeping users in a deprivileged state and granting just-in-time elevation rights only when needed.",
+      "quote": "Users stay deprivileged and are granted just-in-time elevation rights only during an admin operation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Governance guidance; rationale: impact",
+      "n": 15,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Elevation requires the user's explicit approval.",
+      "claim": "Elevation is just in time and requires the user's explicit approval.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "elevating to admin rights only when necessary and only with the user's explicit approval.",
@@ -174,10 +196,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; rationale: risk",
+      "n": 16,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Windows creates an isolated admin token using a hidden, system-generated, profile-separated user account.",
+      "claim": "Windows uses a hidden account for Administrator protection elevation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "Windows uses a hidden, system-generated, profile-separated user account to create an isolated admin token.",
@@ -185,32 +207,65 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The elevation account is system-generated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Windows uses a hidden, system-generated, profile-separated user account to create an isolated admin token.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "The elevated account has a separate profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Windows uses a hidden, system-generated, profile-separated user account to create an isolated admin token.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The account is used to create an isolated admin token.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Windows uses a hidden, system-generated, profile-separated user account to create an isolated admin token.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The isolated admin token is issued to the requesting process.",
+      "claim": "The admin token is issued to the requesting process.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "This token is issued to the requesting process",
+      "quote": "This token is issued to the requesting process and is destroyed once the process ends",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 21,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The isolated admin token is destroyed when the process ends.",
+      "claim": "The admin token is destroyed when its process ends.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "is destroyed once the process ends, ensuring that admin privileges don't persist.",
+      "quote": "This token is issued to the requesting process and is destroyed once the process ends, ensuring that admin privileges don't persist.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 22,
       "where": "What's changing; Scope: Rollout",
       "type": "availability",
-      "claim": "Learn says Administrator protection is available with KB5120998, notwithstanding the roadmap's development status.",
+      "claim": "Learn documents Administrator protection as available with KB5120998, despite the roadmap's In development status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "Administrator protection is now available with KB5120998.",
@@ -218,21 +273,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 23,
       "where": "front matter: defaultState; summary; What's changing; Why it matters",
       "type": "default",
-      "claim": "Administrator protection is off by default.",
+      "claim": "Administrator protection is normally off by default, with the Windows security baseline exception stated in the briefing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "The feature is off by default. ... If your organization uses Windows security baselines, Administrator protection becomes enabled by default with the October 2026 Windows security update.",
-      "severity": "minor",
-      "fix": "Keep the documented general default, but replace the summary's unqualified 'off by default' with 'normally off; enabled by default for Windows security baseline users with the October 2026 update'. The body already gives this exception."
+      "quote": "The feature is off by default.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 19,
-      "where": "Why it matters; Scope: Baseline users; Governance guidance; rationale: risk",
+      "n": 24,
+      "where": "summary; Why it matters; Risk assessment; Scope; Governance guidance; rationale: risk",
       "type": "default",
-      "claim": "Organisations using Windows security baselines get Administrator protection enabled by default with the October 2026 Windows security update.",
+      "claim": "For organizations using Windows security baselines, Administrator protection becomes enabled by default with the October 2026 Windows security update.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "If your organization uses Windows security baselines, Administrator protection becomes enabled by default with the October 2026 Windows security update.",
@@ -240,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The new Windows security baseline defaults are manageable by policy.",
+      "n": 25,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The new baseline defaults are manageable by policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "The security baselines for Windows 11, versions 26H2, 25H2, and 24H2 include the new default settings, manageable by policy.",
@@ -251,21 +306,21 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 26,
       "where": "What's changing; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "The documented Intune configuration route is a settings catalog policy using Local Policies Security Options.",
+      "type": "admin-path",
+      "claim": "The two Administrator protection settings are in the Local Policies Security Options category of an Intune Settings catalog policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "To configure devices by using Microsoft Intune, create a Settings catalog policy, and use the settings listed under the category Local Policies Security Options:",
+      "quote": "create a Settings catalog policy, and use the settings listed under the category Local Policies Security Options:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; controls[0].note; Governance guidance: At rollout",
+      "n": 27,
+      "where": "What's changing; Governance guidance: At rollout; controls[0].note",
       "type": "admin-path",
-      "claim": "User Account Control Type Of Admin Approval Mode enables Administrator protection.",
+      "claim": "User Account Control Type Of Admin Approval Mode is the setting that enables Administrator protection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "User Account Control Type Of Admin Approval Mode (enables the feature)",
@@ -273,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; controls[0].governs; Governance guidance: At rollout",
+      "n": 28,
+      "where": "What's changing; Governance guidance: At rollout; controls[0].note",
       "type": "admin-path",
-      "claim": "User Account Control Behavior Of the Elevation Prompt for Administrator Protection chooses the elevation prompt type.",
+      "claim": "User Account Control Behavior Of the Elevation Prompt for Administrator Protection chooses the prompt type.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "User Account Control Behavior Of the Elevation Prompt for Administrator Protection (Choose type of elevation prompt)",
@@ -284,7 +339,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 29,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Enterprise customers can enable Administrator protection using custom OMA-URI.",
@@ -295,54 +350,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope: Prerequisites",
-      "type": "availability",
-      "claim": "The Administrator protection page lists Windows 11 Home, Pro, Enterprise and Education as supported editions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Supported editions: Windows 11 Home, Pro, Enterprise, Education.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; Risk assessment; Scope; Governance guidance",
-      "type": "availability",
-      "claim": "Administrator protection does not currently apply to Windows 365 Cloud PCs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Administrator protection currently applies to supported Windows 11 devices outside Windows 365 Cloud PCs and Azure Virtual Desktop session hosts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Why it matters; Risk assessment; Scope; Governance guidance",
-      "type": "availability",
-      "claim": "Administrator protection does not currently apply to Azure Virtual Desktop session hosts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Administrator protection currently applies to supported Windows 11 devices outside Windows 365 Cloud PCs and Azure Virtual Desktop session hosts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
-      "type": "availability",
-      "claim": "Support for those virtual desktop environments and Windows Server editions is planned for a future release.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Support for these environments, as well as Windows Server editions, is planned for a future release.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[0].scope; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The Intune policy can be assigned to a security group containing devices or users.",
+      "n": 30,
+      "where": "controls[0].scope; Governance guidance: At rollout; rationale: impact",
+      "type": "applicability",
+      "claim": "The Intune policy is assigned to a security group containing the devices or users to configure.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "Assign the policy to a security group that contains as members the devices or users that you want to configure.",
@@ -350,54 +361,10 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment; Cost and licensing; Scope; Governance guidance; rationale: impact",
-      "type": "behaviour",
-      "claim": "A reboot is required for Administrator protection to take effect.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "A reboot is required for Administrator Protection to take effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 31,
-      "where": "Risk assessment: Security & identity; Autonomy & actions; Governance guidance",
-      "type": "behaviour",
-      "claim": "There are no auto-elevations and users must interactively authorise every admin operation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "No auto-elevations: Users need to interactively authorize every admin operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Administrator protection integrates with Windows Hello.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Windows Hello integration: Administrator protection is integrated with Windows Hello for simple and secure authorization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Security & identity; rationale: impact",
-      "type": "default",
-      "claim": "A device that does not receive the policy keeps its current elevation behaviour.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "If your organization uses Windows security baselines, Administrator protection becomes enabled by default with the October 2026 Windows security update.",
-      "severity": "blocker",
-      "fix": "Replace 'A device that does not receive the policy keeps its current elevation behaviour' with 'Windows security baseline users can have Administrator protection enabled by default by the October 2026 Windows security update even without this Intune policy.' Retain the rationale's narrower attribution to changes made by the Intune settings themselves."
-    },
-    {
-      "n": 34,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Microsoft says not to enable Administrator protection on devices that require Hyper-V.",
+      "claim": "Learn says not to enable Administrator protection on devices that require Hyper-V.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "When not to enable this feature: ... For devices that require Hyper-V.",
@@ -405,21 +372,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance",
-      "type": "applicability",
-      "claim": "Microsoft says not to enable Administrator protection on devices managed with LAPS.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "When not to enable this feature: ... For device which are managed with Local Administrator Password Solution (LAPS)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
+      "n": 32,
       "where": "Why it matters; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Applications accessing shared files across profiles are a documented case where Microsoft says not to enable the feature.",
+      "type": "applicability",
+      "claim": "Learn lists apps accessing shared files across profiles among cases where the feature should not be enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "When not to enable this feature: ... If you're using apps that access shared files across profiles.",
@@ -427,73 +383,51 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Application settings data does not carry between regular and elevated profiles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Settings data for applications don't carry over across the regular(unelevated) and the elevated profiles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "WSL or Visual Studio development environments needed for elevated tasks require separate distro installation and configuration in the elevated profile.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "If you are using development tools or environments like Windows Subsystem for Linux (WSL) or Visual Studio that you also need to run elevated for specific tasks like performance testing, you will need to reinstall and configure the distro in the elevated profile separately.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Security & identity; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Elevated apps do not receive the standard session's SSO credentials.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "When apps run elevated with administrator protection, Single Sign-On (SSO) credentials from the standard session aren't available to the elevated session.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Domain or cloud authentication must be repeated in the elevated session.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Any domain or cloud authentication must be re-established within that elevated session.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Change & support; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Elevated apps cannot reach network drives mapped from the unelevated session.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Elevated apps can't reach network drives, shares or other domain resources that were mapped or signed into from the un-elevated session.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 33,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Remote elevation behaviour is controlled by a separate policy.",
+      "claim": "Learn says not to enable Administrator protection on LAPS-managed devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "remote elevation behavior can be controlled by the User Account Control: Allow remote logon with elevated privileges for domain users in the local Administrators group when Administrator protection is enabled policy.",
+      "quote": "When not to enable this feature: ... For device which are managed with Local Administrator Password Solution (LAPS)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Windows 365 Cloud PCs are outside current support, with support planned for a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Administrator protection currently applies to supported Windows 11 devices outside Windows 365 Cloud PCs and Azure Virtual Desktop session hosts. Support for these environments, as well as Windows Server editions, is planned for a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Azure Virtual Desktop session hosts are outside current support, with support planned for a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Administrator protection currently applies to supported Windows 11 devices outside Windows 365 Cloud PCs and Azure Virtual Desktop session hosts. Support for these environments, as well as Windows Server editions, is planned for a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "Windows Server support is planned for a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Support for these environments, as well as Windows Server editions, is planned for a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Administrator protection elevation events use the Microsoft-Windows-LUA ETW provider.",
@@ -504,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 38,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Elevation event ID 15031 is documented.",
+      "claim": "Event ID 15031 records an approved elevation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "15031 | Elevation Approved | Logged when a user successfully authenticates and elevation is granted",
@@ -515,10 +449,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 39,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Elevation event ID 15032 is documented.",
+      "claim": "Event ID 15032 records an elevation denial, failure or timeout.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "15032 | Elevation Denied/Fail | Logged when elevation is denied, fails, or times out",
@@ -526,10 +460,10 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risk assessment: Data exposure",
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Learn describes capturing these events using Logman or WPR.",
+      "claim": "Learn documents capturing elevation events with Logman or WPR.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "Use Logman or WPR (Windows Performance Recorder) to start a trace session",
@@ -537,40 +471,271 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The documentation describes no new data access introduced by the feature.",
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Autonomy & actions; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users must interactively authorize every admin operation, with no auto-elevations.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Administrator protection Windows new data access autonomous behavior Adminless name Intune. Read Administrator protection, including How Administrator protection works and Troubleshooting; it describes isolated elevation, not a new data-access integration.",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "No auto-elevations: Users need to interactively authorize every admin operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Administrator protection integrates with Windows Hello.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Administrator protection is integrated with Windows Hello for simple and secure authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "Elevated apps do not receive the standard session's SSO credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "When apps run elevated with administrator protection, Single Sign-On (SSO) credentials from the standard session aren't available to the elevated session.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Domain or cloud authentication must be re-established in the elevated session.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Any domain or cloud authentication must be re-established within that elevated session.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "A separate policy controls remote elevation behavior in cross-machine remote administration scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "For cross-machine remote administration scenarios, remote elevation behavior can be controlled by the User Account Control: Allow remote logon with elevated privileges for domain users in the local Administrators group when Administrator protection is enabled policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Cost and licensing; Scope; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "A reboot is required for Administrator protection to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "A reboot is required for Administrator Protection to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Application settings data does not carry between regular and elevated profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Settings data for applications don't carry over across the regular(unelevated) and the elevated profiles.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The documentation describes no autonomous behaviour for Administrator protection.",
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Development environments such as WSL or Visual Studio may need their distro reinstalled and configured separately in the elevated profile.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Administrator protection Windows new data access autonomous behavior Adminless name Intune. Read Administrator protection; its architectural highlights require interactive authorisation for every admin operation and describe no autonomous operation.",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "If you are using development tools or environments like Windows Subsystem for Linux (WSL) or Visual Studio that you also need to run elevated for specific tasks like performance testing, you will need to reinstall and configure the distro in the elevated profile separately.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "What's changing; Governance controls",
+      "where": "Risk assessment: Change & support; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "The Account protection profile covers Windows Hello for Business.",
+      "claim": "Elevated apps cannot reach network drives mapped from the unelevated session.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
-      "quote": "The account protection policy focuses on device-scoped and user-scoped settings for Windows Hello for Business",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Elevated apps can't reach network drives, shares or other domain resources that were mapped or signed into from the un-elevated session.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "An Intune licence is required for any user or device benefiting directly or indirectly from Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/licensing",
+      "quote": "An Intune license is required for any user or device that benefits directly or indirectly from the Microsoft Intune service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The included licensing model identifies these Intune configuration settings with the product's existing Intune licence requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/fundamentals/licensing",
+      "quote": "An Intune license is required for any user or device that benefits directly or indirectly from the Microsoft Intune service, including access through a Microsoft API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope: Prerequisites",
+      "type": "availability",
+      "claim": "The Administrator protection page lists Windows 11 Home, Pro, Enterprise and Education as supported editions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Supported editions: Windows 11 Home, Pro, Enterprise, Education.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The pages read publish no additional licence, feature-specific price or meter for these Administrator protection settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune Administrator protection Adminless settings catalog account protection license pricing meter Plan. Read Administrator protection, settings catalog, Intune licensing and licensing search results; none names an additional licence or feature-specific charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A separate price or licence specific to configuring these settings through the account protection template is not published on the pages read.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune Administrator protection Adminless settings catalog account protection license pricing meter Plan. Read Account protection policy, Intune licensing and Intune release-note results; no template-specific price or licence was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The Administrator protection documentation describes no new data-access integration or data flow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Administrator protection data access autonomous operations user approval token. Read Administrator protection in full and matching search excerpts; they describe local elevation and separated tokens, not a new data-access integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Administrator protection documentation describes no autonomous behavior.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Administrator protection data access autonomous operations user approval token. Read Administrator protection and matching excerpts; interactive authorization is required for every admin operation and no autonomous operation is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "The settings catalog instructions require at least the Policy and Profile Manager built-in role to create the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/",
+      "quote": "Sign in to the Microsoft Intune admin center with an account that has at least the Policy and Profile Manager built-in role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The control's linked settings catalog page documents the route through Local Policies Security Options to User Account Control Type Of Admin Approval Mode.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/",
+      "quote": "In Configuration settings, select Add settings. In the settings picker, select a category to see all the available settings.",
+      "severity": "blocker",
+      "fix": "Set controls[0].ui.docs and the corresponding UI Learn link in the rendered table to https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/#configuration. That cited page documents Local Policies Security Options and User Account Control Type Of Admin Approval Mode; the already-cited settings catalog page supplies the preceding route. The route itself is supported by the two pages together."
+    },
+    {
+      "n": 59,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /beta/deviceManagement/configurationPolicies creates a settings catalog policy object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+      "quote": "Create a new deviceManagementConfigurationPolicy object. ... POST https://graph.microsoft.com/beta/deviceManagement/configurationPolicies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].governs; controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph row documents policy-container creation rather than an operation documented here to enable Administrator protection or set its prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+      "quote": "Create a new deviceManagementConfigurationPolicy object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited Graph creation reference does not name the two Administrator protection settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: deviceManagementConfigurationPolicy create Administrator protection UserAccountControl_TypeOfAdminApprovalMode settings Graph. Read the entire cited beta creation reference, including its request properties and example; neither Administrator protection setting is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: account protection template path",
+      "type": "admin-path",
+      "claim": "The account protection profile route is Microsoft Intune admin center > Endpoint security > Manage > Account protection > Create policy > Windows > Account protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
+      "quote": "under Manage in the Endpoint security node ... go to Endpoint Security > Account protection > Create Policy ... For Platform select Windows ... Account protection",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The account protection reference lists Account protection, Local admin password solution (Windows LAPS), and Local user group membership profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
+      "quote": "Account protection ... Local admin password solution (Windows LAPS) ... Local user group membership",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The Account protection profile covers Windows Hello for Business settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
+      "quote": "The account protection policy focuses on device-scoped and user-scoped settings for Windows Hello for Business, and on Credential Guard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
       "claim": "The Account protection profile covers Credential Guard.",
@@ -581,32 +746,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "The Account protection policy node provides a Local admin password solution (Windows LAPS) profile.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
-      "quote": "Local admin password solution (Windows LAPS) - Use this profile to configure Windows LAPS on devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "The Account protection policy node provides a Local user group membership profile.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
-      "quote": "Local user group membership - Use this profile to add, remove, or replace members of the built-in local groups on Windows devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
+      "n": 66,
       "where": "Governance controls",
       "type": "availability",
-      "claim": "Account protection profile settings are also available in the settings catalog.",
+      "claim": "The Account protection profile's settings are also available in the settings catalog.",
       "status": "supported",
       "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
       "quote": "The settings in this profile are also available in the Settings catalog.",
@@ -614,175 +757,21 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 67,
       "where": "What's changing; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The cited Account protection policy page does not list Administrator protection settings in the template.",
+      "claim": "The cited Account protection reference page does not list Administrator protection settings.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Intune Adminless Administrator protection account protection template settings. Read Account protection policy for endpoint security in Intune in full and search excerpts for ref-account-protection-settings; neither lists Administrator protection in that template.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The printed Intune admin centre route reaches Add settings for a Windows settings catalog policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/",
-      "quote": "Select Devices > Manage devices > Configuration > Create > New policy. ... Windows 10 and later ... Profile type: Select Settings catalog. ... In Configuration settings, select Add settings.",
+      "quote": "Searched: \"Administrator protection settings in Account protection policies\". Read Account protection policy in full: it omits them. Intune's October 26, 2026 release-note excerpt instead says it now includes two Administrator protection settings in endpoint security Account protection policies.",
       "severity": "minor",
-      "fix": "Use 'Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Settings catalog > Create > Basics > Configuration settings > Add settings > Local Policies Security Options > User Account Control Type Of Admin Approval Mode'. The final category and setting are documented at https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/. Retain the other prompt-setting name in the note."
-    },
-    {
-      "n": 56,
-      "where": "controls[0].note; Scope: Roles; Governance controls",
-      "type": "role",
-      "claim": "Creating a settings catalog policy requires at least the Policy and Profile Manager built-in role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/",
-      "quote": "Sign in to the Microsoft Intune admin center with an account that has at least the Policy and Profile Manager built-in role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "POST /beta/deviceManagement/configurationPolicies is the automation equivalent for enabling Administrator protection and choosing its elevation prompt.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
-      "quote": "Create a new deviceManagementConfigurationPolicy object. ... name | String | Policy name ... settingCount | Int32 | Number of settings",
-      "severity": "blocker",
-      "fix": "Narrow controls[0].governs to 'Creation of a settings catalog policy; Administrator protection settings are configured separately'. Retain the valid POST /beta/deviceManagement/configurationPolicies call, but change the note to 'Graph creates the policy container only; it does not enable Administrator protection or set its elevation prompt. In the UI, configure Local Policies Security Options using the two settings named in What's changing. Needs at least Policy and Profile Manager.' The setting-creation reference is https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-create?view=graph-rest-beta, but it does not identify these feature-specific settings, so do not substitute an inferred feature-specific call."
-    },
-    {
-      "n": 58,
-      "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The cited Graph policy-creation reference does not name the Administrator protection settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Graph deviceManagement configurationPolicies settings create deviceManagementConfigurationSetting settingInstance Administrator protection. Read policy-create in full and setting-create Request body; policy-create names neither Administrator protection setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Governance controls: Graph explanation",
-      "type": "command",
-      "claim": "POST /beta/deviceManagement/configurationPolicies is a beta operation that creates a general settings catalog policy object.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
-      "quote": "Create a new deviceManagementConfigurationPolicy object. ... POST https://graph.microsoft.com/beta/deviceManagement/configurationPolicies",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Governance controls",
-      "type": "availability",
-      "claim": "Group policy is another documented method of enabling Administrator protection.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "You can enable administrator protection through several methods: ... Group policy",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Why it matters; Governance controls",
-      "type": "availability",
-      "claim": "Windows Security has a preview Administrator protection toggle.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
-      "quote": "Windows Security Settings (Preview) ... You can enable Administrator protection on your device by going to the Account protection section in the Windows Security settings and turning on the toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "An Intune licence is required for any user or device benefiting directly or indirectly from the Intune service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/fundamentals/licensing",
-      "quote": "An Intune license is required for any user or device that benefits directly or indirectly from the Microsoft Intune service, including access through a Microsoft API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is included under the Intune licence the product already requires.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/fundamentals/licensing",
-      "quote": "An Intune license is required for any user or device that benefits directly or indirectly from the Microsoft Intune service",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "The cited pages publish no feature-specific additional licence or plan for these Administrator protection settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Intune Administrator protection settings catalog license pricing meter plan. Read Microsoft Intune licensing, Administrator protection, settings-catalog and Account protection policy; no feature-specific additional licence is named. EPM search results describe a different feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The cited Administrator protection and settings catalog pages name no meter for these settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Intune Administrator protection settings catalog license pricing meter plan. Read Administrator protection, settings-catalog, Microsoft Intune licensing and Account protection policy; no meter for these settings was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "No feature-specific price for these settings, including the planned account protection template configuration, is published in the cited sources.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Intune Administrator protection settings catalog license pricing meter plan. Read Microsoft Intune licensing, Administrator protection, settings-catalog and Account protection policy, plus roadmap description; none publishes a price specific to these settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance controls: account protection template path",
-      "type": "admin-path",
-      "claim": "Endpoint security > Account protection > Create policy, platform Windows, reaches the account protection profile-selection route.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/endpoint-security/account-protection",
-      "quote": "go to Endpoint Security > Account protection > Create Policy*. For Platform select Windows, and then choose from the following Profiles:",
-      "severity": "minor",
-      "fix": "For the Account protection profile, give 'Microsoft Intune admin center > Endpoint security > Manage > Account protection > Create policy > Windows > Account protection'. The current abbreviated route stops at the profile-selection page; it is not a route to Administrator protection."
+      "fix": "After the reference-page omission, add: \"However, Intune's October 26, 2026 release notes state that endpoint security Account protection policies now include two Administrator protection settings: the Administrator Approval Mode type and elevation prompt behavior.\" Cite https://learn.microsoft.com/intune/whats-new/#week-of-october-26,-2026-service-release-2610 in sources. Replace the open question about whether the template will gain the settings with this documented availability; retain the separate question about the name Adminless."
     },
     {
       "n": 68,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Intune exposes policy status that administrators can review for the pilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/",
-      "quote": "When you select the policy, the device status is displayed. It shows a summary of your policy state and the policy properties.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "The Windows security policy is named User Account Control: Configure type of Admin Approval Mode.",
+      "where": "Governance controls; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Group policy can enable Administrator protection using User Account Control: Configure type of Admin Approval Mode.",
       "status": "supported",
       "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
       "quote": "Locate the policy for \"User Account Control: Configure type of Admin Approval Mode\" and change the setting to \"Admin Approval Mode with Administrator protection\".",
@@ -790,24 +779,57 @@
       "fix": null
     },
     {
+      "n": 69,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Windows Security offers another toggle to enable Administrator protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "You can enable Administrator protection on your device by going to the Account protection section in the Windows Security settings and turning on the toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 70,
-      "where": "Governance guidance; Governance controls table",
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Intune exposes settings catalog policy status for review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/",
+      "quote": "When you select the policy, the device status is displayed. It shows a summary of your policy state and the policy properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance; Governance controls",
       "type": "consistency",
-      "claim": "The governance checklist names controls and monitoring actions that have no corresponding controls-table row.",
+      "claim": "Checklist controls for reviewing LAPS targeting, checking the Windows security baseline, capturing elevation events, and reviewing policy status have no corresponding table rows.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: 'Check whether your Windows security baselines already set'; 'Capture elevation events'; 'Review Intune policy status'. Table: only the settings catalog creation/configuration row.",
+      "quote": "Check whether any Intune LAPS policy targets the same devices before assigning. ... The checklist's Windows security baseline check, elevation-event capture and Intune policy-status review have no row in the table",
       "severity": "minor",
-      "fix": "The Before rollout Windows security baseline check and the After rollout elevation-event capture and Intune policy-status review have no controls-table rows. Record this coverage gap without adding rows as part of this correction."
+      "fix": "Replace the final Governance controls paragraph with: \"The checklist's Intune LAPS targeting review, Windows security baseline check, elevation-event capture and Intune policy-status review have no corresponding row in the controls table.\" This identifies the checklist/table gap without adding unverified control rows."
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Windows Security enablement surface is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/security/application-security/application-control/administrator-protection/",
+      "quote": "Windows Security Settings (Preview)",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T23:33:00.431Z",
+    "at": "2026-11-25T01:57:27.700Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -848,7 +870,7 @@
       {
         "index": 0,
         "side": "ui",
-        "governs": "Whether Administrator protection is enabled and which elevation prompt is used, via a settings catalog policy",
+        "governs": "Creation of a settings catalog policy; Administrator protection settings are configured separately",
         "docs": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/",
         "reachable": true,
         "segments": [
@@ -860,14 +882,19 @@
           "Windows 10 and later",
           "Settings catalog",
           "Configuration settings",
-          "Add settings"
+          "Add settings",
+          "Local Policies Security Options",
+          "User Account Control Type Of Admin Approval Mode"
         ],
-        "missing": []
+        "missing": [
+          "Local Policies Security Options",
+          "User Account Control Type Of Admin Approval Mode"
+        ]
       },
       {
         "index": 0,
         "side": "api",
-        "governs": "Whether Administrator protection is enabled and which elevation prompt is used, via a settings catalog policy",
+        "governs": "Creation of a settings catalog policy; Administrator protection settings are configured separately",
         "docs": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
         "reachable": true,
         "token": "/beta/deviceManagement/configurationPolicies",
@@ -876,5 +903,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

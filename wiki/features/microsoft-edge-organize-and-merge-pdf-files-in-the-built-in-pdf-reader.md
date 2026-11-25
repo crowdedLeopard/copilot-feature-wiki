@@ -55,15 +55,17 @@ changes:
     note: "Corrected the policy control's scope to Other, because Microsoft has not documented whether PdfOrganizeAndMergeEnabled applies per device or per user."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-22"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 42
+  claims: 45
+  confirmed: 45
   unconfirmed: 0
   contradicted: 0
   attempts: 0
