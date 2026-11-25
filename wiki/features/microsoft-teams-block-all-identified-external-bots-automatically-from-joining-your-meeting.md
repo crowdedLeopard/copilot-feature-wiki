@@ -47,10 +47,10 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -ExternalBotAccessMode BlockDetectedBots"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
-    note: "The cmdlet reference documents BlockDetectedBots for automatic blocking; the feature guide lists only two options. Assign to users or groups through a meeting policy."
+    note: "The feature guide documents three options, including Block all detected bots (BlockDetectedBots). Assign to users or groups through a meeting policy."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-09-01T23:00:02"
 changes:
   - date: "2026-11-18"
@@ -63,26 +63,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected: the feature guide documents three options including Block all detected bots; added what happens to blocked participants; removed the label and override questions."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 54
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "6abd15f0fb97a1df7572c7f4490873fb"
+  contradicted: 0
+  attempts: 0
+  hash: "584a962b7b5baeae3e5a93e038e06f4f"
 ---
 
 ## What's changing
 
 Microsoft Teams is adding an option to its meeting policy that automatically blocks external meeting bots once Teams has identified them. The roadmap item describes it as extending the admin controls for external AI bots with "the option to automatically block all identified bots".
 
-Today, the Learn page for the existing **Manage external bots and their access to meetings** setting (the feature guide) documents two options. **Do not detect bots** treats bots like any other external participant; the feature guide calls this value AllowBots, but the [Set-CsTeamsMeetingPolicy reference](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps) lists AllowAllBots for disabling detection. **When detected, require approval before joining** (`RequireApprovalWhenDetected`) is the default: bots are detected, marked in the lobby and kept there until someone admits them. The Set-CsTeamsMeetingPolicy reference documents BlockDetectedBots for automatic blocking, although the feature guide still lists only two options.
+Today, the Learn page for the existing **Manage external bots and their access to meetings** setting (the feature guide) documents three options: **Do not detect bots**, **When detected, require approval before joining** (the default) and **Block all detected bots**. Do not detect bots treats bots like any other external participant; the feature guide calls this value AllowBots, but the [Set-CsTeamsMeetingPolicy reference](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps) lists AllowAllBots for disabling detection. When detected, require approval before joining (`RequireApprovalWhenDetected`) is the default: bots are detected, marked in the lobby and kept there until someone admits them. Block all detected bots (`BlockDetectedBots`) blocks detected bots automatically, and the feature guide says organisers and other participants cannot admit them.
 
 Microsoft's notice MC1459141 says the new option is added to the existing **Manage bots** meeting protection settings in the Teams admin center and can be assigned to specific users or groups through existing Teams meeting policy management. When it is enabled, identified external meeting bots are prevented from joining meetings governed by the assigned policy, and the existing detection and visibility experiences for organisers and administrators continue. Organisations that do not enable it keep the current detection experience with no change to meeting participation behaviour.
 
@@ -111,7 +115,7 @@ If nobody acts, Microsoft's notice says nothing changes: the option is off by de
 
 **Change & support**
 
-- Learn says detection may occasionally misclassify human participants as bots, and that organisers can admit them from the lobby and mark them "This is not a bot". Microsoft has not said whether a blocked participant receives that lobby route once automatic blocking is enabled, so expect help desk calls from legitimate guests and staff who use meeting assistants.
+- Learn says detection may occasionally misclassify human participants as bots. Under Block all detected bots, detected participants are not placed in the lobby for organiser approval and organisers cannot admit them. Where supported, eligible people incorrectly identified as bots can use email verification recovery to verify their identity and attempt to join. Expect help desk calls from legitimate guests and staff who use meeting assistants.
 - Microsoft's notice recommends piloting with a group first and telling organisers and users who rely on automated meeting bots.
 
 ## Cost and licensing
@@ -132,7 +136,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and GCC, with General
 
 - Inventory which meeting bots and automated meeting applications your organisation actually uses, so a block does not stop a sanctioned workflow; the notice recommends reviewing this first.
 - Review your existing Teams meeting policies and decide which users or groups should receive the new option, using the meeting policy row in the controls table.
-- Confirm that the Teams admin center lists the block option before you plan around it; the feature guide lists only two options at the time of writing (November 2026).
+- Confirm that the Teams admin center lists the block option before you plan around it.
 
 ### At rollout
 
@@ -151,18 +155,17 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and GCC, with General
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>How identified external bots are handled in meetings, including the planned automatic block</strong><br><small>User</small><br><small class="controls__note">The cmdlet reference documents BlockDetectedBots for automatic blocking; the feature guide lists only two options. Assign to users or groups through a meeting policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting Join and Lobby › Manage external bots and their access to meetings <a href="https://learn.microsoft.com/microsoftteams/manage-external-bots" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExternalBotAccessMode BlockDetectedBots</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>How identified external bots are handled in meetings, including the planned automatic block</strong><br><small>User</small><br><small class="controls__note">The feature guide documents three options, including Block all detected bots (BlockDetectedBots). Assign to users or groups through a meeting policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting Join and Lobby › Manage external bots and their access to meetings <a href="https://learn.microsoft.com/microsoftteams/manage-external-bots" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExternalBotAccessMode BlockDetectedBots</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The existing setting is the control that the new option extends. Learn documents it as a meeting policy setting in the **Meeting Join and Lobby** section, with the PowerShell attribute `ExternalBotAccessMode`. The Set-CsTeamsMeetingPolicy reference documents BlockDetectedBots for automatic blocking, although the feature guide still lists only two options. The feature guide calls the value for disabling detection AllowBots, but the reference lists AllowAllBots, so check the reference before scripting that value.
+The existing setting is the control that the new option extends. Learn documents it as a meeting policy setting in the **Meeting Join and Lobby** section, with the PowerShell attribute `ExternalBotAccessMode`. The feature guide documents three options: Do not detect bots, When detected, require approval before joining (default), and Block all detected bots. The feature guide calls the value for disabling detection AllowBots, but the reference lists AllowAllBots, so check the reference before scripting that value.
 
 The notice says the option is assigned through existing Teams meeting policy management, so it follows normal policy assignment to users or groups. The admin role needed to edit meeting policies is not covered by the Learn page on external bots, so confirm it against the Teams meeting policy documentation.
 
 ## Open questions
 
-- What is the label in the Teams admin center for automatic blocking? Watch the Learn page on managing external bots.
-- What does a blocked bot, or a person wrongly detected as a bot, see, and can an organiser override the block? Watch the Learn page and Message center.
+- What exact message does a blocked participant see? Watch the Learn page on managing external bots and Message center.
 - Does the option require any licence, including Teams Premium? Watch the roadmap item and Learn.
 - What is the GCC rollout schedule? The roadmap lists GCC but notice MC1459141 gives dates for Worldwide only.
 
@@ -172,12 +175,9 @@ cost: Low. The only cost the sources show is admin time to pilot and assign the 
 impact: Low. Administrators who manage meeting policies see the new option; organisers and participants notice only in the users or groups where an administrator enables it.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; controls[0].note; Governance guidance: Before rollout; Governance controls / behaviour: The feature guide still documents only two options and does not yet include automatic blocking. | Found: | Block all detected bots | *BlockDetectedBots* | Detected external bots are automatically blocked from joining meetings. They can't be admitted by meeting organizers or other participants. | | Fix: Replace every assertion that the feature guide lists only two options with 'The feature guide documents three options: Do not detect bots, When detected, require approval before joining (default), and Block all detected bots.' In the Before rollout bullet, remove the clause claiming the guide lists only two options. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [contradicted, blocker] Risk assessment: Change & support; Open questions / absence: Microsoft has not said whether blocked participants get a lobby admission route or whether organizers can override blocking. | Found: Detected bots are automatically blocked from joining the meeting. They aren't placed in the meeting lobby for organizer approval, and meeting organizers can't admit them. | Fix: Replace the absence sentence with 'Under Block all detected bots, detected participants are not placed in the lobby for organizer approval and organizers cannot admit them. Where supported, eligible people incorrectly identified as bots can use email verification recovery to verify their identity and attempt to join.' Remove the Open questions bullet asking whether organizers can override blocking, or narrow it to 'What exact message does a blocked participant see?' Cite https://learn.microsoft.com/microsoftteams/manage-external-bots. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [contradicted, blocker] Open questions: admin-center label / absence: The admin-center label for automatic blocking is not yet documented. | Found: | Block all detected bots | *BlockDetectedBots* | | Fix: Remove the Open questions bullet asking for the admin-center label: https://learn.microsoft.com/microsoftteams/manage-external-bots documents it as 'Block all detected bots'. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: Licensing is recorded as unknown because no feature-specific entitlement is published. | Found: Each user needs a user account and license before they can sign in and access Teams. | Fix: Set licensing.model to 'included' under the schema's rule for a new option inside a licensed product. Replace the notes with 'Teams users need a user account and Teams licence. No licence requirement or meter specific to this option is published in the checked sources.' Add https://learn.microsoft.com/microsoftteams/deploy-small-business to sources. | Source: https://learn.microsoft.com/microsoftteams/deploy-small-business#add-users-and-give-them-access-to-teams
+- [supported, minor] controls[0].api; Governance controls / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -ExternalBotAccessMode BlockDetectedBots configures automatic blocking. | Found: BlockDetectedBots: When detected, external third-party meeting bots and meeting assistants are blocked from joining meetings hosted in the organization. | Fix: Keep the call unchanged. Add to Governance controls: 'The feature guide names Set-CsTeamsMeetingPolicy in its prose but uses Set-CsTeamsEventsPolicy in its examples; the linked Set-CsTeamsMeetingPolicy reference documents ExternalBotAccessMode and BlockDetectedBots.' The conflicting examples are at https://learn.microsoft.com/microsoftteams/manage-external-bots. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions / licensing: Licensing is recorded as unknown because no feature-specific requirement is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the licensing notes and the first Cost and licensing paragraph with: 'A Teams licence is required: Manage Teams licenses states that, except for joining meetings anonymously, each user in the organisation needs a Teams licence before using Teams. No requirement or meter specific to this blocking option is published as of November 2026.' Add https://learn.microsoft.com/microsoftteams/user-access to sources. Keep the question about a feature-specific Teams Premium requirement. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

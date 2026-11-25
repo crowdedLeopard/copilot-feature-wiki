@@ -4,7 +4,7 @@ slug: "outlook-grant-mail-delegate-sharing-permissions-from-the-new-outlook"
 roadmapId: 417063
 topic: "modern-work"
 products: ["Outlook"]
-summary: "The roadmap plans for users to grant and view delegate access to mailboxes and folders in the new Outlook. No Learn page describes the feature yet; Cloud Policy can restrict folder-permission changes. Admins should review delegate permissions."
+summary: "The roadmap plans delegate access for mailboxes and folders in the new Outlook. Microsoft Support documents folder sharing there, though the roadmap still lists In development (July CY2026). Admins should review delegate permissions."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 417063"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=417063"
     kind: "roadmap"
+  - title: "Share and access another person's mailbox or folder in Outlook"
+    url: "https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081"
+    kind: "docs"
   - title: "Manage permissions for recipients in Exchange Online"
     url: "https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-permissions-for-recipients"
     kind: "learn"
@@ -87,30 +90,34 @@ changes:
     note: "Corrected after the independent check: documented Cloud Policy restrictions on folder-permission changes, the existing Outlook folder-permission UI, and the Exchange admin center inventory step."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: folder permission levels and both clients' sharing screens are now documented from Microsoft Support; removed an IRM checklist step that had no control row."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "20582f56fbdb96ae28392d2966d0cf5f"
+  contradicted: 0
+  attempts: 0
+  hash: "bcb353d516e4e8b9893134d80511de3b"
 ---
 
 ## What's changing
 
 The roadmap item states that delegate access for mailboxes and folders can be granted from the new Outlook app, and that users will be able to view the permissions granted for mailboxes and folders. The description is tagged #newoutlookforwindows; the record lists Web as the platform, General Availability as the release phase and Worldwide (Standard Multi-Tenant) as the cloud.
 
-Microsoft Learn does not describe this feature yet at the time of writing (November 2026), so what is said above about its behaviour is the roadmap's description. In particular, Microsoft has not said which permission types the new screens grant (Full Access, Send as, Send on behalf, or folder roles), and has not said whether they read and write the same permissions that administrators manage in Exchange.
+Microsoft Support documents folder permission levels in new Outlook, including Owner, Publishing Editor, Editor, Publishing Author, Author, Nonediting Author, Reviewer, Contributor, None and Custom ([Share and access another person's mailbox or folder in Outlook](https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081)). This does not establish that the screens grant Exchange Full Access or Send as, and Microsoft has not said whether they read and write the same permissions that administrators manage in Exchange.
 
 For background, Learn describes the existing Exchange Online model. Users assigned Full Access, Send as or Send on behalf on a mailbox are called delegates. For calendars, an Outlook delegate has the Editor calendar role and a Delegate sharing permission flag, and Learn says to configure delegate relationships from Outlook while the calendar owner is signed in. This is background on existing permissions, not a description of the new feature.
 
-The roadmap lists the item as In development with a target of July CY2026. That target month has passed at the time of writing and the record still shows In development, so treat the date as a target that has not been met.
+The roadmap lists the item as In development with a target of July CY2026, while Microsoft Support documents mailbox and folder sharing in new Outlook. That target month has passed at the time of writing and the record still shows In development, so treat the date as a target that has not been met.
 
 ## Why it matters
 
@@ -127,8 +134,8 @@ Microsoft has not stated what happens on arrival, so base your plan on no source
 
 **Security & identity**
 
-- Send as lets a delegate send messages with no indication that the delegate sent them, per Learn. Send on behalf shows the delegate in the From address. Which of these the new screens can grant is not yet documented.
-- Learn says folder sharing needs permissions on the shared folder and on each parent folder in the hierarchy, and that the root Mailbox folder must give the default role at least Folder visible. Partial grants can leave a delegate unable to open the folder.
+- Send as lets a delegate send messages with no indication that the delegate sent them, per Learn. Send on behalf shows the delegate in the From address. Microsoft Support documents folder permission levels in new Outlook, including Owner, Publishing Editor, Editor, Publishing Author, Author, Nonediting Author, Reviewer, Contributor, None and Custom. This does not establish that the screens grant Exchange Full Access or Send as.
+- Learn says folder sharing needs permissions on the shared folder and on each parent folder in the hierarchy, and that the root Mailbox folder must give the default role at least Folder visible. Partial grants can leave a delegate unable to open the folder. Microsoft Support says new Outlook and Outlook on the web preserve existing parent-folder permissions and automatically assign Folder visible where parent folders have no permissions assigned.
 
 **Autonomy & actions**
 
@@ -149,7 +156,7 @@ The cost the sources support is admin time: reviewing existing delegate permissi
 
 ## Scope
 
-The roadmap lists Outlook as the product, Web as the platform, General Availability as the release phase and Worldwide (Standard Multi-Tenant) as the cloud. It does not list GCC, GCC High or DoD; that is a record fact, not a statement that the feature is unavailable there. The #newoutlookforwindows tag suggests the new Outlook for Windows; whether the web client and the Windows app both get the screens is not stated.
+The roadmap lists Outlook as the product, Web as the platform, General Availability as the release phase and Worldwide (Standard Multi-Tenant) as the cloud. It does not list GCC, GCC High or DoD; that is a record fact, not a statement that the feature is unavailable there. The roadmap record lists Web and carries #newoutlookforwindows. Microsoft Support documents Sharing and permissions for mailbox and folder sharing in both new Outlook for Windows and Outlook on the web, although the roadmap record remains In development ([Share and access another person's mailbox or folder in Outlook](https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081)).
 
 The roadmap does not name the users, licences or roles in scope. For the existing Exchange controls, Learn tells administrators to see the "Mailbox settings" entry in the Feature permissions in Exchange Online article for the permissions needed. Mailboxes of different types (user, shared, resource) can hold different permissions in Exchange; which types the new screens cover is not stated.
 
@@ -159,13 +166,12 @@ The roadmap does not name the users, licences or roles in scope. For the existin
 
 - Identify who in your organisation relies on delegates, such as executives with assistants, and decide who may grant mailbox or folder access to others.
 - List who holds Full Access, Send as and Send on behalf on key mailboxes today, using the Exchange admin center Mailbox delegation view.
-- Check whether Full Access delegates reading IRM-protected messages is acceptable for those mailboxes; Learn describes prevention methods per client.
 - Confirm with Microsoft's rollout notice which permission types the new screens grant before deciding whether to brief users.
 
 ### At rollout
 
 - Watch the roadmap item and Message center for a rollout notice, since the July CY2026 target has passed with the status still In development.
-- Tell users that sharing a subfolder needs permission on the folder and on its parent folders, including Folder visible on the root Mailbox folder for the default role.
+- Tell users that sharing a subfolder needs permission on the folder and on its parent folders, including Folder visible on the root Mailbox folder for the default role; Microsoft Support says new Outlook and Outlook on the web assign Folder visible automatically where parent folders have no permissions assigned.
 
 ### After rollout
 
@@ -192,24 +198,13 @@ The Learn page for the Exchange admin center says you need assigned permissions 
 
 ## Open questions
 
-- Which permissions do the new Outlook screens grant: Full Access, Send as, Send on behalf, or folder roles such as Editor with the Delegate flag? Watch the roadmap item and the Learn pages on delegate access.
+- Which mailbox-level permissions do the new Outlook screens grant: Full Access, Send as or Send on behalf? Microsoft Support documents folder permission levels in new Outlook, but not these. Watch the roadmap item and the Learn pages on delegate access.
 - Is the capability on for all users on arrival, or does an administrator have to enable it? Microsoft has not stated the default; watch Message center.
 - Does a separate switch cover the complete new capability, beyond the Cloud Policy restrictions on folder-permission changes that Learn documents? Watch Message center and the Learn page on restricting folder permissions.
-- Does the capability reach Outlook on the web and the new Outlook for Windows alike, and does it cover shared and resource mailboxes?
+- Does the capability cover shared and resource mailboxes?
 
 <!-- rationale
 risk: Medium. Delegate access gives another person access to mailbox or folder content, and the roadmap plans for users to grant it from the new Outlook; Learn documents Cloud Policy restrictions on folder-permission changes, but the default is not stated.
 cost: Low. The only cost the sources show is admin time to review delegate permissions; a licence or meter specific to this item is not yet published, and the new Outlook for Windows licence requirement on Learn applies as it does today.
 impact: Medium. Mailbox owners who share with assistants or colleagues, and the delegates themselves, are the people who would notice; the roadmap does not say the change affects other users.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Risk assessment: Security & identity; Open questions / absence: Microsoft has not said which permission types the new Outlook sharing screens grant, including folder roles. | Found: In the Permissions section, select the Permission level dropdown and select the permissions you want to grant to this user. | Fix: Replace the blanket gap with: 'Microsoft Support documents folder permission levels in new Outlook, including Owner, Publishing Editor, Editor, Publishing Author, Author, Nonediting Author, Reviewer, Contributor, None and Custom. This does not establish that the screens grant Exchange Full Access or Send as.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081 and narrow the repeated open question to the remaining mailbox-level permissions. | Source: https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081
-- [contradicted, blocker] Scope; Open questions / availability: Microsoft has not stated whether both new Outlook for Windows and the web client have the mailbox/folder sharing screens. | Found: Share and access a folder or mailbox in new Outlook ... Share and access a folder or mailbox in Outlook on the web | Fix: Replace the platform uncertainty with: 'The roadmap record lists Web and carries #newoutlookforwindows. Microsoft Support documents Sharing and permissions for mailbox and folder sharing in both new Outlook for Windows and Outlook on the web, although the supplied roadmap record remains In development.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081. Remove the repeated question about whether these two clients have sharing screens; retain the separate question about shared and resource mailbox coverage. | Source: https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing / absence: No Microsoft Learn page describes this specific roadmap feature yet. | Found: Searched: new Outlook grant delegate mailbox folder permissions 417063; "new Outlook" "delegate" "permissions" "sharing" 417063. Opened cited Learn pages and Microsoft's Support sharing and delegate articles; found Support instructions, not a Learn feature page. | Fix: Replace the documentation-gap wording with: 'Microsoft Support documents mailbox and folder sharing in new Outlook, while the supplied roadmap record still lists In development with a July CY2026 target.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081. Do not describe the roadmap as the only source about the functionality.
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: At rollout / behaviour: Folder sharing requires access on the shared folder and its parent folders, and partial grants can prevent opening it. | Found: the user has to grant the other person access to the specific folder that the user wants to share and also to all other parent folders in the folder hierarchy. | Fix: Qualify the existing guidance with: 'Microsoft Support says new Outlook and Outlook on the web preserve existing parent-folder permissions and automatically assign Folder visible where parent folders have no permissions assigned.' Cite https://support.microsoft.com/office/share-and-access-another-person-s-mailbox-or-folder-in-outlook-a909ad30-e413-40b5-a487-0ea70b763081 so readers are not told that these clients always require manual parent-folder grants. | Source: https://learn.microsoft.com/troubleshoot/exchange/outlook-issues/cannot-access-another-mailbox-folder
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review prevention of delegates reading IRM-protected messages, but the controls table has no corresponding control. | Found: Check whether Full Access delegates reading IRM-protected messages is acceptable for those mailboxes; Learn describes prevention methods per client. / Table rows cover mailbox delegation and mailbox-folder permissions only. | Fix: Remove the Before rollout bullet beginning 'Check whether Full Access delegates reading IRM-protected messages is acceptable'. This is the checklist control with no table row; do not add a new control row as part of this correction.
 -->

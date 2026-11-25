@@ -72,15 +72,17 @@ changes:
     note: "Correction: Apply roles now qualified to the Embed for your customers access type, and three checklist bullets without matching control rows removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
   contradicted: 0
   attempts: 0

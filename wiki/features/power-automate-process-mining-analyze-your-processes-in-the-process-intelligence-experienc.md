@@ -78,15 +78,17 @@ changes:
     note: "Corrected after verification: added the receiving-user requirement (Environment Maker is sufficient) to the reassign-records guidance, narrowed the pilot step and removed the After rollout checklist item."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
 version: 4
 verification:
   status: "verified"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 83
+  confirmed: 83
   unconfirmed: 0
   contradicted: 0
   attempts: 0

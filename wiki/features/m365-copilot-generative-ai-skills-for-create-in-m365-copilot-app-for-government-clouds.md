@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "March CY2026"
 previewDate: null
 risk: "low"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
@@ -97,19 +97,23 @@ changes:
     note: "Corrected after the independent check: removed the claim that admins need no action, and aligned the organisation assets library statements with the brand kit governance page."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: cost rating raised to medium for the Microsoft 365 Copilot add-on licence, and two setup steps without controls-table rows removed from Before rollout."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 66
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "41c2c430f0ec70dc3453e3aa0da64224"
+  contradicted: 0
+  attempts: 0
+  hash: "9ab57dfdffc4883e0ea7a3fa52994513"
 ---
 
 ## What's changing
@@ -167,9 +171,7 @@ Expect the most noise from brand kits. The brand kit governance page documents t
 ## Governance guidance
 
 ### Before rollout
-- Create a mail-enabled security group for brand managers and a second one for users who may create and edit personal brand kits, as the brand kit governance page prescribes.
 - Decide which licensed users should hold Microsoft 365 Copilot, since the AI-powered features in Create need it.
-- Create an organisation assets library to connect to Copilot before users create and publish brand kits, as the brand kit governance prerequisites require.
 
 ### At rollout
 - Set the Elevated role for Brand Managers policy to Enabled with the brand manager group's address, and confirm the policy scope is Tenant and its priority is 0.
@@ -208,14 +210,6 @@ Microsoft Learn documents no API for these two policies at the time of writing (
 
 <!-- rationale
 risk: Low. Microsoft says Copilot prompts, responses and generated content stay in the government cloud, and users choose to open Create. What remains is branded content made without review; brand kit policies and licensing are the levers.
-cost: Low. Microsoft's service description says AI-powered features in Create need a Microsoft 365 Copilot licence, an add-on plan. The Create article names no separate meter, so the cost shown is licence assignment and admin time.
+cost: Medium. AI-powered features in Create require the Microsoft 365 Copilot add-on licence for the users who need them; the Create article names no separate meter. Admin setup adds indirect cost.
 impact: Medium. Staff who produce communications, newsletters and posters notice it first; users without a Copilot licence may see different quality or feature coverage.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: A low cost rating represents the documented add-on licensing requirement and licence assignment costs. | Found: cost: "low"; licensing.model: "add-on"; "Microsoft's service description says AI-powered features in Create need a Microsoft 365 Copilot licence, an add-on plan." The scale defines low as indirect cost only and medium as add-on licences for a subset. | Fix: Set cost to "medium" and replace the cost rationale with: "Medium. AI-powered features in Create require the Microsoft 365 Copilot add-on licence for the users who need them; the Create article names no separate meter. Admin setup adds indirect cost."
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks administrators to configure or take stock of has a controls-table row. | Found: Before rollout asks readers to "Create a mail-enabled security group" and "Create an organisation assets library to connect to Copilot"; the table contains only licence assignment, two brand-kit policies and the individual-feature-switch gap. | Fix: The Before rollout steps for creating the two mail-enabled security groups and the organisation assets library have no matching controls-table rows. Remove those two checklist bullets; retain the already-supported prerequisite statements in Cost and licensing.
 -->

@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "low"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "add-on"
   notes: "Microsoft's notice MC1307979 says users need a Microsoft 365 Copilot (Premium) licence. Learn describes that licence as the Microsoft 365 Copilot add-on. A price specific to this feature is not yet published."
@@ -40,6 +40,15 @@ sources:
   - title: "Assign Microsoft 365 licenses to user accounts with PowerShell"
     url: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
     kind: "learn"
+  - title: "Data, Privacy, and Security for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
+    kind: "learn"
+  - title: "Use preferences to manage privacy controls for Office on iOS devices"
+    url: "https://learn.microsoft.com/microsoft-365-apps/privacy/ios-privacy-preferences"
+    kind: "learn"
+  - title: "Overview of Cloud Policy service for Microsoft 365"
+    url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+    kind: "learn"
 videos: []
 related: ["onenote-multimodal-capture-in-copilot-notebooks-windows"]
 controls:
@@ -56,7 +65,7 @@ controls:
     note: "Generic licence assignment; the notice names the Premium licence as the requirement. Needs at least the License Administrator or User Administrator role."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-18"
@@ -65,19 +74,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 41 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 40 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: action now act-now; removed an unsupported storage claim and an unconfirmed-switch question; added the connected experiences control that makes Copilot unavailable in OneNote on iOS."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 36
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "704b01658f618a6ff50bd705464a9cd5"
+  claims: 43
+  confirmed: 42
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "234690a9464fed65eac7ec5ec179e1a1"
 ---
 
 ## What's changing
@@ -90,7 +103,7 @@ The roadmap item is In development, with a target of November CY2026, release ph
 
 ## Why it matters
 
-This puts a generative AI reader in front of OneNote content on a phone. Notes often hold meeting minutes, customer detail and drafts, and a summary or a question puts that content into a Copilot response. Microsoft's notice says the pane works on content the user can already access, so the exposure follows from permissions you already manage rather than from a new store of data.
+This puts a generative AI reader in front of OneNote content on a phone. Notes often hold meeting minutes, customer detail and drafts, and a summary or a question puts that content into a Copilot response. Microsoft's notice says the pane works on content the user can already access, so the exposure follows from permissions you already manage.
 
 Microsoft's notice says no admin action is required, and it asks administrators to make sure the right users hold the Copilot (Premium) licence, to brief the helpdesk and to review existing Copilot governance. Expect questions from licensed iPhone users around the end of November 2026, and from unlicensed users who hear about it.
 
@@ -134,7 +147,6 @@ A price or meter specific to this feature is not yet published. Where users alre
 ### Before rollout
 
 - Confirm which users hold the Microsoft 365 Copilot (Premium) licence, and decide whether anyone who uses OneNote on iPhone should gain or lose it before the end of November 2026 (see the licence row in the controls table).
-- Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open.
 - Brief the helpdesk on the new pane and on the licence it depends on, as the notice suggests.
 
 ### At rollout
@@ -160,11 +172,10 @@ A price or meter specific to this feature is not yet published. Where users alre
 
 Microsoft's notice says existing Microsoft 365 Copilot controls, permissions and policies continue to apply to the pane. The only control read and tied to this feature is licence assignment, because the notice says the pane depends on the Copilot (Premium) licence. Assigning licences needs at least the License Administrator or User Administrator role, per the licence assignment page.
 
-The Copilot settings page in the Microsoft 365 admin center lists no setting named for OneNote. Which existing Copilot setting, if any, switches off this pane for a group is not yet confirmed (see Open questions).
+Turning off connected experiences that analyze content makes Copilot features unavailable in current OneNote apps on iOS; this is a broader control, not a pane-only switch ([Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy)). For iOS, the Cloud Policy setting is named 'Allow the use of connected experiences in Office that analyze content' ([Use preferences to manage privacy controls for Office on iOS devices](https://learn.microsoft.com/microsoft-365-apps/privacy/ios-privacy-preferences)), and Cloud Policy can scope a policy configuration to specific groups ([Overview of Cloud Policy service for Microsoft 365](https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy)).
 
 ## Open questions
 
-- Which existing Microsoft 365 Copilot setting, if any, turns off the OneNote iPhone chat pane for a group of licensed users? Watch the Learn page for Copilot in OneNote and MC1307979.
 - Will a price or credit rate specific to this feature be published, or is use covered by the Copilot (Premium) licence alone? Watch the Copilot licensing pages on Microsoft Learn.
 - Will the date move again? MC1307979 has already moved from the end of October to the end of November 2026; the roadmap status is still In development.
 - Is the pane also planned for other platforms or clouds? The roadmap item lists only iOS and Worldwide.
@@ -178,9 +189,5 @@ impact: Low. Only users with a Microsoft 365 Copilot (Premium) licence who open 
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraphs; Open questions: first bullet / absence: Which existing Copilot setting can switch off this pane for a group of licensed users is not confirmed. | Found: If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: - Excel - OneNote - Outlook - PowerPoint - Word | Fix: Remove the first Open questions bullet and replace the unconfirmed-switch sentence with: 'Turning off connected experiences that analyze content makes Copilot features unavailable in current OneNote apps on iOS; this is a broader control, not a pane-only switch.' Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy. The following sentence on that page explicitly includes iOS. For group targeting, https://learn.microsoft.com/microsoft-365-apps/privacy/ios-privacy-preferences names the Cloud Policy setting 'Allow the use of connected experiences in Office that analyze content', and https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy documents scope to specific groups. Do not add a control row. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [unsupported, major] Why it matters: first paragraph / behaviour: The exposure follows existing permissions rather than a new store of data. | Found: Searched: OneNote Copilot interactions stored history prompts responses iOS iPhone. Read MC1307979 and copilot/plan/microsoft-365-copilot-privacy; access restrictions do not establish this storage inference, and the latter documents stored OneNote Copilot interactions. | Fix: Delete 'rather than from a new store of data'. The notice supports the existing-access boundary but does not establish that storage conclusion.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: Every control the governance checklist asks admins to review is represented in the controls table. | Found: Review sharing on notebooks that hold sensitive content, because the notice says the pane draws on content the user can already open. / The only controls row is licence assignment. | Fix: Remove the Before rollout bullet beginning 'Review sharing on notebooks that hold sensitive content'. It asks admins to check a control absent from the table; do not add a row.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the briefing's verified facts and the action scale on 25 November 2026. | Found: action: "prepare" / risk: "medium" / defaultState: "on" / decide whether anyone who uses OneNote on iPhone should gain or lose it before the end of November 2026 | Fix: Change action from 'prepare' to 'act-now': the automatic end-of-November rollout is within about 60 days of 25 November 2026, the page rates risk medium, and it asks for a licence decision before rollout.
+- [contradicted, blocker] Governance controls: first and second paragraphs / consistency: Licence assignment is the only control read and tied to this feature, despite the next paragraph documenting another applicable control. | Found: The only control read and tied to this feature is licence assignment ... Turning off connected experiences that analyze content makes Copilot features unavailable in current OneNote apps on iOS | Fix: Remove the sentence 'The only control read and tied to this feature is licence assignment, because the notice says the pane depends on the Copilot (Premium) licence.' Keep the following paragraph explaining the broader connected-experiences control.
 -->

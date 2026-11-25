@@ -85,15 +85,17 @@ changes:
     note: "Corrected the licensing model to mixed and the cost rating to variable, naming the general Power Apps per-app pay-as-you-go meter."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -194,4 +196,11 @@ The PowerShell cmdlet in the table creates a policy from a policy object; Get-Dl
 risk: Low. The template generates a standalone canvas app over a list the maker can already reach, and the roadmap says connector and formula delegation limits still apply; no admin switch or new data access is described.
 cost: Variable. The general Power Apps per-app pay-as-you-go meter can apply where enabled at $10 per active user/app/month; qualifying licensed users are excluded. Microsoft documents no separate template-specific meter.
 impact: Low. Makers who start an app from a SharePoint or Lists list will notice the new screens; other users see a change only when a maker publishes an app built from the template.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].note; Governance controls / applicability: Data policies are general connector controls, but the row says Microsoft has not confirmed their application to this template specifically. | Found: After this policy is saved, any Power Apps or Power Automate maker, who is part of the data policy's environment, can create an app or a flow that shares data between SharePoint or Salesforce. | Fix: Replace the row note in front matter and the rendered table with: 'Applies to Power Apps apps in the environments covered by the policy. Governs connector combinations, not template availability.' The cited page states that scope without excluding generated canvas apps. | Source: https://learn.microsoft.com/power-platform/admin/prevent-data-loss
+- [supported, minor] controls[0].ui; Governance controls / admin-path: Power Platform admin center > Security > Settings > Data and privacy > Data policy reaches the data policy list. | Found: Select Security in the navigation pane. ... under Settings, select Data and privacy. ... select the Data policy section. Select + New Policy. | Fix: The path reaches the correct list but stops before classification. Extend controls[0].ui.path and the rendered path to 'Security > Settings > Data and privacy > Data policy > + New Policy > Pre-built connectors > SharePoint > Move to Business' for the cited walkthrough. | Source: https://learn.microsoft.com/power-platform/admin/prevent-data-loss
 -->

@@ -102,17 +102,19 @@ changes:
     note: "Corrected after verification: Fabric export now described as creating a semantic model and report, capacity-pool and Fabric cost statements aligned with Learn, and the capacity allocation path and API note fixed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 72
+  claims: 73
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 2
   attempts: 0
   hash: "e534a0c439f4973354e14f2963ca1d38"
 ---
@@ -213,8 +215,11 @@ cost: Medium. Process mining capacity comes from Power Automate Premium licences
 impact: Medium. Makers and analysts who build process mining models notice it; the roadmap says it is enabled automatically.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / role: A Fabric administrator configures the OneLake tenant setting in Fabric. | Found: These roles provide access to the admin experience in Govern and control over organization-wide Fabric settings, usage metrics, and admin features, except for licensing. | Fix: Add https://learn.microsoft.com/fabric/admin/roles to sources for the Fabric administrator role statement; keep the existing OneLake tenant-settings citation. | Source: https://learn.microsoft.com/fabric/admin/roles
+- [supported, minor] controls[0].api; Governance controls: first table row / command: The cited tutorial documents PATCH of the environment allocations endpoint with api-version=2022-03-01-preview to adjust add-on allocations. | Found: Invoke-RestMethod -Method Patch -Uri "https://api.powerplatform.com/licensing/environments/$EnvironmentId/allocations?api-version=2022-03-01-preview" | Fix: Append to controls[0].note: 'The request body sets currencyAllocations, with currencyType and allocated specifying each allocation.' These properties appear in the cited tutorial's request body. Keep the existing distinction between the tutorial's API version and the current reference. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons
+- [supported, minor] Governance controls / role: A Fabric administrator can configure the OneLake tenant setting in Fabric. | Found: These roles provide access to the admin experience in Govern and control over organization-wide Fabric settings, usage metrics, and admin features, except for licensing. | Fix: Add https://learn.microsoft.com/fabric/admin/roles to sources for the Fabric administrator statement; retain the existing OneLake tenant-settings citation. | Source: https://learn.microsoft.com/fabric/admin/roles
+- [contradicted, minor] Governance guidance: After rollout; controls[0] / consistency: The first controls row represents the checklist's capacity-usage monitoring control. | Found: Review capacity usage in the Power Platform admin center against the licensed pool (first controls row). / Process mining capacity add-on allocated to an environment | Fix: Remove '(first controls row)' from the After rollout usage-monitoring bullet: that row allocates capacity rather than displaying process mining usage. The checklist names capacity-usage monitoring without a corresponding row; do not add a row as part of this correction.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The controls table covers the checklist's optional Fabric export decision. | Found: Agree whether makers should use the optional Choose where to export step or Skip export / The controls table lists only capacity allocation and the undocumented OCPM on/off switch. | Fix: The At rollout export-decision bullet names a control with no table row. Remove that checklist bullet if table/checklist parity is required; retain the supported export description in What's changing. Do not add a control row as part of this correction.
 -->

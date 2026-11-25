@@ -1,0 +1,702 @@
+{
+  "slug": "microsoft-entra-improved-backup-and-restore-experience-for-the-authenticator-app-on-ios",
+  "roadmapId": 498158,
+  "title": "Microsoft Authenticator: iCloud backup and restore of account entries on iOS",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 42)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 49,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 2,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing understates documented Intune restrictions over the iCloud services that Authenticator backup requires. The roadmap details and passkey control are supported, but two additional descriptions of backup behaviour need narrowing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap plans an improved Microsoft Authenticator backup and restore experience on iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Entra: Improved Backup and Restore Experience for the Authenticator App on iOS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The plan covers account names for work or school, personal Microsoft and third-party accounts using iCloud and iCloud Keychain.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "back up account names—including Microsoft work or school accounts, Microsoft personal accounts, and third-party accounts like Amazon or Google—using iCloud and iCloud Keychain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap describes end-to-end encrypted backup of account names and TOTP credentials.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This enables secure, end-to-end encrypted backup of account names and TOTP credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans for account names to appear automatically on a new iOS device.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When setting up a new iOS device, account names will automatically appear in the app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says users can sign in to complete setup.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and users can sign in to complete setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is August CY2025, already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is September CY2025, already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed; GCC, GCC High and DoD are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"iOS\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Backup is user-opt-in: the user turns on the required iCloud settings and Authenticator toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "To back up Authenticator on an iOS device, enable iCloud Drive, Keychain, and Backup for Authenticator. ... Turn on the Authenticator toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "The documented iOS backup procedure requires iCloud Drive to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Enable iCloud Drive on your iOS device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "The documented iOS backup procedure requires iCloud Keychain to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Enable iCloud Keychain on your iOS device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "The documented iOS backup procedure requires iCloud Backup to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Enable iCloud Backup on your iOS device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: Apple Account path",
+      "type": "admin-path",
+      "claim": "The user finds the Authenticator toggle under Apple Account > iCloud > Saved to iCloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Go to Apple Account > iCloud > Saved to iCloud and search for Authenticator. ... Turn on the Authenticator toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "For a work or school account, backup and restore transfers the account name rather than a working organisational sign-in credential.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "For work or school accounts, backup and restore transfers the account name so you can recognize the account on the new phone. You still need to sign in again to complete setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: cost",
+      "type": "behaviour",
+      "claim": "The user opens a restored work or school account and signs in again to complete setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "To complete setup on the new phone, open the account and sign in again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A restored work or school account can show a red sign-in prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "You might see red text that says \"Sign in to add your account.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A personal Microsoft account using only a one-time password code has its verification code entry restored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "If the account uses only a one-time password code that refreshes every 30 seconds, the verification code entry is restored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A personal Microsoft account also using passwordless sign-in has only its account name restored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "If the account also uses passwordless sign-in, only the account name is restored and you must sign in again to complete setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Third-party accounts using one-time password codes have their verification code entries restored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Third-party accounts (Amazon, Facebook, Gmail, etc.) ... These accounts typically use a one-time password code that refreshes every 30 seconds. ... The verification code entry is restored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: TOTP parenthesis",
+      "type": "behaviour",
+      "claim": "The backed-up TOTP credentials are uniformly six-digit codes refreshing every 30 seconds.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft Authenticator six-digit 30 seconds; Authenticator six-digit code. Opened transfer and Authenticator app concept pages; neither establishes a uniform six-digit length for all backed-up account types.",
+      "severity": "major",
+      "fix": "Replace the parenthesis with '(time-based one-time passcodes)', removing the blanket six-digit and refresh-interval description."
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The planned iCloud backup includes TOTP credentials, not just displayed account names.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "using iCloud and iCloud Keychain. This enables secure, end-to-end encrypted backup of account names and TOTP credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn tells users with enforced passkeys to set up a passkey for the new phone before removing the old device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "If passkeys are enforced for the account, set up a passkey for the new phone before removing the old device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Passkeys are handled separately from Authenticator account backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Passkeys are handled separately from Authenticator account backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A passkey saved only on the old phone needs a new passkey on the new phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "If a passkey was saved only to the old phone, add a new passkey for the new phone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises keeping the old phone until sign-in works on the new phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Keep your old phone until you confirm that you can sign in to the accounts and resources you use most often from the new phone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users whose administrator disallows self-service passkey setup are directed to their administrator or help desk.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "If your IT admin doesn't allow self-service passkey setup, contact your admin or help desk for the approved recovery or registration process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "For restore not offered, Learn says to verify backup was enabled on the old phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "Restore from backup isn't available. ... Verify backup was enabled on the old phone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "For restore not offered, Learn says to verify the same recovery account is used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "you're using the same recovery account",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Restore troubleshooting includes checking that the new device is the same device type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "and you're restoring to the same device type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0]; summary; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide Authenticator-specific administrator switch for iOS account backup and restore is documented on the UI or API surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Authenticator backup iOS disable tenant administrator Intune app configuration Microsoft Graph. Opened transfer page, Graph Authenticator configuration v1.0 and feature settings beta; no backup switch. Intune documents device restrictions, not a tenant-wide Authenticator switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "After opting in to passkey profiles, the self-service control is at Microsoft Entra admin center > Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Configure > Allow self-service set up.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Browse to Entra ID > Security > Authentication methods > Policies. ... Select Passkey (FIDO2). ... On the Configure tab, set Allow self-service set up to Yes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 updates the passkey policy, with isSelfServiceRegistrationAllowed deciding self-service registration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 ... \"isSelfServiceRegistrationAllowed\": true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The passkey policy control requires at least Authentication Policy Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].governs; controls[1].scope; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Allow self-service set up is a tenant-wide passkey registration control rather than an Authenticator backup control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "If set to No, users can't register a passkey by using Security info, even if passkeys (FIDO2) are enabled by the Authentication methods policy. This setting is a global policy; it's not on the profile level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Opting in to passkey profiles cannot be undone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "After you opt in to enable passkey profiles, you can't opt out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Intune has an iOS/iPadOS device restriction named Block iCloud backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple",
+      "quote": "Block iCloud backup: Yes stops users from backing up devices to iCloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Intune has an iOS/iPadOS device restriction named Block iCloud Keychain sync.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple",
+      "quote": "Block iCloud Keychain sync: Yes disables syncing credentials stored in the Keychain to iCloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Both named Intune restrictions require supervised devices starting with iOS/iPadOS 13.0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple",
+      "quote": "Block iCloud backup ... Starting with iOS/iPadOS 13.0, this setting requires supervised devices. ... Block iCloud Keychain sync ... Starting with iOS/iPadOS 13.0, this setting requires supervised devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether the named Intune iCloud restrictions govern the services required by Authenticator backup.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple",
+      "quote": "Block iCloud backup: Yes stops users from backing up devices to iCloud. ... Block iCloud Keychain sync: Yes disables syncing credentials stored in the Keychain to iCloud.",
+      "severity": "blocker",
+      "fix": "Replace the unconfirmed-applicability caveats with: 'On supervised iOS/iPadOS devices, Block iCloud backup stops device backups to iCloud, and Block iCloud Keychain sync disables syncing credentials stored in Keychain to iCloud. Authenticator's documented iOS backup procedure requires iCloud Backup and iCloud Keychain to be enabled.' Cite https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple and https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone. Remove the open question asking whether those prerequisite services can be restricted; do not claim a separate Authenticator-specific switch exists."
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "A licence entitlement specific to Authenticator account backup and restore is not yet published, so the model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Authenticator app backup restore licensing free cost price requirements. Read transfer, Entra licensing authentication table and Authenticator app concept page; none names an entitlement for account backup. Free passkey statements concern passkeys, not this backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no feature-specific backup price or meter at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Authenticator app backup restore licensing free cost price requirements. Opened transfer, Entra licensing and Authenticator app concept pages; no backup price or meter. No claim that iCloud storage or all surrounding services are free is established.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The Learn transfer page itself names no licence, price or meter for backup.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Authenticator backup restore licensing price meter. Opened and read the complete transfer page: backup steps, expected restore behaviour and troubleshooting; no licence, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The roadmap record and transfer page state no minimum Authenticator version for account backup and restore.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Authenticator backup minimum iOS. Read roadmap record and transfer page; neither gives an Authenticator version for backup. Passkey-profile version prerequisites on the separate passkey page concern passkey profiles, not account backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The roadmap record and transfer page state no minimum iOS version for backup and restore.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Authenticator backup minimum iOS. Read roadmap record and transfer page; neither specifies an iOS version for account backup and restore.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The roadmap record and transfer page give no rollout mechanics beyond the roadmap targets.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Authenticator iOS iCloud backup restore minimum version automatically default enabled. Read roadmap record and transfer page; no rollout rings, tenant scheduling or app deployment mechanics for this account-backup item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "No administrator role is documented for performing the user-side backup or restore itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Authenticator backup iOS disable tenant administrator Intune app configuration Microsoft Graph. Read transfer and Graph Authenticator configuration pages; no administrator role for account backup or restore. Passkey policy administration has a separate documented role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "The sources do not specify a change for users who leave backup disabled.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Authenticator iOS iCloud backup restore automatically default enabled. Read roadmap record and transfer page; neither says existing disabled backup is enabled automatically. The documented procedure tells the user to enable iCloud services and the Authenticator toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature runs only when a user turns on backup and restores on a new phone, with no background action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Authenticator backup background. Read transfer and Authenticator app concept pages and roadmap record; they describe enabling backup and recovering entries, not an exclusive execution schedule or the absence of background backup after enablement.",
+      "severity": "major",
+      "fix": "Replace the bullet with: 'Learn documents user-side steps to enable backup and recover account entries on a new phone.' Cite https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to review Intune iCloud restriction controls that are absent from the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether your Intune iOS/iPadOS device restriction profiles set Block iCloud backup or Block iCloud Keychain sync ... [The table contains only a tenant-wide backup switch gap and passkey self-service registration.]",
+      "severity": "minor",
+      "fix": "Remove the Before rollout checklist bullet directing review of Intune restriction profiles; those controls have no table row. Keep the verified description of their reach in the controls notes."
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The passkey self-service setting is in the first controls row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Passkey (FIDO2) settings (first controls row) ... [The first row is Tenant-wide switch for Authenticator account backup and restore on iOS; the passkey setting is the second row.]",
+      "severity": "minor",
+      "fix": "Replace '(first controls row)' with '(second controls row)'."
+    },
+    {
+      "n": 54,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The supplied roadmap record and transfer article do not reconcile the roadmap's In development status with the already documented backup procedure.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Authenticator iOS iCloud backup restore automatically default enabled. Read roadmap record and transfer page; the record says In development and the article documents procedures without linking them to item 498158 or explaining its lifecycle status.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T14:00:31.409Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/fido2authenticationmethodconfiguration?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498158",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can register a passkey themselves on a new phone after restore",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Security",
+          "Authentication methods",
+          "Policies",
+          "Passkey",
+          "Configure",
+          "Allow self-service set up"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can register a passkey themselves on a new phone after restore",
+        "docs": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationMethodsPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

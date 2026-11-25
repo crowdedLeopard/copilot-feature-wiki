@@ -4,7 +4,7 @@ slug: "m365-copilot-share-agents-to-teams"
 roadmapId: 557947
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Users can share an agent with a Teams team from the sharing dialog and notify the team's main channel. Launched on the web; no admin action is required, and no Teams-specific admin control is documented."
+summary: "Users can share an agent with a Teams team from the sharing dialog and notify the team's main channel. Launched on the web; no Teams-specific admin control is documented."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -95,19 +95,23 @@ changes:
     note: "Correction: narrowed the sharing-control, notification, licensing and cost statements the check flagged, and removed an unsupported claim about agent capabilities."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Correction: removed the unsupported summary claim that no admin action is required; the summary keeps that no Teams-specific admin control is documented."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 61
-  confirmed: 60
-  unconfirmed: 1
+  confirmed: 61
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "90194b84387c9d00ed0fa843c72191f3"
+  attempts: 0
+  hash: "ec71bb19a6adcea3ecab208f0930718e"
 ---
 
 ## What's changing
@@ -201,10 +205,4 @@ The Graph call is a preview Tenant Configuration Management API in the beta vers
 risk: Medium. One share action can reach a whole team, and Microsoft Learn does not say whether the org-wide Sharing setting in the Microsoft 365 admin center applies to sharing with a team.
 cost: Low. Sharing creates admin and support work; no separate price or meter for the sharing action is published. Using the shared agent can incur Copilot Credits under pay-as-you-go, depending on its capabilities.
 impact: Medium. Agent owners and the members of the teams they pick notice it, because members are told in the team's main channel when the notification is sent.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / default: No admin action is required. | Found: Searched: "557947" "admin action"; "Share agents to Teams" "required". Opened Copilot release notes, both cited sharing pages, agent settings and plugins/prerequisites. None states that this feature requires no administrator action. | Fix: Remove 'no admin action is required, and' from the summary. Retain the narrower statement that no Teams-specific admin control is documented.
 -->

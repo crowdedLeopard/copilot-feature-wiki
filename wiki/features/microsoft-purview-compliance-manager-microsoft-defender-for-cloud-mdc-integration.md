@@ -4,7 +4,7 @@ slug: "microsoft-purview-compliance-manager-microsoft-defender-for-cloud-mdc-int
 roadmapId: 167331
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Compliance Manager is planned to take Defender for Cloud signals for Azure, AWS and GCP in GCC, GCC High and DoD. Setup sits in Azure and Purview, and a paid Defender plan may be needed. Optional until you set it up."
+summary: "Compliance Manager is planned to take Defender for Cloud signals for Azure, AWS and GCP in GCC, GCC High and DoD. Setup sits in Azure and Purview, and a paid Defender plan may be needed."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -70,19 +70,23 @@ changes:
     note: "Corrected after verification: automatic testing applies to technical Defender for Cloud actions only, the testing-source path now ends at its option, the checklist no longer sets controls absent from the table, and the standard-assignment routes are given in full."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after verification: removed the unsupported 'optional until you set it up' wording from the summary and dropped two After rollout checklist items that had no row in the controls table."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
+  claims: 63
   confirmed: 63
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "fdb9cdbebabc5f599d85c7741eb7cf5e"
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "7cafdab2dc12f59bebc2e22fefe1a0fa"
 ---
 
 ## What's changing
@@ -145,8 +149,6 @@ A charge or meter specific to the Compliance Manager integration is not yet publ
 
 ### After rollout
 - Compare the first assessment scores with your manual results and note where a subscription drags an action's aggregate score.
-- Change testing logic or scope for a disputed result in the related assessment in Defender for Cloud, not in Compliance Manager.
-- Review changes to Compliance Manager settings in the audit log.
 
 ## Governance controls
 
@@ -174,12 +176,4 @@ The one row is today's Compliance Manager setting for automatic testing. It does
 risk: Low. Learn describes setup steps in Azure and Defender for Cloud before cloud signals reach Compliance Manager, and the data is compliance test status. What happens on arrival in the US Government clouds is not stated.
 cost: Variable. The meter is the Defender for Cloud plan: Foundational CSPM is free, Defender CSPM is billed on enabled resources, and the compliance dashboard page says non-default standards need a paid plan. Compliance Manager licensing depends on your agreement.
 impact: Low. Compliance and security administrators who build assessments and improvement actions notice it; Learn does not describe a change for end users.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary: Optional until you set it up / default: The government-cloud integration remains inactive until the reader sets it up. | Found: Searched: Compliance Manager Defender for Cloud integration GCC GCC High DoD default enabled rollout; read multicloud, cloud settings, setup and regulatory-compliance-dashboard. Setup prerequisites do not establish rollout behaviour for tenants that already meet them. | Fix: Remove 'Optional until you set it up.' from the summary. Keep defaultState unknown and the existing statement that Microsoft has not stated what happens on arrival in those clouds.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist directs readers to change Defender for Cloud testing logic or scope and review the audit log, but neither control is represented in the table. | Found: Change testing logic or scope for a disputed result in the related assessment in Defender for Cloud ... Review changes to Compliance Manager settings in the audit log. ... The one row is today's Compliance Manager setting for automatic testing. It does not govern this integration | Fix: Remove the final two After rollout checklist bullets, beginning 'Change testing logic or scope' and 'Review changes to Compliance Manager settings'. Their factual guidance can remain in the existing prose; do not add control rows as part of this correction.
 -->

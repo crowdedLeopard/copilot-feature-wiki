@@ -2,69 +2,52 @@
   "slug": "microsoft-teams-teams-admin-center-single-pane-for-monitoring-and-troubleshooting-for-meet",
   "roadmapId": 568782,
   "title": "Microsoft Teams: organisation-wide meeting and call troubleshooting in the Teams admin center",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-25",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "1 blocking finding (claim 49)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 80,
-    "confirmed": 76,
-    "unconfirmed": 1,
-    "contradicted": 3,
-    "blocker": 1,
-    "major": 1,
-    "minor": 4
+    "claims": 82,
+    "confirmed": 82,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the briefing treats Administrative Unit scoping as unconfirmed even though Microsoft's prerequisites explicitly scope access to users' meetings. The paths, commands and rollout facts are supported, but the description of the experience as read-only also goes beyond the sources.",
+  "summary": "The briefing is supported by the roadmap, the supplied Microsoft notice and the cited documentation. Its paths, commands, role restrictions and licence conditions check out; an older Microsoft telemetry article gives a different retention period for users without Teams Premium, which should be acknowledged.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products",
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "This roadmap item concerns Microsoft Teams.",
+      "claim": "Microsoft plans an organisation-wide Teams admin center view for monitoring meeting and call health.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "quote": "Microsoft Teams: Teams Admin Center - Single pane for monitoring & troubleshooting for meetings and calls across the organisation",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The planned Teams admin center experience monitors meeting and call health across the organisation.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Administrators can monitor meeting and call health across the organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap describes uncovering recurring patterns.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "uncover recurring patterns",
+      "quote": "Administrators can monitor meeting and call health across the organization, uncover recurring patterns",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "The roadmap describes troubleshooting active and completed meetings and calls.",
@@ -75,18 +58,18 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Rolling out\"",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -97,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is September CY2026.",
@@ -108,10 +91,21 @@
       "fix": null
     },
     {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
@@ -120,17 +114,6 @@
     },
     {
       "n": 9,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists GCC.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -141,21 +124,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap provides no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap was modified at 2026-09-21T23:04:49.",
+      "claim": "The roadmap modification timestamp is 2026-09-21T23:04:49.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-09-21T23:04:49\"",
@@ -163,54 +135,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: defaultState; What's changing; Why it matters; controls[2].note",
-      "type": "default",
-      "claim": "The experience is on automatically after rollout.",
-      "status": "supported",
-      "source": "Message Center post MC1462463",
-      "quote": "The updated experience will be available automatically after rollout.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "summary; Why it matters",
-      "type": "record",
-      "claim": "Microsoft says no action is required.",
-      "status": "supported",
-      "source": "Message Center post MC1462463",
-      "quote": "No action is required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice gives a Worldwide rollout window from late September 2026 to mid October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1462463",
-      "quote": "General Availability (Worldwide): Rollout will begin in late September 2026 and is expected to complete by mid October 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice gives the same late September to mid October 2026 rollout window for GCC.",
-      "status": "supported",
-      "source": "Message Center post MC1462463",
-      "quote": "General Availability (GCC): Rollout will begin in late September 2026 and is expected to complete by mid October 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
+      "n": 11,
       "where": "What's changing; Governance guidance; controls[1].note",
       "type": "record",
-      "claim": "The notice directs administrators to Teams admin center > Meetings & Calls > Meetings or Calls.",
+      "claim": "MC1462463 gives Teams admin center > Meetings & Calls > Meetings or Calls as the route to the updated experience.",
       "status": "supported",
       "source": "Message Center post MC1462463",
       "quote": "Navigate to Teams admin center > Meetings & Calls > Meetings or Calls to access the updated troubleshooting experience.",
@@ -218,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "Scope: Licence differences; Open questions",
+      "n": 12,
+      "where": "Scope: Licence differences to reconcile; Governance guidance",
       "type": "record",
-      "claim": "The notice conditions in-progress meeting visibility on at least one Teams Premium or Teams Rooms Pro participant.",
+      "claim": "The notice requires at least one Teams Premium or Teams Rooms Pro participant to view in-progress meetings.",
       "status": "supported",
       "source": "Message Center post MC1462463",
       "quote": "In-progress meetings: View meetings, town halls, and webinars currently occurring in the organization when at least one participant has a Teams Premium license or Teams Rooms Pro license.",
@@ -229,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 13,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice says completed meetings cover the previous 30 days.",
@@ -240,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing",
+      "n": 14,
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The notice includes organisation-wide completed calls.",
+      "claim": "The notice describes an organisation-wide list of completed calls for troubleshooting.",
       "status": "supported",
       "source": "Message Center post MC1462463",
       "quote": "Completed calls: Review completed calls across the organization to investigate call quality issues.",
@@ -251,7 +179,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 15,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice includes participant issue details.",
@@ -262,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing",
+      "n": 16,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The notice includes detailed telemetry and diagnostics.",
+      "claim": "The notice includes detailed telemetry and diagnostics for root cause analysis.",
       "status": "supported",
       "source": "Message Center post MC1462463",
       "quote": "Detailed diagnostics: Drill down into telemetry and diagnostic information to support root cause analysis and troubleshooting.",
@@ -273,21 +201,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The notice describes Microsoft 365 Copilot for Admins investigating meetings and analysing organisation-wide trends.",
-      "status": "supported",
-      "source": "Message Center post MC1462463",
-      "quote": "Microsoft 365 Copilot for Admins: Use Copilot to investigate individual meetings or analyze trends across the organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
+      "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice lists 7-, 15-, 30-day and custom time-range filters.",
+      "claim": "The notice lists time filters of 7, 15 and 30 days or a custom range.",
       "status": "supported",
       "source": "Message Center post MC1462463",
       "quote": "Time range (last 7 days, 15 days, 30 days, or a custom date range)",
@@ -295,7 +212,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice lists a meetings-with-issues filter.",
@@ -306,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice lists an organiser filter.",
@@ -317,7 +234,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 20,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice lists a meeting-type filter.",
@@ -328,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 21,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice describes searching by meeting identifier.",
+      "claim": "The notice supports search by meeting identifier.",
       "status": "supported",
       "source": "Message Center post MC1462463",
       "quote": "Search for meetings using meeting identifiers and other filters.",
@@ -339,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 22,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice includes exporting meeting and call data for offline analysis.",
+      "claim": "The notice includes export of meeting and call data for offline analysis.",
       "status": "supported",
       "source": "Message Center post MC1462463",
       "quote": "Export: Export meeting and call data for offline analysis, reporting, and investigation.",
@@ -350,43 +267,142 @@
       "fix": null
     },
     {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice includes Microsoft 365 Copilot for Admins investigation of individual meetings.",
+      "status": "supported",
+      "source": "Message Center post MC1462463",
+      "quote": "Microsoft 365 Copilot for Admins: Use Copilot to investigate individual meetings or analyze trends across the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice includes Copilot analysis of organisation-wide trends.",
+      "status": "supported",
+      "source": "Message Center post MC1462463",
+      "quote": "Use Copilot to investigate individual meetings or analyze trends across the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice targets Worldwide rollout from late September 2026 to mid October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1462463",
+      "quote": "General Availability (Worldwide): Rollout will begin in late September 2026 and is expected to complete by mid October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice targets GCC rollout from late September 2026 to mid October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1462463",
+      "quote": "General Availability (GCC): Rollout will begin in late September 2026 and is expected to complete by mid October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no administrator action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1462463",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: defaultState; What's changing; Why it matters; controls[2].note",
+      "type": "default",
+      "claim": "The experience is on automatically after rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1462463",
+      "quote": "The updated experience will be available automatically after rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "The described change affects Teams administrators rather than changing the end-user experience.",
+      "status": "supported",
+      "source": "Message Center post MC1462463",
+      "quote": "Who is affected\n\n- Teams administrators responsible for monitoring and troubleshooting meeting and call quality across their organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 30,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn describes interconnected user, meeting and participant views.",
+      "claim": "Learn describes three connected views: user, meeting and participant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "User view - Shows a user's meeting history alongside weekly quality and activity trends. ... Meeting view - Shows the details of a specific meeting ... Participant view - Shows session-level telemetry and diagnostics for a specific participant in a meeting.",
+      "quote": "The meeting troubleshooting experience in the Teams admin center provides three interconnected views",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "What's changing; controls[1].note",
-      "type": "absence",
-      "claim": "The cited Learn article does not document the organisation-wide Meetings & Calls > Meetings route.",
+      "where": "controls[1].ui; What's changing; Why it matters; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "Learn documents Teams admin center > Manage users > user > Meetings & calls for per-user troubleshooting.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center Meetings & Calls roles Administrative Units organization monitoring. Opened monitor-troubleshoot-teams-meetings-calls in full; its navigation steps start at Manage users, not the notice's organisation-wide route.",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "In the left navigation, select Manage users. Select the user whose meetings you want to troubleshoot.\nSelect the Meetings & calls tab",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Good and Poor quality labels have been replaced by quality or reliability issue indications.",
+      "where": "What's changing; controls[1].note; Governance guidance",
+      "type": "absence",
+      "claim": "The cited Learn article does not give the notice's Meetings & Calls > Meetings route.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "Meeting and call quality is no longer categorized as Good or Poor. Instead, you can now check if the user faced any quality or reliability issues in the meeting.",
+      "source": null,
+      "quote": "Searched: Teams admin center organization wide Meetings Calls monitoring troubleshooting; read monitor-troubleshoot-teams-meetings-calls in full. Its navigation starts at Manage users and the user's Meetings & calls tab, not the notice's route.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Meeting and call quality is no longer labelled Good or Poor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Meeting and call quality is no longer categorized as Good or Poor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The replacement shows whether the user had quality or reliability issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Instead, you can now check if the user faced any quality or reliability issues in the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Completed-meeting quality is judged using intelligent media classifiers after telemetry aggregation.",
+      "claim": "Completed-meeting quality is judged using intelligent media classifiers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "Once a meeting is complete and the telemetry is aggregated, media quality is judged using intelligent media classifiers.",
@@ -394,7 +410,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "A highlighted telemetry value does not necessarily mean poor user experience.",
@@ -405,7 +421,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 37,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "An in-progress issue does not necessarily mean the user experienced degraded quality.",
@@ -416,35 +432,13 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 38,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Participant details include username and licence type.",
+      "claim": "Participant details show the username.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "Username and license type",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Participant details include the device used.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "Device used",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Participant location is based on public IP.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "Location based on public IP",
+      "quote": "The following information is shown at the participant level and reflects aggregated data across all their sessions in the meeting:\n- Username and license type",
       "severity": null,
       "fix": null
     },
@@ -452,32 +446,32 @@
       "n": 39,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Participant information includes join and leave times.",
+      "claim": "Participant details show the licence type.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "First join time and last leave time",
+      "quote": "Username and license type",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Risk assessment: Data exposure",
+      "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Participant information includes meeting duration.",
+      "claim": "Participant details show the device used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "Total duration in the meeting",
+      "quote": "Device used",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Risk assessment: Data exposure",
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Federated and external participants' end-user identifiable information is obfuscated.",
+      "claim": "Participant details include a location based on public IP.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "For federated and external participants, end-user identifiable information (EUII) is obfuscated to protect privacy in accordance with Microsoft data handling policies.",
+      "quote": "Location based on public IP",
       "severity": null,
       "fix": null
     },
@@ -485,10 +479,10 @@
       "n": 42,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Relevant identifiable information is not obfuscated in peer-to-peer calls because troubleshooting requires shared-session participant information.",
+      "claim": "Participant details include join and leave times.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "For peer-to-peer (P2P) calls, relevant EUII is not obfuscated because the shared call session requires participant information to support effective troubleshooting.",
+      "quote": "First join time and last leave time",
       "severity": null,
       "fix": null
     },
@@ -496,29 +490,51 @@
       "n": 43,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Export downloads the completed-meeting data for the 30-day period as a CSV file.",
+      "claim": "Participant details include meeting duration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "The data for all completed meetings in the 30-day period is downloaded as a CSV file.",
+      "quote": "Total duration in the meeting",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no export-specific setting limiting who can export this meeting telemetry.",
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "End-user identifiable information is obfuscated for federated and external participants.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center export meeting data permissions; Teams admin center Meetings export audit permissions disable monitoring troubleshooting. Opened troubleshooting and Teams roles pages; no separate export permission setting documented for this experience.",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "For federated and external participants, end-user identifiable information (EUII) is obfuscated to protect privacy in accordance with Microsoft data handling policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "For P2P calls, relevant identifiable information is not obfuscated because the shared session requires participant information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "For peer-to-peer (P2P) calls, relevant EUII is not obfuscated because the shared call session requires participant information to support effective troubleshooting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn's completed-meeting export downloads the 30-day period as a CSV file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Select Export from the completed meetings list.\nThe data for all completed meetings in the 30-day period is downloaded as a CSV file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Scope; Governance controls",
       "type": "role",
-      "claim": "Access requires a supported admin role assigned in Microsoft Entra ID.",
+      "claim": "The experience requires a supported admin role assigned in Microsoft Entra ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "You have one of the supported admin roles assigned in Microsoft Entra ID. For a full list of supported roles, see Use Microsoft Teams administrator roles to manage Teams.",
@@ -526,18 +542,18 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
-      "type": "role",
-      "claim": "Teams Reader cannot access users' Meetings & Calls details.",
+      "n": 48,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "applicability",
+      "claim": "Administrative Unit assignments determine which users' meetings an administrator can access where AUs are used.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Cannot access Meetings & Calls details of users",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "If your organization uses Administrative Units (AUs), your AU assignment determines which users' meetings you can access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 49,
       "where": "Risk assessment: Security & identity; Cost and licensing",
       "type": "role",
       "claim": "GDAP partner admins need Teams Communications Support Specialist or Teams Communications Support Engineer in the customer tenant.",
@@ -548,57 +564,35 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Risk assessment: Security & identity; Cost and licensing",
-      "type": "applicability",
-      "claim": "Administrative Unit assignment scopes which users' meetings an administrator can access.",
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The prerequisite list requires the investigated users to be using Microsoft Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "If your organization uses Administrative Units (AUs), your AU assignment determines which users' meetings you can access.",
+      "quote": "Users whose meetings you want to investigate must be using Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Microsoft has not said how Administrative Unit scoping applies to the new organisation-wide lists.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "If your organization uses Administrative Units (AUs), your AU assignment determines which users' meetings you can access.",
-      "severity": "blocker",
-      "fix": "Remove 'Microsoft has not said how that scoping applies to the new organisation-wide lists; confirm it before relying on it to limit visibility.' Keep the preceding sentence about Administrative Units scoping access: Learn states that prerequisite for the troubleshooting experience without a list-specific exception."
-    },
-    {
-      "n": 50,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "The sources describe a read-only experience with no change to autonomy or actions.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams admin center meetings troubleshooting read-only callRecords. Opened troubleshooting and Teams roles articles; read MC1462463. They describe monitoring, diagnostics, exports and Copilot analysis, but do not guarantee read-only behaviour.",
-      "severity": "major",
-      "fix": "Replace 'No change: the sources describe a read-only monitoring and troubleshooting view.' with 'The sources describe monitoring, diagnostics and Copilot analysis.' In the risk rationale replace 'a read-only view of meeting and call telemetry' with 'a view of meeting and call telemetry'."
-    },
-    {
       "n": 51,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Troubleshoot opens Copilot in a chat window with a prefilled prompt that the administrator runs.",
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Teams Reader cannot access users' Meetings & Calls details.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "Copilot opens in a chat window within the Teams admin center with a prefilled prompt. Just run the prompt and Copilot provides a detailed analysis of the user's experience in the meeting.",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Reader ... Cannot access Meetings & Calls details of users",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Risk assessment: Change & support",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "In-progress meetings were previously shown under Recent meetings.",
+      "claim": "Troubleshoot opens Copilot in a chat window with a prefilled prompt for the administrator to run.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "In-progress meetings list (earlier these meetings showed up as \"Recent meetings\")",
+      "quote": "select the Troubleshoot table action. Copilot opens in a chat window within the Teams admin center with a prefilled prompt. Just run the prompt",
       "severity": null,
       "fix": null
     },
@@ -606,10 +600,10 @@
       "n": 53,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Completed meetings were previously shown under Recent meetings or Past meetings.",
+      "claim": "In-progress meetings replaces the earlier Recent meetings presentation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "Completed meetings list (earlier these meetings showed up as both \"Recent meetings\" and \"Past meetings\" depending on user license and elapsed time).",
+      "quote": "the In-progress meetings list (earlier these meetings showed up as \"Recent meetings\")",
       "severity": null,
       "fix": null
     },
@@ -617,7 +611,18 @@
       "n": 54,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Completed-meeting telemetry processing can take 30 minutes to 2 hours after the meeting ends.",
+      "claim": "Completed meetings replaces earlier Recent meetings and Past meetings presentations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "the Completed meetings list (earlier these meetings showed up as both \"Recent meetings\" and \"Past meetings\" depending on user license and elapsed time)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Completed-meeting telemetry may take 30 minutes to 2 hours to process.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "Once the meeting has ended, it might take from 30 minutes to 2 hours for the telemetry to be processed.",
@@ -625,21 +630,21 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 56,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Learn's prerequisites list roles, AU assignment where used, GDAP roles and Teams use, without naming an administrator licence.",
+      "claim": "The feature article's prerequisite list names no administrator licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "You have one of the supported admin roles assigned in Microsoft Entra ID.",
+      "quote": "You have one of the supported admin roles assigned in Microsoft Entra ID. ... If your organization uses Administrative Units ... Partner admins using Granular Delegated Admin Privileges ... Users whose meetings you want to investigate must be using Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "n": 57,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Meeting troubleshooting data is available for all Teams users regardless of licence type, including in-progress data while live.",
+      "claim": "Real-time granular and aggregate troubleshooting data is available for all Teams users regardless of licence type.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "Meeting troubleshooting data (real-time granular and aggregate) is available for all Teams users regardless of license type.",
@@ -647,7 +652,7 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 58,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "Telemetry depth and retention vary by licence.",
@@ -658,10 +663,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 59,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Teams Premium and Teams Rooms Pro accounts retain real-time telemetry for seven days after the meeting ends.",
+      "claim": "Teams Premium accounts have real-time telemetry for seven days after the meeting ends.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "Real-time telemetry is available for users and accounts with Teams Premium and Teams Rooms Pro licenses for seven days after the meeting ends.",
@@ -669,18 +674,29 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 60,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Other users retain real-time telemetry for the duration of the meeting.",
+      "claim": "Teams Rooms Pro accounts have real-time telemetry for seven days after the meeting ends.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Real-time telemetry is available for users and accounts with Teams Premium and Teams Rooms Pro licenses for seven days after the meeting ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "For other users, real-time telemetry is retained for the duration of the meeting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "For all other users, the real-time telemetry is retained for the duration of the meeting.",
       "severity": "minor",
-      "fix": "Keep the cited current-experience statement, but add: 'The older real-time telemetry article instead says users without Teams Premium retain real-time telemetry for 24 hours.' Cite https://learn.microsoft.com/microsoftteams/use-real-time-telemetry-to-troubleshoot-poor-meeting-quality#where-to-find-per-user-real-time-troubleshooting-telemetry for that differing statement."
+      "fix": "After this sentence add: \"The older real-time telemetry article instead says that users without Teams Premium have telemetry collected when an admin opens the in-progress meeting and retained for 24 hours; this differs from the experience article's duration-of-meeting rule.\" Cite https://learn.microsoft.com/microsoftteams/use-real-time-telemetry-to-troubleshoot-poor-meeting-quality#where-to-find-per-user-real-time-troubleshooting-telemetry, which states that 24-hour rule."
     },
     {
-      "n": 60,
+      "n": 62,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Aggregated telemetry is available for all users for 30 days after the meeting ends.",
@@ -691,10 +707,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 63,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Copilot analysis requires at least one user in the organisation to have a Copilot licence.",
+      "claim": "Learn makes Copilot analysis available only if at least one user in the organisation has a Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "This option is only available if at least one user in your organization has a Copilot license.",
@@ -702,21 +718,21 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 64,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "These sources publish no feature-specific price, meter or Copilot Credits rate for this analysis.",
+      "claim": "No separate price, meter or Copilot Credits rate is published for this pane's Copilot analysis in the cited pages.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Teams admin center licensing price credits billing troubleshooting; Copilot for Admins Teams pricing licensing. Read the troubleshooting article, MC1462463, Copilot licence and usage-based billing search excerpts; no rate for this pane was stated.",
+      "quote": "Searched: Teams admin center Copilot meeting troubleshooting analysis licensing price Copilot Credits; \"Copilot\" \"Teams admin center\" \"license\" \"cost\". Read feature article and licensing, credit-rate and usage-based-billing search excerpts; none specifies a rate for this analysis.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
+      "n": 65,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The licensing model is mixed, with general troubleshooting access and licence-dependent telemetry and Copilot capabilities.",
+      "claim": "The licensing model is mixed: general troubleshooting data plus licence-dependent enhanced retention and Copilot analysis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "Meeting troubleshooting data (real-time granular and aggregate) is available for all Teams users regardless of license type. However, the depth and retention period of telemetry data varies by license.",
@@ -724,8 +740,8 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Scope",
+      "n": 66,
+      "where": "Scope: Who and where",
       "type": "availability",
       "claim": "Learn lists Worldwide (Public) and GCC availability.",
       "status": "supported",
@@ -735,10 +751,10 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Scope",
+      "n": 67,
+      "where": "Scope: Who and where",
       "type": "availability",
-      "claim": "The diagnostic experience covers conferences, events and calls across Windows, Mac, Android, iOS and Web.",
+      "claim": "Learn covers conferences, including events, and calls across Windows, Mac, Android, iOS and Web.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "Applies to: Conferences (including Events) and Calls - across Windows, Mac, Android, iOS, and Web",
@@ -746,10 +762,10 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Scope",
+      "n": 68,
+      "where": "Scope: Who and where",
       "type": "availability",
-      "claim": "Event telemetry is available for participating presenters and organisers.",
+      "claim": "Event telemetry is available for presenters and organisers if participating.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
       "quote": "For events, telemetry is only available for presenters and organizers (if they are participating).",
@@ -757,8 +773,8 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Scope",
+      "n": 69,
+      "where": "Scope: Who and where",
       "type": "availability",
       "claim": "Event telemetry is not available for other attendees.",
       "status": "supported",
@@ -768,87 +784,21 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Tenant role assignments are reached through Microsoft Entra admin center > Identity > Roles & admins > role > Add assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "Browse to Identity > Roles & admins. ... Select a role name to open the role. ... Select Add assignments and then select the users, groups, or agent identities you want to assign to this role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "New-MgRoleManagementDirectoryRoleAssignment with DirectoryScopeId '/', PrincipalId and RoleDefinitionId assigns a tenant-scoped role to a user or group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "$directoryScope = '/'\n$roleAssignment = New-MgRoleManagementDirectoryRoleAssignment `\n    -DirectoryScopeId $directoryScope -PrincipalId $group.Id `\n    -RoleDefinitionId $roleDefinition.Id",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 70,
-      "where": "controls[1].ui; What's changing; Governance guidance; Governance controls table",
-      "type": "admin-path",
-      "claim": "The documented per-user route is Teams admin center > Manage users > user > Meetings & calls.",
+      "where": "controls[0].note; Governance guidance",
+      "type": "role",
+      "claim": "The roles article gives Teams Administrator access to everything in the Teams admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-      "quote": "In the left navigation, select Manage users. Select the user whose meetings you want to troubleshoot. ... Select the Meetings & calls tab",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Everything in the Microsoft Teams admin center and associated PowerShell controls",
       "severity": null,
       "fix": null
     },
     {
       "n": 71,
-      "where": "controls[1].api; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "GET /v1.0/communications/callRecords lists call records as an existing programmatic feed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/callrecords-cloudcommunications-list-callrecords?view=graph-rest-1.0",
-      "quote": "Get the list of callRecord objects and their properties.\nGET https://graph.microsoft.com/v1.0/communications/callRecords",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[1].note; Governance controls",
+      "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "The call records list operation uses the CallRecords.Read.All application permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/callrecords-cloudcommunications-list-callrecords?view=graph-rest-1.0",
-      "quote": "Application | CallRecords.Read.All | Not available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft does not identify Graph call records as the new pane's data source or say it uses the same permissions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center meetings troubleshooting read-only callRecords. Opened the callRecords list reference and troubleshooting article; read MC1462463. None links the pane's implementation or its access permissions to that API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[2].ui; controls[2].api; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No tenant-wide UI switch or API for turning the organisation-wide Meetings & Calls pages on or off is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams monitor-troubleshoot-teams-meetings-calls disable policy PowerShell switch; Teams admin center Meetings & Calls disable. Opened troubleshooting and roles pages; read notice. Results document meeting policies, not a switch for these admin pages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Teams Communications Support Specialist is documented as seeing information only for the specific user being searched for.",
+      "claim": "The roles article limits Teams Communications Support Specialist user information to the specific user searched for.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
       "quote": "Access user profile page for troubleshooting calls in Call Analytics. Can only view user information for the specific user being searched for.",
@@ -856,70 +806,136 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "applicability",
-      "claim": "The row caveats the reach of the documented Teams admin roles for the organisation-wide lists.",
+      "n": 72,
+      "where": "Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Teams Communications Administrator is a relevant role with access to user call-quality troubleshooting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Teams Administrator ... Everything in the Microsoft Teams admin center and associated PowerShell controls",
-      "severity": "minor",
-      "fix": "Replace 'Learn does not say which roles reach the new organisation-wide lists.' in controls[0].note and the rendered row with 'The roles page gives Teams Administrator access to everything in the Teams admin center; Teams Communications Support Specialist is limited to information for the specific user being searched for.'"
+      "quote": "Teams Communications Administrator ... View user profile page and troubleshoot user call quality problems using the advanced troubleshooting toolset.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Teams Communications Support Engineer is a relevant role with access to user call-quality troubleshooting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Communications Support Engineer ... View user profile page and troubleshoot user call quality problems using advanced troubleshooting toolset.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Tenant role assignments can be made in Microsoft Entra admin center at Identity > Roles & admins > role > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Browse to Identity > Roles & admins. ... Select a role name to open the role. ... Select Add assignments and then select the users, groups, or agent identities you want to assign to this role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "New-MgRoleManagementDirectoryRoleAssignment with DirectoryScopeId '/', PrincipalId and RoleDefinitionId assigns a tenant-scoped role to a user or role-assignable group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "$directoryScope = '/'\nNew-MgRoleManagementDirectoryRoleAssignment `\n       -DirectoryScopeId $directoryScope -PrincipalId $user.Id `\n       -RoleDefinitionId $roleDefinition.Id",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "GET /v1.0/communications/callRecords lists call records as a separate programmatic feed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/callrecords-cloudcommunications-list-callrecords?view=graph-rest-1.0",
+      "quote": "Get the list of callRecord objects and their properties.\nGET https://graph.microsoft.com/v1.0/communications/callRecords",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 77,
-      "where": "Governance guidance: After rollout; Open questions",
-      "type": "absence",
-      "claim": "No audit event for viewing or exporting this troubleshooting telemetry is documented.",
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The call records list API uses the application permission CallRecords.Read.All.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: audit meeting telemetry export Teams admin; site:learn.microsoft.com/purview/audit-log-activities call analytics. Opened audit-log-activities and searched telemetry, Call Analytics, meeting view/export and troubleshoot; no matching event found.",
+      "source": "https://learn.microsoft.com/graph/api/callrecords-cloudcommunications-list-callrecords?view=graph-rest-1.0",
+      "quote": "Application | CallRecords.Read.All | Not available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 78,
-      "where": "Governance guidance: At rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist instruction to check Administrative Unit scoping has a corresponding controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Confirm how Administrative Unit scoping behaves for delegated admins before you rely on it. ... Controls cover tenant role assignment, the troubleshooting route/call-record feed, and the tenant-wide switch.",
-      "severity": "minor",
-      "fix": "Remove the At rollout checklist item 'Confirm how Administrative Unit scoping behaves for delegated admins before you rely on it.' No control row covers that scoping check."
+      "where": "controls[2].ui; controls[2].api; Governance controls; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no tenant-wide UI or API switch to turn these organisation-wide pages on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center organization wide Meetings Calls monitoring troubleshooting disable enable switch policy PowerShell; Teams troubleshooting disable admin center telemetry. Read feature and roles articles; search returned meeting/VDI policies, not a switch for these pages.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 79,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The documented absence of an export-specific restriction is represented in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Microsoft Learn documents no control over who may export ... Microsoft Learn documents no setting that limits who can export. ... The table has no export-restriction row.",
-      "severity": "minor",
-      "fix": "Remove 'Microsoft Learn documents no control over who may export;' from Risk assessment and remove 'because Microsoft Learn documents no setting that limits who can export' from the Before rollout checklist item. Keep the advice on handling exported personal data."
+      "where": "Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no audit event specifically for opening or exporting this troubleshooting data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center meeting troubleshooting viewed exported meeting data audit events; audit call analytics export. Read feature article and Purview audit search excerpts; searched full audit-log-activities for call analytics, telemetry, troubleshoot, diagnostic and meeting/call export.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 80,
-      "where": "Why it matters; rationale: impact",
-      "type": "record",
-      "claim": "The notice identifies Teams administrators, rather than end users, as the affected audience.",
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft does not document that the organisation-wide pages use the call records API or its permissions.",
       "status": "supported",
-      "source": "Message Center post MC1462463",
-      "quote": "Who is affected\n\n- Teams administrators responsible for monitoring and troubleshooting meeting and call quality across their organization.",
+      "source": null,
+      "quote": "Searched: Teams admin center organization wide monitoring Meetings Calls callRecords API data source permissions. Read feature article, callRecords list reference, and Graph call records overview/FAQ excerpts; no passage identifies that API as the new pane's backend.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Documentation does not specifically explain how the Support Specialist searched-user restriction applies to the new organisation-wide lists.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Communications Support Specialist organization wide Meetings Calls list access roles; Teams Communications Support Specialist Meetings organization new. Read feature, roles and Entra role excerpts: searched-user detail restrictions are stated, but list visibility is not explained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Scope: Licence differences to reconcile; Risk assessment: Change & support; Open questions",
+      "type": "licensing",
+      "claim": "Learn says in-progress meeting data includes all users regardless of licence type while live, unlike the participant-licence condition in the notice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "In-progress meeting data includes all users regardless of license type, while the meeting is live.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T10:15:43.646Z",
+    "at": "2026-11-25T14:00:37.030Z",
     "summary": {
       "links": 6,
-      "unreachable": 4,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -935,23 +951,23 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/graph/api/callrecords-cloudcommunications-list-callrecords?view=graph-rest-1.0",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -960,52 +976,44 @@
         "side": "ui",
         "governs": "Which admins hold the Teams roles that can open meeting and call details",
         "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Identity",
           "Roles & admins",
           "role",
           "Add assignments"
         ],
-        "missing": [
-          "Identity",
-          "Roles & admins",
-          "role",
-          "Add assignments"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which admins hold the Teams roles that can open meeting and call details",
         "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-        "reachable": false,
+        "reachable": true,
         "token": "New-MgRoleManagementDirectoryRoleAssignment",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Where admins open meeting and call troubleshooting data, and the call records feed",
         "docs": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Manage users",
           "Meetings & calls"
         ],
-        "missing": [
-          "Manage users",
-          "Meetings & calls"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Where admins open meeting and call troubleshooting data, and the call records feed",
         "docs": "https://learn.microsoft.com/graph/api/callrecords-cloudcommunications-list-callrecords?view=graph-rest-1.0",
-        "reachable": false,
+        "reachable": true,
         "token": "/v1.0/communications/callRecords",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -1014,6 +1022,12 @@
     {
       "date": "2026-11-18",
       "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
       "version": 1,
       "model": "gpt-6.1-sol"
     }

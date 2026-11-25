@@ -49,6 +49,9 @@ sources:
   - title: "Connect apps to get visibility and control with Microsoft Defender for Cloud Apps"
     url: "https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps"
     kind: "learn"
+  - title: "Get started - Microsoft Defender for Cloud Apps"
+    url: "https://learn.microsoft.com/defender-cloud-apps/get-started"
+    kind: "learn"
   - title: "Plan for Microsoft Purview compliance and risk management solutions – GCC High deployments"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments"
     kind: "learn"
@@ -73,7 +76,7 @@ controls:
       path: "Cloud Apps > Connected apps > Connect an app"
       docs: "https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps"
     api: null
-    note: "Learn gives each app its own connector guide; the connection is a prerequisite for the cloud indicators, not an Insider Risk Management setting."
+    note: "A prerequisite for the cloud indicators, not an IRM setting. The Defender get-started guide instead gives Settings > Cloud Apps > Connected Apps > App Connectors > +Connect an app."
   - governs: "Pay-as-you-go usage of Insider Risk Management"
     scope: "tenant"
     ui:
@@ -102,19 +105,23 @@ changes:
     note: "First briefing: Learn already documents the cloud indicators as preview and pay-as-you-go, while the roadmap still shows In development with a June CY2026 target."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: removed a wrong statement that the Get started page names no plan, narrowed the threshold and billing wording, dropped a one-sided indicator sentence and added the Defender get-started route."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 59
-  unconfirmed: 1
+  claims: 65
+  confirmed: 63
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "d344b156a36f430e0fc41dc036871391"
+  attempts: 0
+  hash: "c3067654efa435403104608f645134b1"
 ---
 
 ## What's changing
@@ -144,12 +151,12 @@ For a finance owner, the change is a new metered cost. Learn bills these indicat
 - Learn says policy indicators determine a risk score for an in-scope user, which analysts review as alerts. Confirm in the Learn pages for each indicator what is detected before relying on it: discovery, collection, exfiltration and deletion for cloud storage apps; defence evasion, exfiltration, deletion and privilege escalation for Amazon S3 and Azure.
 
 **Change & support**
-- Billing follows usage, so a low threshold on a busy app can raise both alert volume and the Azure bill. The Usage center lists Insider Risk Management as not pausable, and the Usage center itself is marked preview.
+- Billing follows processed user activities; indicator thresholds affect alert volume. The Usage center lists Insider Risk Management as not pausable, and the Usage center itself is marked preview.
 - Learn marks the cloud indicators as preview, while the roadmap targets General Availability; expect behaviour and app coverage to change.
 
 ## Cost and licensing
 
-**Licence.** Learn says administrators must confirm the organisation has a supported subscription for Insider Risk Management and assign the appropriate licences to users (Get started with Insider Risk Management). That page names no plan in the section read.
+**Licence.** Learn says administrators must confirm the organisation has a supported subscription for Insider Risk Management and assign the appropriate licences to users (Get started with Insider Risk Management).
 
 **Meter.** Learn says the cloud indicators require pay-as-you-go billing. The billing models page says the mechanism is Azure based, so the Microsoft 365 tenant must be associated with an active Azure subscription, and a bill is generated at the end of the month. For Insider Risk Management, a processing unit represents the compute required to process 10,000 such user activities, billed on data security processing units, and the page's table gives the unit of measure as a data security processing unit measured daily. Cloud storage apps (Box, Dropbox, Google Drive) and cloud services (AWS, Azure) are billed this way.
 
@@ -177,7 +184,7 @@ For a finance owner, the change is a new metered cost. Learn bills these indicat
 
 ### At rollout
 - Connect one app first in Microsoft Defender and select only that app's indicators under Insider Risk Management > Settings > Policy indicators.
-- Add the indicators to a data theft or data leaks policy and set thresholds deliberately rather than leaving defaults, to limit processing-unit use.
+- Add the indicators to a data theft or data leaks policy and set thresholds deliberately to tune alert volume.
 
 ### After rollout
 - Watch the Insider Risk Management line in Usage center > Pay-as-you-go against your budget; it cannot be paused there.
@@ -192,7 +199,7 @@ For a finance owner, the change is a new metered cost. Learn bills these indicat
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which cloud indicators are available to Insider Risk Management policies</strong><br><small>Tenant</small><br><small class="controls__note">Cloud storage and cloud service indicators sit under Built-in indicators; they require apps connected in Defender and pay-as-you-go billing.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which cloud apps are connected so their activity can reach Insider Risk Management</strong><br><small>Tenant</small><br><small class="controls__note">Learn gives each app its own connector guide; the connection is a prerequisite for the cloud indicators, not an Insider Risk Management setting.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Cloud Apps › Connected apps › Connect an app <a href="https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which cloud apps are connected so their activity can reach Insider Risk Management</strong><br><small>Tenant</small><br><small class="controls__note">A prerequisite for the cloud indicators, not an IRM setting. The Defender get-started guide instead gives Settings &gt; Cloud Apps &gt; Connected Apps &gt; App Connectors &gt; +Connect an app.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Cloud Apps › Connected apps › Connect an app <a href="https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Pay-as-you-go usage of Insider Risk Management</strong><br><small>Tenant</small><br><small class="controls__note">Shows usage; the page lists Insider Risk Management as not pausable. The Usage center is in preview. Role requirements are on the linked page.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Usage center › Pay-as-you-go <a href="https://learn.microsoft.com/purview/purview-billing-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">The Insider Risk Management Admins role group can also configure policies and settings.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -200,7 +207,7 @@ For a finance owner, the change is a new metered cost. Learn bills these indicat
 
 Settings sit in three places: Defender decides which apps are connected, Insider Risk Management settings decide which indicators exist, and the Usage center shows the bill. No single switch turns the multicloud capability on or off.
 
-Learn says the indicators selected on the Policy indicators settings page can't be individually configured when creating or editing a policy in the workflow, so choose them deliberately there. The Usage center lists Insider Risk Management as not pausable, so disabling the indicators or disconnecting the app is the route to reduce activity. Microsoft Learn documents no automation for these settings at the time of writing (November 2026), apart from role group membership.
+The Usage center lists Insider Risk Management as not pausable, so disabling the indicators or disconnecting the app is the route to reduce activity. Microsoft Learn documents no automation for these settings at the time of writing (November 2026), apart from role group membership.
 
 ## Open questions
 
@@ -215,13 +222,10 @@ cost: Variable. Learn says Insider Risk Management cloud indicators are billed p
 impact: Low. Administrators and Insider Risk Management analysts configure and review it; it changes nothing until an admin enables the indicators.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Licence / absence: The Get started page names no plan in the licensing section read. | Found: If you don't have an existing Microsoft 365 Enterprise E5 plan and want to try Insider Risk Management, you can add Microsoft 365 to your existing subscription or sign up for a trial of Microsoft 365 Enterprise E5. | Fix: Remove 'That page names no plan in the section read.' The Subscriptions and licensing section explicitly names Microsoft 365 Enterprise E5; keep the preceding supported subscription-and-user-licensing sentence. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
-- [unsupported, blocker] Risk assessment: Change & support; Governance guidance: At rollout / cost: A low alert threshold can raise the Azure bill, and setting thresholds deliberately limits processing-unit use. | Found: Searched: 'Insider Risk Management cloud indicators thresholds reduce processing units billing'; read purview-billing-models, settings-policy-indicators and reports. They document activity-based processing charges and alert thresholds, but not this asserted cost relationship. | Fix: Replace 'Billing follows usage, so a low threshold on a busy app can raise both alert volume and the Azure bill.' with 'Billing follows processed user activities; indicator thresholds affect alert volume.' In the At rollout bullet, replace 'set thresholds deliberately rather than leaving defaults, to limit processing-unit use' with 'set thresholds deliberately to tune alert volume'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Risk assessment: Security & identity; Governance guidance / admin-path: The cited Microsoft Defender portal guide gives Cloud Apps > Connected apps > Connect an app. | Found: Go to Cloud Apps > Connected apps. 3. Select Connect an app or Add a new connector. | Fix: Keep the cited route, but add to this row's note: 'The Defender get-started guide instead gives Settings > Cloud Apps > Connected Apps > App Connectors > +Connect an app.' Cite https://learn.microsoft.com/defender-cloud-apps/get-started#access-defender-for-cloud-apps, whose excerpt gives that alternative route. | Source: https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps
-- [supported, minor] Governance controls: final paragraph / behaviour: The Policy indicators page says globally selected indicators cannot be individually configured while creating or editing a policy. | Found: The indicators you select on the Policy indicators settings page can't be individually configured when creating or editing an insider risk policy in the policy workflow. | Fix: Remove this sentence to avoid presenting one side of conflicting documentation. The already-cited https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy also says 'Select the indicators you want to apply to the policy' and describes custom policy indicator thresholds. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control that the governance checklist asks the reader to configure or check appears in the controls table. | Found: The checklist says 'confirm the tenant is associated with it', 'Add the indicators to a data theft or data leaks policy' and 'Review the pay-as-you-go usage report'; the table covers indicator settings, app connections, Usage center and role membership. | Fix: The Before rollout Azure-subscription association check, At rollout policy configuration and threshold step, and After rollout Insider Risk Management Reports check have no corresponding control rows. The claim that no single multicloud switch exists is likewise not represented by a both-null row.
+- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls table / admin-path: Cloud indicators are configured in the Microsoft Purview portal at Insider Risk Management > Settings > Policy indicators. | Found: In Insider Risk Management, go to Settings > Policy indicators ... Policy indicators are organized into two tabs: ... Built-in indicators | Fix: The path reaches the correct settings page but stops before its tab. Extend it to 'Insider Risk Management > Settings > Policy indicators > Built-in indicators', retaining the note that cloud storage and cloud service indicators are there, as documented at https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's instruction to review the Insider Risk Management pay-as-you-go report has no corresponding controls row. | Found: Review the pay-as-you-go usage report in Insider Risk Management Reports ... [The table has rows for global indicators, app connections, Usage center and role groups, but not this report.] | Fix: The After rollout instruction to review the pay-as-you-go usage report has no matching controls-table row. Remove that checklist bullet to align the checklist with the existing table; do not add a control row as part of this correction.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's instruction to add policy indicators and configure their thresholds has no corresponding policy-level controls row. | Found: Add the indicators to a data theft or data leaks policy and set thresholds deliberately to tune alert volume. [The indicator row governs global availability, not policy-level selection and thresholds.] | Fix: The At rollout instruction to add indicators to a policy and set thresholds has no matching policy-level control row. Remove that checklist bullet to align the checklist with the existing table; do not add a control row as part of this correction.
 -->

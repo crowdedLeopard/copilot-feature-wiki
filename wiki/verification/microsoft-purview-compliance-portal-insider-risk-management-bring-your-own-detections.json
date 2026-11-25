@@ -4,10 +4,10 @@
   "title": "Microsoft Purview Insider Risk Management: bring your own detections as custom indicators",
   "status": "held",
   "date": "2026-11-25",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 3,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-25",
     "reasons": [
-      "1 blocking finding (claim 18)"
+      "1 blocking finding (claim 55)"
     ]
   },
   "counts": {
-    "claims": 55,
-    "confirmed": 54,
+    "claims": 61,
+    "confirmed": 60,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "The briefing is held because it reports the default as unstated even though Microsoft documents disabled indicators and required administrator configuration for the preview. The roadmap details, configuration controls and published limits are supported; the policy path needs only a fuller route.",
+  "summary": "Hold: the policy configuration route omits choices that determine the wizard's next pages, including the policy category and content-priority branch. The roadmap facts, preview behaviour, default state, licensing qualification and documented limits are supported.",
   "claims": [
     {
       "n": 1,
       "where": "What's changing; summary",
       "type": "record",
-      "claim": "Microsoft plans to accept customer user-activity indicators from homegrown systems, SIEM/UEBA platforms and line-of-business applications for existing Insider Risk Management playbooks.",
+      "claim": "The roadmap plans customer-supplied activity indicators from homegrown, SIEM/UEBA and line-of-business systems for existing Insider Risk Management playbooks.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Allow customers to bring their own user activity\nindicators from homegrown, SIEM/UEBA platforms, or other line-of-business\napplications, and leverage them in existing Insider Risk Management playbooks.",
@@ -45,7 +45,7 @@
       "n": 2,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap status remains In development.",
+      "claim": "The record still shows In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -78,7 +78,7 @@
       "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -89,7 +89,7 @@
       "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The record lists Web as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -100,7 +100,7 @@
       "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists both General Availability and Preview release phases.",
+      "claim": "The record lists General Availability as a release phase.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -109,20 +109,31 @@
     },
     {
       "n": 8,
-      "where": "What's changing; Open questions",
-      "type": "date",
-      "claim": "The December CY2025 target has passed as of the November 2026 run while the record remains In development.",
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record also lists Preview as a release phase.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2025\", \"status\": \"In development\"",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "summary; What's changing; controls[1].note",
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "The December CY2025 target has passed as of the November 2026 run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment; controls[1].note",
       "type": "availability",
-      "claim": "Microsoft Learn documents the Insider Risk Indicators connector as preview rather than a final general availability design.",
+      "claim": "Microsoft Learn describes the Insider Risk Indicators connector as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "Set up a connector to import third-party insider risk detections (preview)",
@@ -130,21 +141,21 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing; rationale: risk",
+      "n": 11,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "The documented process requires creating a connector, creating custom indicators and using them in policies.",
+      "claim": "The capability imports preprocessed, aggregated SIEM detections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "Bringing your own detections to insider risk management is a three-step process:",
+      "quote": "To bring your own detections to the insider risk management solution, import preprocessed, aggregated detections from security information and event management (SIEM) solutions such as Microsoft Sentinel or Splunk.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Import accepts preprocessed, aggregated SIEM detections as files, not raw detection signals.",
+      "claim": "Raw detection signals cannot be imported; the supported input is preprocessed aggregations as a file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "Currently, you can't import \"raw\" detection signals into insider risk management. You can only import preprocessed aggregations as a file.",
@@ -152,10 +163,32 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "n": 13,
+      "where": "summary; controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Insider Risk Indicators connector must exist before a custom indicator is created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To create a custom indicator to import third-party indicator data, you must first create an Insider Risk Indicators connector (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The sample script uploads CSV data rather than configuring the connector or policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
+      "quote": "The last step in setting up a connector is running a sample script that uploads the data in the CSV file. When you run the script, the connector you created in Step 3 imports the data to your Microsoft 365 organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Governance guidance",
       "type": "applicability",
-      "claim": "Custom indicators can be used only with Data theft and Data leaks templates.",
+      "claim": "Custom indicators can only be used with Data theft and Data leaks templates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "You can only use custom indicators with the Data theft and Data leaks templates.",
@@ -163,29 +196,29 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
       "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "A custom trigger can bring a user into policy scope when activity crosses its configured threshold.",
+      "claim": "Crossing the configured trigger threshold can bring a user into policy scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "When user activity crosses the threshold value that you specify for the policy, the user is brought into scope of the insider risk management policy and is scored for risk.",
+      "quote": "When user activity crosses the threshold value that you specify for the policy, the user is brought into scope of the insider risk management policy",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Custom indicators can contribute to user risk scoring.",
+      "claim": "The user brought into scope is scored for risk.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
-      "quote": "You can use a custom indicator as: A trigger to bring a user into the scope of a policy. A policy indicator to score the user for risk.",
+      "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
+      "quote": "the user is brought into scope of the insider risk management policy and is scored for risk.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 18,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Learn describes an alert that analysts can investigate using custom indicator details.",
@@ -196,43 +229,65 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "The documented examples include a leaver-prediction trigger and Salesforce and Dropbox policy indicators.",
+      "claim": "A homegrown leaver-prediction model is a documented example of a custom trigger.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "Example 1 below shows how to prepare a CSV file for a 'home-grown' trigger that predicts the probability of an employee leaving an organization.",
+      "quote": "This example shows how to structure a CSV file to create a 'home-grown' trigger that could be used to predict the probability of an employee leaving an organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 20,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "The receiving Insider Risk Management solution can lead from identified risks to investigation cases.",
+      "claim": "Salesforce and Dropbox activities can be supplied as custom indicators alongside built-in detections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
+      "quote": "you might want to extend your detections to include Salesforce and Dropbox activities and use them alongside the built-in detections provided by insider risk management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Identified insider risks can lead to investigation cases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-solution-overview",
       "quote": "After identifying the risks, you can take action to mitigate these risks, and if necessary open investigation cases and take appropriate legal action.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/purview/insider-risk-management-solution-overview to sources for the statement about investigation cases."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "n": 22,
+      "where": "front matter: defaultState; summary; Why it matters; rationales",
       "type": "default",
-      "claim": "The default is unknown and Microsoft has not stated what happens on arrival.",
-      "status": "contradicted",
+      "claim": "The documented preview is admin-opt-in because an administrator must configure the connector, indicators and policy before it operates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
+      "quote": "Bringing your own detections to insider risk management is a three-step process:\n1. In Microsoft Purview, create the Insider Risk Indicators (preview) connector as described in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "All global indicators are disabled by default.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
       "quote": "All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy.",
-      "severity": "blocker",
-      "fix": "Set defaultState to admin-opt-in for the documented preview. Replace the summary's default clause with 'The documented preview requires administrator configuration.' Replace the broad arrival statement in Why it matters with 'The preview requires an administrator to create the connector, custom indicator and policy; all global indicators are disabled by default.' Retain only the narrower open question about whether general availability will change this behaviour. The connector setup is documented at https://learn.microsoft.com/purview/import-insider-risk-indicators and the disabled default at https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 19,
+      "n": 24,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A CSV record requires the user's Microsoft Entra user principal name.",
+      "claim": "Each imported record must identify the user by UserPrincipalName.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "Only the UserPrincipalName and date/time fields are mandatory.",
@@ -240,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A CSV record requires the time the activity occurred.",
+      "claim": "Each imported record must contain an event time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "Mandatory field that displays the date/time that the activity occurred.",
@@ -251,10 +306,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Additional CSV fields are optional and appear in Activity explorer, alerts and cases.",
+      "claim": "Optional imported fields appear in Activity explorer, alerts and cases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "All other fields are optional but can be helpful for the analyst or investigator in decision making when they triage alerts (these fields appear in the Activity explorer and in alerts and cases).",
@@ -262,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 27,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "The sample script uploads the CSV data to the Microsoft cloud.",
+      "claim": "The sample script uploads the supplied data to the Microsoft cloud.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "The sample script that you run in Step 4 uploads your data to the Microsoft cloud so that the insider risk management solution can use it.",
@@ -273,29 +328,29 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Risk assessment: Security & identity; Cost and licensing: Indirect costs",
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Governance guidance",
       "type": "behaviour",
       "claim": "A registered Microsoft Entra application authenticates the connector and upload script.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "When you create this app, Microsoft Entra ID can authenticate the connector when it runs and attempts to access your organization. Use this app to authenticate the script that you run in Step 4",
+      "quote": "When you create this app, Microsoft Entra ID can authenticate the connector when it runs and attempts to access your organization. Use this app to authenticate the script that you run in Step 4 to upload your data to the Microsoft cloud.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
-      "claim": "The script takes the Microsoft Entra application secret as a parameter.",
+      "claim": "The upload script takes the application secret as a parameter.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "appSecret | This is the Microsoft Entra application secret for the app that you created in Microsoft Entra ID in Step 1. This value is also used for authentication.",
+      "quote": ".\\HRConnector.ps1 -tenantId \"aaaabbbb-0000-cccc-1111-dddd2222eeee\" -appId \"00001111-aaaa-2222-bbbb-3333cccc4444\" -appSecret \"Aa1Bb~2Cc3.-Dd4Ee5Ff6Gg7Hh8Ii9_Jj0Kk1Ll2\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "The sample script is not supported under a Microsoft standard support program.",
@@ -306,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 31,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The script requires webhook.ingestion.office.com to be allowed through the organisation's firewall.",
+      "claim": "The webhook.ingestion.office.com domain must be allowed through the firewall for the script to run.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "Make sure to add the webhook.ingestion.office.com domain to your firewall allowlist for your organization. If this domain is blocked, the script doesn't run.",
@@ -317,10 +372,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance; controls[3].note",
       "type": "behaviour",
-      "claim": "Microsoft instructs administrators to use a custom threshold rather than default thresholds for selected custom triggers or indicators.",
+      "claim": "Microsoft instructs administrators to set a custom threshold rather than use default thresholds for a selected custom trigger or indicator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
       "quote": "After selecting your custom trigger or indicator, make sure to set a custom threshold (don't use the default thresholds).",
@@ -328,8 +383,8 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
       "claim": "Trigger thresholds cannot be set when Use only as a triggering event without any thresholds is selected.",
       "status": "supported",
@@ -339,43 +394,43 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
       "claim": "The maximum number of custom indicators is 10.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
-      "quote": "Maximum number of custom indicators. | 10",
+      "quote": "| Maximum number of custom indicators. | 10 |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
       "claim": "The maximum number of fields per custom indicator is 20.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
-      "quote": "Maximum number of fields per custom indicator. | 20",
+      "quote": "| Maximum number of fields per custom indicator. | 20 |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Custom indicator triggers have a limit of 15,000 per UTC calendar day.",
+      "claim": "Custom indicator triggers are limited to 15,000 per UTC calendar day.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
-      "quote": "Triggers (per UTC calendar day) ... Custom indicators | 15,000 ... Limitations apply to each individual trigger type.",
+      "quote": "## Triggers (per UTC calendar day)\n| Custom indicators | 15,000 |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 37,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "A record sharing a timestamp and UPN with another record in the same uploaded file is dropped.",
+      "claim": "A record sharing a timestamp and UPN with another record in the uploaded file is dropped.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "If any record in the uploaded CSV file contains the same timestamp and UPN as other records in the file, the record is dropped.",
@@ -383,21 +438,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Microsoft says to wait 24 hours after indicator and policy updates before uploading because immediate upload can leave data unscored.",
+      "claim": "Microsoft says to wait 24 hours after updating custom indicators and associated policies before uploading data to avoid unscored data during synchronization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "Make sure to wait 24 hours before uploading the data after you update the custom indicators and the associated policies.",
+      "quote": "Make sure to wait 24 hours before uploading the data after you update the custom indicators and the associated policies. This waiting period ensures all components sync.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "front matter: licensing.model and notes; Cost and licensing: Licence; rationale: cost",
+      "n": 39,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Governance guidance; rationale: cost",
       "type": "licensing",
-      "claim": "Insider Risk Management requires a supported subscription and appropriate licences assigned to users, reported as per-user licensing.",
+      "claim": "Insider Risk Management requires a supported subscription and appropriate licences assigned to users, supporting the per-user model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
       "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
@@ -405,21 +460,21 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not published a separate licence specific to custom indicators or the Insider Risk Indicators connector.",
+      "claim": "A licence requirement specific to custom indicators or the Insider Risk Indicators connector is not published separately.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"custom indicators\" \"license\" \"Insider\" pricing' and 'Purview Insider Risk Management custom indicators connector licensing price default enabled'; read connector, policy indicators, Get started, billing models and the service-description licensing excerpt.",
+      "quote": "Searched: Insider Risk Management custom indicators import connector licensing pricing pay as you go; \"insider risk\" \"custom indicators\" \"license\". Read Get started licensing, import-insider-risk-indicators, policy indicators and Purview billing models; no separate requirement stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 41,
       "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "The billing models page meters the listed cloud storage, cloud service and Microsoft Fabric Insider Risk Management indicators in data security processing units.",
+      "claim": "The billing page meters the listed cloud storage, cloud service and Fabric indicators in data security processing units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "Insider Risk Management indicators that detect activity in cloud storage apps (Box, Dropbox, Google Drive), cloud services (AWS, Azure), and Microsoft Fabric (Power BI) are billed on data security processing units.",
@@ -427,29 +482,40 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 42,
       "where": "front matter: licensing.notes; Cost and licensing: Meter; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The billing models page does not list custom indicators, and no connector-specific charge or meter is published.",
+      "claim": "The billing documentation does not identify a meter or charge specifically for imported custom indicators.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Purview Insider Risk Management custom indicators connector licensing price default enabled' and '\"custom indicators\" \"license\" \"Insider\" pricing'; read billing models, policy indicators, connector and Get started; found no custom-indicator meter or charge.",
+      "quote": "Searched: Insider Risk Management custom indicators import connector licensing pricing pay as you go. Read purview-billing-models, policy indicators and connector documentation; the billed categories are cloud and generative AI indicators, with no custom-indicator charge specified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 43,
       "where": "Cost and licensing: Indirect costs",
       "type": "behaviour",
-      "claim": "Microsoft suggests daily script scheduling with CSV refresh on a corresponding schedule.",
+      "claim": "Microsoft suggests scheduling the upload script to run daily.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "schedule the script to run automatically on a recurring basis, such as once a day. This schedule requires updating the data in the CSV file on a similar (if not the same) schedule",
+      "quote": "After you run the script, consider scheduling a task to run it automatically on a daily basis so the most current data is uploaded to the Microsoft cloud.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 44,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The CSV data needs updating on a schedule similar to the upload schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
+      "quote": "This schedule requires updating the data in the CSV file on a similar (if not the same) schedule so that it contains the latest information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Scope",
       "type": "availability",
       "claim": "Learn describes Insider Risk Management availability in tenants hosted in regions and countries supported by Azure service dependencies.",
@@ -460,21 +526,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Scope; controls[0].note; Governance controls",
+      "n": 46,
+      "where": "Scope; controls[1].note; Governance controls",
       "type": "role",
-      "claim": "The Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-      "quote": "Actions | Insider Risk Management | Insider Risk Management Admins ... Configure policies and settings | Yes | Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Scope; controls[0].note; controls[1].note; Governance controls",
-      "type": "role",
-      "claim": "Creating the connector requires the separately assigned Data Connector Admin role.",
+      "claim": "Creating the connector requires the Data Connector Admin role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "Assign the Data Connector Admin role to the user who creates the connector in Step 3. This role is required to add connectors on the Data connectors page in the Microsoft Purview portal.",
@@ -482,7 +537,18 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
+      "where": "Scope; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Both the Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins |\n| Configure policies and settings | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "Scope",
       "type": "role",
       "claim": "Multiple role groups include the Data Connector Admin role by default.",
@@ -493,120 +559,120 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 49,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Role-group membership is edited in Microsoft Purview portal through Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
+      "claim": "Role-group membership is configured in the Purview portal at Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-      "quote": "select Roles and groups, then select Roles groups in the left navigation pane. ... Select the Insider Risk Management role group, then select Edit. ... Select Choose users",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Roles groups in the left navigation pane.\nSelect the Insider Risk Management role group, then select Edit.\nSelect Choose users",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member \"<user-UPN>\" adds a user to that management role group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Connector creation begins in Microsoft Purview portal at Settings > Data connectors > My connectors > Add connector > Insider Risk Indicators (preview).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-      "quote": "Select Settings > Data connectors. ... Select My connectors, then select Add connector. ... From the list, select Insider Risk Indicators (preview).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[1].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft documents no API or PowerShell operation to configure the Insider Risk Indicators connector; the upload script imports data instead.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'site:learn.microsoft.com powershell \"Insider Risk\" \"connector\" create' and 'site:learn.microsoft.com/powershell \"InsiderRisk\" policy indicators connector New Set'; read connector setup and script sections; results document UI creation and data upload, not scripted configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Custom indicator creation is reached in Microsoft Purview portal through Insider Risk Management > Settings > Policy indicators > Custom Indicators > Add custom indicator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "In Insider Risk Management settings, select Policy indicators and then select the Custom Indicators tab. ... Select Add custom indicator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[2].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft documents no API or PowerShell operation to configure these custom indicators.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'site:learn.microsoft.com \"custom indicators\" \"PowerShell\" \"policy\"' and 'site:learn.microsoft.com \"insider risk\" \"custom indicators\" API create policy'; read policy-indicator custom-indicator steps and returned excerpts; no configuration API or cmdlet found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Insider Risk Management > Policies in Microsoft Purview portal is the entry point for setting a policy's custom indicator and threshold.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
-      "quote": "Go to the Insider Risk Management solution. ... Select Policies in the left navigation. ... Select Create policy to open the policy workflow.",
-      "severity": "minor",
-      "fix": "For the policy-indicator route, extend controls[3].ui.path to 'Insider Risk Management > Policies > Create policy > Policy template > Data theft or Data leaks template > Policy indicators > Decide whether to use default or custom indicator thresholds > Specify custom thresholds'. This is the route documented by https://learn.microsoft.com/purview/insider-risk-management-configure; keep the existing custom-trigger qualification in the note."
     },
     {
       "n": 50,
-      "where": "controls[3].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft documents no API or PowerShell operation for selecting these custom indicators and thresholds in policies.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember with Identity \"Insider Risk Management\" and Member set to a user UPN adds that user to the role group.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'site:learn.microsoft.com \"insider risk\" \"custom indicators\" API create policy' and 'site:learn.microsoft.com/powershell \"InsiderRisk\" policy indicators connector New Set'; read Get started policy workflow and policy-indicator steps; found no matching configuration operation.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. The Identity parameter specifies the role group to add a member to. User ID or user principal name (UPN)",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "controls[3].note; Governance controls table",
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The policy workflow chooses the template on Policy template, indicators on Policy indicators, and custom thresholds through Specify custom thresholds; custom triggers are on the Triggers page for Data leaks templates.",
+      "claim": "The connector creation entry point is Purview portal > Settings > Data connectors > My connectors > Add connector > Insider Risk Indicators (preview).",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
-      "quote": "On the Policy indicators page ... Select the indicators you want to apply to the policy. ... Choose either the Use default thresholds for all indicators or Specify custom thresholds",
+      "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
+      "quote": "Select Settings > Data connectors.\nSelect My connectors, then select Add connector.\nFrom the list, select Insider Risk Indicators (preview).",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "A Number field is required when configuring a custom indicator with a threshold.",
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented to create or configure this connector, distinct from uploading data.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "Only fields that have a Number data type appear in the Data from mapping file list, since a Number data type is required to set a threshold value.",
+      "source": null,
+      "quote": "Searched: \"Insider Risk Indicators\" \"connector\" \"API\" create; \"Insider Risk Indicators\" \"New-\" connector; site:learn.microsoft.com/powershell \"InsiderRisk\" \"indicator\". Read connector setup and returned Learn excerpts; upload automation does not configure the connector.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Custom indicator creation is reached through Insider Risk Management > Settings > Policy indicators > Custom Indicators > Add custom indicator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "In Insider Risk Management settings, select Policy indicators and then select the Custom Indicators tab.\nSelect Add custom indicator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented to create or configure these custom indicators.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom indicators\" \"PowerShell\" \"insider\"; site:learn.microsoft.com/powershell \"InsiderRisk\" \"indicator\"; site:learn.microsoft.com/graph/api \"insiderRisk\" \"indicator\". Read policy-indicator setup and returned excerpts; no configuration operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed policy route can go from Policy template directly to a Data theft or Data leaks template and then Policy indicators without further branching choices.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "On the Policy template page, choose a policy category and then select the template for the new policy.\nOn the Content to prioritize page ... Select one of the following choices",
+      "severity": "blocker",
+      "fix": "Replace the UI path, in front matter and the table, with this explicit Data leaks example: 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > I don't want to specify priority content right now > Triggers for this policy > User performs an exfiltration activity triggering event > triggering indicator > Use default thresholds (Recommended) > Policy indicators > custom indicator > Decide whether to use default or custom indicator thresholds > Specify custom thresholds'. Set the note to 'Example route for selecting a custom policy indicator in a Data leaks policy, with no priority content and a separately selected triggering indicator. On the final page set custom thresholds for the custom policy indicator. Custom triggers are selected separately on the Triggers page.' The category and indicator placeholders represent items the administrator chooses. The source documents these choices and their order at https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy."
+    },
+    {
+      "n": 56,
+      "where": "controls[3].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented for selecting a custom indicator and its threshold in an Insider Risk Management policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"InsiderRiskPolicy\" PowerShell indicators thresholds; site:learn.microsoft.com/powershell/module/exchangepowershell \"insider\" \"policy\"; site:learn.microsoft.com/graph/api \"insiderRisk\" \"indicator\". Read Get started policy workflow and returned excerpts; no matching operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Connector setup maps the event time and Microsoft 365 user email fields.",
+      "claim": "Only a Number field can supply a custom indicator threshold value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Only fields that have a Number data type appear in the Data from mapping file list, since a Number data type is required to set a threshold value. The data type is specified when you set up the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Custom indicator insights appear in alerts, Activity explorer and the User timeline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "After adding the custom indicator to your policies, the triggers and insights generated based on the custom indicators appear in the Alerts dashboard, Activity explorer, and User timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Connector configuration maps the event time and Microsoft 365 user email address fields.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
       "quote": "Enter the values for Event time (UTC time) and Microsoft 365 user email address based on the appropriate values from the CSV file. These fields are mandatory for the connector.",
@@ -614,37 +680,37 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[2].note; Governance controls",
+      "n": 60,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The connector must exist before a custom indicator can be created, and the custom indicator must exist before it is selected in a policy.",
+      "claim": "A custom indicator is created before it is added to a policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "To create a custom indicator to import third-party indicator data, you must first create an Insider Risk Indicators connector (preview). ... Now you can add the custom indicator to an insider risk policy",
+      "quote": "Select Add indicator. The indicator is added to the Custom Indicators list.\nNow you can add the custom indicator to an insider risk policy",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Custom-indicator triggers and insights appear in alerts, Activity explorer and User timeline.",
+      "n": 61,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2025-08-19T23:15:40.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-      "quote": "After adding the custom indicator to your policies, the triggers and insights generated based on the custom indicators appear in the Alerts dashboard, Activity explorer, and User timeline.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-08-19T23:15:40\"",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T10:15:39.326Z",
+    "at": "2026-11-25T14:00:34.821Z",
     "summary": {
-      "links": 8,
-      "unreachable": 7,
+      "links": 9,
+      "unreachable": 0,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 4,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -655,38 +721,43 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-solution-overview",
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/insider-risk-management-limits",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/purview-billing-models",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -695,7 +766,7 @@
         "side": "ui",
         "governs": "Who can configure Insider Risk Management policies and settings",
         "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Settings",
           "Roles and groups",
@@ -704,30 +775,23 @@
           "Edit",
           "Choose users"
         ],
-        "missing": [
-          "Settings",
-          "Roles and groups",
-          "Roles groups",
-          "Insider Risk Management",
-          "Edit",
-          "Choose users"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Who can configure Insider Risk Management policies and settings",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-        "reachable": false,
+        "reachable": true,
         "token": "Add-RoleGroupMember",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether third-party detections can be imported through the Insider Risk Indicators connector",
         "docs": "https://learn.microsoft.com/purview/import-insider-risk-indicators",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Settings",
           "Data connectors",
@@ -735,20 +799,14 @@
           "Add connector",
           "Insider Risk Indicators"
         ],
-        "missing": [
-          "Settings",
-          "Data connectors",
-          "My connectors",
-          "Add connector",
-          "Insider Risk Indicators"
-        ]
+        "missing": []
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Which imported detections exist as custom indicators",
         "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Insider Risk Management",
           "Settings",
@@ -756,27 +814,26 @@
           "Custom Indicators",
           "Add custom indicator"
         ],
-        "missing": [
-          "Insider Risk Management",
-          "Settings",
-          "Policy indicators",
-          "Custom Indicators",
-          "Add custom indicator"
-        ]
+        "missing": []
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Which policies use a custom indicator and at what threshold",
         "docs": "https://learn.microsoft.com/purview/insider-risk-management-configure",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Insider Risk Management",
-          "Policies"
+          "Policies",
+          "Create policy",
+          "Policy template",
+          "Data theft or Data leaks template",
+          "Policy indicators",
+          "Decide whether to use default or custom indicator thresholds",
+          "Specify custom thresholds"
         ],
         "missing": [
-          "Insider Risk Management",
-          "Policies"
+          "Data theft or Data leaks template"
         ]
       }
     ],
@@ -787,6 +844,12 @@
       "date": "2026-11-25",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

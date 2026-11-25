@@ -4,7 +4,7 @@ slug: "microsoft-purview-compliance-portal-insider-risk-management-bring-your-ow
 roadmapId: 122278
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Insider Risk Management is planned to accept detections from SIEM and other non-Microsoft systems as custom indicators. Admins must build a connector first. Learn documents a preview; the default on arrival is not stated."
+summary: "Insider Risk Management is planned to accept detections from SIEM and other non-Microsoft systems as custom indicators. Admins must build a connector first. Learn documents a preview that requires administrator configuration."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -14,7 +14,7 @@ previewDate: "June CY2023"
 risk: "medium"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
+defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "per-user"
@@ -34,6 +34,9 @@ sources:
   - title: "Get started with Insider Risk Management"
     url: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     kind: "learn"
+  - title: "Insider Risk Management"
+    url: "https://learn.microsoft.com/purview/insider-risk-management-solution-overview"
+    kind: "learn"
   - title: "Assign permissions in Insider Risk Management"
     url: "https://learn.microsoft.com/purview/insider-risk-management-permissions"
     kind: "learn"
@@ -47,7 +50,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
     kind: "learn"
 videos: []
-related: ["insider-risk-management","microsoft-purview-insider-risk-management-pay-as-you-go-model-for-other-generative-ai-apps"]
+related: []
 controls:
   - governs: "Who can configure Insider Risk Management policies and settings"
     scope: "tenant"
@@ -80,7 +83,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Policies"
+      path: "Insider Risk Management > Policies > Create policy > Policy template > Data theft or Data leaks template > Policy indicators > Decide whether to use default or custom indicator thresholds > Specify custom thresholds"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     api: null
     note: "Create policy opens the workflow. On Policy template, choose a Data theft or Data leaks template; select the custom indicator on Policy indicators, then Specify custom thresholds. Custom triggers: Triggers page (Data leaks templates)."
@@ -97,19 +100,23 @@ changes:
     note: "Corrected after the independent check: Why it matters no longer says Insider Risk Management cannot read those systems, role-group wording and the policy control row narrowed, and checklist steps without a control row removed."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected after the independent check: default state is now admin-opt-in for the documented preview (all global indicators are disabled by default), and the policy control's path now runs to the custom thresholds step."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
+  claims: 61
+  confirmed: 60
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "993a7c353937d2773d45de91677f9176"
+  attempts: 3
+  hash: "5de46136a1674e8893e2bca6b9f24db6"
 ---
 
 ## What's changing
@@ -124,7 +131,7 @@ When user activity crosses the threshold set in the policy, Learn says the user 
 
 This lets an organisation add custom signals, such as a leaver-prediction model or a Salesforce or Dropbox detection feed, to the scoring that analysts already work from. It also means named-user activity data from outside Microsoft 365 now flows into a tool whose alerts can lead to cases, so the owner of Insider Risk Management needs to know what is exported and who can see it.
 
-Microsoft has not stated what happens on arrival or at general availability. No source says existing behaviour changes, and the documented process starts with an administrator creating a connector, so treat this as a capability to review rather than a change that reaches users by itself.
+The preview requires an administrator to create the connector, custom indicator and policy; all global indicators are disabled by default. Treat this as a capability to review rather than a change that reaches users by itself.
 
 ## Risk assessment
 
@@ -185,7 +192,7 @@ Custom indicators work only in policies created from the Data theft and Data lea
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">Insider Risk Management Admins is a separate role group with the same configure right; Data Connector Admin, needed to create the connector, is assigned separately.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether third-party detections can be imported through the Insider Risk Indicators connector</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Needs the Data Connector Admin role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data connectors › My connectors › Add connector › Insider Risk Indicators (preview) <a href="https://learn.microsoft.com/purview/import-insider-risk-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which imported detections exist as custom indicators</strong><br><small>Tenant</small><br><small class="controls__note">The connector must exist first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators › Custom Indicators › Add custom indicator <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which policies use a custom indicator and at what threshold</strong><br><small>Tenant</small><br><small class="controls__note">Create policy opens the workflow. On Policy template, choose a Data theft or Data leaks template; select the custom indicator on Policy indicators, then Specify custom thresholds. Custom triggers: Triggers page (Data leaks templates).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which policies use a custom indicator and at what threshold</strong><br><small>Tenant</small><br><small class="controls__note">Create policy opens the workflow. On Policy template, choose a Data theft or Data leaks template; select the custom indicator on Policy indicators, then Specify custom thresholds. Custom triggers: Triggers page (Data leaks templates).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › Data theft or Data leaks template › Policy indicators › Decide whether to use default or custom indicator thresholds › Specify custom thresholds <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -196,7 +203,7 @@ The three configuration steps depend on one another: the custom indicator can on
 ## Open questions
 
 - Will the general availability design keep the preview's file upload by sample script, or add a direct integration with SIEM platforms? Watch the connector page on Microsoft Learn and the roadmap item.
-- What happens on arrival at general availability, and is anything turned on without an administrator? Microsoft has not stated a default.
+- Will general availability change the preview's requirement for an administrator to create the connector, custom indicator and policy? Watch the connector page and the roadmap item.
 - Does any pay-as-you-go meter or other charge apply to data imported through the connector? Watch the Purview billing models page.
 - Will Microsoft document an API or PowerShell route for the connector, custom indicators and policy selection?
 - The roadmap target of December CY2025 has passed with the status still In development. Is there a revised date? Watch Message center and the roadmap item.
@@ -210,8 +217,5 @@ impact: Low. Admins build the connector and policy, and analysts see custom indi
 <!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; summary; Why it matters; Open questions / default: The default is unknown and Microsoft has not stated what happens on arrival. | Found: All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy. | Fix: Set defaultState to admin-opt-in for the documented preview. Replace the summary's default clause with 'The documented preview requires administrator configuration.' Replace the broad arrival statement in Why it matters with 'The preview requires an administrator to create the connector, custom indicator and policy; all global indicators are disabled by default.' Retain only the narrower open question about whether general availability will change this behaviour. The connector setup is documented at https://learn.microsoft.com/purview/import-insider-risk-indicators and the disabled default at https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: The receiving Insider Risk Management solution can lead from identified risks to investigation cases. | Found: After identifying the risks, you can take action to mitigate these risks, and if necessary open investigation cases and take appropriate legal action. | Fix: Add https://learn.microsoft.com/purview/insider-risk-management-solution-overview to sources for the statement about investigation cases. | Source: https://learn.microsoft.com/purview/insider-risk-management-solution-overview
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: Insider Risk Management > Policies in Microsoft Purview portal is the entry point for setting a policy's custom indicator and threshold. | Found: Go to the Insider Risk Management solution. ... Select Policies in the left navigation. ... Select Create policy to open the policy workflow. | Fix: For the policy-indicator route, extend controls[3].ui.path to 'Insider Risk Management > Policies > Create policy > Policy template > Data theft or Data leaks template > Policy indicators > Decide whether to use default or custom indicator thresholds > Specify custom thresholds'. This is the route documented by https://learn.microsoft.com/purview/insider-risk-management-configure; keep the existing custom-trigger qualification in the note. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
+- [contradicted, blocker] controls[3].ui; Governance controls table / admin-path: The printed policy route can go from Policy template directly to a Data theft or Data leaks template and then Policy indicators without further branching choices. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. On the Content to prioritize page ... Select one of the following choices | Fix: Replace the UI path, in front matter and the table, with this explicit Data leaks example: 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > I don't want to specify priority content right now > Triggers for this policy > User performs an exfiltration activity triggering event > triggering indicator > Use default thresholds (Recommended) > Policy indicators > custom indicator > Decide whether to use default or custom indicator thresholds > Specify custom thresholds'. Set the note to 'Example route for selecting a custom policy indicator in a Data leaks policy, with no priority content and a separately selected triggering indicator. On the final page set custom thresholds for the custom policy indicator. Custom triggers are selected separately on the Triggers page.' The category and indicator placeholders represent items the administrator chooses. The source documents these choices and their order at https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
 -->

@@ -3,12 +3,12 @@
   "roadmapId": 501455,
   "title": "SharePoint admin center: Copilot skills for step-by-step guidance and multi-criteria site search",
   "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "date": "2026-11-25",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
@@ -22,167 +22,79 @@
     "major": 1,
     "minor": 3
   },
-  "summary": "The briefing passes: Microsoft supports the feature description, automatic enablement, licensing and both control paths and commands. Corrections should qualify the reporting licence statement, name the Graph request-body property, and remove the unsupported generalisation about how many administrators hold Copilot licences.",
+  "summary": "The briefing passes: Microsoft documentation supports the feature, licensing, automatic availability and both control rows; the earlier fetch warnings were not evidence of broken links. The assertion about how commonly administrators hold Copilot licences is unsupported, and three minor qualifications need correction. Historical correction instructions embedded in the briefing were treated as history, not followed.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing; Scope",
+      "where": "What's changing; title; summary",
       "type": "record",
-      "claim": "The roadmap item is Launched.",
+      "claim": "The roadmap names step-by-step task guidance and multi-criteria site search as the two new skills.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "We’re excited to announce two new Copilot skills in the SharePoint Admin Center:\n\n- Step-by-Step Task Guidance",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot walks administrators through common tasks with sequential instructions.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "Copilot recommends clear, sequential instructions to guide you from start to finish.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other cloud.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft's guidance example asks how to find potentially over-permissioned sites.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "For example, you can ask questions like \"How can I find sites that are potentially over-permissioned?\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The feature page says the guidance first runs the organization's site permissions report.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "It first runs the site permissions report for your organization, then runs activity-based reports, and finally initiates site access reviews for site owners to review and remediate their sites.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "front matter: targetDate; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap target is October CY2025.",
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The feature page says the guidance next runs activity-based reports.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"October CY2025\"",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "It first runs the site permissions report for your organization, then runs activity-based reports, and finally initiates site access reviews for site owners to review and remediate their sites.",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap has no preview date.",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature page says the guidance initiates site access reviews for owners to review and remediate sites.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "It first runs the site permissions report for your organization, then runs activity-based reports, and finally initiates site access reviews for site owners to review and remediate their sites.",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-06T23:04:41.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "The SharePoint administration roadmap item introduces step-by-step task guidance and multi-criteria site search.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "two new Copilot skills in the SharePoint Admin Center:\n\n- Step-by-Step Task Guidance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing: roadmap search example",
-      "type": "record",
-      "claim": "The roadmap search example finds sites inactive for more than 60 days and shared externally.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Find sites that have been inactive for more than 60 days and are shared externally.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Scope: Where",
-      "type": "admin-path",
-      "claim": "Administrators launch Copilot using the Copilot button in the upper right shell of the SharePoint admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "Select the Copilot button in the upper right shell to launch Copilot in the SharePoint admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing: step-by-step guidance",
+      "where": "What's changing; summary",
       "type": "behaviour",
-      "claim": "Copilot walks administrators through common tasks, with finding potentially over-permissioned sites as Microsoft's example.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "Copilot can walk you through the exact steps required to complete common admin tasks. For example, you can ask questions like \"How can I find sites that are potentially over-permissioned?\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing: over-permissioned-sites example",
-      "type": "behaviour",
-      "claim": "Microsoft describes the guidance as first running the organization's site permissions report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "It first runs the site permissions report for your organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing: over-permissioned-sites example",
-      "type": "behaviour",
-      "claim": "Microsoft describes the guidance as then running activity-based reports.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "then runs activity-based reports",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
-      "type": "behaviour",
-      "claim": "Microsoft describes the guidance as finally initiating site access reviews for site owners to review and remediate sites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "and finally initiates site access reviews for site owners to review and remediate their sites.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Multi-criteria site search accepts multiple conditions and generates a filtered list of sites.",
+      "claim": "Multi-criteria site search accepts several conditions in one request.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
       "quote": "Copilot can help you find sites by querying on multiple conditions at once.",
@@ -190,18 +102,51 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing: Learn search example",
+      "n": 8,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Learn example finds sites created in the last month that are shared externally.",
+      "claim": "Copilot returns a filtered list of sites matching the search criteria.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "Copilot generates a filtered list of sites based on your criteria. In this case, the list includes sites that were created last month and that are shared externally.",
+      "quote": "Copilot generates a filtered list of sites based on your criteria.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap's search example is sites inactive for more than 60 days and shared externally.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Example: “Find sites that have been inactive for more than 60 days and are shared externally.”",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Learn search example is sites created in the last month and shared externally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "For example, you can type a query like \"Find sites created in the last month that are shared externally.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope: Where",
+      "type": "admin-path",
+      "claim": "Administrators open the pane with the Copilot button in the SharePoint admin center's upper right shell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "Select the Copilot button in the upper right shell to launch Copilot in the SharePoint admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Copilot can return a named site's name, URL, creator, external sharing status, sensitivity labels and storage status.",
@@ -212,21 +157,21 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing: additional capabilities",
-      "type": "record",
-      "claim": "The roadmap description does not mention named-site details or voice input.",
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot supports voice input for dictated queries.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Step-by-Step Task Guidance; Multi-Criteria Site Search",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "Voice input enables you to dictate queries into Copilot, improving accessibility and ease of use.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 14,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Voice input prompts for browser microphone permission on first use.",
+      "claim": "First use of the microphone prompts for browser permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
       "quote": "In the SharePoint admin center, with Copilot open, select the microphone in your chat window. The first time, you're prompted to grant permission in your browser window.",
@@ -234,10 +179,21 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap description does not mention named-site details or voice input.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "- Step-by-Step Task Guidance\n\nCopilot can now walk you through the exact steps required to complete common admin tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Microsoft states that Copilot makes no configuration changes on the administrator's behalf.",
+      "claim": "Microsoft says Copilot makes no configuration changes on the administrator's behalf.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
       "quote": "To maintain your security and privacy, Copilot doesn't make any configuration changes on your behalf.",
@@ -245,21 +201,87 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "summary; Risk assessment: Security & identity; Scope: Who; rationale: impact",
-      "type": "role",
-      "claim": "The feature is available to SharePoint administrators.",
+      "n": 17,
+      "where": "front matter: status; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "The feature is available to SharePoint administrators.",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\",",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: clouds; What's changing; Scope: Where",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: platforms; What's changing; Scope: Where",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap target is October CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2025\",",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Risk assessment: Data exposure; Scope; rationale: risk",
-      "type": "applicability",
-      "claim": "Copilot respects role-based access controls and shows only information and controls the administrator can access.",
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null,",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Risk assessment; Scope: Who; rationale: impact",
+      "type": "role",
+      "claim": "The feature is available to SharePoint administrators rather than end users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "Which admin roles can use Copilot in the SharePoint admin center?\n\nThe feature is available to SharePoint administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Scope: Who; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot respects role-based access controls and shows only information and controls accessible to the user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
       "quote": "Copilot in the SharePoint admin center respects role-based access controls and only shows information and controls that the user has access to.",
@@ -267,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 25,
       "where": "front matter: defaultState; summary; Why it matters; Risk assessment; Scope: Rollout",
       "type": "default",
-      "claim": "Copilot is on automatically for customers whose subscriptions include SharePoint and Microsoft Copilot, without an enablement action.",
+      "claim": "Copilot is on automatically for customers whose subscriptions include SharePoint and Microsoft Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
       "quote": "Copilot is automatically enabled for customers whose subscriptions include SharePoint and Microsoft Copilot.",
@@ -278,8 +300,8 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "n": 26,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "The feature is included with a Microsoft Copilot licence.",
       "status": "supported",
@@ -289,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance: Before rollout",
+      "n": 27,
+      "where": "licensing.notes; Cost and licensing; Scope: Who; Governance guidance: Before rollout",
       "type": "licensing",
-      "claim": "Administrators using this experience need an assigned Microsoft Copilot licence.",
+      "claim": "Administrators need an assigned Microsoft Copilot licence to use this pane.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
       "quote": "When you purchase and assign Microsoft Copilot licenses for your tenant, admin users who have a Copilot license can use Copilot in the SharePoint admin center.",
@@ -300,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 28,
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The feature prerequisites include a Microsoft 365 subscription that includes SharePoint.",
+      "claim": "A Microsoft 365 subscription including SharePoint is a prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
       "quote": "You must have a Microsoft 365 subscription that includes SharePoint and a license for Microsoft Copilot",
@@ -311,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Cost and licensing: prerequisite licence",
+      "n": 29,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft Copilot requires a qualifying prerequisite licence.",
+      "claim": "Microsoft Copilot also requires a qualifying prerequisite licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
       "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
@@ -322,32 +344,21 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Cost and licensing: indirect cost",
-      "type": "cost",
-      "claim": "A tenant without Microsoft Copilot licences would need to obtain them for the SharePoint administrators who will use this experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "When you purchase and assign Microsoft Copilot licenses for your tenant, admin users who have a Copilot license can use Copilot in the SharePoint admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[1].note; Cost and licensing; Governance guidance: Before rollout; Governance controls",
+      "n": 30,
+      "where": "Cost and licensing; controls[1].note; Governance guidance; Governance controls",
       "type": "licensing",
-      "claim": "The cmdlet reference says a SharePoint Advanced Management licence is required to run Data access governance reports.",
+      "claim": "The cmdlet reference requires SharePoint Advanced Management for Data access governance reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
       "quote": "SharePoint Advanced Management (SAM) license is required to run these reports.",
       "severity": "minor",
-      "fix": "Retain the cmdlet-reference attribution, but qualify the blanket reporting requirement in the note, prose and checklist: 'The snapshot report shown here requires SharePoint Advanced Management. The Data access governance overview also documents limited activity reporting with Microsoft 365 E5, without snapshot reports or remedial actions.' Cite https://learn.microsoft.com/sharepoint/data-access-governance-reports, which is already in sources."
+      "fix": "Retain the cmdlet-reference attribution. Qualify the reporting requirement in the note, prose and checklist: 'The snapshot report shown here requires SharePoint Advanced Management. The Data access governance overview also documents limited activity reporting with Microsoft 365 E5, without snapshot reports or remedial actions.' The overview is https://learn.microsoft.com/sharepoint/data-access-governance-reports."
     },
     {
-      "n": 30,
-      "where": "Cost and licensing: SharePoint Advanced Management",
+      "n": 31,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "SharePoint Advanced Management is available as part of Microsoft 365 Copilot or as an add-on.",
+      "claim": "The requirements page says SharePoint Advanced Management is available as part of Microsoft 365 Copilot or as an add-on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
       "quote": "SharePoint Advanced Management is available as part of Microsoft 365 Copilot or as an add-on.",
@@ -355,18 +366,29 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Group members can be added in Microsoft Entra admin center through Entra ID > Groups > All groups > group > Members > + Add.",
+      "n": 32,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Adding administrators to the custom security group CopilotForM365AdminExclude disables this Copilot experience for them.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups",
-      "quote": "Browse to Entra ID > Groups > All groups.\n3. Select the group you need to manage.\n4. Select either Members or Owners.\n5. Select + Add (members or owners).",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
+      "quote": "To disable Copilot in the SharePoint admin center, set up a custom security group called CopilotForM365AdminExclude, and then add the administrators you don't want to have the Copilot experience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 33,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "The Microsoft Entra admin center path is Entra ID > Groups > All groups > group > Members > + Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups",
+      "quote": "Browse to Entra ID > Groups > All groups.\n3. Select the group you need to manage.\n4. Select either Members or Owners.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "controls[0].api; Governance controls: first row",
       "type": "command",
       "claim": "POST /v1.0/groups/{group-id}/members/$ref adds a member to the exclusion security group.",
@@ -374,24 +396,13 @@
       "source": "https://learn.microsoft.com/graph/api/group-post-members",
       "quote": "POST https://graph.microsoft.com/v1.0/groups/{group-id}/members/$ref",
       "severity": "minor",
-      "fix": "Keep the endpoint unchanged; the automatic pre-check is a false alarm. Append to controls[0].note and the rendered note: 'The request body sets @odata.id to the reference for the administrator being added.' The property is documented at https://learn.microsoft.com/graph/api/group-post-members."
+      "fix": "Keep the endpoint unchanged. Append to controls[0].note and the rendered note: 'The request body sets @odata.id to the reference for the administrator being added.'"
     },
     {
-      "n": 33,
-      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Adding administrators to a custom security group named CopilotForM365AdminExclude automatically disables their Copilot experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "set up a custom security group called CopilotForM365AdminExclude, and then add the administrators you don't want to have the Copilot experience. Once the group is configured, the Copilot experience is automatically disabled for those users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 35,
       "where": "controls[0].note; Governance controls: first row",
       "type": "role",
-      "claim": "The documented Entra group-management procedure uses the Groups Administrator or User Administrator role.",
+      "claim": "The Entra group-management procedure requires Groups Administrator or User Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups",
       "quote": "You'll need the Groups Administrator or User Administrator role to add members and owners.",
@@ -399,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 36,
       "where": "controls[1].ui; Governance controls: second row",
       "type": "admin-path",
-      "claim": "Data access governance reports are accessed in SharePoint admin center through Reports > Data access governance.",
+      "claim": "Data access governance reports are reached in the SharePoint admin center through Reports > Data access governance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
       "quote": "In the left pane, expand Reports and then select Data access governance.",
@@ -410,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 37,
       "where": "controls[1].api; Governance controls: second row",
       "type": "command",
-      "claim": "Start-SPODataAccessGovernanceInsight supports the printed PermissionedUsers, SharePoint and Snapshot options with Name and CountOfUsersMoreThan.",
+      "claim": "Start-SPODataAccessGovernanceInsight -ReportEntity PermissionedUsers -Workload SharePoint -ReportType Snapshot -Name <name> -CountOfUsersMoreThan <count> generates the report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
       "quote": "Start-SPODataAccessGovernanceInsight -ReportEntity PermissionedUsers -Workload SharePoint -ReportType Snapshot -Name \"OversharingBaselineReport\" -CountOfUsersMoreThan 0",
@@ -421,21 +432,10 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "controls[1].note; Governance controls: today's alternative",
-      "type": "behaviour",
-      "claim": "The Data access governance command generates an oversharing report rather than restricting Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
-      "quote": "This cmdlet generates Data Access Governance (DAG) reports meant to provide insights into potential oversharing of sensitive data in SharePoint and/or OneDrive for Business.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 38,
-      "where": "controls[1].note; Governance controls: reporting role",
+      "where": "controls[1].note; Governance controls: second row and following prose",
       "type": "role",
-      "claim": "The documented report-access procedure uses SharePoint administrator credentials.",
+      "claim": "Accessing the Data access governance reporting experience requires SharePoint administrator credentials.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
       "quote": "Sign in to the SharePoint admin center with the SharePoint administrator credentials for your organization.",
@@ -444,61 +444,50 @@
     },
     {
       "n": 39,
-      "where": "Governance controls: disabling the experience; Open questions: admin-center switch",
-      "type": "absence",
-      "claim": "The feature's Learn page describes exclusion-group membership, not a tenant-wide SharePoint admin-center switch, as the way to disable it.",
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The reporting cmdlet generates a report rather than restricting Copilot.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot\" \"SharePoint admin center\" \"disable\" \"switch\". Opened https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers; its disabling FAQ documents only CopilotForM365AdminExclude.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
+      "quote": "This cmdlet generates Data Access Governance (DAG) reports meant to provide insights into potential oversharing of sensitive data in SharePoint and/or OneDrive for Business.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "rationale: cost",
+      "where": "Governance controls: prose following table",
       "type": "absence",
-      "claim": "The feature's Learn page states no separate meter.",
+      "claim": "The feature page documents the exclusion group but no tenant-wide admin-center switch to turn this experience off.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"SharePoint admin center\" \"meter\" cost license. Opened the Copilot skills feature page and Microsoft Copilot requirements; read the pay-as-you-go meters search excerpt. The feature FAQ states licence inclusion and no meter.",
+      "quote": "Searched: \"Copilot\" \"SharePoint admin center\" \"disable\" \"tenant\". Read the feature page's enable/disable FAQ; it gives CopilotForM365AdminExclude, not a tenant-wide UI switch. Search results about KnowledgeAgentScope concern site-level Copilot, not this admin pane.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
       "where": "rationale: cost",
+      "type": "absence",
+      "claim": "The feature page states no separate meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot skills\" \"SharePoint\" \"pricing\" \"meter\". Read the entire Copilot skills in the SharePoint admin center page, including its cost FAQ; it says included with a Microsoft Copilot license and names no separate meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "rationale: cost",
       "type": "behaviour",
       "claim": "Only a subset of administrators in most tenants hold a Microsoft Copilot licence.",
       "status": "unsupported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"administrators\" \"subset\" license tenants; \"SharePoint administrators\" \"Copilot license\" \"most\". Read feature FAQ, Microsoft Copilot requirements and licence-options excerpts; none states how common administrator licensing is.",
+      "quote": "Searched: \"Copilot\" \"SharePoint administrators\" \"most\" \"license\". Read the feature page's licensing FAQ and Microsoft Copilot requirements; neither states the prevalence of administrator licensing across tenants.",
       "severity": "major",
-      "fix": "Remove 'which only a subset of administrators in most tenants will hold'. Keep: 'Medium. The feature requires a Microsoft Copilot licence for each administrator who uses it; no separate meter is stated on the feature page.'"
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The experience generates its answers using generative AI.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "Copilot in the SharePoint admin center uses generative AI to make you more productive by simplifying administration of SharePoint and OneDrive.",
-      "severity": null,
-      "fix": null
+      "fix": "Remove 'which only a subset of administrators in most tenants will hold' from the cost rationale."
     },
     {
       "n": 43,
-      "where": "Why it matters; rationale: impact",
-      "type": "availability",
-      "claim": "This particular experience is administrator-facing rather than an end-user feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-      "quote": "The feature is available to SharePoint administrators.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
       "where": "Governance guidance: After rollout; Governance controls",
       "type": "consistency",
       "claim": "The governance checklist asks readers to check Microsoft Purview Audit, but that monitoring surface has no controls-table row.",
@@ -506,18 +495,29 @@
       "source": "page",
       "quote": "Checklist: 'Check in Microsoft Purview Audit which records appear for Copilot in the SharePoint admin center'. Table: 'Which administrators can use Copilot in the SharePoint admin center'; 'Data access governance reports'.",
       "severity": "minor",
-      "fix": "Remove the checklist bullet beginning 'Check in Microsoft Purview Audit'. Retain the audit-event question in Open questions; do not add a control row as part of this correction."
+      "fix": "Remove the checklist bullet beginning 'Check in Microsoft Purview Audit'. Retain the audit-event question in Open questions; do not add a control row."
+    },
+    {
+      "n": 44,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\",",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T21:59:10.929Z",
+    "at": "2026-11-25T14:00:41.532Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 5,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -528,8 +528,8 @@
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/copilot-skills-sharepoint-admin-centers",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
@@ -538,23 +538,23 @@
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/group-post-members",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -563,7 +563,7 @@
         "side": "ui",
         "governs": "Which administrators can use Copilot in the SharePoint admin center",
         "docs": "https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Entra ID",
           "Groups",
@@ -571,14 +571,20 @@
           "Members",
           "+ Add"
         ],
-        "missing": []
+        "missing": [
+          "Entra ID",
+          "Groups",
+          "All groups",
+          "Members",
+          "+ Add"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which administrators can use Copilot in the SharePoint admin center",
         "docs": "https://learn.microsoft.com/graph/api/group-post-members",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/groups/members",
         "found": false
       },
@@ -587,24 +593,34 @@
         "side": "ui",
         "governs": "Data access governance reports used in the over-permissioned-sites guidance (today's alternative)",
         "docs": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Reports",
           "Data access governance"
         ],
-        "missing": []
+        "missing": [
+          "Reports",
+          "Data access governance"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Data access governance reports used in the over-permissioned-sites guidance (today's alternative)",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
-        "reachable": true,
+        "reachable": false,
         "token": "Start-SPODataAccessGovernanceInsight",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

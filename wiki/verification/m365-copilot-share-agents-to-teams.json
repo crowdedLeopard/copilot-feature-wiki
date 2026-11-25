@@ -2,39 +2,33 @@
   "slug": "m365-copilot-share-agents-to-teams",
   "roadmapId": 557947,
   "title": "Microsoft 365 Copilot: share agents with a Microsoft Teams team",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-25",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "1 blocking finding (claim 11)"
-    ]
-  },
+  "hold": null,
   "counts": {
     "claims": 61,
-    "confirmed": 60,
-    "unconfirmed": 1,
+    "confirmed": 61,
+    "unconfirmed": 0,
     "contradicted": 0,
-    "blocker": 1,
+    "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing is held because its assurance that no administrator action is required is not documented. The roadmap facts, sharing controls and preview automation are supported; the absence of a dedicated Teams-sharing switch does not establish that no administrative prerequisites apply.",
+  "summary": "The briefing passes: its roadmap facts, licensing statements and documented governance controls are supported. It appropriately distinguishes the organisation-wide sharing control from the Teams-team option, for which a dedicated control was not found.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What's changing; Why it matters; Scope; rationale: risk",
       "type": "record",
-      "claim": "Users can share an agent with a Microsoft Teams team.",
+      "claim": "Users can share their agent with a Microsoft Teams team.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "With this feature, users will be able to share their agent with a Microsoft Teams team.",
@@ -43,9 +37,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "Users can search for and find teams in the agent sharing dialog.",
+      "claim": "Users can search for and select teams in the agent sharing dialog.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can search for and find teams in the agent sharing dialog box.",
@@ -56,7 +50,7 @@
       "n": 3,
       "where": "summary; What's changing; Why it matters; Risk assessment; rationale: impact",
       "type": "record",
-      "claim": "Users can optionally notify the selected team's main channel that the agent was shared.",
+      "claim": "Users can choose to send a notification to the selected team's main channel.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can also send a notification to the main channel of that team to make members aware of an agent being shared with them",
@@ -65,12 +59,12 @@
     },
     {
       "n": 4,
-      "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The notification provides team members an easy way to install and start using the agent.",
+      "where": "What's changing; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "The notification informs team members about the shared agent and provides an installation link.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "and as an easy way to install and start using the agent.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "When sharing, users can send a notification to the team's main channel to inform members and provide an easy installation link.",
       "severity": null,
       "fix": null
     },
@@ -142,372 +136,42 @@
     },
     {
       "n": 11,
-      "where": "summary",
-      "type": "default",
-      "claim": "No admin action is required.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"557947\" \"admin action\"; \"Share agents to Teams\" \"required\". Opened Copilot release notes, both cited sharing pages, agent settings and plugins/prerequisites. None states that this feature requires no administrator action.",
-      "severity": "blocker",
-      "fix": "Remove 'no admin action is required, and' from the summary. Retain the narrower statement that no Teams-specific admin control is documented."
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-04-10T21:45:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-04-10T21:45:06\"",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 12,
-      "where": "front matter: defaultState; What's changing; Why it matters",
-      "type": "default",
-      "claim": "The sharing capability is user-opt-in: an owner chooses a team and whether to send a notification.",
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release notes list Share agents to Teams under Copilot extensibility for updates between April 7 and April 21, 2026.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Users can search for and find teams in the agent sharing dialog box. Users can also send a notification to the main channel of that team",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "April 21, 2026\nUpdates released between April 7, 2026, April 21, 2026\nMicrosoft 365 Copilot extensibility\nShare agents to Teams",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "front matter: licensing.model and licensing.notes",
-      "type": "licensing",
-      "claim": "General agent entitlement has a mixed licensing model, combining licensed access and usage-based access.",
+      "where": "What's changing; Scope; Open questions",
+      "type": "date",
+      "claim": "The July 01, 2026 release-note entry lists the same feature under Microsoft 365 Copilot Studio.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/prerequisites",
-      "quote": "Microsoft 365 with a Microsoft 365 Copilot add-on license\nUsage-based billing (pay-as-you-go) - Tenants can enable agent access without a full license, with some limitations to agent configuration options. Consumption is measured in Copilot Credits.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "July 01, 2026\nMicrosoft 365 Copilot Studio\nShare agents to Teams\nRoadmap ID: 557947",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap record names no licence for this feature.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "With this feature, users will be able to share their agent with a Microsoft Teams team.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Governance guidance",
-      "type": "licensing",
-      "claim": "The Agent Builder sharing page requires recipients to have the Microsoft 365 Copilot licence type needed for the configured capabilities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Users can only add agents that are shared with them when they have the type of Microsoft 365 Copilot license required for accessing the capabilities configured in that agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "Risk assessment; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Attempts to use an agent without the appropriate capability licence might result in an error.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "If a user doesn't have the appropriate license for an agent's capabilities, attempts to use the agent might result in an error.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The prerequisites page says Microsoft 365 Copilot Chat is available to all Microsoft 365 users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/prerequisites",
-      "quote": "Microsoft 365 Copilot Chat is a broadly accessible AI chat interface that is available to all Microsoft 365 users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Pay-as-you-go agent consumption is measured in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/prerequisites",
-      "quote": "Usage-based billing (pay-as-you-go) - Tenants can enable agent access without a full license, with some limitations to agent configuration options. Consumption is measured in Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "For pay-as-you-go users, usage billing applies to agents grounded in tenant data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/prerequisites",
-      "quote": "Usage billing applies to agents grounded in tenant data, while agents grounded in public data or instructions are free to use.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A price or meter specifically for the Teams-team sharing action is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams team\" \"sharing\" \"price\" agent; \"share agents to Teams\" billing price license. Opened plugins/prerequisites, plugins/cost-considerations and Copilot Studio requirements-messages-management; none names a Teams-sharing action meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[0].ui; Governance guidance; Governance controls",
-      "type": "admin-path",
-      "claim": "The organisation-wide sharing control is at Microsoft 365 admin center > Agents > Settings > Sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Org-wide sharing: In Agents > Settings > Sharing, control who can share agents built in Agent Builder with the organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].api; Governance controls",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the sharing setting using an applyOnce baseline.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "The Sharing control applies only to agents built with Agent Builder.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Sharing control only applies to agents built with Microsoft Copilot Agent Builder.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[0].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "Selecting No users for organisation-wide sharing still allows sharing directly with individuals.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "No users - Disable sharing at the org level, but users can still share directly with specific individuals.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "Changes to the Agent Builder Sharing setting apply only to new sharing actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Changes to the sharing setting apply only to new sharing actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "Existing shared agents remain accessible unless their sharing settings are manually updated.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Existing shared agents remain accessible unless you manually update their sharing settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Governance guidance: At rollout",
-      "type": "default",
-      "claim": "All users is the default for Agent Builder organisation-wide sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "All users (default): Everyone can share agents with the organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The admin settings page lists All users, No users and Specific users for Sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "All users - All users can share their agents with others in your tenant. No users - Disable sharing at the org level, but users can still share directly with specific individuals. Specific users - Restrict broad sharing permissions to designated groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[1].ui; Governance guidance",
-      "type": "admin-path",
-      "claim": "The control over who can access and install agents and plugins is Microsoft 365 admin center > Agents > Settings > User access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply a user-access baseline in applyOnce mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[1].governs and note",
-      "type": "applicability",
-      "claim": "User access is a general tenant control over users' or groups' access to and installation of agents and plugins.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Use User access to control how members of your organization access and install agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[2]; summary; What's changing; Governance controls",
-      "type": "absence",
-      "claim": "No dedicated tenant UI or API switch is documented for Teams-team sharing or its main-channel notification.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: agents sharing Teams team notification sharing switch; Graph Teams team agent sharing notification configuration switch; PowerShell Teams share agents notification sharing policy. Read agent-settings, utcm-agent-resources and both sharing pages; no dedicated switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[0].note; Why it matters; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft does not state that the organisation-wide Agent Builder Sharing setting governs this Teams-team sharing option.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams team\" \"agent\" \"sharing\" \"disable\"; \"share agents to Teams\" \"admin\". Opened agent-settings, Agent Builder sharing and utcm-agent-resources: the resource explicitly controls sharing with everyone, not sharing with a Teams team.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Scope",
-      "type": "role",
-      "claim": "AI Administrator is the least-privileged signed-in Microsoft Entra user role for applying these Agent resources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "For applyOnce, the TCM service principal needs delegated CopilotPolicySettings.ReadWrite permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[0].note; controls[1].note; Governance controls",
-      "type": "availability",
-      "claim": "These TCM Agent resources are preview APIs in Microsoft Graph beta.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "This article lists the Agent resource types supported in preview for monitoring and snapshots through the Tenant Configuration Management (TCM) APIs in Microsoft Graph beta.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0].note; controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The Agent resources support applyOnce, which applies the baseline once rather than merely monitoring.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "These resources also support remediation and applyOnce.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The sharing baseline resourceType is microsoft.agent.sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "\"resourceType\": \"microsoft.agent.sharing\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "Sharing uses userAssignmentCategory with allowed values everyone and noOne.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "userAssignmentCategory | Write | String | Specifies whether all users or no users can share agents with everyone in the organization. | everyone, noOne",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The user-access baseline resourceType is microsoft.agent.useraccess.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "\"resourceType\": \"microsoft.agent.useraccess\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[1].note",
-      "type": "command",
-      "claim": "The useraccess resource accepts userAssignmentCategory values everyone and noOne.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "userAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
       "where": "What's changing; Scope; Open questions",
-      "type": "date",
-      "claim": "The April 7 to April 21, 2026 release-notes window lists Share agents to Teams under Microsoft 365 Copilot extensibility.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Updates released between April 7, 2026, April 21, 2026\nMicrosoft 365 Copilot extensibility\nShare agents to Teams [Web]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "What's changing; Scope; Open questions",
-      "type": "date",
-      "claim": "The July 01, 2026 entry lists Share agents to Teams under Microsoft 365 Copilot Studio.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "July 01, 2026\nMicrosoft 365 Copilot Studio\nShare agents to Teams [Web]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The July release note tells users to open the agent sharing dialog in Copilot Studio.",
+      "claim": "The July release-note instructions begin by telling users to open the agent sharing dialog in Copilot Studio.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
       "quote": "Open the agent sharing dialog in Copilot Studio.",
@@ -515,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Agent Builder sharing dialog lets an owner enter a name, group or email.",
+      "claim": "The Agent Builder sharing dialog accepts a name, group or email.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
       "quote": "In the share dialog, enter a name, group, or email in the Add a name, group, or email box.",
@@ -526,85 +190,140 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 16,
       "where": "What's changing",
       "type": "role",
-      "claim": "Agent Builder uses Can edit and Can chat as its two sharing access levels.",
+      "claim": "Agent Builder offers a Can edit role for owners.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Can edit | Owner — full rights to edit, share, and manage the agent.\nCan chat | Chat user — can interact with the agent only.",
+      "quote": "Choose Can edit to add them as an owner with full edit and management rights.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Risk assessment; Open questions",
+      "n": 17,
+      "where": "What's changing; Risk assessment",
       "type": "role",
-      "claim": "A group added to an Agent Builder agent can only be Can chat, not an owner.",
+      "claim": "Agent Builder offers a Can chat role for chat users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "You can't add a group as an owner. When you add a group, it can only be a chat user (Can chat). To grant owner rights, add individual users.",
+      "quote": "Choose Can chat to add them as a chat user who can only interact with the agent.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The new Copilot Studio sharing experience documents individual users, security groups and the whole organisation as sharing audiences.",
+      "claim": "The Copilot Studio new agent experience supports sharing with individual users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
-      "quote": "For each agent, you can share with:\n- Individual users by using their email or user name\n- All members within security groups that you specify\n- Your entire organization",
+      "quote": "For each agent, you can share with:\nIndividual users by using their email or user name",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "What's changing; front matter: changes",
-      "type": "absence",
-      "claim": "Neither cited sharing page describes the specific Teams-team picker and main-channel notification.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: agents sharing Teams team notification sharing switch; \"Teams team\" \"agent\" \"role\" sharing dialog. Read plugins/agent-builder-share-manage-agents and microsoft-copilot-studio/agents-experience/authoring-share-agent in full; neither describes this option.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Risk assessment; Open questions",
-      "type": "absence",
-      "claim": "The role granted specifically by the Teams-team sharing option is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams team\" \"agent\" \"role\" sharing dialog. Read both cited sharing pages and the two release-note entries. Agent Builder documents Can chat for groups, but no text identifies the role granted by this specific team picker.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Risk assessment; Governance guidance",
+      "n": 19,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Agent access and knowledge-source access are separate; sharing an agent alone does not grant all source-content access.",
+      "claim": "The Copilot Studio new agent experience supports sharing with specified security groups.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Access to an agent and access to its knowledge sources are distinct:",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "All members within security groups that you specify",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Risk assessment; Governance guidance",
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Copilot Studio new agent experience supports sharing with the whole organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Your entire organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Neither of the two cited sharing pages describes the roadmap's Teams-team option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams team\" \"agent\" \"sharing\" \"Can chat\"; read plugins/agent-builder-share-manage-agents and microsoft-copilot-studio/agents-experience/authoring-share-agent. Neither describes selecting a Teams team and notifying its main channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The capability is user-opt-in: users choose a team and whether to notify it rather than an agent being shared automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Users can now share an agent with a Microsoft Teams team by selecting a team in the sharing dialog. Users can also notify the team's main channel so team members are aware of the agent and can install it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2]; summary; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "No dedicated admin UI or API switch is documented for Teams-team sharing or its main-channel notification.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"agent sharing\" \"admin\" \"notification\" Copilot sharing switch; \"Teams\" \"sharing\" \"agent\" \"Graph\" \"sharing policy\"; \"Copilot\" \"share agents\" \"Teams team\" \"PowerShell\". Read agent-settings, utcm-agent-resources, both sharing pages and release notes; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft does not state that the org-wide Sharing setting controls the Teams-team option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"sharing\" \"agent\" \"Graph\" \"sharing policy\" and \"557947\" \"control\" \"sharing\". Read agent-settings, Agent Builder sharing and utcm-agent-resources: the setting covers sharing with everyone in the organisation, not an expressly identified Teams-team option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "behaviour",
+      "claim": "Sharing with a team makes the agent accessible to that team's members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This feature allows users to share their agent directly with a Microsoft Teams team, making it easier for teams to discover, install, and start using agents together.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Agent access and knowledge-source access are distinct; sharing the agent alone does not grant access to all its source content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Access to an agent and access to its knowledge sources are distinct:\nSharePoint and OneDrive sources: Existing file permissions and sensitivity labels apply. Sharing the agent alone doesn't grant access to all its source content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Existing file permissions and sensitivity labels apply to the Agent Builder agent's SharePoint and OneDrive sources.",
+      "claim": "Existing file permissions and sensitivity labels apply to SharePoint and OneDrive knowledge sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "SharePoint and OneDrive sources: Existing file permissions and sensitivity labels apply. Sharing the agent alone doesn't grant access to all its source content.",
+      "quote": "SharePoint and OneDrive sources: Existing file permissions and sensitivity labels apply.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Risk assessment; Governance guidance",
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "Files uploaded from a device become embedded knowledge.",
       "status": "supported",
@@ -614,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Risk assessment; Governance guidance",
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Anyone with agent access can receive responses grounded in uploaded knowledge, subject to the embedded content's sensitivity-label permissions.",
+      "claim": "Anyone with agent access can receive responses grounded in uploaded content, subject to that content's sensitivity-label permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
       "quote": "Anyone who can access the agent can receive responses grounded in that content, subject to the embedded content's sensitivity-label permissions.",
@@ -625,21 +344,65 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Risk assessment",
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A team's main channel is a shared collaboration space rather than a list of individually addressed recipients.",
+      "claim": "A team's main channel is a shared conversation space rather than an individually addressed recipient list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/standard-channels",
-      "quote": "A Teams channel is a dedicated space within a team where members can engage in conversations, share files and collaborate on projects.",
+      "quote": "Every team in Teams has a \"General\" channel. General channels are standard channels that permanently appear at the top of the channel list of a team. The General channel can be used as a space for announcements or conversation",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "role",
+      "claim": "A group added to an Agent Builder agent can only be a Can chat user, not an owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "You can't add a group as an owner. When you add a group, it can only be a chat user (Can chat). To grant owner rights, add individual users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The cited documentation does not explicitly identify the role granted through this Teams-team option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams team\" \"agent\" \"sharing\" \"Can chat\". Read both sharing pages and the release notes: group chat permissions are described for Agent Builder, but the Teams-team feature's entries do not name a role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "licensing.notes; Risk assessment: Security & identity; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Agent Builder sharing page says recipients need the Microsoft 365 Copilot licence type required by the agent's capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Users can only add agents that are shared with them when they have the type of Microsoft 365 Copilot license required for accessing the capabilities configured in that agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Attempts to use an agent without the appropriate capability licence might result in an error.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "If a user doesn't have the appropriate license for an agent's capabilities, attempts to use the agent might result in an error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap description describes sharing and notification, not new agent actions.",
+      "claim": "The roadmap description describes sharing, discovery and notification, not new agent actions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can search for and find teams in the agent sharing dialog box. Users can also send a notification to the main channel of that team",
@@ -647,10 +410,87 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Changes to the Sharing setting apply only to new sharing actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Changes to the sharing setting apply only to new sharing actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Existing shared-agent access remains until the agent's sharing settings are manually updated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Existing shared agents remain accessible unless you manually update their sharing settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence for this feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this feature, users will be able to share their agent with a Microsoft Teams team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The prerequisites page describes Microsoft 365 Copilot Chat as available to all Microsoft 365 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Microsoft 365 Copilot Chat is a broadly accessible AI chat interface that is available to all Microsoft 365 users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "In the pay-as-you-go model, consumption is measured in Copilot Credits and usage billing applies to tenant-data-grounded agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Belong to tenants with pay-as-you-go billing enabled (consumed as Copilot Credits). Users can access Copilot Chat and agents without a full Copilot license. Usage billing applies to agents grounded in tenant data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A separate price, meter or licensing rule specific to sharing an agent with a Teams team is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"share agents\" \"Teams\" \"price\" billing. Read plugins/prerequisites, plugins/cost-considerations, Agent Builder licensing, both sharing pages and release notes; found capability-based licensing and usage billing but no separate Teams-team sharing price, meter or entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects licence-based and usage-based access according to agent capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Microsoft 365 with a Microsoft 365 Copilot add-on license - Users with a Microsoft 365 subscription and a Copilot add-on license have full access to Copilot agent experiences across supported apps and platforms.\nUsage-based billing (pay-as-you-go)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Governance guidance: At rollout",
       "type": "licensing",
-      "claim": "The prerequisites page allows users in pay-as-you-go tenants to access agents without a full Copilot licence.",
+      "claim": "The prerequisites page allows pay-as-you-go users to access agents without a full Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/prerequisites",
       "quote": "Users can access Copilot Chat and agents without a full Copilot license.",
@@ -658,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 44,
       "where": "Governance guidance: At rollout",
       "type": "licensing",
-      "claim": "The new Copilot Studio sharing page requires recipients to have a Microsoft Copilot Studio per-user licence.",
+      "claim": "The Copilot Studio new-experience sharing page separately requires recipients to have a Microsoft Copilot Studio per-user licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
       "quote": "Users you share with have a Microsoft Copilot Studio per-user license. Users who don't have a license can sign up for a trial.",
@@ -669,48 +509,202 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Open questions",
-      "type": "behaviour",
-      "claim": "Agent Builder documentation says automatic SharePoint file and folder sharing is supported only with specific security groups.",
+      "n": 45,
+      "where": "Governance guidance: At rollout",
+      "type": "default",
+      "claim": "The org-wide Sharing setting defaults to All users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder",
-      "quote": "Auto sharing SharePoint files and folders is only supported when sharing with specific security groups and not everyone in the organization.",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "All users (default): Everyone can share agents with the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "No users disables org-wide sharing while allowing sharing directly with specific individuals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "No users - Disable sharing at the org level, but users can still share directly with specific individuals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The Sharing control applies only to agents built with Microsoft Copilot Agent Builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Sharing control only applies to agents built with Microsoft Copilot Agent Builder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "role",
+      "claim": "AI Administrator is the least-privileged signed-in user role for applying the documented Agent resources through TCM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Settings > Sharing controls who can share Agent Builder agents with the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Org-wide sharing: In Agents > Settings > Sharing, control who can share agents built in Agent Builder with the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors applies the sharing resource when mode is applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nAn active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Settings > User access controls which users or groups can access and install agents and plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.\nSpecific users or groups - This option lets you select specific users or groups in your organization to have access to agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors applies the useraccess resource when mode is applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nAn active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Tenant Configuration Management Agent resources and the Graph beta API are preview functionality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "This article lists the Agent resource types supported in preview for monitoring and snapshots through the Tenant Configuration Management (TCM) APIs in Microsoft Graph beta. These resources also support remediation and applyOnce.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The mode property can be set to applyOnce to apply the desired-state baseline once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "mode | monitorMode | The monitor mode. The possible values are: monitorOnly, applyOnce, unknownFutureValue. Optional; defaults to monitorOnly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The resourceType value microsoft.agent.sharing configures organisation-wide Agent Builder sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.sharing\"\norganizationWideSharingAssignment | Write | UserAssignment | Configures which users can share agents with everyone in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The resourceType value microsoft.agent.useraccess configures general agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.useraccess\"\nvalueObject | Write | AgentUserAccessValueObject | Configures who can access agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The sharing resource's userAssignmentCategory supports everyone and noOne.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "userAssignmentCategory | Write | String | Specifies whether all users or no users can share agents with everyone in the organization. | everyone, noOne",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The useraccess resource's userAssignmentCategory supports everyone and noOne.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "userAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Applying these Agent resources requires the TCM service principal to have the CopilotPolicySettings.ReadWrite delegated permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "front matter: licensing.notes",
-      "type": "absence",
-      "claim": "No licence requirement specific to the Teams-team sharing option is published, distinct from general agent licensing.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The admin-centre Sharing control offers All users, No users and Specific users.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"share agents to Teams\" billing price license; \"Teams team\" \"sharing\" \"price\" agent. Read release notes, both sharing pages, plugins/prerequisites, agent-builder and cost-considerations; no separate team-picker entitlement.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - All users can share their agents with others in your tenant.\nNo users - Disable sharing at the org level, but users can still share directly with specific individuals.\nSpecific users - Restrict broad sharing permissions to designated groups.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Why it matters",
+      "where": "Open questions",
       "type": "behaviour",
-      "claim": "Directly shared agents need not have undergone the admin review required for organisation-catalog publication.",
+      "claim": "The Agent Builder overview limits automatic SharePoint file and folder sharing to specific security groups, not everyone in the organisation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Publishing to your org catalog requires admin approval.\nSharing and catalog submission are separate paths.",
+      "source": "https://learn.microsoft.com/plugins/agent-builder",
+      "quote": "Auto sharing SharePoint files and folders is only supported when sharing with specific security groups and not everyone in the organization.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T10:15:38.195Z",
+    "at": "2026-11-25T14:00:36.024Z",
     "summary": {
       "links": 10,
-      "unreachable": 7,
+      "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -726,13 +720,13 @@
       },
       {
         "url": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
@@ -741,28 +735,28 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/utcm-agent-resources",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/plugins/agent-builder",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/plugins/prerequisites",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/standard-channels",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -784,9 +778,9 @@
         "side": "api",
         "governs": "Who can share Agent Builder agents with the whole organisation",
         "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": false,
+        "reachable": true,
         "token": "/beta/admin/configurationManagement",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
@@ -806,9 +800,9 @@
         "side": "api",
         "governs": "Which users or groups can access and install agents and plugins",
         "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": false,
+        "reachable": true,
         "token": "/beta/admin/configurationManagement",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -818,6 +812,12 @@
       "date": "2026-11-25",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

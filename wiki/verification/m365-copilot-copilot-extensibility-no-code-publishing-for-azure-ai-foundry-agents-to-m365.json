@@ -1,0 +1,831 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-no-code-publishing-for-azure-ai-foundry-agents-to-m365",
+  "roadmapId": 501112,
+  "title": "Microsoft Foundry: publish agents to the Microsoft 365 Copilot Agent Store without code",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "1 blocking finding (claim 52)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 59,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the briefing overstates what blocking a Foundry agent accomplishes. Microsoft says this admin-centre action affects Foundry agents only in Copilot Chat, so administrators must not rely on it to stop access in Teams.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), without explicitly excluding other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes direct no-code publishing of Azure AI Foundry agents to the Microsoft 365 Copilot Agent Store.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Developers can now publish Azure AI Foundry Agents directly to the Microsoft 365 Copilot Agent Store with a simplified, no-code experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Developers can publish from the Foundry portal to Microsoft Copilot and Teams without manually building a separate app package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Publishing from the portal calls Foundry's Microsoft 365 publish API and builds the Teams app package for you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The feature's Learn page uses the product name Microsoft Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "When you publish a Microsoft Foundry agent to Microsoft Copilot and Teams, you and others can interact with and discover your agent through the Microsoft Copilot and Teams UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: portal procedure; controls[2].ui; rendered table",
+      "type": "admin-path",
+      "claim": "The developer reaches the publishing choices through Publish and Teams and Microsoft Copilot, enters metadata, and selects Direct publish.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "In Microsoft Foundry portal, select **Publish**, and then select **Teams and Microsoft Copilot**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Foundry compiles a Teams app manifest as a ZIP package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Compiles a Teams app manifest as a `.zip` package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Foundry submits the manifest to the Copilot and Teams agent catalogs on the developer's behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Submits the manifest to the Microsoft Copilot and Teams agent catalogs on your behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The portal offers Just you and People in your organization as publishing scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Under **Choose who can use this agent**, select a scope:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "Just you publishing is immediately available without admin approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Available immediately after publishing — no admin approval required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "A Just you publication appears only for its developer under Your agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "The agent appears in the stores only for you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Scope; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "People in your organization requires review and approval by a Microsoft 365 admin in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "After publishing, a Microsoft 365 admin must review and approve the request in the [Microsoft 365 admin center](https://admin.cloud.microsoft/?#/agents/all/requested).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk and impact",
+      "type": "availability",
+      "claim": "An approved organisation-scope agent appears under Built by your org for all tenant users and anyone in the tenant can discover and use it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "After approval, the agent appears for everyone in your tenant under **Built by your org**, and anyone in the tenant can discover and use it.",
+      "severity": "minor",
+      "fix": "After the first description of post-approval availability, add: 'The admin requests page also says administrators can scope the audience to specific users or groups, or everyone: https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests.' This cited page qualifies the tenant-wide wording used by the Foundry page."
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Tenant app policies control which users can access the published agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "App policies in your tenant control which users can access the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Download & customize downloads the manifest ZIP for inspection and manual upload in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "A `.zip` file containing the agent manifest downloads to your local machine.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The downloaded package can be uploaded in Microsoft Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "In Microsoft Teams, upload the package you downloaded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Changing the active agent version through Foundry's version selector needs no republishing to Microsoft 365 or Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "To roll out a new agent version, update the agent's version selector in the Foundry portal. The stable endpoint URL stays the same — no need to republish to M365/Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The admin requests workflow explicitly accepts agents built with Microsoft Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "agents that members of your organization create by using Copilot Studio, Microsoft Foundry, or Microsoft 365 Agents Toolkit can be submitted for admin approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Scope; controls[2].note; licensing.notes",
+      "type": "role",
+      "claim": "The documented project role for creating, managing and publishing agents is Foundry User.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "**Foundry User** role on the Foundry project scope to create, manage, and publish agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Scope: Who approves; Governance guidance",
+      "type": "admin-path",
+      "claim": "The agent Requests queue is at Microsoft 365 admin center > Agents > All agents > Requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "Select **Agents** > **All agents** > **Requests**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Publishing is a user-opt-in capability; the sources do not describe an automatic change before a developer publishes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Just you ... requires no admin approval. The agent appears in the stores only for you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "No feature-specific administrator enablement switch for the personal publishing option is documented by the sources checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Foundry disable personal Just you publish admin control Microsoft 365 Teams. Opened publish-copilot and publish-copilot-virtual-network; results describe scope, RBAC and infrastructure intervention, not an admin enablement switch for personal publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft 365 and Teams process and store data associated with publishing and using the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "When you publish agents to Microsoft 365 and Teams, those services process and store certain data associated with publishing and using the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "That data includes publishing metadata such as name, icon and description, and data in responses to users' queries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "This data can include data necessary to publish the agent, such as the agent's name, icon, and description. It also includes data contained in responses provided by the agent when users in your organization submit queries to the agent from Microsoft 365 and Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft 365 and Teams terms and commitments apply to this data and Microsoft advises evaluating compliance and residency before publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "This data is subject to the terms, compliance commitments, data residency commitments, and data handling practices applicable to Microsoft 365 and Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft warns not to include secrets, API keys or sensitive information in user-visible metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Don't include secrets, API keys, or sensitive information in any metadata fields. These fields are visible to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "The publishing wizard's Review permissions step shows requested permissions and allows admin consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "In the **Review permissions** step, view the permissions requested by the agent and grant admin consent if appropriate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Channel authorisation, store visibility and downstream model or tool permissions are separate concerns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Channel authorization, store visibility, and downstream model or tool permissions are separate concerns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Requested-agent details expose capabilities, data sources, security and permissions, and custom actions for review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "Select the requested agent and view the agent's details. Confirm the capabilities, data sources, security and permissions, and custom actions that the agent can invoke.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "default",
+      "claim": "Always use latest is the default version-selector setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "If the version selector is set to **Always use latest** (the default), the new version automatically serves in M365 and Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Always use latest automatically serves a new agent version in Microsoft 365 and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "If the version selector is set to **Always use latest** (the default), the new version automatically serves in M365 and Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Published agents do not support file uploads or image generation in Microsoft 365, but those features work in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+      "quote": "File uploads and image generation in Microsoft 365 | These features don't work for agents published to Microsoft 365. They work in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Published agents do not support citations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+      "quote": "Published agents don't support citations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "Projects with public network access disabled cannot publish from the portal and instead use the REST route with enable_m365_public_endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Publishing from the Foundry portal isn't supported for projects that disable public network access. To publish these agents, use the REST API and enable the source-IP-filtered public Activity Protocol route with `enable_m365_public_endpoint`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Prerequisites and constraints",
+      "type": "behaviour",
+      "claim": "Microsoft 365 and Teams channel traffic does not use Private Link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+      "quote": "Microsoft 365 and Teams channel traffic doesn't use Private Link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model and cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Consumption is the documented Foundry billing model relevant to running the agent, with separate model, tool and resource meters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/concepts/billing-concepts",
+      "quote": "When an agent in Foundry Agent Service runs, you pay for the model calls it makes and for the tools and resources it uses. Each item bills on its own meters, so an agent's total cost spans several meters in Azure Cost Management.",
+      "severity": "minor",
+      "fix": "Keep the Azure-meter statement, but add: 'The Agent Applications FAQ describes published applications as publisher-pays, with costs based on deployed underlying infrastructure rather than per-call consumption: https://learn.microsoft.com/azure/foundry/agents/how-to/agent-applications#faqs.' This is a different emphasis in Microsoft's published-agent billing guidance, not grounds to discard the cited billing page."
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Foundry charges are Azure costs borne by the publisher's project infrastructure rather than charges owned by the Microsoft 365 admin centre.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/agent-applications#faqs",
+      "quote": "Published agents use a publisher-pays model: the publisher (the Foundry project owner) incurs costs based on the underlying infrastructure that is deployed when the agent is published as an application, not based on per-call consumption.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/azure/foundry/agents/how-to/agent-applications#faqs to sources for the publisher-pays attribution."
+    },
+    {
+      "n": 43,
+      "where": "licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The portal publishing prerequisites include portal access, a project with a tested agent version and Foundry User at project scope, and name no Microsoft 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Access to the [Microsoft Foundry portal] ... A [Foundry project] with an agent version you tested and want to publish ... **Foundry User** role on the Foundry project scope to create, manage, and publish agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft Learn publishes no separate charge or meter specifically for publishing an agent to the Agent Store.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Foundry publish agent Microsoft 365 Copilot publishing pricing meter license; Microsoft Foundry publish Agent Store publishing charge pricing. Opened publish-copilot and billing-concepts; read Agent Applications FAQ. Results describe runtime/infrastructure costs, not a Store publishing meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; controls[1].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Microsoft Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagepublishresult-publish",
+      "quote": "Access to the Package Management API requires a [Microsoft Agent 365] license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited admin-centre request approval steps do not state the API's Agent 365 licence requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "To view pending agent requests and act on those requests, use the following steps:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Who publishes",
+      "type": "role",
+      "claim": "Foundry User, Owner, Account Owner and Project Manager were previously named Azure AI User, Owner, Account Owner and Project Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "**Foundry User**, **Foundry Owner**, **Foundry Account Owner**, and **Foundry Project Manager** were previously named Azure AI User, Azure AI Owner, Azure AI Account Owner, and Azure AI Project Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].ui; rendered table",
+      "type": "admin-path",
+      "claim": "Agents > All agents > Requests > agent > Publish to store opens the wizard for audience, policy template and permission review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "select **Publish to store** within the agent details pane to view the agent publishing wizard. The publishing wizard steps you through the process of selecting users, applying a policy template, and accepting permissions.",
+      "severity": "minor",
+      "fix": "Keep the path, which correctly reaches the publishing wizard, and append to controls[0].note: 'The UI path opens the wizard. Select the users or groups who can install the agent, optionally select preinstalled users, choose a policy template, review permissions and grant admin consent if appropriate, then select Publish.' The current route stops before the audience and template controls named in governs."
+    },
+    {
+      "n": 49,
+      "where": "controls[0].api; rendered table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/publish publishes a pending package using publishScope and policyTemplateId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagepublishresult-publish",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/publish\npolicyTemplateId ... Required. Opaque identifier of an applicable policy template\npublishScope ... Required. Availability audience, separate from acquisition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The Graph publish reference describes a proposed typed beta contract, not proof of deployed availability or a v1.0 release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagepublishresult-publish",
+      "quote": "This reference describes the proposed typed beta contract. Matching schema and backend cutover are required before these wire values are available; source review isn't deployed availability or a v1.0 release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui; rendered table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "An administrator reaches Block through Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select **Agents** > **All agents**. ... select an agent from the list of agents. ... immediately under the agent's name, select **Block** or **Unblock**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].governs; rendered table; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The admin-centre Block action blocks a published Foundry agent for the whole organisation without a host limitation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
+      "severity": "blocker",
+      "fix": "Change controls[1].governs and its rendered label to 'Blocking a published Foundry agent in Microsoft Copilot Chat'. Add to its note: 'For Microsoft Foundry agents, the admin-centre Block action only affects availability in Microsoft Copilot Chat.' Replace the After rollout block bullet with 'Block the Foundry agent in Microsoft Copilot Chat from the All agents page if it proves unsuitable; this action does not block its availability in Teams.' Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions."
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api; rendered table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block is the documented beta package blocking operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The Graph block operation takes no request body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Don't supply a request body for this method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2].ui; rendered table",
+      "type": "admin-path",
+      "claim": "The Foundry scope control is at Publish > Teams and Microsoft Copilot > Direct publish > Choose who can use this agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+      "quote": "Select **Next: Publish options**. ... On **Publish options**, select the **Direct publish** tab. ... Under **Choose who can use this agent**, select a scope:",
+      "severity": "minor",
+      "fix": "Include the wizard page heading: 'Publish > Teams and Microsoft Copilot > Publish options > Direct publish > Choose who can use this agent' in controls[2].ui.path and the rendered table. The omitted Next transition and metadata fields are not blockers."
+    },
+    {
+      "n": 56,
+      "where": "controls[2].api; rendered table",
+      "type": "command",
+      "claim": "POST {{endpoint}}/agents/<agent-name>/microsoft365/publish?api-version=v1 publishes an agent and sets its scope through publishScope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+      "quote": "POST {{endpoint}}/agents/<agent-name>/microsoft365/publish?api-version=v1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The Foundry REST publishScope property accepts Shared, Tenant and Personal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+      "quote": "`Shared` (the portal's **Just you**) ... `Tenant` (the portal's **People in your organization**) ... `Personal` is also accepted and treated as `Shared`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "For submitted package updates, Pending update requests retain the previous version for users until approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "When developers publish an update to an existing agent ... Until you approve the update, users can access the previous version of the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist's instruction to take stock of Foundry User role assignments has a corresponding control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask your Foundry project owners who holds the Foundry User role ... Controls cover publishing approval, blocking and developer publishing scope, not project role assignments.",
+      "severity": "minor",
+      "fix": "Narrow that checklist bullet to 'Ask your Foundry project owners which projects are likely to publish agents to Microsoft 365 and Teams.' Do not add a control row."
+    },
+    {
+      "n": 60,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-03-12T23:15:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-03-12T23:15:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Open questions: active version and Pending update",
+      "type": "absence",
+      "claim": "The sources do not explicitly say whether changing the Foundry active version generates an admin-centre Pending update request.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Foundry agent active version update Pending update Microsoft 365 approval. Opened publish-copilot and agent-requests; read agent-approval search excerpt. They distinguish version-selector changes and submitted updates but do not explicitly link a selector change to a Pending update request.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T14:00:34.397Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=501112",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagepublishresult-publish",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/concepts/billing-concepts",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Approving a Foundry agent request and choosing its audience and policy template",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Requests",
+          "Publish to store"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Approving a Foundry agent request and choosing its audience and policy template",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagepublishresult-publish",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Blocking a published agent for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Blocking a published agent for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who a developer publishes a Foundry agent to: just themselves or the organisation",
+        "docs": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot",
+        "reachable": true,
+        "segments": [
+          "Publish",
+          "Teams and Microsoft Copilot",
+          "Direct publish",
+          "Choose who can use this agent"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Who a developer publishes a Foundry agent to: just themselves or the organisation",
+        "docs": "https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+        "reachable": true,
+        "token": "POST {{endpoint}}/agents/<agent-name>/microsoft365/publish?api-version=v1",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

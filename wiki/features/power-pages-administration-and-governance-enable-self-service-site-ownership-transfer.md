@@ -94,17 +94,19 @@ changes:
     note: "First briefing: documents the admin centre transfer route, its role conditions, the Purview audit event, and the roadmap claims Learn does not yet cover."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
 version: 6
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 60
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 2
   attempts: 0
   hash: "d7d34d4613f6f63053cb58388df91a4d"
 ---
@@ -209,9 +211,10 @@ cost: Low. The Learn page names no licence or meter for transfers, so the only c
 impact: Low. Admins and the site owners involved notice it. Visitors to the site are not mentioned in the roadmap item or on Learn.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The selected user becomes the site's primary owner when the transfer finishes. | Found: When the transfer finishes, the selected user becomes the primary owner of the site. | Fix: After this sentence add: 'The roles page still describes the website owner as the creator and says that ownership cannot be transferred or changed; Microsoft has not reconciled that wording with the transfer procedure.' Cite https://learn.microsoft.com/power-pages/admin/admin-roles#website-owner, which says 'ownership remains with the creator and can't be transferred or changed.' Do not infer that the different ownership terms are equivalent. | Source: https://learn.microsoft.com/power-pages/admin/transfer-ownership
-- [contradicted, minor] Governance guidance: Before rollout, auditing and role-assignment bullet / consistency: The audit row supplies the controls that the checklist tells readers to configure. | Found: Turn on auditing for the production environments ... assign the Audit Logs or View-Only Audit Logs role ... (Purview audit row). The row instead gives Solutions > Audit and Search-UnifiedAuditLog. | Fix: Remove the Before rollout bullet beginning 'Turn on auditing for the production environments'. It instructs readers to enable environment auditing and assign audit roles, neither of which has a configuration row; the existing audit row only searches activity. Retain the verified prerequisites in the row note and Scope. Do not add rows as part of this correction.
+- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The selected user becomes the site's primary owner when the transfer finishes. | Found: When the transfer finishes, the selected user becomes the primary owner of the site. | Fix: After this sentence add: 'The roles page still defines website owner as the creator and says that ownership cannot be transferred or changed; Microsoft has not reconciled that wording with the transfer procedure.' Cite https://learn.microsoft.com/power-pages/admin/admin-roles#website-owner. Do not equate the different ownership terms. | Source: https://learn.microsoft.com/power-pages/admin/transfer-ownership
+- [contradicted, minor] Governance guidance: Before rollout, auditing and role-assignment bullet / consistency: The audit row covers the environment auditing setup and audit-role assignment that the checklist tells readers to configure. | Found: Turn on auditing for the production environments ... assign the Audit Logs or View-Only Audit Logs role ... (Purview audit row). The row gives Solutions > Audit and Search-UnifiedAuditLog, which search records rather than configure those prerequisites. | Fix: Remove the Before rollout bullet beginning 'Turn on auditing for the production environments'. Neither environment auditing setup nor audit-role assignment has a configuration row. Retain the verified prerequisites in the row note and Scope; do not add rows.
+- [contradicted, minor] Governance controls, paragraph after table / consistency: The table represents the documented absence of a tenant-wide ownership-transfer switch. | Found: The transfer is a per-site admin action with no documented tenant-wide on or off setting in this table. The table contains only a transfer row and an audit-search row, not a tenant-switch absence row. | Fix: Replace 'The transfer is a per-site admin action with no documented tenant-wide on or off setting in this table.' with 'The transfer is a per-site admin action.' This removes an absence that has no corresponding row without adding a control.
 -->

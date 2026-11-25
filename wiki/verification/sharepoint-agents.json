@@ -1,0 +1,1043 @@
+{
+  "slug": "sharepoint-agents",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "SharePoint agents: who can use them, what they can read and how they are billed",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "2 blocking findings (claims 59, 60)"
+    ]
+  },
+  "counts": {
+    "claims": 77,
+    "confirmed": 72,
+    "unconfirmed": 0,
+    "contradicted": 5,
+    "blocker": 2,
+    "major": 0,
+    "minor": 11
+  },
+  "summary": "Hold: the licensing control starts inside a details page rather than giving the route from the admin center, and its automation is incorrectly reported as undocumented. Most other claims are supported, but Microsoft pages disagree about some billing requirements and the audit-collection command; those differences need to be acknowledged.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "SharePoint agents answer questions and provide insights from SharePoint sites, pages and document libraries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Agents in SharePoint, powered by AI, help users quickly find information and insights on SharePoint sites, pages, and document libraries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What it is; Why it matters; Risks and limits: Agents inherit oversharing; Governance controls",
+      "type": "behaviour",
+      "claim": "Agent responses respect the asking user's permissions to the agent's data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "For users who access and use an agent in SharePoint, the agent's responses depend on each user's permissions to the agent's data sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is: Who can use agents; Cost and licensing: Licence; controls[0].governs",
+      "type": "licensing",
+      "claim": "Users with a Microsoft Copilot licence can use SharePoint agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Currently, users with a Microsoft Copilot license can use the agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is: Who can use agents; controls[1].governs; Risks and limits: Pay-as-you-go limits",
+      "type": "applicability",
+      "claim": "For unlicensed users, the billing policy's assigned security group determines who has access to agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Only users in the security group assigned to the billing policy have access to agents.",
+      "severity": "minor",
+      "fix": "Qualify the access statement as 'For the security-group billing-policy configuration described on the SharePoint access page, only users in that group have access through that policy.' Add that https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot also documents an 'All users' choice on the Choose users page."
+    },
+    {
+      "n": 5,
+      "where": "What it is: Two formats",
+      "type": "behaviour",
+      "claim": "Permissions on a .agent file determine who can access or edit that agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "The permissions on the `.agent` file determine who can access or edit the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: Two formats",
+      "type": "behaviour",
+      "claim": "The file-based SharePoint agent experience saves a .agent file in the location where the agent is created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+      "quote": "Every agent you create in SharePoint is a `.agent` file saved in the location where you create it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is: Two formats; What to check: upgrade",
+      "type": "date",
+      "claim": "Existing .agent files continue working until the end of March 2027.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "Existing agents in the .agent file format will continue to work across SharePoint, Microsoft Teams, and the Copilot app until the end of March 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "Risks and limits: The .agent format has an end date",
+      "type": "date",
+      "claim": "After March 2027, .agent files stop responding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "After March 2027, .agent files will stop responding and you will have to upgrade to continue using them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: Two formats",
+      "type": "date",
+      "claim": "Microsoft documents Microsoft Copilot Agent Builder as the creation experience for SharePoint and OneDrive agents starting in mid-November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "Starting in mid-November 2026, you'll use Microsoft Copilot Agent Builder to create agents for SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: Two formats",
+      "type": "behaviour",
+      "claim": "Creating an agent in the new experience no longer saves a .agent file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "However, creating an agent no longer saves a .agent file in SharePoint or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is: Two formats",
+      "type": "behaviour",
+      "claim": "Only the .agent file format is being retired, not agents in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "No, only the .agent file format is being retired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: Two formats",
+      "type": "behaviour",
+      "claim": "Copilot Studio agents published to SharePoint do not need to be recreated because of the format retirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "You don't need to recreate Copilot Studio agents published to SharePoint because of this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: Two formats",
+      "type": "applicability",
+      "claim": "Administrators can govern upgraded Agent Builder agents through Microsoft Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "administrators can govern, analyze, and manage agents through Microsoft Agent 365",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Risks and limits: The .agent format has an end date",
+      "type": "behaviour",
+      "claim": "Upgraded Microsoft 365 agent permissions are not managed through SharePoint site permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "You don't manage Microsoft 365 agent permissions through SharePoint site permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Risks and limits: The .agent format has an end date",
+      "type": "behaviour",
+      "claim": "Share access for upgraded agents is set through Microsoft Copilot Agent Builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "Set share access through Microsoft Copilot Agent Builder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Agents in SharePoint do not require activation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Agents in SharePoint don't require activation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "The pay-as-you-go route for unlicensed users is metered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Charges of SharePoint agent usage appear under the Copilot Studio meter in your invoice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing: Licence",
+      "type": "cost",
+      "claim": "Interactive generative answers, tenant graph grounding and agent actions by authenticated Microsoft Copilot users in Microsoft 365 apps and services are included at no extra cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Interactive use of generative answers, tenant graph grounding and agent actions by authenticated Microsoft Copilot users, in Microsoft 365 apps and services, are included at no extra cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing: Pay-as-you-go",
+      "type": "licensing",
+      "claim": "Pay-as-you-go access for users without Copilot licences requires setting up SharePoint agents as an Azure resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "To use pay-as-you-go billing, you need to first set up SharePoint agents as a resource in Azure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing: rates table",
+      "type": "cost",
+      "claim": "The cited SharePoint billing table gives a generative-answer rate of 2 messages for autonomous use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "| Generative answer | 2 messages | No charge | 2 messages |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing: rates table",
+      "type": "cost",
+      "claim": "The cited SharePoint billing table gives a tenant-graph-grounding rate of 10 messages for autonomous use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "| Tenant graph grounding for messages | 10 messages | No charge | 10 messages |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing: Pay-as-you-go",
+      "type": "cost",
+      "claim": "The billing page states that an interaction answering one complex prompt consumes 12 messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "each interaction with a SharePoint agent uses 12 messages (10 messages for tenant graph grounding, and 2 messages for generative answers) to respond to a single complex prompt from the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing: Pay-as-you-go",
+      "type": "behaviour",
+      "claim": "Tenant graph grounding is optional and can be turned on or off for each agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "This capability is optional, and you can turn it on or off for each agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing: Pay-as-you-go",
+      "type": "cost",
+      "claim": "SharePoint agent usage charges appear under the Copilot Studio meter on the invoice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Charges of SharePoint agent usage appear under the Copilot Studio meter in your invoice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "summary; Cost and licensing: Pay-as-you-go",
+      "type": "behaviour",
+      "claim": "Microsoft Cost Management provides a feature-level cost breakdown including SharePoint agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "in Microsoft cost management, you can see a detailed breakdown by feature, including SharePoint agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing: Pay-as-you-go; What to check: budget alert",
+      "type": "behaviour",
+      "claim": "Administrators can create a budget with alert conditions in Microsoft Cost Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "You can quickly create a budget under Monitoring > Budgets for your selected scope. ... Select Alert conditions to set up the budget alert conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Cost and licensing: Set-up roles",
+      "type": "role",
+      "claim": "SharePoint administrator is the Microsoft 365 role required for SharePoint agent billing setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "To set up SharePoint agents as a resource in Azure, you need to have at least the following permissions as: ... A SharePoint administrator",
+      "severity": "minor",
+      "fix": "Replace the role sentence with 'The SharePoint billing page lists SharePoint administrator for Azure-resource setup. The general Copilot billing setup guide instead requires Billing Administrator, AI Administrator or Global Administrator for its admin-center tasks; both require Azure Owner or Contributor rights on the subscription and resource group.' Cite https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing and https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go."
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Cost and licensing: Set-up roles",
+      "type": "role",
+      "claim": "Billing setup requires Owner or Contributor rights on the Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Owner or Contributor Azure roles to an Azure subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: Set-up roles",
+      "type": "role",
+      "claim": "Billing setup also requires Owner or Contributor rights on a resource group linked to the same Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Owner or Contributor Azure roles to an Azure resource group linked to the same Azure subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Set-up roles",
+      "type": "role",
+      "claim": "The Azure Owner or Contributor roles are needed only during billing setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "You only need the Owner or Contributor Azure roles during the billing setup process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[4].note; Cost and licensing: Reporting licences",
+      "type": "licensing",
+      "claim": "Generating and viewing Agent Insights reports requires the SharePoint Advanced Management add-on or a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "To generate and view these reports, ensure the organization has the SharePoint Advanced Management add-on SKU or Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].note; Cost and licensing: Reporting licences",
+      "type": "licensing",
+      "claim": "The package block API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[2].note; Risks and limits: Blocking is narrow; What to check; Open questions",
+      "type": "applicability",
+      "claim": "Blocking SharePoint-created agents affects Copilot Chat only, not OneDrive, SharePoint or Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Currently, blocking an agent only affects its availability in Copilot Chat. It doesn't yet apply to OneDrive, SharePoint, or Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Risks and limits: Switching off the SharePoint service plan",
+      "type": "behaviour",
+      "claim": "Disabling Microsoft Copilot for SharePoint for a user also disables Copilot in OneDrive and SharePoint page authoring for that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "However, this change also disables Copilot in OneDrive and on the SharePoint page authoring Copilot for that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].note; Risks and limits: Restricted Content Discovery hides content, not access",
+      "type": "behaviour",
+      "claim": "Restricted Content Discovery does not change permissions or prevent users from directly accessing content they can already access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't change existing permissions. Users who already have access to content can continue to access that content directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].note; Risks and limits: Restricted Content Discovery hides content, not access",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery applies to SharePoint sites, not OneDrive sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "You can only apply this feature to SharePoint sites. It's not supported for OneDrive sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risks and limits: Restricted Content Discovery hides content, not access",
+      "type": "behaviour",
+      "claim": "On sites with more than 500,000 items, Restricted Content Discovery updates can take more than a week to fully propagate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "For sites with more than 500,000 items, an update to Restricted Content Discovery could take more than a week to fully process and reflect in search and Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risks and limits: DLP cannot yet use a label on the agent file",
+      "type": "behaviour",
+      "claim": "A sensitivity label cannot yet be added directly to a .agent file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "You can't yet add a sensitivity label directly to the .agent file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risks and limits: DLP cannot yet use a label on the agent file",
+      "type": "applicability",
+      "claim": "Microsoft advises using .agent-extension conditions instead of sensitivity-label conditions to govern .agent files with DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "If you want to govern your `.agent` file by using DLP, use conditions based on the `.agent` extension instead of using sensitivity labels as the condition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Risks and limits: Pay-as-you-go limits",
+      "type": "behaviour",
+      "claim": "Each billing policy currently supports one security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Each billing policy can currently have one security group. Support for multiple security groups will be available soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].note; Risks and limits: Pay-as-you-go limits",
+      "type": "behaviour",
+      "claim": "Up to 10 billing policies can be created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "You can create up to 10 policies, with each policy assigned a security group.",
+      "severity": "minor",
+      "fix": "Replace the limit sentence and corresponding table note with 'The SharePoint billing page states up to 10 policies; the general Copilot pay-as-you-go setup page, which explicitly includes SharePoint agents, states up to 50 billing policies per tenant.' Cite both https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing and https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go."
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Agent Insights is audit-based",
+      "type": "behaviour",
+      "claim": "Agent Insights uses Microsoft 365 unified audit data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "These reports use Microsoft 365 unified audit data and might not cover all audit events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Agent Insights is audit-based",
+      "type": "behaviour",
+      "claim": "Agent Insights might not cover all audit events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "These reports use Microsoft 365 unified audit data and might not cover all audit events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Agent Insights is audit-based",
+      "type": "behaviour",
+      "claim": "A newly generated Agent Insights report replaces the previous report with the same date range.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "The newly generated report replaces the previously created report with the same date range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Tenant admins and AI admins can manage SharePoint agents in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Tenant admins and AI admins can manage actively used agents in SharePoint in the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "SharePoint administrators can generate and view Agent Insights reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "With permissions of at least a SharePoint administrator, you can generate and view the insights report by using the following commands:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Only SharePoint administrators can manage Restricted Content Discovery unless management is delegated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
+      "severity": "minor",
+      "fix": "Attribute the exclusive role statement: 'The Restricted Content Discovery page says that only SharePoint administrators manage it by default, with delegation available to site administrators. Its linked prerequisites also list SharePoint Advanced Management Administrator as having all SharePoint Administrator capabilities.' Cite https://learn.microsoft.com/sharepoint/restricted-content-discovery and https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites."
+    },
+    {
+      "n": 48,
+      "where": "Governance controls: Roles",
+      "type": "command",
+      "claim": "Set-SPOTenant -DelegateRestrictedContentDiscoverabilityManagement $true enables delegation of Restricted Content Discovery management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "If you want site administrators to manage the setting for their own sites, enable delegation by using the following PowerShell command: ... Set-SPOTenant -DelegateRestrictedContentDiscoverabilityManagement $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Users with at least Compliance admin permissions and access to Purview can track agent creation and usage details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+      "quote": "Users with at least Compliance admin permissions with access to Purview can track agent creation and usage details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].governs; What it is: Where do agents appear; Governance controls: How they interact",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery removes the Agent icon on the site's global header.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Once you flag a site with restricted content discovery, users can't see the Agent icon on the global header of the site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: How they interact; Why it matters",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery keeps a site's content out of Copilot and organisation-wide search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "The restricted content discovery policy leaves site access unchanged but prevents the site's content from being surfaced in Microsoft Copilot or organization-wide search for all users.",
+      "severity": "minor",
+      "fix": "Replace the blanket exclusion and the suggestion that this limits all agent reading with 'Restricted Content Discovery limits tenant-wide discovery of the site's content and removes AI entry points; it does not change permissions or stop Copilot from summarizing an already-open document.' The cited access page gives a broader description, whereas https://learn.microsoft.com/sharepoint/restricted-content-discovery explicitly excludes experiences operating on content already in use; cite that qualification."
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: How they interact",
+      "type": "role",
+      "claim": "The block API supports delegated CopilotPackages.ReadWrite.All permission, not application permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. | ... | Application | Not available. | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Governance controls: How they interact",
+      "type": "availability",
+      "claim": "The package block API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "What it is: Where do agents appear; Governance controls: Not in the table",
+      "type": "role",
+      "claim": "Site owners can choose one main agent for their site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Site owners can choose one main agent for their site. This agent opens when users select the Agent icon in the global header.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "What it is: What can they draw on; Governance controls: Not in the table; What to check",
+      "type": "applicability",
+      "claim": "Restricted access control restricts all site access to the group specified in the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "all access to the site is restricted to only the group of users specified in the policy. Accordingly, the content from the site is visible in Microsoft Copilot only for this restricted group of users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: Not in the table; What to check: Purview audit log",
+      "type": "behaviour",
+      "claim": "The Purview audit log records which users interacted with an agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+      "quote": "In addition to all file operation audits, the logs include which users interacted with the agent, and where and when the interaction took place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: Not in the table",
+      "type": "behaviour",
+      "claim": "The Purview audit log records where agent interactions took place.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+      "quote": "the logs include which users interacted with the agent, and where and when the interaction took place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: Not in the table",
+      "type": "behaviour",
+      "claim": "The Purview audit log records when agent interactions took place.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+      "quote": "the logs include which users interacted with the agent, and where and when the interaction took place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The admin-center route to the per-user service-plan toggle is License details page for Microsoft Copilot > Microsoft Copilot for SharePoint.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page. ... On the Licenses page, select the row for a specific user or group you want to change. ... In the details pane, select or deselect the apps and services",
+      "severity": "blocker",
+      "fix": "Replace the part-way-in route with 'Billing > Licenses > user or group > Microsoft Copilot for SharePoint'. Keep https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint for the service-plan label and add https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users for the navigation to the user or group details pane."
+    },
+    {
+      "n": 60,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation to enable or disable the user's Microsoft Copilot for SharePoint service plan.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "You can also enable and disable specific plans associated with a subscription. ... You can disable servicePlans associated with a license by setting the disabledPlans property on an assignedLicense object.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api null with kind 'graph', call 'POST https://graph.microsoft.com/v1.0/users/{id}/assignLicense', docs 'https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0'. Add to its note: 'Set addLicenses[].skuId to the Copilot SKU and addLicenses[].disabledPlans to the service-plan IDs to disable, preserving any already-disabled plans; removeLicenses is required and may be empty.' https://learn.microsoft.com/microsoft-365/enterprise/disable-access-to-services-with-microsoft-365-powershell explains preserving existing disabled plans."
+    },
+    {
+      "n": 61,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The SharePoint agent billing connection is at Copilot > Billing and usage > Pay-as-you-go services > SharePoint agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "In the Microsoft 365 admin center, select Copilot > Billing and usage. ... Choose SharePoint agents from the list of apps and services. The Manage billing policy connections pane appears.",
+      "severity": "minor",
+      "fix": "Complete the existing route as 'Copilot > Billing and usage > Pay-as-you-go services > SharePoint agents > billing policy', with a note that the policy is selected in Manage billing policy connections. Also note that https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot documents the alternative entry 'Copilot > Cost management > Classic Billing & usage' and a Connection status toggle set to Connected; retain the SharePoint-specific route as the cited page's route rather than silently choosing between the pages."
+    },
+    {
+      "n": 62,
+      "where": "controls[1].api; Open questions: PowerShell or API billing policy",
+      "type": "absence",
+      "claim": "No documented command or API was found to create or connect the Microsoft 365 billing policy specifically for SharePoint agents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint agents pay as you go billing policy create connect API PowerShell; \"SharePoint agents\" \"billing policy\" \"API\" \"create\". Read sharepoint-agents-azure-billing, copilot/implement/setup-pay-as-you-go and the Copilot-node setup guide; results gave no feature-specific operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Administrators block the selected agent through Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks the specified Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Restricted Content Discovery is configured through SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites. ... Select the site you want to configure. ... Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables Restricted Content Discovery for the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Reports > Agent Insights in the SharePoint admin center reaches reporting on agents across SharePoint and OneDrive sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "In the navigation pane, expand Reports and then select Agent Insights. ... As a SharePoint Administrator, select Create a report to create the report.",
+      "severity": "minor",
+      "fix": "Complete the route for generating the report as 'Reports > Agent Insights > Create a report > Report duration'. The cited page says to enter a name and specify the time frame under Report duration, then select Create and run."
+    },
+    {
+      "n": 68,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Start-SPOCopilotAgentInsightsReport -ReportPeriodInDays <28> generates an Agent Insights report for the past 28 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "For example, to generate a report for the past 28 days, run the command: ... Start-SPOCopilotAgentInsightsReport -ReportPeriodInDays <28>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[5].ui",
+      "type": "absence",
+      "claim": "No admin UI control was found for enabling the audit-data collection that feeds Agent Insights.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Start-SPOAuditDataCollectionForActivityInsights enable data collection admin center UI; site:learn.microsoft.com/sharepoint \"Agent Insights\" \"data collection\" \"enable\". Read insights-on-sharepoint-agents and the cmdlet reference; they document PowerShell, not a UI control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "Start-SPOAuditDataCollectionForActivityInsights enables collection for the agent report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "This PowerShell command starts collecting audit data for reports on activities from the last 28 days. ... Start-SPOAuditDataCollectionForActivityInsights",
+      "severity": "minor",
+      "fix": "Replace the call with 'Start-SPOAuditDataCollectionForActivityInsights -ReportEntity CopilotAppInsights' and point its docs to https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spoauditdatacollectionforactivityinsights?view=sharepoint-ps. Note the documentation discrepancy: the SharePoint overview omits ReportEntity, while the cmdlet reference makes it mandatory, lists CopilotAppInsights and labels the Copilot-agent scenario Private Preview."
+    },
+    {
+      "n": 71,
+      "where": "controls[5].note",
+      "type": "behaviour",
+      "claim": "Reports can be generated 24 hours after audit-data collection is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "After you enable data collection, you can generate the reports after 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[5].governs",
+      "type": "licensing",
+      "claim": "Without a SharePoint Advanced Management licence, audit-data collection must be enabled for Agent Insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "If you don't have a Microsoft SharePoint Advanced Management license, you need to enable data collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "What to check: billing policy and budget alert",
+      "type": "consistency",
+      "claim": "Every control that the budget-alert checklist step asks the reader to review has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review whether a pay-as-you-go billing policy is connected to SharePoint agents, which security group it names and which budget alert covers it. / The table has a billing-policy row but no budget-alert row.",
+      "severity": "minor",
+      "fix": "The budget-alert review has no table row. Remove 'and which budget alert covers it' from this checklist step; leave the supported budget explanation in Cost and licensing."
+    },
+    {
+      "n": 74,
+      "where": "What to check: Agent Insights and restricted access control",
+      "type": "consistency",
+      "claim": "Every control that the Agent Insights checklist step asks the reader to assess has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Run the Agent Insights report to see which sites hold the most agents, then decide where Restricted Content Discovery or restricted access control applies. / Restricted access control is explicitly listed under Not in the table.",
+      "severity": "minor",
+      "fix": "The restricted-access-control assessment has no table row. Remove 'or restricted access control' from this checklist step; keep the supported explanatory note outside the checklist."
+    },
+    {
+      "n": 75,
+      "where": "What to check: Purview audit log",
+      "type": "consistency",
+      "claim": "The audit-search control requested in What to check has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Search the Purview audit log for agent creation and interaction records. / Purview audit search has no controls-table row; the audit-data-collection row enables Agent Insights collection instead.",
+      "severity": "minor",
+      "fix": "The Purview audit-log search has no table row. Remove this checklist bullet rather than adding an unverified control row; retain the supported audit-log description in Governance controls."
+    },
+    {
+      "n": 76,
+      "where": "What it is: What can they draw on",
+      "type": "applicability",
+      "claim": "Microsoft Purview DLP can prevent selected files from being used by SharePoint agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "To prevent selected files from being used by agents, use sensitivity labels along with Microsoft Purview Data Loss Prevention (DLP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "Agent Insights supports report periods of 1, 7, 14 or 28 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+      "quote": "You can create a report for the past 1, 7, 14, or 28 days.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T14:00:32.746Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users can use SharePoint agents through their Copilot licence",
+        "docs": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+        "reachable": true,
+        "segments": [
+          "License details page for Microsoft Copilot",
+          "Microsoft Copilot for SharePoint"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which unlicensed users can use SharePoint agents, via a pay-as-you-go billing policy and its security group",
+        "docs": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Billing and usage",
+          "Pay-as-you-go services",
+          "SharePoint agents"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether an agent is blocked for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "select an agent",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether an agent is blocked for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether a site's content is discoverable by Microsoft Copilot and its agent features show",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "select the site",
+          "Settings",
+          "Restrict content from Microsoft Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether a site's content is discoverable by Microsoft Copilot and its agent features show",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "The Agent Insights report on agents across SharePoint and OneDrive sites",
+        "docs": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Agent Insights"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "The Agent Insights report on agents across SharePoint and OneDrive sites",
+        "docs": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+        "reachable": true,
+        "token": "Start-SPOCopilotAgentInsightsReport",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Audit data collection that feeds Agent Insights without a SharePoint Advanced Management licence",
+        "docs": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+        "reachable": true,
+        "token": "Start-SPOAuditDataCollectionForActivityInsights",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

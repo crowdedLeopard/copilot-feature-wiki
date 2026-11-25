@@ -89,15 +89,17 @@ changes:
     note: "Corrected the ownership reassignment REST call to the full versioned PATCH with JSON header and ownerid@odata.bind body."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -191,4 +193,10 @@ Microsoft Learn documents no switch that turns custom KPIs on or off, and no way
 risk: Low. Custom KPIs are calculated from process data already imported into the process, and no new data source, connector or autonomous action is described in the roadmap item.
 cost: Low. Process mining is licensed as part of Power Automate, and no separate price or meter for custom KPIs is published; the known cost is admin time and process mining capacity already in use.
 impact: Medium. Makers and analysts who build process mining dashboards see a new formula editor and new metrics in their cards.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].api; Governance controls table / command: PATCH to the versioned msdyn_pminferredtasks record endpoint with Content-Type application/json and ownerid@odata.bind set to a systemusers record changes its owner. | Found: Assign ... PATCH /msdyn_pminferredtasks(msdyn_pminferredtaskid) Update the ownerid property. | Fix: Set controls[0].api.call to 'PATCH <organization-uri>/api/data/v9.2/msdyn_pminferredtasks(<msdyn_pminferredtaskid>)'. Add to controls[0].note: 'The request body sets ownerid through ownerid@odata.bind to systemusers(<new-owner-systemuserid>).'. The existing endpoint and property are valid; the cited Web API entity reference documents the v9.2 path, PATCH support and ownerid navigation property. The already-cited update and association guides support Content-Type: application/json and @odata.bind, so the pre-check's missing-header match is not an API error. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pminferredtask
 -->

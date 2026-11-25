@@ -120,14 +120,16 @@ changes:
     note: "Corrected the Dataverse row: anyone can view the audit configuration, but changing it needs System Administrator or System Customizer."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 108 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 110 statements confirmed"
 verification:
   status: "verified"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 108
-  confirmed: 108
+  claims: 110
+  confirmed: 110
   unconfirmed: 0
   contradicted: 0
   attempts: 0

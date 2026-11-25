@@ -1,0 +1,986 @@
+{
+  "slug": "microsoft-purview-compliance-portal-optical-character-recognition-ocr-support-for-embedded",
+  "roadmapId": 497912,
+  "title": "Microsoft Purview: OCR scans images embedded in Office files and PDFs in SharePoint and OneDrive",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "3 blocking findings (claims 58, 65, 66)"
+    ]
+  },
+  "counts": {
+    "claims": 75,
+    "confirmed": 70,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold for corrections to the SharePoint automation guidance and the claim that no budget setting is documented. The current PowerShell reference describes the selected-sites parameter and requires SelectedSites scope; Azure Cost Management documents budgets that can monitor the billing subscription but do not stop consumption.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans Purview sensitive-information scanning of embedded DOCX, PPTX, XLSX and scanned or hybrid PDF content in SharePoint and OneDrive, in addition to standalone images.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With Embedded support, OCR will scan content in DOCX, PPTX, XLSX and PDFs (scanned and hybrid containing searchable text and images). This will be in addition to support for standalone images",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is September CY2025, which has passed as of this run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "Learn already lists embedded images in DOCX, PPTX and XLSX and scanned and hybrid PDFs as supported in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "PDFs (scanned and hybrid containing searchable text and images) Embedded images in DOCX, PPTX, XLSX",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "SharePoint OCR scans images added to Office files and indexes the extracted text for search and compliance solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr-overview",
+      "quote": "Any images added to these files will be automatically scanned using OCR, and the extracted text will be indexed for search purposes and integrated into compliance solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "OCR is optional and requires administrator enablement, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR scanning is an optional feature that you must enable at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; controls[0]",
+      "type": "behaviour",
+      "claim": "Purview OCR is configured at tenant level with selected locations and included or excluded groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Select the locations where you want to scan images.\n5. Select the groups that you want included or excluded from OCR scans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing DLP policies can act on image content after OCR is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "When you configure the OCR settings, Microsoft Purview applies your existing policies for data loss prevention (DLP), records management, and insider risk management (IRM) to images and text-based content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "Records management policies can match OCR image content in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Records management: Autoapply retention label policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "Insider risk management can use OCR image classifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Considers sensitive information types and trainable classifiers present in images for risk scoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing sensitive information types scan images once OCR is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Once OCR is configured, existing sensitive information types, exact data match based sensitive information types, trainable classifiers, and fingerprint SITs scan images as well as documents and emails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing trainable classifiers scan images once OCR is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Once OCR is configured, existing sensitive information types, exact data match based sensitive information types, trainable classifiers, and fingerprint SITs scan images as well as documents and emails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing exact data match sensitive information types scan images once OCR is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Once OCR is configured, existing sensitive information types, exact data match based sensitive information types, trainable classifiers, and fingerprint SITs scan images as well as documents and emails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing fingerprint sensitive information types scan images once OCR is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Once OCR is configured, existing sensitive information types, exact data match based sensitive information types, trainable classifiers, and fingerprint SITs scan images as well as documents and emails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn says only images uploaded after OCR enablement are scanned, with backfill separately discussed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Only images uploaded after OCR is enabled are scanned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters: opening sentence",
+      "type": "behaviour",
+      "claim": "Until now, a policy looking for credit card numbers or classification markings read the text of a file rather than embedded image text.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview OCR previously; read ocr-learn-about and documentprocessing/ocr-overview. They describe current support, not when this historical boundary applied; the roadmap supplies no prior-behaviour date.",
+      "severity": "major",
+      "fix": "Remove 'Until now' and replace the opening comparison with 'OCR lets policies match sensitive text inside images as well as the text of a file.'"
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "An existing sensitive-information policy can match credit card information in images.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Microsoft Purview scans for credit card numbers in both text and images at all of the chosen locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Linking an Azure subscription to pay-as-you-go automatically enables OCR for all SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+      "quote": "After an Azure subscription is linked to pay-as-you-go, OCR will be automatically set up and enabled for all SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Image resolution must be between 50 x 50 and 16,000 x 16,000 pixels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Image resolution | 50 × 50 px minimum, 16,000 × 16,000 px maximum",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Purview OCR file-size limit for SharePoint and OneDrive is 50 MB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "File size (SharePoint, OneDrive, Windows, and macOS endpoints) | 50 MB max",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "OCR extracts only the first 2 million characters of text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR extracts only the first 2 million characters of text.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Scope; controls[1].note; controls[2].note",
+      "type": "role",
+      "claim": "A SharePoint Administrator or Global Administrator can configure billing and the SharePoint OCR service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing",
+      "quote": "You must be a SharePoint Administrator or Global Administrator to be able to access the Microsoft 365 admin center and set up the service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; controls[2].note",
+      "type": "role",
+      "claim": "Billing setup also requires owner or contributor rights on the Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing",
+      "quote": "You must have owner or contributor rights to the Azure subscription that you want to use for pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note; rationale: impact",
+      "type": "role",
+      "claim": "The compliance admin configures tenant OCR settings in Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "The Compliance admin for your organization configures the OCR settings for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "The SharePoint OCR service supports hub sites and primary site-collection sites but not subsites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr-overview",
+      "quote": "This service is available only for SharePoint sites - including hub sites, sites associated to a hub site, and the primary site of a site collection. Subsites aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "OCR extracts text for downstream search and policy use rather than introducing a separate policy action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr-overview",
+      "quote": "The optical character recognition (OCR) service in SharePoint lets you extract printed or handwritten text from images and documents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Start-SPOSiteOpticalCharacterRecognitionBackfill triggers SharePoint OCR for files never processed or modified since their last OCR processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spositeopticalcharacterrecognitionbackfill",
+      "quote": "This cmdlet starts a job to trigger the OCR process for files that have either never been OCR processed or have been modified since the last OCR process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "The backfill cmdlet incurs cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spositeopticalcharacterrecognitionbackfill",
+      "quote": "Optical Character Recognition (OCR) is a pay-as-you-go feature. Running this cmdlet will incur cost for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Backfill cannot be stopped once triggered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spositeopticalcharacterrecognitionbackfill",
+      "quote": "Once the cmdlet is triggered, the backfilling process cannot be stopped. Disabling OCR on the selected site will not cancel the ongoing backfilling session.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; controls[0].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "OCR settings generally take about an hour to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "In general, OCR settings take effect about an hour after you turn them on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft directs readers to Adobe requirements for Purview DLP with PDF files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "For information about the Adobe requirements for using Microsoft Purview Data Loss Prevention (DLP) features with PDF files, see this article from Adobe",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "After Syntex billing information is entered, the compliance admin can configure Purview OCR without extra setup or licensing requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "After you enter billing information in Microsoft Syntex, your Compliance admin can configure OCR in Microsoft Purview without any extra setup or licensing requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The licensing page allows any tenant user with a Microsoft 365 licence to use the services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing",
+      "quote": "Organization-wide access: Any user in your tenant can use the services, provided they have a Microsoft 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Setting up Microsoft Syntex itself is not required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "To use OCR, set up Microsoft Syntex pay-as-you-go billing. (You don't need to set up Microsoft Syntex itself.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "OCR uses consumption licensing through pay-as-you-go Azure subscription billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+      "quote": "Before you can use the OCR service, you must first link an Azure subscription in pay-as-you-go. OCR is billed based on the type and number of transactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: cost; licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "The published OCR price is $0.001 per transaction in USD, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "Each of these counts as one transaction. Processing occurs every time the file is edited. | $0.001/transaction",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Meter; Why it matters",
+      "type": "cost",
+      "claim": "Each image scanned counts as one transaction, subject to the caching and included capacity discussed in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Each image scanned counts as one transaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Each PDF page is charged separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "It also means that each page in a PDF file is charged separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "cost",
+      "claim": "The pricing table counts PDF, TIF and TIFF pages and expressly names embedded images in Teams chats and email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "the number of pages processed for PDF, TIF, or TIFF; or the number of embedded images in Teams chats and email messages. Each of these counts as one transaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The pricing page says processing occurs every time the file is edited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "Processing occurs every time the file is edited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Meter",
+      "type": "behaviour",
+      "claim": "For embedded file types, text-only changes do not cause image rescanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "However, in embedded file types, if only text is updated, images aren't scanned again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "SharePoint de-duplicates images in Office files to avoid duplicate charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr-overview",
+      "quote": "Additionally, SharePoint has implemented de-duplication processes to check for unique images to avoid duplicate charges against the same images.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "A scanned image can be used in any number of DLP, insider risk, auto-labeling and records management policies at no extra charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Additionally, you can use each scanned image in any number of policies across data loss prevention, insider risk management, auto-labeling, and records management at no extra charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Meter; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "Pay-as-you-go usage and charges can be monitored in Microsoft Cost Management for Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing",
+      "quote": "You can monitor your pay-as-you-go usage in Microsoft Cost Management for Azure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Try-out capacity; Open questions",
+      "type": "date",
+      "claim": "The pricing page gives June 2026 as the end of limited included monthly capacity for tenants with pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "Through June 2026, if you have pay-as-you-go billing set up, your organization receives a limited amount of included capacity each month for selected services",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Try-out capacity; Open questions",
+      "type": "date",
+      "claim": "The try-out page instead gives December 2026 as the end of included monthly capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/promo-syntex",
+      "quote": "Through December 2026, your organization can use included monthly capacity for some of these services when you set up pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Estimating; controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The OCR cost estimator is a preview tool.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+      "quote": "You can use the OCR cost estimator tool (preview) to estimate your optical character recognition (OCR) scanning costs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Estimating; controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The estimator projects costs before OCR enablement and is accessible from the Purview OCR settings page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+      "quote": "The tool scans your selected locations—such as Exchange, SharePoint, OneDrive, Teams, and Endpoint—and projects how much OCR processing will cost before you enable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: Estimating; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Estimating embedded images in SharePoint and OneDrive is not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+      "quote": "Estimation for embedded images in SharePoint and OneDrive is not supported yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: Estimating",
+      "type": "behaviour",
+      "claim": "Estimating images inside PDFs in SharePoint and OneDrive is not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+      "quote": "Estimation of images in pdf files isn't supported in SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: Estimating; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "The actual SharePoint and OneDrive OCR bill may be higher than estimated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+      "quote": "As a result, your actual OCR bill for SharePoint and OneDrive may be higher than estimated",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate rate or meter line specific to images embedded in Office files in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OCR embedded images Office SharePoint OneDrive price transaction meter GCC High DoD. Opened Purview OCR, documentprocessing pricing and OCR overview; the general OCR transaction rate is published but no separate Office-embedded rate or line is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Not yet published; Governance controls; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No OCR spending cap that stops consumption is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: document processing pay as you go billing OCR budget spending cap; Syntex budgets; Azure Cost Management budgets. Opened OCR setup, billing and Create and manage budgets; budgets do not stop consumption and no OCR hard cap was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "A budget setting for OCR spending is not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+      "quote": "You can create an Azure subscription budget for a monthly, quarterly, or annual period.",
+      "severity": "blocker",
+      "fix": "Remove 'or budget setting' from the unpublished claim. Replace it with 'Azure Cost Management budgets can monitor the Azure subscription used for OCR billing and send threshold alerts; they do not stop consumption.' Cite https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets."
+    },
+    {
+      "n": 59,
+      "where": "Scope: Who and what",
+      "type": "behaviour",
+      "claim": "OCR supports more than 150 languages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR scanning supports more than 150 languages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: licensing.notes; Scope: Clouds; Open questions",
+      "type": "availability",
+      "claim": "The licensing page says pay-as-you-go and services requiring it are not yet available to GCC organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing",
+      "quote": "For Government Community Cloud (GCC) organizations, pay-as-you-go licensing-and the services that require pay-as-you-go licensing-aren't yet available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Open questions: government billing",
+      "type": "absence",
+      "claim": "The document processing licensing page gives no separate statement about GCC High or DoD pay-as-you-go availability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OCR embedded images Office SharePoint OneDrive price transaction meter GCC High DoD. Read documentprocessing/syntex-licensing in full: its government note names GCC, not GCC High or DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Settings > Optical character recognition (OCR) reaches the location and group configuration page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Select Settings.\n3. Select Optical character recognition (OCR) to enter your OCR configuration settings.\n4. Select the locations where you want to scan images.\n5. Select the groups that you want included or excluded from OCR scans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or other API for the Purview tenant OCR location and group settings is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview OCR settings locations groups Security Compliance PowerShell Graph API; Security & Compliance OCR PowerShell settings. Read Purview OCR and returned references; SharePoint parameters and Communication Compliance OCR are different controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Microsoft 365 admin center path through Pay-as-you-go services and Optical character recognition reaches site selection at Edit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+      "quote": "On the Optical character recognition panel, under Select the SharePoint libraries where you would like to enable optical character recognition, select Edit.",
+      "severity": "minor",
+      "fix": "Extend the existing path after 'Edit' with ' > Enable optical character recognition in Microsoft 365 > All sites / Selected sites (up to 100) / No sites'. The current path is correct but stops before the scope options."
+    },
+    {
+      "n": 65,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOTenant -OpticalCharacterRecognitionSelectedSitesList <String[]> sets which SharePoint sites OCR runs on without a stated scope prerequisite.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "This parameter can only be called if optical character recognition's scope is set to SelectedSites. The inputted list of site URLs cannot exceed 100 items.",
+      "severity": "blocker",
+      "fix": "Keep the call but qualify its note: 'Requires pay-as-you-go billing and OCR scope already set to SelectedSites. Supply up to 100 SharePoint site URLs; this call overwrites the existing selected-sites list by default.' The parameter does not select All sites or No sites."
+    },
+    {
+      "n": 66,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "The Set-SPOTenant reference lists OpticalCharacterRecognitionSelectedSitesList and its type without describing it.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "This parameter allows administrators to pass a list of SharePoint site URLs to modify the optical character recognition premium feature's selected sites list. By default this parameter overwrites the existing list with the user input list.",
+      "severity": "blocker",
+      "fix": "Remove both statements that the parameter is undescribed. Replace the prose with 'The Set-SPOTenant reference documents -OpticalCharacterRecognitionSelectedSitesList as replacing the selected-sites list with up to 100 site URLs; it requires OCR scope SelectedSites and pay-as-you-go billing.'"
+    },
+    {
+      "n": 67,
+      "where": "controls[1].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The site scope panel offers All sites, Selected sites with a maximum of 100, or No sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+      "quote": "On the Enable optical character recognition in Microsoft 365 panel, change the setting from All sites to Selected sites (up to 100) or No sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Settings > Org settings > Pay-as-you-go services > Billing > Document processing services reaches the billing configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing",
+      "quote": "On the Services tab, select Pay-as-you-go services.",
+      "severity": "minor",
+      "fix": "Use 'Settings > Org settings > Services > Pay-as-you-go services > Billing > Document processing services > Set up billing and turn on services > Set up billing > Azure subscription'. This restores the services-list tab and extends the route to the subscription control."
+    },
+    {
+      "n": 69,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API for connecting the document processing billing subscription is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: document processing pay as you go billing connect subscription PowerShell REST API; Syntex billing PowerShell subscription; document processing billing Graph subscription API. Opened syntex-azure-billing; found portal instructions, not a connection API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The billing page separately documents disconnecting the Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing",
+      "quote": "Under Manage billing, select Disconnect Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "If service and DLP site lists differ, the documented maximum number of sites is enabled for OCR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+      "quote": "If there are different sites specified for the service and data loss prevention, the maximum number of sites will be enabled for OCR.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "cost",
+      "claim": "Specifying sites in both service and DLP configuration does not cause a double processing charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+      "quote": "You won't be charged twice for processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Scope: Who and what",
+      "type": "availability",
+      "claim": "Supported image formats include BMP, PNG, JPEG, GIF, TIFF, HEIC and raw camera formats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "BMP, PNG, JPEG, JPG, JFIF, ARW, CR2, CRW, ERF, GIF, MEF, MRW, NEF, NRW, ORF, PEF, RAW, RW2, RW1, SR2, TIF, TIFF, HEIC, HEIF",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to inventory policies, review Cost Management and consider backfill, but these controls have no corresponding rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List the DLP, records management and insider risk policies ... Review Microsoft Cost Management for Azure ... Decide whether existing content needs the backfill cmdlet",
+      "severity": "minor",
+      "fix": "The policy-inventory, Cost Management and backfill checklist steps have no control rows. Remove these checklist bullets to align the checklist with the existing table; this correction does not require adding rows."
+    },
+    {
+      "n": 75,
+      "where": "What's changing; Scope: Rollout",
+      "type": "availability",
+      "claim": "The briefing presents documented Purview OCR behaviour without noting that another Microsoft page still calls its settings preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings",
+      "quote": "Microsoft Purview includes OCR (preview) settings for Microsoft Purview Insider Risk Management, Microsoft Purview Data Loss Prevention, Microsoft Purview Data Loss Management, and auto-labeling.",
+      "severity": "minor",
+      "fix": "Add: 'The Purview OCR page does not mark these settings preview, but the Communication Compliance policy documentation still calls the shared Purview OCR settings preview.' Cite https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T14:00:36.514Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=497912",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ocr-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/promo-syntex",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spositeopticalcharacterrecognitionbackfill",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which locations and groups Purview scans with OCR",
+        "docs": "https://learn.microsoft.com/purview/ocr-learn-about",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Optical character recognition"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which SharePoint sites OCR runs on",
+        "docs": "https://learn.microsoft.com/microsoft-365/documentprocessing/ocr",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Pay-as-you-go services",
+          "Settings",
+          "Document & image services",
+          "Optical character recognition",
+          "Select the SharePoint libraries where you would like to enable optical character recognition",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which SharePoint sites OCR runs on",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Azure subscription that bills OCR and other document processing services",
+        "docs": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-azure-billing",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Pay-as-you-go services",
+          "Billing",
+          "Document processing services"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

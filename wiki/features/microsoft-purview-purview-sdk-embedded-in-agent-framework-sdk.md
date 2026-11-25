@@ -14,7 +14,7 @@ previewDate: "November CY2025"
 risk: "medium"
 cost: "variable"
 impact: "low"
-defaultState: "off"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "mixed"
@@ -46,7 +46,7 @@ sources:
   - title: "Set-FeatureConfiguration"
     url: "https://learn.microsoft.com/powershell/module/exchange/set-featureconfiguration"
     kind: "learn"
-  - title: "MC1302905"
+  - title: "MC1302905: (Updated) Microsoft Purview compliance portal: Purview SDK embedded in Agent Framework SDK"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1302905"
     kind: "message-center"
 videos: []
@@ -73,7 +73,7 @@ controls:
     note: "The call turns ingestion off; New-FeatureConfiguration creates the policy. Learn's example of a suitable account is a member of the Microsoft Entra Compliance Administrator group role."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-18"
@@ -86,19 +86,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Corrected the default state to user-opt-in, replaced the retention sentence with the full route and replaced an unlisted-control checklist step with a FinOps consumption review."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 72
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "b192fe5c3d7c32c870e001f6c56aff7a"
+  contradicted: 0
+  attempts: 0
+  hash: "6bb174b10451f575aa61c7036fdb6213"
 ---
 
 ## What's changing
@@ -153,7 +157,7 @@ Prerequisites on Learn: an Azure subscription with Purview configured, a Microso
 
 ### Before rollout
 - Ask development teams which custom agents use Microsoft Agent Framework and whether they plan to add the Purview middleware; MC1302905 says the integration needs developer implementation.
-- Confirm pay-as-you-go billing is set up and budgeted against an Azure subscription before the middleware is deployed.
+- Review expected pay-as-you-go consumption with FinOps before the middleware is deployed.
 - Draft the DLP rule for the agent's Entra app registration in PowerShell (see the DLP row in the controls table), because the portal does not currently support this.
 - Decide whether prompts and responses should be stored in Purview, using the collection policy row.
 
@@ -182,7 +186,7 @@ The two rows cover the policy that blocks content and the policy that captures i
 
 The PowerShell example for the collection policy uses the name "DSPM for AI - Collection policy for enterprise AI apps", while the one-click recommendation in the portal is named "DSPM for AI - Capture interactions for enterprise AI apps"; check the actual name before running Set-FeatureConfiguration. Set-FeatureConfiguration is in Public Preview, is not available in all organisations, and is subject to change.
 
-The interactions can also be retained: Learn says to go to Data Lifecycle Management > Policies > Retention Policies and select the location Enterprise AI apps. The controls table does not list this because its automation was not read. Both policy types are tenant-level Purview settings; the middleware choice itself sits in agent code, not in an admin centre.
+The interactions can also be retained: Learn says to go to Data Lifecycle Management > Policies > Retention Policies in the Microsoft Purview portal and create a retention policy for the Enterprise AI apps location. The controls table does not list this because its automation was not read. Both policy types are tenant-level Purview settings; the middleware choice itself sits in agent code, not in an admin centre.
 
 ## Open questions
 
@@ -195,13 +199,4 @@ The interactions can also be retained: Learn says to go to Data Lifecycle Manage
 risk: Medium. Prompts and responses from custom agents flow to Purview only where a developer adds the middleware, so the exposure that remains is agents built without it, and the DLP controls for this case are PowerShell-only.
 cost: Variable. Microsoft Learn lists a Microsoft 365 E5 licence and pay-as-you-go billing as prerequisites; the pay-as-you-go meter is billed through an Azure subscription, and no rate for this integration is quoted here.
 impact: Low. Developers and the security and compliance teams notice it; the Message Center post says there is no change to user experiences in Microsoft 365 services.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState / default: The default-state category is off, rather than identifying who opts into using the integration. | Found: The integration is not enabled automatically; it requires developer implementation within custom agents. | Fix: Set defaultState to "user-opt-in": the developer is the maker choosing to use the integration in agent code. The schema reserves "off" for an off-by-default statement that does not identify who enables it. Keep the existing explanation that implementation is required per custom agent.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / admin-path: The Purview portal's Data Lifecycle Management > Policies > Retention Policies route reaches retention-policy creation. | Found: In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy | Fix: Replace the retention sentence with: "The interactions can also be retained: Learn says to go to Data Lifecycle Management > Policies > Retention Policies in the Microsoft Purview portal and create a retention policy for the Enterprise AI apps location." This retains the correct route and makes the omitted policy-creation step explicit. | Source: https://learn.microsoft.com/purview/ai-entra-registered
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every configuration the governance checklist tells readers to check has a controls-table row. | Found: Checklist: "Confirm pay-as-you-go billing is set up and budgeted against an Azure subscription before the middleware is deployed." The controls table has only DLP and collection-policy rows. | Fix: Replace that Before rollout bullet with: "Review expected pay-as-you-go consumption with FinOps before the middleware is deployed." This preserves budgeting advice without directing readers to check an unlisted configuration control.
 -->

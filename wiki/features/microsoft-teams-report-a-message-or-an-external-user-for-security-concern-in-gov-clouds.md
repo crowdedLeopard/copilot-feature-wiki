@@ -15,7 +15,7 @@ risk: "low"
 cost: "low"
 impact: "medium"
 defaultState: "unknown"
-action: "prepare"
+action: "review"
 licensing:
   model: "mixed"
   notes: "Learn describes reporting for organisations with Defender for Office 365 Plan 2 or Defender XDR (another page also lists Plan 1). Defender for Office 365 can be an add-on licence or included in subscriptions such as Microsoft 365 E5. Entitlement for this Government rollout is not published."
@@ -43,6 +43,12 @@ sources:
   - title: "Supported Microsoft Teams resources for Tenant Configuration Management"
     url: "https://learn.microsoft.com/graph/utcm-teams-resources"
     kind: "learn"
+  - title: "Privacy and data handling for security reports in Microsoft Teams"
+    url: "https://learn.microsoft.com/microsoftteams/security-report-privacy"
+    kind: "learn"
+  - title: "Microsoft Teams analytics and reporting"
+    url: "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference#teams-reporting-reference"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-report-suspicious-guest-invitations","microsoft-teams-report-a-security-concern-in-meetings","microsoft-teams-phishing-detection-in-teams-messaging"]
 controls:
@@ -67,7 +73,7 @@ controls:
     note: "Report categories: Calling, Chats and channels, User. CSV export is available in the admin center."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-25"
 roadmapModified: "2026-11-12T01:50:56"
 changes:
   - date: "2026-11-18"
@@ -80,30 +86,34 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-25"
+    note: "Correction: replaced the open question on whether reports go to Microsoft with Learn's statement that report data is shared for threat analysis; added the Gov-cloud availability in the Teams reporting reference and the Communication Compliance pop-up note; action changed to review."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-25"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "328c08577fc3a77d40ed4bc008e5da22"
+  contradicted: 0
+  attempts: 0
+  hash: "c9cac5a637eef74067f26bf415a9d48d"
 ---
 
 ## What's changing
 
 The roadmap item states that users in the US Government clouds (GCC, GCC High and DoD) can report suspicious messages and external users within Teams, and that the reports appear in the Teams admin center so admins can investigate and act. Its status is Rolling out, with a target of November CY2026, in the General Availability phase, on Android, Desktop, iOS, Mac and Web.
 
-Microsoft Learn describes the reporting experience on its page [End user reporting for Security](https://learn.microsoft.com/microsoftteams/end-user-reporting-security). To report a message, a user goes to a chat or channel message, selects **... > Report this message** and chooses **Security concern**. The Defender reporting instructions instead label the selection **Security risk - Spam, phishing, malicious content** ([User reported settings in Microsoft Teams](https://learn.microsoft.com/defender-office-365/submissions-teams#report-malicious-messages-in-teams)). To report an external user, the user ticks **Report this person** while blocking them, from an external chat request or from the user's profile card.
+Microsoft Learn describes the reporting experience on its page [End user reporting for Security](https://learn.microsoft.com/microsoftteams/end-user-reporting-security). To report a message, a user goes to a chat or channel message, selects **... > Report this message** and chooses **Security concern**. The Defender reporting instructions instead label the selection **Security risk - Spam, phishing, malicious content** ([User reported settings in Microsoft Teams](https://learn.microsoft.com/defender-office-365/submissions-teams#report-malicious-messages-in-teams)). If reporting for Microsoft Purview Communication Compliance is turned off, users might see a confirmation pop-up instead of the selection. To report an external user, the user ticks **Report this person** while blocking them, from an external chat request or from the user's profile card.
 
 Admins review the reports in the Teams admin center under the **User reported security submissions** report, which has **Chats and channels** and **User** categories and can be exported to CSV ([Learn](https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal)).
 
-The sources disagree on clouds. The Learn pages about this reporting do not name any cloud, while Microsoft's page [User reported settings in Microsoft Teams](https://learn.microsoft.com/defender-office-365/submissions-teams) states that user reporting of calls, meetings and messages is not supported in GCC, GCC High and DoD. That note does not mention external users, and it may predate this rollout. Both are reported here as written; the roadmap is the later statement of plan.
+The sources disagree on clouds. The Learn pages about this reporting do not name any cloud, while Microsoft's page [User reported settings in Microsoft Teams](https://learn.microsoft.com/defender-office-365/submissions-teams) states that user reporting of calls, meetings and messages is not supported in GCC, GCC High and DoD. That note does not mention external users, and it may predate this rollout. The Teams reporting reference also lists User reported security submissions as unavailable in GCC, GCC High and DoD, in contrast to the roadmap ([Teams reporting reference](https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference#teams-reporting-reference)). Both are reported here as written; the roadmap is the later statement of plan.
 
 ## Why it matters
 
@@ -180,21 +190,11 @@ Two settings are involved for messages: the Teams admin center toggle decides wh
 - Do the Learn pages on end-user reporting apply in GCC, GCC High and DoD now, given that the Defender page says user reporting is not supported there? Watch the Learn pages and the roadmap item.
 - Is **Report a security concern** on or off by default in the US Government clouds? Microsoft has not stated it.
 - Which Defender licence, if any, do US Government tenants need? The Learn pages list different plans and no Gov-specific licence is published.
-- Are reports from US Government tenants also sent to Microsoft for analysis, or do they stay in the tenant's Teams admin center report?
+- Microsoft states that Teams security-report data is also shared with Microsoft for threat analysis and service protection ([Privacy and data handling for security reports in Microsoft Teams](https://learn.microsoft.com/microsoftteams/security-report-privacy)).
 - Will an API or export feed for user reported security submissions be documented? Only the admin center view and CSV export are documented at the time of writing.
 
 <!-- rationale
 risk: Low. The feature adds a user-initiated reporting signal for admins. Its default in these clouds is not stated, so this rates today's behaviour continuing, with one messaging policy toggle as the control.
 cost: Low. The only cost the sources show is admin time to triage reports; Learn frames reporting for organisations with Defender for Office 365 or Defender XDR, and no price or meter for this feature is published.
 impact: Medium. Every user in a messaging policy that allows it sees new report options, and security admins gain a report queue to review and act on.
--->
-
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: reports sent to Microsoft or retained only in the tenant / absence: Whether reports from US Government tenants are also sent to Microsoft for analysis, rather than staying only in the tenant's Teams admin center report, remains undocumented. | Found: You might report security concerns that involve Teams communications, including messages, calls, meetings, or users. ... Report data is also shared with Microsoft for threat analysis and service protection. | Fix: Replace the open question 'Are reports from US Government tenants also sent to Microsoft for analysis, or do they stay in the tenant's Teams admin center report?' with 'Microsoft states that Teams security-report data is also shared with Microsoft for threat analysis and service protection.' Cite and add to sources https://learn.microsoft.com/microsoftteams/security-report-privacy. This general data-handling rule does not establish the Government-specific fifteen-message contextual-sharing detail. | Source: https://learn.microsoft.com/microsoftteams/security-report-privacy
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Defender reporting label / admin-path: The Defender instructions label the selection Security risk - Spam, phishing, malicious content. | Found: If reporting for Microsoft Purview Communication Compliance is turned off, users might not have the dropdown list to select Security risk - Spam, phishing, malicious content. Instead, they're shown a confirmation pop-up. | Fix: After the sentence giving the Defender label, add: 'If reporting for Microsoft Purview Communication Compliance is turned off, users might see a confirmation pop-up instead of the selection.' Keep the existing submissions-teams citation. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
-- [supported, minor] controls[1].ui; What's changing: report availability / admin-path: The report is reached through Analytics & reports > Protection reports > View reports > Report > User reported security submissions. | Found: In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports. ... On the View reports tab, under Report, select User reported security submissions. | Fix: Add to the cloud-disagreement paragraph: 'The Teams reporting reference also lists User reported security submissions as unavailable in GCC, GCC High and DoD, in contrast to the roadmap.' Cite and add to sources https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference#teams-reporting-reference; its table lists Public Yes, GCC No, GCCH No and DoD No for this report. | Source: https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal
-- [contradicted, minor] front matter: action; Why it matters / consistency: The prepare action rating agrees with the page's account of an unknown-default optional capability with no stated change to existing behavior. | Found: action: "prepare" ... Microsoft has not stated what happens on arrival in these clouds, so no source says existing behaviour changes. | Fix: Set action to 'review'. The assessment scale assigns review to a new capability with an unstated default when no source says existing behavior changes; the page's own arrival-behavior paragraph takes that position.
 -->

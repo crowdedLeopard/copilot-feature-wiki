@@ -87,15 +87,17 @@ changes:
     note: "Corrected: Power Pages use rights for Power Apps per app, per user and Dynamics 365 enterprise licences now carry their environment and recognition conditions; three checklist steps with no controls-table row were removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 82 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 82
+  confirmed: 82
   unconfirmed: 0
   contradicted: 0
   attempts: 0

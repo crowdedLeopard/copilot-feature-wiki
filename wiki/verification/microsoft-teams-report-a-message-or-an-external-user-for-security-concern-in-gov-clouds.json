@@ -2,39 +2,33 @@
   "slug": "microsoft-teams-report-a-message-or-an-external-user-for-security-concern-in-gov-clouds",
   "roadmapId": 569609,
   "title": "Microsoft Teams: report a message or an external user for a security concern in US Government clouds",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-25",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "1 blocking finding (claim 54)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 56,
-    "confirmed": 54,
+    "claims": 55,
+    "confirmed": 55,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "The briefing leaves sharing reports with Microsoft as an unanswered question, but Microsoft's Teams security-report privacy page states that report data is shared for threat analysis and service protection. The roadmap facts, admin paths and PowerShell command are supported; the disagreement over Government cloud availability should also include the Teams reporting reference.",
+  "summary": "The briefing matches the roadmap and the documented reporting controls. It explicitly preserves Microsoft's conflicting Government-cloud availability statements and distinguishes the published general reporting requirements from the still-undocumented Government rollout details.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "The roadmap describes Government cloud users reporting suspicious Teams messages.",
+      "claim": "The roadmap describes Government-cloud users reporting suspicious messages within Teams.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users in Gov clouds can now report suspicious messages and external users within Teams.",
@@ -43,9 +37,9 @@
     },
     {
       "n": 2,
-      "where": "title; summary; What's changing",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap describes Government cloud users reporting suspicious external users within Teams.",
+      "claim": "The roadmap describes Government-cloud users reporting external users within Teams.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users in Gov clouds can now report suspicious messages and external users within Teams.",
@@ -54,9 +48,9 @@
     },
     {
       "n": 3,
-      "where": "summary; What's changing; rationale: impact",
+      "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap says reports surface in the Teams admin center for investigation and action.",
+      "claim": "Reports surface in the Teams admin center for administrators to investigate and act on.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Reports are surfaced in the Teams admin center, giving admins greater visibility into potentially malicious activity and enabling them to investigate and take appropriate action.",
@@ -65,17 +59,6 @@
     },
     {
       "n": 4,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The reporting signal is intended to help identify phishing, impersonation, spam and other messaging threats.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "By incorporating end-user reports as an additional security signal, this capability helps organizations identify and respond more quickly to phishing, impersonation, spam, and other messaging threats.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -86,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The target is November CY2026.",
@@ -97,13 +80,24 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
       "severity": null,
       "fix": null
     },
@@ -120,20 +114,9 @@
     },
     {
       "n": 9,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -141,79 +124,90 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on November 12, 2026.",
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default or arrival behaviour specifically for this Government-cloud rollout.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-12T01:50:56\"",
+      "source": null,
+      "quote": "Searched: Teams Report a security concern GCC GCC High DoD default; Teams Gov security concern default. Opened end-user-reporting-security and submissions-teams: general Teams default is On, but no Gov rollout default; the latter excludes Gov reporting. Roadmap gives no default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects Defender entitlement through add-on licences or subscriptions containing it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin",
+      "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2 (add-on licenses or included in subscriptions like Microsoft 365 E5), admins can also see user reported messages in Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Users report a chat or channel message through ... > Report this message > Security concern.",
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "The Teams feature page frames reporting for organisations with Defender for Office 365 Plan 2 or Defender XDR.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "Go to chat or channel message and select ... > Report this message. ... Select Security concern.",
+      "quote": "In organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, admins can decide whether users can report malicious messages in Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing: Defender reporting label",
-      "type": "admin-path",
-      "claim": "The Defender instructions label the selection Security risk - Spam, phishing, malicious content.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Defender reporting page lists Defender for Office 365 Plan 1 or Plan 2, or Defender XDR.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "If reporting for Microsoft Purview Communication Compliance is turned off, users might not have the dropdown list to select Security risk - Spam, phishing, malicious content. Instead, they're shown a confirmation pop-up.",
-      "severity": "minor",
-      "fix": "After the sentence giving the Defender label, add: 'If reporting for Microsoft Purview Communication Compliance is turned off, users might see a confirmation pop-up instead of the selection.' Keep the existing submissions-teams citation."
+      "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings, or meeting participants in Microsoft Teams.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Reporting an external user happens while blocking that user.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Defender for Office 365 Plan 1 or Plan 2 may be add-on licences or included in subscriptions such as Microsoft 365 E5.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "User can report suspicious external users while blocking them in Teams, from external chat requests and user profile cards.",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin",
+      "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2 (add-on licenses or included in subscriptions like Microsoft 365 E5), admins can also see user reported messages in Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Users can select Report this person while blocking someone from an external chat request.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Entitlement specifically for the new Government-cloud reporting rollout is not yet published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "Open the external chat request. ... Select Block, Delete or Leave, depending on the chat type and your organization's settings, and follow the prompt to block the user. ... Click Report this person checkbox and confirm.",
+      "source": null,
+      "quote": "Searched: Teams report a security concern price licensing government; Teams user reported GCC licensing price meter. Opened submissions-teams, end-user-reporting-security, submissions-admin and mdo-gov: general Defender offers are published, not this new Gov reporting entitlement.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing",
-      "type": "admin-path",
-      "claim": "Users can select Report this person while blocking someone from the person's profile card.",
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a price or meter specifically for this feature in Government clouds.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "Open the user's profile card. ... Open the menu option and select Block contact ... Click Report this person checkbox and confirm.",
+      "source": null,
+      "quote": "Searched: Teams user reported GCC licensing price meter; Teams report a security concern price licensing government. Opened submissions-teams, submissions-admin, end-user-reporting-security and mdo-gov; none publishes a price or meter for this Gov reporting feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
+      "where": "controls[0].ui; Governance controls; Governance guidance",
       "type": "admin-path",
-      "claim": "The Teams admin center path is Messaging policies > policy > Report a security concern.",
+      "claim": "The cited page gives Teams admin center > Messaging policies > policy > Report a security concern.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "In the left navigation, select Messaging policies. ... Select a policy. ... Turn on the setting: Report a security concern.",
+      "quote": "In the left navigation, select Messaging policies.\n3. Select a policy.\n4. Turn on the setting: Report a security concern.",
       "severity": null,
       "fix": null
     },
@@ -221,40 +215,51 @@
       "n": 18,
       "where": "controls[0].api; Governance controls",
       "type": "command",
-      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMessagingPolicy -Identity <policy name> -AllowSecurityEndUserReporting $true.",
+      "claim": "Set-CsTeamsMessagingPolicy -Identity <policy name> -AllowSecurityEndUserReporting $true enables security-concern reporting for the selected messaging policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps",
-      "quote": "-AllowSecurityEndUserReporting: This setting determines if users can report any security concern posted in message to their admin. Possible values: True, False",
+      "quote": "This cmdlet updates a Teams messaging policy.\n### -AllowSecurityEndUserReporting\nThis setting determines if users can report any security concern posted in message to their admin. Possible values: True, False",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "controls[0].governs and scope; Scope: Users; rationale: impact",
-      "type": "applicability",
-      "claim": "The messaging policy's Report a security concern setting determines whether its users can report messages and external users.",
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The report is reached through Teams admin center > Analytics & reports > Protection reports > View reports > Report > User reported security submissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Users can submit reports only when the required reporting settings are enabled in the Teams admin center. ... For chat and channel messages and external users, the Report a security concern setting must be turned on in the user's messaging policy.",
+      "quote": "In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports.\n2. On the View reports tab, under Report, select User reported security submissions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "controls[0].note; Scope: Roles",
-      "type": "role",
-      "claim": "Viewing or configuring user reporting in the Teams admin center requires Global Administrator or Teams Administrator.",
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or automated export feed for the User reported security submissions report is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "To view or configure user reporting in the Teams admin center, you need to be a member of the Global Administrator or Teams Administrator roles.",
+      "source": null,
+      "quote": "Searched: User reported security submissions API PowerShell; Teams user reported security submissions report API PowerShell Microsoft Graph export. Opened report page, submissions-teams, Graph beta threatSubmission: no report API; threatSubmission covers email, attachments and URLs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "controls[0].note; Governance controls: newer experience",
-      "type": "behaviour",
-      "claim": "Learn identifies Settings & policies as the entry point for the policy in the new experience.",
+      "where": "controls[0].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Viewing or configuring user reporting in the Teams admin center requires Global Administrator or Teams Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "To view or configure user reporting in the Teams admin center, you need to be a member of the Global Administrator* or Teams Administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Governance controls",
+      "type": "admin-path",
+      "claim": "The newer experience locates this policy under Settings & policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
       "quote": "To access this policy in the new experience, go to Settings & policies.",
@@ -262,131 +267,219 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "controls[0].note",
+      "n": 23,
+      "where": "controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "Cloud availability for this messaging policy setting is not stated.",
+      "claim": "Cloud availability for the messaging-policy setting itself is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Report a security concern GCC GCC High DoD default AllowSecurityEndUserReporting licensing. Read end-user-reporting-security, submissions-teams, Set-CsTeamsMessagingPolicy and utcm-teams-resources; none specifies cloud availability of this setting.",
+      "quote": "Searched: Teams Report a security concern GCC GCC High DoD default; Teams Gov security concern default. Opened end-user-reporting-security, Set-CsTeamsMessagingPolicy and submissions-teams: no cloud matrix for the setting; Gov reporting exclusion is separately stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[1].ui; What's changing: report availability",
-      "type": "admin-path",
-      "claim": "The report is reached through Analytics & reports > Protection reports > View reports > Report > User reported security submissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports. ... On the View reports tab, under Report, select User reported security submissions.",
-      "severity": "minor",
-      "fix": "Add to the cloud-disagreement paragraph: 'The Teams reporting reference also lists User reported security submissions as unavailable in GCC, GCC High and DoD, in contrast to the roadmap.' Cite and add to sources https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference#teams-reporting-reference; its table lists Public Yes, GCC No, GCCH No and DoD No for this report."
-    },
-    {
       "n": 24,
-      "where": "controls[1].note; What's changing; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "The report categories are Calling, Chats and channels, and User.",
+      "where": "controls[0].governs and scope; Scope: Users; rationale: impact",
+      "type": "applicability",
+      "claim": "The user's messaging-policy Report a security concern setting controls reporting of chat and channel messages and external users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Under Report category, choose one of the following categories: Calling; Chats and channels; User.",
+      "quote": "For chat and channel messages and external users, the Report a security concern setting must be turned on in the user's messaging policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "controls[1].note; What's changing; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Admins can export the user-reported security submissions reports to CSV.",
+      "where": "What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "A user reports a chat or channel message through ... > Report this message > Security concern.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "The User reported security submissions report in the Microsoft Teams admin center helps you review security-related reports submitted by users in your organization. You can export these reports to a CSV file for further analysis.",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "Go to chat or channel message and select … > Report this message.\n2. Select Security concern.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "controls[1].api; Governance controls; Open questions: API",
-      "type": "absence",
-      "claim": "An API or export feed for reading User reported security submissions is not documented at the time of writing.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Defender instructions label the message-reporting choice Security risk - Spam, phishing, malicious content.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams user reported security submissions report API Microsoft Graph export reports; \"user reported security submissions\" API PowerShell. Read the report page, utcm-teams-resources and Graph security-threatsubmission; none documents an API for this report.",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "In the report this message dialog that opens, verify Security risk - Spam, phishing, malicious content is selected, and then select Report.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Data exposure",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Chats and channels CSV includes the sender's domain.",
+      "claim": "Turning off Communication Compliance reporting can replace the selection dropdown with a confirmation pop-up.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Sender domain name: Domain of the sender. This field might be blank if the sender uses a consumer account, depending on their privacy setting. ... Available only in the exported CSV file.",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "If reporting for Microsoft Purview Communication Compliance is turned off, users might not have the dropdown list to select Security risk - Spam, phishing, malicious content. Instead, they're shown a confirmation pop-up.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Risk assessment: Data exposure",
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
-      "claim": "The Chats and channels CSV participant list contains at most 20 entries.",
+      "claim": "Users can report an external user by selecting Report this person while blocking them from an external chat request.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Participant list: List of participants in the conversation, including their display name, email address, and Microsoft Resource Identifier (MRI). Maximum 20 entries: up to 10 entries from the reporter's tenant and up to 10 entries from non-reporter tenants.",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "Open the external chat request.\n2. Select Block, Delete or Leave, depending on the chat type and your organization's settings, and follow the prompt to block the user.\n3. Click Report this person checkbox and confirm.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Risk assessment: Data exposure",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The exported report includes any optional reporter comments.",
+      "claim": "Users can also select Report this person when blocking an external contact from the user's profile card.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Reporter comments: Optional comments that the reporter user sent along with the report, if any. ... Available only in the exported CSV file.",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "Open the user's profile card.\n2. Open the menu option and select Block contact\n3. Click Report this person checkbox and confirm.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Risk assessment: Data exposure",
+      "where": "controls[1].note; What's changing; Governance guidance; Governance controls",
       "type": "behaviour",
-      "claim": "The User report includes the reported user's display name and email address if available.",
+      "claim": "The report categories are Calling, Chats and channels, and User.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Reported user name: Reported user's display name and email address, if available. If the reported user uses a consumer account, their email address might not be available depending on their privacy setting.",
+      "quote": "Under Report category, choose one of the following categories:\n- Calling\n- Chats and channels\n- User",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Why it matters; Risk assessment: Security & identity",
+      "where": "controls[1].note; What's changing; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "Admins can use the reported user's identifier to block that user on the Teams admin center External Access page.",
+      "claim": "Administrators can export the reports to CSV.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Reported user ID: Microsoft Resource Identifier (MRI) of the reported user. Admins can use this identifier when blocking the user on the External Access page of the Teams admin center.",
+      "quote": "You can export these reports to a CSV file for further analysis.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The Defender page says message content is copied when a Teams item is reported to Microsoft.",
+      "where": "What's changing: cloud disagreement",
+      "type": "absence",
+      "claim": "The Teams feature and report pages do not specify clouds.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable: Message content.",
+      "source": null,
+      "quote": "Searched: Teams Report a security concern GCC GCC High DoD default; read end-user-reporting-security and end-user-reported-security-signal in full. Neither page names GCC, GCC High or DoD; cloud exclusions appear on submissions-teams and the separately cited reporting reference.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
+      "where": "What's changing; Scope: Clouds; Open questions",
+      "type": "availability",
+      "claim": "The Defender reporting page says reporting calls, meetings and messages is unsupported in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "User reporting of calls, meetings, and messages in Teams is not supported in U.S. Government organizations (Microsoft 365 GCC, GCC High, and DoD).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing: cloud disagreement",
+      "type": "availability",
+      "claim": "That Defender Government-cloud exclusion note does not mention reporting external users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "User reporting of calls, meetings, and messages in Teams is not supported in U.S. Government organizations (Microsoft 365 GCC, GCC High, and DoD).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing: cloud disagreement",
+      "type": "availability",
+      "claim": "The Teams reporting reference lists User reported security submissions as unavailable in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference",
+      "quote": "| Report | Public | GCC | GCCH | DoD | What's measured? |\n| User reported security submissions report | Yes | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing: cloud disagreement",
+      "type": "date",
+      "claim": "The roadmap record is a later statement of plan than the two conflicting Learn pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "submissions-teams HTML: updated_at=\"2026-10-05T22:34:00Z\"; teams-reporting-reference HTML: updated_at=\"2026-08-13T22:44:00Z\". Roadmap record: \"modified\": \"2026-11-12T01:50:56\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Defender page says up to fifteen messages before and after the reported message might be shared for analysis.",
+      "claim": "The chats-and-channels CSV includes a sender-domain field.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "Sender domain name | Domain of the sender. This field might be blank if the sender uses a consumer account, depending on their privacy setting.\nAvailable only in the exported CSV file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The chats-and-channels CSV participant list contains at most 20 entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "List of participants in the conversation, including their display name, email address, and Microsoft Resource Identifier (MRI). Maximum 20 entries: up to 10 entries from the reporter's tenant and up to 10 entries from non-reporter tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The exported CSV includes optional reporter comments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "Reporter comments | Optional comments that the reporter user sent along with the report, if any.\nAvailable only in the exported CSV file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The User report includes the reported user's display name and email address if available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "Reported user's display name and email address, if available. If the reported user uses a consumer account, their email address might not be available depending on their privacy setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Defender documentation says reporting a Teams item to Microsoft copies associated message content for analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable:\n- Message content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Up to fifteen messages before and after the reported message might also be shared for analysis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "The submission might also include contextual data for the reported message. Specifically, up to fifteen messages before and after the reported message might also be shared for analysis.",
@@ -394,19 +487,41 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 43,
       "where": "Risk assessment: Data exposure",
       "type": "absence",
-      "claim": "Microsoft does not state whether the specific fifteen-message contextual-sharing behavior applies to Government cloud reports.",
+      "claim": "Whether Government reports share that specific surrounding-message context is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams reporting Government analysis Microsoft security concern; \"security-report-privacy\" \"Government\". Read submissions-teams and security-report-privacy; neither specifies fifteen-message contextual sharing for Government clouds.",
+      "quote": "Searched: Teams security reports Government data shared messages. Opened security-report-privacy and submissions-teams. Privacy confirms sharing report data generally, not the fifteen-message context in Gov; submissions-teams gives that context but excludes Gov reporting.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "n": 44,
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The exported User report supplies a Microsoft Resource Identifier for the reported user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "Reported user ID | Microsoft Resource Identifier (MRI) of the reported user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Risk assessment: Security & identity; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Admins can use the reported user's identifier when taking the separate action of blocking that user on the Teams admin center External Access page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "Reported user ID | Microsoft Resource Identifier (MRI) of the reported user. Admins can use this identifier when blocking the user on the External Access page of the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
       "claim": "Message senders are not notified that their messages were reported.",
       "status": "supported",
@@ -416,8 +531,30 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Reporting is initiated by a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "Users who see a concerning chat or a channel message in Teams can report it as a security risk.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions; controls[1].scope",
+      "type": "behaviour",
+      "claim": "The admin report provides organisation-level review of security reports submitted by users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "The User reported security submissions report in the Microsoft Teams admin center helps you review security-related reports submitted by users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
       "claim": "Users can report the same item multiple times.",
       "status": "supported",
@@ -427,32 +564,21 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 50,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Reporting is initiated by the user.",
+      "claim": "Not a security concern is the reporting option for messages users believe were incorrectly flagged.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "Users who see a concerning chat or a channel message in Teams can report it as a security risk. ... Review the selections and select Report.",
+      "quote": "Users can report messages in Teams chats or channels that are incorrectly flagged by Link Protection as containing malicious URLs.\nIn the report dialog that opens, select Not a security concern.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The report supplies information for a separate administrator blocking action rather than describing automatic administrator blocking.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Reported user ID: Microsoft Resource Identifier (MRI) of the reported user. Admins can use this identifier when blocking the user on the External Access page of the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
+      "n": 51,
       "where": "Risk assessment: Change & support; Governance controls",
-      "type": "behaviour",
-      "claim": "Learn says external-user reporting is not yet supported in Microsoft Defender, unlike message reporting.",
+      "type": "availability",
+      "claim": "Defender supports user reporting of messages but not yet of external users; external-user reports are reviewed in the Teams admin center instead.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
       "quote": "Only user reporting of messages is supported in Microsoft Defender as of now. User reporting of external users is not yet supported in Microsoft Defender.",
@@ -460,10 +586,32 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Governance controls: two settings",
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The report page's prerequisites name reporting settings, not a licence requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "Reported interactions appear in the User reported security submissions reports only after users submit reports.\nUsers can submit reports only when the required reporting settings are enabled in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Message reporting has separate Teams admin center and Defender portal settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "'Report a security concern' reporting of messages and users in Teams is made of two separate settings:\n- In the Teams admin center\n- In the Microsoft Defender portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
       "type": "applicability",
-      "claim": "Message reports require the Teams reporting setting and the Defender reporting setting to be on to appear correctly on Submissions > User reported.",
+      "claim": "The Defender setting must also be on for user-reported messages to appear correctly on Submissions > User reported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
       "quote": "If \"Report a security concern\" is turned on in the Teams admin center, it also needs to be turned on in the Defender portal for user reported messages to show up correctly on the User reported tab on the Submissions page.",
@@ -471,191 +619,26 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "End user reporting for Security describes reporting in organizations with Defender for Office 365 Plan 2 or Defender XDR.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "In organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, admins can decide whether users can report malicious messages in Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Defender user-reporting page lists Defender for Office 365 Plan 1 or Plan 2, or Defender XDR.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings, or meeting participants in Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing: report prerequisites",
-      "type": "licensing",
-      "claim": "The admin center report's prerequisites name reporting settings but no license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Reported interactions appear in the User reported security submissions reports only after users submit reports. ... Users can submit reports only when the required reporting settings are enabled in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Defender for Office 365 Plan 1 or Plan 2 can be add-on licenses or included in subscriptions such as Microsoft 365 E5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin",
-      "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2 (add-on licenses or included in subscriptions like Microsoft 365 E5), admins can also see user reported messages in Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The mixed licensing model reflects the documented included-subscription and add-on acquisition routes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin",
-      "quote": "Microsoft Defender for Office 365 Plan 1 or Plan 2 (add-on licenses or included in subscriptions like Microsoft 365 E5)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "A license entitlement specific to the Government cloud rollout is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"user reporting\" \"GCC\" \"license\"; \"Report a security concern\" \"GCC\" \"license\" \"default\". Read end-user-reporting-security, end-user-reported-security-signal, submissions-teams and submissions-admin; no Gov-rollout entitlement is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No price or meter for this feature in Government clouds is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams government user reporting security concern reports Microsoft analysis licensing price; \"Teams\" \"Gov\" \"report\" \"meter\". Read submissions-admin, submissions-teams and both Teams reporting pages; none publishes a Gov-reporting price or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "front matter: defaultState; Open questions; rationale: risk",
-      "type": "default",
-      "claim": "The default state of the Government rollout is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Report a security concern\" \"GCC\" default; \"user reported security submissions\" \"default\" \"GCC\". Read roadmap, end-user-reporting-security and submissions-teams: general Teams default is On, but no Gov-rollout default resolves the conflicting Gov support text.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "What's changing: cloud disagreement",
-      "type": "absence",
-      "claim": "The two cited Teams pages describing end-user reporting and the report do not name a cloud.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Report a security concern GCC GCC High DoD default AllowSecurityEndUserReporting licensing. Read end-user-reporting-security and end-user-reported-security-signal in full; neither names GCC, GCC High or DoD.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "What's changing; Scope: Clouds; Open questions",
-      "type": "availability",
-      "claim": "The Defender page says user reporting of calls, meetings and messages is unsupported in GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "User reporting of calls, meetings, and messages in Teams is not supported in U.S. Government organizations (Microsoft 365 GCC, GCC High, and DoD).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "What's changing: cloud disagreement",
-      "type": "behaviour",
-      "claim": "The Defender Government exclusion note does not mention reporting external users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "User reporting of calls, meetings, and messages in Teams is not supported in U.S. Government organizations (Microsoft 365 GCC, GCC High, and DoD).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "What's changing: the roadmap is the later statement of plan",
-      "type": "date",
-      "claim": "The roadmap record is newer than the cited Defender reporting page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/en-us/defender-office-365/submissions-teams",
-      "quote": "<meta name=\"updated_at\" content=\"2026-10-05T22:34:00Z\" />",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Why it matters: arrival behavior",
-      "type": "absence",
-      "claim": "Microsoft has not stated what happens on arrival in these clouds or whether existing behavior changes without administrator action.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Report a security concern\" \"GCC\" default; \"Report a security concern\" \"GCC\" \"license\" \"default\". Read roadmap, end-user-reporting-security and submissions-teams; no Gov-specific automatic rollout or enablement instruction is given.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Open questions: reports sent to Microsoft or retained only in the tenant",
-      "type": "absence",
-      "claim": "Whether reports from US Government tenants are also sent to Microsoft for analysis, rather than staying only in the tenant's Teams admin center report, remains undocumented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/security-report-privacy",
-      "quote": "You might report security concerns that involve Teams communications, including messages, calls, meetings, or users. ... Report data is also shared with Microsoft for threat analysis and service protection.",
-      "severity": "blocker",
-      "fix": "Replace the open question 'Are reports from US Government tenants also sent to Microsoft for analysis, or do they stay in the tenant's Teams admin center report?' with 'Microsoft states that Teams security-report data is also shared with Microsoft for threat analysis and service protection.' Cite and add to sources https://learn.microsoft.com/microsoftteams/security-report-privacy. This general data-handling rule does not establish the Government-specific fifteen-message contextual-sharing detail."
-    },
-    {
       "n": 55,
-      "where": "front matter: action; Why it matters",
-      "type": "consistency",
-      "claim": "The prepare action rating agrees with the page's account of an unknown-default optional capability with no stated change to existing behavior.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "action: \"prepare\" ... Microsoft has not stated what happens on arrival in these clouds, so no source says existing behaviour changes.",
-      "severity": "minor",
-      "fix": "Set action to 'review'. The assessment scale assigns review to a new capability with an unstated default when no source says existing behavior changes; the page's own arrival-behavior paragraph takes that position."
-    },
-    {
-      "n": 56,
-      "where": "Risk assessment: Change & support",
-      "type": "admin-path",
-      "claim": "Not a security concern is the reporting selection for a message incorrectly flagged as a security concern.",
+      "where": "Open questions: security-report data sharing",
+      "type": "behaviour",
+      "claim": "Microsoft states that report data is also shared with Microsoft for threat analysis and service protection.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "Users can report messages in Teams chats or channels that are incorrectly flagged by Link Protection as containing malicious URLs. ... In the report dialog that opens, select Not a security concern.",
+      "source": "https://learn.microsoft.com/microsoftteams/security-report-privacy",
+      "quote": "Report data is also shared with Microsoft for threat analysis and service protection.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-25T10:15:43.054Z",
+    "at": "2026-11-25T14:00:36.225Z",
     "summary": {
-      "links": 9,
-      "unreachable": 8,
+      "links": 11,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -666,43 +649,53 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/submissions-admin",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/graph/utcm-teams-resources",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/security-report-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference#teams-reporting-reference",
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/submissions-teams#report-malicious-messages-in-teams",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/submissions-admin#admin-options-for-user-reported-messages",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -711,31 +704,28 @@
         "side": "ui",
         "governs": "Whether users can report messages and external users as a security concern",
         "docs": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Messaging policies",
           "Report a security concern"
         ],
-        "missing": [
-          "Messaging policies",
-          "Report a security concern"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether users can report messages and external users as a security concern",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps",
-        "reachable": false,
+        "reachable": true,
         "token": "Set-CsTeamsMessagingPolicy",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Where admins review user-reported chat and channel messages and external users",
         "docs": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Analytics & reports",
           "Protection reports",
@@ -743,13 +733,7 @@
           "Report",
           "User reported security submissions"
         ],
-        "missing": [
-          "Analytics & reports",
-          "Protection reports",
-          "View reports",
-          "Report",
-          "User reported security submissions"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -764,6 +748,12 @@
     {
       "date": "2026-11-18",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

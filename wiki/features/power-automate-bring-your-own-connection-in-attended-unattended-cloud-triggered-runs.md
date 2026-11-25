@@ -66,15 +66,17 @@ changes:
     note: "Corrected three held statements: data-policy applicability now cites the desktop-flow DLP page, the 'only related control' wording is removed, and the scope note now reflects the roadmap's plan to remove the embedded-reference requirement."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-25"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -167,4 +169,11 @@ A tenant or environment switch for bring your own connection in cloud runs is no
 risk: Medium. Microsoft has not described whose connection a cloud-triggered run uses once embedded connection references are not needed, and Learn documents no admin setting for it at the time of writing (November 2026).
 cost: Low. The only cost the sources show is admin and maker time; a licence or meter for this feature is not yet published. Premium connectors in desktop flows need an Attended RPA licence on today's Learn page.
 impact: Medium. Makers and co-owners of shared desktop flows that use connector actions, and the people who run them, would notice; users who do not use such flows would not.
+-->
+
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; summary; Cost and licensing / licensing: The licensing model is unknown because feature-specific licensing has not been published. | Found: With a Power Automate Premium user license, users gain the full set of capabilities for cloud and desktop automation including premium connectors | Fix: Set licensing.model to included to acknowledge the published product-level entitlement, without claiming feature-specific terms. Replace the first licensing sentence and expand the notes to: 'Power Automate Premium provides cloud and desktop automation capabilities, including premium connectors. Unattended desktop automation requires additional entitlement, such as Power Automate Process or pay-as-you-go. Terms specific to the planned bring your own connection capability are not yet published.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types. In the summary, replace 'No admin setting or licence is documented yet' with 'No admin setting or feature-specific licensing terms are documented yet'. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types
+- [supported, minor] controls[0].ui; Governance guidance: Before rollout; Governance controls table / admin-path: Power Automate (maker) > desktop flow > Details > Connection references > Manage > Embedded in desktop flow reaches the embedding setting. | Found: Select the desktop flow in Power Automate (make.powerautomate.com), and then select Details. 2. In the Connection references section, select Manage. | Fix: Prepend the documented route to the flow list: 'My flows > Desktop flows > desktop flow > Details > Connection references > Manage > Embedded in desktop flow'. Apply the same route in the rendered table and checklist. Cite https://learn.microsoft.com/power-automate/desktop-flows/manage, which states 'Go to My flows > Desktop flows', alongside the existing control documentation. The omitted portion selects the list and target flow; the printed setting steps are correct. | Source: https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors
 -->

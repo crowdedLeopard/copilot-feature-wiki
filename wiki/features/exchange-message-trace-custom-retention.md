@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. The message trace page in the Exchange admin center lists administrator roles as its prerequisites and names no licence."
+  model: "included"
+  notes: "Message trace is available with Exchange Online plans (1, 2 and Kiosk). Microsoft has not published licensing or pricing specific to custom retention."
 audiences: ["m365-admin","compliance","security"]
 tags: ["exchange","retention","message-trace"]
 sources:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Reporting features and troubleshooting tools"
     url: "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/reporting-features-and-troubleshooting-tools"
+    kind: "learn"
+  - title: "Exchange Online service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description"
     kind: "learn"
   - title: "Set-OrganizationConfig"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig?view=exchange-ps"
@@ -49,7 +52,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Exchange admin center"
-      path: "Mail flow > Message trace"
+      path: "Mail flow > Message trace > Start a trace > New message trace > Search"
       docs: "https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac"
     api:
       kind: "powershell"
@@ -65,19 +68,23 @@ changes:
     note: "New briefing: roadmap plans selectable message trace retention periods; Learn still documents a fixed 90 days and no setting."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 38 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-25"
+    note: "Corrected the message trace search limit (Get-MessageTraceV2 returns at most 10 days per query), extended the search path, and recorded that message trace comes with Exchange Online plans."
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 37 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-25"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
+  claims: 37
   confirmed: 37
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "d74ae54f0aa09cfeaaf44cb0ff560c7c"
+  contradicted: 0
+  attempts: 0
+  hash: "014aea82beb0ec125bd6e0710612c76c"
 ---
 
 ## What's changing
@@ -100,7 +107,7 @@ If nobody acts, Microsoft has not said whether anything changes, so plan on toda
 - The retention period decides how long message trace data about each message's handling is kept. The roadmap says the periods will be predefined, and Microsoft has not said whether they are shorter or longer than today's 90 days, so the effect on exposure cannot be rated yet.
 
 **Security & identity**
-- A shorter period would reduce how far back an investigation can search; a longer one would extend it. Today's documented search window is the last 90 days, queried 10 days at a time, so investigations that depend on older data cannot rely on message trace now.
+- A shorter period would reduce how far back an investigation can search; a longer one would extend it. Today's documented search window is the last 90 days; Get-MessageTraceV2 returns at most 10 days of data per query. Investigations that depend on older data cannot rely on message trace now.
 - Microsoft has not published which roles will be able to change the period. Message trace itself is run by Organization Management, Global Administrator or Exchange Administrator holders.
 
 **Autonomy & actions**
@@ -111,7 +118,7 @@ If nobody acts, Microsoft has not said whether anything changes, so plan on toda
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement, meter or price for custom message trace retention. The Message trace page in the Exchange admin center lists administrator roles as its prerequisites and names no licence, and the Exchange Online service description page on reporting features and troubleshooting tools states none for message trace. No meter or charge is documented for this feature at the time of writing (November 2026).
+Message trace is available with Exchange Online plans (1, 2 and Kiosk), according to the Exchange Online service description. Microsoft has not published licensing or pricing specific to custom message trace retention. No meter or charge is documented for this feature at the time of writing (November 2026).
 
 The cost the sources show is administrator time to choose a period, update runbooks and brief the service desk. If a longer period is offered, whether it carries a charge is not yet published.
 
@@ -144,7 +151,7 @@ Message trace today is run from the Exchange admin center (Mail flow > Message t
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Message trace retention period</strong><br><small>Tenant</small><br><small class="controls__note">The roadmap plans a choice of predefined periods; Learn documents no setting yet (November 2026). The FAQ says the period is not configurable.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Searching message trace data within the current 90-day window</strong><br><small>Tenant</small><br><small class="controls__note">Reads data only; it does not set retention. Needs Organization Management, Global Administrator or Exchange Administrator.</small></td><td data-label="Admin UI"><strong>Exchange admin center</strong><br>Mail flow › Message trace <a href="https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-MessageTraceV2 -StartDate &lt;start date&gt; -EndDate &lt;end date&gt;</code> <a href="https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Searching message trace data within the current 90-day window</strong><br><small>Tenant</small><br><small class="controls__note">Reads data only; it does not set retention. Needs Organization Management, Global Administrator or Exchange Administrator.</small></td><td data-label="Admin UI"><strong>Exchange admin center</strong><br>Mail flow › Message trace › Start a trace › New message trace › Search <a href="https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-MessageTraceV2 -StartDate &lt;start date&gt; -EndDate &lt;end date&gt;</code> <a href="https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -165,11 +172,8 @@ cost: Low. The only cost the sources show is administrator time to choose and re
 impact: Low. Message trace is an administrator and support tool run from the Exchange admin center or PowerShell, so mainly Exchange administrators and service desk staff would notice.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity, first bullet / behaviour: Today's message trace search window is queried only 10 days at a time. | Found: If you specify a date/time range that's even slightly greater than 10 days: The results are available only as a downloadable CSV file (an Enhanced summary report or an Extended report). | Fix: Replace 'Today's documented search window is the last 90 days, queried 10 days at a time' with 'Today's documented search window is the last 90 days; Get-MessageTraceV2 returns at most 10 days of data per query'. The ten-day limit is specific to that cmdlet and near-real-time summary queries, not downloadable reports. The existing cited FAQ documents the cmdlet limit. | Source: https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Scope; Governance controls table / admin-path: The Exchange admin center route to searching message trace is Mail flow > Message trace. | Found: In the EAC at https://admin.exchange.microsoft.com, go to Mail flow > Message trace. ... On the Message trace page, you can start a new default trace by selecting ... Start a trace. | Fix: The path reaches the correct page but stops before the search control. Extend controls[1].ui.path and its rendered table path to 'Mail flow > Message trace > Start a trace > New message trace > Search', as documented at https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac. | Source: https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because requirements specific to custom retention are unpublished. | Found: These features are available for all Business (basic, standard, and premium), Enterprise (E1, E3, E5 and F3) and Exchange Online plans (1, 2 and Kiosk) ... Message trace and auditing reports are accessible via direct access to the Exchange admin center (EAC) management interface | Fix: Set licensing.model to 'included' for a new option inside a licensed product. Replace licensing.notes with 'Message trace is available with Exchange Online plans (1, 2 and Kiosk). Microsoft has not published licensing or pricing specific to custom retention.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description in sources. This records the existing entitlement without claiming that longer retention is free. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description
+- [supported, minor] controls[1].ui; Scope; Governance controls table / admin-path: The Exchange admin center search route is Mail flow > Message trace > Start a trace > New message trace > Search. | Found: go to Mail flow > Message trace. ... selecting Start a trace. ... In the New message trace flyout that opens ... Report type ... Select Search to start the message trace. | Fix: Include the documented section heading in controls[1].ui.path and the rendered table: 'Mail flow > Message trace > Start a trace > New message trace > Report type > Search'. The cited page places Search under Report type; every printed step is otherwise correct. | Source: https://learn.microsoft.com/exchange/monitoring/trace-an-email-message/message-trace-modern-eac
 -->

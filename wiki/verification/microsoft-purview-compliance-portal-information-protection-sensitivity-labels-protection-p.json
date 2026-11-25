@@ -1,0 +1,789 @@
+{
+  "slug": "microsoft-purview-compliance-portal-information-protection-sensitivity-labels-protection-p",
+  "roadmapId": 394282,
+  "title": "Microsoft Purview: sensitivity label protection policies for Azure Blob Storage and Data Lake Storage Gen2",
+  "status": "held",
+  "date": "2026-11-25",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-25",
+    "reasons": [
+      "2 blocking findings (claims 22, 24)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the permissions guidance omits roles Microsoft requires for policy authors and Azure permissions required to enable enforcement. The documented paths, label-scope command, roadmap facts and combined licensing model are supported, but administrators following the abbreviated permissions instructions could be unable to complete setup.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is August CY2025, which has passed by November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2025-06-27T22:15:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-06-27T22:15:28\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft plans to extend existing sensitivity labels and related protections to Azure Blob Storage and Azure Data Lake Storage Gen2.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "you will now be able to apply these labels and the related protections to these additional sources",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: separate Fabric item",
+      "type": "record",
+      "claim": "Microsoft lists protection policy support for Microsoft Fabric under roadmap item 420331.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 420331, \"title\": \"Microsoft Purview compliance portal: Information Protection - Sensitivity labels protection policy support for Microsoft Fabric\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment; controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "The Learn protection policy documentation is marked preview despite the roadmap's GA target.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Authoring and publishing protection policies for Azure sources (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Protection policies restrict access to labeled assets to the selected users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Restrict access on labeled data assets so that only users and groups you select can access them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "After policies are enabled, access control is imposed automatically when Information Protection detects sensitive information, without a per-item approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy",
+      "quote": "After you enable these policies, access control is automatically imposed whenever Information Protection detects sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: policy labels",
+      "type": "behaviour",
+      "claim": "A protection policy can name multiple sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Select + Add sensitivity label to add sensitivity label(s) to detect for the policy, and select all the labels you want the policy to apply to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "A protection policy supports up to 10 resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Currently a maximum of 10 resources is supported, and they must be selected under Edit for them to be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: setup chain; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Sensitivity labels must be scoped to Files & other data assets for Data Map use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-apply",
+      "quote": "Existing sensitivity labels from Microsoft Purview Information Protection can also be modified with this scope to make them available to Data Map.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: setup chain; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Storage sources must be registered before protection policy setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Register sources - register any of these sources you like: Azure Blob Storage; Azure Data Lake Storage Gen2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: setup chain; Scope; Governance guidance; controls[1]",
+      "type": "applicability",
+      "claim": "The registered source must have Data policy enforcement set to On for protection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Select the source where you want to enable data policy enforcement. Set the Data policy enforcement toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: setup chain; Scope",
+      "type": "behaviour",
+      "claim": "Policy creation requires scanning the source and waiting at least 24 hours after the most recent scan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "After you check the prerequisites and prepare your Microsoft Purview instance and source for protection policies and wait at least 24 hours after your most recent scan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "An auto-labeling policy and a Data Map scan apply labels automatically to Data Map assets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-apply",
+      "quote": "Scan your data in Data Map to automatically apply the labels you've created, based on the auto-labeling policy you've defined.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data Map auto-labeling conditions do not support custom sensitive info types, trainable classifiers or Exact Data Match.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-apply",
+      "quote": "Custom sensitive info types and advanced classifiers like named entities (All Full Names, All Physical Addresses), trainable classifiers, credentials, and Exact Data Match are not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Scan service principals must be included in an allowed security group to prevent later scans being blocked on labeled files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Ensure that any service principal accounts running data governance scans for the scoped sources are included in a Security Group. Add this Security Group to the allowed list of your protection policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Policy authors need the Information Protection admin roles plus Data Map reader roles, as the page lists them.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "User needs the roles from within the built-in role group “Information Protection”, along with new roles for data map reader, insights reader, scan reader, source reader.",
+      "severity": "blocker",
+      "fix": "Replace the abbreviated role requirement throughout with: 'Policy authors need the roles in the Information Protection role group plus Data Map Reader, Insights Reader, Scan Reader and Source Reader.' In the Before rollout bullet, say 'Assign the Information Protection role-group roles plus Data Map Reader, Insights Reader, Scan Reader and Source Reader to policy authors.' The existing cited Azure-sources page explicitly requires all four reader roles."
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The Azure-sources page names the Data Owner/Admin as the person who enables a source for enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Data Owner/Admin - This user will enable your source for data policy enforcement in Microsoft Purview for Azure and Amazon S3 sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Governance controls: first paragraph",
+      "type": "role",
+      "claim": "A data source administrator is the role needed to enable Data policy enforcement.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/legacy/how-to-enable-data-policy-enforcement",
+      "quote": "To enable Data policy enforcement, you must have both specific Identity and Access Management (IAM) privileges on the resource as well as specific Microsoft Purview privileges",
+      "severity": "blocker",
+      "fix": "Replace the enforcement-role clause in both places with: 'Enabling Data policy enforcement requires the Microsoft Purview Data source admin role for the collection or an inheritable parent collection, plus either IAM Owner or both IAM Contributor and IAM User Access Administrator on the resource ARM path or an ancestor.' Cite https://learn.microsoft.com/purview/legacy/how-to-enable-data-policy-enforcement and add that URL to sources. Do not change the separate registration-role statement."
+    },
+    {
+      "n": 25,
+      "where": "Scope: registration prerequisite",
+      "type": "role",
+      "claim": "Registration requires a data source administrator in the collection holding the storage source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "To continue, you need to be a data source administrator in the collection where your Azure storage source is registered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "An administrator can create a protection policy without turning it on immediately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Choose whether turn on the policy right away or not, and select Next.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: account prerequisite",
+      "type": "behaviour",
+      "claim": "The Azure-sources prerequisites require an existing Purview account upgraded to the single tenant model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Existing Purview accounts upgraded to Microsoft Purview single tenant model and new Portal experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: account prerequisite",
+      "type": "behaviour",
+      "claim": "The account must use the enterprise version of Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "using the enterprise version of Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "A storage account with a customer-managed key does not work for protection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy",
+      "quote": "If the Azure storage account enables a customer-managed key, the storage account doesn't work for protection policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is mixed: the feature's prerequisites list Microsoft 365 E5 and pay-as-you-go setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy",
+      "quote": "Microsoft 365 E5 license and setup of the pay-as-you-go billing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; front matter: cost and licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Information Protection for non-Microsoft 365 sources uses a variable consumption meter of assets in scope of a protection policy per day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Information Protection | Sensitivity labels that you apply to non-Microsoft 365 data sources | Number of assets in scope of protection policy/day",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: asset definition",
+      "type": "cost",
+      "claim": "For Blob and ADLS, an asset is a file or resource set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Azure | ADLS | File or resource set; Azure | Blob | File or resource set",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters: meter counts assets; Cost and licensing: Counting assets",
+      "type": "cost",
+      "claim": "An asset in an in-scope location counts whether or not it matches the protection policy's conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The asset doesn't have to match a policy's conditions to be counted, it just has to be in a location that's in the scope of a policy.",
+      "severity": "minor",
+      "fix": "Qualify the two asset-count statements with: 'The billing page's general counting rule includes assets that do not match conditions, but its protection-policy example counts only the 50 Confidential-labeled tables out of 100. Confirm the effective billable scope before budgeting.' Both passages are at https://learn.microsoft.com/purview/purview-billing-models#counting-assets; do not silently resolve this inconsistency."
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: asset deduplication",
+      "type": "cost",
+      "claim": "An asset counts once regardless of how many policies cover it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "An asset is only counted once, regardless of how many solutions or protection policies cover it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "Pay-as-you-go billing requires associating the Microsoft 365 tenant with an active Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Pay-as-you-go charges appear in an Azure bill generated at month end.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing: pricing pointer",
+      "type": "cost",
+      "claim": "The billing models page directs readers to Microsoft's pay-as-you-go pricing page for pricing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Understand pricing and estimate your expected monthly costs for pay-as-you-go capabilities: Microsoft pay-as-you-go pricing",
+      "severity": "minor",
+      "fix": "Narrow 'The per-asset rate is on Microsoft's pay-as-you-go pricing page' to 'The billing models page links to Microsoft pay-as-you-go pricing for cost estimates.' Make licensing.notes use the same wording. The link was read, but the pricing destination could not be opened in this run, so a currently published feature-specific rate was not independently verified."
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; controls[3].note",
+      "type": "availability",
+      "claim": "Usage center is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The Microsoft Purview Usage center feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[3].note; Governance controls: first paragraph",
+      "type": "role",
+      "claim": "Access to Usage center Pay-as-you-go requires Global Reader, Security Reader or Global Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "the account you use must have one of the following roles: Global Reader; Security Reader; Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Protection policy creation starts in Microsoft Purview portal at Information Protection > Policies > Protection policies > New protection policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "select the Information Protection card. ... On the left navigation, select select Policies, then select Protection policies. ... Select New protection policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft Learn API or PowerShell operation for creating these Azure Storage protection policies was documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview protection policies Azure sources create REST API PowerShell; protection policy in Exchange PowerShell. Opened Azure-sources setup, protection policy overview and Graph security-datasecurityandgovernance-overview; results expose portal creation, not a matching operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Data policy enforcement is at Microsoft Purview portal > Data Map > Data sources > source > Data policy enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Select the Data Map tab in the left menu. Select the Data sources tab in the left menu. Select the source where you want to enable data policy enforcement. Set the Data policy enforcement toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell operation for enabling source Data policy enforcement was documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview data policy enforcement enable source REST API policyEnforcementEnabled; Purview scanning data sources REST API data policy enforcement enabled property. Opened enforcement guide and Graph overview; reviewed metadata-policy API excerpts, which concern collection roles, not this toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Label scope is configured at Information Protection > Sensitivity labels > Create a label > Define the scope for this label > Files & other data assets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-apply",
+      "quote": "Information Protection card > Sensitivity labels. ... Select + Create a label. ... under Define the scope for this label, select Files & other data assets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-Label -Identity <label name> -ContentType \"File, Email, PurviewAssets\" modifies where the identified label can be applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "The ContentType parameter specifies where the sensitivity label can be applied. ... Values can be combined, for example: \"File, Email, PurviewAssets\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "Set-Label runs in Security & Compliance PowerShell and modifies labels, not protection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell. ... Use the Set-Label cmdlet to modify sensitivity labels in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note",
+      "type": "admin-path",
+      "claim": "Existing labels are modified using Edit label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-apply",
+      "quote": "To modify existing labels, browse to Information Protection > Labels, and select your label. Then select Edit label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The portal's Usage center > Pay-as-you-go page shows pay-as-you-go consumption by feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "To access the Usage center > Pay-as-you-go ... The Usage center provides detailed information on Total Units Used about your pay-as-you-go billing usage by feature and by workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or PowerShell equivalent for this Usage center report is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Usage center pay-as-you-go usage API Information Protection. Opened purview-billing-usage and purview-billing-models; results document the portal report, not a corresponding report API or cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: After rollout, edit/delete policy",
+      "type": "admin-path",
+      "claim": "An existing protection policy can be edited or deleted from Information Protection > Policies > Protection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "Select Policies, then select Protection policies. Select the policy you want to manage. To change any of the details, select the Edit policy button. To delete the policy, select Delete policy.",
+      "severity": "minor",
+      "fix": "Complete the existing guidance path as 'Information Protection > Policies > Protection policies > policy > Edit policy or Delete policy'. The printed route reaches the correct list but stops before its management actions."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: At rollout, check details",
+      "type": "behaviour",
+      "claim": "Learn instructs administrators to select the newly created policy and confirm its details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+      "quote": "You should now see your new policy in the list of protection policies. Select it to confirm that all the details are correct.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Open questions: pausing Information Protection",
+      "type": "behaviour",
+      "claim": "Usage center lists Information Protection as pausable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. ... Information Protection | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Open questions: pausing Information Protection",
+      "type": "absence",
+      "claim": "The Usage center page does not explain the effect of pausing Information Protection on existing protection policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview pause Information Protection policies. Read purview-billing-usage in full and the protection policy setup pages; the usage page gives a pausable flag but no effect on existing protection policies. Search results about pausing Communication Compliance concern a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The cited pages carry a notice that Microsoft is consolidating Purview data governance capabilities in Fabric and retiring those governance capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy",
+      "quote": "Microsoft Purview Unified Catalog and classic Microsoft Purview data governance capabilities (formerly Azure Purview) are being retired. ... Microsoft is consolidating its data governance capabilities in Microsoft Fabric.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Open questions: retirement coverage",
+      "type": "absence",
+      "claim": "The notice does not explicitly identify Azure Storage protection policies as covered by the retirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview protection policies Azure storage retirement data governance November 2027. Read notices on both protection-policy pages and label-application page; they name governance capabilities and exempt security/compliance, without explicitly naming Azure Storage protection policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "This new control is admin-opt-in: enforcement requires an administrator to configure and enable a protection policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-gov-protection-policy",
+      "quote": "After you enable these policies, access control is automatically imposed whenever Information Protection detects sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "The medium risk rating is justified by mistakes in an administrator-configured allow-list.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"admin-opt-in\"; summary: \"Nothing changes until an admin sets one up.\"; rationale: \"Medium. ... a wrong allow-list or a missed scanner account can block people and scans.\"",
+      "severity": "minor",
+      "fix": "Set risk to low and replace the rationale with: 'Low. This new control restricts nothing until an administrator configures and enables a protection policy; existing behaviour continues if nobody acts.' The assessment scale rates the unconfigured default of a new control, not misconfiguration after opting in."
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: Before rollout, assigning roles; Governance controls table",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to configure appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Before rollout: \"Assign the Information Protection and Data Map reader roles to the admins who will author policies\"; the controls table covers policies, enforcement, label scope and usage, not role assignment.",
+      "severity": "minor",
+      "fix": "The Before rollout role-assignment step has no corresponding controls-table row. Keep this as a coverage limitation; do not add a control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-25T14:00:34.252Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=394282",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-gov-protection-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-apply",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Protection policy that restricts access to labelled Azure storage data",
+        "docs": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+        "reachable": true,
+        "segments": [
+          "Information Protection",
+          "Policies",
+          "Protection policies",
+          "New protection policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a registered storage source accepts data policy enforcement",
+        "docs": "https://learn.microsoft.com/purview/data-gov-protection-policy-azure-sources",
+        "reachable": true,
+        "segments": [
+          "Data Map",
+          "Data sources",
+          "source",
+          "Data policy enforcement"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Where each sensitivity label can be applied (label scope)",
+        "docs": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-apply",
+        "reachable": true,
+        "segments": [
+          "Information Protection",
+          "Sensitivity labels",
+          "Create a label",
+          "Define the scope for this label",
+          "Files & other data assets"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Where each sensitivity label can be applied (label scope)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Pay-as-you-go usage of the Information Protection meter",
+        "docs": "https://learn.microsoft.com/purview/purview-billing-usage",
+        "reachable": true,
+        "segments": [
+          "Usage center",
+          "Pay-as-you-go"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

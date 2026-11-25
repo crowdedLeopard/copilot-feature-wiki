@@ -71,15 +71,17 @@ changes:
     note: "Corrected after verification: licensing model set to included (Power Apps premium use rights for model-driven apps) and the maker path now starts at Solutions and Edit."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-25"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-25"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -192,8 +194,8 @@ cost: Low. The only cost the sources show is maker and admin time for testing an
 impact: Medium. Makers decide per app, but once an app is switched, every user of that app sees a new header, sitemap, form scrolling behaviour and command order.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: The maker path is Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh. | Found: In the app designer, select Settings on the command bar. Select Features, and then enable Header and navigation refresh. | Fix: Include environment selection: 'environment > Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh'. The cited create-edit-app page's 'Edit an app' section says to choose the environment before selecting Solutions; its remaining entry steps and the feature page's final steps match the printed path. | Source: https://learn.microsoft.com/power-apps/user/modern-fluent-design
+- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: The maker path is Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh. | Found: In the app designer, select Settings on the command bar. Select Features, and then enable Header and navigation refresh. | Fix: Use 'environment > Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh' in the control and rollout instructions. The cited https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app documents environment selection before Solutions and the remaining entry steps. | Source: https://learn.microsoft.com/power-apps/user/modern-fluent-design
 -->
