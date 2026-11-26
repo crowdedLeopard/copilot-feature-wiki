@@ -16,8 +16,8 @@
  * run is only escalated (red) when the writer has failed twice in a row.
  *
  * Env:
- *   COPILOT_MODEL              first model to try (default claude-opus-5.5); 'auto' lets Copilot choose
- *   COPILOT_FALLBACK_MODELS    comma-separated models to try if the first is refused (default claude-sonnet-5.5,auto)
+ *   COPILOT_MODEL              first model to try (default claude-sonnet-5.5); 'auto' lets Copilot choose
+ *   COPILOT_FALLBACK_MODELS    comma-separated models to try if the first is refused (default claude-opus-5.5,auto)
  *   COPILOT_REASONING_EFFORT   low|medium|high|xhigh|max, or empty for the model default (default high)
  *   COMPILE_PARALLEL           sessions at once (default 2)
  *   COMPILE_ITEM_MAX_CREDITS   AI-credit cap per session (default 300 = $3.00)
@@ -36,8 +36,10 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import { DATA_DIR, ROOT, readJson, writeJson, parseFrontmatter } from './lib/util.mjs';
 import { runCopilot, MICROSOFT_URLS, tail, classifyCopilotError, explainCopilotError, cliDiagnostics, agentReplied } from './lib/copilot.mjs';
 
-const MODEL = (process.env.COPILOT_MODEL || 'claude-opus-5.5').trim();
-const FALLBACKS = (process.env.COPILOT_FALLBACK_MODELS ?? 'claude-sonnet-5.5,auto').split(',').map((s) => s.trim()).filter(Boolean);
+// Sonnet first: the seat accepted claude-opus-5.5 from 25 Nov 2026 and it cost 2.3 times as much a page for the
+// same share of first drafts passing the check (runs 168-171). COPILOT_MODEL overrides this.
+const MODEL = (process.env.COPILOT_MODEL || 'claude-sonnet-5.5').trim();
+const FALLBACKS = (process.env.COPILOT_FALLBACK_MODELS ?? 'claude-opus-5.5,auto').split(',').map((s) => s.trim()).filter(Boolean);
 const EFFORT = (process.env.COPILOT_REASONING_EFFORT ?? 'high').trim();
 const PARALLEL = Math.max(1, Number(process.env.COMPILE_PARALLEL || 2));
 const ITEM_MAX_CREDITS = Math.max(30, Number(process.env.COMPILE_ITEM_MAX_CREDITS || 300));

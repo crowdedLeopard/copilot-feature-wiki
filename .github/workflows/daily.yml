@@ -194,6 +194,9 @@ jobs:
 
       # Billed in AI credits to the Copilot seat of the repository owner (GITHUB_TOKEN) or of the user who
       # made the COPILOT_GITHUB_TOKEN PAT. Caps: COMPILE_ITEM_MAX_CREDITS per briefing, COMPILE_MAX_CREDITS per run.
+      # The writer is claude-sonnet-5.5 unless COPILOT_MODEL says otherwise: the seat started accepting claude-opus-5.5
+      # on 25 Nov 2026 and runs 168-171 showed it writes at 103-128 credits a page against Sonnet's 45-55 with the same
+      # share of pages passing the independent check, so a day would cost about 35,000 credits instead of 25,000.
       # The step checks the token and model first (falling back through COPILOT_FALLBACK_MODELS), retries a
       # session that fails fast, and explains any failure in plain English in the run summary. It never fails
       # the job: the rest of the run (lint, build, deploy) carries on with what is committed.
@@ -204,8 +207,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           COPILOT_PAT: ${{ secrets.COPILOT_GITHUB_TOKEN }}
-          COPILOT_MODEL: ${{ github.event.inputs.compile_model || vars.COPILOT_MODEL || 'claude-opus-5.5' }}
-          COPILOT_FALLBACK_MODELS: ${{ vars.COPILOT_FALLBACK_MODELS || 'claude-sonnet-5.5,auto' }}
+          COPILOT_MODEL: ${{ github.event.inputs.compile_model || vars.COPILOT_MODEL || 'claude-sonnet-5.5' }}
+          COPILOT_FALLBACK_MODELS: ${{ vars.COPILOT_FALLBACK_MODELS || 'claude-opus-5.5,auto' }}
           COPILOT_REASONING_EFFORT: ${{ vars.COPILOT_REASONING_EFFORT || 'high' }}
           COMPILE_PARALLEL: ${{ vars.COMPILE_PARALLEL || '2' }}
           COMPILE_ITEM_MAX_CREDITS: ${{ vars.COMPILE_ITEM_MAX_CREDITS || '300' }}

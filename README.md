@@ -66,8 +66,8 @@ manual and the system prompt, and an append-only log records every run.
      briefing, billed in AI credits. No secret is needed: the job's token carries
      `copilot-requests: write`. To bill a specific user instead, add a `COPILOT_GITHUB_TOKEN` secret
      holding a fine-grained personal access token with the "Copilot Requests" permission. Model
-     `claude-opus-5.5` unless `COPILOT_MODEL` says otherwise, falling back through
-     `COPILOT_FALLBACK_MODELS` (default `claude-sonnet-5.5,auto`) if the seat refuses it; caps of
+     `claude-sonnet-5.5` unless `COPILOT_MODEL` says otherwise, falling back through
+     `COPILOT_FALLBACK_MODELS` (default `claude-opus-5.5,auto`) if the seat refuses it; caps of
      300 credits per briefing and 200 per briefing per run (`COMPILE_ITEM_MAX_CREDITS`,
      `COMPILE_MAX_CREDITS`), with the spend recorded in `wiki/log.md` and the session transcripts
      kept as a run artifact for 14 days. The step first proves the token and model with a one-word
