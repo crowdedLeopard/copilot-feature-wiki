@@ -66,15 +66,17 @@ changes:
     note: "Summary now states that a licensed Visio Desktop application is required; licensing model set to included from the Visio deployment guide; MCP definition cited to Learn."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -170,10 +172,10 @@ cost: Low. The roadmap says a licensed Visio Desktop application is required; a 
 impact: Low. Only Windows users of Visio Desktop who connect an AI client are in the picture, and the roadmap record does not say the server is on by default.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Governance controls / behaviour: Blocking an MCP server disables all tools it exposes. | Found: Blocking an MCP server disables all the tools it exposes. ... Effects on dependent plugins and linked connectors depend on the applicable management route. Don't assume the policy applies across all products or connected components. | Fix: Replace 'Blocking disables all tools the server exposes' in the note and corresponding prose with 'Blocking disables the server's tools through the applicable management route; for BYO servers, gateway blocking does not necessarily prevent direct endpoint access.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server, which states 'Don't assume blocking prevents direct access to the underlying server endpoint.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
-- [supported, minor] Why it matters / behaviour: Visio diagrams are used to describe networks. | Found: Basic flowcharts, organization charts, and network diagrams | Fix: Add https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing to sources for the network and architecture diagram examples. | Source: https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing
-- [supported, minor] Why it matters / behaviour: Visio diagrams are used to describe architectures. | Found: Cloud architecture diagrams, including Azure and Amazon Web Services (AWS) | Fix: Add https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing to sources for the network and architecture diagram examples. | Source: https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing
+- [supported, minor] controls[1].note; Governance controls table and prose / behaviour: Blocking an MCP server disables all tools it exposes. | Found: Blocking an MCP server disables all the tools it exposes. ... Blocking an MCP server (including WorkIQ MCP) blocks usage through governed Agent 365 and Microsoft 365 admin center (MAC) pathways. | Fix: Replace 'Blocking disables all tools the server exposes' in controls[1].note and the matching table and prose with 'Blocking disables all tools the server exposes through governed Agent 365 and Microsoft 365 admin center pathways; it does not automatically disable the underlying API or service endpoint outside those pathways.' Keep the existing caveat that Visio integration is unconfirmed. The cited management page now states this boundary explicitly. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] Why it matters; Governance guidance: Before rollout / behaviour: Visio diagrams are used to describe networks. | Found: Basic flowcharts, organization charts, and network diagrams | Fix: Add https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing to sources to support the network and architecture diagram examples. | Source: https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing
+- [supported, minor] Why it matters; Governance guidance: Before rollout / behaviour: Visio diagrams are used to describe architectures. | Found: Cloud architecture diagrams, including Azure and Amazon Web Services (AWS) | Fix: Add https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing to sources to support the network and architecture diagram examples. | Source: https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing
 -->

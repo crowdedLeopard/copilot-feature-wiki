@@ -130,18 +130,20 @@ changes:
     note: "Corrected the agent block control: it now describes availability in Microsoft Copilot and host products, and notes that SharePoint and Foundry agents are affected only in Copilot Chat."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 74
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "ecd54a47fbbe1883a3a4d7685aa11fe1"
 ---
 
@@ -243,9 +245,13 @@ cost: Variable. The Work IQ API page says use is paid through Copilot Credits; M
 impact: Low. Work IQ's A2A, MCP and REST protocols are aimed at developers building agents, so users notice it only through agents built on it. The roadmap lists the Web platform only.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].governs and note; Governance controls table / applicability: The switch controls availability of the whole Work IQ MCP server, without a governed-pathway limitation. | Found: Blocking an MCP server (including WorkIQ MCP) blocks usage through governed Agent 365 and Microsoft 365 admin center (MAC) pathways. It doesn't automatically disable the underlying API or service endpoint outside that governed path | Fix: Change controls[1].governs and the rendered control label to 'Availability of Work IQ MCP through governed Agent 365 and Microsoft 365 admin center pathways'. Add to its note: 'Blocking does not automatically disable the underlying API or service endpoint outside those pathways; separate service or API policy is needed there.' Keep the existing path and docs link; cite the already-listed manage-plugins-skills-mcp-servers article for this qualification. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [contradicted, blocker] controls[2].governs; Governance controls table; Governance guidance: At rollout / applicability: The registry toggles determine which tools on a supported registered MCP server agents can call, without a gateway-experience limitation. | Found: The Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway. Don't assume the policy applies across all products or connected components. | Fix: Change controls[2].governs and its rendered label to 'Which tools on a supported registered MCP server agents can call through supported Agent 365 Tooling Gateway experiences'. Add to its note: 'Runtime enforcement applies to supported tools and experiences using the gateway, not all products or connected components.' Retain the existing rollout and discovery qualifications. In the At rollout checklist, qualify individual-tool disabling with 'for supported experiences using the Agent 365 Tooling Gateway'. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: Before rollout / admin-path: Work IQ MCP tenant policy is reached through Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy. | Found: select Agents > Tools ... select Work IQ MCP ... select the Policy tab when it's available ... Review the current policy state, then turn policy on or off for the tenant as needed. | Fix: Keep the path, which reaches the correct tab, and add to controls[0].note: 'On the Policy tab, turn policy on or off for the tenant.' Apply the same note in the rendered table. The cited policy page gives this final action without naming a separate setting label. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [supported, minor] controls[3].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The cited Admin agent page gives Microsoft 365 admin center > Agents > Registry > agent > Block as an agent-blocking route. | Found: Select to Agents > Registry. ... Locate Microsoft 365 Admin in the registry. ... Use the available agent actions to Block the agent | Fix: Change controls[3].ui.path and the rendered route to 'Agents > All agents > Registry > agent > Block' and use https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions for ui.docs. Add to the note: 'The Admin agent article gives Agents > Registry; the registry overview gives Agents > All agents > Registry.' Both pages are already cited. | Source: https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: Before rollout / admin-path: Work IQ MCP policy is reached through Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy. | Found: select Agents > Tools ... select Work IQ MCP ... select the Policy tab when it's available. ... Review the current policy state, then turn policy on or off for the tenant as needed. | Fix: Keep the path and add to controls[0].note and its rendered note: 'On the Policy tab, turn policy on or off for the tenant.' The printed route reaches the right tab but omits the final action. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] controls[3].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The cited Admin agent page gives Microsoft 365 admin center > Agents > Registry > agent > Block. | Found: Select to Agents > Registry. ... Locate Microsoft 365 Admin in the registry. ... Use the available agent actions to Block the agent | Fix: Use the general agent-blocking procedure instead: set controls[3].ui.path and the rendered route to 'Agents > All agents > agent > Block', and ui.docs to https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions. Add to the note: 'The Admin agent article gives Agents > Registry; the registry overview locates Registry under Agents > All agents.' Both articles are already cited. | Source: https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent
+- [supported, minor] Cost and licensing / licensing: The Agent 365 service description lists tenant-wide control of tools accessible to Copilot and Microsoft platform agents as a core capability included with a Microsoft cloud subscription. | Found: Control which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide | Microsoft 365 admin center | Yes | Yes | Yes | Fix: Narrow that clause to the categories the service description now names: 'the Agent 365 service description lists tenant-wide control of Plugins, Skills, Connectors and Microsoft MCP servers that Copilot and Microsoft platform agents can access as a core capability included with a Microsoft cloud subscription.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 -->

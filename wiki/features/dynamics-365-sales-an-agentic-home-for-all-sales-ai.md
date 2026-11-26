@@ -97,15 +97,17 @@ changes:
     note: "Correction: licensing set to mixed with the published CRM-only and Microsoft 365 Copilot rules, Sales agent admin paths now start at Microsoft Teams, and the Dynamics 365 role carries its custom-role qualification."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -211,4 +213,11 @@ Microsoft Learn documents no API or PowerShell cmdlet for the Sales agent access
 risk: Medium. The roadmap plans agent recommendations and customer-meeting preparation in a new landing experience, while its default and dedicated controls are not yet stated.
 cost: Low. Known costs are administrator time, seller communication and possible Dataverse search storage growth. No licensing requirement specific to this home is published.
 impact: Medium. The planned home is aimed at sellers in Dynamics 365 Sales, rather than the wider workforce; Microsoft has not stated whether it replaces the opening screen for every seller.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Environment Copilot availability is managed through Power Platform admin center > Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting. | Found: go to Copilot > Settings. Under Power Apps, expand Chat Agent and choose Microsoft Copilot. ... Select an environment group or an environment name, then select Edit Setting. ... Select On | Fix: Extend controls[2].ui.path and the matching rendered path to 'Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting > On', as documented at https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot
+- [supported, minor] Governance guidance: Before rollout / admin-path: Power Platform admin center > Copilot > Settings is the starting page for checking environment Copilot enablement. | Found: In the navigation pane, go to Copilot > Settings. Under Power Apps, expand Chat Agent and choose Microsoft Copilot. | Fix: Replace the parenthetical path with 'Power Platform admin center > Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting', which reaches the setting to inspect. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot
 -->

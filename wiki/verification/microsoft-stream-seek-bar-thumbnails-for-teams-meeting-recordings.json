@@ -2,39 +2,44 @@
   "slug": "microsoft-stream-seek-bar-thumbnails-for-teams-meeting-recordings",
   "roadmapId": 406910,
   "title": "Microsoft Stream: seek bar thumbnails for Teams meeting recordings",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "4 major findings"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 38,
-    "confirmed": 34,
-    "unconfirmed": 4,
+    "claims": 39,
+    "confirmed": 39,
+    "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
-    "major": 4,
-    "minor": 0
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the roadmap facts, general Stream licensing and recording controls check out, but several descriptions go beyond the published evidence. Microsoft has not documented the briefing's assurances that this feature leaves storage and access unchanged or takes no autonomous action.",
+  "summary": "The briefing accurately reports the roadmap's planned hover previews and overdue target, and the recording policy path and PowerShell command are documented. Searches confirmed the narrowly stated gaps in thumbnail controls, default behaviour and feature-specific licensing; the SharePoint reference mentioned in the prose should be added to the sources.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
+      "where": "title; front matter: products",
       "type": "record",
-      "claim": "Microsoft plans to add seek bar thumbnails to Microsoft Stream's video player.",
+      "claim": "Roadmap item 406910 concerns Microsoft Stream seek bar thumbnails for Teams meeting recordings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Stream: Seek bar thumbnails for Teams meeting recordings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans to add seek bar preview thumbnails inside Stream's video player.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature adds seek bar (preview) thumbnails to Microsoft Stream's video player.",
@@ -42,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "summary; What's changing; Risk assessment: Change & support; Governance guidance",
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: impact",
       "type": "record",
-      "claim": "Hovering over the seek bar at a timestamp shows a preview of the recording's content at that timestamp.",
+      "claim": "Hovering over the seek bar at a timestamp is planned to show a preview of the recording's content at that point.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The thumbnails provide a preview of the video content when hovering over the player's seek bar at a certain timestamp.",
@@ -53,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; Scope: Content; rationale: impact; Open questions",
+      "n": 4,
+      "where": "What's changing; Scope: Content; Open questions; rationale: impact",
       "type": "record",
-      "claim": "The roadmap initially limits this feature to Teams meeting recordings, rather than other videos.",
+      "claim": "The roadmap initially limits the feature to Teams meeting recordings rather than other videos.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Currently, it will only be made available for Teams meeting recordings.",
@@ -64,8 +69,8 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: platforms; What's changing; Scope: Platform; rationale: impact",
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope: Platform",
       "type": "record",
       "claim": "The roadmap lists Web as the platform.",
       "status": "supported",
@@ -75,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: status; What's changing; Why it matters; Open questions",
       "type": "record",
-      "claim": "The supplied roadmap record still marks the feature In development.",
+      "claim": "The supplied roadmap record remains In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -86,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: targetDate; What's changing; Why it matters; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The roadmap target is June CY2025.",
+      "claim": "The roadmap's target is June CY2025.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"June CY2025\"",
@@ -97,32 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: releasePhase; What's changing; Scope: Release phase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Targeted Release.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 8,
-      "where": "front matter: clouds; Scope: Clouds",
-      "type": "record",
-      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -130,7 +113,29 @@
       "fix": null
     },
     {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing; Scope: Release phase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 10,
+      "where": "front matter: clouds; Scope: Clouds",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "front matter: roadmapModified; What's changing",
       "type": "record",
       "claim": "The record was last modified on 23 October 2024.",
@@ -141,32 +146,32 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Why it matters; Governance guidance; Open questions",
-      "type": "date",
-      "claim": "The June CY2025 target has passed as of the 26 November 2026 run.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"June CY2025\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 12,
-      "where": "Risk assessment: Security & identity; rationale: risk",
+      "where": "What's changing; Why it matters; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The roadmap description mentions no new sign-in, permissions, sharing, data access or autonomous actions.",
+      "claim": "The June CY2025 target has passed by the run date while the supplied record still shows In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This feature adds seek bar (preview) thumbnails to Microsoft Stream's video player. The thumbnails provide a preview of the video content when hovering over the player's seek bar at a certain timestamp.",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"June CY2025\", \"modified\": \"2024-10-23T23:15:28\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this seek bar thumbnail feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Stream\" \"seek bar\" \"thumbnails\"; Clipchamp Stream seekbar thumbnail preview meeting recordings default prerequisites license generated stored. Read the Stream service description and current Clipchamp feature list; no description of seek bar previews found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What's changing; sources",
       "type": "behaviour",
-      "claim": "The cited current video feature list is now titled Current features and upcoming roadmap for Clipchamp in Microsoft 365.",
+      "claim": "The cited video feature list is now titled Current features and upcoming roadmap for Clipchamp in Microsoft 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/stream/streamnew/features-new-version-stream",
       "quote": "Current features and upcoming roadmap for Clipchamp in Microsoft 365",
@@ -174,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The current feature list includes multi-speed playback for Teams meeting recordings.",
+      "claim": "The feature list documents multi-speed playback for Teams meeting recordings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/stream/streamnew/features-new-version-stream",
       "quote": "Multi-speed play back for Teams meeting recordings",
@@ -185,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The current feature list includes manually added chapters.",
+      "claim": "The feature list documents chapters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/stream/streamnew/features-new-version-stream",
       "quote": "Manually add chapters to make it easier for viewers to jump to the part they're interested in",
@@ -196,32 +201,54 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe seek bar thumbnails, and its current feature list does not list them.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Stream\" \"seek bar\" \"thumbnails\"'; 'Clipchamp Stream video player seek timeline hover preview thumbnails on by default'. Opened features-new-version-stream and Microsoft's Clipchamp overview and player settings; no seek bar thumbnail description.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 17,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated whether seek bar thumbnails appear automatically or must be enabled, so the default is unknown.",
+      "where": "What's changing; Governance controls",
+      "type": "absence",
+      "claim": "The current video feature list does not list seek bar thumbnails.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Microsoft Stream seek bar thumbnails Teams meeting recordings default prerequisites licensing thumbnail generation storage'; 'Clipchamp Stream video player seek timeline hover preview thumbnails on by default'. Read roadmap, current features and player settings; no default.",
+      "quote": "Searched: \"Stream\" \"seek bar\" \"thumbnails\". Read the entire Current features and upcoming roadmap for Clipchamp in Microsoft 365 page; its custom video thumbnail entry is not a seek bar preview entry.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "front matter: licensing.model and notes; Cost and licensing: Licence; rationale: cost",
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state is unknown: Microsoft has not stated whether seek bar thumbnails appear automatically or must be turned on.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Stream seek bar preview thumbnails Teams meeting recordings enable disable settings automatic licensing prerequisites generation storage. Read the roadmap, Stream service description, Clipchamp feature list and player settings page; none states the seek preview default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0]; summary; Risk assessment; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documents no tenant-wide seek bar thumbnail switch on either the admin UI or automation surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-SPOTenant Stream seek bar thumbnails setting PowerShell Microsoft Graph; Stream seek bar thumbnails tenant site user disable preview settings Microsoft Teams PowerShell. Read Set-SPOTenant, Clipchamp feature list and player settings; no seek preview switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no site or user setting for seek bar thumbnails.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Stream seek bar thumbnails tenant site user disable preview settings Microsoft Teams PowerShell. Read the Clipchamp feature list, player video and audio settings, and Set-SPOTenant reference; no site or user seek preview setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "The player option falls under Stream's general inclusion in Microsoft 365 plans with SharePoint and OneDrive.",
+      "claim": "The included licensing model rests on Stream being available through Microsoft 365 plans with SharePoint and OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-stream",
       "quote": "Microsoft Stream (on SharePoint) is available for all Microsoft 365 customers through plans that have SharePoint and OneDrive available.",
@@ -229,8 +256,8 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Stream feature availability may vary across plans.",
       "status": "supported",
@@ -240,79 +267,46 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
-      "type": "absence",
-      "claim": "Licensing or a plan-by-plan entry specific to seek bar thumbnails is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Stream seek bar thumbnails Teams meeting recordings default prerequisites licensing thumbnail generation storage'. Read Stream service description and its feature table, current video features and Clipchamp overview; no feature-specific entitlement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Cost and licensing: Meter",
-      "type": "absence",
-      "claim": "The roadmap and Stream service description mention no meter for seek bar thumbnails.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Stream seek bar thumbnails Teams meeting recordings default prerequisites licensing thumbnail generation storage'. Read the complete roadmap description and Stream service description; neither names a meter for seek bar thumbnails.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0]; summary; Risk assessment: Change & support; Governance guidance",
-      "type": "absence",
-      "claim": "Microsoft Learn documents neither an admin UI nor an automation control for a tenant-wide seek bar thumbnail switch.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Stream Clipchamp seek bar hover thumbnails disable tenant site user setting Set-SPOTenant PowerShell Graph'. Read current features, player settings and searched Set-SPOTenant for thumbnail, seek, hover, Stream and Video; no matching switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 23,
-      "where": "Governance controls: notes",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No site or user setting for seek bar thumbnails is documented, and neither the current feature list nor Set-SPOTenant mentions one.",
+      "claim": "A licensing or plan-by-plan entry specific to seek bar thumbnails has not been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Microsoft Stream Clipchamp seek bar hover thumbnails disable tenant site user setting Set-SPOTenant PowerShell Graph'. Read features-new-version-stream and player settings; searched Set-SPOTenant for thumbnail, seek, hover, Stream and Video. No seek bar thumbnail setting.",
+      "quote": "Searched: Clipchamp Stream seekbar thumbnail preview meeting recordings default prerequisites license generated stored; \"seek bar thumbnails\" licensing prerequisites storage generation automatic. Read Stream service description and Clipchamp service-description excerpts; no feature-specific entry.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "controls[1].ui; Governance controls: table",
-      "type": "admin-path",
-      "claim": "The recording toggle is reached in Teams admin center through Meetings > Meeting policies > policy > Meeting recording.",
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The roadmap record and Stream service description mention no meter for seek bar thumbnails.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select an existing policy or create a new one. Turn the Meeting recording toggle On or Off.",
+      "source": null,
+      "quote": "Searched: Stream seek bar preview thumbnails Teams meeting recordings enable disable settings automatic licensing prerequisites generation storage. Read the entire roadmap record and Microsoft Stream service description; neither names a seek bar thumbnail meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "controls[1].api; Governance controls: table",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowCloudRecording $true allows meeting recording for users assigned the policy.",
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described how the seek bar thumbnail images are produced.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "To allow specific users in your organization to record, run the following commands: ... Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowCloudRecording $true",
+      "source": null,
+      "quote": "Searched: \"seek bar thumbnails\" licensing prerequisites storage generation automatic; Clipchamp Stream seekbar thumbnail preview meeting recordings default prerequisites license generated stored. Read roadmap, Clipchamp feature list and video playback overview excerpt; no generation mechanism found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "controls[1].note; Scope: Prerequisites; Governance controls: notes",
-      "type": "applicability",
-      "claim": "The Teams meeting policy controls whether assigned users can record meetings.",
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether seek bar thumbnail images are stored separately from the recording.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "You can use the Microsoft Teams admin center or PowerShell to control whether your users can record meetings and events. ... -AllowCloudRecording controls whether users can record meetings; it doesn't configure or validate recording storage.",
+      "source": null,
+      "quote": "Searched: Clipchamp Stream seekbar thumbnail preview meeting recordings default prerequisites license generated stored; \"seek bar thumbnails\" licensing prerequisites storage generation automatic. Read roadmap, Stream description, Clipchamp storage quota and FAQ excerpts; no seek-image storage details.",
       "severity": null,
       "fix": null
     },
@@ -342,7 +336,7 @@
       "n": 29,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "OneDrive and SharePoint file storage and access permissions govern the recording files as other files.",
+      "claim": "OneDrive file storage and access permissions apply to meeting recording files as to other files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
       "quote": "Microsoft Purview, OneDrive file storage, and access permissions apply to the meeting recording files the same as with other files.",
@@ -351,86 +345,75 @@
     },
     {
       "n": 30,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described how seek bar thumbnail images are generated.",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The meeting recording toggle is reached in Teams admin center through Meetings > Meeting policies > policy > Meeting recording.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Stream seek bar thumbnails Teams meeting recordings default prerequisites licensing thumbnail generation storage'; '\"seek bar thumbnails\" Teams Stream permissions storage actions'. Read current features and Clipchamp overview; no generation mechanism.",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select an existing policy or create a new one. Turn the Meeting recording toggle On or Off.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described whether seek bar thumbnail images are stored separately from the recording.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowCloudRecording $true enables meeting recording for the selected policy.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Stream seek bar thumbnails Teams meeting recordings default prerequisites licensing thumbnail generation storage'; '\"seek bar thumbnails\" Teams Stream permissions storage actions'. Read current features and recording policies; no seek thumbnail storage description.",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "To manage meeting recording by using PowerShell, use the -AllowCloudRecording parameter in Set-CsTeamsMeetingPolicy. Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowCloudRecording $true",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Scope: Prerequisites",
-      "type": "absence",
-      "claim": "No prerequisites specific to seek bar thumbnails are published beyond the general Stream licensing.",
+      "where": "controls[1].governs and note; Scope: Prerequisites; Governance controls",
+      "type": "applicability",
+      "claim": "The meeting recording policy allows or prevents the users it covers from recording meetings.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Stream seek bar thumbnails Teams meeting recordings default prerequisites licensing thumbnail generation storage'. Read Stream service description, current video features and player settings; no prerequisites specific to seek bar thumbnails.",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "You can use the Microsoft Teams admin center or PowerShell to control whether your users can record meetings and events. Both the organizer and recording initiator need to have recording permissions to record the meeting or event.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The seek bar thumbnail feature changes nothing about where recordings are stored.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"seek bar thumbnails\" Teams Stream permissions storage actions'. Read roadmap, recording policies, Stream service description and Clipchamp overview. These state the existing recording locations but do not describe this feature's effect on storage.",
-      "severity": "major",
-      "fix": "Remove 'and it changes nothing about where recordings are stored or who can open them'. Retain the separately sourced sentence describing existing recording storage."
-    },
-    {
-      "n": 34,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The seek bar thumbnail feature changes nothing about who can open recordings.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"seek bar thumbnails\" Teams Stream permissions storage actions'. Read roadmap, recording policies and Clipchamp overview. Existing file permissions are documented, but no passage describes this feature as leaving access unchanged.",
-      "severity": "major",
-      "fix": "Remove 'and it changes nothing about where recordings are stored or who can open them'. Retain the separately sourced statement that existing recording files follow OneDrive file storage and access permissions."
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The feature takes no action on its own.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"seek bar thumbnails\" Teams Stream permissions storage actions'. Read roadmap, current video features and Clipchamp overview. The roadmap describes hover previews, but no source states that the feature takes no action on its own.",
-      "severity": "major",
-      "fix": "Replace 'No change: the feature displays previews and takes no action on its own' with 'The roadmap describes previews displayed when someone hovers over the seek bar; it mentions no autonomous actions.'"
-    },
-    {
-      "n": 36,
-      "where": "controls[1].note; Governance controls: notes",
+      "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Turning off Meeting recording prevents assigned users from recording meetings rather than controlling seek bar thumbnails.",
+      "claim": "AllowCloudRecording controls recording itself rather than switching playback thumbnails on or off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "To allow or prevent meeting recordings, follow these steps: ... Turn the Meeting recording toggle On or Off. ... -AllowCloudRecording controls whether users can record meetings; it doesn't configure or validate recording storage.",
+      "quote": "-AllowCloudRecording controls whether users can record meetings; it doesn't configure or validate recording storage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Open questions: View only folder",
+      "n": 34,
+      "where": "Scope: Prerequisites; controls[1].governs",
+      "type": "record",
+      "claim": "The planned thumbnail previews concern existing Teams meeting recording content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The thumbnails provide a preview of the video content when hovering over the player's seek bar at a certain timestamp. Currently, it will only be made available for Teams meeting recordings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "Prerequisites specific to seek bar thumbnails have not been published beyond the product licensing described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Stream seek bar preview thumbnails Teams meeting recordings enable disable settings automatic licensing prerequisites generation storage; \"seek bar thumbnails\" licensing prerequisites storage generation automatic. Read roadmap, Stream service description and Clipchamp feature list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Open questions: channel recording download",
       "type": "behaviour",
-      "claim": "Blocking channel recording download saves channel meeting recordings to a View only folder.",
+      "claim": "Blocking channel recording download stores channel recordings in a View only folder.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
       "quote": "Block - Channel meeting recordings and transcripts are saved to a Recordings\\View only folder in the channel's SharePoint site.",
@@ -438,19 +421,41 @@
       "fix": null
     },
     {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description mentions no new sign-in, permission, sharing or data-access behaviour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature adds seek bar (preview) thumbnails to Microsoft Stream's video player. The thumbnails provide a preview of the video content when hovering over the player's seek bar at a certain timestamp. Currently, it will only be made available for Teams meeting recordings.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 38,
-      "where": "What's changing: first paragraph",
-      "type": "behaviour",
-      "claim": "Stream's seek bar is the timeline along the bottom of the player.",
-      "status": "unsupported",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes hover-triggered previews and mentions no autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature adds seek bar (preview) thumbnails to Microsoft Stream's video player. The thumbnails provide a preview of the video content when hovering over the player's seek bar at a certain timestamp. Currently, it will only be made available for Teams meeting recordings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls: Set-SPOTenant reference",
+      "type": "absence",
+      "claim": "The Set-SPOTenant reference does not mention a seek bar thumbnail setting.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: 'Clipchamp Stream video player seek timeline hover preview thumbnails on by default'. Read the roadmap, current features and Clipchamp player overview; no passage locates the seek bar along the bottom.",
-      "severity": "major",
-      "fix": "Remove the parenthetical '(the timeline along the bottom)'."
+      "quote": "Searched: \"Set-SPOTenant\" \"thumbnail\". Fetched the Set-SPOTenant reference and searched its entire text for thumbnail, seek, Stream and Clipchamp; no seek bar thumbnail setting found. StreamLaunchConfig describes only the Stream Launch config state.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant to sources for the reference explicitly mentioned in Governance controls."
     }
   ],
   "precheck": {
-    "at": "2026-11-26T03:50:31.216Z",
+    "at": "2026-11-26T05:27:16.759Z",
     "summary": {
       "links": 4,
       "unreachable": 0,
@@ -508,5 +513,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

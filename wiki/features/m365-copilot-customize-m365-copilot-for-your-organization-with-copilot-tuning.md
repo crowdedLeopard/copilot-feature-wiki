@@ -4,7 +4,7 @@ slug: "m365-copilot-customize-m365-copilot-for-your-organization-with-copilot-tu
 roadmapId: 552589
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Copilot Tuning adds task templates to Agent Builder and lets licensed users tune an agent's context, tools and model on selected SharePoint content. Preview docs say it is on for all Copilot-licensed users in eligible tenants, so decide who may tune."
+summary: "Copilot Tuning adds Agent Builder task templates and lets Copilot-licensed users tune an agent's context, tools and model on chosen SharePoint content. Preview docs say it is on in eligible tenants without Advanced Data Residency; decide who may tune."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -46,11 +46,11 @@ sources:
   - title: "Microsoft 365 Roadmap item 552589"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=552589"
     kind: "roadmap"
+  - title: "copilotPackage: block"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
   - title: "Blocking or unblocking an agent, including one built in Agent Builder, for the whole organisation (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
-    kind: "learn"
-  - title: "Blocking or unblocking an agent, including one built in Agent Builder, for the whole organisation (Microsoft Graph)"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
 videos: []
 related: ["agent-registry","frontier-program","app-management"]
@@ -65,7 +65,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Blocking an Agent Builder agent affects its availability in Microsoft Copilot and other host products. The Graph call blocks a Copilot package and requires a Microsoft Agent 365 licence."
+    note: "Blocking an Agent Builder agent affects its availability in Microsoft Copilot and other host products. The beta Graph call needs a Microsoft Agent 365 licence and is not supported in production applications."
   - governs: "DLP and retention policies over tuning snapshot data"
     scope: "tenant"
     ui: null
@@ -80,19 +80,23 @@ changes:
     note: "New briefing: Copilot Tuning templates and tuning in Agent Builder, its default-on preview setting, snapshot data handling and the block control for tuned agents."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected how limiting versus disabling tuning affects tuning jobs; noted the admin guide's conflicting statement on tuned-agent use when disabled, the ADR default exception and the beta status of the Graph block API."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 96 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 74
+  claims: 96
+  confirmed: 95
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e73d6f545c2a2df944d2655e0097d9a1"
+  contradicted: 1
+  attempts: 0
+  hash: "ffa36e4228ec42e3f6c03f8944a069f1"
 ---
 
 ## What's changing
@@ -101,7 +105,7 @@ Microsoft 365 Copilot Tuning adds task templates to Agent Builder, and lets user
 
 An agent built from a tunable template can be tuned in three ways. **Context tuning** sets the agent's goal, examples and evaluation rubrics. **Tool tuning** adds other agents or tools to its workflow. **Model tuning** applies supervised fine-tuning and reinforcement learning to the underlying model, using example output files from a SharePoint folder the user selects; the Document Writing template needs at least 20 example files, each at least one page long. For tuning, the system takes a snapshot copy of the selected SharePoint content. Tuned agents are then shared with chosen users or Microsoft Entra security groups and used in Microsoft Copilot experiences such as the Microsoft Copilot app and Copilot Chat in Microsoft Teams.
 
-The Microsoft Learn pages are marked **early access preview**. They say tuning is currently available to a limited set of customers through early access programmes, with access through the Microsoft Frontier programme planned for April 2026, and that features and requirements are subject to change. Per the admin guide, in a tenant that meets the eligibility threshold Copilot Tuning appears in the admin centre and is enabled by default, with **Enable for all users** as the default setting.
+The Microsoft Learn pages are marked **early access preview**. They say tuning is currently available to a limited set of customers through early access programmes, with access through the Microsoft Frontier programme planned for April 2026, and that features and requirements are subject to change. Per the admin guide, in a tenant that meets the eligibility threshold Copilot Tuning appears in the admin centre and is enabled by default, with **Enable for all users** as the default setting, except in tenants with Advanced Data Residency commitments.
 
 The roadmap item is **In development**, with preview targeted for February CY2026 and general availability for June CY2026, Worldwide (Standard Multi-Tenant) only, on desktop and web. The June CY2026 target has passed while the status still reads In development.
 
@@ -127,7 +131,7 @@ Because the preview default for eligible tenants is **Enable for all users**, a 
 
 **Change & support**
 - Tuning data follows macro-region residency in preview: Multi-Geo commitments do not apply, and Advanced Data Residency tenants do not get tuning by default and must waive ADR through their Microsoft account team.
-- Restricting or disabling tuning is forward-looking: existing tuned agents stay usable and are not rolled back, so pulling back after rollout means blocking or deleting agents one by one.
+- Restricting or disabling tuning is forward-looking: existing tuned agents stay usable and are not rolled back, so pulling back after rollout means blocking or deleting agents one by one. The same guide's description of **Disable tuning** says it prevents use of tuned agents until tuning is reenabled; see the notes under the controls table.
 
 ## Cost and licensing
 
@@ -151,8 +155,7 @@ Because the preview default for eligible tenants is **Enable for all users**, a 
 ## Governance guidance
 
 ### Before rollout
-- Decide, with data protection and records owners, whether tuning should run as **Enable for all users**, **Enable for specific users or groups** or **Disable tuning**, and set that in the Copilot Tuning controls in the Microsoft 365 admin center before users find the tune option (see the [admin guide](https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide)).
-- Decide whether to allow open-source or external base models, using the open-source model option in the same controls.
+- Decide whether broad tuning and open-source base models fit the organisation, using the admin guide linked below.
 - Brief records and DLP owners that tuning snapshots fall outside DLP and retention policies on the source content, and agree which SharePoint libraries may be used as training data.
 - Confirm with your Microsoft account team how your tenant's residency commitments apply if you rely on Multi-Geo or Advanced Data Residency.
 
@@ -172,14 +175,14 @@ Because the preview default for eligible tenants is **Enable for all users**, a 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Blocking or unblocking an agent, including one built in Agent Builder, for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Blocking an Agent Builder agent affects its availability in Microsoft Copilot and other host products. The Graph call blocks a Copilot package and requires a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Blocking or unblocking an agent, including one built in Agent Builder, for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Blocking an Agent Builder agent affects its availability in Microsoft Copilot and other host products. The beta Graph call needs a Microsoft Agent 365 licence and is not supported in production applications.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>DLP and retention policies over tuning snapshot data</strong><br><small>Tenant</small><br><small class="controls__note">The admin guide says DLP and retention policies on the source SharePoint content don't apply to snapshot data. Deleting the tuned agent deletes its snapshot.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 **Tenant tuning availability.** The [Copilot Tuning admin guide](https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide) documents three options (Enable for all users, which is the default for eligible tenants; Enable for specific users or groups; Disable tuning), an in-product access request flow with approval in the Microsoft 365 admin center, and an open-source model option. It says AI admins manage these through Copilot controls in the Microsoft 365 admin center but gives no navigation path, and the Copilot settings page does not list it. The Microsoft Graph Copilot policy settings resource supports five setting identifiers, none of them for tuning (November 2026).
 
-**How the controls interact.** Disabling or limiting tuning blocks new and in-flight tuning but leaves existing tuned agents usable for inference. To stop a tuned agent being used, block it. The admin guide says deleting a tuned agent also deletes its fine-tuned model and snapshot data; the Microsoft 365 admin center's delete action is a soft delete with a 30-day recovery window.
+**How the controls interact.** Disabling tuning blocks new and in-flight tuning; limiting tuning blocks it for users who lose access, while authorised users can continue tuning. The admin guide's transition table and lifecycle section say existing tuned agents stay usable for inference. The same admin guide contradicts its transition table and lifecycle section: its **Disable tuning** option says it prevents use of tuned agents until tuning is reenabled. Confirm the actual behaviour before relying on this setting. To stop a tuned agent being used, block it. The admin guide says deleting a tuned agent also deletes its fine-tuned model and snapshot data; the Microsoft 365 admin center's delete action is a soft delete with a 30-day recovery window.
 
 **Role.** The Copilot settings page names AI Administrator as an appropriate role for Copilot settings. The Graph block call requires the CopilotPackages.ReadWrite.All delegated permission and a Microsoft Agent 365 licence.
 
@@ -197,13 +200,8 @@ cost: Low. The preview pages tie tuning to existing Microsoft Copilot licences (
 impact: Medium. Agent creators in Agent Builder see the new templates and the tune option; colleagues notice only when a tuned agent is shared with them.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: How the controls interact / behaviour: Disabling or limiting tuning blocks new and in-flight tuning. | Found: Tuning enabled for specific users or groups [...] Allowed only for authorized users [...] Only for authorized users [...] Transition: enabled → limited [...] Blocked for non-authorized users | Fix: Replace the first sentence of How the controls interact with: 'Disabling tuning blocks new and in-flight tuning; limiting tuning blocks it for users who lose access, while authorised users can continue tuning.' The transition table at https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide gives these distinctions. | Source: https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters; rationale: risk / default: The preview default is on with Enable for all users in eligible tenants. | Found: This setting is the default setting for eligible tenants. [...] Copilot Tuning isn't enabled by default for tenants with Advanced Data Residency (ADR) commitments during public preview. | Fix: Keep defaultState as on, but add 'except tenants with Advanced Data Residency commitments' to the default-on sentence in the summary and What's changing, as documented at https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide. The body already gives this exception. | Source: https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide
-- [supported, minor] Risk assessment: Change & support; Governance controls: How the controls interact / behaviour: Restricting or disabling tuning leaves existing tuned agents usable for inference. | Found: Inference is unaffected. Users can continue to use existing agents for inference, subject to the agent's sharing and permission settings. [...] This setting blocks new tuning activity and prevents the use of tuned agents until tuning is reenabled. | Fix: Add after the inference statement: 'The same admin guide contradicts its transition table and lifecycle section: its Disable tuning option says it prevents use of tuned agents until tuning is reenabled. Confirm the actual behaviour before relying on this setting.' Cite https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide. | Source: https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide
-- [supported, minor] controls[0].api / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage. [...] POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block [...] Use of these APIs in production applications is not supported. | Fix: Keep the call unchanged and append to controls[0].note: 'The Graph API is beta, subject to change, and not supported for production applications.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [contradicted, minor] Governance guidance; controls / consistency: The checklist tells readers to configure tuning availability and open-source models, but neither control appears in the table. | Found: Before rollout: 'set that in the Copilot Tuning controls'; 'using the open-source model option'. The controls table contains only agent blocking and DLP/retention snapshot-policy absence. | Fix: The first two Before rollout steps name controls with no table row: tenant tuning availability and open-source model tuning. Do not add rows during correction; replace those steps with 'Decide whether broad tuning and open-source base models fit the organisation, using the admin guide linked below.'
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: Every control that the governance checklist tells readers to set or check appears in the controls table. | Found: Checklist: decide whether broad tuning and open-source base models fit; choose Enable for specific users or groups; require creators to choose a security group; retrain or delete. Table: agent blocking; DLP and retention over snapshots. | Fix: The Before rollout tuning-availability and open-source-model decisions, At rollout pilot availability and creator sharing instructions, and After rollout retraining/deletion instructions have no corresponding control rows. Do not add rows as part of this correction.
 -->

@@ -31,11 +31,20 @@ sources:
   - title: "Manage access to agents in SharePoint"
     url: "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint"
     kind: "learn"
+  - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
+    kind: "learn"
   - title: "Pay-as-you-go services available in Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services"
     kind: "learn"
   - title: "Supported Agent resources for Tenant Configuration Management (preview)"
     url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Manage Copilot agents in the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps"
+    kind: "learn"
+  - title: "Use agents with pay-as-you-go billing"
+    url: "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing"
     kind: "learn"
   - title: "Which users hold the Microsoft Copilot licence that agents in OneDrive require (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
@@ -48,9 +57,6 @@ sources:
     kind: "learn"
   - title: "Which users or groups can access and install agents and plugins (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    kind: "learn"
-  - title: "Blocking or unblocking an agent for the whole organisation (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     kind: "learn"
   - title: "Blocking or unblocking an agent for the whole organisation (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
@@ -111,19 +117,23 @@ changes:
     note: "New briefing: covers agents in OneDrive, the move to Agent Builder from mid-November 2026 and the end-of-March 2027 retirement of .agent files."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the blocking statement: SharePoint-created agents are blocked in Copilot Chat only, while blocking Agent Builder agents also affects other host products; removed an unsupported claim about the roadmap record."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 62
+  claims: 73
+  confirmed: 71
   unconfirmed: 1
   contradicted: 1
-  attempts: 1
-  hash: "faa409b3494a90c75f5bcb8d40fb8196"
+  attempts: 2
+  hash: "cbb94a3827137d5a378be5ce1fb4cc96"
 ---
 
 ## What's changing
@@ -134,7 +144,7 @@ Agents built this way were saved as .agent files. Microsoft's upgrade guidance t
 
 Existing .agent files continue to work across SharePoint, Microsoft Teams and the Copilot app until the end of March 2027. After that they stop responding, and opening one in OneDrive shows a message that an upgrade is required. Microsoft states there is no automatic upgrade: the owner upgrades each agent in the builder with **Upgrade to Microsoft 365 agent**, re-creates it, or deletes it.
 
-The roadmap record lists the item as Launched and in General Availability, with a preview date of September CY2025 and a target of November CY2025, for the Worldwide (Standard Multi-Tenant) cloud on the Web. The record describes the .agent-based experience; the Microsoft Learn upgrade page describes the creation experience as having changed since.
+The roadmap record lists the item as Launched and in General Availability, with a preview date of September CY2025 and a target of November CY2025, for the Worldwide (Standard Multi-Tenant) cloud on the Web. The Microsoft Learn upgrade page describes the creation experience as having changed since.
 
 ## Why it matters
 
@@ -156,7 +166,7 @@ If nobody acts, Copilot-licensed users can keep building agents from their OneDr
 
 **Change & support**
 - .agent files stop responding after March 2027, there is no automatic upgrade, and existing .agent usage history doesn't transfer to the replacement.
-- Blocking an agent in the Microsoft 365 admin center currently affects only its availability in Copilot Chat; Microsoft states it doesn't yet apply to OneDrive, SharePoint or Teams.
+- For agents created using SharePoint, blocking affects Copilot Chat only and does not yet apply to OneDrive, SharePoint or Teams. Blocking Agent Builder agents also affects other host products.
 
 ## Cost and licensing
 
@@ -218,7 +228,7 @@ The Graph calls for User access and Sharing are Tenant Configuration Management 
 - Will agents in OneDrive be offered in US Government clouds, given that the roadmap lists Worldwide only while the upgrade page says the .agent changes apply to Microsoft Government Cloud? Watch the roadmap item and Message center.
 
 <!-- rationale
-risk: Medium. Agents answer from files their owner picks and are shared like files, so exposure follows existing OneDrive permissions, but blocking an agent in the Microsoft 365 admin center does not yet apply to OneDrive.
+risk: Medium. Agents answer from files their owner picks and are shared like files, so exposure follows existing OneDrive permissions, but blocking a legacy SharePoint-created agent in the Microsoft 365 admin center does not yet apply to OneDrive.
 cost: Low. The roadmap ties the feature to the Microsoft Copilot for Microsoft 365 licence; the cost to plan for is owner and admin time to upgrade or retire .agent files before the end of March 2027.
 impact: Medium. Copilot-licensed users who built or rely on OneDrive agents notice: creation has moved to Agent Builder, and their .agent files stop answering after March 2027.
 -->
@@ -226,13 +236,10 @@ impact: Medium. Copilot-licensed users who built or rely on OneDrive agents noti
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support; rationale: risk / applicability: Blocking an agent in the Microsoft 365 admin center only affects Copilot Chat and does not yet apply to OneDrive, SharePoint or Teams. | Found: Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products | Fix: Replace the unqualified blocking bullet with: 'For agents created using SharePoint, blocking affects Copilot Chat only and does not yet apply to OneDrive, SharePoint or Teams. Blocking Agent Builder agents also affects other host products.' In the risk rationale, replace 'blocking an agent' with 'blocking a legacy SharePoint-created agent'. Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [unsupported, major] What's changing: final paragraph / record: The roadmap record describes the .agent-based experience. | Found: Searched: read the complete roadmap record and description; it says build, use and share agents using OneDrive content, but does not mention the .agent format. Read upgrade-sharepoint-agents for the file-format history. | Fix: Remove 'The record describes the .agent-based experience;' and retain the statement that the Microsoft Learn upgrade page describes the subsequent creation change.
+- [unsupported, major] Why it matters / behaviour: Because a OneDrive .agent file sits in one person's OneDrive, there is no site owner to notice it. | Found: Searched: OneDrive agents .agent files site owner upgrade owner responsibility. Read upgrade-sharepoint-agents and manage-access-agents-in-sharepoint; neither establishes that OneDrive agent files have no site-owner oversight. | Fix: Remove ', so there is no site owner to notice it' from Why it matters. Retain the documented owner-led upgrade guidance.
+- [contradicted, blocker] Open questions: inventory routes / absence: Whether SharePoint Advanced Management agent reports cover .agent files in users' OneDrive accounts remains an open documentation question. | Found: The Agent Insights report gives SharePoint admins detailed visibility into newly created agents across all SharePoint and OneDrive sites within their organization. | Fix: Replace the inventory bullet with: 'Does the agent registry list .agent files stored in users' OneDrive accounts? Watch the upgrade page.' Remove SharePoint Advanced Management agent reports from that open question; their OneDrive coverage is documented at https://learn.microsoft.com/sharepoint/monitor-agent-usage and https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents. | Source: https://learn.microsoft.com/sharepoint/monitor-agent-usage
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Clouds; Open questions / availability: The upgrade page states that all the upcoming .agent changes apply to Microsoft Government Cloud. | Found: All these upcoming changes apply to Microsoft Government Cloud. Copilot extensibility is available in Microsoft Government Cloud, so upgrading to Microsoft Copilot Agent Builder declarative agents preserves your agents' capabilities. | Fix: After the government-cloud sentence add: 'The Copilot extensibility prerequisites page separately states that agents grounded in shared tenant work data are not currently available in GCC, GCCH or DoD.' Cite https://learn.microsoft.com/plugins/prerequisites#agent-capabilities-and-licensing-models, which states that qualification. | Source: https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents
-- [supported, minor] controls[1].api; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.agent.useraccess setting once. | Found: POST /admin/configurationManagement/configurationMonitors ... baseline ... The desired-state baseline. ... mode ... monitorOnly, applyOnce, unknownFutureValue. | Fix: Keep the call. Append to controls[1].note: 'The request body sets mode to applyOnce and supplies baseline.resources with resourceType microsoft.agent.useraccess, resourceVersion 1 and properties.valueObject.userAssignmentCategory (everyone or noOne).' These properties are documented at https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[2].api; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.agent.sharing setting once. | Found: Create a new configurationMonitor object ... applies a desired-state baseline once in applyOnce mode. ... POST /admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[2].note: 'The request body sets mode to applyOnce and supplies baseline.resources with resourceType microsoft.agent.sharing, resourceVersion 1 and properties.valueObject.organizationWideSharingAssignment.userAssignmentCategory (everyone or noOne).' These properties are documented at https://learn.microsoft.com/graph/utcm-agent-resources#sharing-resource-type. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[3].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block ... APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported. | Fix: Append to controls[3].note: 'The Graph operation is beta; Microsoft does not support its use in production applications.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [supported, minor] front matter: defaultState; Why it matters / default: The capability is user-opt-in: eligible users choose to build or use agents, without a separately documented OneDrive enablement switch. | Found: The capability is enabled by default in all Microsoft Copilot licensed tenants. ... Searched: agents in OneDrive Copilot admin turn off agents switch licence default; opened upgrade-sharepoint-agents, agent-settings and plugins/agent-builder. | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps to sources for the documented default availability of agents in Copilot-licensed tenants. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps
-- [supported, minor] front matter: cost; rationale: cost; Cost and licensing / cost: For the Copilot-licensed users addressed by this briefing, the known transition cost is owner and admin time rather than a new charge for interactive agent use. | Found: Interactive use of generative answers, tenant graph grounding and agent actions by authenticated Microsoft Copilot users, in Microsoft 365 apps and services, are included at no extra cost. | Fix: Add https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing to sources for the statement that authenticated Copilot users' interactive agent use in Microsoft 365 apps and services is included at no extra cost. | Source: https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing
+- [supported, minor] controls[1].api / command: POST /beta/admin/configurationManagement/configurationMonitors applies User access through an applyOnce baseline containing microsoft.agent.useraccess. | Found: applies a desired-state baseline once in applyOnce mode. POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[1].note: 'The request body sets mode to applyOnce and baseline.resources to a microsoft.agent.useraccess resource, with properties.valueObject.userAssignmentCategory set to everyone or noOne.' The property is documented at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[2].api / command: POST /beta/admin/configurationManagement/configurationMonitors applies Sharing through an applyOnce baseline containing microsoft.agent.sharing. | Found: applies a desired-state baseline once in applyOnce mode. POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[2].note: 'The request body sets mode to applyOnce and baseline.resources to a microsoft.agent.sharing resource, with properties.valueObject.organizationWideSharingAssignment.userAssignmentCategory set to everyone or noOne.' The property is documented at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[3].api / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks the selected Copilot package. | Found: Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Keep the call and licence note. Append to controls[3].note: 'This is a beta API; Microsoft does not support its use in production applications.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
 -->

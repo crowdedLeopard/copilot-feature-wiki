@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 553218"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=553218"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 518224"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=518224"
+    kind: "roadmap"
   - title: "Get started with Content Explorer (classic)"
     url: "https://learn.microsoft.com/purview/data-classification-content-explorer"
     kind: "learn"
@@ -39,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Add-RoleGroupMember"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
+    kind: "learn"
+  - title: "Learn about sensitive information types"
+    url: "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about"
     kind: "learn"
 videos: []
 related: ["microsoft-purview-compliance-portal-information-protection-admin-unit-scoping-in-content-e","sensitive-information-types","sensitivity-labels","microsoft-purview-dspm-copilot-readiness-and-data-explorer","classifiers"]
@@ -68,19 +74,23 @@ changes:
     note: "New briefing for the GCC, GCC High and DoD roadmap item on enhanced SIT and label filtering in Content Explorer."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the risk assessment: removed unsupported statements that the change adds no identity or sign-in and takes no action on content; trimmed the admin-unit checklist step; added sources."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 53
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 1
-  hash: "20c539ca09ffa6b2643242d1de3c092e"
+  claims: 55
+  confirmed: 55
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "2680b667e5a8945b9247845dea6243be"
 ---
 
 ## What's changing
@@ -106,10 +116,10 @@ For investigators the gain is practical: narrowing a large estate to the sensiti
 - The data explorer page says encrypted sensitivity labels are not surfaced on content explorer for SharePoint and OneDrive, so a filter by label will not show every labelled file there.
 
 **Security & identity**
-- No new identity or sign-in. Access stays with the Content Explorer List viewer and Content Explorer Content viewer role groups, which Content Explorer supports restricting by administrative unit.
+- Access stays with the Content Explorer List viewer and Content Explorer Content viewer role groups, which Content Explorer supports restricting by administrative unit.
 
 **Autonomy & actions**
-- No change: the feature filters and displays existing classification data and takes no action on content.
+- The roadmap describes enhanced UI controls enabling scoped visibility and filtering of SIT and label data.
 
 **Change & support**
 - Counts can take up to seven days to update in Content Explorer and 14 days for files in SharePoint, so a filter may not reflect recent labelling or classification. Expect investigators to raise this as a discrepancy.
@@ -134,7 +144,7 @@ The Content Explorer (classic) page refers to those licensing pages and names no
 ### Before rollout
 - List the members of the Content Explorer List viewer and Content Explorer Content viewer role groups in each GCC, GCC High or DoD tenant, under Settings > Roles and scopes > Role groups in the Microsoft Purview portal.
 - Remove Content viewer membership from anyone who needs only to see where items are, since List viewer alone shows items and locations.
-- Decide whether investigators should be restricted to administrative units, and assign them through **Assign admin units** when adding them to the role groups (see /features/microsoft-purview-compliance-portal-information-protection-admin-unit-scoping-in-content-e/).
+- Decide whether investigators should be restricted to administrative units (see /features/microsoft-purview-compliance-portal-information-protection-admin-unit-scoping-in-content-e/).
 
 ### At rollout
 - Open Content Explorer and data explorer as a List viewer member and check which sensitive information types and labels the filter offers and whether anything is hidden that was visible before.
@@ -172,16 +182,4 @@ Microsoft Learn documents no setting that switches the enhanced filter on or off
 risk: Low. The change is to how Content Explorer filters and shows data it already holds; access still rests on the Content Explorer List viewer and Content viewer role groups.
 cost: Low. Content Explorer comes with the E5/A5/G5 licences Microsoft's service description names for data classification analytics; the cost the sources show is admin time to review role groups.
 impact: Low. Only compliance and information protection staff who hold Content Explorer roles use the tool, so end users notice nothing.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The enhancement introduces no new identity. | Found: Searched: Content Explorer enhanced tag identity authentication actions; Content Explorer scoped visibility default identity sign-in action content. Read both explorer pages and What's new; none states that the enhancement introduces no identity. | Fix: Remove 'No new identity or sign-in.' Keep the following documented Content Explorer access and administrative-unit facts.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The enhancement introduces no new sign-in. | Found: Searched: Content Explorer enhanced tag identity authentication actions; Content Explorer scoped visibility default identity sign-in action content. Read both explorer pages and What's new; the existing portal sign-in steps do not state this enhancement's sign-in behaviour. | Fix: Remove 'No new identity or sign-in.' The cited pages document signing in to the existing portal, not a guarantee about the enhancement's authentication changes.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The enhancement makes no change to actions and takes no action on content. | Found: Searched: Content Explorer enhanced tag identity authentication actions; Content Explorer scoped visibility default identity sign-in action content. Read both explorer pages and What's new; neither the UI-only roadmap description nor these pages guarantees no content actions. | Fix: Replace the Autonomy & actions bullet with 'The roadmap describes enhanced UI controls enabling scoped visibility and filtering of SIT and label data.' Remove the guarantees 'No change' and 'takes no action on content'.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: Roadmap item 518224 lists the same enhancement for Worldwide. | Found: "id": 518224; "title": "Microsoft Purview: Information Protection-Content Explorer – Enhanced Tag (SIT, Labels) Filter at UI Layer"; "clouds": ["Worldwide (Standard Multi-Tenant)"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=518224 to sources for the Worldwide item's feature, status and dates.
-- [supported, minor] What's changing / behaviour: SIT means sensitive information type and refers to pattern-based classification. | Found: Sensitive information types (SITs) are pattern-based classifiers. | Fix: Cite https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about for the pattern-based definition of SIT. | Source: https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks administrators to assign administrative units, but the controls table has no row for that assignment. | Found: Decide whether investigators should be restricted to administrative units, and assign them through Assign admin units ... Table rows: Who can see items ...; Tenant switch for the enhanced SIT and label filter ... | Fix: Remove the instruction 'and assign them through Assign admin units when adding them to the role groups' from the Before rollout bullet; retain the advice to decide whether administrative-unit restrictions are appropriate.
 -->

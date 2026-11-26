@@ -4,7 +4,7 @@ slug: "microsoft-teams-ability-for-it-admins-to-customize-the-user-notification-
 roadmapId: 536570
 topic: "m365-copilot"
 products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)"]
-summary: "Teams admins can replace the message and privacy policy link participants see when a meeting is recorded or transcribed, per meeting policy. The roadmap item is Launched; it is an optional setting to review with legal or privacy owners."
+summary: "Teams admins can customise recording and transcription messages per meeting policy and set the privacy policy link tenant-wide. The roadmap item is Launched; it is an optional setting to review with legal or privacy owners."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
@@ -105,19 +105,23 @@ changes:
     note: "New briefing: launched meeting-policy setting for custom recording and transcription notification text, with the privacy URL and explicit consent settings it works with."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: the summary now says the privacy policy link is set tenant-wide, not per meeting policy; removed the claim about a later roadmap item, the unsupported wording that the setting does not start, stop or block recording, and the consent-data review step."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "3a4c96710e77914a40c66d6c7da1b174"
+  claims: 71
+  confirmed: 71
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "348c35f416ae0b0b6c285bc6b84bec03"
 ---
 
 ## What's changing
@@ -128,7 +132,7 @@ Microsoft Learn documents the feature as a meeting policy setting. In the notifi
 
 Once enabled for a meeting policy, users assigned that policy see the custom notifications in meetings they organise, and all participants in those meetings follow the organiser's settings. The message shown depends on the scenario and the participant's client language; where no custom message exists for that language or scenario, the participant sees the default Teams message. Learn says custom messages are not supported in 1:1 calls.
 
-The roadmap item shows status Launched, with a target of January CY2026, General Availability, on Desktop and Mac, in Worldwide (Standard Multi-Tenant) and GCC. Learn names Teams Windows, macOS and Web as supported clients, and says iOS and Android currently support plain text only. A later roadmap item covers the same capability in more clouds: see [/features/microsoft-teams-ability-for-it-admins-to-customize-the-user-notification-messages-for-reco/](/features/microsoft-teams-ability-for-it-admins-to-customize-the-user-notification-messages-for-reco/).
+The roadmap item shows status Launched, with a target of January CY2026, General Availability, on Desktop and Mac, in Worldwide (Standard Multi-Tenant) and GCC. Learn names Teams Windows, macOS and Web as supported clients, and says iOS and Android currently support plain text only.
 
 ## Why it matters
 
@@ -140,7 +144,7 @@ Microsoft has not stated whether the setting is on or off when it arrives, and n
 
 **Data exposure**
 
-- No new data access is documented: the setting changes notification text and the privacy policy URL, not what is recorded or transcribed.
+- No new data access is documented: the setting changes notification text and the privacy policy URL.
 - Banner messages can carry HTML links. Check every link target before upload, because participants, including external ones, will follow what the organiser's policy shows them.
 
 **Security & identity**
@@ -150,7 +154,7 @@ Microsoft has not stated whether the setting is on or off when it arrives, and n
 
 **Autonomy & actions**
 
-- No change: the setting does not start, stop or block recording or transcription. Inserting `<empty>` for a language or scenario leaves only the fixed information, which can remove wording your organisation relies on.
+- The documented setting customises notification text and its privacy policy link. Inserting `<empty>` for a language or scenario leaves only the fixed information, which can remove wording your organisation relies on.
 
 **Change & support**
 
@@ -191,7 +195,6 @@ The indirect cost is admin and legal time: drafting messages for up to six scena
 
 - Recheck messages and links whenever your privacy notice or consent wording changes.
 - Tell the service desk that custom messages are not supported in 1:1 calls, and that participants whose language has no custom message see the default text.
-- Review consent data in the meeting attendance report or the Teams meeting audit logs in Microsoft Purview where explicit consent is on.
 
 ## Governance controls
 
@@ -218,18 +221,14 @@ The custom message toggle and the message text live in the meeting policy and fo
 - Are changes to custom messages recorded in the Microsoft Purview audit log?
 
 <!-- rationale
-risk: Low. The setting changes the wording and privacy link of the recording notice, not what is recorded or who can record; the risk is a misleading or broken message reaching every participant in affected meetings.
+risk: Low. The documented setting customises recording-notice wording and the privacy policy link; the risk is a misleading or broken message reaching every participant in affected meetings.
 cost: Low. The feature sits in Teams meeting policies, which need users with a Teams licence; no separate licence or meter for custom notifications is published. The cost is time to write and translate the messages.
 impact: Low. Admins configure it; participants only see different text in meetings organised by users whose meeting policy has custom messages switched on.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary / applicability: The privacy policy link can be replaced per meeting policy. | Found: The Teams admin center through Meeting settings > Email invitation > Privacy and Security URL. | Fix: Replace the summary's first sentence with: 'Teams admins can customise recording and transcription messages per meeting policy and set the privacy policy link tenant-wide.' The tenant-wide setting is documented at https://learn.microsoft.com/microsoftteams/meeting-recording#set-a-custom-privacy-policy-url and https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration?view=teams-ps. | Source: https://learn.microsoft.com/microsoftteams/meeting-recording
-- [contradicted, blocker] What's changing: final sentence / record: The linked later roadmap item covers the same meeting capability in more clouds. | Found: 567302: "description": "This feature enables IT admins to customize a portion of the user notification messages for recording and transcription during Teams calls."; "clouds": ["Worldwide (Standard Multi-Tenant)", "GCC", "GCC High", "DoD"] | Fix: Remove the sentence 'A later roadmap item covers the same capability in more clouds' and its inline link. Roadmap item 567302 describes custom notification messages during Teams calls, not simply expanded cloud availability for this meeting feature.
-- [unsupported, major] Risk assessment: Autonomy & actions; Data exposure; rationale: risk / behaviour: The custom notification setting does not start, stop or block recording or transcription, or change what is recorded or who can record. | Found: Searched: Teams recording transcription custom message audit changes policy permissions data access. Read custom-message feature and meeting-recording: they describe message customisation and separate recording permission controls, but do not expressly state this exhaustive no-effect claim. | Fix: Replace 'No change: the setting does not start, stop or block recording or transcription' with 'The documented setting customises notification text and its privacy policy link.' Remove ', not what is recorded or transcribed' from Data exposure. Replace the risk rationale with: 'Low. The documented setting customises recording-notice wording and the privacy policy link; the risk is a misleading or broken message reaching every participant in affected meetings.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: After rollout / behaviour: Consent data can be reviewed in the meeting attendance report. | Found: The consent choice for each participant is included in the attendance report. When the attendance report is disabled or participants aren't in the attendance report, organizers and co-organizers don't see consent data. | Fix: Remove the After rollout bullet beginning 'Review consent data', also resolving the missing monitoring row. The attendance-report route is conditional on the report being enabled and participants being included, as documented at https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription. | Source: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells readers to review consent monitoring, but the controls table has no row for that monitoring surface. | Found: Review consent data in the meeting attendance report or the Teams meeting audit logs in Microsoft Purview where explicit consent is on. The table lists custom notification enablement, custom text, the privacy URL and explicit consent, but no consent monitoring. | Fix: Remove the After rollout bullet beginning 'Review consent data'. This resolves the checklist/table mismatch without adding an unverified control row.
+- [supported, minor] controls[1].ui; rendered controls / admin-path: Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Customize notification reaches the panel for custom message text. | Found: Click the Customize notification button to set your custom message. Download the CSV template from the customization panel. [...] Upload the completed CSV using the Select a file button. | Fix: Finish controls[1].ui.path at the upload control: 'Meetings > Meeting policies > policy > Recording & transcription > Customize notification > Select a file', as documented at https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message. | Source: https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message
+- [supported, minor] Open questions: 1:1 calls / behaviour: A later roadmap item concerns custom notification messages for recording and transcription in calls. | Found: Ability for IT admins to customize the user notification messages for recording and transcription in calls [Windows, Mac] [...] Roadmap ID: 567302 | Fix: Replace 'Watch the later roadmap item and Message center' with 'Watch Message center and roadmap item 567302, which the November 17, 2026 Copilot release notes describe as custom notifications for calls.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026 in sources. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026
 -->

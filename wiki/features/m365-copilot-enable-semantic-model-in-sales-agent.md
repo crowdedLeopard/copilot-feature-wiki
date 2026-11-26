@@ -143,15 +143,17 @@ changes:
     note: "Corrected after verification: form summaries wording, CopilotGlossaryTerm Web API call on the glossary row, Work IQ name in the environment copy or move step, and fuller semantic model and glossary paths."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 101 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 93
+  claims: 101
+  confirmed: 101
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -266,9 +268,9 @@ cost: Low. The only costs Learn shows are admin time and extra Dataverse storage
 impact: Medium. Sellers using Sales agent will notice changed answers; the admins and makers who manage the CRM environment do the configuring.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; rationale: risk / default: Business Applications in Work IQ is on by default for new public production environments subject to exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: After the scoped default statement, add: 'The older Manage feature settings reference still lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences as Off by default; the Work IQ default-settings page gives the newer, environment-qualified default.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [supported, minor] Risk assessment: Change & support / behaviour: The semantic model does not support environment copy or move. | Found: No ALM support. The semantic model currently doesn't support environment copy or move operations. | Fix: Replace the sentence with: 'The overview says environment copy or move is unsupported; the configuration guide separately says semantic models are solution-aware and can move configuration through solutions.' Both pages are already cited: https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview and https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals#add-semantic-model-to-a-solution. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview
+- [supported, minor] Why it matters; rationale: risk / default: Work IQ is on by default for new public production environments, subject to the documented exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: After the scoped default statement, add: 'The Manage feature settings reference separately lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences as Off by default; the Work IQ default-settings page gives the environment-qualified default.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot licence gives CRM data only. | Found: Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only | Fix: After the two licensing options, add: 'The Sales agent FAQ separately says a Microsoft 365 Copilot licence is required; the setup and usage pages explicitly document the Dynamics 365 Sales Enterprise or Premium CRM-only option without that licence.' Cite https://learn.microsoft.com/microsoft-sales-copilot/sales-m365-copilot-faq#sales-agent-in-microsoft-365-copilot. | Source: https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat
 -->

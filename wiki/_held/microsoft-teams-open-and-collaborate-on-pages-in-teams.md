@@ -40,6 +40,12 @@ sources:
   - title: "Overview of Cloud Policy service for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     kind: "learn"
+  - title: "Overview of Loop storage"
+    url: "https://learn.microsoft.com/microsoft-365/loop/loop-storage"
+    kind: "learn"
+  - title: "Overview of Loop workspaces and Loop components permissions"
+    url: "https://learn.microsoft.com/microsoft-365/loop/loop-permission"
+    kind: "learn"
 videos: []
 related: ["cloud-policy","copilot-notebooks","conditional-access"]
 controls:
@@ -55,7 +61,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Home > Org settings > Services > Loop"
+      path: "Home > Org settings > Services > Loop > Loop workspaces"
       docs: "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration"
     api: null
     note: "Office Apps Administrator, Security Administrator or Global Administrator. Sets Create Loop workspaces in Loop for all users; does not restrict access to existing workspaces."
@@ -73,19 +79,23 @@ changes:
     note: "New briefing: shared pages open and can be edited inside Teams, with the existing Loop controls for Teams and workspaces."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: editing in Teams makes changes easier for people with edit access, not anyone in the chat; completed the Loop workspaces admin path; cited the Loop storage and permissions pages."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
-  unconfirmed: 0
+  claims: 67
+  confirmed: 65
+  unconfirmed: 1
   contradicted: 1
-  attempts: 1
-  hash: "afb11c6ea33bf872d307901e26d9ea76"
+  attempts: 2
+  hash: "97c6514b56578ee5a0e7f292b5307e03"
 ---
 
 ## What's changing
@@ -100,7 +110,7 @@ The item is In development, with preview and general availability both targeted 
 
 ## Why it matters
 
-This is a change to where people work on content they can already reach, not a new way to share it. The governance questions are the existing Loop ones: who can create pages and components, where they are stored, and who can edit them. Microsoft's Loop admin page says Loop components "are always shared as editable by others", even where the tenant's default link is view-only, so editing beside the conversation makes it easier for anyone in a chat or channel to change shared content.
+This is a change to where people work on content they can already reach, not a new way to share it. The governance questions are the existing Loop ones: who can create pages and components, where they are stored, and who can edit them. Microsoft's Loop admin page says Loop components "are always shared as editable by others", even where the tenant's default link is view-only, so editing beside the conversation makes it easier for people with edit access to change shared content.
 
 Microsoft has not stated what happens on arrival, and no source says existing permissions or storage change. The work is telling users and the help desk where pages will open, and confirming that the tenant's Loop settings are what it wants, bearing in mind that the Teams Loop switch applies to the whole tenant.
 
@@ -108,7 +118,7 @@ Microsoft has not stated what happens on arrival, and no source says existing pe
 
 **Data exposure**
 - No new data reach is described: the roadmap covers pages already shared into a chat or channel. The support article says everyone with access to a channel can see and contribute to its pages, which is today's behaviour.
-- Loop files are stored in OneDrive, SharePoint or SharePoint Embedded; channel pages are found and deleted in SharePoint, so existing SharePoint retention and sharing settings remain the controls.
+- Loop files are stored in OneDrive, SharePoint or SharePoint Embedded; channel pages are found and deleted in SharePoint, so existing SharePoint retention and sharing settings remain the controls ([Loop storage](https://learn.microsoft.com/microsoft-365/loop/loop-storage); [Loop permissions](https://learn.microsoft.com/microsoft-365/loop/loop-permission)).
 
 **Security & identity**
 - No change described. The Loop admin page says its creation settings "don't restrict access to existing Loop files or workspaces" and points to Conditional Access policies to block access to existing Loop content.
@@ -140,7 +150,7 @@ Microsoft has not stated what happens on arrival, and no source says existing pe
 
 ### Before rollout
 - Check the tenant's Teams Loop state by running `Get-SPOTenant` as a SharePoint administrator and reading `IsLoopEnabled`.
-- Confirm whether Loop workspace creation is allowed under Microsoft 365 admin center > Home > Org settings > Services > Loop.
+- Confirm whether Loop workspace creation is allowed under Microsoft 365 admin center > Home > Org settings > Services > Loop > Loop workspaces checkbox.
 - Confirm that firewalls and proxies allow WebSocket traffic to `*.svc.ms` and `*.office.com`, which Microsoft lists for real-time Loop collaboration.
 - Brief the help desk that, per the roadmap, shared pages can be opened in the main Teams window or a new window.
 
@@ -160,7 +170,7 @@ Microsoft has not stated what happens on arrival, and no source says existing pe
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Loop component creation and integration in Teams chats and channels</strong><br><small>Tenant</small><br><small class="controls__note">SharePoint Online administrator. Tenant-wide, can't be set per user. Microsoft has not said whether it governs opening shared pages in Teams.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsLoopEnabled $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether users can create Loop workspaces, including Teams channel workspaces</strong><br><small>Tenant</small><br><small class="controls__note">Office Apps Administrator, Security Administrator or Global Administrator. Sets Create Loop workspaces in Loop for all users; does not restrict access to existing workspaces.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Home › Org settings › Services › Loop <a href="https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create Loop workspaces, including Teams channel workspaces</strong><br><small>Tenant</small><br><small class="controls__note">Office Apps Administrator, Security Administrator or Global Administrator. Sets Create Loop workspaces in Loop for all users; does not restrict access to existing workspaces.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Home › Org settings › Services › Loop › Loop workspaces <a href="https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch for opening shared pages inside Teams</strong><br><small>Tenant</small><br><small class="controls__note">No setting specific to this feature is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -186,13 +196,10 @@ impact: Medium. People who receive and work on pages in Teams chats and channels
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: first paragraph / behaviour: Editing beside the conversation makes it easier for anyone in a chat or channel to change shared content. | Found: Page and Component Sharing: Grants access to a specific page (not the whole workspace) with options for edit or read-only access. | Fix: Replace 'so editing beside the conversation makes it easier for anyone in a chat or channel to change shared content' with 'so editing beside the conversation makes it easier for people with edit access to change shared content'. The component-sharing statement does not establish that every recipient of a shared page has edit permission. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-permission
+- [unsupported, blocker] Risk assessment: Autonomy & actions / default: Nothing happens until a user opens and edits a page. | Found: Searched: Teams pages automatically opening Loop; opening shared pages Teams license meter default setting; Teams Open and collaborate on Pages. Read roadmap, channel-pages support article and Loop admin policies; none guarantees no behaviour changes before opening and editing. | Fix: Replace 'No change: nothing happens until a user opens and edits a page.' with 'The roadmap describes users opening and editing shared pages; it does not describe autonomous actions or state what happens on arrival.' Keep defaultState as unknown.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls; Open questions / command: Set-SPOTenant -IsLoopEnabled $false disables Loop component creation and integration in Teams chats and channels. | Found: Loop components in Teams chats and channels | SharePoint PowerShell | Set-SPOTenant -IsLoopEnabled ... To disable Loop components in Teams, run Set-SPOTenant -IsLoopEnabled $false. | Fix: Keep the command, which the cited Loop admin page explicitly documents for disabling Teams Loop components. Add to its note: 'The same admin page's creation-path table instead lists IsCollabMeetingNotesFluidEnabled for Teams channels.' Cite https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration in that clarification. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration
-- [supported, minor] controls[1].ui; Governance guidance; Governance controls / admin-path: Microsoft 365 admin center > Home > Org settings > Services > Loop leads to the Loop workspace creation control. | Found: Navigate to Home > Org settings > Services > Loop. Choose your desired state for Loop workspaces via the checkbox. | Fix: Append the documented control to the path: 'Home > Org settings > Services > Loop > Loop workspaces checkbox'. Apply the same completion to the front matter, rendered table and governance checklist. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration
-- [supported, minor] Risk assessment: Data exposure / applicability: Existing SharePoint retention settings govern Loop content stored in SharePoint. | Found: When content is stored in SharePoint, the standard SharePoint IT policy is applied. | Fix: Cite https://learn.microsoft.com/microsoft-365/loop/loop-storage alongside the sentence about existing SharePoint retention controls. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-storage
-- [supported, minor] Risk assessment: Data exposure / applicability: Existing organizational sharing settings govern sharing of Loop pages. | Found: The user can choose to use a company share link or people-specific share link, based on your organizational sharing settings. | Fix: Cite https://learn.microsoft.com/microsoft-365/loop/loop-permission alongside the sentence about existing sharing controls. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-permission
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The Loop requirements page lists the Loop with workspaces service plan for Loop workspaces. | Found: Loop workspaces license | Loop with workspaces service plan | Fix: Keep the attribution to the requirements page, but append: 'Microsoft's Loop access via Microsoft 365 subscriptions article also says that, as of February 2026, anyone with access to the Loop app who meets its storage requirements can create workspaces.' Cite https://support.microsoft.com/office/loop-access-via-microsoft-365-subscriptions-92915461-4b14-49a4-9cd4-d1c259292afa to acknowledge the conflicting guidance. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-requirements
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is included as a new option inside the already-licensed Teams product. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Keep licensing.model as 'included'. Add to the licensing notes and Licence bullet: 'A Teams license is required to use Teams; Microsoft has not published licensing specific to this new page-opening option.' Cite https://learn.microsoft.com/microsoftteams/user-access. Keep the separately attributed Loop requirements as background. | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [supported, minor] Governance controls: last paragraph / admin-path: Cloud Policy at config.office.com under Customization > Policy Management can scope Loop workspace settings to groups. | Found: Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy. | Fix: Complete the prose instruction: 'At config.office.com, select Customization > Policy Management, create or edit a policy configuration, choose the group under Choose the scope, then select Create Loop workspaces in Loop in Configure Settings.' The existing steps correctly reach the policy list but stop before the setting. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration
+- [supported, minor] front matter: licensing.notes; Cost and licensing; Open questions / licensing: The Loop requirements page lists the Loop with workspaces service plan for Loop workspaces. | Found: Loop workspaces license | Loop with workspaces service plan (see eligible licenses) | Fix: Keep the attribution to the requirements page, but add: 'Its linked subscription article instead says that, as of February 2026, anyone with access to the Loop app who meets its storage requirements can create workspaces; the Microsoft pages differ.' Cite https://support.microsoft.com/office/loop-access-via-microsoft-365-subscriptions-92915461-4b14-49a4-9cd4-d1c259292afa. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-requirements
+- [supported, minor] Governance controls: Cloud Policy path; Open questions: Copilot policy / admin-path: Cloud Policy at config.office.com under Customization > Policy Management can scope Loop workspace creation to groups. | Found: Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. ... select the group for which you want to apply the policy. | Fix: Complete the group-scoping route as 'config.office.com > Customization > Policy Management > policy configuration > Choose the scope > group > Configure Settings > Create Loop workspaces in Loop', following https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration
+- [supported, minor] Governance guidance: Before rollout / role: Get-SPOTenant is run as a SharePoint administrator. | Found: You must be a SharePoint Online administrator to run the cmdlet. | Fix: Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spotenant for the Get-SPOTenant role requirement. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spotenant
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to confirm firewall and proxy WebSocket allowances, but the controls table has no corresponding network-control row. | Found: Checklist: 'Confirm that firewalls and proxies allow WebSocket traffic'. Table rows: Loop component creation and integration; Loop workspace creation; switch for opening shared pages. | Fix: Remove the standalone firewall/proxy bullet from Before rollout; retain the verified WebSocket requirements in Scope. This avoids a checklist control without a table row and does not add an unverified control.
 -->

@@ -107,15 +107,17 @@ changes:
     note: "Corrected the Agent 365 tool-access control statement to the service description's wording (core capability, available in GCC) and added the usage-limits qualification to the licence text."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
   contradicted: 0
   attempts: 0

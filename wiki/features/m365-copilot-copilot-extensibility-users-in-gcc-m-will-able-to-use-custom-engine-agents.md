@@ -88,15 +88,17 @@ changes:
     note: "Corrected after the independent check: cost is now variable (hosting and Azure consumption), the Graph API is stated as unavailable in GCC per the Agent 365 service description, and host support and usage-limit notes were added."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -201,4 +203,10 @@ The Graph call is a beta API that needs the delegated permission CopilotPackages
 risk: Medium. Custom engine agents bring builder-chosen orchestration and models, and for pro-code builds builder-provided hosting, into Copilot; the default for GCC is not stated, and the agent block control covers them only in part.
 cost: Variable. Pro-code custom engine agents incur hosting and Azure service consumption costs; no separate GCC-release licence or meter is published.
 impact: Medium. Makers and developers who build the agents, and the GCC users who gain access to them, notice the change; users who nobody builds an agent for see nothing.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Data exposure / applicability: Learn says administrators can use Content Search or Microsoft Purview to view and manage stored custom engine agent prompts and responses. | Found: To view and manage this stored data, admins can use Content Search or Microsoft Purview. | Fix: Keep the overview attribution and add: 'The Microsoft Agent 365 service description separately marks audit logs of agent activities and eDiscovery (content search) of agent interactions as unavailable in GCC.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365, whose feature table gives GCC Availability as No for that capability. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent
 -->

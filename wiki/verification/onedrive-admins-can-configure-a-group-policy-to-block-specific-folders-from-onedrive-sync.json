@@ -2,39 +2,198 @@
   "slug": "onedrive-admins-can-configure-a-group-policy-to-block-specific-folders-from-onedrive-sync",
   "roadmapId": 178292,
   "title": "OneDrive sync app: policy to exclude folders by name from upload on Windows and Mac",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "1 blocking finding (claim 33)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 64,
-    "confirmed": 61,
-    "unconfirmed": 2,
-    "contradicted": 1,
-    "blocker": 1,
-    "major": 2,
+    "claims": 60,
+    "confirmed": 60,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the briefing says a matching folder exists only on its device, but Microsoft explicitly says previously synced folders and content are not removed from the cloud. The controls, default and roadmap details are supported; the assertions that sign-in and access do not change are not stated by the sources.",
+  "summary": "The briefing passes: Microsoft documents the Windows and Mac controls, their opt-in default and the limits on existing synced content. The rollout dates match the release notes, and the briefing correctly reports their disagreement with the roadmap status.",
   "claims": [
     {
       "n": 1,
+      "where": "controls[0].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "The Windows folder exclusion control is in Group Policy Management Editor under Computer Configuration > Policies > Administrative Templates > OneDrive > Exclude specific kinds of folders from being uploaded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Under Computer Configuration\\Policies\\Administrative Templates\\OneDrive, navigate to Computer Configuration > Policies. ... Exclude specific kinds of folders from being uploaded",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api; Scope; What's changing",
+      "type": "command",
+      "claim": "Windows folder exclusions are a list of folder-name strings under HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\EnableODIgnoreFolderListFromGPO.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Enabling this policy creates a list of strings under the following path: HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\EnableODIgnoreFolderListFromGPO",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Intune deploys the Mac folder preference through Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Configuration settings > Property list file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Select Devices > Manage devices > Configuration > Create > New policy. ... Platform: Select macOS ... Profile type: Select Templates > Preference file. ... In Configuration settings ... Property list file",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api; What's changing; Scope; Governance guidance",
+      "type": "command",
+      "claim": "The standalone Mac edition uses the EnableODIgnoreFolders array of folder-name strings in /Library/Preferences/com.microsoft.OneDrive.plist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": ".plist location | /Library/Preferences/com.microsoft.OneDrive.plist ... <key>EnableODIgnoreFolders</key>\n<array>\n<string>(Folder name such as PowerShell)</string>\n</array>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "The Windows user-exclusion control is in Group Policy Management Editor under Computer Configuration > Policies > Administrative Templates > OneDrive > Prevent users at your organization from changing the default ignored extension and folder lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Under Computer Configuration\\Policies\\Administrative Templates\\OneDrive ... Prevent users at your organization from changing the default ignored extension and folder lists",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Setting the Windows DisableChangesToODIgnoreList DWORD to 1 under HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive prevents user changes to exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Enabling this policy sets the following registry key value to 1: [HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive]\"DisableChangesToODIgnoreList\"=dword:00000001",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Intune deploys the Mac user-exclusion preference through Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Configuration settings > Property list file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Select Devices > Manage devices > Configuration > Create > New policy. ... Platform: Select macOS ... Profile type: Select Templates > Preference file. ... In Configuration settings ... Property list file",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Setting DisableChangesToODIgnoreList to true in the standalone Mac edition's /Library/Preferences/com.microsoft.OneDrive.plist prevents user changes to exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": ".plist location | /Library/Preferences/com.microsoft.OneDrive.plist ... <key>DisableChangesToODIgnoreList</key>\n<true/>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The Windows folder restriction is admin-opt-in: when disabled or not configured, it does not stop supported folders uploading.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "If you disable or don't configure this setting, the sync app uploads all supported folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The Mac folder restriction is admin-opt-in: when not configured, the sync app uploads all supported folders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "If you don't configure this setting, the sync app uploads all supported folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "This sync administration option is included in the plans that provide OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan. ... IT admin, security, and compliance features | Yes | Yes | Yes | Yes | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description lists Sync features as available in stand-alone, small business, enterprise, education, government and nonprofit plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "Feature | Stand-alone plans | Small business | Enterprise | Education | Government | Nonprofits ... Sync features | Yes | Yes | Yes | Yes | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description lists IT admin, security, and compliance features as available in all six plan-family columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "Feature | Stand-alone plans | Small business | Enterprise | Education | Government | Nonprofits ... IT admin, security, and compliance features | Yes | Yes | Yes | Yes | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published licensing specific to this folder-exclusion setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive EnableODIgnoreFolders folder exclusion license subscription price billing; OneDrive folder exclusion EnableODIgnoreFolders EnableODIgnoreFolderListFromGPO licensing pricing meter charge. Opened OneDrive service description and both sync policy references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter or separate charge is documented for the folder-exclusion setting as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive folder exclusion EnableODIgnoreFolders EnableODIgnoreFolderListFromGPO licensing pricing meter charge; OneDrive EnableODIgnoreFolders folder exclusion license subscription price billing. Opened service description, Windows and Mac policy references, and sync release notes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "front matter: status; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap lists the feature as In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -42,7 +201,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 17,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap target is June CY2025.",
@@ -53,18 +212,7 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
+      "n": 18,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -75,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 19,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -86,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 20,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platforms are Desktop and Mac.",
+      "claim": "The roadmap lists Desktop and Mac.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
@@ -97,19 +245,8 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap item was last modified on 2024-08-01T17:30:27.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2024-08-01T17:30:27\", \"products\": [\"OneDrive\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "n": 21,
+      "where": "What's changing; Risk assessment; Open questions",
       "type": "record",
       "claim": "The roadmap says users will see excluded folders in the sync configuration in OneDrive Advanced Settings.",
       "status": "supported",
@@ -119,516 +256,21 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing: existing file exclusion policy",
+      "n": 22,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The folder policy supplements an existing ability to exclude files or file extensions.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "In addition to being able to configure a group policy to exclude specific files or file extensions from Syncing with OneDrive, admins can now exclude folders as well.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "controls[0].ui; Governance controls table; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "The Windows folder policy is in Group Policy Management Editor under Computer Configuration > Policies > Administrative Templates > OneDrive > Exclude specific kinds of folders from being uploaded.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Under Computer Configuration\\Policies\\Administrative Templates\\OneDrive ... Computer Configuration policies in the Group Policy Management Editor ... Exclude specific kinds of folders from being uploaded",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "controls[0].api; Governance controls table; Scope",
-      "type": "command",
-      "claim": "The Windows policy stores a list of folder-name strings under HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\EnableODIgnoreFolderListFromGPO.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Enabling this policy creates a list of strings under the following path: `HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\EnableODIgnoreFolderListFromGPO`",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The general Intune preference-file route for the Mac folder policy is Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Configuration settings > Property list file.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-      "quote": "Select Devices > Manage devices > Configuration > Create > New policy. ... Platform: Select macOS ... Profile type: Select Templates > Preference file. ... In Configuration settings ... Property list file",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[1].api; Governance controls table; What's changing; Scope",
-      "type": "command",
-      "claim": "The Mac folder policy uses EnableODIgnoreFolders with an array of folder-name strings in the standalone edition's /Library/Preferences/com.microsoft.OneDrive.plist.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "| **.plist location** | `/Library/Preferences/com.microsoft.OneDrive.plist` ... <key>EnableODIgnoreFolders</key> <array> <string>(Folder name such as PowerShell)</string> </array>",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[2].ui; Governance controls table; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "The Windows user-exclusion control is Computer Configuration > Policies > Administrative Templates > OneDrive > Prevent users at your organization from changing the default ignored extension and folder lists in Group Policy Management Editor.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Computer Configuration\\Policies\\Administrative Templates\\OneDrive ... Group Policy Management Editor ... Prevent users at your organization from changing the default ignored extension and folder lists",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Setting DisableChangesToODIgnoreList to DWORD 1 under HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive enables the Windows user-exclusion restriction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Enabling this policy sets the following registry key value to 1: `[HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive]\"DisableChangesToODIgnoreList\"=dword:00000001`",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The general Intune preference-file route for the Mac user-exclusion control is Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Configuration settings > Property list file.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-      "quote": "Select Devices > Manage devices > Configuration > Create > New policy. ... Platform: Select macOS ... Profile type: Select Templates > Preference file. ... In Configuration settings ... Property list file",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "controls[3].api; Governance controls table",
-      "type": "command",
-      "claim": "The Mac user-exclusion restriction is DisableChangesToODIgnoreList set to true in the standalone edition's /Library/Preferences/com.microsoft.OneDrive.plist.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "| **.plist location** | `/Library/Preferences/com.microsoft.OneDrive.plist` ... If you set this setting's value to True, users can't add or remove exclusions in OneDrive settings. ... <key>DisableChangesToODIgnoreList</key> <true/>",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The new folder restriction is admin-opt-in: without configuration it does not restrict uploads of supported folders.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "If you disable or don't configure this setting, the sync app uploads all supported folders.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is included as a sync and IT-admin option inside the already licensed OneDrive product.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
-      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan. ... | Sync features | Yes | Yes | Yes | Yes | Yes | Yes | ... | IT admin, security, and compliance features | Yes | Yes | Yes | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The service description lists Sync features as available in stand-alone, small business, enterprise, education, government and nonprofit plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
-      "quote": "| Feature | Stand-alone plans | Small business | Enterprise | Education | Government | Nonprofits | ... | Sync features | Yes | Yes | Yes | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The service description lists IT admin, security, and compliance features as available in all six plan families.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
-      "quote": "| Feature | Stand-alone plans | Small business | Enterprise | Education | Government | Nonprofits | ... | IT admin, security, and compliance features | Yes | Yes | Yes | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "Nothing specific to the folder exclusion setting's licensing is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: OneDrive EnableODIgnoreFolderListFromGPO EnableODIgnoreFolders license pricing meter charge; read OneDrive service description, Windows policy and Mac preference references; no setting-specific licence found.",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No meter or separate charge is documented for the folder exclusion setting as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: OneDrive EnableODIgnoreFolderListFromGPO EnableODIgnoreFolders license pricing meter charge; read service description and both policy references; search returned storage meters, not a folder-exclusion meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Governance guidance: Before rollout",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Administrators enter complete folder names to prevent the OneDrive sync app uploading matching folders to OneDrive or SharePoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "This setting lets you enter complete folder names to prevent the OneDrive sync app (OneDrive.exe) from uploading matching folders to OneDrive or SharePoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Folder-name matching is not case-sensitive.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Folder-name matching isn't case-sensitive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Folder-name wildcards are not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "For example, enter \"PowerShell\" to exclude folders named \"PowerShell\". Wildcards aren't supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing; summary; Risk assessment; Governance guidance: At rollout; rationale: impact",
-      "type": "behaviour",
-      "claim": "After the folder exclusion setting is enabled, new folders with listed names are not uploaded.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "If you enable this setting, the sync app doesn't upload new folders that match the names you specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "New files created in an existing matching folder are also not uploaded.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "New files created in an existing matching folder also aren't uploaded.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "behaviour",
-      "claim": "The sync app shows no errors for skipped folders.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "No errors appear for the skipped folders",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Skipped new folders remain in the local OneDrive folder.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "If you enable this setting, the sync app doesn't upload new folders that match the names you specified. ... the folders remain in the local OneDrive folder.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The setting does not retroactively remove matching folders or their existing content from OneDrive or SharePoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "This setting doesn't retroactively remove a folder or its existing content from OneDrive or SharePoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "What's changing; controls[0].note; Risk assessment; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The sync app must be restarted after the folder exclusion setting is enabled or changed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "The OneDrive sync app must be restarted after this setting is enabled or changed for the setting to take effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Why it matters: first paragraph; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "A folder matched by the policy exists only on that device and does not reach the web or the user's other devices.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "This setting doesn't retroactively remove a folder or its existing content from OneDrive or SharePoint.",
-      "severity": "blocker",
-      "fix": "Replace the categorical sentence in Why it matters with: 'New matching folders skipped by the sync app remain local; the policy does not remove a folder or its existing content already in OneDrive or SharePoint.' In Data exposure, change 'Folders matched by the policy' to 'New matching folders skipped by the sync app' so the local-only analysis does not include previously synced content. Source: https://learn.microsoft.com/sharepoint/use-group-policy#exclude-specific-kinds-of-folders-from-being-uploaded."
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Removing an exclusion can cause matching local content to begin uploading.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Removing an exclusion can cause matching local content to begin uploading. Review the local content before removing a rule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "There is no change to sign-in.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: OneDrive exclude folders policy sign-in access permissions existing synced content exclusions; OneDrive folder exclusion sign-in permissions. Read Windows and Mac exclusion references and search excerpts; none states sign-in is unchanged.",
-      "severity": "major",
-      "fix": "Remove 'No change to sign-in' from the opening sentence under Security & identity; retain the documented description of the setting as preventing matching-folder uploads."
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "There is no change to access.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: OneDrive exclude folders policy sign-in access permissions existing synced content exclusions; OneDrive folder exclusion sign-in permissions. Read Windows and Mac policy references and search excerpts; none states access is unchanged.",
-      "severity": "major",
-      "fix": "Remove 'or access' along with the rest of 'No change to sign-in or access.' Retain the documented description of the sync filter and the wiki's advice not to treat it as data loss prevention."
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Moving files that already sync into an excluded folder is not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Moving files that are already syncing into an excluded folder isn't supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[0].note; Risk assessment; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Returning a configured Windows Group Policy setting to Not configured leaves its registry key unchanged; use Disabled to withdraw the restriction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "If you later change the setting back to Not configured, the corresponding registry key isn't modified, and the change doesn't take effect. After you configure a setting, set it to Enabled or Disabled, going forward.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[0].note; Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Windows settings apply to devices in the GPO's scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Link the GPOs to an Active Directory container (a site, domain, or an organizational unit). ... By default, a setting is applied to all user and computer objects within the container to which it's linked",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Scope: Mac; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The Mac settings keys are the same in the standalone and Mac App Store editions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "The keys are the same whether you run the standalone or Mac App Store edition of the sync app. However, the .plist file name and domain name are different.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[1].note; Scope: Mac; Governance controls table",
-      "type": "command",
-      "claim": "The standalone Mac preference domain is com.microsoft.OneDrive.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "| - | Standalone | Mac App Store | ... | **Domain** | `com.microsoft.OneDrive` | `com.microsoft.OneDrive-mac` |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[1].note; Scope: Mac; Governance controls table",
-      "type": "command",
-      "claim": "The Mac App Store preference domain is com.microsoft.OneDrive-mac.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "| - | Standalone | Mac App Store | ... | **Domain** | `com.microsoft.OneDrive` | `com.microsoft.OneDrive-mac` |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].note; Scope: Roles; Governance controls table",
-      "type": "role",
-      "claim": "The Intune preference-file procedure requires an account with the Policy and Profile Manager built-in role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-      "quote": "Sign in to the Microsoft Intune admin center with an account that has the Policy and Profile Manager built-in role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing: Mac deployment",
-      "type": "applicability",
-      "claim": "Intune preference-file deployment requires devices enrolled and MDM managed by Intune.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-      "quote": "These settings are added to a device configuration profile in Intune, and then assigned or deployed to your macOS devices. ... The device must be enrolled and MDM managed by Intune.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Governance guidance: Before rollout; Cost and licensing",
-      "type": "admin-path",
-      "claim": "OneDrive administrative templates come from the installed sync app's adm folder and are copied to the Central Store.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Browse to `%localappdata%\\Microsoft\\OneDrive\\\\*BuildNumber*\\adm\\` ... Copy the .adml and .admx files. ... Paste the .admx file in your domain's Central Store ... and the .adml file in the appropriate language subfolder",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[2].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Windows users cannot change policy-configured file or folder exclusions even when DisableChangesToODIgnoreList is not configured.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "If you disable or don't configure this setting, users can add and remove exclusions in OneDrive settings. Users can't change exclusions that you configure with Exclude specific kinds of files from being uploaded or Exclude specific kinds of folders from being uploaded.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Governance controls; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "DisableChangesToODIgnoreList stops applying exclusions users added earlier.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "If you enable this setting: ... Exclusions that users added earlier aren't applied.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "DisableChangesToODIgnoreList re-applies default entries users removed earlier.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Default entries that users removed earlier are applied again.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[2].note; controls[3].note; Governance controls",
-      "type": "applicability",
-      "claim": "The restriction on user-added exclusions applies only to work or school accounts on Windows and Mac.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "DisableChangesToODIgnoreList ... This setting applies only to work or school accounts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Governance controls: default exclusion list",
-      "type": "behaviour",
-      "claim": "Microsoft's default exclusion list continues to apply alongside administrator exclusions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "If you set this setting's value to False or don't configure it, the sync app applies the default list. ... Exclusions that you configure with EnableODIgnore and EnableODIgnoreFolders still apply.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Governance controls: default exclusion list",
-      "type": "behaviour",
-      "claim": "DisableDefaultODIgnoreList turns off Microsoft's default exclusion list.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Disable the default ignored extension and folder lists ... This setting lets you turn off the default list. If you enable this setting, the sync app doesn't apply the default list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Scope: Windows; Governance controls; Open questions",
-      "type": "applicability",
-      "claim": "The Windows folder exclusion reference is marked Applies to: Group Policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "### Exclude specific kinds of folders from being uploaded ... Applies to: Group Policy",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Other OneDrive policy entries in the same reference are marked Group Policy, Intune.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "### Exclude specific kinds of files from being uploaded ... Applies to: Group Policy, Intune ... ### Enable sync health reporting for OneDrive ... Applies to: Group Policy, Intune",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance controls: Intune preference files",
-      "type": "behaviour",
-      "claim": "Intune does not validate the settings inside an uploaded property list file.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-      "quote": "Test your changes before assigning the profile to your devices. Intune doesn't validate the settings in the property list file.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "What's changing: existing Windows file policy",
-      "type": "command",
-      "claim": "The existing Windows file exclusion policy is Exclude specific kinds of files from being uploaded, with string ID EnableODIgnoreListFromGPO.",
+      "claim": "An existing Windows file-exclusion setting is Exclude specific kinds of files from being uploaded, identified by EnableODIgnoreListFromGPO.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
       "quote": "(EnableODIgnoreListFromGPO) Exclude specific kinds of files from being uploaded",
@@ -636,65 +278,241 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "What's changing: existing Mac file policy",
-      "type": "command",
-      "claim": "The existing Mac file exclusion preference is EnableODIgnore.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "### EnableODIgnore ... This setting lets you enter keywords to prevent the OneDrive sync app from uploading certain files to OneDrive or SharePoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "What's changing; Scope: Rollout; front matter: changes; Open questions",
-      "type": "date",
-      "claim": "The Windows production release notes list folder exclusion among features gradually rolling out in build 26.134.0713.0007 dated July 31, 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sync-release-notes",
-      "quote": "Windows Production Ring ... 26.134.0713.0007 (July 31, 2026) ... New features gradually rolling out: ... Exclude specific folders from syncing: Administrators can use a new Group Policy setting",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "What's changing; Scope: Rollout; front matter: changes; Open questions",
-      "type": "date",
-      "claim": "The macOS production release notes list EnableODIgnoreFolders among features gradually rolling out in build 26.134.0713.0007 dated July 31, 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sync-release-notes",
-      "quote": "macOS Production Ring ... 26.134.0713.0007 (July 31, 2026) ... New features gradually rolling out: ... Exclude specific folders from syncing: Administrators can use the EnableODIgnoreFolders managed preference",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[3].note; Governance controls: restart",
+      "n": 24,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Mac exclusion preference changes require restarting the sync app to take effect.",
+      "claim": "The Mac file-exclusion preference is EnableODIgnore.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "DisableChangesToODIgnoreList ... The OneDrive sync app must be restarted after this setting is changed for the setting to take effect. ... Quit the OneDrive app. ... On the next start of OneDrive, the new settings are picked up.",
+      "quote": "EnableODIgnore ... This setting lets you enter keywords to prevent the OneDrive sync app from uploading certain files to OneDrive or SharePoint.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap product is OneDrive.",
+      "n": 25,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Folder exclusions take complete folder names.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"OneDrive\"]",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "This setting lets you enter complete folder names to prevent the OneDrive sync app (OneDrive.exe) from uploading matching folders to OneDrive or SharePoint.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 26,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Folder-name matching is not case-sensitive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "Folder-name matching isn't case-sensitive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Folder exclusions do not support wildcards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Wildcards aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Enabling the setting prevents the sync app uploading new folders whose names match the administrator's list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "If you enable this setting, the sync app doesn't upload new folders that match the names you specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The policy reference says new files created in an existing matching folder are not uploaded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "New files created in an existing matching folder also aren't uploaded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Skipped folders produce no errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "No errors appear for the skipped folders",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "New matching folders skipped by the sync app remain in the local OneDrive folder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "No errors appear for the skipped folders, and the folders remain in the local OneDrive folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The setting does not retroactively remove a folder or its existing content from OneDrive or SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "This setting doesn't retroactively remove a folder or its existing content from OneDrive or SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "Moving files that already sync into an excluded folder is unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "Moving files that are already syncing into an excluded folder isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment; controls[0].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The folder exclusion setting requires restarting the sync app after it is enabled or changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "The OneDrive sync app must be restarted after this setting is enabled or changed for the setting to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Removing an exclusion can cause matching local content to start uploading, and Microsoft advises reviewing that content before removing a rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Removing an exclusion can cause matching local content to begin uploading. Review the local content before removing a rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope",
+      "type": "date",
+      "claim": "The Windows production-ring release notes list folder exclusions in build 26.134.0713.0007 dated July 31, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sync-release-notes",
+      "quote": "Windows Production Ring ... 26.134.0713.0007 (July 31, 2026) ... Exclude specific folders from syncing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Scope",
+      "type": "date",
+      "claim": "The macOS production-ring release notes list folder exclusions in build 26.134.0713.0007 dated July 31, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sync-release-notes",
+      "quote": "macOS Production Ring ... 26.134.0713.0007 (July 31, 2026) ... Exclude specific folders from syncing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The Windows release notes describe folder exclusions as gradually rolling out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sync-release-notes",
+      "quote": "New features gradually rolling out: ... Exclude specific folders from syncing: Administrators can use a new Group Policy setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The macOS release notes describe folder exclusions as gradually rolling out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sync-release-notes",
+      "quote": "New features gradually rolling out: ... Exclude specific folders from syncing: Administrators can use the EnableODIgnoreFolders managed preference",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The release notes say existing synced content is not affected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sync-release-notes",
+      "quote": "Existing synced content is not affected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Returning a Windows Group Policy setting to Not configured does not modify its registry key or make the change take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "If you later change the setting back to Not configured, the corresponding registry key isn't modified, and the change doesn't take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: After rollout; controls[0].note",
+      "type": "behaviour",
+      "claim": "Enabled or Disabled, rather than Not configured, updates a previously configured Group Policy registry setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "When you enable or disable a setting, the corresponding registry key is updated on computers in your domain. ... After you configure a setting, set it to Enabled or Disabled, going forward.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: Before rollout; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The installed OneDrive sync app provides administrative template files in its adm folder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Installing the sync app downloads the .adml and .admx files. ... Browse to %localappdata%\\Microsoft\\OneDrive\\*BuildNumber*\\adm\\",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The OneDrive .admx goes in the domain Central Store and the .adml in its appropriate language subfolder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Paste the .admx file in your domain's Central Store ... and the .adml file in the appropriate language subfolder, such as en-us.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Governance guidance: At rollout",
       "type": "applicability",
-      "claim": "A OneDrive GPO can be linked to an organisational unit.",
+      "claim": "A OneDrive Group Policy object can be linked to an organisational unit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
       "quote": "Link the GPOs to an Active Directory container (a site, domain, or an organizational unit).",
@@ -702,21 +520,65 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Scope: Mac; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The standalone and Mac App Store editions use different preference file locations.",
+      "n": 46,
+      "where": "controls[0].note",
+      "type": "applicability",
+      "claim": "The Windows policy applies to devices within the Group Policy object's scope.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-      "quote": "| **.plist location** | `/Library/Preferences/com.microsoft.OneDrive.plist` | `/Library/Containers/com.microsoft.OneDrive-mac/Data/Library/Preferences/com.microsoft.OneDrive-mac.plist` |",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "By default, a setting is applied to all user and computer objects within the container to which it's linked, but you can use security filtering to narrow the scope",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Cost and licensing: Mac deployment; Governance controls",
+      "n": 47,
+      "where": "Scope: Mac",
       "type": "behaviour",
-      "claim": "Intune deploys a Mac property list file through a device configuration profile.",
+      "claim": "The preference keys are the same in the standalone and Mac App Store editions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "The keys are the same whether you run the standalone or Mac App Store edition of the sync app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Mac; controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The standalone preference domain is com.microsoft.OneDrive, while the Mac App Store edition uses com.microsoft.OneDrive-mac and a different .plist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "Domain | com.microsoft.OneDrive | com.microsoft.OneDrive-mac ... However, the .plist file name and domain name are different. When you apply the settings, ensure that you target the appropriate domain",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Deploying a preference file through Intune requires the device to be enrolled and MDM managed by Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "The device must be enrolled and MDM managed by Intune.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Roles; controls[1].note",
+      "type": "role",
+      "claim": "The Intune preference-file instructions require the Policy and Profile Manager built-in role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Sign in to the Microsoft Intune admin center with an account that has the Policy and Profile Manager built-in role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Intune deploys a property list file as a device configuration profile to configure Mac app settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
       "quote": "These settings are added to a device configuration profile in Intune, and then assigned or deployed to your macOS devices.",
@@ -724,58 +586,146 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "n": 52,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft advises reviewing local content before removing an exclusion rule.",
+      "claim": "Intune does not validate settings inside the property list file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Intune doesn't validate the settings in the property list file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls; controls[2].note",
+      "type": "behaviour",
+      "claim": "Users cannot change administrator-configured file or folder exclusions even when DisableChangesToODIgnoreList is not enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
-      "quote": "Removing an exclusion can cause matching local content to begin uploading. Review the local content before removing a rule.",
+      "quote": "If you disable or don't configure this setting ... Users can't change exclusions that you configure with Exclude specific kinds of files from being uploaded or Exclude specific kinds of folders from being uploaded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls; controls[2]; controls[3]",
+      "type": "behaviour",
+      "claim": "Enabling DisableChangesToODIgnoreList prevents users adding or removing their own exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "If you set this setting's value to True, users can't add or remove exclusions in OneDrive settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Enabling DisableChangesToODIgnoreList stops applying exclusions users added earlier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "If you enable this setting: ... Exclusions that users added earlier aren't applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling DisableChangesToODIgnoreList reapplies default entries users removed earlier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "default entries that users removed earlier are applied again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls; controls[2].note; controls[3].note",
+      "type": "applicability",
+      "claim": "DisableChangesToODIgnoreList applies only to work or school accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "DisableChangesToODIgnoreList ... This setting applies only to work or school accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Changing the Mac user-exclusion restriction requires restarting the sync app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "The OneDrive sync app must be restarted after this setting is changed for the setting to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft's default exclusion list remains applicable alongside configured exclusions unless DisableDefaultODIgnoreList turns it off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "This setting lets you turn off the default list. ... Exclusions that you configure with Exclude specific kinds of files from being uploaded and Exclude specific kinds of folders from being uploaded ... still apply",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Windows; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "The Windows folder setting is marked Applies to: Group Policy, whereas neighbouring settings are marked Group Policy, Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Exclude specific kinds of files from being uploaded ... Applies to: Group Policy, Intune ... Exclude specific kinds of folders from being uploaded ... Applies to: Group Policy",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T03:50:39.950Z",
+    "at": "2026-11-26T05:27:20.714Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 4,
       "apiCalls": 4,
-      "apiCallsNotOnPage": 3,
+      "apiCallsNotOnPage": 4,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/sharepoint/use-group-policy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/sync-release-notes",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/plan-file-sync",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=178292",
@@ -789,7 +739,7 @@
         "side": "ui",
         "governs": "Which folder names the Windows OneDrive sync app does not upload",
         "docs": "https://learn.microsoft.com/sharepoint/use-group-policy",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Computer Configuration",
           "Policies",
@@ -797,14 +747,20 @@
           "OneDrive",
           "Exclude specific kinds of folders from being uploaded"
         ],
-        "missing": []
+        "missing": [
+          "Computer Configuration",
+          "Policies",
+          "Administrative Templates",
+          "OneDrive",
+          "Exclude specific kinds of folders from being uploaded"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which folder names the Windows OneDrive sync app does not upload",
         "docs": "https://learn.microsoft.com/sharepoint/use-group-policy",
-        "reachable": true,
+        "reachable": false,
         "token": "HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\EnableODIgnoreFolderListFromGPO (list",
         "found": false
       },
@@ -813,7 +769,7 @@
         "side": "ui",
         "governs": "Which folder names the Mac OneDrive sync app does not upload",
         "docs": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Devices",
           "Manage devices",
@@ -826,14 +782,25 @@
           "Configuration settings",
           "Property list file"
         ],
-        "missing": []
+        "missing": [
+          "Devices",
+          "Manage devices",
+          "Configuration",
+          "Create",
+          "New policy",
+          "macOS",
+          "Templates",
+          "Preference file",
+          "Configuration settings",
+          "Property list file"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which folder names the Mac OneDrive sync app does not upload",
         "docs": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-        "reachable": true,
+        "reachable": false,
         "token": "EnableODIgnoreFolders key",
         "found": false
       },
@@ -842,7 +809,7 @@
         "side": "ui",
         "governs": "Whether Windows users can add or remove their own sync exclusions",
         "docs": "https://learn.microsoft.com/sharepoint/use-group-policy",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Computer Configuration",
           "Policies",
@@ -850,23 +817,29 @@
           "OneDrive",
           "Prevent users at your organization from changing the default ignored extension and folder lists"
         ],
-        "missing": []
+        "missing": [
+          "Computer Configuration",
+          "Policies",
+          "Administrative Templates",
+          "OneDrive",
+          "Prevent users at your organization from changing the default ignored extension and folder lists"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Whether Windows users can add or remove their own sync exclusions",
         "docs": "https://learn.microsoft.com/sharepoint/use-group-policy",
-        "reachable": true,
+        "reachable": false,
         "token": "[HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive]\"DisableChangesToODIgnoreList\"=dword:00000001",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Whether Mac users can add or remove their own sync exclusions",
         "docs": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Devices",
           "Manage devices",
@@ -879,19 +852,37 @@
           "Configuration settings",
           "Property list file"
         ],
-        "missing": []
+        "missing": [
+          "Devices",
+          "Manage devices",
+          "Configuration",
+          "Create",
+          "New policy",
+          "macOS",
+          "Templates",
+          "Preference file",
+          "Configuration settings",
+          "Property list file"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Whether Mac users can add or remove their own sync exclusions",
         "docs": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
-        "reachable": true,
+        "reachable": false,
         "token": "DisableChangesToODIgnoreList key",
         "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

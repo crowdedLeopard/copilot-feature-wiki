@@ -22,7 +22,7 @@ licensing:
 audiences: ["security","compliance","finops"]
 tags: ["purview","data-security-investigations","ocr","pay-as-you-go","role-groups","auditing"]
 sources:
-  - title: "Microsoft 365 Roadmap item 561489"
+  - title: "Microsoft 365 Roadmap 561489"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=561489"
     kind: "roadmap"
   - title: "Supported file types in Data Security Investigations"
@@ -34,6 +34,9 @@ sources:
   - title: "Manage investigation scopes in Data Security Investigations"
     url: "https://learn.microsoft.com/purview/data-security-investigations-scope"
     kind: "learn"
+  - title: "Use AI analysis in Data Security Investigations"
+    url: "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis"
+    kind: "learn"
   - title: "Billing in Data Security Investigations"
     url: "https://learn.microsoft.com/purview/data-security-investigations-billing"
     kind: "learn"
@@ -42,6 +45,12 @@ sources:
     kind: "learn"
   - title: "Learn about optical character recognition in Microsoft Purview"
     url: "https://learn.microsoft.com/purview/ocr-learn-about"
+    kind: "learn"
+  - title: "Learn about search and analytics settings in eDiscovery cases"
+    url: "https://learn.microsoft.com/purview/edisc-settings-search-analytics"
+    kind: "learn"
+  - title: "Tutorial: Create and manage budgets"
+    url: "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets"
     kind: "learn"
   - title: "Audit log activities"
     url: "https://learn.microsoft.com/purview/audit-log-activities"
@@ -75,7 +84,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data Security Investigations > investigation > Analysis > item > Actions"
+      path: "Data Security Investigations > Investigations > investigation > Analysis > item > Actions"
       docs: "https://learn.microsoft.com/purview/data-security-investigations-scope"
     api: null
     note: "Per investigation, by investigators: exclude the item from AI analysis under Actions. Automatic vectorisation runs during Add to scope."
@@ -107,19 +116,23 @@ changes:
     note: "New briefing: OCR in Data Security Investigations runs automatically on Add to scope, at no additional OCR charge, with role group, exclusion, usage and audit controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 79 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: removed the unsupported 'no new sign-in, connection or permission' line, added the DSI Admins requirement for AI capacity, completed the item-exclusion path, and narrowed the tenant OCR note."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 74
-  unconfirmed: 3
-  contradicted: 2
-  attempts: 1
-  hash: "3d68d1d0757840c89cba3e7ab443fb62"
+  claims: 73
+  confirmed: 72
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "cca175c0ec9d40d9d9df1e165eb57abc"
 ---
 
 ## What's changing
@@ -145,7 +158,7 @@ The cost side needs watching rather than a decision. Microsoft says OCR itself i
 - Compute units are processed in Azure datacentres in the location chosen when AI capacity is set up (ANZ, EU, UK or US), with an opt-in to process anywhere; OCR runs within this same data preparation step.
 
 **Security & identity**
-- No change: OCR adds no new sign-in, connection or permission. Who can add items to a scope is still decided by the DSI Admins and Investigators role groups, and the Compliance Administrator and Organization Management role groups include the DSI Admin role.
+- Who can add items to a scope is still decided by the DSI Admins and Investigators role groups, and the Compliance Administrator and Organization Management role groups include the DSI Admin role.
 
 **Autonomy & actions**
 - OCR runs automatically on every Add to scope. Microsoft Learn documents no setting to turn it off for DSI at the time of writing (November 2026); investigators can exclude individual items from AI analysis.
@@ -165,17 +178,16 @@ The cost side needs watching rather than a decision. Microsoft says OCR itself i
 ## Scope
 
 - **Who:** members of the DSI role groups. Admins and Investigators can add items to an investigation scope; Reviewers can run vector searches, categorisation and examination.
-- **Roles to configure DSI billing:** Global Administrator plus Owner or Contributor on the Azure resource group.
+- **Roles to configure DSI billing:** Global Administrator plus Owner or Contributor on the Azure resource group; configuring AI capacity also requires membership of the Data Security Investigations Admins role group.
 - **Cloud:** Worldwide (Standard Multi-Tenant), as the roadmap record lists it.
 - **Platform:** web (Microsoft Purview portal).
 - **Prerequisites:** DSI storage meter and AI capacity configured; supported image formats as listed on the DSI file-types page.
-- **Separate from:** the tenant-level Purview OCR setting, which is set up through Microsoft Syntex pay-as-you-go billing and serves DLP, insider risk management, information protection and records management; and eDiscovery OCR, which is enabled per case.
+- **Other OCR configurations:** the tenant-level Purview OCR setting, which is set up through Microsoft Syntex pay-as-you-go billing and serves DLP, insider risk management, information protection and records management; and eDiscovery OCR, which is enabled per case.
 
 ## Governance guidance
 
 ### Before rollout
 - Check membership of the Data Security Investigations Admins, Investigators and Reviewers role groups in the Microsoft Purview portal, since Reviewers can now query text taken from images.
-- Confirm the AI analysis data processing location recorded when AI capacity was set up still meets your data residency requirements.
 - Tell investigators which image formats Microsoft lists for OCR and that the two Learn pages differ on scanned PDFs.
 
 ### At rollout
@@ -185,7 +197,6 @@ The cost side needs watching rather than a decision. Microsoft says OCR itself i
 ### After rollout
 - Review the **Usage dashboard** for compute unit use on the Add to scope process in image-heavy investigations.
 - Search the audit log for DSIPurviewSearchAddToEvidenceSetJobSubmitted and DSIInvestigationVectorizationJobSubmitted to see who added data and started vectorisation.
-- Delete completed investigations to stop their storage charges.
 
 ## Governance controls
 
@@ -196,13 +207,13 @@ The cost side needs watching rather than a decision. Microsoft says OCR itself i
 <tbody>
 <tr><td data-label="Control"><strong>Whether Data Security Investigations runs OCR on images added to an investigation</strong><br><small>Tenant</small><br><small class="controls__note">OCR runs automatically during data preparation. The tenant-level Purview OCR setting lists DLP, insider risk management, information protection and records management as its solutions, not DSI.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can add items to an investigation scope and run AI analysis on them</strong><br><small>Tenant</small><br><small class="controls__note">Admins and Investigators manage scope; Reviewers run vector search, categorisation and examination. Compliance Administrator and Organization Management include the DSI Admin role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Role groups › role group › Edit › Choose users <a href="https://learn.microsoft.com/purview/data-security-investigations-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which items in an investigation are prepared for AI analysis</strong><br><small class="controls__note">Per investigation, by investigators: exclude the item from AI analysis under Actions. Automatic vectorisation runs during Add to scope.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › investigation › Analysis › item › Actions <a href="https://learn.microsoft.com/purview/data-security-investigations-scope" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which items in an investigation are prepared for AI analysis</strong><br><small class="controls__note">Per investigation, by investigators: exclude the item from AI analysis under Actions. Automatic vectorisation runs during Add to scope.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › Investigations › investigation › Analysis › item › Actions <a href="https://learn.microsoft.com/purview/data-security-investigations-scope" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Storage and compute unit spend per investigation</strong><br><small>Tenant</small><br><small class="controls__note">Reporting only; does not stop spend. Data Security Investigations Admin role only; data can take up to 48 hours to appear. Export gives per-job consumed units.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › Usage dashboard <a href="https://learn.microsoft.com/purview/data-security-investigations-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit records of Data Security Investigations activity, including Add to scope and vectorisation jobs</strong><br><small>Tenant</small><br><small class="controls__note">DSI operations include DSIPurviewSearchAddToEvidenceSetJobSubmitted and DSIInvestigationVectorizationJobSubmitted.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-There is no OCR-specific switch for DSI in Microsoft Learn at the time of writing (November 2026): OCR follows from adding items to a scope, so the role groups decide who can trigger it. The tenant-level Purview OCR page (Settings > Optical character recognition (OCR)) lists its supported solutions as DLP, insider risk management, information protection and records management; DSI is not listed, and Microsoft does not say whether that setting affects DSI.
+There is no OCR-specific switch for DSI in Microsoft Learn at the time of writing (November 2026): OCR follows from adding items to a scope, so the role groups decide who can trigger it. The tenant OCR page does not name DSI in its supported-solutions table, but its summary says configured OCR is available to the entire Microsoft Purview stack; it does not explain how that statement relates to DSI automatic OCR.
 
 Item exclusion is an investigator action inside each investigation, not a tenant policy. The scope page says excluded items are not prepared for AI analysis, but automatic vectorisation runs during Add to scope, so exclude before relying on it. The Usage dashboard is open only to the Data Security Investigations Admin role, and its data can lag by up to 48 hours. To stop all DSI billing, the billing page says to disable both meters, which deletes all investigations irreversibly. See [/concepts/auditing/](/concepts/auditing/) for audit retention.
 
@@ -222,14 +233,5 @@ impact: Low. Only investigators and reviewers working in Data Security Investiga
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: OCR adds no new sign-in. | Found: Searched: 'Data Security Investigations OCR permissions sign in connection tenant optical character recognition setting'; read DSI file types, AI, scope, billing, permissions and Purview OCR pages. None states that OCR adds no sign-in. | Fix: Remove 'OCR adds no new sign-in' from the Security & identity bullet; retain the documented role-group facts.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: OCR adds no new connection. | Found: Searched: 'Data Security Investigations OCR permissions sign in connection tenant optical character recognition setting'; read DSI file types, AI, scope, billing, permissions and Purview OCR pages. None states that OCR adds no connection. | Fix: Remove 'connection' from the categorical no-change assurance; retain the documented role-group facts.
-- [unsupported, blocker] Risk assessment: Security & identity / role: OCR adds no new permission. | Found: Searched: 'Data Security Investigations OCR permissions sign in connection tenant optical character recognition setting'; read DSI permissions and file-types pages. These document DSI roles and automatic OCR but do not state that OCR adds no permission. | Fix: Remove the sentence 'No change: OCR adds no new sign-in, connection or permission.' Keep the following sentence naming the documented DSI role groups.
-- [contradicted, blocker] Scope: Roles to configure DSI billing / role: The stated billing-role requirements are complete without mentioning DSI Admins membership for AI capacity. | Found: To configure the AI capacity for Data Security Investigations, you must be a member of the Data Security Investigations Admins role group. | Fix: Replace the Scope billing-role bullet with 'Roles to configure DSI billing: Global Administrator plus Owner or Contributor on the Azure resource group; configuring AI capacity also requires membership of the Data Security Investigations Admins role group.' Cite https://learn.microsoft.com/purview/data-security-investigations-billing. | Source: https://learn.microsoft.com/purview/data-security-investigations-billing
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Spend controls / behaviour: Azure budget alerts notify about spending without themselves stopping consumption. | Found: Notifications are triggered when the budget thresholds are exceeded. Resources aren't affected, and your consumption isn't stopped. | Fix: Add https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets to sources for the statement that budget alerts do not stop consumption. | Source: https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets
-- [supported, minor] Scope: Separate from; Governance controls; Open questions / absence: The tenant OCR setting's effect on DSI is not specifically documented. | Found: Searched: '"Data Security Investigations" "OCR" "disable"' and DSI OCR tenant-setting query; read DSI file types, scope and Purview OCR. No DSI-specific relationship stated; general OCR summary says 'available to the entire Microsoft Purview stack'. | Fix: Replace 'Separate from:' with 'Other OCR configurations:'. Replace the final Governance controls sentence about the tenant setting with 'The tenant OCR page does not name DSI in its supported-solutions table, but its summary says configured OCR is available to the entire Microsoft Purview stack; it does not explain how that statement relates to DSI automatic OCR.' Both relevant pages are already cited.
-- [supported, minor] Scope: Separate from / behaviour: eDiscovery OCR is enabled at case level, separately from the tenant-level OCR setting. | Found: When you turn on this setting, OCR processing runs on image files when they're advanced indexed and added to a review set. The case level setting for OCR is distinct from the tenant level OCR setting and doesn't incur the charges associated to that setting. | Fix: Add https://learn.microsoft.com/purview/edisc-settings-search-analytics to sources for the statement that eDiscovery OCR is enabled separately per case. | Source: https://learn.microsoft.com/purview/edisc-settings-search-analytics
-- [supported, minor] controls[2].ui; Governance controls table; Governance guidance / admin-path: The route Data Security Investigations > investigation > Analysis > item > Actions reaches the item-exclusion options. | Found: Select Analysis from the navigation options at the top of any page within a specific investigation ... Select a data item ... For each data item, you can choose to exclude the item from AI analysis ... Select Actions on the command bar for these options. | Fix: Set controls[2].ui.path to 'Data Security Investigations > Investigations > investigation > Analysis > item > Actions' and update the rendered row. Add https://learn.microsoft.com/purview/data-security-investigations-ai-analysis to sources; it documents the omitted Investigations listing step. The existing scope docs link correctly documents Actions and exclusion. | Source: https://learn.microsoft.com/purview/data-security-investigations-scope
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist tells the reader to check or use appears in the controls table. | Found: Confirm the AI analysis data processing location recorded when AI capacity was set up ... Delete completed investigations to stop their storage charges. The controls table has OCR, role membership, item exclusion, usage reporting and audit rows, but no location or investigation-deletion row. | Fix: Remove the checklist bullets 'Confirm the AI analysis data processing location recorded when AI capacity was set up still meets your data residency requirements.' and 'Delete completed investigations to stop their storage charges.' They name controls with no table row; do not add rows during correction.
+- [contradicted, blocker] Risk assessment: Data exposure, first bullet / role: An investigation's vectorised image text is reachable by anyone in the Data Security Investigations Reviewers role group. | Found: If you're not assigned to the Data Security Investigations Admins role group, you can only view investigations you're assigned to as an investigator or reviewer. | Fix: Replace 'reachable by anyone in the Data Security Investigations Reviewers role group' with 'reachable by members of the Data Security Investigations Reviewers role group who are assigned to that investigation'. Cite https://learn.microsoft.com/purview/data-security-investigations-investigation for this qualification. | Source: https://learn.microsoft.com/purview/data-security-investigations-investigation
 -->

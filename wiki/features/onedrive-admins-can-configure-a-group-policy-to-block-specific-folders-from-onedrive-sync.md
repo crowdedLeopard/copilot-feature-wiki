@@ -99,19 +99,23 @@ changes:
     note: "New briefing: Windows Group Policy and Mac preference for excluding folders by name from OneDrive sync, now documented and gradually rolling out per the release notes."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: local-only statements now cover only new matching folders, since the policy does not remove content already in OneDrive or SharePoint; removed the unsupported 'no change to sign-in or access' line."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 61
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "5d9fb4b0128a2ca033d92aeddaa8865d"
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "980039de8071b0c7c25a7c63dba4a07c"
 ---
 
 ## What's changing
@@ -124,18 +128,18 @@ The roadmap item lists the change as In development, targeted for June CY2025, f
 
 ## Why it matters
 
-This is a way to keep named folders, such as tool, cache or build folders that users create inside synced locations, out of OneDrive and SharePoint without users having to manage it. The trade-off is that a folder matched by the policy exists only on that device: it does not reach the web, the user's other devices or anything that works on content stored in OneDrive. Choose names that only ever belong to disposable or device-specific content, because a common name such as one a business team also uses will silently keep real work local.
+This is a way to keep named folders, such as tool, cache or build folders that users create inside synced locations, out of OneDrive and SharePoint without users having to manage it. New matching folders skipped by the sync app remain local; the policy does not remove a folder or its existing content already in OneDrive or SharePoint. Choose names that only ever belong to disposable or device-specific content, because a common name such as one a business team also uses will silently keep real work local.
 
 If nobody acts, nothing changes: Microsoft's reference says that if the setting is disabled or not configured, the sync app uploads all supported folders. The decision is whether any folder names justify the support cost of local-only content.
 
 ## Risk assessment
 
 **Data exposure**
-- Folders matched by the policy stay on the device and are not uploaded, so (in this wiki's reading) their content is outside OneDrive version history, sharing and Microsoft Purview policies that act on OneDrive and SharePoint content. A broad name list can leave business files on one disk with no cloud copy. Keep the list to names agreed with content owners.
+- New matching folders skipped by the sync app stay on the device and are not uploaded, so (in this wiki's reading) their content is outside OneDrive version history, sharing and Microsoft Purview policies that act on OneDrive and SharePoint content. A broad name list can leave business files on one disk with no cloud copy. Keep the list to names agreed with content owners.
 - Removing a name from the list can cause matching local content to begin uploading, as the reference warns. Review that content before removing a rule.
 
 **Security & identity**
-- No change to sign-in or access. The reference describes the setting as preventing the OneDrive sync app from uploading matching folders; treat it as a sync filter, not as a data loss prevention control for sensitive content.
+- The reference describes the setting as preventing the OneDrive sync app from uploading matching folders; treat it as a sync filter, not as a data loss prevention control for sensitive content.
 
 **Autonomy & actions**
 - No change: nothing acts on its own. The sync app skips matching folders without showing errors.
@@ -208,12 +212,4 @@ The indirect costs are admin time to update the OneDrive administrative template
 risk: Low. Left unconfigured, the sync app keeps uploading all supported folders as today; the exposure is self-inflicted, from listing names so broadly that business files stay only on the device.
 cost: Low. The OneDrive service description lists sync and IT admin features in every OneDrive plan family; the cost is admin time to deploy the Group Policy or Mac preference and to support users.
 impact: Low. Administrators configure it; only users who keep folders with the listed names inside OneDrive notice, because those folders stop reaching the cloud and their other devices.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: first paragraph; Risk assessment: Data exposure / behaviour: A folder matched by the policy exists only on that device and does not reach the web or the user's other devices. | Found: This setting doesn't retroactively remove a folder or its existing content from OneDrive or SharePoint. | Fix: Replace the categorical sentence in Why it matters with: 'New matching folders skipped by the sync app remain local; the policy does not remove a folder or its existing content already in OneDrive or SharePoint.' In Data exposure, change 'Folders matched by the policy' to 'New matching folders skipped by the sync app' so the local-only analysis does not include previously synced content. Source: https://learn.microsoft.com/sharepoint/use-group-policy#exclude-specific-kinds-of-folders-from-being-uploaded. | Source: https://learn.microsoft.com/sharepoint/use-group-policy
-- [unsupported, major] Risk assessment: Security & identity / behaviour: There is no change to sign-in. | Found: Searched: OneDrive exclude folders policy sign-in access permissions existing synced content exclusions; OneDrive folder exclusion sign-in permissions. Read Windows and Mac exclusion references and search excerpts; none states sign-in is unchanged. | Fix: Remove 'No change to sign-in' from the opening sentence under Security & identity; retain the documented description of the setting as preventing matching-folder uploads.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: There is no change to access. | Found: Searched: OneDrive exclude folders policy sign-in access permissions existing synced content exclusions; OneDrive folder exclusion sign-in permissions. Read Windows and Mac policy references and search excerpts; none states access is unchanged. | Fix: Remove 'or access' along with the rest of 'No change to sign-in or access.' Retain the documented description of the sync filter and the wiki's advice not to treat it as data loss prevention.
 -->

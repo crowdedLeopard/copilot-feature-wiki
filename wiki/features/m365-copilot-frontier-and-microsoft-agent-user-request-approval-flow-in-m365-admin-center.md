@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "Frontier features for Copilot need a Microsoft Copilot licence or one that includes access to Copilot (Frontier page); the Graph Package Management API needs a Microsoft Agent 365 licence. The agent requests page names no licence or meter for the request flow itself."
+  notes: "Copilot Frontier features need a Microsoft Copilot licence or one including Copilot access; the Graph API needs Agent 365. The Microsoft Agent 365 service description includes admin agent governance actions, including approval, with a Microsoft cloud subscription."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["frontier-program","agent-governance","m365-admin-center","agents","copilot-control-system","approvals","agent-registry","m365-copilot"]
 sources:
@@ -49,6 +49,9 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
+    kind: "docs"
 videos: []
 related: ["frontier-program","agent-registry","app-management","m365-copilot-agent-lifecycle-management-rules"]
 controls:
@@ -56,7 +59,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All agents > Requests"
+      path: "Agents > All agents > Requests > agent > Requests > request > Approve"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests"
     api:
       kind: "graph"
@@ -78,13 +81,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Org settings > Organization profile > Release preferences > Turn on Frontier"
+      path: "Settings > Org settings > Organization profile > Release preferences > Turn on Frontier > All users or Specific users and groups"
       docs: "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier"
     api: null
     note: "Roles: AI Administrator, Security Administrator or Office Apps Administrator. The page also gives an existing route under Copilot > Settings."
 confidence: "medium"
 created: "2026-11-23"
-updated: "2026-11-23"
+updated: "2026-11-26"
 roadmapModified: "2026-07-10T21:58:35"
 changes:
   - date: "2026-11-23"
@@ -93,19 +96,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the impact rationale, which said nothing changes for other users; completed the request and Frontier admin paths; added the Agent 365 service description to licensing; removed two unsupported statements."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 74
+  claims: 73
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "106153f15fa80f031efb5bc5163c5ec6"
+  contradicted: 0
+  attempts: 0
+  hash: "781973f5009102d540e00701650a781a"
 ---
 
 ## What's changing
@@ -162,7 +169,7 @@ Requests are handled by administrators in the Microsoft 365 admin center. The ro
 ### Before rollout
 
 - Check which users are enrolled in Frontier, because newly published Frontier agents reach only enrolled users (controls row 3).
-- Assign the AI Administrator or Global Administrator role to the people who will approve requests, and name an owner for the Requests list.
+- Name an owner for the Requests list.
 - Decide which Microsoft-built agents stay blocked organisation-wide, knowing an unblock is needed before a request can be accepted (controls row 2).
 
 ### At rollout
@@ -183,13 +190,13 @@ Requests are handled by administrators in the Microsoft 365 admin center. The ro
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Approving or rejecting a user's request for a blocked Microsoft-built agent</strong><br><small>Agent</small><br><small class="controls__note">Choose Approve or Reject in the request pane. Graph: beta; the body sets requestId and packageVersion; approves one individual access or hiring request; needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/approve</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Approving or rejecting a user's request for a blocked Microsoft-built agent</strong><br><small>Agent</small><br><small class="controls__note">Choose Approve or Reject in the request pane. Graph: beta; the body sets requestId and packageVersion; approves one individual access or hiring request; needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests › agent › Requests › request › Approve <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/approve</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a Microsoft-built agent is blocked for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">A blocked agent must be unblocked before a user's request to install it can be accepted. Graph: beta; needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users are enrolled in the Frontier program</strong><br><small>Tenant</small><br><small class="controls__note">Roles: AI Administrator, Security Administrator or Office Apps Administrator. The page also gives an existing route under Copilot &gt; Settings.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Organization profile › Release preferences › Turn on Frontier <a href="https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users are enrolled in the Frontier program</strong><br><small>Tenant</small><br><small class="controls__note">Roles: AI Administrator, Security Administrator or Office Apps Administrator. The page also gives an existing route under Copilot &gt; Settings.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Organization profile › Release preferences › Turn on Frontier › All users or Specific users and groups <a href="https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Approve and Reject are actions in the agent's request pane in the admin center, and the Learn page does not give a separate setting that turns the request option on or off. The Graph approve call is a beta API and its reference says availability depends on the matching schema and backend release.
+The Graph approve call is a beta API and its reference says availability depends on the matching schema and backend release.
 
 Related settings read on Learn: **Agents** > **Settings** > **Agent and plugin access** > **Allow agents and plugins built by Microsoft** is the setting the Frontier page names for allowing Microsoft Frontier agents. The agent settings page says users see Microsoft-built agents even when it is disabled, but cannot install them. The Frontier page also says the Frontier admin control does not override settings in the Agent section: an agent an admin turned off is unavailable regardless of Frontier enrolment.
 
@@ -197,23 +204,11 @@ Related settings read on Learn: **Agents** > **Settings** > **Agent and plugin a
 
 - Does the Request and approval flow described for Microsoft-built agents apply unchanged to agents marked (Frontier), which the Learn request page does not name? Watch the agent requests page and the roadmap item.
 - Is the Graph approve operation for an individual access request the same request that the store's Request option creates? Watch the Package Management API reference.
-- Is the request option on by default, and is there an admin setting for it? Microsoft has not stated either; watch Message center and the agent requests page.
+- Is the request option on by default? Watch Message center and the agent requests page.
 - How are administrators told that a request is waiting, and what does the requesting user see until it is decided?
 
 <!-- rationale
 risk: Low. Approval is a manual admin step on Microsoft-built agents only, and Learn says a blocked agent must be unblocked before a request to install it can be accepted.
 cost: Low. The agent requests page names no licence or meter for the request flow, so the known cost is admin time, plus the Microsoft Copilot licence users need for Copilot-related Frontier features.
-impact: Low. Admins who review requests and users who find a blocked Microsoft-built agent notice it; nothing changes for other users.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] rationale: impact; Why it matters; Data exposure / consistency: Nothing changes for users other than the request-reviewing admins and users finding a blocked Microsoft-built agent. | Found: Impact rationale: 'nothing changes for other users.' Why it matters: 'expect an unblock to reach every user the other settings allow, not only the requester.' | Fix: Remove 'nothing changes for other users' from the impact rationale. Keep 'Low. Admins who review requests and users who find a blocked Microsoft-built agent notice it.' The body correctly warns that an organisation-wide unblock can affect other users.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; summary; Governance guidance / admin-path: Microsoft-built agent requests are reached through Microsoft 365 admin center > Agents > All agents > Requests. | Found: The request is submitted to your administrators and appears in the Microsoft 365 admin center under **Agents** > **All agents** > **Requests**. | Fix: Complete controls[0].ui.path and its rendered table path as 'Agents > All agents > Requests > agent > Requests > request > Approve'. Keep Reject as the alternative action in the note. The current path stops on the correct list. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: Frontier enrolment is managed under Settings > Org settings > Organization profile > Release preferences > Turn on Frontier. | Found: Under the **Organization profile** tab, select **Release preferences**. To opt in to Frontier preview, toggle **Turn on Frontier** to **On**. Choose how Frontier access is assigned in your organization: | Fix: Complete controls[2].ui.path and the rendered table path as 'Settings > Org settings > Organization profile > Release preferences > Turn on Frontier > All users or Specific users and groups'. The existing path reaches the panel but stops before the audience selection. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
-- [supported, minor] front matter: licensing.model / licensing: The admin agent approval capability has an included licensing model. | Found: | Admin agent governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin, etc.) | Microsoft 365 admin center | Yes | Yes | Yes | | Fix: Keep licensing.model as 'included'. Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources and add to licensing.notes: 'The Microsoft Agent 365 service description includes admin agent governance actions, including approval, with a Microsoft cloud subscription.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, minor] Governance controls; Open questions / consistency: The prose reports no separately documented admin switch for the request option, but the controls table has no row for that gap. | Found: 'the Learn page does not give a separate setting that turns the request option on or off'; the table contains only request approval, agent blocking and Frontier enrolment. | Fix: Remove the sentence 'Approve and Reject are actions in the agent's request pane in the admin center, and the Learn page does not give a separate setting that turns the request option on or off.' In Open questions, replace the third bullet with 'Is the request option on by default? Watch Message center and the agent requests page.' No new control row is required.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells administrators to assign AI Administrator or Global Administrator, but role assignment has no controls-table row. | Found: 'Assign the AI Administrator or Global Administrator role to the people who will approve requests'; the controls table contains no role-assignment control. | Fix: Replace that checklist bullet with 'Name an owner for the Requests list.' The existing Scope and Security & identity sections already state which roles can approve requests; do not add a control row.
+impact: Low. Admins who review requests and users who find a blocked Microsoft-built agent notice it.
 -->

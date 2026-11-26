@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
-  notes: "Learn says agent management needs a subscription for Microsoft 365, Microsoft Copilot or Microsoft Agent 365; Microsoft 365 (E7) includes Copilot and Agent 365. A price or meter specific to MCP governance is not yet published."
+  model: "included"
+  notes: "Learn says agent management needs a subscription for Microsoft 365, Microsoft Copilot or Microsoft Agent 365. The Agent 365 service description lists the Tools Registry and tenant-wide control of tools, including Microsoft MCP servers, as core capabilities included with Microsoft cloud subscription. No MCP-specific price or meter is published."
 audiences: ["m365-admin","security","service-owner"]
 tags: ["mcp","mcp-server","m365-copilot","agent-365","agent-governance","admin-controls","m365-admin-center","agent-and-plugin-access","extensibility"]
 sources:
@@ -52,6 +52,9 @@ sources:
   - title: "Create configurationMonitor"
     url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
     kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
+    kind: "learn"
 videos: []
 related: ["mcp","m365-copilot-copilot-extensibility-admins-can-govern-and-manage-federated-copilot-connecto","m365-copilot-agent-lifecycle-management-rules","m365-copilot-dynamic-tool-discovery-for-declarative-agents-and-federated-copilot-connector","work-iq"]
 controls:
@@ -62,7 +65,7 @@ controls:
       path: "Agents > Tools > Registry > MCP server > Block"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api: null
-    note: "Blocking disables all the tools the server exposes. For BYO servers the Agent 365 Tooling Gateway enforces it for calls routed through the gateway."
+    note: "Blocks the server's tools through governed Agent 365 and Microsoft 365 admin center pathways; does not automatically disable the underlying API or service endpoint outside them. BYO: enforced by the Agent 365 Tooling Gateway."
   - governs: "Which individual tools of an MCP server are enabled"
     scope: "tenant"
     ui:
@@ -103,7 +106,7 @@ controls:
     note: "UI options: All users (the documented default), No users, or Specific users or groups. API: preview TCM applyOnce, everyone or noOne only (see notes below)."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-26"
 roadmapModified: "2025-09-19T22:00:03"
 changes:
   - date: "2026-11-22"
@@ -116,19 +119,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 100 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: licensing model set to included, citing the Agent 365 service description; MCP server blocking now says it applies through governed Agent 365 and admin center pathways for all servers, not only BYO."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 100
-  confirmed: 98
+  claims: 97
+  confirmed: 97
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "0b94c8e8b51611dd53da26a36eea929d"
+  contradicted: 0
+  attempts: 0
+  hash: "d4314d4dbb27f28d99750a478fde0a33"
 ---
 
 ## What's changing
@@ -159,7 +166,7 @@ The wiki's view is that service owners should look at the Tools registry now, wh
 
 **Autonomy & actions**
 
-- Blocking a server disables all the tools it exposes, so a block can stop agents that depend on it. Tool-level control applies only to supported server types, and for BYO servers it is planned for a future release.
+- Blocking an MCP server disables its exposed tools through governed Agent 365 and Microsoft 365 admin center pathways; it does not automatically disable the underlying API or service endpoint outside those pathways. A block can stop agents that depend on the server. Tool-level control applies only to supported server types, and for BYO servers it is planned for a future release.
 
 **Change & support**
 
@@ -169,6 +176,8 @@ The wiki's view is that service owners should look at the Tools registry now, wh
 ## Cost and licensing
 
 Learn's agent management page lists the subscriptions that cover agent management in the Microsoft 365 admin center: Microsoft 365 plans (which include Copilot Chat), Microsoft Copilot, and Microsoft Agent 365. Microsoft 365 (E7) includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365 and Microsoft Entra Suite. Its prerequisites also ask that users who create, publish or use agents have the appropriate licences.
+
+The [Microsoft Agent 365 service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365) lists viewing plugins, skills and MCP servers in one registry (Tools Registry) and controlling which tools (plugins, skills, connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide as core capabilities included with Microsoft cloud subscription.
 
 The pages on the Tools registry, MCP approval and BYO servers state no price and no meter for these controls. A price or consumption rate specific to MCP governance is not yet published. The indirect cost is admin time to review requests and, for BYO servers, developer time to register servers with the Agent 365 CLI.
 
@@ -204,7 +213,7 @@ On Learn, MCP servers appear in the Tools registry alongside plugins, skills and
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an MCP server is available to agents (block or unblock)</strong><br><small>Tenant</small><br><small class="controls__note">Blocking disables all the tools the server exposes. For BYO servers the Agent 365 Tooling Gateway enforces it for calls routed through the gateway.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an MCP server is available to agents (block or unblock)</strong><br><small>Tenant</small><br><small class="controls__note">Blocks the server's tools through governed Agent 365 and Microsoft 365 admin center pathways; does not automatically disable the underlying API or service endpoint outside them. BYO: enforced by the Agent 365 Tooling Gateway.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which individual tools of an MCP server are enabled</strong><br><small>Tenant</small><br><small class="controls__note">Rolling out; supports only specific MCP server types registered on Agent 365. Each tool has an Enabled or Disabled toggle.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Tools › Enabled or Disabled toggle <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether a registered MCP server is approved into the organisational registry</strong><br><small>Tenant</small><br><small class="controls__note">Needs access to the Tools page and tenant-wide consent rights (AI Administrator or Global Administrator). Entra consent after approval is a separate step.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Requests (preview) › Approve <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which publisher categories of agents and plugins, including MCP servers, users can install</strong><br><small>Tenant</small><br><small class="controls__note">Options are Microsoft, your organisation and certified external publishers; the Agent settings page labels the third Allow agents and plugins built by external publishers. API: preview TCM applyOnce (see notes below).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -216,13 +225,12 @@ All rows are Microsoft 365 admin center settings that Learn documents for MCP se
 
 Preview TCM (Tenant Configuration Management) automation for Agent and plugin access uses mode=applyOnce and baseline.resources with resourceType=microsoft.agent.allowedagenttypes, resourceVersion=1, and properties.valueObject fields areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed and areMicrosoftCertifiedThirdPartyAppsAllowed. For User access it uses resourceType=microsoft.agent.useraccess, resourceVersion=1, and properties.valueObject.userAssignmentCategory set to everyone or noOne; the reference does not document selecting specific users or groups through this resource. Both require the signed-in AI Administrator and the delegated permissions described at https://learn.microsoft.com/graph/utcm-agent-resources, and TCM applyOnce is available only in the global service.
 
-Blocking a server and blocking a plugin are separate actions: blocking a plugin leaves its MCP servers available to other plugins. Approval of a server request does not grant Microsoft Entra consent, and per-tool toggles apply only to supported server types. For BYO servers, the Agent 365 Tooling Gateway enforces a block only for calls that pass through it from supported clients.
+Blocking a server and blocking a plugin are separate actions: blocking a plugin leaves its MCP servers available to other plugins. Approval of a server request does not grant Microsoft Entra consent, and per-tool toggles apply only to supported server types. A server block applies through governed Agent 365 and Microsoft 365 admin center pathways and does not automatically disable the underlying API or service endpoint outside them; for BYO servers, the Agent 365 Tooling Gateway enforces a block only for calls that pass through it from supported clients.
 
 ## Open questions
 
 - Is the roadmap item (target October CY2025, status In development) the same capability as the Tools registry and MCP controls that Learn documents as available, and when will the roadmap status change? Watch the roadmap item and Message center.
 - Which MCP server types support per-tool control, and when will it reach BYO servers? Watch the Manage plugins, skills, and MCP servers page.
-- Does a block in the Tools registry stop access that does not pass through the Agent 365 Tooling Gateway, such as direct calls to the server's endpoint? Learn says not to assume so for BYO servers.
 - Will a price or Copilot Credits rate apply to MCP governance or gateway use? None is published at the time of writing (November 2026).
 
 <!-- rationale
@@ -231,16 +239,8 @@ cost: Low. The only cost the sources show is admin time; Learn lists the Microso
 impact: Low. The controls are used by admins and by developers who register servers; users notice only when a server, plugin or tool they rely on is blocked or not approved.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The licensing model for the documented MCP governance controls is mixed. | Found: Core capability included with Microsoft cloud subscription ... Control which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide ... Yes | Fix: Set licensing.model to 'included'. Retain the existing product-subscription notes, and add: 'Microsoft lists the Tools Registry and core tenant-wide tool access controls, including Microsoft MCP servers, as included with Microsoft cloud subscriptions; operating agents and remote services has separate licensing and costs.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. This does not establish a licence for the roadmap item's still-unconfirmed scope. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, blocker] controls[0].note; Governance controls table; Risk assessment: Autonomy & actions / applicability: Blocking a server disables all exposed tools, with the governed-path limitation stated only for BYO servers. | Found: Blocking an MCP server (including WorkIQ MCP) blocks usage through governed Agent 365 and Microsoft 365 admin center (MAC) pathways. It doesn’t automatically disable the underlying API or service endpoint outside that governed path unless separately controlled by service and API policy. | Fix: Replace the first sentence of controls[0].note, its rendered counterpart and the corresponding blocking statement in Risk assessment with 'Blocking an MCP server disables its exposed tools through governed Agent 365 and Microsoft 365 admin center pathways; it does not automatically disable the underlying API or service endpoint outside those pathways.' Retain the BYO gateway detail. Apply the same general qualification to the blocking explanation below the table; the boundary is not limited to BYO servers. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls table; Governance guidance: At rollout / admin-path: MCP registration approval is at Microsoft 365 admin center > Agents > Tools > Requests (preview) > Approve. | Found: Select Agents > Tools, and then select the Requests (preview) tab. ... Select Approve to make the server available in the organizational registry, or Reject to deny the request. | Fix: Keep the path. Add: 'The develop-mcp reference introduction instead points pending requests to Requested Agents; its publish section and the MCP management guidance point to Tools requests.' Cite https://learn.microsoft.com/microsoft-agent-365/developer/reference/cli/develop-mcp for the differing guidance. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
-- [supported, minor] controls[3].ui; Governance controls table; Governance guidance / admin-path: Publisher access is at Microsoft 365 admin center > Agents > Settings > Agent and plugin access. | Found: Select Agents > Settings > Agent and plugin access. ... Under the installation settings, choose which publisher categories users can access: Microsoft, your organization, or certified external publishers. | Fix: Extend controls[3].ui.path and the rendered path to 'Agents > Settings > Agent and plugin access > installation settings > publisher category'. The existing path reaches the correct setting page. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
-- [supported, minor] controls[3].api; Governance controls table and TCM notes / command: POST /beta/admin/configurationManagement/configurationMonitors applies publisher settings using a preview applyOnce baseline. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call. Replace the API portion of controls[3].note and its rendered counterpart with 'API: preview TCM applyOnce; set properties.valueObject.areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed and areMicrosoftCertifiedThirdPartyAppsAllowed for microsoft.agent.allowedagenttypes.' The deciding fields are documented at the already-cited https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[4].api; Governance controls table and TCM notes / command: POST /beta/admin/configurationManagement/configurationMonitors applies everyone or noOne through the preview useraccess resource. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors | Fix: Keep the call. Replace the API portion of controls[4].note and its rendered counterpart with 'API: preview TCM applyOnce; set properties.valueObject.userAssignmentCategory to everyone or noOne for microsoft.agent.useraccess; specific users or groups are not documented.' Add to the existing TCM paragraph: 'The useraccess resource describes its reach as agents built by Microsoft and the organization, including plugins within agents.' See the already-cited https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] front matter: cost; Cost and licensing; rationale: cost / cost: Low reflects indirect administration work rather than a documented new charge for the core MCP controls. | Found: Core capability included with Microsoft cloud subscription ... View Microsoft, third-party and custom plugins, skills and MCP servers in one registry (Tools Registry) ... Yes | Fix: Keep the low cost rating for administration work. Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources and cite its inclusion of Tools Registry and core tenant-wide tool access controls. Do not extend that inclusion to operating agents or remote services. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [supported, minor] controls[3].governs; controls[4].governs; Governance controls / applicability: Agent and plugin access and User access govern agents and plugins including MCP servers. | Found: Plugins include tools, MCP servers, connectors, skills, and other AI artifacts. | Fix: Retain the settings' applicability in the Agent settings page's terms. Add to the paragraph below the table: 'The MCP management page distinguishes plugin discovery and use from server governance: tenant plugin availability settings do not by themselves change MCP server status in the Tools registry.' Both sources are already cited. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
+- [supported, minor] controls[3].note; Governance guidance: Before rollout / behaviour: The cited MCP management page describes the publisher categories as Microsoft, your organisation and certified external publishers. | Found: Choose which publisher categories users can access: Microsoft, your organization, or certified external publishers. | Fix: Add to controls[3].note: 'The Agent settings page describes the external option as allowing non-Microsoft agents and plugins built by external developers, without the certification qualifier (https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings).' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
 -->

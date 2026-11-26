@@ -101,15 +101,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 84
+  claims: 82
+  confirmed: 81
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -221,9 +223,9 @@ cost: Medium. Agent 365 is licensed per user, and the Connected platforms page n
 impact: Low. Administrators create the connections and see the synced agents in the registry; the documentation describes no change for end users.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: At rollout, Create the connection / admin-path: The checklist locates connection creation under Agents > All Agents > Connected platforms. | Found: In the navigation pane, select Agents > All Agents. In the Connected platforms web part, select Manage. Select + Connect a platform. | Fix: Expand the checklist route to 'Microsoft 365 admin center > Agents > All Agents > Connected platforms > Manage > + Connect a platform', as documented at https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist instructs administrators to start and re-run Sync agents, but the controls table has no corresponding synchronization row. | Found: Start synchronisation ... Re-run Sync agents on a cadence you choose ... Controls: Creating, editing and deleting connections; Whether observability data is collected; Tenant-wide switch to turn registry sync off. | Fix: Remove the 'Start synchronisation' and 'Re-run Sync agents' checklist bullets because they have no corresponding control row. Retain the verified synchronization explanation in What's changing; do not add a row during correction.
+- [supported, minor] Governance guidance: At rollout, Create the connection / admin-path: The checklist locates connection creation under Agents > All Agents > Connected platforms. | Found: In the navigation pane, select Agents > All Agents. In the Connected platforms web part, select Manage. Select + Connect a platform. | Fix: Replace the checklist's shortened route with 'Microsoft 365 admin center > Agents > All Agents > Connected platforms > Manage > + Connect a platform', as documented at https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms
+- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist tells administrators to start and re-run Sync agents, but the controls table contains no corresponding synchronization row. | Found: Start synchronisation ... Re-run Sync agents on a cadence you choose ... Controls: Creating, editing and deleting connections; Whether observability data is collected; Tenant-wide switch to turn registry sync off. | Fix: Remove the 'Start synchronisation' and 'Re-run Sync agents' checklist bullets because synchronization has no controls-table row. Retain the verified synchronization explanation in What's changing; do not add a row during correction.
 -->

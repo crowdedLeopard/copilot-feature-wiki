@@ -69,7 +69,7 @@ controls:
     note: "Teams Administrator. The page says migration sets the account as a resource, so this step is not needed before migrating."
 confidence: "high"
 created: "2026-11-24"
-updated: "2026-11-24"
+updated: "2026-11-26"
 roadmapModified: "2026-08-05T22:47:32"
 changes:
   - date: "2026-11-24"
@@ -82,19 +82,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 99 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected after the independent check: the resource-account bullet no longer says migration removes file and recording access, and the After rollout checklist keeps only the Cleanup password step."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 99 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 99
-  confirmed: 97
+  confirmed: 99
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "697a160b3140d9301ea5d735104faa0e"
+  contradicted: 0
+  attempts: 0
+  hash: "7c9be82f84843359c3e6ede80430f555"
 ---
 
 ## What's changing
@@ -118,7 +122,7 @@ Nothing happens on arrival unless an administrator acts: Microsoft's page says m
 **Data exposure**
 
 - The migration changes how the device authenticates, and the page says authentication to Microsoft 365 services such as Teams, Intune and the Pro Management portal does not change.
-- Marking an account as a resource is part of the migration. Microsoft's Set as Resource page lists removal of the resource account from meeting chats after the call ends and removal of access to shared files and recordings among its benefits, so expect that behaviour on migrated accounts.
+- Marking an account as a resource is part of migration. Microsoft lists removal from meeting chats after the call ends as a benefit.
 
 **Security & identity**
 
@@ -168,7 +172,7 @@ The passwordless page does not list clouds. The roadmap record lists Worldwide (
 
 ### After rollout
 
-- Run Cleanup password for migrated cloud-managed accounts. For accounts synchronized from Windows Server Active Directory, reset or scramble the password in the source directory unless password writeback is enabled and the domain is managed, and change the password of federated accounts through the identity provider.
+- Run Cleanup password for migrated cloud-managed accounts.
 - Record the revert procedure for each device type before migrating further devices.
 
 ## Governance controls
@@ -200,12 +204,4 @@ There is no tenant-wide switch to enable or block passwordless migration on the 
 risk: Low. Migration is optional and administrator-initiated, and Microsoft's page says the transition rolls back automatically if the device cannot sign in; the account's password stays in Entra ID until cleaned up.
 cost: Low. The Learn page names the device licences the resource account must already hold (Teams Rooms or Teams Shared Space) and lists no separate meter; the cost is admin time for testing, scheduling and password cleanup.
 impact: Low. Teams device administrators do the work, and Microsoft's page says end users notice no changes to device functionality.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: Marking an account as a resource during migration is sufficient to expect removal of access to shared files and recordings. | Found: To restrict file and recording access, the -RestrictResourceAccountAccess parameter must be configured as true in SharePoint Online. | Fix: Replace the second Data exposure bullet with: 'Marking an account as a resource is part of migration. Microsoft lists removal from meeting chats after the call ends as a benefit.' Remove the expectation that migration itself removes file and recording access; the cited Set as Resource page now says that restriction additionally requires -RestrictResourceAccountAccess configured as true in SharePoint Online. | Source: https://learn.microsoft.com/microsoftteams/rooms/set-as-resource-account-for-shared-teams-devices
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist instructs source-directory and identity-provider password resets but those controls have no table row. | Found: After rollout: reset or scramble the password in the source directory ... change the password of federated accounts through the identity provider. Table: Schedule migration; built-in Cleanup password; Set as Resource. | Fix: Remove the two manual-password-reset sentences from the After rollout checklist bullet, leaving 'Run Cleanup password for migrated cloud-managed accounts.' Keep the qualified source-directory and federated-password guidance in Risk assessment; do not add control rows.
 -->

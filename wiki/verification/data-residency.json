@@ -1,0 +1,1210 @@
+{
+  "slug": "data-residency",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Data residency: where is your data stored, and where do AI features process it?",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 30)"
+    ]
+  },
+  "counts": {
+    "claims": 89,
+    "confirmed": 86,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 7
+  },
+  "summary": "Hold: the ADR licensing statement omits Microsoft's exception for seats already covered by Multi-Geo, which could lead administrators to buy duplicate licences. The main controls and commands are documented, but conflicting Claude defaults and Multi-Geo minimums need to be reported, and the local-inferencing premise lacks verified Microsoft evidence.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "Data residency is the geographic location where an organisation's data is stored or processed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "Data Residency refers to the geographic location where an organization's data is stored or processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Dynamics 365 and Power Platform have separate data residency behaviour and documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "Dynamics 365 and Power Platform have separate data residency behavior and documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is: Where data is stored",
+      "type": "behaviour",
+      "claim": "The country or region provided at tenant sign-up establishes the Default Geography.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "This country or region establishes the Default Geography for Microsoft 365 services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is: Where data is stored",
+      "type": "behaviour",
+      "claim": "Microsoft uses Default Geography together with service availability to determine storage location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "The provisioning logic uses the Default Geography combined with service availability to determine where data is stored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is: commitment table",
+      "type": "behaviour",
+      "claim": "Microsoft 365 offers Product Terms, Multi-Geo and ADR as three methods for durable data-location commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "There are three methods for ensuring that the Tenant data location for a particular Microsoft 365 service doesn't change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: Product Terms row",
+      "type": "applicability",
+      "claim": "The Product Terms residency commitment covers Copilot and Copilot Chat for tenants with a listed sign-up country or region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings",
+      "quote": "Data Residency Commitments Available for Microsoft 365 Copilot and Microsoft 365 Copilot Chat",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is: Product Terms row",
+      "type": "cost",
+      "claim": "Default data residency commitments are included with the subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "ranging from default commitments included with your subscription to add-on services that provide expanded geographic control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is: ADR row",
+      "type": "behaviour",
+      "claim": "ADR commits eligible tenants' customer data at rest to their Local Region Geography.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+      "quote": "Customer Data stored at rest within your specific country or region for eligible Tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: ADR row",
+      "type": "applicability",
+      "claim": "ADR extends residency commitments beyond Microsoft 365 Core Services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+      "quote": "ADR extends Data Residency commitments to additional Microsoft 365 services beyond Microsoft 365 Core Services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: ADR row",
+      "type": "behaviour",
+      "claim": "ADR provides prioritised tenant migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+      "quote": "and prioritized Tenant migration services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is: ADR row",
+      "type": "licensing",
+      "claim": "ADR is an add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+      "quote": "The Microsoft 365 Advanced Data Residency add-on (ADR)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: Multi-Geo row",
+      "type": "applicability",
+      "claim": "Multi-Geo supports user-level data locations for Exchange Online, SharePoint, OneDrive, Teams, Copilot and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo",
+      "quote": "Multi-Geo enables customers to manage and store in-scope data at a user level for Microsoft 365 Core Services including Exchange Online, SharePoint/OneDrive, Microsoft Teams, and Microsoft 365 Copilot and Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: Multi-Geo row",
+      "type": "licensing",
+      "claim": "Multi-Geo is an add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo",
+      "quote": "Multi-Geo Capabilities in Microsoft 365 is a user-level add-on license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: Where data is stored",
+      "type": "behaviour",
+      "claim": "Copilot stores interaction content comprising the user's prompt, the response and grounding citations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings",
+      "quote": "The stored data includes the user's prompt and Copilot's response, including citations to any information used to ground Copilot's response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: Where data is stored",
+      "type": "behaviour",
+      "claim": "Under Multi-Geo, Copilot interaction storage follows the PDL of the user asking the question.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings",
+      "quote": "The Geography where the content of interactions with Microsoft 365 Copilot and Microsoft 365 Copilot Chat are stored is determined by the PDL of the user interacting with Microsoft 365 Copilot or Microsoft 365 Copilot Chat, respectively.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: Where data is stored",
+      "type": "behaviour",
+      "claim": "Unset or invalid PDL falls back to the tenant's Primary Provisioned Geography.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings",
+      "quote": "If the PDL isn't set or is invalid, data is stored in the Tenant's Primary Provisioned Geography location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Where data is stored",
+      "type": "behaviour",
+      "claim": "Microsoft says detailed documentation for data in processing is coming soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "Detailed documentation for data in processing is coming soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: EU Data Boundary",
+      "type": "applicability",
+      "claim": "Microsoft Copilot is an EU Data Boundary service for EU customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "For EU customers, Microsoft Copilot is an EU Data Boundary service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: EU Data Boundary",
+      "type": "behaviour",
+      "claim": "Customers outside the EU may have queries processed in the US, EU or other regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "Customers outside the EU may have their queries processed in the US, EU, or other regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: Flex routing",
+      "type": "behaviour",
+      "claim": "Flex routing lets eligible EU and EFTA customers allow LLM inferencing outside the boundary during peak demand.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "Flex routing lets customers in the European Union (EU) and the European Free Trade Association (EFTA) allow large language model (LLM) inferencing to occur outside the EU Data Boundary during periods of peak demand",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Flex routing",
+      "type": "availability",
+      "claim": "Flex-routed inferencing may occur in the United States, Canada or Australia.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "If flex routing is enabled, LLM inferencing may occur in the United States, Canada, or Australia during times of peak demand.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: Move data across regions",
+      "type": "behaviour",
+      "claim": "Allowing cross-region movement lets prompts and outputs move to the region hosting the generative AI feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "your inputs (prompts) and outputs (results) might move outside of your region to the location where the generative AI feature is hosted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: AI subprocessors",
+      "type": "applicability",
+      "claim": "Claude models are currently excluded from the EU Data Boundary and applicable in-country processing commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "are currently excluded from the EU Data Boundary, and when applicable, in-country processing commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Allowing cross-region movement does not change Product Terms commitments for storing Core Online Services customer data at rest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "For Core Online Services, allowing data movement across regions with this toggle doesn't impact the commitments made in the Product Terms regarding storage of Customer Data at rest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; controls[1].note",
+      "type": "default",
+      "claim": "Flex routing is on by default for eligible tenants created after March 25, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "Flex routing is on by default for eligible tenants that were created after March 25, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; controls[3].note",
+      "type": "default",
+      "claim": "Claude is enabled by default for most commercial-cloud customers outside the EU, EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; controls[3].note",
+      "type": "default",
+      "claim": "EU Data Boundary and UK customers have Claude disabled by default, with No users selected in the EU, EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default.",
+      "severity": "minor",
+      "fix": "Qualify the default statement: 'The subprocessor overview says Claude is disabled by default in the EU/EFTA and UK. The apps-only documentation separately says its setting is enabled by default for tenants created after March 25, 2026; check the tenant's actual selection.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps. That page also says apps-only or unselected options change to All users starting December 9, 2026, while an explicit No users selection does not change."
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: ADR",
+      "type": "licensing",
+      "claim": "ADR requires Default Geography in a listed Local Region Geography.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+      "quote": "The Tenant's Default Geography must be in one of the following Local Region Geographies:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: ADR",
+      "type": "licensing",
+      "claim": "ADR requires a qualifying Microsoft 365, Office 365, Teams, Exchange, OneDrive, SharePoint or Education subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+      "quote": "Customers must have licenses for one or more of the following products:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: ADR; controls[6].note",
+      "type": "licensing",
+      "claim": "ADR licences must cover 100% of the tenant's paid licences, without an exception for Multi-Geo seats.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-license-management",
+      "quote": "Customers who purchase Multi-Geo licenses for their Tenant don't need to also purchase ADR for the same licenses. This prevents \"double licensing\" a single seat for two different Data Residency programs.",
+      "severity": "blocker",
+      "fix": "Replace the ADR coverage clause and controls[6].note coverage clause with: 'ADR coverage is calculated against eligible purchased paid seats, not assigned users; seats already covered by Multi-Geo do not also need ADR licences. Together the programs must cover 100% of the required seats.' Keep the Global Administrator and migration-card wording. Cite https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-license-management."
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: ADR",
+      "type": "availability",
+      "claim": "The EU is not available as a single ADR geography.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+      "quote": "The European Union isn't available as a single ADR Geography.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: Multi-Geo",
+      "type": "licensing",
+      "claim": "The Multi-Geo overview permits licensing through Enterprise Agreement, Web Direct or CSP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo",
+      "quote": "Customers must license Multi-Geo through the Enterprise Agreement, Web Direct, or CSP channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Multi-Geo",
+      "type": "licensing",
+      "claim": "The Copilot residency page requires an active Enterprise or CSP Partner Agreement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings",
+      "quote": "Customer must have an active Enterprise or CSP Partner Agreement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Multi-Geo",
+      "type": "licensing",
+      "claim": "Purchased Multi-Geo units must be more than 5% of eligible licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings",
+      "quote": "Total purchased Multi-Geo units must be greater than 5% of the total eligible licenses in the Tenant.",
+      "severity": "minor",
+      "fix": "Replace the minimum sentence with: 'The Copilot residency page requires purchased Multi-Geo units greater than 5% of eligible licences; the Multi-Geo overview instead says equal to or greater than 5% for EA and CSP customers.' Both https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings and https://learn.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo are already cited."
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Microsoft Learn data residency pages publish no price for ADR or Multi-Geo.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Advanced Data Residency Multi-Geo price cost site:learn.microsoft.com; read m365-dr-overview, m365-dr-adr-overview, microsoft-365-multi-geo, m365-dr-service-copilot-offerings and ADR license management. No monetary price was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft describes residency options as ranging from included default commitments to paid add-ons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+      "quote": "ranging from default commitments included with your subscription to add-on services that provide expanded geographic control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risks and limits: Clearing Move data across regions",
+      "type": "behaviour",
+      "claim": "Clearing the checkbox cannot reverse data movement that already occurred.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "Data movement that occurred while your environment was allowed to move data across regions can't be reversed by clearing the Move data across regions checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risks and limits: not an off switch",
+      "type": "applicability",
+      "claim": "Move data across regions does not govern all Copilot and generative AI features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "Not all Copilot and generative AI features are governed by this setting. Some features use alternate services and aren't subject to the Move data across regions setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risks and limits: not an off switch",
+      "type": "behaviour",
+      "claim": "Disabling necessary cross-region movement can make Copilot Studio agents show Generative AI not available errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/generative-answers/generative-ai-not-available",
+      "quote": "If data movement across regions is disabled in an environment that needs it for generative AI features, then these features aren't available for agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risks and limits: Some Copilot Studio models",
+      "type": "behaviour",
+      "claim": "Some Copilot Studio models may process data outside the environment region despite cross-geo restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "Some models might process data outside your environment's geographic region, even when cross-geo data movement is restricted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risks and limits: setting not always shown; controls[0].note",
+      "type": "availability",
+      "claim": "The checkbox is not shown for U.S. or government-cloud environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "The Move data across regions checkbox isn't displayed for environments in U.S. or government cloud regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: setting not always shown; controls[0].note",
+      "type": "availability",
+      "claim": "The checkbox is not shown in regions with full in-region capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "If your environment is in a region that has full in-region capacity, the Move data across regions checkbox doesn't appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Multi-Geo; controls[1].note",
+      "type": "applicability",
+      "claim": "Customers who purchased or used Multi-Geo are outside the EU Data Boundary scope for Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "Customers who have purchased or used Multi-Geo Capabilities are not in scope for the EU Data Boundary for Microsoft 365 even if their tenant is listed as being in a country or region in the EU or EFTA.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Multi-Geo; controls[1].note",
+      "type": "availability",
+      "claim": "Customers who purchased or used Multi-Geo do not get the Microsoft 365 flex-routing setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "The flex routing setting will not be available in the Microsoft 365 admin center for customers who have purchased or used Multi-Geo Capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Claude processing",
+      "type": "behaviour",
+      "claim": "When customers allow Claude models with Microsoft Generative AI Services, Anthropic processes customer data in the United States.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/eudb/eu-data-boundary-transfers-for-all-services",
+      "quote": "When customers allow the use of Claude models from Anthropic with Microsoft Generative AI Services, Customer Data is processed by Anthropic in the United States.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Claude processing",
+      "type": "behaviour",
+      "claim": "The EU Data Boundary transfer documentation says this customer data continues to be stored in the boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/eudb/eu-data-boundary-transfers-for-all-services",
+      "quote": "Customer Data continues to be stored in the EU Data Boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Claude processing; Open questions",
+      "type": "date",
+      "claim": "Microsoft says Claude models are coming into the EU Data Boundary starting in December 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/eudb/eu-data-boundary-transfers-for-all-services",
+      "quote": "Claude models from Anthropic are coming into the EU Data Boundary starting in December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: Anthropic models with Data Retention",
+      "type": "behaviour",
+      "claim": "Data Retention model data is stored by Anthropic outside the Microsoft Customer Agreement's Product Terms and DPA commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "This means data is stored by Anthropic and not subject to your Microsoft Customer Agreement including commitments in the Product Terms and DPA.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Anthropic models with Data Retention",
+      "type": "behaviour",
+      "claim": "Anthropic stores most Data Retention model inputs and outputs for up to 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "This means that Anthropic (not Microsoft) stores most inputs and outputs for up to 30 days before deleting them.",
+      "severity": "minor",
+      "fix": "Keep 'most' and add: 'For suspected Usage Policy violations, Anthropic may retain content for up to two years and trust and safety classification scores for up to seven years.' This qualification is on https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor."
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Anthropic models with Data Retention",
+      "type": "default",
+      "claim": "Data Retention models remain off until a tenant administrator explicitly opts in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "No users will have access to these models until the tenant admin explicitly opts in to enable use of Anthropic models with Data Retention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: ADR migration",
+      "type": "behaviour",
+      "claim": "ADR migration does not begin until the Global Administrator opts in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-initiate-migration",
+      "quote": "The data migration process doesn't begin until the Tenant Global Administrator completes the opt-in step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: ADR migration",
+      "type": "behaviour",
+      "claim": "Microsoft uses reasonable efforts to complete ADR migration within 12 months of initiation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-initiate-migration",
+      "quote": "Microsoft uses reasonable efforts to complete ADR Customer Data migration within 12 months from the time the Tenant Global Administrator initiates migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: A new PDL",
+      "type": "behaviour",
+      "claim": "Setting a user's PDL does not automatically move an existing OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-multi-geo-user-testing",
+      "quote": "If the user already has a OneDrive site created in the Tenant, setting their PDL won't automatically move their existing OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: A new PDL",
+      "type": "behaviour",
+      "claim": "Exchange Online automatically relocates a mailbox when PDL changes to a different mailbox geography.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-multi-geo-user-testing",
+      "quote": "Exchange Online automatically relocates the user's mailbox if the PDL changes and the MailboxRegion no longer matches the Mailbox Database Geo Location code.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Manage > Environments > environment > Generative AI features > Edit > Move data across regions reaches the control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "In the Manage pane, select Environments. The Environments page is displayed. Select the name of your environment. Details about your environment are displayed. In the Generative AI features card, select Edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-PowerPlatformGenerativeAiSettings -EnvironmentName <EnvironmentId> -CrossGeoDataMovement $false disables cross-geo movement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings",
+      "quote": "-CrossGeoDataMovement: Enables or disables cross-geo data movement. Type: Boolean. -EnvironmentName: Specifies the ID of the environment you want to modify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Settings > View all > Flex routing during peak load periods > Allow flex routing during periods of peak load reaches the control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "Go to Copilot -> Settings -> View all -> Flex routing during peak load periods. Select Allow flex routing during periods of peak load.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Manage > Environments > environment > Generative AI features > Edit > Allow flex routing during periods of peak load reaches the control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "In the Generative AI features card, select Edit. The Generative AI features pane is displayed. ... Select the Allow flex routing during periods of peak load checkbox, if desired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic reaches the control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Go to the Microsoft 365 admin center and select Copilot > Settings > View all. ... under Available subprocessors for your organization, select Anthropic, and Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Choose who can access Anthropic models for Copilot and generative AI experiences reaches user and group assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "Update-MgUser -UserId <UserId> -PreferredDataLocation <international location code> sets PDL for a cloud-only user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-multi-geo-user-testing",
+      "quote": "Update-MgUser -UserId $user.Id -PreferredDataLocation <international location code>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[6].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Settings > Org settings > Organization profile > Data location reaches the ADR migration control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-initiate-migration",
+      "quote": "Navigate to Settings > Org settings > Organization profile > Data location. ... Select the option to initiate migration for ADR services that don't currently reside in your Local Region Geography.",
+      "severity": "minor",
+      "fix": "Keep the documented navigation and append '> option to initiate migration for ADR services not currently in the Local Region Geography'. The current path stops on the correct page but before the migration option; Microsoft gives no exact label for that option."
+    },
+    {
+      "n": 63,
+      "where": "controls[0].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Consent to Move data across regions requires Power Platform administrator or Dynamics 365 administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "To grant consent, you must be a Power Platform administrator or Dynamics 365 administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Configuring Microsoft 365 flex routing requires the AI Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "Sign in to the Microsoft 365 admin center as an administrator assigned the AI Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Configuring the Anthropic subprocessor settings requires AI Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "You must be a member of the AI Administrator or Global Administrator role to perform this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[6].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "ADR migration opt-in requires a tenant Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-initiate-migration",
+      "quote": "Sign in to the Microsoft 365 admin center as a Tenant Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The Power Platform flex-routing checkbox is shown for environments in the EU Data Boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "If your environment is in the European Union Data Boundary, the Allow flex routing during periods of peak load checkbox is displayed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The Power Platform flex-routing checkbox is unavailable when Microsoft 365 disallows it or Move data across regions is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "If the Allow flex routing during periods of peak load checkbox is visible but unavailable, either the feature is turned off in the Microsoft 365 admin center or the Move data across regions setting isn't enabled in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].governs; Governance controls: Flex routing is set twice",
+      "type": "applicability",
+      "claim": "Microsoft 365 admin center flex routing applies to Microsoft Copilot and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "The Microsoft 365 admin center setting applies to Microsoft Copilot and Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[2].governs; Governance controls: Flex routing is set twice",
+      "type": "applicability",
+      "claim": "Power Platform admin center flex routing applies to Copilot experiences in Dynamics 365, Power Platform and Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "The Power Platform admin center setting applies to Copilot experiences in Dynamics 365, Power Platform, and Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: Flex routing is set twice",
+      "type": "behaviour",
+      "claim": "The Power Platform flex-routing setting honours the Microsoft 365 setting unless its own setting is more restrictive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "The flex routing setting in the Power Platform admin center will honor the flex routing setting in the Microsoft 365 admin center unless the current setting in the Power Platform admin center is more restrictive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: Flex routing is set twice",
+      "type": "behaviour",
+      "claim": "Disallowing Microsoft 365 flex routing turns the Power Platform setting off and prevents changing it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+      "quote": "If flex routing is not allowed in the Microsoft 365 admin center, flex routing will be off by default in the Power Platform admin center and you will not be able to change the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: At scale",
+      "type": "applicability",
+      "claim": "The Generative AI settings environment-group rule controls Move data across regions at scale.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+      "quote": "Is it possible to modify the \"Move data across regions\" checkbox at scale across all my environments? Yes, you can use the Generative AI settings environment rule to control this at scale.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: At scale",
+      "type": "admin-path",
+      "claim": "Manage > Environment groups > group > Rules reaches environment-group rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "On the Environment groups page, select the group you created. Select the Rules tab for that group. You see a list of available rules. Select a rule to open its configuration panel.",
+      "severity": "minor",
+      "fix": "For the Generative AI settings control, extend the prose path to 'Manage > Environment groups > group > Rules > Generative AI settings'. The existing path reaches the rule list but stops before selecting the rule."
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: At scale",
+      "type": "availability",
+      "claim": "Environment groups can contain only managed environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "Environment groups can only contain managed environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: At scale",
+      "type": "behaviour",
+      "claim": "A published group rule overrides the corresponding environment-level generative AI settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "When a rule is published at the environment group level, it's enforced across every environment within that group. This means the corresponding setting or policy becomes locked (read-only) within individual environments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[4].note; Governance controls: AI provider assignments",
+      "type": "applicability",
+      "claim": "AI provider user and group assignments are provider-level and enforced across Microsoft Copilot and Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "These assignments are applied at the provider level and enforced across Microsoft Copilot and Copilot Studio experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[5].note; Governance controls: Synchronised users",
+      "type": "behaviour",
+      "claim": "Synchronised users' PDL must come from on-premises AD through Microsoft Entra Connect rather than the cloud-only cmdlet procedure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-multi-geo-user-testing",
+      "quote": "If your company's users are synchronized from an on-premises Active Directory system to Microsoft Entra ID, their PreferredDataLocation must be populated in AD and synchronized to Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls: Synchronised users",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 admin center displays a user's PDL on the user's Account tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-multi-geo-user-testing",
+      "quote": "you'll find Preferred Data Location under the Account tab of the user's page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls: cmdlet reference",
+      "type": "absence",
+      "claim": "The Set-PowerPlatformGenerativeAiSettings reference lists no flex-routing parameter at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: flex routing Power Platform API; Power Platform flex routing PowerShell Power Platform API pac admin. Read the full Set-PowerPlatformGenerativeAiSettings reference: EnvironmentName, CrossGeoDataMovement, BingSearch, Microsoft365Services and ApiVersion; no flex-routing parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for Microsoft 365 flex routing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 flex routing configure Graph PowerShell; \"flex routing\" \"Graph\" \"settings\". Opened copilot-flex-routing and configure-copilot-admin-center; read Graph group-settings search results. No operation setting flex routing was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for Power Platform environment flex routing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Platform flex routing PowerShell Power Platform API pac admin; \"flex routing\" \"Power Platform API\". Read geographical-availability-copilot, Set-PowerPlatformGenerativeAiSettings, pac admin and API reference excerpts. No flex-routing operation was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for enabling Anthropic as a tenant subprocessor.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Anthropic AI providers subprocessors user group access settings Microsoft Graph PowerShell API; \"Anthropic\" \"subprocessor\" \"API\". Opened connect-to-ai-subprocessor and configure-copilot-admin-center. Results documented portal controls, not a provider-enablement API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for Anthropic provider-level user and group assignments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Anthropic AI providers subprocessors user group access settings Microsoft Graph PowerShell API. Opened connect-to-ai-subprocessor and copilot-ai-provider-user-sec-group-access; read Graph group-management results. No API for assigning an AI provider was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[5].ui",
+      "type": "absence",
+      "claim": "Microsoft has not documented an admin UI for changing a cloud-only user's PDL.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Multi-Geo Preferred Data Location change Microsoft 365 admin center user Account edit; \"Preferred Data Location\" \"admin center\" \"change\". Read m365-multi-geo-user-testing and Copilot Studio residency excerpts: PowerShell changes PDL; Account displays it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[6].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or PowerShell operation for the ADR migration opt-in.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Advanced Data Residency initiate migration opt in API PowerShell Graph. Opened m365-dr-adr-initiate-migration and m365-dr-data-location-faq; read Exchange and SharePoint move-command results. Those move workloads, not the tenant ADR opt-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "What to check: Data location card; controls[6].note",
+      "type": "behaviour",
+      "claim": "The Data Location Card displays current locations and commitments for services, plus the ADR migration option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-data-location-card",
+      "quote": "Current Geography: The location where Customer Data is currently stored. Committed Geography: The location where Microsoft commits to store Customer Data based on your Data Residency commitments",
+      "severity": "minor",
+      "fix": "Narrow the checklist bullet to: 'Open the Data Location Card in the Microsoft 365 admin center and confirm the current and committed geography for each displayed service; Copilot Chat is not currently displayed, and Multi-Geo satellite locations are not shown.' The ADR migration option is independently supported by the cited migration-initiation page."
+    },
+    {
+      "n": 88,
+      "where": "Open questions: in-country processing",
+      "type": "behaviour",
+      "claim": "Microsoft plans in-country Copilot processing for several countries.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot in country processing several countries local inferencing 2026; \"Copilot\" \"in-country processing\". Read Learn residency, privacy and FAQ pages; opened roadmap?id=571886, which returned the roadmap shell without the item's description.",
+      "severity": "major",
+      "fix": "Remove the unverified premise and retain the question as: 'Will in-country processing for Copilot come with a tenant setting? See local inferencing.' A linked wiki briefing is not Microsoft evidence."
+    },
+    {
+      "n": 89,
+      "where": "sources",
+      "type": "consistency",
+      "claim": "Microsoft pages needed to qualify ADR coverage, Claude defaults and the Data Location Card are absent from the page's sources.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Sources include ADR overview, ADR migration initiation and connect-to-ai-subprocessor, but omit ADR license management, copilot-anthropic-apps and m365-dr-data-location-card.",
+      "severity": "minor",
+      "fix": "Add these supporting Microsoft sources together: https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-license-management; https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps; https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-data-location-card."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T05:27:17.106Z",
+    "summary": {
+      "links": 14,
+      "unreachable": 0,
+      "uiPaths": 6,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot-offerings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-initiate-migration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/generative-answers/generative-ai-not-available",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/eudb/eu-data-boundary-transfers-for-all-services",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/m365-multi-geo-user-testing",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an environment's generative AI prompts and outputs may move to another region",
+        "docs": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Generative AI features",
+          "Edit",
+          "Move data across regions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an environment's generative AI prompts and outputs may move to another region",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings",
+        "reachable": true,
+        "token": "Set-PowerPlatformGenerativeAiSettings",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Microsoft Copilot and Copilot Chat may run LLM inferencing outside the EU Data Boundary at peak load",
+        "docs": "https://learn.microsoft.com/copilot/manage/copilot-flex-routing",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "Flex routing during peak load periods",
+          "Allow flex routing during periods of peak load"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Dynamics 365, Power Platform and Copilot Studio may use flex routing in an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Generative AI features",
+          "Edit",
+          "Allow flex routing during periods of peak load"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether Anthropic is available as a Microsoft subprocessor, which sends Claude processing outside the EU Data Boundary",
+        "docs": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Anthropic"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which users and groups may use Claude models in Copilot and generative AI experiences",
+        "docs": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "AI providers operating as Microsoft subprocessors",
+          "Choose who can access Anthropic models for Copilot and generative AI experiences"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Which geography a Multi-Geo user's data, including Copilot interactions, is stored in (Preferred Data Location)",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/m365-multi-geo-user-testing",
+        "reachable": true,
+        "token": "Update-MgUser",
+        "found": true
+      },
+      {
+        "index": 6,
+        "side": "ui",
+        "governs": "Whether ADR data migration to the Local Region Geography starts",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-adr-initiate-migration",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Organization profile",
+          "Data location"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

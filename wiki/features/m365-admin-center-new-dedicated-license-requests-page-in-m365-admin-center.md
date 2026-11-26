@@ -95,15 +95,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-25"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -199,8 +201,9 @@ cost: Low. The only cost the sources show is admin time. The release note names 
 impact: Low. Admins who handle licensing notice it. Microsoft has not said whether it changes anything users see.
 -->
 
-<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; rendered table; What's changing; Governance guidance; Governance controls / admin-path: Billing > Licenses > Requests in the Microsoft 365 admin center reaches the existing self-service request process. | Found: select Billing > Licenses. On the Licenses page, select the Requests tab. Select the row that contains the request you want to review. Assign licenses to each user through the default Approve the selected license requests option. | Fix: For the all-users approval route, extend controls[1].ui.path to 'Billing > Licenses > Requests > request > Approve the selected license requests > Approve'. Add to its note: 'Select all user checkboxes before choosing Approve.' Keep the qualification that this process is not confirmed as the new page. Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests. | Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests
+- [supported, minor] controls[1].ui; rendered table; What's changing; Governance guidance; Governance controls / admin-path: Billing > Licenses > Requests in the Microsoft 365 admin center reaches the existing self-service license request process. | Found: select Billing > Licenses. On the Licenses page, select the Requests tab. Select the row that contains the request you want to review. Assign licenses to each user through the default Approve the selected license requests option. | Fix: For the all-users approval route, extend controls[1].ui.path to 'Billing > Licenses > Requests > request > Approve the selected license requests > Approve'. Add to its note: 'Select all user checkboxes before choosing Approve.' Retain the qualification that this process is not confirmed as the new page. Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests. | Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests
+- [supported, minor] Cost and licensing / absence: The cited license-options article uses Microsoft Copilot while the release note uses Microsoft 365 Copilot, without itself explaining the naming difference for this feature. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Replace the final sentence of the second Cost and licensing paragraph with 'Microsoft 365 Copilot is now named Microsoft Copilot, according to Microsoft's requirements article.' Cite https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements, which states 'Microsoft 365 Copilot is now named Microsoft Copilot'. Keep the historical release-note name when attributing that note. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
 -->

@@ -62,24 +62,28 @@ changes:
     note: "New briefing: planned seek bar thumbnails in Stream's player for Teams meeting recordings, with licensing from the Stream service description and no documented admin setting."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 38 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected four statements the check could not confirm: removed the claims that the feature leaves storage and access unchanged and the seek bar's on-screen position, and narrowed the autonomy line to what the roadmap describes."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 39 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 34
-  unconfirmed: 4
+  claims: 39
+  confirmed: 39
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "e347958cd10fd52f63a470c63384882d"
+  attempts: 0
+  hash: "d8409dbb6b29c7e65fb593df44bb98b3"
 ---
 
 ## What's changing
 
-Microsoft plans to add thumbnail previews to the seek bar (the timeline along the bottom) of Microsoft Stream's video player. According to the roadmap item, hovering over the seek bar at a given point shows a preview of the video content at that timestamp, and the feature is to be made available only for Teams meeting recordings at first. The roadmap lists the web as the platform.
+Microsoft plans to add thumbnail previews to the seek bar of Microsoft Stream's video player. According to the roadmap item, hovering over the seek bar at a given point shows a preview of the video content at that timestamp, and the feature is to be made available only for Teams meeting recordings at first. The roadmap lists the web as the platform.
 
 Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. Learn's current list of video features in Microsoft 365, now titled "Current features and upcoming roadmap for Clipchamp in Microsoft 365", lists other player features such as multi-speed playback for Teams meeting recordings and chapters, but not seek bar thumbnails, at the time of writing (November 2026). Microsoft has not stated whether the thumbnails appear automatically or whether anyone has to turn them on.
 
@@ -87,7 +91,7 @@ The roadmap item's status is In development, with a target of June CY2025 for Ge
 
 ## Why it matters
 
-For a service owner this is a viewing convenience, not a governance change. It makes long meeting recordings easier to navigate, which may reduce "where in the recording was that?" questions, and it changes nothing about where recordings are stored or who can open them. Teams meeting recordings are uploaded to the organiser's OneDrive (private meetings) or SharePoint (channel meetings), and OneDrive file storage and access permissions apply to them as to other files.
+For a service owner this is a viewing convenience, not a governance change. It makes long meeting recordings easier to navigate, which may reduce "where in the recording was that?" questions. Teams meeting recordings are uploaded to the organiser's OneDrive (private meetings) or SharePoint (channel meetings), and OneDrive file storage and access permissions apply to them as to other files.
 
 Microsoft has not stated what happens on arrival. The roadmap item has also outlived its June CY2025 target while still marked In development, so treat the timing as uncertain and watch Message center for a rollout notice.
 
@@ -100,7 +104,7 @@ Microsoft has not stated what happens on arrival. The roadmap item has also outl
 - No change described: the roadmap item mentions no new sign-in, permission or sharing behaviour.
 
 **Autonomy & actions**
-- No change: the feature displays previews and takes no action on its own.
+- The roadmap describes previews displayed when someone hovers over the seek bar; it mentions no autonomous actions.
 
 **Change & support**
 - Users who watch meeting recordings on the web see a new hover preview. Microsoft Learn documents no admin setting to turn it off at the time of writing (November 2026), so any question about it goes to the help desk rather than to a policy change.
@@ -162,11 +166,8 @@ cost: Low. Stream comes with Microsoft 365 plans that include SharePoint and One
 impact: Medium. People who watch Teams meeting recordings in Stream on the web would notice the hover preview; other videos are out of scope according to the roadmap item.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The seek bar thumbnail feature changes nothing about where recordings are stored. | Found: Searched: '"seek bar thumbnails" Teams Stream permissions storage actions'. Read roadmap, recording policies, Stream service description and Clipchamp overview. These state the existing recording locations but do not describe this feature's effect on storage. | Fix: Remove 'and it changes nothing about where recordings are stored or who can open them'. Retain the separately sourced sentence describing existing recording storage.
-- [unsupported, major] Why it matters / behaviour: The seek bar thumbnail feature changes nothing about who can open recordings. | Found: Searched: '"seek bar thumbnails" Teams Stream permissions storage actions'. Read roadmap, recording policies and Clipchamp overview. Existing file permissions are documented, but no passage describes this feature as leaving access unchanged. | Fix: Remove 'and it changes nothing about where recordings are stored or who can open them'. Retain the separately sourced statement that existing recording files follow OneDrive file storage and access permissions.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no action on its own. | Found: Searched: '"seek bar thumbnails" Teams Stream permissions storage actions'. Read roadmap, current video features and Clipchamp overview. The roadmap describes hover previews, but no source states that the feature takes no action on its own. | Fix: Replace 'No change: the feature displays previews and takes no action on its own' with 'The roadmap describes previews displayed when someone hovers over the seek bar; it mentions no autonomous actions.'
-- [unsupported, major] What's changing: first paragraph / behaviour: Stream's seek bar is the timeline along the bottom of the player. | Found: Searched: 'Clipchamp Stream video player seek timeline hover preview thumbnails on by default'. Read the roadmap, current features and Clipchamp player overview; no passage locates the seek bar along the bottom. | Fix: Remove the parenthetical '(the timeline along the bottom)'.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance controls: Set-SPOTenant reference / absence: The Set-SPOTenant reference does not mention a seek bar thumbnail setting. | Found: Searched: "Set-SPOTenant" "thumbnail". Fetched the Set-SPOTenant reference and searched its entire text for thumbnail, seek, Stream and Clipchamp; no seek bar thumbnail setting found. StreamLaunchConfig describes only the Stream Launch config state. | Fix: Add https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant to sources for the reference explicitly mentioned in Governance controls.
 -->

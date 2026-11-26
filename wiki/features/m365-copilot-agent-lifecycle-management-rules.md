@@ -171,15 +171,17 @@ changes:
     note: "Corrected the user-access control's permission requirements to the Tenant Configuration Management authentication page, and removed the deletion steps from the governance checklist."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 100 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 109 statements not yet confirmed"
 version: 8
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 8
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 100
-  confirmed: 100
+  claims: 109
+  confirmed: 109
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -274,8 +276,8 @@ cost: Medium. Conditions-based lifecycle rules are a premium Agent 365 capabilit
 impact: Medium. Users can lose agents; managers inherit ownership.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api; controls[2].note; rendered controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can set tenant agent user access. | Found: Create a new configurationMonitor ... applies a desired-state baseline once in applyOnce mode. ... POST /admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[2].note: 'Preview; beta API production use is unsupported. Set mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne.' The mode is documented at https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta and the access property at https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[2].api; controls[2].note; rendered controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can set tenant agent user access. | Found: Create a new configurationMonitor ... applies a desired-state baseline once in applyOnce mode. ... POST /admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[2].note and its rendered note: 'Preview; beta API production use is unsupported. Set mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne.' The mode is documented at https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta and the resource and property at the already-cited https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

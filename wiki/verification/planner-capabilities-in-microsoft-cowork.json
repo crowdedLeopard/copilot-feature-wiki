@@ -2,352 +2,138 @@
   "slug": "planner-capabilities-in-microsoft-cowork",
   "roadmapId": 567315,
   "title": "Planner: Planner Plugin lets Copilot Cowork read and update plans and tasks",
-  "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "status": "held",
+  "date": "2026-11-26",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
+  "attempts": 1,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 99,
-    "confirmed": 98,
-    "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 0,
-    "major": 0,
-    "minor": 4
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 88)"
+    ]
   },
-  "summary": "The briefing's rollout, licensing, approval requirements and documented controls are supported. Minor corrections would complete the navigation paths, cite the billing overview and reconcile the governance checklist with the controls table.",
+  "counts": {
+    "claims": 107,
+    "confirmed": 105,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The Planner capabilities, rollout, administrator enablement and licensing are supported. Hold the briefing because its spending-policy route omits the required Identity scope choice; the route must distinguish a user-based policy from a resource-based policy. All cited Microsoft pages opened successfully, including the updated plugin-management page.",
   "claims": [
     {
       "n": 1,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Planner Plugin availability is managed in Microsoft 365 admin center under Agents > Tools > Planner Plugin > Users.",
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The Planner Plugin connects Microsoft Planner to Copilot Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "To block the plugin, go to Agents > Tools, select Planner Plugin, open the Users tab, and select Block.",
-      "severity": "minor",
-      "fix": "The path reaches the correct tab but stops before its controls. Extend it to 'Agents > Tools > Planner Plugin > Users > Available to specific users or groups'; retain the alternative availability and Block options in the note, and the separate installation route in the prose."
+      "quote": "The Planner Plugin connects Microsoft Planner to supported Copilot experiences so people can manage plans and tasks through their AI assistant.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 2,
-      "where": "controls[0].api; Governance controls",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a package.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says users can view plans, buckets, goals and tasks in Cowork.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "source": "roadmap record",
+      "quote": "In Cowork, you can view, create, and update your plans, buckets, goals, and tasks without switching apps.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "controls[0].note; Scope: Roles",
-      "type": "role",
-      "claim": "The Planner Plugin administrator prerequisites name Global Administrator or Copilot Administrator.",
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap says users can create plans, buckets, goals and tasks in Cowork.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Admin role | Global Administrator or Copilot Administrator",
+      "source": "roadmap record",
+      "quote": "In Cowork, you can view, create, and update your plans, buckets, goals, and tasks without switching apps.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Available to all users lets licensed users find and acquire the plugin.",
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap says users can update plans, buckets, goals and tasks in Cowork.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Available to all users | Any licensed user can add it.",
+      "source": "roadmap record",
+      "quote": "In Cowork, you can view, create, and update your plans, buckets, goals, and tasks without switching apps.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Available to specific users or groups limits discovery to the selected audience.",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Cowork can help draft emails using Planner task context.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Available to specific users or groups | Only selected users and groups can find it.",
+      "source": "roadmap record",
+      "quote": "Cowork goes a step further by helping you execute your Planner tasks across Microsoft 365, such as drafting and sending emails",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "controls[0].note; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "The Users tab offers Block to prevent plugin use.",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Cowork can help send emails using Planner task context.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "To block the plugin, go to Agents > Tools, select Planner Plugin, open the Users tab, and select Block.",
+      "source": "roadmap record",
+      "quote": "such as drafting and sending emails, scheduling meetings, posting updates to Teams, and working with files.",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "controls[0].note; Governance controls",
-      "type": "licensing",
-      "claim": "Access to the package-blocking API requires a Microsoft Agent 365 licence.",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Cowork can help schedule meetings using Planner task context.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "source": "roadmap record",
+      "quote": "such as drafting and sending emails, scheduling meetings, posting updates to Teams, and working with files.",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The package block operation is a beta, preview operation.",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Cowork can help post updates to Teams using Planner task context.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-      "quote": "Block (preview) | POST `/copilot/admin/catalog/packages/{id}/block` | Block a package to prevent its usage.",
+      "source": "roadmap record",
+      "quote": "such as drafting and sending emails, scheduling meetings, posting updates to Teams, and working with files.",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Cowork service selection is reached through Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Cowork can help work with files while executing Planner tasks.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "On the Scope user and group step, choose Specific groups and select the security group.\nOn the Select agents and services step, select Cowork.",
-      "severity": "minor",
-      "fix": "Include the omitted audience-selection step: 'Copilot > Cost Management > Configuration > + Add spending policy > Scope user and group > Specific groups > group > Select agents and services > Cowork'. This is the pilot-group route documented by the cited governance page."
+      "source": "roadmap record",
+      "quote": "such as drafting and sending emails, scheduling meetings, posting updates to Teams, and working with files.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 10,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending-policy limits and billing properties, as qualified in the note.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The spending-policy update operation supports displayName.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The spending-policy update operation supports periodLimit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The spending-policy update operation supports perUserLimit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The spending-policy update operation supports billingMethods.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "Governance controls: final paragraph",
-      "type": "absence",
-      "claim": "The spendingPolicy update reference does not list service selection among the updatable properties.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: spendingpolicy-update updatable properties services. Read the full cited Update spendingPolicy reference; it lists displayName, periodLimit, perUserLimit and billingMethods, plus conditional billingInstrument requirements, not selected services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters",
-      "type": "default",
-      "claim": "The Planner Plugin is admin-opt-in: it becomes available after an administrator enables or deploys it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "the plugin is available to users with an active Microsoft 365 Copilot license after an admin enables or deploys it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: licensing.model and licensing.notes",
-      "type": "licensing",
-      "claim": "The mixed licensing model combines a Microsoft 365 Copilot licence requirement with Cowork usage-based billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-      "quote": "Services managed by usage-based billing in the Microsoft admin center now include:\nCowork (Copilot license required)",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources, titled 'Understand usage-based billing and cost management for Copilot Credits'. It explicitly connects Cowork to Copilot Credit billing and documents consumption monitoring under Copilot > Cost management."
-    },
-    {
-      "n": 18,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost and impact",
-      "type": "licensing",
-      "claim": "Users of Cowork plugins require assigned Microsoft 365 Copilot licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
-      "quote": "Users who use Cowork plugins must have Microsoft 365 Copilot licenses assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Cowork usage is measured and governed in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-      "quote": "Microsoft's usage-based billing model charges customers based on actual usage, measured in Copilot Credits.\nServices managed by usage-based billing in the Microsoft admin center now include:\nCowork (Copilot license required)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A Copilot Credit rate specific to Planner Plugin actions is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner Plugin Cowork Copilot Credits rate pricing; Planner Plugin credit rate; Copilot Cowork Planner plugin pricing consumption rate. Opened Planner Plugin, plugin management, Cowork governance and Copilot Credits billing overview pages; none gives a Planner-specific rate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The variable cost rating reflects metered Cowork consumption.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "The roadmap describes viewing, creating and updating Planner plans in Cowork.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "In Cowork, you can view, create, and update your plans, buckets, goals, and tasks without switching apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes viewing, creating and updating Planner buckets in Cowork.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "In Cowork, you can view, create, and update your plans, buckets, goals, and tasks without switching apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes viewing, creating and updating Planner goals in Cowork.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "In Cowork, you can view, create, and update your plans, buckets, goals, and tasks without switching apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "The roadmap describes viewing, creating and updating Planner tasks in Cowork.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "In Cowork, you can view, create, and update your plans, buckets, goals, and tasks without switching apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Cowork can help execute Planner work by drafting and sending emails.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "helping you execute your Planner tasks across Microsoft 365, such as drafting and sending emails",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Cowork can help execute Planner work by scheduling meetings.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "such as drafting and sending emails, scheduling meetings, posting updates to Teams, and working with files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Cowork can help execute Planner work by posting updates to Teams.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "such as drafting and sending emails, scheduling meetings, posting updates to Teams, and working with files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Cowork can help execute Planner work by working with files.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "such as drafting and sending emails, scheduling meetings, posting updates to Teams, and working with files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
       "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Cowork can write progress back to Planner with the user's approval.",
+      "claim": "The roadmap says Cowork can write progress back to Planner with the user's approval.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "It can then write progress back to Planner with your approval.",
@@ -355,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "What's changing: second paragraph",
+      "n": 11,
+      "where": "What's changing",
       "type": "record",
-      "claim": "MC1540339 was published on 5 November 2026.",
+      "claim": "Microsoft's notice MC1540339 was published on 5 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1540339",
       "quote": "Published 2026-11-05; last updated 2026-11-05",
@@ -366,7 +152,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 12,
       "where": "What's changing; Why it matters; Risk assessment: Data exposure",
       "type": "record",
       "claim": "Cowork can use Planner task notes as context.",
@@ -377,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 13,
       "where": "What's changing; Why it matters; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Cowork can use Planner checklists as context.",
+      "claim": "Cowork can use Planner task checklists as context.",
       "status": "supported",
       "source": "Message Center post MC1540339",
       "quote": "Cowork can use Planner task notes, checklists, and attachments to research, draft, analyze, and create deliverables.",
@@ -388,10 +174,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 14,
       "where": "What's changing; Why it matters; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Cowork can use Planner attachments as context.",
+      "claim": "Cowork can use Planner task attachments as context.",
       "status": "supported",
       "source": "Message Center post MC1540339",
       "quote": "Cowork can use Planner task notes, checklists, and attachments to research, draft, analyze, and create deliverables.",
@@ -399,32 +185,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Data exposure",
+      "n": 15,
+      "where": "What's changing",
       "type": "record",
-      "claim": "Cowork can use Planner task owners as context for Microsoft 365 work.",
-      "status": "supported",
-      "source": "Message Center post MC1540339",
-      "quote": "Copilot Cowork can use existing Planner data, including task notes, checklists, attachments, owners, and due dates, as context for completing work across Microsoft 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Cowork can use Planner due dates as context for Microsoft 365 work.",
-      "status": "supported",
-      "source": "Message Center post MC1540339",
-      "quote": "Copilot Cowork can use existing Planner data, including task notes, checklists, attachments, owners, and due dates, as context for completing work across Microsoft 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "What's changing: second paragraph",
-      "type": "record",
-      "claim": "Cowork can turn existing content into proposed Planner plans and tasks.",
+      "claim": "Cowork can turn existing content into proposed plans.",
       "status": "supported",
       "source": "Message Center post MC1540339",
       "quote": "Turn spreadsheets, documents, presentations, meeting notes, or goals into proposed plans and tasks for review and approval.",
@@ -432,65 +196,76 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "What's changing: second paragraph",
+      "n": 16,
+      "where": "What's changing",
       "type": "record",
       "claim": "Cowork can generate visual plan status reports.",
       "status": "supported",
       "source": "Message Center post MC1540339",
-      "quote": "Generate visual plan reports: Summarize progress, upcoming and overdue tasks, work by owner and bucket, progress toward goals, blockers, and recommended next steps.",
+      "quote": "It can also turn existing content into plans, generate visual status reports, and use Planner context for work across Microsoft 365.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "n": 17,
+      "where": "What's changing",
       "type": "record",
-      "claim": "Planner-context requests can be scheduled.",
+      "claim": "Cowork can run scheduled requests using Planner context.",
       "status": "supported",
       "source": "Message Center post MC1540339",
-      "quote": "Automate recurring work: Schedule task summaries and plan reports",
+      "quote": "Automate recurring work: Schedule task summaries and plan reports, or trigger requests from events such as emails and Teams messages.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "n": 18,
+      "where": "What's changing",
       "type": "record",
-      "claim": "Planner-context requests can be triggered by events.",
+      "claim": "Cowork can run event-triggered requests using Planner context.",
       "status": "supported",
       "source": "Message Center post MC1540339",
-      "quote": "trigger requests from events such as emails and Teams messages. Changes to Planner still require approval.",
+      "quote": "Automate recurring work: Schedule task summaries and plan reports, or trigger requests from events such as emails and Teams messages.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "What's changing: second paragraph",
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "The notice says changes to Planner still require approval in recurring or event-triggered work.",
+      "status": "supported",
+      "source": "Message Center post MC1540339",
+      "quote": "Changes to Planner still require approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft Corporation created the Planner Plugin.",
+      "claim": "The Planner Plugin is created by Microsoft Corporation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Created by | Microsoft Corporation",
+      "quote": "| Created by | Microsoft Corporation |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "What's changing: second paragraph",
-      "type": "behaviour",
+      "n": 21,
+      "where": "What's changing",
+      "type": "availability",
       "claim": "The Planner Plugin is distributed through the Microsoft 365 App Store.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Distribution | Microsoft 365 App Store",
+      "quote": "| Distribution | Microsoft 365 App Store |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "n": 22,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The plugin's connector reads and updates Planner objects on behalf of the signed-in user.",
+      "claim": "The plugin's connector reads plans, tasks, buckets and goals.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Planner Plugin: reads and updates plans, tasks, buckets, and goals on behalf of the signed-in user",
@@ -498,8 +273,30 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "What's changing: second paragraph",
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The plugin's connector updates plans, tasks, buckets and goals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "Planner Plugin: reads and updates plans, tasks, buckets, and goals on behalf of the signed-in user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Planner Plugin acts on behalf of the signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "The plugin acts on behalf of the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
       "type": "admin-path",
       "claim": "Users find the Planner Plugin in Microsoft Copilot under Plugins > Cowork.",
       "status": "supported",
@@ -509,32 +306,21 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing; Scope: Users and licences",
-      "type": "availability",
-      "claim": "Copilot Cowork must be enabled for the organisation for users to use the Planner Plugin.",
+      "n": 26,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The Planner Plugin is admin-opt-in: it becomes available after an administrator enables or deploys it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Cowork | Copilot Cowork enabled for your organization",
+      "quote": "the plugin is available to users with an active Microsoft 365 Copilot license after an admin enables or deploys it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Cost and licensing; Scope: Users and licences; rationale: impact",
+      "n": 27,
+      "where": "What's changing; Governance controls",
       "type": "availability",
-      "claim": "Planner Plugin users need access to Microsoft Planner.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Planner | Users have access to Microsoft Planner",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "What's changing: third paragraph; Governance controls",
-      "type": "behaviour",
-      "claim": "Administrators can install the Planner Plugin for all users.",
+      "claim": "An administrator can install the plugin for all users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Select Installed for, and then select All users or Specific users/groups.",
@@ -542,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "What's changing: third paragraph; Governance controls",
-      "type": "behaviour",
-      "claim": "Administrators can install the Planner Plugin for specific users or groups.",
+      "n": 28,
+      "where": "What's changing; Governance controls",
+      "type": "availability",
+      "claim": "An administrator can install the plugin for specific users or groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Select Installed for, and then select All users or Specific users/groups.",
@@ -553,32 +339,32 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "What's changing: third paragraph; rationale: impact",
+      "n": 29,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Admin-installed Planner plugins are acquired automatically by the targeted users.",
+      "claim": "Admin-installed plugins are automatically acquired for targeted users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Users get the plugin automatically. It appears on their Plugins page (Cowork tab), labeled Managed by your organization.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "When you install a plugin, it's automatically acquired for the target users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "summary; What's changing: third paragraph",
-      "type": "behaviour",
-      "claim": "Administrators can make the plugin available for eligible users to add themselves instead of installing it for them.",
+      "n": 30,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "Available to all users lets any licensed user add the Planner Plugin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Enable the plugin for your organization by installing it for users or making it available for users to add themselves.",
+      "quote": "| Available to all users | Any licensed user can add it. |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 31,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "Roadmap item 567315 has status Rolling out.",
+      "claim": "The roadmap status is Rolling out.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
@@ -586,7 +372,7 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 32,
       "where": "front matter: releasePhase; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview release phases.",
@@ -597,7 +383,7 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 33,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is October CY2026.",
@@ -608,7 +394,7 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 34,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is November CY2026.",
@@ -619,10 +405,65 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 35,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1540339 says General Availability rollout worldwide began in late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1540339",
+      "quote": "General Availability (Worldwide): We began rolling out in late October 2026 and expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1540339 says Microsoft expects General Availability rollout to complete by late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1540339",
+      "quote": "General Availability (Worldwide): We began rolling out in late October 2026 and expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Scope: Rollout; Open questions",
+      "type": "record",
+      "claim": "MC1540339 says the experience is available now in Frontier.",
+      "status": "supported",
+      "source": "Message Center post MC1540339",
+      "quote": "The experience is available now in Frontier, with general availability targeted for November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1540339 targets general availability for November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1540339",
+      "quote": "The experience is available now in Frontier, with general availability targeted for November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1540339",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "front matter: clouds; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -630,7 +471,7 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 41,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platforms are Desktop, Teams and Surface Devices, and Web.",
@@ -641,54 +482,10 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "What's changing: final paragraph; Scope: Rollout",
-      "type": "record",
-      "claim": "MC1540339 reports Worldwide GA rollout starting in late October 2026 with completion expected by late November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1540339",
-      "quote": "General Availability (Worldwide): We began rolling out in late October 2026 and expect to complete by late November 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "What's changing: final paragraph; Scope: Rollout; Open questions",
-      "type": "record",
-      "claim": "MC1540339 says the experience is available now in Frontier.",
-      "status": "supported",
-      "source": "Message Center post MC1540339",
-      "quote": "The experience is available now in Frontier, with general availability targeted for November 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "What's changing: final paragraph; Open questions",
-      "type": "record",
-      "claim": "MC1540339 targets general availability for November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1540339",
-      "quote": "The experience is available now in Frontier, with general availability targeted for November 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "summary; What's changing: final paragraph",
-      "type": "record",
-      "claim": "The supplied notice sets no administrator act-by deadline.",
-      "status": "supported",
-      "source": "Message Center post MC1540339",
-      "quote": "Act by: none",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
+      "n": 42,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Cowork can use files, email and meetings the user already has access to when helping with Planner work.",
+      "claim": "Cowork can use other Microsoft 365 content the user already has access to, such as files, email and meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "To help with Planner tasks, Cowork can use other Microsoft 365 content that the user already has access to, such as files, email, and meetings.",
@@ -696,9 +493,9 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
-      "type": "behaviour",
+      "n": 43,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "applicability",
       "claim": "The plugin respects existing Planner and Microsoft 365 permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
@@ -707,10 +504,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 44,
       "where": "Why it matters; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The Planner Plugin grants no additional access.",
+      "claim": "The plugin grants no new access to Planner data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Users can only see and change plans and tasks that they already have access to in Planner. The plugin doesn't grant any new access.",
@@ -718,7 +515,7 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 45,
       "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "applicability",
       "claim": "Microsoft Purview Information Barriers are not currently supported for Cowork plugin management and sharing.",
@@ -729,10 +526,10 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 46,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Users may be asked to connect the first time they use the Planner Plugin.",
+      "claim": "Users may be asked to connect the Planner Plugin on first use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Users might be asked to connect once the first time they use it.",
@@ -740,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 47,
       "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Administrators cannot complete users' required connector sign-in or consent for them.",
+      "claim": "An administrator cannot complete the connector sign-in or consent step on the user's behalf.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
       "quote": "You can't sign in on behalf of your users. Each user must complete the sign-in or consent flow themselves the first time they use that connector.",
@@ -751,10 +548,10 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 48,
       "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
       "type": "applicability",
-      "claim": "Cowork and plugin activity is captured in Microsoft Purview audit logs under Copilot activities.",
+      "claim": "Cowork and plugin activity is recorded in Microsoft Purview audit logs under Copilot activities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Cowork and plugin activity is captured in Microsoft Purview audit logs under Copilot activities.",
@@ -762,21 +559,10 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Tasks are marked complete only after user confirmation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Tasks are marked complete only after the user confirms.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
+      "n": 49,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "After approval, Cowork can update Planner progress.",
+      "claim": "After approval, Cowork can update Planner task progress.",
       "status": "supported",
       "source": "Message Center post MC1540339",
       "quote": "After approval, Cowork can update progress, complete checklist items, add deliverable links, and mark tasks complete.",
@@ -784,7 +570,7 @@
       "fix": null
     },
     {
-      "n": 70,
+      "n": 50,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "After approval, Cowork can complete Planner checklist items.",
@@ -795,7 +581,7 @@
       "fix": null
     },
     {
-      "n": 71,
+      "n": 51,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "After approval, Cowork can add deliverable links to Planner.",
@@ -806,21 +592,54 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 52,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Cowork asks for approval by default before automated tasks send email, post messages or change a shared system.",
+      "type": "record",
+      "claim": "After approval, Cowork can mark Planner tasks complete.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "By default, Cowork asks the user for approval before an automated task sends an email, posts a message, or changes a shared system.",
+      "source": "Message Center post MC1540339",
+      "quote": "After approval, Cowork can update progress, complete checklist items, add deliverable links, and mark tasks complete.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Every change to Planner is shown to the user and requires their approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "Every change to Planner is shown to the user and requires their approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Planner tasks are marked complete only after the user confirms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "Tasks are marked complete only after the user confirms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cowork asks for approval before an automated task sends an email, posts a message or changes a shared system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "By default, Cowork asks the user for approval before an automated task sends an email, posts a message, or changes a shared system. Users can pre-authorize actions when they create a task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "behaviour",
-      "claim": "The worldwide Cowork governance documentation permits users to pre-authorise actions when creating an automated task.",
+      "claim": "Users can pre-authorize actions when they create a Cowork automated task.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
       "quote": "Users can pre-authorize actions when they create a task.",
@@ -828,43 +647,43 @@
       "fix": null
     },
     {
-      "n": 74,
+      "n": 57,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Whether automated-task pre-authorisation covers Planner writes remains unspecified.",
+      "claim": "Whether automated-task pre-authorization can cover Planner writes is not resolved by the cited documentation.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Planner Cowork pre-authorize. Read Planner Plugin and Cowork governance pages and supplied MC1540339: Planner changes need approval; general automated tasks permit pre-authorization. None explicitly explains how these rules interact for Planner writes.",
+      "quote": "Searched: Planner Cowork pre-authorize approval scheduled tasks. Read Planner Plugin, Cowork governance, and Learn excerpts for event-driven tasks and approval guidance; none expressly states whether Planner writes can be pre-authorized.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
+      "n": 58,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Users cannot remove admin-installed plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "Users can't remove these plugins, but they can enable or disable them for their own conversations from the Sources & Skills panel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Users cannot remove admin-installed Planner plugins.",
+      "claim": "Users can turn admin-installed plugins off for their own conversations.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Installed for specific users or groups | Targeted users get the plugin and can't remove it.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "Users can't remove these plugins, but they can enable or disable them for their own conversations from the Sources & Skills panel.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Users can turn the plugin off for their own conversations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Users can turn the plugin on or off for their own conversations from the Plugins page (Cowork tab).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
+      "n": 60,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Blocking applies to new conversations.",
+      "claim": "Blocking the Planner Plugin applies to new conversations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Blocking applies to new conversations.",
@@ -872,7 +691,7 @@
       "fix": null
     },
     {
-      "n": 78,
+      "n": 61,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Conversations already in progress continue until they end after the plugin is blocked.",
@@ -883,10 +702,109 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Cost and licensing: second paragraph; controls[1]",
+      "n": 62,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Users of Cowork plugins must have Microsoft 365 Copilot licenses assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "Microsoft 365 Copilot licenses: Users who use Cowork plugins must have Microsoft 365 Copilot licenses assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing; Scope: Users and licences",
+      "type": "availability",
+      "claim": "The Planner Plugin requires Copilot Cowork enabled for the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "| Cowork | Copilot Cowork enabled for your organization |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing; Scope: Users and licences",
+      "type": "availability",
+      "claim": "Planner Plugin users need access to Microsoft Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "| Planner | Users have access to Microsoft Planner |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Admins can set per-user or per-group Cowork spending limits.",
+      "claim": "Cowork uses usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Cowork uses a usage-based billing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork model responses count toward organizational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Cowork tool calls count toward organizational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Cowork skill calls count toward organizational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork image generation counts toward organizational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork browser tasks count toward organizational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing; controls[1].note",
+      "type": "cost",
+      "claim": "Administrators can set per-user or per-group consumption limits for Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
       "quote": "Admins see usage in the Microsoft 365 admin center and can set per-user or per-group limits.",
@@ -894,32 +812,54 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 72,
+      "where": "Why it matters; Cost and licensing; Scope; controls[1].note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Cowork access is granted through a spending policy whose scope includes the user and selects Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Users in the scope of a spending policy that selects Cowork can use Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
       "where": "controls[1].note; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Setting a low credit limit does not remove a user's Cowork access grant.",
+      "type": "applicability",
+      "claim": "A low credit limit does not remove Cowork access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "Any user in the scope of a spending policy that selects Cowork can use Cowork, regardless of how small the credit limit is.",
+      "quote": "To remove access for a user, remove them from every spending policy that includes Cowork. A low credit limit doesn't block access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 81,
-      "where": "Cost and licensing: second paragraph",
-      "type": "behaviour",
-      "claim": "Asynchronous credit enforcement can allow users to start tasks after their limit is reached.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "Credit consumption and limit enforcement are evaluated asynchronously, so a user might be able to start one or more tasks after their limit is reached before enforcement takes effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "Cost and licensing: final paragraph",
+      "n": 74,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Audit (Standard) provides the documented Cowork and plugin activity logs at no additional cost.",
+      "claim": "Cowork credit consumption and limit enforcement are evaluated asynchronously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "Credit consumption and limit enforcement are evaluated asynchronously",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "A user may start tasks after reaching a credit limit before enforcement takes effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "a user might be able to start one or more tasks after their limit is reached before enforcement takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Audit (Standard) provides the Cowork and plugin activity logs at no additional cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Audit (Standard) provides these logs at no additional cost.",
@@ -927,10 +867,32 @@
       "fix": null
     },
     {
-      "n": 83,
+      "n": 77,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A Copilot Credit rate specific to Planner Plugin actions is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Cowork Planner Plugin Copilot Credit rate pricing usage based billing Planner actions; \"Planner Plugin\" \"credits\" \"rate\". Read Planner Plugin, Cowork governance, usage-based billing overview and Cowork credit-usage excerpts; no Planner-specific rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[0].note; Scope: Roles",
+      "type": "role",
+      "claim": "The Planner Plugin page lists Global Administrator or Copilot Administrator as the administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "| Admin role | Global Administrator or Copilot Administrator |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
       "where": "Scope: Rollout",
-      "type": "behaviour",
-      "claim": "Planner Plugin availability cannot be scoped directly by country or region.",
+      "type": "applicability",
+      "claim": "Plugin availability cannot be scoped by country or region.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Availability can't be scoped by country or region.",
@@ -938,10 +900,10 @@
       "fix": null
     },
     {
-      "n": 84,
+      "n": 80,
       "where": "Scope: Rollout",
-      "type": "behaviour",
-      "claim": "Learn directs administrators to use security groups instead of country or region availability scoping.",
+      "type": "applicability",
+      "claim": "Microsoft says to use security groups instead of country or region scoping.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Availability can't be scoped by country or region. Use security groups instead.",
@@ -949,10 +911,10 @@
       "fix": null
     },
     {
-      "n": 85,
+      "n": 81,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The Planner Plugin Learn page suggests starting with a pilot security group.",
+      "claim": "The Planner Plugin Learn page recommends starting with a pilot security group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
       "quote": "Start with a pilot security group, and then expand to all users.",
@@ -960,43 +922,153 @@
       "fix": null
     },
     {
-      "n": 86,
+      "n": 82,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The troubleshooting documentation identifies blocking and assigned-group membership as checks when users cannot find the plugin.",
+      "claim": "Microsoft's troubleshooting guidance checks blocking and assigned-group membership when users cannot find the plugin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Users can't find the plugin | Confirm the plugin isn't blocked and the user is in an assigned group. Changes can take some time to appear.",
+      "quote": "| Users can't find the plugin | Confirm the plugin isn't blocked and the user is in an assigned group. Changes can take some time to appear. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's not-connected troubleshooting guidance tells the user to select Connect and complete sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "| Plugin shows Not connected | The user needs to select Connect and complete sign-in. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Planner Plugin availability is managed in Microsoft 365 admin center under Agents > Tools > Planner Plugin > Users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "To block the plugin, go to Agents > Tools, select Planner Plugin, open the Users tab, and select Block.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and its rendered table path to 'Agents > Tools > Planner Plugin > Users > Available to specific users or groups'. Retain the alternative availability and Block options in the note and the separate installation route in the prose."
+    },
+    {
+      "n": 85,
+      "where": "controls[0].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a package to prevent usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[0].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
       "severity": null,
       "fix": null
     },
     {
       "n": 87,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "A user seeing Not connected needs to select Connect and complete sign-in.",
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The package-block call is a beta preview operation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Plugin shows Not connected | The user needs to select Connect and complete sign-in.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "| Block (preview) | POST /copilot/admin/catalog/packages/{id}/block | Block a package to prevent its usage. |",
       "severity": null,
       "fix": null
     },
     {
       "n": 88,
-      "where": "Governance controls: first paragraph",
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The installation route is Agents > Tools > Planner Plugin > Installed for > All users or Specific users/groups.",
+      "claim": "The Cowork spending-policy route is Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].ui.path and its rendered table path with 'Copilot > Cost Management > Configuration > + Add spending policy > Identity > Specific groups > group > Select agents and services > Cowork'. Add https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits to sources, titled 'Managing AI experiences enabled by usage-based billing'. Keep the existing governance docs link, which documents the Cowork selection."
+    },
+    {
+      "n": 89,
+      "where": "controls[1].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates a spending policy's documented properties.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Select Agents, and then select Tools (or All agents).\nSearch for Planner Plugin and select it.\nSelect Installed for, and then select All users or Specific users/groups.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "Update a spendingPolicy object.\nPATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b",
       "severity": null,
       "fix": null
     },
     {
-      "n": 89,
-      "where": "Governance controls: second paragraph",
+      "n": 90,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The spending-policy update operation can change displayName.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The spending-policy update operation can change periodLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The spending-policy update operation can change perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The spending-policy update operation can change billingMethods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The spending-policy update reference does not list the selected services among the updatable properties.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: spendingPolicy update services selectedAgents selectedServices. Read spendingpolicy-update in full: its update list names displayName, periodLimit, perUserLimit and billingMethods, with conditional billingInstrument; services are separate child settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Governance controls",
       "type": "applicability",
-      "claim": "The Package Management API covers packages containing plugins.",
+      "claim": "The Package Management API's package class includes plugins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
       "quote": "A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog.",
@@ -1004,21 +1076,98 @@
       "fix": null
     },
     {
-      "n": 90,
-      "where": "Why it matters; Cost and licensing; Scope; Governance controls: final paragraph",
-      "type": "applicability",
-      "claim": "Cowork access is granted through a spending policy selecting Cowork, not through the retained Cowork entry under Agents > All agents.",
+      "n": 96,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The package-block reference does not name the Planner Plugin.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "The Cowork agent entry is still visible under Agents > All Agents, but any configuration on it has no effect on who can use Cowork. Access is granted only through a spending policy that selects Cowork.",
+      "source": null,
+      "quote": "Searched: Planner and Planner Plugin in the fully read copilotpackage-block and Package Management API overview pages. The block reference describes a Copilot package generically and never names Planner Plugin.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 91,
+      "n": 97,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Cowork entry under Agents > All agents no longer controls Cowork access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "The Cowork agent entry is still visible under Agents > All Agents, but any configuration on it has no effect on who can use Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Installing the Planner Plugin uses Agents > Tools > Planner Plugin > Installed for > All users or Specific users/groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "Select Agents, and then select Tools (or All agents).\nSearch for Planner Plugin and select it.\nSelect Installed for, and then select All users or Specific users/groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The Users tab offers Available to specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "Select Planner Plugin, and then open the Users tab.\nSelect Available to all users, or Available to specific users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "What's changing; Governance controls; rationale: impact",
+      "type": "availability",
+      "claim": "When available to specific users or groups, only selected users and groups can find the plugin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "| Available to specific users or groups | Only selected users and groups can find it. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "controls[0].note; Governance controls; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The Users tab provides Block to prevent the organization's users from using the plugin in new conversations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
+      "quote": "To block the plugin, go to Agents > Tools, select Planner Plugin, open the Users tab, and select Block. Blocking applies to new conversations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects Cowork's metered consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 103,
+      "where": "front matter: licensing.model and licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The mixed licensing model combines a Microsoft 365 Copilot license requirement with Cowork usage billed in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Microsoft's usage-based billing model charges customers based on actual usage, measured in Copilot Credits.\nCowork (Copilot license required)",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources, titled 'Understand usage-based billing and cost management for Copilot Credits'. It explicitly documents Cowork's Copilot Credit billing and the consumption-monitoring path used in the checklist."
+    },
+    {
+      "n": 104,
       "where": "Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "Cowork consumption is monitored in Microsoft 365 admin center under Copilot > Cost Management.",
+      "claim": "Administrators can monitor Cowork credit consumption under Copilot > Cost Management in Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
       "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as Cowork",
@@ -1026,103 +1175,48 @@
       "fix": null
     },
     {
-      "n": 92,
+      "n": 105,
       "where": "Governance guidance: After rollout; Governance controls",
       "type": "consistency",
-      "claim": "The governance checklist's audit-monitoring instruction is represented in the controls table.",
+      "claim": "Every control the governance checklist tells administrators to check is represented in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: 'Search the Microsoft Purview audit log under Copilot activities for Cowork and plugin activity.' The table contains only plugin availability and Cowork access/credit-limit rows.",
+      "quote": "Checklist: 'Search the Microsoft Purview audit log under Copilot activities for Cowork and plugin activity.' The controls table contains only plugin availability and Cowork access/credit-limit rows.",
       "severity": "minor",
-      "fix": "Remove the After rollout checklist bullet 'Search the Microsoft Purview audit log under Copilot activities for Cowork and plugin activity.' Keep the verified audit description in Risk assessment and Cost and licensing; do not add a control row during this correction."
+      "fix": "Remove the After rollout checklist bullet 'Search the Microsoft Purview audit log under Copilot activities for Cowork and plugin activity.' Retain the supported audit descriptions in Risk assessment and Cost and licensing; do not add a control row."
     },
     {
-      "n": 93,
-      "where": "Governance controls: second paragraph",
-      "type": "absence",
-      "claim": "The package block reference does not name the Planner Plugin.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: copilotpackage-block Planner Plugin. Read the full copilotPackage: block reference and Package Management API overview. The block reference documents generic Copilot packages and contains no Planner Plugin name.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 94,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Every Planner change is shown to the user and requires approval before writing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-      "quote": "Every change to Planner is shown to the user and requires their approval.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 95,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "n": 106,
+      "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "MC1540339 says Planner changes from scheduled or event-triggered requests still require approval.",
+      "claim": "Cowork can use Planner task owners as context for work across Microsoft 365.",
       "status": "supported",
       "source": "Message Center post MC1540339",
-      "quote": "Schedule task summaries and plan reports, or trigger requests from events such as emails and Teams messages. Changes to Planner still require approval.",
+      "quote": "Copilot Cowork can use existing Planner data, including task notes, checklists, attachments, owners, and due dates, as context for completing work across Microsoft 365.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 96,
-      "where": "Cost and licensing: second paragraph",
-      "type": "cost",
-      "claim": "Cowork model responses count toward the organisation's usage-based consumption.",
+      "n": 107,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Cowork can use Planner task due dates as context for work across Microsoft 365.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 97,
-      "where": "Cost and licensing: second paragraph; rationale: cost",
-      "type": "cost",
-      "claim": "Cowork tool and skill calls count toward the organisation's usage-based consumption.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 98,
-      "where": "Cost and licensing: second paragraph",
-      "type": "cost",
-      "claim": "Cowork image generation counts toward the organisation's usage-based consumption.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 99,
-      "where": "Cost and licensing: second paragraph",
-      "type": "cost",
-      "claim": "Cowork browser tasks count toward the organisation's usage-based consumption.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "source": "Message Center post MC1540339",
+      "quote": "Copilot Cowork can use existing Planner data, including task notes, checklists, attachments, owners, and due dates, as context for completing work across Microsoft 365.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T20:05:09.703Z",
+    "at": "2026-11-26T05:27:22.389Z",
     "summary": {
       "links": 9,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -1133,28 +1227,28 @@
       },
       {
         "url": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1540339",
@@ -1168,8 +1262,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1178,14 +1272,19 @@
         "side": "ui",
         "governs": "Whether the Planner Plugin is installed for, available to or blocked for users",
         "docs": "https://learn.microsoft.com/planner/manage-planner-plugin-cowork",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Tools",
           "Planner Plugin",
           "Users"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Tools",
+          "Planner Plugin",
+          "Users"
+        ]
       },
       {
         "index": 0,
@@ -1201,7 +1300,7 @@
         "side": "ui",
         "governs": "Which users have access to Cowork and the credit limits on that access",
         "docs": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Cost Management",
@@ -1209,19 +1308,32 @@
           "+ Add spending policy",
           "Select agents and services"
         ],
-        "missing": []
+        "missing": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "+ Add spending policy",
+          "Select agents and services"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users have access to Cowork and the credit limits on that access",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/copilot/costManagement",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

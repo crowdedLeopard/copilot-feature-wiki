@@ -106,18 +106,20 @@ changes:
     note: "Corrected after the independent check: qualified who gets automatic leader access, removed an unsupported claim about employee records and the Connected platforms checklist step, and said admins can also read the dashboard."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 88 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 93 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 93
+  confirmed: 91
   unconfirmed: 1
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "2bd0e9c8e5f8cb36c87872812370faa4"
 ---
 
@@ -219,8 +221,10 @@ cost: Medium. The Agent 365 view needs Agent 365 licensing, licensed per user, o
 impact: Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures; most employees do not use the dashboard.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].ui; Governance controls: row 3 / absence: No admin UI control is documented for whether Agent 365 reporting includes non-public agents. | Found: You can also use VFAM to set whether reporting in the Agent 365 Dashboard view includes non-public agents, or only agents available to all users in the organization. | Fix: Replace controls[2].ui null with surface 'Microsoft 365 admin center', path 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting', and docs https://learn.microsoft.com/viva/control-access-admin-center. The linked VFAM UI guide documents selecting the app and feature, then On or Off under Access setting. Add to the existing row note: 'Select the Viva Insights non-public-agent reporting feature (FeatureId Agent365DashboardNonPublicAgentsVisibility); choose Off to exclude non-public agents.' Cite the UI guide in sources. Do not invent a feature display label: the feature-specific page supplies its identifier, while the general guide supplies the UI route. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Most employees do not use the dashboard. | Found: Searched: "Agent Dashboard" "third-party" "default" "rollout". Read Agent Dashboard access criteria and Business Analytics Agents; limited automatic access is stated, not actual usage by most employees. | Fix: Remove the clause '; most employees do not use the dashboard' from the impact rationale. Keep 'Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures.'
+- [unsupported, minor] rationale: impact / behaviour: Most employees do not use the dashboard. | Found: Searched: "Agent Dashboard" "most employees" usage adoption. Read Agent Dashboard automatic and assigned access criteria and Business Analytics Agents; limited automatic eligibility is documented, not actual dashboard usage by most employees. | Fix: Remove '; most employees do not use the dashboard' from the impact rationale. Keep 'Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures.'
 -->

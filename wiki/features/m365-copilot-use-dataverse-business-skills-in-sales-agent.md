@@ -109,17 +109,19 @@ changes:
     note: "Corrected after verification: a skill must exist, be active and be accessible to the seller; disabling the Enterprise Copilot Platform client blocks Sales agent MCP access; removed the Share step from the checklist."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 67
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "f3ba5c772850794b82a43334b02f551c"
 ---
@@ -228,8 +230,10 @@ cost: Low. The Learn page lists Microsoft 365 Copilot and Dynamics 365 Sales lic
 impact: Medium. Sellers using Sales agent notice changed answers once skills are active; admins, makers and skill authors do the set-up.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / default: Work IQ is on by default for new public production environments, with exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: After this statement add: 'The general Manage feature settings page still lists the Dataverse intelligence (Work IQ) setting as Off by default; check the actual environment setting.' Both pages are already cited: https://learn.microsoft.com/power-platform/admin/settings-features and https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] Why it matters / default: Work IQ is on by default for new public production environments, with exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: After this sentence add: 'The general Manage feature settings page still lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences as Off by default; check the actual environment setting.' Both sources are already cited: https://learn.microsoft.com/power-platform/admin/settings-features and https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] front matter: defaultState; summary; Why it matters / default: Sales agent business skills require administrator opt-in through the required Dataverse features and MCP client access. | Found: By default, the Microsoft Copilot Studio client for Dataverse MCP is enabled for all environments. You must enable the additional clients in the Power Platform admin center before you can connect to the client. | Fix: Add https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable to sources, titled 'Configure the Dataverse MCP server for an environment'. It states that additional MCP clients require enabling; the already-cited Sales agent page identifies Enterprise Copilot Platform as Sales agent's client. Keep defaultState as admin-opt-in. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable
+- [contradicted, minor] Risk assessment: Data exposure; Governance guidance: Before rollout / consistency: The briefing asks readers to check skill sharing and decide author permissions, but neither access control has a row in the controls table. | Found: Check how each skill is shared on the Business skills page before activating it. / Decide who may author skills / Table rows cover Work IQ, Sales agent MCP access, all-client MCP access and skill activation. | Fix: Remove 'Check how each skill is shared on the Business skills page before activating it.' and the Before rollout bullet beginning 'Decide who may author skills'. These access-control checklist steps have no matching control row; retain the documented sharing and role facts elsewhere without adding rows.
 -->

@@ -87,15 +87,17 @@ changes:
     note: "Corrected after the independent check: default state now admin-opt-in per the roadmap's Enabled for line, the roadmap title's agent reference, access path, and FAQ differences; removed three checklist items."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 82 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 82
+  confirmed: 82
   unconfirmed: 0
   contradicted: 0
   attempts: 0

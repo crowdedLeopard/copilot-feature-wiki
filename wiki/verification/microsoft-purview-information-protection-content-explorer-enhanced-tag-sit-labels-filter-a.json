@@ -2,50 +2,33 @@
   "slug": "microsoft-purview-information-protection-content-explorer-enhanced-tag-sit-labels-filter-a",
   "roadmapId": 553218,
   "title": "Microsoft Purview Content Explorer: enhanced filter for sensitive information types and labels (GCC, GCC High, DoD)",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "3 major findings"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 57,
-    "confirmed": 53,
-    "unconfirmed": 3,
-    "contradicted": 1,
+    "claims": 55,
+    "confirmed": 55,
+    "unconfirmed": 0,
+    "contradicted": 0,
     "blocker": 0,
-    "major": 3,
-    "minor": 3
+    "major": 0,
+    "minor": 0
   },
-  "summary": "Hold: the briefing asserts that the enhancement introduces no identity, requires no new sign-in and takes no action on content, but Microsoft does not state those guarantees. The roadmap facts, licensing requirements and role-membership controls are supported; narrow the unsupported assurances to what Microsoft actually describes.",
+  "summary": "The briefing passes: its roadmap facts, licensing and Content Explorer access controls are supported. It correctly distinguishes documented explorer functionality from the still-unspecified details of the enhanced filter.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products; summary",
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "This is a Microsoft Purview Information Protection Content Explorer enhancement.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Purview: Information Protection-Content Explorer – Enhanced Tag (SIT, Labels) Filter at UI Layer",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "summary; What's changing; rationale: risk",
-      "type": "record",
-      "claim": "The enhancement adds UI controls enabling scoped visibility and filtering of SIT and label data for discoverability and governance.",
+      "claim": "The roadmap introduces enhanced Content Explorer UI controls for scoped visibility and filtering of SIT and label data.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Introduces enhanced controls in Content Explorer’s UI, enabling scoped visibility and filtering of SIT and label data. This will help with content discoverability and governance.",
@@ -53,10 +36,21 @@
       "fix": null
     },
     {
+      "n": 2,
+      "where": "summary; Scope: Platform",
+      "type": "behaviour",
+      "claim": "Content Explorer is accessed in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Explorers > Content explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 3,
       "where": "front matter: status; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "claim": "Roadmap item 553218 is Launched.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
@@ -89,7 +83,7 @@
       "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The platform is Web.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -111,7 +105,7 @@
       "n": 8,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date for this item.",
+      "claim": "The record provides no preview date for this government-cloud item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -122,7 +116,7 @@
       "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-07-14T22:41:38.",
+      "claim": "The roadmap record was modified at 2026-07-14T22:41:38.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-07-14T22:41:38\"",
@@ -131,86 +125,42 @@
     },
     {
       "n": 10,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "Roadmap item 518224 lists the same enhancement for Worldwide.",
+      "where": "What's changing: SIT definition",
+      "type": "behaviour",
+      "claim": "Sensitive information types are pattern-based classifiers.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 518224; \"title\": \"Microsoft Purview: Information Protection-Content Explorer – Enhanced Tag (SIT, Labels) Filter at UI Layer\"; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": "minor",
-      "fix": "Add https://www.microsoft.com/microsoft-365/roadmap?id=518224 to sources for the Worldwide item's feature, status and dates."
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types (SITs) are pattern-based classifiers.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Roadmap item 518224 is Launched.",
+      "where": "What's changing: SIT examples",
+      "type": "behaviour",
+      "claim": "SITs recognise sensitive information such as credit card and national ID numbers.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 518224; \"status\": \"Launched\"",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "For example, credit card numbers, bank account numbers, and national ID numbers.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Roadmap item 518224 has a January CY2026 target.",
+      "where": "What's changing: current documentation",
+      "type": "behaviour",
+      "claim": "The Content Explorer Learn page is now titled Content Explorer (classic).",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 518224; \"targetDate\": \"January CY2026\"",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Get started with Content Explorer (classic)",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Roadmap item 518224 has a November CY2025 preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 518224; \"previewDate\": \"November CY2025\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
+      "where": "What's changing: existing filter box",
       "type": "behaviour",
-      "claim": "SIT means sensitive information type and refers to pattern-based classification.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types (SITs) are pattern-based classifiers.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about for the pattern-based definition of SIT."
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Sensitive information types recognise data such as credit card and national ID numbers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "Microsoft 365 includes definitions for many common sensitive information types from across many different regions that are ready for you to use. For example, credit card numbers, bank account numbers, and national ID numbers.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not describe this enhancement by the roadmap's name.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 scoped visibility default saved views tenant switch PowerShell. Read both explorer pages and searched What's new in Microsoft Purview; no named enhancement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Content Explorer (classic) already has a filter box accepting a label or sensitive information type name.",
+      "claim": "Content Explorer already documents entering a label or sensitive information type name into its filter box.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "If you know the name of the label or the sensitive information type, type it into the filter box.",
@@ -218,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing",
+      "n": 14,
+      "where": "What's changing: saved views",
       "type": "behaviour",
-      "claim": "Content Explorer supports saved customised views configured with SITs, sensitivity labels, trainable classifiers and retention labels.",
+      "claim": "Customised Content Explorer views can configure SITs, sensitivity labels, trainable classifiers and retention labels of interest.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "You can create customized views in content explorer, by configuring what SITs, Sensitivity Labels, Trainable Classifiers, and Retention Labels which are important for you.",
@@ -229,8 +179,8 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing",
+      "n": 15,
+      "where": "What's changing: saved views",
       "type": "behaviour",
       "claim": "A saved Content Explorer view can be made the default.",
       "status": "supported",
@@ -240,54 +190,65 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Open questions",
+      "n": 16,
+      "where": "What's changing: documentation gap",
+      "type": "absence",
+      "claim": "Learn does not yet describe this enhancement by its roadmap name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224; \"Content Explorer\" \"enhanced\" \"filter\" default licensing. Read Content Explorer (classic), data explorer and returned excerpts; none identifies this named enhancement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Open questions: saved views",
       "type": "absence",
       "claim": "Microsoft has not identified the documented saved views as this roadmap item.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 scoped visibility default saved views tenant switch PowerShell. Read Content Explorer (classic), data explorer and What's new; none connects saved views to either roadmap id.",
+      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 saved views. Read both explorer pages and roadmap records; no passage identifies saved views with this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions: scoped visibility",
+      "type": "absence",
+      "claim": "Microsoft has not explained what scoped visibility adds or what mechanism scopes the enhancement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Content Explorer enhanced filter sensitive information types labels tenant setting PowerShell Security Compliance filter visibility. Read both explorer pages, Purview permissions and search excerpts; no enhanced-filter scoping mechanism stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; What's changing; Why it matters; Scope; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated what this enhancement changes on arrival or what existing role holders see by default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 saved views default rollout tenant enable disable; \"Content Explorer\" \"enhanced\" \"filter\" default licensing. Read roadmap and both explorer pages; no enhancement default stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope: Default state and rollout mechanics",
+      "type": "absence",
+      "claim": "Detailed rollout mechanics for this enhancement are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 saved views default rollout tenant enable disable. Read both explorer pages and roadmap record; only record status and month target are supplied, not rollout mechanics.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not explained what the enhancement's scoped visibility adds to the documented saved views.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Content Explorer scoped visibility default identity sign-in action content; enhanced tag identity authentication actions. Read both explorer pages and What's new; found no feature-specific explanation beyond the roadmap.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: defaultState; What's changing; Why it matters; Scope; Open questions",
-      "type": "default",
-      "claim": "The enhancement's default state and any change to existing role holders' visibility on arrival are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 scoped visibility default saved views tenant switch PowerShell. Read both roadmap records, both explorer pages and What's new; none states the enhancement's arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The enhancement's rollout mechanics are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 scoped visibility default saved views tenant switch PowerShell. Read the roadmap record, both explorer pages and What's new; no enhancement-specific rollout procedure.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
+      "where": "What's changing: Content Explorer navigation",
       "type": "admin-path",
-      "claim": "Content Explorer (classic) is reached in the Microsoft Purview portal through Solutions > Data Lifecycle Management > Explorers > Content explorer.",
+      "claim": "Content Explorer (classic) is reached through Solutions > Data Lifecycle Management > Explorers > Content explorer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Explorers > Content explorer.",
@@ -295,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing",
+      "n": 22,
+      "where": "What's changing: data explorer navigation",
       "type": "admin-path",
-      "claim": "Data explorer is reached in the Microsoft Purview portal through Solutions > Information Protection > Explorers > Data explorer.",
+      "claim": "Data explorer is reached through Solutions > Information Protection > Explorers > Data explorer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
       "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protectionn > Explorers > Data explorer.",
@@ -306,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing",
+      "n": 23,
+      "where": "What's changing: data explorer filter",
       "type": "behaviour",
-      "claim": "Data explorer's filter box accepts the name of a label, classifier or sensitive information type.",
+      "claim": "Data explorer's filter box accepts label, classifier and sensitive information type names.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-data-explorer",
       "quote": "If you know the name of the label, classifiers or the sensitive information type, you can type that into the filter box.",
@@ -317,21 +278,76 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Why it matters; rationale: impact",
-      "type": "role",
-      "claim": "Content Explorer access is highly restricted because it exposes scanned-file contents to authorised role holders.",
+      "n": 24,
+      "where": "What's changing: Worldwide item",
+      "type": "record",
+      "claim": "Roadmap item 518224 describes the same enhanced filter capability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "Access to content explorer is highly restricted because it lets you read the contents of scanned files. Therefore, you need additional permissions to access content explorer data.",
+      "source": "roadmap record",
+      "quote": "518224: Introduces enhanced controls in Content Explorer’s UI, enabling scoped visibility and filtering of SIT and label data. This will help with content discoverability and governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope: Worldwide",
+      "type": "record",
+      "claim": "Roadmap item 518224 covers Worldwide.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "518224: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing: Worldwide status",
+      "type": "record",
+      "claim": "Roadmap item 518224 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "518224: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: Worldwide target",
+      "type": "record",
+      "claim": "Roadmap item 518224 has a January CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "518224: \"targetDate\": \"January CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "What's changing: Worldwide preview",
+      "type": "record",
+      "claim": "Roadmap item 518224 has a November CY2025 preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "518224: \"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft highly restricts Content Explorer access because it permits reading scanned-file contents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Access to content explorer is highly restricted because it lets you read the contents of scanned files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "controls[0].note; Why it matters; Risk assessment; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "Content Explorer's content-viewing permissions supersede permissions locally assigned to the items.",
+      "claim": "Content Explorer viewing permissions supersede permissions locally assigned to items.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "These permissions supersede permissions that are locally assigned to the items, which allow viewing of the content.",
@@ -339,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 31,
       "where": "controls[0].governs; Scope; Governance guidance; Governance controls; rationale: risk",
       "type": "role",
-      "claim": "Content Explorer List viewer membership grants visibility of items and their locations.",
+      "claim": "Content Explorer List viewer membership permits viewing items and their locations in list view.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "Content Explorer List viewer: Membership in this role group allows you to see each item and its location in list view.",
@@ -350,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 32,
       "where": "controls[0].governs; Risk assessment; Scope; Governance controls; rationale: risk",
       "type": "role",
-      "claim": "Content Explorer Content viewer membership grants visibility of item contents.",
+      "claim": "Content Explorer Content viewer membership permits viewing item contents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "Content Explorer Content viewer: Membership in this role group allows you to view the contents of each item in the list.",
@@ -361,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 33,
       "where": "controls[0].note; Scope",
       "type": "role",
-      "claim": "Content viewer permission is also required to see item names in list view.",
+      "claim": "Content viewer is also required to see item names in list view.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "Additionally, this role is also required to view name of items in list view, which might contain sensitive data.",
@@ -372,153 +388,54 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The enhancement introduces no new identity.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Content Explorer enhanced tag identity authentication actions; Content Explorer scoped visibility default identity sign-in action content. Read both explorer pages and What's new; none states that the enhancement introduces no identity.",
-      "severity": "major",
-      "fix": "Remove 'No new identity or sign-in.' Keep the following documented Content Explorer access and administrative-unit facts."
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The enhancement introduces no new sign-in.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Content Explorer enhanced tag identity authentication actions; Content Explorer scoped visibility default identity sign-in action content. Read both explorer pages and What's new; the existing portal sign-in steps do not state this enhancement's sign-in behaviour.",
-      "severity": "major",
-      "fix": "Remove 'No new identity or sign-in.' The cited pages document signing in to the existing portal, not a guarantee about the enhancement's authentication changes."
-    },
-    {
       "n": 34,
-      "where": "Risk assessment; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Content Explorer data-classification viewer permissions can be restricted by administrative-unit assignments.",
+      "where": "Scope; Governance controls: tab access",
+      "type": "role",
+      "claim": "The Compliance administrator Entra ID role grants access to the Content Explorer tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "Content Explorer support administrative units. Members of role groups that have the data classification list viewer or data classification content viewer role receive these respective role permissions can be restricted by administrative unit assignments within content explorer.",
+      "quote": "To access the content explorer tab, assign an account membership in any one of these Entra ID roles or Purview roles. Entra ID roles: Compliance administrator",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "Content Explorer filters and displays existing classified or labelled data.",
+      "where": "Scope; Governance controls: tab access",
+      "type": "role",
+      "claim": "The Security administrator Entra ID role grants access to the Content Explorer tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "Content explorer shows a current snapshot of the items that have a sensitivity label, a retention label, or are classified as a sensitive information type in your organization.",
+      "quote": "Permissions to access the content explorer tab ... Entra ID roles ... Security administrator",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The enhancement makes no change to actions and takes no action on content.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Content Explorer enhanced tag identity authentication actions; Content Explorer scoped visibility default identity sign-in action content. Read both explorer pages and What's new; neither the UI-only roadmap description nor these pages guarantees no content actions.",
-      "severity": "major",
-      "fix": "Replace the Autonomy & actions bullet with 'The roadmap describes enhanced UI controls enabling scoped visibility and filtering of SIT and label data.' Remove the guarantees 'No change' and 'takes no action on content'."
+      "where": "Scope; Governance controls: tab access",
+      "type": "role",
+      "claim": "The Compliance data administrator Entra ID role grants access to the Content Explorer tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Permissions to access the content explorer tab ... Entra ID roles ... Compliance data administrator",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 37,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Content Explorer counts can take up to seven days to update.",
+      "where": "Scope; Governance controls: tab access",
+      "type": "role",
+      "claim": "The documented Information Protection roles and role groups also grant Content Explorer tab access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "It can take up to seven days for counts to update in content explorer and 14 days for files that are in SharePoint.",
+      "quote": "Information Protection Admin; Information Protection Analyst; Information Protection Investigator; Information Protection Reader ... Information Protection; Information Protection Admins; Information Protection Analysts; Information Protection Investigators; Information Protection Readers",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Counts for SharePoint files can take up to 14 days to update.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "It can take up to seven days for counts to update in content explorer and 14 days for files that are in SharePoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Data classification analytics is included in Microsoft 365 E5/A5/G5, Microsoft 365 E5/A5/G5 Compliance, Microsoft 365 E5/A5/G5 Information Protection & Governance and Office 365 E5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft 365 E5/A5/G5 Compliance, Microsoft 365 E5/A5/G5 Information Protection & Governance | Office 365 E5 |\n| Data classification analytics | Included | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "E3/A3/G3 tenants receive underlying Content Explorer data aggregation rather than the E5/A5/G5 explorer interfaces.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "While Data classification analytics (Content & Activity Explorer interfaces) requires E5/A5/G5 licensing, the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published a licence specific to this enhanced filter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Content Explorer enhanced filter license pricing meter E5 G5. Read Content Explorer (classic) licensing and the Purview service description's Data classification analytics section; no enhancement-specific licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published a meter specific to this enhanced filter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Content Explorer enhanced filter license pricing meter E5 G5. Read the Purview service description, Content Explorer (classic) licensing and the Purview billing models search excerpt; no enhanced-filter meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Scope; Governance controls",
+      "where": "Governance controls: two access layers",
       "type": "role",
-      "claim": "Compliance administrator, Security administrator or Compliance data administrator Entra ID membership can grant access to the Content Explorer tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "To access the content explorer tab, assign an account membership in any one of these Entra ID roles or Purview roles.\nEntra ID roles\n- Compliance administrator\n- Security administrator\n- Compliance data administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Scope; Governance controls",
-      "type": "role",
-      "claim": "Applicable Information Protection roles and role groups can grant access to the Content Explorer tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "Here's a list of applicable role groups.\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Tab-access roles do not themselves grant permission to view item lists or contents.",
+      "claim": "Tab-access roles alone do not grant access to item lists or contents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "Membership in these roles doesn't grant permission to view the list of items in content explorer or to view the contents of the items in content explorer.",
@@ -526,21 +443,21 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Governance controls",
+      "n": 39,
+      "where": "Governance controls: two role groups",
       "type": "role",
-      "claim": "The two Content Explorer role groups are independent and not cumulative, so someone needing both list and content access needs both permissions.",
+      "claim": "List viewer and Content viewer permissions are independent and not cumulative, so both are needed to list items and read their contents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "These are independent role groups and aren't cumulative. For example, if you want to grant an account the ability to view the items and their locations only, grant Content Explorer List viewer rights.",
+      "quote": "These are independent role groups and aren't cumulative. ... If you want that same account to also be able to view the contents of the items in the list, grant Content Explorer Content viewer rights as well.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 40,
       "where": "controls[0].note; Scope; Governance controls",
       "type": "role",
-      "claim": "Role management role holders can assign Content Explorer role-group membership.",
+      "claim": "Role management role holders can assign Content Explorer role group membership.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
       "quote": "Role management role holders in Microsoft Purview can assign the necessary Content Explorer List Viewer, and Content Explorer Content Viewer role group membership.",
@@ -548,10 +465,21 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Governance controls",
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Content Explorer supports administrative-unit restrictions on its list-viewer and content-viewer permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Content Explorer support administrative units. Members of role groups that have the data classification list viewer or data classification content viewer role ... can be restricted by administrative unit assignments within content explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls: security groups",
       "type": "availability",
-      "claim": "The permissions page supports security groups for role membership only in Microsoft 365 commercial cloud organisations.",
+      "claim": "The permissions page supports security-group membership only in Microsoft 365 commercial cloud organisations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-permissions",
       "quote": "Security groups are supported only in Microsoft 365 commercial cloud organizations.",
@@ -559,43 +487,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "n": 43,
+      "where": "Governance controls: Assign admin units",
       "type": "admin-path",
-      "claim": "The printed Purview portal path reaches the Choose users control for adding role-group members.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "Go to Settings > Roles and scopes ... Select Role groups. On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. On Edit members of the role group, select Choose users or Choose groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to the target role group through Exchange PowerShell, including Security & Compliance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. The Identity parameter specifies the role group to add a member to. The Member parameter specifies who you want to add to the role group. ... User ID or user principal name (UPN)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[1].ui and api; controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "No tenant setting is documented to switch this enhanced filter on or off or restrict which SITs and labels it shows, in the portal or through automation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Content Explorer enhanced filter PowerShell enable disable; site:learn.microsoft.com/powershell/module/exchangepowershell ContentExplorer filter. Read both explorer pages, permissions and What's new; found saved views and role scoping, not a dedicated enhanced-filter tenant control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Governance guidance; Governance controls",
-      "type": "admin-path",
-      "claim": "Role-group members can be assigned administrative units with Assign admin units during the add-members procedure.",
+      "claim": "The same role-group add-members procedure includes selecting members and choosing Assign admin units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-permissions",
       "quote": "If the selected users or groups need to be assigned to administrative units, select the users or groups and select Assign admin units.",
@@ -603,18 +498,7 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Governance guidance: Before rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist asks administrators to assign administrative units, but the controls table has no row for that assignment.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Decide whether investigators should be restricted to administrative units, and assign them through Assign admin units ... Table rows: Who can see items ...; Tenant switch for the enhanced SIT and label filter ...",
-      "severity": "minor",
-      "fix": "Remove the instruction 'and assign them through Assign admin units when adding them to the role groups' from the Before rollout bullet; retain the advice to decide whether administrative-unit restrictions are appropriate."
-    },
-    {
-      "n": 54,
+      "n": 44,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The data explorer page says encrypted sensitivity labels are not surfaced on content explorer for SharePoint and OneDrive.",
@@ -625,7 +509,40 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Content Explorer counts can take up to seven days to update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "It can take up to seven days for counts to update in content explorer and 14 days for files that are in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Updates for SharePoint files can take 14 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "It can take up to seven days for counts to update in content explorer and 14 days for files that are in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "Content Explorer is included in the service description's named data classification analytics licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Feature | Microsoft 365 E5/A5/G5, Microsoft 365 E5/A5/G5 Compliance, Microsoft 365 E5/A5/G5 Information Protection & Governance | Office 365 E5 ... Data classification analytics | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "The Content and Activity Explorer interfaces require E5/A5/G5 licensing.",
@@ -636,32 +553,87 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Cost and licensing",
+      "n": 49,
+      "where": "Cost and licensing: plan list",
       "type": "licensing",
-      "claim": "Content Explorer (classic)'s Licensing section refers readers to Microsoft 365 Enterprise Plans and Microsoft 365 Service Descriptions.",
+      "claim": "Data classification analytics is included in Microsoft 365 E5/A5/G5, its Compliance and Information Protection & Governance plans, and Office 365 E5.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
-      "quote": "For information on licensing, see\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Feature | Microsoft 365 E5/A5/G5, Microsoft 365 E5/A5/G5 Compliance, Microsoft 365 E5/A5/G5 Information Protection & Governance | Office 365 E5 ... Data classification analytics | Included | Included",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Open questions; What's changing",
+      "n": 50,
+      "where": "Cost and licensing: E3/A3/G3",
+      "type": "licensing",
+      "claim": "E3/A3/G3 tenants receive Content Explorer data aggregation rather than entitlement to the explorer interface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "While Data classification analytics (Content & Activity Explorer interfaces) requires E5/A5/G5 licensing, the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: classic prerequisites",
       "type": "absence",
-      "claim": "Microsoft has not specified whether the enhancement applies to Content Explorer (classic), data explorer or both.",
+      "claim": "The classic explorer page refers readers to licensing pages and names no separate filter licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer",
+      "quote": "Licensing: For information on licensing, see Microsoft 365 Enterprise Plans; Microsoft 365 Service Descriptions. Searched the full page's Licensing, Filter and Save views sections; none names a separate filter licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has published no separate licence or meter specific to this enhanced filter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 scoped visibility default saved views tenant switch PowerShell. Read both explorer pages and What's new; no passage connects the named enhancement to classic or data explorer.",
+      "quote": "Searched: Purview Content Explorer enhanced tag SIT labels filter 553218 518224 licensing meter; \"Content Explorer\" \"enhanced\" \"filter\" default licensing. Read explorer prerequisites, service description analytics section and excerpts; no enhancement-specific licence or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "The documented route to add role-group users is Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group ... Select Edit ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].api; rendered controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the identified user to the identified management role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui and controls[1].api; rendered controls table; Governance controls",
+      "type": "absence",
+      "claim": "No tenant switch for the enhanced filter, or tenant control limiting which SITs and labels it shows, is documented on either UI or automation surfaces.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Content Explorer enhanced filter sensitive information types labels tenant setting PowerShell Security Compliance filter visibility; \"Content Explorer\" \"filter\" \"Set\" PowerShell tenant. Read explorer pages, permissions, PowerShell and Graph excerpts; no such tenant control.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T03:50:38.277Z",
+    "at": "2026-11-26T05:27:20.369Z",
     "summary": {
-      "links": 6,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -672,6 +644,11 @@
     "linkChecks": [
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=553218",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=518224",
         "ok": true,
         "status": 200
       },
@@ -697,6 +674,11 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
         "ok": true,
         "status": 200
       }
@@ -732,5 +714,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

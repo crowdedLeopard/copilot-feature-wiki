@@ -217,17 +217,19 @@ changes:
     note: "Corrected after the independent check: tenant-wide tool control is now described as a core capability included with a Microsoft cloud subscription, and the request, connector policy, data policy and Dataverse MCP paths run to the control itself."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 140 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 124 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-26"
   version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 140
-  confirmed: 140
+  claims: 124
+  confirmed: 121
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "aabd9837cd49d94fbbbb39015394276f"
 ---
 
@@ -319,3 +321,11 @@ No licence or meter for the protocol itself is documented at the time of writing
 - Is there a PowerShell, Microsoft Graph or REST call for blocking an MCP server or a tool in the Microsoft 365 admin center? Not yet documented.
 - Are write operations through Work IQ MCP on or off by default? The Work IQ MCP policy page says mutation operations aren't allowed by default; the Copilot Studio what's-new page says Work IQ write operations are enabled by default for new agents powered by the Microsoft Copilot harness, subject to the organisation's permissions and policies.
 - When will tool-level control cover bring-your-own MCP servers? Microsoft calls it a planned future release.
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[7].ui / admin-path: The environment-group control uses Security > Data and privacy > Advanced connector policies > connector > Remove connector. | Found: ### Single environment configuration ... In the navigation pane, select **Security**. ... In the **Security** pane, select **Data and privacy**. ... Select **Advanced connector policies**. | Fix: Replace controls[7].ui.path and its rendered table path with 'Manage > Environment groups > group > Rules > Advanced connector policies > connector > Remove connector', the environment-group route documented at https://learn.microsoft.com/power-platform/admin/advanced-connector-policies. Keep the environment-group scope and API. | Source: https://learn.microsoft.com/power-platform/admin/advanced-connector-policies
+- [contradicted, blocker] controls[0].governs / applicability: Registry blocking determines whether an MCP server and every tool it exposes are available across the organisation, without qualifying the invocation pathway. | Found: Blocking an MCP server (including WorkIQ MCP) blocks usage through governed Agent 365 and Microsoft 365 admin center (MAC) pathways. It doesn't automatically disable the underlying API or service endpoint outside that governed path | Fix: Change the row's governs text to 'Whether an MCP server and its tools are available through governed Agent 365 and Microsoft 365 admin center pathways'. Add to its note: 'Blocking does not automatically disable direct access to the underlying API or service endpoint; that requires separate service or API policy.' Make the same changes in the rendered table, using https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [contradicted, blocker] controls[1].governs / applicability: Registry tool toggles determine which individual tools are enabled, without limiting enforcement to gateway-mediated experiences. | Found: The Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway. Don't assume the policy applies across all products or connected components. | Fix: Change the row's governs text to 'Which individual MCP tools are enabled in supported experiences using the Agent 365 Tooling Gateway'. Add to its note: 'Runtime enforcement applies to supported tools and experiences that use the gateway, not automatically across all products or connected components.' Apply the same qualification to the registry tool-control risk bullet and rendered row, using https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+-->

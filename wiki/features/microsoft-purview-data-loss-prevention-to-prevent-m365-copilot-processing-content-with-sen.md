@@ -61,7 +61,7 @@ controls:
       kind: "powershell"
       call: "New-DlpComplianceRule -Policy \"<policy-name>\" -AdvancedRule $advRule -RestrictAccess @(@{setting=\"ExcludeContentProcessing\";value=\"Block\"})"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
-    note: "In the rule, set Content contains > Sensitivity labels and Prevent Copilot and Cowork from processing content. $advRule names the label GUIDs. Learn gives no step-by-step navigation inside the rule."
+    note: "The path reaches the policy location. In the policy, add a rule with Content contains > Sensitivity labels, choose the labels, and set Prevent Copilot and Cowork from processing content. $advRule names the label GUIDs."
 confidence: "medium"
 created: "2026-11-26"
 updated: "2026-11-26"
@@ -71,19 +71,23 @@ changes:
     note: "New briefing: the Copilot DLP sensitivity label restriction in Word, Excel and PowerPoint now applies wherever the file is stored."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the sensitivity-label control note: removed the claim that Learn gives no rule-level steps, and stated the rule's condition and action."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "88a95136835da0140b87cac9dd01f43a"
+  contradicted: 0
+  attempts: 0
+  hash: "309e7a3ee825b770fd7a73eabe8b302d"
 ---
 
 ## What's changing
@@ -158,7 +162,7 @@ No meter is documented for this capability. The roadmap item names no new licenc
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Copilot DLP policy on the Copilot location, and which users and groups it covers</strong><br><small>User</small><br><small class="controls__note">$loc names the Microsoft 365 Copilot location 470f2276-e011-4e9d-a6ec-20768be3a4b0 with Inclusions and Exclusions. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &quot;&lt;policy-name&gt;&quot; -Locations $loc -EnforcementPlanes @(&quot;CopilotExperiences&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which sensitivity labels Copilot is prevented from processing</strong><br><small>Tenant</small><br><small class="controls__note">In the rule, set Content contains &gt; Sensitivity labels and Prevent Copilot and Cowork from processing content. $advRule names the label GUIDs. Learn gives no step-by-step navigation inside the rule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Policy &quot;&lt;policy-name&gt;&quot; -AdvancedRule $advRule -RestrictAccess @(@{setting=&quot;ExcludeContentProcessing&quot;;value=&quot;Block&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which sensitivity labels Copilot is prevented from processing</strong><br><small>Tenant</small><br><small class="controls__note">The path reaches the policy location. In the policy, add a rule with Content contains &gt; Sensitivity labels, choose the labels, and set Prevent Copilot and Cowork from processing content. $advRule names the label GUIDs.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Policy &quot;&lt;policy-name&gt;&quot; -AdvancedRule $advRule -RestrictAccess @(@{setting=&quot;ExcludeContentProcessing&quot;;value=&quot;Block&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -177,11 +181,8 @@ cost: Low. The Microsoft Purview service description lists DLP to restrict Copil
 impact: Medium. Users who open labelled files from local drives, network shares or other storage in Word, Excel or PowerPoint will find Copilot skills disabled where a policy covers that label.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note / absence: Learn gives no step-by-step navigation inside the sensitivity-label rule. | Found: 1. Add another rule. 2. Set the condition to Content contains > Sensitivity labels. 3. Select the labels the district wants excluded from Copilot processing. 4. Set the action to Prevent Copilot from processing content. 5. Save the rule and policy. | Fix: Remove 'Learn gives no step-by-step navigation inside the rule.' Microsoft provides rule-level steps under 'Protection pattern C — Exclude labeled files and emails from Copilot processing' at https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education. Keep the existing condition and action names supported by the cited feature page. | Source: https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The printed Purview route reaches the Copilot DLP location used to create the policy and scope it to users and groups. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the documented location path, and add to the note: 'At the Copilot location, choose the users and groups to include or exclude.' This is the scope-selection step described at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about#admin-units; the printed path stops at the location. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] controls[1].ui / admin-path: The printed Purview route is the entry route for configuring the sensitivity-label restriction. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the supported route ending at the Copilot location, but clarify the note with: 'The path reaches the policy location. In the policy, add a rule with Content contains > Sensitivity labels, choose the labels, and set Prevent Copilot and Cowork from processing content.' The condition and action are given at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about#supported-conditions-and-actions. Remove the separate assertion that Learn gives no rule-level steps. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed path for selecting the restricted sensitivity labels ends at the Copilot policy location. | Found: To set this up, create DLP policies that use the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location with the Content contains > Sensitivity labels condition to exclude items from being processed. | Fix: Extend controls[1].ui.path beyond the policy location to the rule's 'Content contains > Sensitivity labels' condition. Retain the note instructing administrators to choose the labels and set 'Prevent Copilot and Cowork from processing content', as documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
 -->
