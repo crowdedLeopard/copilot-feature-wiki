@@ -118,15 +118,17 @@ changes:
     note: "Corrected the Create agent wizard route (blank agent via Create agent from scratch), completed the capacity path, put the allocation call's body in the note, and removed two checklist items that had no control row."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 99 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 109 statements not yet confirmed"
 version: 5
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 99
-  confirmed: 99
+  claims: 109
+  confirmed: 109
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -235,4 +237,10 @@ The capacity row limits credits for the linked environment, but it cannot be set
 risk: Medium. Designed agents act through the Business Central UI under an assigned profile and permission sets, and sandboxes can hold copies of production data; Learn documents the capability as sandbox-only preview.
 cost: Variable. Business Central bills agent capabilities in Copilot Credits (prepaid capacity or pay-as-you-go), but Learn says billing events for the AI development toolkit will be announced in a future update.
 impact: Low. Learn aims the designer at product owners, domain experts, consultants and developers working in sandboxes; most Business Central users will not see it in day-to-day work.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].note; Governance controls; Open questions / applicability: The correctly documented general data-movement control is presented with a caveat that Learn does not confirm applicability to Custom Agent. | Found: The Allow data movement setting ... applies to geographic processing for Business Central Copilot and agent capabilities that use Microsoft-managed AI resources through Business Central. | Fix: Replace 'Learn does not say it applies to Custom Agent' in the row note and rendered table with 'Applies to geographic processing for Business Central Copilot and agent capabilities that use Microsoft-managed AI resources through Business Central.' Remove the corresponding applicability question from Open questions; cite https://learn.microsoft.com/dynamics365/business-central/enable-ai. | Source: https://learn.microsoft.com/dynamics365/business-central/enable-ai
 -->

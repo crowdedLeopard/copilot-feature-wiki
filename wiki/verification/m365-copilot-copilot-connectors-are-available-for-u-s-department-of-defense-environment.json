@@ -4,10 +4,10 @@
   "title": "Microsoft 365 Copilot connectors: available in the US Department of Defense (DoD) cloud",
   "status": "held",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,33 +16,55 @@
     "reason": "failed",
     "since": "2026-11-26",
     "reasons": [
-      "1 blocking finding (claim 28)"
+      "1 blocking finding (claim 57)"
     ]
   },
   "counts": {
-    "claims": 74,
-    "confirmed": 72,
-    "unconfirmed": 0,
-    "contradicted": 2,
+    "claims": 70,
+    "confirmed": 68,
+    "unconfirmed": 1,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 4
+    "minor": 1
   },
-  "summary": "Hold: the page incorrectly says every admin-centre step requires the AI administrator role, including licence assignment. Microsoft requires at least a License or User Administrator for licence assignment; the roadmap facts and connector controls otherwise have supporting documentation.",
+  "summary": "Held because the briefing asserts that connection deployment cannot enable government-cloud external connections, a distinction Microsoft does not document in the sources checked. The listed control paths, calls, default and licensing are supported; some checklist controls have no table row.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; summary; What's changing; changes",
       "type": "record",
-      "claim": "Copilot connectors are now available in the US Department of Defense cloud.",
+      "claim": "Copilot connectors are available for the US Department of Defense environment.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Copilot (Microsoft 365): Copilot connectors are available for U.S. Department of Defense environment\"; \"status\": \"Launched\"",
+      "quote": "Microsoft Copilot (Microsoft 365): Copilot connectors are available for U.S. Department of Defense environment",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Copilot connectors integrate content from external data sources into Microsoft Graph to improve Copilot responses and discoverability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot connectors enable organizations to integrate content from  other external data sources into Microsoft Graph, improving Copilot’s intelligence, contextual responses, and content discoverability",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The item lists Microsoft 365 admin center and Microsoft Copilot (Microsoft 365) as its products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365 admin center\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -53,7 +75,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -64,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap record lists DoD only.",
+      "claim": "DoD is the only cloud listed for this roadmap item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"DoD\"]",
@@ -75,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Desktop.",
@@ -86,7 +108,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is June CY2026.",
@@ -97,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -108,21 +130,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The record associates this change with Microsoft 365 admin center and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft 365 admin center\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-07-13T23:07:14.",
+      "claim": "The roadmap modification timestamp is 2026-07-13T23:07:14.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-07-13T23:07:14\"",
@@ -130,32 +141,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Connectors integrate content from external data sources into Microsoft Graph.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Copilot connectors enable organizations to integrate content from  other external data sources into Microsoft Graph, improving Copilot’s intelligence, contextual responses, and content discoverability",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 11,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Connector content can be searched and used for reasoning in Copilot and Microsoft Search.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/overview-copilot-connector",
-      "quote": "Synced and federated connectors power Microsoft 365 Copilot and other Microsoft 365 intelligent experiences, such as Microsoft Search, Copilot in Excel, and the Researcher agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
       "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "The connectors overview lists commercial, GCC, GCC High and DoD availability.",
+      "claim": "Microsoft's connectors overview lists commercial, GCC, GCC High and DoD environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/overview-copilot-connector",
       "quote": "Copilot connectors are available in commercial environments and in Microsoft 365 Government Community Cloud (GCC), Government Community Cloud High (GCCH), and Department of Defense (DoD) environments.",
@@ -163,43 +152,21 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "What's changing",
       "type": "availability",
-      "claim": "The Microsoft Copilot service description marks Microsoft 365 Copilot Connectors as available in DoD.",
+      "claim": "The Microsoft Copilot service description marks Microsoft 365 Copilot Connectors available in DoD.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "| Feature | Commercial/Worldwide | GCC | GCCH | DoD | ... | Microsoft 365 Copilot Connectors | Yes | Yes^9^ | Yes^9^ | Yes^9^ |",
+      "quote": "| Microsoft 365 Copilot Connectors | Yes | Yes^9^ | Yes^9^ | Yes^9^ |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Synced connectors index external content on a recurring schedule.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Synced connectors index content from an external data source into the Microsoft 365 substrate on a recurring schedule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Federated connectors query external content in real time through MCP without indexing it into Microsoft Graph.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/overview-copilot-connector",
-      "quote": "Federated connectors retrieve content in real time by using Model Context Protocol (MCP) without indexing data into Microsoft Graph.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "n": 13,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Governance controls; rationale: risk",
       "type": "default",
-      "claim": "External connections and partner connectors are off by default in government clouds, so leaving them unconfigured does not start indexing.",
+      "claim": "External connections and partner connectors are not enabled by default for government clouds, so the default is off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
       "quote": "Microsoft 365 Copilot Connectors: External connections and partner connectors aren't enabled by default for government clouds.",
@@ -207,384 +174,131 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The service description does not give a government-cloud enablement procedure or a separate tenant-enablement switch supplied by the listed connection and ACL controls.",
+      "n": 14,
+      "where": "controls[0].ui; Governance controls table; What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "A gallery connection is deployed in Microsoft 365 admin center at Copilot > Connectors > Connectors > Gallery > data source > Create.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot connectors DoD government cloud enable external connections partner connectors switch. Read service description, deployment-overview and federated-connectors-overview; no government-specific enablement procedure found.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "In the left pane, choose Copilot > Connectors. On the Connectors tab, in the left pane, choose Gallery, and select the data source you want to connect (for example, ServiceNow Knowledge or Salesforce).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/external/connections creates an external connection for a custom connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0",
+      "quote": "Create a new externalConnection object. POST https://graph.microsoft.com/v1.0/external/connections",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Gallery access permissions are reached through Copilot > Connectors > Connectors > Gallery > data source > Custom setup > Users > Access Permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "On the connector page in the admin center, select Custom setup. This option includes three tabs: Users Content Sync. On the Users tab, under Access Permissions, choose whether indexed data is visible to:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].api; Governance controls table; Governance controls prose",
+      "type": "command",
+      "claim": "PUT /v1.0/external/connections/{connection-id}/items/{item-id} sets the custom item's access control list through the acl request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-1.0",
+      "quote": "PUT /external/connections/{connection-id}/items/{item-id}\nacl | microsoft.graph.externalConnectors.acl collection | The access control list. Required.\nPUT https://graph.microsoft.com/v1.0/external/connections/contosohr/items/TSP228082938",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "summary; What's changing; Scope; controls[0].note; Governance guidance",
-      "type": "role",
-      "claim": "Configuring and deploying Copilot connectors requires an AI administrator in the Microsoft 365 admin center.",
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "A user's licences are assigned at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign, then select Save changes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "Risk assessment: Security & identity; Scope",
-      "type": "role",
-      "claim": "Prebuilt synced connectors require admin access to the external service.",
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns the specified licence with Microsoft Graph PowerShell.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "In addition, for prebuilt synced connectors (such as Google Drive, Confluence, ServiceNow), you must have admin access to the external service (Google Workspace Super Admin, Confluence Admin).",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; controls[0].note; Governance guidance: At rollout; rationale: impact",
-      "type": "behaviour",
-      "claim": "Administrators can deploy a connector to a subset of users for validation before wider rollout.",
+      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "Connector capability is included in the applicable Microsoft 365 or Microsoft 365 Copilot entitlement rather than requiring a separate connector licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "Deploy the connector to a subset of users for validation before a broader rollout.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "What's changing; controls[0].note; rationale: risk",
-      "type": "behaviour",
-      "claim": "Create deploys the connection and starts indexing with default settings.",
+      "where": "licensing.notes; controls[2].note; Cost and licensing; Scope; Governance controls",
+      "type": "licensing",
+      "claim": "Any Microsoft 365 plan supports synced connectors in Microsoft Search.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "Choose Create to deploy the connection. The connector begins indexing content using default settings.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Copilot > Connectors > Connectors > Gallery > data source reaches connector setup.",
+      "where": "licensing.notes; controls[2].note; Cost and licensing; Scope; Governance guidance",
+      "type": "licensing",
+      "claim": "Microsoft 365 with the Microsoft 365 Copilot add-on supports synced connector grounding in Copilot.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "In the left pane, choose Copilot > Connectors. On the Connectors tab, in the left pane, choose Gallery, and select the data source you want to connect ... Choose Create to deploy the connection.",
-      "severity": "minor",
-      "fix": "Extend controls[0].ui.path and its rendered table path to 'Copilot > Connectors > Connectors > Gallery > data source > Create'. The printed route reaches the correct setup page but stops before the deployment control; credentials and other fields remain part of the linked procedure."
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Synced connectors - Copilot grounding and agents\n| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 23,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "POST /v1.0/external/connections creates a connection for custom connectors.",
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 supports synced connector Search, Copilot grounding and agents, and federated connectors.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0",
-      "quote": "Create a new externalConnection object. ... POST https://graph.microsoft.com/v1.0/external/connections",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors |\n| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "controls[1].ui; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Copilot > Connectors > Connectors > Gallery > data source > Custom setup > Users > Access Permissions reaches the gallery connector visibility setting in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "On the connector page in the admin center, select Custom setup. ... On the Users tab, under Access Permissions, choose whether indexed data is visible to: Only users with access to the content; Everyone in the organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[1].api; controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "PUT /v1.0/external/connections/{connection-id}/items/{item-id} creates a custom connector item whose acl property sets its access control list.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-1.0",
-      "quote": "PUT https://graph.microsoft.com/v1.0/external/connections/contosohr/items/TSP228082938 ... acl | microsoft.graph.externalConnectors.acl collection | The access control list. Required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "Users > Active users > user > Licenses and Apps > Licenses reaches user licence assignment in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "In the admin center, go to the Users > Active users page. Select the row of the user ... In the right pane, select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a user licence through Microsoft Graph PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Governance controls: paragraph after table",
-      "type": "role",
-      "claim": "All admin-centre steps, including user licence assignment, need the AI administrator role.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "You must be at least a License or User Administrator to assign licenses.",
-      "severity": "blocker",
-      "fix": "Replace 'All admin-centre steps need the AI administrator role.' with 'Connector deployment and gallery access configuration require the AI administrator role. Assigning user licences requires at least a License or User Administrator.' The licence-assignment source already cited gives the latter requirement."
-    },
-    {
-      "n": 29,
-      "where": "Why it matters; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Imported and indexed connector content is Customer Data in the organisation's Microsoft 365 services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
-      "quote": "Data imported into your Microsoft 365 services using Microsoft 365 Copilot connectors will be \"Customer Data\" under the Product Terms, Data Protection Addendum, and Microsoft's enterprise data obligations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The organisation is responsible as data controller for connector functionality and compliance with third-party obligations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
-      "quote": "As the data controller, you're solely and exclusively responsible for: a) the Connector Functionality; and b) using the Microsoft 365 Copilot connector in compliance with any third-party rights, licenses, and obligations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Connector use may be subject to third-party terms and conditions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
-      "quote": "The use of Microsoft 365 Copilot connectors may be subject to third-party terms and conditions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Why it matters; Risk assessment: Data exposure; controls[1]",
-      "type": "applicability",
-      "claim": "Access Permissions can expose indexed connector data to everyone in the organisation or restrict it to users with access to the content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "On the Users tab, under Access Permissions, choose whether indexed data is visible to: Only users with access to the content; Everyone in the organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Why it matters; Governance guidance: After rollout",
-      "type": "applicability",
-      "claim": "Item access permissions govern what connector content users can see in Copilot and Search.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
-      "quote": "Each item includes content, metadata (like title and URL), and an access control list (ACL) that enforces permissions. ... Search and Copilot only show items to users who have access in the source system.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/connectors/overview to sources for the statement that connector item permissions are enforced in both Search and Copilot."
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Incremental crawls do not process permission updates.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "Incremental crawls don't support permission updates. Run full crawls periodically to maintain sync accuracy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "A source permission removal is reflected through a full crawl rather than an incremental crawl.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "Use a full refresh in scenarios such as: ... Updating ACLs. ... Incremental crawls don't currently process updates to permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Security & identity; Scope",
-      "type": "behaviour",
-      "claim": "Synced connectors require data source credentials, such as API keys or service account tokens.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Data source authentication credentials, such as API keys or service account tokens.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
-      "type": "default",
-      "claim": "Default identity mapping matches email to UserPrincipalName or Mail in Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "By default, the system maps users by matching their email to UserPrincipalName or Mail in Microsoft Entra ID. In the Map Identities section, you can provide a custom mapping formula.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The published usdodcentral IPv4 range is 57.17.40.192/26.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "| usdodcentral | 57.17.40.192/26 (64) | 64 | 2001:489a:3203:7::540/122 (64) | 64 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The published usdodeast IPv4 range is 52.181.74.64/26.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "| usdodeast | 52.181.74.64/26 (64) | 64 | 2001:489a:3303:7::400/122 (64) | 64 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Sources using IP firewall rules need to allow the connector service's relevant published ranges.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "If your data source uses IP firewall rules, allow access to the Copilot connectors service by permitting the following IP ranges.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Synced connector ingestion reads and indexes content rather than writing changes to the source system.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom#connectors-and-plugins",
-      "quote": "| Connectors | Plugins | ... | Run on a schedule | Run in real-time | ... | One way data flow (read) | Can support two-way data flow (read and write) |",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom to sources for the scheduled, one-way read behaviour of synced connectors; retain the existing qualification about broader connector functionality in the terms of use."
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Enabling connectors can authorise sending Customer Data to third-party services, subject to configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
-      "quote": "By enabling Microsoft 365 Copilot connectors, you authorize Microsoft to, subject to your configurations: ... 2) send your Customer Data and Personal Data ... to third-party services",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Enabling connectors can authorise modifying data in third-party services, subject to configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
-      "quote": "By enabling Microsoft 365 Copilot connectors, you authorize Microsoft to, subject to your configurations: ... 4) modify data in third-party services",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Change & support; rationale: impact",
-      "type": "behaviour",
-      "claim": "Deploying and indexing a connection makes its external content available for users' Copilot responses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/overview-copilot-connector",
-      "quote": "Synced connectors ingest content into Microsoft Graph where the data is semantically indexed and made available to Copilot. Users can find, summarize, and learn from this content using natural language prompts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
-      "type": "availability",
-      "claim": "The Copilot Search overview still lists Connectors for DoD as not yet available.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
-      "quote": "Microsoft Copilot Search is available to users in US government cloud environments (GCC), but the following features aren't available yet: ... | Connectors | DoD | 2026 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "What's changing; Open questions",
-      "type": "date",
-      "claim": "The Copilot Search overview estimates DoD connector availability in 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
-      "quote": "| Feature | Environment | Estimated availability | ... | Connectors | DoD | 2026 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The tenant must have Microsoft 365 licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Your tenant must have Microsoft 365 licenses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; controls[2].note; Governance controls",
-      "type": "licensing",
-      "claim": "Any Microsoft 365 plan alone supports synced connectors in Microsoft Search, not Copilot grounding, agents or federated connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors | ... | Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; controls[2]",
-      "type": "licensing",
-      "claim": "Microsoft 365 with the Microsoft 365 Copilot add-on supports grounding on synced connector content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ | ... If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Microsoft 365 with the Microsoft 365 Copilot add-on supports synced connectors for agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Synced connectors - Copilot grounding and agents ... | Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
+      "quote": "Synced connectors - Copilot grounding and agents\n| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "front matter: licensing.notes; Cost and licensing; controls[2].note",
+      "n": 25,
+      "where": "licensing.notes; controls[2].note; Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 with the Microsoft 365 Copilot add-on supports federated connectors.",
+      "claim": "Federated connectors require Microsoft 365 Copilot add-on or Microsoft 365 E7 entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
@@ -592,43 +306,21 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 26,
+      "where": "Cost and licensing: Charges",
       "type": "licensing",
-      "claim": "Microsoft 365 E7 supports Copilot grounding on synced connector content.",
+      "claim": "The federated prerequisites specify a Microsoft 365 Copilot add-on licence for every user querying the source.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Synced connectors - Copilot grounding and agents ... | Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "quote": "A Microsoft 365 Copilot add-on license for every user who queries the federated source. For an eligibility matrix, see Licensing.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 27,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 E7 supports synced connectors for agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Synced connectors - Copilot grounding and agents ... | Microsoft 365 E7 | ✅ | ✅ | ✅ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft 365 E7 supports federated connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft 365 with a Copilot Studio licence supports synced connectors for agents and Microsoft Search.",
+      "claim": "Microsoft 365 with a Copilot Studio licence supports synced connectors in Microsoft Search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "| Microsoft 365 + Copilot Studio license | ✅ | Agents only (no Copilot grounding) | ❌ |",
@@ -636,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 28,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 with a Copilot Studio licence does not provide Copilot grounding on synced connector data.",
+      "claim": "The Copilot Studio licence route supports synced connectors for agents but not Copilot grounding.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "| Microsoft 365 + Copilot Studio license | ✅ | Agents only (no Copilot grounding) | ❌ |",
@@ -647,10 +339,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 29,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Copilot Studio licences do not support federated Copilot connectors.",
+      "claim": "Copilot Studio licences do not support federated connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go.",
@@ -658,10 +350,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 30,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The prerequisites eligibility table supports synced connectors in Microsoft Search under Microsoft 365 Copilot pay-as-you-go.",
+      "claim": "Microsoft 365 Copilot pay-as-you-go supports synced connectors in Microsoft Search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "| Microsoft 365 Copilot pay-as-you-go | ✅ | Agents only (no Copilot grounding) | ❌ |",
@@ -669,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 31,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 Copilot pay-as-you-go supports synced connectors for agents.",
+      "claim": "Microsoft 365 Copilot pay-as-you-go supports synced connectors for agents but not Copilot grounding.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "| Microsoft 365 Copilot pay-as-you-go | ✅ | Agents only (no Copilot grounding) | ❌ |",
@@ -680,18 +372,7 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft 365 Copilot pay-as-you-go does not provide Copilot grounding on synced connector data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "| Microsoft 365 Copilot pay-as-you-go | ✅ | Agents only (no Copilot grounding) | ❌ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
+      "n": 32,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Microsoft 365 Copilot pay-as-you-go does not support federated connectors.",
@@ -702,7 +383,7 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 33,
       "where": "Cost and licensing: Charges; rationale: cost",
       "type": "cost",
       "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
@@ -713,10 +394,10 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "front matter: licensing.notes; Cost and licensing: Charges; rationale: cost",
+      "n": 34,
+      "where": "licensing.notes; Cost and licensing: Charges; rationale: cost",
       "type": "cost",
-      "claim": "Connector grounding is included with Microsoft 365 Copilot licences with no extra charges.",
+      "claim": "Connector grounding is included with Microsoft 365 Copilot licences and incurs no extra charges.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
@@ -724,40 +405,293 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Cost and licensing: Charges",
-      "type": "licensing",
-      "claim": "Every user querying a federated source requires a Microsoft 365 Copilot add-on licence, with E7 identified as an eligible alternative in the matrix.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "A Microsoft 365 Copilot add-on license for every user who queries the federated source. For an eligibility matrix, see Licensing. ... available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
+      "n": 35,
       "where": "Cost and licensing: Charges",
       "type": "cost",
-      "claim": "The prerequisites page refers readers to Copilot Studio Billing rates and management for usage billing.",
+      "claim": "The prerequisites page refers readers to Copilot Studio billing rates for usage billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "For information about usage billing rates, see Billing rates and management (/en-us/microsoft-copilot-studio/requirements-messages-management).",
+      "quote": "For information about usage billing rates, see Billing rates and management.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Connector indexing and Copilot grounding are included in the respective Microsoft 365 and Microsoft 365 Copilot licences already required for those experiences.",
+      "n": 36,
+      "where": "summary; controls[0].note; What's changing; Scope; Governance controls; Governance guidance",
+      "type": "role",
+      "claim": "Configuring and deploying Copilot connectors in the Microsoft 365 admin center requires the AI administrator role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. ... If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 37,
+      "where": "Governance controls prose; changes",
+      "type": "role",
+      "claim": "Assigning user licences requires at least a License or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Prebuilt synced connectors require admin access to the external service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "For prebuilt synced connectors (such as Google Drive, Confluence, ServiceNow), you must have admin access to the external service (Google Workspace Super Admin, Confluence Admin).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Data exposure and Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Synced connectors ingest and index external content into Microsoft Graph on a recurring schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom",
+      "quote": "Connectors run on a schedule to index external data into the Microsoft Graph. By indexing external content into the Graph, Copilot can then access that content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Federated connectors query external content in real time through MCP without indexing it into Microsoft Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-copilot-connector",
+      "quote": "Federated connectors retrieve content in real time by using Model Context Protocol (MCP) without indexing data into Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The connector deployment procedure supports a subset of users for validation before broader rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "Deploy the connector to a subset of users for validation before a broader rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; What's changing; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Choosing Create deploys the connection and starts indexing content using default settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "Choose Create to deploy the connection. The connector begins indexing content using default settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "The Copilot Search overview lists Connectors for DoD as not yet available with estimated availability in 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
+      "quote": "Microsoft Copilot Search is available to users in US government cloud environments (GCC), but the following features aren't available yet:\n| Connectors | DoD | 2026 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Imported connector data is Customer Data under Microsoft's enterprise terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
+      "quote": "Data imported into your Microsoft 365 services using Microsoft 365 Copilot connectors will be \"Customer Data\" under the Product Terms, Data Protection Addendum, and Microsoft's enterprise data obligations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "External indexed content is stored in the organization's tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "External content is stored securely in your tenant, and users only see what they're allowed to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The organization is responsible as data controller for connector functionality and compliance with third-party rights, licences and obligations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
+      "quote": "As the data controller, you're solely and exclusively responsible for: a) the Connector Functionality; and b) using the Microsoft 365 Copilot connector in compliance with any third-party rights, licenses, and obligations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].governs; Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "type": "applicability",
+      "claim": "Gallery Access Permissions can restrict indexed data to users with source access or expose it to everyone in the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "On the Users tab, under Access Permissions, choose whether indexed data is visible to:\n- Only users with access to the content\n- Everyone in the organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Connector item permissions govern what appears in both Search and Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "Each item includes content, metadata (like title and URL), and an access control list (ACL) that enforces permissions. Permission-based filtering - Search and Copilot only show items to users who have access in the source system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Incremental crawls do not process permission updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "Incremental crawls don't currently process updates to permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Synced connector prerequisites include source authentication credentials such as API keys or service account tokens.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Data source authentication credentials, such as API keys or service account tokens.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "Default identity mapping matches users' email to UserPrincipalName or Mail in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "By default, the system maps users by matching their email to UserPrincipalName or Mail in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The deployment page publishes the usdodcentral firewall allow range 57.17.40.192/26.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "If your data source uses IP firewall rules, allow access to the Copilot connectors service by permitting the following IP ranges.\n| usdodcentral | 57.17.40.192/26 (64) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Synced connectors have one-way read data flow and run on a schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom",
+      "quote": "| Connectors | Plugins |\n| Run on a schedule | Run in real-time |\n| One way data flow (read) | Can support two-way data flow (read and write) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "behaviour",
+      "claim": "The terms authorize sending Customer Data to third-party services, subject to connector configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
+      "quote": "By enabling Microsoft 365 Copilot connectors, you authorize Microsoft to, subject to your configurations: 1) create an index of third-party data; 2) send your Customer Data and Personal Data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Automation",
+      "type": "availability",
+      "claim": "The create externalConnection API is available in US Government L5 (DOD).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ✅ | ✅ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The service description does not describe how government-cloud external connections are enabled.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors government clouds DoD external connections partner connectors enable default switch. Opened service description, deployment-overview and manage-connector. The service description gives the default but no enablement procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls prose",
+      "type": "applicability",
+      "claim": "Neither connection deployment nor access-permission configuration decides whether external connections are enabled for a government-cloud tenant in the first place.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot connectors government clouds DoD external connections partner connectors enable default switch; Copilot connectors government enable external connections. Opened service description, deployment-overview and manage-connector; none states this separation from deployment.",
+      "severity": "blocker",
+      "fix": "Replace the sentence beginning 'Neither control decides' with: 'Microsoft's service description says external connections and partner connectors are not enabled by default for government clouds, but does not describe how they are enabled.' Do not assert that deployment cannot enable them."
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "All controls that the governance checklist asks administrators to set or check appear in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Assign the AI administrator role', 'Check the identity mapping on the Users tab', 'Schedule full crawls', and 'allow the usdodcentral and usdodeast ranges'. Table: connection deployment, access permissions and user licence assignment only.",
+      "severity": "minor",
+      "fix": "The role-assignment, identity-mapping, crawl-scheduling and source-firewall checklist steps have no corresponding controls-table row. Remove these steps from Governance guidance to reconcile the checklist with the existing table; their documented background in Risk assessment and Scope can remain."
+    },
+    {
+      "n": 59,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The cited connectors overview does not settle federated connector availability specifically for DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: federated connectors DoD availability government clouds. Opened plugins/overview-copilot-connector and federated-connectors-overview; searched the latter for DoD, GCC, government and availability. The model table says federated availability varies; no DoD-specific statement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Automation",
+      "type": "availability",
+      "claim": "The create externalItem API is available in US Government L5 (DOD).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-1.0",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ✅ | ✅ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
       "where": "Scope: Prerequisites",
       "type": "behaviour",
       "claim": "Synced connectors require configuration of the external environment.",
@@ -768,10 +702,10 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 62,
       "where": "Scope: Prerequisites; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Connector credentials need permission to access the content to be indexed.",
+      "claim": "Synced connectors require permissions to access the content being indexed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "Permissions to access the content you want indexed, such as wiki pages, catalog items, or meeting transcripts.",
@@ -779,76 +713,98 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "Scope: Automation",
-      "type": "availability",
-      "claim": "The create externalConnection API is available in US Government L5 (DOD).",
+      "n": 63,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "behaviour",
+      "claim": "The connector terms authorize modifying third-party data, subject to connector configuration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0",
-      "quote": "This API is available in the following national cloud deployments. | Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet | ... | ✅ | ✅ | ✅ | ❌ |",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
+      "quote": "3) import third-party data into Microsoft 365 services; and 4) modify data in third-party services (together, the \"Connector Functionality\").",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Full crawls process source permission changes by updating ACLs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "A full refresh processes and indexes all changed items, regardless of previous crawls. Use a full refresh in scenarios such as:\n- Detecting deleted items.\n- Recovering from incremental crawl failures.\n- Updating ACLs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Users tab contains Map Identities, where a custom identity-mapping formula can be provided.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "Users tab\nIn the Map Identities section, you can provide a custom mapping formula.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The deployment page publishes the usdodeast firewall allow range 52.181.74.64/26.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "If your data source uses IP firewall rules, allow access to the Copilot connectors service by permitting the following IP ranges.\n| usdodeast | 52.181.74.64/26 (64) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "summary; What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "Configured synced connector content becomes discoverable in Microsoft Search and usable in Copilot answers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "Synced connectors crawl and index content from external sources into Microsoft Graph. You can discover this indexed data in Copilot and Microsoft Search experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Administrators can configure synced connector crawl schedules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "On the Sync tab, you can configure how often data syncs between the source and the connector index. A default crawl schedule is selected based on the connector type, but you can change it during connection creation or by editing the connection after publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "A Microsoft 365 plan alone does not support synced connector Copilot grounding or agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors |\n| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
-      "where": "Scope: Automation",
-      "type": "availability",
-      "claim": "The create externalItem API is available in US Government L5 (DOD).",
+      "where": "controls[2].governs and note; Governance controls prose",
+      "type": "applicability",
+      "claim": "Copilot entitlement assignment controls access to connector grounding and federated connector use, rather than being required for synced connector Microsoft Search results.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-1.0",
-      "quote": "This API is available in the following national cloud deployments. | Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet | ... | ✅ | ✅ | ✅ | ❌ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Open questions: federated availability",
-      "type": "absence",
-      "claim": "DoD-specific federated connector availability remains unconfirmed by the consulted overview and federated documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: federated Copilot connectors DoD availability government cloud MCP. Read plugins/overview-copilot-connector, connectors/overview and federated-connectors-overview; synced availability lists DoD, but federated availability varies and no DoD-specific federated statement was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Open questions: gallery offerings",
-      "type": "absence",
-      "claim": "A DoD-specific list of Microsoft-built gallery connectors and their third-party actions remains an open question.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot connectors\" \"DoD\" \"gallery\" available. Read connectors overview, prebuilt-connectors-overview search excerpt and federated-connectors-overview; general galleries and action capabilities are documented, but no DoD-specific connector/action list was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Governance guidance; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist tells readers to check identity mapping, schedule full crawls and restrict AI administrator assignments, but those controls have no table rows.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check the identity mapping on the Users tab ... Schedule full crawls ... Assign the AI administrator role only ... Table rows cover source connections, item access permissions and user licence assignment.",
-      "severity": "minor",
-      "fix": "The identity-mapping check, full-crawl scheduling and AI administrator role-assignment guidance have no corresponding controls-table rows. Record these as checklist/table coverage gaps; this correction does not request additional rows."
-    },
-    {
-      "n": 74,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The Users tab offers a custom identity mapping formula in Map Identities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
-      "quote": "In the Map Identities section, you can provide a custom mapping formula.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors |\n| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |\n| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T06:53:55.017Z",
+    "at": "2026-11-26T10:10:49.660Z",
     "summary": {
-      "links": 11,
+      "links": 13,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
@@ -893,6 +849,16 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0",
         "ok": true,
         "status": 200
@@ -925,7 +891,8 @@
           "Connectors",
           "Connectors",
           "Gallery",
-          "data source"
+          "data source",
+          "Create"
         ],
         "missing": []
       },
@@ -991,5 +958,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

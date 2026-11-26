@@ -159,15 +159,17 @@ changes:
     note: "Corrected after verification: completed the billing-policy, spending-policy, Credits report and Azure budget paths, removed the read-only spending-policy API, replaced the Bicep technique with an az deployment call, and removed an unmatched budget step from the checklist."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 88
+  claims: 97
+  confirmed: 96
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -280,9 +282,9 @@ cost: Variable. The meter is Copilot Credits, billed to an Azure subscription fo
 impact: Medium. Users without a Microsoft Copilot licence, SharePoint and Copilot administrators and the finance owner of the Azure subscription notice it; licensed users are not metered for interactive SharePoint agent use.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance guidance: Before rollout / admin-path: The cited SharePoint page locates agent blocking under the Agents section of the Copilot Control System. | Found: Tenant admins and AI admins can manage actively used agents in SharePoint in the Microsoft 365 admin center, under the Agents section of the Copilot Control System | Fix: Note the alternative full route in the already-cited https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions: 'Microsoft also documents Microsoft 365 admin center > Agents > All agents > agent > Block or Unblock.' The SharePoint page uses the older Copilot Control System section description. | Source: https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint
-- [contradicted, minor] Governance guidance: Before rollout; After rollout / consistency: Every checklist control has a matching controls-table row. | Found: Create a security group per business unit ... Confirm ... who holds the Owner or Contributor role ... remove users who no longer need metered access. The table covers billing-policy scope, not group membership or Azure role assignments. | Fix: The checklist's security-group creation, ownership and membership-management steps and its Azure role-assignment check have no corresponding controls-table rows. Remove these unmatched control-management instructions from the checklist; keep the existing billing-policy group-selection guidance.
+- [supported, minor] controls[2].ui; Governance guidance: Before rollout; Governance controls table / admin-path: The cited SharePoint page places agent blocking in the Agents section of the Copilot Control System. | Found: in the Microsoft 365 admin center, under the Agents section of the Copilot Control System ... with the ability to view details and block or unblock any agent | Fix: Add to controls[2].note: "Microsoft also documents the full route Microsoft 365 admin center > Agents > All agents > agent > Block or Unblock at https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions." This already-cited page supplies the current, fuller navigation. | Source: https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint
+- [contradicted, minor] Governance guidance: Before rollout; After rollout / consistency: Every checklist control-management instruction has a matching controls-table row. | Found: Create a security group per business unit ... name an owner ... Confirm ... who holds the Owner or Contributor role ... remove users who no longer need metered access. The table covers billing-policy group selection, not group creation, ownership, membership or Azure role assignments. | Fix: Remove the checklist instruction to create a security group and name its owner. Narrow the Azure prerequisite check to 'Confirm the Azure subscription and resource group.' Narrow the after-rollout instruction to 'Compare credits per agent with the group that uses it.' These remove unmatched control-management steps without adding rows.
 -->

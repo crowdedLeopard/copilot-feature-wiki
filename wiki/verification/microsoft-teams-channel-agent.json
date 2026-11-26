@@ -4,10 +4,10 @@
   "title": "Microsoft Teams: Channel Agent, a built-in Copilot agent for each Teams channel",
   "status": "held",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,297 +16,44 @@
     "reason": "failed",
     "since": "2026-11-26",
     "reasons": [
-      "3 blocking findings (claims 60, 63, 78)"
+      "2 blocking findings (claims 28, 92)"
     ]
   },
   "counts": {
-    "claims": 93,
-    "confirmed": 89,
+    "claims": 100,
+    "confirmed": 98,
     "unconfirmed": 1,
-    "contradicted": 3,
-    "blocker": 3,
+    "contradicted": 1,
+    "blocker": 2,
     "major": 0,
     "minor": 3
   },
-  "summary": "Hold: the cost rationale promises no new charge for existing Copilot license holders without a source establishing that for Channel Agent. The creator requirements omit an owner-only restriction, and the Loop disablement note omits the requirement to configure every region. The cited Learn pages opened successfully; their conflicting agent-management instructions are correctly reported.",
+  "summary": "Hold: the retention command creates a policy but does not configure the rule that actually retains content. The briefing also turns the roadmap's Worldwide listing into an unsupported exclusion of other clouds. Most feature, licensing and default-state statements are supported, and the disagreements between Microsoft pages are disclosed.",
   "claims": [
     {
       "n": 1,
-      "where": "title; What's changing",
-      "type": "behaviour",
-      "claim": "Channel Agent is a built-in Teams agent.",
+      "where": "title; front matter: roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 502526 is Microsoft Teams: Channel Agent.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "Built-in Teams agents are embedded directly into core Teams experiences and don't require installation from the app store. Examples include Channel Agent, Facilitator, and other built-in agents.",
+      "source": "roadmap record",
+      "quote": "\"id\": 502526, \"title\": \"Microsoft Teams: Channel Agent\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent adopts the channel's name.",
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Teams and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "These agents adopt the channel’s name and help with common tasks",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent helps flag deadlines buried in conversations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "flagging important deadlines that are buried in conversations",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "summary; What's changing",
-      "type": "behaviour",
-      "claim": "The agent writes status reports.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "summarizing progress with succinct status reports",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent helps assign tasks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "assigning tasks and due dates",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent helps assign due dates.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "assigning tasks and due dates",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent answers questions about channel work.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "answering questions asked in natural language like What’s the latest on our budget?",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes Channel Agent sending emails.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "It can create status reports, send emails, schedule meetings, co-author documents, and answer questions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes Channel Agent scheduling meetings.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "It can create status reports, send emails, schedule meetings, co-author documents, and answer questions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes Channel Agent co-authoring documents.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "It can create status reports, send emails, schedule meetings, co-author documents, and answer questions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Its scheduling skill schedules channel meetings only in the agent's own channel.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Scheduling skill will only schedule channel meetings in the agent’s channel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "The agent uses its channel's messages as knowledge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "In the agent’s channel, the agent automatically uses the channel’s messages and the channel's SharePoint files as its knowledge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "The agent uses files in its channel's SharePoint as knowledge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "In the agent’s channel, the agent automatically uses the channel’s messages and the channel's SharePoint files as its knowledge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent can gather knowledge from standard meetings it is added to.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Channel Agents can be added to both standard meetings and channel meetings to gather knowledge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent can gather knowledge from channel meetings it is added to.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Channel Agents can be added to both standard meetings and channel meetings to gather knowledge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "After a meeting transcript is generated, the agent proposes a summary from it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "In these meetings, after the transcript is generated, the agent sends a message telling users that it will create a summary from the transcript.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "Taking no action within 24 hours automatically adds a meeting summary to the agent's knowledge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "If no action is taken after the 24-hour window, the agent automatically adds the summary to its knowledge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Status reports are saved as .loop files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Channel Agents create status reports that are stored in Loop as a .loop file.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Why it matters; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Status-report files are stored in the channel folder in its SharePoint site.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "This file is stored in the Channel folder within the channel's SharePoint site.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The status-report Loop file's author is the user who created the agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "The author of the Loop file is the user who created the Channel Agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: defaultState; summary; What's changing; rationale: risk",
-      "type": "default",
-      "claim": "Channel Agents are allowed by default, supporting defaultState on for the typical enterprise tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Channel Agents are allowed by default. However, if all apps are blocked for your organization, Channel Agents are also blocked.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "summary; What's changing; Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "By default an agent is automatically added to each new channel an eligible user creates.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "By default, for any new channel that an eligible user creates, a Channel Agent is automatically added to the channel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Scope: Education; controls[2].note",
-      "type": "default",
-      "claim": "Auto-creation is off by default for education tenants.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Auto-creation will be default Off for EDU tenants.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Scope; Governance guidance",
-      "type": "availability",
-      "claim": "Private channels do not support Channel Agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Private channels don't currently support Channel Agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Scope: Not supported",
-      "type": "availability",
-      "claim": "Channel Agent is not supported in tenants using Customer Key.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Channel Agents aren't supported in tenants that use Customer Key.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -317,19 +64,8 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target is September CY2025, stated as a target.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"September CY2025\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "front matter: releasePhase; What's changing; Open questions",
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap lists General Availability and Targeted Release phases.",
       "status": "supported",
@@ -339,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: clouds; What's changing; Scope: Clouds and platforms",
+      "n": 5,
+      "where": "front matter: clouds; What's changing",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap record.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -350,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
@@ -361,21 +97,21 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "front matter: previewDate",
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap target is September CY2025.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"targetDate\": \"September CY2025\", \"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2025-09-24T23:15:27.",
+      "claim": "The roadmap record was modified at 2025-09-24T23:15:27.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2025-09-24T23:15:27\"",
@@ -383,21 +119,505 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The record identifies Microsoft Teams and Microsoft Copilot (Microsoft 365) as the products.",
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Channel Agent is a built-in Teams agent that acts as a channel assistant.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Built-in Teams agents like Channel Agent, Facilitator, and other built-in agents available across chats, channels, and meetings are managed from the Built-In Teams agents page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; rationale: risk",
+      "type": "default",
+      "claim": "Channel Agent is allowed by default, consistent with defaultState on for the typical enterprise tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Channel Agents are allowed by default. However, if all apps are blocked for your organization, Channel Agents are also blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "Channel Agent entitlement is per-user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "The following list contains the prerequisites for users to be able to access a Channel Agent. Users must meet all of the following requirements: ... Have a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Each user needs an eligible Microsoft 365 base licence, with eligible plans listed on Microsoft's Copilot licensing page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "An eligible Microsoft 365 base license. For the list of eligible base licenses, see Understand licensing requirements for Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Each user needs an eligible Microsoft Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Have an eligible Microsoft Teams license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Each user needs a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Have a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Teams setup page publishes no price specific to Channel Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Channel Agent pricing meter credits license Microsoft Copilot'; opened /microsoftteams/set-up-channel-agent-teams and read its licensing requirements and entire page; no feature-specific price appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Teams setup page publishes no meter or credit charge specific to Channel Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Channel Agent pricing meter credits license Microsoft Copilot'; read /microsoftteams/set-up-channel-agent-teams and search excerpts from Copilot pay-as-you-go meters and Copilot Studio billing; the setup page names no meter or credit charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability sets access for everyone, specific users or groups, or no one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "go to Teams apps > Built-in Teams agents. To change who can use an agent, select one or more agents and choose Edit availability. You can make an agent available to everyone, to specific users or groups, or to no one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app-id> -AppAssignmentType <String> is a MicrosoftTeams app-availability operation, with the row explicitly noting that the reference does not mention built-in agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -AppAssignmentType Everyone\nUpdates the availability value for Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b) to Everyone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].ui; Governance controls table and prose",
+      "type": "admin-path",
+      "claim": "The setup page gives Teams admin center > Teams apps > Manage apps > Channel Agent > Actions > Allow or Block, while the briefing discloses the overview's different route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "select Teams apps > Manage apps. ... Select Channel Agent from the app list. ... In the Actions menu, select Allow or Block, to allow or block the overall app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app-id> -IsBlocked $true is a documented MicrosoftTeams app-state update call.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Agent settings > auto-creation controls automatic addition to new channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "In the left rail navigation, select Teams apps > Agent settings. Toggle auto-creation to On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].api; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or Graph equivalent for Channel Agent auto-creation is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Channel Agent\" \"auto-creation\" PowerShell Graph' and '\"Channel Agent\" auto creation setting'; read setup and manage-apps pages and Teams/Graph search excerpts; found the Agent settings UI but no equivalent operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI for the Teams IsLoopEnabled setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Loop IsLoopEnabled Teams admin UI configuration cloud policy'; read /microsoft-365/loop/loop-admin-configuration. Its admin-center checkbox governs Loop workspaces, not the Teams IsLoopEnabled property; Teams control is SharePoint PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[3].api; Governance guidance",
+      "type": "command",
+      "claim": "SharePoint PowerShell Set-SPOTenant -IsLoopEnabled $true enables Loop components in Teams tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "To enable Loop components in Teams, run Set-SPOTenant -IsLoopEnabled $true. ... This property controls Loop component creation and integration in Microsoft Teams. It applies to the entire tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[3].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOTenant -IsLoopEnabled $false disables Loop components in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "To disable Loop components in Teams, run Set-SPOTenant -IsLoopEnabled $false.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[3].note; Governance controls table",
+      "type": "applicability",
+      "claim": "Organizations with multiple regions or organization URLs must disable Loop components in every region for consistent results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "If your organization has multiple regions (that is, organization URLs), you need to disable loop components for all the regions to have consistent results across the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data Lifecycle Management > Policies > Retention Policies is the route to policies used for Channel Agent retention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
+      "quote": "In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy with the following policy location: - Teams chats for interactions with a channel agent",
+      "severity": "minor",
+      "fix": "The route stops on the policy list. For a new static policy, use 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Teams chats'. Cite https://learn.microsoft.com/purview/create-retention-policies, which documents these remaining steps."
+    },
+    {
+      "n": 28,
+      "where": "controls[4].api; Governance controls table",
+      "type": "command",
+      "claim": "New-RetentionCompliancePolicy -Name <String> -TeamsChatLocation <MultiValuedProperty> is the automation that implements retention of Channel Agent interactions.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies).",
+      "severity": "blocker",
+      "fix": "Replace controls[4].api.call with 'New-RetentionComplianceRule -Policy <PolicyIdParameter> -RetentionDuration <days-or-Unlimited> -RetentionComplianceAction <Keep-or-KeepAndDelete>' and api.docs with https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule. Replace the note with 'Security & Compliance PowerShell. Apply the rule to an existing policy with the Teams chats location.' The existing command creates the policy and selects its users, but does not set a retention action or duration."
+    },
+    {
+      "n": 29,
+      "where": "controls[4].note; Governance controls prose",
+      "type": "behaviour",
+      "claim": "A retention policy needs a New-RetentionComplianceRule rule before it takes effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "Creating a new policy also requires use of the New-RetentionComplianceRule cmdlet. ... Policies are not valid until a rule is added (for retention policies)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].note; What's changing; Scope",
+      "type": "default",
+      "claim": "Auto-creation is off by default for education tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Auto-creation will be default Off for EDU tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent adopts its channel's name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "These agents adopt the channel’s name",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent helps flag deadlines buried in conversations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "flagging important deadlines that are buried in conversations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The agent writes status reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "summarizing progress with succinct status reports",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent helps assign tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "assigning tasks and due dates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent helps assign due dates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "assigning tasks and due dates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent answers questions about the channel's work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "answering questions asked in natural language like What’s the latest on our budget?",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "The roadmap says Channel Agent can send emails.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It can create status reports, send emails, schedule meetings, co-author documents, and answer questions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "The roadmap says Channel Agent can schedule meetings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It can create status reports, send emails, schedule meetings, co-author documents, and answer questions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says Channel Agent can co-author documents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It can create status reports, send emails, schedule meetings, co-author documents, and answer questions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The scheduling skill only schedules channel meetings in the agent's own channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Scheduling skill will only schedule channel meetings in the agent’s channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The agent automatically uses its channel's messages as knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "In the agent’s channel, the agent automatically uses the channel’s messages and the channel's SharePoint files as its knowledge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The agent uses files in its channel's SharePoint folder as knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "the channel's SharePoint files as its knowledge. Channel Agent doesn’t use any files shared in links or files outside of the channel’s SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The agent can gather knowledge from standard meetings it is added to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Channel Agents can be added to both standard meetings and channel meetings to gather knowledge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The agent can gather knowledge from channel meetings it is added to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Channel Agents can be added to both standard meetings and channel meetings to gather knowledge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "After the meeting transcript is generated, the agent proposes a summary from it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "after the transcript is generated, the agent sends a message telling users that it will create a summary from the transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Users have 24 hours to approve or reject the meeting summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Users have 24 hours to either approve or reject the created summary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "If no user acts within the 24-hour window, the summary is automatically added to the agent's knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "If no action is taken after the 24-hour window, the agent automatically adds the summary to its knowledge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing; Why it matters; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Status reports are stored as .loop files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Channel Agents create status reports that are stored in Loop as a .loop file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Why it matters; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The status-report file is stored in the channel folder of the channel's SharePoint site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "This file is stored in the Channel folder within the channel's SharePoint site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The status-report Loop file's author is the user who created the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "The author of the Loop file is the user who created the Channel Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "summary; What's changing; Why it matters; controls[2].note; rationale: impact",
+      "type": "default",
+      "claim": "A Channel Agent is automatically added to new channels created by eligible users by default, with the briefing's stated education exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "By default, for any new channel that an eligible user creates, a Channel Agent is automatically added to the channel. ... Auto-creation will be default Off for EDU tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Private channels do not support Channel Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Private channels don't currently support Channel Agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Channel Agent is not supported in tenants using Customer Key.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Channel Agents aren't supported in tenants that use Customer Key.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
       "where": "What's changing; Governance guidance; Open questions",
       "type": "availability",
-      "claim": "The setup page marks Channel Agent as public preview despite the roadmap's release phases.",
+      "claim": "The Teams setup page marks Channel Agent public preview, differing from the roadmap's release phases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "The following feature is currently in public preview. Features in preview might not be complete and could undergo changes before becoming available in the public release.",
@@ -405,10 +625,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 55,
       "where": "What's changing; Open questions",
       "type": "availability",
-      "claim": "The setup page requires users to participate in Teams Public preview.",
+      "claim": "The setup page lists Teams Public preview participation as a user requirement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Be a Microsoft Teams Public preview participant.",
@@ -416,21 +636,43 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 56,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Shared meeting-summary knowledge can help any channel member, including non-attendees and people without transcript access.",
+      "claim": "A meeting summary shared with the agent can be used to help any channel member.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "When a meeting summary is shared with the agent, it can use the summary to help any member of the channel, including people who didn't attend the meeting or don't have access to the chat or transcript.",
+      "quote": "When a meeting summary is shared with the agent, it can use the summary to help any member of the channel",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 57,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Channel members who did not attend a meeting can benefit from its summary in the agent's knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "including people who didn't attend the meeting or don't have access to the chat or transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Channel members without transcript access can benefit from a meeting summary shared with the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "including people who didn't attend the meeting or don't have access to the chat or transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
       "type": "applicability",
-      "claim": "Microsoft says Channel Agent may gather context across Information Barriers.",
+      "claim": "Channel Agent may gather context that crosses Information Barriers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Channel Agents may gather context that crosses Information Barriers.",
@@ -438,10 +680,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 60,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The agent visually displays a sensitivity label above its response.",
+      "claim": "The agent visually shows a sensitivity label above its response.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "The agent visually indicates the sensitivity label above its response",
@@ -449,21 +691,43 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 61,
       "where": "Risk assessment; Governance guidance; rationale: risk",
       "type": "applicability",
-      "claim": "Responses do not inherit sensitivity-label controls that prevent further sharing.",
+      "claim": "The response does not inherit the sensitivity label's controls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "the output doesn't inherit the controls of the sensitivity label itself and doesn't prevent the information from being further shared.",
+      "quote": "the output doesn't inherit the controls of the sensitivity label itself",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 62,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The displayed label does not prevent further sharing of the response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "doesn't prevent the information from being further shared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "New supported Loop content and files the agent creates inherit the source sensitivity label.",
+      "claim": "New Loop components created from labelled source content inherit the source sensitivity label and protections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
+      "quote": "the sensitivity label from the source item is automatically inherited, with the label's protection settings. ... AI-generated items that currently support sensitivity label inheritance for Channel Agent in Teams: Loop components and pages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "New files created from labelled source content also support sensitivity label inheritance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
       "quote": "AI-generated items that currently support sensitivity label inheritance for Channel Agent in Teams: Loop components and pages, and files in OneDrive and SharePoint.",
@@ -471,10 +735,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 65,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The agent can summarize encrypted items for an authorized user even when other channel users cannot open them.",
+      "claim": "The agent could summarize encrypted items for an authorized user even when other channel members cannot open the items.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
       "quote": "Currently, Channel Agent could summarize for an authorized user the content of encrypted items that one or more users in the channel don't have permissions to open.",
@@ -482,10 +746,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 66,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The requesting user is warned about that encrypted-content sharing risk.",
+      "claim": "The requester is warned about the risk of summarizing encrypted content inaccessible to other channel members.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
       "quote": "The requesting user is warned of this risk",
@@ -493,21 +757,43 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 67,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The agent checks the requesting user's file permissions and excludes files they cannot access.",
+      "claim": "The agent checks the requesting user's file permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "When an agent determines that a file will be the best resource to answer a question, it will check the permissions of the requesting user. It won't use files that the requesting user doesn't have access to",
+      "quote": "When an agent determines that a file will be the best resource to answer a question, it will check the permissions of the requesting user.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 68,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent will not use files that the requesting user cannot access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "It won't use files that the requesting user doesn't have access to",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "The agent excludes files whose sensitivity labels prevent extraction.",
+      "claim": "The setup page says the agent will not use files with sensitivity labels that prevent extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The setup page says the agent will not use files whose DLP policies prevent AI usage, while the briefing also reports Purview's narrower DLP statement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions, or files with DLP policies that prevent AI-usage.",
@@ -515,21 +801,10 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "The setup page says the agent excludes files with DLP policies preventing AI use.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions, or files with DLP policies that prevent AI-usage.",
-      "severity": "minor",
-      "fix": "Attribute this to the setup page and append: 'The Purview Channel Agent page, however, lists scanning messages in Teams conversations as the only supported DLP capability.' Cite https://learn.microsoft.com/purview/ai-teams-channel-agent; retain both sources rather than resolving their disagreement."
-    },
-    {
-      "n": 46,
+      "n": 71,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The agent asks the requester before sharing when it cannot verify every recipient's file access.",
+      "claim": "If the agent cannot confirm all recipients' file access, it asks the requester whether to share the response.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "If the agent is unable to check whether or not all users that will receive the message have access to the files used, it will ask the requesting user if they would like to share the response with the group.",
@@ -537,10 +812,21 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 72,
+      "where": "Risk assessment: Security & identity; Governance controls prose",
+      "type": "applicability",
+      "claim": "The Purview page lists scanning the agent's Teams conversation messages as its only supported DLP capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
+      "quote": "The following DLP capability only is supported for Channel Agent in Teams: When an agent interacts with a user in a Teams conversation, a DLP policy can scan the messages for sensitive data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
       "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Preview data processing can happen outside the EU Data Boundary.",
+      "type": "availability",
+      "claim": "Processing preview data can happen outside the EU Data Boundary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Processing data from previews can happen outside of the EU Data Boundaries.",
@@ -548,40 +834,29 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "No admin setting for the 24-hour summary window is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Channel Agent meeting summary 24 hours admin setting email schedule meetings approval'. Opened set-up-channel-agent-teams; search excerpts describe user approval/rejection and no administrator-adjustable window.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
+      "n": 74,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Microsoft Learn does not describe approval steps for the agent sending emails.",
+      "claim": "Microsoft Learn does not describe Channel Agent's email-sending approval steps.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Channel Agent\" \"email\" \"approval\"'. Read Learn results and set-up-channel-agent-teams; no email-action approval steps found in Learn. This confirms only the stated Learn gap, not an absence on Microsoft Support.",
+      "quote": "Searched: '\"Channel Agent\" \"approval\" \"schedule\" email' and '\"Channel Agent\" scheduling approval'; read setup and manage-apps pages and returned excerpts. No Channel Agent email-action approval procedure was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
+      "n": 75,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Microsoft Learn does not describe approval steps for the agent scheduling meetings.",
+      "claim": "Microsoft Learn does not describe Channel Agent's meeting-scheduling approval steps.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Channel Agent\" \"approval\" \"schedule\"'. Read Learn results and set-up-channel-agent-teams; the scheduling limitation is stated, but no scheduling approval steps. This does not claim Microsoft Support lacks instructions.",
+      "quote": "Searched: '\"Channel Agent\" \"approval\" \"schedule\" email' and '\"Channel Agent\" scheduling approval'; read setup and returned excerpts. The setup page states the scheduling skill's channel limitation but not its approval steps.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 76,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The agent can search the web when a user asks it to.",
@@ -592,10 +867,32 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Risk assessment; Governance controls: web search notes",
+      "n": 77,
+      "where": "Risk assessment: Autonomy & actions; Governance controls prose",
       "type": "applicability",
-      "claim": "The setup page warns that turning off users' web search also turns it off for all Copilot features that search the web.",
+      "claim": "The setup page points to Copilot web-search controls, including Allow web search in Copilot in Cloud Policy service for Microsoft 365, to disable the agent's web search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "The primary way that IT admins can control access to web search is by using the Allow web search in Copilot policy, which is available only in Cloud Policy service for Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls prose",
+      "type": "applicability",
+      "claim": "Allow web search in Copilot applies to Microsoft Copilot and Microsoft Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "This policy applies to both Microsoft Copilot and Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls prose",
+      "type": "applicability",
+      "claim": "The setup page warns that turning off users' web search also disables it for all Copilot features that can search the web.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "If you choose to turn off web search for users, this action also turns off web search for all Copilot features in Microsoft products that can search the web.",
@@ -603,10 +900,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 80,
       "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Auto-creation can still add an agent when the team owner disables Allow members to add and remove apps.",
+      "type": "default",
+      "claim": "The agent is still auto-created when a member creates a channel even if the owner disabled Allow members to add and remove apps, provided admins permit auto-creation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "the agent will still be auto-created if a member creates a channel and admins allow for auto-creation.",
@@ -614,43 +911,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Each user needs an eligible Microsoft 365 base license, with the eligible list linked from the setup page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "An eligible Microsoft 365 base license. For the list of eligible base licenses, see Understand licensing requirements for Microsoft Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Each user needs an eligible Teams license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Have an eligible Microsoft Teams license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Each user needs a Microsoft Copilot license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Have a Microsoft Copilot license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
+      "n": 81,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 (no Teams) license holders need separate Teams licenses.",
+      "claim": "Tenants with Microsoft 365 (no Teams) licences need separate Teams licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "If you have Microsoft 365 (no Teams) licenses, you need to purchase separate Teams licenses.",
@@ -658,54 +922,10 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is per-user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "The following list contains the prerequisites for users to be able to access a Channel Agent. Users must meet all of the following requirements",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The setup page publishes no Channel Agent-specific price, meter or credit charge.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Channel Agent pricing meter Copilot license included no additional charge'; '\"Channel Agent\" \"license\" \"included\"'. Opened set-up-channel-agent-teams in full and Copilot licensing. The setup page lists licenses but no feature-specific price or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "rationale: cost",
-      "type": "cost",
-      "claim": "Tenants that already hold Copilot licenses pay nothing new for the agent itself.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Channel Agent pricing meter Copilot license included no additional charge'; '\"Channel Agent\" \"license\" \"included\"'. Read setup, Copilot licensing and Studio billing excerpts; none establishes no new charge for this built-in agent.",
-      "severity": "blocker",
-      "fix": "Replace 'tenants that already hold Copilot licences pay nothing new for the agent itself' with 'the Teams setup page publishes no price or meter specific to Channel Agent'."
-    },
-    {
-      "n": 61,
+      "n": 82,
       "where": "Scope: Users; rationale: impact",
       "type": "behaviour",
-      "claim": "Users not enabled for the agent can see its presence and messages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Scope: Users",
-      "type": "availability",
-      "claim": "Users not enabled for the agent cannot interact with it.",
+      "claim": "Users not enabled for Channel Agent can see its presence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent.",
@@ -713,62 +933,51 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 83,
+      "where": "Scope: Users; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users not enabled for Channel Agent can see its messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Scope: Users",
+      "type": "availability",
+      "claim": "Users not enabled for Channel Agent cannot interact with it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
       "where": "Scope: Who creates it",
       "type": "role",
-      "claim": "Owners or members of the team and channel can create an agent in standard or shared channels, without an owner-only exception.",
-      "status": "contradicted",
+      "claim": "Owners or members of the team and channel can create an agent in a standard or shared channel, subject to the separately stated owner-only exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "In a standard or shared channel, the user must be an owner or member of the team and channel to create an agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Scope: Who creates it",
+      "type": "role",
+      "claim": "If Allow members to add and remove apps is off, only team owners can create and delete Channel Agent.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "If a Team owner has turned off the default setting Allow members to add and remove apps, only Team owners can create and delete a Channel Agent",
-      "severity": "blocker",
-      "fix": "After the creator requirement, add: 'If the team owner has turned off Allow members to add and remove apps, only team owners can create and delete a Channel Agent.' Keep the separately documented auto-creation exception. Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams."
-    },
-    {
-      "n": 64,
-      "where": "Scope: Meetings",
-      "type": "availability",
-      "claim": "Using the agent in meeting chat requires membership in the agent's channel.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "In order for licensed and enabled users to use a Channel Agent within a meeting chat, the user must be a member of the channel that the agent is created in.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Scope: Meetings; controls[3].governs; Governance guidance",
-      "type": "applicability",
-      "claim": "Loop experiences in Teams must be on for Channel Agent use in meetings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Loop experiences in Teams need to be turned on in order for Channel Agents to be used in meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Scope: Admin role; controls[0].note; Governance guidance",
-      "type": "role",
-      "claim": "Teams Administrator is the documented role for using the Teams admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Scope: Not supported; Governance guidance",
-      "type": "availability",
-      "claim": "Channel Agents with external users are not functional.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Channel Agents with external users aren't functional. Channel Agents and chats with external users can't answer questions about the channel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
+      "n": 87,
       "where": "Scope: Who creates it",
       "type": "behaviour",
       "claim": "Only one Channel Agent is supported per channel.",
@@ -779,317 +988,185 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "Availability for everyone, selected users or groups, or no one is managed in Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "go to Teams apps > Built-in Teams agents. To change who can use an agent, select one or more agents and choose Edit availability. You can make an agent available to everyone, to specific users or groups, or to no one.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Update-M365TeamsApp -Id <app-id> -AppAssignmentType <String> is a MicrosoftTeams app-availability operation, with the stated reference caveat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -AppAssignmentType Everyone\nUpdates the availability value for Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b) to Everyone.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "controls[1].ui; Governance controls table and notes",
-      "type": "admin-path",
-      "claim": "The setup page gives Teams admin center > Teams apps > Manage apps > Channel Agent > Actions > Allow or Block, with the overview's different path explicitly reported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "select Teams apps > Manage apps.\nIn the apps list's search box, search for Channel Agent.\nSelect Channel Agent from the app list.\nIn the Actions menu, select Allow or Block, to allow or block the overall app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "Update-M365TeamsApp -Id <app-id> -IsBlocked $true is a documented MicrosoftTeams app-state operation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[2].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "The tenant auto-creation toggle is in Teams admin center > Teams apps > Agent settings > auto-creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "In the left rail navigation, select Teams apps > Agent settings.\nToggle auto-creation to On or Off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[2].api; Governance controls table; Open questions",
-      "type": "absence",
-      "claim": "No PowerShell or Graph equivalent for the auto-creation setting is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Channel Agent auto-creation Agent settings PowerShell Microsoft Graph teamsAppSettings Set-CsTeamsAppSetupPolicy'. Read setup, Set-CsTeamsAppSetupPolicy excerpts and beta teamsAppSettings properties; none documents the auto-creation toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin-center UI path for the IsLoopEnabled Teams Loop setting is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Loop Teams IsLoopEnabled admin UI SharePoint PowerShell settings management'. Opened loop-admin-configuration: Teams settings use SharePoint PowerShell; its admin-center checkbox configures Loop workspaces instead, not IsLoopEnabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "controls[3].api; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "SharePoint PowerShell Set-SPOTenant -IsLoopEnabled $true enables Loop components in Teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "To enable Loop components in Teams, run Set-SPOTenant -IsLoopEnabled $true.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "controls[3].scope and note; Governance controls table",
-      "type": "applicability",
-      "claim": "IsLoopEnabled is a tenant-wide setting rather than a per-user setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "This property controls Loop component creation and integration in Microsoft Teams. It applies to the entire tenant and can't be configured at the user level.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "controls[3].note; Governance controls table",
-      "type": "applicability",
-      "claim": "Setting IsLoopEnabled to false turns off Loop components in Teams for everyone without regional qualification.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "If your organization has multiple regions (that is, organization URLs), you need to disable loop components for all the regions to have consistent results across the organization.",
-      "severity": "blocker",
-      "fix": "Replace the disablement sentence in both the note and rendered table with: 'Set-SPOTenant -IsLoopEnabled $false disables Loop components in Teams; organizations with multiple regions (organization URLs) must disable them in all regions for consistent results.' Source: https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration."
-    },
-    {
-      "n": 79,
-      "where": "controls[4].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "Channel Agent interactions use retention policies with Teams chats in Microsoft Purview portal > Data Lifecycle Management > Policies > Retention Policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
-      "quote": "In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy with the following policy location: - Teams chats for interactions with a channel agent",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "controls[4].api; Governance controls table",
-      "type": "command",
-      "claim": "Security & Compliance PowerShell New-RetentionCompliancePolicy -Name <String> -TeamsChatLocation <MultiValuedProperty> creates the policy for the Teams chats location, with a rule required as noted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell.\nThe TeamsChatLocation parameter specifies the Teams users to include in the policy.\nType: MultiValuedProperty",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "controls[4].note; Governance controls table and notes",
-      "type": "command",
-      "claim": "A retention policy needs a New-RetentionComplianceRule rule before it takes effect.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
-      "quote": "Creating a new policy also requires use of the New-RetentionComplianceRule cmdlet.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "Governance controls: all-apps blocking note",
-      "type": "applicability",
-      "claim": "The setup page says blocking all organization apps also blocks Channel Agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Channel Agents are allowed by default. However, if all apps are blocked for your organization, Channel Agents are also blocked.",
-      "severity": "minor",
-      "fix": "Append: 'The Teams app management overview separately says built-in agents are no longer controlled by the Microsoft apps setting and are managed on Built-in Teams agents.' Cite https://learn.microsoft.com/microsoftteams/manage-apps for that qualification; do not present the Microsoft apps setting as a confirmed way to block Channel Agent."
-    },
-    {
-      "n": 83,
-      "where": "controls[0].note; Governance controls table and notes",
-      "type": "absence",
-      "claim": "Microsoft Learn does not publish Channel Agent's app ID at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Channel Agent app ID built-in Teams agents Update-M365TeamsApp'; '\"Channel Agent\" \"app ID\"'. Opened setup, manage-apps and Update-M365TeamsApp; results and reference examples give no Channel Agent app ID.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 84,
-      "where": "controls[0].note; Governance controls table",
-      "type": "absence",
-      "claim": "The Update-M365TeamsApp reference describes Teams apps but does not mention built-in Teams agents.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Channel Agent app ID built-in Teams agents Update-M365TeamsApp'. Read Update-M365TeamsApp in full: syntax, description, examples and parameters describe Microsoft Teams apps; no built-in-agent-specific text.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 85,
-      "where": "Governance controls: web search notes",
-      "type": "applicability",
-      "claim": "The Copilot web-search admin controls linked by the setup page govern Channel Agent's web search.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "For more information about how web search works and the different types of web controls that exist, and how to manage them, see Data, privacy, and security for web search in Microsoft Copilot and Microsoft Copilot Chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 86,
-      "where": "Governance controls: web search notes",
-      "type": "admin-path",
-      "claim": "Allow web search in Copilot is available in Cloud Policy service for Microsoft 365.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "The primary way that IT admins can control access to web search is by using the Allow web search in Copilot policy, which is available only in Cloud Policy service for Microsoft 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 87,
-      "where": "Governance controls: web search notes",
-      "type": "applicability",
-      "claim": "The Allow web search in Copilot policy applies to Microsoft Copilot and Microsoft Copilot Chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "This policy applies to both Microsoft Copilot and Microsoft Copilot Chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 88,
-      "where": "Governance controls: DLP note",
-      "type": "applicability",
-      "claim": "A Teams DLP policy can scan messages exchanged between Channel Agent and a user.",
+      "where": "Scope: Meetings",
+      "type": "availability",
+      "claim": "A licensed, enabled user must belong to the agent's channel to use it in a meeting chat.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
-      "quote": "When an agent interacts with a user in a Teams conversation, a DLP policy can scan the messages for sensitive data.",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "In order for licensed and enabled users to use a Channel Agent within a meeting chat, the user must be a member of the channel that the agent is created in.",
       "severity": null,
       "fix": null
     },
     {
       "n": 89,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Channel Agent prompts and responses are captured in the unified audit log.",
+      "where": "Scope: Meetings; controls[3].governs; Governance guidance",
+      "type": "applicability",
+      "claim": "Loop experiences in Teams must be enabled to use Channel Agent in meetings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
-      "quote": "Like other activities, prompts and responses are captured in the unified audit log.",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Loop experiences in Teams need to be turned on in order for Channel Agents to be used in meetings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 90,
-      "where": "Governance guidance: After rollout",
-      "type": "admin-path",
-      "claim": "The Microsoft Purview portal's Audit solution can search the agent's auditing events.",
+      "where": "Scope: Admin role; controls[0].note; Governance guidance",
+      "type": "role",
+      "claim": "Teams Administrator is the role required for Teams admin center governance, with higher-privilege administrators also capable of some tasks.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
-      "quote": "You can also use the Audit solution from the Microsoft Purview portal to search and find these auditing events.",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
       "severity": null,
       "fix": null
     },
     {
       "n": 91,
-      "where": "Cost and licensing: indirect costs",
-      "type": "cost",
-      "claim": "Loop report storage uses organizational SharePoint storage, supporting the storage-cost premise.",
+      "where": "Scope: Not supported; Governance guidance",
+      "type": "availability",
+      "claim": "Channel Agent is not functional in channels with external users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "Loop components and their integrations are powered by .loop files (earlier releases created .fluid files), stored in OneDrive, SharePoint, or SharePoint Embedded. Storage counts against your organization's SharePoint quota.",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Channel Agents with external users aren't functional. Channel Agents and chats with external users can't answer questions about the channel.",
       "severity": null,
       "fix": null
     },
     {
       "n": 92,
-      "where": "Governance guidance: After rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The governance checklist's instruction to search Audit has no matching controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "After rollout: 'Search the unified audit log in the Microsoft Purview portal's Audit solution for Channel Agent prompts and responses.' The five control rows cover availability, blocking, auto-creation, Loop and retention, not Audit.",
-      "severity": "minor",
-      "fix": "The After rollout instruction to search Audit has no corresponding controls-table row. Remove that checklist bullet to reconcile the checklist with the existing table without adding an unverified control row."
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "Channel Agent is Worldwide only, per the roadmap record.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Channel Agent\" cloud GCC availability worldwide'; read roadmap clouds, setup and manage-apps pages and search excerpts. The record lists Worldwide but does not exclude other clouds; no Channel Agent cloud-exclusion statement was found.",
+      "severity": "blocker",
+      "fix": "Replace 'Worldwide only, per the roadmap record' with 'The roadmap record lists Worldwide (Standard Multi-Tenant)'."
     },
     {
       "n": 93,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Users have 24 hours to approve or reject the agent's proposed meeting summary.",
+      "where": "Governance guidance: Before rollout, availability",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Built-in Teams agents reaches the availability control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and go to Teams apps > Built-in Teams agents. To change who can use an agent, select one or more agents and choose Edit availability.",
+      "severity": "minor",
+      "fix": "Complete this prose path as 'Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability', matching controls[0].ui."
+    },
+    {
+      "n": 94,
+      "where": "Governance guidance: Before rollout, auto-creation",
+      "type": "admin-path",
+      "claim": "Teams apps > Agent settings reaches the auto-creation setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Users have 24 hours to either approve or reject the created summary.",
+      "quote": "In the left rail navigation, select Teams apps > Agent settings. Toggle auto-creation to On or Off.",
+      "severity": "minor",
+      "fix": "Complete this prose path as 'Teams admin center > Teams apps > Agent settings > auto-creation', matching controls[2].ui."
+    },
+    {
+      "n": 95,
+      "where": "Governance controls prose",
+      "type": "applicability",
+      "claim": "The setup page says blocking all organization apps also blocks Channel Agents; the briefing separately reports the overview's Microsoft apps exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "However, if all apps are blocked for your organization, Channel Agents are also blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "controls[1].note; Governance controls prose",
+      "type": "applicability",
+      "claim": "The Teams overview says built-in agents are no longer governed by Microsoft apps and are managed on Built-in Teams agents rather than Manage apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "These agents are no longer controlled by the Microsoft apps setting. ... Built-in Teams agents like Channel Agent ... are managed from the Built-In Teams agents page, not the Manage apps page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "Governance controls prose; controls[0].note",
+      "type": "command",
+      "claim": "Update-M365TeamsApp targets a Microsoft Teams app by application ID, and its reference does not explicitly mention built-in Teams agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "-Id: Application ID of Microsoft Teams app. ... This cmdlet updates app state and app available values for the Microsoft Teams app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "controls[0].note; Governance controls prose",
+      "type": "absence",
+      "claim": "Microsoft Learn does not publish Channel Agent's app ID at the time of writing in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Channel Agent\" \"app\" \"ID\" PowerShell Update-M365TeamsApp'; read setup, manage-apps and Update-M365TeamsApp reference. Returned examples name Bookings and other apps, not a Channel Agent app ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "No admin setting for the 24-hour meeting-summary approval window is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Channel Agent\" \"24-hour\" admin' and 'Channel Agent auto-creation Agent settings PowerShell Graph app id approval email schedule meeting 24 hours admin'; read setup and manage-apps pages. Found the user approval window but no admin control over its length.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record does not supply a preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T06:54:00.391Z",
+    "at": "2026-11-26T10:10:58.578Z",
     "summary": {
       "links": 8,
-      "unreachable": 7,
+      "unreachable": 0,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 4,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 4,
-      "apiCallsNotOnPage": 4,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=502526",
@@ -1098,13 +1175,13 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -1113,33 +1190,29 @@
         "side": "ui",
         "governs": "Who can use Channel Agent (everyone, specific users or groups, or no one)",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Teams apps",
           "Built-in Teams agents",
           "Edit availability"
         ],
-        "missing": [
-          "Teams apps",
-          "Built-in Teams agents",
-          "Edit availability"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Who can use Channel Agent (everyone, specific users or groups, or no one)",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-        "reachable": false,
+        "reachable": true,
         "token": "Update-M365TeamsApp",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether the Channel Agent app is allowed or blocked, as the setup page gives it",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Teams apps",
           "Manage apps",
@@ -1147,77 +1220,70 @@
           "Actions",
           "Allow or Block"
         ],
-        "missing": [
-          "Teams apps",
-          "Manage apps",
-          "Channel Agent",
-          "Actions",
-          "Allow or Block"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether the Channel Agent app is allowed or blocked, as the setup page gives it",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-        "reachable": false,
+        "reachable": true,
         "token": "Update-M365TeamsApp",
-        "found": false
+        "found": true
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Whether a Channel Agent is added automatically to each new channel",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Teams apps",
           "Agent settings",
           "auto-creation"
         ],
-        "missing": [
-          "Teams apps",
-          "Agent settings",
-          "auto-creation"
-        ]
+        "missing": []
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Whether Loop experiences in Teams are on, which Channel Agents need in meetings",
         "docs": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-        "reachable": false,
+        "reachable": true,
         "token": "Set-SPOTenant",
-        "found": false
+        "found": true
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Retention of Channel Agent interactions under the Teams chats location",
         "docs": "https://learn.microsoft.com/purview/ai-teams-channel-agent",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Data Lifecycle Management",
           "Policies",
           "Retention Policies"
         ],
-        "missing": [
-          "Data Lifecycle Management",
-          "Policies",
-          "Retention Policies"
-        ]
+        "missing": []
       },
       {
         "index": 4,
         "side": "api",
         "governs": "Retention of Channel Agent interactions under the Teams chats location",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
-        "reachable": false,
+        "reachable": true,
         "token": "New-RetentionCompliancePolicy",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

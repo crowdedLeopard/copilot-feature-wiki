@@ -107,17 +107,19 @@ changes:
     note: "Correction: added the Business Central automation API call for assigning permission sets, removed the blanket no-API sentence and three checklist steps without control rows, and set action to act-now."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 121 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 111 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 121
-  confirmed: 121
+  claims: 111
+  confirmed: 110
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "365843558220f5bb3b22c7794ed95576"
 ---
@@ -225,4 +227,11 @@ The Copilot & agent capabilities toggle governs the Sales Order Agent as a whole
 risk: Medium. The agent reads customer email and attachments and drafts quotes and orders; Learn says Business Central users review outgoing messages, but mailbox, folder and credit settings need checking.
 cost: Variable. Sales Order Agent is billed in Copilot Credits per email, attachment and agent action; Learn's billing page publishes the credit rates for each step.
 impact: Medium. Business Central administrators and the sales teams who review agent tasks notice it; the roadmap item says it is enabled for end users automatically.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Open questions / behaviour: Learn says Business Central work uses the agent account without inheriting reviewer permissions. | Found: When a user activates the agent, it runs as a background task in the context of that user ... Sales Order Agent runs under its own user account and doesn't inherit permissions from the person reviewing the task. | Fix: Add to the existing identity question: "Learn's separate Agent permissions (preview) page describes task permissions as the intersection of the scheduling user's and agent's permissions, changing to the responding user's permissions after intervention." Cite https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions in sources. | Source: https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to inspect Attachments and adjust limits, formats or Analyze attachments is fully represented in the control table. | Found: Read the **Attachments** page for skipped files and the stated reasons, and adjust limits, formats or the **Analyze attachments** setting accordingly. / The table has Manage mailbox and View tasks rows, but no Attachments inspection or attachment-limit control row. | Fix: Remove the After rollout checklist bullet beginning "Read the Attachments page for skipped files". Keep the supported Attachments diagnostic description elsewhere; do not add a control row or imply that the fixed PDF page limit is configurable.
 -->

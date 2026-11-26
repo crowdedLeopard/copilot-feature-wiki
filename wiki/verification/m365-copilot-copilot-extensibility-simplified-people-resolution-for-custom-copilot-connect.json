@@ -1,0 +1,783 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-simplified-people-resolution-for-custom-copilot-connect",
+  "roadmapId": 498912,
+  "title": "Microsoft 365 Copilot connectors: people properties in custom connectors resolved to Microsoft Entra users",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "3 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 54,
+    "unconfirmed": 3,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 3,
+    "minor": 5
+  },
+  "summary": "Hold for unsupported descriptions of the mechanism: Microsoft documents people property types, but does not establish that choosing them enables the roadmap's identity resolution or that the Entra fields are optional. The categorical statement that the capability takes no actions also exceeds the evidence. The roadmap facts, licensing and principal admin controls are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is September CY2025, which has passed by the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap specifies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Developer and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The supplied roadmap record was last modified in July 2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-07-25T22:15:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft plans simplified resolution of third-party emails or user IDs to corresponding Microsoft Entra identities.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature enables connectors to resolve external identities—such as email addresses or user IDs from third-party data sources—to their corresponding Microsoft Entra ID (Azure AD) identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes simpler integration without complex Graph API lookups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Simplify integration workflows without needing complex Graph API lookups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes avoiding strict dependency on object IDs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Reduce setup friction by avoiding strict dependency on object IDs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The planned improvement is better Copilot search and chat relevance through accurate people attribution.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improve search and chat relevance in Copilot by ensuring accurate people attribution across connected systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this roadmap item by name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Simplified People Resolution\" \"custom\" Copilot connectors. Read principal, property, manage-connector and people-data build pages; no page identifies this roadmap item by name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The principal type adds people-related properties to items indexed by an externalConnection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0",
+      "quote": "Represents a complex data type used to add people-related properties to items indexed by an externalConnection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "principalCollection is the corresponding type for a list of people.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0",
+      "quote": "Use this datatype when the property refers to a list of people. Example: Contributors property for a GitHub PR where there can be multiple people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A principal's externalId can be an email associated with the person in the external source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0",
+      "quote": "The ID associated with the person in the external data source. It could also be an email associated with the person on the external source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "principal has entraId, email and upn fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0",
+      "quote": "\"entraId\": \"String\", \"email\": \"String\", \"upn\": \"String\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: optional entraId, email and upn",
+      "type": "behaviour",
+      "claim": "The entraId, email and upn fields are optional.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"principal\" \"externalId\" \"optional\" Copilot connector resolution. Read the full v1.0 principal and property references: principal lists these fields but does not state their optionality; search returned no passage establishing it.",
+      "severity": "major",
+      "fix": "Remove 'optional' from 'alongside optional entraId, email and upn fields'. The principal reference at https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0 lists the fields without stating which are required."
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Using principal types instead of strings for people properties can improve Copilot Search or chat results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0",
+      "quote": "Using principal or principalCollection type properties instead of a string or string collection for people related properties while ingesting ExternalItems can provide better and more relevant results in Copilot Search or chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[2].note; Governance controls; Scope",
+      "type": "behaviour",
+      "claim": "Custom connector developers choose principal or principalCollection as schema property types in the Graph API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0",
+      "quote": "A schema property definition for a Microsoft Search connection. ... The data type of the property. The possible values are: ... principal, principalCollection, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance controls: property type that enables people resolution",
+      "type": "behaviour",
+      "claim": "The schema property type enables the roadmap's people resolution.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Simplified People Resolution\" \"custom\" Copilot connectors. Read principal, property and connector API references; none identifies these types as enabling automatic identity resolution.",
+      "severity": "major",
+      "fix": "Replace 'The property type that enables people resolution is set in the connector's schema by its developer' with 'The developer sets people property types in the connector schema; Microsoft has not identified these types as the implementation of the roadmap item.' This preserves the uncertainty already stated in Open questions."
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not documented matching rules for externalId or email in this capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connector principal externalId email matching rules existing string properties rollout automatically. Read principal and property; search results describe prebuilt-connector and people-data mapping, not matching rules for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The default on arrival and whether existing string-based connections change are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connector principal externalId email matching rules existing string properties rollout automatically. Read roadmap, principal, property and schema management. None states rollout default or automatic string conversion; Copilot Visibility is a different control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; rationale: risk",
+      "type": "applicability",
+      "claim": "Access to an indexed connector item is governed by its ACL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-acl?view=graph-rest-1.0",
+      "quote": "An access control entry for an item indexed by a Microsoft Search externalConnection. ... The access granted to the identity. The possible values are: grant, deny, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The ACL reference identifies Microsoft Entra users by object ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-acl?view=graph-rest-1.0",
+      "quote": "For Microsoft Entra identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "No change to item permissions is documented for this capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors simplified people resolution principal externalId email matching existing connections default audit admin switch licensing. Read roadmap, principal and ACL references and connector API overview; none announces a permission change for these people properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "People properties can carry an external name, email and UPN on indexed items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0",
+      "quote": "Represents a complex data type used to add people-related properties to items indexed by an externalConnection. ... externalName ... email ... upn",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure: withhold a whole connection",
+      "type": "applicability",
+      "claim": "Copilot Visibility provides an admin-side way to withhold a whole connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "When the visibility is off, the connector is excluded from all Copilot Search and Copilot Chat results and responses. ... without affecting declarative agents and their data.",
+      "severity": "minor",
+      "fix": "Replace 'the per-connection Copilot Visibility toggle is the admin-side way to withhold a whole connection' with 'where offered, the per-connection Copilot Visibility toggle withholds the connection from Copilot Search and Copilot Chat, but does not affect declarative agents and their data'. This makes the limitation already given elsewhere clear in the exposure advice."
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The capability labels indexed items and takes no actions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot connector principal people resolution actions read-only external system. Read principal, connector API and overview excerpts: people metadata and read-only Chat by default are documented, not a categorical no-actions guarantee for this capability.",
+      "severity": "major",
+      "fix": "Replace 'No change: the capability labels indexed items and takes no actions' with 'The roadmap describes identity resolution and people attribution, not new actions.' Do not turn the absence of announced actions into a guarantee about the undocumented implementation."
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "People properties in synced connector content use the existing connector entitlement, modeled as included.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 alone supports synced connectors in Microsoft Search but not Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors |\n| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Microsoft 365 with the Copilot add-on or Microsoft 365 E7 supports synced connector Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |\n| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: Licence; rationale: cost",
+      "type": "cost",
+      "claim": "Connector grounding in Copilot is included with Copilot licenses without extra charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Indexing",
+      "type": "cost",
+      "claim": "The prerequisites page says synced connector indexing incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Indexing",
+      "type": "cost",
+      "claim": "The connector API overview says API-ingested items consume item quota and links to licensing requirements and pricing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+      "quote": "Items ingested through connections built with the APIs consume your item quota. For more information about how to determine how much item quota you have and purchasing additional quota, see licensing requirements and pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Not yet published; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to people resolution is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"principalCollection\" \"price\" \"licensing\". Read prerequisites, principal and API overview; followed microsoftsearch/licensing, which returns prerequisites. No people-resolution-specific price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "No meter specific to people resolution is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot connectors\" \"people resolution\" \"audit\" default existing string licensing price; \"principalCollection\" \"price\" \"licensing\". Read prerequisites and API overview; these document general grounding and item quota, not a separate people-resolution meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "No license specific to people resolution is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"principalCollection\" \"price\" \"licensing\"; \"Copilot connectors\" \"people resolution\" \"audit\" default existing string licensing price. Read prerequisites and principal reference; licensing covers synced connector experiences, without a separate entitlement for these property types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "An audit or report of identity matches for this capability is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors people resolution principal identity match audit logs report. Read principal, manage-connector and audit-copilot/admin-reports excerpts: interaction/resource auditing is documented, but no people-match audit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The visibility path is Microsoft 365 admin center > Copilot > Connectors > Your Connections > connection > Copilot Visibility.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to Copilot > Connectors > Your Connections. Select the connection that you want to modify. Under Copilot Visibility, select the toggle to turn the connector on or off, and choose Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation equivalent for the Copilot Visibility toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph externalConnection Copilot Visibility toggle API beta PowerShell. Read v1.0 and beta externalConnection and beta update references. Beta enabledContentExperiences names search but is not documented as this toggle; update lists configuration, description and name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The delete row reaches a connection through Copilot > Connectors > Your Connections > connection, without a documented delete button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to Copilot > Connectors > Your Connections. Select the connection that you want to modify. ... | Delete a connection | ✔️ | ✔️ | ... You can permanently delete one or more connections as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "DELETE /v1.0/external/connections/{connectionsId} deletes an externalConnection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete?view=graph-rest-1.0",
+      "quote": "Deletes an externalConnection object. ... DELETE /external/connections/{connectionsId} ... DELETE https://graph.microsoft.com/v1.0/external/connections/contosohr",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].governs; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Deleting a connection removes all items indexed through it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+      "quote": "To remove all items that were indexed via a connection, you can delete a connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The delete API requires ExternalConnection.ReadWrite.OwnedBy or ExternalConnection.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete?view=graph-rest-1.0",
+      "quote": "| Delegated (work or school account) | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All |\n| Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui and controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No tenant or connection admin switch over people resolution is documented on either surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"principal\" \"people\" \"connector\" \"tenant\" \"switch\". Read manage-connector, property, principal and v1.0/beta externalConnection; no admin switch over this resolution capability found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Managing connectors in the Microsoft 365 admin center requires AI administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization.",
+      "severity": "minor",
+      "fix": "Add to this role sentence: 'The Graph connection-management guide instead says a search admin can view and manage all tenant connections.' That guide is already cited: https://learn.microsoft.com/graph/connecting-external-content-manage-connections. Keep the AI administrator requirement from the admin-center guide."
+    },
+    {
+      "n": 47,
+      "where": "controls[0].governs; Governance controls",
+      "type": "applicability",
+      "claim": "Visibility off excludes the connection from Copilot Search and Copilot Chat results and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "When the visibility is off, the connector is excluded from all Copilot Search and Copilot Chat results and responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The connection can continue crawling with Copilot visibility off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If the connection is off, it can still crawl the data source, but the data isn't used for search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Copilot Visibility changes do not affect declarative agents and their data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "The default behavior is visible by default, with changes syncing automatically with search, without affecting declarative agents and their data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The management page documents visibility for partners and groups custom-built connectors with partners for admin operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Admins can control the visibility of partner connectors in Copilot and Copilot Search via a simple toggle. ... ❌ (Refer to partner or custom-built connector admin documentation) ... | Delete a connection | ✔️ | ✔️ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Your Connections tab displays Failed connection states.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "You can view the connection state for your deployed connectors on the Your Connections tab in the admin center. ... Failed - The connection had a critical failure. This error requires manual intervention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Permanent crawl failures generate Service health notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If a permanent failure occurs, the connection is marked as Failed, and notifications are sent to the service health dashboard under the Issues section for your organization to act on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: Indirect cost; Governance guidance",
+      "type": "behaviour",
+      "claim": "Moving existing items to updated schema properties is likely to involve re-ingestion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "After updating your schema, we recommend reindexing items to align them with the latest schema. Without reingestion, item behavior might be inconsistent.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/connecting-external-content-manage-schema to sources for the re-ingestion advice. Keep 'likely'; the source recommends reindexing after schema changes rather than stating that this particular type migration is supported or always requires it."
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to monitor connection states, but the controls table has no monitoring row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check the Your Connections tab for Failed states after schema changes; permanent failures are also posted to Service health. The table has visibility, deletion and an absent people-resolution switch, but no connection-state monitoring control.",
+      "severity": "minor",
+      "fix": "The 'Check the Your Connections tab for Failed states' checklist step has no corresponding controls row. Move that factual monitoring sentence from the checklist to the Governance controls prose; do not add a row."
+    },
+    {
+      "n": 55,
+      "where": "title; summary",
+      "type": "record",
+      "claim": "The title and summary describe matching as an available capability rather than explicitly as Microsoft's plan.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\". This feature enables connectors to resolve external identities ... to their corresponding Microsoft Entra ID (Azure AD) identities.",
+      "severity": "minor",
+      "fix": "Change the title to 'Microsoft 365 Copilot connectors: planned people resolution for custom connectors'. Replace the summary with 'Microsoft plans to let custom Copilot connectors resolve external emails or user IDs to Entra users for better people attribution. Developers should review fit; rollout behaviour is not stated.' The body already distinguishes the plan from the published property references."
+    },
+    {
+      "n": 56,
+      "where": "Scope: Out of scope as documented",
+      "type": "availability",
+      "claim": "Connectors for people data do not currently support principal or principalCollection schema types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "quote": "The Copilot connector principal and principalCollection schema property types aren't currently supported. Use the colleagues collection of the workPosition entity to create relationships.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: visibility for custom connections",
+      "type": "absence",
+      "claim": "The management page does not explicitly state that the Copilot Visibility toggle appears for custom connections.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph externalConnection Copilot Visibility toggle API beta PowerShell; \"Simplified People Resolution\" \"custom\" Copilot connectors. Read manage-connector: visibility is described for partner connectors, without explicitly naming custom-built connections in that section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note: Scope is one connection",
+      "type": "applicability",
+      "claim": "Copilot Visibility is configured at connection scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Select the connection that you want to modify. Under Copilot Visibility, select the toggle to turn the connector on or off, and choose Save.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T10:10:55.738Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498912",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-acl?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a connection's content is used in Copilot Search and Copilot Chat",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Copilot Visibility"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Removing a custom connection and every item it indexed",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Removing a custom connection and every item it indexed",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/external/connections",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

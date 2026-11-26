@@ -93,15 +93,17 @@ changes:
     note: "Correction: added the documented tenant-level Publish bots with AI features setting, qualified the Demand Planning Contributor row-level wording, removed the row-level review step, set action to act-now and called January CY2027 a target."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -206,9 +208,11 @@ cost: Low. Users already need a Demand planning licence; a separate licence or m
 impact: Medium. Demand planners and managers in tenants that run Demand planning notice it; other users of Supply Chain Management do not.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Who; Risk assessment: Security & identity / role: Demand planning access requires a Power Platform account with the appropriate feature roles, including Demand Planning Contributor, Demand Planning Manager or System Administrator. | Found: To be able to access Demand planning, users must sign in a Power Platform user account that has the security roles for the features they need. | Fix: In Scope: Who, replace 'the install page says users need the Power Platform roles for the features they use' with 'the security roles page says users need a Power Platform account with the security roles for the features they need'. The cited users-access page states this; the install page does not. | Source: https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/users-access
-- [supported, minor] controls[0].api; Governance controls: first table row / command: POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes a user's licenses. | Found: Add or remove licenses for the user ... POST /users/{id | userPrincipalName}/assignLicense ... addLicenses ... removeLicenses ... POST https://graph.microsoft.com/v1.0/me/assignLicense | Fix: Keep the call unchanged. Add to controls[0].note and the rendered note: 'The request body uses addLicenses with skuId to assign licenses and removeLicenses to remove them.' The v1.0 reference documents the endpoint; the pre-check's literal-string miss is not an endpoint defect. | Source: https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0
+- [supported, minor] Scope: Who; Risk assessment: Security & identity / role: Demand planning users need a Power Platform account with the security roles for the features they use, attributed in Scope to the install page. | Found: To be able to access Demand planning, users must sign in a Power Platform user account that has the security roles for the features they need. | Fix: In Scope: Who, replace 'the install page says users need the Power Platform roles for the features they use' with 'the security roles page says users need a Power Platform account with the security roles for the features they need'. The cited users-access page, not the install page, states this. | Source: https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/users-access
+- [supported, minor] Governance controls: tenant AI setting / admin-path: The tenant AI setting is under Settings in the Power Platform admin center. | Found: On the navigation pane, select Settings. ... select the row where the Name field is set to Publish bots with AI features. ... In the Publish Copilots with AI features dialog box, set the option to Enabled or Disabled, as you prefer. | Fix: Replace '(Power Platform admin center, Settings)' with '(Power Platform admin center, Settings > Publish bots with AI features > Publish Copilots with AI features > Enabled or Disabled)', as documented at https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot
+- [supported, minor] controls[0].api; Governance controls: first table row / command: POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes user licences. | Found: Add or remove licenses for the user ... POST /users/{id | userPrincipalName}/assignLicense ... addLicenses ... removeLicenses ... POST https://graph.microsoft.com/v1.0/me/assignLicense | Fix: Keep the call unchanged; the pre-check's literal-string miss is not an endpoint defect. Add to controls[0].note and its rendered note: 'The request body uses addLicenses with skuId to assign licenses and removeLicenses to remove them.' | Source: https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0
+- [supported, minor] Governance controls: row-level access / admin-path: Row-level access rules are set up inside Demand planning under Configuration > Row level access. | Found: Sign in to Demand planning using a system admin account. ... select Configuration > Row level access. ... To add a new row-level access rule, select New ... On the Conditions tab ... On the Users tab ... On the Activation tab ... | Fix: Narrow the sentence to the location the abbreviated route reaches: 'A system admin account manages row-level access rules on the Configuration > Row level access page inside Demand planning, as described on the security roles page.' | Source: https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/users-access
 -->

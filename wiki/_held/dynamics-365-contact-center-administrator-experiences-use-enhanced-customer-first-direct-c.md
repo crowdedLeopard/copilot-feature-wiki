@@ -102,18 +102,20 @@ changes:
     note: "Correction: first control row rescoped to the complete onboarding sequence with the documented Dataverse config record noted; profile and queue admin paths extended."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 67
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "6efca1c92e91727389ef56e7f854fb6b"
 ---
 
@@ -218,4 +220,13 @@ For the first row, [the Proactive Callback Config table reference](https://learn
 risk: Medium. Nothing starts until an admin enables it, but enabling cannot be undone, and it places outbound AI-agent calls to customers and applies the first callback profile to queues that already use direct callback.
 cost: Variable. Microsoft's page says AI agent use can consume available Copilot or Microsoft service credits (the Copilot Credits meter); a rate specific to callback agents is not yet published.
 impact: Medium. Callers on voice queues that use direct callback, and the representatives who take those calls, notice the changed callback flow; other users are unaffected.
+-->
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls: first row / admin-path: The complete onboarding route is Copilot Service admin center > Routing > Callback management > Customer-first direct callback. | Found: Enable Copilot AI agent for callback management. Review the enablement information and confirm the action because the setting is irreversible. Wait for the system to provision Callback Agent ... After provisioning completes, select the Customer-first direct callback toggle. | Fix: Replace controls[0].ui.path and the rendered path with 'Routing > Callback management > Copilot AI agent for callback management > Customer-first direct callback'. Keep the existing note explaining the prerequisite enablement and first profile; the missing prerequisite choice must also be in the route. Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback
+- [contradicted, blocker] controls[2].ui; Governance controls: third row / admin-path: The queue overflow path ending in Direct callback > Callback profile is documented by the linked Manage overflow page. | Found: In Copilot Service admin center, for a voice queue, select Direct callback as the overflow action for any of the conditions. Learn more in Manage overflow of work items in queues. In Callback profile, select a callback profile. | Fix: Keep the existing controls[2].ui.path: its earlier steps are supported by Manage overflow and its final selection by Configure customer-first direct callback. Set controls[2].ui.docs and the rendered UI Learn link to https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback#use-callback-profile-in-overflow-action, which documents the actual Callback profile control. Keep Manage overflow in sources for the preceding navigation. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Scope: Who configures it / role: The cited Copilot Service admin center prerequisites give System Customizer access to edit all site map entries. | Found: System Customizer: To access and edit all the site map entries. | Fix: After the roles sentence, add: 'The Contact Center-specific admin-center page instead states that you must have the System administrator role.' Cite and add to sources https://learn.microsoft.com/dynamics365/contact-center/administer/cc-admin-center. Retain the accurately attributed Customer Service prerequisite rather than silently choosing between the pages. | Source: https://learn.microsoft.com/dynamics365/customer-service/implement/cs-admin-center
 -->

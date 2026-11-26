@@ -81,18 +81,20 @@ changes:
     note: "Corrected two statements: who sees the effect (users with an eligible Microsoft Copilot licence) and the SharePoint site-designation route, which the 11 August 2026 release notes describe in the SharePoint admin center."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 59
+  claims: 56
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "76b33883da7d473ef1444c346a27692b"
 ---
 
@@ -194,9 +196,11 @@ cost: Low. The SharePoint page for this feature names a Microsoft Copilot licenc
 impact: Low. Admins configure it, and users see an effect only for sites an admin designates, such as a 'From your organization' label and, per the roadmap, better ranking in Copilot Search.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: paragraph beginning The SharePoint page / absence: The full navigation to the SharePoint site-designation control is not documented. | Found: In the SharePoint admin center, select Sites > Active sites or browse to the Active sites page. In the left column, select a site. | Fix: Replace 'the full navigation path is not documented, so none is given here beyond those two steps' with 'The site-selection navigation is documented on Manage sites in the SharePoint admin center; the designation action is documented in the 11 August 2026 release notes.' Cite https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center alongside the existing release-notes link. The complete route is 'Sites > Active sites > site > Mark as authoritative site'. | Source: https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; Governance guidance; Open questions / licensing: The SAM prerequisites grant Copilot-supporting capabilities when at least one organisation user is assigned a Microsoft Copilot licence. | Found: At least one user in your organization is assigned a Microsoft Copilot license. (The user doesn't need to be a SharePoint administrator.) | Fix: After the tenant-level licensing statement, add: 'The Set-SPOSite reference instead describes -IsAuthoritative as used by an admin with a Copilot licence; this differs from the tenant-level SAM prerequisite.' Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps#-isauthoritative. Retain the supported prerequisite statement. | Source: https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites
-- [supported, minor] controls[1].ui; Governance controls / admin-path: The 11 August release notes document SharePoint admin center > site > Mark as authoritative site. | Found: Open the SharePoint admin center. Select a site and choose 'Mark as authoritative site.' | Fix: Expand the path to 'Sites > Active sites > site > Mark as authoritative site'. Add https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center to sources; it documents 'Sites > Active sites' then selecting a site. Replace the prose saying full navigation is undocumented with: 'The site-selection navigation is documented on Manage sites in the SharePoint admin center; the designation action is documented in the 11 August 2026 release notes.' | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The SharePoint admin center route selects a site and then Mark as authoritative site. | Found: Open the SharePoint admin center. Select a site and choose 'Mark as authoritative site.' | Fix: Expand controls[1].ui.path and its rendered table cell to 'Sites > Active sites > site > Mark as authoritative site'. Add https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center to sources; it documents 'Sites > Active sites' followed by selecting a site. Retain the release-notes docs link for the designation action. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026
+- [supported, minor] Cost and licensing; Scope; Governance guidance / licensing: The SAM prerequisites grant Copilot-supporting capabilities when at least one organization user is assigned a Microsoft Copilot license. | Found: At least one user in your organization is assigned a Microsoft Copilot license. (The user doesn't need to be a SharePoint administrator.) | Fix: After the tenant-level licensing statement, add: 'The Set-SPOSite reference instead describes -IsAuthoritative as used by an admin with a Copilot licence; this differs from the tenant-level SAM prerequisite.' Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps#-isauthoritative, which says 'When an admin with a Copilot license marks a site as authoritative'. Retain the supported tenant-level statement. | Source: https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites
 -->

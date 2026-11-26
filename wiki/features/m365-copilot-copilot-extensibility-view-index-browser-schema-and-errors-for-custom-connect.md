@@ -53,7 +53,7 @@ sources:
     url: "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator"
     kind: "learn"
   - title: "About administrator roles in the Microsoft 365 admin center"
-    url: "https://learn.microsoft.com/microsoft-365/admin/manage/apps/roles-responsibilities"
+    url: "https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 498898"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=498898"
@@ -77,7 +77,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/roleManagement/directory/roleAssignments"
       docs: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0"
-    note: "The request body sets roleDefinitionId and principalId. Privileged Role Administrator is the least privileged role for this operation."
+    note: "The request body sets roleDefinitionId and principalId. For delegated access using a work or school account, Privileged Role Administrator is the least privileged role supported for this operation."
   - governs: "Where a connection's error codes and counts are reviewed and downloaded"
     scope: "other"
     ui:
@@ -106,19 +106,23 @@ changes:
     note: "New briefing: index browser, schema recommendations and error views for custom Copilot connectors, with the role, error-script and Copilot Visibility controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: qualified the Privileged Role Administrator requirement to delegated access, limited the Copilot Visibility advice to partner connectors, removed checklist steps without a control row, and replaced the AI Reader source."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 60
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "5fd9f3f599b3ee2acf371764c99db8eb"
+  claims: 78
+  confirmed: 78
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "4ad7feff92df073191e262ba0c417949"
 ---
 
 ## What's changing
@@ -139,7 +143,7 @@ It also brings a configuration choice into view. Microsoft's page states that wh
 
 **Data exposure**
 - The index browser shows an item's name, properties and permissions list, and **Check user access** lists the groups a named user belongs to. Those details are visible to whoever can open connector pages; Microsoft's connector pages state that managing connectors requires the AI administrator role (row 1).
-- The views can reveal a connection set to **Allow everyone**. Microsoft's documented fix is to delete the connection and recreate it with the intended permissions. Meanwhile the **Copilot Visibility** toggle (row 3) excludes a connection from Copilot Search and Copilot Chat, but the page states it does not affect declarative agents and their data.
+- The views can reveal a connection set to **Allow everyone**. Microsoft's documented fix is to delete the connection and recreate it with the intended permissions. For partner connectors, the **Copilot Visibility** toggle (row 3) excludes a connection from Copilot Search and Copilot Chat, but does not affect declarative agents and their data; its availability for API-built custom synced connectors is not established.
 
 **Security & identity**
 - AI Administrator is a privileged Microsoft Entra role that manages all aspects of Microsoft Copilot. Granting it to support staff so they can troubleshoot connectors gives them that wider reach as well (row 1).
@@ -173,13 +177,10 @@ A licence, price or meter specific to the index browser, schema and error views 
 - Install `DownloadErrorScript` on the support team's admin workstation (row 2) for errors beyond those the **Error** tab shows.
 
 ### At rollout
-- Look up a sample item from each custom connection in the index browser and compare its **Permissions** list with the source system.
 - Open each custom connection's **Error** tab (row 2) and record the error codes and counts as a baseline.
-- Turn off **Copilot Visibility** (row 3) for a connection found open to everyone that should not be, while it is deleted and recreated with the intended access permissions.
 
 ### After rollout
 - Pass schema recommendations for missing `title`, `url`, `lastModifiedBy` and `lastModifiedDateTime` labels to the connector's developer.
-- Use **Check user access** when a user reports a missing item, allowing up to 24 hours and a full crawl for a source permission change to show.
 - Review AI Administrator assignments (row 1) once troubleshooting needs settle.
 
 ## Governance controls
@@ -189,14 +190,14 @@ A licence, price or meter specific to the index browser, schema and error views 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can open Copilot connector pages, including the index browser, schema and errors</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets roleDefinitionId and principalId. Privileged Role Administrator is the least privileged role for this operation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Roles › Role assignments › Microsoft Entra ID › AI Administrator › Assigned › Add users <a href="https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can open Copilot connector pages, including the index browser, schema and errors</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets roleDefinitionId and principalId. For delegated access using a work or school account, Privileged Role Administrator is the least privileged role supported for this operation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Roles › Role assignments › Microsoft Entra ID › AI Administrator › Assigned › Add users <a href="https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Where a connection's error codes and counts are reviewed and downloaded</strong><br><small class="controls__note">Monitoring only. The admin centre shows a limited set of errors; the script prompts for the connection ID and a batch size of up to 5,000 errors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Connectors › Your connections › connection › Error <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>DownloadErrorScript.ps1</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a connection's indexed content is used in Copilot Search and Copilot Chat</strong><br><small class="controls__note">Described for partner connectors. Visible by default; does not affect declarative agents and their data. The connection keeps crawling.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection › Copilot Visibility <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 - Microsoft's connector pages state that accessing and managing Copilot connectors requires the AI administrator role. Microsoft's admin roles page describes the AI Reader role as able to view the features and settings in the admin centres that the AI Administrator can view, without editing any settings.
-- Creating a role assignment through Microsoft Graph needs Privileged Role Administrator as the least privileged role.
+- For delegated access using a work or school account, Privileged Role Administrator is the least privileged role supported for creating a role assignment through Microsoft Graph.
 - The error pages give the path as **Connectors > Your connections**, while other connector pages give **Copilot > Connectors > Your Connections**; follow the labels your admin centre shows.
 - The **Copilot Visibility** toggle is described for partner connectors. With visibility off, the connection can still crawl, and changes take up to 30 minutes to reach all Copilot experiences. Microsoft states that updating a connection's access permissions after creation isn't currently supported.
 
@@ -211,15 +212,4 @@ A licence, price or meter specific to the index browser, schema and error views 
 risk: Low. The views are for administrators who already manage connectors; they show item permissions and group memberships to role holders, and no source says they change what users see in Copilot.
 cost: Low. Copilot connectors need Microsoft 365 licences in the tenant; no licence or charge specific to these views is published, so the known cost is admin troubleshooting time.
 impact: Low. Only administrators who manage Copilot connectors, and the developers they work with, will notice.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls / role: Creating a role assignment through Microsoft Graph needs Privileged Role Administrator as the least privileged role, without an access-mode qualification. | Found: Application | RoleManagement.ReadWrite.Directory ... For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role ... Privileged Role Administrator is the least privileged role supported for this operation. | Fix: In the row note and Governance controls, replace the role sentence with: 'For delegated access using a work or school account, Privileged Role Administrator is the least privileged supported built-in role for this operation.' Keep the Graph call unchanged. Reference: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
-- [unsupported, blocker] Governance guidance: At rollout, Copilot Visibility; Risk assessment: Data exposure / applicability: Administrators can turn off Copilot Visibility to contain an overshared custom synced connector while deleting and recreating it. | Found: Searched: 'Copilot Visibility custom connectors'; 'Copilot connectors Copilot Visibility toggle Microsoft Graph API externalConnection enabledContentExperiences'. Read manage-connector, overview, manage-access-permissions, Graph connection references; only partner-toggle applicability is documented. | Fix: Remove the At rollout instruction 'Turn off Copilot Visibility (row 3) for a connection found open to everyone that should not be, while it is deleted and recreated with the intended access permissions.' In Risk assessment, replace the sentence beginning 'Meanwhile' with: 'For partner connectors, the Copilot Visibility toggle (row 3) excludes a connection from Copilot Search and Copilot Chat, but does not affect declarative agents and their data; its availability for API-built custom synced connectors is not established.' Retain the documented delete-and-recreate advice.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / cost: The prerequisites page says indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences. | Found: Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. | Fix: Keep the prerequisite-page attribution and add: 'Microsoft's Copilot Search FAQ gives different connector-cost guidance: connectors may incur additional costs and may require Microsoft 365 E5, Microsoft Viva or additional capacity units depending on indexed volume and data type.' Cite https://learn.microsoft.com/copilot/manage/copilot-search-faq#is-there-an-additional-cost-for-microsoft-copilot-search. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
-- [supported, minor] Governance controls: AI Reader / role: AI Reader can view features and settings in admin centers that AI Administrator can view, without editing settings. | Found: Assign the AI Reader role to users who need to view the features and settings in the admin centers that the AI Administrator can view. The AI Reader can't edit any settings. | Fix: Replace the unrelated 'Roles and responsibilities' source at https://learn.microsoft.com/microsoft-365/admin/manage/apps/roles-responsibilities with 'About administrator roles in the Microsoft 365 admin center' at https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide. Keep the AI Reader sentence unchanged. | Source: https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide#commonly-used-microsoft-365-admin-center-roles
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist asks readers to review item permissions and use Check user access, but the controls table has no row for that diagnostic control. | Found: Look up a sample item from each custom connection in the index browser and compare its Permissions list with the source system. ... Use Check user access ... Table rows: role assignments, error monitoring and Copilot Visibility. | Fix: The At rollout index-browser Permissions check and After rollout Check user access instruction have no corresponding controls row. Remove those two checklist instructions; retain the explanatory index-browser prose. Do not add a new control row in this correction.
 -->

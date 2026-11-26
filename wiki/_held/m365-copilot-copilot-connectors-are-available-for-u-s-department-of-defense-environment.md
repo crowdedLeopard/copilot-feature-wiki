@@ -43,6 +43,12 @@ sources:
   - title: "Microsoft Copilot Search"
     url: "https://learn.microsoft.com/copilot/manage/copilot-search-overview"
     kind: "learn"
+  - title: "Copilot connectors overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview"
+    kind: "learn"
+  - title: "Service components for Copilot guidance for Sensitive and Regulated customers"
+    url: "https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom"
+    kind: "learn"
   - title: "Which external data sources are connected and indexed for Copilot and Microsoft Search (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0"
     kind: "learn"
@@ -62,7 +68,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Connectors > Connectors > Gallery > data source"
+      path: "Copilot > Connectors > Connectors > Gallery > data source > Create"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview"
     api:
       kind: "graph"
@@ -100,19 +106,23 @@ changes:
     note: "New briefing: Copilot connectors launched for DoD, with the government-cloud default, licensing table, DoD IP ranges and admin-centre and Graph controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the role note: connector deployment needs the AI administrator role, while assigning user licences needs at least a License or User Administrator. Extended the deployment path to Create and added two source pages."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 72
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "c7e10e32202d2dfd7c475d4af148a632"
+  claims: 70
+  confirmed: 68
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 2
+  hash: "698c31b315e35cc0dd5ab5eafb48667f"
 ---
 
 ## What's changing
@@ -194,13 +204,13 @@ If nobody acts, the service description's government-cloud note means external c
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which external data sources are connected and indexed for Copilot and Microsoft Search</strong><br><small>Tenant</small><br><small class="controls__note">AI administrator role. The setup screen offers deployment to a subset of users before broader rollout; Create deploys the connection. The Graph call creates a connection for custom connectors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Connectors › Gallery › data source <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/external/connections</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which external data sources are connected and indexed for Copilot and Microsoft Search</strong><br><small>Tenant</small><br><small class="controls__note">AI administrator role. The setup screen offers deployment to a subset of users before broader rollout; Create deploys the connection. The Graph call creates a connection for custom connectors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Connectors › Gallery › data source › Create <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/external/connections</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether indexed items are visible to everyone or only to users with access in the source</strong><br><small>App</small><br><small class="controls__note">The API side is for custom connectors: the request body's acl property sets who can see each item.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Connectors › Gallery › data source › Custom setup › Users › Access Permissions <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PUT /v1.0/external/connections/{connection-id}/items/{item-id}</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence that Copilot grounding on connector data requires</strong><br><small>User</small><br><small class="controls__note">Decides Copilot grounding and federated connector use; Microsoft Search results from synced connectors need only a Microsoft 365 plan.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-All admin-centre steps need the AI administrator role. The access setting on the Users tab applies to connectors deployed from the gallery; custom connectors built on the Graph API set an access control list (acl) on each item they push instead. Neither control decides whether external connections are enabled for a government-cloud tenant in the first place: Microsoft's service description says they aren't enabled by default there but does not give the switch. Licence assignment decides who gets Copilot grounding, not who sees connector results in Microsoft Search.
+Connector deployment and gallery access configuration require the AI administrator role. Assigning user licences requires at least a License or User Administrator. The access setting on the Users tab applies to connectors deployed from the gallery; custom connectors built on the Graph API set an access control list (acl) on each item they push instead. Neither control decides whether external connections are enabled for a government-cloud tenant in the first place: Microsoft's service description says they aren't enabled by default there but does not give the switch. Licence assignment decides who gets Copilot grounding, not who sees connector results in Microsoft Search.
 
 ## Open questions
 
@@ -218,10 +228,7 @@ impact: Low. Administrators notice first; users see external content in Copilot 
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / role: All admin-centre steps, including user licence assignment, need the AI administrator role. | Found: You must be at least a License or User Administrator to assign licenses. | Fix: Replace 'All admin-centre steps need the AI administrator role.' with 'Connector deployment and gallery access configuration require the AI administrator role. Assigning user licences requires at least a License or User Administrator.' The licence-assignment source already cited gives the latter requirement. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [unsupported, blocker] Governance controls prose / applicability: Neither connection deployment nor access-permission configuration decides whether external connections are enabled for a government-cloud tenant in the first place. | Found: Searched: Copilot connectors government clouds DoD external connections partner connectors enable default switch; Copilot connectors government enable external connections. Opened service description, deployment-overview and manage-connector; none states this separation from deployment. | Fix: Replace the sentence beginning 'Neither control decides' with: 'Microsoft's service description says external connections and partner connectors are not enabled by default for government clouds, but does not describe how they are enabled.' Do not assert that deployment cannot enable them.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: Microsoft 365 admin center > Copilot > Connectors > Connectors > Gallery > data source reaches connector setup. | Found: In the left pane, choose Copilot > Connectors. On the Connectors tab, in the left pane, choose Gallery, and select the data source you want to connect ... Choose Create to deploy the connection. | Fix: Extend controls[0].ui.path and its rendered table path to 'Copilot > Connectors > Connectors > Gallery > data source > Create'. The printed route reaches the correct setup page but stops before the deployment control; credentials and other fields remain part of the linked procedure. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview
-- [supported, minor] Why it matters; Governance guidance: After rollout / applicability: Item access permissions govern what connector content users can see in Copilot and Search. | Found: Each item includes content, metadata (like title and URL), and an access control list (ACL) that enforces permissions. ... Search and Copilot only show items to users who have access in the source system. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/connectors/overview to sources for the statement that connector item permissions are enforced in both Search and Copilot. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/overview
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Synced connector ingestion reads and indexes content rather than writing changes to the source system. | Found: | Connectors | Plugins | ... | Run on a schedule | Run in real-time | ... | One way data flow (read) | Can support two-way data flow (read and write) | | Fix: Add https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom to sources for the scheduled, one-way read behaviour of synced connectors; retain the existing qualification about broader connector functionality in the terms of use. | Source: https://learn.microsoft.com/compliance/anz/blueprint-copilot-servicecom#connectors-and-plugins
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist tells readers to check identity mapping, schedule full crawls and restrict AI administrator assignments, but those controls have no table rows. | Found: Check the identity mapping on the Users tab ... Schedule full crawls ... Assign the AI administrator role only ... Table rows cover source connections, item access permissions and user licence assignment. | Fix: The identity-mapping check, full-crawl scheduling and AI administrator role-assignment guidance have no corresponding controls-table rows. Record these as checklist/table coverage gaps; this correction does not request additional rows.
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: All controls that the governance checklist asks administrators to set or check appear in the controls table. | Found: Checklist: 'Assign the AI administrator role', 'Check the identity mapping on the Users tab', 'Schedule full crawls', and 'allow the usdodcentral and usdodeast ranges'. Table: connection deployment, access permissions and user licence assignment only. | Fix: The role-assignment, identity-mapping, crawl-scheduling and source-firewall checklist steps have no corresponding controls-table row. Remove these steps from Governance guidance to reconcile the checklist with the existing table; their documented background in Risk assessment and Scope can remain.
 -->

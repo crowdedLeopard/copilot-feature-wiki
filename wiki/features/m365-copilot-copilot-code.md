@@ -111,15 +111,17 @@ changes:
     note: "Corrected the admin paths for the spending policy wizard and the Intune sandbox policies, shortened the Graph call, and narrowed the sandbox default to managed devices."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 94 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 101 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 94
+  claims: 101
+  confirmed: 101
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -229,8 +231,10 @@ cost: Variable. Usage is metered in Copilot Credits through a spending policy, o
 impact: Medium. Makers and developers who are included notice it; Microsoft Learn says only users in a spending policy for Copilot Code can build apps, so other users are not reached until included.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Cost and licensing / admin-path: The printed spending-policy wizard path reaches group scope, service selection and the limits section. | Found: Select the Configuration tab and then select + Add spending policy. ... Define the policy scope ... Create and name the policy and then choose Identity as the scope. | Fix: Insert the documented heading after '+ Add spending policy': 'Copilot > Cost management > Configuration > + Add spending policy > Define the policy scope > Identity > Specific groups > Select agents and services > Copilot Code > Set limits and alerts'. The remaining labels are supported by this page and the already-cited https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [supported, minor] controls[0].ui; Cost and licensing: Meter; Governance controls / admin-path: The printed Microsoft 365 admin center path reaches group-scoped Code service selection and spending limits. | Found: Select the Configuration tab and then select + Add spending policy. ... Define the policy scope ... choose Identity as the scope. ... Specific groups ... Select agents and services ... Set limits and alerts | Fix: Insert the documented heading: 'Copilot > Cost management > Configuration > + Add spending policy > Define the policy scope > Identity > Specific groups > Select agents and services > Copilot Code > Set limits and alerts'. Code service selection is supported by the already-cited https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The printed Intune imported-template path reaches Microsoft Copilot > Code Tab after importing the templates. | Found: import the policy file (windows/admx/copilotapp.admx). ... Configure the policies - Policy location: Microsoft Copilot > Code Tab. | Fix: The already-cited https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates supports the navigation and template choices. Complete the path after 'Microsoft Copilot > Code Tab' by naming the controls there: 'Copilot sandbox required', 'Copilot sandbox outbound network access', and 'Copilot sandbox outbound network access mode', as documented at https://learn.microsoft.com/copilot/code/code-admin. | Source: https://learn.microsoft.com/copilot/code/code-admin
+- [supported, minor] controls[1].api; Governance guidance; Governance controls / command: The cited administration page documents macOS sandbox keys CopilotDeviceCodeTabSandboxEnabled and CopilotDeviceCodeTabOutboundNetworkAccessMode in com.microsoft.Copilot. | Found: Domain: com.microsoft.Copilot. ... Copilot sandbox required ... CopilotDeviceCodeTabSandboxEnabled ... Copilot sandbox outbound network access mode ... CopilotDeviceCodeTabOutboundNetworkAccessMode | Fix: Keep the cited keys, but add: 'The separate Microsoft Copilot policy reference documents the macOS sandbox preference as CopilotDeviceCodeTabSandbox, rather than CopilotDeviceCodeTabSandboxEnabled; consult the policy reference for the deployed app version.' Cite https://learn.microsoft.com/windows/client-management/configure-microsoft-copilot-policies, whose Mac information lists 'Preference Key Name: CopilotDeviceCodeTabSandbox'. | Source: https://learn.microsoft.com/copilot/code/code-admin
 -->

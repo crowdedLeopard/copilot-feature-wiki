@@ -1,0 +1,919 @@
+{
+  "slug": "microsoft-purview-information-protection-sensitivity-label-support-in-engage",
+  "roadmapId": 558684,
+  "title": "Viva Engage: apply Microsoft Purview sensitivity labels to communities",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 30)"
+    ]
+  },
+  "counts": {
+    "claims": 64,
+    "confirmed": 62,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 8
+  },
+  "summary": "Hold pending a correction to the testing guidance: new container labels configured with Teams shared channel controls require at least 24 hours, not the briefing's unqualified one-hour wait. The roadmap facts, licensing quotations and control commands are supported; several paths stop before the final setting, and two Microsoft pages give conflicting guidance on changes to existing labels.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Community creators and community admins can manually apply sensitivity labels to Engage communities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Community admins can change the sensitivity label (and hence its privacy setting) of a community. ... The user can select a different label from the list of available labels, but they can't create new labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Labels can be applied to communities after labels and associated policies are configured in Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "After you configure sensitivity labels with their associated policies in the Microsoft Purview portal, these labels can be applied to communities in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Scope",
+      "type": "behaviour",
+      "claim": "The configured default label automatically applies when a user creates a community.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Admins can set up sensitivity labels to automatically apply during community creation. When a user creates a new community, the default sensitivity label automatically applies to the community.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The community creator can choose a different label from those available to them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "The user can select a different label from the list of available labels, but they can't create new labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "role",
+      "claim": "Community creators cannot create new sensitivity labels through this choice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "The user can select a different label from the list of available labels, but they can't create new labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "A community admin can change a community's sensitivity label and hence its privacy setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Community admins can change the sensitivity label (and hence its privacy setting) of a community.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The community's More menu > Settings is the route to change its label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Open the community, select the More menu (...), and choose Settings. ... (Depending on how the policies are configured, other choices might be available for each of the two dropdowns.)",
+      "severity": "minor",
+      "fix": "Complete the prose route as: 'Open the community, select More > Settings, then choose a label from the available dropdown choices.' The printed route currently stops on the right settings page."
+    },
+    {
+      "n": 14,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "The applied label appears to users in the live community's banner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "After the community is live, the sensitivity label appears to users in the community banner:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Admins can set a preferred default label for Engage communities in Purview label policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "As an example, select a preferred default label for Engage communities in Microsoft Purview as part of label policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The Engage community default takes precedence over the default label for sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "This new default takes precedence over the default label for sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; controls[3]; rationale: risk",
+      "type": "applicability",
+      "claim": "Public or Private label privacy sets and locks the community's privacy until the sensitivity label is removed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "The settings of Public or Private set and lock the privacy setting when you apply this label to the container. ... locks the privacy value so it can be changed only by first removing the sensitivity label from the container.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Public label privacy allows anyone in the organisation to access the community container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "Privacy: Keep the default of Public if you want anyone in your organization to access the container where this label is applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing; Why it matters; Risk assessment; controls[4]; rationale: risk",
+      "type": "applicability",
+      "claim": "A community created with a label disallowing guest access is available only to internal users and outside people cannot be added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Communities created with a label that doesn’t allow guest access are only available to users in your organization. People outside your organization can’t be added to the community.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Items inside labelled containers do not inherit the container label's markings or encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "Items in these containers however, do not inherit the labels and therefore don't apply any item-level label settings, such as content markings and encryption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; controls[4].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Changing External users access applies to new users, not existing guests, who retain access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "The new setting applies to new users but not to existing users. ... these guest users can still access the site after this setting is cleared in the label configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Enabled and configured container labels can be seen and applied on team sites, Microsoft 365 groups, SharePoint sites, Engage communities and Loop workspaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "After you enable and configure sensitivity labels for containers, users can additionally see and apply sensitivity labels to containers that support them. These include Microsoft team sites, Microsoft 365 groups, SharePoint sites, Viva Engage communities, and Loop workspaces.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1]; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "EnableMIPLabels is the tenant-level Microsoft Entra group setting used to enable container label support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "To apply published labels to groups, you must first enable the feature. These steps enable the feature in Microsoft Entra ID. ... If the sensitivity label was enabled previously, you see EnableMIPLabels = True.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Container sensitivity label support is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "If you haven't yet enabled sensitivity labels for containers, do the following set of steps as a one-time procedure: ... follow the instructions from the Microsoft Entra documentation to enable sensitivity label support",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "In a tenant without enabled container labels, community labelling requires enabling support, synchronising labels and publishing a Groups & sites label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "Until sensitivity labels are enabled for containers, the settings are visible but you can't configure them. ... make sure you select Groups & sites for the label's scope ... If your sensitivity label isn't already published, now publish it",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Prerequisites; controls[3].ui; controls[4].ui; Governance controls",
+      "type": "applicability",
+      "claim": "Labels for community container protection require the Groups & sites scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "The Groups & sites scope becomes available and selected by default when you enable sensitivity labels for containers and synchronize labels. This option lets you protect content in SharePoint sites, Teams sites, Viva Engage communities, and Loop workspaces by labeling those containers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Scope; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Execute-AzureAdLabelSync in Security & Compliance PowerShell synchronises the labels to Microsoft Entra ID after enabling support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "You now need to synchronize your sensitivity labels to Microsoft Entra ID. First, connect to Security & Compliance PowerShell. ... Then run the following command to ensure your sensitivity labels can be used with Microsoft 365 groups: Execute-AzureAdLabelSync",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Engage documentation describes using a more permissive community default alongside a more restrictive SharePoint site default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Create a more permissive default for Engage communities, while maintaining a more restrictive default for sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Purview recommends first publishing a configured container label to a policy covering a few test users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "After you create and configure the sensitivity label, add this label to a label policy that applies to just a few test users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Purview's testing guidance is to wait at least one hour for a new Groups & sites label, without a configuration exception.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "New label: Wait at least one hour, unless your configured settings include Teams shared channel controls. If that's the case, wait at least 24 hours.",
+      "severity": "blocker",
+      "fix": "In both occurrences, replace the new-label timing with: 'Wait at least one hour for a new label, or at least 24 hours if its configured settings include Teams shared channel controls; wait at least 24 hours for an existing label.' This retains the qualification for labels also used by Teams."
+    },
+    {
+      "n": 31,
+      "where": "controls[3].note; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Purview says changes to an existing container label take at least 24 hours to replicate before testing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "Existing label: Wait at least 24 hours. ... If you do, remember to wait at least 24 hours for the changes to replicate to all containers that have the label applied.",
+      "severity": "minor",
+      "fix": "Add: 'The Entra group-label documentation instead says changes to published group settings are not automatically applied to labelled groups and recommends manually reapplying updates with its linked PowerShell script.' Cite https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels#group-setting-changes-to-published-labels-arent-updated-on-the-groups alongside the Purview timing."
+    },
+    {
+      "n": 32,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Purview warns that deleting a container label still included in a policy can cause new team, group and site creation failures.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "If you delete a sensitivity label that has the site and group settings enabled, and that label is included in one or more label policies, this action can result in creation failures for new teams, groups, and sites.",
+      "severity": "minor",
+      "fix": "Add: 'The general label-creation documentation says a label cannot be deleted while it is still in a label policy.' Cite https://learn.microsoft.com/purview/create-sensitivity-labels#removing-and-deleting-labels. Retain the existing remove-first advice."
+    },
+    {
+      "n": 33,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Removing a container label from every publishing policy and waiting at least one hour are steps before deleting it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "Remove the sensitivity label from all label policies that include the label. Wait at least one hour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description lists Manual Sensitivity Labeling as included in the stated Microsoft 365, Office 365, OneDrive, EMS and AIP plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2 ... Manual Sensitivity Labeling | Included | Included | Included | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The same service-description section also says sensitivity labelling, including automatic or policy-based labelling, requires Microsoft 365 E5 or IPG.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Manual community sensitivity labelling is presented as included in existing qualifying licensing, with the service description's conflicting entitlement wording disclosed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Information Protection helps organizations discover, classify, label, and protect sensitive documents, emails and meetings, and groups and sites. ... Manual Sensitivity Labeling | Included | Included | Included | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; controls[1].note; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Configuring Microsoft 365 group label support requires at least one active Microsoft Entra ID P1 licence in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "To configure this feature, there must be at least one active Microsoft Entra ID P1 license in your Microsoft Entra organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The service description publishes no Engage-community-specific licensing statement in its sensitivity labelling section.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage sensitivity labels license manual labeling communities'; read the Purview service description's sensitivity labeling section and its Engage mentions, plus Engage community sensitivity-labeling. General manual-label entitlements are stated, not an Engage-specific SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Scripting",
+      "type": "behaviour",
+      "claim": "The Engage page says PowerShell does not directly support assigning sensitivity labels to Engage communities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Before you use sensitivity labels for Engage, PowerShell cmdlets don't directly support sensitivity labels. Users can't directly specify sensitivity labels for Engage communities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Scripting",
+      "type": "behaviour",
+      "claim": "Applying a label through PowerShell to the connected SharePoint site updates the existing community's label as a workaround.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "As a workaround, you can use PowerShell to apply labels to a SharePoint site that connects to an existing Engage community. Doing so causes the label on the Engage community to correspondingly update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "A Microsoft Entra Global Administrator or Yammer Administrator (Viva Engage admin) can change the Engage disabling switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity",
+      "quote": "This tenant-level setting can be changed by Microsoft Entra Global Administrator or Microsoft Entra Yammer Administrator (Viva Engage admin).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The Entra enabling steps connect to Microsoft Graph with Directory.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "Connect-MgGraph -Scopes \"Directory.ReadWrite.All\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Who configures; Governance controls",
+      "type": "role",
+      "claim": "Tenant admins create and publish sensitivity labels in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+      "quote": "Tenant and network admins create and publish sensitivity labels in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Viva Engage admin center > Tenant settings > Sensitivity label management > Edit > Disable sensitivity labels for communities reaches the disabling option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity",
+      "quote": "Select Tenant settings. Under Sensitivity label management, select Edit to access the Disable sensitivity labels for communities option ... Select Public, Private, or both.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path to 'Tenant settings > Sensitivity label management > Edit > Disable sensitivity labels for communities > Public or Private (or both)'. The current path correctly reaches the option but stops before selecting the affected community types."
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or API equivalent for the Engage Disable sensitivity labels for communities switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage Disable sensitivity labels API PowerShell'; opened Engage identity enforcement, community sensitivity-labeling and Purview container labels. The switch is documented in UI; PowerShell results concern licensing, container enablement or label configuration, not this switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "An admin-centre UI for enabling the tenant's EnableMIPLabels setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'EnableMIPLabels admin center enable sensitivity labels'; opened Entra Assign sensitivity labels to Microsoft 365 groups and Purview container-label documentation. Enabling uses Graph PowerShell; Entra UI procedures assign labels to groups rather than enable the tenant feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Update-MgBetaDirectorySetting -DirectorySettingId $grpUnifiedSetting.Id -BodyParameter $params enables support when $params sets EnableMIPLabels to True.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "$params = @{ Values = @( @{ Name = \"EnableMIPLabels\" Value = \"True\" } ) } ... Update-MgBetaDirectorySetting -DirectorySettingId $grpUnifiedSetting.Id -BodyParameter $params",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Purview > Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish reaches the publishing selection page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "On the Choose sensitivity labels to publish page, select the Choose sensitivity labels to publish link. Select the labels that you want to make available in apps and to services, and then select Add.",
+      "severity": "minor",
+      "fix": "Extend controls[2].ui.path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish (link) > labels'. The existing route stops on the correct wizard page."
+    },
+    {
+      "n": 49,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity \"<policy name>\" -AddLabels \"<label>\" adds the identified sensitivity label to the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "The AddLabels parameter specifies the sensitivity labels that you want to add to the policy. You can use any value that uniquely identifies the label. For example: Name Distinguished name (DN) GUID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The modern Purview label creation route through Groups & sites and Privacy and external user access settings reaches privacy configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "on the Define protection settings for groups and sites page ... Privacy and external user access settings to configure the Privacy and External users access settings.",
+      "severity": "minor",
+      "fix": "Extend controls[3].ui.path to 'Solutions > Information Protection > Sensitivity labels > + Create > Label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > Privacy'. The opening modern-scheme steps are supported by the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels; the current docs URL supplies the final configuration steps."
+    },
+    {
+      "n": 51,
+      "where": "controls[3].api; controls[3].note",
+      "type": "command",
+      "claim": "Set-Label -Identity \"<label>\" -SiteAndGroupProtectionPrivacy Private sets label privacy, whose valid values are Public and Private.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "The SiteAndGroupProtectionPrivacy parameter specifies the privacy level for the labe. Valid values are: Public Private",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "The modern Purview label creation route through Groups & sites and Privacy and external user access settings reaches guest-access configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "If you selected Privacy and external user access settings, now configure the following settings: ... External user access: Control whether the owner can add guests to the container",
+      "severity": "minor",
+      "fix": "Extend controls[4].ui.path to 'Solutions > Information Protection > Sensitivity labels > + Create > Label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > External user access'. The opening modern-scheme steps are supported by the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels; the current docs URL supplies the final configuration steps."
+    },
+    {
+      "n": 53,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Set-Label -Identity \"<label>\" -SiteAndGroupProtectionAllowAccessToGuestUsers $false disables guest access in the label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "The SiteAndGroupProtectionAllowAccessToGuestUsers parameter enables or disables access to guest users. Valid values are: $true: Guest access is enabled. $false: Guest access is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "summary; controls[0].note; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Engage admins can disable label selection for public communities, private communities or both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity",
+      "quote": "Viva Engage admins can disable sensitivity labels for public communities, private communities, or both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "When sensitivity labels are disabled, users can create communities without selecting a label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity",
+      "quote": "When sensitivity labels are disabled, users can create communities without selecting a sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling community labels does not remove labels already applied to existing communities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity",
+      "quote": "Disabling sensitivity labels doesn't remove labels already applied to existing communities. Existing labels and their protections remain in place unless the label is changed explicitly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Purview documents auditing when sensitivity labels are added to or removed from sites and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "When somebody adds or removes a sensitivity label to or from a site or group, these activities are also audited but without automatically generating an email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The documentation leaves open how Engage community label changes appear in sensitivity-label audit activities.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage sensitivity audit community label'; read Engage community labeling, Purview container-label auditing and the Viva Engage activities search excerpt from audit-log-activities. Sites and groups are named for label events, but no Engage-community label-event mapping is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The Engage documentation does not state the new-community label outcome when no Engage default is configured.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Engage default label sites label policy no default'; read Engage community sensitivity-labeling, Purview container labeling and label-policy defaults. An explicitly configured Engage default takes precedence; the no-Engage-default fallback is not stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: Before rollout; controls[2]",
+      "type": "consistency",
+      "claim": "The checklist's distinct Engage default-label decision has no corresponding control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Decide which label new communities get by default ... default label for Engage communities ... | controls[2]: Which sensitivity labels a label policy publishes to its users and groups; note mentions Apply this label by default to groups and sites.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Decide which label new communities get by default, using the default label for Engage communities in the label policy that the Engage page describes.' Keep the supported default-label explanation in the body; do not add a row."
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-Label and Set-LabelPolicy run in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "You can now use Security & Compliance PowerShell to create and configure all the settings you see in your labeling admin center. ... See the following documentation for supported parameters and values: New-Label New-LabelPolicy Set-Label Set-LabelPolicy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Purview recommends avoiding changes to a label's site and group settings after it has been applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "As a best practice, don't change the site and group settings for a sensitivity label after the label has been applied to teams, groups, or sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record identifies Microsoft Purview as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-07T23:01:01.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-07T23:01:01\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T10:10:54.394Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558684",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/manage-engage-communities/community-sensitivity-labeling",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether sensitivity labels are used when creating public or private Engage communities",
+        "docs": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity",
+        "reachable": true,
+        "segments": [
+          "Tenant settings",
+          "Sensitivity label management",
+          "Edit",
+          "Disable sensitivity labels for communities"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether sensitivity labels can be applied to Microsoft 365 groups and other containers (tenant prerequisite)",
+        "docs": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+        "reachable": true,
+        "token": "Update-MgBetaDirectorySetting",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which sensitivity labels a label policy publishes to its users and groups",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Publish label",
+          "Choose sensitivity labels to publish"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which sensitivity labels a label policy publishes to its users and groups",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "reachable": true,
+        "token": "Set-LabelPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Privacy (public or private) a label sets and locks on a community",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "+ Create",
+          "Label",
+          "Define the scope for this label",
+          "Groups & sites",
+          "Define protection settings for groups and sites",
+          "Privacy and external user access settings"
+        ],
+        "missing": [
+          "Solutions",
+          "Information Protection",
+          "+ Create",
+          "Define the scope for this label"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Privacy (public or private) a label sets and locks on a community",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether guests can be added to a community carrying the label",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "+ Create",
+          "Label",
+          "Define the scope for this label",
+          "Groups & sites",
+          "Define protection settings for groups and sites",
+          "Privacy and external user access settings"
+        ],
+        "missing": [
+          "Solutions",
+          "Information Protection",
+          "+ Create",
+          "Define the scope for this label"
+        ]
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether guests can be added to a community carrying the label",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

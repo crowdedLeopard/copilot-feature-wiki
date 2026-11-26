@@ -85,15 +85,17 @@ changes:
     note: "Corrected the Frontier role requirement in the controls table to the three roles Learn lists, and reworded the note that the notice says only \"eligible users\"."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 83
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -204,4 +206,11 @@ Microsoft Learn documents no setting specific to OneNote edit mode at the time o
 risk: High. The roadmap describes edit mode as able to delete pages, sections and notebooks and to draw on Work IQ. Microsoft's notice says it reaches eligible users without admin action, and Learn documents no OneNote-specific switch at the time of writing (November 2026).
 cost: Low. The only cost the sources show is admin and communication time. For Copilot-related Frontier features users need a Microsoft Copilot licence or a licence that includes access to Copilot; the general-availability entitlement and any credit rate for edit mode are not yet published, so this rating may move.
 impact: Medium. Eligible OneNote users on Windows and iPad get broader Copilot behaviour that can change their notebooks. Mac, iPhone, Android and web are not in this rollout, per Microsoft's notice.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Copilot > Settings > View all > Copilot Frontier reaches the Frontier access settings page. | Found: Copilot Frontier | Choose which users or groups can access eligible preview features. | Copilot > Settings > View all > Copilot Frontier. | Fix: The path reaches the correct settings page but stops before the access controls. Extend it to 'Copilot > Settings > View all > Copilot Frontier > Turn on Frontier > Specific users and groups' for selective enrolment, as documented at https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier; retain the existing docs link, which documents the Frontier part of the route. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
+- [supported, minor] Governance controls: unified release preferences path / admin-path: Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences reaches the unified Frontier settings page. | Found: In the Microsoft 365 admin center, go to Settings > Org settings. Under the Organization profile tab, select Release preferences. To opt in to Frontier preview, toggle Turn on Frontier to On. | Fix: Extend the route to 'Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences > Turn on Frontier > Specific users and groups' for selective enrolment, as documented at https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
 -->

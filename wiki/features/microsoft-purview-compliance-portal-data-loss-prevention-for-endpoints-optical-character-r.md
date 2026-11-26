@@ -14,7 +14,7 @@ previewDate: "April CY2026"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "consumption"
@@ -40,6 +40,12 @@ sources:
   - title: "Troubleshooting endpoint data loss prevention configuration and policy sync"
     url: "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync"
     kind: "learn"
+  - title: "Estimate your OCR costs"
+    url: "https://learn.microsoft.com/purview/ocr-cost-estimator"
+    kind: "learn"
+  - title: "Learn about Endpoint data loss prevention"
+    url: "https://learn.microsoft.com/purview/endpoint-dlp-learn-about"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 381750"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=381750"
     kind: "roadmap"
@@ -58,7 +64,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Setup > Billing and licenses > Activate pay-as-you-go services > Get started > Billing > Document processing services > Set up billing > Azure subscription"
+      path: "Setup > Billing and licenses > Activate pay-as-you-go services > Get started > Pay-as-you-go services > Billing > Document processing services > Set up billing and turn on services > Set up billing > Azure subscription"
       docs: "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing"
     api: null
     note: "SharePoint Administrator or Global Administrator, plus owner or contributor rights on the Azure subscription. Covers all document processing services."
@@ -90,19 +96,23 @@ changes:
     note: "New briefing: planned OCR of embedded images on devices, its paused rollout, the OCR meter and the device bandwidth and exclusion controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: default state now Not stated; cost estimator advice replaced (it does not estimate embedded images on endpoints); endpoint file-type wording narrowed to the OCR page; billing path completed; checklist steps without control rows removed."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 66
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "1eb810eda0369d948492b86ba56f387d"
+  claims: 77
+  confirmed: 76
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "f44cbc063e6590d8588d998c5e533b34"
 ---
 
 ## What's changing
@@ -115,7 +125,7 @@ The roadmap item lists the change as Launched, with a General Availability targe
 
 ## Why it matters
 
-Sensitive data pasted into a slide, spreadsheet or scanned page inside an archive is today invisible to device DLP unless it is a standalone image. When this lands, device DLP policies that look for sensitive information types will also match on those images, so expect more matches, alerts and enforcement on files users copy, upload or print, and more OCR transactions on the Azure bill.
+The [OCR page](https://learn.microsoft.com/purview/ocr-learn-about) currently lists standalone image formats and image-only PDFs for endpoints, but not embedded images in Office or archive files. When this lands, device DLP policies that look for sensitive information types will also match on those images, so expect more matches, alerts and enforcement on files users copy, upload or print, and more OCR transactions on the Azure bill.
 
 Tenants that have not set up OCR are not affected, because OCR does nothing until it is configured. For tenants that already scan devices, Microsoft has not stated whether the new file types are picked up without further action, so plan as if they will be: check the bill, the per-device bandwidth limit and the folders excluded from scanning before the rollout resumes.
 
@@ -143,7 +153,7 @@ Tenants that have not set up OCR are not affected, because OCR does nothing unti
 
 **Limits.** Devices have an advanced classification bandwidth limit, 1,024 MB per device per day by default; the OCR page says OCR stops scanning images once it is reached. It limits scanning, and so spend, per device; it is not a tenant spending cap, and administrators can raise it or choose **Do not limit bandwidth. Unlimited**. Endpoint scans are cached for 30 days on each device, and a scanned image can be used by any number of policies at no extra charge.
 
-**Indirect costs.** Admin time to review DLP matches and the [OCR cost estimator](https://learn.microsoft.com/purview/ocr-cost-estimator) before rollout resumes.
+**Indirect costs.** Admin time to review DLP matches and actual OCR charges before rollout resumes.
 
 ## Scope
 
@@ -158,17 +168,14 @@ Tenants that have not set up OCR are not affected, because OCR does nothing unti
 ### Before rollout
 - Check whether devices are an OCR location under Settings > Optical character recognition (OCR) in the Microsoft Purview portal, and which groups are included.
 - Confirm which Azure subscription pays for document processing in the Microsoft 365 admin center, and who owns it.
-- Estimate added transactions with the OCR cost estimator, using the number of Office, archive and PDF files with images that users handle.
+- Do not use the OCR cost estimator (preview) to estimate this endpoint extension: Microsoft documents embedded-image estimation only for Exchange and assumes four images per endpoint PDF.
 - Review the advanced classification bandwidth limit in Endpoint settings, since OCR stops on a device when it is reached.
 
 ### At rollout
 - Watch for the roadmap item and Message center to say the rollout has resumed, and for the OCR page to list embedded images for endpoints.
-- Review device DLP policies in audit or simulation for new matches on DOCX, XLSX, PPTX, archive and PDF files before relying on block actions.
 - Tell the service desk that files containing images of sensitive data may now trigger DLP on devices.
 
 ### After rollout
-- Review OCR charges in Microsoft Cost Management under Cost analysis, filtered by product.
-- Check devices that report the advanced classification bandwidth limit as exceeded, and decide whether to raise it.
 - Review File path exclusions for Windows, because OCR does not scan images in excluded folders.
 
 ## Governance controls
@@ -179,7 +186,7 @@ Tenants that have not set up OCR are not affected, because OCR does nothing unti
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether OCR scans images on devices, and for which groups</strong><br><small>Tenant</small><br><small class="controls__note">Locations and included or excluded groups are chosen on this page. Configured by the compliance admin; takes effect in about an hour.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Optical character recognition (OCR) <a href="https://learn.microsoft.com/purview/ocr-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which Azure subscription is billed for OCR transactions</strong><br><small>Tenant</small><br><small class="controls__note">SharePoint Administrator or Global Administrator, plus owner or contributor rights on the Azure subscription. Covers all document processing services.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Setup › Billing and licenses › Activate pay-as-you-go services › Get started › Billing › Document processing services › Set up billing › Azure subscription <a href="https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which Azure subscription is billed for OCR transactions</strong><br><small>Tenant</small><br><small class="controls__note">SharePoint Administrator or Global Administrator, plus owner or contributor rights on the Azure subscription. Covers all document processing services.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Setup › Billing and licenses › Activate pay-as-you-go services › Get started › Pay-as-you-go services › Billing › Document processing services › Set up billing and turn on services › Set up billing › Azure subscription <a href="https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Daily bandwidth each device may use for cloud classification, including OCR</strong><br><small>Tenant</small><br><small class="controls__note">Applies per device; default 1,024 MB per day per the OCR page. OCR stops scanning images on a device once reached.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › Advanced classification scanning and protection <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Folders on Windows devices that Endpoint DLP, and so OCR, does not scan</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Files in excluded paths are not audited or subject to DLP enforcement.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › File path exclusions for Windows <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -EndpointDlpGlobalSettings @(@{&quot;Setting&quot;=&quot;PathExclusion&quot;; &quot;Value&quot;=&quot;&lt;folder path&gt;&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -200,17 +207,10 @@ cost: Variable. OCR is billed through document processing pay-as-you-go at $0.00
 impact: Medium. Users on onboarded devices in OCR scope may see new DLP matches on Office, archive and PDF files; tenants without device OCR see nothing.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The embedded-image extension is admin-opt-in on arrival. | Found: Searched: Purview endpoint OCR embedded images rollout automatically enable separate setting billing transaction limit 381750. Read ocr-learn-about and roadmap record; neither states the extension's default for tenants already scanning devices. | Fix: Set defaultState to "unknown". Keep the existing distinction in What's changing: OCR generally must be configured, but Microsoft has not stated whether existing device OCR tenants receive embedded-image scanning automatically.
-- [contradicted, blocker] Governance guidance: Before rollout; Cost and licensing: Indirect costs / behaviour: The OCR cost estimator can estimate this extension's added transactions from Office, archive and PDF files with embedded images on endpoints. | Found: Estimation for embedded and standalone image is only supported for the Exchange workload. ... For Endpoint, each pdf file is estimated to have an image count of 4. ... OCR and OCR cost estimator can't run at the same time. | Fix: Replace the estimator checklist bullet with: "Do not use the OCR cost estimator to estimate this endpoint extension: Microsoft documents embedded-image estimation only for Exchange and assumes four images per endpoint PDF." Replace the indirect-cost sentence with "Admin time to review DLP matches and actual OCR charges before rollout resumes." | Source: https://learn.microsoft.com/purview/ocr-cost-estimator
-- [unsupported, major] Why it matters / behaviour: Sensitive image data in slides, spreadsheets and archives is currently invisible to device DLP unless it is a standalone image. | Found: Searched: Endpoint DLP OCR embedded images Office archives sensitive information not scanned. Read OCR supported-file table, roadmap and Endpoint DLP monitored-file excerpts. These describe scan support, but do not establish the blanket claim that such data is invisible to device DLP. | Fix: Replace the sentence with: "The OCR page currently lists standalone image formats and image-only PDFs for endpoints, but not embedded images in Office or archive files." Keep the citation to https://learn.microsoft.com/purview/ocr-learn-about.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: The endpoint embedded-image extension makes no change to identity. | Found: Searched: Purview OCR scanning actions existing policies identity permissions embedded images endpoint. Read ocr-learn-about, syntex-azure-billing, endpoint-dlp-learn-about and roadmap description; they document current roles but do not state that this extension leaves identity unchanged. | Fix: Remove 'No change to identity:' and begin the existing sentence 'OCR settings are configured by compliance administrators'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] licensing.notes; Cost and licensing: Licence / licensing: The Purview OCR page says OCR can be configured without extra licensing requirements once billing information is entered. | Found: After you enter billing information in Microsoft Syntex, your Compliance admin can configure OCR in Microsoft Purview without any extra setup or licensing requirements. | Fix: Retain this attributed statement and add: "The document processing licensing page also requires users of its services to have a Microsoft 365 license." Cite https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing. | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [supported, minor] Cost and licensing: Licence / role: The OCR page says a Global admin must set up billing to enable OCR. | Found: Because it's an optional feature, your Global admin must set up pay-as-you-go billing to enable OCR. | Fix: Replace the role sentence with: "The OCR page's billing paragraph names Global admin, but its workflow and the billing setup page permit a Global or SharePoint admin to set up billing." Keep the existing citations to ocr-learn-about and syntex-azure-billing. | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [supported, minor] controls[1].ui / admin-path: The Microsoft 365 admin center setup route reaches document processing billing and the Azure subscription selector. | Found: On the Pay-as-you-go services page, on the Billing tab, select Document processing services. 5. On the Set up billing and turn on services panel, in the Set up billing section, under Azure subscription, select the dropdown | Fix: Use the full route: "Setup > Billing and licenses > Activate pay-as-you-go services > Get started > Pay-as-you-go services > Billing > Document processing services > Set up billing and turn on services > Set up billing > Azure subscription". The missing page and panel are pass-through headings. | Source: https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing
-- [supported, minor] Why it matters / applicability: Device DLP policies can audit or restrict sensitive-file copying, uploading and printing. | Found: Copy to USB removable device ... block, warn, or audit ... Print ... block, warn, or audit the printing of protected files from an endpoint device. | Fix: Add https://learn.microsoft.com/purview/endpoint-dlp-learn-about to sources for the existing copy, upload and print enforcement statement. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
-- [supported, minor] Cost and licensing: Indirect costs; Governance guidance: Before rollout / behaviour: Microsoft provides an OCR cost estimator. | Found: You can use the OCR cost estimator tool (preview) to estimate your optical character recognition (OCR) scanning costs. | Fix: If a reference to the tool remains after correcting the endpoint-estimation instruction, call it "OCR cost estimator (preview)". | Source: https://learn.microsoft.com/purview/ocr-cost-estimator
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Several checklist controls have no corresponding controls-table row. | Found: Review device DLP policies in audit or simulation ... Review OCR charges in Microsoft Cost Management ... Check devices that report the advanced classification bandwidth limit as exceeded. Table: OCR scope, billing subscription, bandwidth setting, Windows path exclusions. | Fix: The checklist steps for reviewing DLP policies in audit or simulation, reviewing charges in Cost analysis, and checking the device bandwidth-exceeded attribute have no table rows. Remove these checklist steps to resolve the mismatch without adding unverified rows; their existing explanatory prose can remain.
+- [supported, minor] summary; Cost and licensing: Meter; rationale: cost / cost: Each scanned image counts as a billed transaction, and each PDF page is charged separately. | Found: Each image scanned counts as one transaction. This pricing means that stand-alone images (JPEG, JPG, PNG, BMP, or TIFF) each count as a single transaction. It also means that each page in a PDF file is charged separately. | Fix: Replace 'Each scanned image is billed' in the summary with 'OCR is metered per transaction'. Add to Meter: 'Microsoft's promotion page lists 2,500 OCR pages per tenant per month at no charge through December 2026, with excess usage billed; the pricing page still gives June 2026 as the promotion end date.' Cite https://learn.microsoft.com/microsoft-365/documentprocessing/promo-syntex?view=o365-worldwide. This reports the conflicting Microsoft pages without changing the published $0.001 transaction rate. | Source: https://learn.microsoft.com/purview/ocr-learn-about
 -->

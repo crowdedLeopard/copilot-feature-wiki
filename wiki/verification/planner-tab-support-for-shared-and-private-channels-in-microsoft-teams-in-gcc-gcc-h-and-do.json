@@ -1,0 +1,819 @@
+{
+  "slug": "planner-tab-support-for-shared-and-private-channels-in-microsoft-teams-in-gcc-gcc-h-and-do",
+  "roadmapId": 581866,
+  "title": "Planner: tab support in Teams shared and private channels for GCC, GCC High and DoD",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "10 blocking findings (claims 10, 21, 23, 25, 34, 44, 45, 46, 52, 56)",
+      "3 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 43,
+    "unconfirmed": 4,
+    "contradicted": 10,
+    "blocker": 10,
+    "major": 3,
+    "minor": 6
+  },
+  "summary": "Hold: Microsoft documents an enabled-by-default Planner channel tab and a specific PowerShell switch to disable it, contrary to the briefing's stated gaps. Microsoft also documents channel-based plan membership, and the three channel-policy UI paths omit the required Edit step.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "Microsoft plans Planner tabs in Teams shared and private channels for creating and managing tasks within the channel.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Now you can add Microsoft Planner as a tab in shared and private channels in Microsoft Teams, which allows to create and manage tasks directly within the channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Teams and Planner.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Planner\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD for the planned capability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": "minor",
+      "fix": "Keep the roadmap scope. Add to Scope: 'Microsoft's documentation differs on current shared-channel availability: the Teams service description lists No for GCC High and DoD, while the app integration page says shared-channel tab apps are available there.' Cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description and https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels."
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; summary; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-20T23:20:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-20T23:20:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the default or whether an administrator must enable the Planner tab in shared and private channels.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels",
+      "quote": "Open PowerShell and run the following command to disable the Planner tab for shared and private channels in your tenant. The Planner tab is enabled by default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'on'. Replace the repeated default gap with: 'Microsoft Learn states that the Planner tab in shared and private channels is enabled by default; the government-cloud roadmap item remains In development, targeted for January CY2027.' Cite https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels. Remove the corresponding default question."
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The Planner app is included in a Microsoft 365 licence rather than licensed separately for this new tab option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users with a Microsoft 365 license are entitled to the Planner app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Planner admin page says users with a Microsoft 365 licence are entitled to the Planner app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users with a Microsoft 365 license are entitled to the Planner app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Premium Planner capabilities require a premium licence such as Planner Plan 1, Project Plan 3 or Project Plan 5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users with a Planner premium license such as Planner Plan 1, Project Plan 3, or Project Plan 5, can use the premium capabilities in Planner.",
+      "severity": "minor",
+      "fix": "Use: 'Premium capabilities require a Planner premium licence. The Planner admin page names Planner Plan 1, Project Plan 3 and Project Plan 5; the service description now calls the latter plans Planner and Project Plan 3 and Planner and Project Plan 5, and says Plan 5 reached end of sale on May 1, 2026, with existing subscriptions continuing under applicable policies.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description."
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Planner integration with Teams requires a Microsoft Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Teams integration requires a Microsoft Teams license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "No licensing requirement specific to this Planner channel tab is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner shared private channels GCC licensing price meter government; Planner for Microsoft 365 US Government licensing. Read manage-planner-app, microsoft-planner-service-description and disable-planner-tab-shared-private-channels; no tab-specific licence stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "Microsoft has published no government-cloud-specific licence note for this tab.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner shared private channels GCC licensing price meter government; Planner for Microsoft 365 US Government licensing. Read Planner licensing and channel-tab pages and Office 365 Government search excerpts; government plans include Planner but no tab-specific note.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate price or meter for the Planner channel tab.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner shared private channels GCC licensing price meter government. Read manage-planner-app, microsoft-planner-service-description and disable-planner-tab-shared-private-channels; no tab price or meter. The service description's metered Graph APIs are not a tab meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The change is rated none because the existing Planner app entitlement includes its use as a channel tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Planner is available as an app and as a tab in a channel. ... Users with a Microsoft 365 license are entitled to the Planner app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Planner > Block turns off the Planner app for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "In the left pane of the Teams admin center, go to Teams apps > Manage apps. ... To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -IsPlannerAllowed $false turns off Planner for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "Turn off Planner for your organization using PowerShell ... Set-PlannerConfiguration -IsPlannerAllowed $false",
+      "severity": "minor",
+      "fix": "Keep the command. Add: 'The disable-Planner article's heading describes turning off Planner, but its numbered instruction describes turning off Outlook calendar sync; Microsoft's Planner admin FAQ links this article as the organisation-wide Planner disable control.' Cite https://learn.microsoft.com/planner/faq-for-planner-admins in addition to the existing reference."
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Teams > Teams policies > policy > Create private channels is the complete route to editing private-channel creation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-policies",
+      "quote": "Select the policy by clicking to the left of the policy name, and then click Edit. ... Turn on or turn off the settings that you want",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Teams > Teams policies > policy > Edit > Create private channels' in the front matter and rendered table. Keep Teams admin center as the surface and https://learn.microsoft.com/microsoftteams/teams-policies as docs."
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsChannelsPolicy -Identity <policy name> -AllowPrivateChannelCreation $false prohibits private-channel creation under that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+      "quote": "-AllowPrivateChannelCreation: Determines whether a user is allowed to create a private channel. Set this to TRUE to allow. Set this FALSE to prohibit. ... -Identity: Use this parameter to specify the name of the policy being updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Teams > Teams policies > policy > Create shared channels is the complete route to editing shared-channel creation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-policies",
+      "quote": "Select the policy by clicking to the left of the policy name, and then click Edit. ... Create shared channels: When On, team owners can create shared channels.",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Teams > Teams policies > policy > Edit > Create shared channels' in the front matter and rendered table. Keep Teams admin center as the surface and https://learn.microsoft.com/microsoftteams/teams-policies as docs."
+    },
+    {
+      "n": 24,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsChannelsPolicy -Identity <policy name> -AllowSharedChannelCreation $false controls whether team owners can create shared channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+      "quote": "[-AllowSharedChannelCreation <Boolean>] ... Team owners can create shared channels for people within and outside the organization. ... -Identity: Use this parameter to specify the name of the policy being updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Teams > Teams policies > policy > Invite external users to shared channels is the complete route to editing external invitations.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-policies",
+      "quote": "Select the policy by clicking to the left of the policy name, and then click Edit. ... Invite external users to shared channels",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Teams > Teams policies > policy > Edit > Invite external users to shared channels' in the front matter and rendered table. Keep Teams admin center as the surface and https://learn.microsoft.com/microsoftteams/teams-policies as docs."
+    },
+    {
+      "n": 26,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-CsTeamsChannelsPolicy -Identity <policy name> -AllowChannelSharingToExternalUser $false controls external invitations by shared-channel owners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+      "quote": "[-AllowChannelSharingToExternalUser <Boolean>] ... Owners of a shared channel can invite external users to join the channel if Microsoft Entra external sharing policies are configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[3].note; rendered controls table",
+      "type": "behaviour",
+      "claim": "Already-added external members or teams retain channel access when AllowChannelSharingToExternalUser is FALSE.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+      "quote": "If the channel has been shared with an external member or team, they will continue to have access to the channel even if this parameter is set to FALSE.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Blocking Planner in Manage apps is an organisation-wide Teams app control, not a control limited to shared or private channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "You can turn off or turn on the app at the org level on the Manage apps page in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The disable-Planner PowerShell article is addressed to a global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The organisation-wide PowerShell disable article covers basic plans in Teams and Web and all plans in other Planner endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "This article applies to: Basic plans in the Planner app in Teams and Web; All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Teams policy changes may take 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-policies",
+      "quote": "After you edit the global policy or assign a policy, it may take 24 hours for changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The channel-policy page says organisation-available Teams apps are available in shared channels when Create shared channels is on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-policies",
+      "quote": "Create shared channels: When On, team owners can create shared channels. Teams apps that are available for your organization are also available in shared channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Planner admin page points to a custom app permission policy for allowing or blocking Planner for specific users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "To allow or block specific users in your organization from using Planner, make sure Planner is turned on for your organization on the Manage apps page, and then create a custom policy for app permissions and assign it to those users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe Planner tabs in shared and private channels yet.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels",
+      "quote": "You can disable the Planner tab in shared and private channels for your tenant by using Windows PowerShell. Disabling this tab blocks users from accessing existing plans created in shared and private channels",
+      "severity": "blocker",
+      "fix": "Replace with: 'Microsoft Learn documents the Planner tab in shared and private channels, including its default and disable command. The government-cloud roadmap item remains In development, targeted for January CY2027.' Cite https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels."
+    },
+    {
+      "n": 35,
+      "where": "What's changing: private-channel documentation",
+      "type": "availability",
+      "claim": "The private-channel admin page states that private channels do not support Planner tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/private-channels",
+      "quote": "Private channels don't support connectors and tabs in Stream, Planner, Tasks by Planner and To Do, and Forms.",
+      "severity": "minor",
+      "fix": "Keep the attribution, but add: 'This limitation differs from the Planner channel-tab article, which documents an enabled-by-default Planner tab in shared and private channels.' Cite https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels; do not treat the old limitation as a complete description of current behaviour."
+    },
+    {
+      "n": 36,
+      "where": "What's changing: Teams service description",
+      "type": "availability",
+      "claim": "The Teams service description states that Planner is not currently available in private channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Planner isn't currently available to access in private channels.",
+      "severity": "minor",
+      "fix": "Retain this as an attributed documentation discrepancy, not a settled current limitation. The same sentence added for the private-channel admin page can report that https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels documents the Planner tab and its enabled default."
+    },
+    {
+      "n": 37,
+      "where": "What's changing: shared-channel supported-app list; Scope: Related",
+      "type": "absence",
+      "claim": "Planner is absent from the shared-channel page's supported-app list, whose notes say several listed apps are unavailable in DoD and GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/shared-channels",
+      "quote": "The following apps are supported for use in shared channels. ... Several of these apps are not available in DOD and GCCH environments. ... Activity ... Tasks in a Box ... Zoho Projects",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; rationale: cost; rationale: impact",
+      "type": "behaviour",
+      "claim": "Planner can already be used as a tab in a standard Teams channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users can access Planner as an app on the left side of Teams and as a tab in a channel within individual teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Only members added to a shared or private channel can participate in it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
+      "quote": "Only members you add to the channel can participate in shared and private channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Shared channels can include external people through Microsoft Entra B2B direct connect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/shared-channels",
+      "quote": "you can invite people outside your organization to participate in a shared channel by using Microsoft Entra B2B direct connect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Planner admin page states that basic-plan task attachments are stored in the group's SharePoint location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Basic plans and the tasks in them ... Attachments on these types of tasks are stored in the SharePoint location for the group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Private and shared channels have their own SharePoint sites rather than sharing the parent team's site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
+      "quote": "Unlike standard channels, which share a SharePoint site with the team, private and shared channels have their own SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether a shared/private-channel plan's attachments use the team site or the channel site.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner shared private channel plans existing plans attach attachments storage external participants membership; site:learn.microsoft.com/planner \"channel\" \"attachments\". Read Planner security, Planner admin app storage and channel site docs; no channel-plan site mapping stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No identity or permission model is documented for this change.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Users authenticate via Microsoft Entra ID ... Within Planner, each Plan is inside a container, and access to the plan is defined by the container. ... Plans can be inside other types of containers, like a Meeting or a Channel",
+      "severity": "blocker",
+      "fix": "Replace the bullet with: 'Planner users authenticate through Microsoft Entra ID. Plan access is defined by its container; Microsoft says channel-contained plans use the channel's membership.' Cite https://learn.microsoft.com/planner/planner-security-privacy-compliance."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Governance guidance; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented how channel-plan membership relates to channel membership or who can see the plan.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Within Planner, each Plan is inside a container, and access to the plan is defined by the container. ... Plans can be inside other types of containers, like a Meeting or a Channel, and will use the membership defined by those containers.",
+      "severity": "blocker",
+      "fix": "Replace the membership gap throughout with: 'Access to a channel-contained plan follows the channel's membership, according to Microsoft's Planner security documentation.' Cite https://learn.microsoft.com/planner/planner-security-privacy-compliance. Remove the question implying that the membership relationship is wholly undocumented; retain pilot testing as advice."
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether external channel participants can open or edit the plan.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Plans can be inside other types of containers, like a Meeting or a Channel, and will use the membership defined by those containers. Generally, the members of a container can create, update, and delete the tasks in the plan.",
+      "severity": "blocker",
+      "fix": "Replace with: 'Channel-contained plans use channel membership. Microsoft says container members can generally create, update and delete tasks, with further restrictions possible through Business Scenarios API customizations. Test external participants in the pilot.' Cite https://learn.microsoft.com/planner/planner-security-privacy-compliance; remove the blanket claim that access and editing are undocumented."
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether plans created elsewhere can be attached to these channels, or only new channel plans created.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner shared private channel plans existing plans attach; site:learn.microsoft.com/planner \"channel\" \"existing plans\". Read disable-planner-tab-shared-private-channels and Planner app docs; existing plans created FROM channels are described, not attaching plans created elsewhere.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Scope: Rollout",
+      "type": "absence",
+      "claim": "No source states that existing plans or channels are migrated or changed, or supplies a government-cloud rollout window beyond the roadmap target.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner shared private channels tab admin setting PowerShell AllowTeamsChannelContainerAccess rollout automatic; Planner shared private channel plans existing plans attach. Read roadmap, Planner tab disable and app docs; no government rollout window or existing-content migration stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Platforms",
+      "type": "behaviour",
+      "claim": "The Planner admin page notes limited functionality in Teams mobile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "There's limited functionality when using the Planner app on Teams mobile. On mobile, users will only see plans that are added to a tab in a channel within a team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Prerequisites",
+      "type": "default",
+      "claim": "The Planner app as a whole is enabled by default for all Teams users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Planner is enabled by default for all Teams users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "The Planner app must be allowed in the tenant to use it in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "To allow or block specific users in your organization from using Planner, make sure Planner is turned on for your organization on the Manage apps page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Prerequisites",
+      "type": "role",
+      "claim": "Users need a policy allowing them to create shared or private channels to use the Planner tab.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Planner tab shared private channels prerequisites users create channel policy access plans. Read teams-policies, private-channels, shared-channels and Planner tab disable docs; creation policies govern channel creation, not every member's use of an existing channel plan.",
+      "severity": "blocker",
+      "fix": "Replace with: 'Teams channel policies control who can create private or shared channels; these are channel-creation controls, not documented prerequisites for every plan user.' Cite https://learn.microsoft.com/microsoftteams/teams-policies."
+    },
+    {
+      "n": 53,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Teams using private or shared channels have had to keep their task plans elsewhere.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Planner tab shared private channels prerequisites users create channel policy access plans; Planner shared private channel plans existing plans attach. Read channel limitations and Planner tab disable docs; no historical period or universal requirement to keep plans elsewhere stated.",
+      "severity": "major",
+      "fix": "Remove 'have had to keep their task plans elsewhere'. Keep the supported forward-looking statement: 'The roadmap plans task creation and management directly within shared and private channels.'"
+    },
+    {
+      "n": 54,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The new tab moves task titles, notes and attachments into the channel space.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Planner shared private channel plans existing plans attach attachments storage external participants membership; site:learn.microsoft.com/planner \"channel\" \"attachments\". Read roadmap, Planner security and storage docs; no movement of notes or attachments into channels stated.",
+      "severity": "major",
+      "fix": "Replace with: 'This brings task creation and management into a channel whose membership can differ from the parent team's.' Do not imply a storage migration or confirmed attachment capability for this channel-plan type."
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Nothing acts autonomously in this feature.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Planner tab shared private channels autonomous actions automation. Read roadmap, Planner app, channel-tab disable and security docs; these describe task management but do not state an absolute absence of automated actions.",
+      "severity": "major",
+      "fix": "Remove 'No change' and 'nothing acts on its own'. Retain: 'The roadmap describes a tab for creating and managing tasks directly within the channel.'"
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no setting specific to the Planner tab in shared or private channels.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels",
+      "quote": "Set-PlannerConfiguration -AllowTeamsChannelContainerAccess $false ... Disabling this experience blocks access to: Any existing plans created from shared and private channels; Creation of new plans from shared and private channels",
+      "severity": "blocker",
+      "fix": "Replace the absence sentence with: 'Microsoft documents the tenant-wide command Set-PlannerConfiguration -AllowTeamsChannelContainerAccess $false to disable Planner tabs in shared and private channels. It blocks access to existing plans created from those channels and creation of new plans there; $true re-enables the experience.' Cite https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels. Do not substitute the broader IsPlannerAllowed switch for this narrower operation."
+    },
+    {
+      "n": 57,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The action rating review describes an optional capability that needs no decision before automatic arrival.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"review\"; risk: \"medium\"; targetDate: \"January CY2027\". Schema: act-now applies when the change arrives without admin action, is targeted within about 60 days, and has a control or decision before arrival.",
+      "severity": "minor",
+      "fix": "Set action to 'act-now': the January target is within about 60 days of November 26, 2026, Microsoft documents an enabled default and a disabling control, and the page rates risk medium."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T10:10:57.333Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=581866",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/private-channels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/shared-channels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/disable-planner",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Planner app is available in Teams for the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Planner",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the Planner app is available in Teams for the organisation",
+        "docs": "https://learn.microsoft.com/planner/disable-planner",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can create private channels",
+        "docs": "https://learn.microsoft.com/microsoftteams/teams-policies",
+        "reachable": true,
+        "segments": [
+          "Teams",
+          "Teams policies",
+          "Create private channels"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can create private channels",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsChannelsPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether team owners can create shared channels",
+        "docs": "https://learn.microsoft.com/microsoftteams/teams-policies",
+        "reachable": true,
+        "segments": [
+          "Teams",
+          "Teams policies",
+          "Create shared channels"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether team owners can create shared channels",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsChannelsPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether shared channel owners can invite people from outside the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/teams-policies",
+        "reachable": true,
+        "segments": [
+          "Teams",
+          "Teams policies",
+          "Invite external users to shared channels"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether shared channel owners can invite people from outside the organisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsChannelsPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

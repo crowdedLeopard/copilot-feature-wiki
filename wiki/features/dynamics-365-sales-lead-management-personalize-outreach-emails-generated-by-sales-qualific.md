@@ -85,15 +85,17 @@ changes:
     note: "New briefing: admin-written personalisation guidance for Sales Qualification Agent outreach emails, with Learn still marked as preview."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 65
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -196,10 +198,10 @@ cost: Variable. Sales agent capabilities bill per use through Copilot Studio mes
 impact: Medium. Sales admins write the guidance, and the roadmap says it is enabled by admins, makers or marketers for end users; leads the agent emails receive text shaped by it.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions; Governance guidance: After rollout; rationale: risk / behaviour: Learn describes message length and formatting preferences as targets rather than rigid constraints. | Found: These are preferences that guide the agent's output. The agent uses them as targets rather than rigid constraints. | Fix: Replace the After rollout bullet with 'Read a sample of generated emails against the banned words, length and formatting rules. Learn describes message length and formatting preferences as targets rather than rigid constraints.' In the risk rationale, replace 'so a banned word or limit is not a guaranteed block' with 'so a length or formatting preference is not a guaranteed block'. The targets statement covers message length and formatting, not banned words: https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-email-personalization#set-message-length-and-formatting-preferences. | Source: https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-email-personalization
-- [supported, minor] front matter: licensing.model; summary; Why it matters; Cost and licensing; rationale: cost / licensing: The Sales Qualification Agent's AI-generated initial outreach emails consume billed capacity, supporting consumption licensing. | Found: The Sales Qualification Agent uses Copilot Studio capacity for research, matching the target customer profile, and generating the initial outreach email. | Fix: Add https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-faq to sources and cite its 'What activities consume Copilot Studio capacity?' section for the claim that generating outreach emails consumes capacity. | Source: https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-faq
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist directs readers to check billing and capacity and configure custom Lead-field tokens, but neither control has a table row. | Found: Confirm the billing model for the agent (prepaid capacity or pay-as-you-go) and the linked Power Platform environment before more emails are generated. / Add only the `Lead` table fields you intend to appear in emails as custom personalisation tokens (maximum 3). | Fix: Remove the Before rollout bullet beginning 'Confirm the billing model', the At rollout bullet beginning 'Add only the `Lead` table fields', and the After rollout bullet beginning 'Review consumption against the capacity'. Those checklist controls have no table row; retain their factual discussion in Cost and licensing and Risk assessment. Do not add rows as part of this correction.
+- [supported, minor] front matter: licensing.model; summary; Why it matters; rationale: cost / licensing: AI-generated initial outreach emails consume billed Copilot Studio capacity, supporting the consumption licensing model and variable cost. | Found: The Sales Qualification Agent uses Copilot Studio capacity for research, matching the target customer profile, and generating the initial outreach email. | Fix: Add https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-faq to sources and cite its 'What activities consume Copilot Studio capacity?' section for the statement that generating initial outreach emails consumes capacity. | Source: https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-faq
+- [supported, minor] Risk assessment: Autonomy & actions; Governance guidance: After rollout; rationale: risk / behaviour: Learn describes message length and formatting as targets rather than rigid constraints. | Found: These are preferences that guide the agent's output. The agent uses them as targets rather than rigid constraints. | Fix: Replace the After rollout bullet with 'Read a sample of generated emails against the banned words, length and formatting rules. Learn describes message length and formatting preferences as targets rather than rigid constraints.' In the risk rationale, replace 'so a banned word or limit is not a guaranteed block' with 'so a length or formatting preference is not a guaranteed block'. The quoted targets passage is in the 'Set message length and formatting preferences' section and does not describe banned words. | Source: https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-email-personalization
+- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist directs readers to check billing and capacity and configure custom Lead-field tokens, but these controls have no table row. | Found: Confirm the billing model for the agent (prepaid capacity or pay-as-you-go) and the linked Power Platform environment / Add only the Lead table fields you intend to appear in emails as custom personalisation tokens / Review consumption against the capacity you assigned | Fix: Remove the Before rollout bullet beginning 'Confirm the billing model', the At rollout bullet beginning 'Add only the `Lead` table fields', and the After rollout bullet beginning 'Review consumption against the capacity'. These checklist controls have no table row; retain the factual discussion elsewhere. Do not add rows as part of this correction.
 -->

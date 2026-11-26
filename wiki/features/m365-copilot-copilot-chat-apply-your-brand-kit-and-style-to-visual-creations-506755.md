@@ -43,6 +43,9 @@ sources:
   - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
     url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
     kind: "learn"
+  - title: "Microsoft Copilot requirements"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
+    kind: "learn"
   - title: "Whether supported image-generation experiences in Copilot are allowed (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/copilotpolicysetting-update"
     kind: "learn"
@@ -102,19 +105,23 @@ changes:
     note: "New briefing for the iOS roadmap item, covering the brand kit policies, the image generation setting and the licence gate."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the governance checklist: removed the claim that brand manager group membership alone grants publishing rights and the group-membership steps; cited the Copilot requirements page for iPhone and iPad."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "479a8d5a9a04581ee0a5854a56d1a371"
+  contradicted: 0
+  attempts: 0
+  hash: "f440ea93d0abacd5214eec50f0205a63"
 ---
 
 ## What's changing
@@ -166,7 +173,7 @@ Microsoft has not stated the iOS default. No source says existing behaviour chan
 ## Governance guidance
 
 ### Before rollout
-- Decide who may publish official brand kits, put them in a mail-enabled security group, and set **Elevated role for Brand Managers** in the Microsoft 365 Apps admin center (Office Apps admin).
+- Decide who may publish official brand kits and set **Elevated role for Brand Managers** in the Microsoft 365 Apps admin center (Office Apps admin).
 - Decide whether to limit personal brand kits, and if so set **Restrict brand kit creation** to a second mail-enabled security group.
 - Check which iOS users hold a Microsoft 365 Copilot licence, since the roadmap item ties applying a brand kit to it.
 - Confirm whether the **Copilot image generation** setting in the Microsoft 365 admin center allows or prevents image generation for your tenant, and that this matches your intent for visuals in Copilot Chat.
@@ -178,7 +185,6 @@ Microsoft has not stated the iOS default. No source says existing behaviour chan
 
 ### After rollout
 - Allow up to 24 hours after any brand kit policy change before reporting a fault.
-- Review the membership of the brand manager group on a fixed schedule, since membership alone grants publishing rights.
 
 ## Governance controls
 
@@ -209,11 +215,8 @@ cost: Low. The roadmap item ties applying a brand kit to a Microsoft 365 Copilot
 impact: Medium. iPhone and iPad users who make posters, infographics or images in Copilot Chat see new choices, and the people your organisation names as brand managers gain a publishing role.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: After rollout, second bullet / role: Membership of the brand manager group alone grants publishing rights. | Found: The policies are independent. To publish a personal brand kit as an official brand kit, a user must satisfy both policy checks. C | No | Yes | Can't create or edit brand kits because the creation policy requirement isn't satisfied. | Fix: Replace 'since membership alone grants publishing rights' with 'since publishing a personal brand kit as official requires satisfying both brand kit policy checks'. This also resolves the conflict with Risk assessment and Governance controls. Source: https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets. | Source: https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist tells administrators to configure and review group membership without a group-membership control row. | Found: Before rollout: 'put them in a mail-enabled security group'; After rollout: 'Review the membership of the brand manager group'. The controls table has brand kit policy, image generation and licence assignment rows, but no group-management row. | Fix: The instruction to put publishers in a mail-enabled security group and the After rollout membership-review step have no group-management row. Remove those checklist instructions; retain the documented group prerequisites in Scope and the policy configuration instructions.
-- [supported, minor] What's changing; Why it matters; Scope: Users; rationale: impact / availability: The iOS mobile surface discussed here includes iPhone and iPad. | Found: The Microsoft Copilot app is supported on the following operating systems: Mobile devices: iPhone: iOS 16.0 or later iPad: iPadOS 16.0 or later | Fix: Add https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements to sources for the iPhone and iPad mobile-surface statement; continue to describe this feature's availability as planned under the iOS roadmap item. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Generating a visual in response to a user request is existing mobile Copilot Chat behaviour, not newly autonomous behaviour introduced here. | Found: Image generation in mobile Copilot chat [Android, iOS] ... Create images using natural language to visualize concepts and ideas within the flow of work, directly in Copilot on Microsoft 365, Teams, and Outlook mobile apps. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes to sources and cite its May 13, 2025 mobile image-generation entry after the sentence beginning 'No change:'. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes
 -->

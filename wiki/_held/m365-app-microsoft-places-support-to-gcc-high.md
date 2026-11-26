@@ -18,7 +18,7 @@ defaultState: "on"
 action: "act-now"
 licensing:
   model: "mixed"
-  notes: "Core features are available with the user plans on Microsoft's Places licence page; individual desk booking, autorelease and occupancy reports need a per-space licence (MTR, MTSS or MTSS-SS); Copilot room booking needs a Microsoft Copilot licence. Government plans are not named on that page."
+  notes: "Core features come with the user plans on Microsoft's Places licence page. Individual desk booking, autorelease and occupancy reports use MTSS or MTSS-SS for individual desks; room autorelease and occupancy reports use MTR, MTSS or MTSS-SS. Active Teams Premium subscriptions keep premium features until renewal. Copilot room booking needs a Microsoft Copilot licence."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["microsoft-places","outlook","teams","exchange","powershell","licensing","privacy","gcc-high"]
 sources:
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "License requirements"
     url: "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements"
+    kind: "learn"
+  - title: "Frequently Asked Questions"
+    url: "https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions"
     kind: "learn"
   - title: "Set-PlacesSettings"
     url: "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings"
@@ -118,19 +121,23 @@ changes:
     note: "New briefing: Microsoft Places for GCC High, with its PowerShell feature switches, admin roles and the April 2026 per-space licensing."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: work-location sharing is each user's choice; added the Teams Premium transition until renewal and the per-space licence split for rooms and desks; PowerShell 7.4.0 minimum; Room finder remains the default; removed the audit-search step."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 93 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 72
+  claims: 93
+  confirmed: 92
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "f0bc813ee0ebd4a3decc30f5b7ad7c5a"
+  contradicted: 1
+  attempts: 2
+  hash: "7771379cacb31e9110b70bbfc831feaf"
 ---
 
 ## What's changing
@@ -143,14 +150,14 @@ The roadmap item is **In development**, release phase General Availability, targ
 
 ## Why it matters
 
-For GCC High tenants this is a new data flow between colleagues: work plans and workplace presence exist so that coworkers can see when someone plans to be in the office and who is in that day. In organisations handling Controlled Unclassified Information, staff whereabouts can itself be sensitive, so expect security and works-council-style questions before users start setting work plans.
+For GCC High tenants this is a new data flow between colleagues: work plans and workplace presence exist so that coworkers can see when someone plans to be in the office and who is in that day, for users who choose to share their work location in Teams and Outlook calendar settings. In organisations handling Controlled Unclassified Information, staff whereabouts can itself be sensitive, so expect security and works-council-style questions before users start setting work plans.
 
 If nobody acts, the documented default means the Places app reaches every user, while building-level features stay dark until someone builds the directory. The controls are not in an admin centre: they are Set-PlacesSettings parameters in the MicrosoftPlaces PowerShell module, and a change can take up to 12 hours to take effect, so decide and script the settings before the December target rather than after users find the app.
 
 ## Risk assessment
 
 **Data exposure**
-- Work plans and workplace presence publish each user's planned and actual office days to colleagues. `EnablePlacesWebApp` and `EnableBuildings` govern the app and building-level locations; Microsoft points to mailbox calendar configuration for whether users can make their work location visible to others.
+- Users choose whether to share their work location with coworkers in Teams and Outlook calendar settings; when sharing is enabled, coworkers can see manually or automatically set work-location signals ([Places FAQ](https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions)). `EnablePlacesWebApp` and `EnableBuildings` govern the app and building-level locations; Microsoft points to mailbox calendar configuration for whether users can make their work location visible to others.
 - Places analytics shows planned versus actual occupancy of buildings, rooms and desk pools. It is off by default (`SpaceAnalyticsEnabled`), and Microsoft recommends enabling it only for users who need occupancy information.
 
 **Security & identity**
@@ -162,13 +169,13 @@ If nobody acts, the documented default means the Places app reaches every user, 
 
 **Change & support**
 - Users with mailboxes on Exchange on-premises cannot use the Places app or Places finder; work location changes they make in Teams are visible only to themselves. Expect help-desk calls in hybrid tenants.
-- Microsoft says it is evaluating deprecation of Room finder and recommends adopting Places finder.
+- Microsoft says it is evaluating deprecation of Room finder and recommends adopting Places finder. The Places FAQ also says Room finder remains available and continues to be the default experience in the Outlook and Teams calendar.
 
 ## Cost and licensing
 
 **User licence.** Microsoft's [Places licence page](https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements) lists Microsoft 365 Business Basic, Standard and Premium; Microsoft 365 or Office 365 E1, E3 and E5; Education A1, A3 and A5; frontline F1 and F3; and Teams Enterprise, Essentials and standalone. Core features (work plans, workplace presence, room and workspace booking, Places finder, Places explorer, analytics with limitations) come with those plans. The page names no government plans, so which GCC High plans carry Places is not yet published.
 
-**Space licences.** As of April 1, 2026, individual desk booking, autorelease and occupancy reports moved to a per-space model: rooms need an MTR, MTSS or MTSS-SS licence, and individual desks an MTSS or MTSS-SS licence. Microsoft says three free MTSS-SS licences come with each purchased MTSS licence, except where the MTSS licence is used on a common area phone.
+**Space licences.** As of April 1, 2026, individual desk booking, autorelease and occupancy reports moved to a per-space model: rooms need an MTR, MTSS or MTSS-SS licence, and individual desks an MTSS or MTSS-SS licence. Customers with active Teams Premium subscriptions continue to enjoy premium features until renewal. Microsoft says three free MTSS-SS licences come with each purchased MTSS licence, except where the MTSS licence is used on a common area phone.
 
 **AI features.** Quick book and Copilot room booking need a Microsoft Copilot licence.
 
@@ -180,14 +187,14 @@ If nobody acts, the documented default means the Places app reaches every user, 
 - **Platforms:** Desktop and Web per the record. Learn says the Places app is on the web and on desktop and mobile as a connected app inside Outlook, Teams and the Microsoft 365 app; work plans and Places finder also appear in the calendar in new Outlook and Teams.
 - **Users:** holders of the plans on the licence page; users need a mailbox in Exchange Online.
 - **Admin roles:** Places Administrator (assigned in the Microsoft 365 admin center or Microsoft Entra), Places Building Administrator and Places Desk Administrator (assigned in Exchange Online). Running Set-PlacesSettings needs the Exchange MailRecipients and Places TenantPlacesManagement roles.
-- **Prerequisites:** PowerShell 7 and the MicrosoftPlaces module; a buildings and floors hierarchy for most features.
+- **Prerequisites:** PowerShell 7.4.0 or later and the latest MicrosoftPlaces module; a buildings and floors hierarchy for most features.
 
 ## Governance guidance
 
 ### Before rollout
 - Decide with security and HR whether GCC High users should share work plans and in-office presence, and whether the Places app should be on for everyone or nobody at arrival.
 - Assign the Places Administrator role to the facilities or workplace admins who will run Places, instead of using Global Administrator or Exchange Administrator.
-- Install PowerShell 7 and the MicrosoftPlaces module, and confirm the admin running Set-PlacesSettings holds the MailRecipients and TenantPlacesManagement roles.
+- Install PowerShell 7.4.0 or later and the latest MicrosoftPlaces module, and confirm the admin running Set-PlacesSettings holds the MailRecipients and TenantPlacesManagement roles.
 - Create mail-enabled security groups for pilot users of Places finder and for analytics viewers.
 
 ### At rollout
@@ -198,7 +205,6 @@ If nobody acts, the documented default means the Places app reaches every user, 
 
 ### After rollout
 - Limit `SpaceAnalyticsEnabled` to facilities managers who need occupancy data.
-- Search the audit log for Places directory activities (Created a place, Updated a place, Deleted a place) to review admin changes.
 - Buy space licences only for rooms and desks that need desk booking, autorelease or occupancy reports.
 
 ## Governance controls
@@ -229,19 +235,16 @@ Turning Places off for the whole organisation takes two steps, per Microsoft: se
 - Does group scoping work for `EnablePlacesWebApp` and `EnableBuildings`, given the conflicting Learn pages?
 
 <!-- rationale
-risk: Medium. Work plans and workplace presence let colleagues see when someone is in the office; the Places app setting is documented as on by default, and the switches that limit it are PowerShell-only settings an admin has to set.
-cost: Low. Core Places features come with the Microsoft 365, Office 365 and Teams plans Microsoft lists; desk booking, autorelease and occupancy reports need space licences, and which GCC High plans carry Places is not yet published.
+risk: Medium. Users who share their work location let colleagues see when they are in the office; the Places app setting is documented as on by default, and the switches that limit it are PowerShell-only settings an admin has to set.
+cost: Low. Core Places features come with the Microsoft 365, Office 365 and Teams plans Microsoft lists; desk booking, autorelease and occupancy reports need space licences (active Teams Premium subscriptions keep premium features until renewal), and which GCC High plans carry Places is not yet published.
 impact: Medium. Users may see the Places app in Outlook, Teams and the Microsoft 365 app, but buildings, Places finder and analytics are off until an admin configures them, so most of the change is felt by facilities teams and admins.
 -->
 
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Why it matters; rationale: risk / behaviour: Work plans and workplace presence publish each user's planned and actual office days to colleagues. | Found: Users choose whether to share their work location with coworkers in Teams and Outlook calendar settings. When sharing is enabled, coworkers can see work-location signals (in the office, in a specific building, or remote), whether the location was set manually or automatically. | Fix: Replace the first Data exposure sentence with 'Users choose whether to share their work location with coworkers in Teams and Outlook calendar settings; when sharing is enabled, coworkers can see manually or automatically set work-location signals.' Cite https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions. Retain the narrower work-plan scheduling description elsewhere. | Source: https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions
-- [contradicted, blocker] Cost and licensing: Space licences; front matter: licensing.notes; rationale: cost / licensing: Individual desk booking, autorelease and occupancy reports moved to per-space licensing on April 1, 2026, without an exception for continuing Teams Premium subscriptions. | Found: Individual desk booking shifts from a per-user to a per-space licensing model. To ensure a smooth transition, customers with active Teams Premium subscriptions continue to enjoy premium features until renewal. | Fix: Add to the April 1, 2026 licensing statement: 'Customers with active Teams Premium subscriptions continue to enjoy premium features until renewal.' Add the same transition qualification to licensing.notes and the cost rationale where they state a space licence is required. Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Space licences / licensing: The licensing notes list MTR, MTSS or MTSS-SS as alternatives for individual desk booking as well as autorelease and occupancy reports. | Found: Room | Autorelease, Occupancy reports | MTR, MTSS or MTSS-SS; Individual desk | Booking, Autorelease, Occupancy reports | MTSS or MTSS-SS | Fix: Replace the per-space clause in licensing.notes with 'Individual desk booking, autorelease and occupancy reports use MTSS or MTSS-SS for individual desks; room autorelease and occupancy reports use MTR, MTSS or MTSS-SS.' Preserve the transition qualification specified for the April 2026 statement. The body already distinguishes the permitted licences correctly. Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements
+- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: A low cost rating represents the briefing's documented space and Copilot licence costs. | Found: cost: "low" Cost scale: low = indirect cost only: admin time, communications, training. Page: rooms need an MTR, MTSS or MTSS-SS licence, and individual desks an MTSS or MTSS-SS licence. Page: Quick book and Copilot room booking need a Microsoft Copilot licence. | Fix: Set cost to 'medium' and replace its rationale with 'Medium. Core Places features are included in the listed user plans, but individual desk booking, autorelease, occupancy reports and AI features can require additional licences. GCC High entitlement is not yet published.' This keeps the stated mixed licensing and the documented potential direct costs consistent with the assessment scale.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: Microsoft says it is evaluating Room finder deprecation and recommends adopting Places finder. | Found: Because we are evaluating deprecation of the Room finder experiences, we highly recommend adopting Places finder to reduce future migration costs. | Fix: Add: 'The Places FAQ also says Room finder remains available and continues to be the default experience in the Outlook and Teams calendar.' Cite https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions, whose answer to 'Is Room finder going away?' begins 'No.' | Source: https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings
-- [supported, minor] Scope: Prerequisites; Governance guidance: Before rollout; Why it matters / behaviour: Places administration uses PowerShell 7 and the MicrosoftPlaces module. | Found: Make sure that you're using PowerShell 7.4.0 or later and the latest version of the MicrosoftPlaces PowerShell module. Then connect to Microsoft Places by running Connect-MicrosoftPlaces. | Fix: Change 'PowerShell 7 and the MicrosoftPlaces module' in prerequisites and setup advice to 'PowerShell 7.4.0 or later and the latest MicrosoftPlaces module', preserving Microsoft's published minimum version. Source: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist instructs readers to search Places directory audit activities, but the controls table has no audit-search row. | Found: Search the audit log for Places directory activities (Created a place, Updated a place, Deleted a place) to review admin changes. The six table rows cover app access, buildings, finder, analytics, Places Enhanced and Places Administrator assignments. | Fix: The After rollout audit-search step has no corresponding controls row. Remove that checklist step; retain the sourced statement about recorded Places Directory activities in Governance controls. Do not add a new control row as part of this correction.
+- [supported, minor] controls[5].ui / admin-path: Roles > Role assignments > Exchange > Places Administrator > Assigned reaches the Places Administrator assignment list in Microsoft 365 admin center. | Found: Go to Roles > Role assignments. Under the Exchange tab, select Places Administrator, then go to the Assigned tab. Add users to the role. | Fix: Extend controls[5].ui.path and the rendered path to 'Roles > Role assignments > Exchange > Places Administrator > Assigned > Add users'. The present path stops on the correct assignment list before the documented action that changes membership. | Source: https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins
+- [supported, minor] licensing.notes; Cost and licensing; rationale: cost / licensing: Active Teams Premium subscriptions keep Places premium features until renewal. | Found: To ensure a smooth transition, customers with active Teams Premium subscriptions continue to enjoy premium features until renewal. | Fix: Replace the transition sentence and corresponding licensing notes/rationale with 'Customers who purchased Teams Premium before April 1, 2026 can continue using Places premium capabilities until renewal.' The cited FAQ gives this narrower eligibility condition: https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements
 -->

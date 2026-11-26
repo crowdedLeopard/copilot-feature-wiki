@@ -68,7 +68,7 @@ sources:
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites"
     kind: "learn"
 videos: []
-related: ["work-iq-a2a-and-mcp-long-running-tasks","m365-copilot-agent-lifecycle-management-rules","work-iq-agent-policy-governance","agent-identity","mcp"]
+related: ["a2a","declarative-agents","agent-registry","agent-identity","mcp"]
 controls:
   - governs: "Whether an Agent2Agent agent is installed for users or groups"
     scope: "tenant"
@@ -105,7 +105,7 @@ controls:
     note: "General control: Microsoft has not confirmed it applies to Agent2Agent agents. The API is in preview, uses the CopilotPackages.ReadWrite.All delegated permission and requires an Agent 365 licence."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-17"
@@ -140,19 +140,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 83 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 89 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-26"
+    note: "Corrected the Agent 365 service description sentence: admin agent governance actions, including approval, are now listed as a core capability included with a Microsoft cloud subscription."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+version: 7
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 88
-  unconfirmed: 1
+  claims: 93
+  confirmed: 93
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "ce3b5ccf6ea39cc755d480d3e5b0915a"
+  attempts: 0
+  hash: "09a9a840acdc00710861c554f1c61ff2"
 ---
 
 ## What's changing
@@ -195,7 +199,7 @@ Microsoft documents Copilot agent access through Microsoft 365 Copilot licensing
 
 Microsoft Learn says Microsoft Agent 365 is licensed on a per-user basis and that at least one user must hold a qualifying Agent 365 licence to enable Agent 365 (Overview of Microsoft Agent 365). Microsoft 365 E7 includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365 and the Microsoft Entra Suite (Agent management in Microsoft 365 admin center). The Package Management API, used in the review and block rows below, requires an Agent 365 licence.
 
-Whether an A2A agent you install carries its own charge, and whether using it counts against Copilot Credits, is not published at the time of writing (November 2026). The Agent 365 service description lists basic governance actions, including approval, as included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans. The agent-management roles page lists AI Administrator and Global Administrator for management actions, and Global Reader as read-only.
+Whether an A2A agent you install carries its own charge, and whether using it counts against Copilot Credits, is not published at the time of writing (November 2026). The current Agent 365 service description lists admin agent governance actions, including approval, as a core capability included with a Microsoft cloud subscription. The agent-management roles page lists AI Administrator and Global Administrator for management actions, and Global Reader as read-only.
 
 ## Scope
 
@@ -253,13 +257,8 @@ cost: Variable. Copilot agent access can use pay-as-you-go billing measured in C
 impact: Medium. Administrators and developers who build declarative agents notice first, then users who are given an approved Agent2Agent agent and a declarative agent that connects to it.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing / licensing: The Agent 365 service description lists basic governance actions, including approval, as included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans. | Found: Searched: 'Agent 365 Basic governance Enterprise Front Line'; 'Agent 365 approval Business Education Front Line Worker'. Read the cited service description's full table: it now says 'Core capability included with Microsoft cloud subscription', not the named-plan list. | Fix: Replace the sentence with: 'The current Agent 365 service description lists admin agent governance actions, including approval, as a core capability included with a Microsoft cloud subscription.' Keep https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 as the citation; its current table gives 'Yes' for that row under 'Core capability included with Microsoft cloud subscription'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: External Agent 365 registrations declare authentication through an authorization object referencing an existing authentication registration. | Found: the registration references an existing authentication registration through the authorization object in the agentRegistration. | Fix: Add: 'The connection guide calls this object authorization, while the Agent Registration API resource reference names it a2aAuthorization.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/resources/agentregistration, which states: 'Authorization configuration used to invoke an Agent2Agent server.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: An agent can connect to up to 10 other agents. | Found: Limit - An agent can connect to up to 10 other agents. | Fix: Add: 'The agent-details page instead describes this as up to 10 connections excluding those added by the agent maker.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#connected-agents, which states: 'You can connect up to 10 agents to the selected agent, excluding those added by the agent's maker.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] Risk assessment: Change & support; Governance controls / behaviour: For primary agents other than Researcher and Sales, administrators can view developer-configured connections but cannot add or remove them. | Found: For other agents, you can view the connections configured by the agent developer, but you can't add or remove them. | Fix: Add: 'The agent-details page gives broader guidance: depending on how the agent maker connected the agents, administrators might be able to remove them; the dedicated connected-agents page says developer-configured connections cannot be removed.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#connected-agents. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] Cost and licensing; rationale: cost / cost: Pay-as-you-go Copilot agent consumption is measured in Copilot Credits. | Found: Usage-based billing (pay-as-you-go) - Tenants can enable agent access without a full license, with some limitations to agent configuration options. Consumption is measured in Copilot Credits. | Fix: Add: 'Microsoft's Copilot pay-as-you-go meters page instead describes a Copilot Studio message meter at $0.01 per message; the prerequisites page describes consumption in Copilot Credits.' Cite https://learn.microsoft.com/microsoft-365/copilot/pay-as-you-go/meters, which states 'Any agent or custom Copilot usage is billed through Copilot Studio message meter.' Do not describe the message rate as an A2A-specific rate. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites
+- [supported, minor] Risk assessment: Security & identity / behaviour: An external Agent 365 registration declares Copilot authentication through an authorization object referencing an existing authentication registration. | Found: the registration references an existing authentication registration through the authorization object in the agentRegistration. | Fix: Keep the cited explanation, but append: 'The preview agentRegistration resource reference instead names a2aAuthorization as the optional authorization configuration used to invoke an Agent2Agent server.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/resources/agentregistration for that discrepancy. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent
 -->

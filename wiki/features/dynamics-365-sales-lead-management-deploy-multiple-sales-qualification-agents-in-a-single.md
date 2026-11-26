@@ -111,15 +111,17 @@ changes:
     note: "Correction: added the Dataverse Web API call that sets an agent to Off, and removed three checklist steps that had no controls-table row."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 108 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 91
+  claims: 108
+  confirmed: 108
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -236,8 +238,10 @@ cost: Variable. The agent uses Copilot Studio message capacity, prepaid or pay-a
 impact: Medium. Sales teams, sellers and supervisors using the agents see leads routed, handed over and reassigned; users outside sales qualification do not.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; Cost and licensing: Meter; rationale: cost / cost: The Sales billing page describes Microsoft Copilot Studio messages as the billing unit. | Found: These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage. | Fix: After the Meter paragraph add: "The Sales billing page still uses messages terminology; Copilot Studio licensing says the common currency changed from messages to Copilot Credits on September 1, 2025, with no change in the quantity per prepaid pack or pay-as-you-go rate." Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing in sources. Keep the existing attribution to the Sales billing page. | Source: https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing
+- [supported, minor] summary; Cost and licensing: Meter; rationale: cost / cost: The Sales billing page calls Microsoft Copilot Studio messages the billing unit. | Found: These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage. | Fix: After the Meter paragraph add: "The Sales billing page still uses messages terminology; Copilot Studio licensing says the common currency changed from messages to Copilot Credits on September 1, 2025, with no change in the quantity per prepaid pack or pay-as-you-go rate." Add https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing to sources. Keep the attribution to the Sales billing page. | Source: https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing
+- [supported, minor] Risk assessment: Data exposure / admin-path: The common prerequisites include accepting data movement under Generative AI features > Move data across regions in the Power Platform admin center. | Found: Move data across regions: Select Accept terms to open the Power Platform admin center and allow data movement under Generative AI features > Move data across regions. | Fix: Add to this bullet: "The linked regional guidance says the Move data across regions checkbox is not displayed for environments in U.S. or government cloud regions." Cite https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot in sources. This qualifies the common-prerequisites page's unqualified instruction without claiming the multi-agent feature is available in government clouds. | Source: https://learn.microsoft.com/dynamics365/sales/prerequisites-for-all-agents
+- [supported, minor] controls[2].ui; Governance controls: row 3 / admin-path: The supervisor dashboard is reached through Sales Hub > App settings > General settings > Dynamics 365 AI hub > AI optimization hub > See insights > Sales Qualification Agent. | Found: In the AI optimization hub card, select See insights. ... Select Sales Qualification Agent from the list of agents. ... To view the list of leads handled by the agent, select the View leads category drop-down | Fix: For the row's lead-view control, extend controls[2].ui.path to 'App settings > General settings > Dynamics 365 AI hub > AI optimization hub > See insights > Sales Qualification Agent > View leads category > lead category' and mirror it in the rendered table. The cited page offers 'Leads disqualified by AI agent', 'Leads being processed by AI agent' and 'Leads handed over by AI agent' as the category choices. | Source: https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent
 -->

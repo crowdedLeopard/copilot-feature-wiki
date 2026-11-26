@@ -61,6 +61,9 @@ sources:
   - title: "Set-CsTeamsEventsPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy"
     kind: "learn"
+  - title: "Manage Q&A in Teams meetings and events"
+    url: "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 581720"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=581720"
     kind: "roadmap"
@@ -129,19 +132,23 @@ changes:
     note: "Corrected: removed the claim that recordings show attendees brought on screen, added the Microsoft Graph licence-assignment call for attendee packs, and narrowed the note on pack capacity updates."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: removed the claim that use of the feature rests with organisers rather than an admin policy, and reworded the Q&A comparison to a text queue that organisers can moderate, with its Learn source."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 66
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "ccb16d2e7abfde6f497710e9805ffddc"
+  contradicted: 0
+  attempts: 0
+  hash: "c09f268c72894e26d716d96e2ac4019f"
 ---
 
 ## What's changing
@@ -156,7 +163,7 @@ The roadmap item is **In development**, targeted for **December CY2026**, as Gen
 
 ## Why it matters
 
-In the largest broadcasts, Learn currently lists Q&A as the way attendees above 20,000 take part. This change puts a member of the audience live, in voice and video, in front of up to 100,000 people, with the organiser deciding who speaks. That moves the risk from a moderated text queue to a live microphone, and makes the producer's judgement in the moment the main safeguard.
+In the largest broadcasts, Learn currently lists Q&A as the way attendees above 20,000 take part. This change puts a member of the audience live, in voice and video, in front of up to 100,000 people, with the organiser deciding who speaks. That moves the risk from a text queue that organisers can [moderate](https://learn.microsoft.com/microsoftteams/manage-qna-for-teams) to a live microphone, and makes the producer's judgement in the moment the main safeguard.
 
 Microsoft has not stated what happens on arrival: whether raise hand appears in existing large events or must be chosen in the scheduling form. No source says existing events change. The work for administrators is to brief the few organisers who run events of this size, check who those events admit, and decide whether producers need a run-sheet before the first live question.
 
@@ -172,7 +179,7 @@ Microsoft has not stated what happens on arrival: whether raise hand appears in 
 - No change: per the roadmap, an organiser decides who speaks; nothing acts on its own.
 
 **Change & support**
-- Microsoft Learn lists no events policy setting for raise hand or for bringing attendees on screen at the time of writing (November 2026), so whether the feature is used rests with organisers, not with an admin policy.
+- Microsoft Learn lists no events policy setting for raise hand or for bringing attendees on screen at the time of writing (November 2026).
 - Event producers will face a queue of raised hands at a scale Teams has not offered before; expect requests for run-sheets and rehearsal support.
 
 ## Cost and licensing
@@ -246,12 +253,9 @@ cost: Medium. Events above 3,000 attendees with engagement features need an Atte
 impact: Medium. Noticed by the organisers, producers and audiences of events above 20,000 attendees, such as all-company town halls, rather than by most users.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / consistency: Whether the feature is used rests with organisers, not with an admin policy. | Found: so whether the feature is used rests with organisers, not with an admin policy. ... Turning Events optimized for a large audience off is blunt: it stops affected organisers creating large events | Fix: In Risk assessment > Change & support, remove ', so whether the feature is used rests with organisers, not with an admin policy'. End the sentence after '(November 2026)'. This preserves the confirmed absence of a feature-specific setting without denying the documented coarse admin controls.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents large-event creation. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Add to the events-policy control notes: 'The Set-CsTeamsEventsPolicy reference still labels this policy preview, although the scheduling and attendance admin guide documents these controls without that label.' Reference: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
-- [supported, minor] controls[4].note; Governance controls / applicability: The general Reactions policy sets an organiser Meeting options default that organisers can change for each meeting and event. | Found: As an admin, you can use the Teams admin center or PowerShell to set the default value for reactions in your organizers' Meeting options. Organizers can change the setting for each meeting and event they create. | Fix: Append to controls[4].note: 'However, Plan for Teams events lists No control for admins for Attendee reactions in events optimized for large audiences; the published guidance differs on this scope.' Cite https://learn.microsoft.com/microsoftteams/plan-events#reference. Keep this row as a general default control, not a confirmed control for the planned expansion. | Source: https://learn.microsoft.com/microsoftteams/manage-reactions-meetings
-- [supported, minor] Why it matters / behaviour: Q&A can provide a moderated text-question queue rather than a live microphone. | Found: They can also turn on moderation to review and approve questions before they appear in the Q&A feed. | Fix: Change 'from a moderated text queue to a live microphone' to 'from a text queue that organisers can moderate to a live microphone', and cite https://learn.microsoft.com/microsoftteams/manage-qna-for-teams. | Source: https://learn.microsoft.com/microsoftteams/manage-qna-for-teams
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy from creating large-audience events. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Add to the existing governance notes: 'The Set-CsTeamsEventsPolicy reference still labels the policy as preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy, which says 'Note that this policy is currently still in preview.' This caveat also covers the attendance command. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] controls[4].api; Governance controls table / command: The cited reactions how-to documents Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions Disabled to set the default to Off. | Found: To set the default value for meeting reactions to Off for organizers with the policy, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions Disabled | Fix: Add to controls[4].note: 'The reactions how-to prints Disabled, but the Set-CsTeamsMeetingPolicy reference lists AllowMeetingReactions as Boolean; confirm the accepted value against the installed module before scripting.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps alongside the existing how-to. | Source: https://learn.microsoft.com/microsoftteams/manage-reactions-meetings
 -->

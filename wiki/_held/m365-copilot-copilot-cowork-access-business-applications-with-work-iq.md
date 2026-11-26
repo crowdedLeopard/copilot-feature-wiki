@@ -171,18 +171,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 103 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
-  confirmed: 95
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 103
+  confirmed: 101
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "d73b369315934879d3156714807fc9c5"
 ---
 
@@ -285,8 +287,12 @@ cost: Variable. Learn says Work IQ consumption that supports a Cowork task is at
 impact: Medium. Users who already hold access to model-driven apps or Dataverse tables, and the makers who write business skills, notice it; ordinary Cowork users see nothing until the plugin is installed for them.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Why it matters / behaviour: Many users already have the chat tool receiving this write-capable business-data access. | Found: Searched: Copilot Cowork many users available; read Cowork overview, FAQ, application-card and admin-governance excerpts. They establish product availability, not how many users already have access. | Fix: Replace 'inside a chat tool that many users already have' with 'inside Copilot Cowork'.
+- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls table / absence: Installation automation for the Business apps plugin is not documented. | Found: PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... acquireUsersAndGroups ... Users/groups for whom the package is deployed. ... deployedTo ... deployment scope of the package. | Fix: Replace the blanket absence with the general package deployment operation: controls[0].api kind graph, call 'PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}', docs https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update. Replace 'Installation automation is not yet documented' with 'The beta Package Management API updates package deployment through deployedTo and acquireUsersAndGroups and requires a Microsoft Agent 365 licence; identify the plugin package in the tenant catalog before using it.' Add that reference and https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins to sources. Cowork's plugin guide identifies installation as automatic acquisition for target users. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls / admin-path: The feature's App Access guide gives Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable. | Found: Select **Security** > **Identity & access**. ... Select **App Access Control**. ... Select the environment in which you want to enable app access. ... Select **Enable**, and then select **Save**. | Fix: Append to controls[3].note and the rendered note: 'The general App Access guide gives a different route after selecting the environment: Set up app access control > Access control > Enabled, then select an application and Block.' The other cited guide is https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
+- [supported, minor] Why it matters; Scope: Default environments / default: Business Applications in Work IQ is on by default for new public production environments, subject to exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: Add: 'The general feature-settings guide still lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences with a default of Off; the dedicated Work IQ default-settings guide states On for new public production environments, with exceptions.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: The feature guide gives Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. Select App Access Control. Select the environment in which you want to enable app access. Select Enable, and then select Save. | Fix: Append to controls[3].note and its rendered note: 'The general App Access guide gives a different route after selecting the environment: Set up app access control > Access control > Enabled, then select an application and Block.' Cite https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode. Retain the feature guide's supported path. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
 -->

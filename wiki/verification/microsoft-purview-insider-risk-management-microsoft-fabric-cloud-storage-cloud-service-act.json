@@ -1,0 +1,993 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-microsoft-fabric-cloud-storage-cloud-service-act",
+  "roadmapId": 560399,
+  "title": "Microsoft Purview Insider Risk Management: cloud storage, cloud service and Microsoft Fabric indicators as Data leaks policy triggers",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "3 blocking findings (claims 25, 34, 64)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 67,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the policy-creation route omits choices in the wizard, and the stated administrator requirement excludes other roles Microsoft permits. The statement that scoring cannot start before a trigger also omits Microsoft's manual-enrolment exception. The roadmap dates, indicator descriptions and processing-unit billing are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Cloud storage, cloud service and Microsoft Fabric indicators are supported as Data leaks policy triggers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, the indicators belonging to cloud storage apps (Box, Dropbox, Google Drive), cloud services (Azure, Amazon Web Services) and Microsoft Fabric (Power BI, Lakehouse) will be supported as triggers in Data leaks policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing: roadmap indicator list; summary",
+      "type": "record",
+      "claim": "The roadmap names Box, Dropbox, Google Drive, Azure, Amazon Web Services, Power BI and Lakehouse.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "cloud storage apps (Box, Dropbox, Google Drive), cloud services (Azure, Amazon Web Services) and Microsoft Fabric (Power BI, Lakehouse)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing: first paragraph; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Triggers define the conditions for bringing a user into policy scope.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With triggers, customers can define the conditions for bringing the user into the scope of a policy while the respective indicators are used to determine risk score.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "Policy indicators determine the risk score of an in-scope user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Indicators included in Insider Risk Management policies determine a risk score for an in-scope user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Learn documents cloud storage, cloud service and Fabric indicators as built-in indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "### Built-in indicators\nInsider Risk Management includes the following built-in indicators.\n#### Cloud storage indicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: cloud storage activities",
+      "type": "behaviour",
+      "claim": "Cloud storage indicators detect discovery, collection, exfiltration and deletion in Google Drive, Box and Dropbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Use cloud storage indicators to detect the following activities in Google Drive, Box, and Dropbox:\n1. Discovery\n2. Collection\n3. Exfiltration\n4. Deletion (impact)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: cloud service activities; Scope: Services",
+      "type": "availability",
+      "claim": "Cloud service indicators cover Amazon S3 and Azure SQL Server and Storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "These indicators include policy indicators for Amazon S3 and Azure (SQL Server and Storage) that you can use to detect techniques used to avoid detection or risky activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: cloud service activities",
+      "type": "behaviour",
+      "claim": "Cloud service indicators include disabling trace logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "These techniques might include:\n- Disabling trace logs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: cloud service activities",
+      "type": "behaviour",
+      "claim": "Cloud service indicators include changes to SQL Server firewall rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Updating or deleting SQL Server firewall rules",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: Fabric activities; Scope: Services",
+      "type": "availability",
+      "claim": "Fabric indicators cover Power BI and Lakehouse workloads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "These indicators include policy indicators for Microsoft Fabric workloads such as Power BI and Lakehouse.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: Fabric activities",
+      "type": "behaviour",
+      "claim": "Fabric indicators include viewing Power BI reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Figure out the environment (for example, viewing Power BI reports and dashboards).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: Fabric activities",
+      "type": "behaviour",
+      "claim": "Fabric indicators include downloading Power BI reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Gather data of interest (for example, downloading Power BI reports).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: Fabric activities",
+      "type": "behaviour",
+      "claim": "Fabric indicators include downgrading or removing sensitivity labels on Power BI or Lakehouse assets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Obfuscate the data gathered or change protection (for example, downgrading or removing sensitivity labels of Power BI or Lakehouse assets).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: Fabric activities",
+      "type": "behaviour",
+      "claim": "Fabric indicators include sharing Lakehouse data outside the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Exfiltrate the data (for example, sharing Lakehouse data with people outside the organization).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: policy wizard; controls[1].note",
+      "type": "behaviour",
+      "claim": "Data leaks and Data leaks by priority users offer an exfiltration activity triggering event with one or more selected indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you select the User performs an exfiltration activity triggering event option, you must select one or more of the listed indicators for the policy triggering event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: policy wizard; controls[1].note",
+      "type": "behaviour",
+      "claim": "Indicators disabled for the organisation cannot be selected until enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you're unable to select a listed indicator or sequence, it's because they aren't currently enabled for your organization. To make them available to select and assign to the policy, select the Turn on indicators prompt.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: Learn trigger list; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly name cloud storage, cloud service and Fabric indicators in its list of exfiltration trigger options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Fabric Insider Risk Management indicators prerequisites audit settings triggers cloud storage trigger list. Read configure and policy-indicators pages, including all passages mentioning triggers, Fabric and cloud indicators; no explicit list naming these trigger options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: final paragraph; Open questions",
+      "type": "behaviour",
+      "claim": "The Get started page still labels cloud indicators as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Insider Risk Management includes the following cloud indicators (preview):",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "Until a trigger fires, a Data leaks policy does not score a user.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "If you add a user to an Insider Risk Management policy but the user doesn't have a triggering event, the policy doesn't evaluate the user's activity unless you manually add the user in the Users dashboard.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'A policy does not evaluate a user without a triggering event unless an administrator manually adds the user in the Users dashboard.' This exception is documented at https://learn.microsoft.com/purview/insider-risk-management-policy-templates#policy-template-prerequisites-and-triggering-events."
+    },
+    {
+      "n": 26,
+      "where": "Why it matters: high-severity DLP alert comparison",
+      "type": "behaviour",
+      "claim": "A high-severity DLP alert from Exchange, SharePoint or OneDrive is an alternative Data leaks triggering event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "DLP policy configured for High severity alerts (Exchange Online, SharePoint Online, or OneDrive for Business workloads only) OR Customized triggering indicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Scope: Prerequisites; Governance controls",
+      "type": "applicability",
+      "claim": "Cloud storage and service indicators use connected cloud-app activity through Defender for Cloud Apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To select from cloud storage indicators, you must connect cloud storage apps in Microsoft Defender. To select from cloud service indicators, you must connect source service apps in Microsoft Defender.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure, Box connection",
+      "type": "behaviour",
+      "claim": "Connecting Box asks its admin to permit access to team information and the activity log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/protect-box",
+      "quote": "Box asks you if you want to allow Defender for Cloud Apps access to your team information, activity log, and perform activities as a team member.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/defender-cloud-apps/protect-box to sources for the Box permission statement."
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure, Dropbox connection",
+      "type": "behaviour",
+      "claim": "Connecting Dropbox asks its admin to permit access to team information and the activity log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/protect-dropbox",
+      "quote": "Dropbox asks you if you want to allow Defender for Cloud Apps access to your team information, activity log, and perform activities as a team member.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure, scoring",
+      "type": "behaviour",
+      "claim": "Policy activity scoring applies to users in policy scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "You can select a DLP policy or indicators for triggering events that bring users assigned to the policy in-scope for activity scoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; rationale: impact",
+      "type": "role",
+      "claim": "IRM analysts and investigators can view and investigate policy alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Access & investigate alerts | Yes | No | Yes | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Users are pseudonymised by default.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Built with privacy by design, users are pseudonymized by default, and role-based access controls and audit logs are in place to help ensure user-level privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Scope: Roles; controls[4].note",
+      "type": "role",
+      "claim": "The Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Configure policies and settings | Yes | Yes | No | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Configuring indicators needs membership in the Insider Risk Management or Insider Risk Management Admins role group.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Members of the following roles can assign users to Insider Risk Management role groups and have the same solution permissions included with the Insider Risk Management Admins role group:",
+      "severity": "blocker",
+      "fix": "Replace 'Needs the Insider Risk Management or Insider Risk Management Admins role group' with 'Members of the Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.' Use the same non-exclusive wording for the Security & identity and Scope role statements. The permissions page also grants these solution permissions to Global Administrator, Compliance Administrator, and the Microsoft Purview Organization Management and Compliance Administrator role groups."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Scope: Roles; controls[2].note",
+      "type": "role",
+      "claim": "Only a Global Administrator can enable Purview pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "Only an account in the Global Administrator role can enable the pay-as-you-go model",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "summary; Cost and licensing; Risk assessment; Governance controls",
+      "type": "licensing",
+      "claim": "Microsoft Fabric indicators require enabled pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To use the Microsoft Fabric indicators, enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "summary; Why it matters; Cost and licensing; controls[2].governs",
+      "type": "licensing",
+      "claim": "Cloud storage indicators require enabled pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "#### Cloud storage indicators\nImportant\nTo use this indicator, enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "summary; Why it matters; Cost and licensing; controls[2].governs",
+      "type": "licensing",
+      "claim": "Cloud service indicators require enabled pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "#### Cloud service indicators\nImportant\nTo use this indicator, enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "IRM is included in Microsoft 365 E5/A5/G5, the named Purview suites, Defender + Purview Suite FLW and the E5/A5/F5/G5 IRM add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management\n| Insider Risk Management | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed: product licensing with complementary pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The pay-as-you-go billing model builds on the per-user licensing model. The two are complementary, not mutually exclusive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "These indicators are metered on data security processing units, making cost variable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Insider Risk Management indicators that detect activity in cloud storage apps (Box, Dropbox, Google Drive), cloud services (AWS, Azure), and Microsoft Fabric (Power BI) are billed on data security processing units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "One IRM processing unit represents the compute to process 10,000 user activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "For Insider Risk Management, a processing unit represents the compute required to process 10,000 such user activities. Billing is based on the number of processing units utilized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The data security processing-unit meter is measured daily.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "| Insider Risk Management | Detect risky behavior for non-Microsoft 365 locations when using Cloud and generative AI policy indicators | Data Security processing unit as measured on a daily basis |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Charges are billed through the Azure subscription associated with Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Meter",
+      "type": "admin-path",
+      "claim": "Consumption and billing information appear in the Azure portal under Cost Management + Billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "All consumption and billing information is available in the Azure portal under Cost Management + Billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The billing models page points to the Azure pricing page for rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Understand pricing and estimate your expected monthly costs for pay-as-you-go capabilities:\n- Microsoft pay-as-you-go pricing (https://azure.microsoft.com/pricing/details/purview/)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Watching spend; controls[5].note",
+      "type": "behaviour",
+      "claim": "IRM has a Pay-as-you-go report for billed processing usage rather than a configuration control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+      "quote": "The reports let you explore granular breakdowns of billed processing usage across different data source categories and activity indicators over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Watching spend",
+      "type": "behaviour",
+      "claim": "Purview provides a Usage center in its portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To help you understand and manage your usage, Microsoft Purview provides a Usage center in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Watching spend; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document an IRM processing-unit spending limit that stops processing at a set amount.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management pay-as-you-go usage report API processing units spending cap limit. Read billing-models and reports; billing-usage search excerpt lists IRM as not pausable. No IRM amount-based processing stop found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Prerequisites; controls[2].note",
+      "type": "licensing",
+      "claim": "Pay-as-you-go requires an Azure subscription in the Purview tenant and a resource group in that subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "An Azure subscription in the same tenant as Microsoft Purview.\nAn Azure resource group in that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls; controls[0].note; Governance guidance: turn off indicators",
+      "type": "applicability",
+      "claim": "Global policy-indicator settings govern indicator availability across all insider risk policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Global settings indicators: Indicators enabled in global settings for Insider Risk Management define both the indicators available for configuration in policies and the types of events signals collected by Insider Risk Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Policies; Governance controls",
+      "type": "behaviour",
+      "claim": "Only Data leaks and Data leaks by priority users have customisable triggering events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "You can only modify triggering events for policies created from the Data leaks or Data leaks by priority users templates. Policies created from all other templates don't have customizable triggering indicators or events.",
+      "severity": "minor",
+      "fix": "Replace the broad 'only' statements with: 'The Data leaks and Data leaks by priority users templates offer the User performs an exfiltration activity triggering event option.' The cited Get started page also documents Communication Compliance and HR event choices for Data leaks by risky users and Security policy violations by risky users at https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy."
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: administrative units",
+      "type": "role",
+      "claim": "Admin-unit-scoped IRM administrators can configure global settings without scope restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Configure global settings | Unrestricted | Unrestricted | Never allowed | Never allowed | Never allowed |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: administrative units",
+      "type": "role",
+      "claim": "Admin-unit-scoped IRM administrators have scoped policy-configuration permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Configure policies | Scoped | Scoped | Never allowed | Never allowed | Never allowed |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: role propagation",
+      "type": "behaviour",
+      "claim": "Role-group permission changes can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: At rollout, custom thresholds; After rollout, adjust thresholds",
+      "type": "behaviour",
+      "claim": "Selected exfiltration triggering indicators support choosing custom thresholds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you select the Data leaks or Data leaks by priority users templates and select the User performs an exfiltration activity and associated indicators, you can choose custom or default thresholds for the indicator triggering events that you select.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The control is admin-opt-in: global indicators are disabled by default and an administrator must select indicators to use them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented for configuring IRM cloud and Fabric policy indicators.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management policy indicators triggers Set-InsiderRiskPolicy (PowerShell); insider risk management policies indicators settings configure API (Graph). Read policy-indicators and Defender IRM Graph integration; no setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented for setting these Data leaks triggering indicators.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management policy indicators triggers Set-InsiderRiskPolicy (PowerShell); insider risk management policies indicators settings configure API (Graph). Read configure and Defender IRM Graph integration; no trigger-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No operation is documented for enabling the Purview pay-as-you-go subscription association through API or PowerShell.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview pay-as-you-go enable billing subscription resource group REST API. Read subscription-based enablement and billing-models pages and search results; only the Purview portal enablement flow was documented for this association.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "No Defender for Cloud Apps REST operation is documented for creating its app connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Defender for Cloud Apps REST API create app connector connect app. Read api-introduction supported resource table, connect-apps, protect-dropbox and protect-box; connector-provider APIs are described, but no Defender connector-creation endpoint is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "No API operation is documented for the IRM Pay-as-you-go report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management pay-as-you-go usage report API processing units spending cap limit. Read reports and billing-models and the returned excerpts; no IRM Pay-as-you-go report API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].ui; Governance guidance: Policy indicators",
+      "type": "admin-path",
+      "claim": "Policy indicators are reached in the Microsoft Purview portal through Insider Risk Management > Settings > Policy indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed creation route goes directly from Policy template > Data leaks to Triggers for this policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "On the Policy template page, choose a policy category and then select the template for the new policy. I don't want to specify priority content right now. Select this option to skip the priority content detail pages in the workflow.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].ui.path with 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > I don't want to specify priority content right now > Triggers for this policy > User performs an exfiltration activity triggering event'. Add to the note: 'This route skips optional priority content; complete the name fields and choose the policy user scope on the intervening wizard pages.' The category choice and priority-content branch are documented at https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy."
+    },
+    {
+      "n": 65,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Settings > Account details in the Microsoft Purview portal is the entry to subscription-based pay-as-you-go enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "Select Get Started in the ribbon menu to start the process. This can also be done from Settings > Account details.",
+      "severity": "minor",
+      "fix": "The route correctly reaches the enablement page but stops before the subscription and resource-group selections. Keep the path and narrow the note to: 'Entry to the preview subscription-based enablement flow for organisations not using classic Azure Purview data governance pricing. Select an active Azure subscription, then a resource group in that subscription.'"
+    },
+    {
+      "n": 66,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The Defender portal route to app connectors is Settings > Cloud Apps > Connected apps > App Connectors > +Connect an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/protect-dropbox",
+      "quote": "In the Microsoft Defender Portal, select Settings. Then choose Cloud Apps. Under Connected apps, select App Connectors. In the App connectors page, select +Connect an app, followed by Dropbox.",
+      "severity": "minor",
+      "fix": "The route correctly reaches the connector chooser. Append ' > app' to controls[3].ui.path and replace its note with: 'Choose the app, then complete its connector guide; the Dropbox guide continues through Connect Dropbox and provider authorisation. The general connect-apps page also documents Cloud Apps > Connected apps > Connect an app or Add a new connector.'"
+    },
+    {
+      "n": 67,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "The Purview role-group route is Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings ... select Roles and groups, then select Roles groups ... Select the Insider Risk Management role group, then select Edit. Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member \"<user-UPN>\" adds a member to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. The Identity parameter specifies the role group to add a member to. The Member parameter specifies who you want to add ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[5].ui; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The Pay-as-you-go report is reached through Insider Risk Management > Reports > Pay-as-you-go in the Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+      "quote": "The following reports are available by navigating to Insider Risk Management > Reports in the Microsoft Purview portal ... Pay-as-you-go: Review pay-as-you-go usage reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The subscription-based pay-as-you-go enablement page is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+      "quote": "This featue is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout, custom thresholds; controls table",
+      "type": "consistency",
+      "claim": "The checklist directs administrators to choose custom trigger thresholds, but the controls table stops at selecting the triggering event.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Choose custom thresholds for trigger indicators on high-volume activity ... controls[1] ends at User performs an exfiltration activity triggering event; no row covers custom thresholds.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Choose custom thresholds for trigger indicators on high-volume activity, such as viewing Power BI reports' and remove 'and adjust thresholds' from the final checklist bullet. This removes the unmatched configuration instructions without adding control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T10:10:56.438Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 6,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560399",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-cloud-apps/protect-dropbox",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which cloud storage, cloud service and Microsoft Fabric indicators are available to insider risk policies",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Settings",
+          "Policy indicators"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which indicators bring users into scope of a Data leaks policy",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Policies",
+          "Create policy",
+          "Policy template",
+          "Data leaks",
+          "Triggers for this policy",
+          "User performs an exfiltration activity triggering event"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Purview pay-as-you-go billing, which these indicators require, is linked to an Azure subscription",
+        "docs": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Account details"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which third-party cloud apps are connected to Defender for Cloud Apps, as cloud storage and service indicators need",
+        "docs": "https://learn.microsoft.com/defender-cloud-apps/protect-dropbox",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Cloud Apps",
+          "Connected apps",
+          "App Connectors",
+          "+Connect an app"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Pay-as-you-go processing used by Insider Risk Management indicators",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Reports",
+          "Pay-as-you-go"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

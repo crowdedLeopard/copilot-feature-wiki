@@ -75,15 +75,17 @@ changes:
     note: "Corrected after the independent check: rollout wording, Restricted Content Discovery and DLP coverage, and the EXTRACT requirement; removed two checklist steps and one open question."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0

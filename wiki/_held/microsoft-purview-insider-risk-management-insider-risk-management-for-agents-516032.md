@@ -62,10 +62,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Policies > Agent policy"
+      path: "Insider Risk Management > Policies > Agent policy > policy"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-policies"
     api: null
-    note: "Agent policy covers Copilot Studio and Microsoft Foundry agents. This route ends at the agent-policy dashboard; select a policy to see its details."
+    note: "Agent policy covers Copilot Studio and Microsoft Foundry agents. Selecting a policy shows its details."
   - governs: "Who can configure Insider Risk Management policies and investigate agent alerts"
     scope: "tenant"
     ui:
@@ -97,19 +97,23 @@ changes:
     note: "New briefing for the Worldwide roadmap item on Insider Risk Management for agents."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected three statements: added the E7 or A365 licence needed to view agent risk signals in the Microsoft 365 admin center, and reworded the containment advice and the policy-configuration role statement. The agent policy path now ends at the policy."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 64
+  claims: 84
+  confirmed: 83
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "82270534cb5ae62514b897f3b8e22dca"
+  contradicted: 1
+  attempts: 2
+  hash: "49df3aa869750f90915c7cc80795e42c"
 ---
 
 ## What's changing
@@ -126,7 +130,7 @@ The roadmap record gives status Launched, release phase General Availability and
 
 Agents that answer prompts, read SharePoint files and browse the web now produce alerts in Insider Risk Management without anyone creating a policy, once the service is set up in a licensed tenant. That puts agent prompts and responses in front of insider risk analysts, and puts a new alert stream on their queue. The decision for the service owner is who sees and acts on those alerts, and whether the default policy fits the organisation's agents or needs a custom policy alongside it.
 
-Visibility has a gap that catches scoped teams: Learn says administrative units are not supported for agent alerts, so an analyst scoped by an admin unit cannot see them. Agent risk also travels beyond Purview, to Data Security Posture Management for AI and the agent registry in the Microsoft 365 admin center, so more administrators see that an agent is at risk than the Insider Risk Management role groups alone.
+Visibility has a gap that catches scoped teams: Learn says administrative units are not supported for agent alerts, so an analyst scoped by an admin unit cannot see them. Agent risk also travels beyond Purview, to Data Security Posture Management for AI and the agent registry in the Microsoft 365 admin center, so more administrators see that an agent is at risk than the Insider Risk Management role groups alone. Viewing risk signals in the Microsoft 365 admin center requires the tenant to have an E7 or A365 licence.
 
 ## Risk assessment
 
@@ -138,7 +142,7 @@ Visibility has a gap that catches scoped teams: Learn says administrative units 
 - Agent risk is shared with Data Security Posture Management for AI and the Microsoft 365 admin center. In the agent registry, the Learn page says opening Insider Risk Management alerts from the risk details needs IRM Analyst or IRM Investigator, and that Global Administrator alone is insufficient.
 
 **Autonomy & actions**
-- The policy detects and raises alerts. Learn's agent monitoring page describes investigating alerts and does not describe blocking or changing an agent, so containment rests with the owner of the Copilot Studio or Microsoft Foundry agent.
+- The policy detects and raises alerts. Learn's agent monitoring page describes investigating alerts and does not describe blocking or changing an agent, so agree containment responsibilities with the agent owner and administrators.
 
 **Change & support**
 - Admin units are not supported for agent alerts, so scoped analysts cannot see them.
@@ -160,7 +164,7 @@ Visibility has a gap that catches scoped teams: Learn says administrative units 
 - **Platform and phase:** Web; General Availability and Preview; status Launched; target date June CY2026.
 - **Agents:** Copilot Studio agents, Microsoft Foundry agents and agents built using the P4AI SDK.
 - **Prerequisites:** the steps in Get started with Insider Risk Management, including a supported subscription and the Microsoft 365 audit log, which Learn says is enabled by default for Microsoft 365 organisations.
-- **Roles:** configuring policies and settings needs the Insider Risk Management or Insider Risk Management Admins role group; investigating alerts needs Insider Risk Management, Insider Risk Management Analysts or Insider Risk Management Investigators.
+- **Roles:** members of the Insider Risk Management or Insider Risk Management Admins role group can configure policies and settings; investigating alerts needs Insider Risk Management, Insider Risk Management Analysts or Insider Risk Management Investigators.
 
 ## Governance guidance
 
@@ -184,7 +188,7 @@ Visibility has a gap that catches scoped teams: Learn says administrative units 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Agent policies, including the default Risky Agents policy and any custom agent policy</strong><br><small>Tenant</small><br><small class="controls__note">Agent policy covers Copilot Studio and Microsoft Foundry agents. This route ends at the agent-policy dashboard; select a policy to see its details.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Agent policy <a href="https://learn.microsoft.com/purview/insider-risk-management-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Agent policies, including the default Risky Agents policy and any custom agent policy</strong><br><small>Tenant</small><br><small class="controls__note">Agent policy covers Copilot Studio and Microsoft Foundry agents. Selecting a policy shows its details.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Agent policy › policy <a href="https://learn.microsoft.com/purview/insider-risk-management-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and investigate agent alerts</strong><br><small>Tenant</small><br><small class="controls__note">The Analysts and Investigators role groups can investigate alerts but not configure policies. Admin-unit-scoped members cannot see agent alerts.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the unified audit log records activity that Insider Risk Management policies read</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite, not agent-specific. Needs the Audit Logs role in Exchange Online; run in Exchange Online PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -211,10 +215,8 @@ impact: Low. Insider risk analysts, compliance administrators and the owners of 
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: second paragraph / availability: Sharing risk with the agent registry means more administrators see an agent's risk, without a stated additional licence prerequisite. | Found: Prerequisites for viewing risk signals: Your tenant must have an E7 or A365 license. | Fix: Add to the sentence about wider visibility: 'Viewing risk signals in the Microsoft 365 admin center requires the tenant to have an E7 or A365 licence.' The prerequisite is at https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#prerequisites-for-viewing-risk-signals. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview
-- [contradicted, blocker] Risk assessment: Autonomy & actions / applicability: Containment therefore rests with the owner of the Copilot Studio or Microsoft Foundry agent. | Found: The Microsoft 365 admin center provides governance and lifecycle management capabilities for agents ... Start and stop | Start or stop the underlying Azure infrastructure to govern Foundry agents. | Fix: Replace 'so containment rests with the owner of the Copilot Studio or Microsoft Foundry agent' with the advice 'agree containment responsibilities with the agent owner and administrators'. The absence of a block action on the IRM monitoring page does not establish exclusive owner responsibility. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, blocker] Scope: Roles / role: Configuring policies and settings needs the Insider Risk Management or Insider Risk Management Admins role group. | Found: Members of the following roles can assign users to Insider Risk Management role groups and have the same solution permissions included with the Insider Risk Management Admins role group: ... Global Administrator ... Compliance Administrator ... Organization Management | Fix: Replace 'configuring policies and settings needs the Insider Risk Management or Insider Risk Management Admins role group' with 'members of the Insider Risk Management or Insider Risk Management Admins role group can configure policies and settings'. This removes the exclusive requirement; the permissions page also grants Admins-equivalent solution permissions to the administrative roles already named under Governance controls. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
+- [contradicted, blocker] front matter: licensing.notes / absence: A licence specific to agent monitoring is not yet published. | Found: Microsoft Purview security and compliance capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs. | Fix: Replace the licence-absence clause with: 'Microsoft's Purview service description says security and compliance capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs.' Preserve its future wording and limited scope; do not apply it to every Copilot Studio agent. Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description to sources. Keep any remaining absence only about a rate specific to Risky Agents. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Prerequisites / default: Learn says auditing is enabled by default for Microsoft 365 organisations. | Found: Auditing is enabled for Microsoft 365 organizations by default. | Fix: Qualify the sentence: 'Auditing is enabled by default for Microsoft 365 organisations, except SMB licences (Business Basic, Business Standard and Business Premium) and unmanaged tenants using free trials of enterprise licences, according to https://learn.microsoft.com/purview/audit-log-enable-disable.' The setup page supports the current sentence, but the cited audit page gives these exceptions. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
-- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > Agent policy reaches the agent-policy dashboard. | Found: Go to the Insider Risk Management solution. Select Policies in the left navigation. ... Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details. | Fix: Extend controls[0].ui.path to 'Insider Risk Management > Policies > Agent policy > policy' and retain the note that selecting a policy shows its details. The existing path stops early on the correct dashboard; the page documents selecting the policy to see health status details. | Source: https://learn.microsoft.com/purview/insider-risk-management-policies
+- [supported, minor] Scope: Prerequisites / default: The IRM setup page says auditing is enabled by default for Microsoft 365 organisations. | Found: Auditing is enabled for Microsoft 365 organizations by default. | Fix: Add: 'The auditing page qualifies this: auditing is not enabled by default for Microsoft 365 Business Basic, Business Standard or Business Premium, or for unmanaged tenants using free trials of enterprise licences.' Cite the already listed https://learn.microsoft.com/purview/audit-log-enable-disable. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
+- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls table / admin-path: The tenant policy route is Microsoft Purview portal > Insider Risk Management > Policies > Agent policy > policy. | Found: Go to the Insider Risk Management solution. Select Policies in the left navigation. On the policy dashboard, select the policy you want to update. ... User policy and Agent policy. Switch between the two | Fix: Keep the documented route to policy details, but add to controls[0].note: 'For policy updates, the Policies page continues from the policy details page to Edit policy; the agent monitoring page does not confirm that the default Risky Agents policy is editable.' This distinguishes the details endpoint from a configuration control without asserting default-policy editability. | Source: https://learn.microsoft.com/purview/insider-risk-management-policies
 -->
