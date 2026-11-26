@@ -37,6 +37,9 @@ sources:
   - title: "Change the default list and library experience"
     url: "https://learn.microsoft.com/sharepoint/change-default-list-and-library-experience"
     kind: "learn"
+  - title: "Modernize customizations"
+    url: "https://learn.microsoft.com/sharepoint/dev/transform/modernize-customizations"
+    kind: "learn"
 videos: []
 related: ["onedrive-refreshed-file-browsing-and-filtering-experience-in-onedrive-web"]
 controls:
@@ -52,7 +55,7 @@ controls:
       path: "Settings > Org settings > Organization profile > Release preferences > Deferred release"
       docs: "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options"
     api: null
-    note: "Applies to SharePoint Online among other services; Microsoft has not said this item is deferred-eligible. Needs Office Apps Admin, Security Admin or AI Admin."
+    note: "Needs the unified release preferences experience, rolling out from mid-November 2026; before it, use Copilot > Settings > View all > Copilot Release Preferences: General Availability. Not stated as deferred-eligible."
 confidence: "low"
 created: "2026-11-26"
 updated: "2026-11-26"
@@ -62,19 +65,23 @@ changes:
     note: "New briefing on the planned SharePoint Lists web redesign, targeted for December CY2026."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: the Release preferences path now notes it needs the unified release preferences experience (rolling out from mid-November 2026) and gives the Copilot settings route until then; added the SharePoint Framework customisations source."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 44
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "c39d1496dbb8e5ad4510f8e4b932620b"
+  contradicted: 0
+  attempts: 0
+  hash: "7bf52a61b85ac608bb3d9649c6897f6f"
 ---
 
 ## What's changing
@@ -126,7 +133,7 @@ The costs that can be expected are indirect: updating internal guides and traini
 
 ### Before rollout
 - Identify the list-based processes with written user guides or training that show the command bar, view selector or filter steps, and plan to refresh them.
-- Decide whether teams that depend heavily on lists should sit in Deferred release (Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences), knowing Microsoft has not said this item is deferred-eligible.
+- Decide whether teams that depend heavily on lists should sit in Deferred release (Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences), knowing Microsoft has not said this item is deferred-eligible. This route requires the unified release preferences experience, rolling out gradually from mid-November 2026; if it is not available in your tenant, use Microsoft 365 admin center > Copilot > Settings > View all > Copilot Release Preferences: General Availability > Deferred release.
 - Watch Message center for a post on this item, and check whether it is tagged Major update and Deferred feature and whether it states the default.
 
 ### At rollout
@@ -145,7 +152,7 @@ The costs that can be expected are indirect: updating internal guides and traini
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-wide switch to turn the refreshed Lists experience on or off</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting in the SharePoint admin center or Set-SPOTenant at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether users receive deferred-eligible major updates at general availability or about 30 days later</strong><br><small>User</small><br><small class="controls__note">Applies to SharePoint Online among other services; Microsoft has not said this item is deferred-eligible. Needs Office Apps Admin, Security Admin or AI Admin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Organization profile › Release preferences › Deferred release <a href="https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users receive deferred-eligible major updates at general availability or about 30 days later</strong><br><small>User</small><br><small class="controls__note">Needs the unified release preferences experience, rolling out from mid-November 2026; before it, use Copilot &gt; Settings &gt; View all &gt; Copilot Release Preferences: General Availability. Not stated as deferred-eligible.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Organization profile › Release preferences › Deferred release <a href="https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -166,10 +173,9 @@ cost: Low. Lists is a SharePoint feature available in plans that include SharePo
 impact: High. The roadmap describes a redesign of the screen every SharePoint Lists user on the web works in; Microsoft has not stated whether it arrives on by default.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance guidance: Before rollout / admin-path: Administrators can configure Deferred release through Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences > Deferred release without a rollout qualification. | Found: The unified release preferences experience is rolling out gradually in mid-November 2026, so it might not be available in your organization yet. ... If the unified release preferences experience hasn't rolled out to your organization yet, you can still manage release options following these steps: | Fix: Keep the printed path but qualify it in the row note and the Before rollout instruction: 'This route requires the unified release preferences experience, rolling out gradually from mid-November 2026. If it is not available in your tenant, use Microsoft 365 admin center > Copilot > Settings > View all > Copilot Release Preferences: General Availability > Deferred release.' Both routes and the rollout condition are documented at https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Governance guidance: At rollout / behaviour: SharePoint Framework extensions can add custom buttons to list command bars. | Found: command set extensions that allow you to add custom Edit Control Block (ECB) menu items or custom buttons to the command bar of a list or library. | Fix: Add 'Modernize customizations' at https://learn.microsoft.com/sharepoint/dev/transform/modernize-customizations to sources to support the premise about SharePoint Framework custom command-bar buttons. | Source: https://learn.microsoft.com/sharepoint/dev/transform/modernize-customizations
+- [supported, minor] controls[1].note; Governance guidance: Before rollout / admin-path: Before the unified experience arrives, release preferences are under Copilot > Settings > View all > Copilot Release Preferences: General Availability. | Found: go to Copilot > Settings. ... Under the View all tab, select Copilot Release Preferences: General Availability. ... Choose either Standard release or Deferred release. | Fix: In controls[1].note and its rendered table note, replace the fallback route with 'Copilot > Settings > View all > Copilot Release Preferences: General Availability > Deferred release', matching the complete route already given in Governance guidance. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options
+- [supported, minor] Why it matters / behaviour: Lists underpin information-tracking and request processes. | Found: Issue tracker ... Asset manager ... Recruitment tracker ... Travel requests ... Work progress tracker | Fix: Add 'Control settings for Microsoft Lists' at https://learn.microsoft.com/sharepoint/control-lists to sources to support the background statement about trackers and request processes. | Source: https://learn.microsoft.com/sharepoint/control-lists
 -->

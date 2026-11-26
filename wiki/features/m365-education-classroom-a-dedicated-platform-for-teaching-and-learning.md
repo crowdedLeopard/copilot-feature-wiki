@@ -68,26 +68,30 @@ changes:
     note: "New briefing: Microsoft Classroom, preview targeted for February CY2027, with licensing from Microsoft Learn and the announcement blog."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected What's changing: Microsoft Learn does describe Classroom's capabilities and licensing; only Classroom-specific availability controls are not yet documented."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 66
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "448e7a1b10f24bba6d1dcbde21990147"
+  contradicted: 0
+  attempts: 0
+  hash: "fe59319360bbebecb6608a5a16455efc"
 ---
 
 ## What's changing
 
 Microsoft plans **Microsoft Classroom**, a new standalone Microsoft 365 experience for teaching and learning in primary, secondary and higher education. The roadmap item describes it as a front door to Assignments, Classwork, Grades, OneNote Class Notebook, Learning Accelerators and Insights, offered as another option alongside Teams for Education and Microsoft 365 LTI. A personal **Home** shows each educator or student what needs attention across their classes, and a shared **Class Home**, set up by the educator, gives each class a common starting point.
 
-Microsoft Learn does not yet describe how Classroom behaves or is administered, so what follows about its behaviour comes from the roadmap item and Microsoft's [announcement blog](https://techcommunity.microsoft.com/blog/educationblog/introducing-microsoft-classroom-a-new-experience-built-for-teaching-and-learning/4571185). The blog adds Reflect, Teach in Copilot and Learning Activities to the list of tools, says educators can use the Study and Learn Agent in Assignments, and says Classroom will be available on the web and with dedicated mobile and desktop apps. It states that Classroom does not replace Teams for Education or Microsoft 365 LTI, and that it builds on Microsoft 365 Education foundations for identity, class membership, storage and administration, including class and roster provisioning through School Data Sync. The [Microsoft 365 Education portfolio page](https://learn.microsoft.com/training/educator-center/instructor-materials/microsoft-365-education-portfolio) on Learn says customers can continue using Teams Assignments and other education experiences as they do today.
+Microsoft Learn describes Classroom's capabilities and licensing, but does not yet document Classroom-specific availability controls; the roadmap item and Microsoft's [announcement blog](https://techcommunity.microsoft.com/blog/educationblog/introducing-microsoft-classroom-a-new-experience-built-for-teaching-and-learning/4571185) give further details of the planned experience. The blog adds Reflect, Teach in Copilot and Learning Activities to the list of tools, says educators can use the Study and Learn Agent in Assignments, and says Classroom will be available on the web and with dedicated mobile and desktop apps. It states that Classroom does not replace Teams for Education or Microsoft 365 LTI, and that it builds on Microsoft 365 Education foundations for identity, class membership, storage and administration, including class and roster provisioning through School Data Sync. The [Microsoft 365 Education portfolio page](https://learn.microsoft.com/training/educator-center/instructor-materials/microsoft-365-education-portfolio) on Learn says customers can continue using Teams Assignments and other education experiences as they do today.
 
 The roadmap item is **In development**, with a preview targeted for February CY2027 and general availability targeted for June CY2027, on Android, Desktop, iOS, Mac and Web, in the Worldwide (Standard Multi-Tenant) cloud. The blog says administrators can register now at https://aka.ms/classroompreview for the preview, planned for early 2027.
 
@@ -178,10 +182,4 @@ Teach and the Study and Learn Agent depend on Copilot Chat. Microsoft's [Manage 
 risk: Medium. Classroom puts AI tools such as Teach and Learning Activities in front of educators and students, and Microsoft Learn documents no switch for Classroom itself yet; the controls that exist govern its parts.
 cost: Low. Microsoft says Classroom comes at no additional cost in current A1/A3/A5/A7 and is included in Microsoft 365 Education A2 to A7; the cost is admin, training and communication time.
 impact: Medium. Educators and students in institutions that adopt Classroom notice it; Microsoft has not stated whether it appears for them without an admin choosing it.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: second paragraph / absence: Microsoft Learn does not yet describe how Classroom behaves. | Found: Educators can organize classwork, manage assignments and grades, and use the Teach module, while students can access the Study and Learn Agent. Personalized homepages, School Data Sync, Education Insights, Learning Accelerators, and Class Notebook support the experience. | Fix: Replace the second paragraph's opening sentence with: "Microsoft Learn describes Classroom's capabilities and licensing, but does not yet document Classroom-specific availability controls; the roadmap item and Microsoft's announcement blog give further details of the planned experience." The cited Education FAQ and portfolio page both describe capabilities. | Source: https://learn.microsoft.com/training/educator-center/instructor-materials/microsoft-365-education-frequently-asked-questions
 -->

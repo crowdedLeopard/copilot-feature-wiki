@@ -34,6 +34,9 @@ sources:
   - title: "Archived Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive"
     kind: "learn"
+  - title: "Considerations to manage Microsoft 365 Copilot and Channel Agent in Teams for security and compliance"
+    url: "https://learn.microsoft.com/purview/ai-m365-copilot-considerations"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 469501"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=469501"
     kind: "roadmap"
@@ -65,39 +68,43 @@ changes:
     note: "New briefing: roadmap-only OneDrive web Copilot action, still In development past its April CY2025 target; licence control and gaps documented."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: the sensitivity-label gap now asks only whether this OneDrive action inherits the Word file's label; removed claims that the file must be opened and that only licensed users see the option."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 39
-  unconfirmed: 2
+  claims: 45
+  confirmed: 44
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "4ec755b21d4b6feaeef7ef61672a2599"
+  attempts: 2
+  hash: "6a4da1e75c084187d757e4bfa63a64c4"
 ---
 
 ## What's changing
 
 Microsoft plans to let users create the first draft of a presentation from a Word file with Copilot, in a single click, from OneDrive on the web. The roadmap item states that the feature requires a Microsoft Copilot for Microsoft 365 licence and will be available to commercial customers on OneDrive Web.
 
-Microsoft Learn does not describe this OneDrive feature yet at the time of writing (November 2026), so what follows about its behaviour is the roadmap's description. Microsoft has not stated whether it is on by default, where the new presentation is saved, or how it treats a labelled Word file. Microsoft's archived Copilot release notes for November 2023 list a related capability in PowerPoint itself, **Convert Word documents into presentations**, for Windows, iOS and Mac; the roadmap item does not say whether the OneDrive action uses it.
+Microsoft Learn does not describe this OneDrive feature yet at the time of writing (November 2026), so what follows about its behaviour is the roadmap's description. Microsoft has not stated whether it is on by default, where the new presentation is saved, or whether this OneDrive action inherits the Word file's sensitivity label. Microsoft's archived Copilot release notes for November 2023 list a related capability in PowerPoint itself, **Convert Word documents into presentations**, for Windows, iOS and Mac; the roadmap item does not say whether the OneDrive action uses it.
 
 The roadmap item is **In development**, targeted for **April CY2025**, for General Availability in the Worldwide (Standard Multi-Tenant) cloud on the Web platform. That target passed some 19 months ago and the record has not been modified since 20 November 2024, so treat the date as stale.
 
 ## Why it matters
 
-For a service owner this is a new entry point to an existing Copilot capability rather than a new exposure: the roadmap ties it to the Copilot licence, so the people who could use it are the people already licensed for Copilot. The practical questions are support ones: users will ask why the option appears for some colleagues and not others, and drafts generated from a Word file need checking before they are shared.
+For a service owner this is a new entry point to an existing Copilot capability rather than a new exposure: the roadmap ties it to the Copilot licence, so the people who could use it are the people already licensed for Copilot. The practical question is a support one: drafts generated from a Word file need checking before they are shared.
 
 Microsoft has not stated what happens on arrival. No source says existing OneDrive behaviour changes for unlicensed users. Because the item has sat in development well past its target, plan on hearing about it through Message center before it reaches users rather than from this date.
 
 ## Risk assessment
 
 **Data exposure**
-- The draft is built from a Word file the user opens; the roadmap describes no other data source. Microsoft has not documented where the new presentation is saved or whether the Word file's sensitivity label carries over, so test this before relying on it for labelled content.
+- The draft is built from a Word file; the roadmap describes no other data source. Microsoft has not documented where the new presentation is saved or whether the Word file's sensitivity label carries over, so test this before relying on it for labelled content.
 
 **Security & identity**
 - No change described: the roadmap ties use to the Copilot licence, which is assigned per user in the Microsoft 365 admin center (see the controls table).
@@ -106,7 +113,7 @@ Microsoft has not stated what happens on arrival. No source says existing OneDri
 - The roadmap describes a user-initiated, one-click draft. It describes nothing that runs without the user starting it.
 
 **Change & support**
-- A new Copilot option in OneDrive on the web will appear only to licensed users, if it ships as the roadmap describes. Expect helpdesk questions about why it is missing for some users, and about draft quality.
+- The roadmap states that using the feature requires a Microsoft Copilot for Microsoft 365 licence; it does not specify who sees the option. Expect helpdesk questions about draft quality.
 
 ## Cost and licensing
 
@@ -114,7 +121,7 @@ Microsoft has not stated what happens on arrival. No source says existing OneDri
 
 **Meter.** The roadmap item describes no meter, and Microsoft publishes no separate price for this OneDrive action.
 
-**Indirect costs.** Admin time to confirm licence assignment, and support time for users who see the option inconsistently across licensed and unlicensed colleagues.
+**Indirect costs.** Admin time to confirm licence assignment, and support time for user questions about the feature.
 
 ## Scope
 
@@ -130,7 +137,7 @@ Microsoft has not stated what happens on arrival. No source says existing OneDri
 ### Before rollout
 - Check which users hold the Copilot licence in the Microsoft 365 admin center under Users > Active users, since the roadmap ties this feature to that licence.
 - Watch Message center and the roadmap item for a post giving the default state and rollout window, as the item is still In development past its April CY2025 target.
-- Prepare a short helpdesk note explaining that the OneDrive option appears only for Copilot-licensed users.
+- Prepare a short helpdesk note: the roadmap states that using the feature requires a Microsoft Copilot for Microsoft 365 licence; it does not specify who sees the option.
 
 ### At rollout
 - Test with a licensed pilot account: create a presentation from a labelled and an unlabelled Word file, and record where the file is saved and which label it carries.
@@ -162,7 +169,7 @@ The licence is the only documented route to who can use this feature, and it gov
 - With the April CY2025 target long passed, what is the new target date? Watch the roadmap item.
 
 <!-- rationale
-risk: Low. The roadmap describes a one-click draft built from a Word file the user opens, limited to users with a Copilot licence; it describes no new data source or automatic action.
+risk: Low. The roadmap describes a one-click draft built from a Word file, limited to users with a Copilot licence; it describes no new data source or automatic action.
 cost: Medium. The roadmap item says the feature requires a Copilot licence, which Microsoft sells with Microsoft 365 E7 or as an add-on; no separate charge for this feature is published.
 impact: Medium. Copilot-licensed users who work in OneDrive on the web would notice it; unlicensed users are outside the roadmap's stated scope.
 -->
@@ -170,9 +177,7 @@ impact: Medium. Copilot-licensed users who work in OneDrive on the web would not
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: how it treats a labelled Word file / absence: Microsoft has not stated how Copilot treats a labelled Word file used by this action. | Found: Copilot and agents honor the EXTRACT usage right for a user, however it was applied to the content. | Fix: Replace 'or how it treats a labelled Word file' with 'or whether this OneDrive action inherits the Word file's sensitivity label'. General Copilot protections for labelled content are documented at https://learn.microsoft.com/purview/ai-m365-copilot-considerations; the narrower OneDrive-action inheritance question remains unconfirmed. | Source: https://learn.microsoft.com/purview/ai-m365-copilot-considerations
-- [unsupported, major] Risk assessment: Data exposure; rationale: risk / behaviour: The Word file used for the draft is a file the user opens. | Found: Searched: 'Copilot in OneDrive presentation file selection open Word file saved'. Read roadmap and Get started with Copilot in OneDrive. The record says 'using a Word file'; neither source specifies that this action requires the user to open that file. | Fix: Replace 'a Word file the user opens' with 'a Word file' in Data exposure and the risk rationale. The roadmap does not specify opening the source file.
-- [unsupported, blocker] Risk assessment: Change & support; Governance guidance: Before rollout / availability: The OneDrive option will appear only for Copilot-licensed users. | Found: Searched: '"Copilot in OneDrive" "button" "license"'; '"OneDrive" "presentation" "licensed users" "option"'. Read roadmap and Get started with Copilot in OneDrive. These require a licence for use but do not state who can see the specific option. | Fix: Replace the appearance-only claims in Change & support and the proposed helpdesk note with: 'The roadmap states that using the feature requires a Microsoft Copilot for Microsoft 365 licence; it does not specify who sees the option.' Keep licence eligibility separate from UI visibility.
+- [contradicted, blocker] Governance controls; controls[0].note; Governance guidance: At rollout / licensing: Removing the Copilot licence removes every Copilot feature the licence brings. | Found: Microsoft 365 Copilot (Premium) is the full add-on licensed experience ... which includes everything in Microsoft 365 Copilot (Basic) ... Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps | Fix: Replace the removal sentence with 'Removing the Copilot add-on licence removes that entitlement, not necessarily all Copilot access: Microsoft documents Basic capabilities for some users without the add-on.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Replace controls[0].note's scope sentence with 'Controls the Copilot licence entitlement, not this action alone.' Change the At rollout bullet to 'Remove the Copilot add-on licence from any user who should not hold that entitlement, using the licence assignment control in the table.' | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Microsoft Learn does not describe this OneDrive feature yet / absence: No Microsoft Learn description of the specific roadmap action was found in November 2026. | Found: Searched: '"469501"'; '"OneDrive" "create a presentation" "Copilot"'. Read Learn release notes and Microsoft Support's Get started with Copilot in OneDrive; Support describes presentation creation, but does not identify the specific one-click roadmap action. | Fix: Narrow the paragraph to: 'Microsoft Learn does not describe the specific one-click Word-to-presentation action at the time of writing (November 2026). Microsoft Support describes creating presentations from files in Copilot in OneDrive, without identifying that capability as this roadmap item.' Cite https://support.microsoft.com/office/get-started-with-copilot-in-onedrive-7fc81e10-e0cf-4da8-af2e-9876a2770e5d.
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Users > Active users in the Microsoft 365 admin center is the starting location for checking a user's Copilot licence. | Found: go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. ... Expand the Licenses section | Fix: Extend the checklist path to 'Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses', matching the existing control row. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

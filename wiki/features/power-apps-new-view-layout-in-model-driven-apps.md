@@ -89,15 +89,17 @@ changes:
     note: "Correction: licensing model set to included and the cost section now states the premium use-rights requirement for model-driven apps from the Power Apps licensing FAQs."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 36 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 35 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 36
+  claims: 35
+  confirmed: 35
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -179,8 +181,8 @@ cost: Low. The only cost the sources show is app review, accessibility checking 
 impact: Low. Affects makers and the users of apps where makers choose the layouts.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Running model-driven apps requires a licence providing Power Apps premium use rights. | Found: Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Keep the licensing FAQ requirement, but add: "Microsoft's Share a model-driven app page separately says users assigned the Environment Maker security role don't require licences to use model-driven apps, which conflicts with the licensing FAQ." Link that sentence to https://learn.microsoft.com/power-apps/maker/model-driven-apps/share-model-driven-app#app-sharing-privilege-and-licensing-requirements. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Running model-driven apps requires a licence providing Power Apps premium use rights. | Found: Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Keep the FAQ requirement and add: "Microsoft's Share a model-driven app page separately says users assigned the Environment Maker security role don't require licences to use model-driven apps, which conflicts with the licensing FAQ." Link to https://learn.microsoft.com/power-apps/maker/model-driven-apps/share-model-driven-app#app-sharing-privilege-and-licensing-requirements, which states: "Users who have the Environment Maker security role assigned don't require licenses to use model-driven apps." | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
 -->

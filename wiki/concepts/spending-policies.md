@@ -122,14 +122,16 @@ changes:
     note: "Corrected after the independent check: the Graph update row now says billingInstrument is needed when adding pay-as-you-go funding, and the create row names billingMethods."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 101 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 119 statements not yet confirmed"
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 101
-  confirmed: 101
+  claims: 119
+  confirmed: 119
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -221,3 +223,9 @@ Microsoft's setup page is inconsistent about License Administrator: it also list
 - Which credit rate applies to each service a policy covers? The spending policy pages do not state rates.
 - When is excess per-user usage billed, given Microsoft's "sole discretion" wording?
 - How soon does a limit change take effect for identity-based policies? The 12-minute figure is stated only for resource-based policies.
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risks and limits: Moving groups / behaviour: After a group move, the Consumption tab shows only current usage against the current policy at user level. | Found: Only the current usage against the current spending policy is displayed at a user level in the Consumption tab view. | Fix: Add after this sentence: 'Microsoft's monitoring page also says the Users details panel shows spending policy history and credits spent by policy for the past month; the usage-based billing overview likewise describes daily usage and credits spent by policy, so the documentation is inconsistent about this view.' Both pages are already cited: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending and https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending
+-->

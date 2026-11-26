@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "add-on"
+  model: "included"
   notes: "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans, and Microsoft Learn names integration with SharePoint and OneDrive as a core feature of it. No licence terms specific to the Prompt Gallery in OneDrive are published."
 audiences: ["m365-admin","change-adoption","end-user"]
 tags: ["onedrive","m365-copilot","prompt-gallery","adoption","licensing"]
@@ -40,6 +40,9 @@ sources:
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     kind: "learn"
+  - title: "Application card: Microsoft Copilot (for organizations)"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card"
+    kind: "learn"
   - title: "Which users hold the Microsoft Copilot licence that carries Copilot in OneDrive (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
@@ -59,7 +62,7 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "Needs at least License Administrator or User Administrator. Governs all of Copilot in OneDrive, not the gallery alone."
+    note: "Needs at least License Administrator or User Administrator. Governs all of Copilot in OneDrive, not the gallery alone. The licence's Microsoft Copilot in SharePoint item must also be enabled."
   - governs: "Tenant-wide switch for the Prompt Gallery in OneDrive"
     scope: "tenant"
     ui: null
@@ -74,19 +77,23 @@ changes:
     note: "New briefing: Prompt Gallery in Copilot in OneDrive on the web, launched October CY2026, with licence control and documented gaps."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: licensing model set to included; the licence control now says the Microsoft Copilot in SharePoint licence item must also be enabled; removed the unsupported caps statement; narrowed the impact rationale."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 49
-  confirmed: 45
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "59f6e3df6d0b30d84f90cc4d5ab32dc0"
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a4af18f93acca99188f45ede7dfb4fdd"
 ---
 
 ## What's changing
@@ -108,7 +115,7 @@ Microsoft has not stated whether the gallery appears for everyone with Copilot i
 ## Risk assessment
 
 **Data exposure**
-- The roadmap describes prompts that users run in Copilot in OneDrive; it does not describe the gallery reaching any data that Copilot in OneDrive does not already use. Who can use Copilot in OneDrive at all is decided by the Microsoft Copilot licence (first row of the controls table).
+- The roadmap describes prompts that users run in Copilot in OneDrive; it does not describe the gallery reaching any data that Copilot in OneDrive does not already use. A Microsoft Copilot licence is required for Copilot in OneDrive; its Microsoft Copilot in SharePoint licence item must also be enabled (first row of the controls table).
 - For the Copilot Prompt Gallery, Microsoft Learn says user-created prompts are stored in user and group collections in the Microsoft 365 Substrate data store, within the tenant boundary. Whether prompts customised in OneDrive are saved there is not stated.
 
 **Security & identity**
@@ -124,7 +131,6 @@ Microsoft has not stated whether the gallery appears for everyone with Copilot i
 
 - **Licence:** [License options for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/copilot-license-options) says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education plans. [Required configuration for Copilot guidance for Sensitive and Regulated customers](https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig) describes integration with SharePoint in Microsoft 365 and OneDrive as a core feature in Microsoft Copilot, and says Copilot is only available to users with a licence assigned.
 - **Meter:** none is documented for this feature at the time of writing.
-- **Caps:** not applicable; no metered use is described.
 - **Indirect costs:** user communication and help-desk time.
 - **Not yet published:** licence terms specific to the Prompt Gallery in OneDrive, including whether users with Copilot Chat but no Microsoft Copilot licence see it.
 
@@ -157,12 +163,12 @@ Microsoft has not stated whether the gallery appears for everyone with Copilot i
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold the Microsoft Copilot licence that carries Copilot in OneDrive</strong><br><small>User</small><br><small class="controls__note">Needs at least License Administrator or User Administrator. Governs all of Copilot in OneDrive, not the gallery alone.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the Microsoft Copilot licence that carries Copilot in OneDrive</strong><br><small>User</small><br><small class="controls__note">Needs at least License Administrator or User Administrator. Governs all of Copilot in OneDrive, not the gallery alone. The licence's Microsoft Copilot in SharePoint item must also be enabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for the Prompt Gallery in OneDrive</strong><br><small>Tenant</small><br><small class="controls__note">No setting documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The Microsoft Copilot licence is the documented control over who can use Copilot in OneDrive; Microsoft Learn documents no setting that turns off the Prompt Gallery in OneDrive while leaving Copilot in OneDrive on, either in the Microsoft 365 admin center Copilot settings or in the SharePoint Online PowerShell `Set-SPOTenant` reference, at the time of writing (November 2026). Assigning licences needs at least the License Administrator or User Administrator role. Licences can also be assigned by group membership in Microsoft Entra ID.
+A Microsoft Copilot licence is required for Copilot in OneDrive; its Microsoft Copilot in SharePoint licence item must also be enabled ([Required configuration for Copilot guidance for Sensitive and Regulated customers](https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig)). Microsoft Learn documents no setting that turns off the Prompt Gallery in OneDrive while leaving Copilot in OneDrive on, either in the Microsoft 365 admin center Copilot settings or in the SharePoint Online PowerShell `Set-SPOTenant` reference, at the time of writing (November 2026). Assigning licences needs at least the License Administrator or User Administrator role. Licences can also be assigned by group membership in Microsoft Entra ID.
 
 ## Open questions
 
@@ -174,16 +180,5 @@ The Microsoft Copilot licence is the documented control over who can use Copilot
 <!-- rationale
 risk: Low. The roadmap describes ready-made prompts that users choose to open and run in Copilot in OneDrive; nothing in the record describes new data access or actions.
 cost: Low. The Copilot in OneDrive integration comes with the Microsoft Copilot licence; Microsoft publishes no separate charge or licence for the gallery, so the known cost is user communication.
-impact: Low. Only people who open Copilot in OneDrive on the web and choose Open Prompt Gallery see it; administrators are not asked to do anything.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The gallery's licensing model is add-on, rather than included in the licence already required for Copilot in OneDrive. | Found: licensing: model: "add-on"; rationale: cost: "The Copilot in OneDrive integration comes with the Microsoft Copilot licence". SCHEMA defines included as "part of a licence the product already needs; name it". | Fix: Set licensing.model to "included": this is a new option inside Copilot in OneDrive, whose Microsoft Copilot licence requirement the notes already document. Retain the notes explaining Microsoft Copilot's E7/add-on purchase options and the absence of gallery-specific terms.
-- [contradicted, blocker] Risk assessment: Data exposure; controls[0].note; Governance controls / applicability: Who can use Copilot in OneDrive is decided by holding the Microsoft Copilot licence. | Found: contains eight separate components, which you can enable or disable for individual users. Integration with SharePoint in Microsoft 365 and OneDrive is a core feature in Microsoft Copilot. Enable this license item unless you disable SharePoint in Microsoft 365 and OneDrive. | Fix: Replace "Who can use Copilot in OneDrive at all is decided by the Microsoft Copilot licence" with "A Microsoft Copilot licence is required for Copilot in OneDrive; its Microsoft Copilot in SharePoint licence item must also be enabled." Qualify the existing row note and licence-control prose with that same requirement, citing https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig. | Source: https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig
-- [unsupported, blocker] Cost and licensing: Caps / cost: Caps are not applicable to this feature. | Found: Searched: OneDrive Copilot Prompt Gallery pricing meter limits separate license. Read Copilot license-options and copilot-prompt-gallery pages; neither states that caps are inapplicable. Absence of a published gallery meter does not establish absence of applicable limits. | Fix: Remove the Caps bullet. Retain the narrower, verified Meter statement that no meter is documented for this feature.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Copilot in OneDrive already has document and file skills that the gallery helps users discover. | Found: Microsoft Copilot in OneDrive is an innovative AI-powered assistant designed to help you interact with your documents by extracting information, comparing the key differences, summarizing files and generating insights. | Fix: Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card#key-features-or-capabilities for the existing file skills. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card#key-features-or-capabilities
-- [unsupported, minor] rationale: impact / behaviour: Only users who open Copilot in OneDrive and choose Open Prompt Gallery see the gallery. | Found: Searched: OneDrive "Open Prompt Gallery"; "OneDrive" "Prompt Gallery" "enabled". Read roadmap description and Copilot gallery page. The record gives access routes but does not state that opening the Copilot pane first is required for every route or that no other display occurs. | Fix: Replace the first sentence of the impact rationale with "Low. The roadmap describes users choosing Open Prompt Gallery in Copilot in OneDrive on the web."
+impact: Low. The roadmap describes users choosing Open Prompt Gallery in Copilot in OneDrive on the web; administrators are not asked to do anything.
 -->

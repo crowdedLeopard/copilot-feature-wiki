@@ -4,7 +4,7 @@ slug: "microsoft-purview-information-protection-policy-sync-status-for-m365-labe
 roadmapId: 558687
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "The Label policies page in the Microsoft Purview portal shows whether each sensitivity label publishing policy has finished syncing across Microsoft 365. It is a read-only view for admins; nothing needs configuring."
+summary: "The Label policies page in the Microsoft Purview portal shows whether each sensitivity label publishing policy has finished syncing across Microsoft 365. Admins can use it to check policy distribution."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -43,10 +43,10 @@ sources:
   - title: "Get-LabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-labelpolicy"
     kind: "learn"
-  - title: "Retrying distribution of a label publishing policy (PowerShell)"
+  - title: "Set-LabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy"
     kind: "learn"
-  - title: "Who can open and manage sensitivity label policies (Purview role-group membership) (Microsoft Purview portal)"
+  - title: "Permissions in the Microsoft Purview portal"
     url: "https://learn.microsoft.com/purview/purview-permissions"
     kind: "learn"
   - title: "Who can open and manage sensitivity label policies (Purview role-group membership) (PowerShell)"
@@ -66,14 +66,14 @@ controls:
       call: "Get-LabelPolicy -Identity \"<policy name>\""
       docs: "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/sensitivity-labels-missing"
     note: "Portal sync status is in preview per What's new (May 2026). The cmdlet returns DistributionStatus; Success indicates distribution succeeded."
-  - governs: "Retrying distribution of a label publishing policy"
+  - governs: "Retrying failed label publishing policy distribution to Exchange Online locations"
     scope: "tenant"
     ui: null
     api:
       kind: "powershell"
       call: "Set-LabelPolicy -Identity \"<policy name>\" -RetryDistribution"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy"
-    note: "Security & Compliance PowerShell; RetryDistribution is its own parameter set."
+    note: "Security & Compliance PowerShell; RetryDistribution is its own parameter set. Locations whose initial distributions succeeded are excluded. Run only if necessary, for one policy at a time; this is not intended for every policy update."
   - governs: "Who can open and manage sensitivity label policies (Purview role-group membership)"
     scope: "tenant"
     ui:
@@ -94,19 +94,23 @@ changes:
     note: "New briefing: sync status for sensitivity label publishing policies on the Label policies page, with PowerShell checks and retry."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 44 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: the retry row and guidance now say RetryDistribution targets Exchange Online locations, one policy at a time; removed unsupported read-only and end-user statements."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 40
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 1
-  hash: "39a428950be154ee746b39e2446c7e7b"
+  claims: 49
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "4b1e38cc2efdebd4a9c743e21f7f223c"
 ---
 
 ## What's changing
@@ -121,7 +125,7 @@ The roadmap record marks the item Launched, with a preview date of March CY2026 
 
 Label policy changes do not land at once. Microsoft's guidance is to allow 24 hours for labels and label policy settings to propagate, and changes that depend on new groups or group membership can take 24-48 hours. A per-policy sync status gives administrators a checkpoint before they tell users that a new label or a changed policy setting is ready, and before they start troubleshooting a label that users cannot see.
 
-The roadmap item and the What's new entry describe the status as something admins can now see on the Label policies page, so it arrives without anyone switching it on. It changes nothing for end users and nothing about how policies are distributed; the decision for a service owner is only whether to build it into the label change process.
+The roadmap item and the What's new entry describe the status as something admins can now see on the Label policies page, so it arrives without anyone switching it on. The decision for a service owner is whether to build the status view into the label change process.
 
 ## Risk assessment
 
@@ -156,7 +160,7 @@ The roadmap item and the What's new entry describe the status as something admin
 ## Governance guidance
 
 ### Before rollout
-- Check which administrators hold the Information Protection role groups or Sensitivity Label Reader in Settings > Roles and scopes > Role groups, and remove read access nobody needs.
+- Check which administrators hold the Information Protection role groups or Sensitivity Label Reader in Microsoft Purview portal > Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group, and remove read access nobody needs.
 - Record the current `DistributionStatus` of each label publishing policy with `Get-LabelPolicy -Identity "<policy name>"` as a baseline.
 
 ### At rollout
@@ -164,7 +168,7 @@ The roadmap item and the What's new entry describe the status as something admin
 - Allow 24 hours, or 24-48 hours where a change depends on new groups or group membership, before treating a missing label as a fault.
 
 ### After rollout
-- Run `Set-LabelPolicy -Identity "<policy name>" -RetryDistribution` for a policy whose `DistributionStatus` is not `Success`.
+- If a distribution retry to Exchange Online locations is necessary, run `Set-LabelPolicy -Identity "<policy name>" -RetryDistribution` for one policy at a time; locations whose initial distributions succeeded are excluded.
 - Compare the portal status with `DistributionStatus` when users report missing labels, and note any disagreement in the support case.
 - Watch the What's new page for the view moving out of preview and for documented status values.
 
@@ -176,12 +180,12 @@ The roadmap item and the What's new entry describe the status as something admin
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Checking whether a label publishing policy has synced</strong><br><small>Tenant</small><br><small class="controls__note">Portal sync status is in preview per What's new (May 2026). The cmdlet returns DistributionStatus; Success indicates distribution succeeded.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Publishing policies <a href="https://learn.microsoft.com/purview/create-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-LabelPolicy -Identity &quot;&lt;policy name&gt;&quot;</code> <a href="https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/sensitivity-labels-missing" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Retrying distribution of a label publishing policy</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; RetryDistribution is its own parameter set.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-LabelPolicy -Identity &quot;&lt;policy name&gt;&quot; -RetryDistribution</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retrying failed label publishing policy distribution to Exchange Online locations</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; RetryDistribution is its own parameter set. Locations whose initial distributions succeeded are excluded. Run only if necessary, for one policy at a time; this is not intended for every policy update.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-LabelPolicy -Identity &quot;&lt;policy name&gt;&quot; -RetryDistribution</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can open and manage sensitivity label policies (Purview role-group membership)</strong><br><small>Tenant</small><br><small class="controls__note">Role groups: Information Protection, Information Protection Admins, Analysts, Investigators, Readers. Portal steps need the Role management role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The sync status is a view, not a setting: there is nothing to turn on. Roles: managing role-group membership in the portal needs an admin account assigned the **Role management** role. The PowerShell rows run in Security & Compliance PowerShell. The portal view is a preview on Microsoft Learn; `Get-LabelPolicy` and its `DistributionStatus` property are the documented way to check distribution today.
+Microsoft describes sync status as visibility into when label policy updates are fully synced across Microsoft 365. Roles: managing role-group membership in the portal needs an admin account assigned the **Role management** role. The PowerShell rows run in Security & Compliance PowerShell. The portal view is a preview on Microsoft Learn; `Get-LabelPolicy` and its `DistributionStatus` property are the documented way to check distribution today.
 
 ## Open questions
 
@@ -194,16 +198,11 @@ The sync status is a view, not a setting: there is nothing to turn on. Roles: ma
 <!-- rationale
 risk: Low. The change adds a status view for label publishing policies; neither the roadmap nor Microsoft Learn describes it reading content or changing any policy.
 cost: Low. Microsoft publishes no separate licence or meter for the sync status; it sits on a page already covered by Microsoft Purview sensitivity labelling licences, so the only cost is admin time.
-impact: Low. Only administrators who manage sensitivity labels in the Microsoft Purview portal see it; end users notice nothing.
+impact: Low. It is an administrator-facing status view for those who manage sensitivity labels in the Microsoft Purview portal.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].governs and note; Governance guidance: After rollout; rendered controls / applicability: The retry row and guidance present RetryDistribution as unqualified remediation for label publishing policy distribution across the feature's Microsoft 365 scope. | Found: The RetryDistribution switch specifies whether to redistribute the policy to all Exchange Online locations. You don't need to specify a value with this switch. Locations whose initial distributions succeeded aren't included in the retry. | Fix: Keep the call, but change controls[1].governs to 'Retrying failed label publishing policy distribution to Exchange Online locations'. Add to its note: 'Locations whose initial distributions succeeded are excluded. Run only if necessary, for one policy at a time; this is not intended for every policy update.' Replace the first After rollout bullet with 'If a distribution retry to Exchange Online locations is necessary, run Set-LabelPolicy -Identity "<policy name>" -RetryDistribution for one policy at a time; locations whose initial distributions succeeded are excluded.' These qualifications are documented at https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy#-retrydistribution. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy
-- [unsupported, major] summary; Governance controls / behaviour: The sync-status feature is categorically read-only. | Found: Searched: "label publishing" "sync status" "read-only" "distribution" "users"; portal sync status retry query. Read whats-new and create-sensitivity-labels. Microsoft describes visibility but does not explicitly establish read-only behaviour or the absence of associated actions. | Fix: Replace 'It is a read-only view for admins; nothing needs configuring.' in the summary with 'Admins can use it to check policy distribution.' Replace 'The sync status is a view, not a setting: there is nothing to turn on.' in Governance controls with 'Microsoft describes sync status as visibility into when label policy updates are fully synced across Microsoft 365.'
-- [unsupported, major] Why it matters; rationale: impact / behaviour: The change has no effect on end users. | Found: Searched: "label publishing" "sync status" "read-only" "distribution" "users"; Purview sensitivity label publishing policy portal sync status query. Read whats-new and the roadmap description; they identify admins as the audience but do not state that end-user behaviour is unchanged. | Fix: Remove 'It changes nothing for end users' from Why it matters and 'end users notice nothing' from the impact rationale. Keep the narrower supported statement that this is an administrator-facing status view.
-- [unsupported, major] Why it matters / behaviour: The change does not alter how policies are distributed. | Found: Searched: "label publishing" "sync status" "read-only" "distribution" "users"; Purview sensitivity label publishing policy portal sync status query. Read whats-new, create-sensitivity-labels and the roadmap description; no passage states that the distribution mechanism is unchanged. | Fix: Remove 'and nothing about how policies are distributed' from Why it matters. The sentence can instead read: 'The decision for a service owner is whether to build the status view into the label change process.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / admin-path: Settings > Roles and scopes > Role groups is the starting page for reviewing and removing role-group membership. | Found: Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group that you want to remove users or groups from. Select Edit ... On Edit members of the role group, select the check box for all users or groups you want to remove | Fix: Expand the first Before rollout bullet's path to 'Microsoft Purview portal > Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group'. The cited permissions page documents membership review and removal there. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: The path ending at Edit members of the role group is the route given for reviewing membership and removing unnecessary read access. | Found: On Edit members of the role group, select the check box for all users or groups you want to remove from the role group. ... Select Remove members, and then select Next. | Fix: For the removal instruction, extend the path to 'Microsoft Purview portal > Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Remove members', after selecting the members to remove, as documented at https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

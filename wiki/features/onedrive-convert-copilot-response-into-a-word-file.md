@@ -4,7 +4,7 @@ slug: "onedrive-convert-copilot-response-into-a-word-file"
 roadmapId: 469502
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)","OneDrive"]
-summary: "Microsoft plans a one-click option in OneDrive on the web to turn a Copilot response, such as a summary or FAQ, into a Word document, for users with a Copilot licence. No admin switch is documented; the target date has passed."
+summary: "Microsoft plans a one-click option in OneDrive on the web to turn a Copilot response, such as a summary or FAQ, into a Word document, for users with a Copilot licence. No switch for this option alone is documented; the target date has passed."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "add-on"
-  notes: "The roadmap item says the feature requires a Microsoft Copilot for Microsoft 365 licence. Microsoft Learn says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans. No separate terms for this option are published."
+  model: "included"
+  notes: "The roadmap item says the feature requires a Microsoft Copilot for Microsoft 365 licence, and Microsoft says Copilot in OneDrive is bundled as a part of Microsoft Copilot. Microsoft Learn says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans. No separate terms for this option are published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["onedrive","m365-copilot","word","document-generation","licensing","dlp"]
 sources:
@@ -40,6 +40,12 @@ sources:
   - title: "2025 Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes"
     kind: "learn"
+  - title: "Frequently asked questions about Copilot in OneDrive"
+    url: "https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947"
+    kind: "docs"
+  - title: "Get started with Copilot in OneDrive"
+    url: "https://support.microsoft.com/office/get-started-with-copilot-in-onedrive-7fc81e10-e0cf-4da8-af2e-9876a2770e5d"
+    kind: "docs"
   - title: "Which users hold the Microsoft Copilot licence that the roadmap item says this option requires (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
@@ -74,19 +80,23 @@ changes:
     note: "New briefing: roadmap plan for converting Copilot responses to Word in OneDrive on the web, with Copilot licensing and the licence-assignment control."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 38 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: licensing model is now included (Copilot in OneDrive is bundled with Microsoft Copilot); added the documented Microsoft Copilot for SharePoint service-plan switch alongside licence assignment; removed an unsupported claim about Copilot output staying in the chat pane."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 37 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 35
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "2f26e139e3cbd1434146c593393a469d"
+  claims: 37
+  confirmed: 37
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "bfb9943a004870eaeb7775973b92f06c"
 ---
 
 ## What's changing
@@ -99,9 +109,9 @@ The roadmap item lists the feature as **In development**, for General Availabili
 
 ## Why it matters
 
-The change turns Copilot output that today stays in a chat pane into a document that can be stored, edited and shared like any other Word file. That makes AI-generated summaries easier to circulate, and harder to tell apart from documents a person wrote, once they leave OneDrive. For the service owner the questions are where the file lands, whether it inherits protection from its source files, and whether users understand that they are sharing Copilot output.
+The planned conversion gives users a one-click way to turn a Copilot response into a Word document. That makes AI-generated summaries easier to circulate, and harder to tell apart from documents a person wrote, once they leave OneDrive. For the service owner the questions are where the file lands, whether it inherits protection from its source files, and whether users understand that they are sharing Copilot output.
 
-The roadmap describes an option each licensed user chooses to use, and Microsoft Learn documents no admin switch for it at the time of writing (November 2026). If nobody acts, users with a Copilot licence would be able to use it when it ships; the only documented way to decide who gets it is who holds that licence.
+The roadmap describes an option each licensed user chooses to use, and Microsoft Learn documents no admin switch for it at the time of writing (November 2026). If nobody acts, users with a Copilot licence would be able to use it when it ships. Licence assignment is one documented lever. Microsoft also documents disabling the Microsoft Copilot for SharePoint service plan, which disables Copilot in both OneDrive and SharePoint ([Frequently asked questions about Copilot in OneDrive](https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947)).
 
 ## Risk assessment
 
@@ -121,7 +131,7 @@ The roadmap describes an option each licensed user chooses to use, and Microsoft
 
 ## Cost and licensing
 
-**Licence.** The roadmap item says the feature requires a Microsoft Copilot for Microsoft 365 licence. Microsoft's [Microsoft Copilot requirements](https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements) page says users need a Microsoft Copilot license and a qualifying prerequisite license. The [License options for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/copilot-license-options) page says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education plans, and lists the eligible prerequisite plans.
+**Licence.** The roadmap item says the feature requires a Microsoft Copilot for Microsoft 365 licence. Microsoft's [Microsoft Copilot requirements](https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements) page says users need a Microsoft Copilot license and a qualifying prerequisite license. The [License options for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/copilot-license-options) page says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education plans, and lists the eligible prerequisite plans. Microsoft's [Frequently asked questions about Copilot in OneDrive](https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947) says Copilot in OneDrive is bundled as a part of Microsoft Copilot and is always on for licensed users.
 
 **Meter.** Microsoft publishes no meter or separate price for this option at the time of writing (November 2026).
 
@@ -147,7 +157,7 @@ The roadmap describes an option each licensed user chooses to use, and Microsoft
 - Send the user communication to Copilot-licensed OneDrive users once the option appears.
 
 ### After rollout
-- Adjust Copilot licence assignment if the option needs to be withheld from a group, since no switch for the option itself is documented.
+- Decide whether withholding this option warrants restricting broader Copilot access; no conversion-only switch is documented.
 
 ## Governance controls
 
@@ -161,7 +171,7 @@ The roadmap describes an option each licensed user chooses to use, and Microsoft
 </tbody>
 </table>
 
-Microsoft Learn documents no switch that turns this option on or off separately from Copilot in OneDrive at the time of writing (November 2026), so the documented lever is the Copilot licence. Microsoft's requirements page says the licence is required for licensed Microsoft Copilot capabilities in general, so withholding it affects far more than this option. Assigning licences needs at least the License Administrator or User Administrator role. The roadmap item does not say whether the converted file is covered by sensitivity labels or retention policies; check that at rollout.
+Microsoft Learn documents no switch that turns this option on or off separately from Copilot in OneDrive at the time of writing (November 2026). Licence assignment is one documented lever. Microsoft also documents disabling the Microsoft Copilot for SharePoint service plan, which disables Copilot in both OneDrive and SharePoint ([Frequently asked questions about Copilot in OneDrive](https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947)). Microsoft's requirements page says the licence is required for licensed Microsoft Copilot capabilities in general, so withholding it affects far more than this option. Assigning licences needs at least the License Administrator or User Administrator role. The roadmap item does not say whether the converted file is covered by sensitivity labels or retention policies; check that at rollout.
 
 ## Open questions
 
@@ -175,14 +185,4 @@ Microsoft Learn documents no switch that turns this option on or off separately 
 risk: Low. The roadmap describes a user turning a Copilot response they already see into a Word file; Microsoft has not documented where that file is saved or how it is labelled, so confirm both before relying on existing OneDrive controls.
 cost: Low. The roadmap item requires the Copilot licence that Copilot in OneDrive already needs; Microsoft publishes no separate price or meter for this option, so the known cost is communication and support time.
 impact: Low. Only users with a Microsoft Copilot licence who use Copilot in OneDrive on the web see the option, and each chooses whether to use it.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The new OneDrive option is classified as add-on rather than included in the Copilot licence its host product already requires. | Found: Page field: model: "add-on". Microsoft: "Copilot in OneDrive is bundled as a part of Microsoft Copilot and is always on for licensed users." | Fix: Set licensing.model to "included": this is a new option inside licensed Copilot in OneDrive, not a separately documented add-on. Retain the notes naming the Microsoft Copilot licence and its E7 or eligible-plan add-on acquisition options. | Source: https://support.microsoft.com/en-us/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947
-- [contradicted, blocker] Why it matters; Governance controls; Governance guidance: After rollout / absence: Holding or withholding the whole Copilot licence is the only documented way to decide who can use this OneDrive capability. | Found: Copilot in OneDrive can be disabled in your service plan by your administrator by unchecking Microsoft Copilot for SharePoint from the Microsoft 365 admin center > Turn apps and services on or off. Note that this will disable Copilot in both OneDrive and SharePoint. | Fix: Replace the exclusivity claim in Why it matters and Governance controls with: "Licence assignment is one documented lever. Microsoft also documents disabling the Microsoft Copilot for SharePoint service plan, which disables Copilot in both OneDrive and SharePoint." Cite the FAQ URL above. Replace the After rollout bullet with: "Decide whether withholding this option warrants restricting broader Copilot access; no conversion-only switch is documented." | Source: https://support.microsoft.com/en-us/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947
-- [unsupported, major] Why it matters: first sentence / behaviour: Copilot output today stays in a chat pane until this change turns it into a document. | Found: Searched: OneDrive Copilot response stays chat pane export Word document. Read Get started with Copilot in OneDrive, its FAQ, Copilot overview and data protection documentation; no passage establishes this historical limitation. | Fix: Replace the first sentence with: "The planned conversion gives users a one-click way to turn a Copilot response into a Word document."
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] rationale: cost / licensing: Copilot in OneDrive already needs the Copilot licence that the roadmap requires for this new option. | Found: You need a Microsoft 365 Copilot license to use Copilot in OneDrive and SharePoint. | Fix: Add https://support.microsoft.com/office/get-started-with-copilot-in-onedrive-7fc81e10-e0cf-4da8-af2e-9876a2770e5d to sources to support the existing Copilot in OneDrive licence requirement. | Source: https://support.microsoft.com/office/get-started-with-copilot-in-onedrive-7fc81e10-e0cf-4da8-af2e-9876a2770e5d
 -->

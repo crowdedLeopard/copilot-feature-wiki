@@ -90,15 +90,17 @@ changes:
     note: "Correction: licensing now states Power Automate Premium includes cloud and desktop automation, with no savings-specific licence yet published; control paths and calls tightened."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 56
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
   contradicted: 0
   attempts: 0

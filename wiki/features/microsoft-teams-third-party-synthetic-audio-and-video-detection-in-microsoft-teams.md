@@ -12,7 +12,7 @@ platforms: ["Desktop","Mac","Web"]
 targetDate: "November CY2026"
 previewDate: null
 risk: "low"
-cost: "low"
+cost: "medium"
 impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
@@ -59,7 +59,7 @@ sources:
     url: "https://learn.microsoft.com/microsoftteams/meeting-policies-overview"
     kind: "learn"
 videos: []
-related: ["meeting-policy","microsoft-teams-report-a-security-concern-in-meetings"]
+related: ["meeting-policy"]
 controls:
   - governs: "Whether detection is permitted and which provider a meeting policy uses"
     scope: "user"
@@ -85,7 +85,7 @@ controls:
     note: "App availability, required consent, provider-side activation and meeting policy configuration are separate prerequisites. The reference describes -IsBlocked $true as unblocking; use Manage apps > app > Block."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-17"
@@ -106,19 +106,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-26"
+    note: "Corrected after verification: cost rating raised to medium because detection requires a provider service under its own licensing; cost rationale reworded to match."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "466244051e44f5ccaf48a32b14dd442a"
+  contradicted: 0
+  attempts: 0
+  hash: "a895a4669e2bc12b8687fc01cbaa51e8"
 ---
 
 ## What's changing
@@ -215,14 +219,12 @@ Microsoft Learn documents a Teams admin center route to the same policy setting,
 
 <!-- rationale
 risk: Low. Third-party detection does not start until administrators configure a provider; review its media access and data handling before opting in.
-cost: Low. The provider supplies the service under its own licensing and activation model; a detection-specific Teams licence, price or meter is not yet published, so the cost the sources show is administrator time.
+cost: Medium. Detection requires a provider service under its own licensing and activation model. Microsoft has not published provider fees or a detection-specific Teams licence, price or meter.
 impact: Low. Administrators choose and deploy the provider; meeting participants notice only in meetings organised by users whose policy points to a provider.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is low because the cost the sources show is administrator time, although the page also documents provider add-on licensing. | Found: cost: "low"; licensing: model: "add-on"; "Complete any provider-side licensing or service activation before setup"; "the cost the sources show is administrator time." | Fix: Set cost to medium under the standard's add-on licensing scale. Replace the cost rationale with: "Medium. Detection requires a provider service under its own licensing and activation model. Microsoft has not published provider fees or a detection-specific Teams licence, price or meter." The published licensing prerequisite is at https://learn.microsoft.com/microsoftteams/third-party-synthetic-audio-video-detection-meetings.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; What's changing; Governance guidance: At rollout / command: Set-CsTeamsMeetingPolicy -Identity <policy-name> -SyntheticMediaDetection Enabled -SyntheticMediaDetectionAppId <supported-provider-app-id> selects a provider using its Teams App ID. | Found: Replace <supported-provider-app-id> with the Teams App ID of a supported certified detection provider, not an arbitrary Microsoft Entra application ID or bot ID. | Fix: Keep the call and add this sentence to controls[0].note: "The cmdlet reference specifies the provider's Teams App ID, whereas the feature overview's PowerShell example labels it 'provider bot application ID'." The differing example is at https://learn.microsoft.com/microsoftteams/third-party-synthetic-audio-video-detection-meetings. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy
+- [supported, minor] controls[0].api; What's changing; Governance guidance: At rollout / command: Set-CsTeamsMeetingPolicy -Identity <policy-name> -SyntheticMediaDetection Enabled -SyntheticMediaDetectionAppId <supported-provider-app-id> permits detection with the provider's Teams App ID. | Found: Set-CsTeamsMeetingPolicy -Identity "SyntheticDetectionPolicy" -SyntheticMediaDetection Enabled -SyntheticMediaDetectionAppId "<supported-provider-app-id>" ... Replace `<supported-provider-app-id>` with the Teams App ID of a supported certified detection provider | Fix: Keep the call and Teams App ID wording. Append to controls[0].note: 'The feature overview's PowerShell example labels this value as a provider bot application ID, while the cmdlet reference explicitly requires the supported provider Teams App ID, not an arbitrary Entra application ID or bot ID.' The differing example is at https://learn.microsoft.com/microsoftteams/third-party-synthetic-audio-video-detection-meetings. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy
 -->

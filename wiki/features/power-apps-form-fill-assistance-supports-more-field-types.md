@@ -94,15 +94,17 @@ changes:
     note: "Corrected after the independent check: rich text fields are described as allowing formatted text, and the per-app toolbar path now starts at Solutions and opens the app designer."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 72
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -211,8 +213,8 @@ cost: Medium. Learn says Power Apps model-driven app users need a Power Apps pre
 impact: Medium. Users of model-driven apps where form fill assistance is switched on would see suggestions on more kinds of field; Learn says the default for Power Apps users is off.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance / admin-path: The per-app toolbar route is Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar. | Found: Select the model-driven app, and then select ... > Edit to open the modern app designer. | Fix: Include the omitted more-options step: 'Solutions > solution > app > ... > Edit > Settings > Features > Form fill assist toolbar'. The entry route is in https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer; Settings > Features and the toolbar option are in the already-cited app-properties page. Apply the same route in Governance guidance. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer
+- [supported, minor] controls[1].ui; Governance guidance; Governance controls / admin-path: The per-app toolbar route is Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar. | Found: Select the model-driven app, and then select ... > Edit to open the modern app designer. | Fix: In controls[1].ui, the rendered table and Governance guidance, use 'Solutions > solution > app > ... > Edit > Settings > Features > Form fill assist toolbar'. The entry route is in the cited use-command-designer page; Settings > Features and the toolbar option are in the cited app-properties page. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer
 -->

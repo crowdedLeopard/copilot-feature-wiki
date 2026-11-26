@@ -46,6 +46,9 @@ sources:
   - title: "Use Microsoft Teams administrator roles to manage Teams"
     url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
     kind: "learn"
+  - title: "Admins - Manage transcription and captions for Teams meetings"
+    url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
+    kind: "learn"
 videos: []
 related: ["teams-intelligent-recap-without-saving-transcript","work-iq-real-time-transcripts","teams-ai-generated-meeting-memory"]
 controls:
@@ -92,7 +95,7 @@ controls:
     note: "Adjacent control. Learn says AI must be allowed in the meeting for an app to receive a transcript; Work IQ access is off by default. The PowerShell parameter requires the latest version of the Teams PowerShell module."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-16"
@@ -117,19 +120,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-26"
+    note: "Corrected after verification: MC1532253's last update is now given as 19 November 2026; removed three checklist steps that pointed to replacement-policy settings with no controls-table row; cited the Learn page for the Transcription toggle."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 7
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 79
-  confirmed: 77
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e07ffc2ebd3f9fd427a57b1ba580cd8b"
+  contradicted: 0
+  attempts: 0
+  hash: "7523e9e8a00d17b67df9843c866d18b5"
 ---
 
 ## What's changing
@@ -140,7 +147,7 @@ The new policies arrive without administrator action. Microsoft's notice MC15322
 
 The notice says the Teams admin center meeting policy will show the new settings under **Recording and transcription** and **Copilot and other AI**, with Allow AI in meetings (On; Off but organisers can change; Off and organisers cannot change) and Start transcription when AI is turned on (On but organisers can change; On and organisers cannot change; Off). The Transcription policy stays and still controls whether transcription is allowed. Meeting options for organisers change too: **Who can manage AI** replaces the Allow Copilot and Facilitator option (and is set to No one if an admin turns Meeting AI off), and **Who can use AI**, **Start Transcription with AI** and Intelligent Recap controls are added. Microsoft says administrators can also control Start Transcription with AI in the Teams admin center.
 
-Status is In development with a roadmap target of January CY2027. MC1532253 (updated 3 November 2026) gives Targeted Release starting early December 2026 and completing mid-December 2026, and General Availability (Worldwide) starting early January 2027 and completing mid-January 2027. The notice sets no act-by date.
+Status is In development with a roadmap target of January CY2027. MC1532253 (updated 19 November 2026) gives Targeted Release starting early December 2026 and completing mid-December 2026, and General Availability (Worldwide) starting early January 2027 and completing mid-January 2027. The notice sets no act-by date.
 
 ## Why it matters
 
@@ -188,17 +195,14 @@ The settings sit in Teams meeting policies, which Learn says can be applied to g
 - Inventory scripts, runbooks and documentation that run Set-CsTeamsMeetingPolicy with -Copilot, and plan changes to -MeetingAI and -TranscriptionWithMeetingAI, which Learn says must be used together.
 - Record each meeting policy's current Copilot value (On, On with saved transcript required, On with transcript saved by default, or Off) so the mapped result can be checked afterwards.
 - Tell Teams administrators and help-desk staff that existing behaviour will appear as two settings in the Teams admin center.
-- Decide, per policy, whether organisers may override the AI and transcription settings (MeetingAI and TranscriptionWithMeetingAI are documented only in the notes under the controls table, not as table rows).
 
 ### At rollout
 
 - Watch Message center for MC1532253 updates; Microsoft has already moved the dates once.
 - Switch updated scripts over once the controls reach your tenant, because the Copilot policy cannot then be updated directly.
-- Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values with the values you recorded (documented only in the notes under the controls table).
 
 ### After rollout
 
-- Test a policy where Copilot is enforced off and confirm transcription is also off, as Microsoft describes.
 - Check that any app relying on Work IQ real-time transcripts still receives them where AI is allowed.
 - Decide whether -AllowIntelligentRecap $false is needed for any policy where recap must stay off, and review organiser guidance for Who can manage AI and Who can use AI.
 
@@ -237,11 +241,8 @@ cost: Low. The only cost the sources show is admin time to update scripts and ru
 impact: Medium. Teams administrators see two settings where there was one, and organisers get new AI options in their meeting options; Microsoft says the one-time mapping preserves each policy's current effective behaviour.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: rollout paragraph / date: MC1532253 carrying the quoted rollout schedule was updated on 3 November 2026. | Found: Updated November 19, 2026: We have updated the content. Thank you for your patience. | Fix: Replace 'MC1532253 (updated 3 November 2026)' with 'MC1532253 (updated 19 November 2026)'. Keep the rollout windows unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The transcription UI path ends at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription. | Found: You can use the Recording & Transcription section in the Teams admin center ... to manage your transcription policy. | Fix: Extend controls[1].ui.path and the rendered path to 'Meetings > Meeting policies > policy > Recording & transcription > Transcription'. The Transcription toggle is documented at https://learn.microsoft.com/microsoftteams/meeting-transcription-captions; cite that page. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist directs readers to decide, compare and test replacement-policy settings that have no controls-table rows. | Found: Decide, per policy, whether organisers may override the AI and transcription settings ... not as table rows. ... Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values ... Test a policy where Copilot is enforced off | Fix: Remove the Before rollout bullet beginning 'Decide, per policy', the At rollout bullet beginning 'Compare each policy', and the After rollout bullet beginning 'Test a policy'. Keep the replacement-policy descriptions and migration recommendations in the prose; the notes about missing rows do not resolve the checklist/table inconsistency.
+- [supported, minor] controls[1].ui / admin-path: Teams admin center > Meetings > Meeting policies > policy > Recording & transcription reaches the page section containing the transcription control. | Found: You can use the Recording & Transcription section in the Teams admin center or the -AllowTranscription parameter ... to manage your transcription policy. | Fix: Extend controls[1].ui.path and the rendered table path to 'Meetings > Meeting policies > policy > Recording & transcription > Transcription'. The already cited https://learn.microsoft.com/microsoftteams/meeting-transcription-captions gives the final step: 'Toggle Transcription On or Off.' | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
 -->

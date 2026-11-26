@@ -95,15 +95,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 41 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 41
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -188,9 +190,9 @@ cost: Low. Planning and review take administrator time; recipe licensing and met
 impact: Low. Affects developers and admins building or approving agents that use Work IQ.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls: Work IQ API enablement / command: POST /v1.0/servicePrincipals with appId fdcc1f02-fc51-4226-8753-f668596af7f7 provisions the Work IQ resource. | Found: Set the method to POST and the URL to https://graph.microsoft.com/v1.0/servicePrincipals. ... "appId": "fdcc1f02-fc51-4226-8753-f668596af7f7" | Fix: Set controls[0].api.call and its rendered call to 'POST /v1.0/servicePrincipals'. Add the note 'The request body sets appId to fdcc1f02-fc51-4226-8753-f668596af7f7.' Keep the existing documentation link. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq#enable-work-iq-api-in-your-organization
-- [supported, minor] controls[1].api; Governance controls: Admin consent / command: POST /v1.0/oauth2PermissionGrants can grant WorkIQAgent.Ask for all users using clientId, consentType AllPrincipals, resourceId and scope. | Found: The consentType is AllPrincipals, indicating that you're consenting on behalf of all users in the tenant. ... POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants | Fix: Set controls[1].api.call and its rendered call to 'POST /v1.0/oauth2PermissionGrants'. Add to its note: 'The request body sets clientId to the client service principal object ID, consentType to AllPrincipals, resourceId to the Work IQ service principal object ID, and scope to WorkIQAgent.Ask. Revoke with DELETE /v1.0/oauth2PermissionGrants/{grant-id}.' The existing Graph link documents both operations; the cited Create oAuth2PermissionGrant reference confirms all four properties. | Source: https://learn.microsoft.com/graph/permissions-grant-via-msgraph
+- [supported, minor] controls[0].api; Governance controls: Work IQ API enablement / command: POST /v1.0/servicePrincipals with appId fdcc1f02-fc51-4226-8753-f668596af7f7 provisions the tenant's Work IQ resource. | Found: Set the method to POST and the URL to https://graph.microsoft.com/v1.0/servicePrincipals. ... "appId": "fdcc1f02-fc51-4226-8753-f668596af7f7" | Fix: Set controls[0].api.call and its rendered call to 'POST /v1.0/servicePrincipals'. Add the note 'The request body sets appId to fdcc1f02-fc51-4226-8753-f668596af7f7.' Keep the existing documentation link. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq#enable-work-iq-api-in-your-organization
+- [supported, minor] controls[1].api; Governance controls: Admin consent / command: POST /v1.0/oauth2PermissionGrants grants tenant-wide delegated consent using clientId, consentType AllPrincipals, resourceId and the WorkIQAgent.Ask scope. | Found: The consentType is AllPrincipals, indicating that you're consenting on behalf of all users in the tenant. ... POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants | Fix: Set controls[1].api.call and its rendered call to 'POST /v1.0/oauth2PermissionGrants'. Add to the note: 'The request body sets clientId to the client service principal object ID, consentType to AllPrincipals, resourceId to the Work IQ service principal object ID, and scope to WorkIQAgent.Ask. Revoke with DELETE /v1.0/oauth2PermissionGrants/{grant-id}.' Keep the existing Graph documentation link. The cited Create oAuth2PermissionGrant reference confirms the body properties, and the Work IQ admin-consent page confirms the scope. | Source: https://learn.microsoft.com/graph/permissions-grant-via-msgraph
 -->

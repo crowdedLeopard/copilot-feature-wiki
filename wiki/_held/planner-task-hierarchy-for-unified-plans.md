@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "March CY2027"
 previewDate: null
 risk: "low"
-cost: "medium"
+cost: "low"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
@@ -42,6 +42,27 @@ sources:
     kind: "learn"
   - title: "Microsoft Planner support in Microsoft Purview"
     url: "https://learn.microsoft.com/planner/planner-in-purview"
+    kind: "learn"
+  - title: "Security, privacy, and compliance in Microsoft Planner"
+    url: "https://learn.microsoft.com/planner/planner-security-privacy-compliance"
+    kind: "learn"
+  - title: "Prerequisites for making Planner changes in Windows PowerShell"
+    url: "https://learn.microsoft.com/planner/prerequisites-for-powershell"
+    kind: "learn"
+  - title: "Turn off Outlook calendar sync in Planner for your organization"
+    url: "https://learn.microsoft.com/planner/turn-off-outlook-calendar-sync"
+    kind: "learn"
+  - title: "Disable the creation of Roster containers in your organization's Planner tenant"
+    url: "https://learn.microsoft.com/planner/disable-roster-containers"
+    kind: "learn"
+  - title: "Disable Planner tab in shared and private channels"
+    url: "https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels"
+    kind: "learn"
+  - title: "Disabling direct-push planner mobile notifications"
+    url: "https://learn.microsoft.com/planner/disabling-direct-push-planner-mobile-notifications"
+    kind: "learn"
+  - title: "Turn off or restrict access to Planner Agent and Planner Agent chat in Planner"
+    url: "https://learn.microsoft.com/planner/turn-off-planner-agent"
     kind: "learn"
   - title: "Which users hold a Planner Plan 1 or Planner and Project Plan 3 licence (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
@@ -99,24 +120,28 @@ changes:
     note: "New briefing: nested tasks planned for unified plans in Planner, with current licensing for task hierarchy and the Planner tenant settings."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 63 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: acknowledged Learn's beta Graph description of parent and child tasks, narrowed unified plan eligibility and autonomy wording, re-rated cost low, removed an eDiscovery checklist step, added sources."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 58
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "d289216e06d834bb8d3df552bc7a96d6"
+  claims: 61
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "9cf74094bb0794654946ddba81df8a1f"
 ---
 
 ## What's changing
 
-Microsoft plans to add task hierarchy, meaning tasks nested under other tasks, to unified plans in Planner. The roadmap item states that it "introduces nested tasks to organize complex work, making plan structure clearer and execution easier". Microsoft Learn does not describe this feature in unified plans yet, so what follows about its behaviour is the roadmap's description.
+Microsoft plans to add task hierarchy, meaning tasks nested under other tasks, to unified plans in Planner. The roadmap item states that it "introduces nested tasks to organize complex work, making plan structure clearer and execution easier". Microsoft Learn describes parent and child tasks in the beta unified plans Graph API, but has not stated the rollout default or which licences will allow creating nested tasks in unified plans.
 
 Task hierarchy already exists in Planner, but only in premium plans: the Planner service description marks it "Currently available only in premium plans". Unified plans are the plan type Microsoft now uses in place of basic plans ("Basic plans are now unified plans"), and in them "the capabilities available to each user depend on their assigned license". This item brings the hierarchy into that plan type.
 
@@ -126,7 +151,7 @@ The roadmap item is **In development**, targeted for **March CY2027**, for gener
 
 ## Why it matters
 
-The main question for a service owner is licensing, not risk. Today, subtasks live in premium plans, which a user with a Planner premium licence can create by converting a basic plan. Moving the hierarchy into unified plans brings it to the plan type that every Microsoft 365 Planner user already works in, while the service description still lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3 only. Expect requests for those licences, or for trials, once users see nested tasks in plans they share with licensed colleagues.
+The main question for a service owner is licensing, not risk. Today, subtasks live in premium plans, which a user with a Planner premium licence can create by converting a basic plan. Moving the hierarchy into unified plans brings it to a plan type that users with an eligible Microsoft 365 licence can use, while the service description still lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3 only. Expect requests for those licences, or for trials, once users see nested tasks in plans they share with licensed colleagues.
 
 Microsoft has not stated what happens on arrival, nor whether users without a qualifying licence will see nested tasks as view only, as Microsoft 365 users do in premium plans today. No source says existing plans or tasks change. Plan for a mixed experience in shared plans, since "a unified plan doesn't require every member of the plan to have the same license".
 
@@ -140,7 +165,7 @@ Microsoft has not stated what happens on arrival, nor whether users without a qu
 - No change: Microsoft has not described any new identity, permission or sharing model for nested tasks.
 
 **Autonomy & actions**
-- No change: the feature organises tasks people create; it does not act on its own.
+- No change: the feature organises tasks people create; Microsoft has not described autonomous actions introduced by task hierarchy.
 
 **Change & support**
 - Users in the same plan may get different capabilities, because features in unified plans depend on each user's licence. Expect help-desk questions about why one member can nest tasks and another cannot.
@@ -178,7 +203,6 @@ Microsoft has not stated what happens on arrival, nor whether users without a qu
 
 ### After rollout
 - Review Planner Plan 1 and Planner and Project Plan 3 licence requests against actual need.
-- Test whether eDiscovery searches of a group-shared unified plan return nested tasks with their structure, before relying on it for a legal hold.
 
 ## Governance controls
 
@@ -207,24 +231,12 @@ The practical lever is licensing: who holds Planner Plan 1 or Planner and Projec
 
 <!-- rationale
 risk: Low. Nested tasks organise work inside plans users already share; Microsoft documents no new data access, and Planner itself can still be turned off with PowerShell.
-cost: Medium. Microsoft's Planner service description lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3, not for Microsoft 365 suites, so teams that want to build hierarchies may need those per-user licences.
+cost: Low. Reviewing licences, handling requests and preparing guidance takes administrator time; licensing specific to task hierarchy in unified plans is not yet published.
 impact: Medium. Project leads and plan members who structure work in Planner notice; Microsoft has not said whether the feature appears for every unified plan user.
 -->
 
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing / absence: Microsoft Learn does not describe this feature in unified plans yet. | Found: A task in the Planner Unified plans Graph API. ... parentTaskId | String | ID of the parent task, if this task is a subtask. | Fix: Replace the sentence with: 'Microsoft Learn describes parent and child tasks in the beta unified plans Graph API, but has not stated the rollout default or which licences will allow creating nested tasks in unified plans.' | Source: https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta
-- [unsupported, major] Why it matters / behaviour: Every Microsoft 365 Planner user already works in unified plans. | Found: Searched: Planner unified plans task hierarchy nested tasks licensing default rollout data permissions autonomous. Read Planner for admins and service description: they say users can use unified plans, not that every user already does; premium plans remain supported. | Fix: Replace 'the plan type that every Microsoft 365 Planner user already works in' with 'a plan type that users with an eligible Microsoft 365 licence can use'.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The hierarchy feature does not act on its own. | Found: Searched: Planner unified plans task hierarchy nested tasks licensing default rollout data permissions autonomous; "Planner" "nested tasks" "automatic". Read roadmap and beta task resource; neither states that hierarchy has no automatic actions. | Fix: Replace 'it does not act on its own' with 'Microsoft has not described autonomous actions introduced by task hierarchy'.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The medium cost rating treats premium-plan hierarchy entitlements as evidence of add-on costs for the planned unified-plan feature. | Found: cost: "medium" ... teams that want to build hierarchies may need those per-user licences. ... That row currently refers to premium plans; licensing for task hierarchy in unified plans is not yet published. | Fix: Set cost to 'low'. Replace its rationale with: 'Low. Reviewing licences, handling requests and preparing guidance takes administrator time; licensing specific to task hierarchy in unified plans is not yet published.' The standard rates known costs, not an inferred future entitlement.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; rationale: risk / applicability: Plan membership determines access to tasks within Planner plans. | Found: Within Planner, each Plan is inside a container, and access to the plan is defined by the container. For example, if the Plan is inside a Modern Group, then the members of the Group can see the contents of the Plan. | Fix: Add https://learn.microsoft.com/planner/planner-security-privacy-compliance to sources for the plan-access statement. | Source: https://learn.microsoft.com/planner/planner-security-privacy-compliance
-- [supported, minor] Governance controls / command: Planner tenant settings are changed using the Planner Tenant Admin PowerShell module. | Found: Load the Planner Tenant Admin PowerShell module ... Import-module "<location of the plannertenantadmin.psm1 file you unzipped>" ... Now you're ready to make changes to Planner at the organizational level using PowerShell. | Fix: Add https://learn.microsoft.com/planner/prerequisites-for-powershell to sources for the module statement. | Source: https://learn.microsoft.com/planner/prerequisites-for-powershell
-- [supported, minor] Governance controls: documented parameter coverage / command: Documented Set-PlannerConfiguration parameters cover calendar sync. | Found: Turn off or on Outlook calendar sync in Planner using PowerShell ... Set-PlannerConfiguration -AllowCalendarSharing $false | Fix: Remove 'calendar sync' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/turn-off-outlook-calendar-sync. | Source: https://learn.microsoft.com/planner/turn-off-outlook-calendar-sync
-- [supported, minor] Governance controls: documented parameter coverage / command: Documented Set-PlannerConfiguration parameters cover roster containers. | Found: run the following command to disable the creation of Roster containers in your tenant (it's enabled by default): Set-PlannerConfiguration -AllowRosterCreation $false | Fix: Remove 'roster containers' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/disable-roster-containers. | Source: https://learn.microsoft.com/planner/disable-roster-containers
-- [supported, minor] Governance controls: documented parameter coverage / command: Documented Set-PlannerConfiguration parameters cover channel tabs. | Found: run the following command to disable the Planner tab for shared and private channels in your tenant. ... Set-PlannerConfiguration -AllowTeamsChannelContainerAccess $false | Fix: Remove 'channel tabs' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels. | Source: https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels
-- [supported, minor] Governance controls: documented parameter coverage / command: Documented Set-PlannerConfiguration parameters cover mobile notifications. | Found: Disable direct-push notifications ... Set-PlannerConfiguration -AllowPlannerMobilePushNotifications $false | Fix: Remove 'mobile notifications' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/disabling-direct-push-planner-mobile-notifications. | Source: https://learn.microsoft.com/planner/disabling-direct-push-planner-mobile-notifications
-- [supported, minor] Governance controls: documented parameter coverage / command: Documented Set-PlannerConfiguration parameters cover Planner Agent. | Found: To turn off Planner Agent and Planner Agent chat for all users: Set-PlannerConfiguration -AllowPlannerCopilot $false | Fix: Remove 'Planner Agent' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/turn-off-planner-agent. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to test eDiscovery and legal-hold readiness, but the controls table has no corresponding row. | Found: Test whether eDiscovery searches of a group-shared unified plan return nested tasks with their structure, before relying on it for a legal hold. ... Controls: licence assignment; hierarchy switch; plan conversion; Planner availability. | Fix: The After rollout eDiscovery/legal-hold checklist step has no controls-table row. Remove that checklist bullet; retain the existing risk-section advice to confirm preservation of parent-child structure.
+- [contradicted, blocker] Why it matters: first paragraph / licensing: The service description lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3 only. | Found: Existing customers may continue to use their subscriptions in line with applicable renewal and lifecycle policies. ... Plan 5 includes all Planner and Project Plan 3 capabilities, plus the following: | Fix: Delete 'only' from 'the service description still lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3 only'. The same cited service description also includes Plan 3 capabilities in existing Planner and Project Plan 5 subscriptions. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description
 -->

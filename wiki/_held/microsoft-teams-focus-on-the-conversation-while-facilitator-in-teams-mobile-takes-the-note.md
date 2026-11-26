@@ -34,6 +34,12 @@ sources:
   - title: "Facilitator in Microsoft Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms"
     kind: "learn"
+  - title: "Use app centric management to manage access to apps"
+    url: "https://learn.microsoft.com/microsoftteams/app-centric-management"
+    kind: "learn"
+  - title: "Update-M365TeamsApp"
+    url: "https://learn.microsoft.com/powershell/module/teams/update-m365teamsapp?view=teams-ps"
+    kind: "docs"
 videos: []
 related: ["microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-rooms-on","microsoft-teams-facilitator-detects-and-answers-questions","microsoft-teams-audio-announcement-for-recording-and-transcription","meeting-policy"]
 controls:
@@ -43,8 +49,11 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Built-in Teams agents > agent > Edit availability"
       docs: "https://learn.microsoft.com/microsoftteams/manage-apps"
-    api: null
-    note: "Learn does not say this setting covers mobile note-taking or speaker attribution. The Facilitator page also gives Teams apps > Manage apps > Facilitator > Allow or Block."
+    api:
+      kind: "powershell"
+      call: "Update-M365TeamsApp -Id <Facilitator-app-id> -AppAssignmentType Everyone"
+      docs: "https://learn.microsoft.com/powershell/module/teams/update-m365teamsapp?view=teams-ps"
+    note: "Learn does not say this setting covers mobile note-taking or speaker attribution. The command sets app-centric availability; Microsoft does not state it also covers the Built-in Teams agents route."
   - governs: "A switch specific to mobile note-taking or speaker attribution"
     scope: "tenant"
     ui: null
@@ -52,7 +61,7 @@ controls:
     note: "Not yet documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-11-19T00:35:27"
 changes:
   - date: "2026-11-19"
@@ -61,19 +70,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: added the documented Update-M365TeamsApp availability command, and removed wording that said mobile speaker attribution attaches names; the roadmap says only that it distinguishes who said what."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
-  unconfirmed: 1
+  claims: 63
+  confirmed: 62
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "9bd1e09a133e7142dedbb96bf38dbf88"
+  attempts: 2
+  hash: "4a3c7c6440f90e7fa37530378d8a277f"
 ---
 
 ## What's changing
@@ -86,7 +99,7 @@ The roadmap item lists Android and iOS, the Worldwide (Standard Multi-Tenant) cl
 
 ## Why it matters
 
-This puts AI transcription of in-person speech, with names attached, into a phone app that is not tied to a scheduled meeting or a meeting room. For a service owner that raises questions about who is being captured, where the notes are kept and who can open them, none of which the roadmap item answers.
+This puts AI transcription of in-person speech, with speaker attribution, into a phone app that is not tied to a scheduled meeting or a meeting room. For a service owner that raises questions about who is being captured, where the notes are kept and who can open them, none of which the roadmap item answers.
 
 Microsoft has not stated what happens on arrival, so base planning on no source saying existing behaviour changes. Facilitator itself is documented as allowed by default, so users who hold the licence may be able to use the capability once it ships; confirm that before the December CY2026 target rather than after.
 
@@ -94,7 +107,7 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 
 **Data exposure**
 - The roadmap item says Facilitator transcribes an in-person conversation and generates notes, summaries and follow-up actions. For Teams meetings, Learn says Facilitator data is stored as a .loop file in the Meetings folder in OneDrive of the user who initiated Facilitator and is treated as meeting transcript data. Where notes from a phone-started conversation are stored is not documented.
-- Speaker attribution links spoken words to named people. Which people can be attributed on mobile, and how, is not yet documented.
+- The roadmap says speaker attribution helps distinguish who said what. Which people can be attributed on mobile, and how, is not yet documented.
 
 **Security & identity**
 - Only licensed users can initiate Facilitator, per Learn. How mobile speaker attribution identifies a speaker is not described, so confirm it before telling staff what is captured about them.
@@ -140,12 +153,14 @@ The Learn Facilitator page requires an eligible Microsoft 365 base licence, an e
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Facilitator is available to everyone, specific users or groups, or no one</strong><br><small>Tenant</small><br><small class="controls__note">Learn does not say this setting covers mobile note-taking or speaker attribution. The Facilitator page also gives Teams apps &gt; Manage apps &gt; Facilitator &gt; Allow or Block.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Built-in Teams agents › agent › Edit availability <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Facilitator is available to everyone, specific users or groups, or no one</strong><br><small>Tenant</small><br><small class="controls__note">Learn does not say this setting covers mobile note-taking or speaker attribution. The command sets app-centric availability; Microsoft does not state it also covers the Built-in Teams agents route.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Built-in Teams agents › agent › Edit availability <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;Facilitator-app-id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/teams/update-m365teamsapp?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A switch specific to mobile note-taking or speaker attribution</strong><br><small>Tenant</small><br><small class="controls__note">Not yet documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Learn gives two routes for Facilitator availability. The Facilitator setup page says to allow or block Facilitator under Teams apps > Manage apps, and says Facilitator is allowed by default unless all apps are blocked for the organisation. The Teams agent and app management page says built-in agents such as Facilitator are managed from Teams apps > Built-in Teams agents, not Manage apps. The two pages disagree; the table uses the later one, and you should check which page your tenant shows.
+
+The Facilitator setup page documents [app-centric management](https://learn.microsoft.com/microsoftteams/app-centric-management); the `Update-M365TeamsApp` command in the table sets app-centric availability to Everyone. Microsoft does not state there whether this automation also covers the newer Built-in Teams agents route.
 
 Learn also documents that Loop experiences in Teams control AI-generated notes for meetings, using the `IsCollabMeetingNotesFluidEnabled` setting in PowerShell, tenant-wide. That is documented for meetings; it is not confirmed to apply to notes started on a phone.
 
@@ -158,7 +173,7 @@ Learn also documents that Loop experiences in Teams control AI-generated notes f
 - Does speaker attribution carry a licence, price or capacity limit beyond the Microsoft Copilot licence?
 
 <!-- rationale
-risk: Medium. A phone can capture an in-person conversation and turn it into notes attributed to named speakers, and Microsoft has not yet documented where these notes are stored or a control specific to mobile capture.
+risk: Medium. A phone can capture an in-person conversation and turn it into notes with speaker attribution, and Microsoft has not yet documented where these notes are stored or a control specific to mobile capture.
 cost: Low. Facilitator is documented as included with a Microsoft Copilot licence, subject to available capacity; no separate price or meter for mobile speaker attribution is published, so the known cost is admin time.
 impact: Medium. Licensed users on Android and iOS who start note-taking notice it, and the people being recorded in a conversation are affected without using Teams themselves.
 -->
@@ -166,6 +181,7 @@ impact: Medium. Licensed users on Android and iOS who start note-taking notice i
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: Mobile speaker attribution attaches people's names to their spoken words. | Found: Searched: "Facilitator" "mobile" "speaker" "names". Opened Facilitator setup, Teams Rooms and voice-and-face-recognition; names are documented for Rooms, not phone-started discussions. The roadmap says only 'helping distinguish who said what'. | Fix: In Why it matters replace 'with names attached' with 'with speaker attribution'. In Data exposure replace 'Speaker attribution links spoken words to named people' with 'The roadmap says speaker attribution helps distinguish who said what'. In the risk rationale replace 'notes attributed to named speakers' with 'notes with speaker attribution'. The record does not specify whether mobile uses names, numbered speakers or another identification method.
-- [contradicted, blocker] controls[0].api; Governance controls: availability row / absence: Automation for controlling Facilitator availability is not yet documented. | Found: This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status. | Fix: Replace the blanket automation absence in controls[0] and its rendered table cell with the documented app-centric call: kind 'powershell', call 'Update-M365TeamsApp -Id <Facilitator-app-id> -AppAssignmentType Everyone', docs 'https://learn.microsoft.com/powershell/module/teams/update-m365teamsapp?view=teams-ps'. Add to the existing row note: 'The Facilitator setup page documents app-centric management; this command sets app-centric availability to Everyone. Microsoft does not state here whether this automation also covers the newer Built-in Teams agents route.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management and the cmdlet reference. The setup page explicitly permits app-centric management, and its linked management page documents this cmdlet; do not imply that the new built-in route's automation was separately confirmed. | Source: https://learn.microsoft.com/powershell/module/teams/update-m365teamsapp?view=teams-ps
+- [contradicted, blocker] Governance controls: 'the table uses the later one' / date: The agent and app management page used for the table is the later of the two conflicting Microsoft pages. | Found: Facilitator setup metadata: ms.date="2026-11-04T00:00:00Z", updated_at="2026-11-18T06:40:00Z". Manage-apps metadata: ms.date="2026-07-05T00:00:00Z", updated_at="2026-08-18T22:08:00Z". | Fix: Replace 'The two pages disagree; the table uses the later one, and you should check which page your tenant shows.' with 'The two pages disagree; the table uses the Built-in Teams agents route documented on the agent and app management page, and you should check which page your tenant shows.' | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].note: first sentence; rendered controls table / applicability: The correctly documented Facilitator availability control is described with a caveat that Learn does not confirm mobile note-taking or speaker attribution coverage. | Found: Built-in Teams agents like Channel Agent, Facilitator, and other built-in agents available across chats, channels, and meetings are managed from the Built-In Teams agents page, not the Manage apps page. | Fix: Replace the first sentence of controls[0].note, and its rendered copy, with: 'This setting controls who can use built-in Teams agents such as Facilitator.' Keep the separate caveat about automation for the Built-in Teams agents route. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
 -->

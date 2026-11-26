@@ -37,6 +37,9 @@ sources:
   - title: "Role-based security roles for Dataverse"
     url: "https://learn.microsoft.com/power-platform/admin/database-security"
     kind: "learn"
+  - title: "How access to a record is determined"
+    url: "https://learn.microsoft.com/power-platform/admin/how-record-access-determined"
+    kind: "learn"
 videos: []
 related: ["microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use","work-iq"]
 controls:
@@ -73,19 +76,23 @@ changes:
     note: "Corrected the Autonomy & actions risk: the /mention page shows Copilot drafting an email with business data and a request to send it; added the Dataverse security roles page as a source."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-26"
+    note: "Narrowed the Security & identity gap: the /mention page does not describe how its record suggestions implement the access requirements it states."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "ee982ec12433c46d62fb654d9a0a8abd"
+  contradicted: 0
+  attempts: 0
+  hash: "8dc4a97423614270b9a840afa7064299"
 ---
 
 ## What's changing
@@ -111,7 +118,7 @@ The practical view is that this needs communication, not emergency action. Check
 
 **Security & identity**
 
-- The page says records offered through /mention are those a user has access to and has most recently used. An email recipient needs security roles that grant access to the data to open a shared record. Microsoft Learn does not describe the authorisation mechanism further, so test it with a user who lacks access.
+- The page says records offered through /mention are those a user has access to and has most recently used. An email recipient needs security roles that grant access to the data to open a shared record. The /mention page does not describe how its record suggestions implement these access requirements, so test it with a user who lacks access.
 - Updates or deletions of the synced data update or delete the record in Microsoft 365, per the same page.
 
 **Autonomy & actions**
@@ -178,10 +185,4 @@ The setting is not specific to the new labels: it governs whether /mention offer
 risk: Low. The change is the label text on records that the /mention setting already makes available; the sync of environment, app and record names that sits behind it is documented separately and is set per environment.
 cost: Low. The only cost the sources show is administrator time to review the per-environment setting; Microsoft Copilot is available with Microsoft 365 E7 or as an add-on, and no licensing requirement specific to this enhancement is documented.
 impact: Medium. Users of Dynamics 365 and model-driven Power Apps who reference business records in Microsoft 365 Copilot will see the new labels; people who never use /mention will not notice.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft Learn does not describe the authorization mechanism further than the stated access requirements. | Found: To be able to do a certain action with a table (Create, Read, Write, Delete, Append, Append to, Assign, Share), two major checks are done: privilege and access checks. | Fix: Replace 'Microsoft Learn does not describe the authorisation mechanism further, so test it with a user who lacks access.' with 'The /mention page does not describe how its record suggestions implement these access requirements, so test it with a user who lacks access.' The narrower absence is supported by https://learn.microsoft.com/power-platform/admin/link-records-outlook-web; general Dataverse authorization is documented at https://learn.microsoft.com/power-platform/admin/how-record-access-determined. | Source: https://learn.microsoft.com/power-platform/admin/how-record-access-determined
 -->

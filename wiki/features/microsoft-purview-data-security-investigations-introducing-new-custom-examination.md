@@ -40,6 +40,9 @@ sources:
   - title: "Search the audit log"
     url: "https://learn.microsoft.com/purview/audit-search"
     kind: "learn"
+  - title: "Tutorial: Create and manage budgets"
+    url: "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets"
+    kind: "learn"
   - title: "Who can run examinations, including custom ones (Data Security Investigations role-group membership) (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
     kind: "learn"
@@ -85,7 +88,7 @@ controls:
       path: "Data Security Investigations > Usage dashboard"
       docs: "https://learn.microsoft.com/purview/data-security-investigations-billing"
     api: null
-    note: "Data Security Investigations Admins only; billing data can take up to 48 hours to appear. Export is available from the dashboard."
+    note: "Users with the Data Security Investigation Admin role; billing data can take up to 48 hours to appear. Export is available from the dashboard."
   - governs: "Audit records of examination jobs started (DSIProbeJobSubmitted)"
     scope: "tenant"
     ui:
@@ -106,19 +109,23 @@ changes:
     note: "New briefing: custom examination prompts in Data Security Investigations, their compute unit cost and the role, capacity and audit controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected who can open the Usage dashboard (users with the Data Security Investigation Admin role), restated how a custom examination is started as Microsoft documents it, cited Azure's budgets page and removed two checklist steps that had no control row."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 67
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "e9b6dc36a24ec7b211779760b4e3b91d"
+  claims: 79
+  confirmed: 78
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "ecf9d912b57bb3d41ed2a1262c730c07"
 ---
 
 ## What's changing
@@ -146,7 +153,7 @@ Nothing changes for tenants that have not set up DSI. Where DSI is in use, Learn
 - The Data Security Investigation Contributor role (in the Data Security Management and Insider Risk Management role groups) does not include AI job execution.
 
 **Autonomy & actions**
-- No change: an examination starts only when a user selects **Examine**, and the prompt is verified before it runs.
+- Microsoft documents a user-started custom examination: select **Verify prompt**, confirm that the prompt is understood with the same intent, then select **Examine** to start the examination.
 
 **Change & support**
 - Custom examinations are metered like other examinations, and cancelling a job still bills the compute units used before cancellation. Expect questions from finance if investigators iterate on prompts.
@@ -177,7 +184,6 @@ Nothing changes for tenants that have not set up DSI. Where DSI is in use, Learn
 ### Before rollout
 - Review membership of the Data Security Investigations Admins, Investigators and Reviewers role groups, since all three can run custom examinations.
 - Confirm the AI analysis data processing location set under **Set up AI capacity** meets your data residency requirements.
-- Create an Azure budget with alerts on the DSI resource group and meter, as the billing page recommends.
 - Agree with legal or privacy owners which kinds of custom prompt (for example personal health data) need sign-off before they run.
 
 ### At rollout
@@ -187,7 +193,6 @@ Nothing changes for tenants that have not set up DSI. Where DSI is in use, Learn
 ### After rollout
 - Check the **Usage dashboard** for examination compute unit consumption per investigation.
 - Search the audit log for DSIProbeJobSubmitted to see who started examination jobs.
-- Review **Probing history** in sensitive investigations to see which prompts were run and by whom.
 
 ## Governance controls
 
@@ -200,12 +205,12 @@ Nothing changes for tenants that have not set up DSI. Where DSI is in use, Learn
 <tr><td data-label="Control"><strong>Whether AI analysis can run, and the AI analysis data processing location</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Data Security Investigations Admins role group; prerequisites list Global Administrator and resource group Owner or Contributor.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › Setup tasks › Set up AI capacity › AI analysis data processing location <a href="https://learn.microsoft.com/purview/data-security-investigations-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>A separate switch for the Custom examination type</strong><br><small>Tenant</small><br><small class="controls__note">Access to custom examination follows the role groups that can run examination activities.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>A limit on compute units an examination or investigation can consume</strong><br><small>Tenant</small><br><small class="controls__note">The billing page recommends Azure budgets and threshold alerts, which warn but do not stop jobs.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Compute unit spend on examination per investigation</strong><br><small>Tenant</small><br><small class="controls__note">Data Security Investigations Admins only; billing data can take up to 48 hours to appear. Export is available from the dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › Usage dashboard <a href="https://learn.microsoft.com/purview/data-security-investigations-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Compute unit spend on examination per investigation</strong><br><small>Tenant</small><br><small class="controls__note">Users with the Data Security Investigation Admin role; billing data can take up to 48 hours to appear. Export is available from the dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › Usage dashboard <a href="https://learn.microsoft.com/purview/data-security-investigations-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit records of examination jobs started (DSIProbeJobSubmitted)</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Audit Logs or View-Only Audit Logs role. Run the cmdlet in Exchange Online PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;date&gt; -EndDate &lt;date&gt; -Operations DSIProbeJobSubmitted</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents no setting that turns custom examination off separately from examination as a whole (November 2026); access follows the role groups. Configuring AI capacity needs membership of the Data Security Investigations Admins role group, and the billing prerequisites list the Global Administrator role and the resource group Owner or Contributor role. Only Data Security Investigations Admins can open the Usage dashboard, and its data can be up to 48 hours behind. The audit activity list has one operation for starting an examination job, DSIProbeJobSubmitted, and lists no separate operation for custom examinations. Azure budgets alert on spend but do not stop jobs. See [/concepts/role-groups/](/concepts/role-groups/) and [/concepts/auditing/](/concepts/auditing/).
+Microsoft Learn documents no setting that turns custom examination off separately from examination as a whole (November 2026); access follows the role groups. Configuring AI capacity needs membership of the Data Security Investigations Admins role group, and the billing prerequisites list the Global Administrator role and the resource group Owner or Contributor role. Users with the Data Security Investigation Admin role can open the Usage dashboard, and its data can be up to 48 hours behind. The audit activity list has one operation for starting an examination job, DSIProbeJobSubmitted, and lists no separate operation for custom examinations. Azure budgets alert on spend but do not stop jobs. See [/concepts/role-groups/](/concepts/role-groups/) and [/concepts/auditing/](/concepts/auditing/).
 
 ## Open questions
 
@@ -220,12 +225,8 @@ cost: Variable. Examinations consume Data Security Investigations Compute Units 
 impact: Low. Only investigators and administrators who use Data Security Investigations see the new Custom examination type.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].note; Governance controls table and prose / role: Only members of the dedicated Data Security Investigations Admins role group can open the Usage dashboard. | Found: Members of these role groups have Data Security Investigations access without needing explicit assignment to a Data Security Investigations-specific role group. Compliance Administrator | Data Security Investigation Admin | Full administrative access | Fix: Replace 'Data Security Investigations Admins only' in controls[4].note and its table note with 'Users with the Data Security Investigation Admin role'. Replace 'Only Data Security Investigations Admins can open the Usage dashboard' in the prose with 'Users with the Data Security Investigation Admin role can open the Usage dashboard'. The permissions page documents inherited administrative access through Compliance Administrator and Organization Management; the billing page restricts dashboard access by Admin role, not exclusively by dedicated group membership. | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: There is no change to examination initiation, and an examination starts only when a user selects Examine. | Found: Searched: 'Data Security Investigations examination jobs automatically scheduled API user selects Examine custom prompt'. Opened AI analysis and billing; read AI overview results. Found a user-started workflow, not an exhaustive or historical statement for 'only' or 'No change'. | Fix: Replace the Autonomy & actions bullet with 'Microsoft documents a user-started custom examination: select Verify prompt, confirm that the prompt is understood with the same intent, then select Examine to start the examination.' This workflow is stated at https://learn.microsoft.com/purview/data-security-investigations-ai-analysis#create-a-custom-examination.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].note; Cost and licensing; Governance controls prose / cost: Azure budgets and threshold alerts do not themselves stop examination jobs or consumption. | Found: Notifications are triggered when the budget thresholds are exceeded. Resources aren't affected, and your consumption isn't stopped. | Fix: Add https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets to sources and cite it for the statement that budgets do not stop consumption. | Source: https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets
-- [contradicted, minor] Governance guidance compared with Governance controls / consistency: The governance checklist names monitoring and spending controls that have no corresponding controls-table row. | Found: Create an Azure budget with alerts on the DSI resource group and meter. Review Probing history in sensitive investigations to see which prompts were run and by whom. The controls table has neither an Azure budget row nor a Probing history row. | Fix: The 'Create an Azure budget with alerts' and 'Review Probing history' checklist steps have no corresponding controls-table row. Remove these two checklist bullets for this correction; do not add unverified control rows.
+- [contradicted, minor] Governance guidance: At rollout / consistency: The governance checklist recommends the in-product cost estimator but the controls table has no row for it. | Found: Checklist: "Encourage the in-product cost estimator before large examinations." Controls table: role-group membership, AI capacity/location, separate Custom switch, compute limit, Usage dashboard and audit search; no estimator row. | Fix: Remove the At rollout checklist bullet 'Encourage the in-product cost estimator before large examinations.' It names a tool that has no corresponding controls-table row; the estimator can remain in Open questions.
 -->

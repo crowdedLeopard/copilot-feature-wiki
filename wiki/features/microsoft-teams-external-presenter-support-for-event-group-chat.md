@@ -59,7 +59,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Teams admin center"
-      path: "Users > External access"
+      path: "Users > External access > Teams and Skype for Business users in external organizations > Allow only specific external domains > Add external domains"
       docs: "https://learn.microsoft.com/microsoftteams/manage-external-access"
     api:
       kind: "powershell"
@@ -70,7 +70,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Users > External access > Policies > policy"
+      path: "Users > External access > Policies > policy > Manage external domains for this policy"
       docs: "https://learn.microsoft.com/microsoftteams/manage-external-access"
     api:
       kind: "powershell"
@@ -95,7 +95,7 @@ controls:
     note: "Learn's events planning page lists \"No control\" for admins over event group chat."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-16"
@@ -120,19 +120,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-26"
+    note: "Corrected the AllowedDomains note: it takes a domain object from New-CsEdgeAllowList or New-CsEdgeAllowAllKnownDomains, not a string; completed the two external access admin paths."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 7
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 74
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "7ab81e874226499d24cc53d3eca0d882"
+  contradicted: 0
+  attempts: 0
+  hash: "9a54ec9f8929f73658da508b82777a77"
 ---
 
 ## What's changing
@@ -214,8 +218,8 @@ The cost that is known is indirect: administrator time to check external access 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which external organisations your users can chat and meet with</strong><br><small>Tenant</small><br><small class="controls__note">Existing setting. MC1528011 names external user collaboration as a prerequisite and labels it External collaboration; Learn places the External access page inside that section.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTenantFederationConfiguration -AllowFederatedUsers $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users may chat and meet with people outside the organisation</strong><br><small>User</small><br><small class="controls__note">Existing policy; the default policy is Org-wide default settings. Learn says organisation settings can override it.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Policies › policy <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsExternalAccessPolicy -EnableFederationAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which external organisations your users can chat and meet with</strong><br><small>Tenant</small><br><small class="controls__note">Existing setting. MC1528011 names external user collaboration as a prerequisite and labels it External collaboration; Learn places the External access page inside that section.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Teams and Skype for Business users in external organizations › Allow only specific external domains › Add external domains <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTenantFederationConfiguration -AllowFederatedUsers $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users may chat and meet with people outside the organisation</strong><br><small>User</small><br><small class="controls__note">Existing policy; the default policy is Org-wide default settings. Learn says organisation settings can override it.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Policies › policy › Manage external domains for this policy <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsExternalAccessPolicy -EnableFederationAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether external presenters must verify their identity before joining an event</strong><br><small>User</small><br><small class="controls__note">The join-verification how-to documents this command; the Set-CsTeamsEventsPolicy reference marks the policy as preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Verify external presenters before joining an event <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -ExternalPresenterJoinVerification EOTP</code> <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for external presenters in event group chat</strong><br><small>Tenant</small><br><small class="controls__note">Learn's events planning page lists &quot;No control&quot; for admins over event group chat.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -223,7 +227,7 @@ The cost that is known is indirect: administrator time to check external access 
 
 The notice names external user collaboration as the prerequisite and points to Teams admin center > External collaboration. Learn describes External Collaboration as a section in the Teams admin center left rail that contains the existing External access page, so the first two rows use the Users > External access path given on the external access page.
 
-The organisation setting and a user policy must both allow external access, and the organisation setting can override the policy. A custom policy's Allow or block external domains value takes precedence over the organisation settings. Both tenants must allow external access per the notice. The PowerShell calls are separate operations: the -AllowedDomains and -BlockedDomains parameters take domain lists and are set in their own commands, as the cmdlet reference describes.
+The organisation setting and a user policy must both allow external access, and the organisation setting can override the policy. A custom policy's Allow or block external domains value takes precedence over the organisation settings. Both tenants must allow external access per the notice. The PowerShell calls are separate operations. The -AllowedDomains parameter takes a domain object created with New-CsEdgeAllowList or New-CsEdgeAllowAllKnownDomains, not a string; -BlockedDomains takes a list, as the [cmdlet reference](https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration) describes.
 
 Learn's events planning page lists "No control" for admins over event group chat, and also over the green room. The join-verification setting is documented for external presenters joining events; Microsoft has not confirmed that it governs access to the group chat.
 
@@ -241,11 +245,8 @@ cost: Low. Teams events use the organiser's eligible Teams licence, and no licen
 impact: Medium. Organisers, co-organisers and presenters in Teams events and structured meetings with the green room enabled will notice; attendees do not use this chat.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: prose / command: The Set-CsTenantFederationConfiguration -AllowedDomains parameter takes a domain list. | Found: Note that string values cannot be passed directly to the AllowedDomains parameter. Instead, you must create an object reference using the New-CsEdgeAllowList cmdlet or the New-CsEdgeAllowAllKnownDomains cmdlet and then use the object reference variable as the parameter value. | Fix: Replace 'the -AllowedDomains and -BlockedDomains parameters take domain lists and are set in their own commands' with 'The -AllowedDomains parameter takes a domain object created with New-CsEdgeAllowList or New-CsEdgeAllowAllKnownDomains; -BlockedDomains takes a list. These are set separately from -AllowFederatedUsers.' Keep the existing reference citation: https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: table; Governance guidance: Before rollout / admin-path: Teams admin center > Users > External access reaches the page for managing external organizations. | Found: In the Teams admin center, go to Users > External access. Next to Teams and Skype for Business users in external organizations, choose Allow only specific external domains. | Fix: Complete controls[0].ui.path and the matching table path as 'Users > External access > Teams and Skype for Business users in external organizations > Allow only specific external domains > Add external domains', as documented at https://learn.microsoft.com/microsoftteams/manage-external-access. Keep the prose's shorter page reference. | Source: https://learn.microsoft.com/microsoftteams/manage-external-access
-- [supported, minor] controls[1].ui; Governance controls: table / admin-path: Teams admin center > Users > External access > Policies > policy reaches an external access policy. | Found: In the left navigation, select Users > External access. Select the Policies tab. Click to add a policy or modify an existing one. Turn on Manage external domains for this policy to allow federation in the policy. | Fix: Complete controls[1].ui.path and the matching table path as 'Users > External access > Policies > policy > Manage external domains for this policy', as documented at https://learn.microsoft.com/microsoftteams/manage-external-access. | Source: https://learn.microsoft.com/microsoftteams/manage-external-access
+- [supported, minor] Risk assessment: Data exposure / record: Internal material already in the chat, such as run-of-show notes, is visible to external presenters under the preceding history condition. | Found: External federated presenters can now read and post in the event group chat. That includes messages written before they joined, if the thread shows history. | Fix: Replace 'Anything internal already in that chat, such as run-of-show notes, is visible to them.' with 'Internal messages written before they joined, such as run-of-show notes, may be visible to them if the thread shows history.'
 -->

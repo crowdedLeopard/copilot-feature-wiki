@@ -57,19 +57,23 @@ changes:
     note: "First briefing for roadmap item 580444: Share availability in Outlook, targeted for January CY2027."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 40 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Removed the unsupported statement that nothing has to be configured before January; the page now says only that no source says existing behaviour changes."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 39 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 39
+  claims: 39
+  confirmed: 38
   unconfirmed: 1
   contradicted: 0
-  attempts: 1
-  hash: "1fd91f32bf8cc674fee63c9f3e9ff600"
+  attempts: 0
+  hash: "0332c4d342b7768b92118a4ec15bb86e"
 ---
 
 ## What's changing
@@ -84,7 +88,7 @@ The roadmap item is **In development**, with a General Availability target of **
 
 This puts a user's free time into the body of an email, where it travels with the message to whoever receives or forwards it. Today a user can type the same times by hand, so the information is not new, but a one-click insert makes it more common, and for one-on-one meetings a recipient can book the meeting with one click. Expect questions from users and from the people they email about how the booking link works.
 
-Microsoft has not stated whether the feature is available to users on arrival or needs an administrator to enable it. No source says existing behaviour changes, and nothing has to be configured before January; the decision for now is whether the absence of a documented switch matters for your organisation.
+Microsoft has not stated whether the feature is available to users on arrival or needs an administrator to enable it. No source says existing behaviour changes; the decision for now is whether the absence of a documented switch matters for your organisation.
 
 ## Risk assessment
 
@@ -161,8 +165,8 @@ cost: Low. The feature sits inside Outlook, which the user's Microsoft 365 plan 
 impact: Medium. People who arrange meetings by email in Outlook on the web and on the desktop will see a new option, and the people they email will see the inserted times.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / default: Nothing has to be configured before January. | Found: Searched: Outlook "Share Availability" "580444" default prerequisites license billing external authentication confirmation. Read roadmap, overview and policy-management page; none establishes that administrators will have no configuration requirement before rollout. | Fix: Remove 'and nothing has to be configured before January'. Use: 'No source says existing behaviour changes; the decision for now is whether the absence of a documented switch matters for your organisation.' The absence of published enablement requirements does not establish that no configuration will be needed.
+- [unsupported, major] Why it matters / behaviour: Inserting the selected availability takes one click. | Found: Searched: Outlook share proposed meeting times insert email forwarded message one click insert availability 580444. Read roadmap and returned calendar API and calendar-sharing excerpts; the roadmap promises one-click booking, not one-click insertion. | Fix: Replace 'but a one-click insert makes it more common' with 'but inserting selected slots without typing dates and times could make it more common'.
 -->

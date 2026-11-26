@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 560318"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=560318"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 560700"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=560700"
+    kind: "roadmap"
   - title: "Facilitator in Microsoft Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms"
     kind: "learn"
@@ -50,7 +53,7 @@ sources:
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1307512"
     kind: "message-center"
 videos: []
-related: ["microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-rooms-on","microsoft-teams-focus-on-the-conversation-while-facilitator-in-teams-mobile-takes-the-note","meeting-policy","microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings"]
+related: ["microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-rooms-on","meeting-policy"]
 controls:
   - governs: "Whether the Facilitator app is allowed or blocked for the organisation"
     scope: "tenant"
@@ -100,7 +103,7 @@ controls:
     note: "Learn says the default setting is enabled. Per room."
 confidence: "high"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-10-21T23:02:10"
 changes:
   - date: "2026-11-19"
@@ -109,24 +112,28 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 81 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the Android roadmap item 560700's status to Rolling out, and removed an unsupported 'no organiser' statement and a licence checklist step with no control row."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 78
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "1c9812fe6c408aaf4d25d55348414d07"
+  claims: 86
+  confirmed: 86
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "181d50a81749e0ecb889ffb5bcaf2808"
 ---
 
 ## What's changing
 
-Facilitator, Microsoft's AI meeting agent, can now take notes in a physical room without a scheduled or hybrid meeting. On Teams Rooms on Windows, a person selects the Take notes button on the console (Microsoft's notice MC1307512), and Facilitator shows notes, decisions and action items on the front-of-room display or touch board as people speak. This page covers roadmap item 560318 (Windows). Microsoft lists a separate roadmap item, 560700, for Teams Rooms on Android, which the roadmap shows as In development with a target of November CY2026.
+Facilitator, Microsoft's AI meeting agent, can now take notes in a physical room without a scheduled or hybrid meeting. On Teams Rooms on Windows, a person selects the Take notes button on the console (Microsoft's notice MC1307512), and Facilitator shows notes, decisions and action items on the front-of-room display or touch board as people speak. This page covers roadmap item 560318 (Windows). Microsoft lists a separate roadmap item, 560700, for Teams Rooms on Android, which the roadmap shows as Rolling out with a target of November CY2026.
 
 Learn describes the session this way: Facilitator turns on transcription only, and the meeting is not recorded. At the end, someone selects **Save notes** and adds participants' names so they can open the notes and transcript later; unsaved notes are deleted after the session ends. Saved notes appear under **Recap** > **Notes** in the Teams meeting chat titled 'Meeting with [conference room name]'. Facilitator stores the notes as a Loop file in SharePoint Embedded storage that belongs to the tenant, and the data is treated as meeting transcript data. The notice states that no meeting data is stored or cached on the room device after the meeting ends.
 
@@ -134,7 +141,7 @@ The roadmap record shows status Rolling out, release phase General Availability,
 
 ## Why it matters
 
-Any person standing in a licensed room can now start AI transcription and summarisation with one tap, with no meeting invite and no organiser. Microsoft's notice says the feature is available automatically once licensing and prerequisite configurations are met, with no additional admin enablement beyond existing settings. Learn says Facilitator is allowed by default and that the Take notes button setting in the Pro Management portal is enabled by default, so a room that already meets the prerequisites is likely to show the entry point as the update reaches it.
+Any person standing in a licensed room can now start AI transcription and summarisation with one tap, with no meeting invite. Microsoft's notice says the feature is available automatically once licensing and prerequisite configurations are met, with no additional admin enablement beyond existing settings. Learn says Facilitator is allowed by default and that the Take notes button setting in the Pro Management portal is enabled by default, so a room that already meets the prerequisites is likely to show the entry point as the update reaches it.
 
 For a service owner the decision is whether to leave that default in place. The controls are the prerequisites themselves: the Facilitator app, meeting transcription, the two Loop settings and the portal button. Plan helpdesk guidance on how to save notes and where they end up, because notes nobody saves are deleted, and saved notes go into tenant storage as meeting transcript data.
 
@@ -179,7 +186,6 @@ For a service owner the decision is whether to leave that default in place. The 
 
 ### Before rollout
 
-- Confirm a Teams Rooms Pro licence is assigned to each room resource account that should offer the feature.
 - Check that the Facilitator app is allowed in the Teams admin center and, where availability is scoped to People and Groups, that the room resource accounts are included.
 - Verify the Transcription setting in the meeting policy that covers the room accounts, and the IsLoopEnabled and IsCollabMeetingNotesFluidEnabled settings, using the paths and commands in the controls table.
 - Brief the helpdesk on how to start notes, how to save them with participants' names, and where saved notes appear.
@@ -227,13 +233,9 @@ cost: Low. Learn says the feature is currently included with Teams Rooms Pro and
 impact: Medium. People who meet in rooms with Teams Rooms Pro devices see a Take notes button and an on-screen Facilitator; users elsewhere notice nothing.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: first paragraph / record: The Android roadmap item 560700 is In development. | Found: Item 560700: "status": "Rolling out", "modified": "2026-11-20T23:20:27" | Fix: Replace 'which the roadmap shows as In development with a target of November CY2026' with 'which the roadmap shows as Rolling out with a target of November CY2026'. Cite https://www.microsoft.com/microsoft-365/roadmap?id=560700.
-- [unsupported, major] Why it matters: first paragraph / behaviour: An in-person Facilitator session has no organiser. | Found: Searched: Facilitator Teams Rooms in-person notes organizer meeting policy room resource account. Read rooms/facilitator-teams-rooms, facilitator-teams and meeting-transcription-captions; they describe unscheduled discussions but do not state that the resulting session has no organiser. | Fix: Remove 'and no organiser' from the first sentence of Why it matters.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: Microsoft separately tracks in-person Facilitator notes on Teams Rooms on Android as roadmap item 560700. | Found: "id": 560700; "title": "Microsoft Teams: AI-powered notes for in-person\nmeetings with Facilitator in Teams Rooms on Android" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=560700 to sources for the Android item's identity, status and target.
-- [supported, minor] Scope: Who and where / availability: The feature's Learn page says Windows is available and Android is projected for a future release. | Found: Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. | Fix: After that sentence add: 'The Teams Rooms release notes separately list AI-powered notes for in-person meetings with Facilitator in the November 2026 Android release, so these Microsoft pages differ.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the governance checklist asks administrators to check appears in the controls table. | Found: Checklist: 'Confirm a Teams Rooms Pro licence is assigned to each room resource account'. The table contains app availability, transcription, two Loop settings and the home-screen button, but no licence-assignment control. | Fix: The Before rollout licence-assignment check has no controls-table row. Remove that checklist bullet; retain the licence requirement in Cost and licensing and Scope. Do not add a control row.
+- [supported, minor] Cost and licensing: Licence / licensing: Learn says only the meeting organiser needs a Copilot licence when a Teams Rooms device joins a scheduled meeting. | Found: This is a consumption-only experience for in-room participants. Only the meeting organizer requires a Copilot license. | Fix: Append: 'The room experience is consumption-only. The separate Facilitator setup page requires licensed users to initiate or prompt Facilitator.' The room page gives the consumption-only qualification; https://learn.microsoft.com/microsoftteams/facilitator-teams says only licensed users can initiate and unlicensed users cannot prompt. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
+- [supported, minor] Scope: Who and where / availability: The feature's Learn page says Windows is available and Android is projected for a future release. | Found: Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. | Fix: Append: 'The Teams Rooms release notes now list AI-powered notes for in-person meetings with Facilitator under Android, differing from the feature page's future-release wording.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution, which lists that feature. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
 -->

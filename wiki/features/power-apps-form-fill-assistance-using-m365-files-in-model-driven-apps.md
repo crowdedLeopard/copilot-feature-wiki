@@ -95,15 +95,17 @@ changes:
     note: "Correction: removed the legacy environment switch row, fixed the app toolbar designer path, replaced the finest-grained claim for column settings, and dropped column properties from the checklist."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
+  claims: 49
+  confirmed: 48
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -185,10 +187,10 @@ cost: Low. The known cost is review and training effort; any licensing or charge
 impact: Medium. Affects users of model-driven apps with form fill assistance enabled.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The environment form fill assistance control is at Power Platform admin center > Copilot > Settings > Power Apps > Data entry. | Found: The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. Learn more in Copilot hub. This change is gradually rolling out. | Fix: Add the row note 'The move to this control is gradually rolling out.' The cited Learn page describes a transition rather than universal availability. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The app toolbar control is reached through Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar. | Found: When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. ... Form fill assist toolbar. | Fix: Use 'environment > Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar'. The cited create-edit-app page's 'Edit an app' section confirms the existing entry steps and first says to choose the environment. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties
-- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist's instruction to enable tables has a corresponding control in the controls table. | Found: Enable for a pilot app and tables first. | Controls: Form fill assistance (data entry agent) per environment; Form fill assist toolbar for an app; Switch specific to Microsoft 365 files as a source. | Fix: Replace 'Enable for a pilot app and tables first.' with 'Enable for a pilot app first.' The table has no table-level control; do not add a row.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The environment-level form fill assistance control is at Power Platform admin center > Copilot > Settings > Power Apps > Data entry. | Found: The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. Learn more in Copilot hub. This change is gradually rolling out. | Fix: Add controls[0].note and the matching table note: 'The move to this control is gradually rolling out.' The cited page describes a transition, not availability in every environment. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The app toolbar setting is reached through Power Apps > Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar. | Found: When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. ... Form fill assist toolbar. | Fix: Use 'environment > Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar' in controls[1].ui.path and the table. The already-cited https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app confirms the entry route and environment selection. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist instruction to enable tables is covered by the controls table. | Found: Enable for a pilot app and tables first. | Controls: Form fill assistance (data entry agent) per environment; Form fill assist toolbar for an app; Switch specific to Microsoft 365 files as a source. | Fix: Replace 'Enable for a pilot app and tables first.' with 'Enable for a pilot app first.' The table has no table-level enablement row; do not add a row.
 -->

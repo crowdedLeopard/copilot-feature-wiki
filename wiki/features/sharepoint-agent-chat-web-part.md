@@ -73,15 +73,17 @@ changes:
     note: "Corrected the Block control's scope, cloud availability and SharePoint/Foundry limitation; removed the claim that it is the only tenant-wide agent control and two unsupported statements; narrowed agent configuration, action and billing wording."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 46
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -185,9 +187,10 @@ cost: Low. Microsoft's notice names users with a Microsoft 365 Copilot licence a
 impact: Low. Page authors who choose to add the web part, and Copilot-licensed users who open those pages, are the people who notice it; nothing changes for other users.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / absence: The notice states no admin switch for the web part. | Found: Searched: '"Agent Chat" "SharePoint" disable block admin tenant site'. Read MC1559633, Manage access to agents in SharePoint and Set-SPOTenant. No web-part-specific switch found; the notice says no admin action is required. | Fix: Replace 'the notice states no admin switch for it' with 'the notice says no admin action is required before rollout'. This avoids presenting the notice's silence as an explicit statement that a switch does not exist.
-- [supported, minor] Governance controls: Set-SPOTenant paragraph / absence: No page found says -DisabledWebPartIds covers Agent Chat or gives its web part ID. | Found: Searched: 'Set-SPOTenant DisabledWebPartIds Agent Chat web part'. Read -DisabledWebPartIds and searched the reference for Agent Chat: the supported list contains Amazon Kindle, YouTube, Twitter, Embed, Microsoft Bookings and Stream, not Agent Chat. | Fix: Replace the sentence beginning 'The Set-SPOTenant reference lists' with 'The Set-SPOTenant reference documents -DisabledWebPartIds for Amazon Kindle, YouTube, Twitter, Embed, Microsoft Bookings and Stream only; it does not list Agent Chat.' The reference explicitly limits the supported web parts, rather than merely omitting an ID.
+- [supported, minor] Risk assessment: Change & support / absence: The notice states no admin switch for the web part. | Found: Searched: 'SharePoint "Agent Chat" web part disable admin identity license pricing'; '"Agent Chat web part" block Copilot admin'. Read MC1559633, agent-actions, Manage access to agents in SharePoint and Set-SPOTenant. No web-part-specific switch found; the notice says no admin action is required. | Fix: Replace 'the notice states no admin switch for it' with 'the notice says no admin action is required before rollout'. The notice does not explicitly say that no switch exists.
+- [supported, minor] front matter: licensing.notes; Cost and licensing: Meter; rationale: cost / absence: No price, credit rate or meter specific to the web part is published. | Found: Searched: '"Agent Chat web part" license meter cost'. Read MC1559633, Licensing for agents powered by the standard harness and Meters for Microsoft Copilot pay-as-you-go services. General agent billing is described, but none names a price or meter specific to the web part. | Fix: In the cost rationale, replace 'and states no separate meter or price for the web part' with 'and no price or meter specific to the web part was found in Microsoft documentation at the time of writing (November 2026)'. This distinguishes a confirmed absence from an explicit Microsoft statement.
+- [supported, minor] Governance controls: Set-SPOTenant paragraph; Open questions / absence: No page found states that -DisabledWebPartIds covers Agent Chat or gives its web part ID. | Found: Searched: 'SharePoint "Agent Chat" "web part" "DisabledWebPartIds"'. Read and searched Set-SPOTenant for DisabledWebPartIds, Agent Chat and AgentChat. Its supported list includes Amazon Kindle, YouTube, Twitter, Embed, Microsoft Bookings and Stream only; no Agent Chat ID found. | Fix: Replace the sentence beginning 'The Set-SPOTenant reference lists' with 'The Set-SPOTenant reference documents -DisabledWebPartIds for Amazon Kindle, YouTube, Twitter, Embed, Microsoft Bookings and Stream only; it does not list Agent Chat.' The reference explicitly restricts the supported web parts.
 -->

@@ -88,7 +88,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Setup > Migration and Imports > Microsoft 365 Organizational Data Service > Settings > Edit access policies"
+      path: "Settings > Setup > Migration and Imports > tools to migrate or import data > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies"
       docs: "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies"
     api: null
     note: "Global Administrator or Organizational Data Source Administrator. Custom attributes default to Staging, which releases data to no users."
@@ -112,19 +112,23 @@ changes:
     note: "New briefing: Organizational Data Service in GCC-Moderate, with role, access policy and data precedence controls and the GCC-M connector gaps."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: blank values in an upload keep previously uploaded values rather than deleting them; access policy path now includes its headings; removed the provisioning and data staging checklist steps."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "d25070e032cd5df12451997a6880f4df"
+  contradicted: 0
+  attempts: 0
+  hash: "949dfa2c6ce247fc90ff8fcffdf2cffd"
 ---
 
 ## What's changing
@@ -155,7 +159,7 @@ Viva Insights tenants have a second reason to look. Microsoft's Viva Insights pa
 - Workday and SAP SuccessFactors connectors use credentials you provide to the HR system, so the HR system's own account controls apply.
 
 **Autonomy & actions**
-- An upload with blank values overwrites the user's data as soon as it is processed, which Microsoft describes as effective immediate deletion. Use data staging to review before sharing.
+- Microsoft's import instructions say blank or empty values preserve previously uploaded values; deleting values requires explicit deletion values rather than ordinary blank cells. Use data staging to review before sharing.
 
 **Change & support**
 - Giving the service precedence over Microsoft Entra ID changes the values users see on profile cards (data precedence row). By default Microsoft Entra data takes precedence.
@@ -188,8 +192,6 @@ The Microsoft Viva service description says the Viva Insights subscription is av
 - Confirm with Microsoft which connectors (Workday, SAP SuccessFactors, Azure Blob Storage, API-based) your GCC-M tenant can use before choosing one.
 
 ### At rollout
-- Complete provisioning as a Global Administrator under Setup > Migration and imports > Organizational Data in Microsoft 365.
-- Turn on data staging for the first upload, export the ingested file and approve sharing within the 48 hours Microsoft allows.
 - Set the access policy for each custom attribute shared with Workforce Insights; leave Staging in place for any that should stay hidden.
 
 ### After rollout
@@ -205,7 +207,7 @@ The Microsoft Viva service description says the Viva Insights subscription is av
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who can upload, update, delete and export organisational data (Organizational Data Source Administrator role)</strong><br><small>Tenant</small><br><small class="controls__note">Entra page: assign as at least Privileged Role Administrator. Organizational Data Service pages say a Global Administrator assigns this role.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can see custom attribute data, and for which population (access policies)</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator or Organizational Data Source Administrator. Custom attributes default to Staging, which releases data to no users.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Setup › Migration and Imports › Microsoft 365 Organizational Data Service › Settings › Edit access policies <a href="https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users can see custom attribute data, and for which population (access policies)</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator or Organizational Data Source Administrator. Custom attributes default to Staging, which releases data to no users.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Setup › Migration and Imports › tools to migrate or import data › Microsoft 365 Organizational Data Service › Settings › Organization-wide access policy › Edit access policies <a href="https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether organisational data or Microsoft Entra ID supplies values in the Microsoft 365 User Profile (data precedence)</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator. The request body sets prioritizedSourceUrls; the service's source ID is 7986c642-b494-4140-8df4-f5ed125e2c67.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Data management › Microsoft 365 Organizational Data Service › Settings › Data prioritization › Edit data prioritization <a href="https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/admin/people/profilePropertySettings/{id}</code> <a href="https://learn.microsoft.com/graph/profilepriority-configure-profilepropertysetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -225,13 +227,11 @@ cost: Low. Microsoft lists licence requirements only by the app that consumes th
 impact: Low. The work falls on administrators and HR data owners; users see a difference after an upload, through attributes mapped as public and the data precedence setting.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions / behaviour: An upload with blank values overwrites and effectively immediately deletes the user's existing data when processed. | Found: If you include an attribute but leave the value blank or empty, the previously uploaded value will be used and the existing value won't be updated. New uploads merge with previous data and don't overwrite that data. | Fix: Replace the first sentence with: 'Microsoft's import instructions say blank or empty values preserve previously uploaded values; deleting values requires explicit deletion values rather than ordinary blank cells.' The cited data-usage page describes deletion using nulled values and links to these import instructions; it does not justify equating plain blank cells with deletion. | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope; rationale: risk / role: Only Global Administrators and Organizational Data Source Administrators can upload data. | Found: Only Global Administrators and Organizational Data Source Administrators can upload data. | Fix: Add: 'The Viva Insights transition page describes Global Administrator upload access as a temporary solution.' That cited page, https://learn.microsoft.com/viva/insights/advanced/admin/upload-org-data-admin-center, says: 'Only users with this role or the global admin role (as a temporary solution) can upload organizational data.' | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started
-- [supported, minor] controls[0].api / command: POST /v1.0/roleManagement/directory/roleAssignments assigns an Entra directory role. | Found: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments | Fix: Append to controls[0].note: 'The request body sets roleDefinitionId to the Organizational Data Source Administrator role definition and principalId to the assignee; directoryScopeId is / for tenant scope.' These properties appear in the cited assignment example. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal
-- [supported, minor] controls[1].ui / admin-path: Access policies are at Settings > Setup > Migration and Imports > Microsoft 365 Organizational Data Service > Settings > Edit access policies. | Found: Under the tools to migrate or import data table, select Microsoft 365 Organizational Data Service. ... Under the Organization-wide access policy section, select Edit access policies. | Fix: Use the full heading-inclusive path: 'Settings > Setup > Migration and Imports > tools to migrate or import data > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies'. The omitted elements are headings, not additional choices. | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist tells administrators to complete provisioning and turn on data staging, but neither control appears in the controls table. | Found: Complete provisioning as a Global Administrator ... Turn on data staging for the first upload ... Who can upload, update, delete and export organisational data ... Which users can see custom attribute data ... Whether organisational data or Microsoft Entra ID supplies values | Fix: Remove the provisioning and data-staging checklist bullets, leaving the already documented factual discussion elsewhere intact; these checklist controls have no corresponding table row. Do not add new control rows in this correction.
+- [supported, minor] controls[0].api / command: POST /v1.0/roleManagement/directory/roleAssignments assigns the source administrator role. | Found: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments { "@odata.type": "#microsoft.graph.unifiedRoleAssignment", "principalId": "<Object ID of user or group>", "roleDefinitionId": "<ID of role definition>", "directoryScopeId": "/" } | Fix: Append to controls[0].note: 'The request body uses roleDefinitionId for the Organizational Data Source Administrator role, principalId for the assignee, and directoryScopeId set to / for tenant scope.' | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal
+- [supported, minor] controls[1].ui / admin-path: The printed Settings > Setup > Migration and Imports route reaches Edit access policies. | Found: Under the tools to migrate or import data table, select Microsoft 365 Organizational Data Service. ... select Settings. ... Under the Organization-wide access policy section, select Edit access policies. | Fix: Keep the documented route and append to controls[1].note: 'To apply a policy, under Access policies for custom attributes select the attributes, choose Select access policy, and pick the policy to apply.' The cited page documents these remaining steps. | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Blank or empty upload values preserve previously uploaded values. | Found: If you include an attribute but leave the value blank or empty, the previously uploaded value will be used and the existing value won't be updated. New uploads merge with previous data and don't overwrite that data. | Fix: Append: 'The Office 365 Data Subject Requests page gives conflicting guidance, saying an empty attribute value deletes the current value; confirm deletion behaviour before relying on blanks.' Cite https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-office365#organizational-data-in-microsoft-365. | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata
+- [supported, minor] controls[2].ui / admin-path: Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Settings > Data prioritization > Edit data prioritization reaches the precedence screen. | Found: On the left, select Settings. Under Data prioritization, select Edit data prioritization. ... Use the arrows in the table to re-order the list of connectors based on how you'd like to prioritize the data. | Fix: Keep the path: its initial Settings > Viva > Data management > Microsoft 365 Organizational Data Service steps are documented in the already-cited get-started page. Append to controls[2].note: 'On this screen, use the arrows in the table to re-order the connectors.' | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence
 -->

@@ -149,14 +149,16 @@ changes:
     note: "Corrected after the independent check: the ownership-across-business-units command now uses the documented OrgDBOrgSettings syntax, and the application-user path, audit report path and two checklist items were narrowed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 87
+  claims: 86
+  confirmed: 86
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -241,8 +243,9 @@ Auditing role changes uses the Dataverse audit log, which stores audit logs in l
 - Is there a documented API or command for the License To Role mapping? None was found.
 - When does filtered record ownership leave preview, and is a licence or add-on needed for it?
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui / admin-path: The application-user creation path runs through Application users > + New app user > Create a new app user > edit icon for security roles. | Found: Select + Add an app to choose the registered Microsoft Entra application that was created for the selected user, and then select Add. | Fix: Use the fuller path 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > + Add an app > application > Add > Business Unit > business unit > edit icon (security roles)'. Keep the note explaining the application and business-unit selections; these omitted target selections are not a blocker. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
+- [supported, minor] controls[2].ui / admin-path: The application-user role selection path runs through Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > edit icon (security roles). | Found: Select + Add an app to choose the registered Microsoft Entra application that was created for the selected user, and then select Add. | Fix: Use the fuller path 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > + Add an app > application > Add > Business Unit > business unit > edit icon (security roles)' in the front matter and rendered row. The omitted application and business-unit target selections are not a blocker. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
+- [supported, minor] Cost and licensing / licensing: A user's presence in an environment does not grant Dataverse data access. | Found: A user's presence in an environment doesn't grant access to Dataverse data. | Fix: Add https://learn.microsoft.com/power-platform/admin/pricing-billing-skus to the front-matter sources as 'Licensing overview for Microsoft Power Platform'. It is already linked in the body and supports the licensing qualifications. | Source: https://learn.microsoft.com/power-platform/admin/pricing-billing-skus
 -->

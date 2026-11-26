@@ -91,15 +91,17 @@ changes:
     note: "Corrected the maker path to the per-app form fill assist toolbar setting so it starts at Solutions in Power Apps."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -208,4 +210,10 @@ Learn marks the Allow form fill assistance column property as a preview feature.
 risk: Medium. Suggestions would target data users have already entered, so an accepted wrong suggestion replaces a value; Learn says nothing is saved until the user accepts, but does not yet describe this behaviour.
 cost: Medium. Learn says users of a Power Apps model-driven app need a Power Apps premium licence for form fill assistance; no separate meter or price is published for suggestions on existing values.
 impact: Medium. People who use model-driven apps where form fill assistance is switched on would see suggestions on fields they have already filled; Learn gives the default for Power Apps users as off.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance guidance: Before rollout; Governance controls table; Open questions / admin-path: The environment form fill assistance control is reached in Power Platform admin center through Copilot > Settings > Power Apps > Data entry. | Found: The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. | Fix: Extend the path to 'Copilot > Settings > Power Apps > Data entry > environment > Edit setting'. The cited Copilot hub page documents selecting the environment or group and Edit setting after opening a setting: https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance
 -->

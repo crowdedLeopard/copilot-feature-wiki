@@ -76,17 +76,19 @@ changes:
     note: "Corrected after verification: licensing model is now included, citing Power Automate Premium's desktop capabilities, with library-specific terms still unpublished; added three source links."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 58
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "87df9e12b2b324b5e4529d6cca71b3b5"
 ---
@@ -181,4 +183,11 @@ No library-specific setting is documented, so the table has one row stating that
 risk: Low. The roadmap describes an authoring capability for makers and no source says existing flows change; how shared library content is permissioned and updated is not yet documented, so rate on today's behaviour continuing.
 cost: Low. The only cost the sources show is admin and maker time to agree reuse standards; Microsoft lists Power Automate Premium as providing the full set of desktop authoring capabilities, and library-specific licensing terms are not yet published.
 impact: Medium. Makers who build desktop flows would notice it; the roadmap item names no end-user or admin-facing change.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Data exposure / behaviour: Subflows contain automation actions. | Found: Subflows are groups of actions, which can be referenced as a group within a desktop flow. | Fix: Add the source 'Manage the flow designer workspace' at https://learn.microsoft.com/power-automate/desktop-flows/designer-workspace for the statement that subflows contain actions. | Source: https://learn.microsoft.com/power-automate/desktop-flows/designer-workspace
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist asks readers to check Flow checker rules and data policies, but neither control is represented in the controls table. | Found: confirm ... whether existing Flow checker rules and data policies apply to it. / No library-specific setting is documented, so the table has one row stating that gap. | Fix: Replace the At rollout bullet with 'Confirm which identity and connections a library subflow runs with.' This removes the checklist-only control references without adding unverified control rows.
 -->

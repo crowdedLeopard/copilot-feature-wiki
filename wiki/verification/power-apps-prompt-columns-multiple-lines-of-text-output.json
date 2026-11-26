@@ -3,40 +3,51 @@
   "roadmapId": 573279,
   "title": "Power Apps: prompt columns can store multiple lines of text output",
   "status": "verified-with-gaps",
-  "date": "2026-11-19",
+  "date": "2026-11-26",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 66,
-    "confirmed": 66,
+    "claims": 68,
+    "confirmed": 68,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: its roadmap facts, consumption licensing and prompt-column controls are supported. Microsoft pages differ on the heading containing the environment AI prompts setting; the control note should acknowledge that navigation difference.",
+  "summary": "The briefing passes: the roadmap facts, credit consumption and general prompt-column controls are supported. Microsoft still does not document the multi-line option's default or length limit. The environment control's navigation is supported, but the briefing should acknowledge that two cited Learn pages place its toggle under different headings.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Why it matters; rationale: risk",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap plans multiple lines of prompt output, enabling longer and more detailed AI-generated text in tables.",
+      "claim": "Microsoft plans for prompt columns to store multiple lines of text as prompt output.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Prompt columns can now store multilple lines of text as prompt output, enabling longer and detailed AI-generated insights to be stored in your tables.",
+      "quote": "Prompt columns can now store multilple lines of text as prompt output",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes longer and more detailed AI-generated text being stored in tables.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enabling longer and detailed AI-generated insights to be stored in your tables.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: products; What's changing",
       "type": "record",
       "claim": "The item lists Power Apps and Microsoft Dataverse.",
@@ -47,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -58,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "n": 5,
+      "where": "summary; front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap target is November CY2026, not a committed release date.",
+      "claim": "The roadmap target is November CY2026, not a committed rollout date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
@@ -69,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -80,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "claim": "The roadmap cloud list is Worldwide (Standard Multi-Tenant), GCC and GCC High.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
@@ -91,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "Web is the only platform listed in the roadmap record.",
+      "claim": "Web is the only platform listed in this roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -102,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The record gives no preview date.",
@@ -113,21 +124,21 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Rollout mechanics for multiple-line output are not stated.",
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-15T22:47:30.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps prompt columns multiline output 573279 licensing price default rollout switch; read roadmap record, prompt-column, settings-features and administer; no multiline rollout mechanism stated.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-15T22:47:30\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing",
+      "n": 11,
+      "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "A prompt column is an AI-powered Dataverse data type.",
+      "claim": "Prompt is an AI-powered Dataverse column data type.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "A prompt column is an AI-powered data type in Microsoft Dataverse",
@@ -135,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Prompt columns hold results from natural-language prompts tied to other columns in the table.",
+      "claim": "A prompt column holds the result of a natural language prompt tied to other columns in its table.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "enables you to define natural language prompts tied to other columns in your table. The AI model processes these prompts to generate relevant responses based on specified input columns.",
@@ -146,32 +157,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "A prompt executes on record creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "A prompt executes when you create a record or update one or more of the columns that the prompt references.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Updating a referenced input column triggers prompt execution.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "A prompt executes when you create a record or update one or more of the columns that the prompt references.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Generated prompt-column results persist as table data.",
+      "claim": "Generated prompt-column results persist in the Dataverse table.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "The key function is that the prompt column contains generative AI results stored in the table persistently.",
@@ -179,84 +168,117 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The prompt columns Learn page does not describe multiple-line output at the time of writing.",
+      "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Creating a record triggers prompt-column execution, subject to its execution controls and filters.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"prompt columns\" \"multiple lines\" output default length admin enable; read prompt-column in full and specialized-columns; neither describes this multiple-line enhancement.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "A prompt executes when you create a record or update one or more of the columns that the prompt references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Updating one or more referenced input columns triggers prompt-column execution, subject to its controls and filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "A prompt executes when you create a record or update one or more of the columns that the prompt references. If none of the referenced columns change, the prompt doesn't run and no extra credits are consumed.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "How multiple-line output is selected is not yet documented.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Learn states that on-demand prompt-column execution is not currently supported.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"prompt columns\" \"multiple lines\" output default length admin enable; Power Apps prompt columns multiline output 573279 licensing price default rollout switch; read prompt-column and settings-features; no selection control found.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns are triggered automatically on record updates; however, on-demand execution is not currently supported.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented whether the multiple-line output enhancement changes existing prompt columns.",
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Insufficient permission on an input column is a documented cause of prompt-column generation failure.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps prompt columns multiline output 573279 licensing price default rollout switch; read prompt-column and roadmap. Learn describes existing columns upgrading to asynchronous execution, but does not tie that to multiple-line output.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "The user doesn't have sufficient permissions on one or more input columns referenced in the prompt column definition.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "A length limit for stored multiple-line prompt output is not yet documented.",
+      "where": "Risk assessment: Change & support; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Prompt columns aren't audited, so their generated text has no prompt-column audit trail.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"prompt columns\" \"multiple lines\" output default length admin enable; read prompt-column and specialized-columns; no limit for this multiple-line enhancement found.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Are prompt columns audited? Prompt columns aren't audited.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The arrival default for the multiple-line output enhancement is unknown.",
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Each new prompt column automatically gets corresponding Status and Details columns.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"prompt columns\" \"multiple lines\" output default length admin enable; Power Apps prompt columns multiline output 573279 licensing price default rollout switch; read roadmap, prompt-column and settings-features; no multiline default stated.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "When a prompt column is created, the table automatically includes two corresponding columns, Status and Details, for that prompt column.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "summary",
-      "type": "absence",
-      "claim": "No new administrator switch specifically for multiple-line output is documented.",
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The companion columns record prompt execution status.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"prompt columns\" \"multiple lines\" output default length admin enable; read prompt-column, administer, settings-features and organization reference; found general AI prompts controls, not a multiline-specific switch.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "When prompt execution starts, these columns are populated to record the execution status and any failure details.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "front matter: licensing.model; rationale: cost",
-      "type": "licensing",
-      "claim": "Prompt-column licensing is consumption based.",
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The Details column exposes failure details for troubleshooting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "Prompt columns consume credits every time a prompt is executed.",
+      "quote": "The prompt AI generation failed. Detail column shows error details in the last execution.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises human review of generated content before using it to inform a business decision.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/prompts-overview",
+      "quote": "A human should review the content before you post it online, send it to a customer, or use it to inform a business decision.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model; cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Consumption licensing and a variable cost rating describe the documented credit meter for prompt columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns consume credits every time a prompt is executed. Copilot Credits are a common currency for eligible Microsoft services with usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Prompt columns use the same licensing model as AI Builder prompts.",
@@ -267,7 +289,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 25,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "The prompts overview lists Copilot Credits as a prerequisite.",
@@ -278,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
       "where": "Cost and licensing; Scope",
       "type": "behaviour",
-      "claim": "The prompts overview requires Dataverse installed on the environment.",
+      "claim": "The prompts overview requires Dataverse to be installed on the environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/prompts-overview",
       "quote": "Microsoft Dataverse is installed on the environment.",
@@ -289,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 27,
       "where": "Cost and licensing; Scope",
       "type": "availability",
-      "claim": "The prompts overview requires an environment in an available region.",
+      "claim": "The prompts overview requires an environment in its available-region list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/prompts-overview",
       "quote": "Your environment is in the list of available regions.",
@@ -300,32 +322,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: licensing.notes",
-      "type": "absence",
-      "claim": "No licensing provision specific to multiple-line output is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps prompt columns multiline output 573279 licensing price default rollout switch; read prompt-column, prompts-overview and administer-licensing; found general prompt licensing, not a multiline-specific provision.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Prompt columns support AI Builder credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "Prompt columns consume both AI Builder credits and Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 28,
       "where": "Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Prompt columns support Copilot Credits.",
+      "claim": "Prompt-column executions support AI Builder credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "Prompt columns consume both AI Builder credits and Copilot Credits.",
@@ -334,9 +334,20 @@
     },
     {
       "n": 29,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Prompt-column executions support Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns consume both AI Builder credits and Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The prompt columns page says AI Builder credits are retiring soon.",
+      "claim": "The prompt-column page says AI Builder credits are retiring soon.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "AI Builder credits are retiring soon.",
@@ -344,21 +355,32 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 31,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "AI Builder features in apps and flows first try AI Builder credits, then Copilot Credits if those are absent or exhausted.",
+      "claim": "AI Builder features in apps and flows first try to consume AI Builder credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/administer-licensing",
-      "quote": "AI Builder features in apps and flows first try to consume AI Builder credits, then if absent or exhausted, they try to consume Copilot Credits.",
+      "quote": "AI Builder features in apps and flows first try to consume AI Builder credits",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Those features try Copilot Credits if AI Builder credits are absent or exhausted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/administer-licensing",
+      "quote": "then if absent or exhausted, they try to consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Prompt execution consumes credits on every run.",
+      "claim": "A prompt-column prompt consumes credits each time it runs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "Prompt columns consume credits every time a prompt is executed.",
@@ -366,7 +388,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 34,
       "where": "Cost and licensing; Governance guidance: At rollout",
       "type": "cost",
       "claim": "Testing a prompt in the designer is free.",
@@ -377,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "Cost and licensing; Governance controls: monitoring",
       "type": "admin-path",
-      "claim": "The AI Builder activity report is under Automation center in Power Automate.",
+      "claim": "Power Automate > Automation center > AI Builder activity opens the prompt-column credit consumption report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "Sign in to Power Automate. On the left navigation pane, select Automation center, and then select AI Builder activity.",
@@ -388,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The report's Estimated consumption column shows credits consumed per prompt execution.",
+      "type": "behaviour",
+      "claim": "The report's Estimated consumption column shows credits consumed by each prompt execution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "Review the Estimated consumption column to see the credits consumed by each prompt execution.",
@@ -399,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 37,
       "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Filter conditions reduce unnecessary prompt executions and help optimise credit consumption.",
+      "type": "cost",
+      "claim": "Prompt-column filter conditions reduce unnecessary executions and help optimise credit consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "During record creation or update, the prompt column evaluates the filter first and then executes the prompt for eligible records. This approach reduces unnecessary executions and helps optimize Copilot credit consumption.",
@@ -410,32 +432,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Input tokens contribute to prompt-run cost.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/ai-builder/licensing-prompt-tokens",
-      "quote": "The combination of input tokens, output tokens, and the model version allows you to compute the cost of your prompt run.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Output tokens contribute to prompt-run cost.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/ai-builder/licensing-prompt-tokens",
-      "quote": "The combination of input tokens, output tokens, and the model version allows you to compute the cost of your prompt run.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 38,
       "where": "Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Model version contributes to prompt-run cost.",
+      "claim": "Prompt-run cost depends on input tokens, output tokens and model version.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/licensing-prompt-tokens",
       "quote": "The combination of input tokens, output tokens, and the model version allows you to compute the cost of your prompt run.",
@@ -444,12 +444,12 @@
     },
     {
       "n": 39,
-      "where": "Scope; Governance controls",
-      "type": "applicability",
-      "claim": "The prompt columns prerequisites require the environment's Copilot feature to be on.",
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "Prompt runs consume the environment's available AI credit capacity.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "Copilot and AI Prompts features turned On in the Features area for the environment settings.",
+      "source": "https://learn.microsoft.com/ai-builder/administer-licensing",
+      "quote": "Once an environment has Copilot Credits available, it can run the AI Builder features in all contexts. If an environment only has AI Builder credits available, it can only run AI Builder features in Power Apps and Power Automate.",
       "severity": null,
       "fix": null
     },
@@ -457,7 +457,7 @@
       "n": 40,
       "where": "Scope; Governance controls",
       "type": "applicability",
-      "claim": "The prompt columns prerequisites require the environment's AI Prompts feature to be on.",
+      "claim": "Prompt-column prerequisites require the environment's Copilot feature to be on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "Copilot and AI Prompts features turned On in the Features area for the environment settings.",
@@ -466,9 +466,20 @@
     },
     {
       "n": 41,
+      "where": "Scope; controls[0].governs; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "The environment AI prompts feature controls prompt-column execution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Common scenarios where the prompt doesn't execute, no error is surfaced, and execution is skipped: AI Prompt feature is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "A table can have up to five prompt columns.",
+      "claim": "A table can contain up to five prompt columns.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "You can create up to five prompt columns per table.",
@@ -476,21 +487,21 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 43,
       "where": "Scope",
       "type": "applicability",
       "claim": "Block unmanaged customizations must be disabled to create or edit prompt columns.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "To create or edit Prompt Columns, the‘Block unmanaged customizations’ environment setting must be disabled.",
+      "quote": "To create or edit Prompt Columns, the'Block unmanaged customizations' environment setting must be disabled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Scope; controls[0].note",
+      "n": 44,
+      "where": "Scope; controls[0].note; Governance controls: first row",
       "type": "role",
-      "claim": "Updating feature settings requires the System Administrator security role or equivalent permissions.",
+      "claim": "Updating the environment feature settings requires the System Administrator security role or equivalent permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/settings-features",
       "quote": "Ensure you have the System Administrator security role or equivalent permissions to update the settings.",
@@ -498,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 45,
       "where": "Scope",
       "type": "default",
-      "claim": "The general AI prompts feature is enabled by default.",
+      "claim": "Learn states the environment AI prompts feature is enabled by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/administer",
       "quote": "By default, the AI prompts feature is enabled for makers to create and experiment with various AI-generated content.",
@@ -509,7 +520,7 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 46,
       "where": "controls[0].ui; Governance controls: first row",
       "type": "admin-path",
       "claim": "The environment control is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts.",
@@ -517,46 +528,35 @@
       "source": "https://learn.microsoft.com/ai-builder/administer",
       "quote": "select Environments > [select an environment] > Settings > Product > Features. On the Features settings page under AI Builder, enable or disable the AI prompts toggle.",
       "severity": "minor",
-      "fix": "Append to controls[0].note: 'Administer AI Builder places this toggle under AI Builder; Manage feature settings lists it under AI prompts (https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts).' The latter page also confirms the initial Manage > Environments steps."
-    },
-    {
-      "n": 46,
-      "where": "controls[0].api; Governance controls: first row",
-      "type": "command",
-      "claim": "PATCH /api/data/v9.2/organizations(<organizationid>) updates the organization record for this environment setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest",
-      "quote": "Entity set path: [organization URI]/api/data/v9.2/organizations; Primary key: organizationid; Operations supported: GETPATCH",
-      "severity": null,
-      "fix": null
+      "fix": "Append to controls[0].note: 'Administer AI Builder places this toggle under AI Builder; Manage feature settings lists it under AI prompts (https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts).' Manage feature settings also supports the initial Manage > Environments steps; retain the existing path."
     },
     {
       "n": 47,
-      "where": "controls[0].note; Governance controls: first row",
+      "where": "controls[0].api; Governance controls: first row",
       "type": "command",
-      "claim": "The request body sets aipromptsenabled to true or false.",
+      "claim": "PATCH /api/data/v9.2/organizations(<organizationid>) updates the organization containing the AI prompts setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest",
-      "quote": "aipromptsenabled | Edm.Boolean | Indicates whether AI Prompts feature is enabled.",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/organizations. Primary key: organizationid. Operations supported: GETPATCH.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "controls[0].governs; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "The environment AI prompts control governs prompt-column execution.",
+      "where": "controls[0].note; Governance controls: first row",
+      "type": "command",
+      "claim": "The PATCH request body sets the Boolean aipromptsenabled property to enable or disable AI prompts.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "Why didn't the prompt column execute? Common scenarios where the prompt doesn't execute, no error is surfaced, and execution is skipped: AI Prompt feature is disabled.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest",
+      "quote": "aipromptsenabled | Edm.Boolean | Indicates whether AI Prompts feature is enabled. Display name: Enable AI Prompts.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "controls[0].note; Governance controls",
+      "where": "controls[0].note; Governance controls: first row",
       "type": "applicability",
-      "claim": "An AI prompts environment-group rule can govern AI prompts availability for the group's environments.",
+      "claim": "An AI prompts environment group rule can govern AI prompts availability for the group's environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/administer",
       "quote": "If your environment is part of an environment group, you can also govern AI prompts feature availability through the AI prompts environment group rule.",
@@ -567,7 +567,7 @@
       "n": 50,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "Publishing an AI prompts group rule locks the environment setting, requiring changes through the group rule.",
+      "claim": "Publishing the AI prompts group rule locks the setting at environment level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/administer",
       "quote": "If an environment group rule governing AI prompts is published, it locks the AI prompts setting at the environment-level, preventing any system administrator of those individual environments from editing the setting.",
@@ -576,9 +576,20 @@
     },
     {
       "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "To change a locked AI prompts setting, administrators must modify the corresponding environment group rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/administer",
+      "quote": "To change the setting, admins must modify the corresponding rule in the environment group that includes the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
       "where": "controls[1].ui; Governance controls: second row; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The per-column control is at Power Apps (maker) > Tables > table > Columns > column > Edit column > Allow prompt column execution.",
+      "claim": "The maker-side execution control is at Power Apps > Tables > table > Columns > column > Edit column > Allow prompt column execution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "Select Tables on the left navigation pane. Open the table, select Columns, and then open the column that is of data type Prompt where you want to disable AI generation. On the Edit column pane, clear the Allow prompt column execution checkbox",
@@ -586,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 53,
       "where": "controls[1].note; Governance controls: second row",
       "type": "default",
-      "claim": "Allow prompt column execution is enabled by default.",
+      "claim": "Allow prompt column execution is enabled by default for a prompt column.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "By default, the Allow prompt column execution setting is enabled.",
@@ -597,24 +608,13 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 54,
       "where": "controls[1].governs; controls[1].note; Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "Disabling Allow prompt column execution prevents AI analysis for that individual prompt column.",
+      "claim": "Disabling Allow prompt column execution stops AI analysis for that individual prompt column.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
       "quote": "When disabled, AI analysis isn't performed for the prompt column.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[1].api; Open questions",
-      "type": "absence",
-      "claim": "An API or command for Allow prompt column execution is not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Allow prompt column execution\" API attribute metadata Dataverse; \"prompt column\" \"execution\" API PowerShell CLI attribute enabled; read prompt-column, specialized-columns and msdyn_aiconfiguration reference; no setting operation found.",
       "severity": null,
       "fix": null
     },
@@ -631,17 +631,116 @@
     },
     {
       "n": 56,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Insufficient permission on a referenced input column is a documented cause of prompt-column generation failure.",
+      "where": "controls[1].api; Governance controls: second row; Open questions",
+      "type": "absence",
+      "claim": "No API or command is documented for the Allow prompt column execution setting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "The user doesn't have sufficient permissions on one or more input columns referenced in the prompt column definition.",
+      "source": null,
+      "quote": "Searched: Dataverse Allow prompt column execution API attribute entity reference msdyn aiconfiguration disable execution PowerShell pac. Read prompt-column, specialized-columns, msdyn_aiconfiguration reference and pac copilot excerpts; no operation/property for this setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated what multi-line output does on arrival, so its default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multi-line\" \"default\" \"settings\"; Dataverse prompt columns multiple lines text output length limit default existing columns rollout licensing. Read roadmap record, prompt-column, administer and settings-features; no multi-line arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "summary; Why it matters",
+      "type": "absence",
+      "claim": "No new admin switch specific to multi-line prompt output is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multi-line\" licensing rollout existing admin switch; \"prompt columns\" \"multi-line\" \"default\" \"settings\". Read prompt-column, administer, settings-features and organization reference; found general controls, not a multi-line switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The prompt-columns Learn page does not describe multi-line output as of this check.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multiple lines\" \"output\". Read the full https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column page; it describes prompts, asynchronous execution, filters, backfill and execution controls, but not multi-line output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented how multi-line prompt output is chosen.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multiple lines\" \"output\"; \"prompt columns\" \"multi-line\" \"default\" \"settings\". Read prompt-column and relevant search excerpts; no selection procedure for multi-line output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "No source states whether the multi-line output change alters existing prompt columns.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multi-line\" licensing rollout existing admin switch. Read roadmap record and prompt-column; the latter describes existing definitions changing for asynchronous execution, but does not connect that upgrade to multi-line output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "A stored multi-line prompt-output length limit is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt column\" \"output\" \"maximum\" \"length\"; Dataverse prompt columns multiple lines text output length limit default existing columns rollout licensing. Read prompt-column, specialized-columns and text-column type excerpts; no limit tied to this multi-line feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "No licensing provision specific to multi-line output is published beyond general prompt consumption licensing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multi-line\" licensing rollout existing admin switch. Read prompt-column, prompts-overview, administer-licensing and licensing-prompt-tokens; general prompt credits and token rates are published, but no separate multi-line licensing provision.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics specific to multi-line prompt-column output are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multi-line\" licensing rollout existing admin switch. Read roadmap record and prompt-column; November CY2026 is a roadmap target, and Learn's regional upgrade notes concern asynchronous execution/backfill, not multi-line output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn does not tie either listed execution control specifically to multi-line output; both are general prompt-column controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"multi-line\" \"default\" \"settings\". Read prompt-column, administer, settings-features and organization reference; their controls govern AI prompts or column execution without mentioning multi-line output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "The roadmap description mentions no new connector, identity or permission.",
@@ -652,112 +751,35 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 67,
+      "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn states on-demand prompt-column execution is not currently supported.",
+      "claim": "The prompt designer's Test option can test real table records before the prompt is saved.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "Prompt columns are triggered automatically on record updates; however, on‑demand execution is not currently supported.",
+      "quote": "When you create a prompt column, you can test the prompt against real data in your table before you save it. In the prompt designer, select Test.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The prompts overview advises human review before using generated content to inform a business decision.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/ai-builder/prompts-overview",
-      "quote": "A human should review the content before you post it online, send it to a customer, or use it to inform a business decision.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Risk assessment: Change & support; Governance controls; rationale: risk",
-      "type": "behaviour",
-      "claim": "Prompt columns are not audited.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "Are prompt columns audited? Prompt columns aren't audited.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Creating a prompt column automatically adds corresponding Status and Details columns.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "When a prompt column is created, the table automatically includes two corresponding columns, Status and Details, for that prompt column.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Risk assessment: Change & support; Governance controls: monitoring",
-      "type": "behaviour",
-      "claim": "The corresponding columns record execution status.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "When prompt execution starts, these columns are populated to record the execution status and any failure details.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Risk assessment: Change & support; Governance controls: monitoring",
-      "type": "behaviour",
-      "claim": "The corresponding Details column records execution failure details.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "The prompt AI generation failed. Detail column shows error details in the last execution.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
+      "n": 68,
       "where": "Governance controls: monitoring",
       "type": "behaviour",
-      "claim": "Status and Details columns can be added to the displayed table columns to monitor execution.",
+      "claim": "The prompt-column Status and Details columns can be added to the table view to expose execution failures.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-      "quote": "In the select Show existing column list search for the prompt column name. Search and select the columns named: (columnName) _PromptColumnStatus; (columnName)_PromptColumnDetails",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "Learn does not specifically tie the general AI prompts and per-column execution controls to multiple-line output.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"prompt columns\" \"multiple lines\" output default length admin enable; read prompt-column, administer and settings-features; controls govern prompts generally, with no multiple-line-specific description.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Why it matters",
-      "type": "cost",
-      "claim": "Prompt runs consume AI credit capacity associated with their environment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/ai-builder/administer-licensing",
-      "quote": "Once an environment has Copilot Credits available, it can run the AI Builder features in all contexts. If an environment only has AI Builder credits available, it can only run AI Builder features in Power Apps and Power Automate.",
+      "quote": "Search and select the columns named: (columnName) _PromptColumnStatus; (columnName)_PromptColumnDetails. Select Save. Select Edit to the right of the list to open the columns list with records in a separate view.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T03:09:32.367Z",
+    "at": "2026-11-26T22:51:25.674Z",
     "summary": {
       "links": 8,
-      "unreachable": 6,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
       "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
@@ -770,18 +792,18 @@
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/ai-builder/prompts-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/ai-builder/administer",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/settings-features",
@@ -790,18 +812,18 @@
       },
       {
         "url": "https://learn.microsoft.com/ai-builder/licensing-prompt-tokens",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/ai-builder/administer-licensing",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -810,7 +832,7 @@
         "side": "ui",
         "governs": "Whether AI prompts, and so prompt columns, can run in an environment",
         "docs": "https://learn.microsoft.com/ai-builder/administer",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Manage",
           "Environments",
@@ -820,22 +842,14 @@
           "AI Builder",
           "AI prompts"
         ],
-        "missing": [
-          "Manage",
-          "Environments",
-          "Settings",
-          "Product",
-          "Features",
-          "AI Builder",
-          "AI prompts"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether AI prompts, and so prompt columns, can run in an environment",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest",
-        "reachable": false,
+        "reachable": true,
         "token": "PATCH /api/data/v9.2/organizations(<organizationid>)",
         "found": false
       },
@@ -844,7 +858,7 @@
         "side": "ui",
         "governs": "Whether a single prompt column runs AI generation",
         "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Tables",
           "Columns",
@@ -852,13 +866,7 @@
           "Edit column",
           "Allow prompt column execution"
         ],
-        "missing": [
-          "Tables",
-          "Columns",
-          "column",
-          "Edit column",
-          "Allow prompt column execution"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -879,6 +887,12 @@
     {
       "date": "2026-11-18",
       "status": "verified",
+      "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "verified-with-gaps",
       "version": 3,
       "model": "gpt-6.1-sol"
     }

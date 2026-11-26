@@ -73,18 +73,20 @@ changes:
     note: "Corrected the data policy admin path and the roles needed to edit a policy, and removed a rollout step that had no matching control."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 62 statements contradicted, 2 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 48
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 62
+  confirmed: 59
+  unconfirmed: 2
+  contradicted: 1
+  attempts: 1
   hash: "fc426e711c6d28b1b5306cf0fb96cd77"
 ---
 
@@ -173,4 +175,12 @@ Tenant-level policies require the Power Platform Administrator role. Environment
 risk: Medium. The trigger passes responder details and form responses into flows, which can route them onward; the data policy covering the SharePoint connector is the main control, and Learn describes SharePoint as a connector that cannot be blocked.
 cost: Low. Learn's connector article names no separate charge for the trigger or action; the cost shown is maker time plus the licences already needed for the SharePoint connector and, for document generation forms, a Microsoft Copilot licence for form creators.
 impact: Low. Makers who build flows on SharePoint forms notice it; the roadmap and Learn describe no change for form submitters or for users who build no flow.
+-->
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Security & identity / availability: Whoever holds a document generation form link can submit. | Found: After you publish the form, share the form link so users in your organization can submit forms and generate documents. | Fix: Replace 'so whoever holds the link can submit' with 'and describes sharing the form link with users in your organization'. The source does not establish unrestricted submission by anyone holding a link. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation
+- [unsupported, major] Risk assessment: Data exposure, second bullet / behaviour: The uploaded or generated document metadata carried by the submission trigger includes document names. | Found: Searched: SharePoint When a form is submitted metadata name location. Read connector article/reference and document generation page. The trigger's outputs are dynamic; explicit Name metadata is documented for Generate a document from a form, not this trigger. | Fix: Replace 'so document names and locations can leave SharePoint through a flow' with 'so that metadata can leave SharePoint through a flow'. The submission trigger article does not enumerate its document metadata fields.
+- [unsupported, major] Risk assessment: Data exposure, second bullet / behaviour: The uploaded or generated document metadata carried by the submission trigger includes document locations. | Found: Searched: SharePoint When a form is submitted metadata name location. Read connector article/reference and document generation page. The trigger's outputs are dynamic; explicit location metadata is documented for Generate a document from a form, not this trigger. | Fix: Replace 'so document names and locations can leave SharePoint through a flow' with 'so that metadata can leave SharePoint through a flow'. The submission trigger article does not enumerate its document metadata fields.
 -->

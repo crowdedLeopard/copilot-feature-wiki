@@ -92,18 +92,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 71 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 74 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 82 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 72
+  claims: 82
+  confirmed: 79
   unconfirmed: 1
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "8ab6893cf7c6f61c004ec148ad45cb7d"
 ---
 
@@ -204,11 +206,13 @@ cost: Variable. Row summaries rely on AI Builder, which consumes AI Builder cred
 impact: Medium. Users of model-driven apps that already show row summaries will see a different layout, and the roadmap lists the feature scope as Users (always enabled).
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Learn describes summaries as read-only text. | Found: Searched: "row summaries" "read-only". Read record-summaries, configure-form-row-summary and faq-record-summaries; they describe generated text and interaction buttons but do not state that summaries are read-only. | Fix: Remove 'read-only' so the sentence reads: 'Learn describes summaries as text that users can copy, rate with thumbs up or down and, on forms, refresh.'
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Learn describes summaries as read-only text. | Found: Searched: "row summaries" "read-only". Read record-summaries, configure-form-row-summary and faq-record-summaries; they describe generated content and interaction buttons, but do not state that summaries are read-only. | Fix: Remove 'read-only' so the sentence reads: 'Learn describes summaries as text that users can copy, rate with thumbs up or down and, on forms, refresh.'
+- [contradicted, blocker] Governance controls: maker toggle paragraph / behaviour: Learn identifies Customer Service as providing the summaries for case, lead and opportunity. | Found: Case: Customer Service summary. Lead and opportunity: Sales summary features. | Fix: Replace 'such as Customer Service summaries for case, lead and opportunity' with 'such as Customer Service summaries for case and Sales summaries for lead and opportunity', following https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary#show-or-hide-a-row-summary. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: The FAQ lists links to related records as unsupported. | Found: Row summaries can't include links to related records. | Fix: After the limits sentence add: 'The maker guide qualifies related-record links differently: "Hyperlinks to related records might not render as expected in the summary."' Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary#known-limitations. | Source: https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: Every control the governance checklist asks readers to review appears in the controls table. | Found: Checklist: 'review the preview allow or exclude-list control for model-driven app AI features.' Table: Row summaries, AI insight cards, Show row summary and a separate layout switch; no user-list control row. | Fix: Remove the At rollout bullet 'If you use Managed Environments, review the preview allow or exclude-list control for model-driven app AI features.' Keep the sourced descriptive paragraph in Governance controls.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The legacy route is Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI insight cards. | Found: In the navigation pane, select Manage. In the Manage pane, select Environments. On the Environments page, select an environment. In the command bar, select Settings. Expand Product, and then select Features. | Fix: The path reaches the correct section but stops before its setting. Use 'Manage > Environments > environment > Settings > Product > Features > AI insight cards > Display AI-generated row summaries on records in model-driven apps.' in controls[1].ui.path and the rendered table, as documented at https://learn.microsoft.com/power-platform/admin/settings-features#ai-insight-cards. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
+- [supported, minor] Risk assessment: Change & support / behaviour: The FAQ lists links to related records as unsupported. | Found: Row summaries can't include links to related records. | Fix: After the limitations sentence add: 'The maker guide qualifies related-record links differently: "Hyperlinks to related records might not render as expected in the summary."' The differing source is already cited: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary#known-limitations. | Source: https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The governance checklist's preview AI allow/exclude-list control is represented in the controls table. | Found: Checklist: 'If you use Managed Environments, review the preview allow or exclude-list control for model-driven app AI features.' Table: Row summaries, AI insight cards, Show row summary and a separate layout switch; no allow/exclude-list row. | Fix: Remove the At rollout bullet 'If you use Managed Environments, review the preview allow or exclude-list control for model-driven app AI features.' Keep the sourced descriptive paragraph in Governance controls; do not add a row.
 -->

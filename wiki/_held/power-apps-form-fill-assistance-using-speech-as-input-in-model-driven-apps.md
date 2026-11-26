@@ -88,18 +88,20 @@ changes:
     note: "Corrected the app-level control row: it now names only the form fill assist toolbar setting, with Smart paste noted as a separate setting; summary now attributes the speech plan to Microsoft."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 47
-  confirmed: 47
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "3c87dd84af4395c432fac8a52cfc290c"
 ---
 
@@ -181,4 +183,12 @@ The legacy environment feature flag is listed in the [feature settings reference
 risk: Medium. It is enabled by default for users and processes spoken content, which may include personal or sensitive information.
 cost: Low. Learn says form fill assistance needs a Power Apps premium or Dynamics 365 licence; no additional charge for speech is published.
 impact: High. The roadmap lists users as enabled by default, so many users of enabled apps may see the microphone.
+-->
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The maker-portal route to the app toolbar control is app designer > Settings > Features > Form fill assist toolbar. | Found: Open the solution that contains the model-driven app. ... Select the model-driven app and select the Edit split menu to open it by using the modern app designer. ... Open Settings and switch to Features. | Fix: Replace controls[1].ui.path and the rendered table path with 'Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar'. Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-model-driven-app for Solutions and https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications for opening the existing app with Edit. Keep app-properties as the control's docs link; it documents Settings, Features and the toolbar setting. | Source: https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: The environment-level form fill assistance control is at Power Platform admin center > Copilot > Settings > Power Apps > Data entry. | Found: The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. | Fix: Extend controls[0].ui.path and the rendered table path to 'Copilot > Settings > Power Apps > Data entry > environment > Edit setting'. The cited control page gives the first steps; https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub gives environment selection and Edit setting. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control
 -->
