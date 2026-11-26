@@ -86,15 +86,17 @@ changes:
     note: "Corrected the role group control: the admin path now ends at Edit > Choose users, and the Add-RoleGroupMember cmdlet is given as its PowerShell equivalent."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 64 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 80 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 62
+  claims: 80
+  confirmed: 78
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -197,12 +199,12 @@ cost: Low. No charge specific to the panel is published; the known cost is admin
 impact: Low. Insider Risk Management administrators see the panel; Microsoft's notice says there is no impact to user workflows and existing policies stay unchanged.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The change is not a new detection. | Found: Searched: Insider Risk policy recommendation panel settings roles licensing signals; read the roadmap, MC1387681 and the policies and analytics pages. They describe recommendations and additional signal processing, but do not state that no new detection is involved. | Fix: Replace the first sentence with: "Microsoft's notice describes a new recommendation view over existing insider risk policies."
+- [unsupported, major] Why it matters: first sentence / behaviour: The change is not a new detection. | Found: Searched: "Policy Recommendation panel" "Insider" "detection"; read the roadmap, MC1387681, policies and analytics. They describe recommendations and additional signal processing, but do not establish that no new detection is involved. | Fix: Replace the first sentence with: "Microsoft's notice describes a new recommendation view over existing insider risk policies."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: final paragraph / cost: If a suggested policy uses pay-as-you-go indicators, Microsoft ties billing to that policy's indicator processing rather than describing panel billing. | Found: Insider Risk Management processes user activities corresponding to the non-Microsoft 365 indicators selected in data theft and data leak policies to generate insights, alerts, and cases. | Fix: Add https://learn.microsoft.com/purview/purview-billing-models to sources for the conditional statement about billing when a suggested policy uses pay-as-you-go indicators. | Source: https://learn.microsoft.com/purview/purview-billing-models
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The analytics control is reached in Microsoft Purview through Settings > Insider Risk Management > Insider risk settings > Analytics. | Found: Select Settings in the upper-right corner of the page. 3. Select Insider Risk Management to go to the Insider Risk Management settings. 4. Under Insider risk settings, select Analytics, and then turn off the setting. | Fix: The path reaches the correct settings page but stops before its switch. Set controls[1].ui.path and the rendered path to "Settings > Insider Risk Management > Insider risk settings > Analytics > Scan your tenant's user activity to identify potential insider risks". The final label is documented at https://learn.microsoft.com/purview/insider-risk-management-configure#step-3-optional-enable-and-view-insider-risk-analytics-insights, already cited by the briefing. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-analytics
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the briefing's medium-risk, automatically arriving January preview. | Found: action: "prepare"; risk: "medium"; previewDate: "January CY2027"; "Agree in advance who may act on a recommendation". | Fix: Set action to "act-now". On 19 November 2026 the January month-only preview target is within 60 days when counted from 1 January as the standard requires; the feature arrives automatically, risk is medium, and the briefing identifies an approval decision to take before arrival.
+- [supported, minor] Cost and licensing: final paragraph / cost: If a suggested policy uses a pay-as-you-go indicator, Microsoft ties billing to that policy's indicator processing. | Found: Insider Risk Management processes user activities corresponding to the non-Microsoft 365 indicators selected in data theft and data leak policies to generate insights, alerts, and cases. | Fix: Add https://learn.microsoft.com/purview/purview-billing-models to sources for the conditional statement about billing when a suggested policy uses pay-as-you-go indicators. | Source: https://learn.microsoft.com/purview/purview-billing-models
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The analytics control is reached in Microsoft Purview through Settings > Insider Risk Management > Insider risk settings > Analytics. | Found: Select Settings in the upper-right corner of the page. 3. Select Insider Risk Management to go to the Insider Risk Management settings. 4. Under Insider risk settings, select Analytics, and then turn off the setting. | Fix: Set controls[1].ui.path and the rendered path to "Settings > Insider Risk Management > Insider risk settings > Analytics > Scan your tenant's user activity to identify potential insider risks". The final switch label is documented in the already cited https://learn.microsoft.com/purview/insider-risk-management-configure#step-3-optional-enable-and-view-insider-risk-analytics-insights. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-analytics
+- [contradicted, minor] front matter: action / consistency: The prepare action rating is consistent with the verified facts and the action scale on 26 November 2026. | Found: action: "prepare"; risk: "medium"; previewDate: "January CY2027"; "The feature is enabled by default and available automatically as part of the rollout"; "Agree in advance who may act on a recommendation". | Fix: Set action to "act-now". The January month-only preview target is counted from 1 January under the standard, 36 days after the run date; the panel arrives automatically, risk is medium, and the briefing identifies an approval decision to take before arrival.
 -->

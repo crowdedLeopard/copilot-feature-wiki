@@ -40,6 +40,9 @@ sources:
   - title: "Get started with Copilot Service admin center"
     url: "https://learn.microsoft.com/dynamics365/customer-service/implement/cs-admin-center"
     kind: "learn"
+  - title: "Use Copilot Service admin center"
+    url: "https://learn.microsoft.com/dynamics365/contact-center/administer/cc-admin-center"
+    kind: "learn"
   - title: "Overflow Action Config (msdyn_overflowactionconfig) table/entity reference (Microsoft Dynamics 365 Customer Service)"
     url: "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_overflowactionconfig"
     kind: "learn"
@@ -52,6 +55,9 @@ sources:
   - title: "Overflow Action Config (msdyn_overflowactionconfig) table/entity reference"
     url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig"
     kind: "learn"
+  - title: "Which callback profile a queue uses for each overflow condition (Copilot Service admin center)"
+    url: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback#use-callback-profile-in-overflow-action"
+    kind: "learn"
 videos: []
 related: ["dynamics-365-contact-center-unified-routing-orchestrate-conversation-distribution-with-nat","copilot-credits"]
 controls:
@@ -59,7 +65,7 @@ controls:
     scope: "other"
     ui:
       surface: "Copilot Service admin center"
-      path: "Routing > Callback management > Customer-first direct callback"
+      path: "Routing > Callback management > Copilot AI agent for callback management > Customer-first direct callback"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback"
     api: null
     note: "Enable Copilot AI agent for callback management first. Microsoft says the setting is irreversible and needs at least one callback profile. A Dataverse config record is documented; see the notes below."
@@ -79,7 +85,7 @@ controls:
     ui:
       surface: "Copilot Service admin center"
       path: "Customer support > Queues > Advanced queues > queue > Overflow handling > Add condition-action pair > Before work items are queued > Add condition-action pair > Condition > Action > Direct callback > Callback profile"
-      docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow"
+      docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback#use-callback-profile-in-overflow-action"
     api:
       kind: "rest"
       call: "PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid)"
@@ -87,7 +93,7 @@ controls:
     note: "Choose Direct callback as the action on a voice queue, then select a Callback profile. The Customer Service table reference adds the msdyn_proactive_callback_profileId lookup."
 confidence: "high"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-10-22T23:45:45"
 changes:
   - date: "2026-11-19"
@@ -104,19 +110,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-26"
+    note: "Correction: onboarding path now includes the Copilot AI agent for callback management step; the queue Callback profile row links to the customer-first callback page; the Contact Center admin-center role requirement is added."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 72
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "6efca1c92e91727389ef56e7f854fb6b"
+  contradicted: 0
+  attempts: 0
+  hash: "4f8293a7406bbf5d1dbb964cf8dea88f"
 ---
 
 ## What's changing
@@ -166,7 +176,7 @@ Indirect costs are admin time to design profiles and test queues.
 
 ## Scope
 
-- **Who configures it:** administrators in the Copilot Service admin center. The roadmap says it is enabled by admins, makers or marketers for end users. The Copilot Service admin center prerequisites document System Administrator and System Customizer access to edit all site map entries; the callback page names no narrower role.
+- **Who configures it:** administrators in the Copilot Service admin center. The roadmap says it is enabled by admins, makers or marketers for end users. The Copilot Service admin center prerequisites document System Administrator and System Customizer access to edit all site map entries; the callback page names no narrower role. [The Contact Center-specific admin-center page](https://learn.microsoft.com/dynamics365/contact-center/administer/cc-admin-center) instead states that you must have the System administrator role.
 - **Who is affected:** callers to voice queues that use Direct callback as the overflow action, and the representatives who receive the callback.
 - **Clouds and platform:** the roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, for the Web platform.
 - **Prerequisites (Microsoft's page):** a provisioned Microsoft Copilot Studio agent in the environment, phone numbers with outbound calling enabled, and any Copilot Studio agents for verification or information collection.
@@ -199,9 +209,9 @@ Indirect costs are admin time to design profiles and test queues.
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Complete irreversible customer-first callback onboarding, including Callback Agent provisioning</strong><br><small class="controls__note">Enable Copilot AI agent for callback management first. Microsoft says the setting is irreversible and needs at least one callback profile. A Dataverse config record is documented; see the notes below.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Callback management › Customer-first direct callback <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Complete irreversible customer-first callback onboarding, including Callback Agent provisioning</strong><br><small class="controls__note">Enable Copilot AI agent for callback management first. Microsoft says the setting is irreversible and needs at least one callback profile. A Dataverse config record is documented; see the notes below.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Callback management › Copilot AI agent for callback management › Customer-first direct callback <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Callback profile settings (offer message, window, dialling, retries, AI agent)</strong><br><small>Environment</small><br><small class="controls__note">The earlier wizard pages hold the other profile settings. The request body can set msdyn_number_of_retries and msdyn_fallback_action.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Callback management › Create new direct callback profile › Dialing › Behaviors › Retry Settings <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_proactive_callback_profiles</code> <a href="https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which callback profile a queue uses for each overflow condition</strong><br><small>Environment</small><br><small class="controls__note">Choose Direct callback as the action on a voice queue, then select a Callback profile. The Customer Service table reference adds the msdyn_proactive_callback_profileId lookup.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Queues › Advanced queues › queue › Overflow handling › Add condition-action pair › Before work items are queued › Add condition-action pair › Condition › Action › Direct callback › Callback profile <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which callback profile a queue uses for each overflow condition</strong><br><small>Environment</small><br><small class="controls__note">Choose Direct callback as the action on a voice queue, then select a Callback profile. The Customer Service table reference adds the msdyn_proactive_callback_profileId lookup.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Queues › Advanced queues › queue › Overflow handling › Add condition-action pair › Before work items are queued › Add condition-action pair › Condition › Action › Direct callback › Callback profile <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback#use-callback-profile-in-overflow-action" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -220,13 +230,4 @@ For the first row, [the Proactive Callback Config table reference](https://learn
 risk: Medium. Nothing starts until an admin enables it, but enabling cannot be undone, and it places outbound AI-agent calls to customers and applies the first callback profile to queues that already use direct callback.
 cost: Variable. Microsoft's page says AI agent use can consume available Copilot or Microsoft service credits (the Copilot Credits meter); a rate specific to callback agents is not yet published.
 impact: Medium. Callers on voice queues that use direct callback, and the representatives who take those calls, notice the changed callback flow; other users are unaffected.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: first row / admin-path: The complete onboarding route is Copilot Service admin center > Routing > Callback management > Customer-first direct callback. | Found: Enable Copilot AI agent for callback management. Review the enablement information and confirm the action because the setting is irreversible. Wait for the system to provision Callback Agent ... After provisioning completes, select the Customer-first direct callback toggle. | Fix: Replace controls[0].ui.path and the rendered path with 'Routing > Callback management > Copilot AI agent for callback management > Customer-first direct callback'. Keep the existing note explaining the prerequisite enablement and first profile; the missing prerequisite choice must also be in the route. Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback
-- [contradicted, blocker] controls[2].ui; Governance controls: third row / admin-path: The queue overflow path ending in Direct callback > Callback profile is documented by the linked Manage overflow page. | Found: In Copilot Service admin center, for a voice queue, select Direct callback as the overflow action for any of the conditions. Learn more in Manage overflow of work items in queues. In Callback profile, select a callback profile. | Fix: Keep the existing controls[2].ui.path: its earlier steps are supported by Manage overflow and its final selection by Configure customer-first direct callback. Set controls[2].ui.docs and the rendered UI Learn link to https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback#use-callback-profile-in-overflow-action, which documents the actual Callback profile control. Keep Manage overflow in sources for the preceding navigation. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Who configures it / role: The cited Copilot Service admin center prerequisites give System Customizer access to edit all site map entries. | Found: System Customizer: To access and edit all the site map entries. | Fix: After the roles sentence, add: 'The Contact Center-specific admin-center page instead states that you must have the System administrator role.' Cite and add to sources https://learn.microsoft.com/dynamics365/contact-center/administer/cc-admin-center. Retain the accurately attributed Customer Service prerequisite rather than silently choosing between the pages. | Source: https://learn.microsoft.com/dynamics365/customer-service/implement/cs-admin-center
 -->

@@ -92,19 +92,23 @@ changes:
     note: "Corrected after review: removed unsupported claims about unchanged data access, source-system actions and full crawls after schema edits; trimmed checklist steps without control rows; added the people-data source and the person* description caveat."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected the default-category statement: uncategorized is the default only when no category is supplied, so existing connections are no longer described as uncategorized."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "d87e7e92c9937c781b37f81ccb8baaa9"
+  contradicted: 0
+  attempts: 0
+  hash: "3bbed993c5afe53563a5c147c9592016"
 ---
 
 ## What's changing
@@ -117,7 +121,7 @@ The roadmap record gives the status as In development, with a target of Septembe
 
 ## Why it matters
 
-For a tenant running custom connectors, this is a relevance lever. The documented properties are optional, so connections that nobody updates stay `uncategorized` and keep the descriptions they have. Microsoft documents contentCategory and property descriptions as relevance aids.
+For a tenant running custom connectors, this is a relevance lever. The documented properties are optional. The default category is uncategorized when no category is supplied; descriptions need not be changed. Microsoft documents contentCategory and property descriptions as relevance aids.
 
 The service-owner angle is ownership of the text. Connection and property descriptions become input that shapes when Copilot draws on a connector, so they deserve the same review as any other content Copilot reads. A vague or inaccurate description can make Copilot reach for the wrong source, and Microsoft requires connectors that carry people data to set the category to `people`.
 
@@ -188,12 +192,4 @@ Microsoft Learn documents no tenant-wide setting that turns this metadata on or 
 risk: Low. The metadata describes a custom connection and its schema properties, though misleading descriptions could steer which content Copilot uses.
 cost: Low. Connector grounding is included with Microsoft 365 Copilot licences; the cost is developer and admin time to write and maintain descriptions. Nothing specific to this feature is published.
 impact: Low. Connector developers and AI administrators do the work; users see it only indirectly, as Copilot answers that draw on custom connector content.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / default: Connections that nobody updates stay uncategorized. | Found: Copilot connectors that contain people data must have the value people in the contentCategory property of the externalConnections API. | Fix: Replace 'The documented properties are optional, so connections that nobody updates stay uncategorized and keep the descriptions they have' with 'The documented properties are optional. The default category is uncategorized when no category is supplied; descriptions need not be changed.' This avoids implying that an existing explicitly categorized connection is uncategorized. | Source: https://learn.microsoft.com/plugins/build-connectors-with-people-data
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; controls[1].note; Risk assessment / behaviour: The v1.0 schema property resource has a human-readable description. | Found: description | String | Specifies a human-readable description that explains the purpose, usage, or guidance related to the property. | Fix: After the paragraph describing the documented fields, add: 'The schema design guide still says support for adding property descriptions to custom connectors was expected in Q4 2025, while the v1.0 property reference now documents description.' Cite https://learn.microsoft.com/graph/connecting-external-content-manage-schema. | Source: https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0
 -->

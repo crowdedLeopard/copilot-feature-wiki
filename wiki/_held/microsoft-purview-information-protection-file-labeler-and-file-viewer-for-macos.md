@@ -73,18 +73,20 @@ changes:
     note: "Corrected after the independent check: licensing model is now per-user per Microsoft's billing models page, label-removal wording now follows the notice, and an unsupported checklist item was removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 62
+  claims: 76
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "b55308e8aa018ac5c8e330e1636d0af3"
 ---
 
@@ -176,4 +178,12 @@ The Set-LabelPolicy cmdlet works only in Security & Compliance PowerShell and ne
 risk: Medium. Mac users gain a client that can apply, change and remove sensitivity labels and open protected files, but Microsoft's notice MC1326509 says existing labelling policies continue to govern it.
 cost: Low. The only cost the sources show is admin time to tell Mac users and distribute the download; licensing conditions specific to the macOS clients are not yet published.
 impact: Medium. Mac users who work with labelled or protected files notice it, and so do the admins who manage Information Protection; the client is not pre-installed.
+-->
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft has not described which account the macOS client uses. | Found: To apply sensitivity labels, users must be signed in with their Microsoft 365 work or school account. | Fix: Replace the bullet 'Which account and sign-in method the macOS client uses is not described by Microsoft yet.' with 'The macOS client's specific sign-in method is not yet documented.' The cited sensitivity-label overview already states the general Microsoft 365 work or school account requirement for applying labels; retain only the narrower macOS sign-in-method gap. | Source: https://learn.microsoft.com/purview/sensitivity-labels
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies > Publish label is the documented entry route for publishing labels. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. ... On the Label policies page, select Publish label to start the Create policy configuration. | Fix: The route correctly reaches the Create policy wizard but stops before label selection. Extend the printed path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish > Add'. Add to the existing note: 'Select the labels before Add, then follow the wizard prompts to select users and groups and complete the policy configuration.' Mirror this in the rendered table. The steps and scope are given at https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 -->

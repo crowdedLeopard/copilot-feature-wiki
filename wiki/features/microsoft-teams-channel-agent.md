@@ -37,6 +37,9 @@ sources:
   - title: "Data, privacy, and security for web search in Microsoft Copilot and Microsoft Copilot Chat"
     url: "https://learn.microsoft.com/copilot/plan/manage-public-web-access"
     kind: "learn"
+  - title: "New-RetentionCompliancePolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap: Microsoft Teams: Channel Agent"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=502526"
     kind: "roadmap"
@@ -44,7 +47,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
     kind: "learn"
   - title: "Retention of Channel Agent interactions under the Teams chats location (PowerShell)"
-    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
     kind: "learn"
 videos: []
 related: ["microsoft-teams-channel-agent-to-3p-mcp-tool-orchestration-in-teams-channels","app-management","meeting-transcripts","sensitivity-labels","web-search"]
@@ -95,9 +98,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/ai-teams-channel-agent"
     api:
       kind: "powershell"
-      call: "New-RetentionCompliancePolicy -Name <String> -TeamsChatLocation <MultiValuedProperty>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
-    note: "Create the policy with the Teams chats location. Security & Compliance PowerShell; the policy needs a rule (New-RetentionComplianceRule) to take effect."
+      call: "New-RetentionComplianceRule -Name <String> -Policy <PolicyIdParameter> -RetentionDuration <days-or-Unlimited> -RetentionComplianceAction <Keep-or-KeepAndDelete>"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
+    note: "Security & Compliance PowerShell. Apply the rule to an existing policy with the Teams chats location."
 confidence: "high"
 created: "2026-11-26"
 updated: "2026-11-26"
@@ -111,19 +114,23 @@ changes:
     note: "Corrected: cost rationale no longer says Copilot licence holders pay nothing new; added the owner-only creation rule; Loop note covers multi-region tenants; noted where pages differ on DLP and the Microsoft apps setting; removed the audit step."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 100 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: the retention row's PowerShell now gives New-RetentionComplianceRule, which sets the retention action and duration; Scope now says the roadmap record lists Worldwide (Standard Multi-Tenant); checklist paths given in full."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 100
-  confirmed: 98
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "408469bf885ea3c970d05919e0e39992"
+  claims: 95
+  confirmed: 95
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "792d238526e0299fe93af9f4e4a9ee6d"
 ---
 
 ## What's changing
@@ -174,14 +181,14 @@ The setup page publishes no price, meter or credit charge specific to Channel Ag
 - **Meetings:** to use the agent in a meeting chat, a user must be a member of the agent's channel; Loop experiences in Teams must be on.
 - **Admin role:** the Teams admin center requires the Teams Administrator role.
 - **Not supported:** tenants using Customer Key; channels with external users, where the agent is not functional.
-- **Clouds and platforms:** Worldwide only, per the roadmap record; desktop, Mac, web, iOS and Android.
+- **Clouds and platforms:** The roadmap record lists Worldwide (Standard Multi-Tenant); desktop, Mac, web, iOS and Android.
 - **Education:** auto-creation is off by default.
 
 ## Governance guidance
 
 ### Before rollout
-- Decide who should have Channel Agent, then set availability in Teams admin center > Teams apps > Built-in Teams agents (Teams Administrator).
-- Decide whether new channels should get an agent automatically, and set auto-creation under Teams apps > Agent settings.
+- Decide who should have Channel Agent, then set availability in Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability (Teams Administrator).
+- Decide whether new channels should get an agent automatically, and set auto-creation under Teams admin center > Teams apps > Agent settings > auto-creation.
 - Brief the compliance team that the agent may gather context across Information Barriers, and that its answers do not carry label controls.
 - Check that Loop experiences in Teams are on (`IsLoopEnabled`) if users will add the agent to meetings.
 
@@ -204,7 +211,7 @@ The setup page publishes no price, meter or credit charge specific to Channel Ag
 <tr><td data-label="Control"><strong>Whether the Channel Agent app is allowed or blocked, as the setup page gives it</strong><br><small>Tenant</small><br><small class="controls__note">The Teams app management overview says built-in agents are managed from Built-in Teams agents, not Manage apps.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Channel Agent › Actions › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a Channel Agent is added automatically to each new channel</strong><br><small>Tenant</small><br><small class="controls__note">On by default; off by default for EDU tenants.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Agent settings › auto-creation <a href="https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Loop experiences in Teams are on, which Channel Agents need in meetings</strong><br><small>Tenant</small><br><small class="controls__note">SharePoint PowerShell. Set-SPOTenant -IsLoopEnabled $false disables Loop components in Teams; organisations with multiple regions (organisation URLs) must disable them in all regions for consistent results.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsLoopEnabled $true</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Retention of Channel Agent interactions under the Teams chats location</strong><br><small>Tenant</small><br><small class="controls__note">Create the policy with the Teams chats location. Security &amp; Compliance PowerShell; the policy needs a rule (New-RetentionComplianceRule) to take effect.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention Policies <a href="https://learn.microsoft.com/purview/ai-teams-channel-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;String&gt; -TeamsChatLocation &lt;MultiValuedProperty&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retention of Channel Agent interactions under the Teams chats location</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Apply the rule to an existing policy with the Teams chats location.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention Policies <a href="https://learn.microsoft.com/purview/ai-teams-channel-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Name &lt;String&gt; -Policy &lt;PolicyIdParameter&gt; -RetentionDuration &lt;days-or-Unlimited&gt; -RetentionComplianceAction &lt;Keep-or-KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -230,13 +237,9 @@ cost: Medium. Each user needs a Microsoft Copilot licence on top of an eligible 
 impact: High. Every new channel an eligible user creates gets a Channel Agent by default, and channel members who are not enabled for it still see its presence and messages.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].api; Governance controls table / command: New-RetentionCompliancePolicy -Name <String> -TeamsChatLocation <MultiValuedProperty> is the automation that implements retention of Channel Agent interactions. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). | Fix: Replace controls[4].api.call with 'New-RetentionComplianceRule -Policy <PolicyIdParameter> -RetentionDuration <days-or-Unlimited> -RetentionComplianceAction <Keep-or-KeepAndDelete>' and api.docs with https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule. Replace the note with 'Security & Compliance PowerShell. Apply the rule to an existing policy with the Teams chats location.' The existing command creates the policy and selects its users, but does not set a retention action or duration. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy
-- [unsupported, blocker] Scope: Clouds and platforms / availability: Channel Agent is Worldwide only, per the roadmap record. | Found: Searched: '"Channel Agent" cloud GCC availability worldwide'; read roadmap clouds, setup and manage-apps pages and search excerpts. The record lists Worldwide but does not exclude other clouds; no Channel Agent cloud-exclusion statement was found. | Fix: Replace 'Worldwide only, per the roadmap record' with 'The roadmap record lists Worldwide (Standard Multi-Tenant)'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[4].ui; Governance controls table / admin-path: Microsoft Purview portal > Data Lifecycle Management > Policies > Retention Policies is the route to policies used for Channel Agent retention. | Found: In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy with the following policy location: - Teams chats for interactions with a channel agent | Fix: The route stops on the policy list. For a new static policy, use 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Teams chats'. Cite https://learn.microsoft.com/purview/create-retention-policies, which documents these remaining steps. | Source: https://learn.microsoft.com/purview/ai-teams-channel-agent
-- [supported, minor] Governance guidance: Before rollout, availability / admin-path: Teams admin center > Teams apps > Built-in Teams agents reaches the availability control. | Found: Sign in to the Teams admin center and go to Teams apps > Built-in Teams agents. To change who can use an agent, select one or more agents and choose Edit availability. | Fix: Complete this prose path as 'Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability', matching controls[0].ui. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
-- [supported, minor] Governance guidance: Before rollout, auto-creation / admin-path: Teams apps > Agent settings reaches the auto-creation setting. | Found: In the left rail navigation, select Teams apps > Agent settings. Toggle auto-creation to On or Off. | Fix: Complete this prose path as 'Teams admin center > Teams apps > Agent settings > auto-creation', matching controls[2].ui. | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
+- [supported, minor] controls[1].api / command: Update-M365TeamsApp -Id <app-id> -IsBlocked $true changes the Teams app's allowed/blocked state. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true Unblocks Bookings app | Fix: Add to controls[1].note: 'The PowerShell reference describes -IsBlocked $true as unblocking an app; do not assume this example blocks access.' The reference also describes a $false example as unblocking, so do not substitute a different value without verified documentation. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
+- [supported, minor] controls[4].ui / admin-path: Microsoft Purview portal > Data Lifecycle Management > Policies > Retention Policies is the page for configuring Channel Agent interaction retention. | Found: In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy with the following policy location: - Teams chats for interactions with a channel agent | Fix: For a static retention policy, replace the path with 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Teams chats'. Cite https://learn.microsoft.com/purview/create-retention-policies in sources alongside the existing feature-specific reference. | Source: https://learn.microsoft.com/purview/ai-teams-channel-agent
 -->

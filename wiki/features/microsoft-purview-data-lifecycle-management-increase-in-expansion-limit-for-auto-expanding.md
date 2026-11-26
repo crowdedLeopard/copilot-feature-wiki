@@ -81,15 +81,17 @@ changes:
     note: "Rewritten for the Worldwide roadmap item (Launched, October CY2026 target, notice MC1472592): the 3 TB ceiling for eligible licences and the PowerShell controls, with Learn's body text still at 1.5 TB."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 82 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 86 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 82
+  claims: 86
+  confirmed: 86
   unconfirmed: 0
   contradicted: 0
   attempts: 0

@@ -14,7 +14,7 @@ previewDate: "September CY2026"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "user-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "consumption"
@@ -65,7 +65,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > Tools > Plugins > plugin or skill > Users"
+      path: "Agents > Tools > Plugins > plugin or skill > Users > All users / No users / Specific users and groups"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api:
       kind: "graph"
@@ -98,7 +98,7 @@ controls:
     scope: "maker"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Agents > agent > Build > Skills > skill > … > Share > Share"
+      path: "Agents > agent > Build > Skills > skill > … > Share > Share > Share dialog > Only you / Specific users or groups in your organization"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage"
     api: null
     note: "Maker-side only; preview. Options are Only you, or specific users or groups. Microsoft Learn documents no API for it at the time of writing (November 2026)."
@@ -127,19 +127,23 @@ changes:
     note: "Corrected after the independent check: replaced the view that the catalog arrives without an admin switch with advice to confirm which controls apply to Browse skills, and added the Skills section step to the maker Share path."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 68 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-26"
+    note: "Default state is now Not stated, because Microsoft has not said whether the planned catalog is available on arrival; the package user-availability and maker Share paths now end at their audience choices."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
-  unconfirmed: 1
+  claims: 66
+  confirmed: 66
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "347babc194c2687e51c234a1517cbde4"
+  attempts: 0
+  hash: "5811bfdd797a9eebcb69fca1797f5b5a"
 ---
 
 ## What's changing
@@ -222,10 +226,10 @@ Roles for the catalog are not documented. The Learn page for managing plugins an
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and groups can use a skill package</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the Copilot Studio skills catalog. API is preview and needs a Microsoft Agent 365 licence. The request body sets availableTo and allowedUsersAndGroups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin or skill › Users <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups can use a skill package</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the Copilot Studio skills catalog. API is preview and needs a Microsoft Agent 365 licence. The request body sets availableTo and allowedUsersAndGroups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin or skill › Users › All users / No users / Specific users and groups <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Blocking a skill package across the organisation</strong><br><small>Tenant</small><br><small class="controls__note">General control: not confirmed for the Copilot Studio catalog. Applies to standalone skill packages; a bundled skill has no block of its own. API is preview.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › skill › Block › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Inventory of skill packages in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">General control: not confirmed to list Copilot Studio catalog skills. API needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry <a href="https://learn.microsoft.com/plugins/administrator-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages?$filter=elementTypes/any(e:e eq 'AgentSkills')</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who a maker shares a skill with</strong><br><small>Maker</small><br><small class="controls__note">Maker-side only; preview. Options are Only you, or specific users or groups. Microsoft Learn documents no API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agents › agent › Build › Skills › skill › … › Share › Share <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who a maker shares a skill with</strong><br><small>Maker</small><br><small class="controls__note">Maker-side only; preview. Options are Only you, or specific users or groups. Microsoft Learn documents no API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agents › agent › Build › Skills › skill › … › Share › Share › Share dialog › Only you / Specific users or groups in your organization <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -247,11 +251,8 @@ cost: Variable. Agents on the Microsoft Copilot harness are billed in Copilot Cr
 impact: Medium. Makers who build agents in Copilot Studio see the catalog and the people they share skills with are affected; end users notice only through changed agent behaviour.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState; Why it matters / default: The planned Copilot Studio skills catalog has a user-opt-in default on arrival. | Found: Searched: skills catalog Copilot Studio default; Copilot Studio Browse skills admin disable sharing permissions default catalog. Opened skills-manage and faqs-copilot-harness; neither establishes the roadmap catalog's default or identifies it as the documented Browse skills preview. | Fix: Set defaultState to "unknown". Keep "Microsoft has not stated what happens on arrival" in Why it matters: the maker-selected Browse skills preview does not establish the planned catalog's default while their equivalence remains unconfirmed.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Agents > Tools > Plugins > plugin or skill > Users reaches package user availability. | Found: Select Agents > Tools > Plugins. Select the plugin that you want to manage. Open Users, and then choose ... All users ... No users ... Specific users and groups | Fix: Complete the path as "Agents > Tools > Plugins > plugin or skill > Users > All users / No users / Specific users and groups". The cited page documents these availability choices; the printed path currently stops on their containing tab. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
-- [supported, minor] controls[3].ui; Governance controls table; Governance guidance: Before rollout / admin-path: Copilot Studio > Agents > agent > Build > Skills > skill > more options > Share > Share reaches maker skill sharing. | Found: Select the Build tab. ... the Skills section shows the skills ... Select the skill you want to share ... Select the three dots (...) and then select Share. On the details page, select Share ... In the Share dialog, choose who can use the skill. | Fix: Complete the path as "Agents > agent > Build > Skills > skill > … > Share > Share > Share dialog > Only you / Specific users or groups in your organization". The cited page gives these audience choices; authoring-share-agent supplies the already cited Agents-page entry point. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage
+- [supported, minor] What's changing; Risk assessment: Security & identity; controls[3].note / behaviour: The detailed sharing instructions offer Only you or Specific users or groups in your organization. | Found: In the Share dialog, choose who can use the skill: Only you ... Specific users or groups in your organization | Fix: After the sharing-options sentence, add: "The What's new page also describes sharing skills with the whole organisation, whereas the detailed sharing instructions list Only you and specific users or groups." Cite https://learn.microsoft.com/microsoft-copilot-studio/whats-new#notable-changes, which says "share your own skills with specific people or your whole organization". | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage
 -->

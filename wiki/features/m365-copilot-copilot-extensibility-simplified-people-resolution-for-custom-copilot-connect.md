@@ -1,10 +1,10 @@
 ---
-title: "Microsoft 365 Copilot connectors: people properties in custom connectors resolved to Microsoft Entra users"
+title: "Microsoft 365 Copilot connectors: planned people resolution for custom connectors"
 slug: "m365-copilot-copilot-extensibility-simplified-people-resolution-for-custom-copilot-connect"
 roadmapId: 498912
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Developers of custom Copilot connectors can tag people fields with an email or external ID and have them matched to Microsoft Entra users, so Copilot attributes content to the right person. Optional for developers; admins review fit."
+summary: "Microsoft plans to let custom Copilot connectors resolve external emails or user IDs to Entra users for better people attribution. Developers should review fit; rollout behaviour is not stated."
 status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -46,13 +46,16 @@ sources:
   - title: "Create, update, and delete connections in Microsoft Graph"
     url: "https://learn.microsoft.com/graph/connecting-external-content-manage-connections"
     kind: "learn"
+  - title: "Register and manage schema for the Microsoft 365 Copilot connectors"
+    url: "https://learn.microsoft.com/graph/connecting-external-content-manage-schema"
+    kind: "learn"
   - title: "Build Microsoft 365 Copilot connectors for people data"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data"
     kind: "learn"
-  - title: "Whether a connection's content is used in Copilot Search and Copilot Chat (Microsoft 365 admin center)"
+  - title: "Manage connector connections"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector"
     kind: "learn"
-  - title: "Removing a custom connection and every item it indexed (Microsoft Graph)"
+  - title: "Delete externalConnection"
     url: "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete?view=graph-rest-1.0"
     kind: "learn"
 videos: []
@@ -91,26 +94,30 @@ changes:
     note: "New briefing: people properties in custom Copilot connectors, mapped to the documented principal property types, with visibility and delete controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected after review: title and summary now describe a plan; removed 'optional' from principal fields; narrowed the actions and property-type statements; added the search admin role note and moved connection-state monitoring to the controls notes."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 54
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 1
-  hash: "593bcbe6bbf4ce381ce3abcc1aca1c8d"
+  claims: 69
+  confirmed: 67
+  unconfirmed: 2
+  contradicted: 0
+  attempts: 0
+  hash: "8720f2260a522802b59503e228533584"
 ---
 
 ## What's changing
 
 Microsoft plans to let custom Copilot connectors match people named in third-party data (an email address or a user ID from the source system) to the corresponding Microsoft Entra ID users. The roadmap item states that developers will no longer need their own Microsoft Graph lookups or a strict dependency on Entra object IDs, and that Copilot search and chat will attribute people more accurately across connected systems.
 
-Microsoft Learn does not describe this roadmap item by name. The closest documented match is the Microsoft Graph connector reference, which defines `principal` and `principalCollection` property types "used to add people-related properties to items indexed by an externalConnection". A `principal` carries an `externalId` that "could also be an email associated with the person on the external source", alongside optional `entraId`, `email` and `upn` fields. Microsoft says that using these types "instead of a string or string collection for people related properties while ingesting ExternalItems can provide better and more relevant results in Copilot Search or chat". The developer chooses the type when registering the connection's schema. Microsoft does not describe how the service matches an `externalId` or email to a user.
+Microsoft Learn does not describe this roadmap item by name. The closest documented match is the Microsoft Graph connector reference, which defines `principal` and `principalCollection` property types "used to add people-related properties to items indexed by an externalConnection". A `principal` carries an `externalId` that "could also be an email associated with the person on the external source", alongside `entraId`, `email` and `upn` fields. Microsoft says that using these types "instead of a string or string collection for people related properties while ingesting ExternalItems can provide better and more relevant results in Copilot Search or chat". The developer chooses the type when registering the connection's schema. Microsoft does not describe how the service matches an `externalId` or email to a user.
 
 The roadmap record lists the item as In development, with a target of September CY2025, for General Availability and Targeted Release, on the Developer and Web platforms, in the Worldwide (Standard Multi-Tenant) cloud. That target has passed and the record has not been updated since July 2025, while the Graph v1.0 reference already lists `principal` and `principalCollection` as property types. Microsoft has not stated whether connections that already use string properties for people change on arrival.
 
@@ -123,14 +130,14 @@ It does not, on the documentation available, change who can see connector conten
 ## Risk assessment
 
 **Data exposure**
-- People fields in a `principal` property can carry a person's external name, email and UPN into the index. Treat these fields as visible to anyone who can see the item; the per-connection **Copilot Visibility** toggle is the admin-side way to withhold a whole connection.
+- People fields in a `principal` property can carry a person's external name, email and UPN into the index. Treat these fields as visible to anyone who can see the item; where offered, the per-connection **Copilot Visibility** toggle withholds the connection from Copilot Search and Copilot Chat, but does not affect declarative agents and their data.
 - No change to item permissions is documented: the access control reference still sets Entra users by object ID.
 
 **Security & identity**
 - A wrong match attributes content to the wrong colleague, which matters where answers are used to find an owner or approver. Microsoft documents no matching rules or audit of matches for this capability at the time of writing (November 2026).
 
 **Autonomy & actions**
-- No change: the capability labels indexed items and takes no actions.
+- The roadmap describes identity resolution and people attribution, not new actions.
 
 **Change & support**
 - Questions about "wrong person" in Copilot answers will land with whoever owns the custom connector. Connector developers, not the Microsoft 365 admin centre, decide the property type, so support needs a named owner for each custom connection.
@@ -165,7 +172,6 @@ It does not, on the documentation available, change who can see connector conten
 
 ### After rollout
 - Review user reports of wrong attribution with the connector owner and correct the source data or the fields the connector sends.
-- Check the Your Connections tab for Failed states after schema changes; permanent failures are also posted to Service health.
 - Delete connections that are replaced by a rebuilt connector so their items leave the index.
 
 ## Governance controls
@@ -181,7 +187,9 @@ It does not, on the documentation available, change who can see connector conten
 </tbody>
 </table>
 
-Managing Copilot connectors in the Microsoft 365 admin center requires the AI administrator role. The **Copilot Visibility** toggle is documented under "Manage visibility of partner data sources in Copilot"; the page groups custom-built connectors with partner connectors for admin operations but does not say in terms that the toggle appears for custom connections. Turning visibility off excludes the connection from Copilot Search and Copilot Chat while crawls continue, and the page says the change does not affect declarative agents and their data. The property type that enables people resolution is set in the connector's schema by its developer; Microsoft Learn documents no admin setting over it at the time of writing (November 2026).
+Managing Copilot connectors in the Microsoft 365 admin center requires the AI administrator role. The Graph connection-management guide instead says a search admin can view and manage all tenant connections. The **Copilot Visibility** toggle is documented under "Manage visibility of partner data sources in Copilot"; the page groups custom-built connectors with partner connectors for admin operations but does not say in terms that the toggle appears for custom connections. Turning visibility off excludes the connection from Copilot Search and Copilot Chat while crawls continue, and the page says the change does not affect declarative agents and their data. The developer sets people property types in the connector schema; Microsoft has not identified these types as the implementation of the roadmap item. Microsoft Learn documents no admin setting over the property type at the time of writing (November 2026).
+
+The **Your Connections** tab shows each connection's state, including **Failed** after a critical failure; when a permanent crawl failure occurs, notifications are also sent to the service health dashboard.
 
 ## Open questions
 
@@ -197,16 +205,11 @@ cost: Low. Connector grounding in Copilot is included with Microsoft 365 Copilot
 impact: Low. Connector developers and AI administrators notice it; users see only better people attribution in answers drawn from custom connectors that adopt it.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] What's changing: optional entraId, email and upn / behaviour: The entraId, email and upn fields are optional. | Found: Searched: "principal" "externalId" "optional" Copilot connector resolution. Read the full v1.0 principal and property references: principal lists these fields but does not state their optionality; search returned no passage establishing it. | Fix: Remove 'optional' from 'alongside optional entraId, email and upn fields'. The principal reference at https://learn.microsoft.com/graph/api/resources/externalconnectors-principal?view=graph-rest-1.0 lists the fields without stating which are required.
-- [unsupported, major] Governance controls: property type that enables people resolution / behaviour: The schema property type enables the roadmap's people resolution. | Found: Searched: "Simplified People Resolution" "custom" Copilot connectors. Read principal, property and connector API references; none identifies these types as enabling automatic identity resolution. | Fix: Replace 'The property type that enables people resolution is set in the connector's schema by its developer' with 'The developer sets people property types in the connector schema; Microsoft has not identified these types as the implementation of the roadmap item.' This preserves the uncertainty already stated in Open questions.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The capability labels indexed items and takes no actions. | Found: Searched: Copilot connector principal people resolution actions read-only external system. Read principal, connector API and overview excerpts: people metadata and read-only Chat by default are documented, not a categorical no-actions guarantee for this capability. | Fix: Replace 'No change: the capability labels indexed items and takes no actions' with 'The roadmap describes identity resolution and people attribution, not new actions.' Do not turn the absence of announced actions into a guarantee about the undocumented implementation.
+- [unsupported, major] What's changing: first paragraph / record: The roadmap says developers will no longer need their own Microsoft Graph lookups. | Found: Searched: custom Copilot connectors people resolution Graph API lookups. Read roadmap record, principal reference and connectors API overview. The record says 'without needing complex Graph API lookups', not without any developer lookup. | Fix: Replace 'developers will no longer need their own Microsoft Graph lookups' with 'developers can simplify integration workflows without needing complex Graph API lookups', as the roadmap states.
+- [unsupported, major] Why it matters: first paragraph / behaviour: People attribution in Copilot answers now depends on an undocumented match performed by Microsoft. | Found: Searched: externalConnectors principal people identity mapping email matching; custom Copilot connectors people resolution Graph API lookups. Read roadmap and principal reference. The record describes a plan; the type reference does not establish current automatic identity matching. | Fix: Replace the first two sentences of Why it matters with: 'For a service owner, the roadmap's planned identity resolution could reduce brittle people-matching code in custom connectors. Microsoft has not documented its matching rules or identified the published principal property types as its implementation.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure: withhold a whole connection / applicability: Copilot Visibility provides an admin-side way to withhold a whole connection. | Found: When the visibility is off, the connector is excluded from all Copilot Search and Copilot Chat results and responses. ... without affecting declarative agents and their data. | Fix: Replace 'the per-connection Copilot Visibility toggle is the admin-side way to withhold a whole connection' with 'where offered, the per-connection Copilot Visibility toggle withholds the connection from Copilot Search and Copilot Chat, but does not affect declarative agents and their data'. This makes the limitation already given elsewhere clear in the exposure advice. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
-- [supported, minor] controls[0].note; Scope; Governance controls / role: Managing connectors in the Microsoft 365 admin center requires AI administrator. | Found: To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization. | Fix: Add to this role sentence: 'The Graph connection-management guide instead says a search admin can view and manage all tenant connections.' That guide is already cited: https://learn.microsoft.com/graph/connecting-external-content-manage-connections. Keep the AI administrator requirement from the admin-center guide. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
-- [supported, minor] Cost and licensing: Indirect cost; Governance guidance / behaviour: Moving existing items to updated schema properties is likely to involve re-ingestion. | Found: After updating your schema, we recommend reindexing items to align them with the latest schema. Without reingestion, item behavior might be inconsistent. | Fix: Add https://learn.microsoft.com/graph/connecting-external-content-manage-schema to sources for the re-ingestion advice. Keep 'likely'; the source recommends reindexing after schema changes rather than stating that this particular type migration is supported or always requires it. | Source: https://learn.microsoft.com/graph/connecting-external-content-manage-schema
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells readers to monitor connection states, but the controls table has no monitoring row. | Found: Check the Your Connections tab for Failed states after schema changes; permanent failures are also posted to Service health. The table has visibility, deletion and an absent people-resolution switch, but no connection-state monitoring control. | Fix: The 'Check the Your Connections tab for Failed states' checklist step has no corresponding controls row. Move that factual monitoring sentence from the checklist to the Governance controls prose; do not add a row.
-- [supported, minor] title; summary / record: The title and summary describe matching as an available capability rather than explicitly as Microsoft's plan. | Found: "status": "In development". This feature enables connectors to resolve external identities ... to their corresponding Microsoft Entra ID (Azure AD) identities. | Fix: Change the title to 'Microsoft 365 Copilot connectors: planned people resolution for custom connectors'. Replace the summary with 'Microsoft plans to let custom Copilot connectors resolve external emails or user IDs to Entra users for better people attribution. Developers should review fit; rollout behaviour is not stated.' The body already distinguishes the plan from the published property references.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed deletion route opens the selected connection at Microsoft 365 admin center > Copilot > Connectors > Your Connections > connection. | Found: Go to Copilot > Connectors > Your Connections. Select the connection that you want to modify. Delete a connection | ✔️ | ✔️ | Fix: Keep the documented path, but narrow controls[1].ui's presentation by changing the row note to: 'The UI route opens connection details; the cited page confirms Delete a connection is supported for partner connectors but does not give the final deletion step. The API needs ExternalConnection.ReadWrite.OwnedBy or ExternalConnection.ReadWrite.All.' Do not invent a button label. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
 -->

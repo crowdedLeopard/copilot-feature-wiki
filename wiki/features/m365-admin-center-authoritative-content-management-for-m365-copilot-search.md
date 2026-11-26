@@ -43,6 +43,9 @@ sources:
   - title: "Set-SPOSite"
     url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps"
     kind: "learn"
+  - title: "Manage sites in the SharePoint admin center"
+    url: "https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center"
+    kind: "learn"
   - title: "Whether an individual SharePoint site is marked authoritative (PowerShell route) (SharePoint admin center)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026"
     kind: "learn"
@@ -61,7 +64,7 @@ controls:
     scope: "site"
     ui:
       surface: "SharePoint admin center"
-      path: "site > Mark as authoritative site"
+      path: "Sites > Active sites > site > Mark as authoritative site"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026"
     api:
       kind: "powershell"
@@ -70,7 +73,7 @@ controls:
     note: "Needs a SharePoint Online administrator who is a site collection administrator. Not stated whether this feeds the admin center list. Bulk work uses CSOM on the same page."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-09-21T23:04:49"
 changes:
   - date: "2026-11-19"
@@ -83,19 +86,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected the SharePoint admin center route: the site-selection navigation (Sites > Active sites) is documented, so the path now reads Sites > Active sites > site > Mark as authoritative site."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 55
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "76b33883da7d473ef1444c346a27692b"
+  contradicted: 0
+  attempts: 0
+  hash: "4278a45627705855e7e1ec69e25e7a6e"
 ---
 
 ## What's changing
@@ -172,13 +179,13 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which SharePoint sites are authoritative content for Copilot Search</strong><br><small>Tenant</small><br><small class="controls__note">Global admin and Global reader per MC1526676. Up to 100 sites; the notice mentions bulk import and export.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Search › Authoritative content <a href="https://learn.microsoft.com/microsoft-365/copilot/release-notes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether an individual SharePoint site is marked authoritative (PowerShell route)</strong><br><small>Site</small><br><small class="controls__note">Needs a SharePoint Online administrator who is a site collection administrator. Not stated whether this feeds the admin center list. Bulk work uses CSOM on the same page.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>site › Mark as authoritative site <a href="https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -IsAuthoritative $true</code> <a href="https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether an individual SharePoint site is marked authoritative (PowerShell route)</strong><br><small>Site</small><br><small class="controls__note">Needs a SharePoint Online administrator who is a site collection administrator. Not stated whether this feeds the admin center list. Bulk work uses CSOM on the same page.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Mark as authoritative site <a href="https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -IsAuthoritative $true</code> <a href="https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The two rows are separate routes. Row 1 is the admin center list that the roadmap item and MC1526676 describe. Row 2 is the SharePoint Online Management Shell setting documented on the SharePoint authoritative sites page, which also documents CSOM methods for bulk work. Microsoft Learn does not say that the two share one list or one 100-site limit, so test the interaction before relying on either.
 
-The SharePoint page states that it documents PowerShell and CSOM for the current release and gives no admin center steps for site designation. The 11 August 2026 release notes describe selecting a site in the SharePoint admin center and choosing Mark as authoritative site; the full navigation path is not documented, so none is given here beyond those two steps.
+The SharePoint page states that it documents PowerShell and CSOM for the current release and gives no admin center steps for site designation. The 11 August 2026 release notes describe selecting a site in the SharePoint admin center and choosing Mark as authoritative site. The site-selection navigation is documented on [Manage sites in the SharePoint admin center](https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center); the designation action is documented in the 11 August 2026 release notes.
 
 The Microsoft 365 admin center path comes from the release notes and the roadmap description. The Copilot Search admin experience page documents the Search module for bookmarks and acronyms and does not cover authoritative content.
 
@@ -196,11 +203,8 @@ cost: Low. The SharePoint page for this feature names a Microsoft Copilot licenc
 impact: Low. Admins configure it, and users see an effect only for sites an admin designates, such as a 'From your organization' label and, per the roadmap, better ranking in Copilot Search.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph beginning The SharePoint page / absence: The full navigation to the SharePoint site-designation control is not documented. | Found: In the SharePoint admin center, select Sites > Active sites or browse to the Active sites page. In the left column, select a site. | Fix: Replace 'the full navigation path is not documented, so none is given here beyond those two steps' with 'The site-selection navigation is documented on Manage sites in the SharePoint admin center; the designation action is documented in the 11 August 2026 release notes.' Cite https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center alongside the existing release-notes link. The complete route is 'Sites > Active sites > site > Mark as authoritative site'. | Source: https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls / admin-path: The SharePoint admin center route selects a site and then Mark as authoritative site. | Found: Open the SharePoint admin center. Select a site and choose 'Mark as authoritative site.' | Fix: Expand controls[1].ui.path and its rendered table cell to 'Sites > Active sites > site > Mark as authoritative site'. Add https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center to sources; it documents 'Sites > Active sites' followed by selecting a site. Retain the release-notes docs link for the designation action. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026
-- [supported, minor] Cost and licensing; Scope; Governance guidance / licensing: The SAM prerequisites grant Copilot-supporting capabilities when at least one organization user is assigned a Microsoft Copilot license. | Found: At least one user in your organization is assigned a Microsoft Copilot license. (The user doesn't need to be a SharePoint administrator.) | Fix: After the tenant-level licensing statement, add: 'The Set-SPOSite reference instead describes -IsAuthoritative as used by an admin with a Copilot licence; this differs from the tenant-level SAM prerequisite.' Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps#-isauthoritative, which says 'When an admin with a Copilot license marks a site as authoritative'. Retain the supported tenant-level statement. | Source: https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites
+- [supported, minor] Cost and licensing; Scope; Governance guidance / licensing: The prerequisites grant Copilot-supporting SharePoint Advanced Management capabilities when at least one organisation user has a Microsoft Copilot licence. | Found: At least one user in your organization is assigned a Microsoft Copilot license. (The user doesn't need to be a SharePoint administrator.) | Fix: After the tenant-level licensing statement, add: "The Set-SPOSite reference instead describes marking a site as an operation by 'an admin with a Copilot license', while the SharePoint Advanced Management prerequisites say the licensed user need not be a SharePoint administrator." Link that sentence to https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps#-isauthoritative. The two cited Microsoft pages differ on who holds the licence; retain both accounts rather than silently choosing one. | Source: https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites
 -->

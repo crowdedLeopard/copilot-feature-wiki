@@ -94,18 +94,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 86
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "77e8bdf6b5d04aa6da0f8ac65b462027"
 ---
 
@@ -220,8 +222,12 @@ cost: Variable. Prompt columns consume credits each time a prompt executes; the 
 impact: Medium. Makers using prompt columns notice it first, and the generated values then appear for the app users who read those tables; admins decide where the setting is turned on.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: defaultState; Why it matters; Scope; rationale: impact / default: Backfill is admin-opt-in and cannot be used in an environment until an administrator enables it. | Found: Allow bulk processing of existing records: This is the main setting that controls running prompt on existing records in bulk in an environment. It is on by default. | Fix: Set defaultState to "user-opt-in": the environment gate is on by default, but a maker chooses the bulk option and selects Run prompt. Replace 'Until an admin turns it on in an environment, the bulk option is not available there' with 'The bulk-processing setting is on by default; administrators can review whether to allow it in each environment.' In Scope and the impact rationale, replace advice implying initial admin enablement with 'admins decide where to allow bulk processing'. Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
+- [contradicted, blocker] summary; controls[0].note; Why it matters; Governance guidance; Governance controls; rationale: risk / default: Allow bulk processing of existing records is off by default. | Found: Allow bulk processing of existing records: This is the main setting that controls running prompt on existing records in bulk in an environment. It is on by default. | Fix: Change 'off by default' to 'on by default' in the summary, controls[0].note and its rendered counterpart, Why it matters, Governance controls and risk rationale. Replace the Before rollout instruction with 'Review Allow bulk processing of existing records in each environment and decide where it should remain on.' Replace the At rollout instruction with 'Review bulk processing one environment at a time, starting with a non-production environment, and disable it where it should not be allowed.' Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls / admin-path: AI prompts is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts. | Found: Select Environments > [select an environment] > Settings > Product > Features. ... On the Features settings page under AI Builder, enable or disable the AI prompts toggle. | Fix: Add to controls[2].note and its rendered counterpart: "Manage feature settings now lists a standalone AI prompts section with the setting 'Enable the AI prompts feature in Power Platform and Copilot Studio'; the AI Builder administration page still places the toggle under AI Builder." The differing page is https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts. | Source: https://learn.microsoft.com/ai-builder/administer
+- [supported, minor] controls[2].ui; Governance controls / admin-path: AI prompts is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts. | Found: Select Environments > [select an environment] > Settings > Product > Features. ... On the Features settings page under AI Builder, enable or disable the AI prompts toggle. | Fix: Keep the path supported by Administer AI Builder and add to controls[2].note and its rendered counterpart: 'Manage feature settings lists a standalone AI prompts section with the setting Enable the AI prompts feature in Power Platform and Copilot Studio; the AI Builder administration page still places the toggle under AI Builder.' The differing page, already cited, is https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts. | Source: https://learn.microsoft.com/ai-builder/administer
+- [supported, minor] Why it matters; Cost and licensing: Capacity / cost: Microsoft advises ensuring sufficient environment AI credit capacity before enabling the bulk setting. | Found: Apply filters so the prompt runs only on the records you need, and test a few records initially to understand credit consumption for your data. Also, confirm your environment's available credits before you start. | Fix: In both places replace the attributed advice with 'Microsoft advises confirming the environment's available credits before starting a bulk run.' The current source gives that advice before running the job, not before enabling the setting: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
 -->

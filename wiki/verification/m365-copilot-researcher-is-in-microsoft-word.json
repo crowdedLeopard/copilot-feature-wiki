@@ -2,53 +2,33 @@
   "slug": "m365-copilot-researcher-is-in-microsoft-word",
   "roadmapId": 497833,
   "title": "Word: Researcher agent entry points on the document canvas",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
-  "notes": [
-    "claim 48: fix was 1230 characters, cut to 1200"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "2 blocking findings (claims 18, 48)",
-      "4 major findings"
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 53,
-    "confirmed": 47,
-    "unconfirmed": 5,
-    "contradicted": 1,
-    "blocker": 2,
-    "major": 4,
+    "claims": 60,
+    "confirmed": 60,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
     "minor": 1
   },
-  "summary": "Hold: Microsoft documents preview automation for the web-search setting, contrary to the table's documentation gap. The briefing also treats the planned Word entry points as automatically enabled and guarantees unchanged capabilities without a source establishing those details.",
+  "summary": "The briefing passes: its roadmap facts, licensing statements and documented controls are supported, and it distinguishes Researcher's existing behaviour from the still-undocumented Word entry points. The web search automation note should name the request-body property that sets the policy.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: title, products; summary",
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "The change concerns the Researcher agent in Word and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Copilot (Microsoft 365): Researcher is in Microsoft Word\"; \"products\": [\"Word\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "summary; What's changing; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "Microsoft plans easier Researcher entry points on the Word canvas to go from an idea to a research report without leaving the workflow.",
+      "claim": "Microsoft plans easier Researcher entry points on the Word canvas to take an idea to a research report.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The Researcher agent now has easier entry points on the Word canvas —making it faster to go from idea to polished research report without breaking your flow.",
@@ -56,7 +36,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap item is In development.",
@@ -67,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap target is August CY2025, not a committed shipment date.",
+      "claim": "The roadmap target is August CY2025.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"August CY2025\"",
@@ -78,18 +58,7 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap record supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
+      "n": 4,
       "where": "front matter: platforms; summary; What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "The roadmap lists Desktop as the platform.",
@@ -100,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -111,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -122,10 +91,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: roadmapModified; What's changing",
       "type": "record",
-      "claim": "The record was last modified in July 2025, at the timestamp given in the front matter.",
+      "claim": "The roadmap record was last modified in July 2025.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2025-07-17T23:00:21\"",
@@ -133,21 +113,21 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The August CY2025 target is more than a year past as of the November 26, 2026 run.",
+      "type": "date",
+      "claim": "The August 2025 target is more than a year past at the November 2026 run date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"August CY2025\"",
+      "quote": "\"targetDate\": \"August CY2025\"; compared with the supplied run date, 2026-11-26.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Researcher handles complex, multi-step research tasks.",
+      "claim": "Researcher handles multi-step research tasks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
       "quote": "Researcher agent is an intelligent assistant within Microsoft Copilot, designed to handle complex, multi-step research tasks.",
@@ -155,43 +135,43 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Researcher draws on files, emails, meetings and chats the user has access to.",
+      "claim": "Researcher draws on the web and on files, emails, meetings and chats the user can access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
       "quote": "Researcher draws insights from both the web and your work content - including files, emails, meetings, and chats you have access to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Researcher composes a structured report with cited sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
+      "quote": "It delivers comprehensive, source-cited reports to help you make informed decisions faster. ... It pulls from your work content and the web and composes a structured, reasoned response.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Researcher can draw on public web content.",
+      "where": "What's changing; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the Word canvas entry points.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
-      "quote": "Researcher draws insights from both the web and your work content - including files, emails, meetings, and chats you have access to.",
+      "source": null,
+      "quote": "Searched: \"Researcher\" \"Word\" \"entry\"; Researcher Word canvas entry points default automatic rollout admin disable policy Graph API. Opened Researcher get-started, FAQ, Copilot overview and 2025 release notes; no Word-canvas entry-point description.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Researcher produces reports with cited sources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
-      "quote": "It delivers comprehensive, source-cited reports to help you make informed decisions faster.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
       "where": "What's changing",
       "type": "admin-path",
-      "claim": "The Learn Researcher page directs users to the Microsoft Copilot app and Researcher under Agents in Chat.",
+      "claim": "The Researcher Learn page directs users to Agents in Chat in the Microsoft Copilot app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
       "quote": "Sign into the Microsoft Copilot app. You can find Researcher under Agents in Chat.",
@@ -199,21 +179,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn has not described the planned Word canvas entry points at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Researcher Word; \"Researcher\" \"Word\" \"canvas\"; Researcher agent Word canvas entry points default automatic rollout licence meter block controls. Read researcher-agent, faq-researcher and Researcher passages in previous-year-release-notes; no Word canvas instructions found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "summary; What's changing; Why it matters; Scope; rationale: cost",
+      "n": 15,
+      "where": "summary; licensing.notes; What's changing; Scope; rationale: cost",
       "type": "default",
-      "claim": "Researcher is part of the core default Microsoft Copilot experience for licensed users.",
+      "claim": "Researcher is part of the core default experience for Microsoft Copilot licensed users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Researcher is part of the core default experience for Microsoft Copilot licensed users.",
@@ -221,18 +190,18 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: defaultState; What's changing; Why it matters",
-      "type": "default",
-      "claim": "The new Word entry points are enabled on arrival and appear for licensed users without an administrator enabling them.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Researcher agent Word canvas entry points default automatic rollout licence meter block controls; Researcher Word. Read roadmap, researcher-agent, faq-researcher, previous-year-release-notes and support's Get started with Researcher; none establishes the Word-entry-point rollout default.",
-      "severity": "blocker",
-      "fix": "Set defaultState to \"unknown\". Replace the sentence beginning \"Microsoft's Researcher FAQ describes\" with \"Microsoft's Researcher FAQ describes Researcher as part of the core default experience for Microsoft Copilot licensed users and says users can't disable it. Microsoft has not stated what happens to the Word entry points on arrival.\" Replace the Why it matters sentence beginning \"Because Researcher is on by default\" with \"The existing decisions to review are who holds the licence, whether web search is allowed, and whether Researcher is blocked for the tenant.\""
+      "n": 16,
+      "where": "front matter: licensing.model; controls[1].governs; Cost and licensing",
+      "type": "licensing",
+      "claim": "Researcher is included with the Microsoft Copilot licensed experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "Find it in the left navigation pane alongside other agents, giving you quick access to research tools as part of the Copilot Premium license.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 19,
+      "n": 17,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Users cannot disable Researcher themselves.",
@@ -243,7 +212,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 18,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Users cannot independently remove or unpin Researcher.",
@@ -254,54 +223,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "front matter: licensing.model; controls[1].governs; Cost and licensing; rationale: impact",
-      "type": "licensing",
-      "claim": "Researcher comes with the licensed Copilot experience, supporting an included model for a new entry point inside that experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "The researcher agent is pre-installed in Copilot Chat for all worldwide users. Find it in the left navigation pane alongside other agents, giving you quick access to research tools as part of the Copilot Premium license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The 2025 release notes specifically describe Researcher as part of the Copilot Premium license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "giving you quick access to research tools as part of the Copilot Premium license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 19,
+      "where": "front matter: defaultState; What's changing",
       "type": "absence",
-      "claim": "No license specific to the Word entry points is published.",
+      "claim": "Microsoft has not stated what happens to the Word entry points on arrival, so their default state is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Researcher\" \"Word\" licensing queries credits meter; Researcher usage-based billing meter Word licence. Read copilot-overview, Researcher FAQ, 2025 release notes and usage-based-billing-overview-copilot-credits; no Word-entry-point license found.",
+      "quote": "Searched: Researcher Word canvas entry points default automatic rollout admin disable policy Graph API; \"Researcher\" \"Word\" \"entry\". Opened Researcher get-started, FAQ, Copilot overview, 2025 release notes and agent settings; no Word-entry-point rollout default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to Researcher in Word is documented in November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Researcher\" \"Word\" licensing queries credits meter; Researcher usage-based billing meter Word licence. Read copilot-overview, Researcher FAQ, 2025 release notes and usage-based-billing-overview-copilot-credits, including its service table; no Researcher-in-Word meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
+      "n": 20,
       "where": "Why it matters; Cost and licensing; Governance guidance; Open questions",
       "type": "cost",
-      "claim": "The Researcher FAQ states a maximum of 25 queries per user per month.",
+      "claim": "The Researcher FAQ sets a maximum of 25 queries per user per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Are there any usage limits for Researcher agent in Microsoft 365? A maximum of 25 queries per user per month.",
@@ -309,10 +245,21 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Researcher adheres to DLP policies and follows the same policies as Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "Yes, Researcher agent adheres to DLP policies and follows the same policies as Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions; Why it matters; Governance guidance",
       "type": "behaviour",
-      "claim": "Highly complex Researcher queries typically take 10 to 45 minutes.",
+      "claim": "Highly complex Researcher queries can take 10 to 45 minutes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
       "quote": "Researcher agent responses typically range from under five minutes for simple queries. Then 10 to 45 minutes for highly complex ones.",
@@ -320,65 +267,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Researcher adheres to DLP policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Yes, Researcher agent adheres to DLP policies and follows the same policies as Microsoft Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Researcher follows the same policies as Microsoft Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Yes, Researcher agent adheres to DLP policies and follows the same policies as Microsoft Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "The Word entry-point change gives Researcher no new data and guarantees the same data reach as Chat.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Researcher agent Word canvas entry points default automatic rollout licence meter block controls; Researcher Word. Read roadmap, researcher-agent and faq-researcher. They describe entry points and general Researcher data access, not a comparison of Word and Chat data reach.",
-      "severity": "major",
-      "fix": "Replace the first sentence of Why it matters with \"The roadmap describes easier entry points to the existing Researcher agent.\" Replace the oversharing comparison with \"Researcher draws on work content the user can access, so review oversharing before promoting its use.\" In the risk rationale, replace \"Researcher keeps the same data reach, web search setting and tenant-wide block it has today\" with \"Microsoft documents Researcher's existing data access, web search policy and tenant-wide block, but does not describe the Word entry points in detail\"."
-    },
-    {
-      "n": 30,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The Word entry-point change gives Researcher no new powers.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Researcher agent Word canvas entry points default automatic rollout licence meter block controls; Researcher Word. Read roadmap, researcher-agent and faq-researcher; none states that the Word integration has no additional capabilities.",
-      "severity": "major",
-      "fix": "Replace the first sentence of Why it matters with \"The roadmap describes easier entry points to the existing Researcher agent.\""
-    },
-    {
-      "n": 31,
+      "n": 23,
       "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "There is no identity change in the Word integration.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Researcher agent Word canvas entry points default automatic rollout licence meter block controls; Researcher Word. Read roadmap, researcher-agent and faq-researcher; none describes identity or connection mechanics for the Word entry points.",
-      "severity": "major",
-      "fix": "Replace \"No change: the roadmap item describes new entry points, not a new identity or connection\" with \"The roadmap item describes new entry points and does not describe their identity or connection mechanics.\""
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap description states no new document actions beyond the Researcher entry points.",
+      "claim": "The roadmap description does not describe identity or connection mechanics for the entry points.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The Researcher agent now has easier entry points on the Word canvas —making it faster to go from idea to polished research report without breaking your flow.",
@@ -386,40 +278,95 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 24,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap description specifies no new document actions beyond starting research.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Researcher agent now has easier entry points on the Word canvas —making it faster to go from idea to polished research report without breaking your flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether blocking Researcher removes its Word canvas entry points.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Researcher block Word entry points admin center separate switch PowerShell Graph; \"Researcher\" \"Word\" \"policy\". Opened agent-actions, agent-settings, Researcher FAQ and package block reference; none specifies removal of the Word canvas entry points.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The 2025 release notes describe Researcher as part of the Copilot Premium license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "Find it in the left navigation pane alongside other agents, giving you quick access to research tools as part of the Copilot Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No licence requirement specific to the Word entry points is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Researcher in Word licensing meter billing price Copilot licence. Opened Researcher FAQ, 2025 release notes, Copilot overview and Copilot license options; these describe existing Copilot entitlement, not a licence specific to the Word canvas entry points.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to Researcher in Word is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Researcher in Word licensing meter billing price Copilot licence; \"Researcher\" \"credits\" billing. Opened FAQ, Copilot overview, license options and pay-as-you-go overview; read billing search excerpts. No Researcher-in-Word meter is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "An administrator reaches the agent block action in Microsoft 365 admin center via Agents > All agents > agent > Block.",
+      "claim": "The Researcher block is at Microsoft 365 admin center > Agents > All agents > agent > Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... immediately under the agent's name, select Block or Unblock.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 30,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent its usage.",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "controls[0].scope, note; Governance guidance; Governance controls",
+      "n": 31,
+      "where": "controls[0].scope and note; Why it matters; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "The documented Researcher availability control is a block for the entire tenant.",
+      "claim": "The documented Researcher availability block applies tenant-wide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center.",
+      "quote": "To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 32,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "The Edit users panel is disabled for Researcher.",
@@ -430,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 33,
       "where": "controls[0].note; Governance controls",
       "type": "licensing",
-      "claim": "Access to the package-management Graph block API requires a Microsoft Agent 365 license.",
+      "claim": "The Graph package block API requires a Microsoft Agent 365 licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -441,54 +388,43 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 34,
       "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The Graph block call is a beta API.",
+      "type": "availability",
+      "claim": "The Graph package block call is a beta API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "quote": "APIs under the /beta version are subject to change. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[0].note; Risk assessment: Change & support; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether a Researcher block removes the planned Word canvas entry points.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Researcher Word entry points admin disable switch Microsoft Graph policy; Researcher agent Word canvas entry points default automatic rollout licence meter block controls. Read agent-actions and faq-researcher; neither describes the Researcher block's effect on Word canvas entry points.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
+      "n": 35,
       "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The per-user license control is in Microsoft 365 admin center at Users > Active users > user > Licenses and Apps > Licenses.",
+      "claim": "Licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section",
+      "quote": "go to the Users > Active users page. ... Select the row of the user ... select Licenses and Apps. ... Expand the Licenses section, select the boxes for the licenses that you want to assign",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 36,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "The printed Set-MgUserLicense command assigns the chosen SKU to the identified user using Microsoft Graph PowerShell.",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence using Microsoft Graph PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "quote": "To assign a license to a user, use the following command in PowerShell. ... Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 37,
       "where": "controls[1].note; Scope: Roles",
       "type": "role",
-      "claim": "Assigning licenses requires at least License Administrator or User Administrator.",
+      "claim": "Assigning licences requires at least License Administrator or User Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
       "quote": "You must be at least a License or User Administrator to assign licenses.",
@@ -496,32 +432,32 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 38,
       "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Microsoft 365 Apps admin center route is Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow web search in Copilot.",
+      "claim": "The web search policy is reached through Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot in the Microsoft 365 Apps admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Start with the basics page, enter a name (required) and a description (optional), then select Next.",
-      "severity": "minor",
-      "fix": "Use \"Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot\". The omitted heading and basics page do not change a wizard choice, so this is not a blocker. The Cloud Policy overview documents the route; the existing manage-public-web-access link documents the final policy and is valid."
-    },
-    {
-      "n": 44,
-      "where": "controls[2].note; Scope: Roles",
-      "type": "role",
-      "claim": "Office Apps Administrator is the recommended Cloud Policy management role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Office Apps Administrator (Recommended)",
+      "quote": "Under Customization, select Policy Management. ... On the Policy configurations page, select Create. ... Start with the basics ... Choose the scope ... On the Configure Settings page, select the policies",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[2].scope, note; Governance controls table",
+      "n": 39,
+      "where": "controls[2].ui.docs; Governance guidance",
+      "type": "admin-path",
+      "claim": "The cited public web access page documents Allow web search in Copilot as the Cloud Policy control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "The primary way that IT admins can control access to web search is by using the Allow web search in Copilot policy, which is available only in Cloud Policy service for Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].scope and note; Governance controls table",
       "type": "applicability",
-      "claim": "The Cloud Policy configuration can apply to all users or specific groups.",
+      "claim": "The web search UI policy can target all users or specific groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
       "quote": "On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups, or to users who anonymously access documents using Office for the web.",
@@ -529,57 +465,112 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[2].governs; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Allow web search in Copilot is a Cloud Policy control governing Researcher's public-web access.",
+      "n": 41,
+      "where": "controls[2].note; Scope: Roles",
+      "type": "role",
+      "claim": "Office Apps Administrator is the recommended role for Cloud Policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "The information about web search in this article also applies to Researcher, Analyst, and Cowork in Microsoft Copilot.",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can apply a web search baseline in applyOnce mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "applies a desired-state baseline once in applyOnce mode. ... POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors",
+      "severity": "minor",
+      "fix": "Append to controls[2].note: 'The baseline resource sets properties.value as a string: \"0\" enables web search in both experiences, \"1\" disables it in both, and \"2\" disables Work mode only.' See https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type."
+    },
+    {
+      "n": 43,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "TCM remediation and applyOnce are available in preview through Microsoft Graph beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "These capabilities are available in preview through Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "An applyOnce configuration monitor applies a desired-state baseline once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The web search baseline resource type is microsoft.copilot.allowwebsearch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "\"resourceType\": \"microsoft.copilot.allowwebsearch\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The web search baseline resource uses resourceVersion 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "All resources on this page use resourceVersion: 1 and are singletons.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Choosing the policy option that disables Microsoft Copilot Work mode web search also disables Researcher web search.",
+      "type": "command",
+      "claim": "The allowwebsearch value 0 enables web search in Microsoft 365 Copilot and Microsoft 365 Copilot Chat.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "If the IT admin chooses the Disabled in Microsoft Copilot Work mode; Enabled in Microsoft Copilot Web mode and Microsoft Copilot Chat option, web search in Researcher and Cowork in Microsoft Copilot will be disabled.",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "0 enables it in Microsoft 365 Copilot and Microsoft 365 Copilot Chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "controls[2].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for the Allow web search in Copilot control.",
-      "status": "contradicted",
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The allowwebsearch value 1 disables web search in both experiences.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "These resources also support remediation and applyOnce. The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
-      "severity": "blocker",
-      "fix": "Replace the blanket automation gap with the documented tenant-level preview option: api.kind \"graph\", api.call \"POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\", api.docs \"https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta\". In the existing row's note say: \"UI supports all users or specific groups. Preview API is tenant-level only: use mode applyOnce and a baseline resourceType microsoft.copilot.allowwebsearch, resourceVersion 1, with properties.value 0 to enable both modes, 1 to disable both, or 2 to disable Work mode web search. The target setting must not be configured in any group-level policy, or applyOnce fails. Calling app requires delegated ConfigurationMonitoring.ReadWrite.All; the TCM service principal requires delegated CopilotPolicySettings.ReadWrite, and the signed-in user requires AI Administrator. Beta APIs are not supported for production applications.\" Keep the existing Office Apps Administrator UI qualification. Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Do not present t…"
+      "quote": "1 disables it in both.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 49,
-      "where": "controls[3].ui and controls[3].api; Governance controls table",
-      "type": "absence",
-      "claim": "No separately documented admin UI or API switch controls just the Researcher entry points in Word.",
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The allowwebsearch value 2 disables Work mode web search while leaving Web mode and Copilot Chat enabled.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Researcher Word entry points admin disable switch Microsoft Graph policy; Researcher agent Word canvas entry points default automatic rollout licence meter block controls. Read agent-actions, package block reference and Researcher FAQ; no separate Word-entry-point switch found.",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "2 disables it in Microsoft 365 Copilot Work mode while enabling it in Microsoft 365 Copilot Web mode and Microsoft 365 Copilot Chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Governance controls; Why it matters; Risk assessment; rationale: risk",
+      "where": "controls[2].note; Governance controls",
       "type": "applicability",
-      "claim": "Researcher does not use web data when tenant-level web search is disabled.",
+      "claim": "TCM supports this setting only in tenant-level Microsoft 365 Apps admin center policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "Yes. If web search is disabled at the tenant level, Researcher won't use web data.",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
       "severity": null,
       "fix": null
     },
@@ -587,44 +578,121 @@
       "n": 51,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Researcher remains accessible in Microsoft Copilot Chat under Tools even when Copilot agents are disabled for some or all users.",
+      "claim": "applyOnce fails for the resource if the target setting is configured in any group-level policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
-      "quote": "This tool will remain accessible in Microsoft Copilot Chat under Tools, even when Copilot agents are disabled for some or all users in Microsoft 365 admin center. In addition, admins can block Researcher and Analyst agents.",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "There is no connection change in the Word integration.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Researcher agent Word canvas entry points default automatic rollout licence meter block controls; Researcher Word. Read roadmap, researcher-agent and faq-researcher; none describes connection mechanics for the Word entry points.",
-      "severity": "major",
-      "fix": "Replace \"No change: the roadmap item describes new entry points, not a new identity or connection\" with \"The roadmap item describes new entry points and does not describe their identity or connection mechanics.\""
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The calling app needs delegated ConfigurationMonitoring.ReadWrite.All for applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Creating an applyOnce monitor supports delegated permissions only. In addition to the calling app's delegated ConfigurationMonitoring.ReadWrite.All permission, the TCM service principal needs delegated permissions for the target workloads",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 53,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Researcher structures its reports.",
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The TCM service principal needs delegated CopilotPolicySettings.ReadWrite for allowwebsearch.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/researcher-agent",
-      "quote": "It pulls from your work content and the web and composes a structured, reasoned response.",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "microsoft.copilot.allowwebsearch | CopilotPolicySettings.ReadWrite | AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "The signed-in user needs AI Administrator for allowwebsearch remediation and applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "For remediation and applyOnce, AI Administrator is the least-privileged Microsoft Entra role for the signed-in user. This role requirement applies to the user, not to the TCM service principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "Microsoft states that beta APIs are not supported for use in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; controls[2].governs; Governance guidance",
+      "type": "applicability",
+      "claim": "Disabling web search in Copilot Work mode through Allow web search in Copilot disables web search in Researcher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "If the IT admin chooses the Disabled in Microsoft Copilot Work mode; Enabled in Microsoft Copilot Web mode and Microsoft Copilot Chat option, web search in Researcher and Cowork in Microsoft Copilot will be disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[3]; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented a separate tenant UI or API switch for Researcher entry points in Word.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Researcher block Word entry points admin center separate switch PowerShell Graph; \"Researcher\" \"Word\" \"policy\". Opened agent-actions, agent-settings, Cloud Policy overview, package block and Copilot TCM resources; no separate Word entry-point switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls; Why it matters",
+      "type": "applicability",
+      "claim": "Researcher does not use web data when web search is disabled at the tenant level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "If web search is disabled at the tenant level, Researcher won't use web data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Researcher remains accessible in Copilot Chat under Tools when Copilot agents are disabled for some or all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/faq-researcher",
+      "quote": "This tool will remain accessible in Microsoft Copilot Chat under Tools, even when Copilot agents are disabled for some or all users in Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls; controls[1].scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Licence assignment is a per-user way to manage entitlement to the licensed Researcher experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "Select the row of the user that you want to assign a license to. ... Expand the Licenses section, select the boxes for the licenses that you want to assign, then select Save changes.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T10:10:57.733Z",
+    "at": "2026-11-26T14:10:56.247Z",
     "summary": {
-      "links": 11,
+      "links": 14,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 1,
-      "apiCalls": 2,
+      "apiCalls": 3,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -655,6 +723,16 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=497833",
         "ok": true,
         "status": 200
@@ -681,6 +759,11 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
         "ok": true,
         "status": 200
       }
@@ -740,7 +823,9 @@
         "segments": [
           "Customization",
           "Policy Management",
+          "Policy configurations",
           "Create",
+          "Start with the basics",
           "Choose the scope",
           "Configure Settings",
           "Allow web search in Copilot"
@@ -748,12 +833,30 @@
         "missing": [
           "Customization",
           "Policy Management",
+          "Policy configurations",
+          "Start with the basics",
           "Choose the scope",
           "Configure Settings"
         ]
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether Researcher can use public web content",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

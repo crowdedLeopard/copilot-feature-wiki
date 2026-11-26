@@ -12,13 +12,13 @@ platforms: ["Desktop","Web"]
 targetDate: "March CY2027"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "mixed"
-  notes: "Learn lists the commercial, education and frontline user plans that include Places core features; desk booking (subject to the Teams Premium transition exception until renewal), autorelease and occupancy reports need Teams Room or Teams Shared Space licences; AI room booking needs a Microsoft Copilot licence. No US Government plan is named."
+  notes: "Learn lists the commercial, education and frontline user plans that include Places core features; desk booking (Teams Premium bought before 1 April 2026 keeps it until renewal), autorelease and occupancy reports need Teams Room or Teams Shared Space licences; AI room booking needs a Microsoft Copilot licence. No US Government plan is named."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["microsoft-places","powershell","licensing","exchange","teams","outlook","admin-controls","gcc"]
 sources:
@@ -58,6 +58,12 @@ sources:
   - title: "Buy and set up Microsoft Teams Shared Space licenses for desks"
     url: "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks"
     kind: "learn"
+  - title: "Microsoft Teams Shared Space licensing"
+    url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license"
+    kind: "learn"
+  - title: "Microsoft Teams Rooms licenses"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -84,7 +90,7 @@ controls:
       kind: "powershell"
       call: "Set-PlacesSettings -PlacesFinderEnabled 'Default:false,OID:[OID]@[TID]:true'"
       docs: "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings"
-    note: "Scope with a mail-enabled security group; at most 20 OIDs. Desk booking also needs a space licence per desk, subject to the Teams Premium transition exception until renewal."
+    note: "Scope with a mail-enabled security group; at most 20 OIDs. Desk booking also needs a space licence per desk; Teams Premium bought before 1 April 2026 keeps it until renewal."
   - governs: "Whether users can see Places occupancy analytics"
     scope: "tenant"
     ui: null
@@ -117,19 +123,23 @@ changes:
     note: "Corrected after review: default state now Not stated for the GCC release; noted autorelease already supported in GCC; added Teams Premium transition and free Single Space licence conditions; removed unsupported GCC pricing statement."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 98 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected after review: cost raised to medium for per-space licensing; noted Teams Shared Space and Teams Rooms Pro are sold to GCC; narrowed the Teams Premium transition to purchases before 1 April 2026."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 121 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
-  confirmed: 95
+  claims: 121
+  confirmed: 121
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "2bf49b89daa21e5e7b93124087f8feb9"
+  contradicted: 0
+  attempts: 0
+  hash: "d7c0a47f6d608cb796178075ad77dbfc"
 ---
 
 ## What's changing
@@ -168,7 +178,7 @@ Building experiences, Places finder and analytics require a configured hierarchy
 
 **User licence.** The [License requirements](https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements) page lists Microsoft 365 Business Basic, Standard and Premium; Microsoft 365 or Office 365 E1, E3 and E5; Education A1, A3 and A5; frontline F1 and F3; and Teams Enterprise, Essentials and standalone as the plans whose users can access Places, with core features available to all of them. The list names no US Government (G) plan at the time of writing (November 2026), so which GCC plans will include Places is not yet published.
 
-**Space licences.** Since 1 April 2026, individual desk booking, autorelease and occupancy reports in Places analytics are licensed per space: rooms need a Microsoft Teams Room, Teams Shared Space or Teams Shared Space – Single Space licence; individual desks need Teams Shared Space or Teams Shared Space – Single Space. Customers with active Teams Premium subscriptions continue to enjoy premium features until renewal. For each Teams Shared Space licence used for a BYOD room or individual desk, you can acquire three free Single Space licences for three more rooms or desks; licences used for common area phones do not provide that entitlement.
+**Space licences.** Since 1 April 2026, individual desk booking, autorelease and occupancy reports in Places analytics are licensed per space: rooms need a Microsoft Teams Room, Teams Shared Space or Teams Shared Space – Single Space licence; individual desks need Teams Shared Space or Teams Shared Space – Single Space. Customers who purchased Teams Premium before 1 April 2026 can continue using Places premium capabilities until renewal. For each Teams Shared Space licence used for a BYOD room or individual desk, you can acquire three free Single Space licences for three more rooms or desks; licences used for common area phones do not provide that entitlement.
 
 **AI features.** Copilot room booking and Quick book need a Microsoft Copilot licence.
 
@@ -207,7 +217,7 @@ Building experiences, Places finder and analytics require a configured hierarchy
 <tbody>
 <tr><td data-label="Control"><strong>Whether users can access the Places app on the web, in Outlook, Teams and the Microsoft 365 app</strong><br><small>Tenant</small><br><small class="controls__note">On by default for all users. Needs the Exchange MailRecipients and Places TenantPlacesManagement roles. Up to 12 hours to take effect.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -EnablePlacesWebApp 'Default:false'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users see buildings in work plans, workplace presence and Places finder</strong><br><small>Tenant</small><br><small class="controls__note">Not automatically enabled for newly onboarded tenants; has effect only once buildings and floors are configured.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -EnableBuildings 'Default:false'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can use Places finder and book individual desks</strong><br><small>Group</small><br><small class="controls__note">Scope with a mail-enabled security group; at most 20 OIDs. Desk booking also needs a space licence per desk, subject to the Teams Premium transition exception until renewal.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -PlacesFinderEnabled 'Default:false,OID:[OID]@[TID]:true'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Places finder and book individual desks</strong><br><small>Group</small><br><small class="controls__note">Scope with a mail-enabled security group; at most 20 OIDs. Desk booking also needs a space licence per desk; Teams Premium bought before 1 April 2026 keeps it until renewal.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -PlacesFinderEnabled 'Default:false,OID:[OID]@[TID]:true'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can see Places occupancy analytics</strong><br><small>Tenant</small><br><small class="controls__note">Off by default for all users. Buildings are enabled for analytics separately.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -SpaceAnalyticsEnabled 'Default:false'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a user has the Places Enhanced service plan</strong><br><small>User</small><br><small class="controls__note">Part of Microsoft's turn-off procedure; $addLicenses lists service plan f8566154-2a62-48cb-a0ab-d4d25be26e51 under DisabledPlans. Re-added when Teams Premium is assigned.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and apps › Apps › Places Enhanced <a href="https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses $addLicenses -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -221,24 +231,19 @@ To turn Places off for the whole organisation, Microsoft's procedure turns off `
 
 - Which US Government (G) plans will include Places core features in GCC? Watch the License requirements page.
 - Will the GCC release keep the commercial defaults, with the Places app on for all users? Watch Message center for the rollout post.
-- Will the Teams Shared Space and Teams Room space licences be available and priced for GCC desks and rooms?
+- Teams Shared Space is available to purchase in GCC, and Teams Rooms Pro lists GCC in its segment availability: what is the tenant's actual purchase price, and which space-licensed capabilities are included in the planned Places GCC release?
 - Will Copilot room booking and Quick book be included in the GCC release, or follow later with Microsoft 365 Copilot in GCC?
 - Does `Connect-MicrosoftPlaces` need any GCC-specific setting to reach a GCC tenant? Watch the Places PowerShell reference.
 
 <!-- rationale
 risk: Medium. The Places app is documented as on by default for all users, and when users choose to share their work location, work plans and workplace presence show colleagues their planned and actual work location; the documented tenant settings control app access, building visibility, Places finder and analytics.
-cost: Low. Core Places features come with the user plans Microsoft lists; individual desk booking (subject to the Teams Premium transition exception until renewal), autorelease and occupancy reports need Teams space licences. Which GCC plans carry Places is not yet published.
+cost: Medium. Individual desk booking, autorelease and occupancy reports use per-space licensing, with a transition until renewal for Teams Premium purchased before 1 April 2026. Microsoft publishes paid Teams Shared Space licensing available in GCC; government user-plan coverage for the planned Places core release is not yet published.
 impact: Medium. Users can open the Places app once it reaches the tenant, but Room finder stays the default calendar experience and building features need admin setup, so facilities teams and office-goers notice most.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is low, although the cost rationale and body document space-licensed premium capabilities. | Found: cost: "low" ... Low. Core Places features come with the user plans Microsoft lists; individual desk booking (subject to the Teams Premium transition exception until renewal), autorelease and occupancy reports need Teams space licences. | Fix: Set cost to 'medium' and replace the cost rationale with: 'Medium. Individual desk booking, autorelease and occupancy reports use per-space licensing, with a transition until renewal for Teams Premium purchased before April 1, 2026. Microsoft publishes paid Teams Shared Space licensing available in GCC; government user-plan coverage for the planned Places core release is not yet published.' Sources: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements, https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions and https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license. The standard reserves low for indirect cost only.
-- [contradicted, blocker] Open questions: space-license availability / absence: Whether Teams Shared Space licenses will be available for GCC desks and rooms remains an open question. | Found: The Teams Shared Space license is available to purchase worldwide to commercial, public sector, GCC, GCC High, and DoD tenants. | Fix: Remove Teams Shared Space license availability from this open question. State: 'Teams Shared Space is available to purchase in GCC; confirm the tenant's actual purchase price and which space-licensed capabilities are included in the planned Places GCC release.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license. The page explicitly covers bookable desks and BYOD rooms; do not present license availability as unpublished. | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license
-- [contradicted, blocker] Open questions: space-license availability / absence: Whether Teams Room space licenses will be available for GCC rooms remains an open question. | Found: Segment availability | Commercial, Education, Non-Pro | Commercial, Education, Non-Profit, GCC, GCC-High, DoD | Fix: Remove Teams Rooms license availability from this open question. State: 'Teams Rooms Pro lists GCC in its segment availability; confirm the tenant's actual purchase price and which space-licensed capabilities are included in the planned Places GCC release.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing. Do not extend GCC availability to Teams Rooms Basic, whose segment list omits GCC. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; controls[2].note; front matter: licensing.notes; rationale: cost / licensing: Customers with active Teams Premium subscriptions keep premium Places features until renewal. | Found: To ensure a smooth transition, customers with active Teams Premium subscriptions continue to enjoy premium features until renewal. | Fix: Narrow the transition exception everywhere to subscriptions purchased before April 1, 2026: 'Customers who purchased Teams Premium before April 1, 2026 can continue using Places premium capabilities until renewal.' The cited FAQ gives that narrower condition at https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions, whereas License requirements says active subscriptions. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements
-- [supported, minor] Cost and licensing: Space licences / licensing: An MTSS license used for a BYOD room or individual desk permits three free MTSS-SS licenses for three additional rooms or desks. | Found: If you use an MTSS license for a BYOD room or an individual desk, you can use the 3 free MTSS-SS licenses for 3 more rooms or desks. | Fix: Keep the supported entitlement statement, but append: 'Microsoft's desk-license purchasing guide describes Single Space licenses as assignable only to desks, while License requirements allows BYOD rooms or individual desks.' Both pages are already cited: https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks and https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements
-- [supported, minor] Governance controls: OID scoping / command: The Set-PlacesSettings reference states OID-based scoping is currently supported only for PlacesFinderEnabled. | Found: OID-based scoping is currently supported only for the -PlacesFinderEnabled setting. | Fix: Append: 'The cited Enable Places analytics page nevertheless gives an OID-scoped SpaceAnalyticsEnabled example, and the turn-off page describes group-scoped EnablePlacesWebApp and EnableBuildings; these pages disagree with the reference.' The URLs are https://learn.microsoft.com/microsoft-365/places/enable-places-analytics/enable-places-analytics and https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places. Keep the current correctly attributed reference statement and finder command. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings
+- [supported, minor] Cost and licensing: Space licences / licensing: Room autorelease and occupancy reports can use Microsoft Teams Room, Teams Shared Space or Teams Shared Space - Single Space licences. | Found: Room | Autorelease, Occupancy reports | MTR, MTSS or MTSS-SS MTSS-SS licenses can be used with BYOD rooms or individual desks, but not with common area phones. | Fix: Add after the room licence sentence: "The License requirements page permits Single Space licences for BYOD rooms, but the desk purchasing guide describes them as 'Assignable only to desks'; confirm this documentation discrepancy before assigning them to rooms." The disagreeing cited guide is https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks. This qualification also applies to the later 'three more rooms or desks' sentence. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements
+- [supported, minor] Governance controls: OID-based scoping / applicability: The Set-PlacesSettings reference states that OID-based scoping is currently supported only for PlacesFinderEnabled. | Found: OID-based scoping is currently supported only for the -PlacesFinderEnabled setting. | Fix: Add after this sentence: "Microsoft's other guides are inconsistent with that restriction: Enable Places analytics shows an OID-scoped SpaceAnalyticsEnabled example, and How to turn off Microsoft Places describes scoping EnablePlacesWebApp and EnableBuildings to specific users; confirm support before using those other scoped settings." The disagreeing pages are https://learn.microsoft.com/microsoft-365/places/enable-places-analytics/enable-places-analytics and https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places; both are already cited. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings
 -->

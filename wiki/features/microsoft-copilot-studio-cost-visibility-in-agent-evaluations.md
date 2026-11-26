@@ -108,15 +108,17 @@ changes:
     note: "Corrected after verification: the first control now lists the preview CLI command that reports evaluation credit usage, the allocation call is shortened to the operation, and the consumption-review checklist step is removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -222,8 +224,8 @@ cost: Variable. The display is not described as a charge, but the evaluation act
 impact: Medium. Makers who run evaluations see the figures; owners of environments and capacity are affected through the credits those evaluations draw.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; controls[1].note; Governance controls: second row / command: PUT /licensing/allocationsV2?api-version=2024-10-01 writes the environment allocation and tenant-pool draw configuration. | Found: $apiVersion    = "2024-10-01" Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call unchanged. Add to controls[1].note and the rendered row: 'The request body targets scope.environmentId; allocatedEntitlements uses entitlementId MCSMessages, allocation.quantity and enforcementRules with ruleType TenantPool and enabled false to disable tenant-capacity draw.' The cited allocation tutorial documents these properties. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[1].api / command: PUT /licensing/allocationsV2?api-version=2024-10-01 writes an environment allocation and tenant-capacity draw configuration. | Found: $apiVersion    = "2024-10-01" ... Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call unchanged. Add to controls[1].note and its rendered table note: 'The request body targets scope.environmentId; allocatedEntitlements uses entitlementId MCSMessages, allocation.quantity and enforcementRules with ruleType TenantPool and enabled false to disable tenant-capacity draw.' These properties are documented at https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 -->

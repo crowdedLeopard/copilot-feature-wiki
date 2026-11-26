@@ -40,6 +40,9 @@ sources:
   - title: "Admins - Manage transcription and captions for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     kind: "learn"
+  - title: "Meetings and events feature and capacity comparison"
+    url: "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-interpreter-agent-support-in-teams-rooms-on-android","meeting-policy","copilot-credits"]
 controls:
@@ -66,7 +69,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled"
       docs: "https://learn.microsoft.com/microsoftteams/set-up-events"
-    note: "Blunt fallback: stops town halls for organisers with this policy, not interpretation alone."
+    note: "Blunt fallback: stops town halls for organisers with this policy, not interpretation alone. The Set-CsTeamsEventsPolicy reference labels this policy as currently still in preview."
   - governs: "Whether organisers can create events with up to 1,000 attendees (webinars)"
     scope: "user"
     ui:
@@ -77,7 +80,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Disabled"
       docs: "https://learn.microsoft.com/microsoftteams/set-up-events"
-    note: "Blunt fallback: stops webinars for organisers with this policy, not interpretation alone."
+    note: "Blunt fallback: stops webinars for organisers with this policy, not interpretation alone. The Set-CsTeamsEventsPolicy reference labels this policy as currently still in preview."
 confidence: "medium"
 created: "2026-11-26"
 updated: "2026-11-26"
@@ -87,19 +90,23 @@ changes:
     note: "New briefing: AI Interpreter for Teams town halls and webinars, in development with a February CY2027 target."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: town hall caption languages without Teams Premium, consecutive interpretation prerequisites in the cost rationale, removed an unsupported claim about human interpreters, and noted the events policy is in preview."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 48
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "ddfef698a97696d3d3c2e7887b768409"
+  claims: 53
+  confirmed: 53
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "084770483182bde3cec17aa4296ef5ca"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ Microsoft has not stated what happens on arrival: whether organisers see the opt
 - In meetings, Interpreter can simulate a speaker's voice, governed by the meeting policy's -VoiceSimulationInInterpreter parameter. Whether events offer voice simulation, and which setting would govern it, is not documented.
 
 **Autonomy & actions**
-- Interpretation speaks for the presenter in another language. A mistranslated announcement in a company-wide town hall reaches every listener of that language at once, with no human interpreter to correct it live.
+- Interpretation speaks for the presenter in another language. A mistranslated announcement in a company-wide town hall reaches every listener of that language at once.
 
 **Change & support**
 - Microsoft Learn documents no events policy setting for interpretation at the time of writing (November 2026). Until one appears, the documented way to keep it out of events is to stop organisers creating town halls or webinars through the Teams events policy.
@@ -135,9 +142,9 @@ Microsoft has not stated what happens on arrival: whether organisers see the opt
 
 **Licence for this feature:** Not yet published. The [Interpreter agent page](https://learn.microsoft.com/microsoftteams/interpreter-agent-teams) lists Teams events as not supported, so its licensing does not describe this feature.
 
-**What the meetings version needs, for comparison:** the same page states that the Interpreter agent is available as part of the Microsoft Copilot license, with 20 hours of interpretation included per user per month. Consecutive interpretation in meetings is a usage-based billing experience that consumes [Copilot Credits](/concepts/copilot-credits/), charged to the eligible meeting organiser's applicable billing policy.
+**What the meetings version needs, for comparison:** the same page states that the Interpreter agent is available as part of the Microsoft Copilot license, with 20 hours of interpretation included per user per month. Consecutive interpretation in meetings is a usage-based billing experience that consumes [Copilot Credits](/concepts/copilot-credits/), charged to the eligible meeting organiser's applicable billing policy. Microsoft's [meetings and events feature comparison](https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison) instead lists Interpreter for meetings as "Premium or Microsoft Copilot"; the Interpreter prerequisites page lists Microsoft Copilot.
 
-**Related events feature:** for live translated captions, the meeting or event organiser must have a Teams Premium licence, according to the [captions admin page](https://learn.microsoft.com/microsoftteams/meeting-transcription-captions).
+**Related events feature:** for live translated captions, the meeting or event organiser must have a Teams Premium licence, according to the [captions admin page](https://learn.microsoft.com/microsoftteams/meeting-transcription-captions). For events optimized for large audiences, such as town halls, organisers can preselect up to ten languages for attendees to use during the event without Teams Premium.
 
 **Indirect costs:** admin time to decide policy, and organiser time to set languages and brief presenters. A meter, rate or included hours for events are not yet published.
 
@@ -175,8 +182,8 @@ Microsoft has not stated what happens on arrival: whether organisers see the opt
 <tbody>
 <tr><td data-label="Control"><strong>Whether AI Interpreter can be used in town halls and webinars</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no events-specific setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether users can use Interpreter in Teams meetings (not documented for events)</strong><br><small>User</small><br><small class="controls__note">Enabled by default. Governs meetings; the Interpreter page lists Teams events as not supported and says to manage Interpreter with PowerShell.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AIInterpreter Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/interpreter-agent-teams" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether organisers can create events optimised for a large audience (town halls)</strong><br><small>User</small><br><small class="controls__note">Blunt fallback: stops town halls for organisers with this policy, not interpretation alone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether organisers can create events with up to 1,000 attendees (webinars)</strong><br><small>User</small><br><small class="controls__note">Blunt fallback: stops webinars for organisers with this policy, not interpretation alone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events up to 1k attendees <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowWebinars Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether organisers can create events optimised for a large audience (town halls)</strong><br><small>User</small><br><small class="controls__note">Blunt fallback: stops town halls for organisers with this policy, not interpretation alone. The Set-CsTeamsEventsPolicy reference labels this policy as currently still in preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether organisers can create events with up to 1,000 attendees (webinars)</strong><br><small>User</small><br><small class="controls__note">Blunt fallback: stops webinars for organisers with this policy, not interpretation alone. The Set-CsTeamsEventsPolicy reference labels this policy as currently still in preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events up to 1k attendees <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowWebinars Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -192,18 +199,12 @@ Microsoft Learn documents no events-specific control for AI interpretation at th
 
 <!-- rationale
 risk: Medium. Event audio would be interpreted by an AI service for large and possibly external audiences, and Microsoft Learn documents no events-specific switch yet; the documented fallback is to stop town halls or webinars.
-cost: Low. Licensing is not yet published, so the only known cost is admin and organiser time. The meetings Interpreter needs a Microsoft Copilot licence or Copilot Credits, so budget once Microsoft publishes the events model.
+cost: Low. Licensing is not yet published, so the only known cost is admin and organiser time. Consecutive interpretation in meetings requires Microsoft Copilot (Premium) for the organiser and Copilot Credits usage-based billing; budget once Microsoft publishes the events model.
 impact: Medium. Town hall and webinar organisers and their attendees notice it, in events where an organiser sets up interpretation languages.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Related events feature / licensing: The meeting or event organiser must have Teams Premium for attendees to use live translated captions. | Found: For events optimized for large audiences, such as town halls, organizers can preselect up to ten languages for attendees to use during the event without Teams Premium. | Fix: Add the qualification to the existing sentence: 'For events optimized for large audiences, such as town halls, organisers can preselect up to ten languages for attendees to use during the event without Teams Premium.' Keep the existing captions page citation. | Source: https://learn.microsoft.com/microsoftteams/meeting-transcription-captions
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: An AI-interpreted town hall has no human interpreter to correct a mistranslated announcement live. | Found: Searched: Teams town hall webinar AI interpretation human interpreter correct translation live. Opened interpreter-agent-teams; read event planning search excerpts. Neither roadmap nor Microsoft documentation states that a human interpreter cannot also be present to correct an announcement. | Fix: Remove ', with no human interpreter to correct it live' from the hypothetical mistranslation sentence.
-- [contradicted, blocker] rationale: cost / licensing: The meetings Interpreter needs a Microsoft Copilot licence or Copilot Credits. | Found: The experience is activated by a meeting organizer, who requires Microsoft Copilot (Premium) as a prerequisite, with Copilot Credits usage-based billing enabled through the applicable spending policy. | Fix: Replace 'The meetings Interpreter needs a Microsoft Copilot licence or Copilot Credits, so budget once Microsoft publishes the events model.' with 'Consecutive interpretation in meetings requires Microsoft Copilot (Premium) for the organiser and Copilot Credits usage-based billing; budget once Microsoft publishes the events model.' | Source: https://learn.microsoft.com/microsoftteams/interpreter-agent-teams
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy creating events optimised for large audiences. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Add to controls[2].note: 'The Set-CsTeamsEventsPolicy reference labels this policy as currently still in preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
-- [supported, minor] controls[3].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Disabled prevents organisers with the policy creating events with up to 1,000 attendees. | Found: To prevent organizers with this policy from creating events with up to 1,000 attendees, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Disabled | Fix: Add to controls[3].note: 'The Set-CsTeamsEventsPolicy reference labels this policy as currently still in preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
-- [supported, minor] licensing.notes; Why it matters; Cost and licensing / licensing: The Interpreter agent page says simultaneous interpretation is available as part of the Microsoft Copilot licence. | Found: Interpreter agent is available as part of the Microsoft Copilot license. | Fix: Add after the meetings licensing comparison: 'Microsoft's meetings and events feature comparison instead lists Interpreter for meetings as "Premium or Microsoft Copilot"; the Interpreter prerequisites page lists Microsoft Copilot.' Cite https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison. | Source: https://learn.microsoft.com/microsoftteams/interpreter-agent-teams
+- [supported, minor] front matter: licensing.model; licensing.notes; summary; Cost and licensing; rationale: cost / licensing: Licensing specific to AI Interpreter for events is not yet published, represented by licensing model unknown. | Found: each user in your organization must have a Teams license before they can use Teams. Searched: Teams events town hall webinar AI audio interpreter pricing Copilot Credits billing license; opened Interpreter agent, events-licensing and feature comparison. No feature-specific entitlement is stated. | Fix: Set licensing.model to included to reflect the published product-level requirement, and begin licensing.notes and the licensing paragraph with: 'Teams requires a Teams license for each user in the organisation, except for joining meetings anonymously. Licensing specific to AI Interpreter for events is not yet published.' Cite https://learn.microsoft.com/microsoftteams/user-access. Do not claim that a Teams license alone entitles users to events interpretation. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

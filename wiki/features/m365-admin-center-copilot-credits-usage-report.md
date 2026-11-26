@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "on"
 action: "review"
 licensing:
-  model: "unknown"
+  model: "consumption"
   notes: "Microsoft's notice MC1069563 says a Microsoft Copilot license is not required for this pay-as-you-go scenario. The report appears after Copilot Chat pay-as-you-go is set up in either admin center and agent usage is enabled; no report price is published."
 audiences: ["m365-admin","finops","service-owner"]
 tags: ["m365-admin-center","usage-reports","copilot-credits","pay-as-you-go","copilot-chat","agents","copilot-control-system","cost-management"]
@@ -89,7 +89,7 @@ controls:
     note: "Beta; one completed UTC day per call. Lists delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization. Not an equivalent of the Credits report."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-10-28T23:04:31"
 changes:
   - date: "2026-11-13"
@@ -110,19 +110,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 87 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-26"
+    note: "Correction: licensing model changed from not yet published to consumption, as the report covers the Copilot Chat pay-as-you-go scenario; no separate report price is published."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 86
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "4fff36982a130ca4c6004566f9a74271"
+  contradicted: 0
+  attempts: 0
+  hash: "6ef0ad83ed77e49ee423c575386e0efb"
 ---
 
 ## What's changing
@@ -209,10 +213,4 @@ Microsoft Learn documents no API for the Credits report itself at the time of wr
 risk: Low. The report presents consumption data, and usernames and display names are hidden by default, so personal-data exposure arises only if an administrator reveals them.
 cost: Low. The Credits report page states no separate price for the report, so the cost shown for it is admin time for exports. The consumption it reports is metered in Copilot Credits under pay-as-you-go.
 impact: Low. Administrators and finance teams who manage pay-as-you-go for Copilot Chat notice it; end users do not.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model is unknown, meaning Microsoft has not published how the feature is obtained. | Found: After you set up pay-as-you-go for Microsoft Copilot Chat, either in the Microsoft 365 admin center or the Power Platform admin center, and enable agent usage in your organization, you see a new report that includes metrics for credits used. | Fix: Set licensing.model to "consumption". Keep the notes' published pay-as-you-go prerequisite and the statement that MC1069563 requires no Microsoft Copilot license; retain the narrow statement that no separate report price is published. The model describes the pay-as-you-go scenario, not a charge for opening the report. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits
 -->

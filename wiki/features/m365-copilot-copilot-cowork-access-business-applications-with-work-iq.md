@@ -88,6 +88,12 @@ sources:
   - title: "How much Cowork can consume in Copilot Credits (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy"
     kind: "learn"
+  - title: "Update Copilot package"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    kind: "learn"
+  - title: "Manage plugins for Copilot Cowork"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins"
+    kind: "learn"
 videos: []
 related: ["work-iq","work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp","power-apps-model-driven-applications-in-business-apps-in-work-iq","spending-policies","mcp"]
 controls:
@@ -97,8 +103,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Tools > Plugins > Business apps (preview) > Install"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-work-iq"
-    api: null
-    note: "Install offers All users or Specific users and groups. Installation automation is not yet documented."
+    api:
+      kind: "graph"
+      call: "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    note: "Install offers All users or Specific users and groups. Beta API; the request body sets deployedTo and acquireUsersAndGroups. Requires a Microsoft Agent 365 licence; identify the plugin package in the tenant catalog first."
   - governs: "Which users can use business applications through Microsoft 365 Copilot"
     scope: "tenant"
     ui:
@@ -150,7 +159,7 @@ controls:
     note: "The request body sets statecode to 1 (Inactive) and statuscode to 2 (Inactive) to deactivate the skill without deleting it. Sharing is set with Share on the same page."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-26"
 roadmapModified: "2026-11-11T00:53:34"
 changes:
   - date: "2026-11-18"
@@ -173,19 +182,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 103 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-26"
+    note: "Correction: the plugin install row now gives the beta Graph package update call (deployedTo, acquireUsersAndGroups; Agent 365 licence) in place of 'not yet documented', and Why it matters names Copilot Cowork without claiming how many users have it."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 103 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 103
-  confirmed: 101
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "d73b369315934879d3156714807fc9c5"
+  confirmed: 103
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "307d034ce4e9355e432eaa20fbdc66bf"
 ---
 
 ## What's changing
@@ -200,7 +213,7 @@ On status, the roadmap item is In development with a preview date of September C
 
 ## Why it matters
 
-This puts write-capable access to business records inside a chat tool that many users already have. The plugin does not work until an admin installs it, so the first decision is yours: which users, and which environments, should be able to reach Dynamics 365 and Power Apps data from Cowork.
+This puts write-capable access to business records inside Copilot Cowork. The plugin does not work until an admin installs it, so the first decision is yours: which users, and which environments, should be able to reach Dynamics 365 and Power Apps data from Cowork.
 
 The environment and tenant settings are separate from that decision. Learn documents Business Applications in Work IQ as on by default for new public production environments, with exceptions, and the tenant audience setting defaults to all users. Check those settings now, and separately review App Access Control for Cowork, because participation settings do not prevent agentic access to environment data. Spend also needs an owner: Cowork consumption is metered in Copilot Credits, and the usage of one request varies.
 
@@ -261,7 +274,7 @@ To cap spend, Learn's cost guidance says to include Cowork in a spending policy 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Business apps plugin is installed for Cowork users</strong><br><small>Tenant</small><br><small class="controls__note">Install offers All users or Specific users and groups. Installation automation is not yet documented.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › Business apps (preview) › Install <a href="https://learn.microsoft.com/copilot/cowork/cowork-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Business apps plugin is installed for Cowork users</strong><br><small>Tenant</small><br><small class="controls__note">Install offers All users or Specific users and groups. Beta API; the request body sets deployedTo and acquireUsersAndGroups. Requires a Microsoft Agent 365 licence; identify the plugin package in the tenant catalog first.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › Business apps (preview) › Install <a href="https://learn.microsoft.com/copilot/cowork/cowork-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users can use business applications through Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific groups, No users. The quickstart page words the setting label slightly differently. AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which environments have Work IQ turned on</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. Does not prevent agentic access to environment data.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which applications, including Copilot Cowork, can access an environment's Dataverse data</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. The request body sets access (0 Allowed, 1 Blocked); this changes an app's status, so set environment-level enforcement separately. General App Access docs require a managed environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › App Access Control › environment › Enable <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH https://&lt;organization&gt;/api/data/v9.2/applications(&lt;applicationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -287,12 +300,8 @@ cost: Variable. Learn says Work IQ consumption that supports a Cowork task is at
 impact: Medium. Users who already hold access to model-driven apps or Dataverse tables, and the makers who write business skills, notice it; ordinary Cowork users see nothing until the plugin is installed for them.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Many users already have the chat tool receiving this write-capable business-data access. | Found: Searched: Copilot Cowork many users available; read Cowork overview, FAQ, application-card and admin-governance excerpts. They establish product availability, not how many users already have access. | Fix: Replace 'inside a chat tool that many users already have' with 'inside Copilot Cowork'.
-- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls table / absence: Installation automation for the Business apps plugin is not documented. | Found: PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... acquireUsersAndGroups ... Users/groups for whom the package is deployed. ... deployedTo ... deployment scope of the package. | Fix: Replace the blanket absence with the general package deployment operation: controls[0].api kind graph, call 'PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}', docs https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update. Replace 'Installation automation is not yet documented' with 'The beta Package Management API updates package deployment through deployedTo and acquireUsersAndGroups and requires a Microsoft Agent 365 licence; identify the plugin package in the tenant catalog before using it.' Add that reference and https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins to sources. Cowork's plugin guide identifies installation as automatic acquisition for target users. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Scope: Default environments / default: Business Applications in Work IQ is on by default for new public production environments, subject to exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: Add: 'The general feature-settings guide still lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences with a default of Off; the dedicated Work IQ default-settings guide states On for new public production environments, with exceptions.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: The feature guide gives Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. Select App Access Control. Select the environment in which you want to enable app access. Select Enable, and then select Save. | Fix: Append to controls[3].note and its rendered note: 'The general App Access guide gives a different route after selecting the environment: Set up app access control > Access control > Enabled, then select an application and Block.' Cite https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode. Retain the feature guide's supported path. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: Security > Identity & access > App Access Control > environment > Enable reaches App Access Control in the Power Platform admin center. | Found: Select Enable, and then select Save. ... Return to the environment and select the applications you want to block from accessing the environment. | Fix: Keep the cited route and append to controls[3].note: 'After enabling and saving, return to the environment and select the applications to block.' The cited feature page gives this remaining step. The general control-app-access-environment page instead documents Set up app access control > Access control > Enabled, then application > Block; acknowledge that alternate documented UI. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
 -->

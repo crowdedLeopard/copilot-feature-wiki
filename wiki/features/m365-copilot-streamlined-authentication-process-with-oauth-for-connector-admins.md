@@ -98,16 +98,18 @@ changes:
     note: "Corrected after the independent check: summary no longer says no action is required, removed an unsupported account-ownership claim and the source-system licence cost claim, and fixed the staged rollout and access permissions paths."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
-  unconfirmed: 0
+  claims: 68
+  confirmed: 67
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
   hash: "163dde4547375015985bf7ff5f534e28"
@@ -202,9 +204,11 @@ cost: Low. The only cost the sources show is admin time; Microsoft Learn publish
 impact: Low. Admins who deploy Copilot connectors notice it at setup; end users see no new feature beyond the connector content itself.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] What's changing: first sentence / behaviour: The guided OAuth experience authorises a connector by consenting in a pop-up flow. | Found: Searched: Copilot connectors OAuth pop-up. Opened Gong, GitHub Cloud Knowledge and monday.com deployment pages and release-note excerpts. monday.com documents a pop-up install window; the other pages do not establish pop-up consent as the general mechanism. | Fix: Replace the first sentence with: 'Microsoft 365 Copilot connector setup now offers a guided OAuth sign-in, so an admin signs in and grants the connector access to its source system.' The Gong, GitHub and monday.com deployment pages document sign-in and granting access, but not a universal pop-up consent mechanism.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note; Risk assessment: Data exposure; Governance controls / behaviour: Microsoft says access permissions cannot currently be updated after the connection is created. | Found: Updating access permissions after you create the connection isn't currently supported. | Fix: After the existing statement, add: 'The monday.com deployment page differs: its Customize settings section says default values can be customized after creation and includes Access permissions.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/monday-deployment#customize-settings-optional. Retain the manage-access-permissions guidance as attributed guidance rather than silently resolving the disagreement. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Federated connectors that can write to source systems are distinct from this synced connector authentication change. | Found: Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf. | Fix: Remove the sentence beginning 'Federated connectors that can write to source systems' to avoid an unnecessary cross-feature documentation conflict: https://learn.microsoft.com/microsoft-365/copilot/connectors/overview#types-of-copilot-connectors still calls federated connectors read-only while also announcing write actions starting early October 2026. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] controls[2].note; Risk assessment: Data exposure; Governance controls / behaviour: Microsoft says updating access permissions after connection creation is not currently supported. | Found: Updating access permissions after you create the connection isn't currently supported. | Fix: After the attributed manage-access-permissions guidance, add: 'The monday.com deployment page differs: it says default values can be customized after creation through Custom setup and includes Access permissions among those settings.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/monday-deployment#customize-settings-optional. Do not silently resolve the disagreement. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Federated connectors capable of writing to source systems are distinct from the synced connector OAuth authentication change. | Found: Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf. | Fix: Remove the sentence 'Federated connectors that can write to source systems are a separate feature (see /features/m365-copilot-federated-connectors-write-update-delete/).' The cited federated overview supports write actions, but https://learn.microsoft.com/microsoft-365/copilot/connectors/overview#types-of-copilot-connectors still describes federated connectors as read-only alongside an October 2026 write-actions announcement. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->

@@ -43,6 +43,9 @@ sources:
   - title: "Connect apps to get visibility and control with Microsoft Defender for Cloud Apps"
     url: "https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps"
     kind: "learn"
+  - title: "How Defender for Cloud Apps helps protect your Box environment"
+    url: "https://learn.microsoft.com/defender-cloud-apps/protect-box"
+    kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
@@ -71,15 +74,15 @@ controls:
       path: "Insider Risk Management > Settings > Policy indicators"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators"
     api: null
-    note: "Applies to all insider risk policies. Needs the Insider Risk Management or Insider Risk Management Admins role group."
+    note: "Applies to all insider risk policies. Members of the Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings."
   - governs: "Which indicators bring users into scope of a Data leaks policy"
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Policies > Create policy > Policy template > Data leaks > Triggers for this policy > User performs an exfiltration activity triggering event"
+      path: "Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > Triggers for this policy > User performs an exfiltration activity triggering event"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     api: null
-    note: "Also offered in the Data leaks by priority users template. Only indicators turned on for the organisation can be selected."
+    note: "Also in Data leaks by priority users. Only indicators turned on for the organisation can be selected. On Content to prioritize, I don't want to specify priority content right now skips the priority content pages."
   - governs: "Whether Purview pay-as-you-go billing, which these indicators require, is linked to an Azure subscription"
     scope: "tenant"
     ui:
@@ -124,19 +127,23 @@ changes:
     note: "New briefing: cloud storage, cloud service and Microsoft Fabric indicators as triggers in Data leaks policies, with pay-as-you-go meter and controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the triggering-event rule, the role group wording, the Data leaks policy creation path and the templates offering exfiltration triggers; removed the unsupported custom threshold steps."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 67
+  claims: 79
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "78148bedaf01ae113aed76cd553aac3a"
+  contradicted: 1
+  attempts: 0
+  hash: "dcee85da56ba56666794b22d02ce2f53"
 ---
 
 ## What's changing
@@ -151,7 +158,7 @@ The roadmap item is **Launched**, with preview targeted for June CY2026 and gene
 
 ## Why it matters
 
-Until a trigger fires, a Data leaks policy does not score a user. Using activity in Box, Google Drive, AWS or a Power BI workspace as the trigger lets an insider risk team start scoring on the place data actually leaves, rather than waiting for a high-severity DLP alert in Exchange, SharePoint or OneDrive. It also widens what the IRM team watches about named people into third-party clouds and Fabric, which matters to works councils and privacy reviews.
+A policy does not evaluate a user without a triggering event unless an administrator manually adds the user in the Users dashboard. Using activity in Box, Google Drive, AWS or a Power BI workspace as the trigger lets an insider risk team start scoring on the place data actually leaves, rather than waiting for a high-severity DLP alert in Exchange, SharePoint or OneDrive. It also widens what the IRM team watches about named people into third-party clouds and Fabric, which matters to works councils and privacy reviews.
 
 The cost decision comes first. These indicators only work with pay-as-you-go billing, and each 10,000 user activities processed is a billable unit. A trigger on a busy activity, such as viewing Power BI reports, can bring many users into scope and raise processing. If nobody acts, nothing changes: the indicators stay off until an admin selects them.
 
@@ -162,7 +169,7 @@ The cost decision comes first. These indicators only work with pay-as-you-go bil
 - Activity is scored for users in policy scope and shown to IRM analysts and investigators; usernames are pseudonymised by default.
 
 **Security & identity**
-- Who can turn indicators on and set triggers is decided by the *Insider Risk Management* and *Insider Risk Management Admins* role groups (see controls table).
+- Members of the *Insider Risk Management* and *Insider Risk Management Admins* role groups can configure policies and settings (see controls table).
 - Enabling pay-as-you-go is limited to the Global Administrator role.
 
 **Autonomy & actions**
@@ -184,10 +191,10 @@ The cost decision comes first. These indicators only work with pay-as-you-go bil
 
 ## Scope
 
-- **Policies:** the *Data leaks* and *Data leaks by priority users* templates, the only templates whose triggering events can be customised.
+- **Policies:** the *Data leaks* and *Data leaks by priority users* templates offer the **User performs an exfiltration activity triggering event** option.
 - **Services:** Box, Dropbox, Google Drive, Amazon S3, Azure (SQL Server and Storage), Microsoft Fabric (Power BI, Lakehouse).
 - **Prerequisites:** pay-as-you-go billing linked to an Azure subscription and resource group in the same tenant; for cloud storage and cloud service indicators, the apps connected in Microsoft Defender for Cloud Apps.
-- **Roles:** *Insider Risk Management* or *Insider Risk Management Admins* role group to configure policies and settings; Global Administrator to enable pay-as-you-go.
+- **Roles:** members of the *Insider Risk Management* and *Insider Risk Management Admins* role groups can configure policies and settings; Global Administrator to enable pay-as-you-go.
 - **Cloud:** Worldwide (Standard Multi-Tenant), per the roadmap item. **Platform:** Web.
 
 ## Governance guidance
@@ -201,12 +208,11 @@ The cost decision comes first. These indicators only work with pay-as-you-go bil
 ### At rollout
 - Turn on only the cloud storage, cloud service or Fabric indicators you intend to use under Insider Risk Management > Settings > Policy indicators.
 - Select the trigger indicators on the Triggers for this policy page of a Data leaks policy, starting with a small set of users.
-- Choose custom thresholds for trigger indicators on high-volume activity, such as viewing Power BI reports.
 
 ### After rollout
 - Check the Insider Risk Management Pay-as-you-go report weekly in the first month for processing growth.
 - Turn off indicators for apps you do not need in Policy indicators settings.
-- Review alert volume from the new triggers with the analyst team and adjust thresholds.
+- Review alert volume from the new triggers with the analyst team.
 
 ## Governance controls
 
@@ -215,8 +221,8 @@ The cost decision comes first. These indicators only work with pay-as-you-go bil
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which cloud storage, cloud service and Microsoft Fabric indicators are available to insider risk policies</strong><br><small>Tenant</small><br><small class="controls__note">Applies to all insider risk policies. Needs the Insider Risk Management or Insider Risk Management Admins role group.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which indicators bring users into scope of a Data leaks policy</strong><br><small class="controls__note">Also offered in the Data leaks by priority users template. Only indicators turned on for the organisation can be selected.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › Data leaks › Triggers for this policy › User performs an exfiltration activity triggering event <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which cloud storage, cloud service and Microsoft Fabric indicators are available to insider risk policies</strong><br><small>Tenant</small><br><small class="controls__note">Applies to all insider risk policies. Members of the Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which indicators bring users into scope of a Data leaks policy</strong><br><small class="controls__note">Also in Data leaks by priority users. Only indicators turned on for the organisation can be selected. On Content to prioritize, I don't want to specify priority content right now skips the priority content pages.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › policy category › Data leaks › Content to prioritize › Triggers for this policy › User performs an exfiltration activity triggering event <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Purview pay-as-you-go billing, which these indicators require, is linked to an Azure subscription</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator only. The subscription and resource group are chosen here. Learn marks this enablement flow as preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which third-party cloud apps are connected to Defender for Cloud Apps, as cloud storage and service indicators need</strong><br><small>Tenant</small><br><small class="controls__note">Each app has its own connector guide (Box, Dropbox, Google Workspace, AWS).</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Cloud Apps › Connected apps › App Connectors › +Connect an app <a href="https://learn.microsoft.com/defender-cloud-apps/protect-dropbox" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">The Insider Risk Management Admins role group can also configure policies and settings.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -224,7 +230,7 @@ The cost decision comes first. These indicators only work with pay-as-you-go bil
 </tbody>
 </table>
 
-Turning an indicator on in **Policy indicators** makes it available to every insider risk policy; a trigger applies only in the Data leaks policies where it is selected. Triggers are configurable only in the *Data leaks* and *Data leaks by priority users* templates. The Defender for Cloud Apps connection is the documented prerequisite for cloud storage and cloud service indicators; Learn names pay-as-you-go as the prerequisite for Fabric indicators. Members of these role groups who are scoped by admin units can still configure global settings, which apply tenant-wide, while their policy configuration is limited to their scope. Role group changes can take up to 30 minutes to apply.
+Turning an indicator on in **Policy indicators** makes it available to every insider risk policy; a trigger applies only in the Data leaks policies where it is selected. The *Data leaks* and *Data leaks by priority users* templates offer the **User performs an exfiltration activity triggering event** option. The Defender for Cloud Apps connection is the documented prerequisite for cloud storage and cloud service indicators; Learn names pay-as-you-go as the prerequisite for Fabric indicators. Members of these role groups who are scoped by admin units can still configure global settings, which apply tenant-wide, while their policy configuration is limited to their scope. Role group changes can take up to 30 minutes to apply.
 
 ## Open questions
 
@@ -239,16 +245,12 @@ cost: Variable. These indicators are billed on the Microsoft Purview data securi
 impact: Low. Insider risk administrators and analysts are the people who see the new trigger options and the alerts they raise.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: first sentence / behaviour: Until a trigger fires, a Data leaks policy does not score a user. | Found: If you add a user to an Insider Risk Management policy but the user doesn't have a triggering event, the policy doesn't evaluate the user's activity unless you manually add the user in the Users dashboard. | Fix: Replace the sentence with: 'A policy does not evaluate a user without a triggering event unless an administrator manually adds the user in the Users dashboard.' This exception is documented at https://learn.microsoft.com/purview/insider-risk-management-policy-templates#policy-template-prerequisites-and-triggering-events. | Source: https://learn.microsoft.com/purview/insider-risk-management-policy-templates
-- [contradicted, blocker] controls[0].note / role: Configuring indicators needs membership in the Insider Risk Management or Insider Risk Management Admins role group. | Found: Members of the following roles can assign users to Insider Risk Management role groups and have the same solution permissions included with the Insider Risk Management Admins role group: | Fix: Replace 'Needs the Insider Risk Management or Insider Risk Management Admins role group' with 'Members of the Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.' Use the same non-exclusive wording for the Security & identity and Scope role statements. The permissions page also grants these solution permissions to Global Administrator, Compliance Administrator, and the Microsoft Purview Organization Management and Compliance Administrator role groups. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
-- [contradicted, blocker] controls[1].ui / admin-path: The printed creation route goes directly from Policy template > Data leaks to Triggers for this policy. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. I don't want to specify priority content right now. Select this option to skip the priority content detail pages in the workflow. | Fix: Replace controls[1].ui.path with 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Content to prioritize > I don't want to specify priority content right now > Triggers for this policy > User performs an exfiltration activity triggering event'. Add to the note: 'This route skips optional priority content; complete the name fields and choose the policy user scope on the intervening wizard pages.' The category choice and priority-content branch are documented at https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure, Box connection / behaviour: Connecting Box asks its admin to permit access to team information and the activity log. | Found: Box asks you if you want to allow Defender for Cloud Apps access to your team information, activity log, and perform activities as a team member. | Fix: Add https://learn.microsoft.com/defender-cloud-apps/protect-box to sources for the Box permission statement. | Source: https://learn.microsoft.com/defender-cloud-apps/protect-box
-- [supported, minor] Scope: Policies; Governance controls / behaviour: Only Data leaks and Data leaks by priority users have customisable triggering events. | Found: You can only modify triggering events for policies created from the Data leaks or Data leaks by priority users templates. Policies created from all other templates don't have customizable triggering indicators or events. | Fix: Replace the broad 'only' statements with: 'The Data leaks and Data leaks by priority users templates offer the User performs an exfiltration activity triggering event option.' The cited Get started page also documents Communication Compliance and HR event choices for Data leaks by risky users and Security policy violations by risky users at https://learn.microsoft.com/purview/insider-risk-management-configure#step-6-required-create-an-insider-risk-management-policy. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators
-- [supported, minor] controls[2].ui / admin-path: Settings > Account details in the Microsoft Purview portal is the entry to subscription-based pay-as-you-go enablement. | Found: Select Get Started in the ribbon menu to start the process. This can also be done from Settings > Account details. | Fix: The route correctly reaches the enablement page but stops before the subscription and resource-group selections. Keep the path and narrow the note to: 'Entry to the preview subscription-based enablement flow for organisations not using classic Azure Purview data governance pricing. Select an active Azure subscription, then a resource group in that subscription.' | Source: https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement
-- [supported, minor] controls[3].ui / admin-path: The Defender portal route to app connectors is Settings > Cloud Apps > Connected apps > App Connectors > +Connect an app. | Found: In the Microsoft Defender Portal, select Settings. Then choose Cloud Apps. Under Connected apps, select App Connectors. In the App connectors page, select +Connect an app, followed by Dropbox. | Fix: The route correctly reaches the connector chooser. Append ' > app' to controls[3].ui.path and replace its note with: 'Choose the app, then complete its connector guide; the Dropbox guide continues through Connect Dropbox and provider authorisation. The general connect-apps page also documents Cloud Apps > Connected apps > Connect an app or Add a new connector.' | Source: https://learn.microsoft.com/defender-cloud-apps/protect-dropbox
-- [contradicted, minor] Governance guidance: At rollout, custom thresholds; controls table / consistency: The checklist directs administrators to choose custom trigger thresholds, but the controls table stops at selecting the triggering event. | Found: Choose custom thresholds for trigger indicators on high-volume activity ... controls[1] ends at User performs an exfiltration activity triggering event; no row covers custom thresholds. | Fix: Remove the checklist bullet 'Choose custom thresholds for trigger indicators on high-volume activity, such as viewing Power BI reports' and remove 'and adjust thresholds' from the final checklist bullet. This removes the unmatched configuration instructions without adding control rows.
+- [supported, minor] Cost and licensing: Watching spend / behaviour: Microsoft Purview has a Usage center for viewing billing usage. | Found: The Microsoft Purview Usage center feature is in preview. | Fix: Change the Usage center phrase to 'Purview has a Usage center in preview', and cite https://learn.microsoft.com/purview/purview-billing-usage. | Source: https://learn.microsoft.com/purview/purview-billing-usage
+- [supported, minor] controls[1].ui / admin-path: The Data leaks creation route reaches Triggers for this policy > User performs an exfiltration activity triggering event through the policy template and Content to prioritize pages. | Found: If you select the User performs an exfiltration activity triggering event option, you must select one or more of the listed indicators for the policy triggering event. | Fix: The note already supplies the priority-content choice. Put it in the route and include the omitted user-scoping page: 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Data leaks > Users and groups > Include specific users and groups > Content to prioritize > I don't want to specify priority content right now > Triggers for this policy > User performs an exfiltration activity triggering event'. Keep the existing note; names, description and Next buttons need not be path steps. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
+- [supported, minor] controls[2].ui / admin-path: Microsoft Purview portal > Settings > Account details is a route into pay-as-you-go enablement. | Found: Select Get Started in the ribbon menu to start the process. This can also be done from Settings > Account details. | Fix: Complete the route as 'Settings > Account details > Azure subscription > resource group'. Retain the Global Administrator and preview qualifications. | Source: https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement
+- [supported, minor] controls[3].ui / admin-path: Microsoft Defender portal > Settings > Cloud Apps > Connected apps > App Connectors > +Connect an app starts connector configuration. | Found: In the Microsoft Defender Portal, select Settings. Then choose Cloud Apps. Under Connected apps, select App Connectors. 2. In the App connectors page, select +Connect an app, followed by Dropbox. | Fix: The path correctly reaches the connector-management page but stops before app-specific authorization. Keep it and append this note: 'This starts connector setup; for Dropbox, select Dropbox, provide the connector name and admin email, then on Follow the link select Connect Dropbox and authorize access on the Dropbox sign-in page. Follow each other app's own connector guide.' | Source: https://learn.microsoft.com/defender-cloud-apps/protect-dropbox
+- [contradicted, minor] Cost and licensing: Watching spend / consistency: The Usage center mentioned in the prose appears in the controls table. | Found: Prose: 'Purview has a Usage center (controls table)'. The table's billing report row instead gives 'Insider Risk Management > Reports > Pay-as-you-go'; there is no Usage center row. | Fix: Remove '(controls table)' after 'Usage center'. Do not add a control row.
 -->

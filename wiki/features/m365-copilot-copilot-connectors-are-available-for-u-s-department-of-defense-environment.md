@@ -110,19 +110,23 @@ changes:
     note: "Corrected the role note: connector deployment needs the AI administrator role, while assigning user licences needs at least a License or User Administrator. Extended the deployment path to Create and added two source pages."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Replaced the controls note on government-cloud enablement with the service description's own wording, and removed four checklist steps (role assignment, identity mapping, full crawls, firewall ranges) that had no row in the controls table."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "698c31b315e35cc0dd5ab5eafb48667f"
+  claims: 77
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "afaf52ac5240e5c37b574b678828db7f"
 ---
 
 ## What's changing
@@ -184,17 +188,14 @@ If nobody acts, the service description's government-cloud note means external c
 ### Before rollout
 - Decide with the authorising official and records owner which external systems may be indexed into the DoD tenant, since indexed data becomes Customer Data under Microsoft's terms.
 - Confirm which users hold the Microsoft 365 Copilot licence, because Copilot grounding on connector data needs it and Microsoft Search alone does not.
-- Prepare a least-privilege service account in each source system, and allow the usdodcentral and usdodeast ranges if the source uses an IP firewall.
-- Assign the AI administrator role only to the people who will deploy connections.
+- Prepare a least-privilege service account in each source system.
 
 ### At rollout
 - Create each connection under Copilot > Connectors and deploy it to a subset of users for validation first.
 - Choose Custom setup and set Access Permissions on the Users tab to Only users with access to the content unless the source content is meant for everyone.
-- Check the identity mapping on the Users tab against a sample of users before widening the rollout.
 
 ### After rollout
 - Test that a user without access in the source system cannot find its items in Copilot or Microsoft Search.
-- Schedule full crawls on connections whose source permissions change, since incremental crawls don't process permission updates.
 - Watch Message center for how Microsoft enables external connections in government clouds and for connectors in Copilot Search for DoD.
 
 ## Governance controls
@@ -210,7 +211,7 @@ If nobody acts, the service description's government-cloud note means external c
 </tbody>
 </table>
 
-Connector deployment and gallery access configuration require the AI administrator role. Assigning user licences requires at least a License or User Administrator. The access setting on the Users tab applies to connectors deployed from the gallery; custom connectors built on the Graph API set an access control list (acl) on each item they push instead. Neither control decides whether external connections are enabled for a government-cloud tenant in the first place: Microsoft's service description says they aren't enabled by default there but does not give the switch. Licence assignment decides who gets Copilot grounding, not who sees connector results in Microsoft Search.
+Connector deployment and gallery access configuration require the AI administrator role. Assigning user licences requires at least a License or User Administrator. The access setting on the Users tab applies to connectors deployed from the gallery; custom connectors built on the Graph API set an access control list (acl) on each item they push instead. Microsoft's service description says external connections and partner connectors are not enabled by default for government clouds, but does not describe how they are enabled. Licence assignment decides who gets Copilot grounding, not who sees connector results in Microsoft Search.
 
 ## Open questions
 
@@ -223,12 +224,4 @@ Connector deployment and gallery access configuration require the AI administrat
 risk: Low. Microsoft's service description says external connections and partner connectors aren't enabled by default for government clouds, so nothing is indexed until an administrator deploys a connection.
 cost: Low. Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences, and grounding in Copilot is included with the Microsoft 365 Copilot add-on; the cost is admin time to plan and run connections.
 impact: Low. Administrators notice first; users see external content in Copilot and Microsoft Search only after an AI administrator deploys a connection to them.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance controls prose / applicability: Neither connection deployment nor access-permission configuration decides whether external connections are enabled for a government-cloud tenant in the first place. | Found: Searched: Copilot connectors government clouds DoD external connections partner connectors enable default switch; Copilot connectors government enable external connections. Opened service description, deployment-overview and manage-connector; none states this separation from deployment. | Fix: Replace the sentence beginning 'Neither control decides' with: 'Microsoft's service description says external connections and partner connectors are not enabled by default for government clouds, but does not describe how they are enabled.' Do not assert that deployment cannot enable them.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: All controls that the governance checklist asks administrators to set or check appear in the controls table. | Found: Checklist: 'Assign the AI administrator role', 'Check the identity mapping on the Users tab', 'Schedule full crawls', and 'allow the usdodcentral and usdodeast ranges'. Table: connection deployment, access permissions and user licence assignment only. | Fix: The role-assignment, identity-mapping, crawl-scheduling and source-firewall checklist steps have no corresponding controls-table row. Remove these steps from Governance guidance to reconcile the checklist with the existing table; their documented background in Risk assessment and Scope can remain.
 -->

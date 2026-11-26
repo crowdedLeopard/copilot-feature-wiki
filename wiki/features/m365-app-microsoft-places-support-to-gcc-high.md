@@ -12,13 +12,13 @@ platforms: ["Desktop","Web"]
 targetDate: "December CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
   model: "mixed"
-  notes: "Core features come with the user plans on Microsoft's Places licence page. Individual desk booking, autorelease and occupancy reports use MTSS or MTSS-SS for individual desks; room autorelease and occupancy reports use MTR, MTSS or MTSS-SS. Active Teams Premium subscriptions keep premium features until renewal. Copilot room booking needs a Microsoft Copilot licence."
+  notes: "Core features come with the user plans on Microsoft's Places licence page. Individual desks need MTSS or MTSS-SS for booking, autorelease and occupancy reports; rooms need MTR, MTSS or MTSS-SS for autorelease and occupancy reports. Teams Premium bought before April 1, 2026 keeps Places premium capabilities until renewal. Copilot room booking needs a Microsoft Copilot licence."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["microsoft-places","outlook","teams","exchange","powershell","licensing","privacy","gcc-high"]
 sources:
@@ -105,7 +105,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Roles > Role assignments > Exchange > Places Administrator > Assigned"
+      path: "Roles > Role assignments > Exchange > Places Administrator > Assigned > Add users"
       docs: "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins"
     api:
       kind: "graph"
@@ -125,19 +125,23 @@ changes:
     note: "Corrected: work-location sharing is each user's choice; added the Teams Premium transition until renewal and the per-space licence split for rooms and desks; PowerShell 7.4.0 minimum; Room finder remains the default; removed the audit-search step."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 93 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: cost rated medium, since desk booking, autorelease, occupancy reports and AI features can need extra licences; Teams Premium transition narrowed to pre-April 2026 purchases; role path ends at Add users."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 108 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 92
+  claims: 108
+  confirmed: 108
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "7771379cacb31e9110b70bbfc831feaf"
+  contradicted: 0
+  attempts: 0
+  hash: "68546a1fe46f129bc21c273212ce27a0"
 ---
 
 ## What's changing
@@ -175,7 +179,7 @@ If nobody acts, the documented default means the Places app reaches every user, 
 
 **User licence.** Microsoft's [Places licence page](https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements) lists Microsoft 365 Business Basic, Standard and Premium; Microsoft 365 or Office 365 E1, E3 and E5; Education A1, A3 and A5; frontline F1 and F3; and Teams Enterprise, Essentials and standalone. Core features (work plans, workplace presence, room and workspace booking, Places finder, Places explorer, analytics with limitations) come with those plans. The page names no government plans, so which GCC High plans carry Places is not yet published.
 
-**Space licences.** As of April 1, 2026, individual desk booking, autorelease and occupancy reports moved to a per-space model: rooms need an MTR, MTSS or MTSS-SS licence, and individual desks an MTSS or MTSS-SS licence. Customers with active Teams Premium subscriptions continue to enjoy premium features until renewal. Microsoft says three free MTSS-SS licences come with each purchased MTSS licence, except where the MTSS licence is used on a common area phone.
+**Space licences.** As of April 1, 2026, individual desk booking, autorelease and occupancy reports moved to a per-space model: rooms need an MTR, MTSS or MTSS-SS licence, and individual desks an MTSS or MTSS-SS licence. Customers who purchased Teams Premium before April 1, 2026 can continue using Places premium capabilities until renewal. Microsoft says three free MTSS-SS licences come with each purchased MTSS licence, except where the MTSS licence is used on a common area phone.
 
 **AI features.** Quick book and Copilot room booking need a Microsoft Copilot licence.
 
@@ -219,7 +223,7 @@ If nobody acts, the documented default means the Places app reaches every user, 
 <tr><td data-label="Control"><strong>Which users can use Places finder and book individual desks</strong><br><small>Group</small><br><small class="controls__note">The only setting the reference documents for OID scoping; use a mail-enabled security group, up to 20 OIDs.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -PlacesFinderEnabled 'Default:false,OID:[OID]@[TID]:true'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users can see Places analytics occupancy data</strong><br><small>Tenant</small><br><small class="controls__note">Off by default for all users. Buildings are enabled for analytics separately.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlacesSettings -SpaceAnalyticsEnabled 'Default:false'</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a user keeps the Places Enhanced service plan</strong><br><small>User</small><br><small class="controls__note">$addLicenses carries DisabledPlans with plan ID f8566154-2a62-48cb-a0ab-d4d25be26e51. Re-apply after each new Teams Premium assignment.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and apps › Apps › Places Enhanced <a href="https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses $addLicenses -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who holds the Places Administrator role that enables and disables Places features</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets principalId and roleDefinitionId (the Places Administrator role). Global and Exchange Administrators can also manage all of Places.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Roles › Role assignments › Exchange › Places Administrator › Assigned <a href="https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who holds the Places Administrator role that enables and disables Places features</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets principalId and roleDefinitionId (the Places Administrator role). Global and Exchange Administrators can also manage all of Places.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Roles › Role assignments › Exchange › Places Administrator › Assigned › Add users <a href="https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -236,15 +240,6 @@ Turning Places off for the whole organisation takes two steps, per Microsoft: se
 
 <!-- rationale
 risk: Medium. Users who share their work location let colleagues see when they are in the office; the Places app setting is documented as on by default, and the switches that limit it are PowerShell-only settings an admin has to set.
-cost: Low. Core Places features come with the Microsoft 365, Office 365 and Teams plans Microsoft lists; desk booking, autorelease and occupancy reports need space licences (active Teams Premium subscriptions keep premium features until renewal), and which GCC High plans carry Places is not yet published.
+cost: Medium. Core Places features are included in the listed user plans, but individual desk booking, autorelease, occupancy reports and AI features can require additional licences. GCC High entitlement is not yet published.
 impact: Medium. Users may see the Places app in Outlook, Teams and the Microsoft 365 app, but buildings, Places finder and analytics are off until an admin configures them, so most of the change is felt by facilities teams and admins.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: A low cost rating represents the briefing's documented space and Copilot licence costs. | Found: cost: "low" Cost scale: low = indirect cost only: admin time, communications, training. Page: rooms need an MTR, MTSS or MTSS-SS licence, and individual desks an MTSS or MTSS-SS licence. Page: Quick book and Copilot room booking need a Microsoft Copilot licence. | Fix: Set cost to 'medium' and replace its rationale with 'Medium. Core Places features are included in the listed user plans, but individual desk booking, autorelease, occupancy reports and AI features can require additional licences. GCC High entitlement is not yet published.' This keeps the stated mixed licensing and the documented potential direct costs consistent with the assessment scale.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[5].ui / admin-path: Roles > Role assignments > Exchange > Places Administrator > Assigned reaches the Places Administrator assignment list in Microsoft 365 admin center. | Found: Go to Roles > Role assignments. Under the Exchange tab, select Places Administrator, then go to the Assigned tab. Add users to the role. | Fix: Extend controls[5].ui.path and the rendered path to 'Roles > Role assignments > Exchange > Places Administrator > Assigned > Add users'. The present path stops on the correct assignment list before the documented action that changes membership. | Source: https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins
-- [supported, minor] licensing.notes; Cost and licensing; rationale: cost / licensing: Active Teams Premium subscriptions keep Places premium features until renewal. | Found: To ensure a smooth transition, customers with active Teams Premium subscriptions continue to enjoy premium features until renewal. | Fix: Replace the transition sentence and corresponding licensing notes/rationale with 'Customers who purchased Teams Premium before April 1, 2026 can continue using Places premium capabilities until renewal.' The cited FAQ gives this narrower eligibility condition: https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements
 -->

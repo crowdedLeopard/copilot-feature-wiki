@@ -102,15 +102,17 @@ changes:
     note: "Corrected: removed the unsupported March 20, 2026 pause claim, set licensing to included (Copilot Chat needs an eligible Microsoft 365 subscription, no extra Copilot license), and cited the Edge privacy page for text transfer."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -219,8 +221,10 @@ cost: Low. The writing features need access to Microsoft 365 Copilot Chat, which
 impact: High. Microsoft's notice says Writing Assistance is enabled by default for Edge for Business users, so eligible users will see a new option in the right-click menu on editable text.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: With the policy unconfigured, users can turn Commercial Writing off using 'Collaborate with Copilot as you write on the web' in Edge settings. | Found: Users can turn Commercial Writing off using 'Collaborate with Copilot as you write on the web' in Microsoft Edge settings. | Fix: Append: "Microsoft's Edge privacy page instead names the user toggle 'Draft with Microsoft 365 Copilot as you write on the web' under Settings > Languages > Writing assistance (https://learn.microsoft.com/legal/microsoft-edge/privacy#compose); the two pages differ on this label." Keep the policy-reference wording attributed to that reference. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled
+- [supported, minor] title; What's changing / record: Microsoft plans to upgrade Writing Assistance in Edge to include enterprise data protection for commercial customers. | Found: is being updated to include enterprise data protection for commercial customers. | Fix: Append to the rollout paragraph: "The archived Edge Beta release notes for version 141.0.3537.25 (September 17, 2025) also describe this upgrade as a controlled feature rollout; the current roadmap remains In development and MC1146821 expects Worldwide GA in late January 2027." Cite https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-beta-channel#version-1410353725-september-17,-2025.
+- [supported, minor] Governance controls / admin-path: The policy reference says users can disable unconfigured Commercial Writing using 'Collaborate with Copilot as you write on the web'. | Found: Users can turn Commercial Writing off using 'Collaborate with Copilot as you write on the web' in Microsoft Edge settings. | Fix: Append: "Microsoft's Edge privacy page instead names the user toggle 'Draft with Microsoft 365 Copilot as you write on the web' under Settings > Languages > Writing assistance (https://learn.microsoft.com/legal/microsoft-edge/privacy#compose); the two pages differ on this label." Keep the policy-reference wording attributed to that reference. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Commercial Writing is located under Group Policy Administrative Templates > Microsoft Edge. | Found: GP name: Commercial Writing GP path (Mandatory): Administrative Templates/Microsoft Edge GP ADMX file name: MSEdge.admx | Fix: Set controls[0].ui.path and its rendered table path to 'Administrative Templates > Microsoft Edge > Commercial Writing'. The current path reaches the correct policy folder but stops before selecting the documented setting. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled
 -->

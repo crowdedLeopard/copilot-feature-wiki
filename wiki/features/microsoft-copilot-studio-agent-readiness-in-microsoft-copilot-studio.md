@@ -112,17 +112,19 @@ changes:
     note: "Corrected after verification: removed the statement that Microsoft Learn names no role for the guidance settings, and the matching role wording in Open questions."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "9ee22629b1384b947f4b31a73d59ce01"
 ---
@@ -226,8 +228,11 @@ cost: Low. Microsoft Learn names no licence or meter for Review itself; the cost
 impact: Medium. Makers building agents on the Microsoft Copilot harness see the Review icon and disabled items, and their questions about policy blocks will reach admins.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: managed-environments parenthetical / licensing: Managed environments have a licensing condition. | Found: When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters. | Fix: Add https://learn.microsoft.com/power-platform/admin/managed-environment-licensing to sources as 'Licensing requirements for managed environments' to support the existing reference to that tier's licensing condition. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-licensing
+- [supported, minor] Cost and licensing: managed-environments parenthetical / licensing: Managed environments have a licensing condition. | Found: When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters. | Fix: Add https://learn.microsoft.com/power-platform/admin/managed-environment-licensing to sources with the title 'Licensing requirements for managed environments', supporting the existing parenthetical. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-licensing
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Copilot > Settings > Maker guidelines > Environments > environment > Edit setting reaches the Maker guidelines configuration panel. | Found: Select Copilot > Settings, and then select Maker guidelines. Select the Environments tab, select the environment, and then select Edit setting. ... Under Where to show the message, select Maker selects Review. | Fix: Extend controls[2].ui.path and its rendered copy to 'Copilot > Settings > Maker guidelines > Environments > environment > Edit setting > Where to show the message > Maker selects Review' as documented at https://learn.microsoft.com/power-platform/admin/maker-guidelines. | Source: https://learn.microsoft.com/power-platform/admin/maker-guidelines
+- [supported, minor] controls[3].ui; Governance controls table; Governance guidance: At rollout / admin-path: Copilot > Settings > Copilot Studio > Maker guidance > environment > Edit setting reaches custom guidance configuration. | Found: under the Copilot Studio section, select Maker guidance. ... select the environments or environment groups ... Select Edit setting ... Under Agent status, select either or both ... check boxes. | Fix: Extend controls[3].ui.path and its rendered copy to 'Copilot > Settings > Copilot Studio > Maker guidance > environment > Edit setting > Agent status > Display guidance messaging in popovers for blocked items' as documented at https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status. | Source: https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks readers to check which environments are managed, but the controls table has no row for that control. | Found: Check which environments are managed, since the maker guidelines setting is documented as available only for managed environments. The table lists data policies, error guidance, Maker guidelines, Maker guidance and the absent Review switch. | Fix: Remove 'Check which environments are managed, since the maker guidelines setting is documented as available only for managed environments.' from Before rollout; that managed-environment control check has no table row. Retain the existing managed-environment prerequisite elsewhere.
 -->

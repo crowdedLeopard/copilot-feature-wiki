@@ -34,6 +34,12 @@ sources:
   - title: "externalConnection resource type"
     url: "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-beta"
     kind: "learn"
+  - title: "externalConnection resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Microsoft Graph permissions reference"
+    url: "https://learn.microsoft.com/graph/permissions-reference#externalconnectionreadwriteownedby"
+    kind: "learn"
   - title: "Manage connector connections"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector"
     kind: "learn"
@@ -71,19 +77,23 @@ changes:
     note: "New briefing: documents today's names and icons for custom connectors, the Graph rename call, and the undocumented icon setting."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: Scope now says delegated Graph access needs an administrator; the inventory step gives the full admin centre path; the autonomy bullet is narrowed to what the roadmap describes."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 56
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "055b70f4e2c6ac0c55835339aba31b99"
+  claims: 73
+  confirmed: 73
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c420b0962f1cfc92c2ccb27158541395"
 ---
 
 ## What's changing
@@ -110,7 +120,7 @@ Microsoft has not stated what happens on arrival, and no source says existing co
 - A custom connector given a name or icon that resembles a Microsoft or well-known source could mislead users choosing where an answer comes from.
 
 **Autonomy & actions**
-- No change: the feature performs no actions on its own.
+- The roadmap describes icon and display-name customisation, not new autonomous actions.
 
 **Change & support**
 - A renamed connection changes the label users pick in the Copilot Search source filter and can change how Copilot matches requests to it. Tell users before renaming a source they already filter on.
@@ -124,7 +134,7 @@ The cost the sources show is time: developers updating connection names and icon
 ## Scope
 
 - **Connectors:** custom Copilot connectors, built with the Copilot connectors API or SDK. Learn documents separate behaviour for each today (see What's changing).
-- **Roles:** the [Manage connector connections](https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector) page says managing Copilot connectors in the admin centre requires the AI administrator role. The Graph update call uses application or delegated permissions (row 1).
+- **Roles:** the [Manage connector connections](https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector) page says managing Copilot connectors in the admin centre requires the AI administrator role. The Graph update call supports application permissions or delegated work-or-school permissions; for delegated access, [the signed-in user must be an administrator](https://learn.microsoft.com/graph/permissions-reference#externalconnectionreadwriteownedby) (row 1).
 - **Clouds:** Worldwide (Standard Multi-Tenant) on the roadmap record. US Government clouds are not listed on the record.
 - **Platforms:** Developer and Web.
 - **Rollout:** the roadmap record gives no rollout mechanics.
@@ -132,7 +142,7 @@ The cost the sources show is time: developers updating connection names and icon
 ## Governance guidance
 
 ### Before rollout
-- List the custom connections on the **Your Connections** tab of the Microsoft 365 admin center and note which show a default name or icon.
+- In the Microsoft 365 admin center, go to Copilot > Connectors > Your Connections, list the custom connections, and note which show a default name or icon.
 - Agree a naming convention with connector owners, following Microsoft's guidance: a representative and concise name, and a description that gives the content type, scope, keywords and alternative names.
 - Identify the apps that hold ExternalConnection.ReadWrite.OwnedBy or ExternalConnection.ReadWrite.All, the permissions the rename call in row 1 uses, and who owns them.
 
@@ -172,13 +182,8 @@ cost: Low. The only cost the sources show is developer and admin time; Copilot c
 impact: Low. Connector developers and AI administrators make the change; users notice only a different source name or icon for custom connectors in Copilot Search.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Roles / role: The Graph update call uses application or delegated permissions, without a stated administrator requirement for delegated access. | Found: Allows the app to read and write settings of external connections on behalf of a signed-in user. The signed-in user must be an administrator. The app can only read and write settings of connections that it is authorized to. | Fix: Replace the Graph sentence in Scope with: 'The Graph update call supports application permissions or delegated work-or-school permissions; for delegated access, the signed-in user must be an administrator (row 1).' Cite https://learn.microsoft.com/graph/permissions-reference#externalconnectionreadwriteownedby. | Source: https://learn.microsoft.com/graph/permissions-reference#externalconnectionreadwriteownedby
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature performs no actions on its own. | Found: Searched: Copilot connectors icons actions automatically; Copilot connectors icons automatically existing. Read roadmap, FAQ, manage-connector and May 19 release-note passage; none explicitly states that the customization feature performs no autonomous actions. | Fix: Replace the bullet with: 'The roadmap describes icon and display-name customization, not new autonomous actions.'
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / admin-path: The inventory instruction starts at the Your Connections tab of the Microsoft 365 admin center, without the navigation needed to reach it. | Found: Go to Copilot > Connectors > Your Connections. | Fix: Replace the bullet with: 'In the Microsoft 365 admin center, go to Copilot > Connectors > Your Connections, list the custom connections, and note which show a default name or icon.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].scope; Risk assessment: Security & identity / applicability: Apps granted the update permissions can rename the connections covered by those permissions. | Found: The app can only read and write external connections that it is authorized to, or it can create new external connections. | Fix: Add https://learn.microsoft.com/graph/permissions-reference#externalconnectionreadwriteownedby to sources to support the permission-scope statement. | Source: https://learn.microsoft.com/graph/permissions-reference#externalconnectionreadwriteownedby
-- [supported, minor] What's changing; controls[1].note; Governance controls / absence: The externalConnection resource reference lists no icon property in v1.0 or beta. | Found: Searched: Graph externalConnection icon; custom Copilot connectors configure icons Graph API. Read Properties and JSON representation at graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0 and ?view=graph-rest-beta; neither lists an icon property. | Fix: Add https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0 to sources; the briefing currently cites only the beta resource reference for its two-version absence claim.
+- [supported, minor] Scope: Roles; Governance controls / role: The cited connector-management page requires the AI administrator role to access and manage connectors in the admin center. | Found: To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization. | Fix: Keep the AI administrator requirement. Add: 'The Microsoft Graph connection-management guide instead says a search admin can view and manage all connections in the tenant.' Cite https://learn.microsoft.com/graph/connecting-external-content-manage-connections, which states: 'A search admin can view and manage all the connections in the tenant'. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
 -->

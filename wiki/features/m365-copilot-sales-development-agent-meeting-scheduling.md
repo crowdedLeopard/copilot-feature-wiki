@@ -116,15 +116,17 @@ changes:
     note: "Corrected after the independent check: the activation row now lists the documented beta activate call, and the checklist and notes cite the Agent 365 page for blocking an agent and no longer mention blocking an instance."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 79 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 79
+  claims: 86
+  confirmed: 86
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -227,4 +229,11 @@ The Block action works on the agent as a whole. The [Agent 365 agent management]
 risk: Medium. The agent would act on its own, writing to a seller's calendar and sending invitations to an external prospect; Microsoft documents admin activation scoping and a Block action, but no switch for scheduling alone.
 cost: Variable. Microsoft publishes Copilot Credits consumption billing for the Sales Development agent public preview from December 1, 2026; general-availability pricing for meeting scheduling is not yet confirmed.
 impact: Low. Sellers and prospects of the sales teams that use a Sales Development agent notice it; the preview page lets admins choose which users or groups can create instances.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The preview activation prerequisites list Microsoft 365 Copilot licenses. | Found: You have the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams. | Fix: After the preview prerequisites paragraph, add: 'Microsoft's preview enrollment pages differ: the Agent 365 Frontier page requires at least one Microsoft E7 license, while Microsoft 365 Resources for Agents permits at least one Microsoft 365 Copilot or E7 license.' Cite https://learn.microsoft.com/microsoft-agent-365/frontier and the existing Resources for Agents source. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
+- [supported, minor] controls[0].api / command: POST /beta/copilot/admin/catalog/packages/{id}/activate activates an onboarded template for its manager audience. | Found: Activate an already-onboarded agent template for the users or groups allowed to create instances from it, and apply the selected policy template. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate | Fix: Append to controls[0].note and its rendered table note: 'The request body sets agentManagerScope for users or groups allowed to create instances and policyTemplateId for the saved policy template.' These properties are already correctly explained in the prose. | Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
 -->

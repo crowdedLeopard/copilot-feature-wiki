@@ -14,8 +14,8 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "user-opt-in"
-action: "none"
+defaultState: "unknown"
+action: "review"
 licensing:
   model: "included"
   notes: "Comes with a Teams licence: the Teams service description lists standard channels in every Teams plan, and Teams is licensed through qualifying Microsoft 365 offerings or a standalone SKU. Nothing specific to this feature is published."
@@ -54,19 +54,23 @@ changes:
     note: "New briefing: roadmap item in development for February CY2027; no admin setting or feature-specific licensing documented yet."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 31 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: the default on arrival is now given as not stated, the data-exposure and actions statements are narrowed to what the roadmap says, and an unsupported note about admin roles is removed."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 36 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 31
-  confirmed: 27
-  unconfirmed: 4
+  claims: 36
+  confirmed: 36
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "b214e74daa3894d68980a520a9910d65"
+  attempts: 0
+  hash: "af2144b983cadac5f6c4b434130612bb"
 ---
 
 ## What's changing
@@ -79,20 +83,20 @@ The item is **In development**, with general availability targeted for **Februar
 
 ## Why it matters
 
-For a service owner this is a support and communication change, not a governance one. The roadmap describes it as something users choose, so expect channel behaviour to change only for people who opt in. The likely support load is users who turned the option on and then report that a channel "opens in the wrong place", or users who expect the option on Teams on the web or mobile, which the roadmap item does not list.
+For a service owner this is a support and communication change, not a governance one. The roadmap describes it as something users choose. The likely support load is users who turned the option on and then report that a channel "opens in the wrong place", or users who expect the option on Teams on the web or mobile, which the roadmap item does not list.
 
-If nobody acts, the roadmap's wording indicates that channels keep opening at the most recent message until a user chooses otherwise. Microsoft Learn documents no admin setting that turns the option on or off for users at the time of writing (November 2026).
+The roadmap presents this as a user choice but does not state which opening position is selected on arrival. Microsoft Learn documents no admin setting that turns the option on or off for users at the time of writing (November 2026).
 
 ## Risk assessment
 
 **Data exposure**
-- No change: the option changes where a channel opens, in channels the user can already read. It reaches no content the user could not already see.
+- The roadmap describes a reading-position choice; it does not describe new data access.
 
 **Security & identity**
 - No change: the roadmap item describes no new permission, sign-in or identity behaviour.
 
 **Autonomy & actions**
-- No change: the feature acts on nothing; it only positions the view.
+- The roadmap describes choosing where a channel opens; it does not describe other actions.
 
 **Change & support**
 - Users who opt in see channels open part-way up the conversation instead of at the newest message. Without a heads-up the service desk may treat this as a fault. Microsoft Learn documents no admin setting to turn it off for them (see the controls table), so the answer is in the user's own client.
@@ -139,7 +143,7 @@ If nobody acts, the roadmap's wording indicates that channels keep opening at th
 </tbody>
 </table>
 
-The roadmap item presents this as each user's choice. Messaging policies are the Teams admin center policies that "control what chat and channel messaging features are available to users in Teams", but the settings Microsoft Learn lists for them, and the parameters of `Set-CsTeamsMessagingPolicy`, include none for where a channel opens at the time of writing (November 2026). No admin role is needed for a control that is not documented; if Microsoft adds one, expect it to appear in Message center first.
+The roadmap item presents this as each user's choice. Messaging policies are the Teams admin center policies that "control what chat and channel messaging features are available to users in Teams", but the settings Microsoft Learn lists for them, and the parameters of `Set-CsTeamsMessagingPolicy`, include none for where a channel opens at the time of writing (November 2026). If Microsoft adds one, expect it to appear in Message center first.
 
 ## Open questions
 
@@ -150,16 +154,7 @@ The roadmap item presents this as each user's choice. Messaging policies are the
 - Will the feature reach GCC, GCC High and DoD, which the roadmap item does not list?
 
 <!-- rationale
-risk: Low. The roadmap item describes a reading-position choice each user makes in channels they can already see; it reaches no new data and takes no action.
+risk: Low. The roadmap item describes a reading-position choice each user makes; it does not describe new data access or other actions.
 cost: Low. The only cost the sources show is service desk and communication time; licensing specific to this feature is not yet published, and standard channels come with every Teams plan.
-impact: Low. Only desktop and Mac users who choose the option see channels open at a different place; nobody else notices a change.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters; rationale: impact / default: Channels keep opening at the most recent message until a user chooses otherwise, so only users who opt in notice a change. | Found: Searched: Microsoft Teams channels "last read" default newest messages permissions actions; Microsoft Teams "579890" default role licensing. Read roadmap and Teams settings reference; user choice is stated, but the initial selection and unchanged default are not. | Fix: Replace 'If nobody acts, the roadmap's wording indicates that channels keep opening at the most recent message until a user chooses otherwise' with 'The roadmap presents this as a user choice but does not state which opening position is selected on arrival.' Remove 'so expect channel behaviour to change only for people who opt in.' Replace the impact rationale with 'Low. The roadmap describes a user choice on Desktop and Mac; the opening position selected on arrival is not stated.'
-- [unsupported, major] Risk assessment: Data exposure; rationale: risk / behaviour: This option reaches no content the user could not already see and introduces no new data access. | Found: Searched: Teams channels open last read message client setting private shared threaded across devices permissions; Microsoft Teams channels "last read" default newest messages permissions actions. Read channels overview and roadmap; no feature-specific data-access guarantee. | Fix: Replace the Data exposure bullet with 'The roadmap describes a reading-position choice; it does not describe new data access.' In the risk rationale, replace 'in channels they can already see; it reaches no new data and takes no action' with '; it does not describe new data access or other actions'.
-- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The feature acts on nothing and only positions the view. | Found: Searched: Microsoft Teams channels "last read" default newest messages permissions actions. Read roadmap, channels overview and messaging-policy references; they do not establish that view positioning is the feature's only action. | Fix: Replace the Autonomy & actions bullet with 'The roadmap describes choosing where a channel opens; it does not describe other actions.' Remove the absolute 'takes no action' assertion from the risk rationale, using the narrower replacement specified for Data exposure.
-- [unsupported, blocker] Governance controls / role: No admin role is needed for this undocumented control. | Found: Searched: Microsoft Teams "579890" default role licensing; Teams channels last read message admin switch TeamsMessagingPolicy PowerShell Graph. Read role excerpts and messaging-policy references; no source states that no admin role is needed for this feature. | Fix: Remove 'No admin role is needed for a control that is not documented'. Retain the narrower Scope statement that Microsoft documents no admin role or setting for this feature at the time of writing.
+impact: Low. The roadmap describes a user choice on Desktop and Mac; the opening position selected on arrival is not stated.
 -->

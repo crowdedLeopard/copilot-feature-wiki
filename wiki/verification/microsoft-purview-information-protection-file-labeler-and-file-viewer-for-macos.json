@@ -2,27 +2,33 @@
   "slug": "microsoft-purview-information-protection-file-labeler-and-file-viewer-for-macos",
   "roadmapId": 561327,
   "title": "Microsoft Purview Information Protection: File Labeler and File Viewer for macOS",
-  "status": "verified",
-  "date": "2026-11-19",
+  "status": "held",
+  "date": "2026-11-26",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 62,
-    "confirmed": 62,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 59)"
+    ]
   },
-  "summary": "The briefing accurately reports Microsoft's macOS client announcement, rollout targets and continued application of existing label policies. The publishing-policy controls and per-user billing model are supported, and searches did not establish the client-specific details the briefing leaves open.",
+  "counts": {
+    "claims": 76,
+    "confirmed": 75,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing correctly reports Microsoft's rollout notice, existing label policies and per-user billing model. It incorrectly treats the account requirement as undocumented: Microsoft Learn says users must sign in with a Microsoft 365 work or school account to apply sensitivity labels. The publishing-policy path also stops at the start of the configuration wizard.",
   "claims": [
     {
       "n": 1,
@@ -30,16 +36,38 @@
       "type": "record",
       "claim": "Microsoft plans Information Protection File Labeler and File Viewer applications for macOS.",
       "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Microsoft Purview Information Protection is introducing File Labeler and File Viewer applications for macOS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The description and notice identify macOS as the feature's platform.",
+      "status": "supported",
       "source": "roadmap record",
       "quote": "This feature is bringing the Information Protection Filer Labeler and Viewer applications to the MacOS platform.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Purview as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap item is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -47,18 +75,7 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The record lists General Availability and Preview as release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap General Availability target is January CY2027.",
@@ -69,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is May CY2026.",
@@ -80,10 +97,32 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability as a release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists Preview as a release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: clouds; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -91,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 10,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Web as its platform, despite describing macOS applications.",
+      "claim": "The roadmap's platform field is Web, unlike the macOS platform in its description.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]; \"description\": \"This feature is bringing the Information Protection Filer Labeler and Viewer applications to the MacOS platform.",
@@ -102,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 11,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-13T23:01:05.",
+      "claim": "The roadmap was modified at 2026-10-13T23:01:05.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-13T23:01:05\"",
@@ -113,54 +152,21 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing; Governance guidance; Open questions",
-      "type": "record",
-      "claim": "MC1326509 updated its timeline on 13 October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1326509",
-      "quote": "Updated October 13, 2026: We have updated the timeline. Thank you for your patience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice scheduled the public preview download on or around 29 May 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1326509",
-      "quote": "Public Preview: The macOS client will be made available for download on or around May 29, 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice schedules Worldwide General Availability rollout to begin late January 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1326509",
-      "quote": "General Availability (Worldwide): We will begin rolling out late January 2027 and expect to complete by mid-November 2027.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 12,
-      "where": "What's changing; Scope",
+      "where": "What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The notice expects General Availability rollout to complete by mid-November 2027.",
+      "claim": "The notice says Mac users will be able to apply sensitivity labels to supported files.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "General Availability (Worldwide): We will begin rolling out late January 2027 and expect to complete by mid-November 2027.",
+      "quote": "Users will be able to apply, change, and remove sensitivity labels on supported files",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing; Risk assessment; rationale: risk",
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "Mac users will be able to apply sensitivity labels.",
+      "claim": "The notice says Mac users will be able to change sensitivity labels.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Users will be able to apply, change, and remove sensitivity labels on supported files",
@@ -171,7 +177,7 @@
       "n": 14,
       "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "Mac users will be able to change sensitivity labels.",
+      "claim": "The notice says Mac users will be able to remove sensitivity labels.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Users will be able to apply, change, and remove sensitivity labels on supported files",
@@ -180,12 +186,12 @@
     },
     {
       "n": 15,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Mac users will be able to remove sensitivity labels.",
+      "claim": "Supported files named in the notice include Office documents.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "Users will be able to apply, change, and remove sensitivity labels on supported files",
+      "quote": "including Office documents, PDFs, images, text files, and other file types.",
       "severity": null,
       "fix": null
     },
@@ -193,10 +199,10 @@
       "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice includes Office documents, PDFs, images, text files and other file types among supported files.",
+      "claim": "Supported files named in the notice include PDFs.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "Users will be able to apply, change, and remove sensitivity labels on supported files, including Office documents, PDFs, images, text files, and other file types.",
+      "quote": "including Office documents, PDFs, images, text files, and other file types.",
       "severity": null,
       "fix": null
     },
@@ -204,10 +210,10 @@
       "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "Users will be able to label and protect a single file.",
+      "claim": "Supported files named in the notice include images.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "Users will be able to apply labels and protection to single files, or multiple files",
+      "quote": "including Office documents, PDFs, images, text files, and other file types.",
       "severity": null,
       "fix": null
     },
@@ -215,21 +221,21 @@
       "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "Users will be able to label and protect multiple files.",
+      "claim": "Supported files named in the notice include text files.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "Users will be able to apply labels and protection to single files, or multiple files",
+      "quote": "including Office documents, PDFs, images, text files, and other file types.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Mac users will be able to view protected files, including .pfile-based formats, unsupported by their originating applications.",
+      "claim": "The notice also includes other file types without specifying an exhaustive list.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "Users will be able to open and view protected files (including .pfile-based formats) that are not supported by their originating applications.",
+      "quote": "including Office documents, PDFs, images, text files, and other file types.",
       "severity": null,
       "fix": null
     },
@@ -237,10 +243,10 @@
       "n": 20,
       "where": "What's changing",
       "type": "record",
-      "claim": "Labels remain applied when files are shared or moved.",
+      "claim": "Users will be able to apply labels and protection to a single file.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "Labels and protection will remain applied when files are shared or moved.",
+      "quote": "Users will be able to apply labels and protection to single files, or multiple files",
       "severity": null,
       "fix": null
     },
@@ -248,7 +254,51 @@
       "n": 21,
       "where": "What's changing",
       "type": "record",
-      "claim": "Protection remains applied when files are shared or moved.",
+      "claim": "Users will be able to apply labels and protection to multiple files.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Users will be able to apply labels and protection to single files, or multiple files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Mac users will be able to open and view protected files.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Users will be able to open and view protected files (including .pfile-based formats) that are not supported by their originating applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Protected-file viewing includes .pfile-based formats.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Users will be able to open and view protected files (including .pfile-based formats) that are not supported by their originating applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The viewer can open protected files not supported by their originating applications.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Users will be able to open and view protected files (including .pfile-based formats) that are not supported by their originating applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Labels remain applied when files are shared.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Labels and protection will remain applied when files are shared or moved.",
@@ -256,10 +306,43 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Why it matters",
+      "n": 26,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The notice describes parity with the existing Windows File Labeler and File Viewer, subject to stated exceptions.",
+      "claim": "Protection remains applied when files are shared.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Labels and protection will remain applied when files are shared or moved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Labels remain applied when files are moved.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Labels and protection will remain applied when files are shared or moved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Protection remains applied when files are moved.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Labels and protection will remain applied when files are shared or moved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The notice describes parity with the existing Windows experience, subject to its stated exceptions.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "The macOS client will provide parity with the Windows File Labeler and File Viewer, with the following exceptions:",
@@ -267,8 +350,8 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment",
+      "n": 30,
+      "where": "What's changing; Risk assessment; Open questions",
       "type": "record",
       "claim": "Advanced label-based protection is not supported in this macOS release.",
       "status": "supported",
@@ -278,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 31,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
       "type": "record",
-      "claim": "Selecting a folder does not show the option; users must select files.",
+      "claim": "Selecting a folder does not show the option, so users must work with selected files.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Need to work with files, selecting a folder will not show the option.",
@@ -289,18 +372,18 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "summary; What's changing; Why it matters; Scope; Governance guidance",
+      "n": 32,
+      "where": "summary; What's changing; Why it matters; Scope; Governance guidance; rationales",
       "type": "record",
-      "claim": "The macOS client is a separate download from the Microsoft Purview Information Protection page.",
+      "claim": "The macOS client must be downloaded separately.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "The macOS client will be made available to download via the Microsoft Purview Information Protection page.",
+      "quote": "The client will not be pre-installed and will need to be downloaded separately.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 33,
       "where": "What's changing; Why it matters; Scope; Governance guidance; rationale: impact",
       "type": "record",
       "claim": "The macOS client is not pre-installed.",
@@ -311,10 +394,21 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "summary; controls[0].note; Why it matters; Risk assessment; Scope; Governance controls; rationale: risk",
+      "n": 34,
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "Existing sensitivity labeling policies and controls continue to govern the macOS clients.",
+      "claim": "The notice names the Microsoft Purview Information Protection page as the download location.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "The macOS client will be made available to download via the Microsoft Purview Information Protection page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "summary; controls[0].note; Why it matters; Risk assessment; Scope; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing sensitivity labeling policies and Purview controls continue to govern the macOS clients.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Existing sensitivity labeling policies will continue to apply; no changes will be required. ... Existing Purview labeling policies and controls continue to govern behavior across platforms.",
@@ -322,10 +416,21 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 36,
+      "where": "Scope; Governance controls",
+      "type": "record",
+      "claim": "Microsoft's notice says changes to existing labeling policies are not required.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Existing sensitivity labeling policies will continue to apply; no changes will be required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "summary; Why it matters",
       "type": "record",
-      "claim": "Microsoft's notice says no immediate action is required.",
+      "claim": "Microsoft's notice says no immediate administrator action is required.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "No immediate action is required.",
@@ -333,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 38,
       "where": "Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft suggests reviewing current labeling policies for cross-platform needs.",
+      "claim": "Microsoft suggests reviewing sensitivity labeling policies for cross-platform needs.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Review your current sensitivity labeling policies to ensure they meet cross-platform needs.",
@@ -344,10 +449,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 39,
       "where": "Why it matters",
       "type": "record",
-      "claim": "Microsoft suggests informing macOS users of labeling and protected-file viewing availability.",
+      "claim": "Microsoft suggests informing macOS users about labeling and protected-file viewing availability.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Inform macOS users about the availability of labeling and protected file viewing capabilities.",
@@ -355,7 +460,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 40,
       "where": "Why it matters",
       "type": "record",
       "claim": "Microsoft suggests downloading the macOS client when it becomes available.",
@@ -366,10 +471,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 41,
       "where": "Scope; rationale: impact",
       "type": "record",
-      "claim": "The notice identifies macOS users working with labeled and protected files as affected.",
+      "claim": "Affected users are macOS users who work with labeled and protected files.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Users on macOS who work with labeled and protected files",
@@ -377,10 +482,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 42,
       "where": "Scope; rationale: impact",
       "type": "record",
-      "claim": "The notice identifies administrators managing Purview Information Protection as affected.",
+      "claim": "Admins managing Microsoft Purview Information Protection are also affected.",
       "status": "supported",
       "source": "Message Center post MC1326509",
       "quote": "Admins managing Microsoft Purview Information Protection",
@@ -388,10 +493,54 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 43,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "record",
+      "claim": "The notice's timeline was updated on 13 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Updated October 13, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice scheduled public preview download on or around 29 May 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "Public Preview: The macOS client will be made available for download on or around May 29, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice schedules General Availability Worldwide rollout to begin late January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "General Availability (Worldwide): We will begin rolling out late January 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft expects General Availability rollout to complete by mid-November 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1326509",
+      "quote": "expect to complete by mid-November 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Windows File Labeler applies sensitivity labels using File Explorer.",
+      "claim": "The Windows File Labeler applies sensitivity labels and encryption using File Explorer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/information-protection-client",
       "quote": "Information protection file labeler ... Used to apply sensitivity labels and encryption using File Explorer.",
@@ -399,21 +548,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 48,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Windows File Labeler applies encryption using File Explorer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/information-protection-client",
-      "quote": "Information protection file labeler ... Used to apply sensitivity labels and encryption using File Explorer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The Windows Information Protection Viewer views encrypted files.",
+      "claim": "The Windows information protection viewer is used to view encrypted files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/information-protection-client",
       "quote": "Information protection viewer ... Used to view files that are encrypted.",
@@ -421,10 +559,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 49,
       "where": "What's changing; Cost and licensing",
       "type": "availability",
-      "claim": "The information-protection-client Learn article describes a Windows-only client.",
+      "claim": "The cited information protection client page describes a client that runs only on Windows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/information-protection-client",
       "quote": "This client runs on Windows only and replaces the Azure Information Protection (AIP) unified labeling client.",
@@ -432,98 +570,54 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 50,
       "where": "What's changing",
       "type": "absence",
-      "claim": "No Microsoft Learn page for these macOS clients was established at the time of writing.",
+      "claim": "Microsoft Learn has no dedicated macOS File Labeler and File Viewer page at the time of writing in November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview macOS \"File Labeler\" \"File Viewer\" install admin block sign in system requirements; opened information-protection-client, sensitivity-labels and dlp-learn-about-advanced-label-protection. Results describe Windows clients or other macOS products, not these clients.",
+      "quote": "Searched: Microsoft Purview Information Protection File Labeler File Viewer macOS client installation admin restrict disable system requirements authentication sign in; \"macOS\" \"File Labeler\". Opened learn.microsoft.com/purview/information-protection-client (Windows only).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 51,
       "where": "front matter: defaultState; Why it matters",
       "type": "default",
-      "claim": "The capability is user-opt-in through a separate client download, rather than a pre-installed client.",
+      "claim": "The feature is user-opt-in: the client is separately downloaded rather than pre-installed, with no documented prerequisite admin enablement switch.",
       "status": "supported",
       "source": "Message Center post MC1326509",
-      "quote": "The client will not be pre-installed and will need to be downloaded separately. ... No immediate action is required.",
+      "quote": "The client will not be pre-installed and will need to be downloaded separately. ... Existing sensitivity labeling policies will continue to apply; no changes will be required.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "front matter: licensing.model and notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft places Purview protection of Windows/macOS endpoint assets under its per-user licensing model.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "n": 52,
+      "where": "Why it matters; Open questions",
       "type": "absence",
-      "claim": "A separate license or licensing conditions specific to the macOS File Labeler and File Viewer have not been published.",
+      "claim": "Learn does not document a macOS-client-specific control to restrict who installs it.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview macOS \"File Labeler\" license price subscription; opened purview-billing-models and Microsoft Purview service description, searching for macOS, File Labeler, File Viewer and client. General licensing is published; no separate macOS-client entitlement was found.",
+      "quote": "Searched: Purview macOS File Labeler Viewer disable block installation admin switch Set-LabelPolicy. Opened learn.microsoft.com/purview/information-protection-client, purview/create-sensitivity-labels and powershell/module/exchangepowershell/set-labelpolicy; no macOS installation switch.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "A price specific to the macOS clients has not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview macOS \"File Labeler\" license price subscription; opened purview-billing-models and Microsoft Purview service description. No price specific to the macOS File Labeler and File Viewer was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The supplied notice names no meter or charge.",
-      "status": "supported",
-      "source": "Message Center post MC1326509",
-      "quote": "Searched: the complete supplied MC1326509 notice for pricing, meters and charges; it describes rollout, capabilities and recommendations without naming a meter or charge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Windows client documentation requires a cloud-based subscription for sensitivity labeling.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/information-protection-client",
-      "quote": "You must have a cloud-based subscription for sensitivity labeling using the Microsoft Purview Information Protection client or scanner.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The Windows client subscription section points to Microsoft 365 licensing guidance for security and compliance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/information-protection-client",
-      "quote": "For more information, see: ... Microsoft 365 licensing guidance for security & compliance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 53,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Advanced label-based protection is an endpoint DLP setting used with the information protection client.",
+      "claim": "Opening protected files remains subject to authorization rather than bypassing the protection's access permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "Before encrypted content is rendered, successful authentication must occur for people who are authorized to open the file and given access to it. If authorization fails, the file doesn't open.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Advanced label-based protection for all files on devices is an endpoint DLP setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-learn-about-advanced-label-protection",
       "quote": "When you configure users for the endpoint data loss prevention setting Advanced label-based protection for all files on devices and use the information protection client",
@@ -531,10 +625,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 55,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "On Windows, Advanced label-based protection allows encrypted non-Office, non-PDF files to retain their extension on the device.",
+      "claim": "On Windows, this setting lets labeled and encrypted files other than Office and PDF retain their original file name extension on the device.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-learn-about-advanced-label-protection",
       "quote": "When a user selects a sensitivity label that applies encryption, the file name extension now doesn't change. As a result, there's no change to the user workflow because they can continue to view and edit the file in their standard application.",
@@ -542,10 +636,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 56,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Without that setting, encrypting those files with the Windows client changes their extension.",
+      "claim": "Without that setting, encrypting those files with the Windows client changes their file name extension.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-learn-about-advanced-label-protection",
       "quote": "When users label and encrypt these files with the information protection client and without this setting for advanced label-based protection: ... The encrypted file changes its file name extension and becomes read-only",
@@ -553,10 +647,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 57,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Without that setting, those encrypted Windows files open in the Information Protection Viewer instead of their original applications.",
+      "claim": "Without that setting, those encrypted Windows files open in the information protection viewer instead of their original applications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-learn-about-advanced-label-protection",
       "quote": "can no longer be opened by apps that support the original file name extension. Instead, the file opens in the Microsoft Purview Information Protection viewer.",
@@ -564,117 +658,139 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Access to label-encrypted content depends on permissions in the label's protection.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
-      "quote": "Control access to content by using encryption for emails, meeting invites, and documents to prevent unauthorized people from accessing this data. You can also choose which users or groups have permissions to perform which actions and for how long.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
+      "n": 58,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The sources do not describe the macOS client's extension and application handling of encrypted non-Office, non-PDF files without Advanced label-based protection.",
+      "claim": "Microsoft has not described macOS-specific handling of encrypted non-Office, non-PDF files without Advanced label-based protection.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview macOS \"File Viewer\" encrypted files extension authentication supported versions; read MC1326509, information-protection-client and dlp-learn-about-advanced-label-protection. The notice mentions .pfile viewing but does not explain this macOS encryption workflow.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Microsoft has not described the macOS client's account and sign-in experience.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"macOS\" \"File Labeler\" sign-in authentication account; read MC1326509 and information-protection-client, including its Windows client Entra prerequisites. No account or sign-in instructions for the macOS clients were found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The notice describes user-driven file labeling, not autonomous behavior.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"macOS\" \"File Labeler\" autonomous automatic labeling; read the supplied notice and information-protection-client. MC1326509 describes users selecting and labeling files; no autonomous behavior for these macOS applications was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Supported macOS versions and system requirements for these clients are not stated in the sources read.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview macOS \"File Labeler\" \"File Viewer\" install admin block sign in system requirements; read MC1326509 and information-protection-client. Client prerequisites describe Windows; macOS Endpoint DLP and Rights Management results do not establish these apps' requirements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Why it matters; Open questions",
-      "type": "absence",
-      "claim": "No Learn instructions were found for restricting who installs these macOS clients.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"macOS\" \"File Labeler\" restrict installation admin; Purview macOS \"File Labeler\" \"File Viewer\" install admin block sign in system requirements. Read MC1326509 and information-protection-client; results about Intune privacy settings did not document this installation control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls; Open questions; front matter: defaultState",
-      "type": "absence",
-      "claim": "A separate switch to allow or block the macOS clients is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"macOS\" \"File Labeler\" admin enable disable switch; read MC1326509, create-sensitivity-labels and information-protection-client. Existing labeling policies are documented; no separate macOS client enablement switch was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Label publishing configuration starts in Microsoft Purview portal at Solutions > Information Protection > Publishing policies > Publish label.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. ... On the Label policies page, select Publish label to start the Create policy configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-LabelPolicy -Identity <policy name> -AddLabels <label names> adds sensitivity labels to the identified publishing policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
-      "quote": "The AddLabels parameter specifies the sensitivity labels that you want to add to the policy. You can use any value that uniquely identifies the label. For example: ... Name",
+      "quote": "Searched: \"macOS\" \"Information Protection\" client advanced label-based protection pfile. Opened learn.microsoft.com/purview/dlp-learn-about-advanced-label-protection and purview/information-protection-client; these document Windows behavior, not macOS-specific handling.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[0].governs and scope; Governance controls",
-      "type": "behaviour",
-      "claim": "Tenant label publishing policies determine which users and groups receive which labels.",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not described which account the macOS client uses.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "To apply sensitivity labels, users must be signed in with their Microsoft 365 work or school account.",
+      "severity": "blocker",
+      "fix": "Replace the bullet 'Which account and sign-in method the macOS client uses is not described by Microsoft yet.' with 'The macOS client's specific sign-in method is not yet documented.' The cited sensitivity-label overview already states the general Microsoft 365 work or school account requirement for applying labels; retain only the narrower macOS sign-in-method gap."
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not documented the macOS client's specific sign-in method.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
-      "quote": "As part of the label policy, you select users and groups to have sensitivity labels and label policy settings.",
+      "source": null,
+      "quote": "Searched: Purview Mac File Viewer File Labeler client sign-in authentication supported macOS versions requirements; Microsoft Purview macOS File Labeler File Viewer client Microsoft 365 work school account sign in. Opened purview/sensitivity-labels and purview/information-protection-client.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
+      "n": 61,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The macOS announcement describes user-driven file labeling and no autonomous behavior.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview macOS File Labeler File Viewer no autonomous behavior user selected files. Read MC1326509 in full and opened purview/information-protection-client and purview/dlp-learn-about-advanced-label-protection; no macOS autonomous behavior documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft describes protections for Windows/macOS endpoint-based assets under its per-user licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A separate license or licensing conditions specific to the macOS clients have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Information Protection macOS File Labeler Viewer licensing price subscription. Opened purview/purview-billing-models, purview/information-protection-client and the Microsoft Purview service description; no separate macOS-client license named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A separate price specific to the macOS clients has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Information Protection macOS File Labeler Viewer licensing price subscription. Opened purview/purview-billing-models, purview/information-protection-client and the Microsoft Purview service description; no separate macOS-client price stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The supplied notice names no meter for the macOS clients.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Information Protection macOS File Labeler Viewer licensing price subscription. Read supplied Message Center post MC1326509 in full; it contains no billing meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The supplied notice names no charge for the macOS clients.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Information Protection macOS File Labeler Viewer licensing price subscription. Read supplied Message Center post MC1326509 in full; it contains no charge or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Windows information protection client page requires a cloud-based subscription for sensitivity labeling and links to security and compliance licensing guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-client",
+      "quote": "You must have a cloud-based subscription for sensitivity labeling using the Microsoft Purview Information Protection client or scanner. For more information, see: ... Microsoft 365 licensing guidance for security & compliance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Solutions > Information Protection > Publishing policies > Publish label is the documented entry route for publishing labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. ... On the Label policies page, select Publish label to start the Create policy configuration.",
+      "severity": "minor",
+      "fix": "The route correctly reaches the Create policy wizard but stops before label selection. Extend the printed path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish > Add'. Add to the existing note: 'Select the labels before Add, then follow the wizard prompts to select users and groups and complete the policy configuration.' Mirror this in the rendered table. The steps and scope are given at https://learn.microsoft.com/purview/create-sensitivity-labels."
+    },
+    {
+      "n": 69,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity <policy name> -AddLabels <label names> adds sensitivity labels to an identified policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
+      "quote": "The AddLabels parameter specifies the sensitivity labels that you want to add to the policy. You can use any value that uniquely identifies the label. For example: Name ... Set-LabelPolicy [-Identity] <PolicyIdParameter> ... [-AddLabels <MultiValuedProperty>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
       "where": "controls[0].note; Governance controls",
       "type": "command",
       "claim": "Set-LabelPolicy works only in Security & Compliance PowerShell.",
@@ -685,10 +801,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 71,
       "where": "Governance controls",
       "type": "role",
-      "claim": "Using Set-LabelPolicy requires assigned Purview permissions.",
+      "claim": "Using Set-LabelPolicy requires assigned Microsoft Purview permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
       "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions. For more information, see Permissions in the Microsoft Purview compliance portal.",
@@ -696,26 +812,70 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 72,
+      "where": "controls[0].governs and scope; Governance controls",
+      "type": "applicability",
+      "claim": "Existing tenant label publishing policies select which users and groups receive which sensitivity labels and policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "As part of the label policy, you select users and groups to have sensitivity labels and label policy settings. ... When you publish the label policy to your chosen users: The labels become visible to these users ... The policy settings are applied to these users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
       "where": "Governance controls",
       "type": "absence",
-      "claim": "The cited creating-and-publishing-labels Learn article does not mention macOS.",
+      "claim": "The creating and publishing labels Learn page does not mention macOS.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: create-sensitivity-labels article text for macOS; no match. Read its publishing-policy steps and PowerShell section. The macOS applicability statement is instead explicit in MC1326509.",
+      "quote": "Searched: macOS|MacOS|Mac in the fetched full text of https://learn.microsoft.com/purview/create-sensitivity-labels; no matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate switch specifically allowing or blocking use of the macOS clients is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview macOS File Labeler Viewer disable block installation admin switch Set-LabelPolicy. Opened purview/information-protection-client, purview/create-sensitivity-labels, Set-LabelPolicy and the Purview service description; none documents a macOS-client allow/block switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Supported macOS versions for these clients are not stated in the sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Mac File Viewer File Labeler client sign-in authentication supported macOS versions requirements. Read MC1326509 and purview/information-protection-client; rights-management-requirements search excerpt says to check each app's OS requirements, not these clients' versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "System requirements specific to the macOS clients are not stated in the sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Mac File Viewer File Labeler client sign-in authentication supported macOS versions requirements. Read MC1326509 and opened learn.microsoft.com/purview/information-protection-client; its deployment requirements are for Windows, not the macOS clients.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:21.626Z",
+    "at": "2026-11-26T14:11:02.254Z",
     "summary": {
       "links": 8,
-      "unreachable": 3,
+      "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -731,13 +891,13 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/information-protection-client",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-learn-about-advanced-label-protection",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
@@ -746,8 +906,8 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/purview/purview-billing-models",
@@ -780,9 +940,9 @@
         "side": "api",
         "governs": "Which sensitivity labels are published to which users and groups",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps",
-        "reachable": false,
+        "reachable": true,
         "token": "Set-LabelPolicy",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -792,6 +952,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]
